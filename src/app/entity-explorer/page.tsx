@@ -139,7 +139,7 @@ export default function EntityExplorerPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Hero Section */}
-      <section className="pt-20 md:pt-48 pb-16 md:pb-24 bg-gradient-to-br from-blue-950/50 via-sky-950/30 to-slate-950 relative overflow-hidden">
+      <section className="pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 bg-gradient-to-br from-blue-950/50 via-sky-950/30 to-slate-950 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ export default function EntityExplorerPage() {
               <Search className="w-4 h-4 text-blue-400" />
               <span className="text-sm font-medium text-blue-300">Browse & Filter</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Entity Explorer
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">

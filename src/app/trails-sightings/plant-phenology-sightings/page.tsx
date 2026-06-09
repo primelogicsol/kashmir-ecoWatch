@@ -18,7 +18,7 @@ const plantSightings = [
 export default function PlantPhenologySightingsPage() {
   const router = useRouter();
   return (
-    <main className="min-h-screen bg-slate-950"><section className="relative pt-20 md:pt-48 pb-20 overflow-hidden bg-[#160C27]">
+    <main className="min-h-screen bg-slate-950"><section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
@@ -28,7 +28,7 @@ export default function PlantPhenologySightingsPage() {
               </div>
               <Badge variant="info" size="lg">Plant Lifecycle Records</Badge>
             </div>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Plant & <span className="text-emerald-400">Phenology Sightings</span></h1>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Plant & <span className="text-emerald-400">Phenology Sightings</span></h1>
             <p className="text-xl text-slate-400 mb-8">Flowering records, leaf-out observations, and seasonal plant lifecycle documentation</p>
             <Button size="lg" className="bg-gradient-to-r from-pink-500 to-rose-600" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
           </motion.div>

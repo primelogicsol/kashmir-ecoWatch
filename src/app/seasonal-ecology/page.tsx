@@ -25,7 +25,7 @@ export default function SeasonalEcologyHubPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
-      <div className="relative pt-20 md:pt-48 pb-16 overflow-hidden">
+      <div className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[#160C27]" />
         <div className="absolute inset-0 bg-[#160C27]" />
         
@@ -54,7 +54,7 @@ export default function SeasonalEcologyHubPage() {
               </Badge>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Seasonal Ecology of{' '}
               <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                 Kashmir

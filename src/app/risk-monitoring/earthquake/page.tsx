@@ -316,7 +316,7 @@ export default function EarthquakeRiskMonitoringPage() {
     <main className="min-h-screen bg-slate-950">
 
       {/* ========== HERO SECTION ========== */}
-      <section className="relative pt-20 md:pt-48 pb-12 md:pb-16 overflow-hidden bg-[#160C27]">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
         
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-red-500/5 rounded-full blur-3xl" />
 
@@ -344,7 +344,7 @@ export default function EarthquakeRiskMonitoringPage() {
               <Badge variant="danger" size="lg">Zone V — Highest Seismic Hazard</Badge>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Earthquake &amp; <span className="text-emerald-400">Seismic Risk</span>
             </h1>
 

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
@@ -155,7 +155,7 @@ export default function SupportSponsorshipPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* ─── 1. Hero ──────────────────────────────────────────────────────── */}
-      <section className="relative pt-20 md:pt-48 pb-16 md:pb-24 overflow-hidden bg-blue-700">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-blue-700">
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
@@ -166,7 +166,7 @@ export default function SupportSponsorshipPage() {
               <Badge variant="info" size="lg">Support, Sponsorship & Institutional Backing</Badge>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Support, Sponsorship &amp; <span className="text-emerald-400">Institutional Backing</span>
             </h1>
 

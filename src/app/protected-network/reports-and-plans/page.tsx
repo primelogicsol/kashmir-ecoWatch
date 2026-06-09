@@ -43,7 +43,7 @@ export default function ReportsPage() {
             <Book className="w-6 h-6 text-amber-400" />
             <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">Evidence & Documentation</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4">Reports & Management Plans</h1>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Reports & Management Plans</h1>
           <p className="text-xl text-slate-400 mb-8">Scientific reports, management plans, monitoring documents, and research publications</p>
           <div className="flex flex-wrap gap-4">
             <div className="relative">

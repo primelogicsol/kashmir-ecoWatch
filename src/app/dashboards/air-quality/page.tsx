@@ -46,7 +46,7 @@ export default function AirQualityDashboard() {
                 Air Quality Dashboard
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h1 className="text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Air Quality Intelligence
             </h1>
             <p className="text-slate-400 max-w-2xl text-lg">

@@ -109,7 +109,7 @@ export default function WaterQualityReadingsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <section className="relative pt-20 md:pt-48 pb-12 overflow-hidden bg-[#160C27]">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
@@ -123,7 +123,7 @@ export default function WaterQualityReadingsPage() {
               </div>
               <Badge variant="info" size="lg">Water Quality</Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h1 className="text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Water Quality <span className="text-emerald-400">Readings</span>
             </h1>
             <p className="text-lg text-slate-400 max-w-2xl">

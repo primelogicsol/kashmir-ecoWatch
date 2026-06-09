@@ -208,17 +208,17 @@ export function PremiumStickyHeader() {
       {items.map((subitem) => (
         subitem.isHeader ? (
           <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
+            <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
           </div>
         ) : (
           <Link
             key={subitem.name}
             href={subitem.href}
-            className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+            className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
           >
             <span className="font-medium">{subitem.name}</span>
             {subitem.desc && (
-              <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+              <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
             )}
           </Link>
         )
@@ -261,7 +261,7 @@ export function PremiumStickyHeader() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
+                    'flex items-center gap-1 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer',
                     activeDropdown === item.label
                       ? 'text-white bg-white/10'
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -297,7 +297,7 @@ export function PremiumStickyHeader() {
                         {item.label === 'Field Intelligence' && <FileText className="w-4 h-4 text-orange-400" />}
                         {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           {item.label}
                         </span>
                       </div>
@@ -439,7 +439,7 @@ export function PremiumStickyHeader() {
                         <>
                           <button
                             onClick={() => toggleMobileSubmenu(item.label)}
-                            className="w-full flex items-center justify-between gap-3 px-3 py-4 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer text-base font-medium"
+                            className="w-full flex items-center justify-between gap-3 px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer text-sm font-medium"
                             aria-expanded={isExpanded}
                           >
                             <span>{item.label}</span>
@@ -464,7 +464,7 @@ export function PremiumStickyHeader() {
                                   {renderDropdownItems(
                                     getDropdownItems(item.label).map(item => ({
                                       ...item,
-                                      name: item.name.replace(/^[^\s]+ /, '') // Remove emoji for mobile
+                                      name: item.name.replace(/^[^\w\s]+\s*/u, '') // Strip leading emoji for mobile
                                     }))
                                   )}
                                 </div>
@@ -475,7 +475,7 @@ export function PremiumStickyHeader() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block px-3 py-4 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-base font-medium"
+                          className="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
                         >
                           {item.label}
                         </Link>

@@ -46,7 +46,7 @@ export default function SpeciesIntelligencePage() {
               Ecological Intelligence
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
             Species Intelligence
           </h1>
           <p className="text-xl text-slate-400 mb-8">

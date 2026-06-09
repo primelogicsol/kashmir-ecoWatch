@@ -181,7 +181,7 @@ export function Navigation() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-2.5 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer ${
+                  className={`flex items-center gap-1 px-2.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer ${
                     item.hasDropdown ? 'hover:bg-white/10' : ''
                   }`}
                 >
@@ -206,7 +206,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <Leaf className="w-4 h-4 text-forest-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Biodiversity Intelligence
                         </span>
                       </div>
@@ -215,17 +215,17 @@ export function Navigation() {
                     <div className="border-b border-white/5">
                       <Link
                         href="/biodiversity/dashboards"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                       >
                         <span className="font-medium">📊 Dashboards</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Analytics & trends</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Analytics & trends</span>
                       </Link>
                     </div>
                     
                     {/* Species Group */}
                     <div className="py-2 border-b border-white/5">
                       <div className="px-4 py-1.5 bg-emerald-500/10">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-400">Species</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-wider text-emerald-400">Species</span>
                       </div>
                       {[
                         { name: 'Species Directory', href: '/biodiversity', desc: 'Browse complete database' },
@@ -239,10 +239,10 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -250,7 +250,7 @@ export function Navigation() {
                     {/* Observation & Ecology Group */}
                     <div className="py-2 border-b border-white/5">
                       <div className="px-4 py-1.5 bg-sky-500/10">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-sky-400">Observation & Ecology</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-wider text-sky-400">Observation & Ecology</span>
                       </div>
                       {[
                         { name: 'Wildlife Sightings', href: '/biodiversity/wildlife-sightings', desc: 'Verified & community observations' },
@@ -264,10 +264,10 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -275,7 +275,7 @@ export function Navigation() {
                     {/* Intelligence Group */}
                     <div className="py-2">
                       <div className="px-4 py-1.5 bg-violet-500/10">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-violet-400">Intelligence</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-wider text-violet-400">Intelligence</span>
                       </div>
                       {[
                         { name: 'Overview', href: '/biodiversity/overview', desc: 'Module command center' },
@@ -284,10 +284,10 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -305,7 +305,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <Shield className="w-4 h-4 text-forest-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Protected Areas
                         </span>
                       </div>
@@ -313,17 +313,17 @@ export function Navigation() {
                     <div className="py-2">
                       <Link
                         href="/protected-network"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🗺️ Network Overview</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Complete protected area system</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Complete protected area system</span>
                       </Link>
                       <Link
                         href="/protected-network/atlas"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">📍 Protected Area Atlas</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Interactive GIS mapping</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Interactive GIS mapping</span>
                       </Link>
                       {[
                         { name: 'National Parks', href: '/protected-network/national-parks', desc: 'Core conservation landscapes' },
@@ -340,10 +340,10 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -361,7 +361,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <Droplet className="w-4 h-4 text-blue-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Water Systems
                         </span>
                       </div>
@@ -369,10 +369,10 @@ export function Navigation() {
                     <div className="py-2">
                       <Link
                         href="/water-systems"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">💧 Overview</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Complete hydrological intelligence</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Complete hydrological intelligence</span>
                       </Link>
                       {[
                         { name: 'Dashboards', href: '/water-systems/dashboards', icon: BarChart3, desc: 'Analytics, trends & heatmaps', color: 'text-orange-400' },
@@ -392,13 +392,13 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center gap-2 mb-1">
                             <subitem.icon className={`w-3.5 h-3.5 ${subitem.color}`} />
                             <span className="font-medium">{subitem.name}</span>
                           </div>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -416,7 +416,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <Factory className="w-4 h-4 text-amber-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Environmental Monitoring
                         </span>
                       </div>
@@ -424,10 +424,10 @@ export function Navigation() {
                     <div className="py-2">
                       <Link
                         href="/environmental-monitoring"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🏗️ Overview</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Environmental intelligence command center</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Environmental intelligence command center</span>
                       </Link>
                       {[
                         { name: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress heatmaps', color: 'text-violet-400' },
@@ -443,7 +443,7 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center gap-2 mb-0.5">
                             <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${
@@ -477,7 +477,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <Upload className="w-4 h-4 text-emerald-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Contribute
                         </span>
                       </div>
@@ -485,10 +485,10 @@ export function Navigation() {
                     <div className="py-2">
                       <Link
                         href="/contribute"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🌐 Contribute Hub</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">All contribution pathways</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">All contribution pathways</span>
                       </Link>
                       {[
                         { name: 'Report an Issue', href: '/report-issue', desc: 'Emergency & hazard reporting' },
@@ -499,10 +499,10 @@ export function Navigation() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                         >
                           <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-xs text-slate-500 mt-0.5">{subitem.desc}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
                         </Link>
                       ))}
                     </div>
@@ -520,7 +520,7 @@ export function Navigation() {
                     <div className="p-3 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <AlertTriangle className="w-4 h-4 text-red-400" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Risk & Monitoring
                         </span>
                       </div>
@@ -528,129 +528,129 @@ export function Navigation() {
                     <div className="py-2 max-h-[70vh] overflow-y-auto">
                       <Link
                         href="/risk-monitoring"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🎯 Overview</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Command center</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Command center</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/dashboards"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">📊 Dashboards</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Live risk & incident dashboards</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Live risk & incident dashboards</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/live-alerts"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🚨 Live Alerts</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Critical alerts & warnings</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Critical alerts & warnings</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/hazard-risks"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">⚠️ Hazard Risks</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Umbrella hazard classification</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Umbrella hazard classification</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/flood-flash-flood"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🌊 Flood & Flash Flood</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">River overflow & inundation watch</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">River overflow & inundation watch</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/landslide-slope"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🏔️ Landslide & Slope</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Slope instability & road risk</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Slope instability & road risk</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/avalanche-winter"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">❄️ Avalanche & Winter</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Avalanche exposure & winter access</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Avalanche exposure & winter access</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/earthquake"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🌍 Earthquake</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Seismic exposure & readiness</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Seismic exposure & readiness</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/forest-fire"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🔥 Forest Fire</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Active fires & fire-prone zones</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Active fires & fire-prone zones</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/glacier-cryosphere"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🧊 Glacier & Cryosphere</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Glacier-linked environmental risk</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Glacier-linked environmental risk</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/hydrological-risk"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">💧 Hydrological Risk</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Water system instability & overflow</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Water system instability & overflow</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/environmental-incident-risk"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">☣️ Environmental Incident Risk</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Pollution emergencies & escalation</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Pollution emergencies & escalation</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/district-risk-profiles"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">📍 District Risk Profiles</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">District-wise operational risk</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">District-wise operational risk</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/critical-infrastructure-response"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🏗️ Critical Infrastructure & Response</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Emergency facilities & response nodes</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Emergency facilities & response nodes</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/shelters-closures-emergency-routes"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🛤️ Shelters, Closures & Emergency Routes</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Safe routes & operational mobility</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Safe routes & operational mobility</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/soil-pollution"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🧪 Soil Pollution</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Soil degradation & contamination (ESRO)</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Soil degradation & contamination (ESRO)</span>
                       </Link>
                       <Link
                         href="/risk-monitoring/human-wildlife-conflict"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 cursor-pointer"
                       >
                         <span className="font-medium">🐻 Human-Wildlife Conflict</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Conflict management & mitigation (ESRO)</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Conflict management & mitigation (ESRO)</span>
                       </Link>
                       <Link
                         href="/risk-updates"
-                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                        className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
                       >
                         <span className="font-medium">📋 Risk Updates</span>
-                        <span className="block text-xs text-slate-500 mt-0.5">Situational awareness & assessments</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">Situational awareness & assessments</span>
                       </Link>
                     </div>
                   </motion.div>
@@ -1095,7 +1095,7 @@ export function Navigation() {
                         <>
                           <button
                             onClick={() => toggleMobileSubmenu(item.label)}
-                            className="w-full flex items-center justify-between gap-2 sm:gap-3 px-2 sm:px-3 py-3 sm:py-3.5 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer text-sm sm:text-base font-medium"
+                            className="w-full flex items-center justify-between gap-2 sm:gap-3 px-2 sm:px-3 py-2.5 sm:py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer text-xs sm:text-sm font-medium"
                             aria-expanded={isExpanded}
                             aria-controls={`submenu-${item.label.replace(/\s+/g, '-').toLowerCase()}`}
                           >
@@ -1124,40 +1124,40 @@ export function Navigation() {
                                   {/* Render submenu items based on category */}
                                   {item.label === 'Protected Areas' && (
                                     <>
-                                      <Link href="/protected-network" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🗺️ Network Overview
                                       </Link>
-                                      <Link href="/protected-network/atlas" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/atlas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         📍 Protected Area Atlas
                                       </Link>
-                                      <Link href="/protected-network/national-parks" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/national-parks" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         National Parks
                                       </Link>
-                                      <Link href="/protected-network/wildlife-sanctuaries" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/wildlife-sanctuaries" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Wildlife Sanctuaries
                                       </Link>
-                                      <Link href="/protected-network/wetland-reserves" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/wetland-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Wetland Reserves
                                       </Link>
-                                      <Link href="/protected-network/conservation-reserves" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/conservation-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Conservation Reserves
                                       </Link>
-                                      <Link href="/protected-network/bird-and-habitat-areas" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/bird-and-habitat-areas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Bird & Habitat Areas
                                       </Link>
-                                      <Link href="/protected-network/species-intelligence" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/species-intelligence" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Species Intelligence
                                       </Link>
-                                      <Link href="/protected-network/corridors-and-connectivity" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/corridors-and-connectivity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Corridors & Connectivity
                                       </Link>
-                                      <Link href="/protected-network/trails-and-sightings" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/trails-and-sightings" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Trails & Sightings
                                       </Link>
-                                      <Link href="/protected-network/monitoring-and-threats" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/monitoring-and-threats" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Monitoring & Threats
                                       </Link>
-                                      <Link href="/protected-network/reports-and-plans" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/protected-network/reports-and-plans" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Reports & Plans
                                       </Link>
                                     </>
@@ -1165,25 +1165,25 @@ export function Navigation() {
 
                                   {item.label === 'Biodiversity' && (
                                     <>
-                                      <Link href="/biodiversity" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         📊 All Species
                                       </Link>
-                                      <Link href="/biodiversity/mammals" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/mammals" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Mammals
                                       </Link>
-                                      <Link href="/biodiversity/birds" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/birds" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Birds
                                       </Link>
-                                      <Link href="/biodiversity/fish" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/fish" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Fish
                                       </Link>
-                                      <Link href="/biodiversity/plants" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/plants" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Plants
                                       </Link>
-                                      <Link href="/biodiversity/medicinal-plants" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/medicinal-plants" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Medicinal Plants
                                       </Link>
-                                      <Link href="/biodiversity/threatened-species" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/biodiversity/threatened-species" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Threatened Species
                                       </Link>
                                     </>
@@ -1191,37 +1191,37 @@ export function Navigation() {
 
                                   {item.label === 'Water Systems' && (
                                     <>
-                                      <Link href="/water-systems" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         💧 Overview
                                       </Link>
-                                      <Link href="/water-systems/lakes" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/lakes" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         All Lakes
                                       </Link>
-                                      <Link href="/water-systems/wetlands" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/wetlands" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         All Wetlands
                                       </Link>
-                                      <Link href="/water-systems/rivers" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/rivers" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Rivers & Streams
                                       </Link>
-                                      <Link href="/water-systems/springs" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/springs" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         All Springs
                                       </Link>
-                                      <Link href="/water-systems/watersheds" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/watersheds" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         All Watersheds
                                       </Link>
-                                      <Link href="/water-systems/glaciers" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/glaciers" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Glaciers & Cryosphere
                                       </Link>
-                                      <Link href="/water-systems/water-quality" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/water-quality" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Water Quality
                                       </Link>
-                                      <Link href="/water-systems/fisheries" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/fisheries" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Fisheries & Aquatic Life
                                       </Link>
-                                      <Link href="/water-systems/flood-risk" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/flood-risk" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Flood & Hydrological Risk
                                       </Link>
-                                      <Link href="/water-systems/restoration" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/water-systems/restoration" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Restoration & Rejuvenation
                                       </Link>
                                     </>
@@ -1229,19 +1229,19 @@ export function Navigation() {
 
                                   {item.label === 'Contribute' && (
                                     <>
-                                      <Link href="/contribute" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/contribute" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🌿 Overview
                                       </Link>
-                                      <Link href="/report-issue" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/report-issue" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Report an Issue
                                       </Link>
-                                      <Link href="/submit-sighting" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/submit-sighting" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Submit a Sighting
                                       </Link>
-                                      <Link href="/contribute-data" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/contribute-data" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Contribute Data
                                       </Link>
-                                      <Link href="/citizen-science" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/citizen-science" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Citizen Science
                                       </Link>
                                     </>
@@ -1249,28 +1249,28 @@ export function Navigation() {
 
                                   {item.label === 'Risk & Monitoring' && (
                                     <>
-                                      <Link href="/risk-monitoring" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         ⚠️ Overview
                                       </Link>
-                                      <Link href="/risk-monitoring/hazard-risks" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/hazard-risks" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🏔️ Hazard Risks
                                       </Link>
-                                      <Link href="/risk-monitoring/pollution-stress" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/pollution-stress" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🌫️ Pollution & Stress
                                       </Link>
-                                      <Link href="/risk-monitoring/biodiversity-risks" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/biodiversity-risks" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🦌 Biodiversity Risks
                                       </Link>
-                                      <Link href="/risk-monitoring/response-operations" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/response-operations" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🚨 Response & Operations
                                       </Link>
-                                      <Link href="/risk-monitoring/live-alerts-advisories" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/live-alerts-advisories" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         🔔 Live Alerts
                                       </Link>
-                                      <Link href="/risk-updates" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-updates" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         📋 Risk Updates
                                       </Link>
-                                      <Link href="/risk-monitoring/dashboards" className="block px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/risk-monitoring/dashboards" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         📊 Dashboards
                                       </Link>
                                     </>
@@ -1283,7 +1283,7 @@ export function Navigation() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block px-3 py-4 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-base font-medium"
+                          className="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
                         >
                           {item.label}
                         </Link>

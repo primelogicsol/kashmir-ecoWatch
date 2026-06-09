@@ -72,7 +72,7 @@ function MonitoringOverviewPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* ===== HERO ===== */}
-      <section className="relative pt-20 md:pt-48 pb-16 md:pb-24 overflow-hidden bg-[#160C27]">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
         
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
@@ -90,7 +90,7 @@ function MonitoringOverviewPage() {
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Monitoring{' '}
               <span className="text-emerald-400">
                 Intelligence Overview

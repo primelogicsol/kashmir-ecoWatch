@@ -42,7 +42,7 @@ export default function TrailsAndSightingsPage() {
             <Footprints className="w-6 h-6 text-amber-400" />
             <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">Recreation & Observation</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4">Trails & Sightings</h1>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Trails & Sightings</h1>
           <p className="text-xl text-slate-400 mb-8">Protected area trails, eco-routes, birding paths, and verified wildlife observations across Kashmir</p>
           <div className="flex flex-wrap gap-4">
             <Button className="bg-gradient-to-r from-amber-600 to-amber-500" icon={<Search className="w-5 h-5" />}>

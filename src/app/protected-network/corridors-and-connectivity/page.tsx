@@ -50,7 +50,7 @@ export default function CorridorsPage() {
             <Map className="w-6 h-6 text-pink-400" />
             <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">Ecological Intelligence</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4">Corridors & Connectivity</h1>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Corridors & Connectivity</h1>
           <p className="text-xl text-slate-400 mb-8">Landscape continuity, movement value, and habitat linkage analysis for wildlife conservation</p>
           <div className="flex flex-wrap gap-4">
             <Button className="bg-gradient-to-r from-pink-600 to-pink-500" icon={<Search className="w-5 h-5" />}>Search Corridors</Button>

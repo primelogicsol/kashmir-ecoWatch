@@ -50,7 +50,7 @@ export default function MonitoringPage() {
             <Bell className="w-6 h-6 text-amber-400" />
             <span className="text-sm font-semibold uppercase tracking-widest text-slate-400">Conservation Intelligence</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4">Monitoring & Threats</h1>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Monitoring & Threats</h1>
           <p className="text-xl text-slate-400 mb-8">Pressure signals, habitat condition, and conservation alerts across protected areas</p>
           <div className="flex flex-wrap gap-4">
             <Button className="bg-gradient-to-r from-amber-600 to-amber-500" icon={<Bell className="w-5 h-5" />}>Subscribe to Alerts</Button>

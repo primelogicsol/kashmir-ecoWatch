@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useRef } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
@@ -252,7 +252,7 @@ export default function ModuleDirectoryPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-48 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
         
         <div className="absolute inset-0 bg-blue-700" />
 
@@ -268,7 +268,7 @@ export default function ModuleDirectoryPage() {
                 Platform Modules
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Module Directory
             </h1>
             <p className="text-xl text-slate-400 mb-8 leading-relaxed">

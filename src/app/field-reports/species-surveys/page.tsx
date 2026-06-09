@@ -61,7 +61,7 @@ export default function SpeciesSurveysPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Hero Section */}
-      <section className="relative pt-20 md:pt-48 pb-16 md:pb-20 overflow-hidden bg-[#160C27]">
+      <section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
         
         <div className="absolute top-32 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-green-500/5 rounded-full blur-3xl" />
@@ -82,7 +82,7 @@ export default function SpeciesSurveysPage() {
               <Badge variant="outline" size="lg" className="border-emerald-500/30 text-emerald-400">Biodiversity Intelligence</Badge>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Species <span className="text-emerald-400">Surveys</span>
             </h1>
 

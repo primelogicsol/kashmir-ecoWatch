@@ -281,7 +281,7 @@ export default function AlertArchivePage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Hero Section */}
-      <section className="pt-20 md:pt-48 pb-16 md:pb-24 relative overflow-hidden">
+      <section className="pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 relative overflow-hidden">
         
         <div className="absolute inset-0 bg-[#160C27]" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -295,7 +295,7 @@ export default function AlertArchivePage() {
               <Archive className="w-4 h-4 text-indigo-400" />
               <span className="text-sm text-indigo-300">Historical Records</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               <span className="bg-gradient-to-r from-indigo-400 to-slate-300 bg-clip-text text-transparent">
                 Alert Archive
               </span>
