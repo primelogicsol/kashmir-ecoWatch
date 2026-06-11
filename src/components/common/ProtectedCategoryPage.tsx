@@ -94,7 +94,7 @@ export function ProtectedCategoryPage({
           transition={{ delay: 0.2 }}
         >
           <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
               {metrics.map((metric, idx) => {
                 const MetricIcon = (Icons as any)[metric.icon] || Icons.MapPin;
                 return (
