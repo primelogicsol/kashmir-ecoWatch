@@ -58,7 +58,8 @@ export function ProtectedCategoryPage({
 }: ProtectedCategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.MapPin;
   const router = useRouter();
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
+  const [showFilters, setShowFilters] = React.useState(false);
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -71,12 +72,16 @@ export function ProtectedCategoryPage({
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={
           <>
-            <Button size="lg" className={`bg-gradient-to-r ${color}`} icon={<Search className="w-5 h-5" />}>
-              Search
-            </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<Map className="w-5 h-5" />}>
-              Distribution Map
-            </Button>
+            <a href="/protected-network/atlas">
+              <Button size="lg" className={`bg-gradient-to-r ${color}`} icon={<Search className="w-5 h-5" />}>
+                Search
+              </Button>
+            </a>
+            <a href="/protected-network/atlas">
+              <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<Map className="w-5 h-5" />}>
+                Distribution Map
+              </Button>
+            </a>
           </>
         }
       />
@@ -140,8 +145,8 @@ export function ProtectedCategoryPage({
 
           {/* Filters + count + view toggle */}
           <div className="flex items-center gap-3 ml-auto">
-            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />}>
-              Filters
+            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
+              {showFilters ? 'Hide Filters' : 'Filters'}
             </Button>
             <span className="text-sm text-slate-400 whitespace-nowrap">
               <strong className="text-white">{areas.length}</strong> protected areas

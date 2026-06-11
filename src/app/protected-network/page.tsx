@@ -62,13 +62,13 @@ const categoryCards = [
     href: '/protected-network/conservation-reserves',
   },
   {
-    id: 'bird-habitat-areas',
+    id: 'bird-and-habitat-areas',
     title: 'Bird & Habitat Areas',
     icon: Activity,
     count: protectedNetworkMetrics.importantBirdAreas,
     description: 'Important Bird and Biodiversity Areas (IBAs) with critical habitats',
     color: 'from-emerald-600 to-emerald-500',
-    href: '/protected-network/bird-habitat-areas',
+    href: '/protected-network/bird-and-habitat-areas',
   },
   {
     id: 'atlas',
@@ -140,12 +140,16 @@ export default function ProtectedNetworkPage() {
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={
           <>
-            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Map className="w-5 h-5" />}>
-              Open PA Atlas
-            </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<TrendingUp className="w-5 h-5" />}>
-              Network Statistics
-            </Button>
+            <a href="/protected-network/atlas">
+              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Map className="w-5 h-5" />}>
+                Open PA Atlas
+              </Button>
+            </a>
+            <a href="/protected-network/registry">
+              <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<TrendingUp className="w-5 h-5" />}>
+                Network Statistics
+              </Button>
+            </a>
           </>
         }
       />
@@ -313,14 +317,15 @@ export default function ProtectedNetworkPage() {
               Featured Protected Areas
             </h2>
           </div>
-          <Button
-            variant="outline"
-            className="border-white/20 text-white"
-            icon={<ArrowRight className="w-5 h-5" />}
-            onClick={() => router.push('/protected-network/national-parks')}
-          >
-            View All Protected Areas
-          </Button>
+          <a href="/protected-areas">
+            <Button
+              variant="outline"
+              className="border-white/20 text-white"
+              icon={<ArrowRight className="w-5 h-5" />}
+            >
+              View All Protected Areas
+            </Button>
+          </a>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">

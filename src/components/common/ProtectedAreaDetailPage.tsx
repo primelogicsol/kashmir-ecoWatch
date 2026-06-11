@@ -320,7 +320,9 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                 <a href={`/protected-network/${getCategoryRoute(area.category)}/${area.slug}/management-plan`}>
                   <Button variant="outline" className="border-white/20 text-white" icon={<FileText className="w-4 h-4" />}>Management Plan</Button>
                 </a>
-                <Button variant="outline" className="border-white/20 text-white" icon={<Database className="w-4 h-4" />}>Raw Data</Button>
+                <a href="/protected-network/registry">
+                  <Button variant="outline" className="border-white/20 text-white" icon={<Database className="w-4 h-4" />}>Raw Data</Button>
+                </a>
               </div>
             </div>
 
@@ -750,7 +752,9 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                         <div className="text-[10px] text-slate-500">{report.type} · {report.year} · {report.source}</div>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="border-white/20 text-white shrink-0" icon={<ExternalLink className="w-3.5 h-3.5" />}>View</Button>
+                    <a href="/protected-network/reports-and-plans">
+                      <Button variant="outline" size="sm" className="border-white/20 text-white shrink-0" icon={<ExternalLink className="w-3.5 h-3.5" />}>View</Button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -763,7 +767,9 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-12">
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-xl font-bold text-white">Related Protected Areas</h2>
-              <Button variant="ghost" size="sm" className="text-emerald-400" icon={<ArrowRight className="w-4 h-4" />}>View All</Button>
+              <a href={`/protected-network/${getCategoryRoute(area.category)}`}>
+                <Button variant="ghost" size="sm" className="text-emerald-400" icon={<ArrowRight className="w-4 h-4" />}>View All</Button>
+              </a>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedAreas.slice(0, 3).map((related) => (

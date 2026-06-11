@@ -294,9 +294,11 @@ export function ProtectedAreaManagementPlanPage({ area, backHref, categoryLabel,
                       <div className="text-[10px] text-slate-500">{doc.type} · PDF, {doc.size} · {doc.source} · {doc.year}</div>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="border-emerald-600/40 text-emerald-400 hover:border-emerald-500 shrink-0" icon={<ExternalLink className="w-3.5 h-3.5" />}>
-                    View
-                  </Button>
+                  <a href="/protected-network/reports-and-plans">
+                    <Button variant="outline" size="sm" className="border-emerald-600/40 text-emerald-400 hover:border-emerald-500 shrink-0" icon={<ExternalLink className="w-3.5 h-3.5" />}>
+                      View
+                    </Button>
+                  </a>
                 </div>
               ))}
             </div>
