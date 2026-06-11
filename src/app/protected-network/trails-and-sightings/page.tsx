@@ -5,7 +5,7 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Footprints, Eye, MapPin, ArrowRight, Search } from 'lucide-react';
+import { Footprints, Eye, MapPin, ArrowRight, Search, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getTrails } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
