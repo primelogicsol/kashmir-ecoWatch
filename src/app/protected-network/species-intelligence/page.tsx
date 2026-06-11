@@ -24,10 +24,10 @@ export default function SpeciesIntelligencePage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Species</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Intelligence</span></>}
-        subtitle="Species distribution, protected area overlap, and habitat association analysis across Kashmir's conservation network. Covers mammals, birds, plants, and aquatic species with conservation status."
-        icon={<Activity className="w-6 h-6 text-purple-400" />}
-        label="Ecological Intelligence"
+        title={<><span className="block whitespace-nowrap">Kashmir Species</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Intelligence Network</span></>}
+        subtitle="Species distribution, protected-area overlap, and habitat association analysis across Kashmir's conservation network. Covers mammals, birds, plants, and aquatic species with conservation status, range data, and ecological sensitivity indicators."
+        icon={<Activity className="w-6 h-6 text-emerald-400" />}
+        label="Species Intelligence"
         breadcrumbs={[{ label: 'Species Intelligence' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={
@@ -49,20 +49,20 @@ export default function SpeciesIntelligencePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
               {[
                 { label: 'Species Profiles', value: speciesList.length, icon: Activity },
                 { label: 'Endangered', value: speciesList.filter(s => s.conservationStatus.includes('CR') || s.conservationStatus.includes('EN')).length, icon: Shield },
                 { label: 'PA Habitat Records', value: speciesList.reduce((acc, s) => acc + s.protectedAreas.length, 0), icon: MapPin },
                 { label: 'Conservation Focus', value: 'High', icon: TrendingUp },
               ].map((metric, idx) => (
-                <div key={idx} className="text-center p-4 border-r border-white/5 last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
                     {metric.value}
                   </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
                     {metric.label}
                   </div>
                 </div>

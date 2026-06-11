@@ -82,17 +82,17 @@ export function ProtectedCategoryPage({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
               {metrics.map((metric, idx) => {
                 const MetricIcon = (Icons as any)[metric.icon] || Icons.MapPin;
                 return (
-                  <div key={idx} className="text-center p-4 border-r border-white/5 last:border-r-0">
-                    <MetricIcon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-white tabular-nums">
+                  <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                    <MetricIcon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                    <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
                       {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
                     </div>
-                    <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
+                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
                       {metric.label}
                     </div>
                   </div>

@@ -108,8 +108,8 @@ export default function ProtectedAreasPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4">
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-1 sm:gap-2">
               {[
                 { label: 'Total Areas', value: protectedNetworkMetrics.totalProtectedAreas, icon: Shield },
                 { label: 'National Parks', value: protectedNetworkMetrics.nationalParks, icon: Mountain },
@@ -117,10 +117,14 @@ export default function ProtectedAreasPage() {
                 { label: 'Wetland Reserves', value: protectedNetworkMetrics.wetlandReserves, icon: Droplet },
                 { label: 'Conservation Reserves', value: protectedNetworkMetrics.conservationReserves, icon: Leaf },
               ].map((metric, idx) => (
-                <div key={idx} className="text-center p-3">
-                  <metric.icon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">{metric.value}</div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">{metric.label}</div>
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {metric.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>

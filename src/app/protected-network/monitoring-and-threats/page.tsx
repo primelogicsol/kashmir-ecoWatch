@@ -34,9 +34,9 @@ export default function MonitoringPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Monitoring and</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Threats</span></>}
-        subtitle="Pressure signals, encroachment records, habitat condition assessments, and active conservation alerts across Kashmir's protected areas. Data feeds into threat mapping and management planning."
-        icon={<Bell className="w-6 h-6 text-amber-400" />}
+        title={<><span className="block whitespace-nowrap">Kashmir Monitoring</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">and Threats</span></>}
+        subtitle="Pressure signals, encroachment records, habitat assessments, and conservation alerts across Kashmir's protected areas. Supports threat mapping, risk prioritization, field monitoring, and management planning."
+        icon={<Bell className="w-6 h-6 text-emerald-400" />}
         label="Conservation Intelligence"
         breadcrumbs={[{ label: 'Monitoring & Threats' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
@@ -48,25 +48,32 @@ export default function MonitoringPage() {
         }
       />
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          {[
-            { label: 'Active Alerts', value: threats.length, icon: Bell, color: 'text-amber-400' },
-            { label: 'Critical Threats', value: threats.filter(t => t.severity === 'critical').length, icon: AlertTriangle, color: 'text-red-400' },
-            { label: 'Monitoring Stations', value: '234', icon: Activity, color: 'text-emerald-400' },
-            { label: 'Resolved (30d)', value: '34', icon: TrendingUp, color: 'text-emerald-400' },
-          ].map((metric, idx) => (
-            <Card key={idx} className="glass-light border-white/5 p-6" padding="none">
-              <div className="flex items-center justify-between mb-4">
-                <metric.icon className={`w-6 h-6 ${metric.color}`} />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">{metric.value}</div>
-              <div className="text-sm text-slate-500 uppercase">{metric.label}</div>
-            </Card>
-          ))}
-        </div>
+      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+              {[
+                { label: 'Active Alerts', value: threats.length, icon: Bell },
+                { label: 'Critical Threats', value: threats.filter(t => t.severity === 'critical').length, icon: AlertTriangle },
+                { label: 'Monitoring Stations', value: '234', icon: Activity },
+                { label: 'Resolved (30d)', value: '34', icon: TrendingUp },
+              ].map((metric, idx) => (
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {metric.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+      </div>
 
-        <div className="space-y-4">
+      <div className="container mx-auto px-6 py-8">
           {threats.map((threat, index) => (
             <motion.a
               key={threat.id}
@@ -102,7 +109,6 @@ export default function MonitoringPage() {
               </Card>
             </motion.a>
           ))}
-        </div>
       </div>
 
       

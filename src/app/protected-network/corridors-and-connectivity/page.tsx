@@ -5,7 +5,7 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Map, TrendingUp, ArrowRight, Search } from 'lucide-react';
+import { Map, TrendingUp, ArrowRight, Search, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getCorridors } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
@@ -34,9 +34,9 @@ export default function CorridorsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Corridors and</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Connectivity</span></>}
-        subtitle="Landscape continuity and habitat linkage mapping across Kashmir's protected area network. Identifies movement corridors, fragmentation zones, and wildlife crossing points for spatial planning."
-        icon={<Map className="w-6 h-6 text-pink-400" />}
+        title={<><span className="block whitespace-nowrap">Kashmir Corridors</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">and Connectivity</span></>}
+        subtitle="Landscape connectivity and habitat linkage analysis across Kashmir's protected area network. Identifies wildlife corridors, fragmentation zones, ecological bottlenecks, and movement pathways for conservation planning and spatial management."
+        icon={<Map className="w-6 h-6 text-emerald-400" />}
         label="Ecological Intelligence"
         breadcrumbs={[{ label: 'Corridors & Connectivity' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
@@ -48,22 +48,32 @@ export default function CorridorsPage() {
         }
       />
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {[
-            { label: 'Identified Corridors', value: corridors.length },
-            { label: 'Critical Priority', value: corridors.filter(c => c.priority === 'Critical').length },
-            { label: 'Total Length', value: '287 km' },
-            { label: 'Active Status', value: corridors.filter(c => c.status === 'Active').length },
-          ].map((metric, idx) => (
-            <Card key={idx} className="glass-light border-white/5 p-6" padding="none">
-              <div className="text-3xl font-bold text-white mb-1">{metric.value}</div>
-              <div className="text-sm text-slate-500 uppercase">{metric.label}</div>
-            </Card>
-          ))}
-        </div>
+      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+              {[
+                { label: 'Identified Corridors', value: corridors.length, icon: Map },
+                { label: 'Critical Priority', value: corridors.filter(c => c.priority === 'Critical').length, icon: TrendingUp },
+                { label: 'Total Length', value: '287 km', icon: Search },
+                { label: 'Active Status', value: corridors.filter(c => c.status === 'Active').length, icon: Activity },
+              ].map((metric, idx) => (
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {metric.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+      </div>
 
-        <div className="grid grid-cols-1 gap-6">
+      <div className="container mx-auto px-6 py-8">
           {corridors.map((corridor, index) => (
             <motion.a
               key={corridor.id}

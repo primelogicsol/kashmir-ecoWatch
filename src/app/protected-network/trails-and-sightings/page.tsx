@@ -25,10 +25,10 @@ export default function TrailsAndSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Trails and</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sightings</span></>}
-        subtitle="Protected area trails, eco-routes, birding paths, and verified wildlife observations logged across Kashmir. Field records are reviewed and linked to protected area and species profiles."
-        icon={<Footprints className="w-6 h-6 text-amber-400" />}
-        label="Recreation & Observation"
+        title={<><span className="block whitespace-nowrap">Kashmir Trails</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">and Sightings</span></>}
+        subtitle="Protected-area trails, eco-routes, birding paths, and verified wildlife observations across Kashmir. Integrates field-reviewed sightings, visitor-use data, species records, and protected-area profile links."
+        icon={<Footprints className="w-6 h-6 text-emerald-400" />}
+        label="Recreation Intelligence"
         breadcrumbs={[{ label: 'Trails & Sightings' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={
@@ -46,17 +46,22 @@ export default function TrailsAndSightingsPage() {
       {/* Metrics */}
       <div className="container mx-auto px-6 -mt-8 relative z-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
               {[
-                { label: 'Protected Area Trails', value: trails.length },
-                { label: 'Birding Routes', value: trails.filter(t => t.type === 'Birding Trail').length },
-                { label: 'Verified Sightings', value: '4,521' },
-                { label: 'Active Observers', value: '156' },
+                { label: 'Protected Area Trails', value: trails.length, icon: Footprints },
+                { label: 'Birding Routes', value: trails.filter(t => t.type === 'Birding Trail').length, icon: Eye },
+                { label: 'Verified Sightings', value: '4,521', icon: MapPin },
+                { label: 'Active Observers', value: '156', icon: Search },
               ].map((metric, idx) => (
-                <div key={idx} className="text-center p-4 border-r border-white/5 last:border-r-0">
-                  <div className="text-3xl font-bold text-white mb-1">{metric.value}</div>
-                  <div className="text-sm text-slate-500 uppercase">{metric.label}</div>
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {metric.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>
