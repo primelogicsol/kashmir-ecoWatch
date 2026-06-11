@@ -120,7 +120,7 @@ function EntityCard({ entity, onNavigate }: EntityCardProps) {
 
           {/* Type Badge */}
           <div className="absolute top-3 left-3 z-10">
-            <Badge className={`${config.bgColor} text-xs px-2 py-0.5 rounded whitespace-nowrap text-white border-0 backdrop-blur-md shadow-lg`}>{/* responsive-md-fix */}
+            <Badge className={`${config.bgColor} text-xs px-2 py-0.5 whitespace-nowrap text-white border-0 backdrop-blur-md shadow-lg`}>{/* responsive-md-fix */}
               {config.icon}
               <span className="ml-1.5 text-xs font-semibold">{config.label}</span>
             </Badge>

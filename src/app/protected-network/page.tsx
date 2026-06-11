@@ -345,7 +345,7 @@ export default function ProtectedNetworkPage() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <Badge variant="info" size="sm" className="mb-2 capitalize text-xs px-2 py-0.5 rounded whitespace-nowrap">
+                      <Badge variant="info" size="sm" className="mb-2 capitalize text-xs px-2 py-0.5 whitespace-nowrap">
                         {pa.category.replace('_', ' ')}
                       </Badge>
                       <h3 className="text-base sm:text-lg font-semibold text-white">{pa.name}</h3>

@@ -33,7 +33,7 @@ export function Badge({ children, variant = 'default', size = 'md', className, o
     <span
       onClick={onClick}
       className={cn(
-        'inline-flex items-center font-medium rounded-full',
+        'inline-flex items-center font-medium rounded-[14px]',
         variants[variant],
         sizes[size],
         className,

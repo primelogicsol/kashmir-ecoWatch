@@ -253,14 +253,14 @@ export default function WaterSystemsPage() {
                   <h3 className="text-base sm:text-lg font-semibold text-white flex-1">
                     {module.title}
                   </h3>
-                  <Badge variant="info" size="sm" className="text-xs px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0">{module.count} entities</Badge>
+                  <Badge variant="info" size="sm" className="text-xs px-2 py-0.5 whitespace-nowrap flex-shrink-0">{module.count} entities</Badge>
                 </div>
                 <p className="text-slate-400 text-sm leading-relaxed">
                   {module.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5 text-xs">
                   {module.features.map((feature, fIdx) => (
-                    <Badge key={fIdx} variant="outline" size="sm" className="px-2 py-0.5 rounded whitespace-nowrap text-xs border-white/10 text-slate-400">
+                    <Badge key={fIdx} variant="outline" size="sm" className="px-2 py-0.5 whitespace-nowrap text-xs border-white/10 text-slate-400">
                       {feature}
                     </Badge>
                   ))}

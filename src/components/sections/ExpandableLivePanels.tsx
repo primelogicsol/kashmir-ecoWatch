@@ -73,7 +73,7 @@ export function ExpandableLivePanels() {
       low: { variant: 'info', label: 'LOW' },
     };
     return (
-      <Badge variant={config[severity]?.variant || 'info'} size="sm" className="text-xs px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0">
+      <Badge variant={config[severity]?.variant || 'info'} size="sm" className="text-xs px-2 py-0.5 whitespace-nowrap flex-shrink-0">
         {config[severity]?.label}
       </Badge>
     );
