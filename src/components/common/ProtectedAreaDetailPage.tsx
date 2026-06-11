@@ -280,7 +280,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     { id: 'reports',    label: 'Reports',          icon: FileText },
   ];
 
-  const CARD = 'card-intelligence border border-white/10 bg-transparent backdrop-blur-xl shadow-2xl';
+  const CARD = 'card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl';
   const SECTION_TITLE = 'text-xl font-bold text-white mb-5';
 
   return (
@@ -288,7 +288,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
 
       {/* ── HERO ── */}
       <div className="relative bg-[#160C27] pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
-        <BackgroundCarousel images={heroImages} />
+        <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
         <div className="container mx-auto px-6 relative z-10">

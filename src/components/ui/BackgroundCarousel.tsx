@@ -7,12 +7,14 @@ interface BackgroundCarouselProps {
   images: string[];
   interval?: number;
   className?: string;
+  overlayClassName?: string;
 }
 
 export function BackgroundCarousel({
   images,
   interval = 5000,
   className,
+  overlayClassName,
 }: BackgroundCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,7 +44,7 @@ export function BackgroundCarousel({
           }}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
+      <div className={cn("absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80", overlayClassName)} />
 
       {images.length > 1 && (
         <div className={cn('absolute z-20 flex gap-3 left-1/2 -translate-x-1/2 bottom-4 lg:left-auto lg:right-6 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:flex-col', className)}>
