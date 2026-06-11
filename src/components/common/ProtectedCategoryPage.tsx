@@ -60,6 +60,33 @@ export function ProtectedCategoryPage({
   const router = useRouter();
   const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [selectedDistrict, setSelectedDistrict] = React.useState('all');
+  const [selectedScope, setSelectedScope] = React.useState('all');
+
+  const districts = React.useMemo(() => {
+    return Array.from(new Set(areas.map(a => a.district).filter(Boolean))).sort();
+  }, [areas]);
+
+  const scopes = React.useMemo(() => {
+    return Array.from(new Set(areas.map((a: any) => a.scope).filter(Boolean))).sort();
+  }, [areas]);
+
+  const filteredAreas = React.useMemo(() => {
+    return areas.filter(area => {
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch = !query || 
+        area.name.toLowerCase().includes(query) ||
+        area.district.toLowerCase().includes(query) ||
+        area.description.toLowerCase().includes(query) ||
+        (area as any).flagshipSpecies?.toLowerCase().includes(query);
+
+      const matchesDistrict = selectedDistrict === 'all' || area.district === selectedDistrict;
+      const matchesScope = selectedScope === 'all' || (area as any).scope === selectedScope;
+
+      return matchesSearch && matchesDistrict && matchesScope;
+    });
+  }, [areas, searchQuery, selectedDistrict, selectedScope]);
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -149,7 +176,7 @@ export function ProtectedCategoryPage({
               {showFilters ? 'Hide Filters' : 'Filters'}
             </Button>
             <span className="text-sm text-slate-400 whitespace-nowrap">
-              <strong className="text-white">{areas.length}</strong> protected areas
+              <strong className="text-white">{filteredAreas.length}</strong> of <strong className="text-white">{areas.length}</strong> protected areas
             </span>
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="sm" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<Grid3X3 className="w-4 h-4" />} />
@@ -161,10 +188,62 @@ export function ProtectedCategoryPage({
 
       {/* Content */}
       <div className="container mx-auto px-6 py-8 space-y-6">
+        {showFilters && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="p-5 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6"
+          >
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Text</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder="Search name, district, or species..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Districts</option>
+                {districts.map(d => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            {scopes.length > 0 && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
+                <select
+                  value={selectedScope}
+                  onChange={(e) => setSelectedScope(e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                >
+                  <option value="all">All Scopes</option>
+                  {scopes.map(s => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </motion.div>
+        )}
+
         {/* Protected Areas Grid/List */}
-        {areas.length > 0 ? (
+        {filteredAreas.length > 0 ? (
           <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-            {areas.map((area, index) => (
+            {filteredAreas.map((area, index) => (
               <motion.a
                 key={area.id}
                 href={`/protected-network/${area.category === 'national_park' ? 'national-parks' : area.category === 'wildlife_sanctuary' ? 'wildlife-sanctuaries' : area.category === 'wetland_reserve' ? 'wetland-reserves' : area.category === 'conservation_reserve' ? 'conservation-reserves' : 'bird-and-habitat-areas'}/${area.slug}`}
@@ -236,7 +315,18 @@ export function ProtectedCategoryPage({
           <div className="text-center py-24">
             <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">No protected areas found</h3>
-            <p className="text-slate-400">Try adjusting your filters</p>
+            <p className="text-slate-400 mb-4">Try adjusting your filters</p>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white"
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedDistrict('all');
+                setSelectedScope('all');
+              }}
+            >
+              Reset Filters
+            </Button>
           </div>
         )}
       </div>
