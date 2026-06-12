@@ -236,6 +236,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
                     onClick={() => {
                       window.location.href = `${detailPageBaseRoute}/${entity.slug}`;
                     }}
+                    className={viewMode === 'grid' ? 'h-full flex flex-col' : ''}
                   >
                     <SeasonalCard entity={entity} variant={entityVariant} />
                   </div>

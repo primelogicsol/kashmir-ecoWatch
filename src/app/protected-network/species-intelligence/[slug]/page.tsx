@@ -9,8 +9,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function SpeciesDetailPageWrapper({ params }: PageProps) {
-  const { slug } = await params;
+export default function SpeciesDetailPageWrapper({ params }: PageProps) {
+  const { slug } = React.use(params);
   const species = getSpeciesProfiles.bySlug(slug);
 
   if (!species) {

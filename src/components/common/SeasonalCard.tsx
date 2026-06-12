@@ -179,11 +179,11 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
 
   return (
     <Card
-      className="group relative overflow-hidden border border-white/5 bg-slate-900/50 card-intelligence cursor-pointer"
+      className="group relative overflow-hidden border border-white/5 bg-slate-900/50 card-intelligence cursor-pointer h-full flex flex-col justify-between"
       onClick={onClick}
     >
       {/* Visual header with variant color accent */}
-      <div className={`relative h-40 bg-gradient-to-br ${variantColor} opacity-20 group-hover:opacity-30 transition-opacity overflow-hidden`}>
+      <div className={`relative h-40 bg-gradient-to-br ${variantColor} opacity-20 group-hover:opacity-30 transition-opacity overflow-hidden shrink-0`}>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
         
         {/* Icon watermark */}
@@ -210,63 +210,67 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
       </div>
 
       {/* Content */}
-      <div className="p-4 space-y-3">
-        {/* Description */}
-        <p className="text-sm text-slate-400 line-clamp-2">
-          {description}
-        </p>
+      <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
+        <div>
+          {/* Description */}
+          <p className="text-sm text-slate-400 line-clamp-2">
+            {description}
+          </p>
 
-        {/* Districts */}
-        {districts.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {districts.slice(0, 3).map((district, idx) => (
-              <Badge key={idx} variant="info" size="sm">
-                {district.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-              </Badge>
-            ))}
-            {districts.length > 3 && (
-              <Badge variant="info" size="sm">+{districts.length - 3}</Badge>
-            )}
-          </div>
-        )}
-
-        {/* Seasons */}
-        {seasons.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {seasons.slice(0, 4).map((season, idx) => (
-              <Badge key={idx} variant={getSeasonBadgeVariant(season)} size="sm">
-                {season.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-              </Badge>
-            ))}
-          </div>
-        )}
-
-        {/* Metrics */}
-        {additionalMetrics.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {additionalMetrics.map((metric, idx) => (
-              <div key={idx} className="px-2 py-1 rounded-md bg-slate-800/50 border border-white/5">
-                <span className="text-xs text-slate-500">{metric.label}: </span>
-                <span className="text-xs text-white font-medium">{metric.value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Timing Info */}
-        {timingInfo && (
-          <div className="pt-3 border-t border-white/5">
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-              <Icons.Calendar className="w-3.5 h-3.5" />
-              <span className="line-clamp-1">{timingInfo}</span>
+          {/* Districts */}
+          {districts.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {districts.slice(0, 3).map((district, idx) => (
+                <Badge key={idx} variant="info" size="sm">
+                  {district.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                </Badge>
+              ))}
+              {districts.length > 3 && (
+                <Badge variant="info" size="sm">+{districts.length - 3}</Badge>
+              )}
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Hover CTA */}
-        <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5">
-          <span>View Details</span>
-          <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          {/* Seasons */}
+          {seasons.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {seasons.slice(0, 4).map((season, idx) => (
+                <Badge key={idx} variant={getSeasonBadgeVariant(season)} size="sm">
+                  {season.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                </Badge>
+              ))}
+            </div>
+          )}
+
+          {/* Metrics */}
+          {additionalMetrics.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {additionalMetrics.map((metric, idx) => (
+                <div key={idx} className="px-2 py-1 rounded-md bg-slate-800/50 border border-white/5">
+                  <span className="text-xs text-slate-500">{metric.label}: </span>
+                  <span className="text-xs text-white font-medium">{metric.value}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div>
+          {/* Timing Info */}
+          {timingInfo && (
+            <div className="pt-3 border-t border-white/5">
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                <Icons.Calendar className="w-3.5 h-3.5" />
+                <span className="line-clamp-1">{timingInfo}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Hover CTA */}
+          <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5 mt-2">
+            <span>View Details</span>
+            <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </div>
         </div>
       </div>
     </Card>

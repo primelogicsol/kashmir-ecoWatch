@@ -1,20 +1,30 @@
 'use client';
 
+import { useState } from 'react';
 import { ProtectedCategoryPage } from '@/components/common/ProtectedCategoryPage';
 import { getProtectedAreas } from '@/data/protected-network';
 
+const TABS = [
+  { key: 'core', label: 'Kashmir Core', description: 'Kashmir Core reserves — 12 seed records' },
+  { key: 'trans', label: 'Trans-Divisional', description: 'Jammu & trans-divisional reserves — 8 seed records' },
+  { key: 'extended', label: 'Transboundary / Extended', description: 'Extended conservation landscapes — 20+ seed records' },
+] as const;
+
+type TabKey = 'core' | 'trans' | 'extended';
+
 export default function ConservationReservesPage() {
-  const areas = getProtectedAreas.conservationReserves();
+  const [activeTab, setActiveTab] = useState<TabKey>('core');
+  const allAreas = getProtectedAreas.conservationReserves();
 
   const metrics = [
-    { label: 'Total Reserves', value: areas.length, icon: 'Leaf' as const },
-    { label: 'Total Area', value: `${areas.reduce((acc, pa) => acc + pa.area, 0).toLocaleString()} km²`, icon: 'MapPin' as const },
-    { label: 'Communities', value: 24, icon: 'Users' as const },
-    { label: 'Buffer Zones', value: 5, icon: 'Shield' as const },
-    { label: 'Habitat Types', value: 7, icon: 'Leaf' as const },
-    { label: 'Active Mgmt Plans', value: 4, icon: 'FileText' as const },
-    { label: 'Districts', value: new Set(areas.map(pa => pa.district)).size, icon: 'Map' as const },
-    { label: 'Key Species', value: 38, icon: 'Activity' as const },
+    { label: 'Kashmir Core', value: '12', icon: 'Mountain' as const },
+    { label: 'Trans-Divisional', value: '8', icon: 'MapPin' as const },
+    { label: 'Transboundary / Extended', value: '20+', icon: 'Activity' as const },
+    { label: 'Seed Records', value: '40+', icon: 'Shield' as const },
+    { label: 'Key Species', value: '70+', icon: 'TrendingUp' as const },
+    { label: 'Ecosystem Types', value: '14+', icon: 'Leaf' as const },
+    { label: 'Conservation Labels', value: '6', icon: 'FileText' as const },
+    { label: 'Data Quality', value: 'Mixed', icon: 'Eye' as const },
   ];
 
   return (
@@ -23,8 +33,12 @@ export default function ConservationReservesPage() {
       subtitle="Community-supported conservation landscapes, ecological buffers, and transition zones across Kashmir. Integrates land-use intelligence, community stewardship data, habitat assessments, and ecological condition monitoring."
       icon="Leaf"
       color="from-emerald-600 to-emerald-500"
-      areas={areas}
+      areas={allAreas}
       metrics={metrics}
+      tabs={TABS as any}
+      activeTab={activeTab}
+      onTabChange={(tab) => setActiveTab(tab as TabKey)}
     />
   );
 }
+

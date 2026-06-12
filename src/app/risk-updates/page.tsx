@@ -110,9 +110,9 @@ export default function RiskUpdatesPage() {
     return result.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
   }, [searchQuery, filters]);
 
-  const toggleFilter = <K extends keyof FilterState>(key: K, value: FilterState[K][number]) => {
+  const toggleFilter = <K extends keyof FilterState>(key: K, value: any) => {
     setFilters(prev => {
-      const current = prev[key];
+      const current = prev[key] as any[];
       const updated = current.includes(value)
         ? current.filter(v => v !== value)
         : [...current, value];
@@ -171,7 +171,7 @@ export default function RiskUpdatesPage() {
       <Activity className="w-5 h-5 md:w-8 md:h-8 text-white" />
     </div>
   }
-  badge={<Badge variant="destructive" size="lg">Risk &amp; Alerts</Badge>}
+  badge={<Badge variant="danger" size="lg">Risk &amp; Alerts</Badge>}
 />
 
       <section className="relative bg-[#160C27]">

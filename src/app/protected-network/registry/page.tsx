@@ -170,7 +170,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="glass-intense border-white/10 p-6">
+          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
               {/* Search */}
               <div className="md:col-span-2">
@@ -181,7 +181,7 @@ export default function ProtectedAreasRegistryPage() {
                     placeholder="Search protected areas by name, district, or region..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
@@ -190,26 +190,26 @@ export default function ProtectedAreasRegistryPage() {
               <select
                 value={regionFilter}
                 onChange={(e) => setRegionFilter(e.target.value as RegionFilter)}
-                className="px-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="px-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
               >
-                <option value="All">All Regions</option>
-                <option value="Kashmir">Kashmir Only</option>
-                <option value="Jammu">Jammu Only</option>
-                <option value="Ladakh">Ladakh Only</option>
+                <option value="All" className="bg-[#160C27]">All Regions</option>
+                <option value="Kashmir" className="bg-[#160C27]">Kashmir Only</option>
+                <option value="Jammu" className="bg-[#160C27]">Jammu Only</option>
+                <option value="Ladakh" className="bg-[#160C27]">Ladakh Only</option>
               </select>
 
               {/* Category Filter */}
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value as CategoryFilter)}
-                className="px-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="px-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
               >
-                <option value="All">All Categories</option>
-                <option value="NP">National Parks</option>
-                <option value="WLS">Wildlife Sanctuaries</option>
-                <option value="WR">Wildlife Reserves</option>
-                <option value="GR">Game Reserves</option>
-                <option value="WLR">Wetland Reserves</option>
+                <option value="All" className="bg-[#160C27]">All Categories</option>
+                <option value="NP" className="bg-[#160C27]">National Parks</option>
+                <option value="WLS" className="bg-[#160C27]">Wildlife Sanctuaries</option>
+                <option value="WR" className="bg-[#160C27]">Wildlife Reserves</option>
+                <option value="GR" className="bg-[#160C27]">Game Reserves</option>
+                <option value="WLR" className="bg-[#160C27]">Wetland Reserves</option>
               </select>
             </div>
 
@@ -227,11 +227,11 @@ export default function ProtectedAreasRegistryPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'name' | 'area' | 'category')}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900/50 border border-white/10 text-white text-sm focus:outline-none"
+                  className="px-3 py-1.5 rounded-lg bg-black/20 border border-white/5 text-white text-sm focus:outline-none cursor-pointer"
                 >
-                  <option value="name">Name (A-Z)</option>
-                  <option value="area">Area (Largest)</option>
-                  <option value="category">Category</option>
+                  <option value="name" className="bg-[#160C27]">Name (A-Z)</option>
+                  <option value="area" className="bg-[#160C27]">Area (Largest)</option>
+                  <option value="category" className="bg-[#160C27]">Category</option>
                 </select>
               </div>
             </div>
@@ -276,10 +276,10 @@ export default function ProtectedAreasRegistryPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.02 }}
               >
-                <Card className="glass-intense border-white/10 p-6 h-full hover:border-white/20 transition-all">
+                <Card className="card-intelligence border border-white/5 bg-[#160C27] group p-6 h-full hover:border-white/20 transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getCategoryColor(pa.categoryCode)} flex items-center justify-center flex-shrink-0`}>
-                      <Icon className="w-6 h-6 text-white" />
+                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
@@ -290,7 +290,7 @@ export default function ProtectedAreasRegistryPage() {
                           {pa.regionGroup}
                         </Badge>
                       </div>
-                      <h3 className="text-lg font-bold text-white truncate">{pa.name}</h3>
+                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors truncate">{pa.name}</h3>
                     </div>
                   </div>
 
@@ -375,7 +375,7 @@ export default function ProtectedAreasRegistryPage() {
           </div>
 
           {/* Management Metrics */}
-          <Card className="glass-intense border-white/10 p-6 mb-6">
+          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6 mb-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {[
                 { label: 'Fully Managed', value: protectedAreaRegistryMetrics.byManagementStatus.fully, color: 'text-emerald-400' },
@@ -387,7 +387,7 @@ export default function ProtectedAreasRegistryPage() {
                 { label: 'Severe Encroach.', value: protectedAreaRegistryMetrics.byEncroachmentStatus.severe, color: 'text-red-400' },
                 { label: 'Mod. Encroach.', value: protectedAreaRegistryMetrics.byEncroachmentStatus.moderate, color: 'text-amber-400' },
               ].map((metric, idx) => (
-                <div key={idx} className="text-center p-3 rounded-lg bg-white/5 border border-white/5">
+                <div key={idx} className="text-center p-3 rounded-lg bg-black/20 border border-white/5">
                   <div className={`text-2xl font-bold ${metric.color}`}>{metric.value}</div>
                   <div className="text-xs text-slate-500 uppercase mt-1">{metric.label}</div>
                 </div>
@@ -407,7 +407,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card className="glass-light border-white/10 p-6">
+          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
             <div className="flex items-start gap-4">
               <Info className="w-6 h-6 text-slate-400 mt-1" />
               <div className="flex-1">
@@ -432,7 +432,7 @@ export default function ProtectedAreasRegistryPage() {
                   </div>
                 </div>
                 {PROTECTED_AREA_SOURCE_METADATA.sourceNotes.length > 0 && (
-                  <div className="mt-4 p-4 rounded-lg bg-slate-800/50 border border-white/5">
+                  <div className="mt-4 p-4 rounded-lg bg-black/20 border border-white/5">
                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-2">Source Notes</h4>
                     <ul className="text-sm text-slate-400 space-y-1">
                       {PROTECTED_AREA_SOURCE_METADATA.sourceNotes.map((note, idx) => (

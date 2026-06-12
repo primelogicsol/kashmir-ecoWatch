@@ -326,25 +326,33 @@ export function Navigation() {
                         <span className="block text-[10px] text-slate-500 mt-0.5">Interactive GIS mapping</span>
                       </Link>
                       {[
+                        { name: '── Protected Areas ──', href: '#', desc: '', isHeader: true },
                         { name: 'National Parks', href: '/protected-network/national-parks', desc: 'Core conservation landscapes' },
                         { name: 'Wildlife Sanctuaries', href: '/protected-network/wildlife-sanctuaries', desc: 'Protected habitats' },
                         { name: 'Wetland Reserves', href: '/protected-network/wetland-reserves', desc: 'Marsh & bird conservation' },
                         { name: 'Conservation Reserves', href: '/protected-network/conservation-reserves', desc: 'Community landscapes' },
                         { name: 'Bird & Habitat Areas', href: '/protected-network/bird-and-habitat-areas', desc: 'Important bird areas' },
-                        { name: 'Species Intelligence', href: '/protected-network/species-intelligence', desc: 'PA overlap & distribution' },
-                        { name: 'Corridors & Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
+                        { name: '── Ecological Intelligence ──', href: '#', desc: '', isHeader: true },
+                        { name: 'Species Intelligence Network', href: '/protected-network/species-intelligence', desc: 'Biological intelligence layer' },
+                        { name: 'Corridors and Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
+                        { name: 'Monitoring and Threat Intelligence', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
+                        { name: 'Research and Assessments', href: '/protected-network/reports-and-plans', desc: 'Scientific publications' },
                         { name: 'Trails & Sightings', href: '/protected-network/trails-and-sightings', desc: 'Field observations' },
-                        { name: 'Monitoring & Threats', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
-                        { name: 'Reports & Plans', href: '/protected-network/reports-and-plans', desc: 'Management documents' },
                       ].map((subitem) => (
-                        <Link
-                          key={subitem.name}
-                          href={subitem.href}
-                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-                        >
-                          <span className="font-medium">{subitem.name}</span>
-                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
-                        </Link>
+                        subitem.isHeader ? (
+                          <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
+                            <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
+                          </div>
+                        ) : (
+                          <Link
+                            key={subitem.name}
+                            href={subitem.href}
+                            className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                          >
+                            <span className="font-medium">{subitem.name}</span>
+                            <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
+                          </Link>
+                        )
                       ))}
                     </div>
                   </motion.div>
@@ -1123,45 +1131,49 @@ export function Navigation() {
                                 <div className="ml-2 sm:ml-4 mt-2 mb-3 space-y-0.5">
                                   {/* Render submenu items based on category */}
                                   {item.label === 'Protected Areas' && (
-                                    <>
-                                      <Link href="/protected-network" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        🗺️ Network Overview
-                                      </Link>
-                                      <Link href="/protected-network/atlas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        📍 Protected Area Atlas
-                                      </Link>
-                                      <Link href="/protected-network/national-parks" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        National Parks
-                                      </Link>
-                                      <Link href="/protected-network/wildlife-sanctuaries" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Wildlife Sanctuaries
-                                      </Link>
-                                      <Link href="/protected-network/wetland-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Wetland Reserves
-                                      </Link>
-                                      <Link href="/protected-network/conservation-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Conservation Reserves
-                                      </Link>
-                                      <Link href="/protected-network/bird-and-habitat-areas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Bird & Habitat Areas
-                                      </Link>
-                                      <Link href="/protected-network/species-intelligence" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Species Intelligence
-                                      </Link>
-                                      <Link href="/protected-network/corridors-and-connectivity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Corridors & Connectivity
-                                      </Link>
-                                      <Link href="/protected-network/trails-and-sightings" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Trails & Sightings
-                                      </Link>
-                                      <Link href="/protected-network/monitoring-and-threats" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Monitoring & Threats
-                                      </Link>
-                                      <Link href="/protected-network/reports-and-plans" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Reports & Plans
-                                      </Link>
-                                    </>
-                                  )}
+                                     <>
+                                       <Link href="/protected-network" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         🗺️ Network Overview
+                                       </Link>
+                                       <Link href="/protected-network/atlas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         📍 Protected Area Atlas
+                                       </Link>
+                                       
+                                       <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-slate-500 bg-slate-800/10 mt-2">Protected Areas</div>
+                                       <Link href="/protected-network/national-parks" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         National Parks
+                                       </Link>
+                                       <Link href="/protected-network/wildlife-sanctuaries" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Wildlife Sanctuaries
+                                       </Link>
+                                       <Link href="/protected-network/wetland-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Wetland Reserves
+                                       </Link>
+                                       <Link href="/protected-network/conservation-reserves" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Conservation Reserves
+                                       </Link>
+                                       <Link href="/protected-network/bird-and-habitat-areas" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Bird and Habitat Areas
+                                       </Link>
+
+                                       <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-slate-500 bg-slate-800/10 mt-2">Ecological Intelligence</div>
+                                       <Link href="/protected-network/species-intelligence" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Species Intelligence Network
+                                       </Link>
+                                       <Link href="/protected-network/corridors-and-connectivity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Corridors and Connectivity
+                                       </Link>
+                                       <Link href="/protected-network/monitoring-and-threats" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Monitoring and Threat Intelligence
+                                       </Link>
+                                       <Link href="/protected-network/reports-and-plans" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Research and Assessments
+                                       </Link>
+                                       <Link href="/protected-network/trails-and-sightings" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Trails and Sightings
+                                       </Link>
+                                     </>
+                                   )}
 
                                   {item.label === 'Biodiversity' && (
                                     <>

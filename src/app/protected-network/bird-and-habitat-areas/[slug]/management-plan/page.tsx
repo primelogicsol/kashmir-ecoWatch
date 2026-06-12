@@ -8,7 +8,7 @@ interface PageProps { params: Promise<{ slug: string }>; }
 
 export default function BirdAndHabitatAreaManagementPlanPage({ params }: PageProps) {
   const { slug } = React.use(params);
-  const area = getProtectedAreas.ibas().find(pa => pa.slug === slug);
+  const area = getProtectedAreas.birdHabitatAreas().find(pa => pa.slug === slug);
   if (!area) notFound();
   return (
     <ProtectedAreaManagementPlanPage

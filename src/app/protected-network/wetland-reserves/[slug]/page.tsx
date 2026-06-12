@@ -9,8 +9,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function WetlandReserveDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+export default function WetlandReserveDetailPage({ params }: PageProps) {
+  const { slug } = React.use(params);
   const area = getProtectedAreas.wetlandReserves().find(pa => pa.slug === slug);
 
   if (!area) {

@@ -1,17 +1,101 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Activity, MapPin, Shield, TrendingUp, ArrowRight, Search, Filter, AlertTriangle } from 'lucide-react';
+import { Activity, MapPin, Shield, TrendingUp, ArrowRight, Search, Filter, AlertTriangle, Grid3X3, List, Map as MapIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { getSpeciesProfiles } from '@/data/protected-network';
+import { getSpeciesProfiles, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
 
 export default function SpeciesIntelligencePage() {
   const speciesList = getSpeciesProfiles.all();
+
+  const [activeTab, setActiveTab] = useState<'core' | 'trans' | 'extended'>('core');
+  const [showFilters, setShowFilters] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('all');
+  const [selectedScope, setSelectedScope] = useState('all');
+
+  const allPAs = useMemo(() => {
+    return [
+      ...getProtectedAreas.nationalParks(),
+      ...getProtectedAreas.wildlifeSanctuaries(),
+      ...getProtectedAreas.wetlandReserves(),
+      ...getProtectedAreas.conservationReserves(),
+      ...getProtectedAreas.birdHabitatAreas()
+    ];
+  }, []);
+
+  const paLookup = useMemo(() => new Map(allPAs.map(pa => [pa.slug, pa])), [allPAs]);
+
+  const districtsList = useMemo(() => {
+    const districts = new Set<string>();
+    allPAs.forEach(pa => {
+      if (pa.district) districts.add(pa.district);
+    });
+    return Array.from(districts).sort();
+  }, [allPAs]);
+
+  const scopesList = ['Kashmir Core', 'Trans-Divisional', 'Transboundary / Extended'];
+
+  const coreCount = useMemo(() => {
+    return speciesList.filter(s => s.protectedAreas.some(slug => paLookup.get(slug)?.scope === 'Kashmir Core')).length;
+  }, [speciesList, paLookup]);
+
+  const transCount = useMemo(() => {
+    return speciesList.filter(s => s.protectedAreas.some(slug => paLookup.get(slug)?.scope === 'Trans-Divisional')).length;
+  }, [speciesList, paLookup]);
+
+  const extendedCount = useMemo(() => {
+    return speciesList.filter(s => s.protectedAreas.some(slug => paLookup.get(slug)?.scope === 'Transboundary / Extended')).length;
+  }, [speciesList, paLookup]);
+
+  const TABS = [
+    { key: 'core', label: 'Kashmir Core', description: `Valley core protected areas, wetland networks, and high-density zones — ${coreCount} species` },
+    { key: 'trans', label: 'Trans-Divisional', description: `Jammu, Pir Panjal, Kishtwar, and Ladakh sectors — ${transCount} species` },
+    { key: 'extended', label: 'Transboundary / Extended', description: `Extended Himalayan and Karakoram zones, Neelum, AJK, and Gilgit — ${extendedCount} species` },
+  ] as const;
+
+  const filteredSpecies = useMemo(() => {
+    return speciesList.filter(species => {
+      // 1. Tab scope filter
+      const scopesOfSpecies = [];
+      species.protectedAreas.forEach(slug => {
+        const pa = paLookup.get(slug);
+        if (pa && pa.scope) scopesOfSpecies.push(pa.scope);
+      });
+      if (scopesOfSpecies.length === 0) scopesOfSpecies.push('Kashmir Core');
+      
+      const tabScope = activeTab === 'core' ? 'Kashmir Core' 
+                     : activeTab === 'trans' ? 'Trans-Divisional' 
+                     : 'Transboundary / Extended';
+      const matchesTab = scopesOfSpecies.includes(tabScope);
+
+      // 2. Search Text
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch = !query || 
+        species.name.toLowerCase().includes(query) ||
+        species.scientificName.toLowerCase().includes(query) ||
+        species.description.toLowerCase().includes(query) ||
+        species.protectedAreas.some(pa => pa.replace(/-/g, ' ').toLowerCase().includes(query));
+
+      // 3. District Dropdown
+      const districtsOfSpecies = [];
+      species.protectedAreas.forEach(slug => {
+        const pa = paLookup.get(slug);
+        if (pa && pa.district) districtsOfSpecies.push(pa.district);
+      });
+      const matchesDistrict = selectedDistrict === 'all' || districtsOfSpecies.includes(selectedDistrict);
+
+      // 4. Ecological Scope Dropdown
+      const matchesScopeDropdown = selectedScope === 'all' || scopesOfSpecies.includes(selectedScope);
+
+      return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
+    });
+  }, [speciesList, activeTab, searchQuery, selectedDistrict, selectedScope, paLookup]);
 
   const getStatusColor = (status: string) => {
     if (status.includes('CR')) return 'danger';
@@ -32,10 +116,10 @@ export default function SpeciesIntelligencePage() {
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={
           <>
-            <Button className="bg-gradient-to-r from-purple-600 to-purple-500" icon={<Search className="w-5 h-5" />}>
+            <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Search className="w-5 h-5" />}>
               Search Species
             </Button>
-            <Button variant="outline" className="border-white/20 text-white" icon={<MapPin className="w-5 h-5" />}>
+            <Button variant="outline" className="border-white/20 text-white" icon={<MapIcon className="w-5 h-5" />}>
               Distribution Maps
             </Button>
           </>
@@ -57,8 +141,8 @@ export default function SpeciesIntelligencePage() {
                 { label: 'PA Habitat Records', value: speciesList.reduce((acc, s) => acc + s.protectedAreas.length, 0), icon: MapPin },
                 { label: 'Conservation Focus', value: 'High', icon: TrendingUp },
                 { label: 'Vulnerable', value: speciesList.filter(s => s.conservationStatus.includes('VU')).length, icon: Shield },
-                { label: 'Mammal Profiles', value: speciesList.filter(s => s.group === 'Mammals').length, icon: Activity },
-                { label: 'Bird Profiles', value: speciesList.filter(s => s.group === 'Birds').length, icon: MapPin },
+                { label: 'Mammal Profiles', value: speciesList.filter(s => s.group === 'Mammal').length, icon: Activity },
+                { label: 'Bird Profiles', value: speciesList.filter(s => s.group === 'Bird').length, icon: MapPin },
                 { label: 'PA Network', value: 47, icon: TrendingUp },
               ].map((metric, idx) => (
                 <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
@@ -76,90 +160,181 @@ export default function SpeciesIntelligencePage() {
         </motion.div>
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-6 py-12 space-y-8">
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-        >
-          <div className="flex items-center gap-3">
-            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />}>
-              Filters
+      {/* Tab + Filters — single row */}
+      <div className="container mx-auto px-6 mt-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Tabs */}
+          <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl">
+            {TABS.map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                  activeTab === tab.key
+                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Active tab description */}
+          <span className="text-xs text-slate-500 hidden lg:block flex-1 px-4 truncate">
+            {TABS.find(t => t.key === activeTab)!.description}
+          </span>
+
+          {/* Filters + count */}
+          <div className="flex items-center gap-3 ml-auto">
+            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
+              {showFilters ? 'Hide Filters' : 'Filters'}
             </Button>
-            <span className="text-sm text-slate-400">
-              <strong className="text-white">{speciesList.length}</strong> species profiles
+            <span className="text-sm text-slate-400 whitespace-nowrap">
+              <strong className="text-white">{filteredSpecies.length}</strong> of <strong className="text-white">{speciesList.length}</strong> species
             </span>
           </div>
-        </motion.div>
+        </div>
+      </div>
+
+        {/* Content */}
+      <div className="container mx-auto px-6 py-8 space-y-6">
+        {showFilters && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="p-5 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6"
+          >
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Text</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder="Search species name, scientific name..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Districts</option>
+                {districtsList.map(d => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
+              <select
+                value={selectedScope}
+                onChange={(e) => setSelectedScope(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Scopes</option>
+                {scopesList.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+          </motion.div>
+        )}
 
         {/* Species Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {speciesList.map((species, index) => (
-            <motion.a
-              key={species.id}
-              href={`/protected-network/species-intelligence/${species.slug}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="block group"
-            >
-              <Card className="h-full card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
-                <div className="flex items-start justify-between mb-4">
+        {filteredSpecies.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredSpecies.map((species, index) => (
+              <motion.a
+                key={species.id}
+                href={`/protected-network/species-intelligence/${species.slug}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="h-full block group"
+              >
+                <Card className="h-full flex flex-col justify-between card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300" padding="lg">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge variant={getStatusColor(species.conservationStatus)} size="sm">
-                        {species.conservationStatus.split(' ')[0]}
-                      </Badge>
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge variant={getStatusColor(species.conservationStatus)} size="sm">
+                            {species.conservationStatus.split(' ')[0]}
+                          </Badge>
+                        </div>
+                        <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
+                          {species.name}
+                        </h3>
+                        <p className="text-sm text-slate-400 italic">{species.scientificName}</p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
-                      {species.name}
-                    </h3>
-                    <p className="text-sm text-slate-400 italic">{species.scientificName}</p>
-                  </div>
-                </div>
 
-                {/* Protected Area Overlap */}
-                <div className="mb-4">
-                  <div className="text-xs text-slate-500 uppercase mb-2">Protected Area Overlap</div>
-                  <div className="flex flex-wrap gap-2">
-                    {species.protectedAreas.slice(0, 3).map((pa, idx) => (
-                      <Badge key={idx} variant="default" size="sm">
-                        {pa.replace(/-/g, ' ')}
-                      </Badge>
-                    ))}
-                    {species.protectedAreas.length > 3 && (
-                      <Badge variant="default" size="sm">
-                        +{species.protectedAreas.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                </div>
+                    {/* Protected Area Overlap */}
+                    <div className="mb-4">
+                      <div className="text-xs text-slate-500 uppercase mb-2">Protected Area Overlap</div>
+                      <div className="flex flex-wrap gap-2">
+                        {species.protectedAreas.slice(0, 3).map((pa, idx) => (
+                          <Badge key={idx} variant="default" size="sm">
+                            {pa.replace(/-/g, ' ')}
+                          </Badge>
+                        ))}
+                        {species.protectedAreas.length > 3 && (
+                          <Badge variant="default" size="sm">
+                            +{species.protectedAreas.length - 3}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
 
-                {/* Threats & Conservation */}
-                <div className="flex items-center gap-4 text-sm text-slate-400 mb-4">
-                  <div className="flex items-center gap-1">
-                    <AlertTriangle className="w-4 h-4" />
-                    <span>{species.threats.length} threats</span>
+                    {/* Threats & Conservation */}
+                    <div className="flex items-center gap-4 text-sm text-slate-400 mb-4">
+                      <div className="flex items-center gap-1">
+                        <AlertTriangle className="w-4 h-4" />
+                        <span>{species.threats.length} threats</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Shield className="w-4 h-4" />
+                        <span>{species.conservationMeasures.length} measures</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Shield className="w-4 h-4" />
-                    <span>{species.conservationMeasures.length} measures</span>
-                  </div>
-                </div>
 
-                <div className="mt-4 flex justify-end">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
-                    View Species Details
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Card>
-            </motion.a>
-          ))}
-        </div>
+                  <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
+                      View Species Details
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Card>
+              </motion.a>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24">
+            <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-white mb-2">No species profiles found</h3>
+            <p className="text-slate-400 mb-4">Try adjusting your filters</p>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white"
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedDistrict('all');
+                setSelectedScope('all');
+              }}
+            >
+              Reset Filters
+            </Button>
+          </div>
+        )}
       </div>
 
       

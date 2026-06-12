@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Map, Layers, Search, Filter, Download, Share2, Maximize2, Crosshair, Eye, EyeOff, Plus, Minus } from 'lucide-react';
 import { getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
+import { useRouter } from 'next/navigation';
 
 const mapLayers = [
   { id: 'national-parks', label: 'National Parks', color: 'bg-emerald-500', visible: true, count: 3 },
@@ -19,6 +20,7 @@ const mapLayers = [
 ];
 
 export default function ProtectedAreaAtlasPage() {
+  const router = useRouter();
   const [layers, setLayers] = React.useState(mapLayers);
   const [zoom, setZoom] = React.useState(10);
 
@@ -26,6 +28,18 @@ export default function ProtectedAreaAtlasPage() {
     setLayers(layers.map(layer => 
       layer.id === id ? { ...layer, visible: !layer.visible } : layer
     ));
+  };
+
+  const handleExport = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      const isRegistered = window.localStorage.getItem('kew_member_registered') === 'true';
+      if (isRegistered) {
+        alert('Initiating download for complete Kashmir GIS vector dataset (KML/GPX)...');
+      } else {
+        router.push('/protected-network/trails-and-sightings/request?slug=atlas');
+      }
+    }
   };
 
   return (
@@ -41,7 +55,13 @@ export default function ProtectedAreaAtlasPage() {
             <Button variant="outline" size="sm" className="border-white/20 text-white" icon={<Share2 className="w-4 h-4" />}>
               Share
             </Button>
-            <Button variant="outline" size="sm" className="border-white/20 text-white" icon={<Download className="w-4 h-4" />}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="border-white/20 text-white" 
+              icon={<Download className="w-4 h-4" />}
+              onClick={handleExport}
+            >
               Export
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Maximize2 className="w-4 h-4" />}>

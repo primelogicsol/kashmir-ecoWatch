@@ -12,7 +12,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 
 // ─── Animation variants ────────────────────────────────────────────────
-const fadeInUp = {
+const fadeInUp: any = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
     opacity: 1,

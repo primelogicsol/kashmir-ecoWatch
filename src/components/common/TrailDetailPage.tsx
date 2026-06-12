@@ -10,11 +10,12 @@ import {
   AlertTriangle, Book, FileText, Eye, Calendar, Mountain,
   Droplet, Leaf, Shield, Navigation as NavIcon, Clock,
   Thermometer, Ruler, Users, Target, CheckCircle, Footprints,
-  Bird, Flower2, Sun, Wind, Info
+  Bird, Flower2, Sun, Wind, Info, Download
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Trail } from '@/data/protected-network';
+import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 
 interface TrailDetailPageProps {
   trail: Trail;
@@ -24,6 +25,20 @@ interface TrailDetailPageProps {
 export function TrailDetailPage({ trail, relatedTrails = [] }: TrailDetailPageProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = React.useState<'overview' | 'route' | 'ecology' | 'seasonality' | 'safety' | 'sightings'>('overview');
+
+  const handleDownloadGPS = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (typeof window !== 'undefined') {
+      const isRegistered = window.localStorage.getItem('kew_member_registered') === 'true';
+      if (isRegistered) {
+        alert(`Initiating secure academic download for GPX path "${trail.id}"...`);
+      } else {
+        window.location.href = `/protected-network/trails-and-sightings/request?slug=${trail.id}`;
+      }
+    }
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -53,11 +68,13 @@ export function TrailDetailPage({ trail, relatedTrails = [] }: TrailDetailPagePr
     { id: 'sightings', label: 'Sightings', icon: Eye },
   ];
 
+  const heroImages = ['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png'];
+
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br from-amber-600/15 to-slate-900`} />
-        <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="relative bg-[#160C27] pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+        <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
+        <div className="absolute inset-0 bg-grid opacity-10" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -114,7 +131,7 @@ export function TrailDetailPage({ trail, relatedTrails = [] }: TrailDetailPagePr
               </div>
 
               {/* Quick Stats */}
-              <Card className="glass-intense border-white/10 p-6 hidden lg:block">
+              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 hidden lg:block">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Ruler className="w-5 h-5 text-slate-400" />
@@ -264,7 +281,13 @@ export function TrailDetailPage({ trail, relatedTrails = [] }: TrailDetailPagePr
                 <Card className="card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
                   <h3 className="text-lg font-bold text-white mb-4">Quick Actions</h3>
                   <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<MapPin className="w-4 h-4" />}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full border-white/20 text-white justify-start hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-colors"
+                      icon={<Download className="w-4 h-4 text-emerald-500" />}
+                      onClick={handleDownloadGPS}
+                    >
                       Download GPX
                     </Button>
                     <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<Eye className="w-4 h-4" />}>

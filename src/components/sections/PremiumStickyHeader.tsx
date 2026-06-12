@@ -100,16 +100,18 @@ export function PremiumStickyHeader() {
         return [
           { name: '🗺️ Network Overview', href: '/protected-network', desc: 'Complete protected area system' },
           { name: '📍 Protected Area Atlas', href: '/protected-network/atlas', desc: 'Interactive GIS mapping' },
+          { name: '── Protected Areas ──', href: '#', desc: '', isHeader: true },
           { name: 'National Parks', href: '/protected-network/national-parks', desc: 'Core conservation landscapes' },
           { name: 'Wildlife Sanctuaries', href: '/protected-network/wildlife-sanctuaries', desc: 'Protected habitats' },
           { name: 'Wetland Reserves', href: '/protected-network/wetland-reserves', desc: 'Marsh & bird conservation' },
           { name: 'Conservation Reserves', href: '/protected-network/conservation-reserves', desc: 'Community landscapes' },
           { name: 'Bird & Habitat Areas', href: '/protected-network/bird-and-habitat-areas', desc: 'Important bird areas' },
-          { name: 'Species Intelligence', href: '/protected-network/species-intelligence', desc: 'PA overlap & distribution' },
-          { name: 'Corridors & Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
+          { name: '── Ecological Intelligence ──', href: '#', desc: '', isHeader: true },
+          { name: 'Species Intelligence Network', href: '/protected-network/species-intelligence', desc: 'Biological intelligence layer' },
+          { name: 'Corridors and Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
+          { name: 'Monitoring and Threat Intelligence', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
+          { name: 'Research and Assessments', href: '/protected-network/reports-and-plans', desc: 'Scientific publications' },
           { name: 'Trails & Sightings', href: '/protected-network/trails-and-sightings', desc: 'Field observations' },
-          { name: 'Monitoring & Threats', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
-          { name: 'Reports & Plans', href: '/protected-network/reports-and-plans', desc: 'Management documents' },
         ];
       case 'Biodiversity':
         return [

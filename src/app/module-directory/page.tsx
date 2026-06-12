@@ -79,10 +79,10 @@ const moduleGroups: ModuleGroup[] = [
       { name: 'Conservation Reserves', route: '/protected-network/conservation-reserves', description: 'Community landscapes', icon: Users },
       { name: 'Bird & Habitat Areas', route: '/protected-network/bird-and-habitat-areas', description: 'Important bird areas', icon: Bird },
       { name: 'Species Intelligence', route: '/protected-network/species-intelligence', description: 'PA overlap and distribution', icon: Search },
-      { name: 'Corridors & Connectivity', route: '/protected-network/corridors-and-connectivity', description: 'Landscape linkages', icon: Route },
+      { name: 'Corridors and Connectivity', route: '/protected-network/corridors-and-connectivity', description: 'Landscape linkages', icon: Route },
       { name: 'Trails & Sightings', route: '/protected-network/trails-and-sightings', description: 'Field observations', icon: Eye },
-      { name: 'Monitoring & Threats', route: '/protected-network/monitoring-and-threats', description: 'Conservation alerts', icon: AlertTriangle },
-      { name: 'Reports & Plans', route: '/protected-network/reports-and-plans', description: 'Management documents', icon: FileText },
+      { name: 'Monitoring and Threat Intelligence', route: '/protected-network/monitoring-and-threats', description: 'Conservation alerts', icon: AlertTriangle },
+      { name: 'Research and Assessments', route: '/protected-network/reports-and-plans', description: 'Scientific publications', icon: FileText },
     ],
   },
   {

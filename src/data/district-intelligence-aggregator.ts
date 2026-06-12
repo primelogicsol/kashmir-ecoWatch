@@ -18,7 +18,9 @@ export type DistrictSortKey =
   | 'population'
   | 'area'
   | 'biodiversity'
-  | 'water-security';
+  | 'water-security'
+  | 'alerts'
+  | 'evidence';
 
 export type DistrictFilterRegion = 'all' | 'kashmir-valley' | 'jammu' | 'ladakh';
 
@@ -29,6 +31,8 @@ export interface DistrictIntelligenceSummary {
   riskLevel: 'critical' | 'high' | 'moderate' | 'low';
   environmentalSummary: string;
   keyHighlights: string[];
+  activeAlerts: number;
+  evidenceCount: number;
 }
 
 // ============================================================================
@@ -106,11 +110,23 @@ export function getAllDistrictIntelligence(
       });
   
   return profiles.map(profile => {
+    const activeAlerts = (profile.riskStack?.flood?.alerts || 0) + 
+                         (profile.riskStack?.landslide?.alerts || 0) + 
+                         (profile.riskStack?.forestFire?.alerts || 0);
+
+    const evidenceCount = (profile.evidence?.reports?.length || 0) +
+                          (profile.evidence?.managementPlans?.length || 0) +
+                          (profile.evidence?.eiAs?.length || 0) +
+                          (profile.evidence?.policyDocuments?.length || 0) +
+                          (profile.evidence?.datasets?.length || 0);
+
     return {
       profile,
       riskLevel: getRiskLevel(profile.scores.riskLevel),
       environmentalSummary: generateEnvironmentalSummary(profile),
       keyHighlights: getKeyHighlights(profile),
+      activeAlerts,
+      evidenceCount,
     };
   });
 }

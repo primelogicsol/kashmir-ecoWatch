@@ -9,8 +9,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function CorridorDetailPageWrapper({ params }: PageProps) {
-  const { slug } = await params;
+export default function CorridorDetailPageWrapper({ params }: PageProps) {
+  const { slug } = React.use(params);
   const corridor = getCorridors.bySlug(slug);
 
   if (!corridor) {

@@ -9,8 +9,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ConservationReserveDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+export default function ConservationReserveDetailPage({ params }: PageProps) {
+  const { slug } = React.use(params);
   const area = getProtectedAreas.conservationReserves().find(pa => pa.slug === slug);
 
   if (!area) {

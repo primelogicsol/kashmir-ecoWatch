@@ -28,7 +28,7 @@ interface ProtectedArea {
 }
 
 interface ProtectedCategoryPageProps {
-  title: string;
+  title: string | React.ReactNode;
   subtitle: string;
   icon: keyof typeof import('lucide-react');
   color: string;
@@ -250,7 +250,7 @@ export function ProtectedCategoryPage({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="block group"
+                className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
                 <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-[#160C27]" padding="none">
                   <div className="relative h-40 bg-[#160C27]">

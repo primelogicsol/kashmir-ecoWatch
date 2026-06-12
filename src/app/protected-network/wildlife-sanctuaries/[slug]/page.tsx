@@ -9,8 +9,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function WildlifeSanctuaryDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+export default function WildlifeSanctuaryDetailPage({ params }: PageProps) {
+  const { slug } = React.use(params);
   const area = getProtectedAreas.wildlifeSanctuaries().find(pa => pa.slug === slug);
 
   if (!area) {

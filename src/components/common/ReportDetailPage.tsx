@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Report } from '@/data/protected-network';
+import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 
 interface ReportDetailPageProps {
   report: Report;
@@ -22,6 +23,18 @@ interface ReportDetailPageProps {
 export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPageProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = React.useState<'overview' | 'geographies' | 'themes' | 'species' | 'metadata'>('overview');
+
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      const isRegistered = window.localStorage.getItem('kew_member_registered') === 'true';
+      if (isRegistered) {
+        alert(`Initiating secure academic download for document "${report.slug}"...`);
+      } else {
+        router.push(`/protected-network/reports-and-plans/request?slug=${report.slug}`);
+      }
+    }
+  };
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -55,11 +68,13 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
     { id: 'metadata', label: 'Metadata', icon: FileText },
   ];
 
+  const heroImages = ['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png'];
+
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br from-amber-600/15 to-slate-900`} />
-        <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="relative bg-[#160C27] pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+        <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
+        <div className="absolute inset-0 bg-grid opacity-10" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -102,6 +117,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
                   <Button
                     className="bg-gradient-to-r from-amber-600 to-amber-500"
                     icon={<Download className="w-5 h-5" />}
+                    onClick={handleDownload}
                   >
                     Download PDF
                   </Button>
@@ -123,7 +139,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
               </div>
 
               {/* Quick Stats */}
-              <Card className="glass-intense border-white/10 p-6 hidden lg:block">
+              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 hidden lg:block">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -264,7 +280,13 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
                 <Card className="card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
                   <h3 className="text-lg font-bold text-white mb-4">Quick Actions</h3>
                   <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<Download className="w-4 h-4" />}>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full border-white/20 text-white justify-start" 
+                      icon={<Download className="w-4 h-4" />}
+                      onClick={handleDownload}
+                    >
                       Download PDF
                     </Button>
                     <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<Bookmark className="w-4 h-4" />}>
@@ -444,7 +466,12 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
                 <h3 className="text-2xl font-bold text-white mb-2">Explore More Reports</h3>
                 <p className="text-white/80">Browse management plans, scientific reports, and conservation documents</p>
               </div>
-              <Button size="lg" className="bg-white/20 text-white border-0" icon={<ArrowRight className="w-5 h-5" />}>
+              <Button 
+                size="lg" 
+                className="bg-white/20 text-white border-0" 
+                icon={<ArrowRight className="w-5 h-5" />}
+                onClick={() => router.push('/protected-network/reports-and-plans')}
+              >
                 View All Reports
               </Button>
             </div>

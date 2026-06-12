@@ -1,17 +1,103 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { AlertTriangle, Activity, Bell, ArrowRight, TrendingUp } from 'lucide-react';
+import { AlertTriangle, Activity, Bell, ArrowRight, TrendingUp, Search, Filter, Grid3X3, List, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { getThreats } from '@/data/protected-network';
+import { getThreats, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
 
 export default function MonitoringPage() {
   const threats = getThreats.all();
+
+  const [activeTab, setActiveTab] = useState<'core' | 'trans' | 'extended'>('core');
+  const [showFilters, setShowFilters] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('all');
+  const [selectedScope, setSelectedScope] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
+
+  const allPAs = useMemo(() => {
+    return [
+      ...getProtectedAreas.nationalParks(),
+      ...getProtectedAreas.wildlifeSanctuaries(),
+      ...getProtectedAreas.wetlandReserves(),
+      ...getProtectedAreas.conservationReserves(),
+      ...getProtectedAreas.birdHabitatAreas()
+    ];
+  }, []);
+
+  const paLookup = useMemo(() => new Map(allPAs.map(pa => [pa.slug, pa])), [allPAs]);
+
+  const districtsList = useMemo(() => {
+    const districts = new Set<string>();
+    allPAs.forEach(pa => {
+      if (pa.district) districts.add(pa.district);
+    });
+    return Array.from(districts).sort();
+  }, [allPAs]);
+
+  const scopesList = ['Kashmir Core', 'Trans-Divisional', 'Transboundary / Extended'];
+
+  const coreCount = useMemo(() => {
+    return threats.filter(t => t.affectedAreas.some(slug => paLookup.get(slug)?.scope === 'Kashmir Core') || t.affectedAreas.length === 0).length;
+  }, [threats, paLookup]);
+
+  const transCount = useMemo(() => {
+    return threats.filter(t => t.affectedAreas.some(slug => paLookup.get(slug)?.scope === 'Trans-Divisional')).length;
+  }, [threats, paLookup]);
+
+  const extendedCount = useMemo(() => {
+    return threats.filter(t => t.affectedAreas.some(slug => paLookup.get(slug)?.scope === 'Transboundary / Extended')).length;
+  }, [threats, paLookup]);
+
+  const TABS = [
+    { key: 'core', label: 'Kashmir Core', description: `Valley core protected areas, wetland networks, and high-density zones — ${coreCount} alerts` },
+    { key: 'trans', label: 'Trans-Divisional', description: `Jammu, Pir Panjal, Kishtwar, and Ladakh high-altitude sectors — ${transCount} alerts` },
+    { key: 'extended', label: 'Transboundary / Extended', description: `Extended Himalayan and Karakoram zones, Neelum, AJK, and Gilgit — ${extendedCount} alerts` },
+  ] as const;
+
+  const filteredThreats = useMemo(() => {
+    return threats.filter(threat => {
+      // 1. Tab scope filter
+      const scopesOfThreat = [];
+      threat.affectedAreas.forEach(slug => {
+        const pa = paLookup.get(slug);
+        if (pa && pa.scope) scopesOfThreat.push(pa.scope);
+      });
+      if (scopesOfThreat.length === 0) scopesOfThreat.push('Kashmir Core'); // fallback
+      
+      const tabScope = activeTab === 'core' ? 'Kashmir Core'
+                     : activeTab === 'trans' ? 'Trans-Divisional'
+                     : 'Transboundary / Extended';
+      
+      const matchesTab = scopesOfThreat.includes(tabScope);
+
+      // 2. Search Text
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch = !query || 
+        threat.name.toLowerCase().includes(query) ||
+        threat.type.toLowerCase().includes(query) ||
+        threat.description.toLowerCase().includes(query) ||
+        threat.affectedAreas.some(slug => slug.replace(/-/g, ' ').toLowerCase().includes(query));
+
+      // 3. District Dropdown
+      const districtsOfThreat = [];
+      threat.affectedAreas.forEach(slug => {
+        const pa = paLookup.get(slug);
+        if (pa && pa.district) districtsOfThreat.push(pa.district);
+      });
+      const matchesDistrict = selectedDistrict === 'all' || districtsOfThreat.includes(selectedDistrict);
+
+      // 4. Ecological Scope Dropdown
+      const matchesScopeDropdown = selectedScope === 'all' || scopesOfThreat.includes(selectedScope);
+
+      return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
+    });
+  }, [threats, activeTab, searchQuery, selectedDistrict, selectedScope, paLookup]);
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -35,7 +121,7 @@ export default function MonitoringPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<><span className="block whitespace-nowrap">Kashmir Monitoring</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">and Threats</span></>}
-        subtitle="Pressure signals, encroachment records, habitat assessments, and conservation alerts across Kashmir's protected areas. Supports threat mapping, risk prioritization, field monitoring, and management planning."
+        subtitle="Pressure signals, encroachment records, habitat condition assessments, and active conservation alerts across Kashmir's protected areas. Data feeds into threat mapping and management planning."
         icon={<Bell className="w-6 h-6 text-emerald-400" />}
         label="Conservation Intelligence"
         breadcrumbs={[{ label: 'Monitoring & Threats' }]}
@@ -57,6 +143,10 @@ export default function MonitoringPage() {
                 { label: 'Critical Threats', value: threats.filter(t => t.severity === 'critical').length, icon: AlertTriangle },
                 { label: 'Monitoring Stations', value: '234', icon: Activity },
                 { label: 'Resolved (30d)', value: '34', icon: TrendingUp },
+                { label: 'Core Area Alerts', value: coreCount, icon: Bell },
+                { label: 'Trans-Div alerts', value: transCount, icon: AlertTriangle },
+                { label: 'Transboundary alerts', value: extendedCount, icon: Activity },
+                { label: 'Unmitigated', value: threats.filter(t => t.mitigationStrategies.length === 0).length, icon: TrendingUp },
               ].map((metric, idx) => (
                 <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
                   <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
@@ -73,45 +163,192 @@ export default function MonitoringPage() {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-6 py-8">
-          {threats.map((threat, index) => (
-            <motion.a
-              key={threat.id}
-              href={`/protected-network/monitoring-and-threats/${threat.slug}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="block group"
-            >
-              <Card className={`card-intelligence p-6 ${getSeverityColor(threat.severity)} group-hover:scale-[1.01] transition-transform`}>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-4">
-                    <div className={`w-3 h-3 rounded-full mt-2 ${
-                      threat.severity === 'critical' ? 'bg-red-500 signal-pulse' :
-                      threat.severity === 'high' ? 'bg-red-500 signal-pulse' :
-                      threat.severity === 'medium' ? 'bg-amber-500 signal-pulse' :
-                      'bg-blue-500 signal-pulse'
-                    }`} />
-                    <div>
-                      <h3 className="font-semibold text-white mb-1 group-hover:text-white/90 transition-colors">{threat.name}</h3>
-                      <p className="text-sm text-slate-300 mb-2">{threat.description}</p>
-                      <div className="flex items-center gap-4 text-xs text-slate-400">
-                        <span>{threat.affectedAreas.length} affected areas</span>
-                        <span>•</span>
-                        <Badge variant={getSeverityBadge(threat.severity)} size="sm">
-                          {threat.severity.toUpperCase()}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="sm" className="text-slate-400 group-hover:text-white transition-colors" icon={<ArrowRight className="w-4 h-4" />} />
-                </div>
-              </Card>
-            </motion.a>
-          ))}
+      {/* Tab + Filters — single row */}
+      <div className="container mx-auto px-6 mt-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Tabs */}
+          <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl">
+            {TABS.map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                  activeTab === tab.key
+                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Active tab description */}
+          <span className="text-xs text-slate-500 hidden lg:block flex-1 px-4 truncate">
+            {TABS.find(t => t.key === activeTab)!.description}
+          </span>
+
+          {/* Filters + count + view mode toggle */}
+          <div className="flex items-center gap-3 ml-auto">
+            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
+              {showFilters ? 'Hide Filters' : 'Filters'}
+            </Button>
+            <span className="text-sm text-slate-400 whitespace-nowrap">
+              <strong className="text-white">{filteredThreats.length}</strong> of <strong className="text-white">{threats.length}</strong> threat alerts
+            </span>
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="sm" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<Grid3X3 className="w-4 h-4" />} />
+              <Button variant="ghost" size="sm" onClick={() => setViewMode('list')} className={viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<List className="w-4 h-4" />} />
+            </div>
+          </div>
+        </div>
       </div>
 
-      
+      {/* Content */}
+      <div className="container mx-auto px-6 py-8 space-y-6">
+        {showFilters && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="p-5 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6"
+          >
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Text</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder="Search threat name, affected areas..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Districts</option>
+                {districtsList.map(d => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
+              <select
+                value={selectedScope}
+                onChange={(e) => setSelectedScope(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Scopes</option>
+                {scopesList.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+          </motion.div>
+        )}
+
+        {filteredThreats.length > 0 ? (
+          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+            {filteredThreats.map((threat, index) => (
+              <motion.a
+                key={threat.id}
+                href={`/protected-network/monitoring-and-threats/${threat.slug}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
+              >
+                <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300 p-6 ${getSeverityColor(threat.severity)} group-hover:scale-[1.01] transition-transform`}>
+                  {viewMode === 'grid' ? (
+                    <div className="flex flex-col h-full justify-between">
+                      <div>
+                        <div className="flex items-start gap-4 mb-3">
+                          <div className={`w-3 h-3 rounded-full mt-2 shrink-0 ${
+                            threat.severity === 'critical' ? 'signal-pulse bg-red-500' :
+                            threat.severity === 'high' ? 'signal-pulse bg-red-500' :
+                            threat.severity === 'medium' ? 'signal-pulse bg-amber-500' :
+                            'signal-pulse bg-blue-500'
+                          }`} />
+                          <div>
+                            <h3 className="font-semibold text-white mb-1 group-hover:text-emerald-300 transition-colors">{threat.name}</h3>
+                            <span className="inline-block mt-1">
+                              <Badge variant={getSeverityBadge(threat.severity)} size="sm">
+                                {threat.severity.toUpperCase()}
+                              </Badge>
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-sm text-slate-300 mb-3 line-clamp-3">{threat.description}</p>
+                        <div className="text-xs text-slate-400">
+                          <span>{threat.affectedAreas.length} affected areas</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
+                          View Intel
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-3 h-3 rounded-full mt-2 ${
+                          threat.severity === 'critical' ? 'signal-pulse bg-red-500' :
+                          threat.severity === 'high' ? 'signal-pulse bg-red-500' :
+                          threat.severity === 'medium' ? 'signal-pulse bg-amber-500' :
+                          'signal-pulse bg-blue-500'
+                        }`} />
+                        <div>
+                          <h3 className="font-semibold text-white mb-1 group-hover:text-emerald-300 transition-colors">{threat.name}</h3>
+                          <p className="text-sm text-slate-300 mb-2">{threat.description}</p>
+                          <div className="flex items-center gap-4 text-xs text-slate-400">
+                            <span>{threat.affectedAreas.length} affected areas</span>
+                            <span>•</span>
+                            <Badge variant={getSeverityBadge(threat.severity)} size="sm">
+                              {threat.severity.toUpperCase()}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-slate-400 group-hover:text-white transition-colors" icon={<ArrowRight className="w-4 h-4" />} />
+                    </div>
+                  )}
+                </Card>
+              </motion.a>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24">
+            <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-white mb-2">No threat alerts found</h3>
+            <p className="text-slate-400 mb-4">Try adjusting your filters</p>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white"
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedDistrict('all');
+                setSelectedScope('all');
+              }}
+            >
+              Reset Filters
+            </Button>
+          </div>
+        )}
+      </div>
+
+      <AdvancedFooter />
     </main>
   );
 }
+

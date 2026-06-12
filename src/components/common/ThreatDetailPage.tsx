@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Threat } from '@/data/protected-network';
+import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 
 interface ThreatDetailPageProps {
   threat: Threat;
@@ -21,6 +22,17 @@ interface ThreatDetailPageProps {
 
 export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPageProps) {
   const router = useRouter();
+  const handleViewAssessment = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      const isRegistered = window.localStorage.getItem('kew_member_registered') === 'true';
+      if (isRegistered) {
+        alert(`Initiating secure download for threat assessment: "${threat.name}"...`);
+      } else {
+        router.push(`/protected-network/reports-and-plans/request?slug=${threat.slug}`);
+      }
+    }
+  };
   const [activeTab, setActiveTab] = React.useState<'overview' | 'indicators' | 'affected' | 'mitigation' | 'dashboard'>('overview');
 
   const getSeverityColor = (severity: string) => {
@@ -53,11 +65,13 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
     { id: 'dashboard', label: 'Dashboard Preview', icon: Target },
   ];
 
+  const heroImages = ['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png'];
+
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${getSeverityColor(threat.severity)} opacity-15`} />
-        <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="relative bg-[#160C27] pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+        <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
+        <div className="absolute inset-0 bg-grid opacity-10" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -107,6 +121,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
                     variant="outline"
                     className="border-white/20 text-white"
                     icon={<FileText className="w-5 h-5" />}
+                    onClick={handleViewAssessment}
                   >
                     View Assessment
                   </Button>
@@ -114,7 +129,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
               </div>
 
               {/* Quick Stats */}
-              <Card className="glass-intense border-white/10 p-6 hidden lg:block">
+              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 hidden lg:block">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -253,7 +268,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
                     <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<Bell className="w-4 h-4" />}>
                       Subscribe to Alerts
                     </Button>
-                    <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<FileText className="w-4 h-4" />}>
+                    <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<FileText className="w-4 h-4" />} onClick={handleViewAssessment}>
                       View Assessment
                     </Button>
                     <Button variant="outline" size="sm" className="w-full border-white/20 text-white justify-start" icon={<BarChart3 className="w-4 h-4" />}>

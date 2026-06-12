@@ -184,33 +184,36 @@ export default function ProtectedAreasPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.03 }}
               layout
+              className={viewMode === 'grid' ? 'h-full flex flex-col' : ''}
             >
               <Card
-                className={`glass border-white/10 transition-all duration-300 group cursor-pointer hover:border-white/20 ${viewMode === 'list' ? 'flex items-center gap-4 p-4' : 'p-6'}`}
+                className={`glass border-white/10 transition-all duration-300 group cursor-pointer hover:border-white/20 ${viewMode === 'list' ? 'flex items-center gap-4 p-4' : 'h-full flex flex-col justify-between p-6'}`}
                 onClick={() => router.push(`/protected-areas/${pa.slug}`)}
               >
                 {viewMode === 'grid' ? (
-                  <>
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} inline-flex mb-4`}>
-                      {pa.category === 'national_park' ? <Mountain className="w-6 h-6 text-white" /> :
-                       pa.category === 'wildlife_sanctuary' ? <PawPrint className="w-6 h-6 text-white" /> :
-                       pa.category === 'wetland_reserve' ? <Droplet className="w-6 h-6 text-white" /> :
-                       pa.category === 'conservation_reserve' ? <Leaf className="w-6 h-6 text-white" /> :
-                       <Bird className="w-6 h-6 text-white" />}
+                  <div className="flex flex-col h-full justify-between">
+                    <div>
+                      <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} inline-flex mb-4`}>
+                        {pa.category === 'national_park' ? <Mountain className="w-6 h-6 text-white" /> :
+                         pa.category === 'wildlife_sanctuary' ? <PawPrint className="w-6 h-6 text-white" /> :
+                         pa.category === 'wetland_reserve' ? <Droplet className="w-6 h-6 text-white" /> :
+                         pa.category === 'conservation_reserve' ? <Leaf className="w-6 h-6 text-white" /> :
+                         <Bird className="w-6 h-6 text-white" />}
+                      </div>
+                      <h3 className="text-lg font-semibold text-white mb-1">{pa.name}</h3>
+                      <span className={`inline-block text-xs px-2 py-0.5 rounded-full border ${categoryBadgeColors[pa.category] || ''} mb-3`}>
+                        {categoryLabels[pa.category] || pa.category}
+                      </span>
+                      <p className="text-sm text-slate-400 mb-3 line-clamp-2">{pa.description}</p>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-1">{pa.name}</h3>
-                    <span className={`inline-block text-xs px-2 py-0.5 rounded-full border ${categoryBadgeColors[pa.category] || ''} mb-3`}>
-                      {categoryLabels[pa.category] || pa.category}
-                    </span>
-                    <p className="text-sm text-slate-400 mb-3 line-clamp-2">{pa.description}</p>
-                    <div className="flex flex-wrap gap-2 text-xs text-slate-500">
+                    <div className="flex flex-wrap gap-2 text-xs text-slate-500 mt-auto pt-3 border-t border-white/5">
                       <span>{pa.area.toLocaleString()} km²</span>
                       <span>•</span>
                       <span>{pa.district}</span>
                       <span>•</span>
                       <span>Est. {pa.established}</span>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <>
                     <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} shrink-0`}>

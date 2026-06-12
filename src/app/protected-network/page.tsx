@@ -218,7 +218,7 @@ export default function ProtectedNetworkPage() {
               transition={{ delay: index * 0.05 }}
               className="block group"
             >
-              <Card className="p-4 sm:p-5 flex flex-col gap-2 h-full card-intelligence border border-white/5 bg-slate-900/50" padding="none">
+              <Card className="p-4 sm:p-5 flex flex-col gap-2 h-full card-intelligence border border-white/5 bg-[#160C27]" padding="none">
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} text-white flex items-center justify-center shadow-lg`}>
                     <category.icon className="w-7 h-7" />
@@ -247,7 +247,7 @@ export default function ProtectedNetworkPage() {
       </div>
 
       {/* Ecological Intelligence */}
-      <div className="container mx-auto px-6 py-16 bg-slate-900/50">
+      <div className="container mx-auto px-6 py-16 bg-[#110820]/30 rounded-3xl border border-white/5">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -276,7 +276,7 @@ export default function ProtectedNetworkPage() {
               transition={{ delay: index * 0.05 }}
               className="block group"
             >
-              <Card className="h-full card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
+              <Card className="h-full card-intelligence border border-white/5 bg-[#160C27]" padding="lg">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
                     <card.icon className="w-6 h-6 text-slate-400 group-hover:text-purple-400 transition-colors" />
@@ -340,7 +340,7 @@ export default function ProtectedNetworkPage() {
                 transition={{ delay: index * 0.05 }}
                 className="block group"
               >
-                <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
+                <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/5 bg-[#160C27]" padding="none">
                   <div className="relative h-48 bg-gradient-to-br from-emerald-500/20 to-slate-800/50">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />

@@ -153,6 +153,7 @@ export default function WaterSystemsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
+        icon={<Droplet className="w-6 h-6 text-blue-400" />}
         badge={<Badge variant="info" size="lg" className="mb-4">Comprehensive Hydrological Intelligence</Badge>}
         title="Water Systems"
         subtitle="Water Systems is a complete hydrological, ecological, aquatic, water-quality, watershed, cryosphere, flood-risk, and restoration intelligence system for all mapped water-related landscapes and processes across Kashmir."
