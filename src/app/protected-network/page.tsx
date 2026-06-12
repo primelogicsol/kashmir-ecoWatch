@@ -5,8 +5,8 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import { 
-  Shield, Map, TrendingUp, Activity, Leaf, Mountain, 
+import {
+  Shield, Map, TrendingUp, Activity, Leaf, Mountain,
   Droplet, ArrowRight, Eye, FileText, AlertTriangle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -161,8 +161,8 @@ export default function ProtectedNetworkPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+          <Card className="glass-intense border-white/10" padding="sm">
+            <div className="grid grid-cols-2 xs:grid-cols-4 lg:grid-cols-8 gap-2">
               {[
                 { label: 'Total PAs', value: protectedNetworkMetrics.totalProtectedAreas, icon: Shield },
                 { label: 'Total Area', value: `${protectedNetworkMetrics.totalArea.toLocaleString()} km²`, icon: Map },
@@ -173,12 +173,12 @@ export default function ProtectedNetworkPage() {
                 { label: 'IBAs', value: protectedNetworkMetrics.importantBirdAreas, icon: Activity },
                 { label: 'Coverage', value: `${protectedNetworkMetrics.coveragePercentage}%`, icon: TrendingUp },
               ].map((metric, idx) => (
-                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                <div key={idx} className="py-2.5 px-2 lg:py-3 lg:px-3 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-white tabular-nums leading-tight truncate">
                     {metric.value}
                   </div>
-                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
                     {metric.label}
                   </div>
                 </div>
@@ -189,65 +189,58 @@ export default function ProtectedNetworkPage() {
       </div>
 
       {/* Category Cards */}
-      <div className="container mx-auto px-6 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-            <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-              Protected Area Categories
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Explore by Category
-          </h2>
-        </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-          {categoryCards.map((category, index) => (
-            <motion.a
-              key={category.id}
-              href={category.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="block group"
-            >
-              <Card className="p-4 sm:p-5 flex flex-col gap-2 h-full card-intelligence border border-white/5 bg-[#160C27]" padding="none">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} text-white flex items-center justify-center shadow-lg`}>
-                    <category.icon className="w-7 h-7" />
+      <section className="w-full overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+
+          {/* ... heading ... */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full">
+            {categoryCards.map((category, index) => (
+              <motion.a
+                key={category.id}
+                href={category.href}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="block group w-full min-w-0" // ← min-w-0 prevents flex/grid blowout
+              >
+                <Card className="p-4 sm:p-5 flex flex-col h-full border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl w-full hover:border-emerald-500/20 transition-all duration-300" padding="none">
+
+                  <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 shrink-0`}>
+                    <category.icon className="w-5 h-5 text-white" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm sm:text-base font-semibold text-white mb-1 group-hover:text-emerald-300 transition-colors">
-                      {category.title}
-                    </h3>
-                    <div className="text-2xl sm:text-3xl font-bold text-white">
-                      {category.count.toLocaleString()}
-                    </div>
-                    <div className="text-xs text-slate-500 uppercase">areas</div>
+
+                  <h3 className="text-sm font-semibold text-white mb-1.5 group-hover:text-emerald-300 transition-colors leading-snug">
+                    {category.title}
+                  </h3>
+                  <div className="text-2xl sm:text-3xl font-bold text-white leading-none">
+                    {category.count.toLocaleString()}
                   </div>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-400 mb-4 leading-relaxed line-clamp-3">
-                  {category.description}
-                </p>
-                <div className="mt-auto w-full py-2 text-xs sm:text-sm rounded-lg flex items-center justify-center gap-2 font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors">
-                  <span>Explore</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Card>
-            </motion.a>
-          ))}
+                  <div className="text-[10px] font-semibold tracking-widest text-slate-500 uppercase mt-1 mb-3 sm:mb-4">
+                    Areas
+                  </div>
+
+                  <p className="text-xs text-slate-400 leading-relaxed flex-1 mb-3 sm:mb-4 line-clamp-3">
+                    {category.description}
+                  </p>
+
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                    <span>Explore</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+
+                </Card>
+              </motion.a>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
 
       {/* Ecological Intelligence */}
-      <div className="container mx-auto px-6 py-16 bg-[#110820]/30 rounded-3xl border border-white/5">
+      <div className="container mx-auto px-6 py-16 bg-white/[0.02] rounded-3xl border border-white/[0.06]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -276,7 +269,7 @@ export default function ProtectedNetworkPage() {
               transition={{ delay: index * 0.05 }}
               className="block group"
             >
-              <Card className="h-full card-intelligence border border-white/5 bg-[#160C27]" padding="lg">
+              <Card className="h-full card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20" padding="lg">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
                     <card.icon className="w-6 h-6 text-slate-400 group-hover:text-purple-400 transition-colors" />
@@ -340,10 +333,10 @@ export default function ProtectedNetworkPage() {
                 transition={{ delay: index * 0.05 }}
                 className="block group"
               >
-                <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/5 bg-[#160C27]" padding="none">
+                <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20" padding="none">
                   <div className="relative h-48 bg-gradient-to-br from-emerald-500/20 to-slate-800/50">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
+                    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/80" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <Badge variant="info" size="sm" className="mb-2 capitalize text-xs px-2 py-0.5 whitespace-nowrap">
                         {pa.category.replace('_', ' ')}
@@ -370,7 +363,7 @@ export default function ProtectedNetworkPage() {
                       </div>
                     </div>
                     <div className="mt-4 flex justify-end">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 text-sm font-medium text-white shadow-md shadow-emerald-500/20">
                         View Details
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </span>
@@ -382,8 +375,6 @@ export default function ProtectedNetworkPage() {
           ))}
         </div>
       </div>
-
-      
     </main>
   );
 }

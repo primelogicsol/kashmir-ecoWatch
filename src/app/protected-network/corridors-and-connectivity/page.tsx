@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -9,6 +9,7 @@ import { Map, TrendingUp, ArrowRight, Search, Activity, Filter, Grid3X3, List, S
 import { motion } from 'framer-motion';
 import { getCorridors } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
+import { Pagination } from '@/components/ui/Pagination';
 
 export default function CorridorsPage() {
   const corridors = getCorridors.all();
@@ -19,6 +20,8 @@ export default function CorridorsPage() {
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [selectedScope, setSelectedScope] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 6;
 
   const districtsList = useMemo(() => {
     const districts = new Set<string>();
@@ -67,6 +70,16 @@ export default function CorridorsPage() {
       return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
     });
   }, [corridors, activeTab, searchQuery, selectedDistrict, selectedScope]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredCorridors.length / PAGE_SIZE));
+  const paginatedCorridors = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredCorridors.slice(start, start + PAGE_SIZE);
+  }, [filteredCorridors, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedDistrict, selectedScope, activeTab]);
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -228,8 +241,9 @@ export default function CorridorsPage() {
 
         {/* Corridors Grid/List */}
         {filteredCorridors.length > 0 ? (
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-            {filteredCorridors.map((corridor, index) => (
+          <>
+            <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6' : 'space-y-4'}>
+              {paginatedCorridors.map((corridor, index) => (
               <motion.a
                 key={corridor.id}
                 href={`/protected-network/corridors-and-connectivity/${corridor.slug}`}
@@ -239,7 +253,7 @@ export default function CorridorsPage() {
                 className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
                 <Card 
-                  className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300`} 
+                  className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20 transition-all duration-300`} 
                   padding="lg"
                 >
                   {viewMode === 'grid' ? (
@@ -260,8 +274,8 @@ export default function CorridorsPage() {
                           <span>Length: <strong className="text-slate-400">{corridor.length}</strong></span>
                         </div>
                       </div>
-                      <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
+                      <div className="mt-4 pt-4 border-t border-white/[0.06] flex justify-end">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-500/20 transition-colors text-sm font-medium text-white">
                           View Details
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </span>
@@ -292,6 +306,14 @@ export default function CorridorsPage() {
               </motion.a>
             ))}
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            totalItems={filteredCorridors.length}
+            pageSize={PAGE_SIZE}
+          />
+        </>
         ) : (
           <div className="text-center py-24">
             <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />

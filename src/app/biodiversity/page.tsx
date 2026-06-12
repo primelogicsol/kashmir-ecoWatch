@@ -274,7 +274,7 @@ export default function BiodiversityPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {categoryCards.map((category, index) => (
             <motion.div
               key={category.id}
@@ -387,7 +387,7 @@ export default function BiodiversityPage() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {exploreModes.map((mode, index) => (
             <EnhancedExploreModeCard
               key={mode.id}
@@ -429,7 +429,7 @@ export default function BiodiversityPage() {
           </Button>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {featuredSpecies.map((species, index) => (
             species && (
               <BiodiversityCard

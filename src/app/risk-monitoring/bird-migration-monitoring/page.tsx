@@ -191,7 +191,7 @@ export default function BirdMigrationMonitoringPage() {
             <p className="text-slate-400">Current migratory bird activity at key Kashmir wetlands</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {migrationData.map((record, index) => (
               <motion.div
                 key={record.id}
@@ -247,7 +247,7 @@ export default function BirdMigrationMonitoringPage() {
             <p className="text-slate-400">Origin, timing, and conservation status of major migratory birds</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {migratorySpecies.map((species, index) => (
               <motion.div
                 key={species.species}

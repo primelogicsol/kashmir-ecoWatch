@@ -178,7 +178,7 @@ export function WaterEntityListingPage({
             </div>
 
             {/* Footer row */}
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.06]">
               <div className="text-sm text-slate-400">
                 Showing <span className="text-white font-semibold">{filteredEntities.length}</span> of <span className="text-white font-semibold">{entities.length}</span> {entityType.toLowerCase()}
               </div>
@@ -197,7 +197,7 @@ export function WaterEntityListingPage({
 
       {/* Entities Grid */}
       <div className="container mx-auto px-6 py-8 flex-1">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {filteredEntities.map((entity, idx) => (
             <motion.div
               key={entity.id}

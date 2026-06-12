@@ -55,7 +55,7 @@ export default function WildlifeSightingsPage() {
 
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {wildlifeSightings.map((sighting, i) => (
               <motion.div key={sighting.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 hover:border-amber-500/30 transition-all p-5">

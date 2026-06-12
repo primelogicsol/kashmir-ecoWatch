@@ -1,16 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
+import { Pagination } from '@/components/ui/Pagination';
 import * as Icons from 'lucide-react';
 import {
   MapPin, Activity, ArrowRight, Search, Filter, Shield,
   Grid3X3, List, Map, TrendingUp
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 
@@ -63,19 +64,21 @@ export function ProtectedCategoryPage({
   const [searchQuery, setSearchQuery] = React.useState('');
   const [selectedDistrict, setSelectedDistrict] = React.useState('all');
   const [selectedScope, setSelectedScope] = React.useState('all');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const PAGE_SIZE = 6;
 
-  const districts = React.useMemo(() => {
+  const districts = useMemo(() => {
     return Array.from(new Set(areas.map(a => a.district).filter(Boolean))).sort();
   }, [areas]);
 
-  const scopes = React.useMemo(() => {
+  const scopes = useMemo(() => {
     return Array.from(new Set(areas.map((a: any) => a.scope).filter(Boolean))).sort();
   }, [areas]);
 
-  const filteredAreas = React.useMemo(() => {
+  const filteredAreas = useMemo(() => {
     return areas.filter(area => {
       const query = searchQuery.toLowerCase().trim();
-      const matchesSearch = !query || 
+      const matchesSearch = !query ||
         area.name.toLowerCase().includes(query) ||
         area.district.toLowerCase().includes(query) ||
         area.description.toLowerCase().includes(query) ||
@@ -87,6 +90,26 @@ export function ProtectedCategoryPage({
       return matchesSearch && matchesDistrict && matchesScope;
     });
   }, [areas, searchQuery, selectedDistrict, selectedScope]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredAreas.length / PAGE_SIZE));
+  const paginatedAreas = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredAreas.slice(start, start + PAGE_SIZE);
+  }, [filteredAreas, currentPage]);
+
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedDistrict, selectedScope]);
+
+  const getCategoryIcon = (category: string) => {
+    const map: Record<string, string> = {
+      national_park: 'Trees',
+      wildlife_sanctuary: 'Bird',
+      wetland_reserve: 'Droplets',
+      conservation_reserve: 'Leaf',
+    };
+    return map[category] || 'MapPin';
+  };
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -120,17 +143,17 @@ export function ProtectedCategoryPage({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+          <Card className="glass-intense border-white/10" padding="sm">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2">
               {metrics.map((metric, idx) => {
                 const MetricIcon = (Icons as any)[metric.icon] || Icons.MapPin;
                 return (
-                  <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                    <MetricIcon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                    <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                  <div key={idx} className="py-2.5 px-2 lg:py-3 lg:px-3 rounded-xl text-center min-w-0">
+                    <MetricIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mx-auto mb-1" />
+                    <div className="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-white tabular-nums leading-tight truncate">
                       {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
                     </div>
-                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    <div className="text-[10px] sm:text-[11px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
                       {metric.label}
                     </div>
                   </div>
@@ -141,50 +164,40 @@ export function ProtectedCategoryPage({
         </motion.div>
       </div>
 
-      {/* Tab + Filters — single row */}
-      <div className="container mx-auto px-6 mt-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* Tabs */}
-          {tabs && tabs.length > 0 && (
-            <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl">
-              {tabs.map(tab => (
-                <button
-                  key={tab.key}
-                  onClick={() => onTabChange?.(tab.key)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                    activeTab === tab.key
-                      ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Active tab description */}
-          {tabs && tabs.find(t => t.key === activeTab) && (
-            <span className="text-xs text-slate-500 hidden lg:block flex-1 px-4 truncate">
-              {tabs.find(t => t.key === activeTab)!.description}
-            </span>
-          )}
-
-          {/* Filters + count + view toggle */}
-          <div className="flex items-center gap-3 ml-auto">
-            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
-              {showFilters ? 'Hide Filters' : 'Filters'}
-            </Button>
-            <span className="text-sm text-slate-400 whitespace-nowrap">
-              <strong className="text-white">{filteredAreas.length}</strong> of <strong className="text-white">{areas.length}</strong> protected areas
-            </span>
-            <div className="flex items-center gap-1">
-              <Button variant="ghost" size="sm" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<Grid3X3 className="w-4 h-4" />} />
-              <Button variant="ghost" size="sm" onClick={() => setViewMode('list')} className={viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<List className="w-4 h-4" />} />
+      {/* Tab + Filters — responsive row */}
+      {tabs && tabs.length > 0 && (
+        <div className="px-4 sm:px-6 py-3">
+          {/* 
+      ✅ Pill container: full width, stays fixed — does NOT scroll 
+      overflow-hidden clips tabs that go outside
+    */}
+          <div className="glass-intense border border-white/10 rounded-xl w-full overflow-hidden">
+            {/*
+        ✅ Inner scroller: ONLY this scrolls horizontally
+        The pill background stays put, only text/buttons move
+      */}
+            <div
+              className="overflow-x-auto scrollbar-hide"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
+              <div className="flex items-center gap-2 p-1 w-max">
+                {tabs.map(tab => (
+                  <button
+                    key={tab.key}
+                    onClick={() => onTabChange?.(tab.key)}
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap touch-manipulation flex-shrink-0 ${activeTab === tab.key
+                        ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
+                        : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Content */}
       <div className="container mx-auto px-6 py-8 space-y-6">
@@ -213,7 +226,7 @@ export function ProtectedCategoryPage({
               <select
                 value={selectedDistrict}
                 onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-white/[0.06] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
               >
                 <option value="all">All Districts</option>
                 {districts.map(d => (
@@ -228,7 +241,7 @@ export function ProtectedCategoryPage({
                 <select
                   value={selectedScope}
                   onChange={(e) => setSelectedScope(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-white/[0.06] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
                 >
                   <option value="all">All Scopes</option>
                   {scopes.map(s => (
@@ -242,75 +255,92 @@ export function ProtectedCategoryPage({
 
         {/* Protected Areas Grid/List */}
         {filteredAreas.length > 0 ? (
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-            {filteredAreas.map((area, index) => (
-              <motion.a
-                key={area.id}
-                href={`/protected-network/${area.category === 'national_park' ? 'national-parks' : area.category === 'wildlife_sanctuary' ? 'wildlife-sanctuaries' : area.category === 'wetland_reserve' ? 'wetland-reserves' : area.category === 'conservation_reserve' ? 'conservation-reserves' : 'bird-and-habitat-areas'}/${area.slug}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
-              >
-                <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-[#160C27]" padding="none">
-                  <div className="relative h-40 bg-[#160C27]">
-
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex flex-wrap gap-1 mb-2">
-                        <Badge variant="info" size="sm" className="capitalize">
-                          {area.category.replace('_', ' ')}
-                        </Badge>
-                        {(area as any).scope && (
-                          <Badge variant="default" size="sm">{(area as any).scope}</Badge>
-                        )}
-                        {(area as any).legalStatus && (area as any).legalStatus !== 'Verified' && (
-                          <Badge variant="warning" size="sm">{(area as any).legalStatus}</Badge>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
-                        {area.name}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-slate-400 mb-4 line-clamp-2">
-                      {area.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-400">
-                      <div>
-                        <div className="text-xs text-slate-500 uppercase">Area</div>
-                        <div className="text-white font-semibold">{area.area > 0 ? `${area.area} km²` : 'TBC'}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500 uppercase">District</div>
-                        <div className="text-white font-semibold">{area.district}</div>
-                      </div>
-                      {(area as any).flagshipSpecies && (
-                        <div>
-                          <div className="text-xs text-slate-500 uppercase">Flagship</div>
-                          <div className="text-white font-semibold text-sm">{(area as any).flagshipSpecies}</div>
+          <>
+            <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6' : 'space-y-3 sm:space-y-4'}>
+              {paginatedAreas.map((area, index) => {
+                const CatIcon = (Icons as any)[getCategoryIcon(area.category)] || Icons.MapPin;
+                return (
+                  <motion.a
+                    key={area.id}
+                    href={`/protected-network/${area.category === 'national_park' ? 'national-parks' : area.category === 'wildlife_sanctuary' ? 'wildlife-sanctuaries' : area.category === 'wetland_reserve' ? 'wetland-reserves' : area.category === 'conservation_reserve' ? 'conservation-reserves' : 'bird-and-habitat-areas'}/${area.slug}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
+                  >
+                    <Card className="h-full flex flex-col overflow-hidden card-intelligence bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] hover:border-emerald-500/20" padding="none">
+                      <div className="relative h-44 bg-gradient-to-br from-emerald-900/40 via-slate-900/60 to-slate-950">
+                        <div className="absolute top-4 left-4 flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                            <CatIcon className="w-4 h-4 text-emerald-400" />
+                          </div>
                         </div>
-                      )}
-                    </div>
-                    {(area as any).altitudeRange && (
-                      <div className="mt-2 text-xs text-slate-400">
-                        <span className="text-slate-500 uppercase text-[10px]">Altitude: </span>{(area as any).altitudeRange}
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="flex flex-wrap gap-1.5 mb-2">
+                            <Badge variant="info" size="sm" className="capitalize">
+                              {area.category.replace('_', ' ')}
+                            </Badge>
+                            {(area as any).scope && (
+                              <Badge variant="default" size="sm">{(area as any).scope}</Badge>
+                            )}
+                            {(area as any).legalStatus && (area as any).legalStatus !== 'Verified' && (
+                              <Badge variant="warning" size="sm">{(area as any).legalStatus}</Badge>
+                            )}
+                          </div>
+                          <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                            {area.name}
+                          </h3>
+                        </div>
                       </div>
-                    )}
-                    {(area as any).dataStatus && (
-                      <div className="text-[10px] text-slate-500 italic mt-1">{(area as any).dataStatus}</div>
-                    )}
-                    <div className="mt-auto pt-4 border-t border-white/5 flex justify-end">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
-                        View Details
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </div>
-                  </div>
-                </Card>
-              </motion.a>
-            ))}
-          </div>
+                      <div className="p-5 flex flex-col flex-1">
+                        <p className="text-sm text-slate-400 mb-4 line-clamp-2 leading-relaxed">
+                          {area.description}
+                        </p>
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+                          <div className="min-w-0">
+                            <div className="text-[10px] text-slate-500 uppercase tracking-wider">Area</div>
+                            <div className="text-white font-semibold tabular-nums">{area.area > 0 ? `${area.area.toLocaleString()} km²` : 'TBC'}</div>
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[10px] text-slate-500 uppercase tracking-wider">District</div>
+                            <div className="text-white font-semibold">{area.district}</div>
+                          </div>
+                          {(area as any).flagshipSpecies && (
+                            <div className="min-w-0">
+                              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Flagship</div>
+                              <div className="text-white font-semibold text-sm truncate max-w-[140px]">{(area as any).flagshipSpecies}</div>
+                            </div>
+                          )}
+                        </div>
+                        {(area as any).altitudeRange && (
+                          <div className="mt-2 text-xs text-slate-400">
+                            <span className="text-slate-500 uppercase text-[10px] tracking-wider">Altitude: </span>{(area as any).altitudeRange}
+                          </div>
+                        )}
+                        {(area as any).dataStatus && (
+                          <div className="text-[10px] text-slate-500 italic mt-1">{(area as any).dataStatus}</div>
+                        )}
+                        <div className="mt-auto pt-4 border-t border-white/[0.06] flex justify-end">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 text-sm font-medium text-white shadow-md shadow-emerald-500/20">
+                            View Details
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </span>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.a>
+                );
+              })}
+            </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+              totalItems={filteredAreas.length}
+              pageSize={PAGE_SIZE}
+            />
+          </>
         ) : (
           <div className="text-center py-24">
             <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />
@@ -361,8 +391,6 @@ export function ProtectedCategoryPage({
           </motion.div>
         </div>
       )}
-
-      
     </main>
   );
 }

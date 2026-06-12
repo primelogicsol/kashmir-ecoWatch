@@ -93,14 +93,14 @@ export function ProtectedAreaMapPage({ area, backHref, categoryLabel, categoryHr
   const tile = TILE_LAYERS[activeLayer];
   const connections = CONNECTIVITY[area.slug] ?? [];
 
-  const CARD = 'bg-[#160C27] border border-white/5';
+  const CARD = 'bg-white/[0.03] backdrop-blur-xl border border-white/[0.06]';
 
   return (
     <main className="min-h-screen bg-slate-950">
       <LeafletCSS />
 
       {/* ── COMPACT HERO ── */}
-      <div className="bg-[#160C27] pt-20 pb-8">
+      <div className="bg-white/[0.03] backdrop-blur-xl pt-20 pb-8">
         <div className="container mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-5">

@@ -150,7 +150,7 @@ export function EntityDrawer({ isOpen, onClose, entity }: EntityDrawerProps) {
               )}
 
               {/* Actions */}
-              <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
+              <div className="flex flex-col gap-3 pt-4 border-t border-white/[0.06]">
                 <Button
                   onClick={handleViewDetails}
                   className="w-full bg-gradient-to-r from-forest-600 to-forest-500"

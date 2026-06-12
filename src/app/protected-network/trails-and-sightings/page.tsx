@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
+import { Pagination } from '@/components/ui/Pagination';
 import {
   trailsObservationsData,
   mockObservations,
@@ -71,6 +72,8 @@ export default function TrailsAndSightingsPage() {
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [selectedScope, setSelectedScope] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 6;
   
   // State for inspecting a specific trail in detail
   const [inspectedTrailId, setInspectedTrailId] = useState<string | null>(null);
@@ -322,6 +325,16 @@ export default function TrailsAndSightingsPage() {
     });
   }, [activeScopeTab, searchQuery, selectedDistrict, selectedScope]);
 
+  const totalPages = Math.max(1, Math.ceil(filteredTrails.length / PAGE_SIZE));
+  const paginatedTrails = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredTrails.slice(start, start + PAGE_SIZE);
+  }, [filteredTrails, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedDistrict, selectedScope, activeScopeTab]);
+
   // Filtered birding routes (specifically categorised as birding or containing bird species)
   const birdingRoutes = useMemo(() => {
     return trailsObservationsData.filter(trail => 
@@ -441,7 +454,7 @@ export default function TrailsAndSightingsPage() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Card 1: Summary */}
-                  <Card className="border border-white/5 bg-[#160C27] text-white p-6 h-full flex flex-col justify-between" padding="none">
+                  <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-6 h-full flex flex-col justify-between" padding="none">
                     <div>
                       <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                         <Activity className="w-5 h-5 text-emerald-400" />
@@ -468,7 +481,7 @@ export default function TrailsAndSightingsPage() {
                   </Card>
 
                   {/* Card 2: eBird Integration */}
-                  <Card className="border border-white/5 bg-[#160C27] text-white p-6 h-full flex flex-col justify-between" padding="none">
+                  <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-6 h-full flex flex-col justify-between" padding="none">
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-emerald-500/20 rounded-xl text-emerald-400">
                         <Globe className="w-6 h-6" />
@@ -491,7 +504,7 @@ export default function TrailsAndSightingsPage() {
                   </Card>
 
                   {/* Card 3: Verification Levels */}
-                  <Card className="border border-white/5 bg-[#160C27] text-white p-6 h-full flex flex-col justify-between" padding="none">
+                  <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-6 h-full flex flex-col justify-between" padding="none">
                     <div>
                       <h3 className="text-base font-bold mb-4 flex items-center gap-2">
                         <Shield className="w-4 h-4 text-emerald-400" />
@@ -509,7 +522,7 @@ export default function TrailsAndSightingsPage() {
                   </Card>
 
                   {/* Card 4: Camera Traps status */}
-                  <Card className="border border-white/5 bg-[#160C27] text-white p-6 h-full flex flex-col justify-between" padding="none">
+                  <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-6 h-full flex flex-col justify-between" padding="none">
                     <div>
                       <h3 className="text-base font-bold mb-3 flex items-center gap-2">
                         <Camera className="w-4 h-4 text-emerald-400" />
@@ -633,7 +646,7 @@ export default function TrailsAndSightingsPage() {
 
                 {/* Inspected Trail Panel (Detailed View) */}
                 {inspectedTrailId && (
-                  <Card className="border border-emerald-500/30 bg-[#160C27] text-white p-6 relative" padding="none">
+                  <Card className="border border-emerald-500/30 bg-white/[0.03] backdrop-blur-xl text-white p-6 relative" padding="none">
                     <button
                       className="absolute top-4 right-4 text-slate-400 hover:text-white text-xs font-bold bg-white/5 px-2.5 py-1 rounded"
                       onClick={() => setInspectedTrailId(null)}
@@ -741,8 +754,9 @@ export default function TrailsAndSightingsPage() {
 
                 {/* Trails Grid/List Render */}
                 {filteredTrails.length > 0 ? (
-                  <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-                    {filteredTrails.map((trail, index) => (
+                  <>
+                  <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6' : 'space-y-4'}>
+                    {paginatedTrails.map((trail, index) => (
                       <motion.div
                         key={trail.trail_id}
                         initial={{ opacity: 0, y: 15 }}
@@ -751,7 +765,7 @@ export default function TrailsAndSightingsPage() {
                         className={`${viewMode === 'grid' ? 'h-full flex flex-col' : ''} block cursor-pointer`}
                         onClick={() => setInspectedTrailId(trail.trail_id)}
                       >
-                        <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
+                        <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
                           <div>
                             <div className="flex items-start justify-between mb-3">
                               <div className="flex flex-wrap items-center gap-1.5">
@@ -786,7 +800,7 @@ export default function TrailsAndSightingsPage() {
                             </div>
                           </div>
 
-                          <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between">
+                          <div className="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between">
                             <button
                               onClick={(e) => handleDownloadGPS(e, trail.trail_id)}
                               className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded bg-white/5 hover:bg-emerald-500/10 text-slate-300 hover:text-emerald-400 border border-white/10 hover:border-emerald-500/30 transition-all"
@@ -803,6 +817,14 @@ export default function TrailsAndSightingsPage() {
                       </motion.div>
                     ))}
                   </div>
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                    totalItems={filteredTrails.length}
+                    pageSize={PAGE_SIZE}
+                  />
+                </>
                 ) : (
                   <div className="text-center py-20 bg-white/5 rounded-xl border border-white/5">
                     <Shield className="w-12 h-12 text-slate-600 mx-auto mb-3" />
@@ -867,7 +889,7 @@ export default function TrailsAndSightingsPage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
                       >
-                        <Card className="border border-white/5 bg-[#160C27] text-white p-5" padding="none">
+                        <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-5" padding="none">
                           <div className="flex items-start justify-between mb-3">
                             <div>
                               <div className="flex items-center gap-2">
@@ -893,7 +915,7 @@ export default function TrailsAndSightingsPage() {
                             <span>Scope: <strong className="text-slate-200">{obs.ecological_scope}</strong></span>
                           </div>
 
-                          <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-500">
+                          <div className="mt-4 pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-500">
                             <span>Coords: {obs.latitude.toFixed(3)}°N, {obs.longitude.toFixed(3)}°E ({obs.public_visibility})</span>
                             <span className="text-emerald-400 font-semibold cursor-pointer hover:underline">Inspect Metadata ↗</span>
                           </div>
@@ -907,7 +929,7 @@ export default function TrailsAndSightingsPage() {
             {/* BIRDING ROUTES TAB */}
             {activeMainTab === 'birding' && (
               <div className="space-y-6">
-                <Card className="border border-white/5 bg-[#160C27] text-white p-6" padding="none">
+                <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl text-white p-6" padding="none">
                   <h3 className="text-lg font-bold flex items-center gap-2 mb-2">
                     <Globe className="w-5 h-5 text-emerald-400" />
                     Kashmir Avian Migration & Breeding Route Monitoring
@@ -925,7 +947,7 @@ export default function TrailsAndSightingsPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.05 }}
                     >
-                      <Card className="border border-white/5 bg-[#160C27] p-5 h-full flex flex-col" padding="none">
+                      <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5 h-full flex flex-col" padding="none">
                         <div>
                           <div className="flex items-center justify-between mb-2">
                             <Badge variant="info">{route.route_type}</Badge>
@@ -937,7 +959,7 @@ export default function TrailsAndSightingsPage() {
                             {route.field_intelligence}
                           </p>
                         </div>
-                        <div className="mt-auto pt-3 border-t border-white/5">
+                        <div className="mt-auto pt-3 border-t border-white/[0.06]">
                           <span className="text-[10px] text-slate-500 block mb-1">Target Avian Species</span>
                           <div className="flex flex-wrap gap-1">
                             {route.target_species.map((s, sidx) => (
@@ -959,7 +981,7 @@ export default function TrailsAndSightingsPage() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {trailsObservationsData.filter(t => t.route_type.toLowerCase().includes('network') || t.route_type.toLowerCase().includes('system')).map((site, idx) => (
-                    <Card key={idx} className="border border-white/5 bg-[#160C27] p-5 flex flex-col justify-between" padding="none">
+                    <Card key={idx} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5 flex flex-col justify-between" padding="none">
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <Badge variant="default">Observation Site</Badge>
@@ -973,7 +995,7 @@ export default function TrailsAndSightingsPage() {
                           {site.field_intelligence}
                         </p>
                       </div>
-                      <div className="pt-3 border-t border-white/5 text-[11px] text-slate-400 space-y-1">
+                      <div className="pt-3 border-t border-white/[0.06] text-[11px] text-slate-400 space-y-1">
                         <div>Visitor Pressure: <span className="text-amber-400 font-bold">{site.visitor_pressure}</span></div>
                         <div>Elevation: <span className="text-white">{site.elevation_min_m}m - {site.elevation_max_m}m</span></div>
                         <div>Modality: <span className="text-emerald-400 font-semibold">{site.monitoring_status}</span></div>
@@ -996,7 +1018,7 @@ export default function TrailsAndSightingsPage() {
                     { id: 'CAM-DEO-02', location: 'Sheosar Meadow', status: 'Online', battery: '90%', triggers: 94, target: 'Brown Bear / Marmot' },
                     { id: 'CAM-SHM-01', location: 'Shimshal Gorge', status: 'Online', battery: '82%', triggers: 412, target: 'Snow Leopard' },
                   ].map((ct, idx) => (
-                    <Card key={idx} className="border border-white/5 bg-[#160C27] p-4 text-white" padding="none">
+                    <Card key={idx} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-4 text-white" padding="none">
                       <div className="flex items-center justify-between mb-3">
                         <span className="font-mono text-xs text-emerald-400 font-bold">{ct.id}</span>
                         <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase ${
@@ -1027,7 +1049,7 @@ export default function TrailsAndSightingsPage() {
                     { season: 'Autumn (October - November)', active: 'Himalayan Brown Bear intensive foraging prior to hibernation; Raptor migration passes along the Pir Panjal corridors; early winter waterfowl arrivals.' },
                     { season: 'Winter (December - March)', active: 'Mass Siberian & Central Asian waterfowl staging at Hokersar, Shallabugh, and Wular wetlands; Markhor and snow leopards descend to gorge floors.' },
                   ].map((sa, idx) => (
-                    <Card key={idx} className="border border-white/5 bg-[#160C27] p-5" padding="none">
+                    <Card key={idx} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5" padding="none">
                       <h4 className="font-bold text-base text-emerald-400 mb-2 flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
                         {sa.season}
@@ -1044,7 +1066,7 @@ export default function TrailsAndSightingsPage() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* Submit Observation Form */}
-                  <Card className="border border-white/5 bg-[#160C27] p-6 text-white" padding="none">
+                  <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 text-white" padding="none">
                     <form onSubmit={handleObsSubmit} className="space-y-4">
                       <div>
                         <h3 className="text-lg font-bold text-white mb-1">Submit Field Observation Record</h3>
@@ -1266,7 +1288,7 @@ export default function TrailsAndSightingsPage() {
                         </div>
                       </div>
 
-                      <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 mt-2">
+                      <Button type="submit" className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-500/20 mt-2">
                         Submit Sighting to Verification Queue
                       </Button>
                     </form>
@@ -1275,7 +1297,7 @@ export default function TrailsAndSightingsPage() {
                   {/* Verification Queue & eBird Info */}
                   <div className="space-y-6 flex flex-col justify-between h-full">
                     {/* Live Verification Queue widget */}
-                    <Card className="border border-white/5 bg-[#160C27] p-6 text-white flex-1" padding="none">
+                    <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 text-white flex-1" padding="none">
                       <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
                         <Shield className="w-5 h-5 text-emerald-400" />
                         Live Verification Pipeline
@@ -1308,7 +1330,7 @@ export default function TrailsAndSightingsPage() {
                                   </span>
                                 </div>
 
-                                <div className="space-y-1.5 pt-1.5 border-t border-white/5 text-[10px]">
+                                <div className="space-y-1.5 pt-1.5 border-t border-white/[0.06] text-[10px]">
                                   <div className="flex justify-between">
                                     <span className="text-slate-500">Quality Checks:</span>
                                     <span className="text-emerald-400 font-semibold flex items-center gap-1">
@@ -1333,7 +1355,7 @@ export default function TrailsAndSightingsPage() {
                     </Card>
 
                     {/* eBird Integration Status */}
-                    <Card className="border border-white/5 bg-[#160C27] p-6 text-white h-full flex flex-col justify-between" padding="none">
+                    <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 text-white h-full flex flex-col justify-between" padding="none">
                       <div>
                         <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
                           <Globe className="w-5 h-5 text-emerald-400" />
@@ -1360,7 +1382,7 @@ export default function TrailsAndSightingsPage() {
               <div className="space-y-6">
                 <div className="space-y-4">
                   {trailsObservationsData.slice(0, 8).map((t, idx) => (
-                    <Card key={idx} className="border border-white/5 bg-[#160C27] p-4 text-white flex items-center justify-between" padding="none">
+                    <Card key={idx} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-4 text-white flex items-center justify-between" padding="none">
                       <div>
                         <h4 className="font-bold text-sm">{t.trail_name} - Monitoring Link</h4>
                         <span className="text-xs text-slate-400">Status: <strong className="text-emerald-400">{t.monitoring_status}</strong></span>
@@ -1375,7 +1397,7 @@ export default function TrailsAndSightingsPage() {
             {/* SPATIAL DATA TAB */}
             {activeMainTab === 'spatial' && (
               <div className="space-y-6">
-                <Card className="border border-white/5 bg-[#160C27] p-5 text-white" padding="none">
+                <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5 text-white" padding="none">
                   <h3 className="text-base font-bold mb-3 flex items-center gap-2">
                     <MapIcon className="w-5 h-5 text-emerald-400" />
                     GIS Spatial Layer Index
@@ -1489,7 +1511,7 @@ export default function TrailsAndSightingsPage() {
 
                 {/* Grid or List */}
                 {filteredReports.length > 0 ? (
-                  <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+                  <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6' : 'space-y-4'}>
                     {filteredReports.map((report, index) => (
                       <motion.div
                         key={report.id}
@@ -1499,7 +1521,7 @@ export default function TrailsAndSightingsPage() {
                         className={`${viewMode === 'grid' ? 'h-full' : ''} block group cursor-pointer`}
                         onClick={(e) => handleReportDownload(e, report.slug)}
                       >
-                        <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
+                        <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
                           {viewMode === 'grid' ? (
                             <div className="flex flex-col h-full justify-between">
                               <div>
@@ -1520,7 +1542,7 @@ export default function TrailsAndSightingsPage() {
                                   <span>Authors: <strong className="text-slate-300">{report.authors.slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
                                 </div>
                               </div>
-                              <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
+                              <div className="mt-4 pt-4 border-t border-white/[0.06] flex justify-end">
                                 <Button
                                   variant="outline"
                                   size="sm"

@@ -155,7 +155,7 @@ export default function BiodiversityRiskIntelligencePage() {
             <p className="text-slate-400">Major threats to Kashmir's biodiversity and affected species counts</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {biodiversityRisks.map((risk, index) => (
               <motion.div
                 key={risk.risk}
@@ -199,7 +199,7 @@ export default function BiodiversityRiskIntelligencePage() {
             <p className="text-slate-400">Conservation status and population trends of key species</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {threatenedSpecies.map((species, index) => (
               <motion.div
                 key={species.species}

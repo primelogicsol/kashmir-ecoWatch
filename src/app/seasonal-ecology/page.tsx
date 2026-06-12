@@ -87,7 +87,7 @@ export default function SeasonalEcologyHubPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {seasonalEcologyNavigationCards.map((card) => {
             const CardIcon = (Icons as any)[card.icon] || Icons.Mountain;
             return (
@@ -147,7 +147,7 @@ export default function SeasonalEcologyHubPage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {landscapes.slice(0, 3).map((landscape) => (
             <Link
               key={landscape.id}

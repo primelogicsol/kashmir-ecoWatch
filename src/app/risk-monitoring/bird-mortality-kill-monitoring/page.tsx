@@ -179,7 +179,7 @@ export default function BirdMortalityKillMonitoringPage() {
             <p className="text-slate-400">Bird mortality records and risk levels by wetland</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {wetlandRiskProfile.map((item, index) => (
               <motion.div
                 key={item.wetland}
@@ -231,7 +231,7 @@ export default function BirdMortalityKillMonitoringPage() {
             <p className="text-slate-400">Latest bird mortality incidents across Kashmir wetlands</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {birdMortalityRecords.map((record, index) => (
               <motion.div
                 key={record.id}

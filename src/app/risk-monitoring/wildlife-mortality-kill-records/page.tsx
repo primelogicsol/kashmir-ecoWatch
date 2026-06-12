@@ -184,7 +184,7 @@ export default function WildlifeMortalityKillRecordsPage() {
             <p className="text-slate-400">Wildlife mortality records and trends by district</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {districtMortalityProfile.map((item, index) => (
               <motion.div
                 key={item.district}
@@ -238,7 +238,7 @@ export default function WildlifeMortalityKillRecordsPage() {
             <p className="text-slate-400">Latest wildlife mortality incidents across Kashmir</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {mortalityRecords.map((record, index) => (
               <motion.div
                 key={record.id}
@@ -294,7 +294,7 @@ export default function WildlifeMortalityKillRecordsPage() {
             <p className="text-slate-400">Breakdown of wildlife mortality by cause and affected species</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {mortalityCauses.map((item, index) => (
               <motion.div
                 key={item.cause}

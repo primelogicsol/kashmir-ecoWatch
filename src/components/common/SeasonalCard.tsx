@@ -258,7 +258,7 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
         <div>
           {/* Timing Info */}
           {timingInfo && (
-            <div className="pt-3 border-t border-white/5">
+            <div className="pt-3 border-t border-white/[0.06]">
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <Icons.Calendar className="w-3.5 h-3.5" />
                 <span className="line-clamp-1">{timingInfo}</span>
@@ -267,7 +267,7 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
           )}
 
           {/* Hover CTA */}
-          <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5 mt-2">
+          <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/[0.06] mt-2">
             <span>View Details</span>
             <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>

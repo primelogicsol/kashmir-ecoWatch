@@ -187,7 +187,7 @@ export default function TrailsAndSightingsPage() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {aggregations.map((aggregation, index) => (
               <SightingAggregationPanel
                 key={aggregation.categoryId}
@@ -337,7 +337,7 @@ export default function TrailsAndSightingsPage() {
             </Button>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {kashmirSightings.map((sighting, index) => (
               <motion.div
                 key={sighting.id}

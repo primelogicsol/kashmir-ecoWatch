@@ -201,7 +201,7 @@ export default function NoisePollutionPage() {
             <p className="text-slate-400">Average noise levels and sensitive zone overlap by district</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {districtSummary.map((item, index) => (
               <motion.div
                 key={item.district}
@@ -258,7 +258,7 @@ export default function NoisePollutionPage() {
             <p className="text-slate-400">Latest decibel readings across monitoring zones</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {noiseData.map((record, index) => (
               <motion.div
                 key={record.id}

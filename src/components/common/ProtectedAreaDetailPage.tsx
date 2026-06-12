@@ -531,7 +531,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
               ))}
 
               {/* Core watersheds */}
-              <div className="pt-2 border-t border-white/5">
+              <div className="pt-2 border-t border-white/[0.06]">
                 <div className="text-[10px] text-slate-500 uppercase mb-1.5">Core Watersheds</div>
                 <div className="flex flex-wrap gap-1">
                   {intel.watersheds.map((w, i) => (
@@ -1307,7 +1307,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     </div>
 
                     <div className="lg:col-span-2 space-y-4">
-                      <div className="relative h-96 rounded-xl border border-white/5 bg-[#160C27] flex items-center justify-center overflow-hidden">
+                      <div className="relative h-96 rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-10" />
                         <div className="text-center relative z-10 p-6">
                           <MapPin className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
@@ -2262,8 +2262,8 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   className="block group"
                   whileHover={{ y: -3 }}
                 >
-                  <Card className="h-full flex flex-col card-intelligence border border-white/5 bg-[#160C27]" padding="none">
-                    <div className="relative h-28 bg-[#160C27]">
+                  <Card className="h-full flex flex-col card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl" padding="none">
+                    <div className="relative h-28 bg-white/[0.03]">
                       <div className="absolute bottom-3 left-4 right-4">
                         <div className="flex flex-wrap gap-1 mb-1">
                           <Badge variant="info" size="sm" className="capitalize text-[10px]">{related.category.replace(/_/g, ' ')}</Badge>
@@ -2279,7 +2279,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                         <span>{related.district}</span>
                       </div>
                       <div className="mt-auto flex justify-end">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-xs font-medium text-white">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-500/20 transition-colors text-xs font-medium text-white">
                           View Details <ArrowRight className="w-3.5 h-3.5" />
                         </span>
                       </div>

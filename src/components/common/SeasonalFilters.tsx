@@ -111,7 +111,7 @@ export const SeasonalFilters: React.FC<SeasonalFiltersProps> = ({
     filterState.selectedHabitats.length;
 
   return (
-    <Card className="border border-white/5 bg-slate-900/50 backdrop-blur-sm">
+    <Card className="border border-white/[0.06] bg-slate-900/50 backdrop-blur-sm">
       <div className="p-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
@@ -166,7 +166,7 @@ export const SeasonalFilters: React.FC<SeasonalFiltersProps> = ({
                 setFilterState(newState);
                 onFilterChange?.(newState);
               }}
-              className="w-full pl-10 pr-4 py-2 bg-slate-800/50 border border-white/5 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+              className="w-full pl-10 pr-4 py-2 bg-slate-800/50 border border-white/[0.06] rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             />
           </div>
         </div>
@@ -288,7 +288,7 @@ export const SeasonalFilters: React.FC<SeasonalFiltersProps> = ({
 
         {/* Active Filters Summary */}
         {activeFilterCount > 0 && (
-          <div className="mt-4 pt-4 border-t border-white/5">
+          <div className="mt-4 pt-4 border-t border-white/[0.06]">
             <div className="flex flex-wrap gap-2">
               {filterState.selectedSeasons.map((season) => (
                 <Badge key={season} variant="success" size="sm">

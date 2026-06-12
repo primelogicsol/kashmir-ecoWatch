@@ -59,7 +59,7 @@ export function ProtectedAreaManagementPlanPage({ area, backHref, categoryLabel,
   const router = useRouter();
   const a = area as any;
   const flagship = a.flagshipSpecies ?? 'flagship species';
-  const CARD = 'bg-[#160C27] border border-white/5';
+  const CARD = 'bg-white/[0.03] backdrop-blur-xl border border-white/[0.06]';
 
   const objectives = [
     `Maintain and expand viable ${flagship} population within the park through habitat protection and population monitoring.`,
@@ -114,7 +114,7 @@ export function ProtectedAreaManagementPlanPage({ area, backHref, categoryLabel,
     <main className="min-h-screen bg-slate-950">
 
       {/* ── COMPACT HERO ── */}
-      <div className="bg-[#160C27] pt-20 pb-8 border-b border-white/5">
+      <div className="bg-white/[0.03] backdrop-blur-xl pt-20 pb-8 border-b border-white/[0.06]">
         <div className="container mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-5 flex-wrap">

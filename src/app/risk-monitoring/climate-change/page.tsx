@@ -297,7 +297,7 @@ export default function ClimateChangePage() {
             <p className="text-slate-400">Systems and sectors most vulnerable to climate change in Kashmir</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {impactAreas.map((area, index) => (
               <motion.div
                 key={area.area}

@@ -154,7 +154,7 @@ export default function LakesPage() {
 
       {/* Lakes Grid */}
       <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {filteredLakes.map((lake, idx) => (
             <motion.div
               key={lake.id}

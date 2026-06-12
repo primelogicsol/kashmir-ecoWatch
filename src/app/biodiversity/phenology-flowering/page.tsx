@@ -104,7 +104,7 @@ export default function PhenologyFloweringPage() {
         </Card>
 
         {/* Records Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {filteredRecords.map((r, i) => (
             <motion.div key={r.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}>
               <Card className="border border-white/10 bg-slate-900/30 hover:bg-slate-900/50 transition-all h-full" padding="md">

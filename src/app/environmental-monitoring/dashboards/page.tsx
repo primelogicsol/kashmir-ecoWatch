@@ -173,7 +173,7 @@ export default function DashboardsPage() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {dashboardModules.map((module, i) => (
               <motion.div key={module.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 cursor-pointer group h-full">

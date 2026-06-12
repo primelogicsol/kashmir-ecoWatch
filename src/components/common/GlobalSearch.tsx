@@ -357,7 +357,7 @@ export function GlobalSearch() {
 
               {/* Footer */}
               {!isLoading && !query && (
-                <div className="p-4 border-t border-white/5">
+                <div className="p-4 border-t border-white/[0.06]">
                   <p className="text-xs text-slate-500 text-center">
                     Search across species, protected areas, water bodies, trails, districts, alerts, and reports
                   </p>
@@ -366,7 +366,7 @@ export function GlobalSearch() {
 
               {/* Results count */}
               {!isLoading && hasResults && (
-                <div className="p-4 border-t border-white/5 bg-white/[0.02]">
+                <div className="p-4 border-t border-white/[0.06] bg-white/[0.02]">
                   <p className="text-xs text-slate-500 text-center">
                     {getResultCount(results)} result{getResultCount(results) !== 1 ? 's' : ''} found
                   </p>

@@ -191,7 +191,7 @@ export default function WaterPollutionPage() {
             <p className="text-slate-400">Average WQI and trend analysis by district</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {districtSummary.map((item, index) => (
               <motion.div
                 key={item.district}

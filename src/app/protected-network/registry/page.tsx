@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -24,6 +24,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
+import { Pagination } from '@/components/ui/Pagination';
 import {
   ProtectedAreaSource,
   getProtectedAreasSource,
@@ -42,6 +43,8 @@ export default function ProtectedAreasRegistryPage() {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'area' | 'category'>('name');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 6;
 
   // Get filtered data
   const allData = getProtectedAreasSource.byRegion(regionFilter);
@@ -62,6 +65,16 @@ export default function ProtectedAreasRegistryPage() {
     if (sortBy === 'category') return a.categoryCode.localeCompare(b.categoryCode);
     return 0;
   });
+
+  const totalPages = Math.max(1, Math.ceil(sortedData.length / PAGE_SIZE));
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return sortedData.slice(start, start + PAGE_SIZE);
+  }, [sortedData, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, regionFilter, categoryFilter]);
 
   // Get metrics for current filter
   const metrics = getProtectedAreaMetrics(regionFilter);
@@ -170,7 +183,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
+          <Card className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
               {/* Search */}
               <div className="md:col-span-2">
@@ -237,7 +250,7 @@ export default function ProtectedAreasRegistryPage() {
             </div>
 
             {/* Quick Category Stats */}
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/[0.06]">
               <Badge variant="outline" size="sm" className="border-emerald-500/30 text-emerald-400">
                 <Mountain className="w-3 h-3 mr-1" />
                 NP: {metrics.byCategory.NP}
@@ -265,8 +278,8 @@ export default function ProtectedAreasRegistryPage() {
 
       {/* Protected Areas Grid */}
       <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedData.map((pa, idx) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
+          {paginatedData.map((pa, idx) => {
             const Icon = getCategoryIcon(pa.categoryCode);
             
             return (
@@ -276,7 +289,7 @@ export default function ProtectedAreasRegistryPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.02 }}
               >
-                <Card className="card-intelligence border border-white/5 bg-[#160C27] group p-6 h-full hover:border-white/20 transition-all">
+                <Card className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl group p-6 h-full hover:border-white/20 transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getCategoryColor(pa.categoryCode)} flex items-center justify-center flex-shrink-0`}>
                        <Icon className="w-6 h-6 text-white" />
@@ -338,6 +351,16 @@ export default function ProtectedAreasRegistryPage() {
           })}
         </div>
 
+        {sortedData.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            totalItems={sortedData.length}
+            pageSize={PAGE_SIZE}
+          />
+        )}
+
         {sortedData.length === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -375,7 +398,7 @@ export default function ProtectedAreasRegistryPage() {
           </div>
 
           {/* Management Metrics */}
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6 mb-6">
+          <Card className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 mb-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {[
                 { label: 'Fully Managed', value: protectedAreaRegistryMetrics.byManagementStatus.fully, color: 'text-emerald-400' },
@@ -407,7 +430,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
+          <Card className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6">
             <div className="flex items-start gap-4">
               <Info className="w-6 h-6 text-slate-400 mt-1" />
               <div className="flex-1">

@@ -414,7 +414,7 @@ export default function BiodiversityOverviewPage() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
           {habitatSignals.slice(0, 3).map((signal) => (
             <Card key={signal.id} className="border border-white/10 bg-slate-900/50" padding="md">
               <div className="flex items-start justify-between mb-3">

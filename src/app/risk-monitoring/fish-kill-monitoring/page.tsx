@@ -185,7 +185,7 @@ export default function FishKillMonitoringPage() {
             <p className="text-slate-400">Fish mortality events and economic loss by district</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {districtSummary.map((item, index) => (
               <motion.div
                 key={item.district}
@@ -239,7 +239,7 @@ export default function FishKillMonitoringPage() {
             <p className="text-slate-400">Latest fish mortality incidents across Kashmir waterbodies</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {fishKillEvents.map((record, index) => (
               <motion.div
                 key={record.id}

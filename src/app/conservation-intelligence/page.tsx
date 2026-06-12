@@ -787,19 +787,19 @@ export default function ConservationIntelligencePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="border-b border-white/5">
+                  <tr class="border-b border-white/[0.06]">
                     <td class="py-2 font-semibold text-white">Hokersar Wetland</td>
                     <td class="py-2 text-red-400 font-mono">74 &rarr; 58 (Decline)</td>
                     <td class="py-2 text-slate-400">Siltation, Encroachment</td>
                     <td class="py-2"><span class="px-2 py-0.5 rounded bg-red-500/20 text-red-300 text-[10px]">Urgent Dredging</span></td>
                   </tr>
-                  <tr class="border-b border-white/5">
+                  <tr class="border-b border-white/[0.06]">
                     <td class="py-2 font-semibold text-white">Khrew Conservation Reserve</td>
                     <td class="py-2 text-red-400 font-mono">81 &rarr; 69 (Decline)</td>
                     <td class="py-2 text-slate-400">Stone Quarry Sprawl</td>
                     <td class="py-2"><span class="px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 text-[10px]">Quarry Buffer Fencing</span></td>
                   </tr>
-                  <tr class="border-b border-white/5">
+                  <tr class="border-b border-white/[0.06]">
                     <td class="py-2 font-semibold text-white">Wular Lake Reserve</td>
                     <td class="py-2 text-amber-400 font-mono">76 &rarr; 72 (Decline)</td>
                     <td class="py-2 text-slate-400">Agricultural Encroachment</td>
@@ -1024,7 +1024,7 @@ export default function ConservationIntelligencePage() {
             {dashboardKPIs.map((kpi, idx) => (
               <Card 
                 key={idx} 
-                className="card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 p-4 transition-all duration-300"
+                className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20 p-4 transition-all duration-300"
               >
                 <div className="flex justify-between items-start mb-2">
                   <kpi.icon className="w-5 h-5 text-emerald-500" />
@@ -1056,7 +1056,7 @@ export default function ConservationIntelligencePage() {
             
             {/* Left selector menu of the 10 models */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="p-4 bg-[#160C27] border border-white/5 rounded-xl">
+              <div className="p-4 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-xl">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">
                   Top 10 Recommended Models
                 </h3>
@@ -1102,7 +1102,7 @@ export default function ConservationIntelligencePage() {
 
             {/* Right Interactive Simulator Pane */}
             <div className="lg:col-span-8">
-              <Card className="border border-white/5 bg-[#160C27] h-full" padding="lg">
+              <Card className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl h-full" padding="lg">
                 
                 {/* Active Model Title */}
                 {(() => {
@@ -1110,7 +1110,7 @@ export default function ConservationIntelligencePage() {
                   if (!m) return null;
                   return (
                     <div className="space-y-6">
-                      <div className="flex justify-between items-start pb-4 border-b border-white/5">
+                      <div className="flex justify-between items-start pb-4 border-b border-white/[0.06]">
                         <div>
                           <Badge variant="success" size="sm" className="mb-2">Recommended Engine</Badge>
                           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
@@ -1252,7 +1252,7 @@ export default function ConservationIntelligencePage() {
                           </div>
 
                           <div className="bg-black/20 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
-                            <div className="text-center pb-4 border-b border-white/5">
+                            <div className="text-center pb-4 border-b border-white/[0.06]">
                               <span className="text-xs text-slate-500 uppercase tracking-wider block mb-1">Conservation Priority Index (CPI)</span>
                               <span className="text-4xl font-extrabold text-white">{calculateCpi()}</span>
                               <span className="text-slate-500 text-xs font-semibold block mt-1">
@@ -1528,15 +1528,15 @@ export default function ConservationIntelligencePage() {
                                 <h4 className="font-bold text-white text-sm mb-3">Model Analysis & Pixel Inspection</h4>
                                 {selectedCell ? (
                                   <div className="space-y-3 text-xs text-slate-300">
-                                    <div className="flex justify-between border-b border-white/5 pb-1">
+                                    <div className="flex justify-between border-b border-white/[0.06] pb-1">
                                       <span>Coordinates Sector:</span>
                                       <span className="font-mono text-white">Sect-{selectedCell.r * 10 + selectedCell.c}</span>
                                     </div>
-                                    <div className="flex justify-between border-b border-white/5 pb-1">
+                                    <div className="flex justify-between border-b border-white/[0.06] pb-1">
                                       <span>Estimated Altitude:</span>
                                       <span className="text-white">{(2300 + (selectedCell.r * 340) - (selectedCell.c * 120))}m</span>
                                     </div>
-                                    <div className="flex justify-between border-b border-white/5 pb-1">
+                                    <div className="flex justify-between border-b border-white/[0.06] pb-1">
                                       <span>Model Suitability Score:</span>
                                       <span className="font-bold text-emerald-400">{selectedCell.suitability}/100</span>
                                     </div>
@@ -1554,7 +1554,7 @@ export default function ConservationIntelligencePage() {
                                   </p>
                                 )}
                               </div>
-                              <div className="pt-4 border-t border-white/5 text-[11px] text-slate-500 leading-normal">
+                              <div className="pt-4 border-t border-white/[0.06] text-[11px] text-slate-500 leading-normal">
                                 potential habitat layers are generated using multi-spectral satellite imagery and historical telemetry observations.
                               </div>
                             </div>
@@ -1771,7 +1771,7 @@ export default function ConservationIntelligencePage() {
                               </thead>
                               <tbody>
                                 {researchGaps[researchGapFocus].map((item, idx) => (
-                                  <tr key={idx} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                  <tr key={idx} className="border-b border-white/[0.06] hover:bg-white/5 transition-colors">
                                     <td className="p-3 font-semibold text-white">{item.name}</td>
                                     <td className="p-3">
                                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
@@ -1834,7 +1834,7 @@ export default function ConservationIntelligencePage() {
                               </div>
                             ) : analystOutput ? (
                               <div className="space-y-4">
-                                <h4 className="text-sm font-bold text-white border-b border-white/5 pb-2 flex items-center gap-2">
+                                <h4 className="text-sm font-bold text-white border-b border-white/[0.06] pb-2 flex items-center gap-2">
                                   <Sparkles className="w-4 h-4 text-emerald-400" />
                                   {analystOutput.title}
                                 </h4>
@@ -1868,7 +1868,7 @@ export default function ConservationIntelligencePage() {
           <div className="space-y-6">
             
             {/* Controls */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-[#160C27] border border-white/5 p-4 rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] p-4 rounded-xl">
               {/* Search */}
               <div className="relative w-full sm:w-80">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
@@ -1906,7 +1906,7 @@ export default function ConservationIntelligencePage() {
               {filteredModels.map((model) => (
                 <Card 
                   key={model.id} 
-                  className="card-intelligence border border-white/5 bg-[#160C27] p-5 hover:border-emerald-500/20 transition-all duration-200"
+                  className="card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5 hover:border-emerald-500/20 transition-all duration-200"
                 >
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-3">
                     <div>
@@ -1935,7 +1935,7 @@ export default function ConservationIntelligencePage() {
                   </div>
 
                   {/* Metrics sub-strip */}
-                  <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">
+                  <div className="mt-4 pt-3 border-t border-white/[0.06] flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">
                     <span className="font-bold uppercase tracking-wider text-[10px] text-slate-600">Model Input Metrics:</span>
                     {model.metrics.map((met, idx) => (
                       <span key={idx} className="flex items-center gap-1">
@@ -1988,7 +1988,7 @@ export default function ConservationIntelligencePage() {
               {conservationNetworks.map((network) => {
                 const Icon = network.icon;
                 return (
-                  <Card key={network.id} className="border border-white/5 bg-[#160C27] p-5 h-full flex flex-col justify-between">
+                  <Card key={network.id} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-5 h-full flex flex-col justify-between">
                     <div>
                       <div className="flex items-start gap-4 mb-4">
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${network.color} text-white flex items-center justify-center shadow-lg flex-shrink-0`}>
@@ -2023,7 +2023,7 @@ export default function ConservationIntelligencePage() {
                       )}
                     </div>
 
-                    <div className="pt-3 border-t border-white/5">
+                    <div className="pt-3 border-t border-white/[0.06]">
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-2">EcoWatch Module Intersections</span>
                       <div className="flex flex-wrap gap-2">
                         {network.ecoWatchMapping.map((mapItem, mIdx) => (
@@ -2051,7 +2051,7 @@ export default function ConservationIntelligencePage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {researchPartners.map((part, idx) => (
-                  <Card key={idx} className="border border-white/5 bg-[#160C27] p-4 flex flex-col justify-between">
+                  <Card key={idx} className="border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-4 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-xs font-semibold text-white">{part.domain}</span>
@@ -2072,7 +2072,7 @@ export default function ConservationIntelligencePage() {
       </section>
 
       {/* CTA Bottom Section */}
-      <section className="container mx-auto px-6 py-12 border-t border-white/5">
+      <section className="container mx-auto px-6 py-12 border-t border-white/[0.06]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

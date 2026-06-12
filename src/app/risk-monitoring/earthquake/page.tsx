@@ -657,7 +657,7 @@ export default function EarthquakeRiskMonitoringPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6"
           >
             {emergencyResponseGaps.map((gap, idx) => (
               <motion.div key={gap.gap} variants={itemVariants}>

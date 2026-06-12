@@ -315,7 +315,7 @@ export default function LibraryPage() {
             className="py-8 bg-slate-900/50"
           >
             <div className="container mx-auto px-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
                 {/* Source Type Filter */}
                 <div>
                   <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
@@ -426,7 +426,7 @@ export default function LibraryPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
             {[
               {
                 icon: Building2,

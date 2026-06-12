@@ -181,7 +181,7 @@ export function BiodiversityCategoryPage({
 
         {/* Species Grid/List */}
         {filteredSpecies.length > 0 ? (
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+          <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6' : 'space-y-4'}>
             {filteredSpecies.map((species, index) => (
               <motion.div
                 key={species.id}

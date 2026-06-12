@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -9,6 +9,7 @@ import { Activity, MapPin, Shield, TrendingUp, ArrowRight, Search, Filter, Alert
 import { motion } from 'framer-motion';
 import { getSpeciesProfiles, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
+import { Pagination } from '@/components/ui/Pagination';
 
 export default function SpeciesIntelligencePage() {
   const speciesList = getSpeciesProfiles.all();
@@ -18,6 +19,8 @@ export default function SpeciesIntelligencePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [selectedScope, setSelectedScope] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 6;
 
   const allPAs = useMemo(() => {
     return [
@@ -96,6 +99,16 @@ export default function SpeciesIntelligencePage() {
       return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
     });
   }, [speciesList, activeTab, searchQuery, selectedDistrict, selectedScope, paLookup]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredSpecies.length / PAGE_SIZE));
+  const paginatedSpecies = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredSpecies.slice(start, start + PAGE_SIZE);
+  }, [filteredSpecies, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedDistrict, selectedScope, activeTab]);
 
   const getStatusColor = (status: string) => {
     if (status.includes('CR')) return 'danger';
@@ -251,8 +264,9 @@ export default function SpeciesIntelligencePage() {
 
         {/* Species Cards */}
         {filteredSpecies.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSpecies.map((species, index) => (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6">
+              {paginatedSpecies.map((species, index) => (
               <motion.a
                 key={species.id}
                 href={`/protected-network/species-intelligence/${species.slug}`}
@@ -261,7 +275,7 @@ export default function SpeciesIntelligencePage() {
                 transition={{ delay: index * 0.05 }}
                 className="h-full block group"
               >
-                <Card className="h-full flex flex-col justify-between card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300" padding="lg">
+                <Card className="h-full flex flex-col justify-between card-intelligence border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl hover:border-emerald-500/20 transition-all duration-300" padding="lg">
                   <div>
                     <div className="flex items-start justify-between mb-4">
                       <div>
@@ -307,8 +321,8 @@ export default function SpeciesIntelligencePage() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
+                  <div className="mt-4 pt-4 border-t border-white/[0.06] flex justify-end">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-md shadow-emerald-500/20 transition-colors text-sm font-medium text-white">
                       View Species Details
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -317,6 +331,14 @@ export default function SpeciesIntelligencePage() {
               </motion.a>
             ))}
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            totalItems={filteredSpecies.length}
+            pageSize={PAGE_SIZE}
+          />
+        </>
         ) : (
           <div className="text-center py-24">
             <Shield className="w-16 h-16 text-slate-700 mx-auto mb-4" />
