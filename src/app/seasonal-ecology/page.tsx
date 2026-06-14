@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';

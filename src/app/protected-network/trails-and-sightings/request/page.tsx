@@ -116,7 +116,7 @@ function RequestFormContent() {
   };
 
   return (
-    <main className="min-h-screen bg-white/5 flex flex-col justify-between">
+    <main className="min-h-screen bg-slate-950 flex flex-col justify-between">
       <div>
         <Heading
           title={<><span className="block whitespace-nowrap">Spatial Data</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Verification</span></>}
