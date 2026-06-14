@@ -269,7 +269,14 @@ export function ProtectedCategoryPage({
                     className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
                   >
                     <Card className="h-full flex flex-col overflow-hidden card-intelligence bg-white/5 border border-white/10 hover:border-emerald-500/30" padding="none">
-                      <div className="relative h-44 bg-white/[0.05] hover:bg-white/10 transition-all">
+                      <div
+                        className="relative h-44 bg-[#160C27] transition-all overflow-hidden"
+                        style={area.imageUrl ? { backgroundImage: `url(${area.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+                      >
+                        {!area.imageUrl && (
+                          <div className="absolute inset-0 bg-white/[0.05] group-hover:bg-white/10 transition-all" />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
                         <div className="absolute top-4 left-4 flex items-center gap-2">
                           <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
                             <CatIcon className="w-4 h-4 text-emerald-400" />
