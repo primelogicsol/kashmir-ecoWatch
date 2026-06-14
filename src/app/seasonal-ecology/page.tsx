@@ -56,24 +56,26 @@ export default function SeasonalEcologyHubPage() {
 
       {/* Metrics Ribbon */}
       <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-        <Card className="glass-intense border-slate-700/50">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 p-4">
-            {seasonalEcologyMetrics.map((metric, idx) => {
-              const MetricIcon = (Icons as any)[metric.icon] || Icons.Mountain;
-              return (
-                <div key={idx} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <div className="p-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
-                      <MetricIcon className="w-4 h-4 text-emerald-400" />
-                    </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Card className="glass-intense border-slate-700/50" padding="sm">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+              {seasonalEcologyMetrics.map((metric, idx) => {
+                const MetricIcon = (Icons as any)[metric.icon] || Icons.Mountain;
+                return (
+                  <div key={idx} className="py-2.5 px-2 lg:py-3 lg:px-3 rounded-xl text-center min-w-0">
+                    <MetricIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mx-auto mb-1" />
+                    <p className="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-white tabular-nums leading-tight truncate">{metric.value}</p>
+                    <p className="text-[10px] sm:text-[11px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">{metric.label}</p>
                   </div>
-                  <p className="text-2xl font-bold text-white">{metric.value}</p>
-                  <p className="text-xs text-slate-400">{metric.label}</p>
-                </div>
-              );
-            })}
-          </div>
-        </Card>
+                );
+              })}
+            </div>
+          </Card>
+        </motion.div>
       </div>
 
       {/* Navigation Grid */}

@@ -165,14 +165,14 @@ export default function ThreatenedSpeciesPage() {
       </div>
 
       {/* Metrics Bar */}
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-4 sm:px-6 -mt-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="bg-slate-800/50 border-white/10 backdrop-blur-sm" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4">
+          <Card className="glass-intense border-white/10" padding="sm">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2">
               {[
                 { label: 'Total Species', value: metrics.total, icon: Shield },
                 { label: 'Mammals', value: metrics.byTaxon.mammals, icon: Leaf },
@@ -185,12 +185,12 @@ export default function ThreatenedSpeciesPage() {
                 { label: 'Conservation Gaps', value: metrics.conservationGaps.iucnButNotScheduleI, icon: Info },
                 { label: 'Data Source', value: '1996', icon: BarChart3 },
               ].map((metric, idx) => (
-                <div key={idx} className="text-center p-3 border-r border-white/5 last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-xl font-bold text-white tabular-nums">
+                <div key={idx} className="py-2.5 px-2 lg:py-3 lg:px-3 rounded-xl text-center min-w-0">
+                  <metric.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-white tabular-nums leading-tight truncate">
                     {metric.value}
                   </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
                     {metric.label}
                   </div>
                 </div>

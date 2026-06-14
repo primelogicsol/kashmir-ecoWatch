@@ -156,14 +156,14 @@ export default function ProtectedNetworkPage() {
       />
 
       {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 -mt-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <Card className="glass-intense border-white/10" padding="sm">
-            <div className="grid grid-cols-2 xs:grid-cols-4 lg:grid-cols-8 gap-2">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2">
               {[
                 { label: 'Total PAs', value: protectedNetworkMetrics.totalProtectedAreas, icon: Shield },
                 { label: 'Total Area', value: `${protectedNetworkMetrics.totalArea.toLocaleString()} km²`, icon: Map },
@@ -335,9 +335,9 @@ export default function ProtectedNetworkPage() {
                 className="block group"
               >
                 <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/10 bg-white/5 hover:border-emerald-500/30" padding="none">
-                  <div className="relative h-48 bg-gradient-to-br from-emerald-500/20 to-slate-800/50">
+                  <div className="relative h-48 bg-[#160C27]">
                     <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/80" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <Badge variant="info" size="sm" className="mb-2 capitalize text-xs px-2 py-0.5 whitespace-nowrap">
                         {pa.category.replace('_', ' ')}

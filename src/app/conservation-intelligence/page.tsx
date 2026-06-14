@@ -1009,7 +1009,7 @@ export default function ConservationIntelligencePage() {
       </section>
 
       {/* Operational Dashboard KPIs */}
-      <section className="container mx-auto px-6 pb-12">
+      <section className="container mx-auto px-4 sm:px-6 -mt-8 relative z-20 pb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -1021,24 +1021,21 @@ export default function ConservationIntelligencePage() {
             Operational Intelligence Dashboard
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-2">
             {dashboardKPIs.map((kpi, idx) => (
               <Card 
                 key={idx} 
-                className="card-intelligence border border-white/10 bg-white/5 hover:border-emerald-500/30 p-4 transition-all duration-300"
+                className="glass-intense border-white/10"
+                padding="sm"
               >
-                <div className="flex justify-between items-start mb-2">
-                  <kpi.icon className="w-5 h-5 text-emerald-500" />
-                  <Badge variant="outline" size="sm" className="border-white/10 text-slate-400">KPI</Badge>
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight tabular-nums">
-                  {kpi.value}
-                </div>
-                <div className="text-xs font-bold text-slate-300 mt-1 uppercase tracking-wider">
-                  {kpi.label}
-                </div>
-                <div className="text-[10px] text-slate-500 mt-1">
-                  {kpi.desc}
+                <div className="py-2.5 px-2 lg:py-3 lg:px-3 rounded-xl text-center min-w-0">
+                  <kpi.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 mx-auto mb-1" />
+                  <div className="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-white tabular-nums leading-tight truncate">
+                    {kpi.value}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {kpi.label}
+                  </div>
                 </div>
               </Card>
             ))}

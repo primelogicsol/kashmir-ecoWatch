@@ -329,6 +329,7 @@ export const nationalParksData: ProtectedArea[] = [
     established: 1993,
     ecosystems: ['Alpine plateau', 'Wetland', 'Grassland', 'High-altitude lake system'],
     keySpecies: ['Himalayan brown bear', 'Himalayan ibex', 'Golden marmot', 'Migratory birds'],
+    imageUrl: '/images/parks/deosai.png',
     scope: 'Transboundary / Extended',
     legalStatus: 'Extended Scope',
     altitudeRange: '3,500 to 5,200 m',
