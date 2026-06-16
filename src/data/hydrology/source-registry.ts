@@ -1,0 +1,222 @@
+// Kashmir Eco Watch — Expanded Source Registry
+// Step 3 Validation: Government + Satellite + Research Sources
+// Generated: 2026-06-16T01:22:20.052Z
+
+export const sourceRegistry = [
+  {
+    "Source_ID": "SRC-LEGACY-001",
+    "Source_Name": "Kashmir Eco Watch Legacy Data Import",
+    "Agency_Institution": "Kashmir Eco Watch Internal",
+    "Source_Type": "Report",
+    "URL": null,
+    "Publication_Year": 2026,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "Low",
+    "Citation": "Legacy WaterEntity records migrated from water-systems.ts. Sources per record require individual verification.",
+    "Notes": "Migration traceability record only. Do not use for KPIs."
+  },
+  {
+    "Source_ID": "SRC-NWIA-2010",
+    "Source_Name": "National Wetland Inventory and Assessment (NWIA) J&K Atlas",
+    "Agency_Institution": "Space Applications Centre (SAC), ISRO; University of Kashmir",
+    "Source_Type": "Government",
+    "URL": "https://indianwetlands.in/uploads/NWIA_Jammu_and_Kashmir_Atlas.pdf",
+    "Publication_Year": 2010,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "SAC, ISRO & University of Kashmir (2010). National Wetland Inventory and Assessment, Jammu and Kashmir Atlas.",
+    "Notes": "7 records verified against this source. NWIA codes assigned. Ramsar cross-links added."
+  },
+  {
+    "Source_ID": "SRC-JKLCMA-001",
+    "Source_Name": "J&K Lakes and Waterways Development Authority / Lake Conservation Authority",
+    "Agency_Institution": "Government of Jammu & Kashmir — JKLCMA",
+    "Source_Type": "Government",
+    "URL": "https://jklakeauthority.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "JKLCMA. Lake monitoring and management reports for Dal, Wular, Manasbal, Anchar, Nagin, Hokersar.",
+    "Notes": "Primary authority for Kashmir Valley lakes. Water quality reports, area assessments, restoration records."
+  },
+  {
+    "Source_ID": "SRC-JALSHAKTI-001",
+    "Source_Name": "Jal Shakti Department — Jammu & Kashmir",
+    "Agency_Institution": "Government of Jammu & Kashmir — Jal Shakti",
+    "Source_Type": "Government",
+    "URL": "https://jalshakti.jk.gov.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "Jal Shakti Department J&K. Drinking water schemes, spring inventories, water supply assessments.",
+    "Notes": "Priority source for springs, drinking water, and groundwater records across J&K districts."
+  },
+  {
+    "Source_ID": "SRC-JKPCB-001",
+    "Source_Name": "J&K Pollution Control Committee (JKPCC)",
+    "Agency_Institution": "Government of Jammu & Kashmir — JKPCC",
+    "Source_Type": "Government",
+    "URL": "https://jkpcc.nic.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "JKPCC. Water quality monitoring data for major rivers, lakes, and industrial discharge zones.",
+    "Notes": "Required for verified water quality parameters (pH, DO, BOD, COD, fecal coliform) per monitoring site."
+  },
+  {
+    "Source_ID": "SRC-INDIAWRIS-001",
+    "Source_Name": "India Water Resources Information System (India-WRIS)",
+    "Agency_Institution": "Ministry of Jal Shakti, Government of India / CWC",
+    "Source_Type": "Government",
+    "URL": "https://indiawris.gov.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "India-WRIS / NWIC. River basin data, hydrological stations, water resources atlas.",
+    "Notes": "Primary source for river flow data, basin delineation, and hydrological station records."
+  },
+  {
+    "Source_ID": "SRC-CPCB-001",
+    "Source_Name": "Central Pollution Control Board (CPCB)",
+    "Agency_Institution": "Ministry of Environment, Forest and Climate Change — CPCB",
+    "Source_Type": "Government",
+    "URL": "https://cpcb.nic.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "CPCB. National Water Quality Monitoring Programme (NWMP). River, lake and groundwater quality data.",
+    "Notes": "Used for BOD, COD, heavy metals, and fecal coliform monitoring data at NWMP stations."
+  },
+  {
+    "Source_ID": "SRC-CGWB-001",
+    "Source_Name": "Central Ground Water Board (CGWB)",
+    "Agency_Institution": "Ministry of Jal Shakti, Government of India — CGWB",
+    "Source_Type": "Government",
+    "URL": "https://cgwb.gov.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "CGWB. District Groundwater Brochures, aquifer mapping, groundwater level monitoring reports.",
+    "Notes": "Primary source for groundwater aquifer data, recharge zones, and water level trends in J&K."
+  },
+  {
+    "Source_ID": "SRC-BHUVAN-001",
+    "Source_Name": "ISRO Bhuvan Geoportal",
+    "Agency_Institution": "Indian Space Research Organisation (ISRO)",
+    "Source_Type": "Satellite",
+    "URL": "https://bhuvan.nrsc.gov.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "ISRO Bhuvan. Satellite imagery, waterbody delineation, land use mapping for J&K.",
+    "Notes": "Use for GPS coordinate validation, waterbody area measurement, and change detection."
+  },
+  {
+    "Source_ID": "SRC-GLIMS-001",
+    "Source_Name": "Global Land Ice Measurements from Space (GLIMS)",
+    "Agency_Institution": "USGS / NSIDC",
+    "Source_Type": "Satellite",
+    "URL": "https://www.glims.org",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "GLIMS Glacier Database. Glacier outlines, area measurements, and monitoring records.",
+    "Notes": "Primary source for all glacier record validation including Siachen, Baltoro, Drang-Drung."
+  },
+  {
+    "Source_ID": "SRC-RGI-001",
+    "Source_Name": "Randolph Glacier Inventory (RGI 7.0)",
+    "Agency_Institution": "Global Terrestrial Network for Glaciers / NSIDC",
+    "Source_Type": "Satellite",
+    "URL": "https://www.glims.org/RGI/",
+    "Publication_Year": 2023,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "RGI Consortium (2023). Randolph Glacier Inventory v7.0. NSIDC.",
+    "Notes": "Gold standard for glacier outlines across Karakoram, Zanskar, Great Himalaya. Includes Siachen, Baltoro, Kolahoi."
+  },
+  {
+    "Source_ID": "SRC-JRC-GWS-001",
+    "Source_Name": "JRC Global Surface Water Explorer",
+    "Agency_Institution": "European Commission — Joint Research Centre",
+    "Source_Type": "Satellite",
+    "URL": "https://global-surface-water.appspot.com",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "Pekel et al. (2016). High-resolution global maps of 21st-century surface water. Nature.",
+    "Notes": "Use for lake area change detection and water permanence mapping since 1984."
+  },
+  {
+    "Source_ID": "SRC-RAMSAR-001",
+    "Source_Name": "Ramsar Sites Information Service (RSIS)",
+    "Agency_Institution": "Ramsar Convention Secretariat",
+    "Source_Type": "Government",
+    "URL": "https://rsis.ramsar.org",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "Ramsar Convention Secretariat. Ramsar Site Information Sheets for Wular, Hokersar, Shallabugh, Hygam, Surinsar-Mansar.",
+    "Notes": "Definitive source for Ramsar designations, boundary coordinates, and conservation status."
+  },
+  {
+    "Source_ID": "SRC-ICIMOD-001",
+    "Source_Name": "ICIMOD — International Centre for Integrated Mountain Development",
+    "Agency_Institution": "ICIMOD, Kathmandu",
+    "Source_Type": "Research",
+    "URL": "https://www.icimod.org",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "ICIMOD. Hindu Kush Himalaya Monitoring and Assessment Programme datasets. Glacier, hydrology, and climate data.",
+    "Notes": "Key source for transboundary data covering AJK, Gilgit-Baltistan, Ladakh. GLOF risk assessments."
+  },
+  {
+    "Source_ID": "SRC-PCRWR-001",
+    "Source_Name": "Pakistan Council of Research in Water Resources (PCRWR)",
+    "Agency_Institution": "Government of Pakistan — PCRWR",
+    "Source_Type": "Government",
+    "URL": "https://www.pcrwr.gov.pk",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "Medium",
+    "Citation": "PCRWR. Water quality assessments and spring/river monitoring reports for AJK and Gilgit-Baltistan.",
+    "Notes": "Primary transboundary source for AJK springs, rivers, and wetlands. Cross-validate with ICIMOD."
+  },
+  {
+    "Source_ID": "SRC-GBFEWD-001",
+    "Source_Name": "Gilgit-Baltistan Forest, Environment & Wildlife Department",
+    "Agency_Institution": "Government of Gilgit-Baltistan",
+    "Source_Type": "Government",
+    "URL": "https://www.gb.gov.pk/department/forest-environment-wildlife",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "Medium",
+    "Citation": "GB FEWD. Protected area reports, wetland inventories, and forest surveys for Gilgit-Baltistan districts.",
+    "Notes": "Authoritative source for GB glaciers, alpine lakes (Borith, Attabad, Karakul), and wildlife habitats."
+  },
+  {
+    "Source_ID": "SRC-UOK-001",
+    "Source_Name": "University of Kashmir — Research Publications",
+    "Agency_Institution": "University of Kashmir, Srinagar",
+    "Source_Type": "Research",
+    "URL": "https://www.uok.edu.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "Various authors, University of Kashmir. Peer-reviewed research on Dal, Wular, springs, wetland ecology.",
+    "Notes": "Large body of peer-reviewed limnological research on Kashmir Valley lakes and wetlands."
+  },
+  {
+    "Source_ID": "SRC-SKUAST-001",
+    "Source_Name": "Sher-e-Kashmir University of Agricultural Sciences and Technology (SKUAST-K)",
+    "Agency_Institution": "SKUAST-K, Srinagar",
+    "Source_Type": "Research",
+    "URL": "https://www.skuastkashmir.ac.in",
+    "Publication_Year": null,
+    "Access_Date": "2026-06-16",
+    "Reliability_Level": "High",
+    "Citation": "SKUAST-K. Fisheries, aquatic biodiversity, and water resources research publications.",
+    "Notes": "Key source for fisheries (Snow Trout, Mahseer) and aquatic biodiversity data."
+  }
+];

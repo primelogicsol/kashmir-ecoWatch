@@ -39,9 +39,9 @@ export default function WetlandReservesPage() {
       color="from-emerald-600 to-emerald-500"
       areas={allAreas}
       metrics={metrics}
-      tabs={TABS as any}
-      activeTab={activeTab}
-      onTabChange={(tab) => setActiveTab(tab as TabKey)}
+      
+      
+      
     />
   );
 }

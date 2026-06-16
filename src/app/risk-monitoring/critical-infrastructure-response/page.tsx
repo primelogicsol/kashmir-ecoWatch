@@ -40,17 +40,13 @@ export default function CriticalInfrastructureResponsePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Critical Infrastructure & Response' }]}
-        title={<>Critical <span className="text-emerald-400">Infrastructure</span> & Response</>}
+        title={<><span className="block whitespace-nowrap">Critical Infrastructure</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Response</span></>}
         subtitle="Emergency-linked facility monitoring, high-priority response nodes, critical environmental infrastructure under stress, operational routing intelligence, and support asset awareness."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-2xl">
-            <Shield className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="outline" size="lg" className="border-violet-500/30 text-violet-400">Emergency Facilities & Response Nodes</Badge>}
+        icon={<Shield className="w-6 h-6 text-emerald-400" />}
+        label="Emergency Facilities & Response Nodes"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/dashboards')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/dashboards')}>
               <Activity className="w-5 h-5 mr-2" />View Dashboards
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>

@@ -198,14 +198,10 @@ export default function ReportIssuePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Report an Issue' }]}
-        title={<>Report an <span className="text-emerald-400">Issue</span></>}
+        title={<><span className="block whitespace-nowrap">Report an</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Issue</span></>}
         subtitle="Report environmental hazards, emergencies, and urgent concerns for rapid response and district-level risk intelligence"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <AlertTriangle className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Emergency & Hazard Reporting</Badge>}
+        icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
+        label="Emergency & Hazard Reporting"
       />
 
       {/* How Reports Are Handled */}

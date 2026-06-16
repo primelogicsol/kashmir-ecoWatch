@@ -9,8 +9,9 @@ import * as Icons from 'lucide-react';
 
 export default function SeasonalEcologyGenericDetailPage() {
   const params = useParams();
-  const slug = params.slug as string;
-  const pathSegment = params['*']?.[0] || 'phenology-records';
+  const catchall = (params.catchall as string[]) || [];
+  const slug = catchall[catchall.length - 1] || '';
+  const pathSegment = catchall[0] || 'phenology-records';
 
   // Try to find entity in different data collections
   let entity: any = null;
@@ -40,6 +41,18 @@ export default function SeasonalEcologyGenericDetailPage() {
 
   if (!entity) { entity = getSeasonalEcologyData.reports.bySlug(slug);
     if (entity) { variant = 'report'; title = 'Reports & References'; baseRoute = '/seasonal-ecology/reports-references'; }
+  }
+
+  if (!entity) { entity = getSeasonalEcologyData.landscapes.bySlug(slug);
+    if (entity) { variant = 'landscape'; title = 'Seasonal Landscapes'; baseRoute = '/seasonal-ecology/seasonal-landscapes'; }
+  }
+
+  if (!entity) { entity = getSeasonalEcologyData.migration.bySlug(slug);
+    if (entity) { variant = 'migration'; title = 'Migration Windows'; baseRoute = '/seasonal-ecology/migration-windows'; }
+  }
+
+  if (!entity) { entity = getSeasonalEcologyData.pollinators.bySlug(slug);
+    if (entity) { variant = 'pollinator'; title = 'Pollinator Windows'; baseRoute = '/seasonal-ecology/pollinator-windows'; }
   }
 
   if (!entity) {

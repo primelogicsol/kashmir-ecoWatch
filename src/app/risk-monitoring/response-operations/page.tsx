@@ -75,14 +75,10 @@ export default function ResponseOperationsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Response & <span className="text-emerald-400">Operations</span></>}
+        title={<><span className="block whitespace-nowrap">Response &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Operations</span></>}
         subtitle="Emergency response coordination, live alerts, incident management, and operational intelligence for effective risk mitigation"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-2xl">
-            <TrendingUp className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="default" size="lg">Operational Intelligence</Badge>}
+        icon={<TrendingUp className="w-6 h-6 text-emerald-400" />}
+        label="Operational Intelligence"
         breadcrumbs={[
           { label: "Risk & Monitoring", href: "/risk-monitoring" },
           { label: "Response & Operations" }
@@ -91,7 +87,7 @@ export default function ResponseOperationsPage() {
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-red-600 hover:to-rose-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}
             >
               <Bell className="w-5 h-5 mr-2" />

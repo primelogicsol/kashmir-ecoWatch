@@ -68,7 +68,7 @@ export default function GroundwaterPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#160C27]" />
+        <div className="absolute inset-0 bg-slate-900/50" />
         <div className="relative container mx-auto px-4 md:px-6 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20">
           <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>

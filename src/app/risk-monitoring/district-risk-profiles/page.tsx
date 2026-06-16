@@ -28,17 +28,13 @@ export default function DistrictRiskProfilesPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'District Risk Profiles' }]}
-        title={<>District <span className="text-emerald-400">Risk</span> Profiles</>}
+        title={<><span className="block whitespace-nowrap">District Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Profiles</span></>}
         subtitle="Operational risk intelligence at district level: current risk levels, dominant hazard categories, live alerts, infrastructure concerns, response notes, advisory status, and trend direction."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-            <MapPin className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">District-Wise Operational Risk</Badge>}
+        icon={<MapPin className="w-6 h-6 text-emerald-400" />}
+        label="District-Wise Operational Risk"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
               <Bell className="w-5 h-5 mr-2" />View Live Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>

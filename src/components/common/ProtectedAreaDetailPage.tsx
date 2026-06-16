@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
+import { IntelligenceWidget } from '@/components/intelligence/IntelligenceWidget';
+import { HabitatSignalsWidget } from '@/components/intelligence/HabitatSignalsWidget';
 import {
   MapPin, Activity, Shield, TrendingUp, ArrowRight, ArrowLeft,
   Calendar, Mountain, Droplet, Leaf, Eye, FileText,
@@ -428,7 +430,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     <main className="min-h-screen bg-slate-950">
 
       {/* ── HERO ── */}
-      <div className="relative bg-[#160C27] pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
@@ -580,6 +582,17 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
               </>
             )}
           </Card>
+        </motion.div>
+      </div>
+
+      {/* ── ECOLOGICAL INTELLIGENCE NETWORK ── */}
+      <div className="container mx-auto px-6 mb-12 relative z-20 space-y-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }}>
+          <IntelligenceWidget entityId={area.id} entityType="protected-area" />
+        </motion.div>
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}>
+          <HabitatSignalsWidget entityId={area.id} entityType="protected-area" />
         </motion.div>
       </div>
 
@@ -1307,7 +1320,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     </div>
 
                     <div className="lg:col-span-2 space-y-4">
-                      <div className="relative h-96 rounded-xl border border-white/5 bg-[#160C27] flex items-center justify-center overflow-hidden">
+                      <div className="relative h-96 rounded-xl border border-white/5 bg-slate-900/50 flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 bg-grid opacity-10" />
                         <div className="text-center relative z-10 p-6">
                           <MapPin className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
@@ -2262,8 +2275,8 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   className="block group"
                   whileHover={{ y: -3 }}
                 >
-                  <Card className="h-full flex flex-col card-intelligence border border-white/5 bg-[#160C27]" padding="none">
-                    <div className="relative h-28 bg-[#160C27]">
+                  <Card className="h-full flex flex-col card-intelligence border border-white/5 bg-slate-900/50" padding="none">
+                    <div className="relative h-28 bg-slate-900/50">
                       <div className="absolute bottom-3 left-4 right-4">
                         <div className="flex flex-wrap gap-1 mb-1">
                           <Badge variant="info" size="sm" className="capitalize text-[10px]">{related.category.replace(/_/g, ' ')}</Badge>

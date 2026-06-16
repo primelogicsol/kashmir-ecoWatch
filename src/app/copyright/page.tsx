@@ -465,14 +465,10 @@ export default function CopyrightPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<>Copyright, Intellectual Property & Technology <span className="text-emerald-400">Protection</span></>}
+  title={<><span className="block whitespace-nowrap">Copyright, Intellectual Property</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Technology Protection</span></>}
   subtitle={`\u00A9 ${currentYear} Kashmir EcoWatch. All rights reserved. Kashmir EcoWatch is a protected environmental intelligence platform. All original elements associated with the platform, including its identity, structure, technology-enabled systems, content architecture, evidence organization, environmental intelligence frameworks, geospatial presentation methods, dashboards, workflows, visual systems, written materials, reporting structures, and other original digital components, are protected under applicable copyright, intellectual property, database, proprietary systems, and related legal principles.`}
-  icon={
-    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-slate-600 flex items-center justify-center shadow-2xl">
-      <Shield className="w-5 h-5 md:w-8 md:h-8 text-white" />
-    </div>
-  }
-  badge={<Badge variant="info" size="lg">Legal Notice</Badge>}
+  icon={<Shield className="w-6 h-6 text-emerald-400" />}
+  label="Legal Notice"
 />
 
       {/* ─── Platform Nature ──────────────────────────────────────────────── */}

@@ -2,7 +2,7 @@ import { Metric, IntelligenceCard, InsightPanel, FeaturedEntity, Alert, ChartDat
 
 export const liveMetrics: Metric[] = [
   { label: 'Protected Areas', value: 47, trend: 'up', trendValue: 2 },
-  { label: 'Species Indexed', value: 2847, trend: 'up', trendValue: 156 },
+  { label: 'Species Indexed', value: 2452, trend: 'up', trendValue: 156 },
   { label: 'Lakes & Wetlands', value: 1253, trend: 'stable', trendValue: 0 },
   { label: 'Springs', value: 892, trend: 'down', trendValue: -12 },
   { label: 'Glaciers', value: 148, trend: 'down', trendValue: -3 },
@@ -32,7 +32,7 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Comprehensive species database with distribution, habitat, and conservation status',
     icon: 'leaf',
     metrics: [
-      { label: 'Species', value: 2847 },
+      { label: 'Species', value: 2452 },
       { label: 'Threatened', value: 127 },
     ],
     link: '/biodiversity',

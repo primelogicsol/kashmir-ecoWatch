@@ -66,12 +66,10 @@ export default function DistrictDatasetsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>District <span className="text-emerald-400">Datasets</span></>}
+        title={<><span className="block whitespace-nowrap">District</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Datasets</span></>}
         subtitle="Submit district-level environmental datasets, regional assessments, and area-specific data. Approved records route into District Profiles and related modules."
-        icon={
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-xl"><BarChart3 className="w-7 h-7 text-white" /></div>
-        }
-        badge={<Badge variant="info" size="lg">District Data</Badge>}
+        icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
+        label="District Data"
         breadcrumbs={[{ label: 'Back to Contribute Data', href: '/contribute-data' }]}
       />
       <section className="py-12">

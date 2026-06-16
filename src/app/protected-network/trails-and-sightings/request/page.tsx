@@ -140,7 +140,7 @@ function RequestFormContent() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left: Trail info */}
             <div className="lg:col-span-5 space-y-6">
-              <Card className="border border-white/10 bg-[#160C27] text-white p-6" padding="none">
+              <Card className="border border-white/10 bg-slate-900/50 text-white p-6" padding="none">
                 <h3 className="text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <Lock className="w-3.5 h-3.5" />
                   Requested Route
@@ -287,7 +287,7 @@ function RequestFormContent() {
 
             {/* Right: Registration/Request Module */}
             <div className="lg:col-span-7">
-              <Card className="border border-white/10 bg-[#160C27] text-white p-6 md:p-8" padding="none">
+              <Card className="border border-white/10 bg-slate-900/50 text-white p-6 md:p-8" padding="none">
                 {submitSuccess ? (
                   <div className="text-center py-8 space-y-6">
                     <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto scale-110">

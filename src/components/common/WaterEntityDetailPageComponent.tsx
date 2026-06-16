@@ -46,6 +46,7 @@ export function WaterEntityDetailPageComponent({
       case 'moderate': return 'warning';
       case 'poor': return 'warning';
       case 'critical': return 'danger';
+      case 'data-deficient': return 'info';
       default: return 'default';
     }
   };
@@ -100,7 +101,9 @@ export function WaterEntityDetailPageComponent({
                   </Badge>
                   {entity.waterQuality && (
                     <Badge variant={getQualityBadge(entity.waterQuality.status)} size="lg">
-                      {entity.waterQuality.status.toUpperCase()}
+                      {entity.waterQuality.status === 'data-deficient'
+                        ? "DATA DEFICIENT: GEOTHERMAL SPRING, LAB VALIDATION REQUIRED"
+                        : entity.waterQuality.status.toUpperCase()}
                     </Badge>
                   )}
                   {entity.floodRiskData && (
@@ -370,16 +373,16 @@ function WaterQualityTab({ waterQuality }: { waterQuality: WaterQualityData }) {
         <h2 className="text-2xl font-bold text-white mb-6">Water Quality Parameters</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { label: 'pH Level', value: waterQuality.pH, unit: '', status: waterQuality.pH >= 6.5 && waterQuality.pH <= 8.5 ? 'good' : 'warning' },
-            { label: 'Dissolved Oxygen', value: waterQuality.dissolvedOxygen, unit: 'mg/L', status: waterQuality.dissolvedOxygen >= 6 ? 'good' : 'warning' },
-            { label: 'Turbidity', value: waterQuality.turbidity, unit: 'NTU', status: waterQuality.turbidity <= 5 ? 'good' : 'warning' },
-            { label: 'Conductivity', value: waterQuality.conductivity || 'N/A', unit: 'μS/cm', status: 'neutral' },
-            { label: 'Temperature', value: waterQuality.temperature || 'N/A', unit: '°C', status: 'neutral' },
-            { label: 'Nitrates', value: waterQuality.nitrates || 'N/A', unit: 'mg/L', status: (waterQuality.nitrates || 0) <= 1 ? 'good' : 'warning' },
-            { label: 'Phosphates', value: waterQuality.phosphates || 'N/A', unit: 'mg/L', status: (waterQuality.phosphates || 0) <= 0.1 ? 'good' : 'warning' },
-            { label: 'BOD', value: waterQuality.biologicalOxygenDemand, unit: 'mg/L', status: waterQuality.biologicalOxygenDemand <= 3 ? 'good' : 'warning' },
-            { label: 'TDS', value: waterQuality.totalDissolvedSolids || 'N/A', unit: 'mg/L', status: 'neutral' },
-            { label: 'Fecal Coliform', value: waterQuality.fecalColiform || 'N/A', unit: 'CFU/100mL', status: (waterQuality.fecalColiform || 0) <= 200 ? 'good' : 'warning' },
+            { label: 'pH Level', value: waterQuality.pH ?? 'N/A', unit: '', status: waterQuality.pH == null ? 'neutral' : (waterQuality.pH >= 6.5 && waterQuality.pH <= 8.5 ? 'good' : 'warning') },
+            { label: 'Dissolved Oxygen', value: waterQuality.dissolvedOxygen ?? 'N/A', unit: 'mg/L', status: waterQuality.dissolvedOxygen == null ? 'neutral' : (waterQuality.dissolvedOxygen >= 6 ? 'good' : 'warning') },
+            { label: 'Turbidity', value: waterQuality.turbidity ?? 'N/A', unit: 'NTU', status: waterQuality.turbidity == null ? 'neutral' : (waterQuality.turbidity <= 5 ? 'good' : 'warning') },
+            { label: 'Conductivity', value: waterQuality.conductivity ?? 'N/A', unit: 'μS/cm', status: 'neutral' },
+            { label: 'Temperature', value: waterQuality.temperature ?? 'N/A', unit: '°C', status: 'neutral' },
+            { label: 'Nitrates', value: waterQuality.nitrates ?? 'N/A', unit: 'mg/L', status: waterQuality.nitrates == null ? 'neutral' : (waterQuality.nitrates <= 1 ? 'good' : 'warning') },
+            { label: 'Phosphates', value: waterQuality.phosphates ?? 'N/A', unit: 'mg/L', status: waterQuality.phosphates == null ? 'neutral' : (waterQuality.phosphates <= 0.1 ? 'good' : 'warning') },
+            { label: 'BOD', value: waterQuality.biologicalOxygenDemand ?? 'N/A', unit: 'mg/L', status: waterQuality.biologicalOxygenDemand == null ? 'neutral' : (waterQuality.biologicalOxygenDemand <= 3 ? 'good' : 'warning') },
+            { label: 'TDS', value: waterQuality.totalDissolvedSolids ?? 'N/A', unit: 'mg/L', status: 'neutral' },
+            { label: 'Fecal Coliform', value: waterQuality.fecalColiform ?? 'N/A', unit: 'CFU/100mL', status: waterQuality.fecalColiform == null ? 'neutral' : (waterQuality.fecalColiform <= 200 ? 'good' : 'warning') },
           ].map((param, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-slate-800/50 border border-white/5">
               <div className="text-xs text-slate-500 uppercase mb-1">{param.label}</div>

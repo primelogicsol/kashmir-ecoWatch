@@ -111,14 +111,10 @@ export default function SpeciesSurveyRecordsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Species Survey <span className="text-emerald-400">Records</span></>}
+        title={<><span className="block whitespace-nowrap">Species Survey</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Records</span></>}
         subtitle="Submit structured species count data, population surveys, and distribution records. Approved records are routed into the Biodiversity module for long-term tracking and analysis."
-        icon={
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-xl">
-            <Leaf className="w-7 h-7 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Biodiversity</Badge>}
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
+        label="Biodiversity"
         breadcrumbs={[{ label: 'Back to Contribute Data', href: '/contribute-data' }]}
       />
 

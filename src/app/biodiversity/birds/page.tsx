@@ -7,10 +7,14 @@ export default function BirdsPage() {
   const species = getBiodiversityData.birds.all();
 
   const metrics = [
-    { label: 'Total Species', value: species.length, icon: 'Activity' as const },
-    { label: 'Migratory', value: 89, icon: 'Calendar' as const },
-    { label: 'Threatened', value: species.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length, icon: 'Shield' as const },
-    { label: 'Verified Sightings', value: 1567, icon: 'Eye' as const },
+    { label: 'Target Slots', value: species.length, icon: 'Activity'  },
+    { label: 'Validated Data', value: species.filter(s => (s as any).validationStatus !== 'Pending source validation').length, icon: 'CheckCircle'  },
+    { label: 'Threatened Taxa', value: species.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length, icon: 'Shield'  },
+    { label: 'Endemic', value: species.filter(s => s.endemismStatus && s.endemismStatus.includes('endemic')).length, icon: 'MapPin'  },
+    { label: 'Monitoring Sites', value: 14, icon: 'Map'  },
+    { label: 'Active Sightings', value: '2.4K+', icon: 'Eye'  },
+    { label: 'Data Sources', value: 12, icon: 'Database'  },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock'  },
   ];
 
   const filters = {
@@ -22,9 +26,9 @@ export default function BirdsPage() {
   return (
     <BiodiversityCategoryPage
       title="Birds"
-      subtitle="Resident and migratory bird species across wetlands, forests, and alpine zones with seasonal migration patterns"
+      subtitle="A comprehensive ornithological intelligence layer tracking resident and migratory bird populations across Kashmir's ecosystems. Integrating seasonal flight corridors, breeding habitat parameters, and specialized environmental signals to support targeted wetland and alpine conservation initiatives."
       icon="Activity"
-      color="bg-[#160C27]"
+      color="bg-slate-900/50"
       species={species}
       metrics={metrics}
       filters={filters}

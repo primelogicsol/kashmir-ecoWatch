@@ -314,7 +314,6 @@ export const PROTECTED_AREAS_FULL_SOURCE: ProtectedAreaSource[] = [
     districtHint: 'Baramulla',
     source: PROTECTED_AREA_SOURCE_METADATA.sourceTitle,
     sourceType: PROTECTED_AREA_SOURCE_METADATA.sourceType,
-    sourceNotes: ['double-asterisk note in source - new to the list along Line of Actual Control (India and Pakistan)'],
     isKashmir: true,
     isJammu: false,
     isLadakh: false

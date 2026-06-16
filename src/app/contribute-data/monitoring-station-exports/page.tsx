@@ -68,12 +68,10 @@ export default function MonitoringStationExportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Monitoring Station <span className="text-emerald-400">Exports</span></>}
+        title={<><span className="block whitespace-nowrap">Monitoring Station</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Exports</span></>}
         subtitle="Submit raw or processed data from automated monitoring stations and sensor networks. Approved records route into dashboards and relevant monitoring modules."
-        icon={
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-500 to-gray-600 flex items-center justify-center shadow-xl"><Database className="w-7 h-7 text-white" /></div>
-        }
-        badge={<Badge variant="outline" size="lg">Station Data</Badge>}
+        icon={<Database className="w-6 h-6 text-emerald-400" />}
+        label="Station Data"
         breadcrumbs={[{ label: 'Back to Contribute Data', href: '/contribute-data' }]}
       />
       <section className="py-12">

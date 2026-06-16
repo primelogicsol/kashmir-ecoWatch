@@ -111,14 +111,10 @@ export default function WaterQualityReadingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Water Quality <span className="text-emerald-400">Readings</span></>}
+        title={<><span className="block whitespace-nowrap">Water Quality</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Readings</span></>}
         subtitle="Submit pH, dissolved oxygen, turbidity, temperature, and other water quality parameters from Kashmir's waterbodies. Approved records are routed into Water Systems and Water Quality modules."
-        icon={
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-xl">
-            <Droplets className="w-7 h-7 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Water Quality</Badge>}
+        icon={<Droplets className="w-6 h-6 text-emerald-400" />}
+        label="Water Quality"
         breadcrumbs={[{ label: 'Back to Contribute Data', href: '/contribute-data' }]}
       />
 

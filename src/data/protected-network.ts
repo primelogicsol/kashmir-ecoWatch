@@ -3726,14 +3726,14 @@ export const getProtectedAreas = {
 
 // Metrics
 export const protectedNetworkMetrics = {
-  totalProtectedAreas: 47,
-  totalArea: 5847, // km²
-  nationalParks: 3,
-  wildlifeSanctuaries: 15,
-  wetlandReserves: 5,
-  conservationReserves: 8,
-  importantBirdAreas: 16,
-  coveragePercentage: 12.8,
+  get totalProtectedAreas() { return getProtectedAreas.all().length; },
+  get totalArea() { return Math.round(getProtectedAreas.all().reduce((sum, pa) => sum + (pa.area || 0), 0)); },
+  get nationalParks() { return getProtectedAreas.all().filter(pa => pa.category === 'national_park').length; },
+  get wildlifeSanctuaries() { return getProtectedAreas.all().filter(pa => pa.category === 'wildlife_sanctuary').length; },
+  get wetlandReserves() { return getProtectedAreas.all().filter(pa => pa.category === 'wetland_reserve').length; },
+  get conservationReserves() { return getProtectedAreas.all().filter(pa => pa.category === 'conservation_reserve').length; },
+  get importantBirdAreas() { return getProtectedAreas.all().filter(pa => pa.category === 'iba').length; },
+  get coveragePercentage() { return ((this.totalArea / 45679) * 100).toFixed(1); },
 };
 
 // ============================================================================

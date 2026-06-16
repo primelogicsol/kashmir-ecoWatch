@@ -28,14 +28,10 @@ export default function SeasonalEcologyHubPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Seasonal Ecology' }]}
-        title={<>Seasonal Ecology of{' '}<span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Kashmir</span></>}
+        title={<><span className="block whitespace-nowrap">Seasonal Ecology</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">of Kashmir</span></>}
         subtitle="Kashmir-wide phenology, seasonality, migration, habitat-transition, and ecological-timing intelligence system. Track bloom cycles, migration windows, pollinator activity, and seasonal ecological shifts across the Kashmir region."
-        icon={
-          <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 border border-white/10">
-            <Icons.Calendar className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md"><Icons.Clock className="w-3.5 h-3.5 mr-1" />Current: {formatLabel(currentSeason)}</Badge>}
+        icon={<Icons.Sun className="w-6 h-6 text-emerald-400" />}
+        label="Current: {formatLabel(currentSeason)}"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <Link href="/seasonal-ecology/bloom-mapping">
@@ -113,7 +109,7 @@ export default function SeasonalEcologyHubPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 text-xs text-slate-500">
                         <Icons.Database className="w-3.5 h-3.5" />
-                        <span>{card.count} entities</span>
+                        <span>{card.count} {card.countLabel || 'entities'}</span>
                       </div>
                       <div className="flex items-center gap-1 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                         <span>Explore</span>

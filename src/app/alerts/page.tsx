@@ -118,10 +118,10 @@ export default function AlertsPage() {
   const toggleFilter = <K extends keyof typeof filters>(key: K, value: typeof filters[K][number]) => {
     setFilters(prev => {
       const current = prev[key];
-      const updated = current.includes(value)
-        ? current.filter(v => v !== value)
-        : [...current, value];
-      return { ...prev, [key]: updated };
+      const updated = (current as string[]).includes(value as string)
+        ? (current as string[]).filter(v => v !== value)
+        : [...(current as string[]), value];
+      return { ...prev, [key]: updated } as any;
     });
   };
 
@@ -139,14 +139,10 @@ export default function AlertsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Live Alerts & <span className="text-emerald-400">Advisories</span></>}
+        title={<><span className="block whitespace-nowrap">Live Alerts</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Advisories</span></>}
         subtitle="Public-facing live alert stream for Kashmir EcoWatch — real-time hazard alerts, weather advisories, and emergency notifications for public safety and disaster preparedness."
-        icon={
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-            <Bell className="w-8 h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Risk & Monitoring</Badge>}
+        icon={<Bell className="w-6 h-6 text-emerald-400" />}
+        label="Risk & Monitoring"
       />
 
       {/* Summary Strip */}

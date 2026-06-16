@@ -5,12 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
+import { Heading } from '@/components/common/Heading';
 import {
-  Droplet, Shield, AlertTriangle, TrendingUp, Map,
-  Users, Activity, Eye, FileText, ArrowRight, Search,
-  Filter, X, CheckCircle, AlertCircle, XCircle, Clock,
+  Droplet, Shield, AlertTriangle, Map,
+  Users, Activity, FileText, ArrowRight, Search,
+  Filter, X, CheckCircle, XCircle, Clock,
   Beaker, Droplets, CloudRain, Database, ExternalLink,
-  Building2, BookOpen, Wrench, AlertOctagon
+  BookOpen, Wrench, AlertOctagon
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -135,82 +136,63 @@ export default function DrinkingWaterSourcesPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
-        
 
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Drinking Water Intelligence
-              </span>
-            </div>
-
-            <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-              Drinking Water Sources of <span className="text-emerald-400">Kashmir</span>
-            </h1>
-
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              Comprehensive monitoring and intelligence framework for Kashmir's drinking water sources —
-              springs, river intakes, groundwater schemes, and piped supply networks. Sourced from the
-              ESRO/eIEN Kashmir environmental archive and augmented with real-time monitoring data.
-            </p>
-
-            {/* ESRO Attribution */}
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mb-6">
-              <div className="flex items-start gap-3">
-                <BookOpen className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm text-blue-300 font-medium mb-1">Data Source: ESRO/eIEN Kashmir Archive</p>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    This module is built from the Environmental Systems Research Organization (ESRO) Kashmir archive,
-                    including the Environmental Impact Assessment (EIA) Report and comprehensive ecological surveys.
-                    Key findings on drinking water challenges — including sewage contamination, spring depletion,
-                    pesticide pollution, and the absence of a state water policy — are directly sourced from
-                    ESRO's documented evidence.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Link href="/water-systems">
-                <Button variant="outline" className="border-white/20 text-white">
-                  ← All Water Systems
-                </Button>
-              </Link>
-              <Link href="/water-systems/water-quality">
-                <Button variant="outline" className="border-white/20 text-white">
-                  Water Quality <ExternalLink className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="border-y border-white/5 bg-slate-900/50">
-        <div className="container mx-auto px-4 md:px-6 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            <StatCard icon={Droplet} label="Total Sources" value={drinkingWaterStats.totalSources.toString()} color="text-blue-400" />
-            <StatCard icon={CheckCircle} label="Operational" value={drinkingWaterStats.operational.toString()} color="text-emerald-400" />
-            <StatCard icon={Clock} label="Partial" value={drinkingWaterStats.partial.toString()} color="text-amber-400" />
-            <StatCard icon={XCircle} label="Non-Functional" value={drinkingWaterStats.nonFunctional.toString()} color="text-red-400" />
-            <StatCard icon={Wrench} label="Under Upgrade" value={drinkingWaterStats.underUpgrade.toString()} color="text-blue-400" />
-            <StatCard icon={Shield} label="Safe Quality" value={drinkingWaterStats.safe.toString()} color="text-emerald-400" />
-            <StatCard icon={AlertTriangle} label="At Risk" value={drinkingWaterStats.atRisk.toString()} color="text-orange-400" />
-            <StatCard icon={Users} label="Population Served" value={formatPopulation(drinkingWaterStats.totalPopulationServed)} color="text-purple-400" />
+      {/* ── HERO — matches /water-systems Heading template ── */}
+      <Heading
+        icon={<Droplets className="w-6 h-6 text-white/90" />}
+        title={
+          <>
+            <span className="block">Drinking Water</span>
+            <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Sources</span>
+          </>
+        }
+        subtitle="Comprehensive monitoring and intelligence for Kashmir's drinking water sources — springs, river intakes, groundwater schemes, piped supply, and treatment networks. Sourced from the ESRO/eIEN Kashmir environmental archive."
+        breadcrumbs={[
+          { label: 'Water Systems', href: '/water-systems' },
+          { label: 'Drinking Water Sources' },
+        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <Button
+              className="bg-gradient-to-r from-blue-500 to-cyan-600 border-0 text-white"
+              icon={<Droplet className="w-4 h-4" />}
+            >
+              {drinkingWaterStats.totalSources} Sources
+            </Button>
+            <Link href="/water-systems/water-quality">
+              <Button variant="outline" className="border-white/20 text-white" icon={<ExternalLink className="w-4 h-4" />}>
+                Water Quality
+              </Button>
+            </Link>
           </div>
-        </div>
-      </section>
+        }
+      />
+
+      {/* ── KPI STRIP — same glass card template as all other submodule pages ── */}
+      <div className="container mx-auto px-6 -mt-8 relative z-20">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <Card className="glass-intense border-white/10" padding="none">
+            <div className="grid grid-cols-4 lg:grid-cols-8 divide-x divide-white/5">
+              {[
+                { icon: Droplet,        label: 'Total Sources',     value: drinkingWaterStats.totalSources,                         color: 'text-white'        },
+                { icon: CheckCircle,    label: 'Operational',       value: drinkingWaterStats.operational,                          color: 'text-emerald-400'  },
+                { icon: Clock,          label: 'Partial',           value: drinkingWaterStats.partial,                              color: 'text-amber-400'    },
+                { icon: XCircle,        label: 'Non-Functional',    value: drinkingWaterStats.nonFunctional,                        color: 'text-red-400'      },
+                { icon: Wrench,         label: 'Under Upgrade',     value: drinkingWaterStats.underUpgrade,                         color: 'text-blue-400'     },
+                { icon: Shield,         label: 'Safe Quality',      value: drinkingWaterStats.safe,                                 color: 'text-emerald-400'  },
+                { icon: AlertTriangle,  label: 'At Risk',           value: drinkingWaterStats.atRisk,                               color: 'text-orange-400'   },
+                { icon: Users,          label: 'Pop. Served',       value: formatPopulation(drinkingWaterStats.totalPopulationServed), color: 'text-purple-400' },
+              ].map((kpi, i) => (
+                <div key={i} className="flex flex-col items-center justify-center gap-1 py-5 px-3 text-center">
+                  <kpi.icon className="w-5 h-5 text-slate-500 mb-1" />
+                  <div className={`text-2xl font-bold tabular-nums ${kpi.color}`}>{kpi.value}</div>
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider leading-tight">{kpi.label}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+      </div>
 
       {/* Sub-Pages Navigation */}
       <section className="container mx-auto px-4 md:px-6 py-10">
@@ -516,22 +498,7 @@ export default function DrinkingWaterSourcesPage() {
 
 // ─── Sub-Components ───
 
-function StatCard({ icon: Icon, label, value, color }: {
-  icon: React.ElementType;
-  label: string;
-  value: string;
-  color: string;
-}) {
-  return (
-    <div className="bg-white/5 border border-white/5 rounded-lg p-3">
-      <div className="flex items-center gap-2 mb-1">
-        <Icon className={`w-4 h-4 ${color}`} />
-        <span className="text-[10px] text-slate-400 uppercase tracking-wider">{label}</span>
-      </div>
-      <div className={`text-lg font-bold ${color}`}>{value}</div>
-    </div>
-  );
-}
+
 
 function FilterSelect({ label, value, onChange, options }: {
   label: string;

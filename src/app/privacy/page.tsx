@@ -99,14 +99,10 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Privacy <span className="text-emerald-400">Policy</span></>}
+        title={<><span className="block whitespace-nowrap">Privacy</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Policy</span></>}
         subtitle="Kashmir EcoWatch is committed to protecting personal information, handling contributor data responsibly, and managing environmental evidence with care. Because the platform includes public contribution pathways, geospatial workflows, environmental reporting, biodiversity observations, and evidence-based publication systems, privacy on Kashmir EcoWatch includes both personal-data protection and responsible handling of sensitive environmental information."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
-            <Shield className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Privacy & Data Handling</Badge>}
+        icon={<Shield className="w-6 h-6 text-emerald-400" />}
+        label="Privacy & Data Handling"
       />
 
       {/* 2. Privacy Principles */}

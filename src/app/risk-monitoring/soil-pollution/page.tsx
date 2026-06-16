@@ -405,14 +405,10 @@ export default function SoilPollutionPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Soil Pollution <span className="text-emerald-400">& Degradation</span></>}
+        title={<><span className="block whitespace-nowrap">Soil Pollution</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Degradation</span></>}
         subtitle="Comprehensive soil health intelligence covering erosion, nutrient depletion, chemical contamination, and land degradation across Jammu & Kashmir — sourced from the ESRO Environmental Impact Assessment and Council for Plant Protection archives."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-600 to-yellow-700 flex items-center justify-center shadow-2xl">
-            <Mountain className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Soil Pollution & Degradation Monitoring</Badge>}
+        icon={<Mountain className="w-6 h-6 text-emerald-400" />}
+        label="Soil Pollution & Degradation Monitoring"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Risk Monitoring", href: "/risk-monitoring" },
@@ -426,7 +422,7 @@ export default function SoilPollutionPage() {
             </div>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-amber-600 to-yellow-700 hover:from-amber-700 hover:to-yellow-800 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-amber-700 hover:to-yellow-800 text-white shadow-xl"
               onClick={() => window.location.href = '/risk-monitoring/dashboards'}
             >
               <Activity className="w-5 h-5 mr-2" />

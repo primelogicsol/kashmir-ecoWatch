@@ -5,10 +5,11 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Activity, MapPin, Shield, TrendingUp, ArrowRight, Search, Filter, AlertTriangle, Grid3X3, List, Map as MapIcon } from 'lucide-react';
+import { Activity, MapPin, Shield, TrendingUp, ArrowRight, Search, Filter, AlertTriangle, Grid3X3, List, Map as MapIcon , ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getSpeciesProfiles, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
+import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
 
 export default function SpeciesIntelligencePage() {
   const speciesList = getSpeciesProfiles.all();
@@ -16,8 +17,13 @@ export default function SpeciesIntelligencePage() {
   const [activeTab, setActiveTab] = useState<'core' | 'trans' | 'extended'>('core');
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDistrict, setSelectedDistrict] = useState('all');
-  const [selectedScope, setSelectedScope] = useState('all');
+  const [selectedDistrict, setSelectedDistrict] = useState('All');
+  const [selectedEcologicalScope, setSelectedEcologicalScope] = useState<Scope | 'All'>('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+
+  const availableDistricts = useMemo(() => getUnitsForScope(selectedEcologicalScope).sort(), [selectedEcologicalScope]);
+  const availableScopes = [...GEOGRAPHY.scopes];
 
   const allPAs = useMemo(() => {
     return [
@@ -61,18 +67,7 @@ export default function SpeciesIntelligencePage() {
 
   const filteredSpecies = useMemo(() => {
     return speciesList.filter(species => {
-      // 1. Tab scope filter
-      const scopesOfSpecies = [];
-      species.protectedAreas.forEach(slug => {
-        const pa = paLookup.get(slug);
-        if (pa && pa.scope) scopesOfSpecies.push(pa.scope);
-      });
-      if (scopesOfSpecies.length === 0) scopesOfSpecies.push('Kashmir Core');
       
-      const tabScope = activeTab === 'core' ? 'Kashmir Core' 
-                     : activeTab === 'trans' ? 'Trans-Divisional' 
-                     : 'Transboundary / Extended';
-      const matchesTab = scopesOfSpecies.includes(tabScope);
 
       // 2. Search Text
       const query = searchQuery.toLowerCase().trim();
@@ -88,14 +83,14 @@ export default function SpeciesIntelligencePage() {
         const pa = paLookup.get(slug);
         if (pa && pa.district) districtsOfSpecies.push(pa.district);
       });
-      const matchesDistrict = selectedDistrict === 'all' || districtsOfSpecies.includes(selectedDistrict);
+      const matchesDistrict = selectedDistrict === 'All' || ((species as any).district === selectedDistrict || ((species as any).districts && (species as any).districts.includes(selectedDistrict)));
 
-      // 4. Ecological Scope Dropdown
-      const matchesScopeDropdown = selectedScope === 'all' || scopesOfSpecies.includes(selectedScope);
+      const speciesScope = (species as any).scope || getScopeForUnit((species as any).district || ((species as any).districts && (species as any).districts[0]));
+      const matchesScope = selectedEcologicalScope === 'All' || speciesScope === selectedEcologicalScope || speciesScope === 'All';
 
-      return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
+      return matchesSearch && matchesDistrict && matchesScope;
     });
-  }, [speciesList, activeTab, searchQuery, selectedDistrict, selectedScope, paLookup]);
+  }, [speciesList, searchQuery, selectedDistrict, selectedEcologicalScope, paLookup]);
 
   const getStatusColor = (status: string) => {
     if (status.includes('CR')) return 'danger';
@@ -155,7 +150,65 @@ export default function SpeciesIntelligencePage() {
                   </div>
                 </div>
               ))}
-            </div>
+
+            {filteredSpecies.length > itemsPerPage && (
+              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-1 mx-2">
+                    {Array.from({ length: Math.ceil(filteredSpecies.length / itemsPerPage) }).map((_, i) => {
+                      const page = i + 1;
+                      const totalPages = Math.ceil(filteredSpecies.length / itemsPerPage);
+                      
+                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      }
+                      
+                      if (page === currentPage - 2 || page === currentPage + 2) {
+                        return <span key={page} className="text-slate-600 px-1">...</span>;
+                      }
+                      
+                      return null;
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredSpecies.length / itemsPerPage)))}
+                    disabled={currentPage === Math.ceil(filteredSpecies.length / itemsPerPage)}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="text-xs text-slate-500">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredSpecies.length)} of {filteredSpecies.length} records
+                </div>
+              </div>
+            )}
+          </div>
           </Card>
         </motion.div>
       </div>
@@ -213,7 +266,7 @@ export default function SpeciesIntelligencePage() {
                   type="text"
                   placeholder="Search species name, scientific name..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                   className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
               </div>
@@ -223,11 +276,11 @@ export default function SpeciesIntelligencePage() {
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
               <select
                 value={selectedDistrict}
-                onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
               >
-                <option value="all">All Districts</option>
-                {districtsList.map(d => (
+                <option value="All">All Units in {selectedEcologicalScope}</option>
+                {availableDistricts.map(d => (
                   <option key={d} value={d}>{d}</option>
                 ))}
               </select>
@@ -236,12 +289,11 @@ export default function SpeciesIntelligencePage() {
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
               <select
-                value={selectedScope}
-                onChange={(e) => setSelectedScope(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                value={selectedEcologicalScope}
+                onChange={(e) => { setSelectedEcologicalScope(e.target.value as Scope | 'All'); setSelectedDistrict('All'); setCurrentPage(1); }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
               >
-                <option value="all">All Scopes</option>
-                {scopesList.map(s => (
+                {availableScopes.map(s => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
@@ -252,7 +304,7 @@ export default function SpeciesIntelligencePage() {
         {/* Species Cards */}
         {filteredSpecies.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSpecies.map((species, index) => (
+            {filteredSpecies.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((species, index) => (
               <motion.a
                 key={species.id}
                 href={`/protected-network/species-intelligence/${species.slug}`}
@@ -261,7 +313,7 @@ export default function SpeciesIntelligencePage() {
                 transition={{ delay: index * 0.05 }}
                 className="h-full block group"
               >
-                <Card className="h-full flex flex-col justify-between card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300" padding="lg">
+                <Card className="h-full flex flex-col justify-between card-intelligence border border-white/5 bg-slate-900/50 hover:border-emerald-500/20 transition-all duration-300" padding="lg">
                   <div>
                     <div className="flex items-start justify-between mb-4">
                       <div>
@@ -327,8 +379,8 @@ export default function SpeciesIntelligencePage() {
               className="border-white/20 text-white"
               onClick={() => {
                 setSearchQuery('');
-                setSelectedDistrict('all');
-                setSelectedScope('all');
+                setSelectedDistrict('All');
+                setSelectedEcologicalScope('All');
               }}
             >
               Reset Filters

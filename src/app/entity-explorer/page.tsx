@@ -139,14 +139,14 @@ export default function EntityExplorerPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      <Heading
+      <Heading icon={<span className="hidden"/>}
         badge={
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 mb-6">
             <Search className="w-4 h-4 text-blue-400" />
             <span className="text-sm font-medium text-blue-300">Browse & Filter</span>
           </div>
         }
-        title="Entity Explorer"
+        title={<><span className="block whitespace-nowrap">Entity</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Explorer</span></>}
         subtitle="Browse and filter all ecological entities across Kashmir EcoWatch — protected areas, water bodies, species, districts, trails, and monitoring zones."
       />
 

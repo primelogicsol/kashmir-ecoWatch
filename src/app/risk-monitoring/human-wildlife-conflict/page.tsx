@@ -50,14 +50,10 @@ export default function HumanWildlifeConflictPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Human-Wildlife <span className="text-emerald-400">Conflict</span></>}
+        title={<><span className="block whitespace-nowrap">Human-Wildlife</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Conflict</span></>}
         subtitle="Leopard and black bear conflict monitoring, livestock depredation tracking, crop raiding incidents, settlement-edge conflict zones, Hangul pressure landscapes, and district conflict profiles across Kashmir"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <AlertTriangle className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Conflict Intelligence</Badge>}
+        icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
+        label="Conflict Intelligence"
         breadcrumbs={[
           { label: "Risk & Monitoring", href: "/risk-monitoring" },
           { label: "Biodiversity Risks", href: "/risk-monitoring/biodiversity-risks" },
@@ -67,7 +63,7 @@ export default function HumanWildlifeConflictPage() {
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-amber-600 hover:to-orange-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

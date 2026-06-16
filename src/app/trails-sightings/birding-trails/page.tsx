@@ -21,16 +21,12 @@ export default function BirdingTrailsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Birding <span className="text-emerald-400">Trails</span></>}
+        title={<><span className="block whitespace-nowrap">Birding</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails</span></>}
         subtitle="Prime birdwatching routes through Kashmir's wetlands, forests, and migratory corridors"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-2xl">
-            <Bird className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Prime Birdwatching Routes</Badge>}
+        icon={<Bird className="w-6 h-6 text-emerald-400" />}
+        label="Prime Birdwatching Routes"
         actions={
-          <Button size="lg" className="bg-gradient-to-r from-sky-500 to-blue-600" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
+          <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
         }
       />
       <section className="py-20">

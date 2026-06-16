@@ -148,14 +148,10 @@ export default function AccessibilityPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Accessibility <span className="text-emerald-400">Statement</span></>}
+        title={<><span className="block whitespace-nowrap">Accessibility</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Statement</span></>}
         subtitle="Kashmir EcoWatch is committed to ensuring that environmental intelligence, maps, dashboards, reports, alerts, and contribution workflows remain as accessible and inclusive as possible for people with disabilities and users with different access needs. We are continually improving platform usability, accessibility support, and inclusive design across content, geospatial interfaces, monitoring tools, and public contribution pathways."
-        icon={
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl">
-            <A11yIcon className="w-8 h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Accessibility & Inclusive Access</Badge>}
+        icon={<A11yIcon className="w-6 h-6 text-emerald-400" />}
+        label="Accessibility & Inclusive Access"
       />
 
       {/* ─── Commitment & Conformance ─────────────────────────────────────── */}

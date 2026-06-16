@@ -91,14 +91,10 @@ export default function ContributeHubPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contribute' }]}
-        title={<>Contribute to <span className="text-emerald-400">Kashmir Intelligence</span></>}
+        title={<><span className="block whitespace-nowrap">Contribute to</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Kashmir Intelligence</span></>}
         subtitle="Whether reporting an urgent hazard, documenting wildlife, sharing research data, or joining as a recurring contributor — your participation strengthens Kashmir&#39;s environmental monitoring and conservation decision-making"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-blue-600 flex items-center justify-center shadow-2xl">
-            <Upload className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Community Contribution</Badge>}
+        icon={<Upload className="w-6 h-6 text-emerald-400" />}
+        label="Community Contribution"
       />
 
       {/* Contribution Pathways */}

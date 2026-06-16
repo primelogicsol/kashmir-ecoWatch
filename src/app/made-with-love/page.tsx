@@ -250,14 +250,10 @@ export default function TechnologyPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Made with <span className="text-emerald-400">Love</span> for Kashmir</>}
+        title={<><span className="block whitespace-nowrap">Made with Love</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">for Kashmir</span></>}
         subtitle="Kashmir EcoWatch is designed, engineered, and technologically integrated by Prime Logic Solutions USA as a high-performance environmental intelligence platform built for scientific visibility, geospatial interpretation, modular knowledge systems, monitoring workflows, district-level environmental understanding, and structured public contribution."
-        icon={
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
-            <Heart className="w-8 h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Built for Kashmir</Badge>}
+        icon={<Heart className="w-6 h-6 text-emerald-400" />}
+        label="Built for Kashmir"
       />
 
       {/* ─── Platform Vision ──────────────────────────────────────────────── */}

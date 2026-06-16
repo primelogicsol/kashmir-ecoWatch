@@ -54,19 +54,15 @@ export default function BirdMigrationMonitoringPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Bird Migration Monitoring' }]}
-        title={<>Bird Migration <span className="text-emerald-400">Monitoring</span></>}
+        title={<><span className="block whitespace-nowrap">Bird Migration</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring</span></>}
         subtitle="Hokersar, Hygam, Shallabugh, Wular wetland monitoring, seasonal migration windows, arrival/departure intelligence, migratory species tracking, and route/wetland sensitivity analysis"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-2xl">
-            <Bird className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Migration Intelligence</Badge>}
+        icon={<Bird className="w-6 h-6 text-emerald-400" />}
+        label="Migration Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-blue-600 hover:to-indigo-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

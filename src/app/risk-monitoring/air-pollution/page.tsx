@@ -53,19 +53,15 @@ export default function AirPollutionPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Air Pollution' }]}
-        title={<>Air Pollution <span className="text-emerald-400">Risk & Monitoring</span></>}
+        title={<><span className="block whitespace-nowrap">Air Pollution Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Monitoring</span></>}
         subtitle="District-wise AQI intelligence, seasonal inversion patterns, transport corridor pollution, and public health overlap monitoring across Kashmir valley"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-gray-500 to-slate-600 flex items-center justify-center shadow-2xl">
-            <Wind className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Air Quality Intelligence</Badge>}
+        icon={<Wind className="w-6 h-6 text-emerald-400" />}
+        label="Air Quality Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-gray-500 to-slate-600 hover:from-gray-600 hover:to-slate-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-gray-600 hover:to-slate-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

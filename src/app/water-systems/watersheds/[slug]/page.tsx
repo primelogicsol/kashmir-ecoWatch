@@ -27,7 +27,7 @@ export default function WatershedDetailPage() {
     <WaterEntityDetailPageComponent
       entity={watershed}
       relatedEntities={relatedWatersheds}
-      color="from-amber-500 to-orange-600"
+      color="from-amber-600 to-amber-600"
       icon="Map"
       backRoute="/water-systems"
       listRoute="/water-systems/watersheds"

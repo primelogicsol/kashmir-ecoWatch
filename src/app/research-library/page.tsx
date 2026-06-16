@@ -53,14 +53,14 @@ export default function ResearchLibraryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Scientific Research"
-        title="Research Library"
+        title={<><span className="block whitespace-nowrap">Research</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Library</span></>}
         subtitle="Environmental impact assessments, research reports, and scientific publications documenting Kashmir&#39;s ecological systems and environmental challenges"
-        icon={<BookOpen className="w-6 h-6 text-violet-400" />}
+        icon={<BookOpen className="w-6 h-6 text-emerald-400" />}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-violet-600 to-purple-500"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500"
               icon={<BookOpen className="w-5 h-5" />}
               onClick={() => router.push('/library')}
             >

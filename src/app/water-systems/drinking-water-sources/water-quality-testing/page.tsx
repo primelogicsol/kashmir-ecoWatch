@@ -182,8 +182,8 @@ export default function WaterQualityTestingPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* ─── Hero Section ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#160C27]" />
-        <div className="absolute inset-0 bg-[#160C27]" />
+        <div className="absolute inset-0 bg-slate-900/50" />
+        <div className="absolute inset-0 bg-slate-900/50" />
 
         <div className="relative container mx-auto px-4 md:px-6 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20">
           {/* Breadcrumb */}

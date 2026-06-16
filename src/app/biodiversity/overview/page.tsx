@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { biodiversityMetrics } from '@/data/biodiversity';
+import { Heading } from '@/components/common/Heading';
 import {
   getHabitatBiodiversity,
   getDistrictBiodiversity,
@@ -68,7 +69,7 @@ export default function BiodiversityOverviewPage() {
   // Active migration periods
   const activeMigrations = migrationWindows.filter(m => {
     const currentMonth = new Date().getMonth() + 1;
-    return m.peakPresenceMonths.includes(currentMonth);
+    return m.peakPresenceMonths?.includes(currentMonth) ?? false;
   });
 
   // Recent phenology records
@@ -76,60 +77,28 @@ export default function BiodiversityOverviewPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-[#160C27]" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <Leaf className="w-4 h-4 text-forest-400" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Biodiversity Intelligence
-              </span>
-            </div>
-            <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-3 sm:mb-4 leading-tight tracking-tight">
-              Species, Habitat & Observation Intelligence
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-6 leading-relaxed max-w-3xl">
-              Kashmir's comprehensive biodiversity database — species records, habitat intelligence,
-              wildlife sightings, migration timing, phenology, and conservation priority tracking.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-forest-600 to-forest-500"
-                icon={<Leaf className="w-4 h-4" />}
-                onClick={() => router.push('/biodiversity')}
-              >
+      <Heading
+        title={<><span className="block whitespace-nowrap">Species, Habitat &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Observation Intelligence</span></>}
+        subtitle="An integrated ecological intelligence layer analyzing Kashmir's specific biodiversity domain with verified metrics. Integrating complex spatial distribution mapping, real-time threat vulnerability analysis, and critical longitudinal conservation analytics to protect high-priority regional ecosystems."
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
+        label="Biodiversity Intelligence"
+        gridOverlay
+        images={['/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        actions={
+          <>
+            <a href="/biodiversity">
+              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Leaf className="w-5 h-5" />}>
                 Species Directory
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white"
-                icon={<Eye className="w-4 h-4" />}
-                onClick={() => router.push('/biodiversity/wildlife-sightings')}
-              >
-                Wildlife Sightings
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white"
-                icon={<BarChart3 className="w-4 h-4" />}
-                onClick={() => router.push('/biodiversity/dashboards')}
-              >
+            </a>
+            <a href="/biodiversity/dashboards">
+              <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<BarChart3 className="w-5 h-5" />}>
                 Dashboards
               </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+            </a>
+          </>
+        }
+      />
 
       {/* Live Metrics Bar */}
       <div className="container mx-auto px-6 -mt-8 relative z-20">
@@ -319,7 +288,7 @@ export default function BiodiversityOverviewPage() {
                 </Badge>
               </div>
               <div className="text-xs text-slate-400 mb-2">
-                Peak: {mw.peakPresenceMonths.map(m => new Date(2026, m - 1).toLocaleString('default', { month: 'short' })).join(', ')}
+                Peak: {mw.peakPresenceMonths?.map(m => new Date(2026, m - 1).toLocaleString('default', { month: 'short' })).join(', ') || 'Various'}
               </div>
               <div className="text-xs text-slate-500">
                 {mw.primarySpecies.slice(0, 3).join(', ')}

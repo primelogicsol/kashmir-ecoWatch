@@ -1024,7 +1024,7 @@ export default function ConservationIntelligencePage() {
             {dashboardKPIs.map((kpi, idx) => (
               <Card 
                 key={idx} 
-                className="card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 p-4 transition-all duration-300"
+                className="card-intelligence border border-white/5 bg-slate-900/50 hover:border-emerald-500/20 p-4 transition-all duration-300"
               >
                 <div className="flex justify-between items-start mb-2">
                   <kpi.icon className="w-5 h-5 text-emerald-500" />
@@ -1056,7 +1056,7 @@ export default function ConservationIntelligencePage() {
             
             {/* Left selector menu of the 10 models */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="p-4 bg-[#160C27] border border-white/5 rounded-xl">
+              <div className="p-4 bg-slate-900/50 border border-white/5 rounded-xl">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">
                   Top 10 Recommended Models
                 </h3>
@@ -1076,7 +1076,7 @@ export default function ConservationIntelligencePage() {
                     className={`w-full text-left p-3 rounded-lg border transition-all duration-200 flex items-center justify-between group ${
                       selectedModel === model.id
                         ? 'bg-gradient-to-r from-emerald-950/40 to-teal-950/40 border-emerald-500/50 text-white'
-                        : 'bg-[#160C27] border-white/5 text-slate-400 hover:text-white hover:border-white/10'
+                        : 'bg-slate-900/50 border-white/5 text-slate-400 hover:text-white hover:border-white/10'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -1102,7 +1102,7 @@ export default function ConservationIntelligencePage() {
 
             {/* Right Interactive Simulator Pane */}
             <div className="lg:col-span-8">
-              <Card className="border border-white/5 bg-[#160C27] h-full" padding="lg">
+              <Card className="border border-white/5 bg-slate-900/50 h-full" padding="lg">
                 
                 {/* Active Model Title */}
                 {(() => {
@@ -1140,10 +1140,10 @@ export default function ConservationIntelligencePage() {
                                 onChange={(e) => setPahiPA(e.target.value)}
                                 className="w-full bg-black/40 border border-white/5 text-white rounded-lg p-2 text-sm focus:border-emerald-500/50 outline-none"
                               >
-                                <option value="Dachigam" className="bg-[#160C27]">Dachigam National Park</option>
-                                <option value="Hokersar" className="bg-[#160C27]">Hokersar Wetland Reserve</option>
-                                <option value="Wular" className="bg-[#160C27]">Wular Lake Wetland</option>
-                                <option value="Gulmarg" className="bg-[#160C27]">Gulmarg Wildlife Sanctuary</option>
+                                <option value="Dachigam" className="bg-slate-900/50">Dachigam National Park</option>
+                                <option value="Hokersar" className="bg-slate-900/50">Hokersar Wetland Reserve</option>
+                                <option value="Wular" className="bg-slate-900/50">Wular Lake Wetland</option>
+                                <option value="Gulmarg" className="bg-slate-900/50">Gulmarg Wildlife Sanctuary</option>
                               </select>
                             </div>
 
@@ -1470,7 +1470,7 @@ export default function ConservationIntelligencePage() {
                                 <select
                                   value={suitSpecies}
                                   onChange={(e) => { setSuitSpecies(e.target.value); setSelectedCell(null); }}
-                                  className="bg-[#160C27] border border-white/10 text-white rounded p-1 text-xs outline-none"
+                                  className="bg-slate-900/50 border border-white/10 text-white rounded p-1 text-xs outline-none"
                                 >
                                   <option value="Hangul">Hangul (Kashmir Stag)</option>
                                   <option value="Snow Leopard">Snow Leopard</option>
@@ -1571,7 +1571,7 @@ export default function ConservationIntelligencePage() {
                               <select
                                 value={encroachmentArea}
                                 onChange={(e) => setEncroachmentArea(e.target.value)}
-                                className="bg-[#160C27] border border-white/10 text-white rounded p-1 text-xs outline-none"
+                                className="bg-slate-900/50 border border-white/10 text-white rounded p-1 text-xs outline-none"
                               >
                                 <option value="Khrew">Khrew Conservation Reserve</option>
                                 <option value="Hokersar">Hokersar Wetland</option>
@@ -1868,7 +1868,7 @@ export default function ConservationIntelligencePage() {
           <div className="space-y-6">
             
             {/* Controls */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-[#160C27] border border-white/5 p-4 rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-slate-900/50 border border-white/5 p-4 rounded-xl">
               {/* Search */}
               <div className="relative w-full sm:w-80">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
@@ -1906,7 +1906,7 @@ export default function ConservationIntelligencePage() {
               {filteredModels.map((model) => (
                 <Card 
                   key={model.id} 
-                  className="card-intelligence border border-white/5 bg-[#160C27] p-5 hover:border-emerald-500/20 transition-all duration-200"
+                  className="card-intelligence border border-white/5 bg-slate-900/50 p-5 hover:border-emerald-500/20 transition-all duration-200"
                 >
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-3">
                     <div>
@@ -1988,7 +1988,7 @@ export default function ConservationIntelligencePage() {
               {conservationNetworks.map((network) => {
                 const Icon = network.icon;
                 return (
-                  <Card key={network.id} className="border border-white/5 bg-[#160C27] p-5 h-full flex flex-col justify-between">
+                  <Card key={network.id} className="border border-white/5 bg-slate-900/50 p-5 h-full flex flex-col justify-between">
                     <div>
                       <div className="flex items-start gap-4 mb-4">
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${network.color} text-white flex items-center justify-center shadow-lg flex-shrink-0`}>
@@ -2051,7 +2051,7 @@ export default function ConservationIntelligencePage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {researchPartners.map((part, idx) => (
-                  <Card key={idx} className="border border-white/5 bg-[#160C27] p-4 flex flex-col justify-between">
+                  <Card key={idx} className="border border-white/5 bg-slate-900/50 p-4 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-xs font-semibold text-white">{part.domain}</span>

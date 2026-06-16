@@ -106,7 +106,7 @@ export default function WaterSystemsDashboardsPage() {
     <main className="min-h-screen bg-slate-950">
       <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
         
-        <div className="absolute inset-0 bg-[#160C27]" />
+        <div className="absolute inset-0 bg-slate-900/50" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -130,7 +130,7 @@ export default function WaterSystemsDashboardsPage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-cyan-600 to-blue-500"
+                className="bg-gradient-to-r from-emerald-600 to-emerald-500"
                 icon={<BarChart3 className="w-5 h-5" />}
                 onClick={() => router.push('/dashboards/water-quality')}
               >

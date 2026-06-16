@@ -163,6 +163,69 @@ export interface BiodiversitySpecies {
   imageUrl?: string;
   relatedSpecies?: string[];
   references?: string[];
+  
+  // ==========================================
+  // PHASE 1: COMPREHENSIVE INTELLIGENCE SCHEMA
+  // ==========================================
+  
+  synonyms?: string[];
+  
+  taxonomy?: {
+    kingdom: string;
+    phylum: string;
+    class: string;
+    order: string;
+    family: string;
+    genus: string;
+    species: string;
+  };
+  
+  nationalStatus?: string;
+  regionalStatus?: string;
+  populationTrend?: 'Increasing' | 'Decreasing' | 'Stable' | 'Unknown';
+  
+  geography?: {
+    kashmirCore: boolean;
+    jammu: boolean;
+    ladakh: boolean;
+    ajk: boolean;
+    gilgitBaltistan: boolean;
+    himachal: boolean;
+    punjabFoothills: boolean;
+  };
+  
+  breedingHabitat?: string;
+  feedingEcology?: string;
+  
+  observationIntelligence?: {
+    totalObservations: number;
+    verifiedRecords: number;
+    recentRecords: number;
+    historicalRecords: number;
+  };
+  
+  threatIntelligence?: {
+    habitatLoss: string;
+    climateChange: string;
+    hunting: string;
+    pollution: string;
+    humanConflict: string;
+  };
+  
+  conservationIntelligence?: {
+    protectedAreas: string[];
+    recoveryPrograms: string[];
+    researchPriority: string;
+  };
+  
+  speciesNarrative?: {
+    overview: string;
+    identification: string;
+    ecology: string;
+    distribution: string;
+    threats: string;
+    conservation: string;
+  };
 }
 
 // ============================================================================

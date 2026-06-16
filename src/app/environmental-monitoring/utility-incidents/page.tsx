@@ -145,14 +145,9 @@ export default function UtilityIncidentsPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Utility Incidents' }
         ]}
-        title={<>Utility <span className="text-emerald-400">Incidents</span></>}
+        title={<><span className="block whitespace-nowrap">Utility</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Incidents</span></>}
         subtitle="Real-time utility service failures, emergency advisories, infrastructure damage reports, and citizen complaint tracking across Kashmir&apos;s water and sanitation utility network"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-            <Siren className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Emergency Intelligence</Badge>}
+        icon={<Siren className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Metrics */}

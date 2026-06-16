@@ -182,12 +182,8 @@ export default function GovernancePage() {
       <Heading
         title={<span className="text-emerald-400">Governance</span>}
         subtitle="Governance structure, public composition, advisory systems, expert committee pathways, operational oversight, and governance participation for Kashmir EcoWatch."
-        icon={
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-slate-600 flex items-center justify-center shadow-2xl">
-            <Shield className="w-8 h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Governance</Badge>}
+        icon={<Shield className="w-6 h-6 text-emerald-400" />}
+        label="Governance"
         actions={
           <div className="flex flex-wrap gap-3">
             <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white" onClick={() => document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' })}>

@@ -107,14 +107,9 @@ export default function SolidWastePage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Solid Waste' }
         ]}
-        title={<>Solid <span className="text-emerald-400">Waste</span></>}
+        title={<><span className="block whitespace-nowrap">Solid</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Waste</span></>}
         subtitle="Tracking illegal dumping, landfill stress, open waste accumulation, burning events, and municipal collection performance across Kashmir districts"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-gray-500 to-slate-600 flex items-center justify-center shadow-2xl">
-            <Trash2 className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Waste Intelligence</Badge>}
+        icon={<Trash2 className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Metrics */}

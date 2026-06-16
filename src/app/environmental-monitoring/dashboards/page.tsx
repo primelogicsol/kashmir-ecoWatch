@@ -129,14 +129,9 @@ export default function DashboardsPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Dashboards' }
         ]}
-        title={<>Environmental <span className="text-emerald-400">Dashboards</span></>}
+        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Dashboards</span></>}
         subtitle="Comprehensive analytics dashboards with district comparison, stress heatmaps, trend analysis, and real-time environmental intelligence across all monitoring domains"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-2xl">
-            <BarChart3 className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Analytics &amp; Intelligence</Badge>}
+        icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Quick Analytics */}

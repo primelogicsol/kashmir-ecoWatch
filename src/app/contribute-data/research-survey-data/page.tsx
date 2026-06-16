@@ -68,12 +68,10 @@ export default function ResearchSurveyDataPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Research & Survey <span className="text-emerald-400">Data</span></>}
+        title={<><span className="block whitespace-nowrap">Research &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Survey Data</span></>}
         subtitle="Submit academic research outputs, institutional survey results, and peer-reviewed findings. Approved records route into Library and relevant domain modules."
-        icon={
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-xl"><FileText className="w-7 h-7 text-white" /></div>
-        }
-        badge={<Badge variant="info" size="lg">Research Data</Badge>}
+        icon={<FileText className="w-6 h-6 text-emerald-400" />}
+        label="Research Data"
         breadcrumbs={[{ label: 'Back to Contribute Data', href: '/contribute-data' }]}
       />
       <section className="py-12">

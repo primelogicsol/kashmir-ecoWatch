@@ -90,18 +90,14 @@ export default function CitizenSciencePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Citizen Science' }]}
-        title={<>Citizen <span className="text-emerald-400">Science</span></>}
+        title={<><span className="block whitespace-nowrap">Citizen</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Science</span></>}
         subtitle="Join a growing community of 635+ citizen scientists contributing to Kashmir&#39;s environmental monitoring, data verification, and conservation efforts"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-violet-600 flex items-center justify-center shadow-2xl">
-            <Users className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Community Science Program</Badge>}
+        icon={<Users className="w-6 h-6 text-emerald-400" />}
+        label="Community Science Program"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Link href="/submit-sighting">
-              <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600">
+              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500">
                 <Camera className="w-5 h-5 mr-2" />
                 Start Contributing
               </Button>

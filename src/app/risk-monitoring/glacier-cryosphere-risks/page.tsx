@@ -20,12 +20,10 @@ export default function GlacierCryosphereRisksPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Glacier & <span className="text-emerald-400">Cryosphere Risks</span></>}
+        title={<><span className="block whitespace-nowrap">Glacier &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Cryosphere Risks</span></>}
         subtitle="Glacial lake monitoring, GLOF risk, and cryosphere changes"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-2xl"><Waves className="w-5 h-5 md:w-8 md:h-8 text-white" /></div>
-        }
-        badge={<Badge variant="info" size="lg">Cryosphere Hazards</Badge>}
+        icon={<Waves className="w-6 h-6 text-emerald-400" />}
+        label="Cryosphere Hazards"
         breadcrumbs={[
           { label: 'Risk & Monitoring', href: '/risk-monitoring' },
           { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' },
@@ -33,7 +31,7 @@ export default function GlacierCryosphereRisksPage() {
         ]}
         actions={
           <>
-            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-600" onClick={() => router.push('/risk-monitoring/hazard-risks')}><ArrowRight className="w-5 h-5 mr-2" />Back to Hazard Risks</Button>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/risk-monitoring/hazard-risks')}><ArrowRight className="w-5 h-5 mr-2" />Back to Hazard Risks</Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Overview</Button>
           </>
         }

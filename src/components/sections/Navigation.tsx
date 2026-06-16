@@ -258,6 +258,7 @@ export function Navigation() {
                         { name: 'Migration Windows', href: '/biodiversity/migration-windows', desc: 'Migratory bird timing' },
                         { name: 'Pollinator Activity', href: '/biodiversity/pollinator-activity', desc: 'Pollinator watch periods' },
                         { name: 'Phenology & Flowering Records', href: '/biodiversity/phenology-flowering', desc: 'Flowering & seasonal records' },
+                        { name: 'Forest Ecosystems', href: '/biodiversity/forest-ecosystems', desc: '10-module habitat intelligence layer' },
                         { name: 'Habitat Signals', href: '/biodiversity/habitat-signals', desc: 'Habitat stress & transitions' },
                         { name: 'Seasonal Species Activity', href: '/biodiversity/seasonal-activity', desc: 'Breeding & activity windows' },
                       ].map((subitem) => (

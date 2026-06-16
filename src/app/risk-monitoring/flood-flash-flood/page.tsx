@@ -60,19 +60,15 @@ export default function FloodFlashFloodPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood' }]}
-        title={<>Flood & <span className="text-emerald-400">Flash Flood</span> Risk</>}
+        title={<><span className="block whitespace-nowrap">Flood & Flash</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood Risk</span></>}
         subtitle="River overflow monitoring, flash flood corridors, inundation risk assessment, and drainage stress intelligence across Kashmir's hydrological systems."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-2xl">
-            <Droplets className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">River & Inundation Intelligence</Badge>}
+        icon={<Droplets className="w-6 h-6 text-emerald-400" />}
+        label="River & Inundation Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-blue-600 hover:to-cyan-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/live-alerts')}
             >
               <AlertTriangle className="w-5 h-5 mr-2" />

@@ -53,7 +53,7 @@ const defaultModuleLinks: ModuleLink[] = [
     route: '/biodiversity',
     icon: Leaf,
     color: 'from-emerald-500 to-green-600',
-    count: 2847,
+    count: 2452,
     enabled: true
   },
   {

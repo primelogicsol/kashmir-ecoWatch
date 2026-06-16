@@ -62,6 +62,22 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
     return iconMap[variant] || 'Mountain';
   };
 
+  const getTextColorForVariant = () => {
+    const colors: { [key: string]: string } = {
+      landscape: 'text-emerald-400 group-hover:text-emerald-300',
+      bloom: 'text-rose-400 group-hover:text-rose-300',
+      migration: 'text-sky-400 group-hover:text-sky-300',
+      pollinator: 'text-amber-400 group-hover:text-amber-300',
+      phenology: 'text-violet-400 group-hover:text-violet-300',
+      habitat: 'text-emerald-400 group-hover:text-emerald-300',
+      water: 'text-cyan-400 group-hover:text-cyan-300',
+      species: 'text-rose-400 group-hover:text-rose-300',
+      climate: 'text-amber-400 group-hover:text-amber-300',
+      report: 'text-slate-400 group-hover:text-slate-300',
+    };
+    return colors[variant] || colors.landscape;
+  };
+
   const getName = () => {
     if ('name' in entity) return entity.name;
     if ('title' in entity) return entity.title;
@@ -176,10 +192,13 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
   const additionalMetrics = getAdditionalMetrics();
   const variantColor = getColorForVariant();
   const variantIcon = getIconForVariant();
+  const textColorClasses = getTextColorForVariant();
+  const hoverTextClass = textColorClasses.split(' ')[1]; // Extract the group-hover class
+  const baseTextClass = textColorClasses.split(' ')[0]; // Extract the base text class
 
   return (
     <Card
-      className="group relative overflow-hidden border border-white/5 bg-slate-900/50 card-intelligence cursor-pointer h-full flex flex-col justify-between"
+      className="group relative overflow-hidden glass-intense border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer h-full flex flex-col justify-between"
       onClick={onClick}
     >
       {/* Visual header with variant color accent */}
@@ -200,7 +219,7 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
 
         {/* Title overlay */}
         <div className="absolute bottom-3 left-4 right-4">
-          <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-1">
+          <h3 className={`text-lg font-bold text-white ${hoverTextClass} transition-colors line-clamp-1`}>
             {name}
           </h3>
           {elevationRange && (
@@ -267,7 +286,7 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
           )}
 
           {/* Hover CTA */}
-          <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5 mt-2">
+          <div className={`flex items-center gap-2 ${baseTextClass} text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5 mt-2`}>
             <span>View Details</span>
             <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>

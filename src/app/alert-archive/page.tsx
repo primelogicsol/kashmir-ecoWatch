@@ -281,14 +281,14 @@ export default function AlertArchivePage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      <Heading
+      <Heading icon={<span className="hidden"/>}
         badge={
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
             <Archive className="w-4 h-4 text-indigo-400" />
             <span className="text-sm text-indigo-300">Historical Records</span>
           </div>
         }
-        title={<span className="bg-gradient-to-r from-indigo-400 to-slate-300 bg-clip-text text-transparent">Alert Archive</span>}
+        title={<><span className="block whitespace-nowrap">Alert</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Archive</span></>}
         subtitle="Searchable historical record of all alerts, advisories, and hazard warnings issued through Kashmir EcoWatch monitoring systems."
       />
 

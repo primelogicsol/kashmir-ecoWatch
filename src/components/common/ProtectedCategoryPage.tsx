@@ -8,11 +8,12 @@ import { Card } from '@/components/ui/Card';
 import * as Icons from 'lucide-react';
 import {
   MapPin, Activity, ArrowRight, Search, Filter, Shield,
-  Grid3X3, List, Map, TrendingUp
+  Grid3X3, List, Map, TrendingUp, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
+import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
 
 interface ProtectedArea {
   id: string;
@@ -39,9 +40,6 @@ interface ProtectedCategoryPageProps {
     count: number;
     totalArea: number;
   };
-  tabs?: Array<{ key: string; label: string; description: string }>;
-  activeTab?: string;
-  onTabChange?: (tab: string) => void;
 }
 
 export function ProtectedCategoryPage({
@@ -52,25 +50,22 @@ export function ProtectedCategoryPage({
   areas,
   metrics,
   sourceData,
-  tabs,
-  activeTab,
-  onTabChange,
 }: ProtectedCategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.MapPin;
   const router = useRouter();
   const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [selectedDistrict, setSelectedDistrict] = React.useState('all');
-  const [selectedScope, setSelectedScope] = React.useState('all');
+  const [selectedDistrict, setSelectedDistrict] = React.useState('All');
+  const [selectedEcologicalScope, setSelectedEcologicalScope] = React.useState<Scope | 'All'>('All');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const itemsPerPage = 9;
 
-  const districts = React.useMemo(() => {
-    return Array.from(new Set(areas.map(a => a.district).filter(Boolean))).sort();
-  }, [areas]);
+  const availableDistricts = React.useMemo(() => {
+    return getUnitsForScope(selectedEcologicalScope as Scope).sort();
+  }, [selectedEcologicalScope]);
 
-  const scopes = React.useMemo(() => {
-    return Array.from(new Set(areas.map((a: any) => a.scope).filter(Boolean))).sort();
-  }, [areas]);
+  const availableScopes = [...GEOGRAPHY.scopes];
 
   const filteredAreas = React.useMemo(() => {
     return areas.filter(area => {
@@ -81,12 +76,13 @@ export function ProtectedCategoryPage({
         area.description.toLowerCase().includes(query) ||
         (area as any).flagshipSpecies?.toLowerCase().includes(query);
 
-      const matchesDistrict = selectedDistrict === 'all' || area.district === selectedDistrict;
-      const matchesScope = selectedScope === 'all' || (area as any).scope === selectedScope;
+      const areaScope = getScopeForUnit(area.district) || (area as any).scope;
+      const matchesScope = selectedEcologicalScope === 'All' || areaScope === selectedEcologicalScope || areaScope === 'All';
+      const matchesDistrict = selectedDistrict === 'All' || area.district === selectedDistrict;
 
       return matchesSearch && matchesDistrict && matchesScope;
     });
-  }, [areas, searchQuery, selectedDistrict, selectedScope]);
+  }, [areas, searchQuery, selectedDistrict, selectedEcologicalScope]);
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -144,38 +140,33 @@ export function ProtectedCategoryPage({
       {/* Tab + Filters — single row */}
       <div className="container mx-auto px-6 mt-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* Tabs */}
-          {tabs && tabs.length > 0 && (
-            <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl">
-              {tabs.map(tab => (
-                <button
-                  key={tab.key}
-                  onClick={() => onTabChange?.(tab.key)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                    activeTab === tab.key
-                      ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Active tab description */}
-          {tabs && tabs.find(t => t.key === activeTab) && (
-            <span className="text-xs text-slate-500 hidden lg:block flex-1 px-4 truncate">
-              {tabs.find(t => t.key === activeTab)!.description}
-            </span>
-          )}
+          {/* Top Scope Tabs */}
+          <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl overflow-x-auto hide-scrollbar">
+            {availableScopes.map(scope => (
+              <button
+                key={scope}
+                onClick={() => {
+                  setSelectedEcologicalScope(scope as Scope | 'All');
+                  setSelectedDistrict('All');
+                  setCurrentPage(1);
+                }}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                  selectedEcologicalScope === scope
+                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {scope}
+              </button>
+            ))}
+          </div>
 
           {/* Filters + count + view toggle */}
           <div className="flex items-center gap-3 ml-auto">
             <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
               {showFilters ? 'Hide Filters' : 'Filters'}
             </Button>
-            <span className="text-sm text-slate-400 whitespace-nowrap">
+            <span className="text-sm text-slate-400 whitespace-nowrap hidden sm:inline">
               <strong className="text-white">{filteredAreas.length}</strong> of <strong className="text-white">{areas.length}</strong> protected areas
             </span>
             <div className="flex items-center gap-1">
@@ -202,48 +193,49 @@ export function ProtectedCategoryPage({
                   type="text"
                   placeholder="Search name, district, or species..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                   className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
               <select
-                value={selectedDistrict}
-                onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                value={selectedEcologicalScope}
+                onChange={(e) => { 
+                  setSelectedEcologicalScope(e.target.value as Scope | 'All'); 
+                  setSelectedDistrict('All'); 
+                  setCurrentPage(1); 
+                }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
               >
-                <option value="all">All Districts</option>
-                {districts.map(d => (
-                  <option key={d} value={d}>{d}</option>
+                {availableScopes.map(s => (
+                  <option key={s} value={s}>{s}</option>
                 ))}
               </select>
             </div>
 
-            {scopes.length > 0 && (
-              <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
-                <select
-                  value={selectedScope}
-                  onChange={(e) => setSelectedScope(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
-                >
-                  <option value="all">All Scopes</option>
-                  {scopes.map(s => (
-                    <option key={s} value={s}>{s}</option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
+              >
+                <option value="All">All Units in {selectedEcologicalScope}</option>
+                {availableDistricts.map(d => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+            </div>
           </motion.div>
         )}
 
         {/* Protected Areas Grid/List */}
         {filteredAreas.length > 0 ? (
           <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-            {filteredAreas.map((area, index) => (
+            {filteredAreas.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((area, index) => (
               <motion.a
                 key={area.id}
                 href={`/protected-network/${area.category === 'national_park' ? 'national-parks' : area.category === 'wildlife_sanctuary' ? 'wildlife-sanctuaries' : area.category === 'wetland_reserve' ? 'wetland-reserves' : area.category === 'conservation_reserve' ? 'conservation-reserves' : 'bird-and-habitat-areas'}/${area.slug}`}
@@ -252,8 +244,8 @@ export function ProtectedCategoryPage({
                 transition={{ delay: index * 0.05 }}
                 className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
-                <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-[#160C27]" padding="none">
-                  <div className="relative h-40 bg-[#160C27]">
+                <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
+                  <div className="relative h-40 bg-slate-900/50">
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex flex-wrap gap-1 mb-2">
@@ -310,6 +302,64 @@ export function ProtectedCategoryPage({
                 </Card>
               </motion.a>
             ))}
+
+            {filteredAreas.length > itemsPerPage && (
+              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-1 mx-2">
+                    {Array.from({ length: Math.ceil(filteredAreas.length / itemsPerPage) }).map((_, i) => {
+                      const page = i + 1;
+                      const totalPages = Math.ceil(filteredAreas.length / itemsPerPage);
+                      
+                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      }
+                      
+                      if (page === currentPage - 2 || page === currentPage + 2) {
+                        return <span key={page} className="text-slate-600 px-1">...</span>;
+                      }
+                      
+                      return null;
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredAreas.length / itemsPerPage)))}
+                    disabled={currentPage === Math.ceil(filteredAreas.length / itemsPerPage)}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="text-xs text-slate-500">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredAreas.length)} of {filteredAreas.length} records
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-center py-24">
@@ -321,8 +371,8 @@ export function ProtectedCategoryPage({
               className="border-white/20 text-white"
               onClick={() => {
                 setSearchQuery('');
-                setSelectedDistrict('all');
-                setSelectedScope('all');
+                setSelectedDistrict('All');
+                setSelectedEcologicalScope('All');
               }}
             >
               Reset Filters

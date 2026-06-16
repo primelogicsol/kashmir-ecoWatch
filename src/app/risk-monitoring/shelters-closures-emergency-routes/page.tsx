@@ -35,21 +35,17 @@ export default function SheltersClosuresEmergencyRoutesPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Shelters, <span className="text-emerald-400">Closures</span> & Emergency Routes</>}
+        title={<><span className="block whitespace-nowrap">Shelters, Closures &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Emergency Routes</span></>}
         subtitle="Closure tracking, emergency shelter status, restricted access monitoring, safe route intelligence, and operational mobility support across Kashmir's transportation network."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-2xl">
-            <FileText className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="outline" size="lg" className="border-indigo-500/30 text-indigo-400">Safe Routes & Operational Mobility</Badge>}
+        icon={<FileText className="w-6 h-6 text-emerald-400" />}
+        label="Safe Routes & Operational Mobility"
         breadcrumbs={[
           { label: 'Risk & Monitoring', href: '/risk-monitoring' },
           { label: 'Shelters, Closures & Emergency Routes' },
         ]}
         actions={
           <>
-            <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-blue-600 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
               <AlertTriangle className="w-5 h-5 mr-2" />View Active Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>

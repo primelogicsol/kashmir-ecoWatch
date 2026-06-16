@@ -3,28 +3,44 @@
 import React from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { Filter, X, ChevronDown } from 'lucide-react';
+import { Filter, X, Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { GEOGRAPHY, getUnitsForScope, Scope } from '@/data/geography';
 
 interface BiodiversityFiltersProps {
   filters: {
-    conservationStatus?: string[];
-    habitat?: string[];
-    district?: string[];
+    searchQuery?: string;
+    conservationStatus?: string;
+    habitat?: string;
+    scope?: Scope | 'All';
+    administrativeUnit?: string;
     elevation?: string;
-    season?: string;
-    sensitivity?: string;
   };
   onFilterChange: (filters: any) => void;
   onReset: () => void;
   resultCount: number;
+
+  searchPlaceholder?: string;
+  
+  category1Label?: string;
+  category1Key?: string;
+  category1Options?: { id: string; label: string }[];
+  
+  category2Label?: string;
+  category2Key?: string;
+  category2Options?: string[];
+  
+  moduleOptions?: { id: string; label: string }[];
+  activeModule?: string;
+  onModuleChange?: (moduleId: string) => void;
 }
 
 const conservationStatuses = [
-  { id: 'CR', label: 'Critically Endangered', color: 'bg-red-500' },
-  { id: 'EN', label: 'Endangered', color: 'bg-red-400' },
-  { id: 'VU', label: 'Vulnerable', color: 'bg-amber-500' },
-  { id: 'NT', label: 'Near Threatened', color: 'bg-yellow-500' },
-  { id: 'LC', label: 'Least Concern', color: 'bg-emerald-500' },
+  { id: 'CR', label: 'Critically Endangered' },
+  { id: 'EN', label: 'Endangered' },
+  { id: 'VU', label: 'Vulnerable' },
+  { id: 'NT', label: 'Near Threatened' },
+  { id: 'LC', label: 'Least Concern' },
 ];
 
 const habitats = [
@@ -37,47 +53,50 @@ const habitats = [
   'Forest edges',
 ];
 
-const districts = [
-  'Srinagar',
-  'Anantnag',
-  'Baramulla',
-  'Kulgam',
-  'Pulwama',
-  'Ganderbal',
-  'Kupwara',
-  'Kishtwar',
-  'Doda',
-  'Kargil',
+const scopes = GEOGRAPHY.scopes;
+
+const elevations = [
+  { id: 'low', label: 'Low (0-1500m)' },
+  { id: 'mid', label: 'Mid (1500-3000m)' },
+  { id: 'high', label: 'High (3000m+)' },
 ];
 
-export function BiodiversityFilters({ filters, onFilterChange, onReset, resultCount }: BiodiversityFiltersProps) {
+export function BiodiversityFilters({ 
+  filters, 
+  onFilterChange, 
+  onReset, 
+  resultCount,
+  searchPlaceholder = 'Species name...',
+  category1Label = 'Conservation Status',
+  category1Key = 'conservationStatus',
+  category1Options = conservationStatuses,
+  category2Label = 'Habitat',
+  category2Key = 'habitat',
+  category2Options = habitats,
+  moduleOptions,
+  activeModule,
+  onModuleChange
+}: BiodiversityFiltersProps) {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const toggleConservationStatus = (status: string) => {
-    const current = filters.conservationStatus || [];
-    const updated = current.includes(status)
-      ? current.filter(s => s !== status)
-      : [...current, status];
-    onFilterChange({ ...filters, conservationStatus: updated });
-  };
-
-  const toggleHabitat = (habitat: string) => {
-    const current = filters.habitat || [];
-    const updated = current.includes(habitat)
-      ? current.filter(h => h !== habitat)
-      : [...current, habitat];
-    onFilterChange({ ...filters, habitat: updated });
-  };
-
   const activeFilterCount = 
-    (filters.conservationStatus?.length || 0) +
-    (filters.habitat?.length || 0) +
-    (filters.district?.length || 0) +
-    (filters.elevation ? 1 : 0) +
-    (filters.season ? 1 : 0);
+    (filters.searchQuery ? 1 : 0) +
+    (filters[category1Key] && filters[category1Key] !== 'all' ? 1 : 0) +
+    (filters[category2Key] && filters[category2Key] !== 'all' ? 1 : 0) +
+    (filters.scope && filters.scope !== 'All' ? 1 : 0) +
+    (filters.administrativeUnit && filters.administrativeUnit !== 'All' ? 1 : 0) +
+    (filters.elevation ? 1 : 0);
+
+  const availableUnits = React.useMemo(() => {
+    return getUnitsForScope((filters.scope as Scope) || 'All').sort();
+  }, [filters.scope]);
+
+  const handleChange = (key: string, value: string) => {
+    onFilterChange({ ...filters, [key]: value === 'all' ? undefined : value });
+  };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-full">
       {/* Filter bar header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -112,130 +131,122 @@ export function BiodiversityFilters({ filters, onFilterChange, onReset, resultCo
       </div>
 
       {/* Expanded filters */}
-      {isOpen && (
-        <div className="p-6 rounded-xl glass-light border border-white/5 space-y-6">
-          {/* Conservation Status */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
-              Conservation Status
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {conservationStatuses.map((status) => (
-                <button
-                  key={status.id}
-                  onClick={() => toggleConservationStatus(status.id)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
-                    filters.conservationStatus?.includes(status.id)
-                      ? 'bg-forest-500/20 text-forest-400 border border-forest-500/50'
-                      : 'glass-light border border-white/10 text-slate-400 hover:text-white'
-                  }`}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`p-5 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 ${moduleOptions ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-4`}
+          >
+            {moduleOptions && onModuleChange && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Module</label>
+                <select
+                  value={activeModule || 'overview'}
+                  onChange={(e) => onModuleChange(e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-emerald-400 font-medium focus:outline-none focus:border-emerald-500/50 transition-colors"
                 >
-                  <div className={`w-2 h-2 rounded-full ${status.color}`} />
-                  {status.label}
-                </button>
-              ))}
+                  {moduleOptions.map(m => (
+                    <option key={m.id} value={m.id}>{m.label}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+            
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  value={filters.searchQuery || ''}
+                  onChange={(e) => handleChange('searchQuery', e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-forest-500/50 transition-colors"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Habitat */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
-              Habitat
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {habitats.map((habitat) => (
-                <button
-                  key={habitat}
-                  onClick={() => toggleHabitat(habitat)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                    filters.habitat?.includes(habitat)
-                      ? 'bg-forest-500/20 text-forest-400 border border-forest-500/50'
-                      : 'glass-light border border-white/10 text-slate-400 hover:text-white'
-                  }`}
+            {category1Key !== 'none' && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category1Label}</label>
+                <select
+                  value={filters[category1Key] || 'all'}
+                  onChange={(e) => handleChange(category1Key, e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
                 >
-                  {habitat}
-                </button>
-              ))}
-            </div>
-          </div>
+                  <option value="all">All</option>
+                  {category1Options.map(s => (
+                    <option key={s.id} value={s.id}>{s.label}</option>
+                  ))}
+                </select>
+              </div>
+            )}
 
-          {/* District */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
-              District
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {districts.map((district) => (
-                <button
-                  key={district}
-                  onClick={() => toggleHabitat(district)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                    filters.district?.includes(district)
-                      ? 'bg-forest-500/20 text-forest-400 border border-forest-500/50'
-                      : 'glass-light border border-white/10 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {district}
-                </button>
-              ))}
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category2Label}</label>
+              <select
+                value={filters[category2Key] || 'all'}
+                onChange={(e) => handleChange(category2Key, e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+              >
+                <option value="all">All</option>
+                {category2Options.map(h => (
+                  <option key={h} value={h}>{h}</option>
+                ))}
+              </select>
             </div>
-          </div>
 
-          {/* Elevation Range */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
-              Elevation Range
-            </h4>
-            <div className="flex gap-2">
-              {[
-                { id: 'low', label: 'Low (0-1500m)' },
-                { id: 'mid', label: 'Mid (1500-3000m)' },
-                { id: 'high', label: 'High (3000m+)' },
-              ].map((range) => (
-                <button
-                  key={range.id}
-                  onClick={() => onFilterChange({ ...filters, elevation: range.id })}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                    filters.elevation === range.id
-                      ? 'bg-forest-500/20 text-forest-400 border border-forest-500/50'
-                      : 'glass-light border border-white/10 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {range.label}
-                </button>
-              ))}
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
+              <select
+                value={filters.scope || 'All'}
+                onChange={(e) => {
+                  onFilterChange({ 
+                    ...filters, 
+                    scope: e.target.value === 'All' ? undefined : e.target.value,
+                    administrativeUnit: undefined 
+                  });
+                }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+              >
+                {scopes.map(r => (
+                  <option key={r} value={r}>{r}</option>
+                ))}
+              </select>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Active filter chips */}
-      {activeFilterCount > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {filters.conservationStatus?.map((status) => (
-            <Badge
-              key={status}
-              variant="default"
-              className="bg-forest-500/20 text-forest-400 border border-forest-500/30 cursor-pointer"
-              onClick={() => toggleConservationStatus(status)}
-            >
-              {status}
-              <X className="w-3 h-3 ml-1" />
-            </Badge>
-          ))}
-          {filters.habitat?.map((habitat) => (
-            <Badge
-              key={habitat}
-              variant="default"
-              className="bg-forest-500/20 text-forest-400 border border-forest-500/30 cursor-pointer"
-              onClick={() => toggleHabitat(habitat)}
-            >
-              {habitat}
-              <X className="w-3 h-3 ml-1" />
-            </Badge>
-          ))}
-        </div>
-      )}
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
+              <select
+                value={filters.administrativeUnit || 'All'}
+                onChange={(e) => handleChange('administrativeUnit', e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors disabled:opacity-50"
+              >
+                <option value="All">All Units in {filters.scope || 'All'}</option>
+                {availableUnits.map(u => (
+                  <option key={u} value={u}>{u}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Elevation Range</label>
+              <select
+                value={filters.elevation || 'all'}
+                onChange={(e) => handleChange('elevation', e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+              >
+                <option value="all">All Elevations</option>
+                {elevations.map(e => (
+                  <option key={e.id} value={e.id}>{e.label}</option>
+                ))}
+              </select>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -20,7 +20,6 @@ import {
   updatedWaterSystemsMetrics
 } from '@/data/water-systems';
 import { KASHMIR_VALLEY_TOTALS, NWIA_SOURCE_METADATA } from '@/data/nwia-references';
-import { NwiaClassificationPanel } from '@/components/water/NwiaClassificationPanel';
 
 // Hydrological Intelligence
 import {
@@ -150,17 +149,27 @@ export default function WaterSystemsPage() {
   const router = useRouter();
   const metrics = updatedWaterSystemsMetrics;
 
+  // Overview module filter
+  const [moduleSearch, setModuleSearch] = useState('');
+  const filteredSubmodules = useMemo(() =>
+    submodules.filter(m =>
+      m.title.toLowerCase().includes(moduleSearch.toLowerCase()) ||
+      m.description.toLowerCase().includes(moduleSearch.toLowerCase()) ||
+      m.features.some(f => f.toLowerCase().includes(moduleSearch.toLowerCase()))
+    ),
+    [moduleSearch]
+  );
+
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        icon={<Droplet className="w-6 h-6 text-blue-400" />}
-        badge={<Badge variant="info" size="lg" className="mb-4">Comprehensive Hydrological Intelligence</Badge>}
-        title="Water Systems"
+        icon={<Droplet className="w-6 h-6 text-emerald-400" />}
+        title={<><span className="block whitespace-nowrap">Water</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Systems</span></>}
         subtitle="Water Systems is a complete hydrological, ecological, aquatic, water-quality, watershed, cryosphere, flood-risk, and restoration intelligence system for all mapped water-related landscapes and processes across Kashmir."
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
-              className="bg-gradient-to-r from-blue-500 to-cyan-600"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500"
               icon={<Search className="w-5 h-5" />}
               onClick={() => router.push('/water-systems/lakes')}
             >
@@ -240,9 +249,26 @@ export default function WaterSystemsPage() {
           </div>
         </motion.div>
 
-        {/* Submodules Grid */}
+        {/* Submodules Filter + Grid */}
+        <div className="mb-6">
+          <div className="relative max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search water system modules..."
+              value={moduleSearch}
+              onChange={e => setModuleSearch(e.target.value)}
+              className="w-full pl-9 pr-4 py-2.5 rounded-lg bg-slate-900/60 border border-white/10 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/40 transition-all"
+            />
+          </div>
+          {moduleSearch && (
+            <p className="text-xs text-slate-500 mt-2">
+              {filteredSubmodules.length} module{filteredSubmodules.length !== 1 ? 's' : ''} match &ldquo;{moduleSearch}&rdquo;
+            </p>
+          )}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {submodules.map((module, idx) => (
+          {filteredSubmodules.map((module, idx) => (
             <motion.div
               key={module.id}
               initial={{ opacity: 0, y: 20 }}
@@ -278,6 +304,13 @@ export default function WaterSystemsPage() {
               </Card>
             </motion.div>
           ))}
+          {filteredSubmodules.length === 0 && (
+            <div className="col-span-3 text-center py-16">
+              <Search className="w-10 h-10 text-slate-700 mx-auto mb-3" />
+              <p className="text-white font-semibold mb-1">No modules match &ldquo;{moduleSearch}&rdquo;</p>
+              <button onClick={() => setModuleSearch('')} className="text-sm text-emerald-400 hover:text-emerald-300 underline">Clear search</button>
+            </div>
+          )}
         </div>
       </div>
 

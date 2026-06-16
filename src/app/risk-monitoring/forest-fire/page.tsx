@@ -27,14 +27,10 @@ export default function ForestFirePage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Forest <span className="text-emerald-400">Fire</span> Risk</>}
+        title={<><span className="block whitespace-nowrap">Forest Fire</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk</span></>}
         subtitle="Active fire event monitoring, fire-prone zone mapping, smoke visibility tracking, forest pressure intelligence, and district fire status across Kashmir."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-2xl">
-            <Flame className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Active Fire Intelligence</Badge>}
+        icon={<Flame className="w-6 h-6 text-emerald-400" />}
+        label="Active Fire Intelligence"
         breadcrumbs={[
           { label: 'Risk & Monitoring', href: '/risk-monitoring' },
           { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' },
@@ -42,7 +38,7 @@ export default function ForestFirePage() {
         ]}
         actions={
           <>
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
               <AlertTriangle className="w-5 h-5 mr-2" />View Fire Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring/hazard-risks')}>Back to Hazard Risks</Button>

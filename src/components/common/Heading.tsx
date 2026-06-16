@@ -41,7 +41,7 @@ export function Heading({
   const router = useRouter();
 
   return (
-    <div className={cn('relative bg-[#160C27] overflow-hidden', className)}>
+    <div className={cn('relative bg-slate-900/50 overflow-hidden', className)}>
       <BackgroundCarousel images={images} />
 
       {gridOverlay && (

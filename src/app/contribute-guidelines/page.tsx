@@ -152,14 +152,10 @@ export default function ContributeGuidelinesPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<>Contribution <span className="text-emerald-400">Guidelines</span></>}
+  title={<><span className="block whitespace-nowrap">Contribution</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Guidelines</span></>}
   subtitle="Evidence standards, submission rules, review logic, and sensitivity guidance for all Kashmir EcoWatch contribution pathways."
-  icon={
-    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
-      <BookOpen className="w-5 h-5 md:w-8 md:h-8 text-white" />
-    </div>
-  }
-  badge={<Badge variant="info" size="lg">Contributor Guidance</Badge>}
+  icon={<BookOpen className="w-6 h-6 text-emerald-400" />}
+  label="Contributor Guidance"
   breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contribute', href: '/contribute' }, { label: 'Guidelines' }]}
 />
 

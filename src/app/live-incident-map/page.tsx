@@ -297,14 +297,10 @@ export default function LiveIncidentMapPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<>Live Incident <span className="text-emerald-400">Map</span></>}
+  title={<><span className="block whitespace-nowrap">Live Incident</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Map</span></>}
   subtitle="Real-time spatial view of active environmental incidents, field reports, and hazard events across Kashmir."
-  icon={
-    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
-      <Map className="w-5 h-5 md:w-8 md:h-8 text-white" />
-    </div>
-  }
-  badge={<Badge variant="danger" size="lg">Live Operations</Badge>}
+  icon={<Map className="w-6 h-6 text-emerald-400" />}
+  label="Live Operations"
 />
 
       {/* Summary Strip */}

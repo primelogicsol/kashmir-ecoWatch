@@ -163,17 +163,13 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>About <span className="text-emerald-400">Kashmir EcoWatch</span></>}
+        title={<><span className="block whitespace-nowrap">About Kashmir</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">EcoWatch</span></>}
         subtitle="A Kashmir Diaspora-Supported Initiative for Environmental Intelligence, Scientific Stewardship, and Public-Interest Environmental Knowledge, supported by Dr. Kumar Foundation USA."
-        icon={
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
-            <Leaf className="w-8 h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Institutional Overview</Badge>}
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
+        label="Institutional Overview"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600" onClick={() => router.push('/about/mission')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/about/mission')}>
               Our Mission
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/about/data-sources')}>

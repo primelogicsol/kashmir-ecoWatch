@@ -96,19 +96,15 @@ export default function LiveAlertsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Live <span className="text-emerald-400">Alerts</span></>}
+        title={<><span className="block whitespace-nowrap">Live</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Alerts</span></>}
         subtitle="Real-time hazard warnings, emergency notifications, and public advisories. The operational nerve center of Kashmir's environmental intelligence platform."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl animate-pulse">
-            <Bell className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Real-Time Intelligence</Badge>}
+        icon={<Bell className="w-6 h-6 text-emerald-400" />}
+        label="Real-Time Intelligence"
         actions={
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-red-600 hover:to-rose-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring')}
             >
               <ArrowRight className="w-5 h-5 mr-2 rotate-180" />

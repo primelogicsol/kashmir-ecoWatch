@@ -22,17 +22,13 @@ export default function BirdSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Bird <span className="text-emerald-400">Sightings</span></>}
+        title={<><span className="block whitespace-nowrap">Bird</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sightings</span></>}
         subtitle="Resident and migratory bird observations from across Kashmir's diverse avian habitats"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-2xl">
-            <Bird className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Avian Observations</Badge>}
+        icon={<Bird className="w-6 h-6 text-emerald-400" />}
+        label="Avian Observations"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-sky-500 to-blue-600" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/submit-sighting')}><Camera className="w-5 h-5 mr-2" />Submit Sighting</Button>
           </div>
         }

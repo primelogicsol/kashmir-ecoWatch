@@ -185,17 +185,12 @@ export default function LibraryPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-  title={<>Evidence <span className="text-emerald-400">Intelligence</span> Library</>}
+  title={<><span className="block whitespace-nowrap">Evidence Intelligence</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Library</span></>}
   subtitle="A structured evidence and reference system linking environmental studies, monitoring records, datasets, district profiles, GIS resources, and reviewed knowledge inputs across Kashmir EcoWatch."
-  icon={
-    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-2xl">
-      <Book className="w-5 h-5 md:w-8 md:h-8 text-white" />
-    </div>
-  }
-  badge={<Badge variant="info" size="lg">Evidence Intelligence</Badge>}
+  icon={<Book className="w-6 h-6 text-emerald-400" />}
 />
 
-      <section className="relative bg-[#160C27]">
+      <section className="relative bg-slate-900/50">
         <div className="container mx-auto px-6 relative z-10 pb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

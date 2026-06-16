@@ -328,17 +328,13 @@ export default function DashboardsPage() {
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Risk Analytics' }]}
-        title={<>Risk <span className="text-emerald-400">Dashboards</span></>}
+        title={<><span className="block whitespace-nowrap">Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Dashboards</span></>}
         subtitle="Integrated dashboards for multi-hazard visibility, district risk interpretation, incident response, and evolving environmental risk across Kashmir."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-            <BarChart3 className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Risk Analytics</Badge>}
+        icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
+        label="Risk Analytics"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
               <Bell className="w-5 h-5 mr-2" />Live Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>

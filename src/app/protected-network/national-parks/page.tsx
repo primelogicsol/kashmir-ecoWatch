@@ -49,9 +49,6 @@ export default function NationalParksPage() {
       color="from-emerald-600 to-emerald-500"
       areas={allParks}
       metrics={metrics}
-      tabs={TABS as any}
-      activeTab={activeTab}
-      onTabChange={(tab) => setActiveTab(tab as TabKey)}
-    />
+                      />
   );
 }

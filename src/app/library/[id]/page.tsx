@@ -461,8 +461,7 @@ export default function EvidenceDetailPage() {
                           size="sm"
                           className="w-full"
                           icon={<Download className="w-4 h-4" />}
-                          as="a"
-                          href={evidence.downloadUrl}
+                          onClick={() => window.open(evidence.downloadUrl, '_blank')}
                         >
                           Download Dataset
                         </Button>
@@ -473,9 +472,7 @@ export default function EvidenceDetailPage() {
                           variant="outline"
                           className="w-full border-white/20 text-white"
                           icon={<ExternalLink className="w-4 h-4" />}
-                          as="a"
-                          href={evidence.url}
-                          target="_blank"
+                          onClick={() => window.open(evidence.url, '_blank')}
                         >
                           View Source
                         </Button>

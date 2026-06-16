@@ -202,6 +202,24 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
   const IconComponent = (Icons as any)[getIconForVariant()] || Icons.Mountain;
 
+  const getThemeClasses = () => {
+    const themes: { [key: string]: { text: string, bg: string, border: string, bgGradient: string, hoverText: string, hoverBorder: string, hoverBg: string } } = {
+      landscape: { text: 'text-emerald-400', bg: 'bg-emerald-500/20', border: 'border-emerald-500/30', bgGradient: 'from-emerald-950/50 to-teal-950/50', hoverText: 'group-hover:text-emerald-400', hoverBorder: 'hover:border-emerald-500/30', hoverBg: 'group-hover:bg-emerald-500/20' },
+      bloom: { text: 'text-pink-400', bg: 'bg-pink-500/20', border: 'border-pink-500/30', bgGradient: 'from-pink-950/50 to-rose-950/50', hoverText: 'group-hover:text-pink-400', hoverBorder: 'hover:border-pink-500/30', hoverBg: 'group-hover:bg-pink-500/20' },
+      migration: { text: 'text-sky-400', bg: 'bg-sky-500/20', border: 'border-sky-500/30', bgGradient: 'from-sky-950/50 to-blue-950/50', hoverText: 'group-hover:text-sky-400', hoverBorder: 'hover:border-sky-500/30', hoverBg: 'group-hover:bg-sky-500/20' },
+      pollinator: { text: 'text-amber-400', bg: 'bg-amber-500/20', border: 'border-amber-500/30', bgGradient: 'from-amber-950/50 to-orange-950/50', hoverText: 'group-hover:text-amber-400', hoverBorder: 'hover:border-amber-500/30', hoverBg: 'group-hover:bg-amber-500/20' },
+      phenology: { text: 'text-violet-400', bg: 'bg-violet-500/20', border: 'border-violet-500/30', bgGradient: 'from-violet-950/50 to-purple-950/50', hoverText: 'group-hover:text-violet-400', hoverBorder: 'hover:border-violet-500/30', hoverBg: 'group-hover:bg-violet-500/20' },
+      habitat: { text: 'text-green-400', bg: 'bg-green-500/20', border: 'border-green-500/30', bgGradient: 'from-green-950/50 to-emerald-950/50', hoverText: 'group-hover:text-green-400', hoverBorder: 'hover:border-green-500/30', hoverBg: 'group-hover:bg-green-500/20' },
+      water: { text: 'text-cyan-400', bg: 'bg-cyan-500/20', border: 'border-cyan-500/30', bgGradient: 'from-cyan-950/50 to-blue-950/50', hoverText: 'group-hover:text-cyan-400', hoverBorder: 'hover:border-cyan-500/30', hoverBg: 'group-hover:bg-cyan-500/20' },
+      species: { text: 'text-rose-400', bg: 'bg-rose-500/20', border: 'border-rose-500/30', bgGradient: 'from-rose-950/50 to-red-950/50', hoverText: 'group-hover:text-rose-400', hoverBorder: 'hover:border-rose-500/30', hoverBg: 'group-hover:bg-rose-500/20' },
+      climate: { text: 'text-yellow-400', bg: 'bg-yellow-500/20', border: 'border-yellow-500/30', bgGradient: 'from-yellow-950/50 to-amber-950/50', hoverText: 'group-hover:text-yellow-400', hoverBorder: 'hover:border-yellow-500/30', hoverBg: 'group-hover:bg-yellow-500/20' },
+      report: { text: 'text-slate-400', bg: 'bg-slate-500/20', border: 'border-slate-500/30', bgGradient: 'from-slate-900/50 to-slate-950/50', hoverText: 'group-hover:text-slate-300', hoverBorder: 'hover:border-slate-500/30', hoverBg: 'group-hover:bg-slate-500/20' },
+    };
+    return themes[variant] || themes.landscape;
+  };
+
+  const theme = getThemeClasses();
+
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
@@ -309,7 +327,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
                     activeTab === tab.id
-                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                      ? `${theme.bg} ${theme.text} border ${theme.border}`
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
@@ -340,14 +358,14 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
                   href={item.link}
                   className="group"
                 >
-                  <Card className="glass-intense border-slate-700/50 hover:border-emerald-500/30 transition-all h-full">
+                  <Card className={`glass-intense border-slate-700/50 ${theme.hoverBorder} transition-all h-full`}>
                     <div className="p-4">
                       <div className="flex items-start gap-3">
-                        <div className="p-2 rounded-lg bg-slate-800/50 group-hover:bg-emerald-500/20 transition-colors">
-                          <RelatedIcon className="w-5 h-5 text-slate-400 group-hover:text-emerald-400 transition-colors" />
+                        <div className={`p-2 rounded-lg bg-slate-800/50 ${theme.hoverBg} transition-colors`}>
+                          <RelatedIcon className={`w-5 h-5 text-slate-400 ${theme.hoverText} transition-colors`} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
+                          <h3 className={`text-sm font-semibold text-white ${theme.hoverText} transition-colors line-clamp-1`}>
                             {item.title}
                           </h3>
                           <p className="text-xs text-slate-400 mt-1 line-clamp-2">
@@ -366,7 +384,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
       {/* CTA Strip */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <Card className="glass-intense border-slate-700/50 bg-gradient-to-r from-emerald-950/50 to-teal-950/50">
+        <Card className={`glass-intense border-slate-700/50 bg-gradient-to-r ${theme.bgGradient}`}>
           <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-semibold text-white mb-1">

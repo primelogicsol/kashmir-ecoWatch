@@ -96,14 +96,10 @@ export default function HazardRisksPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Hazard <span className="text-emerald-400">Risks</span></>}
+        title={<><span className="block whitespace-nowrap">Hazard</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risks</span></>}
         subtitle="Multi-hazard classification and risk assessment across Kashmir's diverse environmental threats. Active hazard status, district vulnerability, and routes to specialized monitoring."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <AlertTriangle className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Umbrella Classification</Badge>}
+        icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
+        label="Umbrella Classification"
         breadcrumbs={[
           { label: "Risk & Monitoring", href: "/risk-monitoring" },
           { label: "Hazard Risks" }
@@ -112,7 +108,7 @@ export default function HazardRisksPage() {
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/live-alerts')}
             >
               <Bell className="w-5 h-5 mr-2" />

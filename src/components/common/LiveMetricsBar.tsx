@@ -29,7 +29,7 @@ export function LiveMetricsBar({ metrics }: { metrics: MetricItem[] }) {
   const finalMetrics = padded.slice(0, 8);
 
   return (
-    <div className="container mx-auto px-6 -mt-8 relative z-20 mb-12">
+    <div className="container mx-auto px-6 -mt-8 relative z-20">
       <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
           {finalMetrics.map((stat, idx) => {

@@ -45,14 +45,10 @@ export default function WildlifeMortalityKillRecordsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Wildlife Mortality <span className="text-emerald-400">/ Kill Records</span></>}
+        title={<><span className="block whitespace-nowrap">Wildlife Mortality /</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Kill Records</span></>}
         subtitle="Roadkill, poaching, electrocution, habitat-linked mortality, conflict-linked deaths, and protected area/corridor-linked incident monitoring across Kashmir landscapes"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <Target className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Mortality Intelligence</Badge>}
+        icon={<Target className="w-6 h-6 text-emerald-400" />}
+        label="Mortality Intelligence"
         breadcrumbs={[
           { label: "Risk & Monitoring", href: "/risk-monitoring" },
           { label: "Biodiversity Risks", href: "/risk-monitoring/biodiversity-risks" },
@@ -62,7 +58,7 @@ export default function WildlifeMortalityKillRecordsPage() {
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

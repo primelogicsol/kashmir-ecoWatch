@@ -11,6 +11,9 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { Heading } from '@/components/common/Heading';
+import { LiveMetricsBar } from '@/components/common/LiveMetricsBar';
+
 import Link from 'next/link';
 
 const algalBloomData = [
@@ -48,151 +51,85 @@ export default function AlgalBloomMonitoringPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-[#160C27]" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl"
-          >
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
-              <a href="/water-systems" className="hover:text-white transition-colors">Water Systems</a>
-              <span>/</span>
-              <span className="text-white font-medium">Algal Bloom Intelligence</span>
-            </div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-                <Waves className="w-5 h-5 md:w-8 md:h-8 text-white" />
-              </div>
-              <Badge variant="warning" size="lg">Bloom Intelligence</Badge>
-            </div>
-
-            <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-              Algal Bloom <span className="text-emerald-400">Intelligence</span>
-            </h1>
-
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              Eutrophication-prone wetland monitoring, bloom alerts, seasonality tracking,
-              risk-level assessment, and aquatic vulnerability intelligence for Kashmir lake systems
-            </p>
-
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-xl"
-                onClick={() => router.push('/water-systems')}
-              >
+      <Heading
+        title={<><span className="block whitespace-nowrap">Algal Bloom</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Intelligence</span></>}
+        subtitle="Eutrophication-prone wetland monitoring, bloom alerts, seasonality tracking, risk-level assessment, and aquatic vulnerability intelligence for Kashmir lake systems."
+        icon={<Waves className="w-6 h-6 text-emerald-400" />}
+        label="Bloom Intelligence"
+        images={['/images/protected-network.png']}
+        gridOverlay
+        actions={
+          <>
+            <a href="/water-systems">
+              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500">
                 <Map className="w-5 h-5 mr-2" />
                 Open Bloom Map
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/5"
-                onClick={() => router.push('/water-systems/water-quality')}
-              >
+            </a>
+            <a href="/water-systems/water-quality">
+              <Button size="lg" variant="outline" className="border-white/20 text-white">
                 <Droplets className="w-5 h-5 mr-2" />
                 Water Quality
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/5"
-                onClick={() => router.push('/water-systems')}
-              >
-                All Water Systems
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            </a>
+          </>
+        }
+      />
 
       {/* Metrics Ribbon */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-bold text-emerald-400 mb-2">23</div>
-              <div className="text-sm text-slate-400 mb-1">Waterbodies Monitored</div>
-              <div className="text-xs text-slate-500">Lakes & Wetlands</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-bold text-red-400 mb-2">4</div>
-              <div className="text-sm text-slate-400 mb-1">Active Blooms</div>
-              <div className="text-xs text-red-400">2 Critical</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-bold text-amber-400 mb-2">8</div>
-              <div className="text-sm text-slate-400 mb-1">High Risk Sites</div>
-              <div className="text-xs text-amber-400">Eutrophic</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-bold text-orange-400 mb-2">55%</div>
-              <div className="text-sm text-slate-400 mb-1">Max Coverage</div>
-              <div className="text-xs text-red-400">Anchar Lake</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-bold text-blue-400 mb-2">24/7</div>
-              <div className="text-sm text-slate-400 mb-1">Monitoring Status</div>
-              <div className="text-xs text-emerald-400">Satellite + Ground</div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <div className="relative z-20 -mt-8">
+        <LiveMetricsBar metrics={[
+          { label: 'Waterbodies Monitored', value: 23, icon: 'MapPin' },
+          { label: 'Active Blooms', value: 4, icon: 'AlertTriangle' },
+          { label: 'High Risk Sites', value: 8, icon: 'Shield' },
+          { label: 'Max Coverage', value: '55%', icon: 'Activity' },
+          { label: 'Monitoring Status', value: '24/7', icon: 'Eye' },
+          { label: 'Critical Zones', value: 2, icon: 'Target' },
+          { label: 'Alerts Issued', value: 14, icon: 'Info' },
+          { label: 'Ground Stations', value: 12, icon: 'BarChart3' }
+        ]} />
+      </div>
 
-      {/* Filter Row */}
-      <section className="py-8 border-b border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="border-white/20 cursor-pointer hover:bg-white/5">
-              <Filter className="w-3 h-3 mr-2" />
-              All Status
-            </Badge>
-            <Badge variant="outline" className="border-white/20 cursor-pointer hover:bg-white/5">
-              Active
-            </Badge>
-            <Badge variant="outline" className="border-white/20 cursor-pointer hover:bg-white/5">
+      {/* Tab + Filters — single row */}
+      <div className="container mx-auto px-6 mt-6 mb-12">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Tabs */}
+          <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl">
+            <button className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow">
+              Active Blooms
+            </button>
+            <button className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap text-slate-400 hover:text-white hover:bg-white/5">
               Developing
-            </Badge>
-            <Badge variant="outline" className="border-white/20 cursor-pointer hover:bg-white/5">
+            </button>
+            <button className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap text-slate-400 hover:text-white hover:bg-white/5">
               Monitoring
-            </Badge>
-            <Badge variant="outline" className="border-white/20 cursor-pointer hover:bg-white/5">
-              Low Risk
-            </Badge>
+            </button>
+          </div>
+
+          {/* Active tab description */}
+          <span className="text-xs text-slate-500 hidden lg:block flex-1 px-4 truncate">
+            Current status of algal bloom coverage — 4 active blooms
+          </span>
+
+          {/* Filters + count + view toggle */}
+          <div className="flex items-center gap-3 ml-auto">
+            <Button variant="outline" className="border-white/20 text-white">
+              <Filter className="w-4 h-4 mr-2" /> Filters
+            </Button>
+            <span className="text-sm text-slate-400 whitespace-nowrap">
+              <strong className="text-white">23</strong> of <strong className="text-white">23</strong> waterbodies
+            </span>
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="sm" className="bg-emerald-500/20 text-emerald-400">
+                <Layers className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="text-slate-400">
+                <Eye className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* District Bloom Summary */}
       <section className="py-16">
@@ -397,7 +334,7 @@ export default function AlgalBloomMonitoringPage() {
                   <p className="text-slate-400 mb-4">Interactive bloom monitoring map with satellite imagery overlay</p>
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-emerald-500 to-green-600"
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-500"
                     onClick={() => router.push('/risk-monitoring/dashboards')}
                   >
                     <Map className="w-5 h-5 mr-2" />
@@ -417,8 +354,8 @@ export default function AlgalBloomMonitoringPage() {
             <Card className="glass-intense border-pink-500/30 hover:border-pink-500/50 transition-all cursor-pointer group overflow-hidden">
               <div className="relative p-6 md:p-8">
                 {/* Background Gradient */}
-                <div className="absolute inset-0 bg-[#160C27]" />
-                <div className="absolute inset-0 bg-[#160C27]" />
+                <div className="absolute inset-0 bg-slate-900/50" />
+                <div className="absolute inset-0 bg-slate-900/50" />
                 
                 <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
                   {/* Icon */}

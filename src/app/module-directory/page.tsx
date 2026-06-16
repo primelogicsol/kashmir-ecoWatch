@@ -254,14 +254,14 @@ export default function ModuleDirectoryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Platform Modules"
-        title="Module Directory"
+        title={<><span className="block whitespace-nowrap">Module</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Directory</span></>}
         subtitle="Complete system index of all Kashmir EcoWatch modules, intelligence layers, and operational pathways."
-        icon={<Grid3x3 className="w-6 h-6 text-violet-400" />}
+        icon={<Grid3x3 className="w-6 h-6 text-emerald-400" />}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-violet-500 to-indigo-600"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500"
               onClick={scrollToModules}
             >
               <Grid3x3 className="w-5 h-5 mr-2" />

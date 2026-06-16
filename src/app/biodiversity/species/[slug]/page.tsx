@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getBiodiversityData } from '@/data/biodiversity';
+import { IntelligenceWidget } from '@/components/intelligence/IntelligenceWidget';
 import { useParams, useRouter } from 'next/navigation';
 
 const tabs = [
@@ -69,7 +70,7 @@ export default function SpeciesDetailPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero */}
       <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
         
-        <div className="absolute inset-0 bg-[#160C27]" />
+        <div className="absolute inset-0 bg-slate-900/50" />
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -144,14 +145,11 @@ export default function SpeciesDetailPage() {
 
                 {/* Primary CTAs */}
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                  <Button className="bg-gradient-to-r from-forest-600 to-forest-500" icon={<Map className="w-5 h-5" />}>
+                  <Button onClick={() => setActiveTab('distribution')} className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Map className="w-5 h-5" />}>
                     Open Distribution Map
                   </Button>
-                  <Button variant="outline" className="border-white/20 text-white" icon={<Eye className="w-5 h-5" />}>
+                  <Button onClick={() => setActiveTab('sightings')} variant="outline" className="border-white/20 text-white" icon={<Eye className="w-5 h-5" />}>
                     View Sightings
-                  </Button>
-                  <Button variant="outline" className="border-white/20 text-white" icon={<FileText className="w-5 h-5" />}>
-                    Related Reports
                   </Button>
                 </div>
               </div>
@@ -191,6 +189,13 @@ export default function SpeciesDetailPage() {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* ── ECOLOGICAL INTELLIGENCE NETWORK ── */}
+      <div className="container mx-auto px-6 mb-12 mt-6 relative z-20">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }}>
+          <IntelligenceWidget entityId={species.id} entityType="species" />
+        </motion.div>
       </div>
 
       {/* Tabs */}
@@ -440,7 +445,7 @@ export default function SpeciesDetailPage() {
                   <Eye className="w-6 h-6 text-purple-400" />
                   <h2 className="text-2xl font-bold text-white">Verified Sightings</h2>
                 </div>
-                <Button className="bg-gradient-to-r from-forest-600 to-forest-500" icon={<Eye className="w-4 h-4" />}>
+                <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Eye className="w-4 h-4" />}>
                   View All Sightings
                 </Button>
               </div>

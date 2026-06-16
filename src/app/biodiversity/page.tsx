@@ -10,7 +10,7 @@ import { BiodiversityCard } from '@/components/common/BiodiversityCard';
 import {
   Leaf, Map, Activity, Eye, TrendingUp, ArrowRight,
   Shield, Droplet, Mountain, Flower2, Search, Filter,
-  Layers, Building2, Calendar, BookOpen
+  Layers, Building2, Calendar, BookOpen, TreePine
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { biodiversityMetrics, mammalsData, birdsData, getBiodiversityData } from '@/data/biodiversity';
@@ -34,6 +34,16 @@ import {
 import { getEndemicSpecies, getMigratorySpecies, getBiodiversityRiskDashboard } from '@/data/biodiversity-access';
 
 const categoryCards = [
+  {
+    id: 'forest-ecosystems',
+    title: 'Forest Ecosystems',
+    icon: TreePine,
+    count: 16,
+    description: 'The authoritative habitat intelligence layer mapping Kashmir\'s ecological infrastructure.',
+    color: 'from-emerald-600 to-green-700',
+    href: '/biodiversity/forest-ecosystems',
+    habitats: ['All Forest Types'],
+  },
   {
     id: 'mammals',
     title: 'Mammals',
@@ -165,12 +175,12 @@ export default function BiodiversityPage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const featuredSpecies = [
-    getBiodiversityData.mammals.bySlug('hangul'),
-    getBiodiversityData.mammals.bySlug('markhor'),
+    getBiodiversityData.mammals.bySlug('kashmir-stag-hangul'),
+    getBiodiversityData.mammals.bySlug('kashmir-markhor'),
     getBiodiversityData.birds.bySlug('kashmir-flycatcher'),
-    getBiodiversityData.birds.bySlug('himalayan-monals'),
-    getBiodiversityData.fish.bySlug('snow-trout-group'),
-    getBiodiversityData.medicinalPlants.bySlug('aconitum-heterophyllum'),
+    getBiodiversityData.birds.bySlug('himalayan-monal'),
+    getBiodiversityData.fish.bySlug('kashmir-snow-trout'),
+    getBiodiversityData.medicinalPlants.bySlug('atis'),
   ].filter(Boolean);
 
   const handleQuickView = (species: any) => {
@@ -193,14 +203,14 @@ export default function BiodiversityPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title="Species, Habitats & Ecological Intelligence"
-        subtitle="Comprehensive species database with distribution, habitat associations, seasonal patterns, conservation status, and ecological relevance across Kashmir"
-        icon={<Leaf className="w-4 h-4 text-forest-400" />}
+        title={<><span className="block whitespace-nowrap">Species, Habitats &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Ecological Intelligence</span></>}
+        subtitle="A comprehensive species directory mapping Kashmir's terrestrial and aquatic biodiversity, including mammals, birds, fish, and flora. Integrating detailed conservation status, habitat associations, elevational ranges, and critical intelligence for threatened ecosystems and protected zones."
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-forest-600 to-forest-500"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500"
               icon={<Leaf className="w-4 h-4" />}
             >
               Browse All Species
@@ -227,9 +237,9 @@ export default function BiodiversityPage() {
           <Card className="glass-intense border-white/10 p-6" padding="none">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
               {[
-                { label: 'Species Indexed', value: biodiversityMetrics.totalSpecies, icon: Activity },
+                { label: 'Total Species', value: biodiversityMetrics.totalSpecies, icon: Activity },
+                { label: 'Active Records', value: biodiversityMetrics.activeSightings, icon: Eye },
                 { label: 'Protected Areas', value: biodiversityMetrics.protectedAreaOverlap, icon: Map },
-                { label: 'Active Sightings', value: biodiversityMetrics.activeSightings, icon: Eye },
                 { label: 'Threatened Taxa', value: biodiversityMetrics.threatened, icon: Shield },
                 { label: 'Medicinal Plants', value: biodiversityMetrics.medicinalPlants, icon: Leaf },
                 { label: 'Bird Records', value: biodiversityMetrics.birds, icon: Activity },
@@ -297,9 +307,9 @@ export default function BiodiversityPage() {
                       {category.title}
                     </h3>
                     <div className="text-2xl md:text-3xl font-bold text-white">
-                      {category.count.toLocaleString()}
+                      {category.count.toLocaleString()} <span className="text-sm text-slate-500 font-normal">/ {category.count.toLocaleString()}</span>
                     </div>
-                    <div className="text-xs text-slate-500 uppercase">species</div>
+                    <div className="text-xs text-slate-500 uppercase">validated records</div>
                   </div>
                 </div>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
@@ -696,7 +706,7 @@ export default function BiodiversityPage() {
                   <div className="flex items-center justify-center">
                     <Button
                       onClick={() => router.push('/biodiversity/risk-dashboard')}
-                      className="bg-gradient-to-r from-red-600 to-orange-600"
+                      className="bg-gradient-to-r from-emerald-600 to-emerald-500"
                     >
                       Full Analysis
                     </Button>

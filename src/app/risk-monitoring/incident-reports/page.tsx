@@ -20,12 +20,10 @@ export default function IncidentReportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Incident <span className="text-emerald-400">Reports</span></>}
+        title={<><span className="block whitespace-nowrap">Incident</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports</span></>}
         subtitle="Documented hazard incidents, damage assessments, and response records"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl"><Map className="w-5 h-5 md:w-8 md:h-8 text-white" /></div>
-        }
-        badge={<Badge variant="warning" size="lg">Incident Database</Badge>}
+        icon={<Map className="w-6 h-6 text-emerald-400" />}
+        label="Incident Database"
         breadcrumbs={[
           { label: 'Risk & Monitoring', href: '/risk-monitoring' },
           { label: 'Response & Operations', href: '/risk-monitoring/response-operations' },
@@ -33,7 +31,7 @@ export default function IncidentReportsPage() {
         ]}
         actions={
           <>
-            <Button size="lg" className="bg-gradient-to-r from-amber-500 to-orange-600" onClick={() => router.push('/risk-monitoring/response-operations')}><ArrowRight className="w-5 h-5 mr-2" />Back to Response & Operations</Button>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/risk-monitoring/response-operations')}><ArrowRight className="w-5 h-5 mr-2" />Back to Response & Operations</Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Overview</Button>
           </>
         }

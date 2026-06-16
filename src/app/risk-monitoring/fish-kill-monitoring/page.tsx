@@ -51,19 +51,15 @@ export default function FishKillMonitoringPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Fish Kill Monitoring' }]}
-        title={<>Fish Kill <span className="text-emerald-400">Monitoring</span></>}
+        title={<><span className="block whitespace-nowrap">Fish Kill</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring</span></>}
         subtitle="Lake and river fish mortality events, oxygen depletion monitoring, pollution-linked kills, algal bloom linkage, seasonal mortality patterns, and aquaculture impact tracking across Kashmir waters"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-2xl">
-            <Fish className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Aquatic Mortality Intelligence</Badge>}
+        icon={<Fish className="w-6 h-6 text-emerald-400" />}
+        label="Aquatic Mortality Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-blue-600 hover:to-cyan-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

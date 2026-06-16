@@ -392,7 +392,7 @@ export const participationMetrics: ParticipationMetrics = {
   totalIssues: 342,
   totalSightings: 1256,
   totalDatasets: 89,
-  totalMembers: 2847,
+  totalMembers: 2452,
   pendingIssues: 45,
   verifiedIssues: 267,
   resolvedIssues: 230,

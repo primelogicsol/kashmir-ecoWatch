@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { 
-  MapPin, Activity, Shield, TrendingUp, ExternalLink, 
+  MapPin, Activity, Shield, ExternalLink, 
   Heart, Share2, Eye, ArrowRight
 } from 'lucide-react';
 import type { BiodiversitySpecies } from '@/data/biodiversity';
@@ -67,19 +67,19 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
   }
 
   return (
-    <Card className="group border border-white/5 bg-slate-900/50 card-intelligence flex flex-col gap-3" padding="none">
-      <div className="p-5 sm:p-6 flex flex-col gap-3">
-        {/* Header: IUCN badge + Sensitive badge + taxon tag + hover actions */}
+    <Card className="group border border-white/5 bg-slate-900/50 card-intelligence h-full flex flex-col" padding="none">
+      <div className="p-5 sm:p-6 flex flex-col h-full gap-y-3">
+        {/* 1. Top badge row & 2. Action icons row */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-wrap gap-2 items-center min-w-0">
             <Badge
-              variant={getConservationStatusBadge(species.conservationStatus)}
+              variant={species.commonName === 'Pending Validation' ? 'warning' : getConservationStatusBadge(species.conservationStatus)}
               size="sm"
               className="text-xs font-bold px-2 py-0.5 rounded whitespace-nowrap"
             >
-              {species.conservationStatus}
+              {species.commonName === 'Pending Validation' ? 'PENDING' : species.conservationStatus}
             </Badge>
-            {species.sensitivity === 'critical' || species.sensitivity === 'high' ? (
+            {(species.sensitivity === 'critical' || species.sensitivity === 'high') && (
               <Badge
                 variant="default"
                 size="sm"
@@ -88,8 +88,8 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
                 <Shield className="w-3 h-3 mr-1" />
                 Sensitive
               </Badge>
-            ) : null}
-            <span className="text-xs capitalize">{species.taxonomicGroup.replace('-', ' ')}</span>
+            )}
+            <span className="text-xs capitalize text-slate-400">{species.taxonomicGroup.replace('-', ' ')}</span>
           </div>
           <div className="flex gap-1 flex-shrink-0">
             <button className="p-1.5 rounded-lg hover:bg-white/10 transition-colors">
@@ -101,67 +101,85 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
           </div>
         </div>
 
-        {/* Species name */}
-        <h3 className="text-base sm:text-lg font-semibold text-white">{species.commonName}</h3>
+        {/* 3. Title */}
+        <h3 className="text-base sm:text-lg font-semibold text-white line-clamp-2 leading-tight min-h-[2.5rem]">
+          {species.commonName}
+        </h3>
 
-        {/* Scientific name */}
-        <p className="text-xs italic text-slate-400">{species.scientificName}</p>
+        {/* 4. Scientific name / subtitle */}
+        <p className="text-xs italic text-slate-400 truncate">
+          {species.scientificName}
+        </p>
 
-        {/* Mini stats: districts / habitats / sightings */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-3 text-xs sm:text-sm text-slate-400">
-          <div className="flex items-center gap-1">
-            <MapPin className="w-4 h-4" />
-            <span>{species.districts.length} districts</span>
+        {/* 5. Metrics row */}
+        <div className="flex items-center gap-4 text-xs text-slate-400 whitespace-nowrap overflow-hidden">
+          <div className="flex items-center gap-1.5 shrink-0">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>{species.districts.length} dist.</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Activity className="w-4 h-4" />
-            <span>{species.habitats.length} habitats</span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Activity className="w-3.5 h-3.5" />
+            <span>{species.habitats.length} hab.</span>
           </div>
-          {species.verifiedSightings && (
-            <div className="flex items-center gap-1">
-              <Eye className="w-4 h-4" />
-              <span>{species.verifiedSightings} sightings</span>
+          {species.verifiedSightings !== undefined && (
+            <div className="flex items-center gap-1.5 shrink-0">
+              <Eye className="w-3.5 h-3.5" />
+              <span>{species.verifiedSightings} sight.</span>
             </div>
           )}
         </div>
 
-        {/* Description */}
-        <p className="text-sm leading-relaxed text-slate-400 line-clamp-4">
+        {/* 6. Description */}
+        <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed min-h-[2.75rem]">
           {species.description}
         </p>
 
-        {/* Elevation range */}
-        <div className="text-xs flex items-center gap-1 text-slate-500">
+        {/* 7. Elevation / secondary info */}
+        <div className="text-xs flex items-center gap-1 text-slate-500 truncate">
           <span>Elevation: {species.elevationRange.min}m - {species.elevationRange.max}m</span>
         </div>
 
-        {/* Primary Threats */}
-        {species.threats && species.threats.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-2">
-            {species.threats.slice(0, 3).map((threat, idx) => (
-              <span
-                key={idx}
-                className="text-xs px-2 py-0.5 rounded whitespace-nowrap bg-slate-700/50 text-slate-300"
-              >
-                {threat}
-              </span>
-            ))}
-            {species.threats.length > 3 && (
-              <span className="text-xs px-2 py-0.5 rounded whitespace-nowrap bg-slate-700/50 text-slate-300">
-                +{species.threats.length - 3}
-              </span>
-            )}
-          </div>
-        )}
+        {/* 8. Tag / threat / category chip zone (Fixed height) */}
+        <div className="h-[52px] flex flex-wrap gap-1.5 overflow-hidden content-start">
+          {species.threats && species.threats.length > 0 ? (
+            <>
+              {species.threats.slice(0, 3).map((threat, idx) => (
+                <span
+                  key={idx}
+                  className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-300 max-w-[120px] truncate"
+                  title={threat}
+                >
+                  {threat}
+                </span>
+              ))}
+              {species.threats.length > 3 && (
+                <span className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-400 shrink-0">
+                  +{species.threats.length - 3}
+                </span>
+              )}
+            </>
+          ) : (
+            <span className="text-[11px] text-slate-600 italic mt-1">No active threats recorded</span>
+          )}
+        </div>
 
-        {/* View Details */}
-        <Button
-          onClick={() => window.location.href = `/biodiversity/species/${species.slug}`}
-          className="w-full py-2 text-sm rounded-lg mt-auto bg-gradient-to-r from-forest-600 to-forest-500"
-          icon={<ArrowRight className="w-4 h-4" />}
-        >
-          View Details
-        </Button>
+        {/* 9. CTA button (Pushed to bottom) */}
+        {species.commonName === 'Pending Validation' ? (
+          <Button
+            variant="outline"
+            className="w-full py-2 text-sm rounded-lg mt-auto border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800"
+          >
+            Awaiting Data
+          </Button>
+        ) : (
+          <Button
+            onClick={() => window.location.href = `/biodiversity/species/${species.slug}`}
+            className="w-full py-2 text-sm rounded-lg mt-auto bg-gradient-to-r from-forest-600 to-forest-500 border-0"
+            icon={<ArrowRight className="w-4 h-4" />}
+          >
+            View Details
+          </Button>
+        )}
       </div>
     </Card>
   );

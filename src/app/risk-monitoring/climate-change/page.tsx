@@ -54,19 +54,15 @@ export default function ClimateChangePage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Climate Change' }]}
-        title={<>Climate Change <span className="text-emerald-400">Signals</span></>}
+        title={<><span className="block whitespace-nowrap">Climate Change</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Signals</span></>}
         subtitle="Glacier retreat, snowline shifts, spring discharge changes, wetland shrinkage, altered migration timing, phenology shifts, and seasonal instability across Kashmir"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <Thermometer className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Climate Intelligence</Badge>}
+        icon={<Thermometer className="w-6 h-6 text-emerald-400" />}
+        label="Climate Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-red-600 hover:to-orange-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

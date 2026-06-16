@@ -2,12 +2,16 @@
 
 import React from 'react';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
-import { fisheriesData, WaterEntity } from '@/data/water-systems';
+import { fisheriesData } from '@/data/water-systems';
 
 export default function FisheriesPage() {
-  const districts = Array.from(new Set(fisheriesData.map(f => f.district)));
-  const categories = Array.from(new Set(fisheriesData.map(f => f.category)));
-  const fisheryTypes = Array.from(new Set(fisheriesData.map(f => f.fisheryData?.fisheryType).filter(Boolean)));
+  const categories = [...new Set(fisheriesData.map(f => f.category))].sort();
+  const districts  = [...new Set(fisheriesData.map(f => f.district))].filter(Boolean).sort();
+
+  const trout      = fisheriesData.filter(f => f.fisheryData?.fishSpecies?.some(s => s.toLowerCase().includes('trout'))).length;
+  const aquaculture = fisheriesData.filter(f => f.fisheryData?.fisheryType === 'aquaculture').length;
+  const highProd   = fisheriesData.filter(f => f.fisheryData?.productivity === 'high').length;
+  const threatened = fisheriesData.filter(f => f.threats && f.threats.length > 0).length;
 
   return (
     <WaterEntityListingPage
@@ -17,30 +21,34 @@ export default function FisheriesPage() {
       color="from-violet-500 to-purple-600"
       entities={fisheriesData}
       entityType="Fisheries"
-      filters={{
-        districts,
-        categories,
-        additionalFilters: [{ key: 'fisheryType', label: 'Fishery Type', options: fisheryTypes }],
-      }}
-      getEntitySlug={(entity) => `/water-systems/fisheries/${entity.slug}`}
-      getCategory={(entity) => entity.category}
-      renderAdditionalInfo={(entity) => (
-        entity.fisheryData && (
-          <div className="mb-4">
-            <div className="flex flex-wrap gap-2">
-              {entity.fisheryData.fishSpecies.slice(0, 4).map((species, idx) => (
-                <span key={idx} className="text-xs px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  {species.replace(/-/g, ' ')}
+      kpis={[
+        { label: 'Total Fisheries', value: fisheriesData.length, icon: 'Fish'           },
+        { label: 'Trout Systems',   value: trout,                icon: 'Waves',         color: 'text-violet-400' },
+        { label: 'Aquaculture',     value: aquaculture,          icon: 'BarChart3',     color: 'text-purple-400' },
+        { label: 'High Productivity', value: highProd,           icon: 'TrendingUp',    color: 'text-emerald-400'},
+        { label: 'Under Threat',    value: threatened,           icon: 'AlertTriangle', color: 'text-amber-400'  },
+        { label: 'Districts',       value: districts.length,     icon: 'MapPin'         },
+      ]}
+      filters={{ districts, categories }}
+      getEntitySlug={entity => `/water-systems/fisheries/${entity.slug}`}
+      getCategory={entity => entity.category}
+      renderAdditionalInfo={entity =>
+        entity.fisheryData ? (
+          <div className="mb-2">
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {entity.fisheryData.fishSpecies.slice(0, 4).map((sp, i) => (
+                <span key={i} className="text-[11px] px-2 py-0.5 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                  {sp.replace(/-/g, ' ')}
                 </span>
               ))}
             </div>
-            <div className="flex items-center gap-4 mt-3 text-xs text-slate-400">
+            <div className="flex gap-4 text-xs text-slate-400">
               <span>Type: <span className="text-white capitalize">{entity.fisheryData.fisheryType}</span></span>
               <span>Productivity: <span className="text-white capitalize">{entity.fisheryData.productivity}</span></span>
             </div>
           </div>
-        )
-      )}
+        ) : null
+      }
     />
   );
 }

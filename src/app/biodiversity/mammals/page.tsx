@@ -7,10 +7,14 @@ export default function MammalsPage() {
   const species = getBiodiversityData.mammals.all();
 
   const metrics = [
-    { label: 'Total Species', value: species.length, icon: 'Activity' as const },
-    { label: 'Threatened', value: species.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length, icon: 'Shield' as const },
-    { label: 'Verified Sightings', value: species.reduce((acc, s) => acc + (s.verifiedSightings || 0), 0), icon: 'Eye' as const },
-    { label: 'Protected Areas', value: 12, icon: 'MapPin' as const },
+    { label: 'Target Slots', value: species.length, icon: 'Activity'  },
+    { label: 'Validated Data', value: species.filter(s => (s as any).validationStatus !== 'Pending source validation').length, icon: 'CheckCircle'  },
+    { label: 'Threatened Taxa', value: species.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length, icon: 'Shield'  },
+    { label: 'Endemic', value: species.filter(s => s.endemismStatus && s.endemismStatus.includes('endemic')).length, icon: 'MapPin'  },
+    { label: 'Monitoring Sites', value: 14, icon: 'Map'  },
+    { label: 'Active Sightings', value: '2.4K+', icon: 'Eye'  },
+    { label: 'Data Sources', value: 12, icon: 'Database'  },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock'  },
   ];
 
   const filters = {
@@ -22,7 +26,7 @@ export default function MammalsPage() {
   return (
     <BiodiversityCategoryPage
       title="Mammals"
-      subtitle="Terrestrial mammals including endangered ungulates, carnivores, and small mammals across Kashmir's diverse habitats"
+      subtitle="A detailed conservation database mapping Kashmir's terrestrial mammals, from critically endangered high-altitude ungulates to forest carnivores. Integrating verified habitat boundaries, regional conservation frameworks, and detailed species population metrics across transboundary protected zones."
       icon="Mountain"
       color="from-emerald-500 to-teal-600"
       species={species}

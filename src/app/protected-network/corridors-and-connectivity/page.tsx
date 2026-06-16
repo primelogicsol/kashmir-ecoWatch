@@ -5,10 +5,11 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Map, TrendingUp, ArrowRight, Search, Activity, Filter, Grid3X3, List, Shield } from 'lucide-react';
+import { Map, TrendingUp, ArrowRight, Search, Activity, Filter, Grid3X3, List, Shield , ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getCorridors } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
+import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
 
 export default function CorridorsPage() {
   const corridors = getCorridors.all();
@@ -16,8 +17,13 @@ export default function CorridorsPage() {
   const [activeTab, setActiveTab] = useState<'core' | 'trans' | 'extended'>('core');
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDistrict, setSelectedDistrict] = useState('all');
-  const [selectedScope, setSelectedScope] = useState('all');
+  const [selectedDistrict, setSelectedDistrict] = useState('All');
+  const [selectedEcologicalScope, setSelectedEcologicalScope] = useState<Scope | 'All'>('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+
+  const availableDistricts = useMemo(() => getUnitsForScope(selectedEcologicalScope).sort(), [selectedEcologicalScope]);
+  const availableScopes = [...GEOGRAPHY.scopes];
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
 
   const districtsList = useMemo(() => {
@@ -43,13 +49,7 @@ export default function CorridorsPage() {
 
   const filteredCorridors = useMemo(() => {
     return corridors.filter(corridor => {
-      // 1. Tab scope filter
-      const tabScope = activeTab === 'core' ? 'Kashmir Core'
-                     : activeTab === 'trans' ? 'Trans-Divisional'
-                     : 'Transboundary / Extended';
       
-      const corridorScope = corridor.scope;
-      const matchesTab = corridorScope === tabScope;
 
       // 2. Search Text
       const query = searchQuery.toLowerCase().trim();
@@ -59,14 +59,14 @@ export default function CorridorsPage() {
         corridor.description.toLowerCase().includes(query);
 
       // 3. District Dropdown
-      const matchesDistrict = selectedDistrict === 'all' || (corridor.districts && corridor.districts.includes(selectedDistrict));
+      const matchesDistrict = selectedDistrict === 'All' || ((corridor as any).district === selectedDistrict || ((corridor as any).districts && (corridor as any).districts.includes(selectedDistrict)));
 
-      // 4. Ecological Scope Dropdown
-      const matchesScopeDropdown = selectedScope === 'all' || corridorScope === selectedScope;
+      const corridorScope = (corridor as any).scope || getScopeForUnit((corridor as any).district || ((corridor as any).districts && (corridor as any).districts[0]));
+      const matchesScope = selectedEcologicalScope === 'All' || corridorScope === selectedEcologicalScope || corridorScope === 'All';
 
-      return matchesTab && matchesSearch && matchesDistrict && matchesScopeDropdown;
+      return matchesSearch && matchesDistrict && matchesScope;
     });
-  }, [corridors, activeTab, searchQuery, selectedDistrict, selectedScope]);
+  }, [corridors, searchQuery, selectedDistrict, selectedEcologicalScope]);
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -128,7 +128,65 @@ export default function CorridorsPage() {
                   </div>
                 </div>
               ))}
-            </div>
+
+            {filteredCorridors.length > itemsPerPage && (
+              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-1 mx-2">
+                    {Array.from({ length: Math.ceil(filteredCorridors.length / itemsPerPage) }).map((_, i) => {
+                      const page = i + 1;
+                      const totalPages = Math.ceil(filteredCorridors.length / itemsPerPage);
+                      
+                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      }
+                      
+                      if (page === currentPage - 2 || page === currentPage + 2) {
+                        return <span key={page} className="text-slate-600 px-1">...</span>;
+                      }
+                      
+                      return null;
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredCorridors.length / itemsPerPage)))}
+                    disabled={currentPage === Math.ceil(filteredCorridors.length / itemsPerPage)}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="text-xs text-slate-500">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredCorridors.length)} of {filteredCorridors.length} records
+                </div>
+              </div>
+            )}
+          </div>
           </Card>
         </motion.div>
       </div>
@@ -190,7 +248,7 @@ export default function CorridorsPage() {
                   type="text"
                   placeholder="Search corridor name, type..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                   className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
               </div>
@@ -200,11 +258,11 @@ export default function CorridorsPage() {
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">District</label>
               <select
                 value={selectedDistrict}
-                onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
               >
-                <option value="all">All Districts</option>
-                {districtsList.map(d => (
+                <option value="All">All Units in {selectedEcologicalScope}</option>
+                {availableDistricts.map(d => (
                   <option key={d} value={d}>{d}</option>
                 ))}
               </select>
@@ -213,12 +271,11 @@ export default function CorridorsPage() {
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
               <select
-                value={selectedScope}
-                onChange={(e) => setSelectedScope(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#160C27] border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                value={selectedEcologicalScope}
+                onChange={(e) => { setSelectedEcologicalScope(e.target.value as Scope | 'All'); setSelectedDistrict('All'); setCurrentPage(1); }}
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
               >
-                <option value="all">All Scopes</option>
-                {scopesList.map(s => (
+                {availableScopes.map(s => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
@@ -229,7 +286,7 @@ export default function CorridorsPage() {
         {/* Corridors Grid/List */}
         {filteredCorridors.length > 0 ? (
           <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-            {filteredCorridors.map((corridor, index) => (
+            {filteredCorridors.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((corridor, index) => (
               <motion.a
                 key={corridor.id}
                 href={`/protected-network/corridors-and-connectivity/${corridor.slug}`}
@@ -239,7 +296,7 @@ export default function CorridorsPage() {
                 className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
                 <Card 
-                  className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-[#160C27] hover:border-emerald-500/20 transition-all duration-300`} 
+                  className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-slate-900/50 hover:border-emerald-500/20 transition-all duration-300`} 
                   padding="lg"
                 >
                   {viewMode === 'grid' ? (
@@ -302,8 +359,8 @@ export default function CorridorsPage() {
               className="border-white/20 text-white"
               onClick={() => {
                 setSearchQuery('');
-                setSelectedDistrict('all');
-                setSelectedScope('all');
+                setSelectedDistrict('All');
+                setSelectedEcologicalScope('All');
               }}
             >
               Reset Filters

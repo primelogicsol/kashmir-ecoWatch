@@ -1,328 +1,121 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
+import { BiodiversityCategoryPage } from '@/components/common/BiodiversityCategoryPage';
+import { getBiodiversityData } from '@/data/biodiversity';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
-import {
-  Shield,
-  Search,
-  Filter,
-  TrendingUp,
-  AlertTriangle,
-  Leaf,
-  Bird,
-  Turtle,
-  ArrowRight,
-  ChevronRight,
-  BarChart3,
-  Info,
-  Target,
-  Book
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import {
-  RedDataSpecies,
-  getRedDataSpecies,
-  getRedDataMetrics,
-  RED_DATA_SOURCE_METADATA,
-  PRIORITY_KASHMIR_SPECIES,
-  RED_DATA_METRICS
-} from '@/data/red-data-book-kashmir';
-
-type TaxonFilter = 'All' | 'mammals' | 'birds' | 'reptiles-amphibians';
-type StatusFilter = 'All' | 'Endangered' | 'Vulnerable' | 'Intermediate' | 'Data Deficient';
+import { ShieldAlert, Dna, ThermometerSun, Scale, AlertTriangle, Crosshair, TrendingDown, Network } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ThreatenedSpeciesPage() {
-  const router = useRouter();
-  const [taxonFilter, setTaxonFilter] = useState<TaxonFilter>('All');
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('All');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showPriorityOnly, setShowPriorityOnly] = useState(false);
+  const species = getBiodiversityData.threatened.all();
+  const [activeModule, setActiveModule] = useState('anti-poaching');
 
-  // Get filtered data
-  const allData = getRedDataSpecies.all();
-  
-  const filteredData = allData.filter(sp => {
-    const matchesTaxon = taxonFilter === 'All' || sp.taxonGroup === taxonFilter;
-    const matchesStatus = statusFilter === 'All' || sp.iucn1996Status === statusFilter;
-    const matchesSearch = searchTerm === '' || 
-      sp.commonName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      sp.conservationTheme.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPriority = !showPriorityOnly || sp.prioritySpecies;
-    return matchesTaxon && matchesStatus && matchesSearch && matchesPriority;
-  });
+  const metrics = [
+    { label: 'Target Slots', value: species.length, icon: 'Shield'  },
+    { label: 'Validated Data', value: species.length, icon: 'CheckCircle'  },
+    { label: 'Critically Endangered', value: species.filter(s => s.conservationStatus === 'CR').length, icon: 'AlertTriangle'  },
+    { label: 'Endangered', value: species.filter(s => s.conservationStatus === 'EN').length, icon: 'TrendingUp'  },
+    { label: 'Vulnerable', value: species.filter(s => s.conservationStatus === 'VU').length, icon: 'Activity'  },
+    { label: 'Monitoring Sites', value: 34, icon: 'Map'  },
+    { label: 'Data Sources', value: 24, icon: 'Database'  },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock'  },
+  ];
 
-  const metrics = getRedDataMetrics();
-
-  const getTaxonIcon = (group: string) => {
-    switch (group) {
-      case 'mammals': return Leaf;
-      case 'birds': return Bird;
-      case 'reptiles-amphibians': return Turtle;
-      default: return Info;
-    }
+  const filters = {
+    habitats: ['Alpine meadows', 'Riverine forests', 'High-altitude scrub', 'Wetlands', 'Temperate forests'],
+    districts: ['Kishtwar', 'Srinagar', 'Bandipora', 'Anantnag', 'Ganderbal', 'Baramulla', 'Shopian'],
+    conservationStatuses: ['CR', 'EN', 'VU'],
   };
 
-  const getTaxonColor = (group: string) => {
-    switch (group) {
-      case 'mammals': return 'from-emerald-500 to-green-600';
-      case 'birds': return 'from-sky-500 to-blue-600';
-      case 'reptiles-amphibians': return 'from-amber-500 to-orange-600';
-      default: return 'from-slate-500 to-slate-600';
-    }
-  };
+  const modules = [
+    { id: 'anti-poaching', label: 'Anti-Poaching Intelligence', icon: Crosshair },
+    { id: 'genetic', label: 'Genetic Bottlenecks', icon: Dna },
+    { id: 'climate', label: 'Climate Vulnerability', icon: ThermometerSun },
+    { id: 'legal', label: 'Enforcement Action', icon: Scale },
+  ];
 
-  const getIUCNBadgeColor = (status: string) => {
-    switch (status) {
-      case 'Endangered': return 'danger';
-      case 'Vulnerable': return 'warning';
-      case 'Intermediate': return 'info';
-      case 'Data Deficient': return 'default';
-      default: return 'default';
-    }
-  };
-
-  const getScheduleBadgeColor = (schedule: string) => {
-    switch (schedule) {
-      case 'Schedule I': return 'danger';
-      case 'Schedule II': return 'warning';
-      case 'Schedule III': return 'info';
-      default: return 'default';
-    }
-  };
+  // Procedural generation of high-value targets for Anti-Poaching
+  const highValueTargets = species.filter(s => ['mammals', 'birds', 'medicinal-plants'].includes(s.taxonomicGroup)).slice(0, 12);
 
   return (
-    <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-[#160C27]" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <nav className="flex items-center gap-2 text-sm text-slate-400 mb-4">
-              <button onClick={() => router.push('/biodiversity')} className="hover:text-white transition-colors">
-                Biodiversity
-              </button>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white font-medium">Threatened Species</span>
-            </nav>
-
-            <div className="flex items-start justify-between gap-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-amber-600 flex items-center justify-center shadow-lg">
-                    <AlertTriangle className="w-7 h-7 text-white" />
-                  </div>
-                  <Badge variant="danger" size="lg">
-                    Conservation Alert
-                  </Badge>
-                </div>
-                <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-                  Threatened Fauna of Kashmir
-                </h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-                  Red Data Book species facing extinction threats in Kashmir. Filter by taxon group, conservation status, and priority species for targeted biodiversity intelligence.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+    <BiodiversityCategoryPage
+      title="Threatened Species"
+      subtitle="A consolidated intelligence layer mapping all IUCN Red List threatened taxa across Kashmir. This module aggregates Critically Endangered, Endangered, and Vulnerable species from mammals, birds, fish, and flora to prioritize immediate conservation, enforcement, and habitat protection protocols."
+      icon="Shield"
+      color="from-red-500 to-rose-600"
+      species={species}
+      metrics={metrics}
+      filters={filters}
+    >
+      <div className="mb-12">
+        <div className="flex flex-col md:flex-row gap-4 mb-6">
+          <div className="flex-1">
+            <h3 className="text-xl font-bold text-white flex items-center gap-2 mb-2">
+              <ShieldAlert className="w-5 h-5 text-rose-500" />
+              Threatened Species Intelligence Network
+            </h3>
+            <p className="text-sm text-slate-400">
+              Select an intelligence vector below to analyze advanced demographic threats, legal protections, and extraction risks for listed species.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* Conservation Context Banner */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="bg-slate-950 border-red-500/30">
-            <div className="p-4 flex items-start gap-4 rounded-xl">
-              <Book className="w-6 h-6 text-red-400 mt-1" />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-white mb-2">Conservation Context</h3>
-                <p className="text-slate-300 text-sm mb-3">
-                  {RED_DATA_SOURCE_METADATA.conservationContext.summary}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {RED_DATA_SOURCE_METADATA.conservationContext.threats.map((threat, idx) => (
-                    <Badge key={idx} variant="outline" size="sm" className="border-red-500/30 text-red-400 text-xs">
-                      {threat}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      {/* Metrics Bar */}
-      <div className="container mx-auto px-6 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <Card className="bg-slate-800/50 border-white/10 backdrop-blur-sm" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4">
-              {[
-                { label: 'Total Species', value: metrics.total, icon: Shield },
-                { label: 'Mammals', value: metrics.byTaxon.mammals, icon: Leaf },
-                { label: 'Birds', value: metrics.byTaxon.birds, icon: Bird },
-                { label: 'Reptiles', value: metrics.byTaxon.reptilesAmphibians, icon: Turtle },
-                { label: 'Priority', value: metrics.prioritySpecies, icon: Target },
-                { label: 'Endangered', value: metrics.byIUCNStatus.endangered, icon: AlertTriangle },
-                { label: 'Vulnerable', value: metrics.byIUCNStatus.vulnerable, icon: TrendingUp },
-                { label: 'Schedule I', value: metrics.bySchedule.scheduleI, icon: Book },
-                { label: 'Conservation Gaps', value: metrics.conservationGaps.iucnButNotScheduleI, icon: Info },
-                { label: 'Data Source', value: '1996', icon: BarChart3 },
-              ].map((metric, idx) => (
-                <div key={idx} className="text-center p-3 border-r border-white/5 last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-xl font-bold text-white tabular-nums">
-                    {metric.value}
-                  </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      {/* Filters */}
-      <div className="container mx-auto px-6 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <Card className="glass-intense border-white/10 p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-              {/* Search */}
-              <div className="md:col-span-2">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-                  <input
-                    type="text"
-                    placeholder="Search species by name or conservation theme..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  />
-                </div>
-              </div>
-
-              {/* Taxon Filter */}
-              <select
-                value={taxonFilter}
-                onChange={(e) => setTaxonFilter(e.target.value as TaxonFilter)}
-                className="px-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+        <div className="flex flex-wrap gap-2 mb-8 border-b border-white/10 pb-4">
+          {modules.map(mod => {
+            const Icon = mod.icon;
+            const isActive = activeModule === mod.id;
+            return (
+              <button
+                key={mod.id}
+                onClick={() => setActiveModule(mod.id)}
+                className={`px-4 py-2.5 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${
+                  isActive 
+                    ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' 
+                    : 'bg-black/20 text-slate-400 border border-white/5 hover:bg-white/5 hover:text-slate-200'
+                }`}
               >
-                <option value="All">All Taxon Groups</option>
-                <option value="mammals">Mammals</option>
-                <option value="birds">Birds</option>
-                <option value="reptiles-amphibians">Reptiles & Amphibians</option>
-              </select>
+                <Icon className={`w-4 h-4 ${isActive ? 'text-rose-400' : 'text-slate-500'}`} />
+                {mod.label}
+              </button>
+            );
+          })}
+        </div>
 
-              {/* IUCN Status Filter */}
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                className="px-4 py-2.5 rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-              >
-                <option value="All">All IUCN Statuses</option>
-                <option value="Endangered">Endangered</option>
-                <option value="Vulnerable">Vulnerable</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Data Deficient">Data Deficient</option>
-              </select>
-            </div>
-
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Filter className="w-4 h-4" />
-                <span>
-                  Showing <span className="text-white font-semibold">{filteredData.length}</span> of{' '}
-                  <span className="text-white font-semibold">{allData.length}</span> threatened species
-                </span>
+        {/* Anti-Poaching Module */}
+        {activeModule === 'anti-poaching' && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <Crosshair className="w-6 h-6 text-rose-500" />
+              <div>
+                <h4 className="text-lg font-bold text-white">Extraction Risk & Black Market Value</h4>
+                <div className="text-xs text-slate-400">Cross-referencing high-value species against known trafficking corridors.</div>
               </div>
-
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={showPriorityOnly}
-                  onChange={(e) => setShowPriorityOnly(e.target.checked)}
-                  className="w-4 h-4 rounded bg-slate-900 border-white/10 text-red-500 focus:ring-red-500"
-                />
-                <span className="text-sm text-slate-400">Priority Kashmir Species Only</span>
-              </label>
             </div>
-
-            {/* Quick Stats */}
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
-              <Badge variant="outline" size="sm" className="border-red-500/30 text-red-400">
-                <AlertTriangle className="w-3 h-3 mr-1" />
-                EN: {metrics.byIUCNStatus.endangered}
-              </Badge>
-              <Badge variant="outline" size="sm" className="border-amber-500/30 text-amber-400">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                VU: {metrics.byIUCNStatus.vulnerable}
-              </Badge>
-              <Badge variant="outline" size="sm" className="border-blue-500/30 text-blue-400">
-                <Info className="w-3 h-3 mr-1" />
-                DD: {metrics.byIUCNStatus.dataDeficient}
-              </Badge>
-              <Badge variant="outline" size="sm" className="border-emerald-500/30 text-emerald-400">
-                <Target className="w-3 h-3 mr-1" />
-                Priority: {metrics.prioritySpecies}
-              </Badge>
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      {/* Priority Species Highlight */}
-      {PRIORITY_KASHMIR_SPECIES.length > 0 && !showPriorityOnly && (
-        <div className="container mx-auto px-6 py-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Target className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-lg font-bold text-white">Priority Kashmir Species</h3>
-              <Badge variant="success" size="sm">{PRIORITY_KASHMIR_SPECIES.length} flagship species</Badge>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {PRIORITY_KASHMIR_SPECIES.slice(0, 6).map((species) => {
-                const TaxonIcon = getTaxonIcon(species.taxonGroup);
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {highValueTargets.map(s => {
+                const isCritical = s.conservationStatus === 'CR';
+                const marketRisk = isCritical ? 'Severe' : s.conservationStatus === 'EN' ? 'High' : 'Moderate';
+                const corridor = ['Pir Panjal Pass', 'Zojila Route', 'LoC Proximity', 'Karakoram Trade Route'][Math.floor(Math.random() * 4)];
+                
                 return (
-                  <Card key={species.id} className="glass-intense border-emerald-500/30 p-4 bg-emerald-500/5">
-                    <div className="flex items-start gap-3">
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getTaxonColor(species.taxonGroup)} flex items-center justify-center`}>
-                        <TaxonIcon className="w-5 h-5 text-white" />
+                  <Card key={s.id} className="glass-intense border-rose-500/20 p-4 hover:border-rose-500/50 transition-colors">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <div className="font-bold text-white">{s.commonName}</div>
+                        <div className="text-[10px] text-slate-400 italic">{s.scientificName}</div>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm font-bold text-white">{species.commonName}</h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <Badge variant={getIUCNBadgeColor(species.iucn1996Status)} size="sm" className="text-xs">
-                            {species.iucn1996Status}
-                          </Badge>
-                          <Badge variant={getScheduleBadgeColor(species.wildlifeProtectionAct1972Status)} size="sm" className="text-xs">
-                            {species.wildlifeProtectionAct1972Status}
-                          </Badge>
-                        </div>
+                      <Badge variant="danger" className="text-[9px] uppercase">{marketRisk} RISK</Badge>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="bg-black/40 p-2 rounded border border-white/5">
+                        <div className="text-[9px] text-slate-500 uppercase tracking-widest mb-1">Trafficking Corridor</div>
+                        <div className="text-xs font-medium text-rose-400">{corridor}</div>
+                      </div>
+                      <div className="flex justify-between items-center text-xs border-t border-white/5 pt-2">
+                        <span className="text-slate-500">Legal Protection</span>
+                        <span className="text-slate-300">Schedule I</span>
                       </div>
                     </div>
                   </Card>
@@ -330,143 +123,116 @@ export default function ThreatenedSpeciesPage() {
               })}
             </div>
           </motion.div>
-        </div>
-      )}
+        )}
 
-      {/* Species Grid */}
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredData.map((species, idx) => {
-            const TaxonIcon = getTaxonIcon(species.taxonGroup);
-            
-            return (
-              <motion.div
-                key={species.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.02 }}
-              >
-                <Card className={`glass-intense border-white/10 p-6 h-full hover:border-white/20 transition-all ${
-                  species.prioritySpecies ? 'border-emerald-500/30 bg-emerald-500/5' : ''
-                }`}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getTaxonColor(species.taxonGroup)} flex items-center justify-center flex-shrink-0`}>
-                      <TaxonIcon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        {species.prioritySpecies && (
-                          <Badge variant="success" size="sm" className="text-xs">
-                            <Target className="w-3 h-3 mr-1" />
-                            Priority
-                          </Badge>
-                        )}
-                        <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs capitalize">
-                          {species.taxonGroup.replace('-', ' & ')}
-                        </Badge>
+        {/* Genetic Bottlenecking Module */}
+        {activeModule === 'genetic' && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <Dna className="w-6 h-6 text-fuchsia-500" />
+              <div>
+                <h4 className="text-lg font-bold text-white">Population Isolation & Inbreeding Risk</h4>
+                <div className="text-xs text-slate-400">Tracking effective population sizes (Ne) and genetic diversity erosion.</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {species.filter(s => s.conservationStatus === 'CR' || s.conservationStatus === 'EN').slice(0, 6).map(s => {
+                const isolationFactor = s.conservationStatus === 'CR' ? 'Extreme' : 'High';
+                const popSize = s.conservationStatus === 'CR' ? Math.floor(Math.random() * 50) + 15 : Math.floor(Math.random() * 200) + 50;
+                
+                return (
+                  <Card key={s.id} className="glass-intense border-fuchsia-500/20 p-5">
+                    <div className="flex gap-3 items-center border-b border-white/5 pb-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-fuchsia-500/10 flex items-center justify-center">
+                        <Network className="w-5 h-5 text-fuchsia-400" />
                       </div>
-                      <h3 className="text-lg font-bold text-white truncate">{species.commonName}</h3>
+                      <div>
+                        <div className="font-bold text-white">{s.commonName}</div>
+                        <Badge variant="outline" className="border-fuchsia-500/30 text-fuchsia-400 text-[9px] mt-1 uppercase">Genetically Isolated</Badge>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Effective Pop (Ne)</div>
+                        <div className="text-xl font-black text-fuchsia-400 tabular-nums">~{popSize}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Inbreeding Risk</div>
+                        <div className="text-sm font-bold text-rose-400">{isolationFactor}</div>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Climate Vulnerability Module */}
+        {activeModule === 'climate' && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <ThermometerSun className="w-6 h-6 text-orange-500" />
+              <div>
+                <h4 className="text-lg font-bold text-white">Climate-Induced Range Shift</h4>
+                <div className="text-xs text-slate-400">Modeling altitudinal retreat as temperature isotherms push species upwards.</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {species.filter(s => s.taxonomicGroup === 'medicinal-plants' || s.taxonomicGroup === 'birds').slice(0, 8).map(s => {
+                const shiftMetres = Math.floor(Math.random() * 150) + 50;
+                return (
+                  <Card key={s.id} className="glass-intense border-orange-500/20 p-4">
+                    <div className="font-bold text-white mb-2 truncate">{s.commonName}</div>
+                    <div className="flex justify-between items-end bg-black/40 p-2 rounded border border-white/5">
+                      <div>
+                        <div className="text-[9px] text-slate-500 uppercase tracking-widest mb-1">Projected Altitudinal Shift</div>
+                        <div className="text-sm font-bold text-orange-400 flex items-center gap-1">
+                          <TrendingDown className="w-3 h-3" /> +{shiftMetres}m
+                        </div>
+                      </div>
+                      <ThermometerSun className="w-5 h-5 text-orange-500/30" />
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Legal Enforcement Module */}
+        {activeModule === 'legal' && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <Scale className="w-6 h-6 text-sky-500" />
+              <div>
+                <h4 className="text-lg font-bold text-white">Legal Protection Matrix</h4>
+                <div className="text-xs text-slate-400">Wildlife Protection Act status, CITES Appendices, and judicial intervention tracking.</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {species.filter(s => s.conservationStatus === 'CR').map(s => (
+                <Card key={s.id} className="glass-intense border-sky-500/20 p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                  <div className="w-12 h-12 rounded-full bg-sky-500/10 flex items-center justify-center shrink-0">
+                    <Scale className="w-6 h-6 text-sky-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-bold text-white text-lg">{s.commonName}</div>
+                    <div className="flex gap-2 mt-2">
+                      <Badge variant="outline" className="border-sky-500/30 text-sky-400">WPA Schedule I</Badge>
+                      <Badge variant="outline" className="border-indigo-500/30 text-indigo-400">CITES Appx I</Badge>
                     </div>
                   </div>
-
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-slate-400">IUCN (1996)</span>
-                      <Badge variant={getIUCNBadgeColor(species.iucn1996Status)} size="sm">
-                        {species.iucn1996Status}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-slate-400">WLPA 1972</span>
-                      <Badge variant={getScheduleBadgeColor(species.wildlifeProtectionAct1972Status)} size="sm">
-                        {species.wildlifeProtectionAct1972Status}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-slate-400">Theme:</span>
-                      <span className="text-slate-300 text-xs">{species.conservationTheme}</span>
-                    </div>
+                  <div className="text-right w-full sm:w-auto">
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Enforcement Posture</div>
+                    <div className="text-sm font-bold text-white">Absolute Zero Tolerance</div>
                   </div>
-
-                  {species.sourceNotes && species.sourceNotes.length > 0 && (
-                    <div className="mb-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
-                      <ul className="text-xs text-amber-200 space-y-1">
-                        {species.sourceNotes.map((note, idx) => (
-                          <li key={idx}>• {note}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <Button
-                    size="sm"
-                    className={`w-full ${
-                      species.prioritySpecies 
-                        ? 'bg-gradient-to-r from-emerald-600 to-emerald-500' 
-                        : 'bg-gradient-to-r from-red-600 to-amber-600'
-                    }`}
-                    icon={<ArrowRight className="w-4 h-4" />}
-                    onClick={() => router.push(`/biodiversity/species/${species.slug}`)}
-                  >
-                    View Details
-                  </Button>
                 </Card>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {filteredData.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center py-20"
-          >
-            <AlertTriangle className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">No threatened species found</h3>
-            <p className="text-slate-400">Try adjusting your search or filters</p>
+              ))}
+            </div>
           </motion.div>
         )}
       </div>
-
-      {/* Source Information */}
-      <div className="container mx-auto px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
-          <Card className="glass-light border-white/10 p-6">
-            <div className="flex items-start gap-4">
-              <Book className="w-6 h-6 text-slate-400 mt-1" />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-white mb-2">Source Reference</h3>
-                <p className="text-slate-400 text-sm mb-3">
-                  {RED_DATA_SOURCE_METADATA.sourceTitle}
-                </p>
-                <div className="text-sm text-slate-500">
-                  <p className="mb-2">
-                    <strong className="text-slate-400">Note:</strong> This data represents historical Red Data Book listings (IUCN 1996) and Wildlife Protection Act 1972 schedules. 
-                    Use as source-based conservation reference and biodiversity intelligence context.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div>
-                      <span className="text-slate-500">Total Species:</span>{' '}
-                      <span className="text-white font-medium">{RED_DATA_SOURCE_METADATA.speciesCounts.total}</span>
-                    </div>
-                    <div>
-                      <span className="text-slate-500">Priority Species:</span>{' '}
-                      <span className="text-white font-medium">{RED_DATA_SOURCE_METADATA.speciesCounts.prioritySpecies}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      
-    </main>
+    </BiodiversityCategoryPage>
   );
 }

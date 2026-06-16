@@ -33,14 +33,9 @@ export default function FieldReportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Field <span className="text-emerald-400">Intelligence Reports</span></>}
+        title={<><span className="block whitespace-nowrap">Field Intelligence</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports</span></>}
         subtitle="Field reports, survey findings, technical assessments, and monitoring bulletins supporting environmental intelligence across Kashmir. These documents feed evidence layers, district profiles, alerts, and module intelligence throughout the platform."
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <FileText className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Field Intelligence</Badge>}
+        icon={<FileText className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Summary Strip */}

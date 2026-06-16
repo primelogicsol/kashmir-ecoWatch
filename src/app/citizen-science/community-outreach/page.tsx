@@ -35,7 +35,7 @@ export default function CommunityOutreachPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950"><section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-[#160C27]">
+    <main className="min-h-screen bg-slate-950"><section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-slate-900/50">
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
@@ -118,21 +118,23 @@ export default function CommunityOutreachPage() {
               </Card>
 
               {/* Registration Form */}
-              <Card id="outreach-form" className="glass-intense border-white/10 p-6">
-                <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2"><Megaphone className="w-5 h-5 text-amber-400" />Outreach Registration</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div><label className="block text-sm font-medium text-slate-300 mb-1">Full Name *</label><input type="text" required value={formData.name} onChange={e => setFormData(p => ({...p, name: e.target.value}))} placeholder="Your name" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
-                    <div><label className="block text-sm font-medium text-slate-300 mb-1">Email *</label><input type="email" required value={formData.email} onChange={e => setFormData(p => ({...p, email: e.target.value}))} placeholder="your@email.com" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div><label className="block text-sm font-medium text-slate-300 mb-1">District *</label><input type="text" required value={formData.district} onChange={e => setFormData(p => ({...p, district: e.target.value}))} placeholder="Your district" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
-                    <div><label className="block text-sm font-medium text-slate-300 mb-1">Preferred Role</label><select value={formData.role} onChange={e => setFormData(p => ({...p, role: e.target.value}))} className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"><option value="">Select role</option>{outreachRoles.map(r => <option key={r.title} value={r.title}>{r.title}</option>)}</select></div>
-                  </div>
-                  <div><label className="block text-sm font-medium text-slate-300 mb-1">Message / Interests</label><textarea rows={3} value={formData.message} onChange={e => setFormData(p => ({...p, message: e.target.value}))} placeholder="Tell us about your interests in community outreach" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
-                  <Button type="submit" className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white">{joined ? <><CheckCircle className="w-5 h-5 mr-2" /> Registered!</> : <><Users className="w-5 h-5 mr-2" />Register for Outreach</>}</Button>
-                </form>
-              </Card>
+              <div id="outreach-form">
+                <Card className="glass-intense border-white/10 p-6">
+                  <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2"><Megaphone className="w-5 h-5 text-amber-400" />Outreach Registration</h2>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div><label className="block text-sm font-medium text-slate-300 mb-1">Full Name *</label><input type="text" required value={formData.name} onChange={e => setFormData(p => ({...p, name: e.target.value}))} placeholder="Your name" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
+                      <div><label className="block text-sm font-medium text-slate-300 mb-1">Email *</label><input type="email" required value={formData.email} onChange={e => setFormData(p => ({...p, email: e.target.value}))} placeholder="your@email.com" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div><label className="block text-sm font-medium text-slate-300 mb-1">District *</label><input type="text" required value={formData.district} onChange={e => setFormData(p => ({...p, district: e.target.value}))} placeholder="Your district" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
+                      <div><label className="block text-sm font-medium text-slate-300 mb-1">Preferred Role</label><select value={formData.role} onChange={e => setFormData(p => ({...p, role: e.target.value}))} className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"><option value="">Select role</option>{outreachRoles.map(r => <option key={r.title} value={r.title}>{r.title}</option>)}</select></div>
+                    </div>
+                    <div><label className="block text-sm font-medium text-slate-300 mb-1">Message / Interests</label><textarea rows={3} value={formData.message} onChange={e => setFormData(p => ({...p, message: e.target.value}))} placeholder="Tell us about your interests in community outreach" className="w-full px-3 py-2 rounded-lg bg-slate-800/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" /></div>
+                    <Button type="submit" className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white">{joined ? <><CheckCircle className="w-5 h-5 mr-2" /> Registered!</> : <><Users className="w-5 h-5 mr-2" />Register for Outreach</>}</Button>
+                  </form>
+                </Card>
+              </div>
             </div>
 
             <div className="space-y-6">

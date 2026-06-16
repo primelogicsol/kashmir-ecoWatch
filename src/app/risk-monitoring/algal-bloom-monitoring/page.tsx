@@ -8,19 +8,13 @@ import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import {
   Waves, ArrowRight, Map, AlertTriangle, Activity, Droplets,
-  TrendingUp, Filter, Layers, Eye, Leaf, Flower2
+  TrendingUp, Filter, Layers, Eye, Leaf, Flower2, MapPin, Target
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-const algalBloomData = [
-  { id: 'ab-1', waterbody: 'Dal Lake', district: 'Srinagar', bloomStatus: 'Active', severity: 'High', coverage: '35%', dominant: 'Microcystis' },
-  { id: 'ab-2', waterbody: 'Manasbal Lake', district: 'Ganderbal', bloomStatus: 'Developing', severity: 'Moderate', coverage: '18%', dominant: 'Anabaena' },
-  { id: 'ab-3', waterbody: 'Anchar Lake', district: 'Srinagar', bloomStatus: 'Active', severity: 'Critical', coverage: '55%', dominant: 'Microcystis' },
-  { id: 'ab-4', waterbody: 'Hokersar Wetland', district: 'Srinagar', bloomStatus: 'Low Risk', severity: 'Low', coverage: '5%', dominant: 'None' },
-  { id: 'ab-5', waterbody: 'Wular Lake', district: 'Bandipora', bloomStatus: 'Monitoring', severity: 'Low', coverage: '8%', dominant: 'None' },
-];
+import { algalBloomData, getDistrictSummaries } from '@/data/algal-bloom';
 
 const bloomFactors = [
   { factor: 'Nutrient Loading', contribution: '40%', description: 'Nitrogen and phosphorus from sewage and agriculture' },
@@ -37,33 +31,60 @@ const seasonalRisk = [
   { season: 'Winter (Dec-Feb)', risk: 'Low', description: 'Cold temperatures suppress algal growth' },
 ];
 
-const districtSummary = [
-  { district: 'Srinagar', waterbodies: 8, activeBlooms: 3, avgSeverity: 'High', trend: 'worsening' as const },
-  { district: 'Ganderbal', waterbodies: 5, activeBlooms: 1, avgSeverity: 'Moderate', trend: 'stable' as const },
-  { district: 'Bandipora', waterbodies: 4, activeBlooms: 0, avgSeverity: 'Low', trend: 'stable' as const },
-  { district: 'Budgam', waterbodies: 6, activeBlooms: 1, avgSeverity: 'Moderate', trend: 'worsening' as const },
-];
-
 export default function AlgalBloomMonitoringPage() {
   const router = useRouter();
+  
+  const districtSummary = getDistrictSummaries();
+
+  // Group by contributing watershed for Watershed Intelligence
+  const watershedSummaries = React.useMemo(() => {
+    const map: Record<string, {
+      name: string;
+      waterbodies: string[];
+      pressure: 'Low' | 'Moderate' | 'Severe';
+      inflows: Set<string>;
+      criticalCount: number;
+    }> = {};
+
+    algalBloomData.forEach(r => {
+      const wName = r.contributingWatershed;
+      if (!map[wName]) {
+        map[wName] = {
+          name: wName,
+          waterbodies: [],
+          pressure: 'Low',
+          inflows: new Set(),
+          criticalCount: 0
+        };
+      }
+      map[wName].waterbodies.push(r.waterbodyName);
+      r.topInflowChannels.forEach(ch => map[wName].inflows.add(ch));
+      if (r.riskLevel === 'Critical' || r.riskLevel === 'High') {
+        map[wName].criticalCount++;
+      }
+      if (r.runoffPressureScore === 'Severe') {
+        map[wName].pressure = 'Severe';
+      } else if (r.runoffPressureScore === 'Moderate' && map[wName].pressure !== 'Severe') {
+        map[wName].pressure = 'Moderate';
+      }
+    });
+
+    return Object.values(map);
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Algal Bloom Monitoring' }]}
-        title={<>Algal Bloom <span className="text-emerald-400">Risk & Monitoring</span></>}
-        subtitle="Eutrophication-prone wetland monitoring, bloom alerts, seasonality tracking, visual risk state assessment, and water quality linkage for Kashmir lake systems"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-            <Waves className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Bloom Intelligence</Badge>}
+        title={<><span className="block whitespace-nowrap">Algal Bloom Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Monitoring</span></>}
+        subtitle="Eutrophication-prone lake and wetland monitoring for Kashmir's freshwater systems, linking bloom risk, cyanobacteria indicators, nutrient loading, oxygen stress, seasonal bloom windows, satellite signals, and field water-quality evidence."
+        icon={<Waves className="w-6 h-6 text-emerald-400" />}
+        label="Bloom Intelligence"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-600 hover:to-green-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />
@@ -101,7 +122,7 @@ export default function AlgalBloomMonitoringPage() {
               className="text-center"
             >
               <div className="text-4xl font-bold text-emerald-400 mb-2">23</div>
-              <div className="text-sm text-slate-400 mb-1">Waterbodies Monitored</div>
+              <div className="text-sm text-slate-400 mb-1">Priority Waterbodies</div>
               <div className="text-xs text-slate-500">Lakes & Wetlands</div>
             </motion.div>
             <motion.div
@@ -111,8 +132,8 @@ export default function AlgalBloomMonitoringPage() {
               className="text-center"
             >
               <div className="text-4xl font-bold text-red-400 mb-2">4</div>
-              <div className="text-sm text-slate-400 mb-1">Active Blooms</div>
-              <div className="text-xs text-red-400">2 Critical</div>
+              <div className="text-sm text-slate-400 mb-1">High-Alert Bloom Sites</div>
+              <div className="text-xs text-red-400">Needs Verification</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -121,8 +142,8 @@ export default function AlgalBloomMonitoringPage() {
               className="text-center"
             >
               <div className="text-4xl font-bold text-amber-400 mb-2">8</div>
-              <div className="text-sm text-slate-400 mb-1">High Risk Sites</div>
-              <div className="text-xs text-amber-400">Eutrophic</div>
+              <div className="text-sm text-slate-400 mb-1">Eutrophication-Risk Sites</div>
+              <div className="text-xs text-amber-400">Nutrient Sensitive</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -131,8 +152,8 @@ export default function AlgalBloomMonitoringPage() {
               className="text-center"
             >
               <div className="text-4xl font-bold text-orange-400 mb-2">55%</div>
-              <div className="text-sm text-slate-400 mb-1">Max Coverage</div>
-              <div className="text-xs text-red-400">Anchar Lake</div>
+              <div className="text-sm text-slate-400 mb-1">Max Estimated Coverage</div>
+              <div className="text-xs text-red-400">Satellite Extrapolated</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -140,9 +161,9 @@ export default function AlgalBloomMonitoringPage() {
               transition={{ duration: 0.4, delay: 0.4 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-blue-400 mb-2">24/7</div>
+              <div className="text-4xl font-bold text-blue-400 mb-2">Ready</div>
               <div className="text-sm text-slate-400 mb-1">Monitoring Status</div>
-              <div className="text-xs text-emerald-400">Satellite + Ground</div>
+              <div className="text-xs text-emerald-400">Satellite + Field Validation</div>
             </motion.div>
           </div>
         </div>
@@ -240,7 +261,7 @@ export default function AlgalBloomMonitoringPage() {
             <p className="text-slate-400">Latest algal bloom monitoring data from Kashmir waterbodies</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {algalBloomData.map((record, index) => (
               <motion.div
                 key={record.id}
@@ -248,33 +269,141 @@ export default function AlgalBloomMonitoringPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="glass-intense border-white/10 p-5">
-                  <div className="flex items-start justify-between mb-2">
+                <Card className="glass-intense border-white/10 p-5 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h3 className="text-sm font-bold text-white leading-tight">{record.waterbodyName}</h3>
+                        <div className="text-xs text-slate-500 mt-0.5">{record.district}</div>
+                      </div>
+                      <Badge
+                        variant={
+                          record.riskLevel === 'Critical' ? 'danger' :
+                          record.riskLevel === 'High' ? 'warning' :
+                          record.riskLevel === 'Moderate' ? 'info' : 'success'
+                        }
+                        size="sm"
+                      >
+                        {record.riskLevel}
+                      </Badge>
+                    </div>
+                    <div className="text-xs text-slate-400 mb-3">{record.bloomStatus}</div>
+                    
+                    <div className="space-y-1.5 border-t border-white/5 pt-2">
+                      <div className="flex justify-between text-xs">
+                        <span className="text-slate-500">Coverage</span>
+                        <span className="text-emerald-400 font-medium">{record.surfaceCoveragePercent ? `${record.surfaceCoveragePercent}%` : 'TBD'}</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="text-slate-500">Dominant</span>
+                        <span className="text-white truncate max-w-[140px] text-right" title={record.dominantTaxa}>{record.dominantTaxa}</span>
+                      </div>
+                      
+                      {/* Watershed context */}
+                      <div className="flex justify-between text-[11px] text-slate-400">
+                        <span>Catchment</span>
+                        <span className="text-slate-300 truncate max-w-[140px] text-right" title={record.contributingWatershed}>{record.contributingWatershed}</span>
+                      </div>
+                      <div className="flex justify-between text-[11px] text-slate-400">
+                        <span>Runoff Pressure</span>
+                        <span className={`font-semibold ${
+                          record.runoffPressureScore === 'Severe' ? 'text-red-400' :
+                          record.runoffPressureScore === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'
+                        }`}>{record.runoffPressureScore}</span>
+                      </div>
+                      <div className="flex justify-between text-[11px] text-slate-400">
+                        <span>Top Inflows</span>
+                        <span className="text-emerald-300 truncate max-w-[140px] text-right" title={record.topInflowChannels.join(', ')}>
+                          {record.topInflowChannels.join(', ') || 'Springs'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between text-xs mt-3 pt-2 border-t border-white/5 text-slate-500">
+                    <span>Evidence</span>
+                    <span className="text-slate-400 truncate max-w-[140px] text-right" title={record.primaryEvidence}>{record.primaryEvidence || 'Literature-supported'}</span>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Watershed Upstream Intelligence Section */}
+      <section className="py-16 bg-gradient-to-b from-slate-900 to-slate-950 border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
+                Upstream Intelligence
+              </Badge>
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2">Contributing Watersheds & Runoff Pressure</h2>
+            <p className="text-slate-400">
+              Algal blooms are symptoms; watersheds are the cause. Upstream catchment runoff, agricultural discharge, 
+              and inflow channels carry the nutrient loads that fuel lake and wetland eutrophication.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {watershedSummaries.map((w, index) => (
+              <motion.div
+                key={w.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <Card className="glass-intense border-white/10 p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all">
+                  <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-sm font-bold text-white">{record.waterbody}</h3>
-                      <div className="text-xs text-slate-500">{record.district}</div>
+                      <h3 className="text-lg font-bold text-white mb-1 leading-snug">{w.name}</h3>
+                      <p className="text-xs text-slate-500">
+                        {w.waterbodies.length} connected {w.waterbodies.length === 1 ? 'waterbody' : 'waterbodies'}
+                      </p>
                     </div>
                     <Badge
                       variant={
-                        record.severity === 'Critical' ? 'danger' :
-                        record.severity === 'High' ? 'warning' :
-                        record.severity === 'Moderate' ? 'info' : 'success'
+                        w.pressure === 'Severe' ? 'danger' :
+                        w.pressure === 'Moderate' ? 'warning' : 'success'
                       }
                       size="sm"
                     >
-                      {record.severity}
+                      {w.pressure} Pressure
                     </Badge>
                   </div>
-                  <div className="text-xs text-slate-400 mb-2">{record.bloomStatus}</div>
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-500">Coverage</span>
-                      <span className="text-emerald-400">{record.coverage}</span>
+
+                  <div className="space-y-3 flex-grow">
+                    <div>
+                      <div className="text-[11px] font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Monitored Lakes & Wetlands</div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {w.waterbodies.map(wb => (
+                          <Badge key={wb} variant="outline" className="border-white/5 bg-white/5 text-slate-300 text-[10px]">
+                            {wb}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-500">Dominant</span>
-                      <span className="text-white">{record.dominant}</span>
+
+                    <div>
+                      <div className="text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Top Inflow & Point Channels</div>
+                      <p className="text-xs text-emerald-300/90 leading-relaxed font-medium">
+                        {Array.from(w.inflows).join(', ') || 'Subsurface inflows / springs'}
+                      </p>
                     </div>
+                  </div>
+
+                  <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
+                    <span>Eutrophication Risk</span>
+                    <span className={w.criticalCount > 0 ? 'text-red-400 font-semibold' : 'text-slate-400'}>
+                      {w.criticalCount} High/Critical Sites
+                    </span>
                   </div>
                 </Card>
               </motion.div>
@@ -395,8 +524,8 @@ export default function AlgalBloomMonitoringPage() {
             <Card className="glass-intense border-pink-500/30 hover:border-pink-500/50 transition-all cursor-pointer group overflow-hidden">
               <div className="relative p-6 md:p-8">
                 {/* Background Gradient */}
-                <div className="absolute inset-0 bg-[#160C27]" />
-                <div className="absolute inset-0 bg-[#160C27]" />
+                <div className="absolute inset-0 bg-slate-900/50" />
+                <div className="absolute inset-0 bg-slate-900/50" />
                 
                 <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
                   {/* Icon */}
@@ -509,7 +638,7 @@ export default function AlgalBloomMonitoringPage() {
         </div>
       </section>
 
-      
+      <AdvancedFooter />
     </main>
   );
 }

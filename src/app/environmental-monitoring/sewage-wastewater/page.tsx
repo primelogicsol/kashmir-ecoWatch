@@ -123,14 +123,9 @@ export default function SewageWastewaterPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Sewage & Wastewater' }
         ]}
-        title={<>Sewage &amp; <span className="text-emerald-400">Wastewater</span></>}
+        title={<><span className="block whitespace-nowrap">Sewage &amp;</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wastewater</span></>}
         subtitle="Monitoring sewage overflow events, wastewater discharge points, treatment plant performance, and contamination pathways across Kashmir&apos;s lakes, rivers, and wetland ecosystems"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-2xl">
-            <Droplets className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="info" size="lg">Sewage Intelligence</Badge>}
+        icon={<Droplets className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Metrics */}

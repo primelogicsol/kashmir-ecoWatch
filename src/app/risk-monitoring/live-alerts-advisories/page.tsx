@@ -20,14 +20,12 @@ export default function LiveAlertsAdvisoriesPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>Live <span className="text-emerald-400">Alerts & Advisories</span></>}
+        title={<><span className="block whitespace-nowrap">Live Alerts</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Advisories</span></>}
         subtitle="Real-time hazard alerts, weather advisories, and emergency notifications"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl"><Bell className="w-5 h-5 md:w-8 md:h-8 text-white" /></div>
-        }
-        badge={<Badge variant="danger" size="lg">Real-time Alerts</Badge>}
+        icon={<Bell className="w-6 h-6 text-emerald-400" />}
+        label="Real-time Alerts"
         actions={
-          <Button size="lg" className="bg-gradient-to-r from-red-500 to-rose-600" onClick={() => router.push('/risk-monitoring')}><ArrowRight className="w-5 h-5 mr-2" />Back to Risk Monitoring</Button>
+          <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/risk-monitoring')}><ArrowRight className="w-5 h-5 mr-2" />Back to Risk Monitoring</Button>
         }
       />
       <section className="py-20">

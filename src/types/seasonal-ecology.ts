@@ -1,9 +1,9 @@
 // Seasonal Ecology Types for Kashmir Environmental Intelligence Platform
 
-export type SeasonType = 'spring' | 'summer' | 'monsoon' | 'autumn' | 'winter' | 'pre-spring';
-export type ElevationZone = 'lowland' | 'mid-elevation' | 'highland' | 'alpine' | 'nival';
-export type HabitatType = 'wetland' | 'forest' | 'meadow' | 'orchard' | 'riverine' | 'lake' | 'mountain' | 'valley' | 'alpine';
-export type DistrictKashmir = 'srinagar' | 'anantnag' | 'baramulla' | 'budgam' | 'kupwara' | 'pulwama' | 'shopian' | 'bandipora' | 'ganderbal' | 'kulgam' | 'rambhan' | 'kishtwar' | 'doda' | 'poonch' | 'rajouri' | 'udhampur' | 'kathua' | 'samba';
+export type SeasonType = 'spring' | 'summer' | 'monsoon' | 'autumn' | 'winter' | 'pre-spring' | string;
+export type ElevationZone = 'lowland' | 'mid-elevation' | 'highland' | 'alpine' | 'nival' | 'mid-hills' | string;
+export type HabitatType = 'wetland' | 'forest' | 'meadow' | 'orchard' | 'riverine' | 'lake' | 'mountain' | 'valley' | 'alpine' | string;
+export type DistrictKashmir = string;
 
 export interface SeasonalTimingWindow {
   startMonth: number; // 1-12
@@ -16,7 +16,7 @@ export interface SeasonalLandscape {
   id: string;
   slug: string;
   name: string;
-  category: 'valley' | 'orchard-belt' | 'alpine' | 'wetland-complex' | 'forest-landscape' | 'river-valley' | 'mountain-range';
+  category?: 'valley' | 'orchard-belt' | 'alpine' | 'wetland-complex' | 'forest-landscape' | 'river-valley' | 'mountain-range' | string;
   description: string;
   longDescription: string;
   districts: DistrictKashmir[];
@@ -24,14 +24,16 @@ export interface SeasonalLandscape {
   elevationRange?: { min: number; max: number }; // meters
   area?: number; // km²
   primarySeasons: SeasonType[];
-  keyFeatures: string[];
-  ecologicalSignificance: string;
-  seasonalDynamics: string;
+  keyFeatures?: string[];
+  ecologicalSignificance?: string;
+  seasonalDynamics?: string;
   associatedSpecies?: string[];
   associatedWaterBodies?: string[];
   linkedTrails?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
+  ecologicalDrivers?: string[];
 }
 
 export interface BloomZone {
@@ -41,63 +43,70 @@ export interface BloomZone {
   bloomType: 'orchard' | 'wildflower' | 'alpine-meadow' | 'wetland-flora' | 'medicinal-plant' | 'garden' | 'forest-understory';
   description: string;
   longDescription: string;
-  primarySpecies: string[];
+  primarySpecies?: string[];
   districts: DistrictKashmir[];
   elevationZone: ElevationZone;
   elevationRange?: { min: number; max: number };
   bloomWindow: SeasonalTimingWindow;
-  peakBloomPeriod: string;
+  peakBloomPeriod?: string;
   pollinators?: string[];
-  ecologicalRole: string;
+  ecologicalRole?: string;
   culturalSignificance?: string;
   linkedLandscapes?: string[];
   linkedTrails?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface MigrationWindow {
   id: string;
   slug: string;
   name: string;
-  wetlandType: 'marsh' | 'lake' | 'oxbow' | 'reservoir' | 'stream' | 'wetland-complex';
+  wetlandType?: 'marsh' | 'lake' | 'oxbow' | 'reservoir' | 'stream' | 'wetland-complex' | string;
   description: string;
   longDescription: string;
-  district: DistrictKashmir;
-  primarySpecies: string[];
+  district?: DistrictKashmir;
+  districts?: DistrictKashmir[];
+  primarySpecies?: string[];
   migrationType: 'breeding' | 'wintering' | 'passage' | 'resident';
   arrivalWindow: SeasonalTimingWindow;
   departureWindow?: SeasonalTimingWindow;
-  peakPresenceMonths: number[];
+  peakPresenceMonths?: number[];
   populationEstimate?: string;
-  habitatFeatures: string[];
-  threats: string[];
+  habitatFeatures?: string[];
+  threats?: string[];
   conservationMeasures?: string[];
   birdingRoutes?: string[];
   relatedSightings?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
+  elevationZone?: ElevationZone;
 }
 
 export interface PollinatorWindow {
   id: string;
   slug: string;
   name: string;
-  pollinatorGroup: 'bee' | 'bumblebee' | 'butterfly' | 'moth' | 'fly' | 'beetle' | 'bird' | 'bat';
+  pollinatorGroup: 'bee' | 'bumblebee' | 'butterfly' | 'moth' | 'fly' | 'beetle' | 'bird' | 'bat' | string;
   description: string;
   longDescription: string;
-  associatedBlooms: string[];
+  associatedBlooms?: string[];
   districts: DistrictKashmir[];
   activityWindow: SeasonalTimingWindow;
-  peakActivityMonths: number[];
-  habitatTypes: HabitatType[];
+  peakActivityMonths?: number[];
+  habitatTypes?: HabitatType[];
   linkedAgriculturalLandscapes?: string[];
   linkedOrchards?: string[];
   linkedMeadows?: string[];
-  ecologicalImportance: string;
+  ecologicalImportance?: string;
   threats?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
+  elevationZone?: ElevationZone;
+  associatedFlora?: string[];
 }
 
 export interface PhenologyRecord {
@@ -115,42 +124,46 @@ export interface PhenologyRecord {
   observedTiming: SeasonalTimingWindow;
   historicalBaseline?: string;
   climateSensitivity?: 'low' | 'medium' | 'high';
-  verificationStatus: 'verified' | 'provisional' | 'citizen-science';
-  dataSources: string[];
+  verificationStatus?: 'verified' | 'provisional' | 'citizen-science';
+  dataSources?: string[];
   linkedBloomZones?: string[];
   linkedHabitats?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface HabitatSignal {
   id: string;
   slug: string;
-  name: string;
-  signalType: 'wetland-expansion' | 'wetland-contraction' | 'reedbed-growth' | 'forest-green-up' | 'forest-senescence' | 'meadow-emergence' | 'snow-retreat' | 'ice-formation';
+  name?: string;
+  title?: string;
+  signalType: 'wetland-expansion' | 'wetland-contraction' | 'reedbed-growth' | 'forest-green-up' | 'forest-senescence' | 'meadow-emergence' | 'snow-retreat' | 'ice-formation' | string;
   description: string;
   longDescription: string;
   districts: DistrictKashmir[];
   elevationZone: ElevationZone;
   seasonalTiming: SeasonalTimingWindow;
   ecologicalDrivers: string[];
-  climateIndicators: string[];
+  climateIndicators?: string[];
   linkedWaterBodies?: string[];
   linkedSpecies?: string[];
   monitoringParameters?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface WaterTransition {
   id: string;
   slug: string;
   name: string;
-  waterbodyType: 'lake' | 'wetland' | 'river' | 'stream' | 'spring' | 'glacier-fed' | 'reservoir';
+  waterbodyType?: 'lake' | 'wetland' | 'river' | 'stream' | 'spring' | 'glacier-fed' | 'reservoir' | string;
   description: string;
   longDescription: string;
-  district: DistrictKashmir;
-  transitionType: 'high-flow' | 'low-flow' | 'flood-pulse' | 'seasonal-filling' | 'seasonal-drawdown' | 'ice-cover' | 'ice-melt';
+  district?: DistrictKashmir;
+  districts?: DistrictKashmir[];
+  transitionType: 'high-flow' | 'low-flow' | 'flood-pulse' | 'seasonal-filling' | 'seasonal-drawdown' | 'ice-cover' | 'ice-melt' | string;
   seasonalTiming: SeasonalTimingWindow;
   hydrologicalMetrics: {
     avgDepthChange?: number; // meters
@@ -163,6 +176,8 @@ export interface WaterTransition {
   floodBufferingRole?: string;
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
+  elevationZone?: ElevationZone;
 }
 
 export interface SpeciesActivity {
@@ -184,6 +199,7 @@ export interface SpeciesActivity {
   conservationContext?: string;
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface ClimateWindow {
@@ -203,6 +219,7 @@ export interface ClimateWindow {
   linkedRiskMonitoring?: string[];
   coordinates?: { lat: number; lng: number };
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface SeasonalReport {
@@ -223,6 +240,7 @@ export interface SeasonalReport {
   downloadUrl?: string;
   citationFormat: string;
   imageCredit?: string;
+  ecologicalScope?: string;
 }
 
 export interface SeasonalMetric {
@@ -242,6 +260,7 @@ export interface SeasonalNavigationCard {
   link: string;
   color: string;
   featured?: boolean;
+  countLabel?: string;
 }
 
 export interface KashmirDistrictSeason {

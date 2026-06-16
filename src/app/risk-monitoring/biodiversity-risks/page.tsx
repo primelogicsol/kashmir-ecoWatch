@@ -95,19 +95,15 @@ export default function BiodiversityRisksPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks' }]}
-        title={<>Biodiversity <span className="text-emerald-400">Risks</span></>}
+        title={<><span className="block whitespace-nowrap">Biodiversity</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risks</span></>}
         subtitle="Species vulnerability tracking, habitat risk assessment, mortality monitoring, and ecological intelligence for Kashmir's biodiversity conservation"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-            <Leaf className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Ecological Vulnerability</Badge>}
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
+        label="Ecological Vulnerability"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-600 hover:to-green-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/biodiversity-risk-intelligence')}
             >
               <Leaf className="w-5 h-5 mr-2" />

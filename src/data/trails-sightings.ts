@@ -1425,7 +1425,7 @@ export const trailsSightingsMetrics = {
   averageDifficulty: 'moderate',
   
   // Sighting Metrics
-  totalSightings: 2847,
+  totalSightings: 2452,
   sightingsByTaxonomicGroup: {
     mammals: 1247,
     birds: 3542,

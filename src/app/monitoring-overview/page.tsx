@@ -73,13 +73,9 @@ function MonitoringOverviewPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<>Monitoring <span className="text-emerald-400">Intelligence Overview</span></>}
+  title={<><span className="block whitespace-nowrap">Monitoring Intelligence</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Overview</span></>}
   subtitle="Environmental monitoring systems tracking atmospheric, hydrological, seismic, meteorological, wildlife, and cryosphere-linked conditions across Kashmir. These networks form the platform's operational sensing layer — feeding alerts, dashboards, district profiles, and module-specific intelligence with continuous and periodic environmental data."
-  icon={
-    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-      <Activity className="w-7 h-7 text-white" />
-    </div>
-  }
+  icon={<Activity className="w-6 h-6 text-emerald-400" />}
   badge={
     <div className="flex items-center gap-2">
       <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Monitoring Intelligence</span>

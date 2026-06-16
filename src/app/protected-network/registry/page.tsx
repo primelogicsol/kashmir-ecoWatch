@@ -17,6 +17,7 @@ import {
   Activity,
   ArrowRight,
   ChevronRight,
+  ChevronLeft,
   BarChart3,
   Layers,
   Info
@@ -26,33 +27,55 @@ import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import {
   ProtectedAreaSource,
-  getProtectedAreasSource,
-  getProtectedAreaMetrics,
   PROTECTED_AREA_SOURCE_METADATA
 } from '@/data/protected-areas-source';
 import { ProtectedAreaRegistryTable } from '@/components/protected-areas/ProtectedAreaRegistryTable';
 import { getProtectedAreaRegistry, protectedAreaRegistryMetrics } from '@/data/protected-area-registry';
+import { getProtectedAreas } from '@/data/protected-network';
 
-type RegionFilter = 'All' | 'Kashmir' | 'Jammu' | 'Ladakh';
+type ScopeFilter = 'All' | 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended';
 type CategoryFilter = 'All' | 'NP' | 'WLS' | 'WR' | 'GR' | 'WLR';
 
 export default function ProtectedAreasRegistryPage() {
   const router = useRouter();
-  const [regionFilter, setRegionFilter] = useState<RegionFilter>('Kashmir'); // Default to Kashmir
+  const [scopeFilter, setScopeFilter] = useState<ScopeFilter>('All');
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'area' | 'category'>('name');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+
+  // Reset pagination when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [scopeFilter, categoryFilter, searchTerm, sortBy]);
+
+  // Map global PA data to registry format
+  const mappedData = getProtectedAreas.all().map(pa => ({
+    id: pa.id,
+    slug: pa.slug,
+    name: pa.name,
+    categoryCode: pa.category === 'national_park' ? 'NP' :
+                  pa.category === 'wildlife_sanctuary' ? 'WLS' :
+                  pa.category === 'wetland_reserve' ? 'WLR' :
+                  pa.category === 'conservation_reserve' ? 'WR' : 'GR',
+    categoryLabel: pa.category,
+    areaSqKm: pa.area,
+    regionRaw: pa.scope || pa.district,
+    regionGroup: pa.scope || 'Kashmir Core',
+    districtHint: pa.district,
+    sourceNotes: [],
+  }));
 
   // Get filtered data
-  const allData = getProtectedAreasSource.byRegion(regionFilter);
-  
-  const filteredData = allData.filter(pa => {
+  const filteredData = mappedData.filter(pa => {
+    const matchesScope = scopeFilter === 'All' || pa.regionGroup === scopeFilter;
     const matchesCategory = categoryFilter === 'All' || pa.categoryCode === categoryFilter;
     const matchesSearch = searchTerm === '' || 
       pa.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pa.regionRaw.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pa.districtHint.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return matchesScope && matchesCategory && matchesSearch;
   });
 
   // Sort data
@@ -63,8 +86,24 @@ export default function ProtectedAreasRegistryPage() {
     return 0;
   });
 
-  // Get metrics for current filter
-  const metrics = getProtectedAreaMetrics(regionFilter);
+  // Pagination slice
+  const paginatedData = sortedData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+
+  // Dynamic metrics for the filtered view
+  const metrics = {
+    total: filteredData.length,
+    totalArea: filteredData.reduce((sum, pa) => sum + (pa.areaSqKm || 0), 0),
+    byCategory: {
+      NP: filteredData.filter(pa => pa.categoryCode === 'NP').length,
+      WLS: filteredData.filter(pa => pa.categoryCode === 'WLS').length,
+      WR: filteredData.filter(pa => pa.categoryCode === 'WR').length,
+      GR: filteredData.filter(pa => pa.categoryCode === 'GR').length,
+      WLR: filteredData.filter(pa => pa.categoryCode === 'WLR').length,
+    },
+    recordsWithAreaData: filteredData.filter(pa => pa.areaSqKm !== null && pa.areaSqKm > 0).length,
+    recordsWithoutAreaData: filteredData.filter(pa => !pa.areaSqKm).length,
+  };
 
   const getCategoryLabel = (code: string) => {
     switch (code) {
@@ -99,27 +138,38 @@ export default function ProtectedAreasRegistryPage() {
     }
   };
 
-  const getRegionBadgeColor = (region: string) => {
-    switch (region) {
-      case 'Kashmir': return 'success';
-      case 'Jammu': return 'warning';
-      case 'Ladakh': return 'info';
+  const getRegionBadgeColor = (scope: string) => {
+    switch (scope) {
+      case 'Kashmir Core': return 'success';
+      case 'Trans-Divisional': return 'warning';
+      case 'Transboundary / Extended': return 'info';
       default: return 'default';
     }
+  };
+
+  const getCategoryPath = (code: string) => {
+      switch (code) {
+          case 'NP': return 'national-parks';
+          case 'WLS': return 'wildlife-sanctuaries';
+          case 'WR': return 'wildlife-reserves';
+          case 'GR': return 'game-reserves';
+          case 'WLR': return 'wetland-reserves';
+          default: return 'all';
+      }
   };
 
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Protected Areas Registry"
-        subtitle="Complete inventory of all protected areas from the source dataset. Filter by region, category, and search by name. Default view shows Kashmir-focused data."
+        title={<><span className="block whitespace-nowrap">Protected Areas</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Registry</span></>}
+        subtitle="Complete inventory of all protected areas across the global ecological scope. Filter by scope, category, and search by name. Integrated with the entire regional database."
         icon={
           <div className="flex items-center gap-3">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
               <Shield className="w-7 h-7 text-white" />
             </div>
             <Badge variant="info" size="lg">
-              {PROTECTED_AREA_SOURCE_METADATA.sourceTitle}
+              Global Master Registry
             </Badge>
           </div>
         }
@@ -135,7 +185,15 @@ export default function ProtectedAreasRegistryPage() {
           transition={{ delay: 0.2 }}
         >
           <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4">
+            <div className="mb-4 px-6 pt-4 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-emerald-400" />
+                <h3 className="text-sm font-semibold text-white uppercase tracking-widest">
+                  Registry Statistics ({scopeFilter})
+                </h3>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-4">
               {[
                 { label: 'Total', value: metrics.total, icon: Shield },
                 { label: 'Area (km²)', value: metrics.totalArea.toFixed(2), icon: MapPin },
@@ -146,7 +204,6 @@ export default function ProtectedAreasRegistryPage() {
                 { label: 'Wetland Reserves', value: metrics.byCategory.WLR, icon: Droplet },
                 { label: 'With Area Data', value: metrics.recordsWithAreaData, icon: BarChart3 },
                 { label: 'Missing Area', value: metrics.recordsWithoutAreaData, icon: Info },
-                { label: 'Source Total', value: PROTECTED_AREA_SOURCE_METADATA.sourceTotalAreaSqKm, icon: Layers },
               ].map((metric, idx) => (
                 <div key={idx} className="text-center p-3 border-r border-white/5 last:border-r-0">
                   <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
@@ -170,7 +227,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
+          <Card className="card-intelligence border border-white/5 bg-slate-900/50 p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
               {/* Search */}
               <div className="md:col-span-2">
@@ -186,17 +243,19 @@ export default function ProtectedAreasRegistryPage() {
                 </div>
               </div>
 
-              {/* Region Filter */}
-              <select
-                value={regionFilter}
-                onChange={(e) => setRegionFilter(e.target.value as RegionFilter)}
-                className="px-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
-              >
-                <option value="All" className="bg-[#160C27]">All Regions</option>
-                <option value="Kashmir" className="bg-[#160C27]">Kashmir Only</option>
-                <option value="Jammu" className="bg-[#160C27]">Jammu Only</option>
-                <option value="Ladakh" className="bg-[#160C27]">Ladakh Only</option>
-              </select>
+              {/* Scope Filter as Dropdown */}
+              <div>
+                <select
+                  value={scopeFilter}
+                  onChange={(e) => setScopeFilter(e.target.value as ScopeFilter)}
+                  className="w-full px-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+                >
+                  <option value="All" className="bg-slate-900/50">All Scopes</option>
+                  <option value="Kashmir Core" className="bg-slate-900/50">Kashmir Core</option>
+                  <option value="Trans-Divisional" className="bg-slate-900/50">Trans-Divisional</option>
+                  <option value="Transboundary / Extended" className="bg-slate-900/50">Transboundary / Extended</option>
+                </select>
+              </div>
 
               {/* Category Filter */}
               <select
@@ -204,12 +263,12 @@ export default function ProtectedAreasRegistryPage() {
                 onChange={(e) => setCategoryFilter(e.target.value as CategoryFilter)}
                 className="px-4 py-2.5 rounded-lg bg-black/20 border border-white/5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
               >
-                <option value="All" className="bg-[#160C27]">All Categories</option>
-                <option value="NP" className="bg-[#160C27]">National Parks</option>
-                <option value="WLS" className="bg-[#160C27]">Wildlife Sanctuaries</option>
-                <option value="WR" className="bg-[#160C27]">Wildlife Reserves</option>
-                <option value="GR" className="bg-[#160C27]">Game Reserves</option>
-                <option value="WLR" className="bg-[#160C27]">Wetland Reserves</option>
+                <option value="All" className="bg-slate-900/50">All Categories</option>
+                <option value="NP" className="bg-slate-900/50">National Parks</option>
+                <option value="WLS" className="bg-slate-900/50">Wildlife Sanctuaries</option>
+                <option value="WR" className="bg-slate-900/50">Wildlife Reserves</option>
+                <option value="GR" className="bg-slate-900/50">Game Reserves</option>
+                <option value="WLR" className="bg-slate-900/50">Wetland Reserves</option>
               </select>
             </div>
 
@@ -218,7 +277,7 @@ export default function ProtectedAreasRegistryPage() {
                 <Filter className="w-4 h-4" />
                 <span>
                   Showing <span className="text-white font-semibold">{sortedData.length}</span> of{' '}
-                  <span className="text-white font-semibold">{allData.length}</span> protected areas
+                  <span className="text-white font-semibold">{mappedData.length}</span> protected areas
                 </span>
               </div>
 
@@ -229,9 +288,9 @@ export default function ProtectedAreasRegistryPage() {
                   onChange={(e) => setSortBy(e.target.value as 'name' | 'area' | 'category')}
                   className="px-3 py-1.5 rounded-lg bg-black/20 border border-white/5 text-white text-sm focus:outline-none cursor-pointer"
                 >
-                  <option value="name" className="bg-[#160C27]">Name (A-Z)</option>
-                  <option value="area" className="bg-[#160C27]">Area (Largest)</option>
-                  <option value="category" className="bg-[#160C27]">Category</option>
+                  <option value="name" className="bg-slate-900/50">Name (A-Z)</option>
+                  <option value="area" className="bg-slate-900/50">Area (Largest)</option>
+                  <option value="category" className="bg-slate-900/50">Category</option>
                 </select>
               </div>
             </div>
@@ -266,7 +325,7 @@ export default function ProtectedAreasRegistryPage() {
       {/* Protected Areas Grid */}
       <div className="container mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedData.map((pa, idx) => {
+          {paginatedData.map((pa, idx) => {
             const Icon = getCategoryIcon(pa.categoryCode);
             
             return (
@@ -276,7 +335,7 @@ export default function ProtectedAreasRegistryPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.02 }}
               >
-                <Card className="card-intelligence border border-white/5 bg-[#160C27] group p-6 h-full hover:border-white/20 transition-all">
+                <Card className="card-intelligence border border-white/5 bg-slate-900/50 group p-6 h-full hover:border-white/20 transition-all flex flex-col">
                   <div className="flex items-start gap-4 mb-4">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getCategoryColor(pa.categoryCode)} flex items-center justify-center flex-shrink-0`}>
                        <Icon className="w-6 h-6 text-white" />
@@ -290,11 +349,11 @@ export default function ProtectedAreasRegistryPage() {
                           {pa.regionGroup}
                         </Badge>
                       </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors truncate">{pa.name}</h3>
+                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors truncate" title={pa.name}>{pa.name}</h3>
                     </div>
                   </div>
 
-                  <div className="space-y-3 mb-4">
+                  <div className="space-y-3 mb-4 flex-1">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-400">Area</span>
                       <span className="text-white font-semibold">
@@ -303,7 +362,7 @@ export default function ProtectedAreasRegistryPage() {
                     </div>
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-400">District</span>
-                      <span className="text-white font-semibold">{pa.districtHint}</span>
+                      <span className="text-white font-semibold" title={pa.districtHint}>{pa.districtHint}</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-400">Region</span>
@@ -324,14 +383,16 @@ export default function ProtectedAreasRegistryPage() {
                     </div>
                   )}
 
-                  <Button
-                    size="sm"
-                    className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500"
-                    icon={<ArrowRight className="w-4 h-4" />}
-                    onClick={() => router.push(`/protected-network/${getCategoryPath(pa.categoryCode)}/${pa.slug}`)}
-                  >
-                    View Details
-                  </Button>
+                  <div className="mt-auto">
+                    <Button
+                      size="sm"
+                      className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500"
+                      icon={<ArrowRight className="w-4 h-4" />}
+                      onClick={() => router.push(`/protected-network/${getCategoryPath(pa.categoryCode)}/${pa.slug}`)}
+                    >
+                      View Details
+                    </Button>
+                  </div>
                 </Card>
               </motion.div>
             );
@@ -348,6 +409,67 @@ export default function ProtectedAreasRegistryPage() {
             <h3 className="text-xl font-bold text-white mb-2">No protected areas found</h3>
             <p className="text-slate-400">Try adjusting your search or filters</p>
           </motion.div>
+        )}
+
+        {totalPages > 1 && (
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 bg-black/20 border border-white/5 rounded-xl p-4 glass-intense">
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              
+              <div className="flex items-center gap-1 mx-2">
+                {Array.from({ length: totalPages }).map((_, i) => {
+                  const page = i + 1;
+                  // Truncation logic: show first, last, current, and +/- 1
+                  if (
+                    page === 1 || 
+                    page === totalPages || 
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-all ${
+                          currentPage === page
+                            ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-[0_0_10px_rgba(16,185,129,0.3)] border border-emerald-400/30'
+                            : 'text-slate-400 hover:text-white hover:bg-white/10 border border-transparent'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  }
+                  
+                  if (page === currentPage - 2 || page === currentPage + 2) {
+                    return <span key={page} className="text-slate-600 px-1">...</span>;
+                  }
+                  
+                  return null;
+                })}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+            <div className="text-xs text-slate-400">
+              Showing <strong className="text-white">{(currentPage - 1) * itemsPerPage + 1}</strong> to <strong className="text-white">{Math.min(currentPage * itemsPerPage, sortedData.length)}</strong> of <strong className="text-white">{sortedData.length}</strong> records
+            </div>
+          </div>
         )}
       </div>
 
@@ -375,7 +497,7 @@ export default function ProtectedAreasRegistryPage() {
           </div>
 
           {/* Management Metrics */}
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6 mb-6">
+          <Card className="card-intelligence border border-white/5 bg-slate-900/50 p-6 mb-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {[
                 { label: 'Fully Managed', value: protectedAreaRegistryMetrics.byManagementStatus.fully, color: 'text-emerald-400' },
@@ -407,7 +529,7 @@ export default function ProtectedAreasRegistryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <Card className="card-intelligence border border-white/5 bg-[#160C27] p-6">
+          <Card className="card-intelligence border border-white/5 bg-slate-900/50 p-6">
             <div className="flex items-start gap-4">
               <Info className="w-6 h-6 text-slate-400 mt-1" />
               <div className="flex-1">

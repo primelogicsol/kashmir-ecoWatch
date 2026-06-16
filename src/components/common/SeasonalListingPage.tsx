@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
-import { PageHeader } from '@/components/common/PageHeader';
+import { Heading } from '@/components/common/Heading';
 import { SeasonalFilters, SeasonalFilterState } from '@/components/common/SeasonalFilters';
 import { SeasonalCard } from '@/components/common/SeasonalCard';
 import { Card } from '@/components/ui/Card';
@@ -53,8 +53,19 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
     searchQuery: '',
   });
 
+  const [selectedEcologicalScope, setSelectedEcologicalScope] = useState<string>('Kashmir Core');
+  const availableScopes = ['Kashmir Core', 'Trans-Divisional', 'Transboundary / Extended'];
+
   const filteredEntities = useMemo(() => {
     return entities.filter((entity) => {
+      if (!entity) return false;
+      
+      // Ecological Scope filter
+      const entityScope = entity.ecologicalScope || 'Kashmir Core';
+      if (selectedEcologicalScope !== 'All' && entityScope !== selectedEcologicalScope) {
+        return false;
+      }
+
       // Search filter
       if (filterState.searchQuery) {
         const searchLower = filterState.searchQuery.toLowerCase();
@@ -96,53 +107,82 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
     setFilterState(newState);
   };
 
+  const getThemeColors = () => {
+    const colors: { [key: string]: { text: string, bgOrb: string, bgActive: string } } = {
+      landscape: { text: 'text-emerald-400', bgOrb: 'bg-emerald-500/10', bgActive: 'bg-emerald-500/20' },
+      bloom: { text: 'text-rose-400', bgOrb: 'bg-rose-500/10', bgActive: 'bg-rose-500/20' },
+      migration: { text: 'text-sky-400', bgOrb: 'bg-sky-500/10', bgActive: 'bg-sky-500/20' },
+      pollinator: { text: 'text-amber-400', bgOrb: 'bg-amber-500/10', bgActive: 'bg-amber-500/20' },
+      phenology: { text: 'text-violet-400', bgOrb: 'bg-violet-500/10', bgActive: 'bg-violet-500/20' },
+      habitat: { text: 'text-emerald-400', bgOrb: 'bg-emerald-500/10', bgActive: 'bg-emerald-500/20' },
+      water: { text: 'text-cyan-400', bgOrb: 'bg-cyan-500/10', bgActive: 'bg-cyan-500/20' },
+      species: { text: 'text-rose-400', bgOrb: 'bg-rose-500/10', bgActive: 'bg-rose-500/20' },
+      climate: { text: 'text-amber-400', bgOrb: 'bg-amber-500/10', bgActive: 'bg-amber-500/20' },
+      report: { text: 'text-slate-400', bgOrb: 'bg-slate-500/10', bgActive: 'bg-slate-500/20' },
+    };
+    return colors[entityVariant] || colors.landscape;
+  };
+  const theme = getThemeColors();
+
   return (
-    <main className="mx-auto min-h-screen bg-slate-950">{/* Hero Section */}
-      <div className="relative pb-16 overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-950 to-slate-950" />
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
-        
-        {/* Animated Gradient Orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+    <main className="mx-auto min-h-screen bg-slate-950">
+      {/* Hero Section */}
+      <Heading
+        title={title}
+        subtitle={subtitle}
+        icon={<Icon className={`w-6 h-6 ${theme.text}`} />}
+        label="Seasonal Intelligence"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Seasonal Ecology', href: '/seasonal-ecology' },
+          { label: title },
+        ]}
+        images={['/images/protected-network.png', '/images/bear.png']}
+      />
 
-        <div className="relative max-w-[93rem] mx-auto">
-          <PageHeader
-            breadcrumbs={[
-              { label: 'Home', href: '/' },
-              { label: 'Seasonal Ecology', href: '/seasonal-ecology' },
-              { label: title, href: undefined },
-            ]}
-            icon={<Icon className="w-8 h-8" />}
-            title={title}
-            subtitle={subtitle}
-          />
-
-          {/* Metrics Bar */}
-          <Card className="relative mt-8 border border-white/5 bg-slate-900/50 backdrop-blur-sm">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 p-4">
-              {metrics.map((metric, idx) => {
-                const MetricIcon = (Icons as any)[metric.icon] || Icons.Mountain;
-                return (
-                  <div key={idx} className="text-center">
-                    <div className="flex justify-center mb-2">
-                      <div className={`p-2 rounded-lg bg-gradient-to-br ${color} border border-white/10`}>
-                        <MetricIcon className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                    <p className="text-2xl font-bold text-white">{metric.value}</p>
-                    <p className="text-xs text-slate-400">{metric.label}</p>
+      {/* Metrics */}
+      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
+        <div className="glass-intense border-white/10 p-4 lg:p-5 rounded-2xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+            {metrics.map((metric, idx) => {
+              const MetricIcon = (Icons as any)[metric.icon] || Icons.Mountain;
+              return (
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
+                  <MetricIcon className={`w-4 h-4 ${theme.text} mx-auto mb-1`} />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {metric.value}
                   </div>
-                );
-              })}
-            </div>
-          </Card>
+                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {metric.label}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Scope Tabs */}
+      <div className="relative max-w-[93rem] mx-auto px-4 mt-6">
+        <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl overflow-x-auto hide-scrollbar w-fit">
+          {availableScopes.map(scope => (
+            <button
+              key={scope}
+              onClick={() => setSelectedEcologicalScope(scope)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                selectedEcologicalScope === scope
+                  ? `bg-gradient-to-r ${color} text-white shadow`
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {scope}
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="relative max-w-[93rem] mx-auto pb-16">
+      <div className="relative max-w-[93rem] mx-auto pb-16 mt-6 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
@@ -169,8 +209,8 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
                       </div>
                     </div>
                     {/* Decorative map elements */}
-                    <div className="absolute top-4 left-4 w-16 h-16 bg-emerald-500/10 rounded-full blur-xl" />
-                    <div className="absolute bottom-4 right-4 w-16 h-16 bg-teal-500/10 rounded-full blur-xl" />
+                    <div className={`absolute top-4 left-4 w-16 h-16 ${theme.bgOrb} rounded-full blur-xl`} />
+                    <div className={`absolute bottom-4 right-4 w-16 h-16 ${theme.bgOrb} rounded-full blur-xl`} />
                   </div>
                   <div className="p-3">
                     <div className="flex items-center justify-between text-xs text-slate-400">
@@ -201,7 +241,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded-md transition-all ${
                       viewMode === 'grid'
-                        ? 'bg-emerald-500/20 text-emerald-400'
+                        ? `${theme.bgActive} ${theme.text}`
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >
@@ -211,7 +251,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
                     onClick={() => setViewMode('list')}
                     className={`p-2 rounded-md transition-all ${
                       viewMode === 'list'
-                        ? 'bg-emerald-500/20 text-emerald-400'
+                        ? `${theme.bgActive} ${theme.text}`
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >

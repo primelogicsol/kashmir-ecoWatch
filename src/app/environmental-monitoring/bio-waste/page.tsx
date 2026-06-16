@@ -143,12 +143,7 @@ export default function BioWastePage() {
         ]}
         title={<>Bio-<span className="text-emerald-400">Waste</span></>}
         subtitle="Monitoring organic waste accumulation, slaughter waste discharge, market decomposition zones, and bio-contamination pathways across Kashmir&apos;s ecological and residential interfaces"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
-            <Leaf className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="success" size="md">Organic Waste Intelligence</Badge>}
+        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Metrics */}
@@ -199,7 +194,7 @@ export default function BioWastePage() {
                         <MapPin className="w-3 h-3" />
                         <span>{card.zone}, {card.district}</span>
                       </div>
-                      <Badge variant={card.riskLevel} size="sm">{card.riskLevel}</Badge>
+                      <Badge variant={card.riskLevel as any} size="sm">{card.riskLevel}</Badge>
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-slate-400">
                       <Droplets className="w-3 h-3 text-cyan-500" />
@@ -252,7 +247,7 @@ export default function BioWastePage() {
                       <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">{w.waterBody}</h3>
                       <p className="text-xs text-slate-400 mt-1">{w.proximity}</p>
                     </div>
-                    <Badge variant={w.riskLevel} size="sm">{w.riskLevel}</Badge>
+                    <Badge variant={w.riskLevel as any} size="sm">{w.riskLevel}</Badge>
                   </div>
                   <div className="space-y-2">
                     <div className="text-xs text-slate-400">

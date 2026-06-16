@@ -44,14 +44,10 @@ export default function GlobalWarmingImpactsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<>Global Warming <span className="text-emerald-400">Impacts on Kashmir</span></>}
+        title={<><span className="block whitespace-nowrap">Global Warming Impacts</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">on Kashmir</span></>}
         subtitle="Comprehensive analysis of warming-linked impacts on Kashmir glaciers, springs, wetlands, species, seasons, hydrology, and biodiversity across all ecological systems"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-2xl">
-            <Thermometer className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="danger" size="lg">Warming Intelligence</Badge>}
+        icon={<Thermometer className="w-6 h-6 text-emerald-400" />}
+        label="Warming Intelligence"
         breadcrumbs={[
           { label: "Risk & Monitoring", href: "/risk-monitoring" },
           { label: "Pollution & Stress", href: "/risk-monitoring/pollution-stress" },
@@ -61,7 +57,7 @@ export default function GlobalWarmingImpactsPage() {
           <>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white shadow-xl"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-orange-600 hover:to-red-700 text-white shadow-xl"
               onClick={() => router.push('/risk-monitoring/dashboards')}
             >
               <Activity className="w-5 h-5 mr-2" />

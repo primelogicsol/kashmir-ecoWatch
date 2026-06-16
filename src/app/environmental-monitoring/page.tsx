@@ -54,14 +54,9 @@ export default function EnvironmentalMonitoringOverview() {
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring' }
         ]}
-        title={<>Environmental <span className="text-emerald-400">Monitoring</span></>}
+        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring</span></>}
         subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and public ecological service risks across Kashmir"
-        icon={
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl">
-            <Factory className="w-5 h-5 md:w-8 md:h-8 text-white" />
-          </div>
-        }
-        badge={<Badge variant="warning" size="lg">Environmental Intelligence</Badge>}
+        icon={<Factory className="w-6 h-6 text-emerald-400" />}
       />
 
       {/* Metrics */}
@@ -106,7 +101,7 @@ export default function EnvironmentalMonitoringOverview() {
                         <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{mod.name}</h3>
                         <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
                       </div>
-                      <p className="text-xs text-slate-400">{mod.desc || 'Environmental intelligence module'}</p>
+                      <p className="text-xs text-slate-400">{(mod as any).desc || 'Environmental intelligence module'}</p>
                     </div>
                   </div>
                 </Card>

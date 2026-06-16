@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/Badge';
 import {
   Shield, Map, Mountain, Droplet, Leaf, Activity,
   ArrowRight, Search, Filter, Grid3X3, List, Eye,
-  Trees, Bird, Fish, PawPrint
+  Trees, Bird, Fish, PawPrint, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -52,7 +52,11 @@ export default function ProtectedAreasPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
+  const [activeScope, setActiveScope] = useState('all');
+  const [activeDistrict, setActiveDistrict] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const allProtectedAreas = useMemo(() => getProtectedAreas.all(), []);
 
@@ -61,16 +65,56 @@ export default function ProtectedAreasPage() {
     if (activeFilter !== 'all') {
       areas = areas.filter(pa => pa.category === activeFilter);
     }
+    if (activeScope !== 'all') {
+      areas = areas.filter(pa => pa.scope === activeScope);
+    }
+    if (activeDistrict !== 'all') {
+      areas = areas.filter(pa => pa.district.includes(activeDistrict));
+    }
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       areas = areas.filter(pa =>
         pa.name.toLowerCase().includes(q) ||
         pa.district.toLowerCase().includes(q) ||
-        pa.description.toLowerCase().includes(q)
+        pa.description.toLowerCase().includes(q) ||
+        (pa.ecosystems && pa.ecosystems.some(e => e.toLowerCase().includes(q))) ||
+        (pa.habitat_types && pa.habitat_types.some(h => h.toLowerCase().includes(q))) ||
+        (pa.keySpecies && pa.keySpecies.some(k => k.toLowerCase().includes(q)))
       );
     }
     return areas;
-  }, [allProtectedAreas, activeFilter, searchQuery]);
+  }, [allProtectedAreas, activeFilter, activeScope, activeDistrict, searchQuery]);
+
+  const dynamicMetrics = useMemo(() => {
+    const totalArea = filteredAreas.reduce((sum, pa) => sum + (pa.area || 0), 0);
+    return {
+      totalProtectedAreas: filteredAreas.length,
+      totalArea: Math.round(totalArea),
+      nationalParks: filteredAreas.filter(pa => pa.category === 'national_park').length,
+      wildlifeSanctuaries: filteredAreas.filter(pa => pa.category === 'wildlife_sanctuary').length,
+      wetlandReserves: filteredAreas.filter(pa => pa.category === 'wetland_reserve').length,
+      conservationReserves: filteredAreas.filter(pa => pa.category === 'conservation_reserve').length,
+      importantBirdAreas: filteredAreas.filter(pa => pa.category === 'iba').length,
+      coveragePercentage: ((totalArea / 45679) * 100).toFixed(1),
+    };
+  }, [filteredAreas]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter, activeScope, activeDistrict, searchQuery]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const habitat = params.get('habitat');
+      if (habitat) {
+        setSearchQuery(habitat.replace(/-/g, ' '));
+      }
+    }
+  }, []);
+
+  const displayedAreas = filteredAreas.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = Math.ceil(filteredAreas.length / itemsPerPage);
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -109,20 +153,23 @@ export default function ProtectedAreasPage() {
           transition={{ delay: 0.2 }}
         >
           <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-1 sm:gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
               {[
-                { label: 'Total Areas', value: protectedNetworkMetrics.totalProtectedAreas, icon: Shield },
-                { label: 'National Parks', value: protectedNetworkMetrics.nationalParks, icon: Mountain },
-                { label: 'Sanctuaries', value: protectedNetworkMetrics.wildlifeSanctuaries, icon: PawPrint },
-                { label: 'Wetland Reserves', value: protectedNetworkMetrics.wetlandReserves, icon: Droplet },
-                { label: 'Conservation Reserves', value: protectedNetworkMetrics.conservationReserves, icon: Leaf },
+                { label: 'Total Areas', value: dynamicMetrics.totalProtectedAreas, icon: Shield },
+                { label: 'Total Area (km²)', value: dynamicMetrics.totalArea, icon: Map },
+                { label: 'National Parks', value: dynamicMetrics.nationalParks, icon: Mountain },
+                { label: 'Sanctuaries', value: dynamicMetrics.wildlifeSanctuaries, icon: PawPrint },
+                { label: 'Wetland Reserves', value: dynamicMetrics.wetlandReserves, icon: Droplet },
+                { label: 'Conservations', value: dynamicMetrics.conservationReserves, icon: Leaf },
+                { label: 'Bird Areas', value: dynamicMetrics.importantBirdAreas, icon: Bird },
+                { label: 'Network Coverage', value: `${dynamicMetrics.coveragePercentage}%`, icon: Activity },
               ].map((metric, idx) => (
-                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0 border-r border-white/5 last:border-0">
+                  <metric.icon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
+                  <div className="text-xl lg:text-xl font-bold text-white tabular-nums leading-tight truncate">
                     {metric.value}
                   </div>
-                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                  <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-1 leading-tight break-words">
                     {metric.label}
                   </div>
                 </div>
@@ -133,16 +180,57 @@ export default function ProtectedAreasPage() {
       </div>
 
       <div className="container mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-            <input
-              type="text"
-              placeholder="Search protected areas by name, district, or ecosystem..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
-            />
+        <Card className="glass-intense border-white/10 p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label className="block text-[10px] font-medium text-slate-500 uppercase tracking-widest mb-2">Search Areas</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <input
+                  type="text"
+                  placeholder="Search by name, ecosystem..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-[10px] font-medium text-slate-500 uppercase tracking-widest mb-2">Ecological Scope</label>
+              <select
+                value={activeScope}
+                onChange={(e) => setActiveScope(e.target.value)}
+                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Scopes</option>
+                <option value="Kashmir Core">Kashmir Core</option>
+                <option value="Trans-Divisional">Trans-Divisional</option>
+                <option value="Transboundary / Extended">Transboundary / Extended</option>
+              </select>
+            </div>
+            
+            <div>
+              <label className="block text-[10px] font-medium text-slate-500 uppercase tracking-widest mb-2">District</label>
+              <select
+                value={activeDistrict}
+                onChange={(e) => setActiveDistrict(e.target.value)}
+                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+              >
+                <option value="all">All Districts</option>
+                {Array.from(new Set(allProtectedAreas.map(pa => pa.district).filter(Boolean)))
+                  .sort()
+                  .map(district => (
+                    <option key={district} value={district}>{district}</option>
+                  ))}
+              </select>
+            </div>
+          </div>
+        </Card>
+
+        <div className="flex justify-between items-center mb-8">
+          <div className="text-sm text-slate-400">
+            <strong className="text-white">{filteredAreas.length}</strong> protected areas
           </div>
           <div className="flex gap-2">
             <button
@@ -177,7 +265,7 @@ export default function ProtectedAreasPage() {
         </div>
 
         <motion.div layout className={viewMode === 'grid' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-          {filteredAreas.map((pa, idx) => (
+          {displayedAreas.map((pa, idx) => (
             <motion.div
               key={pa.id}
               initial={{ opacity: 0, y: 20 }}
@@ -248,11 +336,72 @@ export default function ProtectedAreasPage() {
             <Search className="w-12 h-12 text-slate-600 mx-auto mb-4" />
             <p className="text-slate-400 text-lg">No protected areas match your search</p>
             <button
-              onClick={() => { setSearchQuery(''); setActiveFilter('all'); }}
+              onClick={() => { setSearchQuery(''); setActiveFilter('all'); setActiveScope('all'); setActiveDistrict('all'); }}
               className="mt-4 text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               Clear filters
             </button>
+          </div>
+        )}
+
+        {totalPages > 1 && (
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-8 bg-black/20 border border-white/5 rounded-xl p-4 glass-intense">
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              
+              <div className="flex items-center gap-1 mx-2">
+                {Array.from({ length: totalPages }).map((_, i) => {
+                  const page = i + 1;
+                  // Simple truncation logic: show first, last, current, and +/- 1
+                  if (
+                    page === 1 || 
+                    page === totalPages || 
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-all ${
+                          currentPage === page
+                            ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-[0_0_10px_rgba(16,185,129,0.3)] border border-emerald-400/30'
+                            : 'text-slate-400 hover:text-white hover:bg-white/10 border border-transparent'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  }
+                  
+                  if (page === currentPage - 2 || page === currentPage + 2) {
+                    return <span key={page} className="text-slate-600 px-1">...</span>;
+                  }
+                  
+                  return null;
+                })}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+            <div className="text-xs text-slate-400">
+              Showing <strong className="text-white">{(currentPage - 1) * itemsPerPage + 1}</strong> to <strong className="text-white">{Math.min(currentPage * itemsPerPage, filteredAreas.length)}</strong> of <strong className="text-white">{filteredAreas.length}</strong> records
+            </div>
           </div>
         )}
       </div>
