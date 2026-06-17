@@ -38,7 +38,7 @@ export default function WildlifeSanctuariesPage() {
 
   return (
     <ProtectedCategoryPage
-      title={<><span className="block whitespace-nowrap leading-[1.12]">Wildlife Sanctuaries Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+      title={<><span className="block whitespace-nowrap leading-[1.12]">Wildlife Sanctuaries</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
       subtitle="Protected forest and alpine habitats supporting Kashmir's mammals, birds, and mountain biodiversity. Integrates species data, seasonal movement patterns, habitat condition, and conservation monitoring for each sanctuary."
       icon="Shield"
       color="from-emerald-600 to-emerald-500"

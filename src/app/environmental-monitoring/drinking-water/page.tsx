@@ -250,7 +250,7 @@ export default function DrinkingWaterPage() {
         label="Environmental Monitoring"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Drinking Water Safety Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Drinking Water Safety</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }

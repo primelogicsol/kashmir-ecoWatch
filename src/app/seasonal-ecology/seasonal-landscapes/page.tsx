@@ -10,7 +10,7 @@ export default function SeasonalLandscapesPage() {
 
   return (
     <SeasonalListingPage
-      title="Seasonal Landscapes Across Greater Kashmir Ecology"
+      title="Seasonal Landscapes Greater Kashmir Ecology"
       subtitle="Landscape-scale seasonal patterns across Kashmir"
       icon="Mountain"
       color="from-emerald-500 to-teal-600"

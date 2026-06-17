@@ -44,7 +44,7 @@ export default function PlantsPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Flora Across Greater Kashmir Ecology"
+      title="Flora Greater Kashmir Ecology"
       subtitle="A foundational botanical repository indexing vascular plants and diverse flora across Kashmir's varied ecological gradients. Integrating detailed geographical distribution models, intricate ecological associations, and highly verified spatial occurrences across critical conservation landscapes."
       icon="Flower2"
       color="from-green-500 to-emerald-600"

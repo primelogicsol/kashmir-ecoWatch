@@ -20,6 +20,7 @@ import {
   glofRegistry, glofKpis,
   GLOFRecord,
 } from '@/data/hazard-glofs';
+import { useGlofIntelligence } from '@/hooks/useGlofIntelligence';
 
 // ─── Risk badge helpers ──────────────────────────────────────────────────────
 
@@ -68,8 +69,8 @@ function GLOFCard({ record, index }: { record: GLOFRecord; index: number }) {
               <span className="truncate">{record.district} · {record.scope}</span>
             </div>
           </div>
-          <Badge variant={RISK_VARIANT[record.risk_level]} className="flex-shrink-0 ml-2">
-            {record.risk_level}
+          <Badge variant={RISK_VARIANT[record.live_risk_level || record.risk_level] || 'info'} className="flex-shrink-0 ml-2">
+            {record.live_risk_level || record.risk_level}
           </Badge>
         </div>
 
@@ -86,18 +87,18 @@ function GLOFCard({ record, index }: { record: GLOFRecord; index: number }) {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-3 gap-1.5 text-xs mb-3">
+        <div className="grid grid-cols-2 gap-1.5 text-xs mb-3">
           <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Area</div>
-            <div className="font-bold text-slate-200">{record.lake_area_sqkm} <span className="text-[8px] font-normal text-slate-500">km²</span></div>
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Peak Temp (°C)</div>
+            <div className="font-bold text-slate-200">
+              {record.live_temperature_max !== undefined ? record.live_temperature_max.toFixed(1) : '--'}
+            </div>
           </div>
           <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Elevation</div>
-            <div className="font-bold text-slate-200">{record.elevation_m.toLocaleString()} <span className="text-[8px] font-normal text-slate-500">m</span></div>
-          </div>
-          <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Volume</div>
-            <div className="font-bold text-slate-200">{record.volume_estimate_mcm} <span className="text-[8px] font-normal text-slate-500">MCM</span></div>
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">7-Day Precip (mm)</div>
+            <div className="font-bold text-slate-200">
+              {record.live_precipitation_7d !== undefined ? record.live_precipitation_7d.toFixed(1) : '--'}
+            </div>
           </div>
         </div>
 
@@ -110,6 +111,10 @@ function GLOFCard({ record, index }: { record: GLOFRecord; index: number }) {
           <div className="text-[10px]">
             <span className="text-slate-500">Glacier Source:</span>{' '}
             <span className="text-slate-300 font-medium">{record.glacier_source}</span>
+          </div>
+          <div className="text-[10px]">
+            <span className="text-slate-500">Dominant Trigger:</span>{' '}
+            <span className="text-amber-300 font-medium">{record.dominant_trigger || 'Unknown'}</span>
           </div>
         </div>
 
@@ -130,8 +135,10 @@ function GLOFCard({ record, index }: { record: GLOFRecord; index: number }) {
           </div>
           <p className="text-slate-400 line-clamp-2 leading-relaxed">{record.downstream_exposure}</p>
           <div className="flex justify-between items-center mt-1">
-            <span className="text-slate-500">Last Assessment</span>
-            <span className="text-slate-400 font-mono">{record.last_assessment}</span>
+            <span className="text-slate-500">Last Updated</span>
+            <span className="text-slate-400 font-mono">
+              {record.last_updated ? new Date(record.last_updated).toLocaleTimeString() : record.last_assessment}
+            </span>
           </div>
         </div>
       </Card>
@@ -161,23 +168,29 @@ function GLOFRow({ record, index }: { record: GLOFRecord; index: number }) {
 
           {/* Risk */}
           <div className="w-24">
-            <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={RISK_VARIANT[record.risk_level]} size="sm">{record.risk_level}</Badge>
+            <div className="text-[10px] text-slate-500 mb-1">Live Risk</div>
+            <Badge variant={RISK_VARIANT[record.live_risk_level || record.risk_level] || 'info'} size="sm">{record.live_risk_level || record.risk_level}</Badge>
           </div>
 
           {/* Metrics */}
           <div className="w-44 hidden md:flex items-center justify-between gap-2">
             <div>
-              <div className="text-[10px] text-slate-500 mb-0.5">Area</div>
-              <div className="text-xs font-bold text-slate-300">{record.lake_area_sqkm} km²</div>
+              <div className="text-[10px] text-slate-500 mb-0.5">Peak Temp</div>
+              <div className="text-xs font-bold text-slate-300">
+                {record.live_temperature_max !== undefined ? record.live_temperature_max.toFixed(1) : '--'}°C
+              </div>
             </div>
             <div>
-              <div className="text-[10px] text-slate-500 mb-0.5">Elevation</div>
-              <div className="text-xs font-bold text-slate-300">{record.elevation_m}m</div>
+              <div className="text-[10px] text-slate-500 mb-0.5">7d Precip</div>
+              <div className="text-xs font-bold text-slate-300">
+                {record.live_precipitation_7d !== undefined ? record.live_precipitation_7d.toFixed(1) : '--'}mm
+              </div>
             </div>
             <div>
-              <div className="text-[10px] text-slate-500 mb-0.5">Volume</div>
-              <div className="text-xs font-bold text-slate-300">{record.volume_estimate_mcm} MCM</div>
+              <div className="text-[10px] text-slate-500 mb-0.5">Trigger</div>
+              <div className="text-[10px] font-bold text-amber-300 truncate max-w-[50px]" title={record.dominant_trigger}>
+                {record.dominant_trigger || '--'}
+              </div>
             </div>
           </div>
 
@@ -226,9 +239,11 @@ export default function GLOFsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
+  const { data: liveRecords, loading, isStale } = useGlofIntelligence(glofRegistry);
+
   // ─── Filtering ─────────────────────────────────────────────────────────────
 
-  const filteredData = useMemo(() => glofRegistry.filter(d => {
+  const filteredData = useMemo(() => liveRecords.filter(d => {
     const matchSearch = filter.searchQuery === '' ||
       d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
       d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
@@ -238,10 +253,10 @@ export default function GLOFsPage() {
     const matchScope = filter.scope === 'All' || d.scope === filter.scope;
     const matchDistrict = filter.district === 'All' || d.district === filter.district;
     const matchDamType = damTypeFilter === 'all' || d.dam_type === damTypeFilter;
-    const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+    const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
 
     return matchSearch && matchScope && matchDistrict && matchDamType && matchRisk;
-  }), [filter, damTypeFilter, riskFilter]);
+  }), [liveRecords, filter, damTypeFilter, riskFilter]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -261,7 +276,7 @@ export default function GLOFsPage() {
         ]}
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">GLOF Risk Intelligence Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">GLOF Risk Intelligence</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-teal-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
@@ -328,7 +343,23 @@ export default function GLOFsPage() {
             </p>
           </motion.div>
 
-          {filteredData.length === 0 ? (
+          {isStale && (
+            <div className="mb-6 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+              <div>
+                <h4 className="text-sm font-bold text-amber-400">Live API Data Unavailable</h4>
+                <p className="text-xs text-amber-200/70 mt-0.5">Showing cached or static metrics. Network or Open-Meteo service may be down.</p>
+              </div>
+            </div>
+          )}
+
+          {loading ? (
+            <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+              <Activity className="w-8 h-8 text-teal-500 mx-auto mb-3 animate-pulse" />
+              <div className="text-white font-medium mb-1">Fetching Live Meteo Data</div>
+              <div className="text-sm text-slate-400">Analyzing high-altitude temperatures and precipitation...</div>
+            </div>
+          ) : filteredData.length === 0 ? (
             <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
               <Droplets className="w-8 h-8 text-slate-500 mx-auto mb-3" />
               <div className="text-white font-medium mb-1">No GLOF records found</div>

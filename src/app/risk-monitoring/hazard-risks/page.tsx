@@ -99,7 +99,7 @@ export default function HazardRisksPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Hazard Risks</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Multi-hazard classification and risk assessment across Kashmir's diverse environmental threats. Active hazard status, district vulnerability, and routes to specialized monitoring."

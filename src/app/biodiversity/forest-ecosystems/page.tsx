@@ -110,7 +110,7 @@ export default function ForestEcosystemsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title="Forest Ecosystems Across Greater Kashmir Ecology"
+        title="Forest Ecosystems Greater Kashmir Ecology"
         subtitle="The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics."
         icon={<TreePine className="w-6 h-6 text-emerald-400" />}
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Forest Ecosystems' }]}

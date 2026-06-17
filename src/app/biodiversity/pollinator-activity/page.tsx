@@ -76,7 +76,7 @@ export default function PollinatorActivityPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Pollinator Activity Across Greater Kashmir Ecology"
+        title="Pollinator Activity Greater Kashmir Ecology"
         subtitle="Master phenology database tracking flowering-linked pollinator windows, orchard dynamics, and alpine ecology."
         icon={<Bug className="w-6 h-6 text-fuchsia-400" />}
         label="Biodiversity Intelligence"

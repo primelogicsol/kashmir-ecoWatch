@@ -89,7 +89,7 @@ export default function HabitatSignalsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Habitat Signals Across Greater Kashmir Ecology"
+        title="Habitat Signals Greater Kashmir Ecology"
         subtitle="Dynamic ecosystem monitoring detecting ecological change, degradation, and climate shifts across Kashmir Core."
         icon={<Crosshair className="w-6 h-6 text-teal-400" />}
         label="Ecosystem Intelligence"

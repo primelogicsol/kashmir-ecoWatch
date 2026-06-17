@@ -205,7 +205,7 @@ export default function WaterTreatmentPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Water Treatment</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Comprehensive inventory of drinking water treatment infrastructure across Kashmir — from conventional rapid sand filtration to modern membrane bioreactor systems."

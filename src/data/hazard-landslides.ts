@@ -36,6 +36,14 @@ export interface LandslideRecord {
   trigger: LandslideTrigger;
   last_event_date: string;
   current_status: LandslideStatus;
+  latitude: number;
+  longitude: number;
+  live_soil_moisture?: number;
+  live_precipitation_24h?: number;
+  live_precipitation_72h?: number;
+  live_risk_level?: LandslideRiskLevel;
+  dominant_trigger?: string;
+  last_updated?: string;
 }
 
 export const landslideData: LandslideRecord[] = [
@@ -47,6 +55,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-001',
     name: 'Khanabal–Qazigund NH44 Slide Zone',
+    latitude: 33.65,
+    longitude: 75.14,
     scope: 'Kashmir Core',
     district: 'Anantnag',
     slide_type: 'Debris Flow',
@@ -62,6 +72,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-002',
     name: 'Sinthan Pass–Anantnag Slide Belt',
+    latitude: 33.56,
+    longitude: 75.48,
     scope: 'Kashmir Core',
     district: 'Anantnag',
     slide_type: 'Translational',
@@ -77,6 +89,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-003',
     name: 'Mughal Road–Shopian Entry Slide Zone',
+    latitude: 33.71,
+    longitude: 74.82,
     scope: 'Kashmir Core',
     district: 'Shopian',
     slide_type: 'Debris Flow',
@@ -92,6 +106,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-004',
     name: 'Peer Ki Gali–Hirpora Slide Belt',
+    latitude: 33.63,
+    longitude: 74.52,
     scope: 'Kashmir Core',
     district: 'Shopian',
     slide_type: 'Rotational',
@@ -107,6 +123,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-005',
     name: 'Zojila Pass–Baltal Slide Complex',
+    latitude: 34.27,
+    longitude: 75.46,
     scope: 'Kashmir Core',
     district: 'Ganderbal',
     slide_type: 'Rock Slide',
@@ -122,6 +140,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-006',
     name: 'Kangan–Wayil Slide Zone',
+    latitude: 34.28,
+    longitude: 74.83,
     scope: 'Kashmir Core',
     district: 'Ganderbal',
     slide_type: 'Mudslide',
@@ -137,6 +157,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-007',
     name: 'Tangmarg–Gulmarg Slide Corridor',
+    latitude: 34.05,
+    longitude: 74.38,
     scope: 'Kashmir Core',
     district: 'Baramulla',
     slide_type: 'Debris Flow',
@@ -152,6 +174,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-008',
     name: 'Uri–LOC Slide Zone',
+    latitude: 34.09,
+    longitude: 74.03,
     scope: 'Kashmir Core',
     district: 'Baramulla',
     slide_type: 'Translational',
@@ -167,6 +191,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-009',
     name: 'Kupwara–Karnah Slide Belt',
+    latitude: 34.39,
+    longitude: 73.86,
     scope: 'Kashmir Core',
     district: 'Kupwara',
     slide_type: 'Mudslide',
@@ -182,6 +208,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-010',
     name: 'Handwara–Rajwar Slide Zone',
+    latitude: 34.40,
+    longitude: 74.28,
     scope: 'Kashmir Core',
     district: 'Kupwara',
     slide_type: 'Rotational',
@@ -197,6 +225,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-011',
     name: 'Bandipora–Gurez Slide Corridor',
+    latitude: 34.63,
+    longitude: 74.83,
     scope: 'Kashmir Core',
     district: 'Bandipora',
     slide_type: 'Rock Slide',
@@ -212,6 +242,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-012',
     name: 'Razdan Pass Slide Zone',
+    latitude: 34.58,
+    longitude: 74.80,
     scope: 'Kashmir Core',
     district: 'Bandipora',
     slide_type: 'Debris Flow',
@@ -227,6 +259,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-013',
     name: 'Kokernag–Breng Valley Slide Zone',
+    latitude: 33.58,
+    longitude: 75.31,
     scope: 'Kashmir Core',
     district: 'Anantnag',
     slide_type: 'Mudslide',
@@ -242,6 +276,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-014',
     name: 'Aharbal Falls Slide Zone',
+    latitude: 33.64,
+    longitude: 74.78,
     scope: 'Kashmir Core',
     district: 'Kulgam',
     slide_type: 'Translational',
@@ -257,6 +293,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-015',
     name: 'Budgam–Chadoora Karewa Slip Zone',
+    latitude: 33.95,
+    longitude: 74.63,
     scope: 'Kashmir Core',
     district: 'Budgam',
     slide_type: 'Rotational',
@@ -272,6 +310,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-016',
     name: 'Pampore–Tral Karewa Slide Belt',
+    latitude: 34.01,
+    longitude: 74.93,
     scope: 'Kashmir Core',
     district: 'Pulwama',
     slide_type: 'Rotational',
@@ -287,6 +327,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-kc-017',
     name: 'Srinagar–Harwan Slide Zone',
+    latitude: 34.16,
+    longitude: 74.89,
     scope: 'Kashmir Core',
     district: 'Srinagar',
     slide_type: 'Mudslide',
@@ -307,6 +349,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-001',
     name: 'Ramban–Banihal NH44 Mega-Slide Zone',
+    latitude: 33.24,
+    longitude: 75.24,
     scope: 'Trans-Divisional',
     district: 'Ramban',
     slide_type: 'Debris Flow',
@@ -322,6 +366,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-002',
     name: 'Kishtwar–Sinthan Road Slide Belt',
+    latitude: 33.31,
+    longitude: 75.76,
     scope: 'Trans-Divisional',
     district: 'Kishtwar',
     slide_type: 'Rock Slide',
@@ -337,6 +383,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-003',
     name: 'Doda–Bhaderwah Slide Complex',
+    latitude: 33.14,
+    longitude: 75.54,
     scope: 'Trans-Divisional',
     district: 'Doda',
     slide_type: 'Translational',
@@ -352,6 +400,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-004',
     name: 'Rajouri–Thanamandi Slide Belt',
+    latitude: 33.38,
+    longitude: 74.30,
     scope: 'Trans-Divisional',
     district: 'Rajouri',
     slide_type: 'Mudslide',
@@ -367,6 +417,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-005',
     name: 'Poonch–Surankote Slide Corridor',
+    latitude: 33.76,
+    longitude: 74.09,
     scope: 'Trans-Divisional',
     district: 'Poonch',
     slide_type: 'Rotational',
@@ -382,6 +434,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-006',
     name: 'Udhampur–Patnitop Slide Zone',
+    latitude: 32.92,
+    longitude: 75.13,
     scope: 'Trans-Divisional',
     district: 'Udhampur',
     slide_type: 'Debris Flow',
@@ -397,6 +451,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-007',
     name: 'Reasi–Katra Slide Zone',
+    latitude: 33.08,
+    longitude: 74.83,
     scope: 'Trans-Divisional',
     district: 'Reasi',
     slide_type: 'Translational',
@@ -412,6 +468,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-008',
     name: 'Khardung La–Leh Slide Belt',
+    latitude: 34.27,
+    longitude: 77.60,
     scope: 'Trans-Divisional',
     district: 'Leh',
     slide_type: 'Rock Slide',
@@ -427,6 +485,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-009',
     name: 'Kargil–Drass Slide Complex',
+    latitude: 34.55,
+    longitude: 76.13,
     scope: 'Trans-Divisional',
     district: 'Kargil',
     slide_type: 'Rock Slide',
@@ -442,6 +502,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-td-010',
     name: 'Kathua–Basohli Slide Zone',
+    latitude: 32.37,
+    longitude: 75.51,
     scope: 'Trans-Divisional',
     district: 'Kathua',
     slide_type: 'Mudslide',
@@ -462,6 +524,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-001',
     name: 'Muzaffarabad–Garhi Dupatta Slide Belt',
+    latitude: 34.36,
+    longitude: 73.47,
     scope: 'Transboundary / Extended',
     district: 'Muzaffarabad',
     slide_type: 'Rotational',
@@ -477,6 +541,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-002',
     name: 'Neelum Valley–Sharda Slide Complex',
+    latitude: 34.58,
+    longitude: 73.89,
     scope: 'Transboundary / Extended',
     district: 'Neelum',
     slide_type: 'Debris Flow',
@@ -492,6 +558,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-003',
     name: 'Bagh–Dhirkot LOC Slide Zone',
+    latitude: 33.97,
+    longitude: 73.78,
     scope: 'Transboundary / Extended',
     district: 'Bagh',
     slide_type: 'Translational',
@@ -507,6 +575,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-004',
     name: 'Karakoram Highway–Attabad Slide Zone',
+    latitude: 36.31,
+    longitude: 74.64,
     scope: 'Transboundary / Extended',
     district: 'Hunza',
     slide_type: 'Rock Slide',
@@ -522,6 +592,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-005',
     name: 'Gilgit–Shandur Slide Belt',
+    latitude: 35.92,
+    longitude: 74.30,
     scope: 'Transboundary / Extended',
     district: 'Gilgit',
     slide_type: 'Debris Flow',
@@ -537,6 +609,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-006',
     name: 'Skardu–Deosai Access Slide Zone',
+    latitude: 35.29,
+    longitude: 75.63,
     scope: 'Transboundary / Extended',
     district: 'Skardu',
     slide_type: 'Rock Slide',
@@ -552,6 +626,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-007',
     name: 'Haveli–Tatta Pani LOC Slide Zone',
+    latitude: 33.88,
+    longitude: 74.01,
     scope: 'Transboundary / Extended',
     district: 'Haveli',
     slide_type: 'Mudslide',
@@ -567,6 +643,8 @@ export const landslideData: LandslideRecord[] = [
   {
     id: 'ls-tb-008',
     name: 'KKH–Chilas Diamer Slide Complex',
+    latitude: 35.41,
+    longitude: 74.09,
     scope: 'Transboundary / Extended',
     district: 'Gilgit',
     slide_type: 'Rock Slide',

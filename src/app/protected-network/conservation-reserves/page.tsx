@@ -29,7 +29,7 @@ export default function ConservationReservesPage() {
 
   return (
     <ProtectedCategoryPage
-      title={<><span className="block whitespace-nowrap leading-[1.12]">Conservation Reserves Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+      title={<><span className="block whitespace-nowrap leading-[1.12]">Conservation Reserves</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
       subtitle="Community-supported conservation landscapes, ecological buffers, and transition zones across Kashmir. Integrates land-use intelligence, community stewardship data, habitat assessments, and ecological condition monitoring."
       icon="Leaf"
       color="from-emerald-600 to-emerald-500"

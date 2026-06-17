@@ -99,7 +99,7 @@ export default function LiveAlertsPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Live Alerts</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Real-time hazard warnings, emergency notifications, and public advisories. The operational nerve center of Kashmir's environmental intelligence platform."

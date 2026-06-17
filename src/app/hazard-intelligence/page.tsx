@@ -63,7 +63,7 @@ export default function HazardIntelligenceOverview() {
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence' }
         ]}
-        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Hazard Intelligence Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Hazard Intelligence</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Greater Kashmir ecological region"
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}
       />

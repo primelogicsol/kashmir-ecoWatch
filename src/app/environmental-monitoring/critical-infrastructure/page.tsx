@@ -256,7 +256,7 @@ export default function CriticalInfrastructurePage() {
         label="Environmental Monitoring"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Critical Infrastructure Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Critical Infrastructure</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }

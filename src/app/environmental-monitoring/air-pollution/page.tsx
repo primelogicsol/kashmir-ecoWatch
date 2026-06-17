@@ -427,7 +427,7 @@ export default function AirPollutionPage() {
         ]}
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Air Pollution Monitoring Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Air Pollution Monitoring</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }

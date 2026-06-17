@@ -17,7 +17,7 @@ export default function RiversPage() {
 
   return (
     <WaterEntityListingPage
-      title="Rivers Across Greater Kashmir Ecology"
+      title="Rivers Greater Kashmir Ecology"
       description="Complete inventory of major rivers, tributaries, district streams, cold-water streams, drainage-linked natural channels, and ecologically significant flow systems."
       icon="Wind"
       color="from-indigo-600 to-indigo-600"

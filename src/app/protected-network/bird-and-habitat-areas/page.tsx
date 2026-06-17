@@ -29,7 +29,7 @@ export default function BirdHabitatAreasPage() {
 
   return (
     <ProtectedCategoryPage
-      title={<><span className="block whitespace-nowrap leading-[1.12]">Bird Habitat Network Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+      title={<><span className="block whitespace-nowrap leading-[1.12]">Bird Habitat Network</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
       subtitle="Important bird and biodiversity habitats across Kashmir supporting resident and migratory species. Integrates site assessments, species checklists, seasonal usage data, and habitat condition intelligence."
       icon="Bird"
       color="from-emerald-600 to-emerald-500"

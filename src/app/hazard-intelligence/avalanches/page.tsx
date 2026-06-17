@@ -17,6 +17,7 @@ import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterB
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { avalancheData, AvalancheRecord } from '@/data/hazard-avalanches';
+import { useAvalancheIntelligence } from '@/hooks/useAvalancheIntelligence';
 
 // ─── Colour maps ──────────────────────────────────────────────────────────────
 
@@ -64,12 +65,12 @@ function AvalancheCard({ record, index }: { record: AvalancheRecord; index: numb
       className="h-full"
     >
       <Card className={`glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group ${
-        record.risk_level === 'Critical' ? 'hover:border-red-500/30' : record.risk_level === 'High' ? 'hover:border-orange-500/30' : 'hover:border-white/20'
+        (record.live_risk_level || record.risk_level) === 'Critical' ? 'hover:border-red-500/30' : (record.live_risk_level || record.risk_level) === 'High' ? 'hover:border-orange-500/30' : 'hover:border-white/20'
       }`}>
 
         {/* Subtle accent gradient */}
         <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-5 pointer-events-none ${
-          record.risk_level === 'Critical' ? 'from-red-500 to-transparent' : record.risk_level === 'High' ? 'from-orange-500 to-transparent' : 'from-cyan-500 to-transparent'
+          (record.live_risk_level || record.risk_level) === 'Critical' ? 'from-red-500 to-transparent' : (record.live_risk_level || record.risk_level) === 'High' ? 'from-orange-500 to-transparent' : 'from-cyan-500 to-transparent'
         }`} />
 
         {/* Header */}
@@ -81,8 +82,8 @@ function AvalancheCard({ record, index }: { record: AvalancheRecord; index: numb
               {record.district} · {record.scope}
             </p>
           </div>
-          <Badge variant={record.risk_level === 'Critical' ? 'critical' : record.risk_level === 'High' ? 'danger' : record.risk_level === 'Moderate' ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
-            {record.risk_level} Risk
+          <Badge variant={(record.live_risk_level || record.risk_level) === 'Critical' ? 'critical' : (record.live_risk_level || record.risk_level) === 'High' ? 'danger' : (record.live_risk_level || record.risk_level) === 'Moderate' ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {record.live_risk_level || record.risk_level} Risk
           </Badge>
         </div>
 
@@ -98,24 +99,26 @@ function AvalancheCard({ record, index }: { record: AvalancheRecord; index: numb
         {/* Key Metrics */}
         <div className="flex flex-col gap-1.5 text-xs mt-1 bg-white/[0.02] rounded-lg p-2 border border-white/5">
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Elevation</span>
-            <span className="font-bold text-cyan-400">{record.elevation_m.toLocaleString()} m</span>
+            <span className="text-slate-500">24h Snowfall</span>
+            <span className="font-bold text-cyan-400">{record.live_snowfall_24h !== undefined ? `${record.live_snowfall_24h} cm` : '--'}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Type</span>
-            <span className={`font-medium ${TYPE_ICON_COLOR[record.avalanche_type] || 'text-slate-300'}`}>{record.avalanche_type} Avalanche</span>
+            <span className="text-slate-500">Snow Depth</span>
+            <span className="font-bold text-blue-300">{record.live_snow_depth !== undefined ? `${record.live_snow_depth} m` : '--'}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Slope / Aspect</span>
-            <span className="text-slate-300 font-medium">{record.slope_angle_deg}° / {record.aspect}</span>
+            <span className="text-slate-500">Wind / Temp</span>
+            <span className="text-slate-300 font-medium">
+              {record.live_wind_speed !== undefined ? `${record.live_wind_speed} km/h` : '--'} / {record.live_temperature !== undefined ? `${record.live_temperature} °C` : '--'}
+            </span>
           </div>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-2 mt-1">
           <div className="bg-white/5 rounded p-2 text-center border border-white/5 flex flex-col justify-center">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Season</div>
-            <div className="text-[10px] font-medium text-sky-400 leading-tight">{record.season}</div>
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Elevation</div>
+            <div className="text-[10px] font-medium text-cyan-400 leading-tight">{record.elevation_m.toLocaleString()} m</div>
           </div>
           <div className="bg-white/5 rounded p-2 text-center border border-white/5 flex flex-col justify-center">
             <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Hist. Events</div>
@@ -129,6 +132,19 @@ function AvalancheCard({ record, index }: { record: AvalancheRecord; index: numb
             <Triangle className="w-3 h-3 flex-shrink-0 mt-0.5 text-cyan-400" />
             <span className="line-clamp-2 leading-snug"><strong className="text-slate-300 font-medium">Affected Road:</strong> {record.road_or_pass}</span>
           </div>
+        </div>
+
+        {/* Dominant Trigger & Last Updated */}
+        <div className="mt-1 text-[10px] text-slate-400">
+          <div className="flex justify-between items-center bg-white/5 p-1.5 rounded">
+            <span>Trigger:</span>
+            <span className="text-amber-400 font-medium">{record.dominant_trigger || 'Calculating...'}</span>
+          </div>
+          {record.last_updated && (
+             <div className="text-right text-[9px] mt-1 text-slate-500">
+               Updated: {new Date(record.last_updated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+             </div>
+          )}
         </div>
       </Card>
     </motion.div>
@@ -176,8 +192,8 @@ function AvalancheRow({ record, index }: { record: AvalancheRecord; index: numbe
           {/* Risk Level */}
           <div className="w-24">
             <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={record.risk_level === 'Critical' ? 'critical' : record.risk_level === 'High' ? 'danger' : record.risk_level === 'Moderate' ? 'warning' : 'success'} size="sm" className="text-[10px] shadow-sm">
-              {record.risk_level}
+            <Badge variant={(record.live_risk_level || record.risk_level) === 'Critical' ? 'critical' : (record.live_risk_level || record.risk_level) === 'High' ? 'danger' : (record.live_risk_level || record.risk_level) === 'Moderate' ? 'warning' : 'success'} size="sm" className="text-[10px] shadow-sm">
+              {record.live_risk_level || record.risk_level}
             </Badge>
           </div>
 
@@ -209,6 +225,8 @@ export default function AvalanchesPage() {
   const router = useRouter();
   const { filter, setScope, setDistrict } = useGlobalFilter();
 
+  const { data: liveData, isStale, error } = useAvalancheIntelligence(avalancheData);
+
   const [typeFilter, setTypeFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -224,7 +242,7 @@ export default function AvalanchesPage() {
   const seasons = ['Nov-Mar', 'Dec-Feb', 'Year-round'];
 
   const filteredData = useMemo(() => {
-    return avalancheData.filter(d => {
+    return liveData.filter(d => {
       const matchSearch = filter.searchQuery === '' ||
         d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
@@ -234,7 +252,7 @@ export default function AvalanchesPage() {
       const matchDistrict = filter.district === 'All' || d.district === filter.district;
 
       const matchType = typeFilter === 'all' || d.avalanche_type === typeFilter;
-      const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+      const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
       const matchStatus = statusFilter === 'all' || d.current_status === statusFilter;
       const matchSeason = seasonFilter === 'all' || d.season === seasonFilter;
 
@@ -249,26 +267,26 @@ export default function AvalanchesPage() {
 
   const scopeCount = useMemo(() => {
     if (filter.scope === 'All') return 0;
-    return avalancheData.filter(d => d.scope === filter.scope).length;
-  }, [filter.scope]);
+    return liveData.filter(d => d.scope === filter.scope).length;
+  }, [filter.scope, liveData]);
 
   // Aggregate KPIs
-  const activeWarnings = avalancheData.filter(d => d.current_status === 'Active Warning').length;
-  const criticalZones = avalancheData.filter(d => d.risk_level === 'Critical').length;
-  const highAltitude = avalancheData.filter(d => d.elevation_m >= 4000).length;
-  const verifiedCount = avalancheData.filter(d => d.verification_status === 'Verified').length;
-  const totalEvents = avalancheData.reduce((sum, d) => sum + d.historical_events_count, 0);
-  const maxElevation = Math.max(...avalancheData.map(d => d.elevation_m));
+  const activeWarnings = liveData.filter(d => d.current_status === 'Active Warning').length;
+  const criticalZones = liveData.filter(d => (d.live_risk_level || d.risk_level) === 'Critical').length;
+  const highAltitude = liveData.filter(d => d.elevation_m >= 4000).length;
+  const verifiedCount = liveData.filter(d => d.verification_status === 'Verified').length;
+  const totalEvents = liveData.reduce((sum, d) => sum + d.historical_events_count, 0);
+  const maxElevation = Math.max(...liveData.map(d => d.elevation_m));
 
   const metrics = [
-    { label: 'Total Zones', value: avalancheData.length, icon: 'MapPin' },
+    { label: 'Total Zones', value: liveData.length, icon: 'MapPin' },
     { label: 'Active Warnings', value: activeWarnings, icon: 'AlertTriangle' },
     { label: 'Critical Risk', value: criticalZones, icon: 'Shield' },
     { label: 'High-Altitude (4000m+)', value: highAltitude, icon: 'Mountain' },
     { label: 'Verified Zones', value: verifiedCount, icon: 'CheckCircle' },
     { label: 'Historical Events', value: totalEvents.toLocaleString(), icon: 'Activity' },
     { label: 'Max Elevation', value: `${maxElevation.toLocaleString()} m`, icon: 'TrendingUp' },
-    { label: 'Latest Update', value: 'Today', icon: 'Clock' },
+    { label: 'Latest Update', value: 'Live', icon: 'Clock' },
   ];
 
   return (
@@ -278,7 +296,7 @@ export default function AvalanchesPage() {
         label="Hazard Intelligence"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Avalanche Risk Intelligence Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Avalanche Risk Intelligence</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
@@ -292,6 +310,18 @@ export default function AvalanchesPage() {
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} iconColor="text-cyan-500" />
+
+      {/* ── WARNING BANNER ───────────────────────────────────────────────── */}
+      {(isStale || error) && (
+        <div className="container mx-auto px-6 mt-4 relative z-40">
+          <div className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-3 rounded-lg flex items-center gap-3 text-sm">
+            <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+            <span>
+              {error ? `Error: ${error}` : 'Warning: Live Meteo API is unreachable. Displaying cached data which may be stale.'}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* ── FILTER BAR ───────────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
@@ -317,7 +347,7 @@ export default function AvalanchesPage() {
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow
         filteredCount={filteredData.length}
-        totalCount={avalancheData.length}
+        totalCount={liveData.length}
         entityLabel="avalanche zones"
         viewMode={viewMode}
         onViewModeChange={setViewMode}

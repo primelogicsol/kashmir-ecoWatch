@@ -132,7 +132,7 @@ export default function DashboardsPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Dashboards' }
         ]}
-        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Dashboards Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Dashboards</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Comprehensive analytics dashboards with district comparison, stress heatmaps, trend analysis, and real-time environmental intelligence across all monitoring domains"
         icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
       />

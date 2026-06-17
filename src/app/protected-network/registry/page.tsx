@@ -161,7 +161,7 @@ export default function ProtectedAreasRegistryPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap leading-[1.12]">Protected Areas Registry Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12]">Protected Areas Registry</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Complete inventory of all protected areas across the global ecological scope. Filter by scope, category, and search by name. Integrated with the entire regional database."
         icon={
           <div className="flex items-center gap-3">

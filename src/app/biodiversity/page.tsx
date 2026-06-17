@@ -204,7 +204,7 @@ export default function BiodiversityPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title="Species Across Greater Kashmir Ecology"
+        title="Species Greater Kashmir Ecology"
         subtitle="A comprehensive species directory mapping Kashmir's terrestrial and aquatic biodiversity, including mammals, birds, fish, and flora. Integrating detailed conservation status, habitat associations, elevational ranges, and critical intelligence for threatened ecosystems and protected zones."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         actions={

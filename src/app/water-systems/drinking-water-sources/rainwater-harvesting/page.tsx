@@ -98,7 +98,7 @@ export default function RainwaterHarvestingPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Rainwater Harvesting</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Harnessing Kashmir's rainfall (600-1450mm annually) for drinking water augmentation and groundwater recharge. The ESRO EIA Report identifies that rainwater is lost as run off without recharging groundwater."

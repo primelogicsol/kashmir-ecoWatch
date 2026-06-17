@@ -25,7 +25,7 @@ export default function MammalsPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Mammals Across Greater Kashmir Ecology"
+      title="Mammals Greater Kashmir Ecology"
       subtitle="A detailed conservation database mapping Kashmir's terrestrial mammals, from critically endangered high-altitude ungulates to forest carnivores. Integrating verified habitat boundaries, regional conservation frameworks, and detailed species population metrics across transboundary protected zones."
       icon="Mountain"
       color="from-emerald-500 to-teal-600"

@@ -71,7 +71,7 @@ export default function GroundwaterPage() {
         icon={<Database className="w-6 h-6 text-emerald-400" />}
         title={
           <>
-            <span className="block whitespace-nowrap">Aquifers Across</span>
+            <span className="block whitespace-nowrap">Aquifers</span>
             <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }

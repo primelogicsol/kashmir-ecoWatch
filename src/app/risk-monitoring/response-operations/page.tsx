@@ -78,7 +78,7 @@ export default function ResponseOperationsPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Response & Operations</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Emergency response coordination, live alerts, incident management, and operational intelligence for effective risk mitigation"

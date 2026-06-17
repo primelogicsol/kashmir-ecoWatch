@@ -165,7 +165,7 @@ export default function PipedWaterSupplyPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Piped Water Supply</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Comprehensive assessment of Kashmir's piped drinking water supply network managed by the Public Health Engineering Department (PHED). Tracking coverage, supply reliability, service levels, and infrastructure gaps across all districts."

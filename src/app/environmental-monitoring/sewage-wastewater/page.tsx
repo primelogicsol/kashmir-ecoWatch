@@ -356,7 +356,7 @@ export default function SewageWastewaterPage() {
         label="Environmental Monitoring"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Sewage and Wastewater Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Sewage and Wastewater</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }

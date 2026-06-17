@@ -18,6 +18,7 @@ import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterB
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { earthquakeData, EarthquakeRecord } from '@/data/hazard-earthquakes';
+import { useEarthquakeIntelligence } from '@/hooks/useEarthquakeIntelligence';
 
 // ─── Colour maps ──────────────────────────────────────────────────────────────
 
@@ -62,6 +63,8 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
   const ev = VERIFICATION_CONFIG[record.verification_status] || VERIFICATION_CONFIG['Modelled'];
   const EvIcon = ev.icon;
 
+  const liveRisk = record.live_risk_level || record.risk_level;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -70,12 +73,12 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
       className="h-full"
     >
       <Card className={`glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group ${
-        record.risk_level === 'Critical' ? 'hover:border-red-500/30' : record.risk_level === 'High' ? 'hover:border-orange-500/30' : 'hover:border-white/20'
+        liveRisk === 'Critical' ? 'hover:border-red-500/30' : liveRisk === 'High' ? 'hover:border-orange-500/30' : 'hover:border-white/20'
       }`}>
 
         {/* Subtle accent gradient */}
         <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-5 pointer-events-none ${
-          record.risk_level === 'Critical' ? 'from-red-500 to-transparent' : record.risk_level === 'High' ? 'from-orange-500 to-transparent' : 'from-transparent to-transparent'
+          liveRisk === 'Critical' ? 'from-red-500 to-transparent' : liveRisk === 'High' ? 'from-orange-500 to-transparent' : 'from-transparent to-transparent'
         }`} />
 
         {/* Header */}
@@ -87,8 +90,8 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
               {record.district} · {record.scope}
             </p>
           </div>
-          <Badge variant={record.risk_level === 'Critical' ? 'critical' : record.risk_level === 'High' ? 'danger' : record.risk_level === 'Moderate' ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
-            {record.risk_level} Risk
+          <Badge variant={liveRisk === 'Critical' ? 'critical' : liveRisk === 'High' ? 'danger' : liveRisk === 'Moderate' ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {liveRisk} Risk
           </Badge>
         </div>
 
@@ -101,24 +104,24 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
             </div>
             <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Seismic Zone</span>
           </div>
-          <div className={`flex-1 flex flex-col gap-0.5 px-2.5 py-1.5 rounded-lg border text-[10px] ${gap.bg} ${gap.border}`}>
-            <div className={`flex items-center gap-1.5 font-bold ${gap.color}`}>
-              <GapIcon className="w-3 h-3 flex-shrink-0" />
-              <span>{record.seismic_gap_status}</span>
+          <div className={`flex-1 flex flex-col gap-0.5 px-2.5 py-1.5 rounded-lg border text-[10px] bg-white/5 border-white/10`}>
+            <div className={`flex items-center gap-1.5 font-bold ${record.live_recent_quakes_30d ? 'text-orange-400' : 'text-slate-300'}`}>
+              <Activity className="w-3 h-3 flex-shrink-0" />
+              <span>{record.live_recent_quakes_30d || 0} Quakes</span>
             </div>
-            <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Seismic Gap</span>
+            <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Past 30 Days</span>
           </div>
         </div>
 
         {/* Key Metrics */}
         <div className="flex flex-col gap-1.5 text-xs mt-1 bg-white/[0.02] rounded-lg p-2 border border-white/5">
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Max Magnitude</span>
-            <span className="font-bold text-red-400">M {record.magnitude_max_recorded}</span>
+            <span className="text-slate-500">Live Latest Mag</span>
+            <span className="font-bold text-red-400">{record.live_latest_magnitude ? `M ${record.live_latest_magnitude.toFixed(1)}` : 'None'}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Depth</span>
-            <span className="text-slate-300 font-medium">{record.depth_km} km</span>
+            <span className="text-slate-500">Historical Max</span>
+            <span className="text-slate-300 font-medium">M {record.magnitude_max_recorded}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-500">Fault System</span>
@@ -142,7 +145,7 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
         <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400">
           <div className="flex items-center gap-1.5">
             <Clock className="w-3 h-3 text-slate-500" />
-            <span>Last event: <strong className="text-slate-300">{record.last_significant_event}</strong></span>
+            <span>Latest: <strong className="text-slate-300">{record.live_latest_date || record.last_significant_event}</strong></span>
           </div>
           <div className={`flex items-center gap-1 px-1.5 py-0.5 rounded border ${ev.bg} ${ev.border}`}>
             <EvIcon className={`w-2.5 h-2.5 ${ev.color}`} />
@@ -158,8 +161,7 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
 
 function EarthquakeRow({ record, index }: { record: EarthquakeRecord; index: number }) {
   const zone = ZONE_COLOR[record.zone_classification] || ZONE_COLOR['Zone III'];
-  const gap = GAP_STATUS_CONFIG[record.seismic_gap_status] || GAP_STATUS_CONFIG['Low Activity'];
-  const GapIcon = gap.icon;
+  const liveRisk = record.live_risk_level || record.risk_level;
 
   return (
     <motion.div
@@ -177,8 +179,8 @@ function EarthquakeRow({ record, index }: { record: EarthquakeRecord; index: num
 
           {/* Magnitude */}
           <div className="w-20 hidden md:block">
-            <div className="text-[10px] text-slate-500">Max Mag.</div>
-            <div className="text-xs font-bold text-red-400">M {record.magnitude_max_recorded}</div>
+            <div className="text-[10px] text-slate-500">Latest Mag.</div>
+            <div className="text-xs font-bold text-red-400">{record.live_latest_magnitude ? `M ${record.live_latest_magnitude.toFixed(1)}` : 'None'}</div>
           </div>
 
           {/* Zone */}
@@ -195,17 +197,17 @@ function EarthquakeRow({ record, index }: { record: EarthquakeRecord; index: num
           {/* Risk Level */}
           <div className="w-24">
             <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={record.risk_level === 'Critical' ? 'critical' : record.risk_level === 'High' ? 'danger' : record.risk_level === 'Moderate' ? 'warning' : 'success'} size="sm" className="text-[10px] shadow-sm">
-              {record.risk_level}
+            <Badge variant={liveRisk === 'Critical' ? 'critical' : liveRisk === 'High' ? 'danger' : liveRisk === 'Moderate' ? 'warning' : 'success'} size="sm" className="text-[10px] shadow-sm">
+              {liveRisk}
             </Badge>
           </div>
 
-          {/* Seismic Gap */}
+          {/* Recent Quakes */}
           <div className="w-36 hidden sm:block">
-            <div className={`flex flex-col gap-0.5 px-2 py-1 rounded-lg border w-max ${gap.bg} ${gap.border}`}>
-              <div className={`flex items-center gap-1.5 text-[10px] font-bold ${gap.color}`}>
-                <GapIcon className="w-3 h-3 flex-shrink-0" />
-                <span>{record.seismic_gap_status}</span>
+            <div className={`flex flex-col gap-0.5 px-2 py-1 rounded-lg border w-max bg-white/5 border-white/10`}>
+              <div className={`flex items-center gap-1.5 text-[10px] font-bold ${record.live_recent_quakes_30d ? 'text-orange-400' : 'text-slate-300'}`}>
+                <Activity className="w-3 h-3 flex-shrink-0" />
+                <span>{record.live_recent_quakes_30d || 0} Quakes</span>
               </div>
             </div>
           </div>
@@ -228,6 +230,8 @@ export default function EarthquakesPage() {
   const router = useRouter();
   const { filter, setScope, setDistrict } = useGlobalFilter();
 
+  const { data: liveData, loading, isStale, error } = useEarthquakeIntelligence();
+
   const [zoneFilter, setZoneFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
   const [gapFilter, setGapFilter] = useState('all');
@@ -243,7 +247,7 @@ export default function EarthquakesPage() {
   const vulnerabilities = ['High', 'Moderate', 'Low'];
 
   const filteredData = useMemo(() => {
-    return earthquakeData.filter(d => {
+    return liveData.filter(d => {
       const matchSearch = filter.searchQuery === '' ||
         d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
@@ -253,13 +257,13 @@ export default function EarthquakesPage() {
       const matchDistrict = filter.district === 'All' || d.district === filter.district;
 
       const matchZone = zoneFilter === 'all' || d.zone_classification === zoneFilter;
-      const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+      const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
       const matchGap = gapFilter === 'all' || d.seismic_gap_status === gapFilter;
       const matchVuln = vulnFilter === 'all' || d.building_vulnerability === vulnFilter;
 
       return matchSearch && matchScope && matchDistrict && matchZone && matchRisk && matchGap && matchVuln;
     });
-  }, [filter, zoneFilter, riskFilter, gapFilter, vulnFilter]);
+  }, [liveData, filter, zoneFilter, riskFilter, gapFilter, vulnFilter]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -268,20 +272,20 @@ export default function EarthquakesPage() {
 
   const scopeCount = useMemo(() => {
     if (filter.scope === 'All') return 0;
-    return earthquakeData.filter(d => d.scope === filter.scope).length;
-  }, [filter.scope]);
+    return liveData.filter(d => d.scope === filter.scope).length;
+  }, [filter.scope, liveData]);
 
   // Aggregate KPIs
-  const zoneVCount = earthquakeData.filter(d => d.zone_classification === 'Zone V').length;
-  const activeGaps = earthquakeData.filter(d => d.seismic_gap_status === 'Active Gap').length;
-  const criticalZones = earthquakeData.filter(d => d.risk_level === 'Critical').length;
-  const faultSystems = new Set(earthquakeData.map(d => d.fault_system)).size;
-  const maxMag = Math.max(...earthquakeData.map(d => d.magnitude_max_recorded));
-  const highVulnCount = earthquakeData.filter(d => d.building_vulnerability === 'High').length;
-  const verifiedCount = earthquakeData.filter(d => d.verification_status === 'Verified').length;
+  const zoneVCount = liveData.filter(d => d.zone_classification === 'Zone V').length;
+  const activeGaps = liveData.filter(d => d.seismic_gap_status === 'Active Gap').length;
+  const criticalZones = liveData.filter(d => (d.live_risk_level || d.risk_level) === 'Critical').length;
+  const faultSystems = new Set(liveData.map(d => d.fault_system)).size;
+  const maxMag = Math.max(...liveData.map(d => d.magnitude_max_recorded));
+  const highVulnCount = liveData.filter(d => d.building_vulnerability === 'High').length;
+  const verifiedCount = liveData.filter(d => d.verification_status === 'Verified').length;
 
   const metrics = [
-    { label: 'Seismic Zones', value: earthquakeData.length, icon: 'MapPin' },
+    { label: 'Seismic Zones', value: liveData.length, icon: 'MapPin' },
     { label: 'Zone V Districts', value: zoneVCount, icon: 'AlertTriangle' },
     { label: 'Active Seismic Gaps', value: activeGaps, icon: 'Activity' },
     { label: 'Critical Risk', value: criticalZones, icon: 'Shield' },
@@ -298,7 +302,7 @@ export default function EarthquakesPage() {
         label="Hazard Intelligence"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Seismic Risk Intelligence Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Seismic Risk Intelligence</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
@@ -309,6 +313,15 @@ export default function EarthquakesPage() {
           { label: 'Earthquakes' },
         ]}
       />
+
+      {isStale && (
+        <div className="container mx-auto px-6 mt-4">
+          <div className="bg-amber-500/10 border border-amber-500/20 text-amber-400 p-3 rounded-lg flex items-center gap-2 text-sm">
+            <AlertTriangle className="w-4 h-4" />
+            <span>Live earthquake data is currently unavailable. Showing last known state.</span>
+          </div>
+        </div>
+      )}
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} iconColor="text-red-500" />
@@ -337,7 +350,7 @@ export default function EarthquakesPage() {
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow
         filteredCount={filteredData.length}
-        totalCount={earthquakeData.length}
+        totalCount={liveData.length}
         entityLabel="seismic zones"
         viewMode={viewMode}
         onViewModeChange={setViewMode}

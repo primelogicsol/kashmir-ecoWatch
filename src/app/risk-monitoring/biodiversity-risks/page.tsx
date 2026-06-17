@@ -98,7 +98,7 @@ export default function BiodiversityRisksPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Biodiversity Risks</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Species vulnerability tracking, habitat risk assessment, mortality monitoring, and ecological intelligence for Kashmir's biodiversity conservation"

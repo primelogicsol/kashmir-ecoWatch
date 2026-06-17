@@ -331,7 +331,7 @@ export default function DashboardsPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Risk Dashboards</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Integrated dashboards for multi-hazard visibility, district risk interpretation, incident response, and evolving environmental risk across Kashmir."

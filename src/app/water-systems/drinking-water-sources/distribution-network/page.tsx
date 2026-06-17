@@ -148,7 +148,7 @@ export default function DistributionNetworkPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Distribution Network</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Comprehensive mapping of Kashmir's drinking water distribution infrastructure — pipeline networks, elevated storage reservoirs, leakage analysis, and non-revenue water assessment across all districts."

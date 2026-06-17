@@ -132,7 +132,7 @@ export default function WaterIntelligenceDashboard() {
         title={
           <>
             <span className="block whitespace-nowrap">Water Intelligence</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Hydrological intelligence engine for Kashmir Eco Watch. All computations run on source-verified records only. Locked records are excluded from KPIs until source verification is complete."

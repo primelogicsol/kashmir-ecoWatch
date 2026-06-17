@@ -186,7 +186,7 @@ export default function WaterQualityTestingPage() {
         title={
           <>
             <span className="block whitespace-nowrap">Quality Testing</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
         subtitle="Comprehensive testing protocols, parameter monitoring, and contamination surveillance for Kashmir's drinking water sources. Tracking physical, chemical, and biological parameters across testing stations to safeguard public health."

@@ -238,7 +238,7 @@ export default function AlgalBloomMonitoringPage() {
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <Heading
-        title={<><span className="block whitespace-nowrap leading-[1.12]">Algal Bloom Intelligence Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12]">Algal Bloom Intelligence</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Complete trophic status database covering 83 lake systems across Kashmir Core, Trans-Divisional, and Transboundary regions — with verified, inferred, and data-gap classifications anchored to published scientific sources."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
         label="Bloom Intelligence"

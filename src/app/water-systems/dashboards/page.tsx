@@ -108,7 +108,7 @@ export default function WaterSystemsDashboardsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Water Systems Analytics"
-        title="Water Dashboards Across Greater Kashmir Ecology"
+        title="Water Dashboards Greater Kashmir Ecology"
         subtitle="Real-time analytics, trends, and heatmaps for hydrological monitoring, water quality tracking, and aquatic ecosystem health across Kashmir."
         icon={<BarChart3 className="w-6 h-6 text-cyan-400" />}
         breadcrumbs={[{ label: 'Water Systems', href: '/water-systems' }, { label: 'Dashboards' }]}

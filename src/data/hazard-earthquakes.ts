@@ -15,6 +15,13 @@ export interface EarthquakeRecord {
   building_vulnerability: 'High' | 'Moderate' | 'Low';
   verification_status: 'Verified' | 'Field-Assessed' | 'Remote-Sensed' | 'Modelled';
   seismic_gap_status: 'Active Gap' | 'Monitored' | 'Low Activity';
+  latitude: number;
+  longitude: number;
+  live_recent_quakes_30d?: number;
+  live_latest_magnitude?: number;
+  live_latest_date?: string;
+  live_risk_level?: 'Critical' | 'High' | 'Moderate' | 'Low';
+  last_updated?: string;
 }
 
 export const earthquakeData: EarthquakeRecord[] = [
@@ -34,6 +41,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.0837,
+    longitude: 74.7973,
   },
   {
     id: 'eq-002',
@@ -50,6 +59,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 34.0150,
+    longitude: 74.7100,
   },
   {
     id: 'eq-003',
@@ -66,6 +77,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.2166,
+    longitude: 74.7833,
   },
   {
     id: 'eq-004',
@@ -82,6 +95,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.2000,
+    longitude: 74.3333,
   },
   {
     id: 'eq-005',
@@ -98,6 +113,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 34.4166,
+    longitude: 74.6500,
   },
   {
     id: 'eq-006',
@@ -114,6 +131,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 34.5333,
+    longitude: 74.2666,
   },
   {
     id: 'eq-007',
@@ -130,6 +149,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.7333,
+    longitude: 75.1500,
   },
   {
     id: 'eq-008',
@@ -146,6 +167,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 33.6500,
+    longitude: 75.0166,
   },
   {
     id: 'eq-009',
@@ -162,6 +185,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 33.8833,
+    longitude: 74.9000,
   },
   {
     id: 'eq-010',
@@ -178,6 +203,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Low',
     verification_status: 'Field-Assessed',
     seismic_gap_status: 'Low Activity',
+    latitude: 33.7166,
+    longitude: 74.8333,
   },
 
   // ─── Trans-Divisional (12 records) ──────────────────────────────────────────
@@ -196,6 +223,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 32.7333,
+    longitude: 74.8666,
   },
   {
     id: 'eq-012',
@@ -212,6 +241,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Low Activity',
+    latitude: 32.9166,
+    longitude: 75.1333,
   },
   {
     id: 'eq-013',
@@ -228,6 +259,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.0833,
+    longitude: 74.8333,
   },
   {
     id: 'eq-014',
@@ -244,6 +277,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.3833,
+    longitude: 74.3000,
   },
   {
     id: 'eq-015',
@@ -260,6 +295,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.7666,
+    longitude: 74.1000,
   },
   {
     id: 'eq-016',
@@ -276,6 +313,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.3166,
+    longitude: 75.7666,
   },
   {
     id: 'eq-017',
@@ -292,6 +331,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 33.1500,
+    longitude: 75.5500,
   },
   {
     id: 'eq-018',
@@ -308,6 +349,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 33.2500,
+    longitude: 75.2500,
   },
   {
     id: 'eq-019',
@@ -324,6 +367,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.1666,
+    longitude: 77.5833,
   },
   {
     id: 'eq-020',
@@ -340,6 +385,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 34.5500,
+    longitude: 76.1333,
   },
   {
     id: 'eq-021',
@@ -356,6 +403,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Low',
     verification_status: 'Field-Assessed',
     seismic_gap_status: 'Low Activity',
+    latitude: 32.5500,
+    longitude: 75.1166,
   },
   {
     id: 'eq-022',
@@ -372,6 +421,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Low',
     verification_status: 'Field-Assessed',
     seismic_gap_status: 'Low Activity',
+    latitude: 32.3666,
+    longitude: 75.5166,
   },
 
   // ─── Transboundary / Extended (10 records) ──────────────────────────────────
@@ -390,6 +441,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.3666,
+    longitude: 73.4666,
   },
   {
     id: 'eq-024',
@@ -406,6 +459,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.9833,
+    longitude: 73.7833,
   },
   {
     id: 'eq-025',
@@ -422,6 +477,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Active Gap',
+    latitude: 34.5833,
+    longitude: 73.9000,
   },
   {
     id: 'eq-026',
@@ -438,6 +495,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Monitored',
+    latitude: 33.8833,
+    longitude: 74.0166,
   },
   {
     id: 'eq-027',
@@ -454,6 +513,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Active Gap',
+    latitude: 35.9166,
+    longitude: 74.3000,
   },
   {
     id: 'eq-028',
@@ -470,6 +531,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Monitored',
+    latitude: 35.3000,
+    longitude: 75.6166,
   },
   {
     id: 'eq-029',
@@ -486,6 +549,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Active Gap',
+    latitude: 36.3166,
+    longitude: 74.6500,
   },
   {
     id: 'eq-030',
@@ -502,6 +567,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Verified',
     seismic_gap_status: 'Active Gap',
+    latitude: 36.3166,
+    longitude: 74.8166,
   },
   {
     id: 'eq-031',
@@ -518,6 +585,8 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'Moderate',
     verification_status: 'Verified',
     seismic_gap_status: 'Monitored',
+    latitude: 35.8500,
+    longitude: 73.1000,
   },
   {
     id: 'eq-032',
@@ -534,5 +603,7 @@ export const earthquakeData: EarthquakeRecord[] = [
     building_vulnerability: 'High',
     verification_status: 'Remote-Sensed',
     seismic_gap_status: 'Active Gap',
+    latitude: 33.8500,
+    longitude: 73.7500,
   },
 ];

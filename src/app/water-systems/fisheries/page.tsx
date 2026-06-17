@@ -15,7 +15,7 @@ export default function FisheriesPage() {
 
   return (
     <WaterEntityListingPage
-      title="Fisheries Across Greater Kashmir Ecology"
+      title="Fisheries Greater Kashmir Ecology"
       description="Native fish systems, trout systems, snow trout systems, aquatic ecology, lake fisheries, stream fisheries, wetland aquatic communities, and biodiversity linked to freshwater habitats."
       icon="Fish"
       color="from-violet-500 to-purple-600"

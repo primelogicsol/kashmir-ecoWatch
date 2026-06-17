@@ -14,12 +14,13 @@ import { useRouter } from 'next/navigation';
 import {
   Flame, ChevronRight, AlertTriangle,
   Activity, Clock, MapPin, ExternalLink,
-  TrendingUp, Shield, Zap, Eye, Mountain, Users, Calendar, RefreshCw
+  TrendingUp, Shield, Zap, Eye, Mountain, Users, Calendar, RefreshCw, Thermometer, Droplets, Wind
 } from 'lucide-react';
 import {
   forestFireRegistry, forestFireKpis,
   ForestFireRecord,
 } from '@/data/hazard-forest-fires';
+import { useForestFireIntelligence, LiveFireData } from '@/hooks/useForestFireIntelligence';
 
 // ─── Risk badge helpers ──────────────────────────────────────────────────────
 
@@ -54,10 +55,12 @@ const FOREST_TYPE_COLORS: Record<string, string> = {
 
 // ─── ForestFireCard ──────────────────────────────────────────────────────────
 
-function ForestFireCard({ record, index }: { record: ForestFireRecord; index: number }) {
+function ForestFireCard({ record, index, liveData }: { record: ForestFireRecord; index: number; liveData?: LiveFireData }) {
   const statusChip = STATUS_CHIP[record.current_status] || STATUS_CHIP['No Current Risk'];
   const verChip = VERIFICATION_CHIP[record.verification_status] || VERIFICATION_CHIP['Unverified'];
   const forestColor = FOREST_TYPE_COLORS[record.forest_type] || 'text-slate-300';
+  
+  const riskLevel = liveData?.live_risk_level || record.risk_level;
 
   return (
     <motion.div
@@ -76,56 +79,62 @@ function ForestFireCard({ record, index }: { record: ForestFireRecord; index: nu
               <span className="truncate">{record.district} · {record.scope}</span>
             </div>
           </div>
-          <Badge variant={RISK_VARIANT[record.risk_level]} className="flex-shrink-0 ml-2">
-            {record.risk_level}
+          <Badge variant={RISK_VARIANT[riskLevel] || 'info'} className="flex-shrink-0 ml-2 shadow-sm shadow-black/20">
+            {riskLevel}
           </Badge>
         </div>
 
-        {/* Status + Verification */}
-        <div className="flex gap-2 mb-3">
-          <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] ${statusChip}`}>
-            <Activity className="w-3 h-3 flex-shrink-0" />
-            <span className="font-medium">{record.current_status}</span>
+        {/* Live Metrics Grid */}
+        <div className="grid grid-cols-3 gap-1.5 text-xs mb-3">
+          <div className="bg-white/5 rounded p-2 border border-white/5 relative overflow-hidden">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1"><Thermometer className="w-2.5 h-2.5" /> Peak Temp</div>
+            <div className={`font-bold ${liveData ? 'text-red-400' : 'text-slate-400'}`}>
+              {liveData ? `${liveData.live_temperature}°C` : '--'}
+            </div>
           </div>
-          <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] ${verChip}`}>
-            <Shield className="w-3 h-3 flex-shrink-0" />
-            <span className="font-medium truncate">{record.verification_status}</span>
+          <div className="bg-white/5 rounded p-2 border border-white/5 relative overflow-hidden">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1"><Droplets className="w-2.5 h-2.5" /> Min Hum</div>
+            <div className={`font-bold ${liveData ? 'text-blue-400' : 'text-slate-400'}`}>
+              {liveData ? `${liveData.live_humidity}%` : '--'}
+            </div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5 relative overflow-hidden">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1"><Wind className="w-2.5 h-2.5" /> Wind</div>
+            <div className={`font-bold ${liveData ? 'text-teal-400' : 'text-slate-400'}`}>
+              {liveData ? `${liveData.live_wind_speed} km/h` : '--'}
+            </div>
           </div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-3 gap-1.5 text-xs mb-3">
-          <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Forest Type</div>
-            <div className={`font-bold ${forestColor}`}>{record.forest_type}</div>
+        {/* Dominant Trigger & Updated Time */}
+        {liveData && (
+          <div className="mb-3 p-2 bg-gradient-to-r from-red-500/10 to-orange-500/5 rounded border border-red-500/20">
+             <div className="text-[10px] text-slate-400 mb-0.5">Dominant Trigger</div>
+             <div className="text-xs font-bold text-red-300 flex items-center gap-1.5">
+               <AlertTriangle className="w-3 h-3" />
+               {liveData.dominant_trigger}
+             </div>
           </div>
-          <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Area</div>
-            <div className="font-bold text-slate-200">{record.area_vulnerable_hectares.toLocaleString()} <span className="text-[8px] font-normal text-slate-500">ha</span></div>
-          </div>
-          <div className="bg-white/5 rounded p-2 border border-white/5">
-            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Frequency</div>
-            <div className="font-bold text-slate-200">{record.fire_frequency}</div>
-          </div>
-        </div>
+        )}
 
         {/* Evidence Chips */}
         <div className="flex flex-wrap gap-1.5 mb-3">
           <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
+             <Mountain className="w-2.5 h-2.5 inline mr-1" />{record.forest_type}
+          </span>
+          <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
             <Users className="w-2.5 h-2.5 inline mr-1" />{record.cause_primary} Cause
-          </span>
-          <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
-            <Calendar className="w-2.5 h-2.5 inline mr-1" />{record.fire_season}
-          </span>
-          <span className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
-            <Eye className="w-2.5 h-2.5 inline mr-1" />{record.detection_method}
           </span>
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-3 border-t border-white/5 flex justify-between items-center text-[10px]">
-          <span className="text-slate-500">Last Fire Event</span>
-          <span className="text-slate-400 font-mono">{record.last_fire_event}</span>
+        <div className="mt-auto pt-3 border-t border-white/5 flex flex-col gap-1 text-[10px]">
+          <div className="flex justify-between items-center">
+            <span className="text-slate-500">Live Status Updated</span>
+            <span className="text-slate-400 font-mono">
+              {liveData ? new Date(liveData.last_updated).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Waiting...'}
+            </span>
+          </div>
         </div>
       </Card>
     </motion.div>
@@ -134,10 +143,9 @@ function ForestFireCard({ record, index }: { record: ForestFireRecord; index: nu
 
 // ─── ForestFireRow ───────────────────────────────────────────────────────────
 
-function ForestFireRow({ record, index }: { record: ForestFireRecord; index: number }) {
+function ForestFireRow({ record, index, liveData }: { record: ForestFireRecord; index: number; liveData?: LiveFireData }) {
   const statusChip = STATUS_CHIP[record.current_status] || STATUS_CHIP['No Current Risk'];
-  const verChip = VERIFICATION_CHIP[record.verification_status] || VERIFICATION_CHIP['Unverified'];
-  const forestColor = FOREST_TYPE_COLORS[record.forest_type] || 'text-slate-300';
+  const riskLevel = liveData?.live_risk_level || record.risk_level;
 
   return (
     <motion.div
@@ -153,44 +161,32 @@ function ForestFireRow({ record, index }: { record: ForestFireRecord; index: num
             <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1"><MapPin className="w-3 h-3" /> {record.district} · {record.scope}</div>
           </div>
 
-          {/* Risk */}
+          {/* Live Risk */}
           <div className="w-24">
-            <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={RISK_VARIANT[record.risk_level]} size="sm">{record.risk_level}</Badge>
+            <div className="text-[10px] text-slate-500 mb-1">Live Risk</div>
+            <Badge variant={RISK_VARIANT[riskLevel] || 'info'} size="sm">{riskLevel}</Badge>
           </div>
 
-          {/* Forest Type & Area */}
-          <div className="w-36 hidden md:flex items-center justify-between gap-2">
+          {/* Live Metrics */}
+          <div className="w-48 hidden md:flex items-center justify-between gap-3 text-xs">
             <div>
-              <div className="text-[10px] text-slate-500 mb-0.5">Type</div>
-              <div className={`text-xs font-bold ${forestColor}`}>{record.forest_type}</div>
+              <div className="text-[9px] text-slate-500 mb-0.5">Temp</div>
+              <div className="font-bold text-red-400">{liveData ? `${liveData.live_temperature}°C` : '--'}</div>
             </div>
             <div>
-              <div className="text-[10px] text-slate-500 mb-0.5">Area</div>
-              <div className="text-xs font-bold text-slate-300">{record.area_vulnerable_hectares.toLocaleString()} ha</div>
+              <div className="text-[9px] text-slate-500 mb-0.5">Humidity</div>
+              <div className="font-bold text-blue-400">{liveData ? `${liveData.live_humidity}%` : '--'}</div>
+            </div>
+            <div>
+              <div className="text-[9px] text-slate-500 mb-0.5">Wind</div>
+              <div className="font-bold text-teal-400">{liveData ? `${liveData.live_wind_speed} km/h` : '--'}</div>
             </div>
           </div>
 
-          {/* Status */}
+          {/* Trigger */}
           <div className="w-36 hidden lg:block">
-            <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] w-max ${statusChip}`}>
-              <Activity className="w-3 h-3 flex-shrink-0" />
-              <span className="font-medium">{record.current_status}</span>
-            </div>
-          </div>
-
-          {/* Verification */}
-          <div className="w-36 hidden xl:block">
-            <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] w-max ${verChip}`}>
-              <Shield className="w-3 h-3 flex-shrink-0" />
-              <span className="font-medium truncate">{record.verification_status}</span>
-            </div>
-          </div>
-
-          {/* Cause */}
-          <div className="w-20 hidden sm:block text-right">
-            <div className="text-[10px] text-slate-500 mb-0.5">Cause</div>
-            <div className="text-xs text-orange-300 font-bold">{record.cause_primary}</div>
+            <div className="text-[10px] text-slate-500 mb-0.5">Dominant Trigger</div>
+            <div className="text-[11px] font-medium text-red-300 truncate">{liveData ? liveData.dominant_trigger : '--'}</div>
           </div>
 
           {/* Action */}
@@ -216,6 +212,8 @@ export default function ForestFiresPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
+  const { liveData, loading: apiLoading, error: apiError, isStale } = useForestFireIntelligence(forestFireRegistry);
+
   // ─── Filtering ─────────────────────────────────────────────────────────────
 
   const filteredData = useMemo(() => forestFireRegistry.filter(d => {
@@ -227,10 +225,13 @@ export default function ForestFiresPage() {
     const matchScope = filter.scope === 'All' || d.scope === filter.scope;
     const matchDistrict = filter.district === 'All' || d.district === filter.district;
     const matchForestType = forestTypeFilter === 'all' || d.forest_type === forestTypeFilter;
-    const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+    
+    // Check against live risk if available, else static
+    const riskLevel = liveData?.[d.id]?.live_risk_level || d.risk_level;
+    const matchRisk = riskFilter === 'all' || riskLevel === riskFilter;
 
     return matchSearch && matchScope && matchDistrict && matchForestType && matchRisk;
-  }), [filter, forestTypeFilter, riskFilter]);
+  }), [filter, forestTypeFilter, riskFilter, liveData]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -250,7 +251,7 @@ export default function ForestFiresPage() {
         ]}
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Forest Fire Intelligence Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Forest Fire Intelligence</span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-orange-400 to-red-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
           </>
         }
@@ -259,6 +260,23 @@ export default function ForestFiresPage() {
       />
 
       <ModuleKpiStrip kpis={forestFireKpis} iconColor="text-orange-500" />
+
+      {isStale && (
+        <div className="container mx-auto px-6 mt-4 relative z-40">
+          <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center gap-3 text-amber-200/80 text-sm">
+            <AlertTriangle className="w-4 h-4 text-amber-400" />
+            Live data feed is currently unavailable. Displaying cached intelligence.
+          </div>
+        </div>
+      )}
+      {apiError && (
+        <div className="container mx-auto px-6 mt-4 relative z-40">
+          <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-200/80 text-sm">
+            <AlertTriangle className="w-4 h-4 text-red-400" />
+            Live data feed failed. Displaying baseline registry data.
+          </div>
+        </div>
+      )}
 
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
         <GlobalFilterBar
@@ -308,14 +326,17 @@ export default function ForestFiresPage() {
       <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-              <Zap className="w-6 h-6 text-orange-400" />
-              Forest Fire Risk Registry
-            </h2>
-            <p className="text-slate-400 text-sm mt-1">
-              Wildfire vulnerability zones — forest type, fire frequency, detection methods & causal intelligence
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex justify-between items-end">
+            <div>
+              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                <Zap className="w-6 h-6 text-orange-400" />
+                Forest Fire Risk Registry
+              </h2>
+              <p className="text-slate-400 text-sm mt-1">
+                Wildfire vulnerability zones — forest type, fire frequency, detection methods & causal intelligence
+              </p>
+            </div>
+            {apiLoading && <div className="text-sm text-slate-400 flex items-center gap-2"><RefreshCw className="w-4 h-4 animate-spin" /> Live feed syncing...</div>}
           </motion.div>
 
           {filteredData.length === 0 ? (
@@ -327,13 +348,13 @@ export default function ForestFiresPage() {
           ) : viewMode === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginatedData.map((d, i) => (
-                <ForestFireCard key={d.id} record={d} index={i} />
+                <ForestFireCard key={d.id} record={d} index={i} liveData={liveData?.[d.id]} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col gap-3">
               {paginatedData.map((d, i) => (
-                <ForestFireRow key={d.id} record={d} index={i} />
+                <ForestFireRow key={d.id} record={d} index={i} liveData={liveData?.[d.id]} />
               ))}
             </div>
           )}

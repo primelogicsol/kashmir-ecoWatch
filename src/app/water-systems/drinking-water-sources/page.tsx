@@ -326,7 +326,7 @@ export default function DrinkingWaterSourcesPage() {
 
   return (
     <WaterEntityListingPage
-      title="Drinking Water Sources Across Greater Kashmir Ecology"
+      title="Drinking Water Sources Greater Kashmir Ecology"
       description="Comprehensive monitoring and intelligence for Kashmir's drinking water sources — springs, river intakes, groundwater schemes, piped supply, and treatment networks. Sourced from the ESRO/eIEN Kashmir environmental archive."
       icon="Droplets"
       color="from-blue-500 to-cyan-600"

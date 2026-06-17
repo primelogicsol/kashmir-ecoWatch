@@ -16,7 +16,7 @@ export default function RestorationPage() {
 
   return (
     <WaterEntityListingPage
-      title="Restoration Across Greater Kashmir Ecology"
+      title="Restoration Greater Kashmir Ecology"
       description="Lake restoration, wetland restoration, spring rejuvenation, catchment treatment, river rehabilitation, recharge improvement, ecological desiltation, and hydrological restoration planning."
       icon="Hammer"
       color="from-lime-500 to-green-600"

@@ -18,6 +18,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { landslideData, LandslideRecord } from '@/data/hazard-landslides';
+import { useLandslideIntelligence, EnhancedLandslideRecord } from '@/hooks/useLandslideIntelligence';
 
 // ─── Risk colour helpers ──────────────────────────────────────────────────────
 
@@ -60,9 +61,10 @@ function getTriggerIcon(trigger: string) {
 
 // ─── Landslide Card ───────────────────────────────────────────────────────────
 
-function LandslideCard({ record, index }: { record: LandslideRecord; index: number }) {
-  const isCritical = record.risk_level === 'Critical';
-  const isHigh = record.risk_level === 'High';
+function LandslideCard({ record, index }: { record: EnhancedLandslideRecord; index: number }) {
+  const currentRisk = record.live_risk_level || record.risk_level;
+  const isCritical = currentRisk === 'Critical';
+  const isHigh = currentRisk === 'High';
 
   return (
     <motion.div
@@ -86,8 +88,8 @@ function LandslideCard({ record, index }: { record: LandslideRecord; index: numb
               {record.district} · {record.scope}
             </p>
           </div>
-          <Badge variant={getRiskBadgeVariant(record.risk_level)} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
-            {record.risk_level}
+          <Badge variant={getRiskBadgeVariant(currentRisk)} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {currentRisk}
           </Badge>
         </div>
 
@@ -104,27 +106,29 @@ function LandslideCard({ record, index }: { record: LandslideRecord; index: numb
         {/* Key info */}
         <div className="flex flex-col gap-1.5 text-xs bg-white/[0.02] rounded-lg p-2 border border-white/5">
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Slide Type</span>
-            <span className="text-amber-400 font-medium">{record.slide_type}</span>
+            <span className="text-slate-500">Live Soil Moisture</span>
+            <span className="text-amber-400 font-medium">{record.live_soil_moisture !== undefined ? `${record.live_soil_moisture.toFixed(2)} m³/m³` : 'N/A'}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Trigger</span>
-            <span className={`font-medium ${getTriggerIcon(record.trigger)}`}>{record.trigger}</span>
+            <span className="text-slate-500">Live Rainfall (24h/72h)</span>
+            <span className="text-blue-400 font-medium">
+              {record.live_precipitation_24h !== undefined ? `${record.live_precipitation_24h.toFixed(1)}mm` : 'N/A'} / {record.live_precipitation_72h !== undefined ? `${record.live_precipitation_72h.toFixed(1)}mm` : 'N/A'}
+            </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-500">Road Affected</span>
-            <span className="text-slate-300 font-medium truncate ml-2 text-right max-w-[160px]">{record.road_affected}</span>
+            <span className="text-slate-500">Dominant Trigger</span>
+            <span className={`font-medium text-right max-w-[140px] truncate ${getTriggerIcon(record.trigger)}`}>{record.dominant_trigger || record.trigger}</span>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-1.5 text-[10px]">
           <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
-            <span className="text-slate-500">Slope Angle</span>
-            <span className="text-white font-medium">{record.slope_angle_deg}°</span>
+            <span className="text-slate-500">Road Affected</span>
+            <span className="text-white font-medium truncate">{record.road_affected}</span>
           </div>
           <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
-            <span className="text-slate-500">Last Event</span>
-            <span className="text-white font-medium">{record.last_event_date}</span>
+            <span className="text-slate-500">Last Updated</span>
+            <span className="text-white font-medium truncate">{record.last_updated ? new Date(record.last_updated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'N/A'}</span>
           </div>
         </div>
 
@@ -145,7 +149,8 @@ function LandslideCard({ record, index }: { record: LandslideRecord; index: numb
 
 // ─── Landslide Row ────────────────────────────────────────────────────────────
 
-function LandslideRow({ record, index }: { record: LandslideRecord; index: number }) {
+function LandslideRow({ record, index }: { record: EnhancedLandslideRecord; index: number }) {
+  const currentRisk = record.live_risk_level || record.risk_level;
   return (
     <motion.div
       initial={{ opacity: 0, x: -10 }}
@@ -184,8 +189,8 @@ function LandslideRow({ record, index }: { record: LandslideRecord; index: numbe
 
           <div className="w-24">
             <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={getRiskBadgeVariant(record.risk_level)} size="sm" className="text-[10px]">
-              {record.risk_level}
+            <Badge variant={getRiskBadgeVariant(currentRisk)} size="sm" className="text-[10px]">
+              {currentRisk}
             </Badge>
           </div>
 
@@ -211,6 +216,8 @@ export default function LandslidesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
+  const { data: liveLandslideData, loading, error, isStale } = useLandslideIntelligence(landslideData);
+
   // Filter options
   const slideTypeOptions = useMemo(() =>
     Array.from(new Set(landslideData.map(d => d.slide_type))).sort().map(t => ({ value: t, label: t })), []);
@@ -219,7 +226,7 @@ export default function LandslidesPage() {
 
   // Filtered data
   const filteredData = useMemo(() => {
-    return landslideData.filter(d => {
+    return liveLandslideData.filter(d => {
       const matchSearch = filter.searchQuery === '' ||
         d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
@@ -228,10 +235,10 @@ export default function LandslidesPage() {
       const matchScope = filter.scope === 'All' || d.scope === filter.scope;
       const matchDistrict = filter.district === 'All' || d.district === filter.district;
       const matchSlideType = slideTypeFilter === 'all' || d.slide_type === slideTypeFilter;
-      const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+      const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
       return matchSearch && matchScope && matchDistrict && matchSlideType && matchRisk;
     });
-  }, [filter, slideTypeFilter, riskFilter]);
+  }, [liveLandslideData, filter, slideTypeFilter, riskFilter]);
 
   const totalCount = landslideData.length;
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
@@ -271,8 +278,8 @@ export default function LandslidesPage() {
         label="Hazard Intelligence"
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Landslide Risk Intelligence Across</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Landslide & Slope Risk</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Greater Kashmir</span>
           </>
         }
         subtitle="Monitoring landslide-prone zones across highways, mountain passes, and LOC areas with geological risk analysis, trigger classification, and real-time alert intelligence."
@@ -283,6 +290,18 @@ export default function LandslidesPage() {
           { label: 'Landslides' },
         ]}
       />
+
+      {(error || isStale) && (
+        <div className="container mx-auto px-6 mt-4">
+          <div className="bg-amber-500/10 border border-amber-500/20 text-amber-400 px-4 py-3 rounded-lg flex items-center gap-3 text-sm">
+            <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+            <div>
+              <strong>Live Data Warning:</strong> Could not fetch the latest Open-Meteo rainfall and soil moisture data. 
+              {isStale ? " Showing stale cached data." : " Falling back to baseline risks."}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── KPI STRIP ──────────────────────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} iconColor="text-amber-500" />
@@ -319,7 +338,12 @@ export default function LandslidesPage() {
       {/* ── DATA GRID / LIST ───────────────────────────────────────────────── */}
       <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          {filteredData.length === 0 ? (
+          {loading ? (
+            <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+              <Activity className="w-8 h-8 text-amber-400 mx-auto mb-3 animate-spin" />
+              <div className="text-white font-medium mb-1">Loading real-time hazard data...</div>
+            </div>
+          ) : filteredData.length === 0 ? (
             <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
               <Mountain className="w-8 h-8 text-slate-500 mx-auto mb-3" />
               <div className="text-white font-medium mb-1">No landslide zones found</div>

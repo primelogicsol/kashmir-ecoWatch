@@ -188,7 +188,7 @@ export default function LibraryPage() {
   title={
     <>
       <span className="block whitespace-nowrap">Evidence Intelligence Library</span>
-      <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+      <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
     </>
   }
   subtitle="A structured evidence and reference system linking environmental studies, monitoring records, datasets, district profiles, GIS resources, and reviewed knowledge inputs across Kashmir EcoWatch."
