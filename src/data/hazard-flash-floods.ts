@@ -34,6 +34,14 @@ export interface FlashFloodRecord {
   casualties_historical: number;
   verification_status: VerificationStatus;
   current_status: FlashFloodStatus;
+  latitude: number;
+  longitude: number;
+  latest_hourly_rainfall?: number;
+  forecast_rainfall_24h?: number;
+  live_risk_level?: RiskLevel;
+  live_trend?: 'Rising' | 'Stable' | 'Falling';
+  dominant_trigger?: string;
+  last_updated?: string;
 }
 
 export const flashFloodData: FlashFloodRecord[] = [
@@ -56,6 +64,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 23,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 34.1174,
+    longitude: 74.7569,
   },
   {
     id: 'ff-kc-002',
@@ -71,6 +81,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 11,
     verification_status: 'Verified',
     current_status: 'Active Alert',
+    latitude: 34.0813,
+    longitude: 74.7797,
   },
   {
     id: 'ff-kc-003',
@@ -86,6 +98,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 8,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 33.9900,
+    longitude: 74.6996,
   },
   {
     id: 'ff-kc-004',
@@ -101,6 +115,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 15,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 34.2055,
+    longitude: 74.8968,
   },
   {
     id: 'ff-kc-005',
@@ -116,6 +132,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 19,
     verification_status: 'Satellite-Derived',
     current_status: 'Seasonal Risk',
+    latitude: 34.2475,
+    longitude: 74.8032,
   },
   {
     id: 'ff-kc-006',
@@ -131,6 +149,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 6,
     verification_status: 'Community-Reported',
     current_status: 'Watch',
+    latitude: 34.2364,
+    longitude: 74.3691,
   },
   {
     id: 'ff-kc-007',
@@ -146,6 +166,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 2,
     verification_status: 'Satellite-Derived',
     current_status: 'Seasonal Risk',
+    latitude: 34.1837,
+    longitude: 74.3965,
   },
   {
     id: 'ff-kc-008',
@@ -161,6 +183,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 5,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 34.1929,
+    longitude: 74.3703,
   },
   {
     id: 'ff-kc-009',
@@ -176,6 +200,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 28,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 33.7095,
+    longitude: 75.1175,
   },
   {
     id: 'ff-kc-010',
@@ -191,6 +217,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 12,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 33.7152,
+    longitude: 75.1416,
   },
   {
     id: 'ff-kc-011',
@@ -206,6 +234,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 3,
     verification_status: 'Community-Reported',
     current_status: 'Historical',
+    latitude: 33.7065,
+    longitude: 74.8517,
   },
   {
     id: 'ff-kc-012',
@@ -221,6 +251,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 7,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 33.6893,
+    longitude: 75.0224,
   },
   {
     id: 'ff-kc-013',
@@ -236,6 +268,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 4,
     verification_status: 'Satellite-Derived',
     current_status: 'Historical',
+    latitude: 34.3762,
+    longitude: 74.6714,
   },
   {
     id: 'ff-kc-014',
@@ -251,6 +285,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 9,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 34.3828,
+    longitude: 74.6422,
   },
   {
     id: 'ff-kc-015',
@@ -266,6 +302,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 10,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 34.5330,
+    longitude: 74.2602,
   },
   {
     id: 'ff-kc-016',
@@ -281,6 +319,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 2,
     verification_status: 'Community-Reported',
     current_status: 'Historical',
+    latitude: 33.8956,
+    longitude: 74.9696,
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -301,6 +341,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 14,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 32.7755,
+    longitude: 74.8344,
   },
   {
     id: 'ff-td-002',
@@ -316,6 +358,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 32,
     verification_status: 'Verified',
     current_status: 'Active Alert',
+    latitude: 33.2301,
+    longitude: 75.2979,
   },
   {
     id: 'ff-td-003',
@@ -331,6 +375,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 18,
     verification_status: 'Satellite-Derived',
     current_status: 'Watch',
+    latitude: 33.3582,
+    longitude: 75.8130,
   },
   {
     id: 'ff-td-004',
@@ -346,6 +392,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 11,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 33.1788,
+    longitude: 75.5540,
   },
   {
     id: 'ff-td-005',
@@ -361,6 +409,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 7,
     verification_status: 'Community-Reported',
     current_status: 'Watch',
+    latitude: 33.3468,
+    longitude: 74.2970,
   },
   {
     id: 'ff-td-006',
@@ -376,6 +426,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 5,
     verification_status: 'Community-Reported',
     current_status: 'Seasonal Risk',
+    latitude: 33.8112,
+    longitude: 74.1414,
   },
   {
     id: 'ff-td-007',
@@ -391,6 +443,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 3,
     verification_status: 'Verified',
     current_status: 'Historical',
+    latitude: 33.0750,
+    longitude: 74.8186,
   },
   {
     id: 'ff-td-008',
@@ -406,6 +460,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 234,
     verification_status: 'Verified',
     current_status: 'Seasonal Risk',
+    latitude: 34.1814,
+    longitude: 77.5752,
   },
   {
     id: 'ff-td-009',
@@ -421,6 +477,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 16,
     verification_status: 'Satellite-Derived',
     current_status: 'Seasonal Risk',
+    latitude: 34.5255,
+    longitude: 76.0990,
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -441,6 +499,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 42,
     verification_status: 'Community-Reported',
     current_status: 'Active Alert',
+    latitude: 34.6250,
+    longitude: 73.8581,
   },
   {
     id: 'ff-tb-002',
@@ -456,6 +516,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 56,
     verification_status: 'Verified',
     current_status: 'Watch',
+    latitude: 34.4128,
+    longitude: 73.4642,
   },
   {
     id: 'ff-tb-003',
@@ -471,6 +533,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 14,
     verification_status: 'Community-Reported',
     current_status: 'Seasonal Risk',
+    latitude: 33.9803,
+    longitude: 73.7798,
   },
   {
     id: 'ff-tb-004',
@@ -486,6 +550,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 20,
     verification_status: 'Satellite-Derived',
     current_status: 'Watch',
+    latitude: 36.3528,
+    longitude: 74.6614,
   },
   {
     id: 'ff-tb-005',
@@ -501,6 +567,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 18,
     verification_status: 'Satellite-Derived',
     current_status: 'Seasonal Risk',
+    latitude: 35.8818,
+    longitude: 74.2854,
   },
   {
     id: 'ff-tb-006',
@@ -516,6 +584,8 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 12,
     verification_status: 'Satellite-Derived',
     current_status: 'Seasonal Risk',
+    latitude: 35.3168,
+    longitude: 75.5589,
   },
   {
     id: 'ff-tb-007',
@@ -531,5 +601,7 @@ export const flashFloodData: FlashFloodRecord[] = [
     casualties_historical: 4,
     verification_status: 'Community-Reported',
     current_status: 'Historical',
+    latitude: 33.8767,
+    longitude: 74.0875,
   },
 ];

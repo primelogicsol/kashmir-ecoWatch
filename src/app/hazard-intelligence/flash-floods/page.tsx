@@ -18,6 +18,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { flashFloodData, FlashFloodRecord } from '@/data/hazard-flash-floods';
+import { useFlashFloodIntelligence } from '@/hooks/useFlashFloodIntelligence';
 
 // ─── Risk colour helpers ──────────────────────────────────────────────────────
 
@@ -53,8 +54,9 @@ function getVerificationColor(vs: string) {
 // ─── Flash Flood Card ─────────────────────────────────────────────────────────
 
 function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: number }) {
-  const isCritical = record.risk_level === 'Critical';
-  const isHigh = record.risk_level === 'High';
+  const riskToUse = record.live_risk_level || record.risk_level;
+  const isCritical = riskToUse === 'Critical';
+  const isHigh = riskToUse === 'High';
 
   return (
     <motion.div
@@ -78,8 +80,8 @@ function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: nu
               {record.district} · {record.scope}
             </p>
           </div>
-          <Badge variant={getRiskBadgeVariant(record.risk_level)} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
-            {record.risk_level}
+          <Badge variant={getRiskBadgeVariant(riskToUse)} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {riskToUse} {record.live_trend === 'Rising' ? '↑' : record.live_trend === 'Falling' ? '↓' : ''}
           </Badge>
         </div>
 
@@ -97,7 +99,7 @@ function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: nu
         <div className="flex flex-col gap-1.5 text-xs bg-white/[0.02] rounded-lg p-2 border border-white/5">
           <div className="flex items-center justify-between">
             <span className="text-slate-500">Trigger</span>
-            <span className="text-blue-400 font-medium">{record.trigger_type}</span>
+            <span className="text-blue-400 font-medium">{record.dominant_trigger || record.trigger_type}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-500">Nallah / Stream</span>
@@ -107,21 +109,21 @@ function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: nu
 
         <div className="grid grid-cols-2 gap-1.5 text-[10px]">
           <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
-            <span className="text-slate-500">Elevation</span>
-            <span className="text-white font-medium">{record.elevation_m.toLocaleString()} m</span>
+            <span className="text-slate-500">Live 24h Rain</span>
+            <span className="text-white font-medium">{record.forecast_rainfall_24h ?? '-'} mm</span>
+          </div>
+          <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Peak Hourly</span>
+            <span className="text-white font-medium">{(record as any).peak_hourly_intensity ?? '-'} mm/h</span>
           </div>
           <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
             <span className="text-slate-500">Catchment</span>
             <span className="text-white font-medium">{record.catchment_area_sqkm.toLocaleString()} km²</span>
           </div>
           <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
-            <span className="text-slate-500">Response Time</span>
-            <span className="text-white font-medium">{record.response_time_hrs} hrs</span>
-          </div>
-          <div className="flex flex-col bg-white/5 rounded px-2 py-1.5 border border-white/5">
-            <span className="text-slate-500">Historic Casualties</span>
-            <span className={`font-bold ${record.casualties_historical > 10 ? 'text-red-400' : 'text-white'}`}>
-              {record.casualties_historical}
+            <span className="text-slate-500">Updated</span>
+            <span className="text-white font-medium truncate">
+              {record.last_updated ? new Date(record.last_updated).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Offline'}
             </span>
           </div>
         </div>
@@ -129,10 +131,10 @@ function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: nu
         {/* Footer */}
         <div className="mt-auto pt-3 border-t border-white/5">
           <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
-            <Activity className={`w-3 h-3 flex-shrink-0 ${getRiskColor(record.risk_level)}`} />
+            <Activity className={`w-3 h-3 flex-shrink-0 ${getRiskColor(riskToUse)}`} />
             <span>
-              <strong className="text-slate-300 font-medium">Trigger:</strong>{' '}
-              <span className={getRiskColor(record.risk_level)}>{record.trigger_type}</span>
+              <strong className="text-slate-300 font-medium">Live Risk:</strong>{' '}
+              <span className={getRiskColor(riskToUse)}>{riskToUse}</span>
               {' · '}
               Response {record.response_time_hrs < 1 ? '< 1 hr' : `${record.response_time_hrs} hrs`}
             </span>
@@ -146,6 +148,8 @@ function FlashFloodCard({ record, index }: { record: FlashFloodRecord; index: nu
 // ─── Flash Flood Row ──────────────────────────────────────────────────────────
 
 function FlashFloodRow({ record, index }: { record: FlashFloodRecord; index: number }) {
+  const riskToUse = record.live_risk_level || record.risk_level;
+  
   return (
     <motion.div
       initial={{ opacity: 0, x: -10 }}
@@ -155,39 +159,44 @@ function FlashFloodRow({ record, index }: { record: FlashFloodRecord; index: num
       <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all">
         <div className="flex flex-wrap items-center gap-4">
 
-          <div className="min-w-[200px] flex-1">
+          <div className="min-w-[180px] flex-1">
             <span className="text-sm font-bold text-white">{record.name}</span>
             <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
               <MapPin className="w-3 h-3" /> {record.district}
             </div>
           </div>
 
-          <div className="w-28 hidden md:block">
+          <div className="w-24 hidden md:block">
             <div className="text-[10px] text-slate-500">Nallah / Stream</div>
             <div className="text-xs font-bold text-blue-400 truncate">{record.nallah_stream}</div>
           </div>
 
           <div className="w-24 hidden xl:block">
             <div className="text-[10px] text-slate-500">Trigger</div>
-            <div className="text-xs text-slate-300">{record.trigger_type}</div>
-          </div>
-
-          <div className="w-24 hidden lg:block">
-            <div className="text-[10px] text-slate-500">Catchment</div>
-            <div className="text-xs text-slate-300">{record.catchment_area_sqkm.toLocaleString()} km²</div>
+            <div className="text-xs text-slate-300 truncate">{record.dominant_trigger || record.trigger_type}</div>
           </div>
 
           <div className="w-20 hidden lg:block">
-            <div className="text-[10px] text-slate-500">Response</div>
-            <div className={`text-xs font-medium ${record.response_time_hrs < 1 ? 'text-red-400' : 'text-slate-300'}`}>
-              {record.response_time_hrs} hrs
+            <div className="text-[10px] text-slate-500">Live 24h</div>
+            <div className="text-xs text-slate-300">{record.forecast_rainfall_24h ?? '-'} mm</div>
+          </div>
+
+          <div className="w-20 hidden lg:block">
+            <div className="text-[10px] text-slate-500">Peak Hr</div>
+            <div className="text-xs text-slate-300">{(record as any).peak_hourly_intensity ?? '-'} mm/h</div>
+          </div>
+
+          <div className="w-20 hidden lg:block">
+            <div className="text-[10px] text-slate-500">Updated</div>
+            <div className="text-[11px] text-slate-300 truncate">
+              {record.last_updated ? new Date(record.last_updated).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Offline'}
             </div>
           </div>
 
           <div className="w-24">
-            <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
-            <Badge variant={getRiskBadgeVariant(record.risk_level)} size="sm" className="text-[10px]">
-              {record.risk_level}
+            <div className="text-[10px] text-slate-500 mb-1">Live Risk</div>
+            <Badge variant={getRiskBadgeVariant(riskToUse)} size="sm" className="text-[10px]">
+              {riskToUse} {record.live_trend === 'Rising' ? '↑' : record.live_trend === 'Falling' ? '↓' : ''}
             </Badge>
           </div>
 
@@ -213,45 +222,47 @@ export default function FlashFloodsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
+  const { data: realTimeData, loading, error, isStale, lastUpdated, refresh } = useFlashFloodIntelligence(flashFloodData);
+
   // Filter options
   const triggerOptions = useMemo(() =>
-    Array.from(new Set(flashFloodData.map(d => d.trigger_type))).sort().map(t => ({ value: t, label: t })), []);
+    Array.from(new Set(realTimeData.map(d => d.dominant_trigger || d.trigger_type))).sort().map(t => ({ value: t, label: t })), [realTimeData]);
   const riskOptions = useMemo(() =>
-    Array.from(new Set(flashFloodData.map(d => d.risk_level))).sort().map(r => ({ value: r, label: r })), []);
+    Array.from(new Set(realTimeData.map(d => d.live_risk_level || d.risk_level))).sort().map(r => ({ value: r, label: r })), [realTimeData]);
 
   // Filtered data
   const filteredData = useMemo(() => {
-    return flashFloodData.filter(d => {
+    return realTimeData.filter(d => {
       const matchSearch = filter.searchQuery === '' ||
         d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.nallah_stream.toLowerCase().includes(filter.searchQuery.toLowerCase());
       const matchScope = filter.scope === 'All' || d.scope === filter.scope;
       const matchDistrict = filter.district === 'All' || d.district === filter.district;
-      const matchTrigger = triggerFilter === 'all' || d.trigger_type === triggerFilter;
-      const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+      const matchTrigger = triggerFilter === 'all' || (d.dominant_trigger || d.trigger_type) === triggerFilter;
+      const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
       return matchSearch && matchScope && matchDistrict && matchTrigger && matchRisk;
     });
-  }, [filter, triggerFilter, riskFilter]);
+  }, [realTimeData, filter, triggerFilter, riskFilter]);
 
-  const totalCount = flashFloodData.length;
+  const totalCount = realTimeData.length;
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
   const extraActiveCount = [triggerFilter, riskFilter].filter(f => f !== 'all').length;
 
   const scopeCount = useMemo(() => {
     if (filter.scope === 'All') return 0;
-    return flashFloodData.filter(d => d.scope === filter.scope).length;
-  }, [filter.scope]);
+    return realTimeData.filter(d => d.scope === filter.scope).length;
+  }, [realTimeData, filter.scope]);
 
   // KPI aggregations
-  const criticalCount = flashFloodData.filter(d => d.risk_level === 'Critical').length;
-  const activeAlertCount = flashFloodData.filter(d => d.current_status === 'Active Alert').length;
-  const watchCount = flashFloodData.filter(d => d.current_status === 'Watch').length;
-  const verifiedCount = flashFloodData.filter(d => d.verification_status === 'Verified').length;
-  const totalCasualties = flashFloodData.reduce((sum, d) => sum + d.casualties_historical, 0);
-  const avgResponseTime = (flashFloodData.reduce((sum, d) => sum + d.response_time_hrs, 0) / flashFloodData.length).toFixed(1);
-  const glacialMeltCount = flashFloodData.filter(d => d.trigger_type === 'Glacial Melt').length;
+  const criticalCount = realTimeData.filter(d => (d.live_risk_level || d.risk_level) === 'Critical').length;
+  const activeAlertCount = realTimeData.filter(d => d.current_status === 'Active Alert').length;
+  const watchCount = realTimeData.filter(d => d.current_status === 'Watch').length;
+  const verifiedCount = realTimeData.filter(d => d.verification_status === 'Verified').length;
+  const totalCasualties = realTimeData.reduce((sum, d) => sum + d.casualties_historical, 0);
+  const avgResponseTime = (realTimeData.reduce((sum, d) => sum + d.response_time_hrs, 0) / realTimeData.length).toFixed(1);
+  const glacialMeltCount = realTimeData.filter(d => d.trigger_type === 'Glacial Melt').length;
 
   const metrics = [
     { label: 'Monitored Zones', value: flashFloodData.length, icon: 'MapPin' },
@@ -319,7 +330,26 @@ export default function FlashFloodsPage() {
       {/* ── DATA GRID / LIST ───────────────────────────────────────────────── */}
       <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          {filteredData.length === 0 ? (
+          {isStale && (
+            <div className="bg-amber-500/20 text-amber-300 p-3 text-sm rounded border border-amber-500/30 mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                <span>
+                  <strong>Stale Data Warning:</strong> Real-time data could not be fetched. Showing cached data from {lastUpdated ? new Date(lastUpdated).toLocaleTimeString() : 'an earlier session'}.
+                </span>
+              </div>
+              <Button variant="outline" size="sm" onClick={refresh} className="whitespace-nowrap bg-amber-500/10 border-amber-500/30 hover:bg-amber-500/20 text-amber-300">
+                Retry Connection
+              </Button>
+            </div>
+          )}
+          {loading && !paginatedData.length && (
+             <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+               <Activity className="w-8 h-8 text-indigo-400 mx-auto mb-3 animate-spin" />
+               <div className="text-white font-medium mb-1">Loading real-time hazard data...</div>
+             </div>
+          )}
+          {!loading && filteredData.length === 0 ? (
             <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
               <Waves className="w-8 h-8 text-slate-500 mx-auto mb-3" />
               <div className="text-white font-medium mb-1">No flash flood zones found</div>
