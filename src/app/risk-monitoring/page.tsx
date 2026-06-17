@@ -72,7 +72,12 @@ export default function RiskMonitoringOverviewPage() {
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
-        title={<><span className="block whitespace-nowrap">Risk &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Intelligence</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Greater Kashmir</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk & Monitoring</span>
+          </>
+        }
         subtitle="Monitoring hazards, advisories, environmental emergencies, district risk, response signals, and operational alerts across Kashmir"
         icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
         label="Command Center"

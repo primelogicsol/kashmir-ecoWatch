@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useMemo } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
@@ -352,7 +352,7 @@ export default function TrailsAndSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Kashmir Trails and</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sightings Network</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12]">Trails and Sightings Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Protected-area trails, ecological routes, birding paths, wildlife observation zones, and verified field sightings across Kashmir Core, Trans-Divisional, and Transboundary conservation landscapes. Integrates species observations, seasonal activity, visitor-use pressure, monitoring evidence, and protected-area profile links."
         icon={<Footprints className="w-6 h-6 text-emerald-400" />}
         label="Recreation & Observation"

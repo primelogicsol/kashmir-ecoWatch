@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 
 import {
   Factory, ArrowRight, Map, BarChart3, Eye,
@@ -20,7 +22,7 @@ const submodules = [
   { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', icon: Cloud, color: 'from-emerald-500 to-green-600', status: '3 zones', statusColor: 'info' },
   { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', icon: Droplets, color: 'from-blue-500 to-cyan-600', status: '5 outfalls active', statusColor: 'danger' },
   { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', icon: Waves, color: 'from-cyan-500 to-teal-600', status: '2 advisories', statusColor: 'warning' },
-  { name: 'Critical Water Infrastructure', href: '/environmental-monitoring/critical-infrastructure', icon: Building2, color: 'from-indigo-500 to-blue-600', status: '12 assets', statusColor: 'info' },
+  { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', icon: Building2, color: 'from-indigo-500 to-blue-600', status: '122 assets', statusColor: 'info' },
   { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', icon: Wind, color: 'from-slate-500 to-gray-600', status: 'AQI: Moderate', statusColor: 'info' },
   { name: 'Environmental Health', href: '/environmental-monitoring/environmental-health', icon: Shield, color: 'from-amber-500 to-orange-600', status: '6 signals', statusColor: 'warning' },
   { name: 'Utility Incidents', href: '/environmental-monitoring/utility-incidents', icon: AlertTriangle, color: 'from-red-500 to-orange-600', status: '3 active', statusColor: 'danger' },
@@ -46,6 +48,7 @@ const recentReports = [
 
 export default function EnvironmentalMonitoringOverview() {
   const router = useRouter();
+  const [domainFilter, setDomainFilter] = useState('all');
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -54,31 +57,41 @@ export default function EnvironmentalMonitoringOverview() {
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring' }
         ]}
-        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Monitoring Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and public ecological service risks across Kashmir"
         icon={<Factory className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { label: 'Active Alerts', value: '38', sub: 'District-wide', color: 'text-red-400' },
-              { label: 'Sewage Outfalls', value: '5', sub: 'Active discharge', color: 'text-blue-400' },
-              { label: 'Waste Hotspots', value: '8', sub: 'Mapped & verified', color: 'text-amber-400' },
-              { label: 'AQI Status', value: 'Mod', sub: 'Kashmir avg', color: 'text-emerald-400' },
-              { label: 'Water Advisories', value: '2', sub: 'Active notices', color: 'text-cyan-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="p-4 sm:p-5 rounded-xl text-center">
-                <div className={`text-2xl sm:text-3xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-xs sm:text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ModuleKpiStrip kpis={[
+        { label: 'Active Alerts',    value: 38,    icon: 'AlertTriangle', color: 'text-red-400'     },
+        { label: 'Sewage Outfalls',  value: 5,     icon: 'Droplets',      color: 'text-blue-400'   },
+        { label: 'Waste Hotspots',   value: 8,     icon: 'Trash2',        color: 'text-amber-400'  },
+        { label: 'AQI Status',       value: 'Mod', icon: 'Wind',          color: 'text-slate-400'  },
+        { label: 'Water Advisories', value: 2,     icon: 'Shield',        color: 'text-cyan-400'   },
+      ]} />
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <FilterSelect
+              value={domainFilter}
+              onChange={setDomainFilter}
+              placeholder="All Domains"
+              options={[
+                { value: 'solid-waste',            label: 'Solid Waste'              },
+                { value: 'bio-waste',              label: 'Bio-Waste'                },
+                { value: 'sewage-wastewater',      label: 'Sewage & Wastewater'     },
+                { value: 'drinking-water',         label: 'Drinking Water'           },
+                { value: 'critical-infrastructure',label: 'Critical Infrastructure'  },
+                { value: 'air-pollution',          label: 'Air Pollution'            },
+                { value: 'environmental-health',   label: 'Environmental Health'     },
+                { value: 'utility-incidents',      label: 'Utility Incidents'        },
+              ]}
+            />
+          }
+          extraActiveCount={domainFilter !== 'all' ? 1 : 0}
+          onExtraFiltersClear={() => setDomainFilter('all')}
+        />
+      </div>
 
       {/* Submodules Grid */}
       <section className="py-16">

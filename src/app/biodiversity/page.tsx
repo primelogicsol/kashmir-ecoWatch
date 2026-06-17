@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { biodiversityMetrics, mammalsData, birdsData, getBiodiversityData } from '@/data/biodiversity';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { RED_DATA_METRICS, PRIORITY_KASHMIR_SPECIES } from '@/data/red-data-book-kashmir';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
@@ -203,7 +204,7 @@ export default function BiodiversityPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title={<><span className="block whitespace-nowrap">Species, Habitats &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Ecological Intelligence</span></>}
+        title="Species Across Greater Kashmir Ecology"
         subtitle="A comprehensive species directory mapping Kashmir's terrestrial and aquatic biodiversity, including mammals, birds, fish, and flora. Integrating detailed conservation status, habitat associations, elevational ranges, and critical intelligence for threatened ecosystems and protected zones."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         actions={
@@ -227,39 +228,16 @@ export default function BiodiversityPage() {
         }
       />
 
-      {/* Live Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-              {[
-                { label: 'Total Species', value: biodiversityMetrics.totalSpecies, icon: Activity },
-                { label: 'Active Records', value: biodiversityMetrics.activeSightings, icon: Eye },
-                { label: 'Protected Areas', value: biodiversityMetrics.protectedAreaOverlap, icon: Map },
-                { label: 'Threatened Taxa', value: biodiversityMetrics.threatened, icon: Shield },
-                { label: 'Medicinal Plants', value: biodiversityMetrics.medicinalPlants, icon: Leaf },
-                { label: 'Bird Records', value: biodiversityMetrics.birds, icon: Activity },
-                { label: 'Mammals', value: biodiversityMetrics.mammals, icon: Mountain },
-                { label: 'Fish Species', value: biodiversityMetrics.fish, icon: Droplet },
-              ].map((metric, idx) => (
-                <div key={idx} className="text-center p-4 border-r border-white/5 even:border-r-0 md:even:border-r md:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4n)]:border-r lg:last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">
-                    {metric.value.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
+      <ModuleKpiStrip kpis={[
+        { label: 'Total Species',   value: biodiversityMetrics.totalSpecies,         icon: 'Activity'  },
+        { label: 'Active Records',  value: biodiversityMetrics.activeSightings,      icon: 'Eye'       },
+        { label: 'Protected Areas', value: biodiversityMetrics.protectedAreaOverlap, icon: 'Map'       },
+        { label: 'Threatened Taxa', value: biodiversityMetrics.threatened,           icon: 'Shield'    },
+        { label: 'Medicinal Plants',value: biodiversityMetrics.medicinalPlants,      icon: 'Leaf'      },
+        { label: 'Bird Records',    value: biodiversityMetrics.birds,                icon: 'Activity'  },
+        { label: 'Mammals',         value: biodiversityMetrics.mammals,              icon: 'Mountain'  },
+        { label: 'Fish Species',    value: biodiversityMetrics.fish,                 icon: 'Droplet'   },
+      ]} />
 
       {/* Category Modules */}
       <div className="container mx-auto px-6 py-16">

@@ -1,0 +1,149 @@
+{
+  "Dashboard": {
+    "rowCount": 10,
+    "columns": [
+      "Kashmir Eco Watch Validated Biodiversity Database"
+    ],
+    "sample": [
+      {
+        "Kashmir Eco Watch Validated Biodiversity Database": "Species record framework for Kashmir Core, Trans-Divisional, and Transboundary / Extended biodiversity intelligence. Created 2026-06-14."
+      },
+      {
+        "Kashmir Eco Watch Validated Biodiversity Database": "Metric",
+        "__EMPTY": "Target Count",
+        "__EMPTY_1": "Current Entered",
+        "__EMPTY_2": "Validation Rule",
+        "__EMPTY_4": "Tier",
+        "__EMPTY_5": "Region",
+        "__EMPTY_6": "Purpose"
+      }
+    ]
+  },
+  "Species_Records": {
+    "rowCount": 2452,
+    "columns": [
+      "Record ID",
+      "Category",
+      "Category Serial",
+      "Validation Status",
+      "Notes"
+    ],
+    "sample": [
+      {
+        "Record ID": "KEW-BRD-0001",
+        "Category": "Birds",
+        "Category Serial": 1,
+        "Validation Status": "Pending source validation",
+        "Notes": "Populate only with source-backed taxonomy."
+      },
+      {
+        "Record ID": "KEW-BRD-0002",
+        "Category": "Birds",
+        "Category Serial": 2,
+        "Validation Status": "Pending source validation",
+        "Notes": "Populate only with source-backed taxonomy."
+      }
+    ]
+  },
+  "Category_Targets": {
+    "rowCount": 6,
+    "columns": [
+      "Category",
+      "Target Count",
+      "Ecological Logic",
+      "Record Label",
+      "First Record ID",
+      "Last Record ID"
+    ],
+    "sample": [
+      {
+        "Category": "Birds",
+        "Target Count": 312,
+        "Ecological Logic": "Avifauna",
+        "Record Label": "Bird",
+        "First Record ID": "KEW-BRD-0001",
+        "Last Record ID": "KEW-BRD-0312"
+      },
+      {
+        "Category": "Mammals",
+        "Target Count": 67,
+        "Ecological Logic": "Mammalia",
+        "Record Label": "Mammal",
+        "First Record ID": "KEW-MAM-0001",
+        "Last Record ID": "KEW-MAM-0067"
+      }
+    ]
+  },
+  "Taxonomy_Validation": {
+    "rowCount": 6,
+    "columns": [
+      "Validation Field",
+      "Allowed / Expected Values",
+      "Rule Type",
+      "Notes"
+    ],
+    "sample": [
+      {
+        "Validation Field": "Validation Status",
+        "Allowed / Expected Values": "Pending source validation; Source cited; Taxonomy reviewed; Field verified; Duplicate flagged; Excluded",
+        "Rule Type": "Dropdown",
+        "Notes": "No public record should be marked validated without a source URL."
+      },
+      {
+        "Validation Field": "Category",
+        "Allowed / Expected Values": "Birds; Mammals; Fish & Aquatic; Plants & Flora; Medicinal Flora; Threatened",
+        "Rule Type": "Dropdown",
+        "Notes": "Must match one of six dashboard categories."
+      }
+    ]
+  },
+  "Sources": {
+    "rowCount": 10,
+    "columns": [
+      "Source ID",
+      "Source Name",
+      "URL",
+      "Best Use",
+      "Validation Notes"
+    ],
+    "sample": [
+      {
+        "Source ID": "SRC-001",
+        "Source Name": "IUCN Red List",
+        "URL": "https://www.iucnredlist.org/",
+        "Best Use": "Threat status",
+        "Validation Notes": "Use current species page where possible."
+      },
+      {
+        "Source ID": "SRC-002",
+        "Source Name": "GBIF",
+        "URL": "https://www.gbif.org/",
+        "Best Use": "Occurrence-backed species records",
+        "Validation Notes": "Check coordinates and occurrence confidence."
+      }
+    ]
+  },
+  "Data_Dictionary": {
+    "rowCount": 10,
+    "columns": [
+      "Column",
+      "Definition",
+      "Required?",
+      "Validation Logic"
+    ],
+    "sample": [
+      {
+        "Column": "Record ID",
+        "Definition": "Unique Kashmir Eco Watch species identifier",
+        "Required?": "Yes",
+        "Validation Logic": "Auto-generated based on category and serial number."
+      },
+      {
+        "Column": "Category",
+        "Definition": "One of the six biodiversity categories requested",
+        "Required?": "Yes",
+        "Validation Logic": "Must match Category_Targets."
+      }
+    ]
+  }
+}

@@ -77,7 +77,7 @@ export default function EndemicSpeciesPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Endemic Species of Kashmir"
+      title="Endemic Species Across Greater Kashmir Ecology"
       subtitle="Unique species found only in the Kashmir region and the Himalayas. These species represent our natural heritage and require special conservation attention and strict intelligence monitoring."
       icon="MapPin"
       color="from-emerald-500 to-teal-700"

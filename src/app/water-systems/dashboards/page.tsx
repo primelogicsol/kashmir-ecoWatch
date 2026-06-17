@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 
 const dashboardModules = [
   {
@@ -104,78 +106,46 @@ export default function WaterSystemsDashboardsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-slate-900/50" />
+      <Heading
+        label="Water Systems Analytics"
+        title="Water Dashboards Across Greater Kashmir Ecology"
+        subtitle="Real-time analytics, trends, and heatmaps for hydrological monitoring, water quality tracking, and aquatic ecosystem health across Kashmir."
+        icon={<BarChart3 className="w-6 h-6 text-cyan-400" />}
+        breadcrumbs={[{ label: 'Water Systems', href: '/water-systems' }, { label: 'Dashboards' }]}
+        gridOverlay
+        actions={
+          <>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 border-0 text-white"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/dashboards/water-quality')}
+            >
+              Open Water Quality Dashboard
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/20 text-white"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/water-systems/lakes')}
+            >
+              Lake Health Scorecard
+            </Button>
+          </>
+        }
+      />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="w-6 h-6 text-cyan-400" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Water Systems Analytics
-              </span>
-            </div>
-            <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-              Water Dashboards
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              Real-time analytics, trends, and heatmaps for hydrological monitoring, water quality tracking, 
-              and aquatic ecosystem health across Kashmir
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-emerald-600 to-emerald-500"
-                icon={<BarChart3 className="w-5 h-5" />}
-                onClick={() => router.push('/dashboards/water-quality')}
-              >
-                Open Water Quality Dashboard
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white"
-                icon={<Database className="w-5 h-5" />}
-                onClick={() => router.push('/water-systems/lakes')}
-              >
-                Lake Health Scorecard
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10" padding="md">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {performanceMetrics.map((metric, idx) => (
-                <div key={idx} className="text-center p-4 border-r border-white/5 last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">
-                    {metric.value}
-                  </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
-                    {metric.label}
-                  </div>
-                  <div className="text-xs text-emerald-400 mt-1">
-                    {metric.trend} this month
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
+      <ModuleKpiStrip kpis={[
+        { label: 'Monitoring Stations', value: 234,     icon: 'Database',      color: 'text-cyan-400'    },
+        { label: 'Daily Samples',       value: 1847,    icon: 'BarChart3',     color: 'text-blue-400'    },
+        { label: 'Active Alerts',       value: 7,       icon: 'AlertTriangle', color: 'text-amber-400'   },
+        { label: 'Data Points (M)',     value: '2.4M',  icon: 'LineChart',     color: 'text-purple-400'  },
+        { label: 'Water Bodies',        value: 580,     icon: 'Droplet'                                  },
+        { label: 'Quality Sites',       value: 47,      icon: 'Activity'                                 },
+        { label: 'Districts Covered',   value: 10,      icon: 'MapPin'                                   },
+        { label: 'Reports This Month',  value: 124,     icon: 'FileText',      color: 'text-emerald-400' },
+      ]} />
 
       <div className="container mx-auto px-6 py-16">
         <motion.div

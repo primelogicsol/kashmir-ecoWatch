@@ -12,8 +12,17 @@ try {
   console.log('\n[3/4] Merging Wetlands & Lakes...');
   execSync('node "C:/Users/Fayaz/.gemini/antigravity-cli/brain/2f702963-7bcc-47d5-9cf9-4db320a60d31/scratch/migrate_wetlands_and_lakes_v3.js"', { stdio: 'inherit' });
 
-  console.log('\n[4/4] Merging Watersheds...');
+  console.log('\n[4/6] Merging Watersheds...');
   execSync('node scripts/merge-watersheds.js', { stdio: 'inherit' });
+
+  console.log('\n[5/6] Merging Groundwater...');
+  execSync('node scripts/merge-groundwater.js', { stdio: 'inherit' });
+
+  console.log('\n[6/6] Merging Glaciers...');
+  execSync('node scripts/merge-glaciers.js', { stdio: 'inherit' });
+
+  console.log('\n[7/7] Merging Water Quality Sites...');
+  execSync('node scripts/merge-water-quality.js', { stdio: 'inherit' });
 
   console.log('\n=== MASTER HYDROLOGY DATABASE MERGE COMPLETED SUCCESSFULLY ===');
 } catch (error) {

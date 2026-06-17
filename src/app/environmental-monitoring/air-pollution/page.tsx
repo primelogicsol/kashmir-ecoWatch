@@ -1,382 +1,573 @@
 'use client';
 
-import React from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
-  Wind, Map, BarChart3, ChevronRight, AlertTriangle,
-  FileText, ArrowRight, Activity, Clock,
-  MapPin, ExternalLink, Flame, Car, Factory as FactoryIcon, Cloud,
-  TrendingUp, Thermometer
+  Wind, ChevronRight, AlertTriangle,
+  Activity, Clock,
+  MapPin, ExternalLink, Cloud,
+  TrendingUp, RefreshCw, ShieldAlert, Shield, Zap
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import {
+  airQualityRegistry,
+  AirQualityLiveRecord,
+  getAqiCategory,
+  getAqiVariant,
+  getVerificationBadgeVariant,
+} from '@/data/air-quality-registry';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 
-const pollutantCards = [
-  {
-    pollutant: 'PM2.5',
-    value: '87 µg/m³',
-    status: 'Unhealthy',
-    variant: 'danger' as const,
-    icon: Cloud,
-    desc: 'Exceeds WHO guideline (15 µg/m³) by 5.8x — Srinagar urban zone',
-  },
-  {
-    pollutant: 'PM10',
-    value: '142 µg/m³',
-    status: 'Moderate',
-    variant: 'warning' as const,
-    icon: Wind,
-    desc: 'Above 50 µg/m³ threshold — construction dust, road emissions',
-  },
-  {
-    pollutant: 'NO₂',
-    value: '52 ppb',
-    status: 'Moderate',
-    variant: 'warning' as const,
-    icon: Car,
-    desc: 'Traffic-related emissions — Lal Chowk corridor peak hours',
-  },
-  {
-    pollutant: 'SO₂',
-    value: '18 ppb',
-    status: 'Good',
-    variant: 'success' as const,
-    icon: FactoryIcon,
-    desc: 'Within acceptable range — industrial source monitoring active',
-  },
-  {
-    pollutant: 'O₃ (Ozone)',
-    value: '64 ppb',
-    status: 'Moderate',
-    variant: 'warning' as const,
-    icon: Thermometer,
-    desc: 'Ground-level ozone — afternoon peak in valley floor',
-  },
-  {
-    pollutant: 'CO',
-    value: '1.2 mg/m³',
-    status: 'Good',
-    variant: 'success' as const,
-    icon: Flame,
-    desc: 'Within 4 mg/m³ WHO guideline — combustion monitoring',
-  },
-];
+// ─── Verification badge colours ──────────────────────────────────────────────
 
-const districtAirQualityData = [
-  { district: 'Srinagar', aqi: 187, aqiCategory: 'Unhealthy', aqiVariant: 'danger' as const, pm25: '87 µg/m³', trend: 'worsening' as const, dominantPollutant: 'PM2.5' },
-  { district: 'Anantnag', aqi: 142, aqiCategory: 'Unhealthy for Sensitive', aqiVariant: 'warning' as const, pm25: '62 µg/m³', trend: 'stable' as const, dominantPollutant: 'PM2.5' },
-  { district: 'Baramulla', aqi: 98, aqiCategory: 'Moderate', aqiVariant: 'warning' as const, pm25: '41 µg/m³', trend: 'improving' as const, dominantPollutant: 'PM10' },
-  { district: 'Pulwama', aqi: 156, aqiCategory: 'Unhealthy', aqiVariant: 'danger' as const, pm25: '71 µg/m³', trend: 'worsening' as const, dominantPollutant: 'PM2.5' },
-  { district: 'Budgam', aqi: 118, aqiCategory: 'Unhealthy for Sensitive', aqiVariant: 'warning' as const, pm25: '52 µg/m³', trend: 'stable' as const, dominantPollutant: 'PM2.5' },
-  { district: 'Ganderbal', aqi: 76, aqiCategory: 'Moderate', aqiVariant: 'success' as const, pm25: '31 µg/m³', trend: 'improving' as const, dominantPollutant: 'PM10' },
-  { district: 'Kupwara', aqi: 64, aqiCategory: 'Moderate', aqiVariant: 'success' as const, pm25: '26 µg/m³', trend: 'stable' as const, dominantPollutant: 'PM10' },
-  { district: 'Shopian', aqi: 71, aqiCategory: 'Moderate', aqiVariant: 'success' as const, pm25: '29 µg/m³', trend: 'stable' as const, dominantPollutant: 'PM10' },
-];
+const VERIFICATION_CHIP: Record<string, string> = {
+  'Official Station Verified': 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+  'Public Sensor Verified':    'text-cyan-400    bg-cyan-500/10    border-cyan-500/30',
+  'Satellite-Modelled':        'text-amber-400   bg-amber-500/10   border-amber-500/30',
+  'API Live':                  'text-green-400   bg-green-500/10   border-green-500/30',
+  'Data Deficient':            'text-slate-400   bg-slate-500/10   border-slate-500/30',
+};
 
-const pollutionSourceAdvisories = [
-  {
-    title: 'Winter Heating Emissions Spike — Srinagar',
-    source: 'Residential Heating',
-    status: 'Active',
-    desc: 'Increased PM2.5 and CO from wood/coal burning in residential zones. 42% rise in emissions compared to summer baseline. Clean heating alternatives recommended.',
-    issued: '1 day ago',
-    icon: Flame,
-  },
-  {
-    title: 'Traffic Corridor NO₂ Exceedance',
-    source: 'Vehicular Emissions',
-    status: 'Monitoring',
-    desc: 'Lal Chowk and adjacent corridors showing NO₂ peaks above 60 ppb during rush hours. Traffic management and EV adoption acceleration recommended.',
-    issued: '3 days ago',
-    icon: Car,
-  },
-  {
-    title: 'Construction Dust — Urban Development Zones',
-    source: 'Construction Activity',
-    status: 'Advisory',
-    desc: 'Multiple infrastructure projects generating PM10 exceedances. Dust suppression measures and water sprinkling protocols required at 14 active sites.',
-    issued: '5 days ago',
-    icon: FactoryIcon,
-  },
-  {
-    title: 'Crop Residue Burning — Rural Belts',
-    source: 'Agricultural Burning',
-    status: 'Active',
-    desc: 'Satellite-detected fire points in Pulwama and Budgam agricultural zones. Open burning ban enforcement and farmer awareness campaigns recommended.',
-    issued: '2 days ago',
-    icon: Flame,
-  },
-];
+// ─── AirQualityCard ──────────────────────────────────────────────────────────
 
-const recentIncidents = [
-  { type: 'PM2.5 Exceedance', location: 'Rajbagh, Srinagar — 142 µg/m³', severity: 'Critical', time: '2h ago', verified: true },
-  { type: 'AQI Alert — Unhealthy', location: 'Pulwama town — AQI 168', severity: 'High', time: '4h ago', verified: true },
-  { type: 'Open Burning Detected', location: 'Tral agricultural zone', severity: 'High', time: '6h ago', verified: false },
-  { type: 'NO₂ Peak', location: 'Lal Chowk traffic junction, Srinagar', severity: 'Moderate', time: '8h ago', verified: true },
-  { type: 'Construction Dust Complaint', location: 'Nowgam roadwork site', severity: 'Moderate', time: '1 day ago', verified: true },
-];
+function AirQualityCard({ record, index }: { record: AirQualityLiveRecord; index: number }) {
+  const verChip = VERIFICATION_CHIP[record.verification_status] || VERIFICATION_CHIP['Data Deficient'];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.5) }}
+      className="flex flex-col h-full"
+    >
+      <Card className="glass-intense border-white/10 p-5 flex flex-col h-full hover:border-white/20 transition-all group">
+        {/* Header: District + AQI Badge */}
+        <div className="flex justify-between items-start mb-3">
+          <div className="min-w-0">
+            <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors truncate">{record.district}</h3>
+            <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-1">
+              <MapPin className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">{record.scope}</span>
+            </div>
+          </div>
+          <Badge variant={record.aqiVariant} className="flex flex-col items-center justify-center px-3 py-1 flex-shrink-0">
+            <span className="text-[10px] uppercase opacity-80 leading-tight">AQI</span>
+            <span className="text-lg font-black leading-tight">{record.aqi}</span>
+          </Badge>
+        </div>
+
+        {/* Verification Status */}
+        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-[10px] w-full mb-3 ${verChip}`}>
+          <Shield className="w-3 h-3 flex-shrink-0" />
+          <span className="font-medium truncate">{record.verification_status}</span>
+          {record.isStale && <span className="text-[8px] uppercase ml-auto text-amber-500">Stale</span>}
+        </div>
+
+        {/* Pollutant Grid */}
+        <div className="grid grid-cols-3 gap-1.5 text-xs mb-3">
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">PM2.5</div>
+            <div className="font-bold text-slate-200">{record.pm25.toFixed(1)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">PM10</div>
+            <div className="font-bold text-slate-200">{record.pm10.toFixed(1)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">NO₂</div>
+            <div className="font-bold text-slate-200">{record.no2.toFixed(1)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">SO₂</div>
+            <div className="font-bold text-slate-200">{record.so2.toFixed(1)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">CO</div>
+            <div className="font-bold text-slate-200">{record.co.toFixed(0)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+          <div className="bg-white/5 rounded p-2 border border-white/5">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">O₃</div>
+            <div className="font-bold text-slate-200">{record.o3.toFixed(1)} <span className="text-[8px] font-normal text-slate-500">µg/m³</span></div>
+          </div>
+        </div>
+
+        {/* Footer: Dominant + Trend + Last Updated */}
+        <div className="mt-auto pt-3 border-t border-white/5 flex flex-col gap-1.5 text-[10px]">
+          <div className="flex justify-between items-center">
+            <span className="text-slate-500">Dominant Pollutant</span>
+            <span className="text-amber-300 font-bold">{record.dominantPollutant}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-slate-500">Trend</span>
+            <span className={`font-medium ${record.trend === 'Rising' ? 'text-red-400' : record.trend === 'Falling' ? 'text-emerald-400' : 'text-slate-400'}`}>
+              {record.trend === 'Rising' ? '↗' : record.trend === 'Falling' ? '↘' : '→'} {record.trend}
+            </span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-slate-500">Source</span>
+            <span className="text-slate-400 truncate ml-4">{record.data_source}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-slate-500">Updated</span>
+            <span className="text-slate-400 font-mono">{record.lastUpdated}</span>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── AirQualityRow ───────────────────────────────────────────────────────────
+
+function AirQualityRow({ record, index }: { record: AirQualityLiveRecord; index: number }) {
+  const verChip = VERIFICATION_CHIP[record.verification_status] || VERIFICATION_CHIP['Data Deficient'];
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.02, 0.4) }}
+    >
+      <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all group">
+        <div className="flex flex-wrap items-center gap-4">
+          {/* District */}
+          <div className="min-w-[160px] flex-1">
+            <span className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">{record.district}</span>
+            <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1"><MapPin className="w-3 h-3" /> {record.scope}</div>
+          </div>
+
+          {/* AQI */}
+          <div className="w-28">
+            <div className="text-[10px] text-slate-500 mb-1">AQI Level</div>
+            <Badge variant={record.aqiVariant} size="sm" className="shadow-sm">
+              <span className="text-xs font-bold">{record.aqi}</span>
+              <span className="text-[10px] uppercase ml-1 opacity-80 truncate hidden sm:inline">{record.aqiCategory}</span>
+            </Badge>
+          </div>
+
+          {/* Pollutants */}
+          <div className="w-44 hidden md:flex items-center justify-between gap-2">
+            <div>
+              <div className="text-[10px] text-slate-500 mb-0.5">PM2.5</div>
+              <div className="text-xs font-bold text-slate-300">{record.pm25.toFixed(1)}</div>
+            </div>
+            <div>
+              <div className="text-[10px] text-slate-500 mb-0.5">PM10</div>
+              <div className="text-xs font-bold text-slate-300">{record.pm10.toFixed(1)}</div>
+            </div>
+            <div>
+              <div className="text-[10px] text-slate-500 mb-0.5">NO₂</div>
+              <div className="text-xs font-bold text-slate-300">{record.no2.toFixed(1)}</div>
+            </div>
+            <div>
+              <div className="text-[10px] text-slate-500 mb-0.5">SO₂</div>
+              <div className="text-xs font-bold text-slate-300">{record.so2.toFixed(1)}</div>
+            </div>
+          </div>
+
+          {/* Verification */}
+          <div className="w-40 hidden lg:block">
+            <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] w-max ${verChip}`}>
+              <Shield className="w-3 h-3 flex-shrink-0" />
+              <span className="font-medium truncate">{record.verification_status}</span>
+            </div>
+          </div>
+
+          {/* Dominant */}
+          <div className="w-20 hidden xl:block text-right">
+            <div className="text-[10px] text-slate-500 mb-0.5">Dominant</div>
+            <div className="text-xs text-amber-300 font-bold">{record.dominantPollutant}</div>
+          </div>
+
+          {/* Trend */}
+          <div className="w-16 hidden sm:block text-right">
+            <div className="text-[10px] text-slate-500 mb-0.5">Trend</div>
+            <span className={`text-xs font-medium ${record.trend === 'Rising' ? 'text-red-400' : record.trend === 'Falling' ? 'text-emerald-400' : 'text-slate-400'}`}>
+              {record.trend === 'Rising' ? '↗' : record.trend === 'Falling' ? '↘' : '→'} {record.trend}
+            </span>
+          </div>
+
+          {/* Action */}
+          <div className="flex-shrink-0 ml-auto">
+            <Button variant="outline" size="sm" className="text-xs px-3 border-white/10" icon={<ChevronRight className="w-3 h-3" />}>
+              Details
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Fetch helper — Open-Meteo Hourly Air Quality API ────────────────────────
+
+async function fetchOpenMeteoAirQuality(): Promise<AirQualityLiveRecord[]> {
+  const lats = airQualityRegistry.map(s => s.lat).join(',');
+  const lngs = airQualityRegistry.map(s => s.lng).join(',');
+
+  // Request hourly data for the last 2 hours so we can compute trend
+  const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lats}&longitude=${lngs}&hourly=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,us_aqi,european_aqi&timezone=auto&forecast_days=1&past_days=1`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Open-Meteo API error: ${res.status}`);
+  const raw = await res.json();
+
+  // Open-Meteo returns an array when multiple coordinates are passed
+  const results = Array.isArray(raw) ? raw : [raw];
+  const now = new Date();
+
+  return airQualityRegistry.map((station, i) => {
+    const data = results[i];
+    if (!data?.hourly) {
+      return makeDeficientRecord(station, now);
+    }
+
+    const hourly = data.hourly;
+    const times: string[] = hourly.time || [];
+
+    // Find the latest index with valid data (scanning from the end)
+    let latestIdx = -1;
+    let prevIdx = -1;
+    for (let j = times.length - 1; j >= 0; j--) {
+      const t = new Date(times[j]);
+      if (t <= now && hourly.us_aqi?.[j] != null) {
+        if (latestIdx === -1) {
+          latestIdx = j;
+        } else if (prevIdx === -1) {
+          prevIdx = j;
+          break;
+        }
+      }
+    }
+
+    if (latestIdx === -1) {
+      return makeDeficientRecord(station, now);
+    }
+
+    const pm25 = hourly.pm2_5?.[latestIdx] ?? 0;
+    const pm10 = hourly.pm10?.[latestIdx] ?? 0;
+    const no2  = hourly.nitrogen_dioxide?.[latestIdx] ?? 0;
+    const so2  = hourly.sulphur_dioxide?.[latestIdx] ?? 0;
+    const co   = hourly.carbon_monoxide?.[latestIdx] ?? 0;
+    const o3   = hourly.ozone?.[latestIdx] ?? 0;
+    const aqiUs = hourly.us_aqi?.[latestIdx] ?? 0;
+    const aqiEu = hourly.european_aqi?.[latestIdx] ?? 0;
+
+    // Dominant pollutant: compare each pollutant's contribution
+    // Use concentration-based weighting relative to WHO/EPA breakpoints
+    const pollutantWeights = [
+      { name: 'PM2.5', val: pm25 / 15 },   // WHO 24h guideline: 15 µg/m³
+      { name: 'PM10',  val: pm10 / 45 },   // WHO 24h guideline: 45 µg/m³
+      { name: 'NO₂',   val: no2  / 25 },   // WHO annual guideline: 10 µg/m³ (hourly ~25)
+      { name: 'SO₂',   val: so2  / 40 },   // WHO 24h guideline: 40 µg/m³
+      { name: 'CO',     val: co   / 4000 }, // WHO 24h guideline: 4000 µg/m³
+      { name: 'O₃',     val: o3   / 100 },  // WHO 8h guideline: 100 µg/m³
+    ];
+    const dominant = pollutantWeights.reduce((max, p) => p.val > max.val ? p : max, pollutantWeights[0]).name;
+
+    // Trend: compare latest AQI vs previous hour AQI
+    let trend: 'Stable' | 'Rising' | 'Falling' = 'Stable';
+    if (prevIdx !== -1) {
+      const prevAqi = hourly.us_aqi?.[prevIdx] ?? aqiUs;
+      const diff = aqiUs - prevAqi;
+      if (diff > 5) trend = 'Rising';
+      else if (diff < -5) trend = 'Falling';
+    }
+
+    const apiTime = times[latestIdx] || now.toISOString();
+    const apiDate = new Date(apiTime);
+    const diffMs = now.getTime() - apiDate.getTime();
+    const isStale = diffMs > 2 * 60 * 60 * 1000; // >2 hours old
+
+    // Format last updated as relative time
+    const diffMins = Math.floor(diffMs / 60000);
+    let lastUpdated = 'Just now';
+    if (diffMins >= 60) {
+      const hours = Math.floor(diffMins / 60);
+      lastUpdated = `${hours}h ago`;
+    } else if (diffMins > 1) {
+      lastUpdated = `${diffMins}m ago`;
+    }
+
+    return {
+      ...station,
+      pm25, pm10, no2, so2, co, o3,
+      aqi_us: aqiUs,
+      aqi_eu: aqiEu,
+      aqi: aqiUs, // US AQI as primary display
+      aqiCategory: getAqiCategory(aqiUs),
+      aqiVariant: getAqiVariant(aqiUs),
+      dominantPollutant: dominant,
+      trend,
+      lastUpdated,
+      apiTimestamp: apiTime,
+      isStale,
+    };
+  });
+}
+
+function makeDeficientRecord(station: typeof airQualityRegistry[0], now: Date): AirQualityLiveRecord {
+  return {
+    ...station,
+    pm25: 0, pm10: 0, no2: 0, so2: 0, co: 0, o3: 0,
+    aqi_us: 0, aqi_eu: 0, aqi: 0,
+    aqiCategory: 'Good',
+    aqiVariant: 'success',
+    dominantPollutant: '—',
+    trend: 'Stable',
+    lastUpdated: '—',
+    apiTimestamp: now.toISOString(),
+    isStale: true,
+    verification_status: 'Data Deficient',
+  };
+}
+
+// ─── Main Page ──────────────────────────────────────────────────────────────
 
 export default function AirPollutionPage() {
   const router = useRouter();
+  const { filter } = useGlobalFilter();
+  const [aqiFilter, setAqiFilter] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [liveData, setLiveData] = useState<AirQualityLiveRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [fetchTimestamp, setFetchTimestamp] = useState<Date | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 9;
+
+  const doFetch = useCallback(async (isRefresh = false) => {
+    if (isRefresh) setRefreshing(true);
+    else setLoading(true);
+
+    try {
+      const data = await fetchOpenMeteoAirQuality();
+      setLiveData(data);
+      setFetchTimestamp(new Date());
+    } catch (err) {
+      console.error('Failed to fetch air quality data', err);
+      // If we already have cached data, keep it and mark stale
+      if (liveData.length === 0) {
+        // No cached data — show deficient records
+        const now = new Date();
+        setLiveData(airQualityRegistry.map(s => makeDeficientRecord(s, now)));
+      }
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, [liveData.length]);
+
+  React.useEffect(() => { doFetch(); }, []);
+
+  // ─── Computed KPI metrics ──────────────────────────────────────────────────
+
+  const totalStations = airQualityRegistry.length;
+  const officialCount = liveData.filter(d => d.verification_status === 'Official Station Verified').length;
+  const sensorCount = liveData.filter(d => d.verification_status === 'Public Sensor Verified').length;
+  const modelledCount = liveData.filter(d => d.verification_status === 'Satellite-Modelled').length;
+  const avgAqi = liveData.length > 0 ? Math.round(liveData.reduce((acc, curr) => acc + curr.aqi, 0) / liveData.length) : 0;
+  const unhealthyCount = liveData.filter(d => d.aqi > 100).length;
+  const risingCount = liveData.filter(d => d.trend === 'Rising').length;
+
+  // Overall trend
+  const overallTrend = useMemo(() => {
+    if (liveData.length === 0) return 'Stable';
+    const rising = liveData.filter(d => d.trend === 'Rising').length;
+    const falling = liveData.filter(d => d.trend === 'Falling').length;
+    if (rising > falling + 3) return 'Rising';
+    if (falling > rising + 3) return 'Falling';
+    return 'Stable';
+  }, [liveData]);
+
+  // ─── Filtering ─────────────────────────────────────────────────────────────
+
+  const filteredData = useMemo(() => liveData.filter(d => {
+    const matchSearch = filter.searchQuery === '' ||
+      d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+      d.scope.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+      d.country_or_region.toLowerCase().includes(filter.searchQuery.toLowerCase());
+
+    const matchScope = filter.scope === 'All' || d.scope === filter.scope;
+    const matchDistrict = filter.district === 'All' || d.district === filter.district;
+
+    let matchAqi = true;
+    if (aqiFilter === 'hazardous') matchAqi = d.aqi > 300;
+    else if (aqiFilter === 'very-unhealthy') matchAqi = d.aqi > 200 && d.aqi <= 300;
+    else if (aqiFilter === 'unhealthy') matchAqi = d.aqi > 100 && d.aqi <= 200;
+    else if (aqiFilter === 'moderate') matchAqi = d.aqi > 50 && d.aqi <= 100;
+    else if (aqiFilter === 'good') matchAqi = d.aqi <= 50;
+
+    return matchSearch && matchScope && matchDistrict && matchAqi;
+  }), [liveData, filter, aqiFilter]);
+
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  React.useEffect(() => { setCurrentPage(1); }, [aqiFilter, filter]);
+
+  // Format fetch timestamp
+  const fetchTimeLabel = fetchTimestamp
+    ? fetchTimestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+    : '—';
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
+        label="Environmental Monitoring"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Air Pollution' }
         ]}
-        title={<><span className="block whitespace-nowrap">Air</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Pollution</span></>}
-        subtitle="Real-time air quality monitoring, pollutant tracking, emission source identification, and health advisories across Kashmir&apos;s urban and rural monitoring stations"
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Air Pollution Monitoring Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Real-time air quality monitoring via Open-Meteo hourly API across all 44 regional units — PM2.5, PM10, NO₂, SO₂, CO, O₃, and US AQI with dynamic trend computation."
         icon={<Wind className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Active Stations', value: '12', sub: 'Valley-wide', color: 'text-slate-400' },
-              { label: 'Avg AQI (Kashmir)', value: '114', sub: 'Unhealthy for Sensitive', color: 'text-amber-400' },
-              { label: 'PM2.5 Hotspots', value: '7', sub: 'Above WHO guideline', color: 'text-red-400' },
-              { label: 'Active Advisories', value: '4', sub: 'Source-linked', color: 'text-orange-400' },
-              { label: 'Trend (7-day)', value: '↗', sub: 'Worsening', color: 'text-red-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ModuleKpiStrip kpis={[
+        { label: 'Total Units',        value: totalStations,                      icon: 'MapPin'        },
+        { label: 'Official Stations',  value: officialCount,                      icon: 'Shield',       color: 'text-emerald-400' },
+        { label: 'Public Sensors',     value: sensorCount,                        icon: 'Activity',     color: 'text-cyan-400' },
+        { label: 'Avg US AQI',         value: loading ? '...' : avgAqi,           icon: 'Wind',         color: 'text-amber-400' },
+        { label: 'Unhealthy Zones',    value: loading ? '...' : unhealthyCount,   icon: 'AlertTriangle',color: 'text-red-400' },
+        { label: 'Rising Trend',       value: loading ? '...' : risingCount,      icon: 'TrendingUp',   color: 'text-orange-400' },
+        { label: 'Satellite Models',   value: modelledCount,                      icon: 'Cloud',        color: 'text-blue-400' },
+        { label: 'Last Fetch',         value: loading ? '...' : fetchTimeLabel,   icon: 'Clock',        color: 'text-cyan-400' },
+      ]} iconColor="text-emerald-500" />
 
-      {/* Map Preview */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <Card className="glass-intense border-white/10 overflow-hidden">
-            <div className="p-6 flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Map className="w-5 h-5 text-slate-400" />
-                <h3 className="text-lg font-bold text-white">District Air Quality Map</h3>
-              </div>
-              <Button size="sm" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/environmental-monitoring/dashboards')}>
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Open Dashboard
-              </Button>
-            </div>
-            <div className="h-80 bg-gradient-to-br from-slate-800/20 to-gray-900/10 flex items-center justify-center border-t border-white/5">
-              <div className="text-center">
-                <Map className="w-14 h-14 text-slate-700 mx-auto mb-3" />
-                <p className="text-slate-400 text-sm mb-1">Interactive air quality monitoring map with station-level AQI data</p>
-                <p className="text-slate-500 text-xs">PM2.5 • PM10 • NO₂ • SO₂ • O₃ • CO monitoring stations</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <FilterSelect
+              value={aqiFilter}
+              onChange={setAqiFilter}
+              placeholder="All AQI Levels"
+              options={[
+                { value: 'good',           label: 'Good (0–50)'        },
+                { value: 'moderate',       label: 'Moderate (51–100)'  },
+                { value: 'unhealthy',      label: 'Unhealthy (101–200)'},
+                { value: 'very-unhealthy', label: 'Very Unhealthy'     },
+                { value: 'hazardous',      label: 'Hazardous (301+)'  },
+              ]}
+            />
+          }
+          extraActiveCount={aqiFilter !== 'all' ? 1 : 0}
+          onExtraFiltersClear={() => setAqiFilter('all')}
+        />
+      </div>
 
-      {/* Pollutant Cards */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+      <ModuleScopeRow
+        filteredCount={filteredData.length}
+        totalCount={totalStations}
+        entityLabel="monitoring units"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Units')}
+        scopeCount={filter.scope === 'All' ? 0 : liveData.filter(d => d.scope === filter.scope).length}
+        onScopeChange={() => setCurrentPage(1)}
+      />
+
+      {/* ── Registry Section ─────────────────────────────────────────────────── */}
+      <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <Activity className="w-6 h-6 text-slate-400" />
-              Key Pollutant Indicators
-            </h2>
-            <p className="text-slate-400">Current concentrations and health status for monitored pollutants</p>
+
+          {/* Section header + Refresh Button */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                <Zap className="w-6 h-6 text-emerald-400" />
+                44-Unit Live Air Quality Registry
+              </h2>
+              <p className="text-slate-400 text-sm mt-1">
+                Hourly Open-Meteo API — PM2.5, PM10, NO₂, SO₂, CO, O₃ &amp; US AQI
+                {fetchTimestamp && (
+                  <span className="ml-2 text-[10px] text-slate-500 font-mono border border-white/10 px-2 py-0.5 rounded">
+                    Fetched {fetchTimeLabel}
+                  </span>
+                )}
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10"
+              icon={<RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />}
+              onClick={() => doFetch(true)}
+              disabled={refreshing}
+            >
+              {refreshing ? 'Refreshing...' : 'Refresh Data'}
+            </Button>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {pollutantCards.map((card, i) => (
-              <motion.div key={card.pollutant} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center">
-                        <card.icon className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white">{card.pollutant}</h3>
-                        <p className="text-lg font-black text-slate-300">{card.value}</p>
-                      </div>
-                    </div>
-                    <Badge variant={card.variant} size="sm">{card.status}</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400">{card.desc}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Data Display */}
+          {loading ? (
+            <div className="py-24 text-center text-slate-500 glass-intense border border-white/10 rounded-xl">
+              <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-3 text-emerald-500" />
+              <p className="text-sm font-medium">Establishing Live Open-Meteo Connection for 44 Units...</p>
+              <p className="text-xs text-slate-500 mt-1">Fetching hourly PM2.5, PM10, NO₂, SO₂, CO, O₃ and US AQI</p>
+            </div>
+          ) : (
+            <>
+              {filteredData.length === 0 ? (
+                <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+                  <Wind className="w-8 h-8 text-slate-500 mx-auto mb-3" />
+                  <div className="text-white font-medium mb-1">No data found</div>
+                  <div className="text-sm text-slate-400">Try adjusting your filters</div>
+                </div>
+              ) : viewMode === 'grid' ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {paginatedData.map((d, i) => (
+                    <AirQualityCard key={d.id} record={d} index={i} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {paginatedData.map((d, i) => (
+                    <AirQualityRow key={d.id} record={d} index={i} />
+                  ))}
+                </div>
+              )}
 
-      {/* District Air Quality Table */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <TrendingUp className="w-6 h-6 text-slate-400" />
-              District Air Quality Profiles
-            </h2>
-            <p className="text-slate-400">AQI values, trends, and dominant pollutants by district</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">District</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">AQI</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Category</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">PM2.5</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Trend</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Dominant Pollutant</th>
-                </tr>
-              </thead>
-              <tbody>
-                {districtAirQualityData.map((d, i) => (
-                  <motion.tr
-                    key={d.district}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.03 }}
-                    className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
+              {totalPages > 1 && (
+                <div className="flex justify-center items-center gap-4 mt-8 pt-6 border-t border-white/10">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
                   >
-                    <td className="py-3 px-4">
-                      <span className="text-white font-medium">{d.district}</span>
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      <Badge variant={d.aqiVariant} size="sm">{d.aqi}</Badge>
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      <span className={`text-xs font-medium ${
-                        d.aqiCategory === 'Unhealthy' ? 'text-red-400' :
-                        d.aqiCategory === 'Unhealthy for Sensitive' ? 'text-amber-400' :
-                        'text-emerald-400'
-                      }`}>
-                        {d.aqiCategory}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-center text-slate-300">{d.pm25}</td>
-                    <td className="py-3 px-4 text-center">
-                      <span className={`text-xs font-medium ${
-                        d.trend === 'worsening' ? 'text-red-400' :
-                        d.trend === 'improving' ? 'text-emerald-400' :
-                        'text-slate-400'
-                      }`}>
-                        {d.trend === 'worsening' ? '↗' : d.trend === 'improving' ? '↘' : '→'} {d.trend}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-center text-slate-300">{d.dominantPollutant}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </Card>
+                    Previous
+                  </Button>
+                  <div className="text-sm text-slate-400">
+                    Page <span className="text-white font-medium">{currentPage}</span> of {totalPages}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
 
-      {/* Source-Linked Advisories */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <Flame className="w-6 h-6 text-orange-400" />
-              Emission Source Advisories
-            </h2>
-            <p className="text-slate-400">Pollution source identification and targeted intervention recommendations</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {pollutionSourceAdvisories.map((advisory, i) => (
-              <motion.div key={advisory.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500/20 to-gray-600/20 flex items-center justify-center">
-                        <advisory.icon className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-slate-300 transition-colors">{advisory.title}</h3>
-                        <p className="text-xs text-slate-500">{advisory.source}</p>
-                      </div>
-                    </div>
-                    <Badge variant={advisory.status === 'Active' ? 'danger' : advisory.status === 'Monitoring' ? 'warning' : 'info'} size="sm">
-                      {advisory.status}
-                    </Badge>
-                  </div>
-                  <p className="text-xs text-slate-400 mb-3 leading-relaxed">{advisory.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">Issued: {advisory.issued}</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Recent Incident Feed */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-400" />
-              Recent Air Quality Incidents
-            </h2>
-            <p className="text-slate-400">Latest exceedance events, alerts, and pollution complaints</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 p-5">
-            <div className="space-y-4">
-              {recentIncidents.map((r, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="py-3 border-b border-white/5 last:border-0 last:pb-0"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm text-white font-medium">{r.type}</span>
-                    <div className="flex items-center gap-2">
-                      {r.verified ? (
-                        <Badge variant="success" size="sm" className="text-xs">Verified</Badge>
-                      ) : (
-                        <Badge variant="warning" size="sm" className="text-xs">Pending</Badge>
-                      )}
-                      <Badge variant={r.severity === 'Critical' ? 'critical' : r.severity === 'High' ? 'danger' : 'warning'} size="sm" className="text-xs">
-                        {r.severity}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{r.location}</span>
-                    </div>
-                    <span className="text-slate-600">|</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{r.time}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Cross-links */}
+      {/* ── Cross-links ──────────────────────────────────────────────────────── */}
       <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
@@ -408,8 +599,6 @@ export default function AirPollutionPage() {
           </div>
         </div>
       </section>
-
-      
     </main>
   );
 }

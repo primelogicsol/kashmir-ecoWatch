@@ -1,0 +1,128 @@
+Species ID,Common Name,Scientific Name,Status,Elevation Min,Elevation Max,Sensitivity
+medicinal-1,"Kuth / Costus","Saussurea costus",CR,2500,3800,critical
+medicinal-2,"Atis","Aconitum heterophyllum",EN,2500,4000,high
+medicinal-3,"Poison Aconite","Aconitum chasmanthum",CR,2500,4000,critical
+medicinal-4,"Violet Aconite","Aconitum violaceum",VU,3000,4500,medium
+medicinal-5,"Salam Panja","Dactylorhiza hatagirea",EN,2800,4000,high
+medicinal-6,"Bankakri","Podophyllum hexandrum",EN,2500,4000,high
+medicinal-7,"Kutki","Picrorhiza kurrooa",EN,3000,4500,high
+medicinal-8,"Jatamansi","Nardostachys jatamansi",CR,3500,5000,critical
+medicinal-9,"Himalayan Yew","Taxus wallichiana",EN,2000,3500,high
+medicinal-10,"Nag Chhatri","Trillium govanianum",EN,2500,3500,high
+medicinal-11,"Blue Poppy","Meconopsis aculeata",EN,3500,4500,high
+medicinal-12,"Chora","Angelica glauca",EN,2500,3500,high
+medicinal-13,"Gaozaban","Arnebia benthamii",EN,3000,4000,high
+medicinal-14,"Kins","Dioscorea deltoidea",EN,1500,3000,high
+medicinal-15,"Indian Gentian","Gentiana kurroo",CR,1500,3000,critical
+medicinal-16,"Kashmir Sage","Artemisia amygdalina",CR,2000,3000,critical
+medicinal-17,"Himalayan Fritillary","Fritillaria roylei",VU,2500,4000,medium
+medicinal-18,"Himalayan Rhubarb","Rheum australe",VU,3000,4500,medium
+medicinal-19,"Webb's Rhubarb","Rheum webbianum",VU,2500,4500,medium
+medicinal-20,"Spike Rhubarb","Rheum spiciforme",VU,3500,5000,medium
+medicinal-21,"Kala Zeera","Bunium persicum",VU,2000,3000,medium
+medicinal-22,"Suranjan","Colchicum luteum",VU,1500,3000,medium
+medicinal-23,"Somlata","Ephedra gerardiana",NT,2500,4500,low
+medicinal-24,"Chirayita","Swertia chirayita",VU,1500,3000,medium
+medicinal-25,"Himalayan Paris","Paris polyphylla",VU,2000,3000,medium
+medicinal-26,"Pushkarmool","Inula racemosa",VU,2000,3000,medium
+medicinal-27,"Dhup","Jurinea macrocephala",LC,3000,4000,low
+medicinal-28,"Mushkbala","Valeriana jatamansi",LC,1500,3000,low
+medicinal-29,"Hardwick's Valerian","Valeriana hardwickii",LC,1500,3000,low
+medicinal-30,"Pashanbhed","Bergenia ciliata",LC,1500,3000,low
+medicinal-31,"Strachey's Bergenia","Bergenia stracheyi",LC,2500,4500,low
+medicinal-32,"Giant Fennel","Ferula jaeschkeana",LC,2000,3000,low
+medicinal-33,"Whorled Solomon's Seal","Polygonatum verticillatum",LC,2500,3500,low
+medicinal-34,"Tendril Solomon's Seal","Polygonatum cirrhifolium",LC,2500,3500,low
+medicinal-35,"Banafsha","Viola odorata",LC,1500,2500,low
+medicinal-36,"Yellow Wood Violet","Viola biflora",LC,2500,4000,low
+medicinal-37,"Hairy Violet","Viola pilosa",LC,1500,3000,low
+medicinal-38,"Henbane","Hyoscyamus niger",LC,1500,3000,low
+medicinal-39,"Indian Belladonna","Atropa acuminata",LC,2000,3500,low
+medicinal-40,"Jimsonweed","Datura stramonium",LC,1000,2500,low
+medicinal-41,"Bhang","Cannabis sativa",LC,500,3000,low
+medicinal-42,"Corn Mint","Mentha arvensis",LC,500,2500,low
+medicinal-43,"Horse Mint","Mentha longifolia",LC,1500,3000,low
+medicinal-44,"Peppermint","Mentha piperita",LC,1000,2500,low
+medicinal-45,"Oregano","Origanum vulgare",LC,1500,3500,low
+medicinal-46,"Wild Thyme","Thymus linearis",LC,2000,4500,low
+medicinal-47,"Creeping Thyme","Thymus serpyllum",LC,2000,4000,low
+medicinal-48,"Moorcroft's Sage","Salvia moorcroftiana",LC,1500,2500,low
+medicinal-49,"Clary Sage","Salvia sclarea",LC,1500,2500,low
+medicinal-50,"Yarrow","Achillea millefolium",LC,1500,3500,low
+medicinal-51,"Wormwood","Artemisia absinthium",LC,1500,3000,low
+medicinal-52,"Short-leaved Wormwood","Artemisia brevifolia",LC,2500,4500,low
+medicinal-53,"Sea Wormwood","Artemisia maritima",LC,2500,4500,low
+medicinal-54,"Mugwort","Artemisia vulgaris",LC,1500,3000,low
+medicinal-55,"Chicory","Cichorium intybus",LC,1000,2500,low
+medicinal-56,"Dandelion","Taraxacum officinale",LC,1500,4000,low
+medicinal-57,"Broadleaf Plantain","Plantago major",LC,1500,3000,low
+medicinal-58,"Narrowleaf Plantain","Plantago lanceolata",LC,1500,3000,low
+medicinal-59,"Nepal Dock","Rumex nepalensis",LC,1500,3500,low
+medicinal-60,"Sorrel","Rumex acetosa",LC,1500,3500,low
+medicinal-61,"Stinging Nettle","Urtica dioica",LC,1500,3500,low
+medicinal-62,"St. John's Wort","Hypericum perforatum",LC,1500,3000,low
+medicinal-63,"Wallich's Spurge","Euphorbia wallichii",LC,2500,4000,low
+medicinal-64,"Thomson's Spurge","Euphorbia thomsoniana",LC,3000,4500,low
+medicinal-65,"Cobra Lily","Arisaema jacquemontii",LC,2000,3500,low
+medicinal-66,"Yellow Cobra Lily","Arisaema flavum",LC,1500,3500,low
+medicinal-67,"Sweet Flag","Acorus calamus",LC,1000,2000,low
+medicinal-68,"Self-heal","Prunella vulgaris",LC,1500,3500,low
+medicinal-69,"Marsh Marigold","Caltha palustris",LC,2500,4000,low
+medicinal-70,"Corn Buttercup","Ranunculus arvensis",LC,1500,2500,low
+medicinal-71,"Sacred Lotus","Nelumbo nucifera",LC,1500,1600,low
+medicinal-72,"White Water Lily","Nymphaea alba",LC,1500,1600,low
+medicinal-73,"Foxnut","Euryale ferox",LC,1500,1600,low
+medicinal-74,"Water Chestnut","Trapa natans",LC,1500,1600,low
+medicinal-75,"Walnut","Juglans regia",LC,1500,3000,low
+medicinal-76,"Apricot","Prunus armeniaca",LC,1500,3000,low
+medicinal-77,"Sea Buckthorn","Hippophae rhamnoides",LC,2500,4000,low
+medicinal-78,"Willow-leaved Sea Buckthorn","Hippophae salicifolia",LC,2000,3500,low
+medicinal-79,"Indian Barberry","Berberis lycium",LC,1000,3000,low
+medicinal-80,"Tree Turmeric","Berberis aristata",LC,2000,3500,low
+medicinal-81,"Thick-spined Barberry","Berberis pachyacantha",LC,2000,3500,low
+medicinal-82,"Webb's Rose","Rosa webbiana",LC,2000,3500,low
+medicinal-83,"Large-leaved Rose","Rosa macrophylla",LC,2000,3500,low
+medicinal-84,"Golden Evergreen Raspberry","Rubus ellipticus",LC,1500,2500,low
+medicinal-85,"Blackberry","Rubus fruticosus",LC,1500,2500,low
+medicinal-86,"Autumn Olive","Elaeagnus umbellata",LC,1500,3000,low
+medicinal-87,"Himalayan Viburnum","Viburnum grandiflorum",LC,2000,3500,low
+medicinal-88,"Songar Hawthorn","Crataegus songarica",LC,2000,3000,low
+medicinal-89,"White Willow","Salix alba",LC,1500,3000,low
+medicinal-90,"Toothed Willow","Salix denticulata",LC,2000,3500,low
+medicinal-91,"Himalayan Poplar","Populus ciliata",LC,1500,3000,low
+medicinal-92,"Blue Pine","Pinus wallichiana",LC,1500,3500,low
+medicinal-93,"Deodar Cedar","Cedrus deodara",LC,1500,2500,low
+medicinal-94,"Himalayan Fir","Abies pindrow",LC,2500,3500,low
+medicinal-95,"Common Juniper","Juniperus communis",LC,3000,4500,low
+medicinal-96,"Flaky Juniper","Juniperus squamata",LC,3000,4500,low
+medicinal-97,"Pashtun Juniper","Juniperus macropoda",LC,3000,4000,low
+medicinal-98,"Skimmia","Skimmia laureola",LC,2500,3500,low
+medicinal-99,"Toothache Tree","Zanthoxylum armatum",LC,1000,2500,low
+medicinal-100,"Himalayan Pear","Pyrus pashia",LC,1500,2500,low
+medicinal-101,"Dwarf Rhododendron","Rhododendron anthopogon",LC,3500,4500,low
+medicinal-102,"Bell Rhododendron","Rhododendron campanulatum",LC,3000,4000,low
+medicinal-103,"Himalayan Birch","Betula utilis",LC,3000,4000,low
+medicinal-104,"European Ash","Fraxinus excelsior",LC,2000,3000,low
+medicinal-105,"European Nettle Tree","Celtis australis",LC,1000,2500,low
+medicinal-106,"Govan's Corydalis","Corydalis govaniana",LC,2500,4000,low
+medicinal-107,"Two-leaved Corydalis","Corydalis diphylla",LC,2000,3500,low
+medicinal-108,"Drumstick Primrose","Primula denticulata",LC,2000,4000,low
+medicinal-109,"Large-leaved Primrose","Primula macrophylla",LC,3500,5000,low
+medicinal-110,"Round-leaved Rock Jasmine","Androsace rotundifolia",LC,2000,3500,low
+medicinal-111,"Alpine Avens","Geum elatum",LC,3000,4500,low
+medicinal-112,"Himalayan Cinquefoil","Potentilla fulgens",LC,2000,4000,low
+medicinal-113,"Dark Blood Cinquefoil","Potentilla atrosanguinea",LC,3000,4500,low
+medicinal-114,"Jacquemont's Saxifrage","Saxifraga jacquemontiana",LC,3500,5000,low
+medicinal-115,"Two-horned Lousewort","Pedicularis bicornuta",LC,3000,4500,low
+medicinal-116,"Comb-leaved Lousewort","Pedicularis pectinata",LC,2500,4000,low
+medicinal-117,"Ratanjot","Onosma hispida",LC,2000,3500,low
+medicinal-118,"Wallich's Geranium","Geranium wallichianum",LC,2500,4000,low
+medicinal-119,"Meadow Crane's-bill","Geranium pratense",LC,2500,4000,low
+medicinal-120,"Jadwar","Delphinium denudatum",LC,2500,3500,low
+medicinal-121,"Kashmir Larkspur","Delphinium cashmerianum",LC,3000,4500,low
+medicinal-122,"Smooth Aconite","Aconitum laeve",LC,2500,4000,low
+medicinal-123,"Vaginate Selinum","Selinum vaginatum",LC,2500,4000,low
+medicinal-124,"White Cow Parsnip","Heracleum candicans",LC,2000,3500,low
+medicinal-125,"Wild Caraway","Carum carvi",LC,2500,3500,low
+medicinal-126,"Puncture Vine","Tribulus terrestris",LC,1000,2500,low
+medicinal-127,"Wild Rue","Peganum harmala",LC,1000,2500,low

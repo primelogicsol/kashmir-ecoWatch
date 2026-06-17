@@ -1,516 +1,356 @@
 'use client';
 
-import React from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
-import { Button } from '@/components/ui/Button';
+import React, { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
-import {
-  Building2, Map, BarChart3, ChevronRight, AlertTriangle,
-  FileText, ArrowRight, Activity, Clock,
-  MapPin, ExternalLink, Wrench,
-  AlertCircle, Droplets, Construction, Factory, Database
-} from 'lucide-react';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import { Building2, Activity, MapPin, AlertTriangle, Shield, CheckCircle, Info, Settings, Trash2, Droplet, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 
-const assetProfileCards = [
-  {
-    name: 'Telbal Intake Point',
-    type: 'Intake Point',
-    location: 'Telbal, Srinagar',
-    district: 'Srinagar',
-    condition: 'Fair',
-    conditionVariant: 'warning' as const,
-    vulnerability: 'Sedimentation buildup',
-    vulnerabilityVariant: 'warning' as const,
-    maintenanceStatus: 'Scheduled',
-    lastInspection: '5 days ago',
-    icon: Droplets,
-  },
-  {
-    name: 'Zadibal Pumping Station',
-    type: 'Pumping Station',
-    location: 'Zadibal, Srinagar',
-    district: 'Srinagar',
-    condition: 'Poor',
-    conditionVariant: 'danger' as const,
-    vulnerability: 'Aging pump motors — 25+ yrs',
-    vulnerabilityVariant: 'danger' as const,
-    maintenanceStatus: 'Overdue',
-    lastInspection: '3 weeks ago',
-    icon: Factory,
-  },
-  {
-    name: 'Nowgam Treatment Plant',
-    type: 'Treatment Plant',
-    location: 'Nowgam, Srinagar',
-    district: 'Srinagar',
-    condition: 'Good',
-    conditionVariant: 'success' as const,
-    vulnerability: 'Chemical supply chain risk',
-    vulnerabilityVariant: 'monitoring' as const,
-    maintenanceStatus: 'Current',
-    lastInspection: '2 days ago',
-    icon: Factory,
-  },
-  {
-    name: 'Anantnag Reservoir',
-    type: 'Reservoir',
-    location: 'Anantnag town',
-    district: 'Anantnag',
-    condition: 'Fair',
-    conditionVariant: 'warning' as const,
-    vulnerability: 'Structural seepage detected',
-    vulnerabilityVariant: 'warning' as const,
-    maintenanceStatus: 'In Progress',
-    lastInspection: '1 week ago',
-    icon: Database,
-  },
-  {
-    name: 'Baramulla Storage System',
-    type: 'Storage System',
-    location: 'Baramulla urban',
-    district: 'Baramulla',
-    condition: 'Good',
-    conditionVariant: 'success' as const,
-    vulnerability: 'Low — recent upgrade',
-    vulnerabilityVariant: 'stable' as const,
-    maintenanceStatus: 'Current',
-    lastInspection: '3 days ago',
-    icon: Database,
-  },
-  {
-    name: 'Srinagar Main Supply Node',
-    type: 'Supply Node',
-    location: 'Rajbagh, Srinagar',
-    district: 'Srinagar',
-    condition: 'Critical',
-    conditionVariant: 'critical' as const,
-    vulnerability: 'Pipeline corrosion — failure risk',
-    vulnerabilityVariant: 'danger' as const,
-    maintenanceStatus: 'Emergency',
-    lastInspection: '1 day ago',
-    icon: Construction,
-  },
-];
+import { infrastructureData, InfrastructureRecord } from '@/data/critical-infrastructure';
 
-const districtInfrastructureData = [
-  { district: 'Srinagar', totalAssets: 47, criticalAssets: 8, goodCondition: 22, fairCondition: 14, poorCondition: 8, criticalCondition: 3, maintenanceStatus: '72% current' },
-  { district: 'Anantnag', totalAssets: 28, criticalAssets: 4, goodCondition: 12, fairCondition: 9, poorCondition: 5, criticalCondition: 2, maintenanceStatus: '65% current' },
-  { district: 'Baramulla', totalAssets: 31, criticalAssets: 3, goodCondition: 18, fairCondition: 8, poorCondition: 4, criticalCondition: 1, maintenanceStatus: '78% current' },
-  { district: 'Pulwama', totalAssets: 22, criticalAssets: 5, goodCondition: 8, fairCondition: 7, poorCondition: 5, criticalCondition: 2, maintenanceStatus: '58% current' },
-  { district: 'Budgam', totalAssets: 19, criticalAssets: 2, goodCondition: 10, fairCondition: 5, poorCondition: 3, criticalCondition: 1, maintenanceStatus: '68% current' },
-  { district: 'Ganderbal', totalAssets: 24, criticalAssets: 3, goodCondition: 13, fairCondition: 7, poorCondition: 3, criticalCondition: 1, maintenanceStatus: '71% current' },
-  { district: 'Kupwara', totalAssets: 16, criticalAssets: 1, goodCondition: 10, fairCondition: 4, poorCondition: 2, criticalCondition: 0, maintenanceStatus: '81% current' },
-  { district: 'Shopian', totalAssets: 13, criticalAssets: 2, goodCondition: 6, fairCondition: 4, poorCondition: 2, criticalCondition: 1, maintenanceStatus: '62% current' },
-];
+// ─── Infrastructure Card ──────────────────────────────────────────────────
 
-const highRiskFailurePoints = [
-  {
-    title: 'Zadibal Pump Motor Failure Cascade',
-    location: 'Zadibal, Srinagar',
-    risk: 'Critical',
-    riskVariant: 'critical' as const,
-    impact: '18 MLD capacity at risk — 250K+ population',
-    scenario: 'Three of five pump motors showing bearing degradation. Complete failure within 60–90 days without replacement.',
-    icon: AlertTriangle,
-    lastAssessment: '3 days ago',
-  },
-  {
-    title: 'Telbal Intake Sedimentation Blockage',
-    location: 'Telbal, Srinagar',
-    risk: 'High',
-    riskVariant: 'danger' as const,
-    impact: 'Primary water source for Srinagar network',
-    scenario: 'Accelerated silt deposition reducing intake capacity by 22%. Dredging overdue. Monsoon sediment spike expected.',
-    icon: AlertCircle,
-    lastAssessment: '1 week ago',
-  },
-  {
-    title: 'Anantnag Reservoir Structural Degradation',
-    location: 'Anantnag town',
-    risk: 'High',
-    riskVariant: 'danger' as const,
-    impact: '5 ML storage — town-wide supply disruption',
-    scenario: 'Seepage detected in north wall. Structural integrity declining. Emergency repair recommended before monsoon.',
-    icon: Building2,
-    lastAssessment: '5 days ago',
-  },
-  {
-    title: 'Pulwama Pipeline Corrosion — Main Artery',
-    location: 'Pulwama district network',
-    risk: 'Critical',
-    riskVariant: 'critical' as const,
-    impact: 'Main supply artery — 80K+ population',
-    scenario: 'CI pipe section from 1980s showing advanced corrosion. 3 leak points in past month. Catastrophic rupture risk.',
-    icon: Construction,
-    lastAssessment: '2 days ago',
-  },
-];
+function InfrastructureCard({ record, index }: { record: InfrastructureRecord; index: number }) {
+  const isCritical = record.priority_level === 'Critical' || record.risk_exposure.includes('Critical');
+  const isHigh = record.priority_level === 'High' || record.risk_exposure.includes('High') || record.priority_level === 'Strategic';
+  
+  let riskColor = 'text-emerald-400';
+  let badgeVariant: 'default' | 'success' | 'warning' | 'danger' | 'critical' = 'success';
+  
+  if (record.risk_exposure.includes('Low')) {
+    riskColor = 'text-emerald-400';
+    badgeVariant = 'success';
+  } else if (record.risk_exposure.includes('Moderate')) {
+    riskColor = 'text-amber-400';
+    badgeVariant = 'warning';
+  } else if (record.risk_exposure.includes('High')) {
+    riskColor = 'text-orange-400';
+    badgeVariant = 'danger';
+  } else if (record.risk_exposure.includes('Critical')) {
+    riskColor = 'text-red-400';
+    badgeVariant = 'critical';
+  }
 
-const recentIncidents = [
-  { type: 'Pump Motor Overheating', location: 'Zadibal Station B, Srinagar', severity: 'Critical', time: '2h ago', verified: true },
-  { type: 'Intake Blockage Detected', location: 'Telbal intake channel', severity: 'High', time: '6h ago', verified: true },
-  { type: 'Reservoir Seepage Increased', location: 'Anantnag main reservoir', severity: 'High', time: '12h ago', verified: true },
-  { type: 'Pipeline Leak — Section 7', location: 'Pulwama main artery', severity: 'Critical', time: '1 day ago', verified: true },
-  { type: 'Valve Failure', location: 'Budgam distribution node', severity: 'Moderate', time: '2 days ago', verified: false },
-];
+  // Get dynamic icon based on asset type
+  let AssetIcon = Building2;
+  if (record.asset_type.includes('Water')) AssetIcon = Droplet;
+  if (record.asset_type.includes('Dam') || record.asset_type.includes('Hydropower')) AssetIcon = Zap;
+  if (record.asset_type.includes('Waste') || record.asset_type.includes('Landfill')) AssetIcon = Trash2;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.04, 0.5) }}
+      className="h-full"
+    >
+      <Card className="glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group hover:border-white/20">
+        
+        <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-10 pointer-events-none ${
+          isCritical ? 'from-red-500 to-transparent' : isHigh ? 'from-amber-500 to-transparent' : 'from-blue-500 to-transparent'
+        }`} />
+
+        <div className="flex items-start justify-between gap-2 relative z-10">
+          <div className="min-w-0">
+            <h3 className="text-sm font-bold text-white truncate group-hover:text-blue-300 transition-colors">{record.asset_name}</h3>
+            <p className="text-[10px] text-slate-500 truncate mt-0.5 flex items-center gap-1">
+              <AssetIcon className="w-3 h-3" />
+              {record.asset_type}
+            </p>
+          </div>
+          <Badge variant={isCritical ? 'critical' : isHigh ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {record.priority_level} Priority
+          </Badge>
+        </div>
+
+        <div className="flex flex-col gap-1.5 text-xs mt-2 bg-white/[0.02] rounded-lg p-2 border border-white/5">
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Design Capacity</span>
+            <span className="text-blue-400 font-bold truncate ml-2 text-right">{record.design_capacity}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Current Load</span>
+            <span className="text-amber-400 font-medium truncate">{record.current_load}</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-1.5 text-[10px] mt-1">
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Operational Status</span>
+            <span className="text-white font-medium truncate ml-2">{record.operational_status}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Efficiency</span>
+            <span className="text-slate-300 truncate ml-2 text-right max-w-[120px]">{record.treatment_efficiency}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Service Area</span>
+            <span className="text-slate-300 truncate ml-2 max-w-[120px]">{record.ward_or_service_area}</span>
+          </div>
+        </div>
+
+        <div className="mt-auto pt-3 border-t border-white/5 flex flex-col gap-1 text-[10px] text-slate-400">
+          <div className="flex items-start gap-1.5">
+            <AlertTriangle className={`w-3 h-3 flex-shrink-0 mt-0.5 ${riskColor}`} />
+            <span className="line-clamp-2 leading-snug">
+              <strong className="text-slate-300 font-medium">Risk Exposure:</strong> <span className={riskColor}>{record.risk_exposure}</span>
+            </span>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Infrastructure Row ──────────────────────────────────────────────────────
+
+function InfrastructureRow({ record, index }: { record: InfrastructureRecord; index: number }) {
+  const isCritical = record.priority_level === 'Critical' || record.risk_exposure.includes('Critical');
+
+  let riskColor = 'text-emerald-400';
+  let badgeVariant: 'default' | 'success' | 'warning' | 'danger' | 'critical' = 'success';
+  
+  if (record.risk_exposure.includes('Moderate')) {
+    riskColor = 'text-amber-400';
+    badgeVariant = 'warning';
+  } else if (record.risk_exposure.includes('High')) {
+    riskColor = 'text-orange-400';
+    badgeVariant = 'danger';
+  } else if (record.risk_exposure.includes('Critical')) {
+    riskColor = 'text-red-400';
+    badgeVariant = 'critical';
+  }
+
+  let AssetIcon = Building2;
+  if (record.asset_type.includes('Water')) AssetIcon = Droplet;
+  if (record.asset_type.includes('Dam') || record.asset_type.includes('Hydropower')) AssetIcon = Zap;
+  if (record.asset_type.includes('Waste') || record.asset_type.includes('Landfill')) AssetIcon = Trash2;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.02, 0.4) }}
+    >
+      <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all">
+        <div className="flex flex-wrap items-center gap-4">
+          
+          <div className="min-w-[200px] flex-1">
+            <span className="text-sm font-bold text-white">{record.asset_name}</span>
+            <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1"><AssetIcon className="w-3 h-3" /> {record.asset_type}</div>
+          </div>
+
+          <div className="w-32 hidden md:block">
+            <div className="text-[10px] text-slate-500">Design Capacity</div>
+            <div className="text-xs font-bold text-blue-400 truncate" title={record.design_capacity}>{record.design_capacity}</div>
+          </div>
+
+          <div className="w-24 hidden xl:block">
+            <div className="text-[10px] text-slate-500">Current Load</div>
+            <div className="text-xs text-amber-400 font-medium truncate" title={record.current_load}>{record.current_load}</div>
+          </div>
+
+          <div className="w-32 hidden lg:block">
+            <div className="text-[10px] text-slate-500">Risk Exposure</div>
+            <div className={`text-xs font-medium truncate ${riskColor}`}>{record.risk_exposure}</div>
+          </div>
+
+          <div className="w-24">
+            <div className="text-[10px] text-slate-500 mb-1">Status</div>
+            <Badge variant={record.operational_status.includes('Operational') ? 'success' : 'warning'} size="sm" className="text-[10px] shadow-sm">
+              {record.operational_status}
+            </Badge>
+          </div>
+
+          <div className="flex-shrink-0 ml-auto">
+            <Button variant="outline" size="sm" className="text-xs px-3 border-white/10" icon={<Info className="w-3 h-3" />}>
+              Details
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Main Page Component ──────────────────────────────────────────────────────
 
 export default function CriticalInfrastructurePage() {
   const router = useRouter();
+  const { filter } = useGlobalFilter();
+
+  const [assetFilter, setAssetFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [priorityFilter, setPriorityFilter] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 9;
+
+  // Derive filter options
+  const assetOptions = useMemo(() => Array.from(new Set(infrastructureData.map(d => d.asset_type))).filter(Boolean).sort(), []);
+  const statusOptions = useMemo(() => Array.from(new Set(infrastructureData.map(d => d.operational_status))).filter(Boolean).sort(), []);
+  const priorityOptions = useMemo(() => Array.from(new Set(infrastructureData.map(d => d.priority_level))).filter(Boolean).sort(), []);
+
+  const filteredData = useMemo(() => {
+    return infrastructureData.filter(d => {
+      const matchSearch = filter.searchQuery === '' || 
+        d.asset_name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+        d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+        d.asset_type.toLowerCase().includes(filter.searchQuery.toLowerCase());
+      
+      const matchScope = filter.scope === 'All' || d.scope === filter.scope;
+      const matchDistrict = filter.district === 'All' || d.district === filter.district;
+      
+      const matchAsset = assetFilter === 'all' || d.asset_type === assetFilter;
+      const matchStatus = statusFilter === 'all' || d.operational_status === statusFilter;
+      const matchPriority = priorityFilter === 'all' || d.priority_level === priorityFilter;
+
+      return matchSearch && matchScope && matchDistrict && matchAsset && matchStatus && matchPriority;
+    });
+  }, [filter, assetFilter, statusFilter, priorityFilter]);
+
+  const totalCount = infrastructureData.length;
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  const extraActiveCount = [assetFilter, statusFilter, priorityFilter].filter(f => f !== 'all').length;
+
+  const scopeCount = useMemo(() => {
+    if (filter.scope === 'All') return 0;
+    return infrastructureData.filter(d => d.scope === filter.scope).length;
+  }, [filter.scope]);
+
+  // Aggregate stats
+  const totalAssets = infrastructureData.length;
+  const criticalPriority = infrastructureData.filter(d => d.priority_level && d.priority_level.includes('Critical')).length;
+  const operationalAssets = infrastructureData.filter(d => d.operational_status && d.operational_status.includes('Operational')).length;
+  const highRisk = infrastructureData.filter(d => d.risk_exposure && (d.risk_exposure.includes('Critical') || d.risk_exposure.includes('High'))).length;
+
+  const hydroDams = infrastructureData.filter(d => d.asset_type && d.asset_type.includes('Hydropower')).length;
+  const treatmentPlants = infrastructureData.filter(d => d.asset_type && (d.asset_type.includes('Treatment') || d.asset_type.includes('STP') || d.asset_type.includes('WTP'))).length;
+  const solidWaste = infrastructureData.filter(d => d.asset_type && d.asset_type.includes('Solid Waste')).length;
+
+  const metrics = [
+    { label: 'Total Assets', value: totalAssets, icon: 'Building2' },
+    { label: 'Hydropower Dams', value: hydroDams, icon: 'Waves' },
+    { label: 'Treatment Plants', value: treatmentPlants, icon: 'Factory' },
+    { label: 'Solid Waste Sites', value: solidWaste, icon: 'Trash2' },
+    { label: 'Critical Priority', value: criticalPriority, icon: 'ShieldAlert' },
+    { label: 'High Risk Exposure', value: highRisk, icon: 'AlertTriangle' },
+    { label: 'Fully Operational', value: operationalAssets, icon: 'CheckCircle' },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock' },
+  ];
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-slate-950 flex flex-col">
+      {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
+        label="Environmental Monitoring"
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Critical Infrastructure Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Monitoring the capacity, operational load, and environmental risk of major dams, STPs, WTPs, landfills, and outfalls forming the ecological backbone."
+        icon={<Building2 className="w-6 h-6 text-blue-400" />}
         breadcrumbs={[
-          { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Critical Infrastructure' }
+          { label: 'Critical Infrastructure' },
         ]}
-        title={<><span className="block whitespace-nowrap">Critical Water</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Infrastructure</span></>}
-        subtitle="Monitoring water infrastructure assets — intake points, pumping stations, treatment plants, reservoirs, storage systems, and supply nodes across Kashmir&apos;s water supply network"
-        icon={<Building2 className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Total Assets Tracked', value: '200', sub: 'Kashmir Valley', color: 'text-indigo-400' },
-              { label: 'Critical Condition', value: '11', sub: 'Immediate action', color: 'text-red-400' },
-              { label: 'Maintenance Overdue', value: '34', sub: 'Across districts', color: 'text-amber-400' },
-              { label: 'Failure Risk Points', value: '4', sub: 'High-priority', color: 'text-orange-400' },
-              { label: 'Avg Asset Health', value: '71%', sub: 'Kashmir avg', color: 'text-emerald-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} iconColor="text-blue-500" />
 
-      {/* Asset Map Preview */}
-      <section className="py-16">
+      {/* ── FILTER BAR ───────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-6 mt-4 relative z-30 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <>
+              <FilterSelect value={assetFilter} onChange={setAssetFilter} placeholder="Asset Type" options={assetOptions.map(c => ({ value: c, label: c as string }))} />
+              <FilterSelect value={statusFilter} onChange={setStatusFilter} placeholder="Operational Status" options={statusOptions.map(s => ({ value: s, label: s as string }))} />
+              <FilterSelect value={priorityFilter} onChange={setPriorityFilter} placeholder="Priority Level" options={priorityOptions.map(s => ({ value: s, label: s as string }))} />
+            </>
+          }
+          extraActiveCount={extraActiveCount}
+          onExtraFiltersClear={() => {
+            setAssetFilter('all');
+            setStatusFilter('all');
+            setPriorityFilter('all');
+          }}
+        />
+      </div>
+
+      {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
+      <ModuleScopeRow
+        filteredCount={filteredData.length}
+        totalCount={totalCount}
+        entityLabel="infrastructure assets"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Major Assets')}
+        scopeCount={scopeCount}
+        onScopeChange={() => setCurrentPage(1)}
+      />
+
+      {/* ── DATA GRID / LIST ─────────────────────────────────────────────── */}
+      <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          <Card className="glass-intense border-white/10 overflow-hidden">
-            <div className="p-6 flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Map className="w-5 h-5 text-indigo-400" />
-                <h3 className="text-lg font-bold text-white">Asset Map — Real-Time Preview</h3>
-              </div>
-              <Button size="sm" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/environmental-monitoring/dashboards')}>
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Open Dashboard
-              </Button>
+          {filteredData.length === 0 ? (
+            <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+              <Settings className="w-8 h-8 text-slate-500 mx-auto mb-3" />
+              <div className="text-white font-medium mb-1">No data found</div>
+              <div className="text-sm text-slate-400">Try adjusting your filters</div>
             </div>
-            <div className="h-80 bg-gradient-to-br from-indigo-900/20 to-blue-900/10 flex items-center justify-center border-t border-white/5">
-              <div className="text-center">
-                <Map className="w-14 h-14 text-indigo-800 mx-auto mb-3" />
-                <p className="text-slate-400 text-sm mb-1">Interactive infrastructure asset map with condition and risk layers</p>
-                <p className="text-slate-500 text-xs">Intake points • Pumping stations • Treatment plants • Reservoirs • Storage • Supply nodes</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Asset Profile Cards */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Asset Profile Cards</h2>
-            <p className="text-slate-400">Key infrastructure assets with condition, vulnerability, and maintenance status</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {assetProfileCards.map((asset, i) => (
-              <motion.div key={asset.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow flex-shrink-0">
-                        <asset.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">{asset.name}</h3>
-                        <p className="text-xs text-slate-400">{asset.type}</p>
-                      </div>
-                    </div>
-                    <Badge variant={asset.conditionVariant} size="sm">{asset.condition}</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                      <MapPin className="w-3 h-3 flex-shrink-0" />
-                      <span>{asset.location}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Vulnerability</span>
-                      <Badge variant={asset.vulnerabilityVariant} size="sm">{asset.vulnerability}</Badge>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1.5 text-slate-400">
-                        <Wrench className="w-3 h-3" />
-                        <span>Maintenance</span>
-                      </div>
-                      <span className={`font-medium ${
-                        asset.maintenanceStatus === 'Current' ? 'text-emerald-400' :
-                        asset.maintenanceStatus === 'Scheduled' ? 'text-blue-400' :
-                        asset.maintenanceStatus === 'In Progress' ? 'text-amber-400' :
-                        asset.maintenanceStatus === 'Overdue' ? 'text-red-400' :
-                        'text-red-500'
-                      }`}>
-                        {asset.maintenanceStatus}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs text-slate-500">
-                      <span>Last inspection</span>
-                      <span>{asset.lastInspection}</span>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* District Infrastructure Profiles */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <Map className="w-6 h-6 text-indigo-400" />
-              District Infrastructure Profiles
-            </h2>
-            <p className="text-slate-400">Asset count, critical asset distribution, and maintenance status by district</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">District</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Assets</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Critical Assets</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Good</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Fair</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Poor</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Critical</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Maintenance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {districtInfrastructureData.map((d, i) => (
-                  <motion.tr
-                    key={d.district}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.03 }}
-                    className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
-                  >
-                    <td className="py-3 px-4">
-                      <span className="text-white font-medium">{d.district}</span>
-                    </td>
-                    <td className="py-3 px-4 text-center text-slate-300 font-bold">{d.totalAssets}</td>
-                    <td className="py-3 px-4 text-center">
-                      <Badge variant={d.criticalAssets >= 5 ? 'danger' : d.criticalAssets >= 3 ? 'warning' : 'success'} size="sm">
-                        {d.criticalAssets}
-                      </Badge>
-                    </td>
-                    <td className="py-3 px-4 text-center text-emerald-400">{d.goodCondition}</td>
-                    <td className="py-3 px-4 text-center text-amber-400">{d.fairCondition}</td>
-                    <td className="py-3 px-4 text-center text-orange-400">{d.poorCondition}</td>
-                    <td className="py-3 px-4 text-center text-red-400">{d.criticalCondition}</td>
-                    <td className="py-3 px-4 text-center">
-                      <span className={`text-xs font-medium ${
-                        parseInt(d.maintenanceStatus) >= 75 ? 'text-emerald-400' :
-                        parseInt(d.maintenanceStatus) >= 65 ? 'text-amber-400' :
-                        'text-red-400'
-                      }`}>
-                        {d.maintenanceStatus}
-                      </span>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </Card>
-        </div>
-      </section>
-
-      {/* High-Risk Failure Points */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-red-400" />
-              High-Risk Failure Points
-            </h2>
-            <p className="text-slate-400">Critical infrastructure failure scenarios requiring immediate intervention</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {highRiskFailurePoints.map((point, i) => (
-              <motion.div key={point.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center">
-                        <point.icon className="w-5 h-5 text-red-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-red-300 transition-colors">{point.title}</h3>
-                        <p className="text-xs text-slate-400">{point.impact}</p>
-                      </div>
-                    </div>
-                    <Badge variant={point.riskVariant} size="sm">{point.risk}</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400 mb-3 leading-relaxed">{point.scenario}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                      <MapPin className="w-3 h-3" />
-                      <span>{point.location}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                      <Clock className="w-3 h-3" />
-                      <span>Assessed {point.lastAssessment}</span>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Asset Condition Summary */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <Activity className="w-6 h-6 text-indigo-400" />
-              Asset Condition Summary
-            </h2>
-            <p className="text-slate-400">Distribution of asset health across all tracked infrastructure</p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: 'Good', count: 99, percentage: '50%', color: 'text-emerald-400', bg: 'bg-emerald-400', borderColor: 'border-emerald-400/20' },
-              { label: 'Fair', count: 58, percentage: '29%', color: 'text-amber-400', bg: 'bg-amber-400', borderColor: 'border-amber-400/20' },
-              { label: 'Poor', count: 32, percentage: '16%', color: 'text-orange-400', bg: 'bg-orange-400', borderColor: 'border-orange-400/20' },
-              { label: 'Critical', count: 11, percentage: '5%', color: 'text-red-400', bg: 'bg-red-400', borderColor: 'border-red-400/20' },
-            ].map((item, i) => (
-              <motion.div key={item.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className={`glass-intense ${item.borderColor} hover:${item.borderColor.replace('/20', '/40')} transition-all p-5 text-center`}>
-                  <div className={`text-4xl font-black ${item.color} mb-2`}>{item.count}</div>
-                  <div className="text-sm text-slate-400 mb-1">{item.label}</div>
-                  <div className="text-xs text-slate-500 mb-3">{item.percentage} of total</div>
-                  <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${item.bg}`}
-                      style={{ width: item.percentage }}
-                    />
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Incident / Maintenance Status Feed */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <FileText className="w-6 h-6 text-indigo-400" />
-              Incident &amp; Maintenance Feed
-            </h2>
-            <p className="text-slate-400">Recent infrastructure incidents and maintenance activity</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 p-5">
-            <div className="space-y-4">
-              {recentIncidents.map((r, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="py-3 border-b border-white/5 last:border-0 last:pb-0"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-white font-medium">{r.type}</span>
-                      {r.verified ? (
-                        <Badge variant="success" size="sm" className="text-xs">Verified</Badge>
-                      ) : (
-                        <Badge variant="warning" size="sm" className="text-xs">Pending</Badge>
-                      )}
-                    </div>
-                    <Badge variant={r.severity === 'Critical' ? 'critical' : r.severity === 'High' ? 'danger' : 'warning'} size="sm" className="text-xs">
-                      {r.severity}
-                    </Badge>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{r.location}</span>
-                    </div>
-                    <span className="text-slate-600">|</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{r.time}</span>
-                    </div>
-                  </div>
-                </motion.div>
+          ) : viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedData.map((record, idx) => (
+                <InfrastructureCard key={record.id} record={record} index={idx} />
               ))}
             </div>
-          </Card>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {paginatedData.map((record, idx) => (
+                <InfrastructureRow key={record.id} record={record} index={idx} />
+              ))}
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-8 pt-6 border-t border-white/10">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </Button>
+              <div className="text-sm text-slate-400">
+                Page <span className="text-white font-medium">{currentPage}</span> of {totalPages}
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </Button>
+            </div>
+          )}
         </div>
       </section>
-
-      {/* Cross-links */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Related Actions</h2>
-            <p className="text-slate-400">Explore connected water and environmental monitoring domains</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Potable water quality & supply', icon: ExternalLink, color: 'from-cyan-500 to-teal-600' },
-              { label: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow and discharge monitoring', icon: ExternalLink, color: 'from-blue-500 to-cyan-600' },
-              { label: 'Water Systems', href: '/water-systems', desc: 'Complete hydrological intelligence', icon: ExternalLink, color: 'from-indigo-500 to-blue-600' },
-              { label: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress maps', icon: ExternalLink, color: 'from-violet-500 to-purple-600' },
-            ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      
     </main>
   );
 }

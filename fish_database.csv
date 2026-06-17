@@ -1,0 +1,24 @@
+Species ID,Common Name,Scientific Name,Status,Elevation Min,Elevation Max,Category,Sensitivity
+fish-1,"Chirruh Snow Trout","Schizothorax esocinus",LC,1500,3000,Snow Trout,medium
+fish-2,"Himalayan Snow Trout","Schizothorax plagiostomus",LC,1000,3500,Snow Trout,high
+fish-3,"Alwan Snow Trout","Schizothorax richardsonii",VU,500,3000,Snow Trout,critical
+fish-4,"Kunar Snow Trout","Schizothorax labiatus",LC,1500,2500,Snow Trout,medium
+fish-5,"Kashmir Snow Trout","Schizothorax niger",LC,1500,1600,Snow Trout,high
+fish-6,"Satter Snow Trout","Schizothorax curvifrons",LC,1500,1800,Snow Trout,high
+fish-7,"Indus Snow Trout","Ptychobarbus conirostris",LC,3000,4500,Snow Trout,medium
+fish-8,"Tibetan Snow Trout","Diptychus maculatus",LC,3500,5000,Snow Trout,high
+fish-9,"Brown Trout","Salmo trutta fario",LC,1500,3500,Salmonid,low
+fish-10,"Rainbow Trout","Oncorhynchus mykiss",LC,1500,2500,Salmonid,low
+fish-11,"Scale Carp","Cyprinus carpio communis",LC,1500,1700,Carp,low
+fish-12,"Mirror Carp","Cyprinus carpio specularis",LC,1500,1700,Carp,low
+fish-13,"Crucian Carp","Carassius carassius",LC,1500,1700,Carp,low
+fish-14,"Golden Mahseer","Tor putitora",EN,300,1500,Mahseer,critical
+fish-15,"Rohu","Labeo rohita",LC,300,1000,Carp,low
+fish-16,"Kalabans","Labeo dero",LC,300,1500,Carp,medium
+fish-17,"Kashmir Labeo","Crossocheilus diplochilus",LC,500,2000,Cyprinid,medium
+fish-18,"Birdi Loach","Botia birdi",LC,1500,2500,Loach,medium
+fish-19,"Kashmir Triplophysa","Triplophysa marmorata",LC,1500,2500,Loach,high
+fish-20,"Kashmiri Stone Loach","Triplophysa kashmirensis",LC,1500,2500,Loach,high
+fish-21,"Yasin Stone Loach","Triplophysa yasinensis",LC,2000,3500,Loach,medium
+fish-22,"Kashmir Catfish","Glyptothorax kashmirensis",CR,1000,2000,Catfish,critical
+fish-23,"Helicopter Catfish","Wallago attu",VU,300,1000,Catfish,high

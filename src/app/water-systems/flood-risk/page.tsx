@@ -10,26 +10,27 @@ export default function FloodRiskPage() {
 
   const criticalRisk = floodRiskZones.filter(f => f.floodRiskData?.riskLevel === 'critical').length;
   const highRisk     = floodRiskZones.filter(f => f.floodRiskData?.riskLevel === 'high').length;
-  const modRisk      = floodRiskZones.filter(f => f.floodRiskData?.riskLevel === 'moderate').length;
+  const modLowRisk   = floodRiskZones.filter(f => f.floodRiskData?.riskLevel === 'moderate' || f.floodRiskData?.riskLevel === 'low').length;
   const flash        = floodRiskZones.filter(f => f.floodRiskData?.floodType?.includes('flash')).length;
   const glacial      = floodRiskZones.filter(f => f.floodRiskData?.floodType?.includes('glacial')).length;
 
   return (
     <WaterEntityListingPage
-      title="Flood and Hydrological Risk Zones"
+      title="Flood Risk Across Greater Kashmir Ecology"
       description="Floodplains, flash-flood corridors, overflow zones, glacial-melt-linked risk, wetland flood buffering, riverbank vulnerability, waterlogging zones, and hydrological hazard sensitivity mapping."
       icon="AlertTriangle"
       color="from-red-500 to-rose-600"
       entities={floodRiskZones}
       entityType="Flood Risk Zones"
       kpis={[
-        { label: 'Total Zones',    value: floodRiskZones.length, icon: 'AlertTriangle'                    },
-        { label: 'Critical Risk',  value: criticalRisk,          icon: 'AlertOctagon', color: 'text-red-400'    },
-        { label: 'High Risk',      value: highRisk,              icon: 'AlertCircle',  color: 'text-orange-400' },
-        { label: 'Moderate Risk',  value: modRisk,               icon: 'Info',         color: 'text-amber-400'  },
-        { label: 'Flash Flood',    value: flash,                 icon: 'Zap',          color: 'text-yellow-400' },
-        { label: 'GLOF Risk',      value: glacial,               icon: 'Mountain',     color: 'text-blue-400'   },
-        { label: 'Districts',      value: districts.length,      icon: 'MapPin'                           },
+        { label: 'Total Zones',    value: floodRiskZones.length, icon: 'MapPin' },
+        { label: 'Critical Risk',  value: criticalRisk,          icon: 'AlertOctagon' },
+        { label: 'High Risk',      value: highRisk,              icon: 'AlertCircle' },
+        { label: 'Mod/Low Risk',   value: modLowRisk,            icon: 'Shield' },
+        { label: 'Flash Flood',    value: flash,                 icon: 'Zap' },
+        { label: 'GLOF Risk',      value: glacial,               icon: 'Mountain' },
+        { label: 'Districts',      value: districts.length,      icon: 'Map' },
+        { label: 'Latest Update',  value: 'Today',               icon: 'Clock' },
       ]}
       filters={{ districts, categories }}
       getEntitySlug={entity => `/water-systems/flood-risk/${entity.slug}`}

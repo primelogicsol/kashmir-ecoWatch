@@ -122,7 +122,7 @@ const moduleGroups: ModuleGroup[] = [
       { name: 'Bio-Waste', route: '/environmental-monitoring/bio-waste', description: 'Organic waste, decomposition zones', icon: Recycle },
       { name: 'Sewage & Wastewater', route: '/environmental-monitoring/sewage-wastewater', description: 'Overflow, outfalls, untreated discharge', icon: Droplets },
       { name: 'Drinking Water', route: '/environmental-monitoring/drinking-water', description: 'Contamination alerts, supply issues', icon: TestTube },
-      { name: 'Critical Water Infrastructure', route: '/environmental-monitoring/critical-infrastructure', description: 'Intake points, treatment plants, reservoirs', icon: FactoryIcon },
+      { name: 'Critical Infrastructure', route: '/environmental-monitoring/critical-infrastructure', description: 'Reservoirs, utilities, waste assets', icon: FactoryIcon },
       { name: 'Air Pollution', route: '/environmental-monitoring/air-pollution', description: 'AQI, particulate, smoke, burning', icon: Wind },
       { name: 'Environmental Health Signals', route: '/environmental-monitoring/environmental-health', description: 'Odor, fish kill, stagnant water', icon: Thermometer },
       { name: 'Utility Incidents & Advisories', route: '/environmental-monitoring/utility-incidents', description: 'Service failures, emergency notices', icon: Bell },

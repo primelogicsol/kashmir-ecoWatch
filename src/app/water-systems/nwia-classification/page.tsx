@@ -40,6 +40,7 @@ import {
   NWIA_SOURCE_METADATA
 } from '@/data/nwia-references';
 import { wetlandsData, lakesData, riversData } from '@/data/water-systems';
+import { Heading } from '@/components/common/Heading';
 
 export default function NwiaClassificationExplorerPage() {
   const router = useRouter();
@@ -149,69 +150,49 @@ export default function NwiaClassificationExplorerPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-slate-900/50" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <nav className="flex items-center gap-2 text-sm text-slate-400 mb-4">
-              <button onClick={() => router.push('/water-systems')} className="hover:text-white transition-colors">
-                Water Systems
-              </button>
-              <ChevronDown className="w-4 h-4" />
-              <span className="text-white font-medium">NWIA Classification Explorer</span>
-            </nav>
-
-            <div className="flex items-start justify-between gap-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg">
-                    <Book className="w-7 h-7 text-white" />
-                  </div>
-                  <Badge variant="info" size="lg">Kashmir Valley</Badge>
-                </div>
-                <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-                  NWIA Wetland Classification Explorer
-                </h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-                  Comprehensive wetland inventory and classification system for Kashmir Valley based on the National Wetland Inventory and Assessment (NWIA) Atlas by SAC/ISRO and University of Kashmir (2010).
-                </p>
-                <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6">
-                  <div className="flex gap-2">
-                    <Button
-                      className="bg-gradient-to-r from-emerald-600 to-emerald-500"
-                      icon={<Download className="w-5 h-5" />}
-                      onClick={() => handleExportData('json')}
-                    >
-                      Export JSON
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="border-white/20 text-white"
-                      icon={<Download className="w-5 h-5" />}
-                      onClick={() => handleExportData('csv')}
-                    >
-                      Export CSV
-                    </Button>
-                  </div>
-                  <Button
-                    variant="outline"
-                    className="border-white/20 text-white"
-                    icon={<Globe className="w-5 h-5" />}
-                    onClick={() => window.open('https://indianwetlands.in/uploads/NWIA_Jammu_and_Kashmir_Atlas.pdf', '_blank')}
-                  >
-                    View Original Atlas
-                  </Button>
-                </div>
-              </div>
+      <Heading
+        icon={<Book className="w-6 h-6 text-emerald-400" />}
+        title={
+          <>
+            <span className="block whitespace-nowrap">NWIA Classification</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Comprehensive wetland inventory and classification system for Kashmir Valley based on the National Wetland Inventory and Assessment (NWIA) Atlas by SAC/ISRO and University of Kashmir (2010)."
+        breadcrumbs={[
+          { label: 'Water Systems', href: '/water-systems' },
+          { label: 'NWIA Classification Explorer' },
+        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6">
+            <div className="flex gap-2">
+              <Button
+                className="bg-gradient-to-r from-emerald-600 to-emerald-500"
+                icon={<Download className="w-5 h-5" />}
+                onClick={() => handleExportData('json')}
+              >
+                Export JSON
+              </Button>
+              <Button
+                variant="outline"
+                className="border-white/20 text-white"
+                icon={<Download className="w-5 h-5" />}
+                onClick={() => handleExportData('csv')}
+              >
+                Export CSV
+              </Button>
             </div>
-          </motion.div>
-        </div>
-      </div>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white"
+              icon={<Globe className="w-5 h-5" />}
+              onClick={() => window.open('https://indianwetlands.in/uploads/NWIA_Jammu_and_Kashmir_Atlas.pdf', '_blank')}
+            >
+              View Original Atlas
+            </Button>
+          </div>
+        }
+      />
 
       {/* Metrics Bar */}
       <div className="container mx-auto px-6 -mt-8 relative z-20">

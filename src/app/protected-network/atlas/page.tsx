@@ -45,7 +45,7 @@ export default function ProtectedAreaAtlasPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Kashmir Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Area Atlas</span></>}
+        title={<><span className="block whitespace-nowrap">Greater Kashmir Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Area Atlas</span></>}
         subtitle="Interactive GIS atlas mapping Kashmir's protected landscapes, wetlands, wildlife corridors, and ecological boundaries. Supports spatial analysis of distribution, coverage, category overlap, and conservation priority zones."
         icon={<Map className="w-6 h-6 text-emerald-400" />}
         label="Spatial Intelligence"

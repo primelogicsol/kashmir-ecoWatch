@@ -3,15 +3,11 @@
 import React from 'react';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
 import { watershedsData } from '@/data/water-systems';
-import { watershedsRecords } from '@/data/hydrology/watersheds';
 import { watershedsExpandedRecords } from '@/data/hydrology/watersheds-expanded';
 
 export default function WatershedsPage() {
-  const lockedIds = React.useMemo(() => new Set(watershedsRecords.filter(w => w.Dashboard_Locked).map(w => w.id)), []);
-  const activeWatersheds = React.useMemo(() => watershedsData.filter(w => !lockedIds.has(w.id)), [lockedIds]);
-
-  const categories = [...new Set(activeWatersheds.map(w => w.category))].sort();
-  const districts  = [...new Set(activeWatersheds.map(w => w.district))].filter(Boolean).sort();
+  const categories = React.useMemo(() => [...new Set(watershedsData.map(w => w.category))].sort(), []);
+  const districts  = React.useMemo(() => [...new Set(watershedsData.map(w => w.district))].filter(Boolean).sort(), []);
 
   // Dynamic KPI calculations from full registry
   const allWatershedsCount = watershedsExpandedRecords.length;
@@ -25,11 +21,11 @@ export default function WatershedsPage() {
 
   return (
     <WaterEntityListingPage
-      title="All Watersheds of Kashmir"
+      title="Watersheds Across Greater Kashmir Ecology"
       description={`Verified Base + GIS-Derived Expansion | ${allWatershedsCount} Hydrological Intelligence Units. Verified Jhelum Basin base dataset expanded into GIS-derived river catchments, lake catchments, spring catchments, flood-response units, and restoration-priority zones across Kashmir Core, Trans-Divisional, and Transboundary ecological scope.`}
       icon="Map"
       color="from-amber-600 to-amber-600"
-      entities={activeWatersheds}
+      entities={watershedsData}
       entityType="Watersheds"
       kpis={[
         { label: 'All Watersheds', value: allWatershedsCount, icon: 'Map' },

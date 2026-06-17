@@ -30,3 +30,13 @@ export * from './restoration';
 export * from './gps-validation-queue';
 export * from './source-registry';
 
+// Groundwater & Aquifers
+export * from './groundwater-expanded';
+export * from './aquifers-expanded';
+export * from './groundwater-source-registry';
+export * from './groundwater-validation-queue';
+export * from './aquifer-linkage-queue';
+export * from './groundwater-quality-queue';
+export * from './groundwater-ecosystem-linkage-queue';
+
+

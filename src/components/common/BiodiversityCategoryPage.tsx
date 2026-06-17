@@ -7,16 +7,20 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { EntityDrawer } from '@/components/common/EntityDrawer';
 import { BiodiversityCard } from '@/components/common/BiodiversityCard';
-import { BiodiversityFilters } from '@/components/common/BiodiversityFilters';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import {
   Leaf, Map, Activity, Eye, TrendingUp, ArrowRight, Search,
   Grid3X3, List, MapPin, Shield, ChevronLeft, ChevronRight, type LucideIcon
 } from 'lucide-react';
 import * as Icons from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BiodiversitySpecies, biodiversityMetrics } from '@/data/biodiversity';
 import { useRouter } from 'next/navigation';
-import { getScopeForUnit } from '@/data/geography';
+import { GEOGRAPHY, getScopeForUnit, Scope } from '@/data/geography';
+import { Heading } from '@/components/common/Heading';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
 
 interface CategoryPageProps {
   title: string;
@@ -31,6 +35,9 @@ interface CategoryPageProps {
     conservationStatuses: string[];
   };
   children?: React.ReactNode;
+  hideHabitatFilter?: boolean;
+  hideAdministrativeUnitFilter?: boolean;
+  hideElevationFilter?: boolean;
 }
 
 export function BiodiversityCategoryPage({
@@ -42,23 +49,39 @@ export function BiodiversityCategoryPage({
   metrics,
   filters,
   children,
+  hideHabitatFilter = false,
+  hideAdministrativeUnitFilter = false,
+  hideElevationFilter = false,
 }: CategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.Leaf;
   const router = useRouter();
+
+  // ── Global filter ──
+  const { filter: globalFilter, resetFilter: resetGlobalFilter } = useGlobalFilter();
+
+  // Scope-only count (ignores district/search) — drives the KPI pill
+  const scopeCount = React.useMemo(() => {
+    if (globalFilter.scope === 'All') return 0;
+    return species.filter(s =>
+      s.districts.some(d => {
+        const sc = getScopeForUnit(d);
+        return sc === globalFilter.scope;
+      })
+    ).length;
+  }, [species, globalFilter.scope]);
+
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [activeFilters, setActiveFilters] = useState<any>({});
+  // biodiversity-specific filters (scope/district/search come from globalFilter)
+  const [conservationStatus, setConservationStatus] = useState('all');
+  const [habitat,            setHabitat]            = useState('all');
   const [selectedEntity, setSelectedEntity] = useState<any>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  const handleFilterChange = (newFilters: any) => {
-    setActiveFilters(newFilters);
-    setCurrentPage(1);
-  };
-
   const handleReset = () => {
-    setActiveFilters({});
+    setConservationStatus('all');
+    setHabitat('all');
     setCurrentPage(1);
   };
 
@@ -78,102 +101,95 @@ export function BiodiversityCategoryPage({
     setDrawerOpen(true);
   };
 
-  const filteredSpecies = species.filter(s => {
-    let match = true;
-    if (activeFilters.searchQuery && !s.commonName.toLowerCase().includes(activeFilters.searchQuery.toLowerCase())) {
-      match = false;
-    }
-    if (activeFilters.conservationStatus && activeFilters.conservationStatus !== 'all') {
-      if (s.conservationStatus !== activeFilters.conservationStatus) match = false;
-    }
-    if (activeFilters.habitat && activeFilters.habitat !== 'all') {
-      if (!s.habitats.includes(activeFilters.habitat)) match = false;
-    }
-    if (activeFilters.scope && activeFilters.scope !== 'All') {
-      const isInScope = s.districts.some(d => {
-        const scope = getScopeForUnit(d);
-        return scope === activeFilters.scope || scope === 'All';
+  const filteredSpecies = React.useMemo(() => species.filter(s => {
+    // Global search
+    const q = globalFilter.searchQuery.toLowerCase();
+    if (q && !s.commonName.toLowerCase().includes(q) && !s.scientificName?.toLowerCase().includes(q)) return false;
+    // Global scope
+    if (globalFilter.scope && globalFilter.scope !== 'All') {
+      const inScope = s.districts.some(d => {
+        const sc = getScopeForUnit(d);
+        return sc === globalFilter.scope || sc === 'All';
       });
-      if (!isInScope) match = false;
+      if (!inScope) return false;
     }
-    if (activeFilters.administrativeUnit && activeFilters.administrativeUnit !== 'All') {
-      if (!s.districts.includes(activeFilters.administrativeUnit)) match = false;
+    // Global district
+    if (!hideAdministrativeUnitFilter && globalFilter.district && globalFilter.district !== 'All') {
+      if (!s.districts.includes(globalFilter.district)) return false;
     }
-    return match;
-  });
+    // Page-specific: conservation status
+    if (conservationStatus !== 'all' && s.conservationStatus !== conservationStatus) return false;
+    // Page-specific: habitat
+    if (!hideHabitatFilter && habitat !== 'all' && !s.habitats.includes(habitat)) return false;
+    return true;
+  }), [species, globalFilter, conservationStatus, habitat, hideHabitatFilter, hideAdministrativeUnitFilter]);
+
+  // Count of active page-specific filters (drives combined Clear count in bar)
+  const extraActiveCount = [
+    conservationStatus !== 'all',
+    !hideHabitatFilter && habitat !== 'all',
+  ].filter(Boolean).length;
 
   return (
     <main className="min-h-screen bg-slate-950">
-      {/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        <div className={`absolute inset-0 bg-slate-900/50`} />
-        <div className="absolute inset-0 bg-grid " />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Biodiversity Intelligence
-              </span>
-            </div>
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
-              {title}
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              {subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className={`bg-gradient-to-r ${color}`}
-                icon={<Search className="w-5 h-5" />}
-              >
-                Search {title}
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white/20 text-white"
-                icon={<Map className="w-5 h-5" />}
-              >
-                Distribution Map
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <Heading
+        label="Biodiversity Intelligence"
+        title={title}
+        subtitle={subtitle}
+        icon={<Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />}
+        gridOverlay
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity' },
+          { label: typeof title === 'string' && title.includes(' Across ') ? title.split(' Across ')[0] : title }
+        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <Button 
+              size="lg" 
+              className={`bg-gradient-to-r ${color}`}
+              icon={<Search className="w-5 h-5" />}
+            >
+              Search {typeof title === 'string' && title.includes(' Across ') ? title.split(' Across ')[0] : title}
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white"
+              icon={<Map className="w-5 h-5" />}
+            >
+              Distribution Map
+            </Button>
+          </div>
+        }
+      />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
-              {metrics.map((metric, idx) => {
-                const MetricIcon = (Icons as any)[metric.icon] || Icons.Activity;
-                return (
-                  <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                    <MetricIcon className={`w-4 h-4 ${color.includes('emerald') ? 'text-emerald-500' : 'text-slate-500'} mx-auto mb-1`} />
-                    <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                      {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                      {metric.label}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Card>
-        </motion.div>
+      {/* ── KPI Strip ─────────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} />
+
+      {/* ── Global Filter Bar with inline page-specific filters ──────────────── */}
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <>
+              <FilterSelect
+                value={conservationStatus}
+                onChange={v => { setConservationStatus(v); setCurrentPage(1); }}
+                placeholder="All Statuses"
+                options={filters.conservationStatuses.map(s => ({ value: s, label: s }))}
+              />
+              {!hideHabitatFilter && (
+                <FilterSelect
+                  value={habitat}
+                  onChange={v => { setHabitat(v); setCurrentPage(1); }}
+                  placeholder="All Habitats"
+                  options={filters.habitats.map(h => ({ value: h, label: h }))}
+                />
+              )}
+            </>
+          }
+          extraActiveCount={extraActiveCount}
+          onExtraFiltersClear={() => { setConservationStatus('all'); setHabitat('all'); setCurrentPage(1); }}
+        />
       </div>
 
       {children && (
@@ -182,37 +198,20 @@ export function BiodiversityCategoryPage({
         </div>
       )}
 
-      {/* Content */}
-      <div className="container mx-auto px-6 py-12 space-y-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-        >
-          <BiodiversityFilters
-            filters={activeFilters}
-            onFilterChange={handleFilterChange}
-            onReset={handleReset}
-            resultCount={filteredSpecies.length}
-          />
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setViewMode('grid')}
-              className={viewMode === 'grid' ? `bg-gradient-to-r ${color} bg-clip-text text-transparent` : 'text-slate-400'}
-              icon={<Grid3X3 className="w-4 h-4" />}
-            />
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setViewMode('list')}
-              className={viewMode === 'list' ? `bg-gradient-to-r ${color} bg-clip-text text-transparent` : 'text-slate-400'}
-              icon={<List className="w-4 h-4" />}
-            />
-          </div>
-        </motion.div>
+      {/* ── Scope tabs + results action row ────────────────────────────────── */}
+      <ModuleScopeRow
+        filteredCount={filteredSpecies.length}
+        totalCount={species.length}
+        entityLabel="species"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Species')}
+        scopeCount={scopeCount}
+        onScopeChange={() => setCurrentPage(1)}
+      />
+
+      {/* Content — pinned to z-0 so dropdown never clips behind cards */}
+      <div className="container mx-auto px-6 py-6 space-y-6 relative z-0">
 
         {filteredSpecies.length > 0 ? (
           <>
@@ -296,7 +295,7 @@ export function BiodiversityCategoryPage({
             <Leaf className="w-16 h-16 text-slate-700 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">No species found</h3>
             <p className="text-slate-400 mb-4">Try adjusting your filters</p>
-            <Button onClick={handleReset} variant="outline" className="border-white/20 text-white">
+            <Button onClick={() => { handleReset(); resetGlobalFilter(); }} variant="outline" className="border-white/20 text-white">
               Reset Filters
             </Button>
           </div>

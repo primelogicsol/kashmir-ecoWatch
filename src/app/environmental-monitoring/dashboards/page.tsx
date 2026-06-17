@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
   BarChart3, Map, TrendingUp, ChevronRight, AlertTriangle,
   FileText, ArrowRight, Activity, Clock,
@@ -120,6 +122,7 @@ const quickAnalytics = [
 
 export default function DashboardsPage() {
   const router = useRouter();
+  const [dashboardFilter, setDashboardFilter] = useState('all');
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -129,29 +132,38 @@ export default function DashboardsPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Dashboards' }
         ]}
-        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Dashboards</span></>}
+        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Dashboards Across</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
         subtitle="Comprehensive analytics dashboards with district comparison, stress heatmaps, trend analysis, and real-time environmental intelligence across all monitoring domains"
         icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Quick Analytics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {quickAnalytics.map((m, i) => (
-              <motion.div key={m.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className="text-sm text-slate-400 mb-1">{m.title}</div>
-                <div className={`text-3xl md:text-4xl font-bold ${
-                  m.variant === 'success' ? 'text-emerald-400' :
-                  m.variant === 'warning' ? 'text-amber-400' :
-                  'text-red-400'
-                } mb-1`}>{m.value}</div>
-                <div className="text-xs text-slate-500">{m.status} • {m.trend}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ModuleKpiStrip kpis={[
+        { label: 'Env Stress Index',    value: '64/100', icon: 'BarChart3', color: 'text-amber-400'   },
+        { label: 'District Compliance', value: '67%',    icon: 'Shield',    color: 'text-blue-400'   },
+        { label: 'Active Monitors',     value: 247,      icon: 'Activity',  color: 'text-emerald-400'},
+        { label: 'Data Availability',   value: '94.2%',  icon: 'Database',  color: 'text-emerald-400'},
+      ]} />
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <FilterSelect
+              value={dashboardFilter}
+              onChange={setDashboardFilter}
+              placeholder="All Dashboards"
+              options={[
+                { value: 'district-comparison', label: 'District Comparison' },
+                { value: 'stress-heatmap',      label: 'Stress Heatmap'      },
+                { value: 'water-systems',       label: 'Water Systems'       },
+                { value: 'air-quality',         label: 'Air Quality'         },
+                { value: 'waste-management',    label: 'Waste Management'    },
+                { value: 'infrastructure',      label: 'Infrastructure'      },
+              ]}
+            />
+          }
+          extraActiveCount={dashboardFilter !== 'all' ? 1 : 0}
+          onExtraFiltersClear={() => setDashboardFilter('all')}
+        />
+      </div>
 
       {/* Dashboard Modules */}
       <section className="py-16">

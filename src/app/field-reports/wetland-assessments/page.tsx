@@ -83,7 +83,8 @@ export default function WetlandAssessmentsPage() {
             </div>
 
             <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-              Wetland <span className="text-emerald-400">Assessments</span>
+              <span className="block whitespace-nowrap">Wetland Assessments</span>
+              <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
             </h1>
 
             <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">

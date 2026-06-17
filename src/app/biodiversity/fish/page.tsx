@@ -25,7 +25,7 @@ export default function FishPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Fish & Aquatic Biodiversity"
+      title="Aquatic Life Across Greater Kashmir Ecology"
       subtitle="An aquatic biodiversity matrix analyzing freshwater fish and associated aquatic life across Kashmir's intricate river and lake networks. Integrating critical hydrological parameters, endemic population baselines, and environmental sensitivity indexing for continuous aquatic conservation monitoring."
       icon="Droplet"
       color="from-cyan-500 to-blue-600"

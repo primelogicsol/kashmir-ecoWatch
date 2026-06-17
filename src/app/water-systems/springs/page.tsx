@@ -3,31 +3,27 @@
 import React from 'react';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
 import { springsData } from '@/data/water-systems';
-import { springsRecords } from '@/data/hydrology/springs';
 
 export default function SpringsPage() {
-  const lockedIds = React.useMemo(() => new Set(springsRecords.filter(s => s.Dashboard_Locked).map(s => s.id)), []);
-  const activeSprings = React.useMemo(() => springsData.filter(s => !lockedIds.has(s.id)), [lockedIds]);
+  const categories = React.useMemo(() => [...new Set(springsData.map(s => s.category))].sort(), []);
+  const districts  = React.useMemo(() => [...new Set(springsData.map(s => s.district))].filter(Boolean).sort(), []);
 
-  const categories = [...new Set(activeSprings.map(s => s.category))].sort();
-  const districts  = [...new Set(activeSprings.map(s => s.district))].filter(Boolean).sort();
-
-  const perennial  = activeSprings.filter(s => s.hydrologicalData?.seasonalVariation === 'perennial').length;
-  const seasonal   = activeSprings.filter(s => s.hydrologicalData?.seasonalVariation === 'seasonal').length;
-  const hotSprings = activeSprings.filter(s => s.category?.toLowerCase().includes('hot') || s.category?.toLowerCase().includes('thermal')).length;
-  const goodPlus   = activeSprings.filter(s => ['excellent','good'].includes(s.waterQuality?.status||'')).length;
-  const threatened = activeSprings.filter(s => s.threats && s.threats.length > 0).length;
+  const perennial  = React.useMemo(() => springsData.filter(s => s.hydrologicalData?.seasonalVariation === 'perennial').length, []);
+  const seasonal   = React.useMemo(() => springsData.filter(s => s.hydrologicalData?.seasonalVariation === 'seasonal').length, []);
+  const hotSprings = React.useMemo(() => springsData.filter(s => s.category?.toLowerCase().includes('hot') || s.category?.toLowerCase().includes('thermal')).length, []);
+  const goodPlus   = React.useMemo(() => springsData.filter(s => ['excellent','good'].includes(s.waterQuality?.status||'')).length, []);
+  const threatened = React.useMemo(() => springsData.filter(s => s.threats && s.threats.length > 0).length, []);
 
   return (
     <WaterEntityListingPage
-      title="All Springs of Kashmir"
+      title="Springs Across Greater Kashmir Ecology"
       description="Mapped springs, community springs, seasonal springs, perennial springs, springsheds, recharge-linked spring systems, and spring restoration sites across the Kashmir region."
       icon="Droplet"
       color="from-emerald-600 to-emerald-600"
-      entities={activeSprings}
+      entities={springsData}
       entityType="Springs"
       kpis={[
-        { label: 'Total Springs',  value: activeSprings.length, icon: 'Droplet'       },
+        { label: 'Total Springs',  value: springsData.length, icon: 'Droplet'       },
         { label: 'Perennial',      value: perennial,          icon: 'RefreshCw',      color: 'text-emerald-400' },
         { label: 'Seasonal',       value: seasonal,           icon: 'Sun',            color: 'text-amber-400'   },
         { label: 'Hot Springs',    value: hotSprings,         icon: 'Flame',          color: 'text-orange-400'  },

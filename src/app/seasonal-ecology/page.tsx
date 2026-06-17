@@ -28,7 +28,7 @@ export default function SeasonalEcologyHubPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Seasonal Ecology' }]}
-        title={<><span className="block whitespace-nowrap">Seasonal Ecology</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">of Kashmir</span></>}
+        title={<><span className="block whitespace-nowrap">Seasonal Ecology of</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir</span></>}
         subtitle="Kashmir-wide phenology, seasonality, migration, habitat-transition, and ecological-timing intelligence system. Track bloom cycles, migration windows, pollinator activity, and seasonal ecological shifts across the Kashmir region."
         icon={<Icons.Sun className="w-6 h-6 text-emerald-400" />}
         label="Current: {formatLabel(currentSeason)}"

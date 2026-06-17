@@ -16,7 +16,7 @@ export default function WetlandsPage() {
 
   return (
     <WaterEntityListingPage
-      title="All Wetlands of Kashmir"
+      title="Wetlands Across Greater Kashmir Ecology"
       description="Comprehensive inventory of all marshes, floodplain wetlands, shallow-water habitats, reedbeds, bird-use wetlands, Ramsar-linked wetlands, and district-level wetland landscapes."
       icon="Waves"
       color="from-sky-500 to-blue-600"

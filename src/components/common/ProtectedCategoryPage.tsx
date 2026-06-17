@@ -7,13 +7,17 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import * as Icons from 'lucide-react';
 import {
-  MapPin, Activity, ArrowRight, Search, Filter, Shield,
+  MapPin, Activity, ArrowRight, Search,
   Grid3X3, List, Map, TrendingUp, ChevronLeft, ChevronRight
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
-import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
+import { GlobalFilterBar } from '@/components/common/GlobalFilterBar';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
+import { GEOGRAPHY, getScopeForUnit, Scope } from '@/data/geography';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
 
 interface ProtectedArea {
   id: string;
@@ -53,36 +57,99 @@ export function ProtectedCategoryPage({
 }: ProtectedCategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.MapPin;
   const router = useRouter();
+
+  // ── Global filter (shared across all modules) ──
+  const {
+    filter: globalFilter,
+    setScope: setGlobalScope,
+    setDistrict: setGlobalDistrict,
+    setSearchQuery: setGlobalSearchQuery,
+    resetFilter: resetGlobalFilter,
+  } = useGlobalFilter();
+
   const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
-  const [showFilters, setShowFilters] = React.useState(false);
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const [selectedDistrict, setSelectedDistrict] = React.useState('All');
-  const [selectedEcologicalScope, setSelectedEcologicalScope] = React.useState<Scope | 'All'>('All');
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 9;
 
+  // Derive available districts from the actual data for the current scope (data-driven, Bug #4 fix)
   const availableDistricts = React.useMemo(() => {
-    return getUnitsForScope(selectedEcologicalScope as Scope).sort();
-  }, [selectedEcologicalScope]);
+    const scopeAreas = globalFilter.scope === 'All'
+      ? areas
+      : areas.filter(a => {
+          const derived = getScopeForUnit(a.district);
+          const resolved = (derived === 'All' && (a as any).scope) ? (a as any).scope : derived;
+          return resolved === globalFilter.scope;
+        });
+    const parts = new Set<string>();
+    scopeAreas.forEach(a =>
+      a.district.split('/').forEach(d => parts.add(d.trim()))
+    );
+    return Array.from(parts).sort();
+  }, [areas, globalFilter.scope]);
 
   const availableScopes = [...GEOGRAPHY.scopes];
 
   const filteredAreas = React.useMemo(() => {
+    const query = globalFilter.searchQuery.toLowerCase().trim();
+    const selectedEcologicalScope = globalFilter.scope;
+    const selectedDistrict = globalFilter.district;
+
     return areas.filter(area => {
-      const query = searchQuery.toLowerCase().trim();
-      const matchesSearch = !query || 
+      const matchesSearch = !query ||
         area.name.toLowerCase().includes(query) ||
         area.district.toLowerCase().includes(query) ||
         area.description.toLowerCase().includes(query) ||
         (area as any).flagshipSpecies?.toLowerCase().includes(query);
 
-      const areaScope = getScopeForUnit(area.district) || (area as any).scope;
-      const matchesScope = selectedEcologicalScope === 'All' || areaScope === selectedEcologicalScope || areaScope === 'All';
-      const matchesDistrict = selectedDistrict === 'All' || area.district === selectedDistrict;
+      // Bug #2 & #6 fix: prefer area.scope when getScopeForUnit returns 'All' (unrecognised district)
+      const derived = getScopeForUnit(area.district);
+      const areaScope = (derived === 'All' && (area as any).scope) ? (area as any).scope : derived;
+      const matchesScope = selectedEcologicalScope === 'All' || areaScope === selectedEcologicalScope;
+
+      // Bug #5 fix: split slash-delimited district strings before comparing
+      const matchesDistrict = selectedDistrict === 'All' ||
+        area.district.split('/').map(d => d.trim()).includes(selectedDistrict);
 
       return matchesSearch && matchesDistrict && matchesScope;
     });
-  }, [areas, searchQuery, selectedDistrict, selectedEcologicalScope]);
+  }, [areas, globalFilter]);
+
+  // Count of areas belonging to the active scope only (ignores district & search)
+  // — used for the Scope KPI pill which describes the scope, not the filter result
+  const scopeCount = React.useMemo(() => {
+    if (globalFilter.scope === 'All') return 0;
+    return areas.filter(area => {
+      const derived = getScopeForUnit(area.district);
+      const areaScope = (derived === 'All' && (area as any).scope) ? (area as any).scope : derived;
+      return areaScope === globalFilter.scope;
+    }).length;
+  }, [areas, globalFilter.scope]);
+
+  // Label config per scope
+  const SCOPE_KPI: Record<string, { label: string; color: string; iconColor: string; bg: string; border: string }> = {
+    'Kashmir Core': {
+      label: 'Kashmir Core Protected Areas',
+      color: 'text-emerald-300',
+      iconColor: 'text-emerald-400',
+      bg: 'bg-emerald-500/10',
+      border: 'border-emerald-500/25',
+    },
+    'Trans-Divisional': {
+      label: 'Trans-Divisional Protected Areas',
+      color: 'text-blue-300',
+      iconColor: 'text-blue-400',
+      bg: 'bg-blue-500/10',
+      border: 'border-blue-500/25',
+    },
+    'Transboundary / Extended': {
+      label: 'Transboundary Protected Areas',
+      color: 'text-amber-300',
+      iconColor: 'text-amber-400',
+      bg: 'bg-amber-500/10',
+      border: 'border-amber-500/25',
+    },
+  };
+
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -109,128 +176,28 @@ export function ProtectedCategoryPage({
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
-              {metrics.map((metric, idx) => {
-                const MetricIcon = (Icons as any)[metric.icon] || Icons.MapPin;
-                return (
-                  <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                    <MetricIcon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                    <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                      {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                      {metric.label}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Card>
-        </motion.div>
+      {/* ── KPI Strip ─────────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} />
+
+      {/* ── Global Filter Bar ─────────────────────────────────────────────── */}
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar />
       </div>
 
-      {/* Tab + Filters — single row */}
-      <div className="container mx-auto px-6 mt-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* Top Scope Tabs */}
-          <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl overflow-x-auto hide-scrollbar">
-            {availableScopes.map(scope => (
-              <button
-                key={scope}
-                onClick={() => {
-                  setSelectedEcologicalScope(scope as Scope | 'All');
-                  setSelectedDistrict('All');
-                  setCurrentPage(1);
-                }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                  selectedEcologicalScope === scope
-                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {scope}
-              </button>
-            ))}
-          </div>
+      {/* ── Scope tabs + results action row ────────────────────────────────── */}
+      <ModuleScopeRow
+        filteredCount={filteredAreas.length}
+        totalCount={areas.length}
+        entityLabel="protected areas"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Protected Areas')}
+        scopeCount={scopeCount}
+        onScopeChange={() => setCurrentPage(1)}
+      />
 
-          {/* Filters + count + view toggle */}
-          <div className="flex items-center gap-3 ml-auto">
-            <Button variant="outline" className="border-white/20 text-white" icon={<Filter className="w-4 h-4" />} onClick={() => setShowFilters(f => !f)}>
-              {showFilters ? 'Hide Filters' : 'Filters'}
-            </Button>
-            <span className="text-sm text-slate-400 whitespace-nowrap hidden sm:inline">
-              <strong className="text-white">{filteredAreas.length}</strong> of <strong className="text-white">{areas.length}</strong> protected areas
-            </span>
-            <div className="flex items-center gap-1">
-              <Button variant="ghost" size="sm" onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<Grid3X3 className="w-4 h-4" />} />
-              <Button variant="ghost" size="sm" onClick={() => setViewMode('list')} className={viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400'} icon={<List className="w-4 h-4" />} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-6 py-8 space-y-6">
-        {showFilters && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-5 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6"
-          >
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Text</label>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                <input
-                  type="text"
-                  placeholder="Search name, district, or species..."
-                  value={searchQuery}
-                  onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
-              <select
-                value={selectedEcologicalScope}
-                onChange={(e) => { 
-                  setSelectedEcologicalScope(e.target.value as Scope | 'All'); 
-                  setSelectedDistrict('All'); 
-                  setCurrentPage(1); 
-                }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
-              >
-                {availableScopes.map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
-              <select
-                value={selectedDistrict}
-                onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
-              >
-                <option value="All">All Units in {selectedEcologicalScope}</option>
-                {availableDistricts.map(d => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-            </div>
-          </motion.div>
-        )}
+      {/* Content — pinned to z-0 so it never overlaps filter bar dropdown */}
+      <div className="container mx-auto px-6 py-8 space-y-6 relative z-0">
 
         {/* Protected Areas Grid/List */}
         {filteredAreas.length > 0 ? (
@@ -370,9 +337,8 @@ export function ProtectedCategoryPage({
               variant="outline"
               className="border-white/20 text-white"
               onClick={() => {
-                setSearchQuery('');
-                setSelectedDistrict('All');
-                setSelectedEcologicalScope('All');
+                resetGlobalFilter();
+                setCurrentPage(1);
               }}
             >
               Reset Filters

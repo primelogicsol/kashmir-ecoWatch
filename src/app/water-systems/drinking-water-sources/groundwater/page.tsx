@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Heading } from '@/components/common/Heading';
 
 const aquiferData = {
   name: 'Karewa Aquifer System',
@@ -66,64 +67,48 @@ export default function GroundwaterPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900/50" />
-        <div className="relative container mx-auto px-4 md:px-6 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20">
-          <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span className="text-slate-600">/</span>
-            <Link href="/water-systems" className="hover:text-white transition-colors">Water Systems</Link>
-            <span className="text-slate-600">/</span>
-            <Link href="/water-systems/drinking-water-sources" className="hover:text-white transition-colors">Drinking Water Sources</Link>
-            <span className="text-slate-600">/</span>
-            <span className="text-white">Groundwater</span>
-          </nav>
+      <Heading
+        icon={<Database className="w-6 h-6 text-emerald-400" />}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Aquifers Across</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Comprehensive monitoring and mapping of Kashmir's groundwater resources — the Karewa aquifer system that sustains millions. The ESRO EIA Report warns that water resources like springs, wells, baulies are drying up."
+        breadcrumbs={[
+          { label: 'Water Systems', href: '/water-systems' },
+          { label: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources' },
+          { label: 'Groundwater' },
+        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <Link href="/water-systems/drinking-water-sources">
+              <Button variant="outline" className="border-white/20 text-white">← Drinking Water Sources</Button>
+            </Link>
+            <Link href="/water-systems/drinking-water-sources/rainwater-harvesting">
+              <Button variant="outline" className="border-white/20 text-white">Rainwater Harvesting <ExternalLink className="w-4 h-4 ml-2" /></Button>
+            </Link>
+          </div>
+        }
+      />
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-                <Database className="w-7 h-7 text-white" />
-              </div>
-              <Badge variant="outline" className="border-amber-400/30 text-amber-400 text-xs">Groundwater Intelligence</Badge>
+      <div className="container mx-auto px-6 py-6">
+        <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div className="flex items-start gap-3">
+            <BookOpen className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-sm text-amber-300 font-medium mb-1">ESRO Critical Finding</p>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                &ldquo;As the major share of precious rainwater is lost as run off without recharging
+                groundwater, the water resources like springs, wells, baulies are drying up. Due to
+                climate change, the glaciers are receding at a very fast rate and snow-fed areas are
+                facing increasing aridity.&rdquo; — ESRO EIA Report for Jammu & Kashmir
+              </p>
             </div>
-
-            <h1 className="max-w-xl text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Groundwater Intelligence — Karewa Aquifer System
-            </h1>
-            <p className="text-lg text-slate-300 max-w-3xl mb-6 leading-relaxed">
-              Comprehensive monitoring and mapping of Kashmir's groundwater resources — the Karewa
-              aquifer system that sustains millions. The ESRO EIA Report warns that
-              &ldquo;water resources like springs, wells, baulies are drying up&rdquo; due to
-              reduced recharge and climate change impacts.
-            </p>
-
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-6">
-              <Link href="/water-systems/drinking-water-sources">
-                <Button variant="outline" className="border-white/20 text-white">← Drinking Water Sources</Button>
-              </Link>
-              <Link href="/water-systems/drinking-water-sources/rainwater-harvesting">
-                <Button variant="outline" className="border-white/20 text-white">Rainwater Harvesting <ExternalLink className="w-4 h-4 ml-2" /></Button>
-              </Link>
-            </div>
-
-            <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
-              <div className="flex items-start gap-3">
-                <BookOpen className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm text-amber-300 font-medium mb-1">ESRO Critical Finding</p>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    &ldquo;As the major share of precious rainwater is lost as run off without recharging
-                    groundwater, the water resources like springs, wells, baulies are drying up. Due to
-                    climate change, the glaciers are receding at a very fast rate and snow-fed areas are
-                    facing increasing aridity.&rdquo; — ESRO EIA Report for Jammu & Kashmir
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Stats */}
       <section className="border-y border-white/5 bg-slate-900/50">

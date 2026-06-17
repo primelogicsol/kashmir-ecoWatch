@@ -12,10 +12,11 @@ export default function GlaciersPage() {
   const glacialLakes = glaciersData.filter(g => g.category?.toLowerCase().includes('glacial lake')).length;
   const withArea   = glaciersData.filter(g => g.area).length;
   const highAlt    = glaciersData.filter(g => (g.elevation || 0) > 4000).length;
+  const verified   = glaciersData.filter(g => g.verificationStatus === 'verified').length;
 
   return (
     <WaterEntityListingPage
-      title="All Glaciers and Cryosphere of Kashmir"
+      title="Cryosphere Across Greater Kashmir Ecology"
       description="Glaciers, glacial lakes, snow-fed systems, seasonal snow cover, high-altitude cryosphere-linked catchments, and downstream hydrological dependence across the Kashmir Himalaya and Karakoram."
       icon="Mountain"
       color="from-slate-400 to-slate-600"
@@ -23,11 +24,13 @@ export default function GlaciersPage() {
       entityType="Glaciers"
       kpis={[
         { label: 'Total Glaciers',  value: glaciersData.length, icon: 'Mountain'       },
-        { label: 'Retreating',      value: retreating,          icon: 'TrendingDown',  color: 'text-red-400'     },
-        { label: 'Glacial Lakes',   value: glacialLakes,        icon: 'Droplet',       color: 'text-blue-400'    },
-        { label: 'Above 4000m',     value: highAlt,             icon: 'ArrowUp',       color: 'text-slate-300'   },
-        { label: 'With Area Data',  value: withArea,            icon: 'BarChart3',     color: 'text-cyan-400'    },
+        { label: 'Verified Sites',  value: verified,            icon: 'CheckCircle'    },
+        { label: 'Retreating',      value: retreating,          icon: 'TrendingDown'   },
+        { label: 'Glacial Lakes',   value: glacialLakes,        icon: 'Droplet'        },
+        { label: 'Above 4000m',     value: highAlt,             icon: 'ArrowUp'        },
+        { label: 'With Area Data',  value: withArea,            icon: 'BarChart3'      },
         { label: 'Districts',       value: districts.length,    icon: 'MapPin'         },
+        { label: 'Latest Update',   value: 'Today',             icon: 'Clock'          },
       ]}
       filters={{ districts, categories }}
       getEntitySlug={entity => `/water-systems/glaciers/${entity.slug}`}

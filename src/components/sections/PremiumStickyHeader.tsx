@@ -43,6 +43,7 @@ const navItems = [
   { label: 'Biodiversity', href: '/biodiversity', hasDropdown: true },
   { label: 'Water Systems', href: '/water-systems', hasDropdown: true },
   { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true },
+  { label: 'Hazard Intelligence', href: '/hazard-intelligence', hasDropdown: true },
   { label: 'Field Intelligence', href: '/field-reports', hasDropdown: true },
   { label: 'Contribute', href: '/contribute', hasDropdown: true },
   { label: 'Risk & Monitoring', href: '/risk-monitoring', hasDropdown: true },
@@ -149,6 +150,7 @@ export function PremiumStickyHeader() {
           { name: 'Rivers & Streams', href: '/water-systems/rivers', desc: 'Major rivers, tributaries & streams' },
           { name: 'Springs', href: '/water-systems/springs', desc: 'Perennial, seasonal & community springs' },
           { name: 'Watersheds', href: '/water-systems/watersheds', desc: 'Basins, catchments & hydrological units' },
+          { name: 'Groundwater', href: '/water-systems/groundwater', desc: 'Aquifers, water levels & validation queues' },
           { name: 'Glaciers & Cryosphere', href: '/water-systems/glaciers', desc: 'Glaciers & snow-fed systems' },
           { name: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources', desc: 'Spring & surface supply vulnerability' },
           { name: 'Water Quality', href: '/water-systems/water-quality', desc: 'Quality monitoring & trends' },
@@ -165,10 +167,23 @@ export function PremiumStickyHeader() {
           { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', desc: 'Organic waste, decomposition zones' },
           { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow, outfalls, untreated discharge' },
           { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Contamination alerts, supply issues' },
-          { name: 'Critical Water Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Intake points, treatment plants, reservoirs' },
+          { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets' },
           { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning' },
           { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water' },
           { name: 'Utility Incidents & Advisories', href: '/environmental-monitoring/utility-incidents', desc: 'Service failures, emergency notices' },
+        ];
+      case 'Hazard Intelligence':
+        return [
+          { name: '⚠️ Overview', href: '/hazard-intelligence', desc: 'Multi-hazard intelligence command center' },
+          { name: '📊 Dashboards', href: '/hazard-intelligence/dashboards', desc: 'Risk dashboards, heatmaps & trends' },
+          { name: '── Hazard Systems ──', href: '#', desc: '', isHeader: true },
+          { name: 'Floods', href: '/hazard-intelligence/floods', desc: 'Riverine, urban & floodplain flooding' },
+          { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards' },
+          { name: 'Landslides', href: '/hazard-intelligence/landslides', desc: 'Slope instability & mass movement' },
+          { name: 'Avalanches', href: '/hazard-intelligence/avalanches', desc: 'Snow-slide monitoring & exposure' },
+          { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', desc: 'Seismic activity & fault systems' },
+          { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence' },
+          { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring' },
         ];
       case 'Field Intelligence':
         return [
@@ -298,6 +313,7 @@ export function PremiumStickyHeader() {
                         {item.label === 'Biodiversity' && <Leaf className="w-4 h-4 text-emerald-400" />}
                         {item.label === 'Water Systems' && <Droplet className="w-4 h-4 text-sky-400" />}
                         {item.label === 'Environmental Monitoring' && <BarChart3 className="w-4 h-4 text-amber-400" />}
+                        {item.label === 'Hazard Intelligence' && <AlertTriangle className="w-4 h-4 text-red-400" />}
                         {item.label === 'Field Intelligence' && <FileText className="w-4 h-4 text-orange-400" />}
                         {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}

@@ -33,7 +33,12 @@ export default function FieldReportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Field Intelligence</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Greater Kashmir</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Field Intelligence Reports</span>
+          </>
+        }
         subtitle="Field reports, survey findings, technical assessments, and monitoring bulletins supporting environmental intelligence across Kashmir. These documents feed evidence layers, district profiles, alerts, and module intelligence throughout the platform."
         icon={<FileText className="w-6 h-6 text-emerald-400" />}
       />

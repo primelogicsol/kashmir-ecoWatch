@@ -1,422 +1,404 @@
 'use client';
 
-import React from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
+import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Heading } from '@/components/common/Heading';
 import {
-  Trash2, Map, BarChart3, Eye, ChevronRight, AlertTriangle,
-  Flame, Factory, FileText, ArrowRight, Activity, Clock,
-  MapPin, TrendingUp, Shield, ExternalLink
+  Trash2, ChevronRight, Droplets, MapPin, 
+  Shield, Activity, CheckCircle, Search, 
+  ChevronLeft, Building2, Factory
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import { solidWasteData, SolidWasteWardRecord, Scope } from '@/data/solid-waste';
 
-const hotspotCards = [
-  {
-    title: 'Illegal Dumping Sites',
-    location: 'Multiple districts',
-    severity: 'critical' as const,
-    verified: true,
-    count: 14,
-    lastReported: '1h ago',
-    icon: MapPin,
-    description: 'Unsanctioned waste accumulation in ecological zones',
-  },
-  {
-    title: 'Landfill Stress',
-    location: 'Srinagar, Ganderbal border',
-    severity: 'critical' as const,
-    verified: true,
-    count: 3,
-    lastReported: '3h ago',
-    icon: Factory,
-    description: 'Capacity exceedance at designated landfill sites',
-  },
-  {
-    title: 'Open Waste Accumulation',
-    location: 'Urban corridors, Anantnag',
-    severity: 'warning' as const,
-    verified: true,
-    count: 8,
-    lastReported: '5h ago',
-    icon: Trash2,
-    description: 'Unmanaged waste in public spaces and waterways',
-  },
-  {
-    title: 'Waste Burning Locations',
-    location: 'Pulwama, Budgam',
-    severity: 'danger' as const,
-    verified: false,
-    count: 5,
-    lastReported: '8h ago',
-    icon: Flame,
-    description: 'Open burning events with air quality impact',
-  },
-  {
-    title: 'Municipal Collection Gaps',
-    location: 'Baramulla, Kupwara',
-    severity: 'warning' as const,
-    verified: true,
-    count: 6,
-    lastReported: '12h ago',
-    icon: AlertTriangle,
-    description: 'Areas with irregular or absent waste collection',
-  },
-  {
-    title: 'District Comparison Index',
-    location: 'Kashmir-wide',
-    severity: 'info' as const,
-    verified: true,
-    count: 8,
-    lastReported: '1d ago',
-    icon: BarChart3,
-    description: 'Cross-district waste management performance',
-  },
-];
+// ─── Colour maps ──────────────────────────────────────────────────────────────
 
-const districtWasteData = [
-  { district: 'Srinagar', incidents: 18, trend: 'worsening' as const, collectionRate: '72%', landfillLoad: '94%' },
-  { district: 'Anantnag', incidents: 9, trend: 'stable' as const, collectionRate: '65%', landfillLoad: '71%' },
-  { district: 'Baramulla', incidents: 7, trend: 'improving' as const, collectionRate: '68%', landfillLoad: '58%' },
-  { district: 'Pulwama', incidents: 8, trend: 'worsening' as const, collectionRate: '61%', landfillLoad: '67%' },
-  { district: 'Budgam', incidents: 5, trend: 'stable' as const, collectionRate: '70%', landfillLoad: '52%' },
-  { district: 'Ganderbal', incidents: 3, trend: 'stable' as const, collectionRate: '74%', landfillLoad: '45%' },
-  { district: 'Kupwara', incidents: 4, trend: 'improving' as const, collectionRate: '58%', landfillLoad: '41%' },
-  { district: 'Shopian', incidents: 2, trend: 'stable' as const, collectionRate: '63%', landfillLoad: '38%' },
-];
+const RISK_COLOR: Record<string, string> = {
+  Critical: 'text-red-400 bg-red-500/10 border-red-500/25',
+  High:     'text-orange-400 bg-orange-500/10 border-orange-500/25',
+  Moderate: 'text-amber-400 bg-amber-500/10 border-amber-500/25',
+  Low:      'text-emerald-400 bg-emerald-500/10 border-emerald-500/25',
+  Unknown:  'text-slate-500 bg-slate-500/10 border-slate-500/25',
+};
 
-const recentReports = [
-  { type: 'Illegal Dumping', location: 'Near Dal Lake periphery, Srinagar', severity: 'High', time: '1h ago', verified: true },
-  { type: 'Landfill Overflow', location: 'Karasu landfill, Ganderbal', severity: 'Critical', time: '3h ago', verified: true },
-  { type: 'Open Waste Burning', location: 'Tral town, Pulwama', severity: 'High', time: '8h ago', verified: false },
-  { type: 'Collection Failure', location: 'Sopore municipal area, Baramulla', severity: 'Moderate', time: '12h ago', verified: true },
-  { type: 'Waste in Waterway', location: 'Lidder riverbank, Anantnag', severity: 'High', time: '1d ago', verified: true },
-];
+const EVIDENCE_CONFIG: Record<string, { color: string; bg: string; border: string; icon: React.ElementType }> = {
+  'Verified Reported Value': { color: 'text-emerald-300', bg: 'bg-emerald-500/10', border: 'border-emerald-500/25', icon: CheckCircle },
+  'Derived Value':           { color: 'text-blue-300',    bg: 'bg-blue-500/10',    border: 'border-blue-500/25',    icon: Activity    },
+  'Planning Baseline':       { color: 'text-amber-300',   bg: 'bg-amber-500/10',   border: 'border-amber-500/25',   icon: Shield      },
+};
+
+// ─── Solid-Waste Card ────────────────────────────────────────────────────────
+
+function SolidWasteCard({ record, index }: { record: SolidWasteWardRecord; index: number }) {
+  const ev = EVIDENCE_CONFIG[record.evidence_tier] || EVIDENCE_CONFIG['Planning Baseline'];
+  const EvIcon = ev.icon;
+  const maxRisk = record.risk_level;
+  const isModeled = record.evidence_tier === 'Planning Baseline';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.04, 0.5) }}
+      className="h-full"
+    >
+      <Card className={`glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group ${isModeled ? 'hover:border-amber-500/30' : 'hover:border-white/20'}`}>
+        
+        {/* Subtle accent gradient behind header based on risk */}
+        <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-5 pointer-events-none ${
+          maxRisk === 'Critical' ? 'from-red-500 to-transparent' : maxRisk === 'High' ? 'from-orange-500 to-transparent' : 'from-transparent to-transparent'
+        }`} />
+
+        {/* Header */}
+        <div className="flex items-start justify-between gap-2 relative z-10">
+          <div className="min-w-0">
+            <h3 className="text-sm font-bold text-white truncate group-hover:text-emerald-300 transition-colors">{record.ward_sector_name}</h3>
+            <p className="text-[10px] text-slate-500 truncate mt-0.5 flex items-center gap-1">
+              <Building2 className="w-3 h-3" />
+              {record.city_region}
+            </p>
+          </div>
+          <Badge variant={maxRisk === 'Critical' ? 'critical' : maxRisk === 'High' ? 'danger' : maxRisk === 'Moderate' ? 'warning' : 'success'} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {maxRisk} Risk
+          </Badge>
+        </div>
+
+        {/* Evidence label */}
+        <div className={`flex flex-col gap-1 px-2.5 py-1.5 rounded-lg border text-[10px] w-full ${ev.bg} ${ev.border}`}>
+          <div className={`flex items-center gap-1.5 font-bold ${ev.color}`}>
+            <EvIcon className="w-3 h-3 flex-shrink-0" />
+            <span>{record.evidence_tier}</span>
+          </div>
+          {isModeled && (
+            <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Ward-Level Solid Waste Profile</span>
+          )}
+        </div>
+
+        {/* Key Metrics */}
+        <div className="flex flex-col gap-1.5 text-xs mt-1 bg-white/[0.02] rounded-lg p-2 border border-white/5">
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Estimated Daily Load</span>
+            <span className={`font-bold truncate ml-2 text-right ${isModeled ? 'text-amber-400' : 'text-emerald-400'}`}>{record.solid_waste_tpd}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Ward Type</span>
+            <span className="text-slate-300 font-medium truncate">{record.ward_category}</span>
+          </div>
+        </div>
+
+        {/* Sources & Status Grid */}
+        <div className="grid grid-cols-1 gap-1.5 text-[10px] mt-1">
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Primary Source</span>
+            <span className="text-white font-medium">{record.primary_source || 'Unknown'}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Secondary Source</span>
+            <span className="text-slate-300">{record.secondary_source || 'Unknown'}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Seasonal Surge</span>
+            <span className={record.seasonal_surge === 'High' || record.seasonal_surge === 'Critical' ? 'text-amber-400 font-medium' : 'text-emerald-400 font-medium'}>{record.seasonal_surge || 'Unknown'}</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2 mt-1">
+          <div className="bg-white/5 rounded p-2 text-center border border-white/5 flex flex-col justify-center">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Collection</div>
+            <div className={`text-[10px] font-medium leading-tight ${record.collection_status === 'Mapped' ? 'text-emerald-400' : record.collection_status === 'Partial' ? 'text-amber-400' : 'text-red-400'}`}>
+              {record.collection_status || 'Unknown'}
+            </div>
+          </div>
+          <div className="bg-white/5 rounded p-2 text-center border border-white/5 flex flex-col justify-center">
+            <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">Treatment</div>
+            <div className="text-[10px] font-medium text-slate-300 leading-tight">
+              {record.treatment_linkage || 'Unknown'}
+            </div>
+          </div>
+        </div>
+
+        {/* Pathway */}
+        <div className="mt-auto pt-3 border-t border-white/5 flex flex-col gap-1 text-[10px] text-slate-400">
+          <div className="flex items-start gap-1.5">
+            <Factory className="w-3 h-3 flex-shrink-0 mt-0.5 text-blue-400" />
+            <span className="line-clamp-2 leading-snug"><strong className="text-slate-300 font-medium">Environmental Pathway:</strong> {record.waterbody_pathway}</span>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── List Row ─────────────────────────────────────────────────────────────────
+
+function SolidWasteRow({ record, index }: { record: SolidWasteWardRecord; index: number }) {
+  const ev = EVIDENCE_CONFIG[record.evidence_tier] || EVIDENCE_CONFIG['Planning Baseline'];
+  const EvIcon = ev.icon;
+  const maxRisk = record.risk_level;
+  const isModeled = record.evidence_tier === 'Planning Baseline';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.02, 0.4) }}
+    >
+      <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all">
+        <div className="flex flex-wrap items-center gap-4">
+          {/* District + Scope */}
+          <div className="min-w-[200px] flex-1">
+            <span className="text-sm font-bold text-white">{record.ward_sector_name}</span>
+            <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1"><Building2 className="w-3 h-3" /> {record.city_region}</div>
+          </div>
+
+          {/* Load */}
+          <div className="w-24 hidden md:block">
+            <div className="text-[10px] text-slate-500">Daily Load</div>
+            <div className={`text-xs font-bold truncate ${isModeled ? 'text-amber-400' : 'text-emerald-400'}`}>{record.solid_waste_tpd}</div>
+          </div>
+
+          {/* Source */}
+          <div className="w-32 hidden xl:block">
+            <div className="text-[10px] text-slate-500">Ward Type</div>
+            <div className="text-xs text-slate-300 truncate" title={record.ward_category}>{record.ward_category}</div>
+          </div>
+
+          {/* Collection Status */}
+          <div className="w-32 hidden lg:block">
+            <div className="text-[10px] text-slate-500">Collection</div>
+            <div className="text-xs text-slate-300 truncate">{record.collection_status || 'Unknown'}</div>
+          </div>
+
+          {/* Risk Level */}
+          <div className="w-24">
+            <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
+            <Badge variant={maxRisk === 'Critical' ? 'critical' : maxRisk === 'High' ? 'danger' : maxRisk === 'Moderate' ? 'warning' : 'success'} size="sm" className="text-[10px] shadow-sm">
+              {maxRisk}
+            </Badge>
+          </div>
+
+          {/* Evidence */}
+          <div className="w-48 hidden sm:block">
+            <div className={`flex flex-col gap-0.5 px-2 py-1 rounded-lg border w-max ${ev.bg} ${ev.border}`}>
+              <div className={`flex items-center gap-1.5 text-[10px] font-bold ${ev.color}`}>
+                <EvIcon className="w-3 h-3 flex-shrink-0" />
+                <span>{record.evidence_tier}</span>
+              </div>
+              {isModeled && <span className="text-[8px] text-slate-400 uppercase tracking-widest pl-4">Ward Intelligence</span>}
+            </div>
+          </div>
+
+          {/* Action */}
+          <div className="flex-shrink-0 ml-auto">
+            <Button variant="outline" size="sm" className="text-xs px-3 border-white/10" icon={<ChevronRight className="w-3 h-3" />}>
+              Details
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Main Page Component ──────────────────────────────────────────────────────
 
 export default function SolidWastePage() {
   const router = useRouter();
+  const { filter, setScope, setDistrict } = useGlobalFilter();
+
+  const [cityFilter, setCityFilter] = useState('all');
+  const [collectionFilter, setCollectionFilter] = useState('all');
+  const [treatmentFilter, setTreatmentFilter] = useState('all');
+  const [surgeFilter, setSurgeFilter] = useState('all');
+
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 9;
+
+  // Derive filter options dynamically from data
+  const cities = useMemo(() => Array.from(new Set(solidWasteData.map(d => d.city_region))).sort(), []);
+  const treatmentLinkages = useMemo(() => Array.from(new Set(solidWasteData.map(d => d.treatment_linkage).filter(Boolean) as string[])).sort(), []);
+  const surges = ['Low', 'Medium', 'High', 'Critical'];
+  const collections = ['Mapped', 'Partial', 'Needs Route Data'];
+
+  const filteredData = useMemo(() => {
+    return solidWasteData.filter(d => {
+      const matchSearch = filter.searchQuery === '' || 
+        d.ward_sector_name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+        d.city_region.toLowerCase().includes(filter.searchQuery.toLowerCase());
+      
+      const matchScope = filter.scope === 'All' || d.scope === filter.scope;
+      const matchDistrict = filter.district === 'All' || d.district === filter.district;
+      
+      const matchCity = cityFilter === 'all' || d.city_region === cityFilter;
+      const matchCollection = collectionFilter === 'all' || d.collection_status === collectionFilter;
+      const matchTreatment = treatmentFilter === 'all' || d.treatment_linkage === treatmentFilter;
+      const matchSurge = surgeFilter === 'all' || d.seasonal_surge === surgeFilter;
+
+      return matchSearch && matchScope && matchDistrict && matchCity && matchCollection && matchTreatment && matchSurge;
+    });
+  }, [filter, cityFilter, collectionFilter, treatmentFilter, surgeFilter]);
+
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  const extraActiveCount = [cityFilter, collectionFilter, treatmentFilter, surgeFilter].filter(f => f !== 'all').length;
+
+  const scopeCount = useMemo(() => {
+    if (filter.scope === 'All') return 0;
+    return solidWasteData.filter(d => d.scope === filter.scope).length;
+  }, [filter.scope]);
+
+  // Aggregate stats
+  const verifiedAnchors = solidWasteData.filter(d => d.evidence_tier === 'Verified Reported Value').length;
+  const planningBaselines = solidWasteData.filter(d => d.evidence_tier === 'Planning Baseline').length;
+  const derivedValues = solidWasteData.filter(d => d.evidence_tier === 'Derived Value').length;
+
+  const mappedCollectionCount = solidWasteData.filter(d => d.collection_status === 'Mapped').length;
+  const highSurgeCount = solidWasteData.filter(d => ['High', 'Critical'].includes(d.seasonal_surge)).length;
+  const totalLoad = Math.round(solidWasteData.reduce((acc, curr) => acc + (parseFloat(curr.solid_waste_tpd.replace(/[^\d.]/g, '')) || 0), 0));
+
+  const metrics = [
+    { label: 'Monitored Zones', value: solidWasteData.length, icon: 'MapPin' },
+    { label: 'Verified Anchors', value: verifiedAnchors, icon: 'CheckCircle' },
+    { label: 'Planning Baselines', value: planningBaselines, icon: 'Shield' },
+    { label: 'Derived Est.', value: derivedValues, icon: 'Activity' },
+    { label: 'Mapped Collection', value: mappedCollectionCount, icon: 'Map' },
+    { label: 'High Surge Risks', value: highSurgeCount, icon: 'TrendingUp' },
+    { label: 'Est. Total Load', value: `${totalLoad.toLocaleString()} TPD`, icon: 'Database' },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock' },
+  ];
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-slate-950 flex flex-col">
+      {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Solid Waste' }
-        ]}
-        title={<><span className="block whitespace-nowrap">Solid</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Waste</span></>}
-        subtitle="Tracking illegal dumping, landfill stress, open waste accumulation, burning events, and municipal collection performance across Kashmir districts"
+        label="Environmental Monitoring"
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Solid Waste Management Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Monitoring municipal solid waste accumulation, collection coverage, and environmental exposure via ward-level planning baselines."
         icon={<Trash2 className="w-6 h-6 text-emerald-400" />}
+        breadcrumbs={[
+          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
+          { label: 'Solid Waste' },
+        ]}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Active Hotspots', value: '42', sub: 'Mapped & tracked', color: 'text-gray-400' },
-              { label: 'Verified Incidents', value: '36', sub: 'Last 7 days', color: 'text-slate-300' },
-              { label: 'Critical Alerts', value: '5', sub: 'Immediate action', color: 'text-red-400' },
-              { label: 'Avg Collection Rate', value: '66%', sub: 'Kashmir avg', color: 'text-amber-400' },
-              { label: 'Landfill Stress', value: '3', sub: 'Near capacity', color: 'text-orange-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} iconColor="text-emerald-500" />
 
-      {/* Hotspot Cards */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Waste Pressure Intelligence</h2>
-            <p className="text-slate-400">Real-time waste system stress indicators across monitored zones</p>
-          </motion.div>
+      {/* ── FILTER BAR ───────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <>
+              <FilterSelect value={cityFilter} onChange={setCityFilter} placeholder="City / Region" options={cities.map(c => ({ value: c, label: c }))} />
+              <FilterSelect value={surgeFilter} onChange={setSurgeFilter} placeholder="Seasonal Surge" options={surges.map(s => ({ value: s, label: s }))} />
+              <FilterSelect value={collectionFilter} onChange={setCollectionFilter} placeholder="Collection Status" options={collections.map(w => ({ value: w, label: w }))} />
+              <FilterSelect value={treatmentFilter} onChange={setTreatmentFilter} placeholder="Treatment Linkage" options={treatmentLinkages.map(t => ({ value: t, label: t }))} />
+            </>
+          }
+          extraActiveCount={extraActiveCount}
+          onExtraFiltersClear={() => {
+            setCityFilter('all');
+            setSurgeFilter('all');
+            setCollectionFilter('all');
+            setTreatmentFilter('all');
+          }}
+        />
+      </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {hotspotCards.map((card, i) => (
-              <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-500 to-slate-600 flex items-center justify-center shadow flex-shrink-0">
-                      <card.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-gray-300 transition-colors">{card.title}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{card.description}</p>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                        <MapPin className="w-3 h-3" />
-                        <span>{card.location}</span>
-                      </div>
-                      <Badge variant={card.severity} size="sm">{card.severity}</Badge>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1.5 text-slate-400">
-                        <Activity className="w-3 h-3" />
-                        <span>{card.count} incidents</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3" />
-                        <span>{card.lastReported}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs">
-                      {card.verified ? (
-                        <>
-                          <Shield className="w-3 h-3 text-emerald-400" />
-                          <span className="text-emerald-400">Verified</span>
-                        </>
-                      ) : (
-                        <>
-                          <Shield className="w-3 h-3 text-amber-400" />
-                          <span className="text-amber-400">Pending verification</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
+      <ModuleScopeRow
+        filteredCount={filteredData.length}
+        totalCount={solidWasteData.length}
+        entityLabel="wards & anchors"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Wards & Sectors')}
+        scopeCount={scopeCount}
+        onScopeChange={() => setCurrentPage(1)}
+      />
 
-      {/* Map Preview */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* ── DATA GRID / LIST ─────────────────────────────────────────────── */}
+      <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          <Card className="glass-intense border-white/10 overflow-hidden">
-            <div className="p-6 flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Map className="w-5 h-5 text-gray-400" />
-                <h3 className="text-lg font-bold text-white">Waste Pressure & Accumulation Map</h3>
+          {filteredData.length === 0 ? (
+            <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+              <Search className="w-8 h-8 text-slate-500 mx-auto mb-3" />
+              <div className="text-white font-medium mb-1">No data found</div>
+              <div className="text-sm text-slate-400">Try adjusting your filters</div>
+            </div>
+          ) : viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatePresence mode="popLayout">
+                {paginatedData.map((record, i) => (
+                  <SolidWasteCard key={record.id} record={record} index={i} />
+                ))}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              <AnimatePresence mode="popLayout">
+                {paginatedData.map((record, i) => (
+                  <SolidWasteRow key={record.id} record={record} index={i} />
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+
+          {/* ── PAGINATION ───────────────────────────────────────────────── */}
+          {totalPages > 1 && (
+            <div className="mt-8 flex justify-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-white/10"
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              <div className="flex items-center gap-1 overflow-x-auto max-w-[60vw] hide-scrollbar px-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+                  <button
+                    key={p}
+                    onClick={() => setCurrentPage(p)}
+                    className={`flex-shrink-0 w-8 h-8 rounded-lg text-sm transition-colors ${
+                      currentPage === p 
+                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-sm' 
+                        : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    {p}
+                  </button>
+                ))}
               </div>
-              <Button size="sm" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/environmental-monitoring/dashboards')}>
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Open Dashboard
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-white/10"
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              >
+                <ChevronRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="h-72 bg-gradient-to-br from-gray-900/50 to-slate-900/50 flex items-center justify-center border-t border-white/5">
-              <div className="text-center">
-                <Map className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-                <p className="text-slate-400 text-sm mb-1">Interactive waste intelligence map with dumping, landfill, and accumulation layers</p>
-                <p className="text-slate-500 text-xs">Illegal dumping • Landfill stress • Open waste • Burning events • Collection gaps</p>
-              </div>
-            </div>
-          </Card>
+          )}
         </div>
       </section>
 
-      {/* District Comparison Table */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">District Waste Performance</h2>
-            <p className="text-slate-400">Cross-district comparison of waste management indicators</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">District</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Incidents (7d)</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Trend</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Collection Rate</th>
-                  <th className="text-center py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Landfill Load</th>
-                </tr>
-              </thead>
-              <tbody>
-                {districtWasteData.map((d, i) => (
-                  <motion.tr
-                    key={d.district}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.03 }}
-                    className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
-                  >
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <span className={`w-2 h-2 rounded-full ${
-                          d.incidents >= 10 ? 'bg-red-400' : d.incidents >= 6 ? 'bg-amber-400' : 'bg-emerald-400'
-                        }`} />
-                        <span className="text-white font-medium">{d.district}</span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-center text-slate-300">{d.incidents}</td>
-                    <td className="py-3 px-4 text-center">
-                      <div className="flex items-center justify-center gap-1">
-                        <TrendingUp className={`w-3.5 h-3.5 ${
-                          d.trend === 'worsening' ? 'text-red-400 rotate-180' : d.trend === 'improving' ? 'text-emerald-400' : 'text-slate-500'
-                        }`} />
-                        <Badge variant={d.trend === 'worsening' ? 'danger' : d.trend === 'improving' ? 'success' : 'default'} size="sm" className="text-xs">
-                          {d.trend}
-                        </Badge>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      <span className={`font-medium ${
-                        parseInt(d.collectionRate) >= 70 ? 'text-emerald-400' : parseInt(d.collectionRate) >= 60 ? 'text-amber-400' : 'text-red-400'
-                      }`}>
-                        {d.collectionRate}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${
-                              parseInt(d.landfillLoad) >= 80 ? 'bg-red-400' : parseInt(d.landfillLoad) >= 60 ? 'bg-amber-400' : 'bg-emerald-400'
-                            }`}
-                            style={{ width: d.landfillLoad }}
-                          />
-                        </div>
-                        <span className="text-slate-300 text-xs">{d.landfillLoad}</span>
-                      </div>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </Card>
-        </div>
-      </section>
-
-      {/* Recent Reports Feed */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <FileText className="w-6 h-6 text-gray-400" />
-              Recent Reports Feed
-            </h2>
-            <p className="text-slate-400">Latest verified and pending waste intelligence reports</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 p-5">
-            <div className="space-y-4">
-              {recentReports.map((r, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="py-3 border-b border-white/5 last:border-0 last:pb-0"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-white font-medium">{r.type}</span>
-                      {r.verified ? (
-                        <Badge variant="success" size="sm" className="text-xs">Verified</Badge>
-                      ) : (
-                        <Badge variant="warning" size="sm" className="text-xs">Pending</Badge>
-                      )}
-                    </div>
-                    <Badge variant={r.severity === 'Critical' ? 'critical' : r.severity === 'High' ? 'danger' : 'warning'} size="sm" className="text-xs">
-                      {r.severity}
-                    </Badge>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{r.location}</span>
-                    </div>
-                    <span className="text-slate-600">|</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{r.time}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Related Advisories */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-400" />
-              Related Advisories
-            </h2>
-            <p className="text-slate-400">Active notices and guidance from environmental authorities</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { title: 'Landfill Capacity Advisory — Srinagar', status: 'Active', desc: 'Karasu landfill approaching maximum capacity. Diversion protocols activated for Ganderbal and Budgam zones.', issued: '2 days ago' },
-              { title: 'Waste Burning Alert — Pulwama District', status: 'Monitoring', desc: 'Increased open burning events detected near agricultural zones. Air quality impact assessment underway.', issued: '5 days ago' },
-              { title: 'Collection Schedule Update — Baramulla', status: 'Resolved', desc: 'Municipal collection frequency restored to normal schedule in Sopore and Uri subdivisions.', issued: '1 week ago' },
-              { title: 'Waterway Contamination Risk — Anantnag', status: 'Active', desc: 'Waste accumulation along Lidder riverbank poses contamination risk. Cleanup operations initiated.', issued: '3 days ago' },
-            ].map((advisory, i) => (
-              <motion.div key={advisory.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-sm font-bold text-white group-hover:text-gray-300 transition-colors">{advisory.title}</h3>
-                    <Badge variant={advisory.status === 'Active' ? 'danger' : advisory.status === 'Monitoring' ? 'warning' : 'success'} size="sm">
-                      {advisory.status}
-                    </Badge>
-                  </div>
-                  <p className="text-xs text-slate-400 mb-3 leading-relaxed">{advisory.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">Issued: {advisory.issued}</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cross-links */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Related Actions</h2>
-            <p className="text-slate-400">Contribute to waste intelligence or explore related domains</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'Report an Issue', href: '/report-issue', desc: 'Submit waste-related hazards', icon: AlertTriangle, color: 'from-red-500 to-orange-600' },
-              { label: 'Contribute Data', href: '/contribute-data', desc: 'Add verified observations', icon: Eye, color: 'from-emerald-500 to-green-600' },
-              { label: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Discharge & outfall monitoring', icon: ExternalLink, color: 'from-blue-500 to-cyan-600' },
-              { label: 'Environmental Health', href: '/environmental-monitoring/environmental-health', desc: 'Health signal monitoring', icon: ExternalLink, color: 'from-amber-500 to-orange-600' },
-            ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-gray-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      
     </main>
   );
 }

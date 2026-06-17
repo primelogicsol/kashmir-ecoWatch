@@ -54,6 +54,7 @@ const navItems = [
   { label: 'Biodiversity', href: '/biodiversity', hasDropdown: true },
   { label: 'Water Systems', href: '/water-systems', hasDropdown: true },
   { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true },
+  { label: 'Hazard Intelligence', href: '/hazard-intelligence', hasDropdown: true },
   { label: 'Contribute', href: '/contribute', hasDropdown: true },
   { label: 'Risk & Monitoring', href: '/risk-monitoring', hasDropdown: true },
   { label: 'Research Library', href: '/research-library', hasDropdown: true },
@@ -390,6 +391,7 @@ export function Navigation() {
                         { name: 'Rivers & Streams', href: '/water-systems/rivers', icon: Wind, desc: 'Major rivers, tributaries & streams', color: 'text-indigo-400' },
                         { name: 'Springs', href: '/water-systems/springs', icon: Droplet, desc: 'Perennial, seasonal & community springs', color: 'text-emerald-400' },
                         { name: 'Watersheds', href: '/water-systems/watersheds', icon: Map, desc: 'Basins, catchments & hydrological units', color: 'text-amber-400' },
+                        { name: 'Groundwater', href: '/water-systems/groundwater', icon: Database, desc: 'Aquifers, water levels & validation queues', color: 'text-blue-400' },
                         { name: 'Glaciers & Cryosphere', href: '/water-systems/glaciers', icon: Mountain, desc: 'Glaciers & snow-fed systems', color: 'text-slate-400' },
                         { name: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources', icon: Droplet, desc: 'Spring & surface supply vulnerability', color: 'text-cyan-400' },
                         { name: 'Water Quality', href: '/water-systems/water-quality', icon: Thermometer, desc: 'Quality monitoring & trends', color: 'text-teal-400' },
@@ -444,7 +446,7 @@ export function Navigation() {
                         { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', desc: 'Organic waste, decomposition zones', color: 'text-emerald-400' },
                         { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow, outfalls, untreated discharge', color: 'text-blue-400' },
                         { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Contamination alerts, supply issues', color: 'text-cyan-400' },
-                        { name: 'Critical Water Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Intake points, treatment plants, reservoirs', color: 'text-indigo-400' },
+                        { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets', color: 'text-indigo-400' },
                         { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning', color: 'text-slate-400' },
                         { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water', color: 'text-amber-400' },
                         { name: 'Utility Incidents & Advisories', href: '/environmental-monitoring/utility-incidents', desc: 'Service failures, emergency notices', color: 'text-red-400' },
@@ -1221,6 +1223,9 @@ export function Navigation() {
                                       </Link>
                                       <Link href="/water-systems/watersheds" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         All Watersheds
+                                      </Link>
+                                      <Link href="/water-systems/groundwater" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Groundwater
                                       </Link>
                                       <Link href="/water-systems/glaciers" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Glaciers & Cryosphere

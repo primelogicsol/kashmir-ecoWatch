@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Heading } from '@/components/common/Heading';
 
 const rainfallData = [
   { station: 'Srinagar', annualMm: 655, wettestMonth: 'March', driestMonth: 'October', snowDays: 12 },
@@ -92,63 +93,48 @@ const potentialColors: Record<string, string> = {
 export default function RainwaterHarvestingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900/50" />
-        <div className="relative container mx-auto px-4 md:px-6 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20">
-          <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span className="text-slate-600">/</span>
-            <Link href="/water-systems" className="hover:text-white transition-colors">Water Systems</Link>
-            <span className="text-slate-600">/</span>
-            <Link href="/water-systems/drinking-water-sources" className="hover:text-white transition-colors">Drinking Water Sources</Link>
-            <span className="text-slate-600">/</span>
-            <span className="text-white">Rainwater Harvesting</span>
-          </nav>
+      <Heading
+        icon={<CloudRain className="w-6 h-6 text-emerald-400" />}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Rainwater Harvesting</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Harnessing Kashmir's rainfall (600-1450mm annually) for drinking water augmentation and groundwater recharge. The ESRO EIA Report identifies that rainwater is lost as run off without recharging groundwater."
+        breadcrumbs={[
+          { label: 'Water Systems', href: '/water-systems' },
+          { label: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources' },
+          { label: 'Rainwater Harvesting' },
+        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <Link href="/water-systems/drinking-water-sources">
+              <Button variant="outline" className="border-white/20 text-white">← Drinking Water Sources</Button>
+            </Link>
+            <Link href="/water-systems/drinking-water-sources/groundwater">
+              <Button variant="outline" className="border-white/20 text-white">Groundwater <ExternalLink className="w-4 h-4 ml-2" /></Button>
+            </Link>
+          </div>
+        }
+      />
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
-                <CloudRain className="w-7 h-7 text-white" />
-              </div>
-              <Badge variant="outline" className="border-sky-400/30 text-sky-400 text-xs">Rainwater Intelligence</Badge>
+      <div className="container mx-auto px-6 py-6">
+        <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-4">
+          <div className="flex items-start gap-3">
+            <BookOpen className="w-5 h-5 text-sky-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-sm text-sky-300 font-medium mb-1">ESRO Finding: Rainwater Loss</p>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                The ESRO Environmental Impact Assessment Report documents: "As the major share of
+                precious rainwater is lost as run off without recharging groundwater, the water
+                resources like springs, wells, baulies are drying up." This finding directly supports
+                the need for systematic rainwater harvesting infrastructure across Kashmir.
+              </p>
             </div>
-
-            <h1 className="max-w-xl text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Rainwater Harvesting & Groundwater Recharge
-            </h1>
-            <p className="text-lg text-slate-300 max-w-3xl mb-6 leading-relaxed">
-              Harnessing Kashmir's rainfall (600-1450mm annually) for drinking water augmentation and
-              groundwater recharge. The ESRO EIA Report identifies that "rainwater is lost as run off
-              without recharging groundwater" — representing a massive untapped opportunity.
-            </p>
-
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-6">
-              <Link href="/water-systems/drinking-water-sources">
-                <Button variant="outline" className="border-white/20 text-white">← Drinking Water Sources</Button>
-              </Link>
-              <Link href="/water-systems/drinking-water-sources/groundwater">
-                <Button variant="outline" className="border-white/20 text-white">Groundwater <ExternalLink className="w-4 h-4 ml-2" /></Button>
-              </Link>
-            </div>
-
-            <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-4">
-              <div className="flex items-start gap-3">
-                <BookOpen className="w-5 h-5 text-sky-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm text-sky-300 font-medium mb-1">ESRO Finding: Rainwater Loss</p>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    The ESRO Environmental Impact Assessment Report documents: "As the major share of
-                    precious rainwater is lost as run off without recharging groundwater, the water
-                    resources like springs, wells, baulies are drying up." This finding directly supports
-                    the need for systematic rainwater harvesting infrastructure across Kashmir.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Rainfall Stats */}
       <section className="border-y border-white/5 bg-slate-900/50">

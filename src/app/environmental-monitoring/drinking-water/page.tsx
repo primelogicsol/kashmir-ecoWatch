@@ -1,525 +1,378 @@
 'use client';
 
-import React from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
-import { Button } from '@/components/ui/Button';
+import React, { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
-import {
-  Droplets, Map, BarChart3, ChevronRight, AlertTriangle,
-  FileText, ArrowRight, Activity, Clock,
-  MapPin, ExternalLink, FlaskConical,
-  CloudRain, AlertCircle, Pipette, Waves, Factory
-} from 'lucide-react';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
+import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import { Droplets, Activity, MapPin, FlaskConical, AlertTriangle, Shield, CheckCircle, Info, Waves, Map } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 
-const districtWaterCards = [
-  {
-    district: 'Srinagar',
-    alertCount: 12,
-    qualityStatus: 'Moderate',
-    qualityVariant: 'warning' as const,
-    serviceReliability: '78%',
-    reliabilityVariant: 'warning' as const,
-    supplyDisruptions: 4,
-    treatmentIssues: 2,
-    sourceVulnerability: 'Groundwater + Jhelum abstraction',
-  },
-  {
-    district: 'Anantnag',
-    alertCount: 8,
-    qualityStatus: 'Moderate',
-    qualityVariant: 'warning' as const,
-    serviceReliability: '72%',
-    reliabilityVariant: 'warning' as const,
-    supplyDisruptions: 3,
-    treatmentIssues: 1,
-    sourceVulnerability: 'Spring-fed system stress',
-  },
-  {
-    district: 'Baramulla',
-    alertCount: 6,
-    qualityStatus: 'Good',
-    qualityVariant: 'success' as const,
-    serviceReliability: '85%',
-    reliabilityVariant: 'success' as const,
-    supplyDisruptions: 2,
-    treatmentIssues: 0,
-    sourceVulnerability: 'Surface water seasonal variability',
-  },
-  {
-    district: 'Pulwama',
-    alertCount: 10,
-    qualityStatus: 'Poor',
-    qualityVariant: 'danger' as const,
-    serviceReliability: '61%',
-    reliabilityVariant: 'danger' as const,
-    supplyDisruptions: 5,
-    treatmentIssues: 3,
-    sourceVulnerability: 'Groundwater depletion + contamination',
-  },
-  {
-    district: 'Kupwara',
-    alertCount: 4,
-    qualityStatus: 'Good',
-    qualityVariant: 'success' as const,
-    serviceReliability: '88%',
-    reliabilityVariant: 'success' as const,
-    supplyDisruptions: 1,
-    treatmentIssues: 0,
-    sourceVulnerability: 'Remote spring systems — limited monitoring',
-  },
-  {
-    district: 'Ganderbal',
-    alertCount: 7,
-    qualityStatus: 'Moderate',
-    qualityVariant: 'warning' as const,
-    serviceReliability: '74%',
-    reliabilityVariant: 'warning' as const,
-    supplyDisruptions: 3,
-    treatmentIssues: 1,
-    sourceVulnerability: 'Sind River abstraction + seasonal turbidity',
-  },
-];
+import { drinkingWaterData, DrinkingWaterRecord, drinkingWaterQualitySourceRegistry } from '@/data/drinking-water';
 
-const qualityIndicators = [
-  { parameter: 'pH', value: '6.8–7.4', status: 'Normal', variant: 'success' as const, icon: Pipette, desc: 'Within WHO acceptable range (6.5–8.5)' },
-  { parameter: 'Turbidity', value: '3.2 NTU', status: 'Elevated', variant: 'warning' as const, icon: CloudRain, desc: 'Above 1 NTU threshold in 4 districts' },
-  { parameter: 'Coliform Count', value: '18 CFU/100mL', status: 'Contaminated', variant: 'danger' as const, icon: AlertCircle, desc: 'Exceeds 0 CFU standard — Srinagar, Pulwama' },
-  { parameter: 'Residual Chlorine', value: '0.3 mg/L', status: 'Low', variant: 'warning' as const, icon: FlaskConical, desc: 'Below 0.5 mg/L minimum in supply network' },
-  { parameter: 'Dissolved Oxygen', value: '5.8 mg/L', status: 'Acceptable', variant: 'success' as const, icon: Activity, desc: 'Within acceptable range for drinking water' },
-  { parameter: 'Fluoride', value: '0.9 mg/L', status: 'Normal', variant: 'success' as const, icon: FlaskConical, desc: 'Within 1.0 mg/L WHO guideline' },
-];
+// ─── Drinking Water Card ──────────────────────────────────────────────────
 
-const sourceLinkedAdvisories = [
-  {
-    title: 'Spring-Fed System Stress — South Kashmir',
-    source: 'Springs & Groundwater',
-    status: 'Active',
-    desc: 'Reduced spring discharge observed across Anantnag and Pulwama belts. 23 springs showing >30% flow reduction compared to 5-year average. Communities advised to implement water conservation measures.',
-    issued: '2 days ago',
-    icon: CloudRain,
-  },
-  {
-    title: 'Groundwater Depletion — Urban Corridors',
-    source: 'Aquifer Monitoring',
-    status: 'Monitoring',
-    desc: 'Water table decline of 1.2m/year detected in Srinagar urban zone. Borewell dependency increasing. Artificial recharge zones recommended.',
-    issued: '5 days ago',
-    icon: Droplets,
-  },
-  {
-    title: 'Surface Water Contamination Risk — Jhelum Basin',
-    source: 'River Water Quality',
-    status: 'Advisory',
-    desc: 'Elevated turbidity and bacterial load in Jhelum raw water intakes during monsoon. Enhanced treatment protocols recommended for downstream supply systems.',
-    issued: '1 week ago',
-    icon: Waves,
-  },
-  {
-    title: 'Treatment Plant Chemical Dosing Alert',
-    source: 'Infrastructure Operations',
-    status: 'Active',
-    desc: 'Residual chlorine levels below standard across 4 district networks. Review of chemical dosing rates and contact time required at treatment facilities.',
-    issued: '3 days ago',
-    icon: Factory,
-  },
-];
+function DrinkingWaterCard({ record, index }: { record: DrinkingWaterRecord; index: number }) {
+  const isCritical = record.risk_level === 'Critical';
+  const isHigh = record.risk_level === 'High' || record.priority_level === 'Strategic';
+  
+  let riskColor = 'text-slate-400';
+  let badgeVariant: 'default' | 'success' | 'warning' | 'danger' | 'critical' = 'default';
+  
+  if (record.risk_level === 'Low') {
+    riskColor = 'text-emerald-400';
+    badgeVariant = 'success';
+  } else if (record.risk_level === 'Moderate') {
+    riskColor = 'text-amber-400';
+    badgeVariant = 'warning';
+  } else if (record.risk_level === 'High') {
+    riskColor = 'text-orange-400';
+    badgeVariant = 'danger';
+  } else if (record.risk_level === 'Critical') {
+    riskColor = 'text-red-400';
+    badgeVariant = 'critical';
+  }
 
-const communityReports = [
-  {
-    title: 'Discolored Water Supply — Rajbagh, Srinagar',
-    type: 'Contamination',
-    severity: 'danger' as const,
-    location: 'Rajbagh, Srinagar',
-    time: '6h ago',
-    verified: true,
-    desc: 'Residents report brown discoloration and metallic taste in morning supply. Sample collected for laboratory analysis.',
-  },
-  {
-    title: 'Supply Disruption — Kakapora, Pulwama',
-    type: 'Supply Issue',
-    severity: 'warning' as const,
-    location: 'Kakapora, Pulwama',
-    time: '12h ago',
-    verified: true,
-    desc: 'Intermittent supply for past 3 days. Pipeline damage suspected. Alternative water tankers deployed.',
-  },
-  {
-    title: 'Odor Complaint — Lal Chowkar, Anantnag',
-    type: 'Contamination',
-    severity: 'warning' as const,
-    location: 'Lal Chowk, Anantnag',
-    time: '1 day ago',
-    verified: false,
-    desc: 'Chlorine-like odor reported in treated water supply. Investigation underway to verify dosing levels.',
-  },
-  {
-    title: 'Spring Water Quality — Tral, Pulwama',
-    type: 'Contamination',
-    severity: 'danger' as const,
-    location: 'Tral, Pulwama',
-    time: '2 days ago',
-    verified: true,
-    desc: 'Coliform contamination detected in community spring water source. Boil advisory issued for 120 households.',
-  },
-  {
-    title: 'Low Pressure — Soura, Srinagar',
-    type: 'Supply Issue',
-    severity: 'monitoring' as const,
-    location: 'Soura, Srinagar',
-    time: '3 days ago',
-    verified: true,
-    desc: 'Consistent low pressure in distribution network. Possible subsurface leak or pump underperformance.',
-  },
-];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.04, 0.5) }}
+      className="h-full"
+    >
+      <Card className="glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group hover:border-white/20">
+        
+        <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-10 pointer-events-none ${
+          isCritical ? 'from-red-500 to-transparent' : isHigh ? 'from-amber-500 to-transparent' : 'from-blue-500 to-transparent'
+        }`} />
 
-const recentIncidents = [
-  { type: 'Coliform Exceedance', location: 'Rajbagh supply zone, Srinagar', severity: 'Critical', time: '6h ago', verified: true },
-  { type: 'Turbidity Spike', location: 'Ganderbal treatment plant', severity: 'High', time: '8h ago', verified: true },
-  { type: 'Pipeline Rupture', location: 'Kakapora main line, Pulwama', severity: 'Critical', time: '12h ago', verified: true },
-  { type: 'Chlorine Dosing Low', location: 'Baramulla district network', severity: 'Moderate', time: '1 day ago', verified: true },
-  { type: 'Spring Contamination', location: 'Tral community spring, Pulwama', severity: 'Critical', time: '2 days ago', verified: true },
-];
+        <div className="flex items-start justify-between gap-2 relative z-10">
+          <div className="min-w-0">
+            <h3 className="text-sm font-bold text-white truncate group-hover:text-blue-300 transition-colors">Tap Water Quality</h3>
+            <p className="text-[10px] text-slate-500 truncate mt-0.5 flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              {record.area}
+            </p>
+          </div>
+          <Badge variant={badgeVariant} size="sm" className="flex-shrink-0 text-[10px] shadow-sm">
+            {record.risk_level} Risk
+          </Badge>
+        </div>
+
+        <div className="flex flex-col gap-1.5 text-xs mt-2 bg-white/[0.02] rounded-lg p-2 border border-white/5">
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Supply Type</span>
+            <span className="text-blue-400 font-medium truncate ml-2 text-right">{record.supply_type}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-slate-500">Urban / Rural</span>
+            <span className="text-slate-300 font-medium truncate">{record.urban_rural}</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-1.5 text-[10px] mt-1">
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Testing Coverage</span>
+            <span className="text-white font-medium truncate ml-2">{record.testing_coverage}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Treatment Status</span>
+            <span className="text-slate-300 truncate ml-2">{record.treatment_status}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Chlorination Status</span>
+            <span className="text-slate-300 truncate ml-2">{record.chlorination_status}</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 rounded px-2 py-1.5 border border-white/5">
+            <span className="text-slate-500">Priority Level</span>
+            <span className="text-slate-300 font-bold truncate ml-2">{record.priority_level}</span>
+          </div>
+        </div>
+
+        <div className="mt-auto pt-3 border-t border-white/5 flex flex-col gap-1 text-[10px] text-slate-400">
+          <div className="flex items-start gap-1.5">
+            <Activity className={`w-3 h-3 flex-shrink-0 mt-0.5 ${riskColor}`} />
+            <span className="line-clamp-2 leading-snug">
+              <strong className="text-slate-300 font-medium">Main Risk:</strong> <span className={riskColor}>{record.quality_issue}</span>
+            </span>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Drinking Water Row ──────────────────────────────────────────────────────
+
+function DrinkingWaterRow({ record, index }: { record: DrinkingWaterRecord; index: number }) {
+  let riskColor = 'text-slate-400';
+  let badgeVariant: 'default' | 'success' | 'warning' | 'danger' | 'critical' = 'default';
+  
+  if (record.risk_level === 'Low') {
+    riskColor = 'text-emerald-400';
+    badgeVariant = 'success';
+  } else if (record.risk_level === 'Moderate') {
+    riskColor = 'text-amber-400';
+    badgeVariant = 'warning';
+  } else if (record.risk_level === 'High') {
+    riskColor = 'text-orange-400';
+    badgeVariant = 'danger';
+  } else if (record.risk_level === 'Critical') {
+    riskColor = 'text-red-400';
+    badgeVariant = 'critical';
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.02, 0.4) }}
+    >
+      <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all">
+        <div className="flex flex-wrap items-center gap-4">
+          
+          <div className="min-w-[200px] flex-1">
+            <span className="text-sm font-bold text-white">{record.area}</span>
+            <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1"><Map className="w-3 h-3" /> {record.district}</div>
+          </div>
+
+          <div className="w-32 hidden md:block">
+            <div className="text-[10px] text-slate-500">Supply Type</div>
+            <div className="text-xs font-bold text-blue-400 truncate" title={record.supply_type}>{record.supply_type}</div>
+          </div>
+
+          <div className="w-24 hidden xl:block">
+            <div className="text-[10px] text-slate-500">Coverage</div>
+            <div className="text-xs text-slate-300 truncate" title={record.testing_coverage}>{record.testing_coverage}</div>
+          </div>
+
+          <div className="w-32 hidden lg:block">
+            <div className="text-[10px] text-slate-500">Main Risk</div>
+            <div className={`text-xs font-medium truncate ${riskColor}`}>{record.quality_issue}</div>
+          </div>
+
+          <div className="w-24">
+            <div className="text-[10px] text-slate-500 mb-1">Risk Level</div>
+            <Badge variant={badgeVariant} size="sm" className="text-[10px] shadow-sm">
+              {record.risk_level}
+            </Badge>
+          </div>
+
+          <div className="flex-shrink-0 ml-auto">
+            <Button variant="outline" size="sm" className="text-xs px-3 border-white/10" icon={<Info className="w-3 h-3" />}>
+              Details
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Main Page Component ──────────────────────────────────────────────────────
 
 export default function DrinkingWaterPage() {
   const router = useRouter();
+  const { filter } = useGlobalFilter();
+
+  const [supplyFilter, setSupplyFilter] = useState('all');
+  const [qualityFilter, setQualityFilter] = useState('all');
+  const [riskFilter, setRiskFilter] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 9;
+
+  // Derive filter options
+  const supplyOptions = useMemo(() => Array.from(new Set(drinkingWaterData.map(d => d.supply_type))).filter(Boolean).sort(), []);
+  const qualityOptions = useMemo(() => Array.from(new Set(drinkingWaterData.map(d => d.quality_issue))).filter(Boolean).sort(), []);
+  const riskOptions = useMemo(() => Array.from(new Set(drinkingWaterData.map(d => d.risk_level))).filter(Boolean).sort(), []);
+
+  const filteredData = useMemo(() => {
+    return drinkingWaterData.filter(d => {
+      const matchSearch = filter.searchQuery === '' || 
+        d.area.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+        d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
+        d.supply_type.toLowerCase().includes(filter.searchQuery.toLowerCase());
+      
+      const matchScope = filter.scope === 'All' || d.scope === filter.scope;
+      const matchDistrict = filter.district === 'All' || d.district === filter.district;
+      
+      const matchSupply = supplyFilter === 'all' || d.supply_type === supplyFilter;
+      const matchQuality = qualityFilter === 'all' || d.quality_issue === qualityFilter;
+      const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
+
+      return matchSearch && matchScope && matchDistrict && matchSupply && matchQuality && matchRisk;
+    });
+  }, [filter, supplyFilter, qualityFilter, riskFilter]);
+
+  const totalCount = drinkingWaterData.length;
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+  const extraActiveCount = [supplyFilter, qualityFilter, riskFilter].filter(f => f !== 'all').length;
+
+  const scopeCount = useMemo(() => {
+    if (filter.scope === 'All') return 0;
+    return drinkingWaterData.filter(d => d.scope === filter.scope).length;
+  }, [filter.scope]);
+
+  // Aggregate stats
+  const criticalCount = drinkingWaterData.filter(d => d.risk_level === 'Critical').length;
+  const highCount = drinkingWaterData.filter(d => d.risk_level === 'High').length;
+  const lowCount = drinkingWaterData.filter(d => d.risk_level === 'Low').length;
+  const pendingCount = drinkingWaterData.filter(d => d.risk_level === 'Pending Verification').length;
+  
+  const treatedCount = drinkingWaterData.filter(d => d.treatment_status && d.treatment_status.includes('Treated')).length;
+  const groundWaterCount = drinkingWaterData.filter(d => d.supply_type && d.supply_type.includes('Groundwater')).length;
+  const monitoredChlorine = drinkingWaterData.filter(d => d.chlorination_status && d.chlorination_status.includes('Monitored')).length;
+
+  const metrics = [
+    { label: 'Monitored Sources', value: drinkingWaterData.length, icon: 'MapPin' },
+    { label: 'Safe Baselines', value: lowCount, icon: 'CheckCircle' },
+    { label: 'High/Critical Risks', value: highCount + criticalCount, icon: 'AlertTriangle' },
+    { label: 'Pending Verification', value: pendingCount, icon: 'ShieldAlert' },
+    { label: 'Treated Supplies', value: treatedCount, icon: 'Activity' },
+    { label: 'Groundwater Sources', value: groundWaterCount, icon: 'Database' },
+    { label: 'Chlorine Monitored', value: monitoredChlorine, icon: 'FlaskConical' },
+    { label: 'Latest Update', value: 'Today', icon: 'Clock' },
+  ];
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-slate-950 flex flex-col">
+      {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
+        label="Environmental Monitoring"
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Drinking Water Safety Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Monitoring verified PCRWR & JJM/WQMIS supply system records, urban/rural coverage, and specific quality contamination risks."
+        icon={<Droplets className="w-6 h-6 text-blue-400" />}
         breadcrumbs={[
-          { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Drinking Water' }
+          { label: 'Drinking Water Safety' },
         ]}
-        title={<><span className="block whitespace-nowrap">Drinking</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water</span></>}
-        subtitle="Monitoring drinking water quality, supply reliability, contamination events, and source vulnerability across Kashmir&apos;s district water supply networks"
-        icon={<Droplets className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Active Alerts', value: '47', sub: 'Last 24 hours', color: 'text-cyan-400' },
-              { label: 'Districts Monitored', value: '6', sub: 'Kashmir Valley', color: 'text-teal-400' },
-              { label: 'Quality Samples', value: '284', sub: 'This week', color: 'text-slate-300' },
-              { label: 'Supply Disruptions', value: '18', sub: 'Active incidents', color: 'text-amber-400' },
-              { label: 'Avg Reliability', value: '76%', sub: 'Kashmir avg', color: 'text-emerald-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} iconColor="text-blue-500" />
 
-      {/* Map Preview */}
-      <section className="py-16">
+      {/* ── FILTER BAR ───────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-6 mt-4 relative z-30 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <>
+              <FilterSelect value={supplyFilter} onChange={setSupplyFilter} placeholder="Supply Type" options={supplyOptions.map(c => ({ value: c, label: c as string }))} />
+              <FilterSelect value={qualityFilter} onChange={setQualityFilter} placeholder="Quality Issue" options={qualityOptions.map(s => ({ value: s, label: s as string }))} />
+              <FilterSelect value={riskFilter} onChange={setRiskFilter} placeholder="Risk Level" options={riskOptions.map(s => ({ value: s, label: s as string }))} />
+            </>
+          }
+          extraActiveCount={extraActiveCount}
+          onExtraFiltersClear={() => {
+            setSupplyFilter('all');
+            setQualityFilter('all');
+            setRiskFilter('all');
+          }}
+        />
+      </div>
+
+      {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
+      <ModuleScopeRow
+        filteredCount={filteredData.length}
+        totalCount={totalCount}
+        entityLabel="supply systems"
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        scopePillMap={DEFAULT_SCOPE_PILL_MAP('Drinking Water Sources')}
+        scopeCount={scopeCount}
+        onScopeChange={() => setCurrentPage(1)}
+      />
+
+      {/* ── DATA GRID / LIST ─────────────────────────────────────────────── */}
+      <section className="py-8 flex-1">
         <div className="container mx-auto px-6">
-          <Card className="glass-intense border-white/10 overflow-hidden">
-            <div className="p-6 flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Map className="w-5 h-5 text-cyan-400" />
-                <h3 className="text-lg font-bold text-white">District Water Quality Map</h3>
+          {filteredData.length === 0 ? (
+            <div className="text-center py-20 bg-white/5 border border-white/10 rounded-xl">
+              <FlaskConical className="w-8 h-8 text-slate-500 mx-auto mb-3" />
+              <div className="text-white font-medium mb-1">No data found</div>
+              <div className="text-sm text-slate-400">Try adjusting your filters</div>
+            </div>
+          ) : viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedData.map((record, idx) => (
+                <DrinkingWaterCard key={record.id} record={record} index={idx} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {paginatedData.map((record, idx) => (
+                <DrinkingWaterRow key={record.id} record={record} index={idx} />
+              ))}
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-8 pt-6 border-t border-white/10">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </Button>
+              <div className="text-sm text-slate-400">
+                Page <span className="text-white font-medium">{currentPage}</span> of {totalPages}
               </div>
-              <Button size="sm" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/environmental-monitoring/dashboards')}>
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Open Dashboard
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+              >
+                Next
               </Button>
             </div>
-            <div className="h-80 bg-gradient-to-br from-cyan-900/20 to-teal-900/10 flex items-center justify-center border-t border-white/5">
-              <div className="text-center">
-                <Map className="w-14 h-14 text-cyan-800 mx-auto mb-3" />
-                <p className="text-slate-400 text-sm mb-1">Interactive drinking water quality map with district-level monitoring</p>
-                <p className="text-slate-500 text-xs">Quality stations • Supply networks • Contamination points • Source locations</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
+          )}
 
-      {/* District Water Alert Cards */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">District Water Alert Matrix</h2>
-            <p className="text-slate-400">Active alert count, quality status, and service reliability by district</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {districtWaterCards.map((card, i) => (
-              <motion.div key={card.district} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center shadow flex-shrink-0">
-                        <MapPin className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{card.district}</h3>
-                        <p className="text-xs text-slate-400">{card.alertCount} active alerts</p>
-                      </div>
-                    </div>
-                    <Badge variant={card.qualityVariant} size="sm">{card.qualityStatus}</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Service Reliability</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${
-                              parseInt(card.serviceReliability) >= 80 ? 'bg-emerald-400' : parseInt(card.serviceReliability) >= 70 ? 'bg-amber-400' : 'bg-red-400'
-                            }`}
-                            style={{ width: `${card.serviceReliability}` }}
-                          />
-                        </div>
-                        <Badge variant={card.reliabilityVariant} size="sm">{card.serviceReliability}</Badge>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Supply Disruptions</span>
-                      <span className="text-slate-300 font-medium">{card.supplyDisruptions} events</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Treatment Issues</span>
-                      <span className={card.treatmentIssues > 0 ? 'text-amber-400 font-medium' : 'text-emerald-400 font-medium'}>{card.treatmentIssues}</span>
-                    </div>
-                    <div className="pt-2 border-t border-white/5">
-                      <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                        <AlertTriangle className="w-3 h-3 text-amber-400 flex-shrink-0" />
-                        <span>{card.sourceVulnerability}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quality Indicators */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <FlaskConical className="w-6 h-6 text-teal-400" />
-              Water Quality Indicators
+          {/* ── DATA SOURCES REGISTRY ───────────────────────────────────────── */}
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-blue-400" />
+              Verified Data Intelligence & Source Registry
             </h2>
-            <p className="text-slate-400">Key physico-chemical parameters and contamination status</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {qualityIndicators.map((indicator, i) => (
-              <motion.div key={indicator.parameter} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center">
-                        <indicator.icon className="w-4 h-4 text-teal-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white">{indicator.parameter}</h3>
-                        <p className="text-lg font-black text-teal-300">{indicator.value}</p>
-                      </div>
-                    </div>
-                    <Badge variant={indicator.variant} size="sm">{indicator.status}</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400">{indicator.desc}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Source-Linked Advisories */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <CloudRain className="w-6 h-6 text-cyan-400" />
-              Source-Linked Advisories
-            </h2>
-            <p className="text-slate-400">Spring-fed system stress, groundwater depletion, and surface water contamination</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {sourceLinkedAdvisories.map((advisory, i) => (
-              <motion.div key={advisory.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500/20 to-teal-600/20 flex items-center justify-center">
-                        <advisory.icon className="w-4 h-4 text-cyan-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{advisory.title}</h3>
-                        <p className="text-xs text-slate-500">{advisory.source}</p>
-                      </div>
-                    </div>
-                    <Badge variant={advisory.status === 'Active' ? 'danger' : advisory.status === 'Monitoring' ? 'warning' : 'info'} size="sm">
-                      {advisory.status}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {drinkingWaterQualitySourceRegistry.map((source, idx) => (
+                <Card key={idx} className="glass-intense border-white/5 p-4 flex flex-col gap-2 hover:border-white/20 transition-all">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-sm font-bold text-white leading-snug">{source.sourceName}</h3>
+                    <Badge variant={source.reliability === 'High' ? 'success' : 'warning'} size="sm" className="flex-shrink-0 text-[10px]">
+                      {source.reliability}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-400 mb-3 leading-relaxed">{advisory.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">Issued: {advisory.issued}</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
+                  <div className="text-[10px] text-slate-400 font-mono bg-black/40 px-2 py-1 rounded inline-block w-max mt-1">
+                    {source.sourceId}
                   </div>
+                  <div className="text-xs text-blue-400 font-medium mt-1">{source.sourceType}</div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed mt-2 border-t border-white/5 pt-3">
+                    {source.notes}
+                  </p>
                 </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Community Reports */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <FileText className="w-6 h-6 text-cyan-400" />
-              Community Reports
-            </h2>
-            <p className="text-slate-400">Recent contamination and supply disruption reports from residents</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 p-5">
-            <div className="space-y-4">
-              {communityReports.map((report, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="py-3 border-b border-white/5 last:border-0 last:pb-0"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-white font-medium">{report.title}</span>
-                      {report.verified ? (
-                        <Badge variant="success" size="sm" className="text-xs">Verified</Badge>
-                      ) : (
-                        <Badge variant="warning" size="sm" className="text-xs">Pending</Badge>
-                      )}
-                    </div>
-                    <Badge variant={report.severity} size="sm" className="text-xs">{report.type}</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400 mb-1.5">{report.desc}</p>
-                  <div className="flex items-center gap-3 text-xs text-slate-500">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{report.location}</span>
-                    </div>
-                    <span className="text-slate-600">|</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{report.time}</span>
-                    </div>
-                  </div>
-                </motion.div>
               ))}
             </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Recent Incident Feed */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-400" />
-              Recent Drinking Water Incidents
-            </h2>
-            <p className="text-slate-400">Latest verified contamination and supply failure events</p>
-          </motion.div>
-
-          <Card className="glass-intense border-white/10 p-5">
-            <div className="space-y-4">
-              {recentIncidents.map((r, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="py-3 border-b border-white/5 last:border-0 last:pb-0"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm text-white font-medium">{r.type}</span>
-                    <div className="flex items-center gap-2">
-                      {r.verified ? (
-                        <Badge variant="success" size="sm" className="text-xs">Verified</Badge>
-                      ) : (
-                        <Badge variant="warning" size="sm" className="text-xs">Pending</Badge>
-                      )}
-                      <Badge variant={r.severity === 'Critical' ? 'critical' : r.severity === 'High' ? 'danger' : 'warning'} size="sm" className="text-xs">
-                        {r.severity}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{r.location}</span>
-                    </div>
-                    <span className="text-slate-600">|</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{r.time}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Cross-links */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Related Actions</h2>
-            <p className="text-slate-400">Explore connected water and environmental monitoring domains</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'Critical Water Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Intake points, treatment plants, reservoirs', icon: ExternalLink, color: 'from-indigo-500 to-blue-600' },
-              { label: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow and discharge monitoring', icon: ExternalLink, color: 'from-blue-500 to-cyan-600' },
-              { label: 'Environmental Health', href: '/environmental-monitoring/environmental-health', desc: 'Health signal monitoring', icon: ExternalLink, color: 'from-amber-500 to-orange-600' },
-              { label: 'Water Systems', href: '/water-systems', desc: 'Complete hydrological intelligence', icon: ExternalLink, color: 'from-cyan-500 to-teal-600' },
-            ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
           </div>
+
         </div>
       </section>
-
-      
     </main>
   );
 }

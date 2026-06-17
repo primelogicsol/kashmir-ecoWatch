@@ -25,13 +25,16 @@ export default function BirdsPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Birds"
+      title="Birds Across Greater Kashmir Ecology"
       subtitle="A comprehensive ornithological intelligence layer tracking resident and migratory bird populations across Kashmir's ecosystems. Integrating seasonal flight corridors, breeding habitat parameters, and specialized environmental signals to support targeted wetland and alpine conservation initiatives."
       icon="Activity"
-      color="bg-slate-900/50"
+      color="from-sky-500 to-blue-600"
       species={species}
       metrics={metrics}
       filters={filters}
+      hideHabitatFilter={true}
+      hideAdministrativeUnitFilter={true}
+      hideElevationFilter={true}
     />
   );
 }

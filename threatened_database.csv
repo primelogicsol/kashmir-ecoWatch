@@ -1,0 +1,90 @@
+Species ID,Common Name,Scientific Name,Taxonomic Group,Status,Elevation Min,Elevation Max,Sensitivity
+threatened-1,"Hangul","Cervus hanglu hanglu",mammals,CR,1500,3600,critical
+threatened-2,"Kashmir Musk Deer","Moschus cupreus",mammals,EN,2500,4000,high
+threatened-3,"Snow Leopard","Panthera uncia",mammals,VU,3000,5000,medium
+threatened-4,"Himalayan Brown Bear","Ursus arctos isabellinus",mammals,CR,2500,4500,critical
+threatened-5,"Markhor","Capra falconeri",mammals,NT,1000,3500,low
+threatened-6,"Himalayan Serow","Capricornis sumatraensis thar",mammals,VU,2000,3500,medium
+threatened-7,"Ladakh Urial","Ovis vignei vignei",mammals,VU,3000,4500,medium
+threatened-8,"Tibetan Antelope","Pantholops hodgsonii",mammals,NT,4000,5500,low
+threatened-9,"Tibetan Wild Ass","Equus kiang",mammals,LC,4000,5500,low
+threatened-10,"Himalayan Tahr","Hemitragus jemlahicus",mammals,NT,2000,4000,low
+threatened-11,"Eurasian Lynx","Lynx lynx isabellinus",mammals,LC,3000,4500,low
+threatened-12,"Pallas's Cat","Otocolobus manul",mammals,LC,3500,5000,low
+threatened-13,"Himalayan Black Bear","Ursus thibetanus laniger",mammals,VU,1500,3500,medium
+threatened-14,"Woolly Flying Squirrel","Eupetaurus cinereus",mammals,EN,2500,4000,high
+threatened-15,"Tibetan Wolf","Canis lupus chanco",mammals,LC,3000,5000,low
+threatened-16,"Western Tragopan","Tragopan melanocephalus",birds,VU,2400,3600,medium
+threatened-17,"Kashmir Flycatcher","Ficedula subrubra",birds,VU,1800,3000,medium
+threatened-18,"White-rumped Vulture","Gyps bengalensis",birds,CR,300,1500,critical
+threatened-19,"Slender-billed Vulture","Gyps tenuirostris",birds,CR,300,1500,critical
+threatened-20,"Red-headed Vulture","Sarcogyps calvus",birds,CR,300,2000,critical
+threatened-21,"Egyptian Vulture","Neophron percnopterus",birds,EN,300,2500,high
+threatened-22,"Steppe Eagle","Aquila nipalensis",birds,EN,1000,4000,high
+threatened-23,"Pallas's Fish Eagle","Haliaeetus leucoryphus",birds,EN,1000,3000,high
+threatened-24,"Saker Falcon","Falco cherrug",birds,EN,3000,5000,high
+threatened-25,"White-headed Duck","Oxyura leucocephala",birds,EN,1500,2000,high
+threatened-26,"Baer's Pochard","Aythya baeri",birds,CR,1500,2000,critical
+threatened-27,"Black-bellied Tern","Sterna acuticauda",birds,EN,300,1000,high
+threatened-28,"Cheer Pheasant","Catreus wallichii",birds,VU,1500,3000,medium
+threatened-29,"MacQueen's Bustard","Chlamydotis macqueenii",birds,VU,300,1500,medium
+threatened-30,"Marbled Teal","Marmaronetta angustirostris",birds,VU,1500,2000,medium
+threatened-31,"Greater Spotted Eagle","Clanga clanga",birds,VU,1500,3000,medium
+threatened-32,"Eastern Imperial Eagle","Aquila heliaca",birds,VU,1000,3000,medium
+threatened-33,"Sarus Crane","Antigone antigone",birds,VU,300,1000,medium
+threatened-34,"Black-necked Crane","Grus nigricollis",birds,NT,4000,5000,low
+threatened-35,"Ferruginous Duck","Aythya nyroca",birds,NT,1500,2000,low
+threatened-36,"Tytler's Leaf Warbler","Phylloscopus tytleri",birds,NT,2000,3500,low
+threatened-37,"Himalayan Monal","Lophophorus impejanus",birds,LC,2500,4500,low
+threatened-38,"Koklass Pheasant","Pucrasia macrolopha",birds,LC,2000,3500,low
+threatened-39,"Ibisbill","Ibidorhyncha struthersii",birds,LC,2000,4000,low
+threatened-40,"Kashmir Nuthatch","Sitta cashmirensis",birds,LC,2000,3000,low
+threatened-41,"Golden Mahseer","Tor putitora",fish,EN,300,1500,high
+threatened-42,"Kashmir Catfish","Glyptothorax kashmirensis",fish,CR,1000,2000,critical
+threatened-43,"Alwan Snow Trout","Schizothorax richardsonii",fish,VU,500,3000,medium
+threatened-44,"Helicopter Catfish","Wallago attu",fish,VU,300,1000,medium
+threatened-45,"Chirruh Snow Trout","Schizothorax esocinus",fish,LC,1500,3000,low
+threatened-46,"Kuth / Costus","Saussurea costus",medicinal-plants,CR,2500,3500,critical
+threatened-47,"Indian Aconite / Atis","Aconitum heterophyllum",medicinal-plants,EN,3000,4000,high
+threatened-48,"Himalayan Mayapple","Podophyllum hexandrum",medicinal-plants,EN,2500,4000,high
+threatened-49,"Salam Panja","Dactylorhiza hatagirea",medicinal-plants,EN,2800,4000,high
+threatened-50,"Kutki / Kour","Picrorhiza kurrooa",medicinal-plants,EN,3000,4500,high
+threatened-51,"Spikenard / Jatamansi","Nardostachys jatamansi",medicinal-plants,CR,3500,5000,critical
+threatened-52,"Himalayan Yew","Taxus wallichiana",medicinal-plants,EN,2000,3500,high
+threatened-53,"Himalayan Fritillary","Fritillaria roylei",medicinal-plants,VU,2500,4000,medium
+threatened-54,"Himalayan Trillium","Trillium govanianum",medicinal-plants,EN,2500,3500,high
+threatened-55,"Himalayan Blue Poppy","Meconopsis aculeata",plants,EN,3500,4500,high
+threatened-56,"Chora / Angelica","Angelica glauca",medicinal-plants,EN,2500,3500,high
+threatened-57,"Himalayan Rhubarb","Rheum australe",medicinal-plants,VU,3000,4500,medium
+threatened-58,"Gaozaban","Arnebia benthamii",medicinal-plants,EN,3000,4000,high
+threatened-59,"Black Cumin","Bunium persicum",medicinal-plants,VU,2000,3000,medium
+threatened-60,"Himalayan Yam","Dioscorea deltoidea",medicinal-plants,EN,1500,3000,high
+threatened-61,"Yellow Colchicum","Colchicum luteum",medicinal-plants,VU,1500,3000,medium
+threatened-62,"Indian Gentian","Gentiana kurroo",medicinal-plants,CR,1500,3000,critical
+threatened-63,"Somlata / Ephedra","Ephedra gerardiana",medicinal-plants,NT,2500,4500,low
+threatened-64,"Kashmir Sage","Artemisia amygdalina",medicinal-plants,CR,2000,3000,critical
+threatened-65,"Brahma Kamal","Saussurea obvallata",plants,LC,3500,5000,low
+threatened-66,"Snow Lotus","Saussurea simpsoniana",plants,LC,4500,5500,low
+threatened-67,"Dhup","Jurinea macrocephala",medicinal-plants,LC,3000,4000,low
+threatened-68,"Himalayan Elm","Ulmus wallichiana",plants,VU,2000,3000,medium
+threatened-69,"Chirayita","Swertia chirayita",medicinal-plants,VU,1500,3000,medium
+threatened-70,"Poison Aconite","Aconitum chasmanthum",medicinal-plants,CR,2500,4000,critical
+threatened-71,"Himalayan Birch","Betula utilis",plants,LC,3000,4000,low
+threatened-72,"Chilgoza Pine","Pinus gerardiana",plants,NT,2000,3000,low
+threatened-73,"Whorled Solomon's Seal","Polygonatum verticillatum",medicinal-plants,LC,2500,3500,low
+threatened-74,"Tendril Solomon's Seal","Polygonatum cirrhifolium",medicinal-plants,LC,2500,3500,low
+threatened-75,"Himalayan Paris","Paris polyphylla",medicinal-plants,VU,2000,3000,medium
+threatened-76,"Violet Aconite","Aconitum violaceum",medicinal-plants,VU,3000,4500,medium
+threatened-77,"Indian Valerian","Valeriana jatamansi",medicinal-plants,LC,1500,3000,low
+threatened-78,"Himalayan Bergenia","Bergenia ciliata",medicinal-plants,LC,1500,3000,low
+threatened-79,"Giant Fennel","Ferula jaeschkeana",medicinal-plants,LC,2000,3000,low
+threatened-80,"Pushkarmool","Inula racemosa",medicinal-plants,VU,2000,3000,medium
+threatened-81,"Himalayan Cherry","Prunus prostrata",plants,LC,2500,3500,low
+threatened-82,"Webb's Rose","Rosa webbiana",plants,LC,2000,3500,low
+threatened-83,"Dwarf Rhododendron","Rhododendron anthopogon",plants,LC,3500,4500,low
+threatened-84,"Bell Rhododendron","Rhododendron campanulatum",plants,LC,3000,4000,low
+threatened-85,"Kashmir Rowan","Sorbus kashmirica",plants,LC,2500,3500,low
+threatened-86,"Himalayan Juniper","Juniperus semiglobosa",plants,LC,3000,4500,low
+threatened-87,"Kashmir Corydalis","Corydalis cashmeriana",plants,LC,3000,4000,low
+threatened-88,"Snow Columbine","Aquilegia nivalis",plants,LC,3000,4000,low
+threatened-89,"Deodar Cedar","Cedrus deodara",plants,LC,1500,2500,low

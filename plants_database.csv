@@ -1,0 +1,1835 @@
+Species ID,Common Name,Scientific Name,Family,Category,Status,Elevation Min,Elevation Max,Sensitivity
+flora-1,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1","Plant Family","Herb/Shrub",CR,1119,2636,critical
+flora-2,"Saw-wort (Saussurea sp.)","Saussurea specio-2","Plant Family","Alpine Herb",LC,2121,4447,low
+flora-3,"Fescue Grass (Festuca sp.)","Festuca specio-3","Plant Family","Grass",LC,1422,3265,low
+flora-4,"Bluegrass (Poa sp.)","Poa specio-4","Plant Family","Grass",LC,1248,3552,low
+flora-5,"Feather Grass (Stipa sp.)","Stipa specio-5","Plant Family","Grass",LC,1133,2372,low
+flora-6,"Cinquefoil (Potentilla sp.)","Potentilla specio-6","Plant Family","Herb",LC,1610,3002,low
+flora-7,"Wild Rose (Rosa sp.)","Rosa specio-7","Plant Family","Shrub",NT,1382,2608,low
+flora-8,"Bramble/Raspberry (Rubus sp.)","Rubus specio-8","Plant Family","Shrub/Climber",LC,1000,2923,low
+flora-9,"Primrose (Primula sp.)","Primula specio-9","Plant Family","Alpine Herb",LC,2306,4117,low
+flora-10,"Rock Jasmine (Androsace sp.)","Androsace specio-10","Plant Family","Alpine Herb",LC,2209,3396,low
+flora-11,"Gentian (Gentiana sp.)","Gentiana specio-11","Plant Family","Alpine Herb",LC,2284,4174,low
+flora-12,"Catmint (Nepeta sp.)","Nepeta specio-12","Plant Family","Herb",LC,1283,2022,low
+flora-13,"Sage (Salvia sp.)","Salvia specio-13","Plant Family","Herb",LC,1023,1644,low
+flora-14,"Milkvetch (Astragalus sp.)","Astragalus specio-14","Plant Family","Herb/Shrub",LC,1172,1991,low
+flora-15,"Sedge (Carex sp.)","Carex specio-15","Plant Family","Sedge",LC,1000,3037,low
+flora-16,"Bog Sedge (Kobresia sp.)","Kobresia specio-16","Plant Family","Sedge",LC,2954,3897,low
+flora-17,"Willow (Salix sp.)","Salix specio-17","Plant Family","Tree/Shrub",LC,1000,1850,low
+flora-18,"Corydalis (Corydalis sp.)","Corydalis specio-18","Plant Family","Herb",LC,1537,2138,low
+flora-19,"Lousewort (Pedicularis sp.)","Pedicularis specio-19","Plant Family","Herb",LC,2163,3864,low
+flora-20,"Campion (Silene sp.)","Silene specio-20","Plant Family","Herb",LC,1049,3486,low
+flora-21,"Willowherb (Epilobium sp.)","Epilobium specio-21","Plant Family","Herb",LC,1122,2037,low
+flora-22,"Buttercup (Ranunculus sp.)","Ranunculus specio-22","Plant Family","Herb",LC,1000,1524,low
+flora-23,"Monkshood (Aconitum sp.)","Aconitum specio-23","Plant Family","Herb",LC,1242,1825,low
+flora-24,"Windflower (Anemone sp.)","Anemone specio-24","Plant Family","Herb",LC,1522,3627,low
+flora-25,"Knotweed (Polygonum sp.)","Polygonum specio-25","Plant Family","Herb",LC,1000,1563,low
+flora-26,"Barberry (Berberis sp.)","Berberis specio-26","Plant Family","Shrub",LC,1447,2138,low
+flora-27,"Rhododendron (Rhododendron sp.)","Rhododendron specio-27","Plant Family","Shrub/Tree",LC,1496,2523,low
+flora-28,"Pine (Pinus sp.)","Pinus specio-28","Plant Family","Tree",LC,1000,2355,low
+flora-29,"Fir (Abies sp.)","Abies specio-29","Plant Family","Tree",LC,1752,2838,low
+flora-30,"Spruce (Picea sp.)","Picea specio-30","Plant Family","Tree",LC,1626,2617,low
+flora-31,"Juniper (Juniperus sp.)","Juniperus specio-31","Plant Family","Tree/Shrub",LC,1352,3233,low
+flora-32,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-32","Plant Family","Herb/Shrub",LC,1258,2672,low
+flora-33,"Saw-wort (Saussurea sp.)","Saussurea specio-33","Plant Family","Alpine Herb",LC,1499,2045,low
+flora-34,"Fescue Grass (Festuca sp.)","Festuca specio-34","Plant Family","Grass",LC,1397,3792,low
+flora-35,"Bluegrass (Poa sp.)","Poa specio-35","Plant Family","Grass",VU,1211,2082,medium
+flora-36,"Feather Grass (Stipa sp.)","Stipa specio-36","Plant Family","Grass",LC,2143,4433,low
+flora-37,"Cinquefoil (Potentilla sp.)","Potentilla specio-37","Plant Family","Herb",LC,1737,2785,low
+flora-38,"Wild Rose (Rosa sp.)","Rosa specio-38","Plant Family","Shrub",NT,1066,3559,low
+flora-39,"Bramble/Raspberry (Rubus sp.)","Rubus specio-39","Plant Family","Shrub/Climber",NT,1000,2755,low
+flora-40,"Primrose (Primula sp.)","Primula specio-40","Plant Family","Alpine Herb",LC,2016,3530,low
+flora-41,"Rock Jasmine (Androsace sp.)","Androsace specio-41","Plant Family","Alpine Herb",LC,1463,2180,low
+flora-42,"Gentian (Gentiana sp.)","Gentiana specio-42","Plant Family","Alpine Herb",LC,1011,3395,low
+flora-43,"Catmint (Nepeta sp.)","Nepeta specio-43","Plant Family","Herb",LC,1097,3299,low
+flora-44,"Sage (Salvia sp.)","Salvia specio-44","Plant Family","Herb",LC,1350,2452,low
+flora-45,"Milkvetch (Astragalus sp.)","Astragalus specio-45","Plant Family","Herb/Shrub",NT,1096,1906,low
+flora-46,"Sedge (Carex sp.)","Carex specio-46","Plant Family","Sedge",LC,1000,2861,low
+flora-47,"Bog Sedge (Kobresia sp.)","Kobresia specio-47","Plant Family","Sedge",LC,1058,1665,low
+flora-48,"Willow (Salix sp.)","Salix specio-48","Plant Family","Tree/Shrub",LC,1000,2123,low
+flora-49,"Corydalis (Corydalis sp.)","Corydalis specio-49","Plant Family","Herb",LC,1243,2976,low
+flora-50,"Lousewort (Pedicularis sp.)","Pedicularis specio-50","Plant Family","Herb",LC,1837,4223,low
+flora-51,"Campion (Silene sp.)","Silene specio-51","Plant Family","Herb",LC,1288,1865,low
+flora-52,"Willowherb (Epilobium sp.)","Epilobium specio-52","Plant Family","Herb",LC,1484,3406,low
+flora-53,"Buttercup (Ranunculus sp.)","Ranunculus specio-53","Plant Family","Herb",LC,1000,2403,low
+flora-54,"Monkshood (Aconitum sp.)","Aconitum specio-54","Plant Family","Herb",LC,1148,3469,low
+flora-55,"Windflower (Anemone sp.)","Anemone specio-55","Plant Family","Herb",LC,1408,3850,low
+flora-56,"Knotweed (Polygonum sp.)","Polygonum specio-56","Plant Family","Herb",VU,1000,2734,medium
+flora-57,"Barberry (Berberis sp.)","Berberis specio-57","Plant Family","Shrub",LC,1432,3374,low
+flora-58,"Rhododendron (Rhododendron sp.)","Rhododendron specio-58","Plant Family","Shrub/Tree",LC,2252,4357,low
+flora-59,"Pine (Pinus sp.)","Pinus specio-59","Plant Family","Tree",EN,1000,1523,high
+flora-60,"Fir (Abies sp.)","Abies specio-60","Plant Family","Tree",NT,1076,3207,low
+flora-61,"Spruce (Picea sp.)","Picea specio-61","Plant Family","Tree",LC,1476,3557,low
+flora-62,"Juniper (Juniperus sp.)","Juniperus specio-62","Plant Family","Tree/Shrub",LC,2453,3985,low
+flora-63,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-63","Plant Family","Herb/Shrub",VU,1152,1770,medium
+flora-64,"Saw-wort (Saussurea sp.)","Saussurea specio-64","Plant Family","Alpine Herb",NT,3033,5391,low
+flora-65,"Fescue Grass (Festuca sp.)","Festuca specio-65","Plant Family","Grass",LC,1108,2969,low
+flora-66,"Bluegrass (Poa sp.)","Poa specio-66","Plant Family","Grass",LC,1024,1968,low
+flora-67,"Feather Grass (Stipa sp.)","Stipa specio-67","Plant Family","Grass",LC,1751,2371,low
+flora-68,"Cinquefoil (Potentilla sp.)","Potentilla specio-68","Plant Family","Herb",LC,1180,1778,low
+flora-69,"Wild Rose (Rosa sp.)","Rosa specio-69","Plant Family","Shrub",LC,1243,2552,low
+flora-70,"Bramble/Raspberry (Rubus sp.)","Rubus specio-70","Plant Family","Shrub/Climber",LC,1000,3355,low
+flora-71,"Primrose (Primula sp.)","Primula specio-71","Plant Family","Alpine Herb",VU,1855,2502,medium
+flora-72,"Rock Jasmine (Androsace sp.)","Androsace specio-72","Plant Family","Alpine Herb",NT,1937,3625,low
+flora-73,"Gentian (Gentiana sp.)","Gentiana specio-73","Plant Family","Alpine Herb",LC,1683,2732,low
+flora-74,"Catmint (Nepeta sp.)","Nepeta specio-74","Plant Family","Herb",LC,1071,1947,low
+flora-75,"Sage (Salvia sp.)","Salvia specio-75","Plant Family","Herb",LC,1278,3092,low
+flora-76,"Milkvetch (Astragalus sp.)","Astragalus specio-76","Plant Family","Herb/Shrub",LC,1320,3646,low
+flora-77,"Sedge (Carex sp.)","Carex specio-77","Plant Family","Sedge",LC,1000,3262,low
+flora-78,"Bog Sedge (Kobresia sp.)","Kobresia specio-78","Plant Family","Sedge",LC,1667,3484,low
+flora-79,"Willow (Salix sp.)","Salix specio-79","Plant Family","Tree/Shrub",LC,1000,1998,low
+flora-80,"Corydalis (Corydalis sp.)","Corydalis specio-80","Plant Family","Herb",LC,1474,3552,low
+flora-81,"Lousewort (Pedicularis sp.)","Pedicularis specio-81","Plant Family","Herb",LC,1296,2094,low
+flora-82,"Campion (Silene sp.)","Silene specio-82","Plant Family","Herb",LC,1225,2842,low
+flora-83,"Willowherb (Epilobium sp.)","Epilobium specio-83","Plant Family","Herb",LC,1187,3039,low
+flora-84,"Buttercup (Ranunculus sp.)","Ranunculus specio-84","Plant Family","Herb",LC,1000,2432,low
+flora-85,"Monkshood (Aconitum sp.)","Aconitum specio-85","Plant Family","Herb",LC,2335,3359,low
+flora-86,"Windflower (Anemone sp.)","Anemone specio-86","Plant Family","Herb",LC,1549,2645,low
+flora-87,"Knotweed (Polygonum sp.)","Polygonum specio-87","Plant Family","Herb",LC,1000,2348,low
+flora-88,"Barberry (Berberis sp.)","Berberis specio-88","Plant Family","Shrub",LC,1232,2639,low
+flora-89,"Rhododendron (Rhododendron sp.)","Rhododendron specio-89","Plant Family","Shrub/Tree",LC,2443,4276,low
+flora-90,"Pine (Pinus sp.)","Pinus specio-90","Plant Family","Tree",LC,1000,3435,low
+flora-91,"Fir (Abies sp.)","Abies specio-91","Plant Family","Tree",LC,1272,1996,low
+flora-92,"Spruce (Picea sp.)","Picea specio-92","Plant Family","Tree",LC,1681,3033,low
+flora-93,"Juniper (Juniperus sp.)","Juniperus specio-93","Plant Family","Tree/Shrub",LC,2306,3005,low
+flora-94,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-94","Plant Family","Herb/Shrub",NT,1051,3165,low
+flora-95,"Saw-wort (Saussurea sp.)","Saussurea specio-95","Plant Family","Alpine Herb",LC,1138,2065,low
+flora-96,"Fescue Grass (Festuca sp.)","Festuca specio-96","Plant Family","Grass",LC,1193,2014,low
+flora-97,"Bluegrass (Poa sp.)","Poa specio-97","Plant Family","Grass",LC,1279,3363,low
+flora-98,"Feather Grass (Stipa sp.)","Stipa specio-98","Plant Family","Grass",LC,2368,4706,low
+flora-99,"Cinquefoil (Potentilla sp.)","Potentilla specio-99","Plant Family","Herb",LC,1532,3743,low
+flora-100,"Wild Rose (Rosa sp.)","Rosa specio-100","Plant Family","Shrub",LC,1351,3304,low
+flora-101,"Bramble/Raspberry (Rubus sp.)","Rubus specio-101","Plant Family","Shrub/Climber",LC,1000,2695,low
+flora-102,"Primrose (Primula sp.)","Primula specio-102","Plant Family","Alpine Herb",LC,1290,2354,low
+flora-103,"Rock Jasmine (Androsace sp.)","Androsace specio-103","Plant Family","Alpine Herb",LC,2040,2921,low
+flora-104,"Gentian (Gentiana sp.)","Gentiana specio-104","Plant Family","Alpine Herb",LC,1800,2737,low
+flora-105,"Catmint (Nepeta sp.)","Nepeta specio-105","Plant Family","Herb",LC,1005,2819,low
+flora-106,"Sage (Salvia sp.)","Salvia specio-106","Plant Family","Herb",NT,1469,3580,low
+flora-107,"Milkvetch (Astragalus sp.)","Astragalus specio-107","Plant Family","Herb/Shrub",LC,1185,3025,low
+flora-108,"Sedge (Carex sp.)","Carex specio-108","Plant Family","Sedge",NT,1000,3329,low
+flora-109,"Bog Sedge (Kobresia sp.)","Kobresia specio-109","Plant Family","Sedge",VU,1254,3152,medium
+flora-110,"Willow (Salix sp.)","Salix specio-110","Plant Family","Tree/Shrub",NT,1000,1854,low
+flora-111,"Corydalis (Corydalis sp.)","Corydalis specio-111","Plant Family","Herb",LC,1874,3275,low
+flora-112,"Lousewort (Pedicularis sp.)","Pedicularis specio-112","Plant Family","Herb",LC,1180,2848,low
+flora-113,"Campion (Silene sp.)","Silene specio-113","Plant Family","Herb",LC,1472,2559,low
+flora-114,"Willowherb (Epilobium sp.)","Epilobium specio-114","Plant Family","Herb",LC,1340,2967,low
+flora-115,"Buttercup (Ranunculus sp.)","Ranunculus specio-115","Plant Family","Herb",CR,1000,2294,critical
+flora-116,"Monkshood (Aconitum sp.)","Aconitum specio-116","Plant Family","Herb",LC,1751,2447,low
+flora-117,"Windflower (Anemone sp.)","Anemone specio-117","Plant Family","Herb",LC,1834,2969,low
+flora-118,"Knotweed (Polygonum sp.)","Polygonum specio-118","Plant Family","Herb",LC,1000,1895,low
+flora-119,"Barberry (Berberis sp.)","Berberis specio-119","Plant Family","Shrub",LC,1287,1800,low
+flora-120,"Rhododendron (Rhododendron sp.)","Rhododendron specio-120","Plant Family","Shrub/Tree",NT,1992,3949,low
+flora-121,"Pine (Pinus sp.)","Pinus specio-121","Plant Family","Tree",LC,1000,1682,low
+flora-122,"Fir (Abies sp.)","Abies specio-122","Plant Family","Tree",LC,1648,2356,low
+flora-123,"Spruce (Picea sp.)","Picea specio-123","Plant Family","Tree",LC,1174,2364,low
+flora-124,"Juniper (Juniperus sp.)","Juniperus specio-124","Plant Family","Tree/Shrub",LC,1856,2603,low
+flora-125,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-125","Plant Family","Herb/Shrub",LC,1101,1759,low
+flora-126,"Saw-wort (Saussurea sp.)","Saussurea specio-126","Plant Family","Alpine Herb",LC,1800,2758,low
+flora-127,"Fescue Grass (Festuca sp.)","Festuca specio-127","Plant Family","Grass",LC,1416,2726,low
+flora-128,"Bluegrass (Poa sp.)","Poa specio-128","Plant Family","Grass",LC,1367,2880,low
+flora-129,"Feather Grass (Stipa sp.)","Stipa specio-129","Plant Family","Grass",LC,2033,3556,low
+flora-130,"Cinquefoil (Potentilla sp.)","Potentilla specio-130","Plant Family","Herb",LC,1201,3042,low
+flora-131,"Wild Rose (Rosa sp.)","Rosa specio-131","Plant Family","Shrub",LC,1233,2843,low
+flora-132,"Bramble/Raspberry (Rubus sp.)","Rubus specio-132","Plant Family","Shrub/Climber",CR,1000,3466,critical
+flora-133,"Primrose (Primula sp.)","Primula specio-133","Plant Family","Alpine Herb",LC,1115,3533,low
+flora-134,"Rock Jasmine (Androsace sp.)","Androsace specio-134","Plant Family","Alpine Herb",NT,2179,3521,low
+flora-135,"Gentian (Gentiana sp.)","Gentiana specio-135","Plant Family","Alpine Herb",NT,2484,3987,low
+flora-136,"Catmint (Nepeta sp.)","Nepeta specio-136","Plant Family","Herb",LC,1274,2518,low
+flora-137,"Sage (Salvia sp.)","Salvia specio-137","Plant Family","Herb",LC,1266,3750,low
+flora-138,"Milkvetch (Astragalus sp.)","Astragalus specio-138","Plant Family","Herb/Shrub",LC,1212,3517,low
+flora-139,"Sedge (Carex sp.)","Carex specio-139","Plant Family","Sedge",LC,1000,2734,low
+flora-140,"Bog Sedge (Kobresia sp.)","Kobresia specio-140","Plant Family","Sedge",LC,2690,4126,low
+flora-141,"Willow (Salix sp.)","Salix specio-141","Plant Family","Tree/Shrub",NT,1000,3215,low
+flora-142,"Corydalis (Corydalis sp.)","Corydalis specio-142","Plant Family","Herb",CR,1866,4247,critical
+flora-143,"Lousewort (Pedicularis sp.)","Pedicularis specio-143","Plant Family","Herb",LC,2169,2830,low
+flora-144,"Campion (Silene sp.)","Silene specio-144","Plant Family","Herb",LC,1459,2098,low
+flora-145,"Willowherb (Epilobium sp.)","Epilobium specio-145","Plant Family","Herb",LC,1433,3366,low
+flora-146,"Buttercup (Ranunculus sp.)","Ranunculus specio-146","Plant Family","Herb",NT,1000,2232,low
+flora-147,"Monkshood (Aconitum sp.)","Aconitum specio-147","Plant Family","Herb",LC,2362,4050,low
+flora-148,"Windflower (Anemone sp.)","Anemone specio-148","Plant Family","Herb",NT,1421,3140,low
+flora-149,"Knotweed (Polygonum sp.)","Polygonum specio-149","Plant Family","Herb",LC,1000,2057,low
+flora-150,"Barberry (Berberis sp.)","Berberis specio-150","Plant Family","Shrub",LC,1333,2818,low
+flora-151,"Rhododendron (Rhododendron sp.)","Rhododendron specio-151","Plant Family","Shrub/Tree",LC,1459,2492,low
+flora-152,"Pine (Pinus sp.)","Pinus specio-152","Plant Family","Tree",LC,1000,2264,low
+flora-153,"Fir (Abies sp.)","Abies specio-153","Plant Family","Tree",LC,1235,3665,low
+flora-154,"Spruce (Picea sp.)","Picea specio-154","Plant Family","Tree",LC,1346,2488,low
+flora-155,"Juniper (Juniperus sp.)","Juniperus specio-155","Plant Family","Tree/Shrub",LC,1887,3682,low
+flora-156,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-156","Plant Family","Herb/Shrub",NT,1124,3564,low
+flora-157,"Saw-wort (Saussurea sp.)","Saussurea specio-157","Plant Family","Alpine Herb",VU,3086,5337,medium
+flora-158,"Fescue Grass (Festuca sp.)","Festuca specio-158","Plant Family","Grass",LC,1251,3511,low
+flora-159,"Bluegrass (Poa sp.)","Poa specio-159","Plant Family","Grass",LC,1122,2954,low
+flora-160,"Feather Grass (Stipa sp.)","Stipa specio-160","Plant Family","Grass",LC,2498,4232,low
+flora-161,"Cinquefoil (Potentilla sp.)","Potentilla specio-161","Plant Family","Herb",LC,1560,3664,low
+flora-162,"Wild Rose (Rosa sp.)","Rosa specio-162","Plant Family","Shrub",VU,1247,3149,medium
+flora-163,"Bramble/Raspberry (Rubus sp.)","Rubus specio-163","Plant Family","Shrub/Climber",LC,1000,2229,low
+flora-164,"Primrose (Primula sp.)","Primula specio-164","Plant Family","Alpine Herb",VU,2420,4131,medium
+flora-165,"Rock Jasmine (Androsace sp.)","Androsace specio-165","Plant Family","Alpine Herb",EN,1038,1925,high
+flora-166,"Gentian (Gentiana sp.)","Gentiana specio-166","Plant Family","Alpine Herb",LC,1581,4014,low
+flora-167,"Catmint (Nepeta sp.)","Nepeta specio-167","Plant Family","Herb",LC,1477,2944,low
+flora-168,"Sage (Salvia sp.)","Salvia specio-168","Plant Family","Herb",LC,1186,3357,low
+flora-169,"Milkvetch (Astragalus sp.)","Astragalus specio-169","Plant Family","Herb/Shrub",LC,1287,3504,low
+flora-170,"Sedge (Carex sp.)","Carex specio-170","Plant Family","Sedge",LC,1000,2110,low
+flora-171,"Bog Sedge (Kobresia sp.)","Kobresia specio-171","Plant Family","Sedge",LC,2525,3983,low
+flora-172,"Willow (Salix sp.)","Salix specio-172","Plant Family","Tree/Shrub",LC,1000,2628,low
+flora-173,"Corydalis (Corydalis sp.)","Corydalis specio-173","Plant Family","Herb",VU,1774,2713,medium
+flora-174,"Lousewort (Pedicularis sp.)","Pedicularis specio-174","Plant Family","Herb",LC,1046,1662,low
+flora-175,"Campion (Silene sp.)","Silene specio-175","Plant Family","Herb",LC,1166,2836,low
+flora-176,"Willowherb (Epilobium sp.)","Epilobium specio-176","Plant Family","Herb",LC,1463,2503,low
+flora-177,"Buttercup (Ranunculus sp.)","Ranunculus specio-177","Plant Family","Herb",LC,1000,1776,low
+flora-178,"Monkshood (Aconitum sp.)","Aconitum specio-178","Plant Family","Herb",LC,1927,2848,low
+flora-179,"Windflower (Anemone sp.)","Anemone specio-179","Plant Family","Herb",LC,1133,2130,low
+flora-180,"Knotweed (Polygonum sp.)","Polygonum specio-180","Plant Family","Herb",LC,1000,2198,low
+flora-181,"Barberry (Berberis sp.)","Berberis specio-181","Plant Family","Shrub",LC,1440,3751,low
+flora-182,"Rhododendron (Rhododendron sp.)","Rhododendron specio-182","Plant Family","Shrub/Tree",LC,1650,2605,low
+flora-183,"Pine (Pinus sp.)","Pinus specio-183","Plant Family","Tree",LC,1000,2970,low
+flora-184,"Fir (Abies sp.)","Abies specio-184","Plant Family","Tree",LC,1557,2436,low
+flora-185,"Spruce (Picea sp.)","Picea specio-185","Plant Family","Tree",LC,1760,3100,low
+flora-186,"Juniper (Juniperus sp.)","Juniperus specio-186","Plant Family","Tree/Shrub",LC,2344,3866,low
+flora-187,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-187","Plant Family","Herb/Shrub",LC,1059,1639,low
+flora-188,"Saw-wort (Saussurea sp.)","Saussurea specio-188","Plant Family","Alpine Herb",LC,1877,3443,low
+flora-189,"Fescue Grass (Festuca sp.)","Festuca specio-189","Plant Family","Grass",LC,1239,2439,low
+flora-190,"Bluegrass (Poa sp.)","Poa specio-190","Plant Family","Grass",VU,1133,2878,medium
+flora-191,"Feather Grass (Stipa sp.)","Stipa specio-191","Plant Family","Grass",LC,2083,4180,low
+flora-192,"Cinquefoil (Potentilla sp.)","Potentilla specio-192","Plant Family","Herb",LC,1652,2642,low
+flora-193,"Wild Rose (Rosa sp.)","Rosa specio-193","Plant Family","Shrub",LC,1109,2195,low
+flora-194,"Bramble/Raspberry (Rubus sp.)","Rubus specio-194","Plant Family","Shrub/Climber",LC,1000,1701,low
+flora-195,"Primrose (Primula sp.)","Primula specio-195","Plant Family","Alpine Herb",LC,1405,2587,low
+flora-196,"Rock Jasmine (Androsace sp.)","Androsace specio-196","Plant Family","Alpine Herb",NT,1357,3637,low
+flora-197,"Gentian (Gentiana sp.)","Gentiana specio-197","Plant Family","Alpine Herb",LC,1863,3609,low
+flora-198,"Catmint (Nepeta sp.)","Nepeta specio-198","Plant Family","Herb",LC,1184,3310,low
+flora-199,"Sage (Salvia sp.)","Salvia specio-199","Plant Family","Herb",VU,1281,2616,medium
+flora-200,"Milkvetch (Astragalus sp.)","Astragalus specio-200","Plant Family","Herb/Shrub",LC,1482,2442,low
+flora-201,"Sedge (Carex sp.)","Carex specio-201","Plant Family","Sedge",LC,1000,3103,low
+flora-202,"Bog Sedge (Kobresia sp.)","Kobresia specio-202","Plant Family","Sedge",LC,1853,2469,low
+flora-203,"Willow (Salix sp.)","Salix specio-203","Plant Family","Tree/Shrub",LC,1000,2796,low
+flora-204,"Corydalis (Corydalis sp.)","Corydalis specio-204","Plant Family","Herb",LC,1285,1955,low
+flora-205,"Lousewort (Pedicularis sp.)","Pedicularis specio-205","Plant Family","Herb",VU,1580,3814,medium
+flora-206,"Campion (Silene sp.)","Silene specio-206","Plant Family","Herb",EN,1202,1748,high
+flora-207,"Willowherb (Epilobium sp.)","Epilobium specio-207","Plant Family","Herb",LC,1236,2728,low
+flora-208,"Buttercup (Ranunculus sp.)","Ranunculus specio-208","Plant Family","Herb",LC,1000,3294,low
+flora-209,"Monkshood (Aconitum sp.)","Aconitum specio-209","Plant Family","Herb",LC,1826,2705,low
+flora-210,"Windflower (Anemone sp.)","Anemone specio-210","Plant Family","Herb",LC,1345,3148,low
+flora-211,"Knotweed (Polygonum sp.)","Polygonum specio-211","Plant Family","Herb",LC,1000,2042,low
+flora-212,"Barberry (Berberis sp.)","Berberis specio-212","Plant Family","Shrub",LC,1344,2733,low
+flora-213,"Rhododendron (Rhododendron sp.)","Rhododendron specio-213","Plant Family","Shrub/Tree",VU,1773,3517,medium
+flora-214,"Pine (Pinus sp.)","Pinus specio-214","Plant Family","Tree",LC,1000,2937,low
+flora-215,"Fir (Abies sp.)","Abies specio-215","Plant Family","Tree",LC,1750,2546,low
+flora-216,"Spruce (Picea sp.)","Picea specio-216","Plant Family","Tree",LC,1497,2361,low
+flora-217,"Juniper (Juniperus sp.)","Juniperus specio-217","Plant Family","Tree/Shrub",VU,1801,3657,medium
+flora-218,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-218","Plant Family","Herb/Shrub",LC,1108,1713,low
+flora-219,"Saw-wort (Saussurea sp.)","Saussurea specio-219","Plant Family","Alpine Herb",LC,1859,4054,low
+flora-220,"Fescue Grass (Festuca sp.)","Festuca specio-220","Plant Family","Grass",LC,1187,3220,low
+flora-221,"Bluegrass (Poa sp.)","Poa specio-221","Plant Family","Grass",LC,1060,2789,low
+flora-222,"Feather Grass (Stipa sp.)","Stipa specio-222","Plant Family","Grass",NT,1753,3951,low
+flora-223,"Cinquefoil (Potentilla sp.)","Potentilla specio-223","Plant Family","Herb",LC,1598,3566,low
+flora-224,"Wild Rose (Rosa sp.)","Rosa specio-224","Plant Family","Shrub",LC,1354,2374,low
+flora-225,"Bramble/Raspberry (Rubus sp.)","Rubus specio-225","Plant Family","Shrub/Climber",CR,1000,1783,critical
+flora-226,"Primrose (Primula sp.)","Primula specio-226","Plant Family","Alpine Herb",EN,1283,3138,high
+flora-227,"Rock Jasmine (Androsace sp.)","Androsace specio-227","Plant Family","Alpine Herb",EN,2519,3311,high
+flora-228,"Gentian (Gentiana sp.)","Gentiana specio-228","Plant Family","Alpine Herb",LC,2023,4333,low
+flora-229,"Catmint (Nepeta sp.)","Nepeta specio-229","Plant Family","Herb",LC,1481,3505,low
+flora-230,"Sage (Salvia sp.)","Salvia specio-230","Plant Family","Herb",LC,1109,2271,low
+flora-231,"Milkvetch (Astragalus sp.)","Astragalus specio-231","Plant Family","Herb/Shrub",LC,1080,3360,low
+flora-232,"Sedge (Carex sp.)","Carex specio-232","Plant Family","Sedge",LC,1000,2812,low
+flora-233,"Bog Sedge (Kobresia sp.)","Kobresia specio-233","Plant Family","Sedge",NT,1391,1986,low
+flora-234,"Willow (Salix sp.)","Salix specio-234","Plant Family","Tree/Shrub",LC,1000,2697,low
+flora-235,"Corydalis (Corydalis sp.)","Corydalis specio-235","Plant Family","Herb",NT,1111,2214,low
+flora-236,"Lousewort (Pedicularis sp.)","Pedicularis specio-236","Plant Family","Herb",LC,1962,4230,low
+flora-237,"Campion (Silene sp.)","Silene specio-237","Plant Family","Herb",LC,1262,1863,low
+flora-238,"Willowherb (Epilobium sp.)","Epilobium specio-238","Plant Family","Herb",LC,1121,1947,low
+flora-239,"Buttercup (Ranunculus sp.)","Ranunculus specio-239","Plant Family","Herb",LC,1000,2184,low
+flora-240,"Monkshood (Aconitum sp.)","Aconitum specio-240","Plant Family","Herb",LC,1154,3124,low
+flora-241,"Windflower (Anemone sp.)","Anemone specio-241","Plant Family","Herb",LC,1973,3822,low
+flora-242,"Knotweed (Polygonum sp.)","Polygonum specio-242","Plant Family","Herb",LC,1000,2196,low
+flora-243,"Barberry (Berberis sp.)","Berberis specio-243","Plant Family","Shrub",LC,1177,2233,low
+flora-244,"Rhododendron (Rhododendron sp.)","Rhododendron specio-244","Plant Family","Shrub/Tree",LC,1774,3928,low
+flora-245,"Pine (Pinus sp.)","Pinus specio-245","Plant Family","Tree",LC,1000,2058,low
+flora-246,"Fir (Abies sp.)","Abies specio-246","Plant Family","Tree",LC,1416,3504,low
+flora-247,"Spruce (Picea sp.)","Picea specio-247","Plant Family","Tree",NT,1474,3638,low
+flora-248,"Juniper (Juniperus sp.)","Juniperus specio-248","Plant Family","Tree/Shrub",CR,2203,4141,critical
+flora-249,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-249","Plant Family","Herb/Shrub",CR,1129,2674,critical
+flora-250,"Saw-wort (Saussurea sp.)","Saussurea specio-250","Plant Family","Alpine Herb",LC,3306,5232,low
+flora-251,"Fescue Grass (Festuca sp.)","Festuca specio-251","Plant Family","Grass",LC,1153,2662,low
+flora-252,"Bluegrass (Poa sp.)","Poa specio-252","Plant Family","Grass",LC,1283,2667,low
+flora-253,"Feather Grass (Stipa sp.)","Stipa specio-253","Plant Family","Grass",NT,1873,2532,low
+flora-254,"Cinquefoil (Potentilla sp.)","Potentilla specio-254","Plant Family","Herb",LC,1836,4134,low
+flora-255,"Wild Rose (Rosa sp.)","Rosa specio-255","Plant Family","Shrub",LC,1084,3366,low
+flora-256,"Bramble/Raspberry (Rubus sp.)","Rubus specio-256","Plant Family","Shrub/Climber",LC,1000,2066,low
+flora-257,"Primrose (Primula sp.)","Primula specio-257","Plant Family","Alpine Herb",LC,1415,2993,low
+flora-258,"Rock Jasmine (Androsace sp.)","Androsace specio-258","Plant Family","Alpine Herb",LC,1264,2723,low
+flora-259,"Gentian (Gentiana sp.)","Gentiana specio-259","Plant Family","Alpine Herb",LC,1295,3504,low
+flora-260,"Catmint (Nepeta sp.)","Nepeta specio-260","Plant Family","Herb",LC,1411,2051,low
+flora-261,"Sage (Salvia sp.)","Salvia specio-261","Plant Family","Herb",LC,1083,3242,low
+flora-262,"Milkvetch (Astragalus sp.)","Astragalus specio-262","Plant Family","Herb/Shrub",LC,1245,1993,low
+flora-263,"Sedge (Carex sp.)","Carex specio-263","Plant Family","Sedge",LC,1000,1932,low
+flora-264,"Bog Sedge (Kobresia sp.)","Kobresia specio-264","Plant Family","Sedge",LC,2566,3662,low
+flora-265,"Willow (Salix sp.)","Salix specio-265","Plant Family","Tree/Shrub",LC,1000,1749,low
+flora-266,"Corydalis (Corydalis sp.)","Corydalis specio-266","Plant Family","Herb",VU,1124,2456,medium
+flora-267,"Lousewort (Pedicularis sp.)","Pedicularis specio-267","Plant Family","Herb",LC,1936,3708,low
+flora-268,"Campion (Silene sp.)","Silene specio-268","Plant Family","Herb",LC,1444,3679,low
+flora-269,"Willowherb (Epilobium sp.)","Epilobium specio-269","Plant Family","Herb",NT,1492,2260,low
+flora-270,"Buttercup (Ranunculus sp.)","Ranunculus specio-270","Plant Family","Herb",LC,1000,1753,low
+flora-271,"Monkshood (Aconitum sp.)","Aconitum specio-271","Plant Family","Herb",LC,1942,2588,low
+flora-272,"Windflower (Anemone sp.)","Anemone specio-272","Plant Family","Herb",VU,1472,2793,medium
+flora-273,"Knotweed (Polygonum sp.)","Polygonum specio-273","Plant Family","Herb",LC,1000,1983,low
+flora-274,"Barberry (Berberis sp.)","Berberis specio-274","Plant Family","Shrub",LC,1291,3148,low
+flora-275,"Rhododendron (Rhododendron sp.)","Rhododendron specio-275","Plant Family","Shrub/Tree",VU,2426,4706,medium
+flora-276,"Pine (Pinus sp.)","Pinus specio-276","Plant Family","Tree",LC,1000,3101,low
+flora-277,"Fir (Abies sp.)","Abies specio-277","Plant Family","Tree",LC,1998,4125,low
+flora-278,"Spruce (Picea sp.)","Picea specio-278","Plant Family","Tree",LC,1250,1916,low
+flora-279,"Juniper (Juniperus sp.)","Juniperus specio-279","Plant Family","Tree/Shrub",LC,1651,2159,low
+flora-280,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-280","Plant Family","Herb/Shrub",LC,1306,1888,low
+flora-281,"Saw-wort (Saussurea sp.)","Saussurea specio-281","Plant Family","Alpine Herb",LC,2696,4755,low
+flora-282,"Fescue Grass (Festuca sp.)","Festuca specio-282","Plant Family","Grass",LC,1500,3298,low
+flora-283,"Bluegrass (Poa sp.)","Poa specio-283","Plant Family","Grass",LC,1111,1660,low
+flora-284,"Feather Grass (Stipa sp.)","Stipa specio-284","Plant Family","Grass",LC,2092,3242,low
+flora-285,"Cinquefoil (Potentilla sp.)","Potentilla specio-285","Plant Family","Herb",LC,1698,2678,low
+flora-286,"Wild Rose (Rosa sp.)","Rosa specio-286","Plant Family","Shrub",LC,1144,2158,low
+flora-287,"Bramble/Raspberry (Rubus sp.)","Rubus specio-287","Plant Family","Shrub/Climber",LC,1000,1664,low
+flora-288,"Primrose (Primula sp.)","Primula specio-288","Plant Family","Alpine Herb",CR,2294,3552,critical
+flora-289,"Rock Jasmine (Androsace sp.)","Androsace specio-289","Plant Family","Alpine Herb",LC,2987,5256,low
+flora-290,"Gentian (Gentiana sp.)","Gentiana specio-290","Plant Family","Alpine Herb",LC,1791,2541,low
+flora-291,"Catmint (Nepeta sp.)","Nepeta specio-291","Plant Family","Herb",EN,1451,2950,high
+flora-292,"Sage (Salvia sp.)","Salvia specio-292","Plant Family","Herb",LC,1010,2642,low
+flora-293,"Milkvetch (Astragalus sp.)","Astragalus specio-293","Plant Family","Herb/Shrub",LC,1193,2134,low
+flora-294,"Sedge (Carex sp.)","Carex specio-294","Plant Family","Sedge",LC,1000,3174,low
+flora-295,"Bog Sedge (Kobresia sp.)","Kobresia specio-295","Plant Family","Sedge",LC,1380,2565,low
+flora-296,"Willow (Salix sp.)","Salix specio-296","Plant Family","Tree/Shrub",LC,1000,2107,low
+flora-297,"Corydalis (Corydalis sp.)","Corydalis specio-297","Plant Family","Herb",LC,1070,2789,low
+flora-298,"Lousewort (Pedicularis sp.)","Pedicularis specio-298","Plant Family","Herb",VU,1710,2725,medium
+flora-299,"Campion (Silene sp.)","Silene specio-299","Plant Family","Herb",LC,1303,2713,low
+flora-300,"Willowherb (Epilobium sp.)","Epilobium specio-300","Plant Family","Herb",LC,1447,3674,low
+flora-301,"Buttercup (Ranunculus sp.)","Ranunculus specio-301","Plant Family","Herb",LC,1000,2470,low
+flora-302,"Monkshood (Aconitum sp.)","Aconitum specio-302","Plant Family","Herb",LC,2433,4103,low
+flora-303,"Windflower (Anemone sp.)","Anemone specio-303","Plant Family","Herb",LC,1235,2836,low
+flora-304,"Knotweed (Polygonum sp.)","Polygonum specio-304","Plant Family","Herb",LC,1000,1957,low
+flora-305,"Barberry (Berberis sp.)","Berberis specio-305","Plant Family","Shrub",LC,1002,2550,low
+flora-306,"Rhododendron (Rhododendron sp.)","Rhododendron specio-306","Plant Family","Shrub/Tree",LC,1954,4234,low
+flora-307,"Pine (Pinus sp.)","Pinus specio-307","Plant Family","Tree",LC,1000,2768,low
+flora-308,"Fir (Abies sp.)","Abies specio-308","Plant Family","Tree",LC,1722,2852,low
+flora-309,"Spruce (Picea sp.)","Picea specio-309","Plant Family","Tree",LC,1667,3692,low
+flora-310,"Juniper (Juniperus sp.)","Juniperus specio-310","Plant Family","Tree/Shrub",LC,1057,2245,low
+flora-311,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-311","Plant Family","Herb/Shrub",LC,1154,3139,low
+flora-312,"Saw-wort (Saussurea sp.)","Saussurea specio-312","Plant Family","Alpine Herb",LC,3216,3921,low
+flora-313,"Fescue Grass (Festuca sp.)","Festuca specio-313","Plant Family","Grass",LC,1081,3029,low
+flora-314,"Bluegrass (Poa sp.)","Poa specio-314","Plant Family","Grass",LC,1419,3536,low
+flora-315,"Feather Grass (Stipa sp.)","Stipa specio-315","Plant Family","Grass",LC,2485,4418,low
+flora-316,"Cinquefoil (Potentilla sp.)","Potentilla specio-316","Plant Family","Herb",LC,1344,3831,low
+flora-317,"Wild Rose (Rosa sp.)","Rosa specio-317","Plant Family","Shrub",CR,1240,2114,critical
+flora-318,"Bramble/Raspberry (Rubus sp.)","Rubus specio-318","Plant Family","Shrub/Climber",LC,1000,2854,low
+flora-319,"Primrose (Primula sp.)","Primula specio-319","Plant Family","Alpine Herb",LC,2304,3841,low
+flora-320,"Rock Jasmine (Androsace sp.)","Androsace specio-320","Plant Family","Alpine Herb",LC,2139,4411,low
+flora-321,"Gentian (Gentiana sp.)","Gentiana specio-321","Plant Family","Alpine Herb",LC,1290,3019,low
+flora-322,"Catmint (Nepeta sp.)","Nepeta specio-322","Plant Family","Herb",LC,1283,3188,low
+flora-323,"Sage (Salvia sp.)","Salvia specio-323","Plant Family","Herb",EN,1393,2600,high
+flora-324,"Milkvetch (Astragalus sp.)","Astragalus specio-324","Plant Family","Herb/Shrub",VU,1196,3205,medium
+flora-325,"Sedge (Carex sp.)","Carex specio-325","Plant Family","Sedge",LC,1000,2222,low
+flora-326,"Bog Sedge (Kobresia sp.)","Kobresia specio-326","Plant Family","Sedge",LC,2351,3863,low
+flora-327,"Willow (Salix sp.)","Salix specio-327","Plant Family","Tree/Shrub",LC,1000,1529,low
+flora-328,"Corydalis (Corydalis sp.)","Corydalis specio-328","Plant Family","Herb",LC,1488,2077,low
+flora-329,"Lousewort (Pedicularis sp.)","Pedicularis specio-329","Plant Family","Herb",NT,1876,2989,low
+flora-330,"Campion (Silene sp.)","Silene specio-330","Plant Family","Herb",LC,1361,1913,low
+flora-331,"Willowherb (Epilobium sp.)","Epilobium specio-331","Plant Family","Herb",LC,1216,3531,low
+flora-332,"Buttercup (Ranunculus sp.)","Ranunculus specio-332","Plant Family","Herb",CR,1000,3269,critical
+flora-333,"Monkshood (Aconitum sp.)","Aconitum specio-333","Plant Family","Herb",LC,1640,2595,low
+flora-334,"Windflower (Anemone sp.)","Anemone specio-334","Plant Family","Herb",LC,1506,3633,low
+flora-335,"Knotweed (Polygonum sp.)","Polygonum specio-335","Plant Family","Herb",LC,1000,3186,low
+flora-336,"Barberry (Berberis sp.)","Berberis specio-336","Plant Family","Shrub",LC,1218,2327,low
+flora-337,"Rhododendron (Rhododendron sp.)","Rhododendron specio-337","Plant Family","Shrub/Tree",LC,1032,2223,low
+flora-338,"Pine (Pinus sp.)","Pinus specio-338","Plant Family","Tree",LC,1000,2780,low
+flora-339,"Fir (Abies sp.)","Abies specio-339","Plant Family","Tree",LC,1085,1966,low
+flora-340,"Spruce (Picea sp.)","Picea specio-340","Plant Family","Tree",LC,1027,2742,low
+flora-341,"Juniper (Juniperus sp.)","Juniperus specio-341","Plant Family","Tree/Shrub",LC,1653,3606,low
+flora-342,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-342","Plant Family","Herb/Shrub",LC,1251,3685,low
+flora-343,"Saw-wort (Saussurea sp.)","Saussurea specio-343","Plant Family","Alpine Herb",CR,2442,3255,critical
+flora-344,"Fescue Grass (Festuca sp.)","Festuca specio-344","Plant Family","Grass",LC,1062,3367,low
+flora-345,"Bluegrass (Poa sp.)","Poa specio-345","Plant Family","Grass",LC,1234,2586,low
+flora-346,"Feather Grass (Stipa sp.)","Stipa specio-346","Plant Family","Grass",LC,1175,3294,low
+flora-347,"Cinquefoil (Potentilla sp.)","Potentilla specio-347","Plant Family","Herb",LC,1108,2485,low
+flora-348,"Wild Rose (Rosa sp.)","Rosa specio-348","Plant Family","Shrub",LC,1069,3188,low
+flora-349,"Bramble/Raspberry (Rubus sp.)","Rubus specio-349","Plant Family","Shrub/Climber",LC,1000,2933,low
+flora-350,"Primrose (Primula sp.)","Primula specio-350","Plant Family","Alpine Herb",LC,2242,3703,low
+flora-351,"Rock Jasmine (Androsace sp.)","Androsace specio-351","Plant Family","Alpine Herb",LC,2371,4195,low
+flora-352,"Gentian (Gentiana sp.)","Gentiana specio-352","Plant Family","Alpine Herb",LC,1265,3246,low
+flora-353,"Catmint (Nepeta sp.)","Nepeta specio-353","Plant Family","Herb",EN,1322,3614,high
+flora-354,"Sage (Salvia sp.)","Salvia specio-354","Plant Family","Herb",LC,1311,1986,low
+flora-355,"Milkvetch (Astragalus sp.)","Astragalus specio-355","Plant Family","Herb/Shrub",LC,1003,2030,low
+flora-356,"Sedge (Carex sp.)","Carex specio-356","Plant Family","Sedge",LC,1000,3280,low
+flora-357,"Bog Sedge (Kobresia sp.)","Kobresia specio-357","Plant Family","Sedge",LC,1913,3832,low
+flora-358,"Willow (Salix sp.)","Salix specio-358","Plant Family","Tree/Shrub",LC,1000,3247,low
+flora-359,"Corydalis (Corydalis sp.)","Corydalis specio-359","Plant Family","Herb",LC,1965,2629,low
+flora-360,"Lousewort (Pedicularis sp.)","Pedicularis specio-360","Plant Family","Herb",LC,1824,3484,low
+flora-361,"Campion (Silene sp.)","Silene specio-361","Plant Family","Herb",LC,1413,3907,low
+flora-362,"Willowherb (Epilobium sp.)","Epilobium specio-362","Plant Family","Herb",LC,1229,2219,low
+flora-363,"Buttercup (Ranunculus sp.)","Ranunculus specio-363","Plant Family","Herb",LC,1000,3000,low
+flora-364,"Monkshood (Aconitum sp.)","Aconitum specio-364","Plant Family","Herb",LC,1929,4265,low
+flora-365,"Windflower (Anemone sp.)","Anemone specio-365","Plant Family","Herb",LC,1688,2792,low
+flora-366,"Knotweed (Polygonum sp.)","Polygonum specio-366","Plant Family","Herb",LC,1000,2161,low
+flora-367,"Barberry (Berberis sp.)","Berberis specio-367","Plant Family","Shrub",LC,1093,3468,low
+flora-368,"Rhododendron (Rhododendron sp.)","Rhododendron specio-368","Plant Family","Shrub/Tree",LC,1325,2399,low
+flora-369,"Pine (Pinus sp.)","Pinus specio-369","Plant Family","Tree",LC,1000,2066,low
+flora-370,"Fir (Abies sp.)","Abies specio-370","Plant Family","Tree",EN,1377,2737,high
+flora-371,"Spruce (Picea sp.)","Picea specio-371","Plant Family","Tree",LC,1332,3025,low
+flora-372,"Juniper (Juniperus sp.)","Juniperus specio-372","Plant Family","Tree/Shrub",EN,1694,2289,high
+flora-373,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-373","Plant Family","Herb/Shrub",VU,1288,3168,medium
+flora-374,"Saw-wort (Saussurea sp.)","Saussurea specio-374","Plant Family","Alpine Herb",LC,1468,2455,low
+flora-375,"Fescue Grass (Festuca sp.)","Festuca specio-375","Plant Family","Grass",LC,1303,2195,low
+flora-376,"Bluegrass (Poa sp.)","Poa specio-376","Plant Family","Grass",LC,1167,2286,low
+flora-377,"Feather Grass (Stipa sp.)","Stipa specio-377","Plant Family","Grass",LC,2051,2817,low
+flora-378,"Cinquefoil (Potentilla sp.)","Potentilla specio-378","Plant Family","Herb",CR,1060,2046,critical
+flora-379,"Wild Rose (Rosa sp.)","Rosa specio-379","Plant Family","Shrub",LC,1022,3218,low
+flora-380,"Bramble/Raspberry (Rubus sp.)","Rubus specio-380","Plant Family","Shrub/Climber",LC,1000,2706,low
+flora-381,"Primrose (Primula sp.)","Primula specio-381","Plant Family","Alpine Herb",LC,1380,3008,low
+flora-382,"Rock Jasmine (Androsace sp.)","Androsace specio-382","Plant Family","Alpine Herb",LC,1273,3136,low
+flora-383,"Gentian (Gentiana sp.)","Gentiana specio-383","Plant Family","Alpine Herb",NT,1587,3443,low
+flora-384,"Catmint (Nepeta sp.)","Nepeta specio-384","Plant Family","Herb",LC,1142,2599,low
+flora-385,"Sage (Salvia sp.)","Salvia specio-385","Plant Family","Herb",LC,1196,2549,low
+flora-386,"Milkvetch (Astragalus sp.)","Astragalus specio-386","Plant Family","Herb/Shrub",LC,1003,3263,low
+flora-387,"Sedge (Carex sp.)","Carex specio-387","Plant Family","Sedge",LC,1000,2140,low
+flora-388,"Bog Sedge (Kobresia sp.)","Kobresia specio-388","Plant Family","Sedge",LC,1269,2891,low
+flora-389,"Willow (Salix sp.)","Salix specio-389","Plant Family","Tree/Shrub",LC,1000,3326,low
+flora-390,"Corydalis (Corydalis sp.)","Corydalis specio-390","Plant Family","Herb",NT,1849,3603,low
+flora-391,"Lousewort (Pedicularis sp.)","Pedicularis specio-391","Plant Family","Herb",LC,1847,3107,low
+flora-392,"Campion (Silene sp.)","Silene specio-392","Plant Family","Herb",LC,1335,3828,low
+flora-393,"Willowherb (Epilobium sp.)","Epilobium specio-393","Plant Family","Herb",LC,1084,2142,low
+flora-394,"Buttercup (Ranunculus sp.)","Ranunculus specio-394","Plant Family","Herb",LC,1000,3443,low
+flora-395,"Monkshood (Aconitum sp.)","Aconitum specio-395","Plant Family","Herb",NT,2183,3234,low
+flora-396,"Windflower (Anemone sp.)","Anemone specio-396","Plant Family","Herb",LC,1718,3143,low
+flora-397,"Knotweed (Polygonum sp.)","Polygonum specio-397","Plant Family","Herb",NT,1000,2482,low
+flora-398,"Barberry (Berberis sp.)","Berberis specio-398","Plant Family","Shrub",LC,1088,1951,low
+flora-399,"Rhododendron (Rhododendron sp.)","Rhododendron specio-399","Plant Family","Shrub/Tree",LC,1416,3213,low
+flora-400,"Pine (Pinus sp.)","Pinus specio-400","Plant Family","Tree",LC,1000,3184,low
+flora-401,"Fir (Abies sp.)","Abies specio-401","Plant Family","Tree",LC,1964,2844,low
+flora-402,"Spruce (Picea sp.)","Picea specio-402","Plant Family","Tree",LC,1677,2896,low
+flora-403,"Juniper (Juniperus sp.)","Juniperus specio-403","Plant Family","Tree/Shrub",CR,2003,4381,critical
+flora-404,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-404","Plant Family","Herb/Shrub",LC,1081,1780,low
+flora-405,"Saw-wort (Saussurea sp.)","Saussurea specio-405","Plant Family","Alpine Herb",CR,2656,4180,critical
+flora-406,"Fescue Grass (Festuca sp.)","Festuca specio-406","Plant Family","Grass",LC,1406,3206,low
+flora-407,"Bluegrass (Poa sp.)","Poa specio-407","Plant Family","Grass",LC,1221,3115,low
+flora-408,"Feather Grass (Stipa sp.)","Stipa specio-408","Plant Family","Grass",NT,2130,4107,low
+flora-409,"Cinquefoil (Potentilla sp.)","Potentilla specio-409","Plant Family","Herb",LC,1510,2370,low
+flora-410,"Wild Rose (Rosa sp.)","Rosa specio-410","Plant Family","Shrub",CR,1166,3633,critical
+flora-411,"Bramble/Raspberry (Rubus sp.)","Rubus specio-411","Plant Family","Shrub/Climber",LC,1000,1547,low
+flora-412,"Primrose (Primula sp.)","Primula specio-412","Plant Family","Alpine Herb",LC,2376,4092,low
+flora-413,"Rock Jasmine (Androsace sp.)","Androsace specio-413","Plant Family","Alpine Herb",LC,2592,3753,low
+flora-414,"Gentian (Gentiana sp.)","Gentiana specio-414","Plant Family","Alpine Herb",LC,1145,1646,low
+flora-415,"Catmint (Nepeta sp.)","Nepeta specio-415","Plant Family","Herb",CR,1081,2770,critical
+flora-416,"Sage (Salvia sp.)","Salvia specio-416","Plant Family","Herb",CR,1378,1990,critical
+flora-417,"Milkvetch (Astragalus sp.)","Astragalus specio-417","Plant Family","Herb/Shrub",LC,1298,3203,low
+flora-418,"Sedge (Carex sp.)","Carex specio-418","Plant Family","Sedge",LC,1000,3473,low
+flora-419,"Bog Sedge (Kobresia sp.)","Kobresia specio-419","Plant Family","Sedge",NT,1071,2437,low
+flora-420,"Willow (Salix sp.)","Salix specio-420","Plant Family","Tree/Shrub",NT,1000,3353,low
+flora-421,"Corydalis (Corydalis sp.)","Corydalis specio-421","Plant Family","Herb",LC,1864,2769,low
+flora-422,"Lousewort (Pedicularis sp.)","Pedicularis specio-422","Plant Family","Herb",EN,1126,3176,high
+flora-423,"Campion (Silene sp.)","Silene specio-423","Plant Family","Herb",EN,1418,2639,high
+flora-424,"Willowherb (Epilobium sp.)","Epilobium specio-424","Plant Family","Herb",LC,1333,2851,low
+flora-425,"Buttercup (Ranunculus sp.)","Ranunculus specio-425","Plant Family","Herb",LC,1000,3400,low
+flora-426,"Monkshood (Aconitum sp.)","Aconitum specio-426","Plant Family","Herb",NT,1427,2283,low
+flora-427,"Windflower (Anemone sp.)","Anemone specio-427","Plant Family","Herb",LC,1992,3833,low
+flora-428,"Knotweed (Polygonum sp.)","Polygonum specio-428","Plant Family","Herb",LC,1000,2862,low
+flora-429,"Barberry (Berberis sp.)","Berberis specio-429","Plant Family","Shrub",LC,1413,2176,low
+flora-430,"Rhododendron (Rhododendron sp.)","Rhododendron specio-430","Plant Family","Shrub/Tree",LC,2479,4176,low
+flora-431,"Pine (Pinus sp.)","Pinus specio-431","Plant Family","Tree",LC,1000,2253,low
+flora-432,"Fir (Abies sp.)","Abies specio-432","Plant Family","Tree",LC,1830,2467,low
+flora-433,"Spruce (Picea sp.)","Picea specio-433","Plant Family","Tree",LC,1649,2989,low
+flora-434,"Juniper (Juniperus sp.)","Juniperus specio-434","Plant Family","Tree/Shrub",CR,1238,2497,critical
+flora-435,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-435","Plant Family","Herb/Shrub",LC,1085,2385,low
+flora-436,"Saw-wort (Saussurea sp.)","Saussurea specio-436","Plant Family","Alpine Herb",LC,2595,4929,low
+flora-437,"Fescue Grass (Festuca sp.)","Festuca specio-437","Plant Family","Grass",LC,1017,2290,low
+flora-438,"Bluegrass (Poa sp.)","Poa specio-438","Plant Family","Grass",LC,1229,2854,low
+flora-439,"Feather Grass (Stipa sp.)","Stipa specio-439","Plant Family","Grass",LC,1788,4073,low
+flora-440,"Cinquefoil (Potentilla sp.)","Potentilla specio-440","Plant Family","Herb",LC,1778,2911,low
+flora-441,"Wild Rose (Rosa sp.)","Rosa specio-441","Plant Family","Shrub",LC,1439,2210,low
+flora-442,"Bramble/Raspberry (Rubus sp.)","Rubus specio-442","Plant Family","Shrub/Climber",LC,1000,2925,low
+flora-443,"Primrose (Primula sp.)","Primula specio-443","Plant Family","Alpine Herb",LC,1399,2946,low
+flora-444,"Rock Jasmine (Androsace sp.)","Androsace specio-444","Plant Family","Alpine Herb",LC,1719,3934,low
+flora-445,"Gentian (Gentiana sp.)","Gentiana specio-445","Plant Family","Alpine Herb",LC,2493,4707,low
+flora-446,"Catmint (Nepeta sp.)","Nepeta specio-446","Plant Family","Herb",EN,1303,3077,high
+flora-447,"Sage (Salvia sp.)","Salvia specio-447","Plant Family","Herb",VU,1499,3300,medium
+flora-448,"Milkvetch (Astragalus sp.)","Astragalus specio-448","Plant Family","Herb/Shrub",LC,1496,3824,low
+flora-449,"Sedge (Carex sp.)","Carex specio-449","Plant Family","Sedge",EN,1000,2368,high
+flora-450,"Bog Sedge (Kobresia sp.)","Kobresia specio-450","Plant Family","Sedge",LC,2946,5022,low
+flora-451,"Willow (Salix sp.)","Salix specio-451","Plant Family","Tree/Shrub",LC,1000,3470,low
+flora-452,"Corydalis (Corydalis sp.)","Corydalis specio-452","Plant Family","Herb",LC,1050,1912,low
+flora-453,"Lousewort (Pedicularis sp.)","Pedicularis specio-453","Plant Family","Herb",LC,2305,4396,low
+flora-454,"Campion (Silene sp.)","Silene specio-454","Plant Family","Herb",LC,1495,2467,low
+flora-455,"Willowherb (Epilobium sp.)","Epilobium specio-455","Plant Family","Herb",VU,1257,3179,medium
+flora-456,"Buttercup (Ranunculus sp.)","Ranunculus specio-456","Plant Family","Herb",EN,1000,2716,high
+flora-457,"Monkshood (Aconitum sp.)","Aconitum specio-457","Plant Family","Herb",NT,1522,3399,low
+flora-458,"Windflower (Anemone sp.)","Anemone specio-458","Plant Family","Herb",LC,1033,2097,low
+flora-459,"Knotweed (Polygonum sp.)","Polygonum specio-459","Plant Family","Herb",LC,1000,2001,low
+flora-460,"Barberry (Berberis sp.)","Berberis specio-460","Plant Family","Shrub",LC,1136,2726,low
+flora-461,"Rhododendron (Rhododendron sp.)","Rhododendron specio-461","Plant Family","Shrub/Tree",VU,1471,3225,medium
+flora-462,"Pine (Pinus sp.)","Pinus specio-462","Plant Family","Tree",LC,1000,3134,low
+flora-463,"Fir (Abies sp.)","Abies specio-463","Plant Family","Tree",LC,1543,2600,low
+flora-464,"Spruce (Picea sp.)","Picea specio-464","Plant Family","Tree",LC,1714,2911,low
+flora-465,"Juniper (Juniperus sp.)","Juniperus specio-465","Plant Family","Tree/Shrub",LC,1873,3370,low
+flora-466,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-466","Plant Family","Herb/Shrub",LC,1292,2932,low
+flora-467,"Saw-wort (Saussurea sp.)","Saussurea specio-467","Plant Family","Alpine Herb",LC,2110,4031,low
+flora-468,"Fescue Grass (Festuca sp.)","Festuca specio-468","Plant Family","Grass",LC,1152,3039,low
+flora-469,"Bluegrass (Poa sp.)","Poa specio-469","Plant Family","Grass",LC,1395,2657,low
+flora-470,"Feather Grass (Stipa sp.)","Stipa specio-470","Plant Family","Grass",LC,1623,3110,low
+flora-471,"Cinquefoil (Potentilla sp.)","Potentilla specio-471","Plant Family","Herb",LC,1318,2644,low
+flora-472,"Wild Rose (Rosa sp.)","Rosa specio-472","Plant Family","Shrub",NT,1385,3359,low
+flora-473,"Bramble/Raspberry (Rubus sp.)","Rubus specio-473","Plant Family","Shrub/Climber",LC,1000,1892,low
+flora-474,"Primrose (Primula sp.)","Primula specio-474","Plant Family","Alpine Herb",CR,2230,4430,critical
+flora-475,"Rock Jasmine (Androsace sp.)","Androsace specio-475","Plant Family","Alpine Herb",NT,1973,2950,low
+flora-476,"Gentian (Gentiana sp.)","Gentiana specio-476","Plant Family","Alpine Herb",LC,2299,2914,low
+flora-477,"Catmint (Nepeta sp.)","Nepeta specio-477","Plant Family","Herb",LC,1376,2086,low
+flora-478,"Sage (Salvia sp.)","Salvia specio-478","Plant Family","Herb",VU,1278,2217,medium
+flora-479,"Milkvetch (Astragalus sp.)","Astragalus specio-479","Plant Family","Herb/Shrub",LC,1035,3370,low
+flora-480,"Sedge (Carex sp.)","Carex specio-480","Plant Family","Sedge",LC,1000,3235,low
+flora-481,"Bog Sedge (Kobresia sp.)","Kobresia specio-481","Plant Family","Sedge",LC,1971,3353,low
+flora-482,"Willow (Salix sp.)","Salix specio-482","Plant Family","Tree/Shrub",LC,1000,3334,low
+flora-483,"Corydalis (Corydalis sp.)","Corydalis specio-483","Plant Family","Herb",LC,1548,2807,low
+flora-484,"Lousewort (Pedicularis sp.)","Pedicularis specio-484","Plant Family","Herb",CR,1350,2597,critical
+flora-485,"Campion (Silene sp.)","Silene specio-485","Plant Family","Herb",NT,1353,3761,low
+flora-486,"Willowherb (Epilobium sp.)","Epilobium specio-486","Plant Family","Herb",EN,1128,3237,high
+flora-487,"Buttercup (Ranunculus sp.)","Ranunculus specio-487","Plant Family","Herb",LC,1000,3457,low
+flora-488,"Monkshood (Aconitum sp.)","Aconitum specio-488","Plant Family","Herb",VU,1594,2195,medium
+flora-489,"Windflower (Anemone sp.)","Anemone specio-489","Plant Family","Herb",LC,1110,1614,low
+flora-490,"Knotweed (Polygonum sp.)","Polygonum specio-490","Plant Family","Herb",LC,1000,2495,low
+flora-491,"Barberry (Berberis sp.)","Berberis specio-491","Plant Family","Shrub",NT,1205,2872,low
+flora-492,"Rhododendron (Rhododendron sp.)","Rhododendron specio-492","Plant Family","Shrub/Tree",NT,2190,3018,low
+flora-493,"Pine (Pinus sp.)","Pinus specio-493","Plant Family","Tree",LC,1000,2270,low
+flora-494,"Fir (Abies sp.)","Abies specio-494","Plant Family","Tree",LC,1617,2919,low
+flora-495,"Spruce (Picea sp.)","Picea specio-495","Plant Family","Tree",LC,1048,2438,low
+flora-496,"Juniper (Juniperus sp.)","Juniperus specio-496","Plant Family","Tree/Shrub",LC,1103,3594,low
+flora-497,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-497","Plant Family","Herb/Shrub",LC,1172,1740,low
+flora-498,"Saw-wort (Saussurea sp.)","Saussurea specio-498","Plant Family","Alpine Herb",LC,1351,2993,low
+flora-499,"Fescue Grass (Festuca sp.)","Festuca specio-499","Plant Family","Grass",LC,1376,2268,low
+flora-500,"Bluegrass (Poa sp.)","Poa specio-500","Plant Family","Grass",LC,1331,3477,low
+flora-501,"Feather Grass (Stipa sp.)","Stipa specio-501","Plant Family","Grass",LC,1510,2760,low
+flora-502,"Cinquefoil (Potentilla sp.)","Potentilla specio-502","Plant Family","Herb",LC,1245,3405,low
+flora-503,"Wild Rose (Rosa sp.)","Rosa specio-503","Plant Family","Shrub",LC,1090,1800,low
+flora-504,"Bramble/Raspberry (Rubus sp.)","Rubus specio-504","Plant Family","Shrub/Climber",LC,1000,3046,low
+flora-505,"Primrose (Primula sp.)","Primula specio-505","Plant Family","Alpine Herb",LC,2165,2973,low
+flora-506,"Rock Jasmine (Androsace sp.)","Androsace specio-506","Plant Family","Alpine Herb",LC,1936,3693,low
+flora-507,"Gentian (Gentiana sp.)","Gentiana specio-507","Plant Family","Alpine Herb",EN,2085,4058,high
+flora-508,"Catmint (Nepeta sp.)","Nepeta specio-508","Plant Family","Herb",LC,1146,3562,low
+flora-509,"Sage (Salvia sp.)","Salvia specio-509","Plant Family","Herb",LC,1110,2283,low
+flora-510,"Milkvetch (Astragalus sp.)","Astragalus specio-510","Plant Family","Herb/Shrub",LC,1452,2626,low
+flora-511,"Sedge (Carex sp.)","Carex specio-511","Plant Family","Sedge",EN,1000,1948,high
+flora-512,"Bog Sedge (Kobresia sp.)","Kobresia specio-512","Plant Family","Sedge",LC,1437,3552,low
+flora-513,"Willow (Salix sp.)","Salix specio-513","Plant Family","Tree/Shrub",LC,1000,1821,low
+flora-514,"Corydalis (Corydalis sp.)","Corydalis specio-514","Plant Family","Herb",LC,1204,2878,low
+flora-515,"Lousewort (Pedicularis sp.)","Pedicularis specio-515","Plant Family","Herb",LC,2144,2860,low
+flora-516,"Campion (Silene sp.)","Silene specio-516","Plant Family","Herb",LC,1299,2917,low
+flora-517,"Willowherb (Epilobium sp.)","Epilobium specio-517","Plant Family","Herb",LC,1243,2176,low
+flora-518,"Buttercup (Ranunculus sp.)","Ranunculus specio-518","Plant Family","Herb",LC,1000,2493,low
+flora-519,"Monkshood (Aconitum sp.)","Aconitum specio-519","Plant Family","Herb",LC,2140,3781,low
+flora-520,"Windflower (Anemone sp.)","Anemone specio-520","Plant Family","Herb",LC,1345,2260,low
+flora-521,"Knotweed (Polygonum sp.)","Polygonum specio-521","Plant Family","Herb",LC,1000,2376,low
+flora-522,"Barberry (Berberis sp.)","Berberis specio-522","Plant Family","Shrub",LC,1241,2190,low
+flora-523,"Rhododendron (Rhododendron sp.)","Rhododendron specio-523","Plant Family","Shrub/Tree",NT,1649,3002,low
+flora-524,"Pine (Pinus sp.)","Pinus specio-524","Plant Family","Tree",LC,1000,2840,low
+flora-525,"Fir (Abies sp.)","Abies specio-525","Plant Family","Tree",LC,1780,4264,low
+flora-526,"Spruce (Picea sp.)","Picea specio-526","Plant Family","Tree",LC,1254,3439,low
+flora-527,"Juniper (Juniperus sp.)","Juniperus specio-527","Plant Family","Tree/Shrub",LC,2438,4566,low
+flora-528,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-528","Plant Family","Herb/Shrub",LC,1129,2097,low
+flora-529,"Saw-wort (Saussurea sp.)","Saussurea specio-529","Plant Family","Alpine Herb",LC,1005,1921,low
+flora-530,"Fescue Grass (Festuca sp.)","Festuca specio-530","Plant Family","Grass",LC,1020,2583,low
+flora-531,"Bluegrass (Poa sp.)","Poa specio-531","Plant Family","Grass",LC,1172,3561,low
+flora-532,"Feather Grass (Stipa sp.)","Stipa specio-532","Plant Family","Grass",VU,2282,4689,medium
+flora-533,"Cinquefoil (Potentilla sp.)","Potentilla specio-533","Plant Family","Herb",LC,1524,3916,low
+flora-534,"Wild Rose (Rosa sp.)","Rosa specio-534","Plant Family","Shrub",LC,1324,3612,low
+flora-535,"Bramble/Raspberry (Rubus sp.)","Rubus specio-535","Plant Family","Shrub/Climber",NT,1000,2045,low
+flora-536,"Primrose (Primula sp.)","Primula specio-536","Plant Family","Alpine Herb",LC,2330,4406,low
+flora-537,"Rock Jasmine (Androsace sp.)","Androsace specio-537","Plant Family","Alpine Herb",LC,2098,4322,low
+flora-538,"Gentian (Gentiana sp.)","Gentiana specio-538","Plant Family","Alpine Herb",LC,1984,2756,low
+flora-539,"Catmint (Nepeta sp.)","Nepeta specio-539","Plant Family","Herb",LC,1455,2534,low
+flora-540,"Sage (Salvia sp.)","Salvia specio-540","Plant Family","Herb",LC,1297,3195,low
+flora-541,"Milkvetch (Astragalus sp.)","Astragalus specio-541","Plant Family","Herb/Shrub",LC,1044,2597,low
+flora-542,"Sedge (Carex sp.)","Carex specio-542","Plant Family","Sedge",LC,1000,1697,low
+flora-543,"Bog Sedge (Kobresia sp.)","Kobresia specio-543","Plant Family","Sedge",LC,2920,4855,low
+flora-544,"Willow (Salix sp.)","Salix specio-544","Plant Family","Tree/Shrub",LC,1000,2770,low
+flora-545,"Corydalis (Corydalis sp.)","Corydalis specio-545","Plant Family","Herb",LC,1612,4041,low
+flora-546,"Lousewort (Pedicularis sp.)","Pedicularis specio-546","Plant Family","Herb",LC,2431,3390,low
+flora-547,"Campion (Silene sp.)","Silene specio-547","Plant Family","Herb",LC,1470,2235,low
+flora-548,"Willowherb (Epilobium sp.)","Epilobium specio-548","Plant Family","Herb",LC,1025,3141,low
+flora-549,"Buttercup (Ranunculus sp.)","Ranunculus specio-549","Plant Family","Herb",LC,1000,2299,low
+flora-550,"Monkshood (Aconitum sp.)","Aconitum specio-550","Plant Family","Herb",LC,1187,3597,low
+flora-551,"Windflower (Anemone sp.)","Anemone specio-551","Plant Family","Herb",CR,1136,1985,critical
+flora-552,"Knotweed (Polygonum sp.)","Polygonum specio-552","Plant Family","Herb",LC,1000,2994,low
+flora-553,"Barberry (Berberis sp.)","Berberis specio-553","Plant Family","Shrub",VU,1490,2555,medium
+flora-554,"Rhododendron (Rhododendron sp.)","Rhododendron specio-554","Plant Family","Shrub/Tree",LC,2273,4391,low
+flora-555,"Pine (Pinus sp.)","Pinus specio-555","Plant Family","Tree",LC,1000,2327,low
+flora-556,"Fir (Abies sp.)","Abies specio-556","Plant Family","Tree",LC,1249,2474,low
+flora-557,"Spruce (Picea sp.)","Picea specio-557","Plant Family","Tree",LC,1902,2602,low
+flora-558,"Juniper (Juniperus sp.)","Juniperus specio-558","Plant Family","Tree/Shrub",NT,2064,3182,low
+flora-559,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-559","Plant Family","Herb/Shrub",EN,1226,2895,high
+flora-560,"Saw-wort (Saussurea sp.)","Saussurea specio-560","Plant Family","Alpine Herb",LC,2501,4840,low
+flora-561,"Fescue Grass (Festuca sp.)","Festuca specio-561","Plant Family","Grass",LC,1335,3029,low
+flora-562,"Bluegrass (Poa sp.)","Poa specio-562","Plant Family","Grass",NT,1253,1796,low
+flora-563,"Feather Grass (Stipa sp.)","Stipa specio-563","Plant Family","Grass",LC,1476,3861,low
+flora-564,"Cinquefoil (Potentilla sp.)","Potentilla specio-564","Plant Family","Herb",LC,1877,3700,low
+flora-565,"Wild Rose (Rosa sp.)","Rosa specio-565","Plant Family","Shrub",LC,1144,3442,low
+flora-566,"Bramble/Raspberry (Rubus sp.)","Rubus specio-566","Plant Family","Shrub/Climber",NT,1000,1829,low
+flora-567,"Primrose (Primula sp.)","Primula specio-567","Plant Family","Alpine Herb",LC,1884,4183,low
+flora-568,"Rock Jasmine (Androsace sp.)","Androsace specio-568","Plant Family","Alpine Herb",LC,2838,3808,low
+flora-569,"Gentian (Gentiana sp.)","Gentiana specio-569","Plant Family","Alpine Herb",LC,1867,3807,low
+flora-570,"Catmint (Nepeta sp.)","Nepeta specio-570","Plant Family","Herb",LC,1420,2772,low
+flora-571,"Sage (Salvia sp.)","Salvia specio-571","Plant Family","Herb",NT,1036,2388,low
+flora-572,"Milkvetch (Astragalus sp.)","Astragalus specio-572","Plant Family","Herb/Shrub",LC,1001,2591,low
+flora-573,"Sedge (Carex sp.)","Carex specio-573","Plant Family","Sedge",LC,1000,2512,low
+flora-574,"Bog Sedge (Kobresia sp.)","Kobresia specio-574","Plant Family","Sedge",LC,1087,1594,low
+flora-575,"Willow (Salix sp.)","Salix specio-575","Plant Family","Tree/Shrub",LC,1000,3179,low
+flora-576,"Corydalis (Corydalis sp.)","Corydalis specio-576","Plant Family","Herb",LC,1363,3325,low
+flora-577,"Lousewort (Pedicularis sp.)","Pedicularis specio-577","Plant Family","Herb",LC,1697,2720,low
+flora-578,"Campion (Silene sp.)","Silene specio-578","Plant Family","Herb",NT,1148,2039,low
+flora-579,"Willowherb (Epilobium sp.)","Epilobium specio-579","Plant Family","Herb",LC,1490,2058,low
+flora-580,"Buttercup (Ranunculus sp.)","Ranunculus specio-580","Plant Family","Herb",LC,1000,2382,low
+flora-581,"Monkshood (Aconitum sp.)","Aconitum specio-581","Plant Family","Herb",CR,2121,3199,critical
+flora-582,"Windflower (Anemone sp.)","Anemone specio-582","Plant Family","Herb",LC,1147,2446,low
+flora-583,"Knotweed (Polygonum sp.)","Polygonum specio-583","Plant Family","Herb",VU,1000,1569,medium
+flora-584,"Barberry (Berberis sp.)","Berberis specio-584","Plant Family","Shrub",LC,1333,2025,low
+flora-585,"Rhododendron (Rhododendron sp.)","Rhododendron specio-585","Plant Family","Shrub/Tree",LC,2481,3069,low
+flora-586,"Pine (Pinus sp.)","Pinus specio-586","Plant Family","Tree",LC,1000,2746,low
+flora-587,"Fir (Abies sp.)","Abies specio-587","Plant Family","Tree",EN,1303,2009,high
+flora-588,"Spruce (Picea sp.)","Picea specio-588","Plant Family","Tree",LC,1365,1907,low
+flora-589,"Juniper (Juniperus sp.)","Juniperus specio-589","Plant Family","Tree/Shrub",NT,1988,3165,low
+flora-590,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-590","Plant Family","Herb/Shrub",LC,1017,1858,low
+flora-591,"Saw-wort (Saussurea sp.)","Saussurea specio-591","Plant Family","Alpine Herb",LC,2537,3580,low
+flora-592,"Fescue Grass (Festuca sp.)","Festuca specio-592","Plant Family","Grass",LC,1156,3397,low
+flora-593,"Bluegrass (Poa sp.)","Poa specio-593","Plant Family","Grass",LC,1275,2088,low
+flora-594,"Feather Grass (Stipa sp.)","Stipa specio-594","Plant Family","Grass",LC,1964,3548,low
+flora-595,"Cinquefoil (Potentilla sp.)","Potentilla specio-595","Plant Family","Herb",LC,1922,3737,low
+flora-596,"Wild Rose (Rosa sp.)","Rosa specio-596","Plant Family","Shrub",LC,1181,2972,low
+flora-597,"Bramble/Raspberry (Rubus sp.)","Rubus specio-597","Plant Family","Shrub/Climber",LC,1000,1799,low
+flora-598,"Primrose (Primula sp.)","Primula specio-598","Plant Family","Alpine Herb",NT,1718,4096,low
+flora-599,"Rock Jasmine (Androsace sp.)","Androsace specio-599","Plant Family","Alpine Herb",EN,1832,2714,high
+flora-600,"Gentian (Gentiana sp.)","Gentiana specio-600","Plant Family","Alpine Herb",LC,1851,3809,low
+flora-601,"Catmint (Nepeta sp.)","Nepeta specio-601","Plant Family","Herb",NT,1411,2649,low
+flora-602,"Sage (Salvia sp.)","Salvia specio-602","Plant Family","Herb",LC,1231,2642,low
+flora-603,"Milkvetch (Astragalus sp.)","Astragalus specio-603","Plant Family","Herb/Shrub",EN,1247,1929,high
+flora-604,"Sedge (Carex sp.)","Carex specio-604","Plant Family","Sedge",LC,1000,1806,low
+flora-605,"Bog Sedge (Kobresia sp.)","Kobresia specio-605","Plant Family","Sedge",LC,2049,2602,low
+flora-606,"Willow (Salix sp.)","Salix specio-606","Plant Family","Tree/Shrub",LC,1000,3466,low
+flora-607,"Corydalis (Corydalis sp.)","Corydalis specio-607","Plant Family","Herb",LC,1255,1964,low
+flora-608,"Lousewort (Pedicularis sp.)","Pedicularis specio-608","Plant Family","Herb",VU,2072,3117,medium
+flora-609,"Campion (Silene sp.)","Silene specio-609","Plant Family","Herb",LC,1075,3042,low
+flora-610,"Willowherb (Epilobium sp.)","Epilobium specio-610","Plant Family","Herb",LC,1087,3278,low
+flora-611,"Buttercup (Ranunculus sp.)","Ranunculus specio-611","Plant Family","Herb",LC,1000,2702,low
+flora-612,"Monkshood (Aconitum sp.)","Aconitum specio-612","Plant Family","Herb",NT,1327,2989,low
+flora-613,"Windflower (Anemone sp.)","Anemone specio-613","Plant Family","Herb",LC,1669,2817,low
+flora-614,"Knotweed (Polygonum sp.)","Polygonum specio-614","Plant Family","Herb",LC,1000,3064,low
+flora-615,"Barberry (Berberis sp.)","Berberis specio-615","Plant Family","Shrub",LC,1097,2914,low
+flora-616,"Rhododendron (Rhododendron sp.)","Rhododendron specio-616","Plant Family","Shrub/Tree",LC,1449,2083,low
+flora-617,"Pine (Pinus sp.)","Pinus specio-617","Plant Family","Tree",LC,1000,2784,low
+flora-618,"Fir (Abies sp.)","Abies specio-618","Plant Family","Tree",LC,1272,3377,low
+flora-619,"Spruce (Picea sp.)","Picea specio-619","Plant Family","Tree",LC,1522,3077,low
+flora-620,"Juniper (Juniperus sp.)","Juniperus specio-620","Plant Family","Tree/Shrub",EN,1659,3211,high
+flora-621,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-621","Plant Family","Herb/Shrub",LC,1351,2293,low
+flora-622,"Saw-wort (Saussurea sp.)","Saussurea specio-622","Plant Family","Alpine Herb",LC,2976,4743,low
+flora-623,"Fescue Grass (Festuca sp.)","Festuca specio-623","Plant Family","Grass",LC,1281,3132,low
+flora-624,"Bluegrass (Poa sp.)","Poa specio-624","Plant Family","Grass",LC,1437,2576,low
+flora-625,"Feather Grass (Stipa sp.)","Stipa specio-625","Plant Family","Grass",LC,1675,3634,low
+flora-626,"Cinquefoil (Potentilla sp.)","Potentilla specio-626","Plant Family","Herb",LC,1271,3605,low
+flora-627,"Wild Rose (Rosa sp.)","Rosa specio-627","Plant Family","Shrub",NT,1338,2919,low
+flora-628,"Bramble/Raspberry (Rubus sp.)","Rubus specio-628","Plant Family","Shrub/Climber",NT,1000,3192,low
+flora-629,"Primrose (Primula sp.)","Primula specio-629","Plant Family","Alpine Herb",LC,2057,3133,low
+flora-630,"Rock Jasmine (Androsace sp.)","Androsace specio-630","Plant Family","Alpine Herb",LC,2255,3435,low
+flora-631,"Gentian (Gentiana sp.)","Gentiana specio-631","Plant Family","Alpine Herb",LC,2283,3295,low
+flora-632,"Catmint (Nepeta sp.)","Nepeta specio-632","Plant Family","Herb",LC,1366,2577,low
+flora-633,"Sage (Salvia sp.)","Salvia specio-633","Plant Family","Herb",NT,1297,2128,low
+flora-634,"Milkvetch (Astragalus sp.)","Astragalus specio-634","Plant Family","Herb/Shrub",NT,1348,2503,low
+flora-635,"Sedge (Carex sp.)","Carex specio-635","Plant Family","Sedge",NT,1000,3455,low
+flora-636,"Bog Sedge (Kobresia sp.)","Kobresia specio-636","Plant Family","Sedge",LC,2210,3425,low
+flora-637,"Willow (Salix sp.)","Salix specio-637","Plant Family","Tree/Shrub",LC,1000,1899,low
+flora-638,"Corydalis (Corydalis sp.)","Corydalis specio-638","Plant Family","Herb",LC,1315,3292,low
+flora-639,"Lousewort (Pedicularis sp.)","Pedicularis specio-639","Plant Family","Herb",LC,1320,3141,low
+flora-640,"Campion (Silene sp.)","Silene specio-640","Plant Family","Herb",NT,1309,3738,low
+flora-641,"Willowherb (Epilobium sp.)","Epilobium specio-641","Plant Family","Herb",LC,1169,3251,low
+flora-642,"Buttercup (Ranunculus sp.)","Ranunculus specio-642","Plant Family","Herb",LC,1000,2353,low
+flora-643,"Monkshood (Aconitum sp.)","Aconitum specio-643","Plant Family","Herb",LC,1552,2288,low
+flora-644,"Windflower (Anemone sp.)","Anemone specio-644","Plant Family","Herb",VU,1824,3643,medium
+flora-645,"Knotweed (Polygonum sp.)","Polygonum specio-645","Plant Family","Herb",LC,1000,1544,low
+flora-646,"Barberry (Berberis sp.)","Berberis specio-646","Plant Family","Shrub",LC,1410,2756,low
+flora-647,"Rhododendron (Rhododendron sp.)","Rhododendron specio-647","Plant Family","Shrub/Tree",NT,2121,2916,low
+flora-648,"Pine (Pinus sp.)","Pinus specio-648","Plant Family","Tree",EN,1000,2305,high
+flora-649,"Fir (Abies sp.)","Abies specio-649","Plant Family","Tree",LC,1880,2766,low
+flora-650,"Spruce (Picea sp.)","Picea specio-650","Plant Family","Tree",LC,1555,2091,low
+flora-651,"Juniper (Juniperus sp.)","Juniperus specio-651","Plant Family","Tree/Shrub",LC,2189,3015,low
+flora-652,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-652","Plant Family","Herb/Shrub",LC,1074,3006,low
+flora-653,"Saw-wort (Saussurea sp.)","Saussurea specio-653","Plant Family","Alpine Herb",LC,1376,2355,low
+flora-654,"Fescue Grass (Festuca sp.)","Festuca specio-654","Plant Family","Grass",LC,1169,3425,low
+flora-655,"Bluegrass (Poa sp.)","Poa specio-655","Plant Family","Grass",LC,1244,2829,low
+flora-656,"Feather Grass (Stipa sp.)","Stipa specio-656","Plant Family","Grass",LC,1150,2585,low
+flora-657,"Cinquefoil (Potentilla sp.)","Potentilla specio-657","Plant Family","Herb",VU,1363,3409,medium
+flora-658,"Wild Rose (Rosa sp.)","Rosa specio-658","Plant Family","Shrub",LC,1063,2233,low
+flora-659,"Bramble/Raspberry (Rubus sp.)","Rubus specio-659","Plant Family","Shrub/Climber",LC,1000,2231,low
+flora-660,"Primrose (Primula sp.)","Primula specio-660","Plant Family","Alpine Herb",LC,2346,3442,low
+flora-661,"Rock Jasmine (Androsace sp.)","Androsace specio-661","Plant Family","Alpine Herb",LC,2528,4189,low
+flora-662,"Gentian (Gentiana sp.)","Gentiana specio-662","Plant Family","Alpine Herb",LC,1764,2951,low
+flora-663,"Catmint (Nepeta sp.)","Nepeta specio-663","Plant Family","Herb",LC,1171,2149,low
+flora-664,"Sage (Salvia sp.)","Salvia specio-664","Plant Family","Herb",LC,1313,2948,low
+flora-665,"Milkvetch (Astragalus sp.)","Astragalus specio-665","Plant Family","Herb/Shrub",LC,1130,2270,low
+flora-666,"Sedge (Carex sp.)","Carex specio-666","Plant Family","Sedge",LC,1000,2953,low
+flora-667,"Bog Sedge (Kobresia sp.)","Kobresia specio-667","Plant Family","Sedge",LC,1124,3301,low
+flora-668,"Willow (Salix sp.)","Salix specio-668","Plant Family","Tree/Shrub",LC,1000,2577,low
+flora-669,"Corydalis (Corydalis sp.)","Corydalis specio-669","Plant Family","Herb",LC,1425,2096,low
+flora-670,"Lousewort (Pedicularis sp.)","Pedicularis specio-670","Plant Family","Herb",LC,1835,2839,low
+flora-671,"Campion (Silene sp.)","Silene specio-671","Plant Family","Herb",LC,1147,3610,low
+flora-672,"Willowherb (Epilobium sp.)","Epilobium specio-672","Plant Family","Herb",LC,1282,2635,low
+flora-673,"Buttercup (Ranunculus sp.)","Ranunculus specio-673","Plant Family","Herb",LC,1000,2707,low
+flora-674,"Monkshood (Aconitum sp.)","Aconitum specio-674","Plant Family","Herb",LC,2283,4538,low
+flora-675,"Windflower (Anemone sp.)","Anemone specio-675","Plant Family","Herb",LC,1245,3070,low
+flora-676,"Knotweed (Polygonum sp.)","Polygonum specio-676","Plant Family","Herb",LC,1000,3207,low
+flora-677,"Barberry (Berberis sp.)","Berberis specio-677","Plant Family","Shrub",LC,1423,3245,low
+flora-678,"Rhododendron (Rhododendron sp.)","Rhododendron specio-678","Plant Family","Shrub/Tree",LC,1175,2267,low
+flora-679,"Pine (Pinus sp.)","Pinus specio-679","Plant Family","Tree",LC,1000,3257,low
+flora-680,"Fir (Abies sp.)","Abies specio-680","Plant Family","Tree",LC,1499,3310,low
+flora-681,"Spruce (Picea sp.)","Picea specio-681","Plant Family","Tree",LC,1950,3594,low
+flora-682,"Juniper (Juniperus sp.)","Juniperus specio-682","Plant Family","Tree/Shrub",LC,1410,3641,low
+flora-683,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-683","Plant Family","Herb/Shrub",LC,1410,3070,low
+flora-684,"Saw-wort (Saussurea sp.)","Saussurea specio-684","Plant Family","Alpine Herb",LC,3150,4447,low
+flora-685,"Fescue Grass (Festuca sp.)","Festuca specio-685","Plant Family","Grass",LC,1069,1962,low
+flora-686,"Bluegrass (Poa sp.)","Poa specio-686","Plant Family","Grass",LC,1383,3777,low
+flora-687,"Feather Grass (Stipa sp.)","Stipa specio-687","Plant Family","Grass",LC,1986,2570,low
+flora-688,"Cinquefoil (Potentilla sp.)","Potentilla specio-688","Plant Family","Herb",LC,1165,2905,low
+flora-689,"Wild Rose (Rosa sp.)","Rosa specio-689","Plant Family","Shrub",LC,1380,2136,low
+flora-690,"Bramble/Raspberry (Rubus sp.)","Rubus specio-690","Plant Family","Shrub/Climber",NT,1000,1693,low
+flora-691,"Primrose (Primula sp.)","Primula specio-691","Plant Family","Alpine Herb",EN,1235,3364,high
+flora-692,"Rock Jasmine (Androsace sp.)","Androsace specio-692","Plant Family","Alpine Herb",LC,1806,2761,low
+flora-693,"Gentian (Gentiana sp.)","Gentiana specio-693","Plant Family","Alpine Herb",LC,2494,4397,low
+flora-694,"Catmint (Nepeta sp.)","Nepeta specio-694","Plant Family","Herb",LC,1020,3052,low
+flora-695,"Sage (Salvia sp.)","Salvia specio-695","Plant Family","Herb",LC,1326,3068,low
+flora-696,"Milkvetch (Astragalus sp.)","Astragalus specio-696","Plant Family","Herb/Shrub",NT,1286,3255,low
+flora-697,"Sedge (Carex sp.)","Carex specio-697","Plant Family","Sedge",LC,1000,3471,low
+flora-698,"Bog Sedge (Kobresia sp.)","Kobresia specio-698","Plant Family","Sedge",NT,2789,4406,low
+flora-699,"Willow (Salix sp.)","Salix specio-699","Plant Family","Tree/Shrub",LC,1000,3156,low
+flora-700,"Corydalis (Corydalis sp.)","Corydalis specio-700","Plant Family","Herb",LC,1528,3709,low
+flora-701,"Lousewort (Pedicularis sp.)","Pedicularis specio-701","Plant Family","Herb",LC,1149,3615,low
+flora-702,"Campion (Silene sp.)","Silene specio-702","Plant Family","Herb",LC,1221,2023,low
+flora-703,"Willowherb (Epilobium sp.)","Epilobium specio-703","Plant Family","Herb",LC,1166,3218,low
+flora-704,"Buttercup (Ranunculus sp.)","Ranunculus specio-704","Plant Family","Herb",LC,1000,3282,low
+flora-705,"Monkshood (Aconitum sp.)","Aconitum specio-705","Plant Family","Herb",EN,1703,2603,high
+flora-706,"Windflower (Anemone sp.)","Anemone specio-706","Plant Family","Herb",NT,1336,3429,low
+flora-707,"Knotweed (Polygonum sp.)","Polygonum specio-707","Plant Family","Herb",LC,1000,3090,low
+flora-708,"Barberry (Berberis sp.)","Berberis specio-708","Plant Family","Shrub",LC,1156,2145,low
+flora-709,"Rhododendron (Rhododendron sp.)","Rhododendron specio-709","Plant Family","Shrub/Tree",LC,1042,3345,low
+flora-710,"Pine (Pinus sp.)","Pinus specio-710","Plant Family","Tree",EN,1000,2355,high
+flora-711,"Fir (Abies sp.)","Abies specio-711","Plant Family","Tree",EN,1081,2272,high
+flora-712,"Spruce (Picea sp.)","Picea specio-712","Plant Family","Tree",LC,1706,2590,low
+flora-713,"Juniper (Juniperus sp.)","Juniperus specio-713","Plant Family","Tree/Shrub",LC,1867,3141,low
+flora-714,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-714","Plant Family","Herb/Shrub",NT,1422,2050,low
+flora-715,"Saw-wort (Saussurea sp.)","Saussurea specio-715","Plant Family","Alpine Herb",NT,3043,4585,low
+flora-716,"Fescue Grass (Festuca sp.)","Festuca specio-716","Plant Family","Grass",LC,1158,1715,low
+flora-717,"Bluegrass (Poa sp.)","Poa specio-717","Plant Family","Grass",LC,1274,2355,low
+flora-718,"Feather Grass (Stipa sp.)","Stipa specio-718","Plant Family","Grass",LC,1112,2608,low
+flora-719,"Cinquefoil (Potentilla sp.)","Potentilla specio-719","Plant Family","Herb",LC,1906,2608,low
+flora-720,"Wild Rose (Rosa sp.)","Rosa specio-720","Plant Family","Shrub",LC,1036,2030,low
+flora-721,"Bramble/Raspberry (Rubus sp.)","Rubus specio-721","Plant Family","Shrub/Climber",LC,1000,1633,low
+flora-722,"Primrose (Primula sp.)","Primula specio-722","Plant Family","Alpine Herb",LC,1624,2519,low
+flora-723,"Rock Jasmine (Androsace sp.)","Androsace specio-723","Plant Family","Alpine Herb",VU,2905,4045,medium
+flora-724,"Gentian (Gentiana sp.)","Gentiana specio-724","Plant Family","Alpine Herb",NT,1358,3233,low
+flora-725,"Catmint (Nepeta sp.)","Nepeta specio-725","Plant Family","Herb",LC,1139,1670,low
+flora-726,"Sage (Salvia sp.)","Salvia specio-726","Plant Family","Herb",LC,1069,2129,low
+flora-727,"Milkvetch (Astragalus sp.)","Astragalus specio-727","Plant Family","Herb/Shrub",LC,1338,2497,low
+flora-728,"Sedge (Carex sp.)","Carex specio-728","Plant Family","Sedge",LC,1000,3338,low
+flora-729,"Bog Sedge (Kobresia sp.)","Kobresia specio-729","Plant Family","Sedge",LC,2423,4104,low
+flora-730,"Willow (Salix sp.)","Salix specio-730","Plant Family","Tree/Shrub",LC,1000,2911,low
+flora-731,"Corydalis (Corydalis sp.)","Corydalis specio-731","Plant Family","Herb",LC,1770,3892,low
+flora-732,"Lousewort (Pedicularis sp.)","Pedicularis specio-732","Plant Family","Herb",EN,2142,3807,high
+flora-733,"Campion (Silene sp.)","Silene specio-733","Plant Family","Herb",VU,1040,2215,medium
+flora-734,"Willowherb (Epilobium sp.)","Epilobium specio-734","Plant Family","Herb",NT,1005,2874,low
+flora-735,"Buttercup (Ranunculus sp.)","Ranunculus specio-735","Plant Family","Herb",LC,1000,1559,low
+flora-736,"Monkshood (Aconitum sp.)","Aconitum specio-736","Plant Family","Herb",LC,2064,3336,low
+flora-737,"Windflower (Anemone sp.)","Anemone specio-737","Plant Family","Herb",LC,1330,3090,low
+flora-738,"Knotweed (Polygonum sp.)","Polygonum specio-738","Plant Family","Herb",VU,1000,1759,medium
+flora-739,"Barberry (Berberis sp.)","Berberis specio-739","Plant Family","Shrub",LC,1342,2062,low
+flora-740,"Rhododendron (Rhododendron sp.)","Rhododendron specio-740","Plant Family","Shrub/Tree",LC,2443,3619,low
+flora-741,"Pine (Pinus sp.)","Pinus specio-741","Plant Family","Tree",LC,1000,2304,low
+flora-742,"Fir (Abies sp.)","Abies specio-742","Plant Family","Tree",LC,1629,2384,low
+flora-743,"Spruce (Picea sp.)","Picea specio-743","Plant Family","Tree",LC,1221,1973,low
+flora-744,"Juniper (Juniperus sp.)","Juniperus specio-744","Plant Family","Tree/Shrub",LC,2200,3722,low
+flora-745,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-745","Plant Family","Herb/Shrub",LC,1337,2712,low
+flora-746,"Saw-wort (Saussurea sp.)","Saussurea specio-746","Plant Family","Alpine Herb",LC,1901,2797,low
+flora-747,"Fescue Grass (Festuca sp.)","Festuca specio-747","Plant Family","Grass",LC,1089,2515,low
+flora-748,"Bluegrass (Poa sp.)","Poa specio-748","Plant Family","Grass",LC,1336,2231,low
+flora-749,"Feather Grass (Stipa sp.)","Stipa specio-749","Plant Family","Grass",LC,2081,4539,low
+flora-750,"Cinquefoil (Potentilla sp.)","Potentilla specio-750","Plant Family","Herb",LC,1357,2912,low
+flora-751,"Wild Rose (Rosa sp.)","Rosa specio-751","Plant Family","Shrub",NT,1266,2039,low
+flora-752,"Bramble/Raspberry (Rubus sp.)","Rubus specio-752","Plant Family","Shrub/Climber",VU,1000,2714,medium
+flora-753,"Primrose (Primula sp.)","Primula specio-753","Plant Family","Alpine Herb",LC,1298,3041,low
+flora-754,"Rock Jasmine (Androsace sp.)","Androsace specio-754","Plant Family","Alpine Herb",NT,1474,3680,low
+flora-755,"Gentian (Gentiana sp.)","Gentiana specio-755","Plant Family","Alpine Herb",LC,2467,3323,low
+flora-756,"Catmint (Nepeta sp.)","Nepeta specio-756","Plant Family","Herb",LC,1301,2973,low
+flora-757,"Sage (Salvia sp.)","Salvia specio-757","Plant Family","Herb",LC,1489,2064,low
+flora-758,"Milkvetch (Astragalus sp.)","Astragalus specio-758","Plant Family","Herb/Shrub",NT,1489,3462,low
+flora-759,"Sedge (Carex sp.)","Carex specio-759","Plant Family","Sedge",CR,1000,2900,critical
+flora-760,"Bog Sedge (Kobresia sp.)","Kobresia specio-760","Plant Family","Sedge",LC,1753,2318,low
+flora-761,"Willow (Salix sp.)","Salix specio-761","Plant Family","Tree/Shrub",LC,1000,2671,low
+flora-762,"Corydalis (Corydalis sp.)","Corydalis specio-762","Plant Family","Herb",LC,1649,2401,low
+flora-763,"Lousewort (Pedicularis sp.)","Pedicularis specio-763","Plant Family","Herb",LC,2081,3315,low
+flora-764,"Campion (Silene sp.)","Silene specio-764","Plant Family","Herb",LC,1343,2595,low
+flora-765,"Willowherb (Epilobium sp.)","Epilobium specio-765","Plant Family","Herb",LC,1255,2356,low
+flora-766,"Buttercup (Ranunculus sp.)","Ranunculus specio-766","Plant Family","Herb",LC,1000,1651,low
+flora-767,"Monkshood (Aconitum sp.)","Aconitum specio-767","Plant Family","Herb",LC,1579,2223,low
+flora-768,"Windflower (Anemone sp.)","Anemone specio-768","Plant Family","Herb",LC,1116,2484,low
+flora-769,"Knotweed (Polygonum sp.)","Polygonum specio-769","Plant Family","Herb",CR,1000,1515,critical
+flora-770,"Barberry (Berberis sp.)","Berberis specio-770","Plant Family","Shrub",VU,1282,3466,medium
+flora-771,"Rhododendron (Rhododendron sp.)","Rhododendron specio-771","Plant Family","Shrub/Tree",LC,1491,3522,low
+flora-772,"Pine (Pinus sp.)","Pinus specio-772","Plant Family","Tree",LC,1000,1752,low
+flora-773,"Fir (Abies sp.)","Abies specio-773","Plant Family","Tree",LC,1438,3570,low
+flora-774,"Spruce (Picea sp.)","Picea specio-774","Plant Family","Tree",LC,1025,2581,low
+flora-775,"Juniper (Juniperus sp.)","Juniperus specio-775","Plant Family","Tree/Shrub",NT,1488,2842,low
+flora-776,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-776","Plant Family","Herb/Shrub",LC,1290,2162,low
+flora-777,"Saw-wort (Saussurea sp.)","Saussurea specio-777","Plant Family","Alpine Herb",LC,3009,4478,low
+flora-778,"Fescue Grass (Festuca sp.)","Festuca specio-778","Plant Family","Grass",LC,1463,2778,low
+flora-779,"Bluegrass (Poa sp.)","Poa specio-779","Plant Family","Grass",LC,1396,2512,low
+flora-780,"Feather Grass (Stipa sp.)","Stipa specio-780","Plant Family","Grass",LC,1045,3023,low
+flora-781,"Cinquefoil (Potentilla sp.)","Potentilla specio-781","Plant Family","Herb",LC,1205,3197,low
+flora-782,"Wild Rose (Rosa sp.)","Rosa specio-782","Plant Family","Shrub",EN,1373,3594,high
+flora-783,"Bramble/Raspberry (Rubus sp.)","Rubus specio-783","Plant Family","Shrub/Climber",LC,1000,3425,low
+flora-784,"Primrose (Primula sp.)","Primula specio-784","Plant Family","Alpine Herb",LC,1516,3482,low
+flora-785,"Rock Jasmine (Androsace sp.)","Androsace specio-785","Plant Family","Alpine Herb",LC,1448,3028,low
+flora-786,"Gentian (Gentiana sp.)","Gentiana specio-786","Plant Family","Alpine Herb",NT,1157,2561,low
+flora-787,"Catmint (Nepeta sp.)","Nepeta specio-787","Plant Family","Herb",NT,1436,2359,low
+flora-788,"Sage (Salvia sp.)","Salvia specio-788","Plant Family","Herb",LC,1069,2703,low
+flora-789,"Milkvetch (Astragalus sp.)","Astragalus specio-789","Plant Family","Herb/Shrub",LC,1323,3473,low
+flora-790,"Sedge (Carex sp.)","Carex specio-790","Plant Family","Sedge",LC,1000,2004,low
+flora-791,"Bog Sedge (Kobresia sp.)","Kobresia specio-791","Plant Family","Sedge",EN,2251,4532,high
+flora-792,"Willow (Salix sp.)","Salix specio-792","Plant Family","Tree/Shrub",LC,1000,2915,low
+flora-793,"Corydalis (Corydalis sp.)","Corydalis specio-793","Plant Family","Herb",LC,1872,3080,low
+flora-794,"Lousewort (Pedicularis sp.)","Pedicularis specio-794","Plant Family","Herb",LC,1363,3780,low
+flora-795,"Campion (Silene sp.)","Silene specio-795","Plant Family","Herb",EN,1483,3398,high
+flora-796,"Willowherb (Epilobium sp.)","Epilobium specio-796","Plant Family","Herb",VU,1009,2049,medium
+flora-797,"Buttercup (Ranunculus sp.)","Ranunculus specio-797","Plant Family","Herb",LC,1000,2283,low
+flora-798,"Monkshood (Aconitum sp.)","Aconitum specio-798","Plant Family","Herb",LC,1762,3164,low
+flora-799,"Windflower (Anemone sp.)","Anemone specio-799","Plant Family","Herb",LC,1872,3247,low
+flora-800,"Knotweed (Polygonum sp.)","Polygonum specio-800","Plant Family","Herb",LC,1000,2983,low
+flora-801,"Barberry (Berberis sp.)","Berberis specio-801","Plant Family","Shrub",NT,1056,2009,low
+flora-802,"Rhododendron (Rhododendron sp.)","Rhododendron specio-802","Plant Family","Shrub/Tree",LC,2425,4588,low
+flora-803,"Pine (Pinus sp.)","Pinus specio-803","Plant Family","Tree",CR,1000,2371,critical
+flora-804,"Fir (Abies sp.)","Abies specio-804","Plant Family","Tree",LC,1344,2650,low
+flora-805,"Spruce (Picea sp.)","Picea specio-805","Plant Family","Tree",LC,1704,2749,low
+flora-806,"Juniper (Juniperus sp.)","Juniperus specio-806","Plant Family","Tree/Shrub",LC,1870,3368,low
+flora-807,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-807","Plant Family","Herb/Shrub",NT,1109,1778,low
+flora-808,"Saw-wort (Saussurea sp.)","Saussurea specio-808","Plant Family","Alpine Herb",LC,2255,3095,low
+flora-809,"Fescue Grass (Festuca sp.)","Festuca specio-809","Plant Family","Grass",LC,1474,2513,low
+flora-810,"Bluegrass (Poa sp.)","Poa specio-810","Plant Family","Grass",LC,1114,2168,low
+flora-811,"Feather Grass (Stipa sp.)","Stipa specio-811","Plant Family","Grass",LC,1237,1796,low
+flora-812,"Cinquefoil (Potentilla sp.)","Potentilla specio-812","Plant Family","Herb",LC,1260,1834,low
+flora-813,"Wild Rose (Rosa sp.)","Rosa specio-813","Plant Family","Shrub",LC,1498,3277,low
+flora-814,"Bramble/Raspberry (Rubus sp.)","Rubus specio-814","Plant Family","Shrub/Climber",LC,1000,2878,low
+flora-815,"Primrose (Primula sp.)","Primula specio-815","Plant Family","Alpine Herb",LC,1500,2424,low
+flora-816,"Rock Jasmine (Androsace sp.)","Androsace specio-816","Plant Family","Alpine Herb",LC,2177,2884,low
+flora-817,"Gentian (Gentiana sp.)","Gentiana specio-817","Plant Family","Alpine Herb",LC,2462,3808,low
+flora-818,"Catmint (Nepeta sp.)","Nepeta specio-818","Plant Family","Herb",NT,1136,2684,low
+flora-819,"Sage (Salvia sp.)","Salvia specio-819","Plant Family","Herb",LC,1146,2513,low
+flora-820,"Milkvetch (Astragalus sp.)","Astragalus specio-820","Plant Family","Herb/Shrub",LC,1404,3830,low
+flora-821,"Sedge (Carex sp.)","Carex specio-821","Plant Family","Sedge",CR,1000,2552,critical
+flora-822,"Bog Sedge (Kobresia sp.)","Kobresia specio-822","Plant Family","Sedge",LC,2249,3992,low
+flora-823,"Willow (Salix sp.)","Salix specio-823","Plant Family","Tree/Shrub",VU,1000,1595,medium
+flora-824,"Corydalis (Corydalis sp.)","Corydalis specio-824","Plant Family","Herb",LC,1664,2440,low
+flora-825,"Lousewort (Pedicularis sp.)","Pedicularis specio-825","Plant Family","Herb",LC,1249,2146,low
+flora-826,"Campion (Silene sp.)","Silene specio-826","Plant Family","Herb",LC,1173,3492,low
+flora-827,"Willowherb (Epilobium sp.)","Epilobium specio-827","Plant Family","Herb",LC,1438,2418,low
+flora-828,"Buttercup (Ranunculus sp.)","Ranunculus specio-828","Plant Family","Herb",LC,1000,2524,low
+flora-829,"Monkshood (Aconitum sp.)","Aconitum specio-829","Plant Family","Herb",NT,1286,1982,low
+flora-830,"Windflower (Anemone sp.)","Anemone specio-830","Plant Family","Herb",LC,1778,4176,low
+flora-831,"Knotweed (Polygonum sp.)","Polygonum specio-831","Plant Family","Herb",LC,1000,1560,low
+flora-832,"Barberry (Berberis sp.)","Berberis specio-832","Plant Family","Shrub",LC,1448,1960,low
+flora-833,"Rhododendron (Rhododendron sp.)","Rhododendron specio-833","Plant Family","Shrub/Tree",EN,1090,1882,high
+flora-834,"Pine (Pinus sp.)","Pinus specio-834","Plant Family","Tree",LC,1000,1912,low
+flora-835,"Fir (Abies sp.)","Abies specio-835","Plant Family","Tree",LC,1075,2211,low
+flora-836,"Spruce (Picea sp.)","Picea specio-836","Plant Family","Tree",LC,1407,2687,low
+flora-837,"Juniper (Juniperus sp.)","Juniperus specio-837","Plant Family","Tree/Shrub",LC,1071,3122,low
+flora-838,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-838","Plant Family","Herb/Shrub",LC,1264,2671,low
+flora-839,"Saw-wort (Saussurea sp.)","Saussurea specio-839","Plant Family","Alpine Herb",LC,3498,4252,low
+flora-840,"Fescue Grass (Festuca sp.)","Festuca specio-840","Plant Family","Grass",LC,1477,3970,low
+flora-841,"Bluegrass (Poa sp.)","Poa specio-841","Plant Family","Grass",LC,1254,1793,low
+flora-842,"Feather Grass (Stipa sp.)","Stipa specio-842","Plant Family","Grass",LC,2472,4718,low
+flora-843,"Cinquefoil (Potentilla sp.)","Potentilla specio-843","Plant Family","Herb",LC,1306,3100,low
+flora-844,"Wild Rose (Rosa sp.)","Rosa specio-844","Plant Family","Shrub",LC,1169,3468,low
+flora-845,"Bramble/Raspberry (Rubus sp.)","Rubus specio-845","Plant Family","Shrub/Climber",VU,1000,2732,medium
+flora-846,"Primrose (Primula sp.)","Primula specio-846","Plant Family","Alpine Herb",LC,2238,2812,low
+flora-847,"Rock Jasmine (Androsace sp.)","Androsace specio-847","Plant Family","Alpine Herb",LC,1468,3045,low
+flora-848,"Gentian (Gentiana sp.)","Gentiana specio-848","Plant Family","Alpine Herb",LC,2359,3862,low
+flora-849,"Catmint (Nepeta sp.)","Nepeta specio-849","Plant Family","Herb",LC,1455,2199,low
+flora-850,"Sage (Salvia sp.)","Salvia specio-850","Plant Family","Herb",VU,1231,2191,medium
+flora-851,"Milkvetch (Astragalus sp.)","Astragalus specio-851","Plant Family","Herb/Shrub",LC,1070,2209,low
+flora-852,"Sedge (Carex sp.)","Carex specio-852","Plant Family","Sedge",LC,1000,2389,low
+flora-853,"Bog Sedge (Kobresia sp.)","Kobresia specio-853","Plant Family","Sedge",LC,2548,3371,low
+flora-854,"Willow (Salix sp.)","Salix specio-854","Plant Family","Tree/Shrub",LC,1000,2733,low
+flora-855,"Corydalis (Corydalis sp.)","Corydalis specio-855","Plant Family","Herb",LC,1985,4457,low
+flora-856,"Lousewort (Pedicularis sp.)","Pedicularis specio-856","Plant Family","Herb",LC,2371,4829,low
+flora-857,"Campion (Silene sp.)","Silene specio-857","Plant Family","Herb",LC,1007,2822,low
+flora-858,"Willowherb (Epilobium sp.)","Epilobium specio-858","Plant Family","Herb",LC,1084,2322,low
+flora-859,"Buttercup (Ranunculus sp.)","Ranunculus specio-859","Plant Family","Herb",LC,1000,1881,low
+flora-860,"Monkshood (Aconitum sp.)","Aconitum specio-860","Plant Family","Herb",LC,2220,4389,low
+flora-861,"Windflower (Anemone sp.)","Anemone specio-861","Plant Family","Herb",LC,1045,1799,low
+flora-862,"Knotweed (Polygonum sp.)","Polygonum specio-862","Plant Family","Herb",LC,1000,3335,low
+flora-863,"Barberry (Berberis sp.)","Berberis specio-863","Plant Family","Shrub",LC,1286,2173,low
+flora-864,"Rhododendron (Rhododendron sp.)","Rhododendron specio-864","Plant Family","Shrub/Tree",LC,1859,2380,low
+flora-865,"Pine (Pinus sp.)","Pinus specio-865","Plant Family","Tree",LC,1000,1728,low
+flora-866,"Fir (Abies sp.)","Abies specio-866","Plant Family","Tree",LC,1332,1920,low
+flora-867,"Spruce (Picea sp.)","Picea specio-867","Plant Family","Tree",LC,1376,2489,low
+flora-868,"Juniper (Juniperus sp.)","Juniperus specio-868","Plant Family","Tree/Shrub",LC,2051,3031,low
+flora-869,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-869","Plant Family","Herb/Shrub",LC,1369,3173,low
+flora-870,"Saw-wort (Saussurea sp.)","Saussurea specio-870","Plant Family","Alpine Herb",NT,2590,4482,low
+flora-871,"Fescue Grass (Festuca sp.)","Festuca specio-871","Plant Family","Grass",LC,1227,2586,low
+flora-872,"Bluegrass (Poa sp.)","Poa specio-872","Plant Family","Grass",LC,1225,2354,low
+flora-873,"Feather Grass (Stipa sp.)","Stipa specio-873","Plant Family","Grass",LC,1023,2148,low
+flora-874,"Cinquefoil (Potentilla sp.)","Potentilla specio-874","Plant Family","Herb",VU,1547,3651,medium
+flora-875,"Wild Rose (Rosa sp.)","Rosa specio-875","Plant Family","Shrub",LC,1078,3126,low
+flora-876,"Bramble/Raspberry (Rubus sp.)","Rubus specio-876","Plant Family","Shrub/Climber",NT,1000,1684,low
+flora-877,"Primrose (Primula sp.)","Primula specio-877","Plant Family","Alpine Herb",LC,1937,3261,low
+flora-878,"Rock Jasmine (Androsace sp.)","Androsace specio-878","Plant Family","Alpine Herb",LC,1079,1999,low
+flora-879,"Gentian (Gentiana sp.)","Gentiana specio-879","Plant Family","Alpine Herb",LC,2197,4107,low
+flora-880,"Catmint (Nepeta sp.)","Nepeta specio-880","Plant Family","Herb",LC,1140,2615,low
+flora-881,"Sage (Salvia sp.)","Salvia specio-881","Plant Family","Herb",LC,1360,2004,low
+flora-882,"Milkvetch (Astragalus sp.)","Astragalus specio-882","Plant Family","Herb/Shrub",LC,1281,3621,low
+flora-883,"Sedge (Carex sp.)","Carex specio-883","Plant Family","Sedge",LC,1000,1612,low
+flora-884,"Bog Sedge (Kobresia sp.)","Kobresia specio-884","Plant Family","Sedge",LC,1355,3330,low
+flora-885,"Willow (Salix sp.)","Salix specio-885","Plant Family","Tree/Shrub",LC,1000,2189,low
+flora-886,"Corydalis (Corydalis sp.)","Corydalis specio-886","Plant Family","Herb",LC,1586,3405,low
+flora-887,"Lousewort (Pedicularis sp.)","Pedicularis specio-887","Plant Family","Herb",LC,1545,3354,low
+flora-888,"Campion (Silene sp.)","Silene specio-888","Plant Family","Herb",LC,1288,2562,low
+flora-889,"Willowherb (Epilobium sp.)","Epilobium specio-889","Plant Family","Herb",VU,1061,2348,medium
+flora-890,"Buttercup (Ranunculus sp.)","Ranunculus specio-890","Plant Family","Herb",LC,1000,2086,low
+flora-891,"Monkshood (Aconitum sp.)","Aconitum specio-891","Plant Family","Herb",LC,1583,3378,low
+flora-892,"Windflower (Anemone sp.)","Anemone specio-892","Plant Family","Herb",LC,1006,2175,low
+flora-893,"Knotweed (Polygonum sp.)","Polygonum specio-893","Plant Family","Herb",LC,1000,2178,low
+flora-894,"Barberry (Berberis sp.)","Berberis specio-894","Plant Family","Shrub",LC,1307,2410,low
+flora-895,"Rhododendron (Rhododendron sp.)","Rhododendron specio-895","Plant Family","Shrub/Tree",NT,1427,2669,low
+flora-896,"Pine (Pinus sp.)","Pinus specio-896","Plant Family","Tree",LC,1000,1753,low
+flora-897,"Fir (Abies sp.)","Abies specio-897","Plant Family","Tree",LC,1641,2556,low
+flora-898,"Spruce (Picea sp.)","Picea specio-898","Plant Family","Tree",LC,1511,3820,low
+flora-899,"Juniper (Juniperus sp.)","Juniperus specio-899","Plant Family","Tree/Shrub",LC,2125,3925,low
+flora-900,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-900","Plant Family","Herb/Shrub",VU,1332,3426,medium
+flora-901,"Saw-wort (Saussurea sp.)","Saussurea specio-901","Plant Family","Alpine Herb",NT,1916,4130,low
+flora-902,"Fescue Grass (Festuca sp.)","Festuca specio-902","Plant Family","Grass",LC,1221,3322,low
+flora-903,"Bluegrass (Poa sp.)","Poa specio-903","Plant Family","Grass",NT,1031,1959,low
+flora-904,"Feather Grass (Stipa sp.)","Stipa specio-904","Plant Family","Grass",LC,2398,3525,low
+flora-905,"Cinquefoil (Potentilla sp.)","Potentilla specio-905","Plant Family","Herb",NT,1379,3455,low
+flora-906,"Wild Rose (Rosa sp.)","Rosa specio-906","Plant Family","Shrub",LC,1303,2324,low
+flora-907,"Bramble/Raspberry (Rubus sp.)","Rubus specio-907","Plant Family","Shrub/Climber",LC,1000,2134,low
+flora-908,"Primrose (Primula sp.)","Primula specio-908","Plant Family","Alpine Herb",LC,2183,3307,low
+flora-909,"Rock Jasmine (Androsace sp.)","Androsace specio-909","Plant Family","Alpine Herb",LC,2461,3449,low
+flora-910,"Gentian (Gentiana sp.)","Gentiana specio-910","Plant Family","Alpine Herb",LC,2412,3125,low
+flora-911,"Catmint (Nepeta sp.)","Nepeta specio-911","Plant Family","Herb",NT,1133,3247,low
+flora-912,"Sage (Salvia sp.)","Salvia specio-912","Plant Family","Herb",NT,1285,2872,low
+flora-913,"Milkvetch (Astragalus sp.)","Astragalus specio-913","Plant Family","Herb/Shrub",LC,1491,2857,low
+flora-914,"Sedge (Carex sp.)","Carex specio-914","Plant Family","Sedge",LC,1000,2939,low
+flora-915,"Bog Sedge (Kobresia sp.)","Kobresia specio-915","Plant Family","Sedge",LC,1503,3807,low
+flora-916,"Willow (Salix sp.)","Salix specio-916","Plant Family","Tree/Shrub",LC,1000,1817,low
+flora-917,"Corydalis (Corydalis sp.)","Corydalis specio-917","Plant Family","Herb",LC,1668,2303,low
+flora-918,"Lousewort (Pedicularis sp.)","Pedicularis specio-918","Plant Family","Herb",LC,2464,4205,low
+flora-919,"Campion (Silene sp.)","Silene specio-919","Plant Family","Herb",LC,1007,2762,low
+flora-920,"Willowherb (Epilobium sp.)","Epilobium specio-920","Plant Family","Herb",LC,1031,1985,low
+flora-921,"Buttercup (Ranunculus sp.)","Ranunculus specio-921","Plant Family","Herb",LC,1000,3059,low
+flora-922,"Monkshood (Aconitum sp.)","Aconitum specio-922","Plant Family","Herb",LC,1030,1567,low
+flora-923,"Windflower (Anemone sp.)","Anemone specio-923","Plant Family","Herb",LC,1982,2785,low
+flora-924,"Knotweed (Polygonum sp.)","Polygonum specio-924","Plant Family","Herb",LC,1000,3065,low
+flora-925,"Barberry (Berberis sp.)","Berberis specio-925","Plant Family","Shrub",LC,1109,3279,low
+flora-926,"Rhododendron (Rhododendron sp.)","Rhododendron specio-926","Plant Family","Shrub/Tree",NT,1716,3472,low
+flora-927,"Pine (Pinus sp.)","Pinus specio-927","Plant Family","Tree",LC,1000,1750,low
+flora-928,"Fir (Abies sp.)","Abies specio-928","Plant Family","Tree",LC,1734,3124,low
+flora-929,"Spruce (Picea sp.)","Picea specio-929","Plant Family","Tree",LC,1820,3571,low
+flora-930,"Juniper (Juniperus sp.)","Juniperus specio-930","Plant Family","Tree/Shrub",LC,2471,3095,low
+flora-931,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-931","Plant Family","Herb/Shrub",LC,1266,3579,low
+flora-932,"Saw-wort (Saussurea sp.)","Saussurea specio-932","Plant Family","Alpine Herb",NT,1494,2415,low
+flora-933,"Fescue Grass (Festuca sp.)","Festuca specio-933","Plant Family","Grass",EN,1155,2453,high
+flora-934,"Bluegrass (Poa sp.)","Poa specio-934","Plant Family","Grass",LC,1086,2151,low
+flora-935,"Feather Grass (Stipa sp.)","Stipa specio-935","Plant Family","Grass",LC,1045,1671,low
+flora-936,"Cinquefoil (Potentilla sp.)","Potentilla specio-936","Plant Family","Herb",LC,1557,3111,low
+flora-937,"Wild Rose (Rosa sp.)","Rosa specio-937","Plant Family","Shrub",LC,1004,2628,low
+flora-938,"Bramble/Raspberry (Rubus sp.)","Rubus specio-938","Plant Family","Shrub/Climber",LC,1000,2621,low
+flora-939,"Primrose (Primula sp.)","Primula specio-939","Plant Family","Alpine Herb",VU,1503,3314,medium
+flora-940,"Rock Jasmine (Androsace sp.)","Androsace specio-940","Plant Family","Alpine Herb",LC,2570,4512,low
+flora-941,"Gentian (Gentiana sp.)","Gentiana specio-941","Plant Family","Alpine Herb",LC,2389,4650,low
+flora-942,"Catmint (Nepeta sp.)","Nepeta specio-942","Plant Family","Herb",LC,1051,2406,low
+flora-943,"Sage (Salvia sp.)","Salvia specio-943","Plant Family","Herb",LC,1263,3461,low
+flora-944,"Milkvetch (Astragalus sp.)","Astragalus specio-944","Plant Family","Herb/Shrub",LC,1212,2910,low
+flora-945,"Sedge (Carex sp.)","Carex specio-945","Plant Family","Sedge",LC,1000,1760,low
+flora-946,"Bog Sedge (Kobresia sp.)","Kobresia specio-946","Plant Family","Sedge",LC,2128,3891,low
+flora-947,"Willow (Salix sp.)","Salix specio-947","Plant Family","Tree/Shrub",LC,1000,3316,low
+flora-948,"Corydalis (Corydalis sp.)","Corydalis specio-948","Plant Family","Herb",LC,1239,2542,low
+flora-949,"Lousewort (Pedicularis sp.)","Pedicularis specio-949","Plant Family","Herb",NT,2365,3306,low
+flora-950,"Campion (Silene sp.)","Silene specio-950","Plant Family","Herb",LC,1163,1776,low
+flora-951,"Willowherb (Epilobium sp.)","Epilobium specio-951","Plant Family","Herb",LC,1282,2694,low
+flora-952,"Buttercup (Ranunculus sp.)","Ranunculus specio-952","Plant Family","Herb",CR,1000,2384,critical
+flora-953,"Monkshood (Aconitum sp.)","Aconitum specio-953","Plant Family","Herb",LC,2006,4126,low
+flora-954,"Windflower (Anemone sp.)","Anemone specio-954","Plant Family","Herb",EN,1106,3278,high
+flora-955,"Knotweed (Polygonum sp.)","Polygonum specio-955","Plant Family","Herb",LC,1000,2258,low
+flora-956,"Barberry (Berberis sp.)","Berberis specio-956","Plant Family","Shrub",LC,1449,3839,low
+flora-957,"Rhododendron (Rhododendron sp.)","Rhododendron specio-957","Plant Family","Shrub/Tree",NT,1440,2954,low
+flora-958,"Pine (Pinus sp.)","Pinus specio-958","Plant Family","Tree",CR,1000,3133,critical
+flora-959,"Fir (Abies sp.)","Abies specio-959","Plant Family","Tree",LC,1958,4434,low
+flora-960,"Spruce (Picea sp.)","Picea specio-960","Plant Family","Tree",LC,1282,2820,low
+flora-961,"Juniper (Juniperus sp.)","Juniperus specio-961","Plant Family","Tree/Shrub",NT,1383,3739,low
+flora-962,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-962","Plant Family","Herb/Shrub",LC,1187,2162,low
+flora-963,"Saw-wort (Saussurea sp.)","Saussurea specio-963","Plant Family","Alpine Herb",NT,3000,3643,low
+flora-964,"Fescue Grass (Festuca sp.)","Festuca specio-964","Plant Family","Grass",LC,1313,3357,low
+flora-965,"Bluegrass (Poa sp.)","Poa specio-965","Plant Family","Grass",LC,1464,3809,low
+flora-966,"Feather Grass (Stipa sp.)","Stipa specio-966","Plant Family","Grass",LC,1998,4382,low
+flora-967,"Cinquefoil (Potentilla sp.)","Potentilla specio-967","Plant Family","Herb",LC,1322,3009,low
+flora-968,"Wild Rose (Rosa sp.)","Rosa specio-968","Plant Family","Shrub",LC,1393,2898,low
+flora-969,"Bramble/Raspberry (Rubus sp.)","Rubus specio-969","Plant Family","Shrub/Climber",LC,1000,3152,low
+flora-970,"Primrose (Primula sp.)","Primula specio-970","Plant Family","Alpine Herb",EN,1440,3283,high
+flora-971,"Rock Jasmine (Androsace sp.)","Androsace specio-971","Plant Family","Alpine Herb",LC,2289,4751,low
+flora-972,"Gentian (Gentiana sp.)","Gentiana specio-972","Plant Family","Alpine Herb",NT,1484,3918,low
+flora-973,"Catmint (Nepeta sp.)","Nepeta specio-973","Plant Family","Herb",LC,1187,1692,low
+flora-974,"Sage (Salvia sp.)","Salvia specio-974","Plant Family","Herb",LC,1438,3227,low
+flora-975,"Milkvetch (Astragalus sp.)","Astragalus specio-975","Plant Family","Herb/Shrub",LC,1002,2891,low
+flora-976,"Sedge (Carex sp.)","Carex specio-976","Plant Family","Sedge",LC,1000,1673,low
+flora-977,"Bog Sedge (Kobresia sp.)","Kobresia specio-977","Plant Family","Sedge",LC,1821,3301,low
+flora-978,"Willow (Salix sp.)","Salix specio-978","Plant Family","Tree/Shrub",NT,1000,3432,low
+flora-979,"Corydalis (Corydalis sp.)","Corydalis specio-979","Plant Family","Herb",CR,1079,2538,critical
+flora-980,"Lousewort (Pedicularis sp.)","Pedicularis specio-980","Plant Family","Herb",NT,1466,2299,low
+flora-981,"Campion (Silene sp.)","Silene specio-981","Plant Family","Herb",LC,1162,3058,low
+flora-982,"Willowherb (Epilobium sp.)","Epilobium specio-982","Plant Family","Herb",EN,1430,3588,high
+flora-983,"Buttercup (Ranunculus sp.)","Ranunculus specio-983","Plant Family","Herb",LC,1000,2920,low
+flora-984,"Monkshood (Aconitum sp.)","Aconitum specio-984","Plant Family","Herb",EN,1316,3663,high
+flora-985,"Windflower (Anemone sp.)","Anemone specio-985","Plant Family","Herb",VU,1892,2435,medium
+flora-986,"Knotweed (Polygonum sp.)","Polygonum specio-986","Plant Family","Herb",LC,1000,2029,low
+flora-987,"Barberry (Berberis sp.)","Berberis specio-987","Plant Family","Shrub",LC,1452,3531,low
+flora-988,"Rhododendron (Rhododendron sp.)","Rhododendron specio-988","Plant Family","Shrub/Tree",LC,2043,4039,low
+flora-989,"Pine (Pinus sp.)","Pinus specio-989","Plant Family","Tree",LC,1000,1660,low
+flora-990,"Fir (Abies sp.)","Abies specio-990","Plant Family","Tree",LC,1793,3987,low
+flora-991,"Spruce (Picea sp.)","Picea specio-991","Plant Family","Tree",VU,1476,2520,medium
+flora-992,"Juniper (Juniperus sp.)","Juniperus specio-992","Plant Family","Tree/Shrub",NT,1116,2735,low
+flora-993,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-993","Plant Family","Herb/Shrub",LC,1270,2441,low
+flora-994,"Saw-wort (Saussurea sp.)","Saussurea specio-994","Plant Family","Alpine Herb",LC,1799,3241,low
+flora-995,"Fescue Grass (Festuca sp.)","Festuca specio-995","Plant Family","Grass",LC,1144,2947,low
+flora-996,"Bluegrass (Poa sp.)","Poa specio-996","Plant Family","Grass",VU,1011,1833,medium
+flora-997,"Feather Grass (Stipa sp.)","Stipa specio-997","Plant Family","Grass",NT,1909,2597,low
+flora-998,"Cinquefoil (Potentilla sp.)","Potentilla specio-998","Plant Family","Herb",LC,1929,3487,low
+flora-999,"Wild Rose (Rosa sp.)","Rosa specio-999","Plant Family","Shrub",LC,1483,3566,low
+flora-1000,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1000","Plant Family","Shrub/Climber",LC,1000,2044,low
+flora-1001,"Primrose (Primula sp.)","Primula specio-1001","Plant Family","Alpine Herb",LC,1057,2692,low
+flora-1002,"Rock Jasmine (Androsace sp.)","Androsace specio-1002","Plant Family","Alpine Herb",LC,2772,4535,low
+flora-1003,"Gentian (Gentiana sp.)","Gentiana specio-1003","Plant Family","Alpine Herb",LC,1292,2360,low
+flora-1004,"Catmint (Nepeta sp.)","Nepeta specio-1004","Plant Family","Herb",NT,1147,2991,low
+flora-1005,"Sage (Salvia sp.)","Salvia specio-1005","Plant Family","Herb",LC,1121,2682,low
+flora-1006,"Milkvetch (Astragalus sp.)","Astragalus specio-1006","Plant Family","Herb/Shrub",LC,1089,3532,low
+flora-1007,"Sedge (Carex sp.)","Carex specio-1007","Plant Family","Sedge",LC,1000,3330,low
+flora-1008,"Bog Sedge (Kobresia sp.)","Kobresia specio-1008","Plant Family","Sedge",VU,2938,5158,medium
+flora-1009,"Willow (Salix sp.)","Salix specio-1009","Plant Family","Tree/Shrub",LC,1000,2454,low
+flora-1010,"Corydalis (Corydalis sp.)","Corydalis specio-1010","Plant Family","Herb",VU,1373,2996,medium
+flora-1011,"Lousewort (Pedicularis sp.)","Pedicularis specio-1011","Plant Family","Herb",LC,1766,3275,low
+flora-1012,"Campion (Silene sp.)","Silene specio-1012","Plant Family","Herb",LC,1132,2486,low
+flora-1013,"Willowherb (Epilobium sp.)","Epilobium specio-1013","Plant Family","Herb",LC,1198,2871,low
+flora-1014,"Buttercup (Ranunculus sp.)","Ranunculus specio-1014","Plant Family","Herb",LC,1000,2385,low
+flora-1015,"Monkshood (Aconitum sp.)","Aconitum specio-1015","Plant Family","Herb",LC,2100,3081,low
+flora-1016,"Windflower (Anemone sp.)","Anemone specio-1016","Plant Family","Herb",EN,1039,2427,high
+flora-1017,"Knotweed (Polygonum sp.)","Polygonum specio-1017","Plant Family","Herb",LC,1000,3310,low
+flora-1018,"Barberry (Berberis sp.)","Berberis specio-1018","Plant Family","Shrub",LC,1153,3146,low
+flora-1019,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1019","Plant Family","Shrub/Tree",EN,1762,2587,high
+flora-1020,"Pine (Pinus sp.)","Pinus specio-1020","Plant Family","Tree",LC,1000,2574,low
+flora-1021,"Fir (Abies sp.)","Abies specio-1021","Plant Family","Tree",LC,1658,4150,low
+flora-1022,"Spruce (Picea sp.)","Picea specio-1022","Plant Family","Tree",LC,1267,2928,low
+flora-1023,"Juniper (Juniperus sp.)","Juniperus specio-1023","Plant Family","Tree/Shrub",NT,1596,3651,low
+flora-1024,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1024","Plant Family","Herb/Shrub",LC,1141,2011,low
+flora-1025,"Saw-wort (Saussurea sp.)","Saussurea specio-1025","Plant Family","Alpine Herb",LC,2791,3558,low
+flora-1026,"Fescue Grass (Festuca sp.)","Festuca specio-1026","Plant Family","Grass",LC,1083,1706,low
+flora-1027,"Bluegrass (Poa sp.)","Poa specio-1027","Plant Family","Grass",NT,1268,2461,low
+flora-1028,"Feather Grass (Stipa sp.)","Stipa specio-1028","Plant Family","Grass",LC,2217,3396,low
+flora-1029,"Cinquefoil (Potentilla sp.)","Potentilla specio-1029","Plant Family","Herb",LC,1800,3941,low
+flora-1030,"Wild Rose (Rosa sp.)","Rosa specio-1030","Plant Family","Shrub",NT,1095,1727,low
+flora-1031,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1031","Plant Family","Shrub/Climber",LC,1000,2104,low
+flora-1032,"Primrose (Primula sp.)","Primula specio-1032","Plant Family","Alpine Herb",LC,1710,3197,low
+flora-1033,"Rock Jasmine (Androsace sp.)","Androsace specio-1033","Plant Family","Alpine Herb",NT,1591,2293,low
+flora-1034,"Gentian (Gentiana sp.)","Gentiana specio-1034","Plant Family","Alpine Herb",LC,1555,3083,low
+flora-1035,"Catmint (Nepeta sp.)","Nepeta specio-1035","Plant Family","Herb",LC,1099,2513,low
+flora-1036,"Sage (Salvia sp.)","Salvia specio-1036","Plant Family","Herb",LC,1113,3403,low
+flora-1037,"Milkvetch (Astragalus sp.)","Astragalus specio-1037","Plant Family","Herb/Shrub",EN,1330,3374,high
+flora-1038,"Sedge (Carex sp.)","Carex specio-1038","Plant Family","Sedge",LC,1000,2484,low
+flora-1039,"Bog Sedge (Kobresia sp.)","Kobresia specio-1039","Plant Family","Sedge",LC,2400,3424,low
+flora-1040,"Willow (Salix sp.)","Salix specio-1040","Plant Family","Tree/Shrub",LC,1000,1685,low
+flora-1041,"Corydalis (Corydalis sp.)","Corydalis specio-1041","Plant Family","Herb",LC,1269,2397,low
+flora-1042,"Lousewort (Pedicularis sp.)","Pedicularis specio-1042","Plant Family","Herb",LC,1144,3590,low
+flora-1043,"Campion (Silene sp.)","Silene specio-1043","Plant Family","Herb",LC,1399,1952,low
+flora-1044,"Willowherb (Epilobium sp.)","Epilobium specio-1044","Plant Family","Herb",LC,1434,3337,low
+flora-1045,"Buttercup (Ranunculus sp.)","Ranunculus specio-1045","Plant Family","Herb",LC,1000,3050,low
+flora-1046,"Monkshood (Aconitum sp.)","Aconitum specio-1046","Plant Family","Herb",LC,1193,1701,low
+flora-1047,"Windflower (Anemone sp.)","Anemone specio-1047","Plant Family","Herb",LC,1584,3894,low
+flora-1048,"Knotweed (Polygonum sp.)","Polygonum specio-1048","Plant Family","Herb",LC,1000,3096,low
+flora-1049,"Barberry (Berberis sp.)","Berberis specio-1049","Plant Family","Shrub",LC,1472,3028,low
+flora-1050,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1050","Plant Family","Shrub/Tree",LC,1683,2670,low
+flora-1051,"Pine (Pinus sp.)","Pinus specio-1051","Plant Family","Tree",LC,1000,1600,low
+flora-1052,"Fir (Abies sp.)","Abies specio-1052","Plant Family","Tree",LC,1473,2847,low
+flora-1053,"Spruce (Picea sp.)","Picea specio-1053","Plant Family","Tree",LC,1612,2135,low
+flora-1054,"Juniper (Juniperus sp.)","Juniperus specio-1054","Plant Family","Tree/Shrub",LC,2152,4535,low
+flora-1055,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1055","Plant Family","Herb/Shrub",VU,1400,2156,medium
+flora-1056,"Saw-wort (Saussurea sp.)","Saussurea specio-1056","Plant Family","Alpine Herb",LC,3018,3662,low
+flora-1057,"Fescue Grass (Festuca sp.)","Festuca specio-1057","Plant Family","Grass",LC,1352,2718,low
+flora-1058,"Bluegrass (Poa sp.)","Poa specio-1058","Plant Family","Grass",LC,1138,2781,low
+flora-1059,"Feather Grass (Stipa sp.)","Stipa specio-1059","Plant Family","Grass",LC,1186,3197,low
+flora-1060,"Cinquefoil (Potentilla sp.)","Potentilla specio-1060","Plant Family","Herb",LC,1581,2669,low
+flora-1061,"Wild Rose (Rosa sp.)","Rosa specio-1061","Plant Family","Shrub",LC,1371,2816,low
+flora-1062,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1062","Plant Family","Shrub/Climber",LC,1000,2420,low
+flora-1063,"Primrose (Primula sp.)","Primula specio-1063","Plant Family","Alpine Herb",LC,1073,1833,low
+flora-1064,"Rock Jasmine (Androsace sp.)","Androsace specio-1064","Plant Family","Alpine Herb",NT,2666,4984,low
+flora-1065,"Gentian (Gentiana sp.)","Gentiana specio-1065","Plant Family","Alpine Herb",LC,1229,1827,low
+flora-1066,"Catmint (Nepeta sp.)","Nepeta specio-1066","Plant Family","Herb",LC,1400,2933,low
+flora-1067,"Sage (Salvia sp.)","Salvia specio-1067","Plant Family","Herb",LC,1309,2545,low
+flora-1068,"Milkvetch (Astragalus sp.)","Astragalus specio-1068","Plant Family","Herb/Shrub",LC,1164,3636,low
+flora-1069,"Sedge (Carex sp.)","Carex specio-1069","Plant Family","Sedge",LC,1000,2367,low
+flora-1070,"Bog Sedge (Kobresia sp.)","Kobresia specio-1070","Plant Family","Sedge",NT,2850,4415,low
+flora-1071,"Willow (Salix sp.)","Salix specio-1071","Plant Family","Tree/Shrub",LC,1000,2731,low
+flora-1072,"Corydalis (Corydalis sp.)","Corydalis specio-1072","Plant Family","Herb",LC,1658,2369,low
+flora-1073,"Lousewort (Pedicularis sp.)","Pedicularis specio-1073","Plant Family","Herb",LC,1777,3966,low
+flora-1074,"Campion (Silene sp.)","Silene specio-1074","Plant Family","Herb",LC,1141,2300,low
+flora-1075,"Willowherb (Epilobium sp.)","Epilobium specio-1075","Plant Family","Herb",NT,1245,3490,low
+flora-1076,"Buttercup (Ranunculus sp.)","Ranunculus specio-1076","Plant Family","Herb",LC,1000,2583,low
+flora-1077,"Monkshood (Aconitum sp.)","Aconitum specio-1077","Plant Family","Herb",LC,2146,3478,low
+flora-1078,"Windflower (Anemone sp.)","Anemone specio-1078","Plant Family","Herb",LC,1544,3553,low
+flora-1079,"Knotweed (Polygonum sp.)","Polygonum specio-1079","Plant Family","Herb",LC,1000,2227,low
+flora-1080,"Barberry (Berberis sp.)","Berberis specio-1080","Plant Family","Shrub",LC,1043,2484,low
+flora-1081,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1081","Plant Family","Shrub/Tree",LC,1040,2349,low
+flora-1082,"Pine (Pinus sp.)","Pinus specio-1082","Plant Family","Tree",LC,1000,2750,low
+flora-1083,"Fir (Abies sp.)","Abies specio-1083","Plant Family","Tree",LC,1802,4005,low
+flora-1084,"Spruce (Picea sp.)","Picea specio-1084","Plant Family","Tree",LC,1131,2469,low
+flora-1085,"Juniper (Juniperus sp.)","Juniperus specio-1085","Plant Family","Tree/Shrub",LC,2420,4326,low
+flora-1086,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1086","Plant Family","Herb/Shrub",LC,1178,1815,low
+flora-1087,"Saw-wort (Saussurea sp.)","Saussurea specio-1087","Plant Family","Alpine Herb",VU,2752,4400,medium
+flora-1088,"Fescue Grass (Festuca sp.)","Festuca specio-1088","Plant Family","Grass",LC,1291,3680,low
+flora-1089,"Bluegrass (Poa sp.)","Poa specio-1089","Plant Family","Grass",LC,1480,3890,low
+flora-1090,"Feather Grass (Stipa sp.)","Stipa specio-1090","Plant Family","Grass",LC,1158,3154,low
+flora-1091,"Cinquefoil (Potentilla sp.)","Potentilla specio-1091","Plant Family","Herb",NT,1187,2285,low
+flora-1092,"Wild Rose (Rosa sp.)","Rosa specio-1092","Plant Family","Shrub",LC,1192,3398,low
+flora-1093,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1093","Plant Family","Shrub/Climber",LC,1000,3248,low
+flora-1094,"Primrose (Primula sp.)","Primula specio-1094","Plant Family","Alpine Herb",LC,1059,2176,low
+flora-1095,"Rock Jasmine (Androsace sp.)","Androsace specio-1095","Plant Family","Alpine Herb",LC,2479,3349,low
+flora-1096,"Gentian (Gentiana sp.)","Gentiana specio-1096","Plant Family","Alpine Herb",LC,1702,3380,low
+flora-1097,"Catmint (Nepeta sp.)","Nepeta specio-1097","Plant Family","Herb",LC,1434,3148,low
+flora-1098,"Sage (Salvia sp.)","Salvia specio-1098","Plant Family","Herb",LC,1349,3634,low
+flora-1099,"Milkvetch (Astragalus sp.)","Astragalus specio-1099","Plant Family","Herb/Shrub",NT,1473,3285,low
+flora-1100,"Sedge (Carex sp.)","Carex specio-1100","Plant Family","Sedge",LC,1000,1832,low
+flora-1101,"Bog Sedge (Kobresia sp.)","Kobresia specio-1101","Plant Family","Sedge",EN,2464,4214,high
+flora-1102,"Willow (Salix sp.)","Salix specio-1102","Plant Family","Tree/Shrub",NT,1000,2497,low
+flora-1103,"Corydalis (Corydalis sp.)","Corydalis specio-1103","Plant Family","Herb",LC,1560,3697,low
+flora-1104,"Lousewort (Pedicularis sp.)","Pedicularis specio-1104","Plant Family","Herb",LC,1031,1698,low
+flora-1105,"Campion (Silene sp.)","Silene specio-1105","Plant Family","Herb",EN,1349,3734,high
+flora-1106,"Willowherb (Epilobium sp.)","Epilobium specio-1106","Plant Family","Herb",LC,1416,3088,low
+flora-1107,"Buttercup (Ranunculus sp.)","Ranunculus specio-1107","Plant Family","Herb",LC,1000,2466,low
+flora-1108,"Monkshood (Aconitum sp.)","Aconitum specio-1108","Plant Family","Herb",NT,1597,3464,low
+flora-1109,"Windflower (Anemone sp.)","Anemone specio-1109","Plant Family","Herb",LC,1480,2658,low
+flora-1110,"Knotweed (Polygonum sp.)","Polygonum specio-1110","Plant Family","Herb",LC,1000,1670,low
+flora-1111,"Barberry (Berberis sp.)","Berberis specio-1111","Plant Family","Shrub",LC,1297,1928,low
+flora-1112,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1112","Plant Family","Shrub/Tree",LC,1045,1758,low
+flora-1113,"Pine (Pinus sp.)","Pinus specio-1113","Plant Family","Tree",LC,1000,1569,low
+flora-1114,"Fir (Abies sp.)","Abies specio-1114","Plant Family","Tree",LC,1520,3436,low
+flora-1115,"Spruce (Picea sp.)","Picea specio-1115","Plant Family","Tree",LC,1634,2508,low
+flora-1116,"Juniper (Juniperus sp.)","Juniperus specio-1116","Plant Family","Tree/Shrub",LC,2184,3406,low
+flora-1117,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1117","Plant Family","Herb/Shrub",LC,1467,2065,low
+flora-1118,"Saw-wort (Saussurea sp.)","Saussurea specio-1118","Plant Family","Alpine Herb",LC,2803,3931,low
+flora-1119,"Fescue Grass (Festuca sp.)","Festuca specio-1119","Plant Family","Grass",LC,1228,3060,low
+flora-1120,"Bluegrass (Poa sp.)","Poa specio-1120","Plant Family","Grass",LC,1171,2291,low
+flora-1121,"Feather Grass (Stipa sp.)","Stipa specio-1121","Plant Family","Grass",EN,1340,1843,high
+flora-1122,"Cinquefoil (Potentilla sp.)","Potentilla specio-1122","Plant Family","Herb",LC,1444,3908,low
+flora-1123,"Wild Rose (Rosa sp.)","Rosa specio-1123","Plant Family","Shrub",LC,1322,2972,low
+flora-1124,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1124","Plant Family","Shrub/Climber",LC,1000,1646,low
+flora-1125,"Primrose (Primula sp.)","Primula specio-1125","Plant Family","Alpine Herb",VU,2421,3946,medium
+flora-1126,"Rock Jasmine (Androsace sp.)","Androsace specio-1126","Plant Family","Alpine Herb",LC,1556,2246,low
+flora-1127,"Gentian (Gentiana sp.)","Gentiana specio-1127","Plant Family","Alpine Herb",LC,2176,3529,low
+flora-1128,"Catmint (Nepeta sp.)","Nepeta specio-1128","Plant Family","Herb",EN,1158,2966,high
+flora-1129,"Sage (Salvia sp.)","Salvia specio-1129","Plant Family","Herb",LC,1498,3271,low
+flora-1130,"Milkvetch (Astragalus sp.)","Astragalus specio-1130","Plant Family","Herb/Shrub",LC,1460,2068,low
+flora-1131,"Sedge (Carex sp.)","Carex specio-1131","Plant Family","Sedge",LC,1000,3215,low
+flora-1132,"Bog Sedge (Kobresia sp.)","Kobresia specio-1132","Plant Family","Sedge",NT,2158,2773,low
+flora-1133,"Willow (Salix sp.)","Salix specio-1133","Plant Family","Tree/Shrub",LC,1000,2592,low
+flora-1134,"Corydalis (Corydalis sp.)","Corydalis specio-1134","Plant Family","Herb",LC,1767,2283,low
+flora-1135,"Lousewort (Pedicularis sp.)","Pedicularis specio-1135","Plant Family","Herb",VU,1713,3744,medium
+flora-1136,"Campion (Silene sp.)","Silene specio-1136","Plant Family","Herb",LC,1236,1782,low
+flora-1137,"Willowherb (Epilobium sp.)","Epilobium specio-1137","Plant Family","Herb",LC,1038,3058,low
+flora-1138,"Buttercup (Ranunculus sp.)","Ranunculus specio-1138","Plant Family","Herb",LC,1000,2176,low
+flora-1139,"Monkshood (Aconitum sp.)","Aconitum specio-1139","Plant Family","Herb",LC,1328,3243,low
+flora-1140,"Windflower (Anemone sp.)","Anemone specio-1140","Plant Family","Herb",LC,1040,2110,low
+flora-1141,"Knotweed (Polygonum sp.)","Polygonum specio-1141","Plant Family","Herb",NT,1000,1745,low
+flora-1142,"Barberry (Berberis sp.)","Berberis specio-1142","Plant Family","Shrub",CR,1403,3496,critical
+flora-1143,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1143","Plant Family","Shrub/Tree",LC,1713,3575,low
+flora-1144,"Pine (Pinus sp.)","Pinus specio-1144","Plant Family","Tree",LC,1000,3386,low
+flora-1145,"Fir (Abies sp.)","Abies specio-1145","Plant Family","Tree",NT,1577,2438,low
+flora-1146,"Spruce (Picea sp.)","Picea specio-1146","Plant Family","Tree",LC,1426,1987,low
+flora-1147,"Juniper (Juniperus sp.)","Juniperus specio-1147","Plant Family","Tree/Shrub",LC,1895,3189,low
+flora-1148,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1148","Plant Family","Herb/Shrub",LC,1218,2764,low
+flora-1149,"Saw-wort (Saussurea sp.)","Saussurea specio-1149","Plant Family","Alpine Herb",LC,1654,3655,low
+flora-1150,"Fescue Grass (Festuca sp.)","Festuca specio-1150","Plant Family","Grass",LC,1181,3237,low
+flora-1151,"Bluegrass (Poa sp.)","Poa specio-1151","Plant Family","Grass",LC,1186,2770,low
+flora-1152,"Feather Grass (Stipa sp.)","Stipa specio-1152","Plant Family","Grass",CR,1479,2360,critical
+flora-1153,"Cinquefoil (Potentilla sp.)","Potentilla specio-1153","Plant Family","Herb",LC,1886,3402,low
+flora-1154,"Wild Rose (Rosa sp.)","Rosa specio-1154","Plant Family","Shrub",NT,1246,2864,low
+flora-1155,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1155","Plant Family","Shrub/Climber",LC,1000,2867,low
+flora-1156,"Primrose (Primula sp.)","Primula specio-1156","Plant Family","Alpine Herb",LC,2441,4323,low
+flora-1157,"Rock Jasmine (Androsace sp.)","Androsace specio-1157","Plant Family","Alpine Herb",LC,2254,3839,low
+flora-1158,"Gentian (Gentiana sp.)","Gentiana specio-1158","Plant Family","Alpine Herb",LC,1442,3155,low
+flora-1159,"Catmint (Nepeta sp.)","Nepeta specio-1159","Plant Family","Herb",LC,1359,3039,low
+flora-1160,"Sage (Salvia sp.)","Salvia specio-1160","Plant Family","Herb",LC,1408,2084,low
+flora-1161,"Milkvetch (Astragalus sp.)","Astragalus specio-1161","Plant Family","Herb/Shrub",LC,1115,2779,low
+flora-1162,"Sedge (Carex sp.)","Carex specio-1162","Plant Family","Sedge",NT,1000,3204,low
+flora-1163,"Bog Sedge (Kobresia sp.)","Kobresia specio-1163","Plant Family","Sedge",LC,1602,4033,low
+flora-1164,"Willow (Salix sp.)","Salix specio-1164","Plant Family","Tree/Shrub",LC,1000,1691,low
+flora-1165,"Corydalis (Corydalis sp.)","Corydalis specio-1165","Plant Family","Herb",LC,1287,3504,low
+flora-1166,"Lousewort (Pedicularis sp.)","Pedicularis specio-1166","Plant Family","Herb",LC,1615,2337,low
+flora-1167,"Campion (Silene sp.)","Silene specio-1167","Plant Family","Herb",LC,1462,3812,low
+flora-1168,"Willowherb (Epilobium sp.)","Epilobium specio-1168","Plant Family","Herb",LC,1485,2907,low
+flora-1169,"Buttercup (Ranunculus sp.)","Ranunculus specio-1169","Plant Family","Herb",LC,1000,2644,low
+flora-1170,"Monkshood (Aconitum sp.)","Aconitum specio-1170","Plant Family","Herb",LC,1842,3692,low
+flora-1171,"Windflower (Anemone sp.)","Anemone specio-1171","Plant Family","Herb",LC,1100,1892,low
+flora-1172,"Knotweed (Polygonum sp.)","Polygonum specio-1172","Plant Family","Herb",LC,1000,2517,low
+flora-1173,"Barberry (Berberis sp.)","Berberis specio-1173","Plant Family","Shrub",LC,1476,3409,low
+flora-1174,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1174","Plant Family","Shrub/Tree",NT,2379,3179,low
+flora-1175,"Pine (Pinus sp.)","Pinus specio-1175","Plant Family","Tree",LC,1000,3457,low
+flora-1176,"Fir (Abies sp.)","Abies specio-1176","Plant Family","Tree",LC,1734,3712,low
+flora-1177,"Spruce (Picea sp.)","Picea specio-1177","Plant Family","Tree",EN,1688,2375,high
+flora-1178,"Juniper (Juniperus sp.)","Juniperus specio-1178","Plant Family","Tree/Shrub",LC,1421,2991,low
+flora-1179,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1179","Plant Family","Herb/Shrub",LC,1043,2257,low
+flora-1180,"Saw-wort (Saussurea sp.)","Saussurea specio-1180","Plant Family","Alpine Herb",LC,3327,5626,low
+flora-1181,"Fescue Grass (Festuca sp.)","Festuca specio-1181","Plant Family","Grass",NT,1016,2366,low
+flora-1182,"Bluegrass (Poa sp.)","Poa specio-1182","Plant Family","Grass",LC,1218,1812,low
+flora-1183,"Feather Grass (Stipa sp.)","Stipa specio-1183","Plant Family","Grass",LC,2428,3497,low
+flora-1184,"Cinquefoil (Potentilla sp.)","Potentilla specio-1184","Plant Family","Herb",LC,1352,3016,low
+flora-1185,"Wild Rose (Rosa sp.)","Rosa specio-1185","Plant Family","Shrub",LC,1206,2645,low
+flora-1186,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1186","Plant Family","Shrub/Climber",LC,1000,1687,low
+flora-1187,"Primrose (Primula sp.)","Primula specio-1187","Plant Family","Alpine Herb",LC,2247,3982,low
+flora-1188,"Rock Jasmine (Androsace sp.)","Androsace specio-1188","Plant Family","Alpine Herb",VU,1622,2629,medium
+flora-1189,"Gentian (Gentiana sp.)","Gentiana specio-1189","Plant Family","Alpine Herb",LC,2105,2648,low
+flora-1190,"Catmint (Nepeta sp.)","Nepeta specio-1190","Plant Family","Herb",LC,1318,1943,low
+flora-1191,"Sage (Salvia sp.)","Salvia specio-1191","Plant Family","Herb",LC,1249,2224,low
+flora-1192,"Milkvetch (Astragalus sp.)","Astragalus specio-1192","Plant Family","Herb/Shrub",LC,1086,1618,low
+flora-1193,"Sedge (Carex sp.)","Carex specio-1193","Plant Family","Sedge",LC,1000,3300,low
+flora-1194,"Bog Sedge (Kobresia sp.)","Kobresia specio-1194","Plant Family","Sedge",LC,1008,2089,low
+flora-1195,"Willow (Salix sp.)","Salix specio-1195","Plant Family","Tree/Shrub",LC,1000,2409,low
+flora-1196,"Corydalis (Corydalis sp.)","Corydalis specio-1196","Plant Family","Herb",LC,1461,2023,low
+flora-1197,"Lousewort (Pedicularis sp.)","Pedicularis specio-1197","Plant Family","Herb",LC,1741,3585,low
+flora-1198,"Campion (Silene sp.)","Silene specio-1198","Plant Family","Herb",LC,1248,2798,low
+flora-1199,"Willowherb (Epilobium sp.)","Epilobium specio-1199","Plant Family","Herb",LC,1449,2709,low
+flora-1200,"Buttercup (Ranunculus sp.)","Ranunculus specio-1200","Plant Family","Herb",LC,1000,2274,low
+flora-1201,"Monkshood (Aconitum sp.)","Aconitum specio-1201","Plant Family","Herb",LC,1966,2953,low
+flora-1202,"Windflower (Anemone sp.)","Anemone specio-1202","Plant Family","Herb",LC,1084,2863,low
+flora-1203,"Knotweed (Polygonum sp.)","Polygonum specio-1203","Plant Family","Herb",LC,1000,2465,low
+flora-1204,"Barberry (Berberis sp.)","Berberis specio-1204","Plant Family","Shrub",LC,1044,3426,low
+flora-1205,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1205","Plant Family","Shrub/Tree",LC,1169,2887,low
+flora-1206,"Pine (Pinus sp.)","Pinus specio-1206","Plant Family","Tree",LC,1000,2192,low
+flora-1207,"Fir (Abies sp.)","Abies specio-1207","Plant Family","Tree",VU,1932,3709,medium
+flora-1208,"Spruce (Picea sp.)","Picea specio-1208","Plant Family","Tree",CR,1246,3020,critical
+flora-1209,"Juniper (Juniperus sp.)","Juniperus specio-1209","Plant Family","Tree/Shrub",NT,1397,3425,low
+flora-1210,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1210","Plant Family","Herb/Shrub",LC,1079,2863,low
+flora-1211,"Saw-wort (Saussurea sp.)","Saussurea specio-1211","Plant Family","Alpine Herb",LC,3039,4174,low
+flora-1212,"Fescue Grass (Festuca sp.)","Festuca specio-1212","Plant Family","Grass",VU,1022,2657,medium
+flora-1213,"Bluegrass (Poa sp.)","Poa specio-1213","Plant Family","Grass",LC,1320,3549,low
+flora-1214,"Feather Grass (Stipa sp.)","Stipa specio-1214","Plant Family","Grass",EN,2169,3716,high
+flora-1215,"Cinquefoil (Potentilla sp.)","Potentilla specio-1215","Plant Family","Herb",LC,1494,3326,low
+flora-1216,"Wild Rose (Rosa sp.)","Rosa specio-1216","Plant Family","Shrub",NT,1211,1839,low
+flora-1217,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1217","Plant Family","Shrub/Climber",LC,1000,2434,low
+flora-1218,"Primrose (Primula sp.)","Primula specio-1218","Plant Family","Alpine Herb",LC,1047,3285,low
+flora-1219,"Rock Jasmine (Androsace sp.)","Androsace specio-1219","Plant Family","Alpine Herb",LC,1371,1964,low
+flora-1220,"Gentian (Gentiana sp.)","Gentiana specio-1220","Plant Family","Alpine Herb",LC,1602,3339,low
+flora-1221,"Catmint (Nepeta sp.)","Nepeta specio-1221","Plant Family","Herb",LC,1407,2776,low
+flora-1222,"Sage (Salvia sp.)","Salvia specio-1222","Plant Family","Herb",NT,1044,1989,low
+flora-1223,"Milkvetch (Astragalus sp.)","Astragalus specio-1223","Plant Family","Herb/Shrub",LC,1341,2446,low
+flora-1224,"Sedge (Carex sp.)","Carex specio-1224","Plant Family","Sedge",LC,1000,2617,low
+flora-1225,"Bog Sedge (Kobresia sp.)","Kobresia specio-1225","Plant Family","Sedge",VU,2894,4842,medium
+flora-1226,"Willow (Salix sp.)","Salix specio-1226","Plant Family","Tree/Shrub",EN,1000,1574,high
+flora-1227,"Corydalis (Corydalis sp.)","Corydalis specio-1227","Plant Family","Herb",LC,1244,2805,low
+flora-1228,"Lousewort (Pedicularis sp.)","Pedicularis specio-1228","Plant Family","Herb",LC,1279,1974,low
+flora-1229,"Campion (Silene sp.)","Silene specio-1229","Plant Family","Herb",LC,1107,3309,low
+flora-1230,"Willowherb (Epilobium sp.)","Epilobium specio-1230","Plant Family","Herb",LC,1285,3275,low
+flora-1231,"Buttercup (Ranunculus sp.)","Ranunculus specio-1231","Plant Family","Herb",LC,1000,3265,low
+flora-1232,"Monkshood (Aconitum sp.)","Aconitum specio-1232","Plant Family","Herb",VU,1721,3757,medium
+flora-1233,"Windflower (Anemone sp.)","Anemone specio-1233","Plant Family","Herb",LC,1068,3342,low
+flora-1234,"Knotweed (Polygonum sp.)","Polygonum specio-1234","Plant Family","Herb",LC,1000,1722,low
+flora-1235,"Barberry (Berberis sp.)","Berberis specio-1235","Plant Family","Shrub",NT,1344,3693,low
+flora-1236,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1236","Plant Family","Shrub/Tree",LC,1443,2897,low
+flora-1237,"Pine (Pinus sp.)","Pinus specio-1237","Plant Family","Tree",NT,1000,2394,low
+flora-1238,"Fir (Abies sp.)","Abies specio-1238","Plant Family","Tree",LC,1528,4010,low
+flora-1239,"Spruce (Picea sp.)","Picea specio-1239","Plant Family","Tree",LC,1582,3588,low
+flora-1240,"Juniper (Juniperus sp.)","Juniperus specio-1240","Plant Family","Tree/Shrub",NT,2287,4121,low
+flora-1241,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1241","Plant Family","Herb/Shrub",LC,1250,2333,low
+flora-1242,"Saw-wort (Saussurea sp.)","Saussurea specio-1242","Plant Family","Alpine Herb",CR,3092,4691,critical
+flora-1243,"Fescue Grass (Festuca sp.)","Festuca specio-1243","Plant Family","Grass",LC,1176,3596,low
+flora-1244,"Bluegrass (Poa sp.)","Poa specio-1244","Plant Family","Grass",LC,1147,3549,low
+flora-1245,"Feather Grass (Stipa sp.)","Stipa specio-1245","Plant Family","Grass",LC,1533,2072,low
+flora-1246,"Cinquefoil (Potentilla sp.)","Potentilla specio-1246","Plant Family","Herb",LC,1322,3077,low
+flora-1247,"Wild Rose (Rosa sp.)","Rosa specio-1247","Plant Family","Shrub",LC,1205,3523,low
+flora-1248,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1248","Plant Family","Shrub/Climber",LC,1000,1852,low
+flora-1249,"Primrose (Primula sp.)","Primula specio-1249","Plant Family","Alpine Herb",NT,2272,4366,low
+flora-1250,"Rock Jasmine (Androsace sp.)","Androsace specio-1250","Plant Family","Alpine Herb",VU,1947,3237,medium
+flora-1251,"Gentian (Gentiana sp.)","Gentiana specio-1251","Plant Family","Alpine Herb",LC,1490,2634,low
+flora-1252,"Catmint (Nepeta sp.)","Nepeta specio-1252","Plant Family","Herb",LC,1180,2889,low
+flora-1253,"Sage (Salvia sp.)","Salvia specio-1253","Plant Family","Herb",LC,1081,2331,low
+flora-1254,"Milkvetch (Astragalus sp.)","Astragalus specio-1254","Plant Family","Herb/Shrub",LC,1425,2372,low
+flora-1255,"Sedge (Carex sp.)","Carex specio-1255","Plant Family","Sedge",LC,1000,3069,low
+flora-1256,"Bog Sedge (Kobresia sp.)","Kobresia specio-1256","Plant Family","Sedge",LC,1784,3625,low
+flora-1257,"Willow (Salix sp.)","Salix specio-1257","Plant Family","Tree/Shrub",LC,1000,2810,low
+flora-1258,"Corydalis (Corydalis sp.)","Corydalis specio-1258","Plant Family","Herb",NT,1154,3356,low
+flora-1259,"Lousewort (Pedicularis sp.)","Pedicularis specio-1259","Plant Family","Herb",LC,1722,3869,low
+flora-1260,"Campion (Silene sp.)","Silene specio-1260","Plant Family","Herb",LC,1049,3447,low
+flora-1261,"Willowherb (Epilobium sp.)","Epilobium specio-1261","Plant Family","Herb",NT,1163,2662,low
+flora-1262,"Buttercup (Ranunculus sp.)","Ranunculus specio-1262","Plant Family","Herb",CR,1000,2543,critical
+flora-1263,"Monkshood (Aconitum sp.)","Aconitum specio-1263","Plant Family","Herb",LC,1955,3967,low
+flora-1264,"Windflower (Anemone sp.)","Anemone specio-1264","Plant Family","Herb",NT,1634,3942,low
+flora-1265,"Knotweed (Polygonum sp.)","Polygonum specio-1265","Plant Family","Herb",LC,1000,2073,low
+flora-1266,"Barberry (Berberis sp.)","Berberis specio-1266","Plant Family","Shrub",LC,1334,2772,low
+flora-1267,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1267","Plant Family","Shrub/Tree",LC,1369,2508,low
+flora-1268,"Pine (Pinus sp.)","Pinus specio-1268","Plant Family","Tree",LC,1000,2701,low
+flora-1269,"Fir (Abies sp.)","Abies specio-1269","Plant Family","Tree",LC,1798,2494,low
+flora-1270,"Spruce (Picea sp.)","Picea specio-1270","Plant Family","Tree",LC,1632,4103,low
+flora-1271,"Juniper (Juniperus sp.)","Juniperus specio-1271","Plant Family","Tree/Shrub",LC,1724,2921,low
+flora-1272,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1272","Plant Family","Herb/Shrub",LC,1175,2573,low
+flora-1273,"Saw-wort (Saussurea sp.)","Saussurea specio-1273","Plant Family","Alpine Herb",LC,1429,3230,low
+flora-1274,"Fescue Grass (Festuca sp.)","Festuca specio-1274","Plant Family","Grass",LC,1109,3283,low
+flora-1275,"Bluegrass (Poa sp.)","Poa specio-1275","Plant Family","Grass",LC,1250,2867,low
+flora-1276,"Feather Grass (Stipa sp.)","Stipa specio-1276","Plant Family","Grass",LC,1358,2012,low
+flora-1277,"Cinquefoil (Potentilla sp.)","Potentilla specio-1277","Plant Family","Herb",VU,1367,2704,medium
+flora-1278,"Wild Rose (Rosa sp.)","Rosa specio-1278","Plant Family","Shrub",LC,1239,3429,low
+flora-1279,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1279","Plant Family","Shrub/Climber",LC,1000,2852,low
+flora-1280,"Primrose (Primula sp.)","Primula specio-1280","Plant Family","Alpine Herb",LC,1221,3194,low
+flora-1281,"Rock Jasmine (Androsace sp.)","Androsace specio-1281","Plant Family","Alpine Herb",LC,2448,3555,low
+flora-1282,"Gentian (Gentiana sp.)","Gentiana specio-1282","Plant Family","Alpine Herb",LC,1061,2516,low
+flora-1283,"Catmint (Nepeta sp.)","Nepeta specio-1283","Plant Family","Herb",LC,1312,2913,low
+flora-1284,"Sage (Salvia sp.)","Salvia specio-1284","Plant Family","Herb",LC,1468,2224,low
+flora-1285,"Milkvetch (Astragalus sp.)","Astragalus specio-1285","Plant Family","Herb/Shrub",LC,1012,3356,low
+flora-1286,"Sedge (Carex sp.)","Carex specio-1286","Plant Family","Sedge",LC,1000,1568,low
+flora-1287,"Bog Sedge (Kobresia sp.)","Kobresia specio-1287","Plant Family","Sedge",LC,2879,4808,low
+flora-1288,"Willow (Salix sp.)","Salix specio-1288","Plant Family","Tree/Shrub",LC,1000,2731,low
+flora-1289,"Corydalis (Corydalis sp.)","Corydalis specio-1289","Plant Family","Herb",LC,1912,3788,low
+flora-1290,"Lousewort (Pedicularis sp.)","Pedicularis specio-1290","Plant Family","Herb",LC,1194,2188,low
+flora-1291,"Campion (Silene sp.)","Silene specio-1291","Plant Family","Herb",LC,1406,1908,low
+flora-1292,"Willowherb (Epilobium sp.)","Epilobium specio-1292","Plant Family","Herb",LC,1182,2907,low
+flora-1293,"Buttercup (Ranunculus sp.)","Ranunculus specio-1293","Plant Family","Herb",LC,1000,2590,low
+flora-1294,"Monkshood (Aconitum sp.)","Aconitum specio-1294","Plant Family","Herb",LC,1464,3690,low
+flora-1295,"Windflower (Anemone sp.)","Anemone specio-1295","Plant Family","Herb",VU,1886,3027,medium
+flora-1296,"Knotweed (Polygonum sp.)","Polygonum specio-1296","Plant Family","Herb",LC,1000,2795,low
+flora-1297,"Barberry (Berberis sp.)","Berberis specio-1297","Plant Family","Shrub",LC,1174,3422,low
+flora-1298,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1298","Plant Family","Shrub/Tree",LC,2022,3001,low
+flora-1299,"Pine (Pinus sp.)","Pinus specio-1299","Plant Family","Tree",LC,1000,3392,low
+flora-1300,"Fir (Abies sp.)","Abies specio-1300","Plant Family","Tree",LC,1617,3158,low
+flora-1301,"Spruce (Picea sp.)","Picea specio-1301","Plant Family","Tree",LC,1176,2090,low
+flora-1302,"Juniper (Juniperus sp.)","Juniperus specio-1302","Plant Family","Tree/Shrub",LC,1861,3545,low
+flora-1303,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1303","Plant Family","Herb/Shrub",NT,1237,2128,low
+flora-1304,"Saw-wort (Saussurea sp.)","Saussurea specio-1304","Plant Family","Alpine Herb",LC,3300,4784,low
+flora-1305,"Fescue Grass (Festuca sp.)","Festuca specio-1305","Plant Family","Grass",LC,1354,3292,low
+flora-1306,"Bluegrass (Poa sp.)","Poa specio-1306","Plant Family","Grass",LC,1338,1842,low
+flora-1307,"Feather Grass (Stipa sp.)","Stipa specio-1307","Plant Family","Grass",LC,2093,2745,low
+flora-1308,"Cinquefoil (Potentilla sp.)","Potentilla specio-1308","Plant Family","Herb",LC,1340,3835,low
+flora-1309,"Wild Rose (Rosa sp.)","Rosa specio-1309","Plant Family","Shrub",VU,1304,2610,medium
+flora-1310,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1310","Plant Family","Shrub/Climber",LC,1000,2915,low
+flora-1311,"Primrose (Primula sp.)","Primula specio-1311","Plant Family","Alpine Herb",LC,1886,2963,low
+flora-1312,"Rock Jasmine (Androsace sp.)","Androsace specio-1312","Plant Family","Alpine Herb",NT,2640,3187,low
+flora-1313,"Gentian (Gentiana sp.)","Gentiana specio-1313","Plant Family","Alpine Herb",LC,2092,2657,low
+flora-1314,"Catmint (Nepeta sp.)","Nepeta specio-1314","Plant Family","Herb",LC,1162,2753,low
+flora-1315,"Sage (Salvia sp.)","Salvia specio-1315","Plant Family","Herb",LC,1069,1784,low
+flora-1316,"Milkvetch (Astragalus sp.)","Astragalus specio-1316","Plant Family","Herb/Shrub",LC,1322,2276,low
+flora-1317,"Sedge (Carex sp.)","Carex specio-1317","Plant Family","Sedge",LC,1000,2321,low
+flora-1318,"Bog Sedge (Kobresia sp.)","Kobresia specio-1318","Plant Family","Sedge",VU,1215,1728,medium
+flora-1319,"Willow (Salix sp.)","Salix specio-1319","Plant Family","Tree/Shrub",LC,1000,1688,low
+flora-1320,"Corydalis (Corydalis sp.)","Corydalis specio-1320","Plant Family","Herb",LC,1890,3720,low
+flora-1321,"Lousewort (Pedicularis sp.)","Pedicularis specio-1321","Plant Family","Herb",LC,1375,2145,low
+flora-1322,"Campion (Silene sp.)","Silene specio-1322","Plant Family","Herb",NT,1162,1882,low
+flora-1323,"Willowherb (Epilobium sp.)","Epilobium specio-1323","Plant Family","Herb",NT,1111,2087,low
+flora-1324,"Buttercup (Ranunculus sp.)","Ranunculus specio-1324","Plant Family","Herb",LC,1000,2090,low
+flora-1325,"Monkshood (Aconitum sp.)","Aconitum specio-1325","Plant Family","Herb",LC,1328,2200,low
+flora-1326,"Windflower (Anemone sp.)","Anemone specio-1326","Plant Family","Herb",LC,1024,2425,low
+flora-1327,"Knotweed (Polygonum sp.)","Polygonum specio-1327","Plant Family","Herb",NT,1000,2820,low
+flora-1328,"Barberry (Berberis sp.)","Berberis specio-1328","Plant Family","Shrub",LC,1011,2232,low
+flora-1329,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1329","Plant Family","Shrub/Tree",LC,1870,3089,low
+flora-1330,"Pine (Pinus sp.)","Pinus specio-1330","Plant Family","Tree",LC,1000,2465,low
+flora-1331,"Fir (Abies sp.)","Abies specio-1331","Plant Family","Tree",LC,1412,3722,low
+flora-1332,"Spruce (Picea sp.)","Picea specio-1332","Plant Family","Tree",LC,1955,3136,low
+flora-1333,"Juniper (Juniperus sp.)","Juniperus specio-1333","Plant Family","Tree/Shrub",LC,2395,4134,low
+flora-1334,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1334","Plant Family","Herb/Shrub",LC,1199,2571,low
+flora-1335,"Saw-wort (Saussurea sp.)","Saussurea specio-1335","Plant Family","Alpine Herb",EN,1917,3258,high
+flora-1336,"Fescue Grass (Festuca sp.)","Festuca specio-1336","Plant Family","Grass",LC,1101,2727,low
+flora-1337,"Bluegrass (Poa sp.)","Poa specio-1337","Plant Family","Grass",VU,1428,3706,medium
+flora-1338,"Feather Grass (Stipa sp.)","Stipa specio-1338","Plant Family","Grass",LC,2223,3485,low
+flora-1339,"Cinquefoil (Potentilla sp.)","Potentilla specio-1339","Plant Family","Herb",LC,1145,3070,low
+flora-1340,"Wild Rose (Rosa sp.)","Rosa specio-1340","Plant Family","Shrub",LC,1204,2051,low
+flora-1341,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1341","Plant Family","Shrub/Climber",LC,1000,1946,low
+flora-1342,"Primrose (Primula sp.)","Primula specio-1342","Plant Family","Alpine Herb",NT,1378,2352,low
+flora-1343,"Rock Jasmine (Androsace sp.)","Androsace specio-1343","Plant Family","Alpine Herb",LC,1136,3193,low
+flora-1344,"Gentian (Gentiana sp.)","Gentiana specio-1344","Plant Family","Alpine Herb",VU,2394,3594,medium
+flora-1345,"Catmint (Nepeta sp.)","Nepeta specio-1345","Plant Family","Herb",LC,1018,3138,low
+flora-1346,"Sage (Salvia sp.)","Salvia specio-1346","Plant Family","Herb",LC,1483,3288,low
+flora-1347,"Milkvetch (Astragalus sp.)","Astragalus specio-1347","Plant Family","Herb/Shrub",LC,1340,2456,low
+flora-1348,"Sedge (Carex sp.)","Carex specio-1348","Plant Family","Sedge",LC,1000,3089,low
+flora-1349,"Bog Sedge (Kobresia sp.)","Kobresia specio-1349","Plant Family","Sedge",LC,2496,4599,low
+flora-1350,"Willow (Salix sp.)","Salix specio-1350","Plant Family","Tree/Shrub",LC,1000,1759,low
+flora-1351,"Corydalis (Corydalis sp.)","Corydalis specio-1351","Plant Family","Herb",NT,1739,3359,low
+flora-1352,"Lousewort (Pedicularis sp.)","Pedicularis specio-1352","Plant Family","Herb",NT,1976,3312,low
+flora-1353,"Campion (Silene sp.)","Silene specio-1353","Plant Family","Herb",LC,1491,2923,low
+flora-1354,"Willowherb (Epilobium sp.)","Epilobium specio-1354","Plant Family","Herb",LC,1318,2564,low
+flora-1355,"Buttercup (Ranunculus sp.)","Ranunculus specio-1355","Plant Family","Herb",LC,1000,2746,low
+flora-1356,"Monkshood (Aconitum sp.)","Aconitum specio-1356","Plant Family","Herb",LC,1230,2213,low
+flora-1357,"Windflower (Anemone sp.)","Anemone specio-1357","Plant Family","Herb",CR,1993,4243,critical
+flora-1358,"Knotweed (Polygonum sp.)","Polygonum specio-1358","Plant Family","Herb",LC,1000,2842,low
+flora-1359,"Barberry (Berberis sp.)","Berberis specio-1359","Plant Family","Shrub",CR,1305,2354,critical
+flora-1360,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1360","Plant Family","Shrub/Tree",NT,2327,4481,low
+flora-1361,"Pine (Pinus sp.)","Pinus specio-1361","Plant Family","Tree",LC,1000,2776,low
+flora-1362,"Fir (Abies sp.)","Abies specio-1362","Plant Family","Tree",LC,1513,2541,low
+flora-1363,"Spruce (Picea sp.)","Picea specio-1363","Plant Family","Tree",LC,1849,3102,low
+flora-1364,"Juniper (Juniperus sp.)","Juniperus specio-1364","Plant Family","Tree/Shrub",NT,1763,3642,low
+flora-1365,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1365","Plant Family","Herb/Shrub",LC,1385,3773,low
+flora-1366,"Saw-wort (Saussurea sp.)","Saussurea specio-1366","Plant Family","Alpine Herb",LC,2607,4376,low
+flora-1367,"Fescue Grass (Festuca sp.)","Festuca specio-1367","Plant Family","Grass",LC,1136,2865,low
+flora-1368,"Bluegrass (Poa sp.)","Poa specio-1368","Plant Family","Grass",LC,1399,3760,low
+flora-1369,"Feather Grass (Stipa sp.)","Stipa specio-1369","Plant Family","Grass",LC,1016,2597,low
+flora-1370,"Cinquefoil (Potentilla sp.)","Potentilla specio-1370","Plant Family","Herb",LC,1972,4332,low
+flora-1371,"Wild Rose (Rosa sp.)","Rosa specio-1371","Plant Family","Shrub",NT,1339,3568,low
+flora-1372,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1372","Plant Family","Shrub/Climber",VU,1000,1737,medium
+flora-1373,"Primrose (Primula sp.)","Primula specio-1373","Plant Family","Alpine Herb",LC,1252,2100,low
+flora-1374,"Rock Jasmine (Androsace sp.)","Androsace specio-1374","Plant Family","Alpine Herb",NT,2042,3060,low
+flora-1375,"Gentian (Gentiana sp.)","Gentiana specio-1375","Plant Family","Alpine Herb",LC,1194,1956,low
+flora-1376,"Catmint (Nepeta sp.)","Nepeta specio-1376","Plant Family","Herb",EN,1246,2923,high
+flora-1377,"Sage (Salvia sp.)","Salvia specio-1377","Plant Family","Herb",LC,1439,2915,low
+flora-1378,"Milkvetch (Astragalus sp.)","Astragalus specio-1378","Plant Family","Herb/Shrub",LC,1170,3437,low
+flora-1379,"Sedge (Carex sp.)","Carex specio-1379","Plant Family","Sedge",VU,1000,2023,medium
+flora-1380,"Bog Sedge (Kobresia sp.)","Kobresia specio-1380","Plant Family","Sedge",LC,1670,2294,low
+flora-1381,"Willow (Salix sp.)","Salix specio-1381","Plant Family","Tree/Shrub",LC,1000,1515,low
+flora-1382,"Corydalis (Corydalis sp.)","Corydalis specio-1382","Plant Family","Herb",LC,1526,2856,low
+flora-1383,"Lousewort (Pedicularis sp.)","Pedicularis specio-1383","Plant Family","Herb",LC,1156,3005,low
+flora-1384,"Campion (Silene sp.)","Silene specio-1384","Plant Family","Herb",LC,1402,3066,low
+flora-1385,"Willowherb (Epilobium sp.)","Epilobium specio-1385","Plant Family","Herb",LC,1055,2300,low
+flora-1386,"Buttercup (Ranunculus sp.)","Ranunculus specio-1386","Plant Family","Herb",LC,1000,1799,low
+flora-1387,"Monkshood (Aconitum sp.)","Aconitum specio-1387","Plant Family","Herb",LC,1790,2594,low
+flora-1388,"Windflower (Anemone sp.)","Anemone specio-1388","Plant Family","Herb",LC,1488,2226,low
+flora-1389,"Knotweed (Polygonum sp.)","Polygonum specio-1389","Plant Family","Herb",LC,1000,1985,low
+flora-1390,"Barberry (Berberis sp.)","Berberis specio-1390","Plant Family","Shrub",LC,1005,1943,low
+flora-1391,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1391","Plant Family","Shrub/Tree",LC,1528,3159,low
+flora-1392,"Pine (Pinus sp.)","Pinus specio-1392","Plant Family","Tree",LC,1000,2062,low
+flora-1393,"Fir (Abies sp.)","Abies specio-1393","Plant Family","Tree",VU,1362,2362,medium
+flora-1394,"Spruce (Picea sp.)","Picea specio-1394","Plant Family","Tree",LC,1692,3844,low
+flora-1395,"Juniper (Juniperus sp.)","Juniperus specio-1395","Plant Family","Tree/Shrub",NT,2077,4178,low
+flora-1396,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1396","Plant Family","Herb/Shrub",LC,1088,2197,low
+flora-1397,"Saw-wort (Saussurea sp.)","Saussurea specio-1397","Plant Family","Alpine Herb",LC,1756,3485,low
+flora-1398,"Fescue Grass (Festuca sp.)","Festuca specio-1398","Plant Family","Grass",LC,1258,1886,low
+flora-1399,"Bluegrass (Poa sp.)","Poa specio-1399","Plant Family","Grass",LC,1313,2938,low
+flora-1400,"Feather Grass (Stipa sp.)","Stipa specio-1400","Plant Family","Grass",NT,1591,2385,low
+flora-1401,"Cinquefoil (Potentilla sp.)","Potentilla specio-1401","Plant Family","Herb",NT,1576,3258,low
+flora-1402,"Wild Rose (Rosa sp.)","Rosa specio-1402","Plant Family","Shrub",LC,1368,3624,low
+flora-1403,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1403","Plant Family","Shrub/Climber",LC,1000,2172,low
+flora-1404,"Primrose (Primula sp.)","Primula specio-1404","Plant Family","Alpine Herb",LC,1239,3276,low
+flora-1405,"Rock Jasmine (Androsace sp.)","Androsace specio-1405","Plant Family","Alpine Herb",NT,2738,3976,low
+flora-1406,"Gentian (Gentiana sp.)","Gentiana specio-1406","Plant Family","Alpine Herb",LC,2031,3479,low
+flora-1407,"Catmint (Nepeta sp.)","Nepeta specio-1407","Plant Family","Herb",NT,1416,2032,low
+flora-1408,"Sage (Salvia sp.)","Salvia specio-1408","Plant Family","Herb",LC,1274,2962,low
+flora-1409,"Milkvetch (Astragalus sp.)","Astragalus specio-1409","Plant Family","Herb/Shrub",NT,1278,2960,low
+flora-1410,"Sedge (Carex sp.)","Carex specio-1410","Plant Family","Sedge",LC,1000,1950,low
+flora-1411,"Bog Sedge (Kobresia sp.)","Kobresia specio-1411","Plant Family","Sedge",LC,1610,3084,low
+flora-1412,"Willow (Salix sp.)","Salix specio-1412","Plant Family","Tree/Shrub",LC,1000,3133,low
+flora-1413,"Corydalis (Corydalis sp.)","Corydalis specio-1413","Plant Family","Herb",LC,1711,2840,low
+flora-1414,"Lousewort (Pedicularis sp.)","Pedicularis specio-1414","Plant Family","Herb",LC,2287,3415,low
+flora-1415,"Campion (Silene sp.)","Silene specio-1415","Plant Family","Herb",CR,1379,2224,critical
+flora-1416,"Willowherb (Epilobium sp.)","Epilobium specio-1416","Plant Family","Herb",LC,1126,3560,low
+flora-1417,"Buttercup (Ranunculus sp.)","Ranunculus specio-1417","Plant Family","Herb",LC,1000,3397,low
+flora-1418,"Monkshood (Aconitum sp.)","Aconitum specio-1418","Plant Family","Herb",NT,1604,2996,low
+flora-1419,"Windflower (Anemone sp.)","Anemone specio-1419","Plant Family","Herb",NT,1909,3999,low
+flora-1420,"Knotweed (Polygonum sp.)","Polygonum specio-1420","Plant Family","Herb",LC,1000,2856,low
+flora-1421,"Barberry (Berberis sp.)","Berberis specio-1421","Plant Family","Shrub",LC,1192,3142,low
+flora-1422,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1422","Plant Family","Shrub/Tree",NT,1198,2755,low
+flora-1423,"Pine (Pinus sp.)","Pinus specio-1423","Plant Family","Tree",VU,1000,3428,medium
+flora-1424,"Fir (Abies sp.)","Abies specio-1424","Plant Family","Tree",LC,1675,4156,low
+flora-1425,"Spruce (Picea sp.)","Picea specio-1425","Plant Family","Tree",LC,1447,3456,low
+flora-1426,"Juniper (Juniperus sp.)","Juniperus specio-1426","Plant Family","Tree/Shrub",LC,1002,2971,low
+flora-1427,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1427","Plant Family","Herb/Shrub",NT,1354,1860,low
+flora-1428,"Saw-wort (Saussurea sp.)","Saussurea specio-1428","Plant Family","Alpine Herb",CR,2347,3275,critical
+flora-1429,"Fescue Grass (Festuca sp.)","Festuca specio-1429","Plant Family","Grass",LC,1055,1987,low
+flora-1430,"Bluegrass (Poa sp.)","Poa specio-1430","Plant Family","Grass",LC,1144,2980,low
+flora-1431,"Feather Grass (Stipa sp.)","Stipa specio-1431","Plant Family","Grass",NT,2187,4601,low
+flora-1432,"Cinquefoil (Potentilla sp.)","Potentilla specio-1432","Plant Family","Herb",LC,1596,3571,low
+flora-1433,"Wild Rose (Rosa sp.)","Rosa specio-1433","Plant Family","Shrub",LC,1220,2313,low
+flora-1434,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1434","Plant Family","Shrub/Climber",NT,1000,3020,low
+flora-1435,"Primrose (Primula sp.)","Primula specio-1435","Plant Family","Alpine Herb",LC,2267,3502,low
+flora-1436,"Rock Jasmine (Androsace sp.)","Androsace specio-1436","Plant Family","Alpine Herb",NT,1618,3591,low
+flora-1437,"Gentian (Gentiana sp.)","Gentiana specio-1437","Plant Family","Alpine Herb",LC,1623,3192,low
+flora-1438,"Catmint (Nepeta sp.)","Nepeta specio-1438","Plant Family","Herb",LC,1353,2761,low
+flora-1439,"Sage (Salvia sp.)","Salvia specio-1439","Plant Family","Herb",LC,1242,2327,low
+flora-1440,"Milkvetch (Astragalus sp.)","Astragalus specio-1440","Plant Family","Herb/Shrub",EN,1006,3177,high
+flora-1441,"Sedge (Carex sp.)","Carex specio-1441","Plant Family","Sedge",LC,1000,1557,low
+flora-1442,"Bog Sedge (Kobresia sp.)","Kobresia specio-1442","Plant Family","Sedge",NT,2015,3778,low
+flora-1443,"Willow (Salix sp.)","Salix specio-1443","Plant Family","Tree/Shrub",LC,1000,2788,low
+flora-1444,"Corydalis (Corydalis sp.)","Corydalis specio-1444","Plant Family","Herb",LC,1257,3086,low
+flora-1445,"Lousewort (Pedicularis sp.)","Pedicularis specio-1445","Plant Family","Herb",LC,1332,3185,low
+flora-1446,"Campion (Silene sp.)","Silene specio-1446","Plant Family","Herb",VU,1326,2789,medium
+flora-1447,"Willowherb (Epilobium sp.)","Epilobium specio-1447","Plant Family","Herb",LC,1017,2291,low
+flora-1448,"Buttercup (Ranunculus sp.)","Ranunculus specio-1448","Plant Family","Herb",LC,1000,1788,low
+flora-1449,"Monkshood (Aconitum sp.)","Aconitum specio-1449","Plant Family","Herb",CR,1298,3730,critical
+flora-1450,"Windflower (Anemone sp.)","Anemone specio-1450","Plant Family","Herb",VU,1643,2617,medium
+flora-1451,"Knotweed (Polygonum sp.)","Polygonum specio-1451","Plant Family","Herb",LC,1000,1670,low
+flora-1452,"Barberry (Berberis sp.)","Berberis specio-1452","Plant Family","Shrub",NT,1050,3109,low
+flora-1453,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1453","Plant Family","Shrub/Tree",LC,1995,3056,low
+flora-1454,"Pine (Pinus sp.)","Pinus specio-1454","Plant Family","Tree",LC,1000,2085,low
+flora-1455,"Fir (Abies sp.)","Abies specio-1455","Plant Family","Tree",LC,1295,3300,low
+flora-1456,"Spruce (Picea sp.)","Picea specio-1456","Plant Family","Tree",EN,1246,2671,high
+flora-1457,"Juniper (Juniperus sp.)","Juniperus specio-1457","Plant Family","Tree/Shrub",LC,2119,4436,low
+flora-1458,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1458","Plant Family","Herb/Shrub",LC,1335,3223,low
+flora-1459,"Saw-wort (Saussurea sp.)","Saussurea specio-1459","Plant Family","Alpine Herb",LC,1570,2399,low
+flora-1460,"Fescue Grass (Festuca sp.)","Festuca specio-1460","Plant Family","Grass",LC,1211,2806,low
+flora-1461,"Bluegrass (Poa sp.)","Poa specio-1461","Plant Family","Grass",VU,1375,2917,medium
+flora-1462,"Feather Grass (Stipa sp.)","Stipa specio-1462","Plant Family","Grass",LC,2212,3438,low
+flora-1463,"Cinquefoil (Potentilla sp.)","Potentilla specio-1463","Plant Family","Herb",LC,1931,4353,low
+flora-1464,"Wild Rose (Rosa sp.)","Rosa specio-1464","Plant Family","Shrub",LC,1104,2938,low
+flora-1465,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1465","Plant Family","Shrub/Climber",LC,1000,2449,low
+flora-1466,"Primrose (Primula sp.)","Primula specio-1466","Plant Family","Alpine Herb",LC,2476,4647,low
+flora-1467,"Rock Jasmine (Androsace sp.)","Androsace specio-1467","Plant Family","Alpine Herb",LC,1744,3330,low
+flora-1468,"Gentian (Gentiana sp.)","Gentiana specio-1468","Plant Family","Alpine Herb",LC,1784,3871,low
+flora-1469,"Catmint (Nepeta sp.)","Nepeta specio-1469","Plant Family","Herb",LC,1360,2764,low
+flora-1470,"Sage (Salvia sp.)","Salvia specio-1470","Plant Family","Herb",LC,1032,2963,low
+flora-1471,"Milkvetch (Astragalus sp.)","Astragalus specio-1471","Plant Family","Herb/Shrub",LC,1212,2368,low
+flora-1472,"Sedge (Carex sp.)","Carex specio-1472","Plant Family","Sedge",LC,1000,2622,low
+flora-1473,"Bog Sedge (Kobresia sp.)","Kobresia specio-1473","Plant Family","Sedge",LC,2636,4127,low
+flora-1474,"Willow (Salix sp.)","Salix specio-1474","Plant Family","Tree/Shrub",LC,1000,1705,low
+flora-1475,"Corydalis (Corydalis sp.)","Corydalis specio-1475","Plant Family","Herb",LC,1594,4027,low
+flora-1476,"Lousewort (Pedicularis sp.)","Pedicularis specio-1476","Plant Family","Herb",LC,1540,3522,low
+flora-1477,"Campion (Silene sp.)","Silene specio-1477","Plant Family","Herb",LC,1090,2578,low
+flora-1478,"Willowherb (Epilobium sp.)","Epilobium specio-1478","Plant Family","Herb",LC,1305,2433,low
+flora-1479,"Buttercup (Ranunculus sp.)","Ranunculus specio-1479","Plant Family","Herb",LC,1000,3426,low
+flora-1480,"Monkshood (Aconitum sp.)","Aconitum specio-1480","Plant Family","Herb",LC,1582,3917,low
+flora-1481,"Windflower (Anemone sp.)","Anemone specio-1481","Plant Family","Herb",LC,1551,3117,low
+flora-1482,"Knotweed (Polygonum sp.)","Polygonum specio-1482","Plant Family","Herb",LC,1000,1809,low
+flora-1483,"Barberry (Berberis sp.)","Berberis specio-1483","Plant Family","Shrub",LC,1365,3075,low
+flora-1484,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1484","Plant Family","Shrub/Tree",LC,1673,2249,low
+flora-1485,"Pine (Pinus sp.)","Pinus specio-1485","Plant Family","Tree",LC,1000,1682,low
+flora-1486,"Fir (Abies sp.)","Abies specio-1486","Plant Family","Tree",LC,1796,2351,low
+flora-1487,"Spruce (Picea sp.)","Picea specio-1487","Plant Family","Tree",LC,1414,2861,low
+flora-1488,"Juniper (Juniperus sp.)","Juniperus specio-1488","Plant Family","Tree/Shrub",LC,1086,2529,low
+flora-1489,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1489","Plant Family","Herb/Shrub",LC,1203,2116,low
+flora-1490,"Saw-wort (Saussurea sp.)","Saussurea specio-1490","Plant Family","Alpine Herb",LC,2903,4486,low
+flora-1491,"Fescue Grass (Festuca sp.)","Festuca specio-1491","Plant Family","Grass",LC,1296,2831,low
+flora-1492,"Bluegrass (Poa sp.)","Poa specio-1492","Plant Family","Grass",LC,1276,2153,low
+flora-1493,"Feather Grass (Stipa sp.)","Stipa specio-1493","Plant Family","Grass",LC,1940,4386,low
+flora-1494,"Cinquefoil (Potentilla sp.)","Potentilla specio-1494","Plant Family","Herb",LC,1330,3097,low
+flora-1495,"Wild Rose (Rosa sp.)","Rosa specio-1495","Plant Family","Shrub",LC,1254,3505,low
+flora-1496,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1496","Plant Family","Shrub/Climber",VU,1000,2254,medium
+flora-1497,"Primrose (Primula sp.)","Primula specio-1497","Plant Family","Alpine Herb",NT,1827,4313,low
+flora-1498,"Rock Jasmine (Androsace sp.)","Androsace specio-1498","Plant Family","Alpine Herb",LC,1417,2654,low
+flora-1499,"Gentian (Gentiana sp.)","Gentiana specio-1499","Plant Family","Alpine Herb",LC,1969,4146,low
+flora-1500,"Catmint (Nepeta sp.)","Nepeta specio-1500","Plant Family","Herb",LC,1421,2632,low
+flora-1501,"Sage (Salvia sp.)","Salvia specio-1501","Plant Family","Herb",VU,1256,3292,medium
+flora-1502,"Milkvetch (Astragalus sp.)","Astragalus specio-1502","Plant Family","Herb/Shrub",LC,1024,3190,low
+flora-1503,"Sedge (Carex sp.)","Carex specio-1503","Plant Family","Sedge",LC,1000,2181,low
+flora-1504,"Bog Sedge (Kobresia sp.)","Kobresia specio-1504","Plant Family","Sedge",LC,2477,3998,low
+flora-1505,"Willow (Salix sp.)","Salix specio-1505","Plant Family","Tree/Shrub",LC,1000,2827,low
+flora-1506,"Corydalis (Corydalis sp.)","Corydalis specio-1506","Plant Family","Herb",CR,1843,3255,critical
+flora-1507,"Lousewort (Pedicularis sp.)","Pedicularis specio-1507","Plant Family","Herb",LC,1373,3707,low
+flora-1508,"Campion (Silene sp.)","Silene specio-1508","Plant Family","Herb",LC,1017,3247,low
+flora-1509,"Willowherb (Epilobium sp.)","Epilobium specio-1509","Plant Family","Herb",VU,1283,3671,medium
+flora-1510,"Buttercup (Ranunculus sp.)","Ranunculus specio-1510","Plant Family","Herb",LC,1000,2719,low
+flora-1511,"Monkshood (Aconitum sp.)","Aconitum specio-1511","Plant Family","Herb",NT,2428,4841,low
+flora-1512,"Windflower (Anemone sp.)","Anemone specio-1512","Plant Family","Herb",LC,1096,3137,low
+flora-1513,"Knotweed (Polygonum sp.)","Polygonum specio-1513","Plant Family","Herb",LC,1000,3078,low
+flora-1514,"Barberry (Berberis sp.)","Berberis specio-1514","Plant Family","Shrub",LC,1152,2973,low
+flora-1515,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1515","Plant Family","Shrub/Tree",LC,1127,3553,low
+flora-1516,"Pine (Pinus sp.)","Pinus specio-1516","Plant Family","Tree",LC,1000,2267,low
+flora-1517,"Fir (Abies sp.)","Abies specio-1517","Plant Family","Tree",LC,1155,2910,low
+flora-1518,"Spruce (Picea sp.)","Picea specio-1518","Plant Family","Tree",LC,1450,2112,low
+flora-1519,"Juniper (Juniperus sp.)","Juniperus specio-1519","Plant Family","Tree/Shrub",LC,2456,3861,low
+flora-1520,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1520","Plant Family","Herb/Shrub",LC,1181,3434,low
+flora-1521,"Saw-wort (Saussurea sp.)","Saussurea specio-1521","Plant Family","Alpine Herb",VU,2704,4914,medium
+flora-1522,"Fescue Grass (Festuca sp.)","Festuca specio-1522","Plant Family","Grass",LC,1034,1850,low
+flora-1523,"Bluegrass (Poa sp.)","Poa specio-1523","Plant Family","Grass",LC,1295,2721,low
+flora-1524,"Feather Grass (Stipa sp.)","Stipa specio-1524","Plant Family","Grass",LC,2351,3520,low
+flora-1525,"Cinquefoil (Potentilla sp.)","Potentilla specio-1525","Plant Family","Herb",LC,1797,3171,low
+flora-1526,"Wild Rose (Rosa sp.)","Rosa specio-1526","Plant Family","Shrub",LC,1265,3381,low
+flora-1527,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1527","Plant Family","Shrub/Climber",LC,1000,2645,low
+flora-1528,"Primrose (Primula sp.)","Primula specio-1528","Plant Family","Alpine Herb",LC,1795,2576,low
+flora-1529,"Rock Jasmine (Androsace sp.)","Androsace specio-1529","Plant Family","Alpine Herb",LC,1510,3597,low
+flora-1530,"Gentian (Gentiana sp.)","Gentiana specio-1530","Plant Family","Alpine Herb",LC,2098,3590,low
+flora-1531,"Catmint (Nepeta sp.)","Nepeta specio-1531","Plant Family","Herb",LC,1319,2672,low
+flora-1532,"Sage (Salvia sp.)","Salvia specio-1532","Plant Family","Herb",LC,1455,2685,low
+flora-1533,"Milkvetch (Astragalus sp.)","Astragalus specio-1533","Plant Family","Herb/Shrub",LC,1194,3236,low
+flora-1534,"Sedge (Carex sp.)","Carex specio-1534","Plant Family","Sedge",LC,1000,2702,low
+flora-1535,"Bog Sedge (Kobresia sp.)","Kobresia specio-1535","Plant Family","Sedge",LC,1152,3613,low
+flora-1536,"Willow (Salix sp.)","Salix specio-1536","Plant Family","Tree/Shrub",LC,1000,1991,low
+flora-1537,"Corydalis (Corydalis sp.)","Corydalis specio-1537","Plant Family","Herb",LC,1279,2856,low
+flora-1538,"Lousewort (Pedicularis sp.)","Pedicularis specio-1538","Plant Family","Herb",LC,2224,3845,low
+flora-1539,"Campion (Silene sp.)","Silene specio-1539","Plant Family","Herb",LC,1112,3195,low
+flora-1540,"Willowherb (Epilobium sp.)","Epilobium specio-1540","Plant Family","Herb",LC,1458,3131,low
+flora-1541,"Buttercup (Ranunculus sp.)","Ranunculus specio-1541","Plant Family","Herb",LC,1000,2128,low
+flora-1542,"Monkshood (Aconitum sp.)","Aconitum specio-1542","Plant Family","Herb",LC,2018,3203,low
+flora-1543,"Windflower (Anemone sp.)","Anemone specio-1543","Plant Family","Herb",LC,1205,3132,low
+flora-1544,"Knotweed (Polygonum sp.)","Polygonum specio-1544","Plant Family","Herb",LC,1000,1816,low
+flora-1545,"Barberry (Berberis sp.)","Berberis specio-1545","Plant Family","Shrub",LC,1002,3075,low
+flora-1546,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1546","Plant Family","Shrub/Tree",NT,2403,3417,low
+flora-1547,"Pine (Pinus sp.)","Pinus specio-1547","Plant Family","Tree",LC,1000,3171,low
+flora-1548,"Fir (Abies sp.)","Abies specio-1548","Plant Family","Tree",LC,1850,4290,low
+flora-1549,"Spruce (Picea sp.)","Picea specio-1549","Plant Family","Tree",LC,1338,2388,low
+flora-1550,"Juniper (Juniperus sp.)","Juniperus specio-1550","Plant Family","Tree/Shrub",VU,1783,3248,medium
+flora-1551,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1551","Plant Family","Herb/Shrub",LC,1438,2333,low
+flora-1552,"Saw-wort (Saussurea sp.)","Saussurea specio-1552","Plant Family","Alpine Herb",LC,2704,4378,low
+flora-1553,"Fescue Grass (Festuca sp.)","Festuca specio-1553","Plant Family","Grass",LC,1161,3080,low
+flora-1554,"Bluegrass (Poa sp.)","Poa specio-1554","Plant Family","Grass",LC,1165,3271,low
+flora-1555,"Feather Grass (Stipa sp.)","Stipa specio-1555","Plant Family","Grass",LC,1919,4108,low
+flora-1556,"Cinquefoil (Potentilla sp.)","Potentilla specio-1556","Plant Family","Herb",LC,1757,4048,low
+flora-1557,"Wild Rose (Rosa sp.)","Rosa specio-1557","Plant Family","Shrub",EN,1489,2810,high
+flora-1558,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1558","Plant Family","Shrub/Climber",LC,1000,2850,low
+flora-1559,"Primrose (Primula sp.)","Primula specio-1559","Plant Family","Alpine Herb",LC,2392,3671,low
+flora-1560,"Rock Jasmine (Androsace sp.)","Androsace specio-1560","Plant Family","Alpine Herb",LC,1924,3255,low
+flora-1561,"Gentian (Gentiana sp.)","Gentiana specio-1561","Plant Family","Alpine Herb",NT,2318,2990,low
+flora-1562,"Catmint (Nepeta sp.)","Nepeta specio-1562","Plant Family","Herb",NT,1218,3312,low
+flora-1563,"Sage (Salvia sp.)","Salvia specio-1563","Plant Family","Herb",NT,1184,1730,low
+flora-1564,"Milkvetch (Astragalus sp.)","Astragalus specio-1564","Plant Family","Herb/Shrub",LC,1134,2452,low
+flora-1565,"Sedge (Carex sp.)","Carex specio-1565","Plant Family","Sedge",LC,1000,2471,low
+flora-1566,"Bog Sedge (Kobresia sp.)","Kobresia specio-1566","Plant Family","Sedge",LC,1854,3522,low
+flora-1567,"Willow (Salix sp.)","Salix specio-1567","Plant Family","Tree/Shrub",LC,1000,3387,low
+flora-1568,"Corydalis (Corydalis sp.)","Corydalis specio-1568","Plant Family","Herb",EN,1907,4201,high
+flora-1569,"Lousewort (Pedicularis sp.)","Pedicularis specio-1569","Plant Family","Herb",NT,2499,4505,low
+flora-1570,"Campion (Silene sp.)","Silene specio-1570","Plant Family","Herb",LC,1390,3620,low
+flora-1571,"Willowherb (Epilobium sp.)","Epilobium specio-1571","Plant Family","Herb",LC,1068,2716,low
+flora-1572,"Buttercup (Ranunculus sp.)","Ranunculus specio-1572","Plant Family","Herb",LC,1000,2035,low
+flora-1573,"Monkshood (Aconitum sp.)","Aconitum specio-1573","Plant Family","Herb",LC,1538,3414,low
+flora-1574,"Windflower (Anemone sp.)","Anemone specio-1574","Plant Family","Herb",LC,1932,3336,low
+flora-1575,"Knotweed (Polygonum sp.)","Polygonum specio-1575","Plant Family","Herb",VU,1000,3312,medium
+flora-1576,"Barberry (Berberis sp.)","Berberis specio-1576","Plant Family","Shrub",NT,1095,1836,low
+flora-1577,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1577","Plant Family","Shrub/Tree",LC,2425,4808,low
+flora-1578,"Pine (Pinus sp.)","Pinus specio-1578","Plant Family","Tree",LC,1000,3288,low
+flora-1579,"Fir (Abies sp.)","Abies specio-1579","Plant Family","Tree",LC,1918,3724,low
+flora-1580,"Spruce (Picea sp.)","Picea specio-1580","Plant Family","Tree",LC,1316,2424,low
+flora-1581,"Juniper (Juniperus sp.)","Juniperus specio-1581","Plant Family","Tree/Shrub",EN,1120,2507,high
+flora-1582,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1582","Plant Family","Herb/Shrub",LC,1198,2300,low
+flora-1583,"Saw-wort (Saussurea sp.)","Saussurea specio-1583","Plant Family","Alpine Herb",LC,2931,4230,low
+flora-1584,"Fescue Grass (Festuca sp.)","Festuca specio-1584","Plant Family","Grass",LC,1295,2056,low
+flora-1585,"Bluegrass (Poa sp.)","Poa specio-1585","Plant Family","Grass",LC,1392,2513,low
+flora-1586,"Feather Grass (Stipa sp.)","Stipa specio-1586","Plant Family","Grass",VU,1204,2144,medium
+flora-1587,"Cinquefoil (Potentilla sp.)","Potentilla specio-1587","Plant Family","Herb",LC,1970,3886,low
+flora-1588,"Wild Rose (Rosa sp.)","Rosa specio-1588","Plant Family","Shrub",LC,1276,3651,low
+flora-1589,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1589","Plant Family","Shrub/Climber",LC,1000,2330,low
+flora-1590,"Primrose (Primula sp.)","Primula specio-1590","Plant Family","Alpine Herb",NT,1199,2290,low
+flora-1591,"Rock Jasmine (Androsace sp.)","Androsace specio-1591","Plant Family","Alpine Herb",LC,2876,3459,low
+flora-1592,"Gentian (Gentiana sp.)","Gentiana specio-1592","Plant Family","Alpine Herb",NT,1100,2698,low
+flora-1593,"Catmint (Nepeta sp.)","Nepeta specio-1593","Plant Family","Herb",LC,1338,2189,low
+flora-1594,"Sage (Salvia sp.)","Salvia specio-1594","Plant Family","Herb",LC,1415,3466,low
+flora-1595,"Milkvetch (Astragalus sp.)","Astragalus specio-1595","Plant Family","Herb/Shrub",LC,1232,3684,low
+flora-1596,"Sedge (Carex sp.)","Carex specio-1596","Plant Family","Sedge",LC,1000,3351,low
+flora-1597,"Bog Sedge (Kobresia sp.)","Kobresia specio-1597","Plant Family","Sedge",EN,2851,4208,high
+flora-1598,"Willow (Salix sp.)","Salix specio-1598","Plant Family","Tree/Shrub",CR,1000,2561,critical
+flora-1599,"Corydalis (Corydalis sp.)","Corydalis specio-1599","Plant Family","Herb",LC,1309,3389,low
+flora-1600,"Lousewort (Pedicularis sp.)","Pedicularis specio-1600","Plant Family","Herb",LC,2074,4421,low
+flora-1601,"Campion (Silene sp.)","Silene specio-1601","Plant Family","Herb",LC,1295,2581,low
+flora-1602,"Willowherb (Epilobium sp.)","Epilobium specio-1602","Plant Family","Herb",LC,1047,3290,low
+flora-1603,"Buttercup (Ranunculus sp.)","Ranunculus specio-1603","Plant Family","Herb",LC,1000,2560,low
+flora-1604,"Monkshood (Aconitum sp.)","Aconitum specio-1604","Plant Family","Herb",NT,1550,3791,low
+flora-1605,"Windflower (Anemone sp.)","Anemone specio-1605","Plant Family","Herb",VU,1084,2778,medium
+flora-1606,"Knotweed (Polygonum sp.)","Polygonum specio-1606","Plant Family","Herb",VU,1000,2933,medium
+flora-1607,"Barberry (Berberis sp.)","Berberis specio-1607","Plant Family","Shrub",NT,1459,2871,low
+flora-1608,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1608","Plant Family","Shrub/Tree",LC,1842,3798,low
+flora-1609,"Pine (Pinus sp.)","Pinus specio-1609","Plant Family","Tree",VU,1000,3342,medium
+flora-1610,"Fir (Abies sp.)","Abies specio-1610","Plant Family","Tree",LC,1547,2263,low
+flora-1611,"Spruce (Picea sp.)","Picea specio-1611","Plant Family","Tree",LC,1323,1987,low
+flora-1612,"Juniper (Juniperus sp.)","Juniperus specio-1612","Plant Family","Tree/Shrub",LC,2190,4501,low
+flora-1613,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1613","Plant Family","Herb/Shrub",LC,1294,3552,low
+flora-1614,"Saw-wort (Saussurea sp.)","Saussurea specio-1614","Plant Family","Alpine Herb",LC,3095,4307,low
+flora-1615,"Fescue Grass (Festuca sp.)","Festuca specio-1615","Plant Family","Grass",LC,1367,2971,low
+flora-1616,"Bluegrass (Poa sp.)","Poa specio-1616","Plant Family","Grass",LC,1027,2275,low
+flora-1617,"Feather Grass (Stipa sp.)","Stipa specio-1617","Plant Family","Grass",LC,1094,3068,low
+flora-1618,"Cinquefoil (Potentilla sp.)","Potentilla specio-1618","Plant Family","Herb",LC,1680,2505,low
+flora-1619,"Wild Rose (Rosa sp.)","Rosa specio-1619","Plant Family","Shrub",LC,1075,2281,low
+flora-1620,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1620","Plant Family","Shrub/Climber",LC,1000,1596,low
+flora-1621,"Primrose (Primula sp.)","Primula specio-1621","Plant Family","Alpine Herb",NT,1899,4171,low
+flora-1622,"Rock Jasmine (Androsace sp.)","Androsace specio-1622","Plant Family","Alpine Herb",LC,2043,3199,low
+flora-1623,"Gentian (Gentiana sp.)","Gentiana specio-1623","Plant Family","Alpine Herb",LC,1126,2568,low
+flora-1624,"Catmint (Nepeta sp.)","Nepeta specio-1624","Plant Family","Herb",LC,1153,3586,low
+flora-1625,"Sage (Salvia sp.)","Salvia specio-1625","Plant Family","Herb",LC,1151,1835,low
+flora-1626,"Milkvetch (Astragalus sp.)","Astragalus specio-1626","Plant Family","Herb/Shrub",LC,1165,2529,low
+flora-1627,"Sedge (Carex sp.)","Carex specio-1627","Plant Family","Sedge",LC,1000,2291,low
+flora-1628,"Bog Sedge (Kobresia sp.)","Kobresia specio-1628","Plant Family","Sedge",LC,1159,3485,low
+flora-1629,"Willow (Salix sp.)","Salix specio-1629","Plant Family","Tree/Shrub",LC,1000,3331,low
+flora-1630,"Corydalis (Corydalis sp.)","Corydalis specio-1630","Plant Family","Herb",LC,1406,3455,low
+flora-1631,"Lousewort (Pedicularis sp.)","Pedicularis specio-1631","Plant Family","Herb",LC,2197,2840,low
+flora-1632,"Campion (Silene sp.)","Silene specio-1632","Plant Family","Herb",VU,1310,2292,medium
+flora-1633,"Willowherb (Epilobium sp.)","Epilobium specio-1633","Plant Family","Herb",LC,1047,1829,low
+flora-1634,"Buttercup (Ranunculus sp.)","Ranunculus specio-1634","Plant Family","Herb",LC,1000,2176,low
+flora-1635,"Monkshood (Aconitum sp.)","Aconitum specio-1635","Plant Family","Herb",LC,1134,1636,low
+flora-1636,"Windflower (Anemone sp.)","Anemone specio-1636","Plant Family","Herb",VU,1450,3274,medium
+flora-1637,"Knotweed (Polygonum sp.)","Polygonum specio-1637","Plant Family","Herb",LC,1000,2136,low
+flora-1638,"Barberry (Berberis sp.)","Berberis specio-1638","Plant Family","Shrub",LC,1316,3790,low
+flora-1639,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1639","Plant Family","Shrub/Tree",LC,2250,4716,low
+flora-1640,"Pine (Pinus sp.)","Pinus specio-1640","Plant Family","Tree",LC,1000,3000,low
+flora-1641,"Fir (Abies sp.)","Abies specio-1641","Plant Family","Tree",LC,1293,2863,low
+flora-1642,"Spruce (Picea sp.)","Picea specio-1642","Plant Family","Tree",LC,1601,3155,low
+flora-1643,"Juniper (Juniperus sp.)","Juniperus specio-1643","Plant Family","Tree/Shrub",LC,2138,4426,low
+flora-1644,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1644","Plant Family","Herb/Shrub",VU,1314,3797,medium
+flora-1645,"Saw-wort (Saussurea sp.)","Saussurea specio-1645","Plant Family","Alpine Herb",CR,2709,5178,critical
+flora-1646,"Fescue Grass (Festuca sp.)","Festuca specio-1646","Plant Family","Grass",LC,1220,2865,low
+flora-1647,"Bluegrass (Poa sp.)","Poa specio-1647","Plant Family","Grass",LC,1167,3332,low
+flora-1648,"Feather Grass (Stipa sp.)","Stipa specio-1648","Plant Family","Grass",LC,1722,3598,low
+flora-1649,"Cinquefoil (Potentilla sp.)","Potentilla specio-1649","Plant Family","Herb",LC,1550,2056,low
+flora-1650,"Wild Rose (Rosa sp.)","Rosa specio-1650","Plant Family","Shrub",LC,1050,1897,low
+flora-1651,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1651","Plant Family","Shrub/Climber",LC,1000,3230,low
+flora-1652,"Primrose (Primula sp.)","Primula specio-1652","Plant Family","Alpine Herb",LC,1070,1646,low
+flora-1653,"Rock Jasmine (Androsace sp.)","Androsace specio-1653","Plant Family","Alpine Herb",NT,1610,3616,low
+flora-1654,"Gentian (Gentiana sp.)","Gentiana specio-1654","Plant Family","Alpine Herb",LC,1463,3841,low
+flora-1655,"Catmint (Nepeta sp.)","Nepeta specio-1655","Plant Family","Herb",LC,1202,2344,low
+flora-1656,"Sage (Salvia sp.)","Salvia specio-1656","Plant Family","Herb",LC,1411,3526,low
+flora-1657,"Milkvetch (Astragalus sp.)","Astragalus specio-1657","Plant Family","Herb/Shrub",NT,1090,2941,low
+flora-1658,"Sedge (Carex sp.)","Carex specio-1658","Plant Family","Sedge",VU,1000,3047,medium
+flora-1659,"Bog Sedge (Kobresia sp.)","Kobresia specio-1659","Plant Family","Sedge",LC,1736,3603,low
+flora-1660,"Willow (Salix sp.)","Salix specio-1660","Plant Family","Tree/Shrub",LC,1000,3019,low
+flora-1661,"Corydalis (Corydalis sp.)","Corydalis specio-1661","Plant Family","Herb",LC,1839,3319,low
+flora-1662,"Lousewort (Pedicularis sp.)","Pedicularis specio-1662","Plant Family","Herb",LC,1907,3915,low
+flora-1663,"Campion (Silene sp.)","Silene specio-1663","Plant Family","Herb",LC,1294,2185,low
+flora-1664,"Willowherb (Epilobium sp.)","Epilobium specio-1664","Plant Family","Herb",EN,1003,1594,high
+flora-1665,"Buttercup (Ranunculus sp.)","Ranunculus specio-1665","Plant Family","Herb",LC,1000,2004,low
+flora-1666,"Monkshood (Aconitum sp.)","Aconitum specio-1666","Plant Family","Herb",CR,1850,3493,critical
+flora-1667,"Windflower (Anemone sp.)","Anemone specio-1667","Plant Family","Herb",LC,1755,2906,low
+flora-1668,"Knotweed (Polygonum sp.)","Polygonum specio-1668","Plant Family","Herb",VU,1000,1678,medium
+flora-1669,"Barberry (Berberis sp.)","Berberis specio-1669","Plant Family","Shrub",LC,1191,2072,low
+flora-1670,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1670","Plant Family","Shrub/Tree",LC,1996,2843,low
+flora-1671,"Pine (Pinus sp.)","Pinus specio-1671","Plant Family","Tree",LC,1000,2320,low
+flora-1672,"Fir (Abies sp.)","Abies specio-1672","Plant Family","Tree",LC,1910,2689,low
+flora-1673,"Spruce (Picea sp.)","Picea specio-1673","Plant Family","Tree",LC,1498,2180,low
+flora-1674,"Juniper (Juniperus sp.)","Juniperus specio-1674","Plant Family","Tree/Shrub",LC,1439,2524,low
+flora-1675,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1675","Plant Family","Herb/Shrub",LC,1062,2183,low
+flora-1676,"Saw-wort (Saussurea sp.)","Saussurea specio-1676","Plant Family","Alpine Herb",LC,1548,2848,low
+flora-1677,"Fescue Grass (Festuca sp.)","Festuca specio-1677","Plant Family","Grass",LC,1471,2498,low
+flora-1678,"Bluegrass (Poa sp.)","Poa specio-1678","Plant Family","Grass",NT,1359,2749,low
+flora-1679,"Feather Grass (Stipa sp.)","Stipa specio-1679","Plant Family","Grass",LC,1093,2432,low
+flora-1680,"Cinquefoil (Potentilla sp.)","Potentilla specio-1680","Plant Family","Herb",LC,1751,2320,low
+flora-1681,"Wild Rose (Rosa sp.)","Rosa specio-1681","Plant Family","Shrub",LC,1358,3799,low
+flora-1682,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1682","Plant Family","Shrub/Climber",LC,1000,2433,low
+flora-1683,"Primrose (Primula sp.)","Primula specio-1683","Plant Family","Alpine Herb",LC,1915,3858,low
+flora-1684,"Rock Jasmine (Androsace sp.)","Androsace specio-1684","Plant Family","Alpine Herb",NT,1569,3544,low
+flora-1685,"Gentian (Gentiana sp.)","Gentiana specio-1685","Plant Family","Alpine Herb",LC,1585,2976,low
+flora-1686,"Catmint (Nepeta sp.)","Nepeta specio-1686","Plant Family","Herb",NT,1026,2820,low
+flora-1687,"Sage (Salvia sp.)","Salvia specio-1687","Plant Family","Herb",LC,1146,1800,low
+flora-1688,"Milkvetch (Astragalus sp.)","Astragalus specio-1688","Plant Family","Herb/Shrub",LC,1062,3463,low
+flora-1689,"Sedge (Carex sp.)","Carex specio-1689","Plant Family","Sedge",LC,1000,2523,low
+flora-1690,"Bog Sedge (Kobresia sp.)","Kobresia specio-1690","Plant Family","Sedge",LC,2750,3314,low
+flora-1691,"Willow (Salix sp.)","Salix specio-1691","Plant Family","Tree/Shrub",NT,1000,1924,low
+flora-1692,"Corydalis (Corydalis sp.)","Corydalis specio-1692","Plant Family","Herb",LC,1176,2535,low
+flora-1693,"Lousewort (Pedicularis sp.)","Pedicularis specio-1693","Plant Family","Herb",NT,2304,4238,low
+flora-1694,"Campion (Silene sp.)","Silene specio-1694","Plant Family","Herb",LC,1477,3019,low
+flora-1695,"Willowherb (Epilobium sp.)","Epilobium specio-1695","Plant Family","Herb",LC,1037,1738,low
+flora-1696,"Buttercup (Ranunculus sp.)","Ranunculus specio-1696","Plant Family","Herb",LC,1000,2149,low
+flora-1697,"Monkshood (Aconitum sp.)","Aconitum specio-1697","Plant Family","Herb",LC,2423,3354,low
+flora-1698,"Windflower (Anemone sp.)","Anemone specio-1698","Plant Family","Herb",LC,1284,2243,low
+flora-1699,"Knotweed (Polygonum sp.)","Polygonum specio-1699","Plant Family","Herb",NT,1000,3271,low
+flora-1700,"Barberry (Berberis sp.)","Berberis specio-1700","Plant Family","Shrub",LC,1351,3690,low
+flora-1701,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1701","Plant Family","Shrub/Tree",LC,1085,1891,low
+flora-1702,"Pine (Pinus sp.)","Pinus specio-1702","Plant Family","Tree",LC,1000,2563,low
+flora-1703,"Fir (Abies sp.)","Abies specio-1703","Plant Family","Tree",LC,1842,3888,low
+flora-1704,"Spruce (Picea sp.)","Picea specio-1704","Plant Family","Tree",LC,1444,3848,low
+flora-1705,"Juniper (Juniperus sp.)","Juniperus specio-1705","Plant Family","Tree/Shrub",LC,2184,4019,low
+flora-1706,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1706","Plant Family","Herb/Shrub",NT,1465,3813,low
+flora-1707,"Saw-wort (Saussurea sp.)","Saussurea specio-1707","Plant Family","Alpine Herb",LC,2960,4126,low
+flora-1708,"Fescue Grass (Festuca sp.)","Festuca specio-1708","Plant Family","Grass",LC,1031,2918,low
+flora-1709,"Bluegrass (Poa sp.)","Poa specio-1709","Plant Family","Grass",NT,1085,2011,low
+flora-1710,"Feather Grass (Stipa sp.)","Stipa specio-1710","Plant Family","Grass",CR,1140,1756,critical
+flora-1711,"Cinquefoil (Potentilla sp.)","Potentilla specio-1711","Plant Family","Herb",LC,1151,2393,low
+flora-1712,"Wild Rose (Rosa sp.)","Rosa specio-1712","Plant Family","Shrub",NT,1390,3122,low
+flora-1713,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1713","Plant Family","Shrub/Climber",LC,1000,1514,low
+flora-1714,"Primrose (Primula sp.)","Primula specio-1714","Plant Family","Alpine Herb",NT,1959,3327,low
+flora-1715,"Rock Jasmine (Androsace sp.)","Androsace specio-1715","Plant Family","Alpine Herb",LC,2332,4393,low
+flora-1716,"Gentian (Gentiana sp.)","Gentiana specio-1716","Plant Family","Alpine Herb",LC,1074,3022,low
+flora-1717,"Catmint (Nepeta sp.)","Nepeta specio-1717","Plant Family","Herb",NT,1016,1788,low
+flora-1718,"Sage (Salvia sp.)","Salvia specio-1718","Plant Family","Herb",LC,1163,2820,low
+flora-1719,"Milkvetch (Astragalus sp.)","Astragalus specio-1719","Plant Family","Herb/Shrub",LC,1227,2198,low
+flora-1720,"Sedge (Carex sp.)","Carex specio-1720","Plant Family","Sedge",LC,1000,2059,low
+flora-1721,"Bog Sedge (Kobresia sp.)","Kobresia specio-1721","Plant Family","Sedge",LC,1465,2180,low
+flora-1722,"Willow (Salix sp.)","Salix specio-1722","Plant Family","Tree/Shrub",LC,1000,2985,low
+flora-1723,"Corydalis (Corydalis sp.)","Corydalis specio-1723","Plant Family","Herb",LC,1173,3176,low
+flora-1724,"Lousewort (Pedicularis sp.)","Pedicularis specio-1724","Plant Family","Herb",VU,1597,2546,medium
+flora-1725,"Campion (Silene sp.)","Silene specio-1725","Plant Family","Herb",LC,1249,2754,low
+flora-1726,"Willowherb (Epilobium sp.)","Epilobium specio-1726","Plant Family","Herb",LC,1061,2527,low
+flora-1727,"Buttercup (Ranunculus sp.)","Ranunculus specio-1727","Plant Family","Herb",VU,1000,3269,medium
+flora-1728,"Monkshood (Aconitum sp.)","Aconitum specio-1728","Plant Family","Herb",LC,1073,2708,low
+flora-1729,"Windflower (Anemone sp.)","Anemone specio-1729","Plant Family","Herb",LC,1488,3215,low
+flora-1730,"Knotweed (Polygonum sp.)","Polygonum specio-1730","Plant Family","Herb",NT,1000,2959,low
+flora-1731,"Barberry (Berberis sp.)","Berberis specio-1731","Plant Family","Shrub",LC,1311,3510,low
+flora-1732,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1732","Plant Family","Shrub/Tree",LC,2119,4334,low
+flora-1733,"Pine (Pinus sp.)","Pinus specio-1733","Plant Family","Tree",LC,1000,1543,low
+flora-1734,"Fir (Abies sp.)","Abies specio-1734","Plant Family","Tree",LC,1441,2125,low
+flora-1735,"Spruce (Picea sp.)","Picea specio-1735","Plant Family","Tree",LC,1765,2468,low
+flora-1736,"Juniper (Juniperus sp.)","Juniperus specio-1736","Plant Family","Tree/Shrub",LC,2360,3421,low
+flora-1737,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1737","Plant Family","Herb/Shrub",LC,1487,3734,low
+flora-1738,"Saw-wort (Saussurea sp.)","Saussurea specio-1738","Plant Family","Alpine Herb",EN,2686,3738,high
+flora-1739,"Fescue Grass (Festuca sp.)","Festuca specio-1739","Plant Family","Grass",EN,1374,2543,high
+flora-1740,"Bluegrass (Poa sp.)","Poa specio-1740","Plant Family","Grass",LC,1006,2289,low
+flora-1741,"Feather Grass (Stipa sp.)","Stipa specio-1741","Plant Family","Grass",LC,1955,4401,low
+flora-1742,"Cinquefoil (Potentilla sp.)","Potentilla specio-1742","Plant Family","Herb",LC,1435,2113,low
+flora-1743,"Wild Rose (Rosa sp.)","Rosa specio-1743","Plant Family","Shrub",LC,1138,2169,low
+flora-1744,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1744","Plant Family","Shrub/Climber",LC,1000,3158,low
+flora-1745,"Primrose (Primula sp.)","Primula specio-1745","Plant Family","Alpine Herb",LC,1278,2891,low
+flora-1746,"Rock Jasmine (Androsace sp.)","Androsace specio-1746","Plant Family","Alpine Herb",LC,2824,4471,low
+flora-1747,"Gentian (Gentiana sp.)","Gentiana specio-1747","Plant Family","Alpine Herb",LC,1022,2240,low
+flora-1748,"Catmint (Nepeta sp.)","Nepeta specio-1748","Plant Family","Herb",LC,1079,1672,low
+flora-1749,"Sage (Salvia sp.)","Salvia specio-1749","Plant Family","Herb",LC,1133,3043,low
+flora-1750,"Milkvetch (Astragalus sp.)","Astragalus specio-1750","Plant Family","Herb/Shrub",LC,1480,3208,low
+flora-1751,"Sedge (Carex sp.)","Carex specio-1751","Plant Family","Sedge",LC,1000,1769,low
+flora-1752,"Bog Sedge (Kobresia sp.)","Kobresia specio-1752","Plant Family","Sedge",LC,2611,4248,low
+flora-1753,"Willow (Salix sp.)","Salix specio-1753","Plant Family","Tree/Shrub",LC,1000,3467,low
+flora-1754,"Corydalis (Corydalis sp.)","Corydalis specio-1754","Plant Family","Herb",LC,1125,3240,low
+flora-1755,"Lousewort (Pedicularis sp.)","Pedicularis specio-1755","Plant Family","Herb",LC,2288,3199,low
+flora-1756,"Campion (Silene sp.)","Silene specio-1756","Plant Family","Herb",LC,1343,2630,low
+flora-1757,"Willowherb (Epilobium sp.)","Epilobium specio-1757","Plant Family","Herb",LC,1222,2658,low
+flora-1758,"Buttercup (Ranunculus sp.)","Ranunculus specio-1758","Plant Family","Herb",EN,1000,2728,high
+flora-1759,"Monkshood (Aconitum sp.)","Aconitum specio-1759","Plant Family","Herb",LC,1393,2211,low
+flora-1760,"Windflower (Anemone sp.)","Anemone specio-1760","Plant Family","Herb",LC,1933,4023,low
+flora-1761,"Knotweed (Polygonum sp.)","Polygonum specio-1761","Plant Family","Herb",NT,1000,1937,low
+flora-1762,"Barberry (Berberis sp.)","Berberis specio-1762","Plant Family","Shrub",EN,1404,3580,high
+flora-1763,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1763","Plant Family","Shrub/Tree",LC,1114,2863,low
+flora-1764,"Pine (Pinus sp.)","Pinus specio-1764","Plant Family","Tree",LC,1000,3063,low
+flora-1765,"Fir (Abies sp.)","Abies specio-1765","Plant Family","Tree",LC,1975,2698,low
+flora-1766,"Spruce (Picea sp.)","Picea specio-1766","Plant Family","Tree",LC,1827,2924,low
+flora-1767,"Juniper (Juniperus sp.)","Juniperus specio-1767","Plant Family","Tree/Shrub",LC,2114,4350,low
+flora-1768,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1768","Plant Family","Herb/Shrub",NT,1174,2898,low
+flora-1769,"Saw-wort (Saussurea sp.)","Saussurea specio-1769","Plant Family","Alpine Herb",LC,2324,3944,low
+flora-1770,"Fescue Grass (Festuca sp.)","Festuca specio-1770","Plant Family","Grass",LC,1094,2215,low
+flora-1771,"Bluegrass (Poa sp.)","Poa specio-1771","Plant Family","Grass",LC,1382,2907,low
+flora-1772,"Feather Grass (Stipa sp.)","Stipa specio-1772","Plant Family","Grass",LC,1552,3581,low
+flora-1773,"Cinquefoil (Potentilla sp.)","Potentilla specio-1773","Plant Family","Herb",LC,1527,2084,low
+flora-1774,"Wild Rose (Rosa sp.)","Rosa specio-1774","Plant Family","Shrub",EN,1116,3271,high
+flora-1775,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1775","Plant Family","Shrub/Climber",LC,1000,2197,low
+flora-1776,"Primrose (Primula sp.)","Primula specio-1776","Plant Family","Alpine Herb",LC,1505,2257,low
+flora-1777,"Rock Jasmine (Androsace sp.)","Androsace specio-1777","Plant Family","Alpine Herb",LC,1444,3520,low
+flora-1778,"Gentian (Gentiana sp.)","Gentiana specio-1778","Plant Family","Alpine Herb",LC,1267,3132,low
+flora-1779,"Catmint (Nepeta sp.)","Nepeta specio-1779","Plant Family","Herb",LC,1202,2088,low
+flora-1780,"Sage (Salvia sp.)","Salvia specio-1780","Plant Family","Herb",LC,1358,1991,low
+flora-1781,"Milkvetch (Astragalus sp.)","Astragalus specio-1781","Plant Family","Herb/Shrub",LC,1149,2090,low
+flora-1782,"Sedge (Carex sp.)","Carex specio-1782","Plant Family","Sedge",LC,1000,1938,low
+flora-1783,"Bog Sedge (Kobresia sp.)","Kobresia specio-1783","Plant Family","Sedge",NT,1811,3304,low
+flora-1784,"Willow (Salix sp.)","Salix specio-1784","Plant Family","Tree/Shrub",NT,1000,3416,low
+flora-1785,"Corydalis (Corydalis sp.)","Corydalis specio-1785","Plant Family","Herb",LC,1288,3385,low
+flora-1786,"Lousewort (Pedicularis sp.)","Pedicularis specio-1786","Plant Family","Herb",LC,1223,3318,low
+flora-1787,"Campion (Silene sp.)","Silene specio-1787","Plant Family","Herb",LC,1420,2760,low
+flora-1788,"Willowherb (Epilobium sp.)","Epilobium specio-1788","Plant Family","Herb",LC,1413,2871,low
+flora-1789,"Buttercup (Ranunculus sp.)","Ranunculus specio-1789","Plant Family","Herb",LC,1000,2560,low
+flora-1790,"Monkshood (Aconitum sp.)","Aconitum specio-1790","Plant Family","Herb",LC,1931,4133,low
+flora-1791,"Windflower (Anemone sp.)","Anemone specio-1791","Plant Family","Herb",LC,1556,3865,low
+flora-1792,"Knotweed (Polygonum sp.)","Polygonum specio-1792","Plant Family","Herb",LC,1000,3201,low
+flora-1793,"Barberry (Berberis sp.)","Berberis specio-1793","Plant Family","Shrub",NT,1019,2745,low
+flora-1794,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1794","Plant Family","Shrub/Tree",LC,1754,3657,low
+flora-1795,"Pine (Pinus sp.)","Pinus specio-1795","Plant Family","Tree",LC,1000,1734,low
+flora-1796,"Fir (Abies sp.)","Abies specio-1796","Plant Family","Tree",LC,1012,3397,low
+flora-1797,"Spruce (Picea sp.)","Picea specio-1797","Plant Family","Tree",LC,1132,2585,low
+flora-1798,"Juniper (Juniperus sp.)","Juniperus specio-1798","Plant Family","Tree/Shrub",VU,1229,3047,medium
+flora-1799,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1799","Plant Family","Herb/Shrub",LC,1095,1944,low
+flora-1800,"Saw-wort (Saussurea sp.)","Saussurea specio-1800","Plant Family","Alpine Herb",NT,1222,3065,low
+flora-1801,"Fescue Grass (Festuca sp.)","Festuca specio-1801","Plant Family","Grass",LC,1034,2313,low
+flora-1802,"Bluegrass (Poa sp.)","Poa specio-1802","Plant Family","Grass",EN,1371,3634,high
+flora-1803,"Feather Grass (Stipa sp.)","Stipa specio-1803","Plant Family","Grass",VU,1255,2200,medium
+flora-1804,"Cinquefoil (Potentilla sp.)","Potentilla specio-1804","Plant Family","Herb",LC,1148,3639,low
+flora-1805,"Wild Rose (Rosa sp.)","Rosa specio-1805","Plant Family","Shrub",LC,1261,2420,low
+flora-1806,"Bramble/Raspberry (Rubus sp.)","Rubus specio-1806","Plant Family","Shrub/Climber",LC,1000,2079,low
+flora-1807,"Primrose (Primula sp.)","Primula specio-1807","Plant Family","Alpine Herb",LC,2449,4561,low
+flora-1808,"Rock Jasmine (Androsace sp.)","Androsace specio-1808","Plant Family","Alpine Herb",LC,2268,4598,low
+flora-1809,"Gentian (Gentiana sp.)","Gentiana specio-1809","Plant Family","Alpine Herb",LC,1623,2424,low
+flora-1810,"Catmint (Nepeta sp.)","Nepeta specio-1810","Plant Family","Herb",LC,1232,2633,low
+flora-1811,"Sage (Salvia sp.)","Salvia specio-1811","Plant Family","Herb",VU,1418,3716,medium
+flora-1812,"Milkvetch (Astragalus sp.)","Astragalus specio-1812","Plant Family","Herb/Shrub",LC,1167,3446,low
+flora-1813,"Sedge (Carex sp.)","Carex specio-1813","Plant Family","Sedge",LC,1000,2528,low
+flora-1814,"Bog Sedge (Kobresia sp.)","Kobresia specio-1814","Plant Family","Sedge",LC,1067,2324,low
+flora-1815,"Willow (Salix sp.)","Salix specio-1815","Plant Family","Tree/Shrub",NT,1000,1707,low
+flora-1816,"Corydalis (Corydalis sp.)","Corydalis specio-1816","Plant Family","Herb",LC,1119,2573,low
+flora-1817,"Lousewort (Pedicularis sp.)","Pedicularis specio-1817","Plant Family","Herb",LC,2408,3866,low
+flora-1818,"Campion (Silene sp.)","Silene specio-1818","Plant Family","Herb",LC,1428,3051,low
+flora-1819,"Willowherb (Epilobium sp.)","Epilobium specio-1819","Plant Family","Herb",LC,1169,2590,low
+flora-1820,"Buttercup (Ranunculus sp.)","Ranunculus specio-1820","Plant Family","Herb",LC,1000,2950,low
+flora-1821,"Monkshood (Aconitum sp.)","Aconitum specio-1821","Plant Family","Herb",LC,2445,3374,low
+flora-1822,"Windflower (Anemone sp.)","Anemone specio-1822","Plant Family","Herb",LC,1180,2951,low
+flora-1823,"Knotweed (Polygonum sp.)","Polygonum specio-1823","Plant Family","Herb",LC,1000,3174,low
+flora-1824,"Barberry (Berberis sp.)","Berberis specio-1824","Plant Family","Shrub",VU,1388,3052,medium
+flora-1825,"Rhododendron (Rhododendron sp.)","Rhododendron specio-1825","Plant Family","Shrub/Tree",LC,2472,4097,low
+flora-1826,"Pine (Pinus sp.)","Pinus specio-1826","Plant Family","Tree",LC,1000,2101,low
+flora-1827,"Fir (Abies sp.)","Abies specio-1827","Plant Family","Tree",LC,1404,3245,low
+flora-1828,"Spruce (Picea sp.)","Picea specio-1828","Plant Family","Tree",NT,1274,2607,low
+flora-1829,"Juniper (Juniperus sp.)","Juniperus specio-1829","Plant Family","Tree/Shrub",CR,1851,2500,critical
+flora-1830,"Wormwood/Sagebrush (Artemisia sp.)","Artemisia specio-1830","Plant Family","Herb/Shrub",EN,1127,1650,high
+flora-1831,"Saw-wort (Saussurea sp.)","Saussurea specio-1831","Plant Family","Alpine Herb",LC,2965,5367,low
+flora-1832,"Fescue Grass (Festuca sp.)","Festuca specio-1832","Plant Family","Grass",LC,1210,2929,low
+flora-1833,"Bluegrass (Poa sp.)","Poa specio-1833","Plant Family","Grass",CR,1021,2599,critical
+flora-1834,"Feather Grass (Stipa sp.)","Stipa specio-1834","Plant Family","Grass",LC,1994,3607,low

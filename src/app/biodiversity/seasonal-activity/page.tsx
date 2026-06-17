@@ -87,7 +87,7 @@ export default function SeasonalActivityPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Seasonal Species Activity"
+        title="Seasonal Species Activity Across Greater Kashmir Ecology"
         subtitle="Breeding periods, activity windows, appearance/disappearance timing, altitudinal movement cues, and seasonal behavior notes."
         icon={<Calendar className="w-6 h-6 text-violet-400" />}
         label="Biodiversity Intelligence"

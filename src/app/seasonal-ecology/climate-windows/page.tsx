@@ -9,7 +9,7 @@ export default function ClimateWindowsPage() {
 
   return (
     <SeasonalListingPage
-      title="All Seasonal Climate and Visibility Windows"
+      title="Climate Windows Across Greater Kashmir Ecology"
       subtitle="Climate-linked visibility and access windows across Kashmir"
       icon="Sun"
       color="from-yellow-500 to-amber-600"

@@ -17,7 +17,7 @@ export default function WaterQualityPage() {
 
   return (
     <WaterEntityListingPage
-      title="Water Quality Monitoring Sites"
+      title="Water Quality Across Greater Kashmir Ecology"
       description="Lake quality, wetland quality, river and stream quality, spring quality, catchment-linked water stress, site-based monitoring with dissolved oxygen, pH, turbidity, BOD and trend tracking."
       icon="Thermometer"
       color="from-teal-500 to-cyan-600"

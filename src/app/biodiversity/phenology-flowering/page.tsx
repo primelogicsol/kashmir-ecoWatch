@@ -92,7 +92,7 @@ export default function PhenologyFloweringPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Phenology & Flowering Records"
+        title="Phenology Records Across Greater Kashmir Ecology"
         subtitle="Climate-sensitive ecological monitoring system tracking first bloom, seasonal flowering, and fruiting records."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         label="Biodiversity Intelligence"

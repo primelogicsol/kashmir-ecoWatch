@@ -13,6 +13,7 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
+import { Heading } from '@/components/common/Heading';
 import { biodiversityMetrics, mammalsData, birdsData, fishData, plantsData, medicinalPlantsData, threatenedSpeciesData } from '@/data/biodiversity';
 import { getHabitatBiodiversity, getDistrictBiodiversity, biodiversityIntelligenceMetrics } from '@/data/biodiversity-intelligence';
 import { getBiodiversityRiskDashboard, getSpeciesCount, getThreatSeverityAnalysis } from '@/data/biodiversity-access';
@@ -159,51 +160,42 @@ export default function BiodiversityDashboardsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        
-        <div className="absolute inset-0 bg-slate-900/50" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="w-5 h-5 text-emerald-400" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Analytics & Trends
-              </span>
-            </div>
-            <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight leading-tight">
-              Biodiversity Dashboards
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-6 leading-relaxed max-w-3xl">
-              Comprehensive analytics covering {biodiversityMetrics.totalSpecies.toLocaleString()} species across {biodiversityIntelligenceMetrics.totalHabitats} habitat systems and {biodiversityIntelligenceMetrics.totalDistricts} districts — species composition, conservation status distribution,
-              sightings trends, district comparisons, habitat diversity, and threat analysis.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Button
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/5"
-                icon={<TrendingUp className="w-4 h-4" />}
-                onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}
-              >
-                View Analytics
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/5"
-                icon={<ArrowRight className="w-4 h-4" />}
-                onClick={() => router.push('/biodiversity/risk-dashboard')}
-              >
-                Risk Dashboard
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+    <main className="min-h-screen bg-slate-950">
+      <Heading
+        label="Analytics & Trends"
+        title="Biodiversity Intelligence Dashboards"
+        subtitle={`Comprehensive analytics covering ${biodiversityMetrics.totalSpecies.toLocaleString()} species across ${biodiversityIntelligenceMetrics.totalHabitats} habitat systems and ${biodiversityIntelligenceMetrics.totalDistricts} districts — species composition, conservation status distribution, sightings trends, district comparisons, habitat diversity, and threat analysis.`}
+        icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
+        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Dashboards' }]}
+        gridOverlay
+        actions={
+          <>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white hover:bg-white/5"
+              icon={<TrendingUp className="w-4 h-4" />}
+              onClick={() => {
+                const element = document.getElementById('analytics-start');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: 800, behavior: 'smooth' });
+                }
+              }}
+            >
+              View Analytics
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white hover:bg-white/5"
+              icon={<ArrowRight className="w-4 h-4" />}
+              onClick={() => router.push('/biodiversity/risk-dashboard')}
+            >
+              Risk Dashboard
+            </Button>
+          </>
+        }
+      />
 
       <div className="container mx-auto px-6 py-12 space-y-16">
 

@@ -133,7 +133,7 @@ export default function ProtectedNetworkPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Kashmir Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Area Network</span></>}
+        title={<><span className="block whitespace-nowrap">Greater Kashmir Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Area Network</span></>}
         subtitle="A geospatial conservation intelligence layer mapping Kashmir's protected areas, wetlands, wildlife corridors, and sensitive ecosystems. Integrating biodiversity data, habitat assessments, and real-time threat signals for monitoring and spatial analysis."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}
         label="Conservation Intelligence"

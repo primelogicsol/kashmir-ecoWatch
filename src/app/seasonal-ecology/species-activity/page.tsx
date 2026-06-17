@@ -10,7 +10,7 @@ export default function SpeciesActivityPage() {
 
   return (
     <SeasonalListingPage
-      title="All Seasonal Species Activity"
+      title="Species Activity Across Greater Kashmir Ecology"
       subtitle="Seasonal species activity patterns across Kashmir"
       icon="PawPrint"
       color="from-rose-500 to-red-600"

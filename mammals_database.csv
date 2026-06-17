@@ -1,0 +1,68 @@
+Species ID,Common Name,Scientific Name,Status,Elevation Min,Elevation Max,Category,Sensitivity
+mammal-1,"Kashmir Stag (Hangul)","Cervus hanglu hanglu",CR,1700,3600,Ungulate,critical
+mammal-2,"Kashmir Musk Deer","Moschus cupreus",EN,2600,4300,Ungulate,high
+mammal-3,"Snow Leopard","Panthera uncia",VU,3000,5400,Carnivore,medium
+mammal-4,"Himalayan Brown Bear","Ursus arctos isabellinus",CR,3000,5000,Carnivore,critical
+mammal-5,"Asiatic Black Bear","Ursus thibetanus",VU,1500,3700,Carnivore,medium
+mammal-6,"Common Leopard","Panthera pardus",VU,500,3000,Carnivore,medium
+mammal-7,"Himalayan Ibex","Capra sibirica hemalayanus",LC,3200,5000,Ungulate,low
+mammal-8,"Kashmir Markhor","Capra falconeri cashmiriensis",NT,2000,3500,Ungulate,low
+mammal-9,"Himalayan Serow","Capricornis sumatraensis thar",VU,2000,3000,Ungulate,medium
+mammal-10,"Himalayan Goral","Naemorhedus goral",NT,1000,3000,Ungulate,low
+mammal-11,"Blue Sheep (Bharal)","Pseudois nayaur",LC,3500,5500,Ungulate,low
+mammal-12,"Tibetan Argali","Ovis ammon hodgsoni",NT,4000,5500,Ungulate,low
+mammal-13,"Ladakh Urial","Ovis vignei vignei",VU,3000,4000,Ungulate,medium
+mammal-14,"Himalayan Marmot","Marmota himalayana",LC,3500,5200,Rodent,low
+mammal-15,"Long-tailed Marmot","Marmota caudata",LC,3200,4800,Rodent,low
+mammal-16,"Red Fox","Vulpes vulpes",LC,1500,4500,Carnivore,low
+mammal-17,"Tibetan Wolf","Canis lupus chanco",LC,3000,5500,Carnivore,low
+mammal-18,"Golden Jackal","Canis aureus",LC,500,2000,Carnivore,low
+mammal-19,"Yellow-throated Marten","Martes flavigula",LC,1500,3500,Carnivore,low
+mammal-20,"Stone Marten","Martes foina",LC,2000,4000,Carnivore,low
+mammal-21,"Himalayan Weasel","Mustela sibirica",LC,1500,4800,Carnivore,low
+mammal-22,"Pallas's Cat","Otocolobus manul",LC,4000,5000,Carnivore,low
+mammal-23,"Jungle Cat","Felis chaus",LC,500,2500,Carnivore,low
+mammal-24,"Leopard Cat","Prionailurus bengalensis",LC,1000,3000,Carnivore,low
+mammal-25,"Indian Crested Porcupine","Hystrix indica",LC,500,2800,Rodent,low
+mammal-26,"Himalayan Palm Civet","Paguma larvata",LC,1500,2500,Carnivore,low
+mammal-27,"Rhesus Macaque","Macaca mulatta",LC,500,2500,Primate,low
+mammal-28,"Kashmir Gray Langur","Semnopithecus ajax",EN,2000,3500,Primate,high
+mammal-29,"Indian Hare","Lepus nigricollis",LC,500,2000,Lagomorph,low
+mammal-30,"Royle's Pika","Ochotona roylei",LC,2500,4500,Lagomorph,low
+mammal-31,"Large-eared Pika","Ochotona macrotis",LC,3500,5500,Lagomorph,low
+mammal-32,"Woolly Hare","Lepus oiostolus",LC,4000,5500,Lagomorph,low
+mammal-33,"Small Indian Mongoose","Urva auropunctata",LC,500,2000,Carnivore,low
+mammal-34,"Wild Boar","Sus scrofa",LC,500,2500,Ungulate,low
+mammal-35,"Himalayan Tahr","Hemitragus jemlahicus",NT,2500,4000,Ungulate,low
+mammal-36,"Eurasian Lynx","Lynx lynx isabellinus",LC,3500,5000,Carnivore,low
+mammal-37,"Kashmir Cave Bat","Myotis longipes",DD,1500,2500,Bat,low
+mammal-38,"Tibetan Antelope (Chiru)","Pantholops hodgsonii",NT,4000,5500,Ungulate,low
+mammal-39,"Kiang (Tibetan Wild Ass)","Equus kiang",LC,4000,5500,Ungulate,low
+mammal-40,"Kashmir Flying Squirrel","Eoglaucomys fimbriatus",LC,1500,3500,Rodent,low
+mammal-41,"Himalayan Mouse-Hare","Ochotona himalayana",LC,3000,4500,Lagomorph,low
+mammal-42,"Royle's Mountain Vole","Alticola roylei",NT,2500,4500,Rodent,low
+mammal-43,"Little Indian Field Mouse","Mus booduga",LC,500,2000,Rodent,low
+mammal-44,"Kashmir Wood Mouse","Apodemus rusiges",LC,2000,3500,Rodent,low
+mammal-45,"Eurasian Otter","Lutra lutra",NT,1000,3500,Carnivore,low
+mammal-46,"Small-clawed Otter","Aonyx cinereus",VU,500,2000,Carnivore,medium
+mammal-47,"Indian Flying Fox","Pteropus medius",LC,500,1500,Bat,low
+mammal-48,"Greater Horseshoe Bat","Rhinolophus ferrumequinum",LC,1000,2500,Bat,low
+mammal-49,"Brown Long-eared Bat","Plecotus auritus",LC,2000,3500,Bat,low
+mammal-50,"Himalayan Water Shrew","Chimarrogale himalayica",LC,1000,3000,Eulipotyphla,low
+mammal-51,"Grey Shrew","Crocidura attenuata",LC,1500,3000,Eulipotyphla,low
+mammal-52,"House Shrew","Suncus murinus",LC,500,2000,Eulipotyphla,low
+mammal-53,"Indian Pangolin","Manis crassicaudata",EN,500,2000,Pholidota,high
+mammal-54,"Common Mongoose","Herpestes edwardsii",LC,500,2000,Carnivore,low
+mammal-55,"Striped Hyena","Hyaena hyaena",NT,500,1500,Carnivore,low
+mammal-56,"Indian Fox","Vulpes bengalensis",LC,500,1500,Carnivore,low
+mammal-57,"Nilgai","Boselaphus tragocamelus",LC,500,1500,Ungulate,low
+mammal-58,"Barking Deer (Muntjac)","Muntiacus muntjak",LC,500,2500,Ungulate,low
+mammal-59,"Chital (Spotted Deer)","Axis axis",LC,500,1500,Ungulate,low
+mammal-60,"Sambar Deer","Rusa unicolor",VU,500,2000,Ungulate,medium
+mammal-61,"Hog Deer","Axis porcinus",EN,500,1000,Ungulate,high
+mammal-62,"Long-eared Hedgehog","Hemiechinus auritus",LC,500,1500,Eulipotyphla,low
+mammal-63,"Indian Gerbil","Tatera indica",LC,500,1500,Rodent,low
+mammal-64,"Bactrian Camel","Camelus bactrianus",CR,3000,4500,Ungulate,critical
+mammal-65,"Karakoram Brown Bear","Ursus arctos isabellinus",CR,3500,5000,Carnivore,critical
+mammal-66,"Eurasian Water Vole","Arvicola amphibius",LC,1500,3000,Rodent,low
+mammal-67,"Tibetan Gazelle","Procapra picticaudata",NT,4500,5500,Ungulate,low

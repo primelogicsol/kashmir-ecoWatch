@@ -84,7 +84,12 @@ export default function PollutionStressPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<><span className="block whitespace-nowrap">Pollution &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Stress</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Pollution & Stress</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+          </>
+        }
         subtitle="Environmental quality monitoring, pollution tracking, and climate stress assessment across air, water, soil, and ecosystem domains"
         icon={<Activity className="w-6 h-6 text-emerald-400" />}
         label="Environmental Pressure"

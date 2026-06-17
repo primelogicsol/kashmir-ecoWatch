@@ -1,0 +1,46 @@
+Created At: 2026-06-14T23:52:21Z
+Completed At: 2026-06-14T23:52:21Z
+File Path: `file:///C:/Users/Fayaz/Sufipulseupdate2026/KEW%202026/kashmir-ecoWatch/src/app/biodiversity/birds/page.tsx`
+Total Lines: 38
+Total Bytes: 1894
+Showing lines 1 to 38
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: 'use client';
+2: 
+3: import { BiodiversityCategoryPage } from '@/components/common/BiodiversityCategoryPage';
+4: import { getBiodiversityData } from '@/data/biodiversity';
+5: 
+6: export default function BirdsPage() {
+7:   const species = getBiodiversityData.birds.all();
+8: 
+9:   const metrics = [
+10:     { label: 'Target Slots', value: species.length, icon: 'Activity' as const },
+11:     { label: 'Validated Data', value: species.filter(s => (s as any).validationStatus !== 'Pending source validation').length, icon: 'CheckCircle' as const },
+12:     { label: 'Threatened Taxa', value: species.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length, icon: 'Shield' as const },
+13:     { label: 'Endemic', value: species.filter(s => s.endemismStatus && s.endemismStatus.includes('endemic')).length, icon: 'MapPin' as const },
+14:     { label: 'Monitoring Sites', value: 14, icon: 'Map' as const },
+15:     { label: 'Active Sightings', value: '2.4K+', icon: 'Eye' as const },
+16:     { label: 'Data Sources', value: 12, icon: 'Database' as const },
+17:     { label: 'Latest Update', value: 'Today', icon: 'Clock' as const },
+18:   ];
+19: 
+20:   const filters = {
+21:     habitats: ['Wetlands', 'Temperate forests', 'Alpine meadows', 'Forest edges', 'Riparian forests'],
+22:     districts: ['Srinagar', 'Ganderbal', 'Anantnag', 'Kulgam', 'Kishtwar'],
+23:     conservationStatuses: ['CR', 'EN', 'VU', 'NT', 'LC'],
+24:   };
+25: 
+26:   return (
+27:     <BiodiversityCategoryPage
+28:       title="Birds"
+29:       subtitle="A comprehensive ornithological intelligence layer tracking resident and migratory bird populations across Kashmir's ecosystems. Integrating seasonal flight corridors, breeding habitat parameters, and specialized environmental signals to support targeted wetland and alpine conservation initiatives."
+30:       icon="Activity"
+31:       color="bg-[#160C27]"
+32:       species={species}
+33:       metrics={metrics}
+34:       filters={filters}
+35:     />
+36:   );
+37: }
+38: 
+The above content shows the entire, complete file contents of the requested file.

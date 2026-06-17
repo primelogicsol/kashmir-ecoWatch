@@ -16,20 +16,21 @@ export default function RestorationPage() {
 
   return (
     <WaterEntityListingPage
-      title="All Restoration and Rejuvenation Sites"
+      title="Restoration Across Greater Kashmir Ecology"
       description="Lake restoration, wetland restoration, spring rejuvenation, catchment treatment, river rehabilitation, recharge improvement, ecological desiltation, and hydrological restoration planning."
       icon="Hammer"
       color="from-lime-500 to-green-600"
       entities={restorationSites}
       entityType="Restoration Sites"
       kpis={[
-        { label: 'Total Sites',   value: restorationSites.length, icon: 'Hammer'                         },
-        { label: 'Completed',     value: completed,               icon: 'CheckCircle', color: 'text-emerald-400' },
-        { label: 'Ongoing',       value: ongoing,                 icon: 'RefreshCw',   color: 'text-blue-400'    },
-        { label: 'Planned',       value: planned,                 icon: 'Calendar',    color: 'text-amber-400'   },
-        { label: 'Lake Restore',  value: lakeRest,                icon: 'Droplet',     color: 'text-cyan-400'    },
-        { label: 'Wetland Restore', value: wetRest,               icon: 'Waves',       color: 'text-sky-400'     },
-        { label: 'Districts',     value: districts.length,        icon: 'MapPin'                         },
+        { label: 'Total Sites',     value: restorationSites.length, icon: 'Hammer' },
+        { label: 'Completed',       value: completed,               icon: 'CheckCircle' },
+        { label: 'Ongoing',         value: ongoing,                 icon: 'RefreshCw' },
+        { label: 'Planned',         value: planned,                 icon: 'Calendar' },
+        { label: 'Lake Restore',    value: lakeRest,                icon: 'Droplet' },
+        { label: 'Wetland Restore', value: wetRest,                 icon: 'Waves' },
+        { label: 'Districts',       value: districts.length,        icon: 'MapPin' },
+        { label: 'Latest Update',   value: 'Today',                 icon: 'Clock' },
       ]}
       filters={{ districts, categories }}
       getEntitySlug={entity => `/water-systems/restoration/${entity.slug}`}

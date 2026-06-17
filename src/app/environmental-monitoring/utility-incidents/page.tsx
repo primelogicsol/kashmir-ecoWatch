@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
   Siren, Map, BarChart3, ChevronRight, AlertTriangle,
   FileText, ArrowRight, Activity, Clock,
@@ -136,6 +138,7 @@ const recentIncidents = [
 
 export default function UtilityIncidentsPage() {
   const router = useRouter();
+  const [incidentTypeFilter, setIncidentTypeFilter] = useState('all');
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -145,31 +148,44 @@ export default function UtilityIncidentsPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Utility Incidents' }
         ]}
-        title={<><span className="block whitespace-nowrap">Utility</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Incidents</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Utility Incidents Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
         subtitle="Real-time utility service failures, emergency advisories, infrastructure damage reports, and citizen complaint tracking across Kashmir&apos;s water and sanitation utility network"
         icon={<Siren className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Active Incidents', value: '111', sub: 'Last 24 hours', color: 'text-red-400' },
-              { label: 'Critical Events', value: '19', sub: 'Emergency response', color: 'text-red-500' },
-              { label: 'Active Advisories', value: '5', sub: 'Public notices', color: 'text-amber-400' },
-              { label: 'Citizen Complaints', value: '47', sub: 'Last 7 days', color: 'text-orange-400' },
-              { label: 'Avg Resolution Time', value: '18h', sub: 'Target: 12h', color: 'text-slate-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ModuleKpiStrip kpis={[
+        { label: 'Active Incidents',   value: 111,  icon: 'Siren',         color: 'text-red-400'    },
+        { label: 'Critical Events',    value: 19,   icon: 'AlertTriangle', color: 'text-red-400'    },
+        { label: 'Active Advisories',  value: 5,    icon: 'Bell',          color: 'text-amber-400'  },
+        { label: 'Citizen Complaints', value: 47,   icon: 'MessageSquare', color: 'text-blue-400'   },
+        { label: 'Avg Resolution',     value: '18h',icon: 'Clock',         color: 'text-emerald-400'},
+      ]} />
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <FilterSelect
+              value={incidentTypeFilter}
+              onChange={setIncidentTypeFilter}
+              placeholder="All Incident Types"
+              options={[
+                { value: 'water-failure',   label: 'Water Failure'    },
+                { value: 'sewage-overflow', label: 'Sewage Overflow'  },
+                { value: 'power',           label: 'Power Disruption' },
+                { value: 'advisory',        label: 'Emergency Notice' },
+                { value: 'infrastructure',  label: 'Infrastructure'   },
+                { value: 'complaint',       label: 'Citizen Complaint'},
+              ]}
+            />
+          }
+          extraActiveCount={incidentTypeFilter !== 'all' ? 1 : 0}
+          onExtraFiltersClear={() => setIncidentTypeFilter('all')}
+        />
+      </div>
 
       {/* Map Preview */}
       <section className="py-16">

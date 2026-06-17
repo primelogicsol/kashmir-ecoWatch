@@ -96,7 +96,12 @@ export default function HazardRisksPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<><span className="block whitespace-nowrap">Hazard</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risks</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap">Hazard Risks</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+          </>
+        }
         subtitle="Multi-hazard classification and risk assessment across Kashmir's diverse environmental threats. Active hazard status, district vulnerability, and routes to specialized monitoring."
         icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
         label="Umbrella Classification"

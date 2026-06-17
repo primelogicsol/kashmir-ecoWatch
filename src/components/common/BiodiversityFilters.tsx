@@ -33,6 +33,9 @@ interface BiodiversityFiltersProps {
   moduleOptions?: { id: string; label: string }[];
   activeModule?: string;
   onModuleChange?: (moduleId: string) => void;
+  hideHabitatFilter?: boolean;
+  hideAdministrativeUnitFilter?: boolean;
+  hideElevationFilter?: boolean;
 }
 
 const conservationStatuses = [
@@ -75,17 +78,20 @@ export function BiodiversityFilters({
   category2Options = habitats,
   moduleOptions,
   activeModule,
-  onModuleChange
+  onModuleChange,
+  hideHabitatFilter = false,
+  hideAdministrativeUnitFilter = false,
+  hideElevationFilter = false,
 }: BiodiversityFiltersProps) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const activeFilterCount = 
     (filters.searchQuery ? 1 : 0) +
     (filters[category1Key] && filters[category1Key] !== 'all' ? 1 : 0) +
-    (filters[category2Key] && filters[category2Key] !== 'all' ? 1 : 0) +
+    (!hideHabitatFilter && filters[category2Key] && filters[category2Key] !== 'all' ? 1 : 0) +
     (filters.scope && filters.scope !== 'All' ? 1 : 0) +
-    (filters.administrativeUnit && filters.administrativeUnit !== 'All' ? 1 : 0) +
-    (filters.elevation ? 1 : 0);
+    (!hideAdministrativeUnitFilter && filters.administrativeUnit && filters.administrativeUnit !== 'All' ? 1 : 0) +
+    (!hideElevationFilter && filters.elevation ? 1 : 0);
 
   const availableUnits = React.useMemo(() => {
     return getUnitsForScope((filters.scope as Scope) || 'All').sort();
@@ -184,19 +190,21 @@ export function BiodiversityFilters({
               </div>
             )}
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category2Label}</label>
-              <select
-                value={filters[category2Key] || 'all'}
-                onChange={(e) => handleChange(category2Key, e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
-              >
-                <option value="all">All</option>
-                {category2Options.map(h => (
-                  <option key={h} value={h}>{h}</option>
-                ))}
-              </select>
-            </div>
+            {!hideHabitatFilter && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category2Label}</label>
+                <select
+                  value={filters[category2Key] || 'all'}
+                  onChange={(e) => handleChange(category2Key, e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                >
+                  <option value="all">All</option>
+                  {category2Options.map(h => (
+                    <option key={h} value={h}>{h}</option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
@@ -217,33 +225,37 @@ export function BiodiversityFilters({
               </select>
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
-              <select
-                value={filters.administrativeUnit || 'All'}
-                onChange={(e) => handleChange('administrativeUnit', e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors disabled:opacity-50"
-              >
-                <option value="All">All Units in {filters.scope || 'All'}</option>
-                {availableUnits.map(u => (
-                  <option key={u} value={u}>{u}</option>
-                ))}
-              </select>
-            </div>
+            {!hideAdministrativeUnitFilter && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
+                <select
+                  value={filters.administrativeUnit || 'All'}
+                  onChange={(e) => handleChange('administrativeUnit', e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors disabled:opacity-50"
+                >
+                  <option value="All">All Units in {filters.scope || 'All'}</option>
+                  {availableUnits.map(u => (
+                    <option key={u} value={u}>{u}</option>
+                  ))}
+                </select>
+              </div>
+            )}
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Elevation Range</label>
-              <select
-                value={filters.elevation || 'all'}
-                onChange={(e) => handleChange('elevation', e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
-              >
-                <option value="all">All Elevations</option>
-                {elevations.map(e => (
-                  <option key={e.id} value={e.id}>{e.label}</option>
-                ))}
-              </select>
-            </div>
+            {!hideElevationFilter && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Elevation Range</label>
+                <select
+                  value={filters.elevation || 'all'}
+                  onChange={(e) => handleChange('elevation', e.target.value)}
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                >
+                  <option value="all">All Elevations</option>
+                  {elevations.map(e => (
+                    <option key={e.id} value={e.id}>{e.label}</option>
+                  ))}
+                </select>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

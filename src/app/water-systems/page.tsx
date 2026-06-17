@@ -19,6 +19,7 @@ import {
   fisheriesData, floodRiskZones, restorationSites,
   updatedWaterSystemsMetrics
 } from '@/data/water-systems';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { KASHMIR_VALLEY_TOTALS, NWIA_SOURCE_METADATA } from '@/data/nwia-references';
 
 // Hydrological Intelligence
@@ -164,7 +165,7 @@ export default function WaterSystemsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         icon={<Droplet className="w-6 h-6 text-emerald-400" />}
-        title={<><span className="block whitespace-nowrap">Water</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Systems</span></>}
+        title={<><span className="block whitespace-nowrap">Greater Kashmir</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Systems</span></>}
         subtitle="Water Systems is a complete hydrological, ecological, aquatic, water-quality, watershed, cryosphere, flood-risk, and restoration intelligence system for all mapped water-related landscapes and processes across Kashmir."
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
@@ -187,41 +188,16 @@ export default function WaterSystemsPage() {
         }
       />
 
-      {/* Metrics Bar */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3">
-              {[
-                { label: 'Lakes', value: metrics.totalLakes, icon: Droplet },
-                { label: 'Wetlands', value: metrics.totalWetlands, icon: Waves },
-                { label: 'Rivers', value: metrics.totalRivers + metrics.totalStreams, icon: Wind },
-                { label: 'Springs', value: metrics.totalSprings, icon: Mountain },
-                { label: 'Watersheds', value: metrics.totalWatersheds, icon: Map },
-                { label: 'Glaciers', value: metrics.totalGlaciers, icon: Layers },
-                { label: 'Quality Sites', value: metrics.totalWaterQualitySites, icon: Thermometer },
-                { label: 'Fisheries', value: metrics.totalFisheries, icon: Fish },
-                { label: 'Flood Zones', value: metrics.totalFloodZones, icon: AlertTriangle },
-                { label: 'Restoration', value: metrics.totalRestorationSites, icon: Hammer },
-              ].map((metric, idx) => (
-                <div key={idx} className="text-center p-3 border-r border-white/5 last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">
-                    {metric.value}
-                  </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
+      <ModuleKpiStrip kpis={[
+        { label: 'Lakes',         value: metrics.totalLakes,                              icon: 'Droplet'       },
+        { label: 'Wetlands',      value: metrics.totalWetlands,                           icon: 'Waves'         },
+        { label: 'Rivers',        value: metrics.totalRivers + metrics.totalStreams,       icon: 'Wind'          },
+        { label: 'Springs',       value: metrics.totalSprings,                            icon: 'Mountain'      },
+        { label: 'Watersheds',    value: metrics.totalWatersheds,                         icon: 'Map'           },
+        { label: 'Glaciers',      value: metrics.totalGlaciers,                           icon: 'Layers'        },
+        { label: 'Quality Sites', value: metrics.totalWaterQualitySites,                  icon: 'Thermometer'   },
+        { label: 'Fisheries',     value: metrics.totalFisheries,                          icon: 'Fish'          },
+      ]} />
 
       {/* Quality Overview */}
       <div className="container mx-auto px-6 py-12">

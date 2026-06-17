@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { biodiversityMetrics } from '@/data/biodiversity';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { Heading } from '@/components/common/Heading';
 import {
   getHabitatBiodiversity,
@@ -78,7 +79,7 @@ export default function BiodiversityOverviewPage() {
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
       <Heading
-        title={<><span className="block whitespace-nowrap">Species, Habitat &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Observation Intelligence</span></>}
+        title="Biodiversity Across Greater Kashmir Ecology"
         subtitle="An integrated ecological intelligence layer analyzing Kashmir's specific biodiversity domain with verified metrics. Integrating complex spatial distribution mapping, real-time threat vulnerability analysis, and critical longitudinal conservation analytics to protect high-priority regional ecosystems."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         label="Biodiversity Intelligence"
@@ -100,39 +101,16 @@ export default function BiodiversityOverviewPage() {
         }
       />
 
-      {/* Live Metrics Bar */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-6" padding="none">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-              {[
-                { label: 'Species Indexed', value: biodiversityMetrics.totalSpecies, icon: Activity },
-                { label: 'Birds', value: biodiversityMetrics.birds, icon: Bird },
-                { label: 'Mammals', value: biodiversityMetrics.mammals, icon: Mountain },
-                { label: 'Fish & Aquatic', value: biodiversityMetrics.fish, icon: Fish },
-                { label: 'Plants & Flora', value: biodiversityMetrics.plants, icon: Sprout },
-                { label: 'Medicinal Flora', value: biodiversityMetrics.medicinalPlants, icon: Flower2 },
-                { label: 'Threatened', value: biodiversityMetrics.threatened, icon: Shield },
-                { label: 'Active Migrations', value: activeMigrations.length, icon: Clock },
-              ].map((metric, idx) => (
-                <div key={idx} className="text-center p-4 border-r border-white/5 even:border-r-0 md:even:border-r md:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4n)]:border-r lg:last:border-r-0">
-                  <metric.icon className="w-5 h-5 text-slate-500 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white tabular-nums">
-                    {metric.value.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
+      <ModuleKpiStrip kpis={[
+        { label: 'Species Indexed',   value: biodiversityMetrics.totalSpecies,     icon: 'Activity' },
+        { label: 'Birds',             value: biodiversityMetrics.birds,            icon: 'Bird'     },
+        { label: 'Mammals',           value: biodiversityMetrics.mammals,          icon: 'Mountain' },
+        { label: 'Fish & Aquatic',    value: biodiversityMetrics.fish,             icon: 'Fish'     },
+        { label: 'Plants & Flora',    value: biodiversityMetrics.plants,           icon: 'Sprout'   },
+        { label: 'Medicinal Flora',   value: biodiversityMetrics.medicinalPlants,  icon: 'Flower2'  },
+        { label: 'Threatened',        value: biodiversityMetrics.threatened,       icon: 'Shield'   },
+        { label: 'Active Migrations', value: activeMigrations.length,              icon: 'Clock'    },
+      ]} />
 
       {/* Module Navigation - 3 Groups */}
       <div className="container mx-auto px-6 py-16">

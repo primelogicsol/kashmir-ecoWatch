@@ -17,6 +17,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { GEOGRAPHY, Scope } from '@/data/geography';
 import { masterCorridors, generateDistrictCorridorMetrics } from '@/data/wildlife-corridors';
+import { Heading } from '@/components/common/Heading';
 
 export default function ForestEcosystemsPage() {
   const router = useRouter();
@@ -107,49 +108,33 @@ export default function ForestEcosystemsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      {/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
-        <div className={`absolute inset-0 bg-[#0B1A12]`} />
-        <div className="absolute inset-0 bg-grid opacity-20" />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <TreePine className="w-6 h-6 text-emerald-400" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Biodiversity Intelligence
-              </span>
-            </div>
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
-              Forest Ecosystems
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white border-0"
-                icon={<Search className="w-5 h-5" />}
-              >
-                Search Forest Ecosystems
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white/20 text-white"
-                icon={<Map className="w-5 h-5" />}
-              >
-                Distribution Map
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <Heading
+        label="Biodiversity Intelligence"
+        title="Forest Ecosystems Across Greater Kashmir Ecology"
+        subtitle="The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics."
+        icon={<TreePine className="w-6 h-6 text-emerald-400" />}
+        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Forest Ecosystems' }]}
+        gridOverlay
+        actions={
+          <>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white border-0"
+              icon={<Search className="w-5 h-5" />}
+            >
+              Search Forest Ecosystems
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white"
+              icon={<Map className="w-5 h-5" />}
+            >
+              Distribution Map
+            </Button>
+          </>
+        }
+      />
 
       {/* Metrics */}
       <div className="container mx-auto px-6 -mt-8 relative z-20">

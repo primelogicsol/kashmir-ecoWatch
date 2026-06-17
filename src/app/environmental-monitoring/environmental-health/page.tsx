@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
   HeartPulse, Map, BarChart3, ChevronRight, AlertTriangle,
   FileText, ArrowRight, Activity, Clock,
@@ -134,6 +136,7 @@ const recentIncidents = [
 
 export default function EnvironmentalHealthPage() {
   const router = useRouter();
+  const [signalFilter, setSignalFilter] = useState('all');
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -143,31 +146,44 @@ export default function EnvironmentalHealthPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Environmental Health' }
         ]}
-        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Health</span></>}
+        title={
+          <>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Health Across</span>
+            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
+          </>
+        }
         subtitle="Monitoring ecosystem health signals — fish kills, odor pollution, stagnant water, algal blooms, and vector breeding sites across Kashmir&apos;s water bodies and urban zones"
         icon={<HeartPulse className="w-6 h-6 text-emerald-400" />}
       />
 
-      {/* Metrics */}
-      <section className="py-12 border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { label: 'Active Signals', value: '115', sub: 'Last 7 days', color: 'text-amber-400' },
-              { label: 'Fish Kill Events', value: '8', sub: 'Valley-wide', color: 'text-red-400' },
-              { label: 'Odor Complaints', value: '34', sub: 'Urban zones', color: 'text-orange-400' },
-              { label: 'Stagnant Water Zones', value: '30', sub: 'Vector risk', color: 'text-amber-400' },
-              { label: 'Algal Blooms', value: '5', sub: 'Active detection', color: 'text-cyan-400' },
-            ].map((m, i) => (
-              <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} className="text-center">
-                <div className={`text-3xl md:text-4xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm text-slate-400">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ModuleKpiStrip kpis={[
+        { label: 'Active Signals',   value: 115, icon: 'Activity',      color: 'text-red-400'    },
+        { label: 'Fish Kill Events', value: 8,   icon: 'Fish',          color: 'text-orange-400' },
+        { label: 'Odor Complaints',  value: 34,  icon: 'AlertTriangle', color: 'text-amber-400'  },
+        { label: 'Stagnant Zones',   value: 30,  icon: 'Waves',         color: 'text-blue-400'   },
+        { label: 'Algal Blooms',     value: 5,   icon: 'Droplets',      color: 'text-emerald-400'},
+      ]} />
+      <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
+        <GlobalFilterBar
+          extraFilters={
+            <FilterSelect
+              value={signalFilter}
+              onChange={setSignalFilter}
+              placeholder="All Signals"
+              options={[
+                { value: 'fish-kill',       label: 'Fish Kill'       },
+                { value: 'odor',            label: 'Odor Complaints' },
+                { value: 'stagnant-water',  label: 'Stagnant Water'  },
+                { value: 'algal-bloom',     label: 'Algal Bloom'     },
+                { value: 'vector-breeding', label: 'Vector Breeding' },
+                { value: 'bio-indicator',   label: 'Bio Indicator'   },
+              ]}
+            />
+          }
+          extraActiveCount={signalFilter !== 'all' ? 1 : 0}
+          onExtraFiltersClear={() => setSignalFilter('all')}
+        />
+      </div>
 
       {/* Map Preview */}
       <section className="py-16">

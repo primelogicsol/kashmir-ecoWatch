@@ -113,7 +113,7 @@ export type ConservationPriority = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export type SensitivityLevel = 'low' | 'medium' | 'high' | 'critical';
 
-export type IUCNStatus = 'LC' | 'NT' | 'VU' | 'EN' | 'CR' | 'EW' | 'EX';
+export type IUCNStatus = 'LC' | 'NT' | 'VU' | 'EN' | 'CR' | 'EW' | 'EX' | 'DD' | 'NE';
 
 export type TaxonomicGroup = 'mammals' | 'birds' | 'fish' | 'plants' | 'medicinal-plants' | 'reptiles-amphibians';
 

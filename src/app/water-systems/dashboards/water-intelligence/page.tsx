@@ -8,7 +8,7 @@ import {
   TrendingUp, Info, Satellite, FlaskConical,
   Clock, ArrowRight, BarChart3, Layers, Eye
 } from 'lucide-react';
-
+import { Heading } from '@/components/common/Heading';
 import { lakesRecords } from '@/data/hydrology/lakes';
 import { wetlandsRecords } from '@/data/hydrology/wetlands';
 import { riversRecords } from '@/data/hydrology/rivers';
@@ -126,29 +126,22 @@ export default function WaterIntelligenceDashboard() {
   return (
     <div className="min-h-screen bg-[#050d1a]">
       {/* ── Hero Header ─────────────────────────────────────────────────── */}
-      <div className="relative overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(6,182,212,0.12),transparent_60%)]" />
-        <div className="relative max-w-7xl mx-auto px-6 py-12">
-          <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-medium text-cyan-400 tracking-widest uppercase bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
-                Live Intelligence Layer
-              </span>
-              <span className="text-xs text-slate-500 border border-slate-700 px-2 py-1 rounded-full">
-                Model v1.0 · NWIA 2010
-              </span>
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              Water Intelligence Dashboard
-            </h1>
-            <p className="text-slate-400 text-sm max-w-2xl">
-              Hydrological intelligence engine for Kashmir Eco Watch. All computations run on source-verified records only.
-              Locked records are excluded from KPIs until source verification is complete.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      <Heading
+        icon={<Activity className="w-6 h-6 text-emerald-400" />}
+        label="Live Intelligence Layer"
+        title={
+          <>
+            <span className="block whitespace-nowrap">Water Intelligence</span>
+            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Across Greater Kashmir Ecology</span>
+          </>
+        }
+        subtitle="Hydrological intelligence engine for Kashmir Eco Watch. All computations run on source-verified records only. Locked records are excluded from KPIs until source verification is complete."
+        breadcrumbs={[
+          { label: 'Water Systems', href: '/water-systems' },
+          { label: 'Dashboards', href: '/water-systems/dashboards' },
+          { label: 'Water Intelligence' },
+        ]}
+      />
 
       <div className="max-w-7xl mx-auto px-6 py-10 space-y-10">
 
