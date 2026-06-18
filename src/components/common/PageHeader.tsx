@@ -50,7 +50,7 @@ export function PageHeader({ icon, title, subtitle, breadcrumbs, actions }: Page
         <div className="flex items-center gap-2 mb-4">
           {icon}
           <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
-            Protected Network
+            KEW Protected Network
           </span>
         </div>
         <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">{title}</h1>

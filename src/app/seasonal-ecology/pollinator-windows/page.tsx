@@ -9,7 +9,7 @@ export default function PollinatorWindowsPage() {
 
   return (
     <SeasonalListingPage
-      title="Pollinator Activity Greater Kashmir Ecology"
+      title="Western Himalayan Pollinator Activity"
       subtitle="Pollinator activity timing across Kashmir ecosystems"
       icon="Bug"
       color="from-amber-500 to-orange-600"

@@ -1,4 +1,4 @@
-// Algal Bloom Lakes Database — Greater Kashmir Ecology
+// Algal Bloom Lakes Database — Western Himalayan
 // Full inventory: Named lakes · Wetland lakes / marsh pools · Alpine tarns and lakelets
 //
 // Evidence base:
@@ -70,6 +70,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-dal',
     name: 'Dal Lake',
+    latitude: 34.1082,
+    longitude: 74.869,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m', area: '~18 km²',
     lakeType: 'Urban floodplain lake',
@@ -83,7 +85,9 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   },
   {
     id: 'kc-nigeen',
-    name: 'Nigeen Lake', alternateName: 'Nagin Lake',
+    name: 'Nigeen Lake',
+    latitude: 34.1166,
+    longitude: 74.8322, alternateName: 'Nagin Lake',
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m', area: '~3.5 km²',
     lakeType: 'Urban lake basin',
@@ -97,6 +101,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-gagribal',
     name: 'Gagribal Basin',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m',
     lakeType: 'Dal Lake basin segment',
@@ -110,6 +116,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-lokut-dal',
     name: 'Lokut Dal',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m',
     lakeType: 'Dal Lake basin segment (small)',
@@ -123,6 +131,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-bod-dal',
     name: 'Bod Dal',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m',
     lakeType: 'Dal Lake basin segment (large)',
@@ -135,7 +145,9 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   },
   {
     id: 'kc-brari-nambal',
-    name: 'Brari Nambal', alternateName: 'Bab Demb',
+    name: 'Brari Nambal',
+    latitude: 34.0837,
+    longitude: 74.7973, alternateName: 'Bab Demb',
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,580 m',
     lakeType: 'Dal-linked lagoon / urban lake',
@@ -150,6 +162,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-khushalsar',
     name: 'Khushalsar Lake',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m',
     lakeType: 'Urban lake',
@@ -163,6 +177,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-gilsar',
     name: 'Gilsar Lake',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,584 m',
     lakeType: 'Urban lake',
@@ -177,6 +193,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-anchar',
     name: 'Anchar Lake',
+    latitude: 34.1311,
+    longitude: 74.7865,
     scope: 'Kashmir Core', district: 'Srinagar / Ganderbal',
     altitude: '1,580 m', area: '~7 km²',
     lakeType: 'Floodplain / urban lake',
@@ -191,6 +209,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-nallah-amir-khan',
     name: 'Nallah Amir Khan Lake-Channel System',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '1,580 m',
     lakeType: 'Lake connector / urban waterway',
@@ -204,6 +224,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-harwan',
     name: 'Harwan Reservoir',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Srinagar',
     altitude: '~1,700 m',
     lakeType: 'Drinking water reservoir',
@@ -222,6 +244,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-narkara',
     name: 'Narkara Wetland',
+    latitude: 34.014,
+    longitude: 74.7111,
     scope: 'Kashmir Core', district: 'Budgam',
     altitude: '1,580 m',
     lakeType: 'Marsh lake / wetland conservation reserve',
@@ -236,6 +260,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-hokersar',
     name: 'Hokersar Wetland',
+    latitude: 34.0837,
+    longitude: 74.7973,
     scope: 'Kashmir Core', district: 'Budgam / Srinagar',
     altitude: '1,582 m', area: '~13.7 km²',
     lakeType: 'Ramsar wetland / floodplain marsh',
@@ -249,6 +275,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-nilnag',
     name: 'Nilnag Lake',
+    latitude: 34.014,
+    longitude: 74.7111,
     scope: 'Kashmir Core', district: 'Budgam',
     altitude: '~2,100 m',
     lakeType: 'Spring-fed sub-alpine lake',
@@ -262,6 +290,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-tosamaidan-tarns',
     name: 'Tosamaidan Alpine Tarns',
+    latitude: 34.014,
+    longitude: 74.7111,
     scope: 'Kashmir Core', district: 'Budgam',
     altitude: '~3,000–3,500 m',
     lakeType: 'Alpine tarns / highland meadow pools',
@@ -275,6 +305,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-doodhpathri-pools',
     name: 'Doodhpathri Upland Pools',
+    latitude: 34.014,
+    longitude: 74.7111,
     scope: 'Kashmir Core', district: 'Budgam',
     altitude: '~2,730 m',
     lakeType: 'Meadow pools / upland water bodies',
@@ -293,6 +325,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-shallabugh',
     name: 'Shallabugh Wetland',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '1,575 m',
     lakeType: 'Shallow floodplain wetland reserve',
@@ -306,6 +340,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-manasbal',
     name: 'Manasbal Lake',
+    latitude: 34.2492,
+    longitude: 74.6748,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '1,583 m', area: '~2.8 km²',
     lakeType: 'Freshwater floodplain lake',
@@ -319,6 +355,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-gangbal',
     name: 'Gangbal Lake',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,600 m', area: '~3 km²',
     lakeType: 'High-altitude glacial / alpine lake',
@@ -333,6 +371,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-nundkol',
     name: 'Nundkol Lake',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,500 m',
     lakeType: 'High-altitude alpine lake',
@@ -346,6 +386,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-vishansar',
     name: 'Vishansar Lake',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,710 m',
     lakeType: 'High-altitude alpine lake',
@@ -359,6 +401,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-krishansar',
     name: 'Krishansar Lake',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,801 m',
     lakeType: 'High-altitude alpine lake',
@@ -372,6 +416,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-gadsar',
     name: 'Gadsar Lake',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,600 m',
     lakeType: 'High-altitude alpine lake',
@@ -385,6 +431,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-satsar-cluster',
     name: 'Satsar Alpine Lakes (1–5)',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~3,600–3,800 m',
     lakeType: 'Alpine lake cluster (5 lakes)',
@@ -398,6 +446,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-sonamarg-tarns',
     name: 'Sonamarg Alpine Tarns',
+    latitude: 34.2272,
+    longitude: 74.7744,
     scope: 'Kashmir Core', district: 'Ganderbal',
     altitude: '~2,740–4,000 m',
     lakeType: 'Alpine tarns',
@@ -416,6 +466,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-wular',
     name: 'Wular Lake',
+    latitude: 34.3411,
+    longitude: 74.6186,
     scope: 'Kashmir Core', district: 'Bandipora / Baramulla',
     altitude: '1,580 m', area: '~130–200 km² (seasonal)',
     lakeType: 'Floodplain lake (Asia\'s largest freshwater lake)',
@@ -430,6 +482,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-wular-marsh-pools',
     name: 'Wular Lake-Fringe Marsh Pools',
+    latitude: 34.4225,
+    longitude: 74.6542,
     scope: 'Kashmir Core', district: 'Bandipora',
     altitude: '1,580 m',
     lakeType: 'Lake-fringe wetland pools',
@@ -443,6 +497,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-zurimanz',
     name: 'Zurimanz / Wular Fringe Waters',
+    latitude: 34.4225,
+    longitude: 74.6542,
     scope: 'Kashmir Core', district: 'Bandipora',
     altitude: '1,580 m',
     lakeType: 'Wetland pools / lake fringe',
@@ -456,6 +512,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-malgam-pools',
     name: 'Malgam Wetland Pools',
+    latitude: 34.4225,
+    longitude: 74.6542,
     scope: 'Kashmir Core', district: 'Bandipora',
     altitude: '~1,580 m',
     lakeType: 'Wetland pools',
@@ -474,6 +532,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-hygam',
     name: 'Hygam / Haigam Wetland',
+    latitude: 34.2,
+    longitude: 74.34,
     scope: 'Kashmir Core', district: 'Baramulla',
     altitude: '1,575 m',
     lakeType: 'Wetland conservation reserve',
@@ -488,6 +548,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-mirgund',
     name: 'Mirgund Wetland',
+    latitude: 34.2,
+    longitude: 74.34,
     scope: 'Kashmir Core', district: 'Baramulla',
     altitude: '~1,575 m',
     lakeType: 'Marsh / wetland',
@@ -501,6 +563,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-alpather',
     name: 'Alpather Lake',
+    latitude: 34.2,
+    longitude: 74.34,
     scope: 'Kashmir Core', district: 'Baramulla',
     altitude: '~4,390 m',
     lakeType: 'High-altitude alpine lake',
@@ -514,6 +578,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-gulmarg-tarns',
     name: 'Gulmarg Upland Tarns',
+    latitude: 34.2,
+    longitude: 74.34,
     scope: 'Kashmir Core', district: 'Baramulla',
     altitude: '~2,700–4,000 m',
     lakeType: 'Alpine tarns / upland pools',
@@ -527,6 +593,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-ferozpora-ponds',
     name: 'Ferozpora Upland Ponds',
+    latitude: 34.2,
+    longitude: 74.34,
     scope: 'Kashmir Core', district: 'Baramulla',
     altitude: '~2,000–2,500 m',
     lakeType: 'Meadow ponds',
@@ -545,6 +613,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-chatlam',
     name: 'Chatlam Wetland',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Pulwama',
     altitude: '~1,580 m',
     lakeType: 'Wetland / lakelet',
@@ -558,6 +628,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-kranchoo',
     name: 'Kranchoo Wetland',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Pulwama',
     altitude: '~1,580 m',
     lakeType: 'Wetland / lakelet',
@@ -571,6 +643,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-pampore-pools',
     name: 'Pampore Wetland Pools',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Pulwama',
     altitude: '~1,580 m',
     lakeType: 'Saffron Karewa wetland pools',
@@ -584,6 +658,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-tarsar',
     name: 'Tarsar Lake',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Anantnag / Pulwama',
     altitude: '~3,720 m',
     lakeType: 'High-altitude glacial lake',
@@ -598,6 +674,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-marsar',
     name: 'Marsar Lake',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Anantnag / Pulwama',
     altitude: '~3,700 m',
     lakeType: 'High-altitude glacial lake',
@@ -612,6 +690,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-nagberan-lakelets',
     name: 'Nagberan Alpine Lakelets',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Pulwama',
     altitude: '~3,500–4,000 m',
     lakeType: 'Alpine lakelets',
@@ -625,6 +705,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-shikargah-pools',
     name: 'Shikargah / Tral Upland Pools',
+    latitude: 33.8716,
+    longitude: 74.8946,
     scope: 'Kashmir Core', district: 'Pulwama',
     altitude: '~2,000–3,000 m',
     lakeType: 'Upland pools',
@@ -643,6 +725,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-sheshnag',
     name: 'Sheshnag Lake',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~3,657 m',
     lakeType: 'High-altitude glacial lake',
@@ -656,6 +740,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-tulian',
     name: 'Tulian Lake',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~3,700 m',
     lakeType: 'High-altitude alpine lake',
@@ -669,6 +755,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-sundersar',
     name: 'Sundersar Lake',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~3,600 m',
     lakeType: 'High-altitude alpine lake',
@@ -682,6 +770,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-semthan-pools',
     name: 'Semthan Wetland Pools',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~1,650 m',
     lakeType: 'Wetland pools',
@@ -695,6 +785,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-aishmuqam-pools',
     name: 'Aishmuqam Upland Pools',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~1,800–2,500 m',
     lakeType: 'Upland pools',
@@ -708,6 +800,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-pahalgam-tarns',
     name: 'Pahalgam Valley Tarns',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~2,400–4,000 m',
     lakeType: 'Alpine tarns',
@@ -721,6 +815,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-lidderwat-tarns',
     name: 'Lidderwat Tarns',
+    latitude: 33.7311,
+    longitude: 75.1487,
     scope: 'Kashmir Core', district: 'Anantnag',
     altitude: '~3,300–3,800 m',
     lakeType: 'Alpine tarns',
@@ -738,7 +834,9 @@ export const algalBloomLakes: AlgalBloomLake[] = [
 
   {
     id: 'kc-konsarnag',
-    name: 'Konsarnag Lake', alternateName: 'Kausar Nag',
+    name: 'Konsarnag Lake',
+    latitude: 33.6402,
+    longitude: 75.0189, alternateName: 'Kausar Nag',
     scope: 'Kashmir Core', district: 'Kulgam',
     altitude: '~4,191 m',
     lakeType: 'High-altitude glacial lake',
@@ -752,6 +850,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-aharbal-pools',
     name: 'Aharbal Upland Pools',
+    latitude: 33.6402,
+    longitude: 75.0189,
     scope: 'Kashmir Core', district: 'Kulgam',
     altitude: '~2,200 m',
     lakeType: 'Upland pools / waterfall basin',
@@ -765,6 +865,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-chiranbal-pools',
     name: 'Chiranbal Meadow Pools',
+    latitude: 33.6402,
+    longitude: 75.0189,
     scope: 'Kashmir Core', district: 'Kulgam',
     altitude: '~2,500–3,200 m',
     lakeType: 'Meadow pools',
@@ -778,6 +880,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-veshew-lakelets',
     name: 'Veshew Basin Lakelets',
+    latitude: 33.6402,
+    longitude: 75.0189,
     scope: 'Kashmir Core', district: 'Kulgam',
     altitude: '~2,000–3,000 m',
     lakeType: 'Basin pools / lakelets',
@@ -796,6 +900,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-hirpora-tarns',
     name: 'Hirpora Alpine Tarns',
+    latitude: 33.72,
+    longitude: 74.829,
     scope: 'Kashmir Core', district: 'Shopian',
     altitude: '~3,000–3,800 m',
     lakeType: 'Alpine tarns',
@@ -809,6 +915,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-pir-ki-gali-pools',
     name: 'Pir Ki Gali Upland Pools',
+    latitude: 33.72,
+    longitude: 74.829,
     scope: 'Kashmir Core', district: 'Shopian',
     altitude: '~3,490 m',
     lakeType: 'Upland pools / highland water bodies',
@@ -822,6 +930,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-shopian-meadow-pools',
     name: 'Sedow / Shopian Upland Pools',
+    latitude: 33.72,
+    longitude: 74.829,
     scope: 'Kashmir Core', district: 'Shopian',
     altitude: '~2,000–3,000 m',
     lakeType: 'Meadow pools',
@@ -840,6 +950,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-bangus-tarns',
     name: 'Bangus Valley Tarns',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Kashmir Core', district: 'Kupwara',
     altitude: '~2,900–3,600 m',
     lakeType: 'Alpine / meadow tarns',
@@ -853,6 +965,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-lolab-pools',
     name: 'Lolab Upland Water Bodies',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Kashmir Core', district: 'Kupwara',
     altitude: '~1,600–2,500 m',
     lakeType: 'Upland pools / valley water bodies',
@@ -866,6 +980,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-kupwara-wetlands',
     name: 'Kupwara Monitored Wetlands',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Kashmir Core', district: 'Kupwara',
     altitude: '~1,600 m',
     lakeType: 'Wetland pools / monitored sites',
@@ -880,6 +996,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-machil-tarns',
     name: 'Machil / Keran Alpine Tarns',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Kashmir Core', district: 'Kupwara',
     altitude: '~3,000–4,000 m',
     lakeType: 'Alpine tarns',
@@ -893,6 +1011,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'kc-karnah-pools',
     name: 'Karnah Upland Pools',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Kashmir Core', district: 'Kupwara',
     altitude: '~1,800–2,800 m',
     lakeType: 'Upland pools',
@@ -911,6 +1031,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-mansar',
     name: 'Mansar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Jammu / Samba',
     altitude: '~648 m', area: '~1.5 km²',
     lakeType: 'Natural freshwater lake',
@@ -925,6 +1047,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-surinsar',
     name: 'Surinsar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Jammu',
     altitude: '~648 m',
     lakeType: 'Natural freshwater lake',
@@ -938,6 +1062,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-sanasar',
     name: 'Sanasar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ramban',
     altitude: '~2,050 m',
     lakeType: 'Highland meadow lake',
@@ -951,6 +1077,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-hangu',
     name: 'Hangu Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Kishtwar',
     altitude: '~3,800 m',
     lakeType: 'Glacial / alpine lake',
@@ -964,6 +1092,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-mundiksar',
     name: 'Mundiksar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Kishtwar',
     altitude: '~3,600 m',
     lakeType: 'Glacial / alpine lake',
@@ -977,6 +1107,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-pangong',
     name: 'Pangong Tso',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,350 m', area: '~700 km²',
     lakeType: 'Brackish high-altitude endorheic lake',
@@ -990,6 +1122,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-tso-moriri',
     name: 'Tso Moriri',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,522 m', area: '~120 km²',
     lakeType: 'High-altitude saline/brackish endorheic lake (Ramsar)',
@@ -1003,6 +1137,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-tso-kar',
     name: 'Tso Kar',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,530 m',
     lakeType: 'Saline / brackish endorheic lake',
@@ -1016,6 +1152,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-kyagar',
     name: 'Kyagar Tso',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,700 m',
     lakeType: 'High-altitude glacial lake',
@@ -1029,6 +1167,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'td-yarab',
     name: 'Yarab Tso',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,820 m',
     lakeType: 'High-altitude glacial lake',
@@ -1041,7 +1181,9 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   },
   {
     id: 'td-stat-tso',
-    name: 'Stat Tso', alternateName: 'Lang Tso',
+    name: 'Stat Tso',
+    latitude: 34,
+    longitude: 74.8, alternateName: 'Lang Tso',
     scope: 'Trans-Divisional', district: 'Ladakh',
     altitude: '~4,600 m',
     lakeType: 'High-altitude glacial lake',
@@ -1060,6 +1202,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-mangla',
     name: 'Mangla Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'AJK / Mirpur',
     altitude: '~282 m', area: '~253 km²',
     lakeType: 'Hydropower reservoir',
@@ -1074,6 +1218,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-baghsar',
     name: 'Baghsar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'AJK / Bhimber',
     altitude: '~410 m',
     lakeType: 'Natural freshwater lake',
@@ -1088,6 +1234,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-banjosa',
     name: 'Banjosa Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'AJK / Rawalakot',
     altitude: '~1,981 m',
     lakeType: 'Artificial freshwater lake',
@@ -1102,6 +1250,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-sheosar',
     name: 'Sheosar Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Gilgit-Baltistan / Deosai',
     altitude: '~4,142 m', area: '~2.5 km²',
     lakeType: 'High-altitude alpine lake',
@@ -1115,6 +1265,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-satpara',
     name: 'Satpara Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Skardu (Gilgit-Baltistan)',
     altitude: '~2,636 m', area: '~1.5 km²',
     lakeType: 'Natural freshwater lake / reservoir',
@@ -1127,7 +1279,9 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   },
   {
     id: 'tb-upper-kachura',
-    name: 'Upper Kachura Lake', alternateName: 'Shangrila Lake',
+    name: 'Upper Kachura Lake',
+    latitude: 34,
+    longitude: 74.8, alternateName: 'Shangrila Lake',
     scope: 'Transboundary / Extended', district: 'Skardu (Gilgit-Baltistan)',
     altitude: '~2,500 m',
     lakeType: 'Natural freshwater lake',
@@ -1141,6 +1295,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-lower-kachura',
     name: 'Lower Kachura Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Skardu (Gilgit-Baltistan)',
     altitude: '~2,400 m',
     lakeType: 'Natural freshwater lake',
@@ -1154,6 +1310,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-attabad',
     name: 'Attabad Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Hunza (Gilgit-Baltistan)',
     altitude: '~2,420 m', area: '~9 km²',
     lakeType: 'Landslide-dammed lake (formed 2010)',
@@ -1167,6 +1325,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-rama',
     name: 'Rama Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Astore (Gilgit-Baltistan)',
     altitude: '~3,462 m',
     lakeType: 'High-altitude alpine lake',
@@ -1180,6 +1340,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-rush',
     name: 'Rush Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Nagar (Gilgit-Baltistan)',
     altitude: '~4,694 m',
     lakeType: 'High-altitude glacial lake',
@@ -1193,6 +1355,8 @@ export const algalBloomLakes: AlgalBloomLake[] = [
   {
     id: 'tb-khalti',
     name: 'Khalti Lake',
+    latitude: 34,
+    longitude: 74.8,
     scope: 'Transboundary / Extended', district: 'Ghizer (Gilgit-Baltistan)',
     altitude: '~1,800 m',
     lakeType: 'Natural freshwater lake',

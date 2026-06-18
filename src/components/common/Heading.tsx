@@ -84,25 +84,18 @@ export function Heading({
           </div>
 
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-black text-white mb-4 sm:mb-6 leading-[1.12] tracking-tight overflow-visible pb-2">
-            {typeof title === 'string' && title.includes(' Across ') ? (
+            {typeof title === 'string' ? (
               (() => {
-                const parts = title.split(' Across ');
+                const moduleName = title.replace(/^Western Himalayan\s*/i, '').trim();
                 return (
                   <>
-                    <span className="block leading-[1.12] overflow-visible whitespace-nowrap">{parts[0]} Across</span>
+                    <span className="block leading-[1.12] overflow-visible whitespace-nowrap pb-2">Western Himalayan</span>
                     <span className="block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
-                      {parts[1]}
+                      {moduleName}
                     </span>
                   </>
                 );
               })()
-            ) : typeof title === 'string' && title === 'Biodiversity Intelligence Dashboards' ? (
-              <>
-                <span className="block leading-[1.12] overflow-visible whitespace-nowrap">Biodiversity Intelligence</span>
-                <span className="block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
-                  Dashboards
-                </span>
-              </>
             ) : (
               title
             )}

@@ -111,7 +111,10 @@ export default function WaterQualityReadingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Water Quality</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Readings</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Quality Readings</span>
+          </>}
         subtitle="Submit pH, dissolved oxygen, turbidity, temperature, and other water quality parameters from Kashmir's waterbodies. Approved records are routed into Water Systems and Water Quality modules."
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         label="Water Quality"

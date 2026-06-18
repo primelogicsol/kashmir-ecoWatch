@@ -19,7 +19,10 @@ export default function AvalancheWinterRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Avalanche & Winter Risks' }]}
-        title={<><span className="block whitespace-nowrap">Avalanche &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Winter Risks</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Avalanche & Winter Risks</span>
+          </>}
         subtitle="Snow avalanche forecasting, winter hazard monitoring, and road closure tracking"
         icon={<Snowflake className="w-6 h-6 text-emerald-400" />}
         label="Winter Hazards"

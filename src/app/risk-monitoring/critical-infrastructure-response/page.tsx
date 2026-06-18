@@ -40,7 +40,10 @@ export default function CriticalInfrastructureResponsePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Critical Infrastructure & Response' }]}
-        title={<><span className="block whitespace-nowrap">Critical Infrastructure</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Response</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Critical Infrastructure & Response</span>
+          </>}
         subtitle="Emergency-linked facility monitoring, high-priority response nodes, critical environmental infrastructure under stress, operational routing intelligence, and support asset awareness."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}
         label="Emergency Facilities & Response Nodes"

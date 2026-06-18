@@ -21,7 +21,10 @@ export default function EnvironmentalMonitoringPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Environmental Monitoring' }]}
-        title={<><span className="block whitespace-nowrap">Environmental</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
+          </>}
         subtitle="Air quality, water quality, and ecosystem health monitoring"
         icon={<Activity className="w-6 h-6 text-emerald-400" />}
         label="Environmental Health"

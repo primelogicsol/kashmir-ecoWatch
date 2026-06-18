@@ -89,7 +89,7 @@ export default function MigrationWindowsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Migration Windows Greater Kashmir Ecology"
+        title="Western Himalayan Migration Windows"
         subtitle="Master botanical and ornithological timing database. Source-backed seasonal arrival, departure, and breeding windows."
         icon={<Wind className="w-6 h-6 text-sky-400" />}
         label="Biodiversity Intelligence"

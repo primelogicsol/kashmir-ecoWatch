@@ -243,7 +243,7 @@ export function WaterEntityListingPage({
         icon={<LucideIcon className="w-6 h-6 text-emerald-400" />}
         title={(() => {
           // Rule: Line 1 = "[Module Name] Across"
-          //       Line 2 = "Greater Kashmir Ecology"  (accent gradient)
+          //       Line 2 = "Western Himalayan"  (accent gradient)
           const acrossIdx = title.indexOf(' Across');
           const line1 = acrossIdx !== -1 ? title.slice(0, acrossIdx + ' Across'.length) : title.split(' ').slice(0, -1).join(' ');
           const line2 = acrossIdx !== -1 ? title.slice(acrossIdx + ' Across'.length).trim() : title.split(' ').slice(-1)[0];

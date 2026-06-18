@@ -35,7 +35,10 @@ export default function EnvironmentalIncidentRiskPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Environmental Incident Risk' }]}
-        title={<><span className="block whitespace-nowrap">Environmental Incident</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Incident Risk</span>
+          </>}
         subtitle="Escalated environmental cases from monitoring systems: severe sewage overflows, toxic discharge, severe AQI episodes, landfill fires, unsafe water emergencies, and pollution emergencies."
         icon={<AlertCircle className="w-6 h-6 text-emerald-400" />}
         label="Pollution & Escalation Intelligence"

@@ -129,12 +129,10 @@ export default function WaterIntelligenceDashboard() {
       <Heading
         icon={<Activity className="w-6 h-6 text-emerald-400" />}
         label="Live Intelligence Layer"
-        title={
-          <>
-            <span className="block whitespace-nowrap">Water Intelligence</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Intelligence</span>
+          </>}
         subtitle="Hydrological intelligence engine for Kashmir Eco Watch. All computations run on source-verified records only. Locked records are excluded from KPIs until source verification is complete."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },

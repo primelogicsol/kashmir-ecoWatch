@@ -21,7 +21,10 @@ export default function PlantPhenologySightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Plant &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Phenology Sightings</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Plant & Phenology Sightings</span>
+          </>}
         subtitle="Flowering records, leaf-out observations, and seasonal plant lifecycle documentation"
         icon={<Flower2 className="w-6 h-6 text-emerald-400" />}
         label="Plant Lifecycle Records"

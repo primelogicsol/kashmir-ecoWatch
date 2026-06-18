@@ -45,7 +45,6 @@ const navItems = [
   { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true },
   { label: 'Hazard Intelligence', href: '/hazard-intelligence', hasDropdown: true },
   { label: 'Field Intelligence', href: '/field-reports', hasDropdown: true },
-  { label: 'Contribute', href: '/contribute', hasDropdown: true },
   { label: 'Risk & Monitoring', href: '/risk-monitoring', hasDropdown: true },
 ];
 
@@ -154,7 +153,6 @@ export function PremiumStickyHeader() {
           { name: 'Glaciers & Cryosphere', href: '/water-systems/glaciers', desc: 'Glaciers & snow-fed systems' },
           { name: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources', desc: 'Spring & surface supply vulnerability' },
           { name: 'Water Quality', href: '/water-systems/water-quality', desc: 'Quality monitoring & trends' },
-          { name: 'Algal Bloom Intelligence', href: '/water-systems/algal-bloom-intelligence', desc: 'Eutrophication & bloom risk monitoring' },
           { name: 'Aquatic Life & Fisheries', href: '/water-systems/fisheries', desc: 'Fish species & fishery management' },
           { name: 'Restoration & Rejuvenation', href: '/water-systems/restoration', desc: 'Conservation & restoration projects' },
           { name: 'Flood & Hydrological Risk', href: '/water-systems/flood-risk', desc: 'Flood zones & hazard assessment' },
@@ -181,6 +179,7 @@ export function PremiumStickyHeader() {
           { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards' },
           { name: 'Landslides', href: '/hazard-intelligence/landslides', desc: 'Slope instability & mass movement' },
           { name: 'Avalanches', href: '/hazard-intelligence/avalanches', desc: 'Snow-slide monitoring & exposure' },
+          { name: 'Algal Bloom Intelligence', href: '/hazard-intelligence/algal-bloom-intelligence', desc: 'Eutrophication & bloom risk monitoring' },
           { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', desc: 'Seismic activity & fault systems' },
           { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence' },
           { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring' },
@@ -195,26 +194,12 @@ export function PremiumStickyHeader() {
           { name: '🔬 Technical Reports', href: '/field-reports/technical-reports', desc: 'Scientific and technical studies' },
           { name: '📚 Library Collections', href: '/library', desc: 'Archived and catalogued reports' },
         ];
-      case 'Contribute':
-        return [
-          { name: '🌐 Contribute Hub', href: '/contribute', desc: 'All contribution pathways' },
-          { name: 'Report an Issue', href: '/report-issue', desc: 'Emergency & hazard reporting' },
-          { name: 'Submit a Sighting', href: '/submit-sighting', desc: 'Wildlife & ecological observations' },
-          { name: 'Contribute Data', href: '/contribute-data', desc: 'Structured datasets & research' },
-          { name: 'Citizen Science', href: '/citizen-science', desc: 'Programs & recurring roles' },
-          { name: '── Research Library ──', href: '#', desc: '', isHeader: true },
-          { name: '📚 Research Library', href: '/research-library', desc: 'Environmental research & reports' },
-          { name: '🔬 Environmental Impact Assessments', href: '/research-library/environmental-impact-assessment', desc: 'EIA findings & analysis' },
-        ];
+
       case 'Risk & Monitoring':
         return [
           { name: '⚠️ Overview', href: '/risk-monitoring', desc: 'Risk monitoring dashboard' },
           { name: '📊 Dashboards', href: '/risk-monitoring/dashboards', desc: 'Risk monitoring dashboards' },
-          { name: '🏔️ Hazard Risks', href: '/risk-monitoring/hazard-risks', desc: 'Multi-hazard risk systems' },
-          { name: '🌫️ Pollution & Stress', href: '/risk-monitoring/pollution-stress', desc: 'Environmental pressure monitoring' },
           { name: '🦌 Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks', desc: 'Species threat intelligence' },
-          { name: '🚨 Response & Operations', href: '/risk-monitoring/response-operations', desc: 'Response and operational intelligence' },
-          { name: '🔔 Live Alerts', href: '/risk-monitoring/live-alerts-advisories', desc: 'Real-time warnings' },
         ];
       default:
         return [];

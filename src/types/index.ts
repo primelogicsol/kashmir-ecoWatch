@@ -81,6 +81,7 @@ export interface FieldReport {
   status: ReportStatus;
   visibility: ReportVisibility;
   confidence: ConfidenceLevel;
+  scope?: 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended' | 'All Scopes';
 
   // Intelligence Data
   summary: string; // 2-3 sentence abstract

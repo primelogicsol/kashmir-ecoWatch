@@ -152,12 +152,10 @@ export default function NwiaClassificationExplorerPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero */}
       <Heading
         icon={<Book className="w-6 h-6 text-emerald-400" />}
-        title={
-          <>
-            <span className="block whitespace-nowrap">NWIA Classification</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">NWIA Classification</span>
+          </>}
         subtitle="Comprehensive wetland inventory and classification system for Kashmir Valley based on the National Wetland Inventory and Assessment (NWIA) Atlas by SAC/ISRO and University of Kashmir (2010)."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },

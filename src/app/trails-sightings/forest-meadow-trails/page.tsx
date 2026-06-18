@@ -21,7 +21,10 @@ export default function ForestMeadowTrailsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Forest &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Meadow Trails</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Forest & Meadow Trails</span>
+          </>}
         subtitle="Trails through dense forests and expansive alpine meadows (margs)"
         icon={<Trees className="w-6 h-6 text-emerald-400" />}
         label="Forests & Alpine Meadows"

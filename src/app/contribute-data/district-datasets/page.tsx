@@ -66,7 +66,10 @@ export default function DistrictDatasetsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">District</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Datasets</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Datasets</span>
+          </>}
         subtitle="Submit district-level environmental datasets, regional assessments, and area-specific data. Approved records route into District Profiles and related modules."
         icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
         label="District Data"

@@ -24,7 +24,7 @@ export default function GroundwaterPage() {
 
   return (
     <WaterEntityListingPage
-      title="Groundwater Greater Kashmir Ecology"
+      title="Western Himalayan Groundwater"
       description="Authoritative directory of groundwater monitoring stations, community tube wells, springshed aquifers, and water-table observation networks across Jammu & Kashmir, Ladakh, AJK, and Gilgit-Baltistan."
       icon="Database"
       color="from-sky-600 to-blue-700"

@@ -21,7 +21,10 @@ export default function AquaticWetlandSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Aquatic &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wetland Sightings</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Aquatic & Wetland Sightings</span>
+          </>}
         subtitle="Fish, amphibians, aquatic plants, and wetland-dependent species observations"
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         label="Aquatic Species"

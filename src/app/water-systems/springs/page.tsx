@@ -16,7 +16,7 @@ export default function SpringsPage() {
 
   return (
     <WaterEntityListingPage
-      title="Springs Greater Kashmir Ecology"
+      title="Western Himalayan Springs"
       description="Mapped springs, community springs, seasonal springs, perennial springs, springsheds, recharge-linked spring systems, and spring restoration sites across the Kashmir region."
       icon="Droplet"
       color="from-emerald-600 to-emerald-600"

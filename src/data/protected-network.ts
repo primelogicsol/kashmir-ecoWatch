@@ -3897,7 +3897,7 @@ export const corridorsData: Corridor[] = [
     data_quality: 'Provisional',
     gis_layer_status: 'In Development',
     source_primary: 'Historical Game Warden Logs (1900s)',
-    source_literature: 'Tracking Hangul Migration in Greater Kashmir (2022)',
+    source_literature: 'Tracking Hangul Migration in Western Himalayan (2022)',
     last_verified_date: '2026-02-18',
     alternate_names: ['Gurez-Sindh Historical Track', 'Sindh Valley Migratory Route']
   },

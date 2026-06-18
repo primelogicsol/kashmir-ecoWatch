@@ -93,7 +93,7 @@ export default function WildlifeSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Wildlife Sightings Greater Kashmir Ecology"
+        title="Western Himalayan Wildlife Sightings"
         subtitle="The central wildlife observation and reporting system combining verified science, citizen science, and conservation monitoring."
         icon={<Eye className="w-6 h-6 text-emerald-400" />}
         label="Citizen Science & Monitoring"

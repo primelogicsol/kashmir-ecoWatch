@@ -300,13 +300,11 @@ export default function EarthquakesPage() {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
         label="Hazard Intelligence"
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Seismic Risk Intelligence</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
-        subtitle="Mapping seismic fault systems, zone classifications, and building vulnerability across the Greater Kashmir ecological domain using verified geological surveys and continuous monitoring data."
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Seismic Risk Intelligence</span>
+          </>}
+        subtitle="Mapping seismic fault systems, zone classifications, and building vulnerability across the Western Himalayan ecological domain using verified geological surveys and continuous monitoring data."
         icon={<Activity className="w-6 h-6 text-red-400" />}
         breadcrumbs={[
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },

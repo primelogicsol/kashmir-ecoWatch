@@ -16,7 +16,7 @@ export default function GlaciersPage() {
 
   return (
     <WaterEntityListingPage
-      title="Cryosphere Greater Kashmir Ecology"
+      title="Western Himalayan Cryosphere"
       description="Glaciers, glacial lakes, snow-fed systems, seasonal snow cover, high-altitude cryosphere-linked catchments, and downstream hydrological dependence across the Kashmir Himalaya and Karakoram."
       icon="Mountain"
       color="from-slate-400 to-slate-600"

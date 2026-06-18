@@ -94,7 +94,10 @@ export default function HikingTrailsPage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       
       <Heading
-        title={<><span className="block whitespace-nowrap">Hiking</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hiking Trails</span>
+          </>}
         subtitle="Multi-day treks and day hikes across Kashmir's mountains, valleys, and alpine meadows. From challenging high-altitude routes to scenic valley walks."
         icon={<Mountain className="w-6 h-6 text-emerald-400" />}
         label="Multi-day Treks & Day Hikes"

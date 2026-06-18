@@ -1,4 +1,4 @@
-// Flash Flood Intelligence Registry — Greater Kashmir Ecology
+// Flash Flood Intelligence Registry — Western Himalayan
 // Hazard Intelligence Module
 //
 // Evidence base:
@@ -8,7 +8,7 @@
 //   CWC India — Jhelum basin hydrological data, catchment area estimates
 //   WAPDA Pakistan — AJK & GB hydrological gauge data, glacial melt monitoring
 //   ICIMOD Nepal — Hindu Kush Himalaya flash flood risk mapping
-//   Greater Kashmir News — Documented flash flood events 2010–2025
+//   Western Himalayan News — Documented flash flood events 2010–2025
 
 export type FlashFloodScope = 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended';
 

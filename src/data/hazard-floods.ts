@@ -1,4 +1,4 @@
-// ─── Flood Zone Registry — Greater Kashmir Hazard Intelligence ───────────────
+// ─── Flood Zone Registry — Western Himalayan Hazard Intelligence ───────────────
 // 36 flood zone records across Kashmir Core, Trans-Divisional, and Transboundary scopes.
 // River systems: Jhelum, Lidder, Sindh, Doodganga, Vishav, Chenab, Tawi, Ravi, Neelum, Gilgit, Indus, Hunza
 

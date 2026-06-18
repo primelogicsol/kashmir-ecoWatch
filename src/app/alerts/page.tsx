@@ -139,7 +139,10 @@ export default function AlertsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Live Alerts</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Advisories</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Alerts & Advisories</span>
+          </>}
         subtitle="Public-facing live alert stream for Kashmir EcoWatch — real-time hazard alerts, weather advisories, and emergency notifications for public safety and disaster preparedness."
         icon={<Bell className="w-6 h-6 text-emerald-400" />}
         label="Risk & Monitoring"

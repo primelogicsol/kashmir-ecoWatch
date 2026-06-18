@@ -42,7 +42,7 @@ export default function MedicinalPlantsPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Medicinal Flora Greater Kashmir Ecology"
+      title="Western Himalayan Medicinal Flora"
       subtitle="A specialized ecological database cataloging Kashmir's traditional medicinal flora and commercially sensitive alpine species. Integrating sustainable harvesting guidelines, ethnobotanical intelligence, and dynamic conservation vulnerability assessments across heavily utilized high-altitude zones."
       icon="Leaf"
       color="from-amber-500 to-orange-600"

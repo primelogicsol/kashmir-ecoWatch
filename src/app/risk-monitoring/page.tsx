@@ -74,7 +74,7 @@ export default function RiskMonitoringOverviewPage() {
       <Heading
         title={
           <>
-            <span className="block whitespace-nowrap">Greater Kashmir</span>
+            <span className="block whitespace-nowrap">Western Himalayan</span>
             <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk & Monitoring</span>
           </>
         }

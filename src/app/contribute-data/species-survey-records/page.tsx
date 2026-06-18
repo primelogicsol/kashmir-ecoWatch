@@ -111,7 +111,10 @@ export default function SpeciesSurveyRecordsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Species Survey</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Records</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Species Survey Records</span>
+          </>}
         subtitle="Submit structured species count data, population surveys, and distribution records. Approved records are routed into the Biodiversity module for long-term tracking and analysis."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         label="Biodiversity"

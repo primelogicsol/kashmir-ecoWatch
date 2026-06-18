@@ -1,4 +1,4 @@
-// Landslide Risk Intelligence Registry — Greater Kashmir Ecology
+// Landslide Risk Intelligence Registry — Western Himalayan
 // Hazard Intelligence Module
 //
 // Evidence base:
@@ -8,7 +8,7 @@
 //   BRO India — Road maintenance records, Zojila and Mughal Road data
 //   AJK DMA — LOC area landslide records, post-earthquake slide monitoring
 //   NDMA Pakistan — Karakoram Highway landslide events, geological hazard mapping
-//   Greater Kashmir / Kashmir Observer — Documented landslide events 2005–2025
+//   Western Himalayan / Kashmir Observer — Documented landslide events 2005–2025
 
 export type LandslideScope = 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended';
 

@@ -41,7 +41,7 @@ export default function ThreatenedSpeciesPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Threatened Species Greater Kashmir Ecology"
+      title="Western Himalayan Threatened Species"
       subtitle="A consolidated intelligence layer mapping all IUCN Red List threatened taxa across Kashmir. This module aggregates Critically Endangered, Endangered, and Vulnerable species from mammals, birds, fish, and flora to prioritize immediate conservation, enforcement, and habitat protection protocols."
       icon="Shield"
       color="from-red-500 to-rose-600"

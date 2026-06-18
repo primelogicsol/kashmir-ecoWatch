@@ -1,16 +1,12 @@
 import { Metric, IntelligenceCard, InsightPanel, FeaturedEntity, Alert, ChartData } from '@/types';
 
 export const liveMetrics: Metric[] = [
-  { label: 'Protected Areas', value: 47, trend: 'up', trendValue: 2 },
-  { label: 'Species Indexed', value: 2452, trend: 'up', trendValue: 156 },
-  { label: 'Lakes & Wetlands', value: 1253, trend: 'stable', trendValue: 0 },
-  { label: 'Springs', value: 892, trend: 'down', trendValue: -12 },
-  { label: 'Glaciers', value: 148, trend: 'down', trendValue: -3 },
-  { label: 'Monitoring Stations', value: 234, trend: 'up', trendValue: 8 },
-  { label: 'Active Alerts', value: 17, trend: 'up', trendValue: 3 },
-  { label: 'Trails', value: 156, trend: 'up', trendValue: 12 },
-  { label: 'Sightings', value: 4521, trend: 'up', trendValue: 287 },
-  { label: 'Research Reports', value: 1893, trend: 'up', trendValue: 45 },
+  { label: 'Protected Areas', value: 39, trend: 'stable', trendValue: 0 },
+  { label: 'Species Indexed', value: 73, trend: 'up', trendValue: 0 },
+  { label: 'Lakes & Wetlands', value: 82, trend: 'stable', trendValue: 0 },
+  { label: 'Active Alerts', value: 0, trend: 'stable', trendValue: 0 },
+  { label: 'Field Reports', value: 45, trend: 'up', trendValue: 8 },
+  { label: 'Hazard Zones', value: 224, trend: 'stable', trendValue: 0 },
 ];
 
 export const intelligenceCards: IntelligenceCard[] = [
@@ -32,8 +28,8 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Comprehensive species database with distribution, habitat, and conservation status',
     icon: 'leaf',
     metrics: [
-      { label: 'Species', value: 2452 },
-      { label: 'Threatened', value: 127 },
+      { label: 'Species', value: 73 },
+      { label: 'Threatened', value: 14 },
     ],
     link: '/biodiversity',
     color: 'glacier',
@@ -44,7 +40,7 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'National parks, sanctuaries, reserves with ecological monitoring',
     icon: 'shield',
     metrics: [
-      { label: 'Areas', value: 47 },
+      { label: 'Areas', value: 39 },
       { label: 'Coverage', value: 12.8, unit: '%' },
     ],
     link: '/protected-network',
@@ -56,34 +52,34 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Lakes, wetlands, rivers, springs with hydrological intelligence',
     icon: 'droplet',
     metrics: [
-      { label: 'Water Bodies', value: 1253 },
-      { label: 'Watersheds', value: 89 },
+      { label: 'Lakes Monitored', value: 82 },
+      { label: 'Rivers & Basins', value: 15 },
     ],
     link: '/water-systems',
     color: 'glacier',
   },
   {
     id: 'pollution',
-    title: 'Pollution & Environmental Stress',
-    description: 'Air, water, soil, noise pollution monitoring and environmental stress assessment',
+    title: 'Hazard Intelligence',
+    description: 'Real-time hazard intelligence across floods, fires, landslides, and quakes',
     icon: 'cloud',
     metrics: [
-      { label: 'Monitoring Stations', value: 234 },
-      { label: 'Pollution Hotspots', value: 23 },
+      { label: 'Hazard Zones', value: 224 },
+      { label: 'Live APIs', value: 7 },
     ],
-    link: '/risk-monitoring',
+    link: '/hazard-intelligence',
     color: 'slate',
   },
   {
     id: 'seasonal',
-    title: 'Seasonal Ecology',
-    description: 'Bloom mapping, migration patterns, and seasonal ecological windows',
+    title: 'Environmental Monitoring',
+    description: 'Pollution, water quality, and environmental stress signals',
     icon: 'sun',
     metrics: [
-      { label: 'Bloom Zones', value: 78 },
-      { label: 'Active Now', value: 12 },
+      { label: 'Monitored Assets', value: 45 },
+      { label: 'Active Alerts', value: 0 },
     ],
-    link: '/seasonal-ecology',
+    link: '/environmental-monitoring',
     color: 'alert',
   },
   {
@@ -100,14 +96,14 @@ export const intelligenceCards: IntelligenceCard[] = [
   },
   {
     id: 'research',
-    title: 'Research Library',
-    description: 'Scientific reports, datasets, management plans, and evidence archive',
+    title: 'Field Intelligence',
+    description: 'Scientific field reports, surveys, and technical assessments',
     icon: 'book',
     metrics: [
-      { label: 'Reports', value: 1893 },
-      { label: 'Datasets', value: 456 },
+      { label: 'Field Reports', value: 45 },
+      { label: 'Datasets', value: 12 },
     ],
-    link: '/library',
+    link: '/field-reports',
     color: 'glacier',
   },
 ];

@@ -425,12 +425,10 @@ export default function AirPollutionPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Air Pollution' }
         ]}
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Air Pollution Monitoring</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Monitoring</span>
+          </>}
         subtitle="Real-time air quality monitoring via Open-Meteo hourly API across all 44 regional units — PM2.5, PM10, NO₂, SO₂, CO, O₃, and US AQI with dynamic trend computation."
         icon={<Wind className="w-6 h-6 text-emerald-400" />}
       />

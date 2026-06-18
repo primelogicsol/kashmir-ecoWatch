@@ -120,7 +120,10 @@ export default function ProtectedAreasPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Conservation Areas"
-        title={<><span className="block whitespace-nowrap">Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Areas</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Areas</span>
+          </>}
         subtitle="A structured inventory of Kashmir's national parks, wildlife sanctuaries, wetland reserves, and conservation areas. Each record includes ecological profile, boundary data, and conservation status."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}
         actions={

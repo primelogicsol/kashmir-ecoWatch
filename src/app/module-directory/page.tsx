@@ -187,7 +187,7 @@ const moduleGroups: ModuleGroup[] = [
       { name: 'Contact', route: '/about/contact', description: 'Contact and coordination', icon: Phone },
       { name: 'Partners', route: '/about/partners', description: 'Institutional engagement', icon: Users },
       { name: 'Governance', route: '/about/governance', description: 'Governance and advisory structure', icon: Landmark },
-      { name: 'Support & Sponsorship', route: '/about/support-sponsorship', description: 'Institutional backing', icon: HandCoins },
+      { name: 'Support KEW', route: '/about/support-sponsorship', description: 'Institutional partnerships', icon: Users },
       { name: 'Data Sources', route: '/about/data-sources', description: 'Evidence origins and sourcing', icon: Database },
       { name: 'Methodology', route: '/about/methodology', description: 'Review logic and classification', icon: ScaleIcon },
       { name: 'Verification Model', route: '/about/verification', description: 'Confidence assessment framework', icon: ShieldCheck },
@@ -254,7 +254,10 @@ export default function ModuleDirectoryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Platform Modules"
-        title={<><span className="block whitespace-nowrap">Module</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Directory</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Module Directory</span>
+          </>}
         subtitle="Complete system index of all Kashmir EcoWatch modules, intelligence layers, and operational pathways."
         icon={<Grid3x3 className="w-6 h-6 text-emerald-400" />}
         actions={

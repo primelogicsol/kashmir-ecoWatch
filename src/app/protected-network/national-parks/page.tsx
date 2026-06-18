@@ -43,7 +43,10 @@ export default function NationalParksPage() {
 
   return (
     <ProtectedCategoryPage
-      title={<><span className="block whitespace-nowrap leading-[1.12]">National Parks</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+      title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">National Parks</span>
+          </>}
       subtitle="Mountain and temperate forest conservation landscapes spanning Kashmir's protected, trans-divisional, and transboundary ecological zones. Integrates species profiles, boundary data, habitat intelligence, and conservation monitoring for each park."
       icon="Mountain"
       color="from-emerald-600 to-emerald-500"

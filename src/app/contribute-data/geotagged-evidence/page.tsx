@@ -67,7 +67,10 @@ export default function GeotaggedEvidencePage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Geotagged Evidence</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Collections</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Geotagged Evidence Collections</span>
+          </>}
         subtitle="Submit location-tagged photos, drone imagery, and field documentation with GPS metadata. Approved records route into relevant modules by theme."
         icon={<Camera className="w-6 h-6 text-emerald-400" />}
         label="Geotagged Evidence"

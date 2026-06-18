@@ -16,7 +16,7 @@ export default function FloodRiskPage() {
 
   return (
     <WaterEntityListingPage
-      title="Flood Risk Greater Kashmir Ecology"
+      title="Western Himalayan Flood Risk"
       description="Floodplains, flash-flood corridors, overflow zones, glacial-melt-linked risk, wetland flood buffering, riverbank vulnerability, waterlogging zones, and hydrological hazard sensitivity mapping."
       icon="AlertTriangle"
       color="from-red-500 to-rose-600"

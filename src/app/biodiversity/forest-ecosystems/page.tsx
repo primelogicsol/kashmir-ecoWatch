@@ -110,7 +110,7 @@ export default function ForestEcosystemsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title="Forest Ecosystems Greater Kashmir Ecology"
+        title="Western Himalayan Forest Ecosystems"
         subtitle="The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics."
         icon={<TreePine className="w-6 h-6 text-emerald-400" />}
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Forest Ecosystems' }]}
@@ -336,7 +336,7 @@ export default function ForestEcosystemsPage() {
                   Forest Types Taxonomy
                 </h2>
                 <p className="text-sm text-slate-400 mt-2">
-                  Classification of the major ecological systems operating within the Greater Kashmir geography.
+                  Classification of the major ecological systems operating within the Western Himalayan geography.
                 </p>
               </div>
             </div>
@@ -457,7 +457,7 @@ export default function ForestEcosystemsPage() {
                   Forest Cover & Density Analytics
                 </h2>
                 <p className="text-sm text-slate-400 mt-2 max-w-2xl">
-                  District-wise analysis of forest canopy density mapping across the Greater Kashmir landscape, validated by ISFR 2023, J&K Forest Department, and Sentinel-2 vegetation indices.
+                  District-wise analysis of forest canopy density mapping across the Western Himalayan landscape, validated by ISFR 2023, J&K Forest Department, and Sentinel-2 vegetation indices.
                 </p>
               </div>
               <div className="flex gap-2">

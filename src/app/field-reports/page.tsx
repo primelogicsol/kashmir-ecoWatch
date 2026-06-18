@@ -7,7 +7,7 @@ import { FilterBar } from '@/components/field-reports/FilterBar';
 import { SummaryStrip } from '@/components/field-reports/SummaryStrip';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import { FileText, BookOpen, Link2, Shield, Database, AlertTriangle, BarChart3, MapPin, Calendar, PawPrint, Droplets, Flame, FlaskConical, ArrowRight } from 'lucide-react';
+import { FileText, BookOpen, Link2, Shield, Database, AlertTriangle, BarChart3, MapPin, Calendar, PawPrint, Droplets, Flame, FlaskConical, ArrowRight, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import {
   fieldReportsRegistry, getFieldReportStats, getAllDistricts, getAllModules, getAllSources, getAllYears
@@ -15,14 +15,42 @@ import {
 import { FieldReport } from '@/types';
 import { Heading } from '@/components/common/Heading';
 
+import { GlobalFilterBar } from '@/components/common/GlobalFilterBar';
+import { useGlobalFilter } from '@/context/GlobalFilterContext';
+
+const KASHMIR_CORE = ['Srinagar', 'Ganderbal', 'Budgam', 'Anantnag', 'Kulgam', 'Pulwama', 'Shopian', 'Bandipora', 'Baramulla'];
+const TRANS_DIV = ['Ramban', 'Reasi', 'Poonch', 'Rajouri', 'Doda', 'Kishtwar', 'Udhampur', 'Jammu', 'Kathua', 'Samba'];
+const TRANSBOUNDARY = ['AJK', 'Neelum', 'Muzaffarabad', 'Mirpur', 'Gilgit', 'Baltistan', 'Skardu', 'Leh', 'Kargil'];
+
+function getReportScope(districts: string[]) {
+  if (districts.some(d => KASHMIR_CORE.includes(d))) return 'Kashmir Core';
+  if (districts.some(d => TRANS_DIV.includes(d))) return 'Trans-Divisional';
+  if (districts.some(d => TRANSBOUNDARY.includes(d))) return 'Transboundary / Extended';
+  return 'Kashmir Core'; // Default fallback
+}
+
 export default function FieldReportsPage() {
   const stats = getFieldReportStats();
-  const [filteredReports, setFilteredReports] = useState<FieldReport[]>(
+  const { filter: globalFilter } = useGlobalFilter();
+  const [localFilteredReports, setLocalFilteredReports] = useState<FieldReport[]>(
     [...fieldReportsRegistry].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   );
 
+  const filteredReports = useMemo(() => {
+    return localFilteredReports.filter(report => {
+      // Apply Global Scope Filter
+      const reportScope = getReportScope(report.districts);
+      if (globalFilter.scope !== 'All' && reportScope !== globalFilter.scope) return false;
+      
+      // Apply Global District Filter
+      if (globalFilter.district !== 'All' && !report.districts.includes(globalFilter.district)) return false;
+
+      return true;
+    });
+  }, [localFilteredReports, globalFilter.scope, globalFilter.district]);
+
   const handleFilterChange = (filtered: FieldReport[]) => {
-    setFilteredReports(filtered);
+    setLocalFilteredReports(filtered);
   };
 
   const districts = getAllDistricts();
@@ -35,7 +63,7 @@ export default function FieldReportsPage() {
       <Heading
         title={
           <>
-            <span className="block whitespace-nowrap">Greater Kashmir</span>
+            <span className="block whitespace-nowrap">Western Himalayan</span>
             <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Field Intelligence Reports</span>
           </>
         }
@@ -61,123 +89,98 @@ export default function FieldReportsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Monthly Bulletins */}
-              <a href="/field-reports/monthly-bulletins" className="group">
-                <Card className="glass-intense border-cyan-500/10 p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Monthly Environmental Bulletins</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Periodic environmental condition summaries tracking air quality, water quality, and seasonal indicators across Kashmir Valley.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="px-2 py-1 text-xs bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">2005–2026</span>
-                    <span className="px-2 py-1 text-xs bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">ESRO Archive</span>
-                    <span className="px-2 py-1 text-xs bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">Station Data</span>
-                  </div>
-                </Card>
-              </a>
-
-              {/* Species Surveys */}
-              <a href="/field-reports/species-surveys" className="group">
+              {/* Protected Areas */}
+              <a href="/field-reports/protected-areas" className="group">
                 <Card className="glass-intense border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
-                      <PawPrint className="w-6 h-6 text-white" />
+                      <Shield className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Species Surveys</h3>
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Protected Areas</h3>
                       <p className="text-sm text-slate-400 leading-relaxed">
-                        Wildlife population censuses, species conservation assessments, and faunal biodiversity inventories including Hangul, Snow Leopard, and Markhor.
+                        Field intelligence from National Parks, Wildlife Sanctuaries, and Conservation Reserves. Anti-poaching patrols, habitat assessments, and corridor tracking.
                       </p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">73 Mammal Species</span>
-                    <span className="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">ESRO CWPR</span>
-                    <span className="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">Endangered</span>
-                  </div>
                 </Card>
               </a>
 
-              {/* Wetland Assessments */}
-              <a href="/field-reports/wetland-assessments" className="group">
-                <Card className="glass-intense border-blue-500/10 p-6 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-teal-600 flex items-center justify-center flex-shrink-0">
-                      <Droplets className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Wetland Assessments</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Comprehensive wetland health evaluations covering water quality, macrophyte coverage, nutrient loading, and biodiversity indicators.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="px-2 py-1 text-xs bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Dal-Nigeen</span>
-                    <span className="px-2 py-1 text-xs bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">12+ Stations</span>
-                    <span className="px-2 py-1 text-xs bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Water Quality</span>
-                  </div>
-                </Card>
-              </a>
-
-              {/* Risk Assessments */}
-              <a href="/field-reports/risk-assessments" className="group">
-                <Card className="glass-intense border-red-500/10 p-6 hover:border-red-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center flex-shrink-0">
-                      <Flame className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors">Risk Assessments</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Forest fire risk forecasts, human-wildlife conflict assessments, and environmental hazard evaluations with early warning systems.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-red-400 group-hover:translate-x-1 transition-all" />
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="px-2 py-1 text-xs bg-red-500/10 text-red-400 rounded border border-red-500/20">Fire Risk</span>
-                    <span className="px-2 py-1 text-xs bg-red-500/10 text-red-400 rounded border border-red-500/20">Conflict Zones</span>
-                    <span className="px-2 py-1 text-xs bg-red-500/10 text-red-400 rounded border border-red-500/20">Early Warning</span>
-                  </div>
-                </Card>
-              </a>
-
-              {/* Technical Reports */}
-              <a href="/field-reports/technical-reports" className="group">
+              {/* Biodiversity */}
+              <a href="/field-reports/biodiversity" className="group">
                 <Card className="glass-intense border-purple-500/10 p-6 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center flex-shrink-0">
-                      <FlaskConical className="w-6 h-6 text-white" />
+                      <PawPrint className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Technical Reports</h3>
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Biodiversity</h3>
                       <p className="text-sm text-slate-400 leading-relaxed">
-                        In-depth scientific studies, glacial retreat assessments, water quality analyses, and hydrological impact models from research institutions.
+                        Species population censuses, avian migration tracking, phenology records, and flora conservation surveys.
                       </p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all" />
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="px-2 py-1 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">Glaciers</span>
-                    <span className="px-2 py-1 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">28 Parameters</span>
-                    <span className="px-2 py-1 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">Peer-Reviewed</span>
+                </Card>
+              </a>
+
+              {/* Water Systems */}
+              <a href="/field-reports/water-systems" className="group">
+                <Card className="glass-intense border-blue-500/10 p-6 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 h-full">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                      <Droplets className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Water Systems</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Water quality testing, lake trophic status monitoring, river discharge data, and groundwater recharge field studies.
+                      </p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
                   </div>
                 </Card>
               </a>
 
-              {/* All Reports (Current View) */}
-              <Card className="glass-intense border-amber-500/20 p-6 bg-gradient-to-br from-amber-500/5 to-orange-500/5">
+              {/* Environmental Monitoring */}
+              <a href="/field-reports/environmental-monitoring" className="group">
+                <Card className="glass-intense border-cyan-500/10 p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Environmental Monitoring</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Air pollution indices, solid and bio-waste tracking, and sewage outfall field measurements.
+                      </p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </Card>
+              </a>
+
+              {/* Hazard Intelligence */}
+              <a href="/field-reports/hazard-intelligence" className="group">
+                <Card className="glass-intense border-red-500/10 p-6 hover:border-red-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 h-full">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                      <AlertTriangle className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors">Hazard Intelligence</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Avalanche exposure logs, landslide geotechnical assessments, GLOF monitoring, and flood vulnerability reports.
+                      </p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-red-400 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </Card>
+              </a>
+
+              {/* All Reports */}
+              <Card className="glass-intense border-amber-500/20 p-6 bg-gradient-to-br from-amber-500/5 to-orange-500/5 h-full">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 ring-2 ring-amber-500/50">
                     <FileText className="w-6 h-6 text-white" />
@@ -185,14 +188,9 @@ export default function FieldReportsPage() {
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-white mb-2">All Reports (Current View)</h3>
                     <p className="text-sm text-slate-400 leading-relaxed">
-                      Comprehensive view of all field intelligence reports with filtering by type, district, year, and source.
+                      Comprehensive view of all field intelligence reports with filtering by module, district, year, and source below.
                     </p>
                   </div>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="px-2 py-1 text-xs bg-amber-500/10 text-amber-400 rounded border border-amber-500/20">All Types</span>
-                  <span className="px-2 py-1 text-xs bg-amber-500/10 text-amber-400 rounded border border-amber-500/20">Filtered View</span>
-                  <span className="px-2 py-1 text-xs bg-amber-500/10 text-amber-400 rounded border border-amber-500/20">Active</span>
                 </div>
               </Card>
             </div>
@@ -200,7 +198,15 @@ export default function FieldReportsPage() {
         </div>
       </section>
 
-      {/* Filter Bar */}
+      {/* Global Scope & District Filters */}
+      <div className="container mx-auto px-6 mt-8 relative z-40">
+        <GlobalFilterBar 
+          scopes={['All', 'Kashmir Core', 'Trans-Divisional', 'Transboundary / Extended']}
+          districts={districts}
+        />
+      </div>
+
+      {/* Local Filter Bar (Year, Module, Type, etc.) */}
       <FilterBar
         reports={fieldReportsRegistry}
         years={years}

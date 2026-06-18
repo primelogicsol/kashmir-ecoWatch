@@ -52,7 +52,10 @@ export default function WaterPollutionPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<><span className="block whitespace-nowrap">Water Pollution Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">& Monitoring</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Pollution Risk & Monitoring</span>
+          </>}
         subtitle="Lake eutrophication, sewage and runoff indicators, river and stream contamination, spring contamination signals, and wetland degradation monitoring across Kashmir"
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         label="Water Quality Intelligence"

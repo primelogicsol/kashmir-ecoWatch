@@ -10,7 +10,7 @@ export default function ReportsReferencesPage() {
 
   return (
     <SeasonalListingPage
-      title="Seasonal Reports Greater Kashmir Ecology"
+      title="Western Himalayan Seasonal Reports"
       subtitle="Kashmir seasonal and phenology-related scientific evidence"
       icon="FileText"
       color="from-slate-500 to-gray-600"

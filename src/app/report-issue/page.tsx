@@ -130,10 +130,10 @@ export default function ReportIssuePage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
-              className="max-w-3xl mx-auto"
+              className="max-w-3xl"
             >
-              <div className="text-center mb-8">
-                <CheckCircle className="w-20 h-20 text-emerald-400 mx-auto mb-6" />
+              <div className="mb-8">
+                <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
                 <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Incident Report Received</h1>
                 <p className="text-slate-400 text-lg">
                   Your report has been successfully logged into the Kashmir Environmental Intelligence system.
@@ -142,7 +142,7 @@ export default function ReportIssuePage() {
 
               {/* Incident Reference Card */}
               <Card className="glass-intense border-white/10 p-6 mb-6">
-                <div className="text-center">
+                <div>
                   <div className="text-sm text-slate-400 mb-2">Incident Reference ID</div>
                   <div className="text-3xl font-mono font-bold text-white mb-4">{incidentId}</div>
                   <p className="text-sm text-slate-400">
@@ -211,7 +211,7 @@ export default function ReportIssuePage() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl"
           >
             <Card className="glass-intense border-white/10 p-6">
               <div className="flex items-start gap-3 mb-4">
@@ -245,7 +245,7 @@ export default function ReportIssuePage() {
       {/* Form */}
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             <Card className="glass-intense border-white/10 p-6 sm:p-8">
               <form onSubmit={handleSubmit}>
                 {/* Issue Type */}

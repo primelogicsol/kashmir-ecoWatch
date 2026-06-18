@@ -1,4 +1,4 @@
-// ─── Forest Fire Risk Registry — Greater Kashmir Ecology ─────────────────────
+// ─── Forest Fire Risk Registry — Western Himalayan ─────────────────────
 // Forest fire intelligence across Kashmir Core, Trans-Divisional,
 // and Transboundary / Extended ecological scopes.
 

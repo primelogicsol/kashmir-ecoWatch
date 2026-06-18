@@ -294,13 +294,11 @@ export default function AvalanchesPage() {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
         label="Hazard Intelligence"
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Avalanche Risk Intelligence</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
-        subtitle="Monitoring avalanche-prone corridors, high-altitude passes, and critical road infrastructure across the Greater Kashmir ecological domain using verified field data and remote-sensing intelligence."
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Avalanche Risk Intelligence</span>
+          </>}
+        subtitle="Monitoring avalanche-prone corridors, high-altitude passes, and critical road infrastructure across the Western Himalayan ecological domain using verified field data and remote-sensing intelligence."
         icon={<Snowflake className="w-6 h-6 text-cyan-400" />}
         breadcrumbs={[
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },

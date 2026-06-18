@@ -1,4 +1,4 @@
-// ─── Air Quality Registry — 44-Unit Greater Kashmir Ecology ──────────────────
+// ─── Air Quality Registry — 44-Unit Western Himalayan ──────────────────
 // Coordinates sourced from district headquarters / representative centroids.
 // Verification status follows the tiered logic:
 //   Official Station Verified  → CPCB/JKPCC stations (Srinagar, Jammu)

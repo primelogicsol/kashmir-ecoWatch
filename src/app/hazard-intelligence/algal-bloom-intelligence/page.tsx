@@ -8,7 +8,7 @@ import {
   Waves, ArrowRight, Map, AlertTriangle, Activity, Droplets,
   Layers, Flower2, Thermometer, Fish,
   Grid3X3, List, CheckCircle, HelpCircle, Search,
-  BarChart3, Target, ChevronLeft, ChevronRight
+  BarChart3, Target, ChevronLeft, ChevronRight, Wind, CloudRain, Clock
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -20,6 +20,7 @@ import {
   algalBloomLakes, algalBloomLakeStats,
   type AlgalBloomLake, type TrophicEvidenceLabel,
 } from '@/data/algal-bloom-lakes';
+import { useAlgalBloomIntelligence } from '@/hooks/useAlgalBloomIntelligence';
 import Link from 'next/link';
 
 // ─── Colour maps ──────────────────────────────────────────────────────────────
@@ -104,6 +105,35 @@ function LakeCard({ lake, index }: { lake: AlgalBloomLake; index: number }) {
           </span>
         </div>
 
+        {/* Live Data */}
+        {lake.last_updated && (
+          <div className="mt-2 space-y-2 border-t border-white/5 pt-3">
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="text-slate-400 flex items-center gap-1"><Thermometer className="w-3 h-3 text-red-400"/> Temp (Max)</span>
+              <span className="font-semibold text-white">{lake.live_temperature_max}°C</span>
+            </div>
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="text-slate-400 flex items-center gap-1"><CloudRain className="w-3 h-3 text-blue-400"/> 7d Rainfall</span>
+              <span className="font-semibold text-white">{lake.live_precipitation_7d} mm</span>
+            </div>
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="text-slate-400 flex items-center gap-1"><Wind className="w-3 h-3 text-teal-400"/> Wind</span>
+              <span className="font-semibold text-white">{lake.live_wind_speed} km/h</span>
+            </div>
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="text-slate-400">Live Risk</span>
+              <span className={`font-bold ${lake.live_bloom_risk === 'Critical' ? 'text-red-500' : lake.live_bloom_risk === 'High' ? 'text-orange-400' : lake.live_bloom_risk === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'}`}>{lake.live_bloom_risk}</span>
+            </div>
+            <div className="text-[9px] text-slate-500 italic flex items-center gap-1">
+              <AlertTriangle className="w-2.5 h-2.5"/> {lake.live_dominant_trigger}
+            </div>
+            <div className="text-[8px] text-slate-600 flex items-center gap-1 mt-1">
+              <Clock className="w-2.5 h-2.5" />
+              Updated: {new Date(lake.last_updated).toLocaleTimeString()}
+            </div>
+          </div>
+        )}
+
         {/* Meta row */}
         <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[10px] text-slate-500">
           {lake.altitude && <span>↑ {lake.altitude}</span>}
@@ -158,6 +188,12 @@ function LakeRow({ lake, index }: { lake: AlgalBloomLake; index: number }) {
           <span className={`text-xs font-semibold flex-shrink-0 w-24 hidden sm:block ${TROPHIC_COLOR[lake.trophicStatus]}`}>
             {lake.trophicStatus}
           </span>
+          {/* Live Risk */}
+          {lake.live_bloom_risk && (
+            <span className={`text-xs font-bold flex-shrink-0 w-24 hidden md:block ${lake.live_bloom_risk === 'Critical' ? 'text-red-500' : lake.live_bloom_risk === 'High' ? 'text-orange-400' : lake.live_bloom_risk === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'}`}>
+              Risk: {lake.live_bloom_risk}
+            </span>
+          )}
           {/* Bloom badge */}
           <Badge variant={BLOOM_BADGE[lake.bloomIssue]} size="sm" className="flex-shrink-0 text-[10px]">
             {lake.bloomIssue}
@@ -188,13 +224,15 @@ export default function AlgalBloomMonitoringPage() {
   const [viewMode, setViewMode]           = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage]     = useState(1);
 
+  const { lakesWithLiveData, loading, isStale } = useAlgalBloomIntelligence();
+
   // Map GlobalFilterBar scope → lake scope field
   const scopeFilter = globalFilter.scope === 'All' ? 'All' : globalFilter.scope;
 
   const ITEMS_PER_PAGE = viewMode === 'grid' ? 9 : 15;
 
   const filtered = useMemo(() => {
-    return algalBloomLakes.filter(lake => {
+    return lakesWithLiveData.filter(lake => {
       // Scope — driven by GlobalFilterBar scope buttons
       if (scopeFilter !== 'All' && lake.scope !== scopeFilter) return false;
       // Page-specific filters
@@ -238,10 +276,18 @@ export default function AlgalBloomMonitoringPage() {
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <Heading
-        title={<><span className="block whitespace-nowrap leading-[1.12]">Algal Bloom Intelligence</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Algal Bloom Intelligence</span>
+          </>}
         subtitle="Complete trophic status database covering 83 lake systems across Kashmir Core, Trans-Divisional, and Transboundary regions — with verified, inferred, and data-gap classifications anchored to published scientific sources."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
-        label="Bloom Intelligence"
+        label="Hazard Intelligence"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Algal Blooms' },
+        ]}
         images={['/images/protected-network.png']}
         gridOverlay
         actions={
@@ -273,6 +319,27 @@ export default function AlgalBloomMonitoringPage() {
         { label: 'Blooms Confirmed',   value: stats.bloomConfirmed, icon: 'Waves',         color: 'text-orange-400'  },
         { label: 'Critical Threat',    value: stats.critical,       icon: 'ShieldAlert',   color: 'text-red-400'     },
       ]} />
+
+      {isStale && (
+        <div className="container mx-auto px-6 mt-4">
+          <div className="bg-amber-500/10 border border-amber-500/20 text-amber-400 px-4 py-3 rounded-lg flex items-center gap-3 text-sm">
+            <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+            <div>
+              <strong>Stale Data Warning:</strong> Real-time algal bloom intelligence API is currently unavailable. Showing last cached data.
+            </div>
+          </div>
+        </div>
+      )}
+      {loading && (
+        <div className="container mx-auto px-6 mt-4">
+          <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 px-4 py-3 rounded-lg flex items-center gap-3 text-sm">
+            <Activity className="w-5 h-5 flex-shrink-0 animate-pulse" />
+            <div>
+              <strong>Loading Intelligence:</strong> Fetching live meteorological data for {stats.total} lake systems...
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Global Filter Bar ───────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
@@ -380,11 +447,12 @@ export default function AlgalBloomMonitoringPage() {
             <motion.div key={`list-${currentPage}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="space-y-2">
               {/* List header */}
-              <div className="hidden lg:grid grid-cols-[1fr_140px_200px_100px_140px_80px] gap-3 px-4 pb-1 text-[10px] text-slate-600 uppercase tracking-wider">
+              <div className="hidden lg:grid grid-cols-[1fr_140px_200px_100px_100px_140px_80px] gap-3 px-4 pb-1 text-[10px] text-slate-600 uppercase tracking-wider">
                 <span>Lake Name / District</span>
                 <span>Scope</span>
                 <span>Evidence Label</span>
                 <span>Trophic</span>
+                <span>Live Risk</span>
                 <span>Bloom Issue</span>
                 <span>Threat</span>
               </div>

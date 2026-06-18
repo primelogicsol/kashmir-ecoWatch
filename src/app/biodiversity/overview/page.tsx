@@ -79,7 +79,7 @@ export default function BiodiversityOverviewPage() {
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
       <Heading
-        title="Biodiversity Greater Kashmir Ecology"
+        title="Western Himalayan Biodiversity"
         subtitle="An integrated ecological intelligence layer analyzing Kashmir's specific biodiversity domain with verified metrics. Integrating complex spatial distribution mapping, real-time threat vulnerability analysis, and critical longitudinal conservation analytics to protect high-priority regional ecosystems."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         label="Biodiversity Intelligence"

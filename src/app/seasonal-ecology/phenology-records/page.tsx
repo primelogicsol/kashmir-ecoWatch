@@ -10,7 +10,7 @@ export default function PhenologyRecordsPage() {
 
   return (
     <SeasonalListingPage
-      title="Phenology Records Greater Kashmir Ecology"
+      title="Western Himalayan Phenology Records"
       subtitle="Flowering, seasonal, and observation-based phenology records across Kashmir"
       icon="Calendar"
       color="from-violet-500 to-purple-600"

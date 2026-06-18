@@ -20,7 +20,10 @@ export default function IncidentReportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Incident</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Incident Reports</span>
+          </>}
         subtitle="Documented hazard incidents, damage assessments, and response records"
         icon={<Map className="w-6 h-6 text-emerald-400" />}
         label="Incident Database"

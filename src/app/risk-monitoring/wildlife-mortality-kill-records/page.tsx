@@ -45,7 +45,10 @@ export default function WildlifeMortalityKillRecordsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<><span className="block whitespace-nowrap">Wildlife Mortality /</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Kill Records</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wildlife Mortality / Kill Records</span>
+          </>}
         subtitle="Roadkill, poaching, electrocution, habitat-linked mortality, conflict-linked deaths, and protected area/corridor-linked incident monitoring across Kashmir landscapes"
         icon={<Target className="w-6 h-6 text-emerald-400" />}
         label="Mortality Intelligence"

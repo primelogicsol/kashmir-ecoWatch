@@ -9,7 +9,7 @@ export default function HabitatSignalsPage() {
 
   return (
     <SeasonalListingPage
-      title="Habitat Signals Greater Kashmir Ecology"
+      title="Western Himalayan Habitat Signals"
       subtitle="Seasonal habitat changes and transitions across Kashmir"
       icon="Radar"
       color="from-green-500 to-emerald-600"

@@ -146,12 +146,10 @@ export default function EnvironmentalHealthPage() {
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
           { label: 'Environmental Health' }
         ]}
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Health</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Health</span>
+          </>}
         subtitle="Monitoring ecosystem health signals — fish kills, odor pollution, stagnant water, algal blooms, and vector breeding sites across Kashmir&apos;s water bodies and urban zones"
         icon={<HeartPulse className="w-6 h-6 text-emerald-400" />}
       />

@@ -288,7 +288,10 @@ export default function AlertArchivePage() {
             <span className="text-sm text-indigo-300">Historical Records</span>
           </div>
         }
-        title={<><span className="block whitespace-nowrap">Alert</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Archive</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Alert Archive</span>
+          </>}
         subtitle="Searchable historical record of all alerts, advisories, and hazard warnings issued through Kashmir EcoWatch monitoring systems."
       />
 

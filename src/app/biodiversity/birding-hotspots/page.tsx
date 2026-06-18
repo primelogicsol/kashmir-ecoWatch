@@ -61,7 +61,7 @@ export default function BirdingHotspotsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Observation Hotspots Greater Kashmir Ecology"
+        title="Western Himalayan Observation Hotspots"
         subtitle="A scientifically validated directory of the region's most important habitats for birding, conservation monitoring, and citizen science across the Kashmir Eco Watch geography."
         icon={<Wind className="w-6 h-6 text-sky-400" />}
         label="Biodiversity Intelligence"

@@ -1,4 +1,4 @@
-// ─── GLOF Risk Registry — Greater Kashmir Ecology ────────────────────────────
+// ─── GLOF Risk Registry — Western Himalayan ────────────────────────────
 // Glacial Lake Outburst Flood intelligence across Kashmir Core, Trans-Divisional,
 // and Transboundary / Extended ecological scopes.
 

@@ -297,7 +297,10 @@ export default function LiveIncidentMapPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<><span className="block whitespace-nowrap">Live Incident</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Map</span></>}
+  title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Incident Map</span>
+          </>}
   subtitle="Real-time spatial view of active environmental incidents, field reports, and hazard events across Kashmir."
   icon={<Map className="w-6 h-6 text-emerald-400" />}
   label="Live Operations"

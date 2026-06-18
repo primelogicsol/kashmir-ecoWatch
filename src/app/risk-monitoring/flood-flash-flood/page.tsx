@@ -60,7 +60,10 @@ export default function FloodFlashFloodPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood' }]}
-        title={<><span className="block whitespace-nowrap">Flood & Flash</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood Risk</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risk</span>
+          </>}
         subtitle="River overflow monitoring, flash flood corridors, inundation risk assessment, and drainage stress intelligence across Kashmir's hydrological systems."
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         label="River & Inundation Intelligence"

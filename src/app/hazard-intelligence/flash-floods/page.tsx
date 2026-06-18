@@ -280,12 +280,10 @@ export default function FlashFloodsPage() {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
         label="Hazard Intelligence"
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Flash Flood Intelligence</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-indigo-400 to-blue-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-blue-300 bg-clip-text text-transparent">Flash Flood Intelligence</span>
+          </>}
         subtitle="Monitoring flash flood zones across nallahs, glacial catchments, and urban corridors with real-time alert intelligence, historical casualty data, and trigger classification."
         icon={<Zap className="w-6 h-6 text-indigo-400" />}
         breadcrumbs={[
@@ -404,7 +402,7 @@ export default function FlashFloodsPage() {
               {[
                 { title: 'Landslide Risk Intelligence', description: 'Landslide zones, slide types, and geological risk mapping across highways and passes.', href: '/hazard-intelligence/landslides', icon: Mountain, color: 'text-amber-400' },
                 { title: 'Hazard Intelligence Overview', description: 'Multi-hazard dashboard with escalation notices, district risk summaries, and submodule links.', href: '/hazard-intelligence', icon: AlertTriangle, color: 'text-red-400' },
-                { title: 'Environmental Monitoring', description: 'Water quality, air pollution, and ecological monitoring for the Greater Kashmir region.', href: '/environmental-monitoring', icon: Activity, color: 'text-emerald-400' },
+                { title: 'Environmental Monitoring', description: 'Water quality, air pollution, and ecological monitoring for the Western Himalayan region.', href: '/environmental-monitoring', icon: Activity, color: 'text-emerald-400' },
               ].map((link, idx) => (
                 <Link key={idx} href={link.href}>
                   <Card className="glass-intense border-white/5 p-4 flex items-start gap-3 hover:border-white/20 transition-all group cursor-pointer h-full">

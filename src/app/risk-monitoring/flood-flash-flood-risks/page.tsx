@@ -21,7 +21,10 @@ export default function FloodFlashFloodRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood Risks' }]}
-        title={<><span className="block whitespace-nowrap">Flood & Flash</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood Risks</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risks</span>
+          </>}
         subtitle="River flooding, flash flood corridors, and GLOF risk monitoring"
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         label="Water Hazards"

@@ -52,7 +52,10 @@ export default function EcoTrailsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Eco</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Eco Trails</span>
+          </>}
         subtitle="Nature-focused trails highlighting Kashmir's ecological diversity, conservation areas, and environmental education opportunities"
         icon={<Trees className="w-6 h-6 text-emerald-400" />}
         label="Nature-Focused Routes"

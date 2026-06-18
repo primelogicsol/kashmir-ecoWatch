@@ -152,7 +152,10 @@ export default function ContributeGuidelinesPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-  title={<><span className="block whitespace-nowrap">Contribution</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Guidelines</span></>}
+  title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribution Guidelines</span>
+          </>}
   subtitle="Evidence standards, submission rules, review logic, and sensitivity guidance for all Kashmir EcoWatch contribution pathways."
   icon={<BookOpen className="w-6 h-6 text-emerald-400" />}
   label="Contributor Guidance"

@@ -10,7 +10,7 @@ export default function MigrationWindowsPage() {
 
   return (
     <SeasonalListingPage
-      title="Migration Windows Greater Kashmir Ecology"
+      title="Western Himalayan Migration Windows"
       subtitle="Migration timing and wetland bird windows across Kashmir"
       icon="Bird"
       color="from-sky-500 to-blue-600"

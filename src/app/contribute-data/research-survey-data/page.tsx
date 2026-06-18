@@ -68,7 +68,10 @@ export default function ResearchSurveyDataPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Research &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Survey Data</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Research & Survey Data</span>
+          </>}
         subtitle="Submit academic research outputs, institutional survey results, and peer-reviewed findings. Approved records route into Library and relevant domain modules."
         icon={<FileText className="w-6 h-6 text-emerald-400" />}
         label="Research Data"

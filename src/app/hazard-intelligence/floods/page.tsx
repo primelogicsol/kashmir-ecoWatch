@@ -559,7 +559,7 @@ export default function FloodsPage() {
               Live Flood Intelligence Across
             </span>
             <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Greater Kashmir Ecology
+              Western Himalayan
             </span>
           </>
         }

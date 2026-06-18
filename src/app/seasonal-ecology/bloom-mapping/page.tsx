@@ -15,7 +15,7 @@ export default function BloomMappingPage() {
   return (
     <main className="min-h-screen  mx-auto bg-slate-950">
       <SeasonalListingPage
-        title="Bloom Mapping Greater Kashmir Ecology"
+        title="Western Himalayan Bloom Mapping"
         subtitle="Floral bloom zones and flowering landscapes across Kashmir"
         icon="Flower2"
         color="from-pink-500 to-rose-600"

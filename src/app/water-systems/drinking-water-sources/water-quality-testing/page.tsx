@@ -183,12 +183,10 @@ export default function WaterQualityTestingPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <Heading
         icon={<Beaker className="w-6 h-6 text-emerald-400" />}
-        title={
-          <>
-            <span className="block whitespace-nowrap">Quality Testing</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Quality Testing</span>
+          </>}
         subtitle="Comprehensive testing protocols, parameter monitoring, and contamination surveillance for Kashmir's drinking water sources. Tracking physical, chemical, and biological parameters across testing stations to safeguard public health."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },

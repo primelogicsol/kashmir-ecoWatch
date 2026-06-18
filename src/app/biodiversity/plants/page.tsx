@@ -44,7 +44,7 @@ export default function PlantsPage() {
 
   return (
     <BiodiversityCategoryPage
-      title="Flora Greater Kashmir Ecology"
+      title="Western Himalayan Flora"
       subtitle="A foundational botanical repository indexing vascular plants and diverse flora across Kashmir's varied ecological gradients. Integrating detailed geographical distribution models, intricate ecological associations, and highly verified spatial occurrences across critical conservation landscapes."
       icon="Flower2"
       color="from-green-500 to-emerald-600"

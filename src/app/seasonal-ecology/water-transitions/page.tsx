@@ -10,7 +10,7 @@ export default function WaterTransitionsPage() {
 
   return (
     <SeasonalListingPage
-      title="Water Transitions Greater Kashmir Ecology"
+      title="Western Himalayan Water Transitions"
       subtitle="Seasonal water and wetland transitions across Kashmir"
       icon="Droplets"
       color="from-cyan-500 to-blue-600"

@@ -145,12 +145,10 @@ export default function DistributionNetworkPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <Heading
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
-        title={
-          <>
-            <span className="block whitespace-nowrap">Distribution Network</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Distribution Network</span>
+          </>}
         subtitle="Comprehensive mapping of Kashmir's drinking water distribution infrastructure — pipeline networks, elevated storage reservoirs, leakage analysis, and non-revenue water assessment across all districts."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },

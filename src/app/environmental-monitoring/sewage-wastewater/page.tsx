@@ -354,12 +354,10 @@ export default function SewageWastewaterPage() {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
         label="Environmental Monitoring"
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Sewage and Wastewater</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sewage and Wastewater</span>
+          </>}
         subtitle="Monitoring sewage generation, wastewater discharge, STP capacity, drainage pathways, septic dependence, and contamination routes across Kashmir's ecological systems."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
         breadcrumbs={[

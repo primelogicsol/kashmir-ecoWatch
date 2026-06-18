@@ -10,7 +10,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Primates",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
     "ecologicalRole": "Omnivore / Herbivore",
     "habitats": [
       "Temperate Forest",
@@ -73,7 +73,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Primates",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
     "ecologicalRole": "Omnivore / Herbivore",
     "habitats": [
       "Temperate Forest",
@@ -126,7 +126,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Primates",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a omnivore / herbivore in its preferred habitats.",
     "ecologicalRole": "Omnivore / Herbivore",
     "habitats": [
       "Temperate Forest",
@@ -189,7 +189,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Lagomorpha",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a primary herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a primary herbivore in its preferred habitats.",
     "ecologicalRole": "Primary Herbivore",
     "habitats": [
       "Alpine Meadows",
@@ -242,7 +242,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Lagomorpha",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a primary herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a primary herbivore in its preferred habitats.",
     "ecologicalRole": "Primary Herbivore",
     "habitats": [
       "Alpine Meadows",
@@ -295,7 +295,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Lagomorpha",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a primary herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a primary herbivore in its preferred habitats.",
     "ecologicalRole": "Primary Herbivore",
     "habitats": [
       "Alpine Meadows",
@@ -358,7 +358,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Lagomorpha",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a primary herbivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a primary herbivore in its preferred habitats.",
     "ecologicalRole": "Primary Herbivore",
     "habitats": [
       "Alpine Meadows",
@@ -421,7 +421,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -484,7 +484,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -537,7 +537,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -600,7 +600,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -653,7 +653,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "NE",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -716,7 +716,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -769,7 +769,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -822,7 +822,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -885,7 +885,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -936,7 +936,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -987,7 +987,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1050,7 +1050,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1103,7 +1103,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1166,7 +1166,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1217,7 +1217,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1270,7 +1270,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1323,7 +1323,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1376,7 +1376,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1429,7 +1429,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1492,7 +1492,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1545,7 +1545,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1608,7 +1608,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1671,7 +1671,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1724,7 +1724,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1787,7 +1787,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1850,7 +1850,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Rodentia",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a granivore / seed disperser in its preferred habitats.",
     "ecologicalRole": "Granivore / Seed Disperser",
     "habitats": [
       "Forest Understory",
@@ -1913,7 +1913,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -1966,7 +1966,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2029,7 +2029,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2092,7 +2092,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "DD",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2143,7 +2143,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2196,7 +2196,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2259,7 +2259,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2322,7 +2322,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2385,7 +2385,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2448,7 +2448,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Eulipotyphla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore in its preferred habitats.",
     "ecologicalRole": "Insectivore",
     "habitats": [
       "Leaf Litter",
@@ -2499,7 +2499,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2552,7 +2552,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2605,7 +2605,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2658,7 +2658,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2711,7 +2711,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2764,7 +2764,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2827,7 +2827,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2890,7 +2890,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -2943,7 +2943,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "NE",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3006,7 +3006,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3069,7 +3069,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "DD",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3132,7 +3132,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3195,7 +3195,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3258,7 +3258,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "DD",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3309,7 +3309,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3372,7 +3372,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3435,7 +3435,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "NE",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3498,7 +3498,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3551,7 +3551,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3614,7 +3614,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3677,7 +3677,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3740,7 +3740,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3793,7 +3793,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3856,7 +3856,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3909,7 +3909,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -3972,7 +3972,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4025,7 +4025,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4088,7 +4088,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4141,7 +4141,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "DD",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4204,7 +4204,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4267,7 +4267,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Chiroptera",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a insectivore / insect predator in its preferred habitats.",
     "ecologicalRole": "Insectivore / Insect Predator",
     "habitats": [
       "Cave Roosts",
@@ -4320,7 +4320,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Pholidota",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a myrmecophagous (ants & termites) in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a myrmecophagous (ants & termites) in its preferred habitats.",
     "ecologicalRole": "Myrmecophagous (Ants & Termites)",
     "habitats": [
       "Dry Shrublands",
@@ -4373,7 +4373,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4436,7 +4436,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4499,7 +4499,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4562,7 +4562,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4625,7 +4625,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4688,7 +4688,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4751,7 +4751,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4836,7 +4836,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4899,7 +4899,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -4962,7 +4962,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5037,7 +5037,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5090,7 +5090,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5175,7 +5175,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5238,7 +5238,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5301,7 +5301,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5354,7 +5354,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5417,7 +5417,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5492,7 +5492,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5545,7 +5545,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5598,7 +5598,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5651,7 +5651,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5714,7 +5714,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5767,7 +5767,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Carnivora",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a carnivorous predator in its preferred habitats.",
     "ecologicalRole": "Carnivorous Predator",
     "habitats": [
       "Coniferous Forest",
@@ -5820,7 +5820,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -5893,7 +5893,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -5968,7 +5968,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6031,7 +6031,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6084,7 +6084,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "NT",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6137,7 +6137,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6190,7 +6190,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6243,7 +6243,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6296,7 +6296,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "CR",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6347,7 +6347,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "VU",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6410,7 +6410,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6463,7 +6463,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "EN",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",
@@ -6526,7 +6526,7 @@ export const mammalsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "mammals",
     "category": "Artiodactyla",
     "conservationStatus": "LC",
-    "description": "A documented mammalian species of the Western Himalayas and Greater Kashmir region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
+    "description": "A documented mammalian species of the Western Himalayas and Western Himalayan region, playing a key ecological role as a ungulate grazer / browser in its preferred habitats.",
     "ecologicalRole": "Ungulate Grazer / Browser",
     "habitats": [
       "Alpine Meadows",

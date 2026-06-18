@@ -157,7 +157,7 @@ export function ProtectedCategoryPage({
         title={title}
         subtitle={subtitle}
         icon={<Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />}
-        label="Protected Network"
+        label="KEW Protected Network"
         gridOverlay
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         actions={

@@ -97,7 +97,10 @@ export default function DistrictsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
 <Heading
-  title={<><span className="block whitespace-nowrap">District</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Profiles</span></>}
+  title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Profiles</span>
+          </>}
   subtitle="Integrated district-level environmental intelligence bringing together ecological systems, water networks, monitoring, risk, evidence, and public contribution across the platform. Geographic Scope: Currently covering Kashmir Valley districts, with select profiles from Jammu Division and Ladakh. Expanded J&K coverage in progress."
   icon={<Map className="w-6 h-6 text-emerald-400" />}
   label="District Intelligence"

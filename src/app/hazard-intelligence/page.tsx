@@ -63,8 +63,11 @@ export default function HazardIntelligenceOverview() {
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence' }
         ]}
-        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Hazard Intelligence</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
-        subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Greater Kashmir ecological region"
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Hazard Intelligence</span>
+          </>}
+        subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Western Himalayan ecological region"
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}
       />
 
@@ -107,7 +110,7 @@ export default function HazardIntelligenceOverview() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-2">Hazard Domains</h2>
-            <p className="text-slate-400">Access all hazard intelligence submodules across the Greater Kashmir ecology</p>
+            <p className="text-slate-400">Access all hazard intelligence submodules across the Western Himalayan ecology</p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -237,7 +240,7 @@ export default function HazardIntelligenceOverview() {
                   When hazard events cross critical thresholds — major flood inundation, large landslides blocking highways,
                   significant seismic activity, GLOF breach warnings — they are escalated and mirrored into
                   the <span className="text-white font-medium">Risk & Monitoring</span> module for coordinated emergency response
-                  across all Greater Kashmir divisions.
+                  across all Western Himalayan divisions.
                 </p>
               </div>
             </div>

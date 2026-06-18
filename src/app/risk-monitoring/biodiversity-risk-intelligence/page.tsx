@@ -45,7 +45,10 @@ export default function BiodiversityRiskIntelligencePage() {
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Biodiversity Risk Intelligence' }]}
-        title={<><span className="block whitespace-nowrap">Biodiversity Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Intelligence</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Biodiversity Risk Intelligence</span>
+          </>}
         subtitle="Comprehensive biodiversity risk assessment, habitat vulnerability analysis, threatened species monitoring, and ecological pressure tracking across Kashmir's protected areas and landscapes"
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
         label="Biodiversity Intelligence"

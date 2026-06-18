@@ -22,7 +22,10 @@ export default function ReportsReferencesPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Reports &</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">References</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports & References</span>
+          </>}
         subtitle="Scientific reports, field guides, research papers, and reference materials for trails and wildlife"
         icon={<Book className="w-6 h-6 text-emerald-400" />}
         label="Documentation & Research"

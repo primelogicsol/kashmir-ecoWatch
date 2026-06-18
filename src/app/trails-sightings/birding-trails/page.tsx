@@ -21,7 +21,10 @@ export default function BirdingTrailsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Birding</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Birding Trails</span>
+          </>}
         subtitle="Prime birdwatching routes through Kashmir's wetlands, forests, and migratory corridors"
         icon={<Bird className="w-6 h-6 text-emerald-400" />}
         label="Prime Birdwatching Routes"

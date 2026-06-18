@@ -57,7 +57,10 @@ export default function EnvironmentalMonitoringOverview() {
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring' }
         ]}
-        title={<><span className="block whitespace-nowrap leading-[1.12] overflow-visible">Environmental Monitoring</span><span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
+          </>}
         subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and public ecological service risks across Kashmir"
         icon={<Factory className="w-6 h-6 text-emerald-400" />}
       />

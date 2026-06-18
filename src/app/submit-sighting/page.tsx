@@ -146,10 +146,10 @@ export default function SubmitSightingPage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
-              className="max-w-3xl mx-auto"
+              className="max-w-3xl"
             >
-              <div className="text-center mb-8">
-                <CheckCircle className="w-20 h-20 text-emerald-400 mx-auto mb-6" />
+              <div className="mb-8">
+                <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
                 <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Sighting Received</h1>
                 <p className="text-slate-400 text-lg">
                   Your observation has been logged and will be reviewed for inclusion in Kashmir's biodiversity records.
@@ -219,7 +219,10 @@ export default function SubmitSightingPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Submit a Sighting' }]}
-        title={<><span className="block whitespace-nowrap">Submit a</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sighting</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Submit a Sighting</span>
+          </>}
         subtitle="Contribute wildlife observations to build Kashmir&#39;s most comprehensive biodiversity database for conservation and research"
         icon={<Camera className="w-6 h-6 text-emerald-400" />}
         label="Citizen Science"
@@ -232,7 +235,7 @@ export default function SubmitSightingPage() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl"
           >
             <Card className="glass-intense border-white/10 p-6">
               <div className="flex items-start gap-3 mb-4">
@@ -271,7 +274,7 @@ export default function SubmitSightingPage() {
       {/* Form */}
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             <Card className="glass-intense border-white/10 p-6 sm:p-8">
               <form onSubmit={handleSubmit}>
                 {/* Species Category */}

@@ -53,7 +53,10 @@ export default function ResearchLibraryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Scientific Research"
-        title={<><span className="block whitespace-nowrap">Research</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Library</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Research Library</span>
+          </>}
         subtitle="Environmental impact assessments, research reports, and scientific publications documenting Kashmir&#39;s ecological systems and environmental challenges"
         icon={<BookOpen className="w-6 h-6 text-emerald-400" />}
         actions={

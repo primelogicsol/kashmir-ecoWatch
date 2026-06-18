@@ -352,7 +352,10 @@ export default function TrailsAndSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap leading-[1.12]">Trails and Sightings</span><span className="block whitespace-nowrap leading-[1.12] pb-2 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails and Sightings</span>
+          </>}
         subtitle="Protected-area trails, ecological routes, birding paths, wildlife observation zones, and verified field sightings across Kashmir Core, Trans-Divisional, and Transboundary conservation landscapes. Integrates species observations, seasonal activity, visitor-use pressure, monitoring evidence, and protected-area profile links."
         icon={<Footprints className="w-6 h-6 text-emerald-400" />}
         label="Recreation & Observation"

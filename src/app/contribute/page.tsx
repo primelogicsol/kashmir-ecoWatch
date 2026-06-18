@@ -91,7 +91,10 @@ export default function ContributeHubPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contribute' }]}
-        title={<><span className="block whitespace-nowrap">Contribute to</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Kashmir Intelligence</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute to Kashmir Intelligence</span>
+          </>}
         subtitle="Whether reporting an urgent hazard, documenting wildlife, sharing research data, or joining as a recurring contributor — your participation strengthens Kashmir&#39;s environmental monitoring and conservation decision-making"
         icon={<Upload className="w-6 h-6 text-emerald-400" />}
         label="Community Contribution"

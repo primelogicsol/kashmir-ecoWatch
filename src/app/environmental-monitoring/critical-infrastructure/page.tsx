@@ -254,12 +254,10 @@ export default function CriticalInfrastructurePage() {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
         label="Environmental Monitoring"
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Critical Infrastructure</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent">Critical Infrastructure</span>
+          </>}
         subtitle="Monitoring the capacity, operational load, and environmental risk of major dams, STPs, WTPs, landfills, and outfalls forming the ecological backbone."
         icon={<Building2 className="w-6 h-6 text-blue-400" />}
         breadcrumbs={[

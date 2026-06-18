@@ -18,7 +18,7 @@ export default function LakesPage() {
 
   return (
     <WaterEntityListingPage
-      title="Lakes Greater Kashmir Ecology"
+      title="Western Himalayan Lakes"
       description="Comprehensive inventory of every major, minor, urban, rural, high-altitude, floodplain, and district-level lake mapped across Kashmir. Includes water quality, biodiversity, hydrology, and threat monitoring."
       icon="Droplet"
       color="from-blue-500 to-cyan-600"

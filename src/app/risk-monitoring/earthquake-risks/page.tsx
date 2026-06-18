@@ -21,7 +21,10 @@ export default function EarthquakeRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Earthquake Risks' }]}
-        title={<><span className="block whitespace-nowrap">Earthquake</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risks</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake Risks</span>
+          </>}
         subtitle="Seismic hazard assessment, fault line mapping, and building vulnerability"
         icon={<Zap className="w-6 h-6 text-emerald-400" />}
         label="Seismic Hazards"

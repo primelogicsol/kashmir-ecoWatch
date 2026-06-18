@@ -107,7 +107,10 @@ export default function ContributeDataPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-  title={<><span className="block whitespace-nowrap">Contribute</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Data</span></>}
+  title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute Data</span>
+          </>}
   subtitle="Share structured datasets, research findings, water quality readings, and monitoring data to strengthen Kashmir's environmental intelligence and evidence archive"
   icon={<Database className="w-6 h-6 text-emerald-400" />}
   label="Structured Data Contribution"

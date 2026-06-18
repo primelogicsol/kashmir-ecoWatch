@@ -274,12 +274,10 @@ export default function GLOFsPage() {
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
           { label: 'GLOFs' }
         ]}
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">GLOF Risk Intelligence</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-teal-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-emerald-300 bg-clip-text text-transparent">GLOF Risk Intelligence</span>
+          </>}
         subtitle="Glacial Lake Outburst Flood risk monitoring across 27 high-altitude glacial zones spanning Kashmir Core, Trans-Divisional, and Transboundary ecological scopes. Integrates moraine dam assessments, ice-dam surveillance, and downstream exposure intelligence."
         icon={<Droplets className="w-6 h-6 text-teal-400" />}
       />

@@ -113,11 +113,6 @@ export function FilterBar({ reports, years, districts, modules, sources, onFilte
       options: [{ value: 'all', label: 'All Years' }, ...years.map(y => ({ value: y.toString(), label: y.toString() }))],
     },
     {
-      key: 'district' as keyof FilterState,
-      label: 'District',
-      options: [{ value: 'all', label: 'All Districts' }, ...districts.map(d => ({ value: d, label: d }))],
-    },
-    {
       key: 'module' as keyof FilterState,
       label: 'Module',
       options: [{ value: 'all', label: 'All Modules' }, ...modules.map(m => ({ value: m, label: m }))],

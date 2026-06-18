@@ -68,7 +68,10 @@ export default function MonitoringStationExportsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Monitoring Station</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Exports</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Station Exports</span>
+          </>}
         subtitle="Submit raw or processed data from automated monitoring stations and sensor networks. Approved records route into dashboards and relevant monitoring modules."
         icon={<Database className="w-6 h-6 text-emerald-400" />}
         label="Station Data"

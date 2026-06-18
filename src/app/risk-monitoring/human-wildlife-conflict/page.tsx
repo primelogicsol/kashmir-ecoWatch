@@ -50,7 +50,10 @@ export default function HumanWildlifeConflictPage() {
 
   return (
     <main className="min-h-screen bg-slate-950"><Heading
-        title={<><span className="block whitespace-nowrap">Human-Wildlife</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Conflict</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Human-Wildlife Conflict</span>
+          </>}
         subtitle="Leopard and black bear conflict monitoring, livestock depredation tracking, crop raiding incidents, settlement-edge conflict zones, Hangul pressure landscapes, and district conflict profiles across Kashmir"
         icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}
         label="Conflict Intelligence"

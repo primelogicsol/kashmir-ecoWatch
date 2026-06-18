@@ -202,12 +202,10 @@ export default function WaterTreatmentPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <Heading
         icon={<Beaker className="w-6 h-6 text-emerald-400" />}
-        title={
-          <>
-            <span className="block whitespace-nowrap">Water Treatment</span>
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Greater Kashmir Ecology</span>
-          </>
-        }
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Treatment</span>
+          </>}
         subtitle="Comprehensive inventory of drinking water treatment infrastructure across Kashmir — from conventional rapid sand filtration to modern membrane bioreactor systems."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },

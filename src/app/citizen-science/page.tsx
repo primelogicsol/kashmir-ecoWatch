@@ -90,7 +90,10 @@ export default function CitizenSciencePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Citizen Science' }]}
-        title={<><span className="block whitespace-nowrap">Citizen</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Science</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Citizen Science</span>
+          </>}
         subtitle="Join a growing community of 635+ citizen scientists contributing to Kashmir&#39;s environmental monitoring, data verification, and conservation efforts"
         icon={<Users className="w-6 h-6 text-emerald-400" />}
         label="Community Science Program"

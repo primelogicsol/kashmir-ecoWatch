@@ -21,7 +21,7 @@ export default function WatershedsPage() {
 
   return (
     <WaterEntityListingPage
-      title="Watersheds Greater Kashmir Ecology"
+      title="Western Himalayan Watersheds"
       description={`Verified Base + GIS-Derived Expansion | ${allWatershedsCount} Hydrological Intelligence Units. Verified Jhelum Basin base dataset expanded into GIS-derived river catchments, lake catchments, spring catchments, flood-response units, and restoration-priority zones across Kashmir Core, Trans-Divisional, and Transboundary ecological scope.`}
       icon="Map"
       color="from-amber-600 to-amber-600"

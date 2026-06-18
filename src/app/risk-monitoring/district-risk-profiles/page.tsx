@@ -28,7 +28,10 @@ export default function DistrictRiskProfilesPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'District Risk Profiles' }]}
-        title={<><span className="block whitespace-nowrap">District Risk</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Profiles</span></>}
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Risk Profiles</span>
+          </>}
         subtitle="Operational risk intelligence at district level: current risk levels, dominant hazard categories, live alerts, infrastructure concerns, response notes, advisory status, and trend direction."
         icon={<MapPin className="w-6 h-6 text-emerald-400" />}
         label="District-Wise Operational Risk"

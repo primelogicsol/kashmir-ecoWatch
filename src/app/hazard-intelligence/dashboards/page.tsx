@@ -15,7 +15,7 @@ import {
 const dashboardCards = [
   {
     title: 'Multi-Hazard Risk Map',
-    description: 'Comprehensive geospatial overlay of all hazard types — seismic, flood, landslide, GLOF, and fire risk layers across Greater Kashmir with severity gradients.',
+    description: 'Comprehensive geospatial overlay of all hazard types — seismic, flood, landslide, GLOF, and fire risk layers across Western Himalayan with severity gradients.',
     icon: Map,
     gradient: 'from-emerald-500 to-teal-600',
     metrics: ['Risk Overlay', 'Severity Zones', 'Population Exposure', 'Temporal Analysis'],
@@ -69,13 +69,11 @@ export default function HazardDashboardsPage() {
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
           { label: 'Dashboards' }
         ]}
-        title={
-          <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible">Hazard Intelligence</span>
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">Dashboards</span>
-          </>
-        }
-        subtitle="Integrated hazard analytics dashboards spanning multi-hazard risk mapping, seismic timelines, GLOF monitoring, fire detection, flood heatmaps, and landslide susceptibility across Greater Kashmir ecology."
+        title={<>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">Hazard Intelligence Dashboards</span>
+          </>}
+        subtitle="Integrated hazard analytics dashboards spanning multi-hazard risk mapping, seismic timelines, GLOF monitoring, fire detection, flood heatmaps, and landslide susceptibility across Western Himalayan ecology."
         icon={<BarChart3 className="w-6 h-6 text-violet-400" />}
       />
 
@@ -88,7 +86,7 @@ export default function HazardDashboardsPage() {
               Analytics Dashboards
             </h2>
             <p className="text-slate-400 text-sm mt-1">
-              Explore multi-hazard risk analytics and monitoring dashboards for Greater Kashmir ecology
+              Explore multi-hazard risk analytics and monitoring dashboards for Western Himalayan ecology
             </p>
           </motion.div>
 
