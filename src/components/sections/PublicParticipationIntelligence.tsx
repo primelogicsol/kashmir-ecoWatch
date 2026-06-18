@@ -36,7 +36,7 @@ const contributionPathways = [
     purpose: 'Document wildlife, bird, or species sightings for research',
     icon: Eye,
     color: 'from-emerald-500 to-green-600',
-    route: '/submit-sighting',
+    route: '/submit-observation',
     count: metrics.totalSightings,
     newCount: metrics.newThisMonth,
     newLabel: 'This month',
@@ -108,7 +108,7 @@ export function PublicParticipationIntelligence() {
                 <AlertTriangle className="w-4 h-4 mr-2" />
                 Report Issue
               </Button>
-              <Button className="bg-gradient-to-r from-emerald-500 to-teal-600 w-full sm:w-auto text-xs sm:text-sm" onClick={() => router.push('/submit-sighting')}>
+              <Button className="bg-gradient-to-r from-emerald-500 to-teal-600 w-full sm:w-auto text-xs sm:text-sm" onClick={() => router.push('/submit-observation')}>
                 <Eye className="w-4 h-4 mr-2" />
                 Submit Sighting
               </Button>

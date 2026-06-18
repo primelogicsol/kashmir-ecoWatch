@@ -123,7 +123,7 @@ export default function PhotoDocumentationPage() {
                 <h3 className="text-sm font-bold text-white mb-3">Related Links</h3>
                 <div className="space-y-2">
                   <Link href="/contribute-data/geotagged-evidence" className="block text-sm text-blue-400 hover:text-blue-300">→ Submit Geotagged Evidence</Link>
-                  <Link href="/submit-sighting" className="block text-sm text-blue-400 hover:text-blue-300">→ Submit a Sighting</Link>
+                  <Link href="/submit-observation" className="block text-sm text-blue-400 hover:text-blue-300">→ Submit a Sighting</Link>
                   <Link href="/citizen-science" className="block text-sm text-blue-400 hover:text-blue-300">→ Citizen Science Hub</Link>
                   <Link href="/contribute" className="block text-sm text-blue-400 hover:text-blue-300">→ All Contribution Paths</Link>
                 </div>

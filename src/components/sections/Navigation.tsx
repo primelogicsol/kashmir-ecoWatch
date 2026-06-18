@@ -1209,7 +1209,7 @@ export function Navigation() {
                                       <Link href="/report-issue" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Report an Issue
                                       </Link>
-                                      <Link href="/submit-sighting" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                      <Link href="/submit-observation" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Submit a Sighting
                                       </Link>
                                       <Link href="/contribute-data" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">

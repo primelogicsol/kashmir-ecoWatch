@@ -15,13 +15,13 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
 
-const speciesCategories = [
-  { id: 'mammal', label: 'Mammal', icon: '🦌' },
-  { id: 'bird', label: 'Bird', icon: '🦅' },
-  { id: 'reptile', label: 'Reptile/Amphibian', icon: '🦎' },
-  { id: 'fish', label: 'Fish', icon: '🐟' },
-  { id: 'plant', label: 'Plant', icon: '🌿' },
-  { id: 'other', label: 'Other', icon: '🔍' },
+const observationCategories = [
+  { id: 'wildlife', label: 'Wildlife / Animals', icon: '🦌' },
+  { id: 'plants', label: 'Trees / Plants', icon: '🌳' },
+  { id: 'water', label: 'Water / Springs', icon: '💧' },
+  { id: 'weather', label: 'Extreme Weather', icon: '⛈️' },
+  { id: 'pollution', label: 'Pollution / Waste', icon: '🗑️' },
+  { id: 'community', label: 'Community Action', icon: '🤝' },
 ];
 
 const habitatTypes = [
@@ -150,19 +150,19 @@ export default function SubmitSightingPage() {
             >
               <div className="mb-8">
                 <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
-                <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Sighting Received</h1>
+                <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Observation Received</h1>
                 <p className="text-slate-400 text-lg">
-                  Your observation has been logged and will be reviewed for inclusion in Kashmir's biodiversity records.
+                  Thank you! Your observation has been logged and will be reviewed by the Kashmir EcoWatch team.
                 </p>
               </div>
 
               {/* Sighting Reference Card */}
               <Card className="glass-intense border-white/10 p-6 mb-6">
                 <div className="text-center">
-                  <div className="text-sm text-slate-400 mb-2">Sighting Reference ID</div>
+                  <div className="text-sm text-slate-400 mb-2">Observation Reference ID</div>
                   <div className="text-3xl font-mono font-bold text-white mb-4">{sightingId}</div>
                   <p className="text-sm text-slate-400">
-                    Please save this reference for any follow-up inquiries.
+                    Keep this reference handy if you need to follow up or provide more details.
                   </p>
                 </div>
               </Card>
@@ -195,12 +195,12 @@ export default function SubmitSightingPage() {
               </Card>
 
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
-                <Button onClick={() => router.push('/submit-sighting')}>
-                  Submit Another Sighting
+                <Button onClick={() => window.location.reload()}>
+                  Submit Another Observation
                 </Button>
-                <Button variant="outline" className="border-white/20 text-white" onClick={() => router.push('/biodiversity/wildlife-sightings')}>
+                <Button variant="outline" className="border-white/20 text-white" onClick={() => router.push('/')}>
                   <Eye className="w-4 h-4 mr-2" />
-                  View Wildlife Sightings
+                  Return Home
                 </Button>
                 <Button variant="outline" className="border-white/20 text-white" onClick={() => router.push('/biodiversity')}>
                   Explore Biodiversity Hub
@@ -218,14 +218,14 @@ export default function SubmitSightingPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Submit a Sighting' }]}
+        breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Submit Observation' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Submit a Sighting</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Community Reporting</span>
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Submit Observation</span>
           </>}
-        subtitle="Contribute wildlife observations to build Kashmir&#39;s most comprehensive biodiversity database for conservation and research"
+        subtitle="An easy-to-use platform for students, citizens, journalists, and communities to report wildlife, environmental conditions, and community events."
         icon={<Camera className="w-6 h-6 text-emerald-400" />}
-        label="Citizen Science"
+        label="Community Hub"
       />
 
       {/* How Sightings Are Handled */}
@@ -241,10 +241,9 @@ export default function SubmitSightingPage() {
               <div className="flex items-start gap-3 mb-4">
                 <Shield className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-lg font-bold text-white mb-2">How Sightings Are Handled</h2>
+                  <h2 className="text-lg font-bold text-white mb-2">How Your Reports Help</h2>
                   <p className="text-sm text-slate-400 leading-relaxed">
-                    Sightings are screened, classified, and reviewed before being added to biodiversity records, 
-                    species intelligence, district profiles, or related ecological workflows where appropriate.
+                    Whether you are a student noticing unusual weather, a community reporting pollution, or a local observing wildlife, your simple reports provide crucial "eyes on the ground" for our environmental intelligence network.
                   </p>
                 </div>
               </div>
@@ -278,39 +277,40 @@ export default function SubmitSightingPage() {
             <Card className="glass-intense border-white/10 p-6 sm:p-8">
               <form onSubmit={handleSubmit}>
                 {/* Species Category */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-white mb-3">Species Category <span className="text-red-400">*</span></label>
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-                    {speciesCategories.map((cat) => (
-                      <button
-                        key={cat.id}
-                        type="button"
-                        onClick={() => setSelectedCategory(cat.id)}
-                        className={`p-3 rounded-xl border transition-all text-center ${
-                          selectedCategory === cat.id
-                            ? 'border-emerald-500 bg-emerald-500/10 ring-1 ring-emerald-500/30'
-                            : 'border-white/10 hover:border-emerald-500/50 bg-white/5'
-                        }`}
-                      >
-                        <div className="text-xl mb-1">{cat.icon}</div>
-                        <div className="text-xs font-medium text-white">{cat.label}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Species Name */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-white mb-2">Species Name <span className="text-red-400">*</span></label>
-                  <input
-                    type="text"
-                    placeholder="Common or scientific name"
-                    value={speciesName}
-                    onChange={(e) => setSpeciesName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
-                    required
-                  />
-                </div>
+                <div className="mb-8">
+                    <label className="text-xs font-semibold text-slate-400 mb-2 block uppercase tracking-wider">What did you observe?</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {observationCategories.map((cat) => (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          onClick={() => setSelectedCategory(cat.id)}
+                          className={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all text-center gap-2
+                            ${selectedCategory === cat.id 
+                              ? 'bg-emerald-500/20 border-emerald-500/50 ring-1 ring-emerald-500/50' 
+                              : 'bg-slate-900/50 border-white/10 hover:bg-white/5 hover:border-white/20'}`}
+                        >
+                          <span className="text-2xl">{cat.icon}</span>
+                          <span className={`text-xs font-semibold ${selectedCategory === cat.id ? 'text-emerald-400' : 'text-slate-300'}`}>
+                            {cat.label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <label className="text-xs font-semibold text-slate-400 mb-2 block uppercase tracking-wider">Title or Name of Observation <span className="text-red-400">*</span></label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="e.g. Black Bear, Fallen Chinar Tree, Contaminated Stream..." 
+                      value={speciesName} 
+                      onChange={(e) => setSpeciesName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white text-sm"
+                    />
+                  </div>
 
                 {/* Date & Location */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
@@ -398,61 +398,7 @@ export default function SubmitSightingPage() {
                   </p>
                 </div>
 
-                {/* Count & Observation Method */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
-                      <Users className="w-4 h-4 inline mr-1" />
-                      Number Observed
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g., 1, 2-3, flock of ~20"
-                      value={countObserved}
-                      onChange={(e) => setCountObserved(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
-                      <Binoculars className="w-4 h-4 inline mr-1" />
-                      Observation Method
-                    </label>
-                    <select
-                      value={observationMethod}
-                      onChange={(e) => setObservationMethod(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-emerald-500"
-                    >
-                      {observationMethods.map((method) => (
-                        <option key={method.id} value={method.id} className="bg-slate-800">{method.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Confidence Level */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-white mb-3">Confidence Level</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {confidenceLevels.map((level) => (
-                      <button
-                        key={level.id}
-                        type="button"
-                        onClick={() => setConfidence(level.id)}
-                        className={`p-3 rounded-xl border transition-all text-center ${
-                          confidence === level.id
-                            ? 'border-white/30 bg-white/10'
-                            : 'border-white/10 hover:border-white/20 bg-white/5'
-                        }`}
-                      >
-                        <div className={`text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r ${level.color} mb-1`}>
-                          {level.label}
-                        </div>
-                        <div className="text-xs text-slate-400">{level.description}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {/* Observation Method (moved to later or integrated below) */}
 
                 {/* Habitat Type */}
                 <div className="mb-6">
@@ -472,30 +418,41 @@ export default function SubmitSightingPage() {
                   </select>
                 </div>
 
-                {/* Behavior Observed */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-white mb-2">Behavior Observed</label>
-                  <textarea
-                    placeholder="Describe behavior, activity, or notable characteristics..."
-                    rows={3}
-                    value={behaviorObserved}
-                    onChange={(e) => setBehaviorObserved(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 resize-none"
-                  />
-                </div>
-
                 {/* Description */}
                 <div className="mb-6">
-                  <label className="block text-sm font-semibold text-white mb-2">Description <span className="text-red-400">*</span></label>
-                  <textarea
-                    placeholder="Describe the sighting in detail: what you observed, environmental context, any immediate conservation concerns..."
-                    rows={4}
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 resize-none"
-                    required
-                  />
-                </div>
+                        <label className="text-xs font-semibold text-slate-400 mb-2 block uppercase tracking-wider">Details / Description <span className="text-red-400">*</span></label>
+                        <textarea 
+                          required
+                          rows={4}
+                          placeholder="Describe what you saw in your own words. E.g., 'Noticed a strange smell near the river' or 'Saw a flock of birds heading north'."
+                          value={description} 
+                          onChange={(e) => setDescription(e.target.value)}
+                          className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white text-sm resize-none"
+                        />
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                          <label className="text-xs font-semibold text-slate-400 mb-2 block uppercase tracking-wider">Count / Amount (Optional)</label>
+                          <input 
+                            type="text" 
+                            placeholder="e.g. 5 birds, 10 bags of trash, 1 tree" 
+                            value={countObserved} 
+                            onChange={(e) => setCountObserved(e.target.value)}
+                            className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-xs font-semibold text-slate-400 mb-2 block uppercase tracking-wider">Context / Action (Optional)</label>
+                          <input 
+                            type="text" 
+                            placeholder="e.g. Flying, burning, dumping" 
+                            value={behaviorObserved} 
+                            onChange={(e) => setBehaviorObserved(e.target.value)}
+                            className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-white text-sm"
+                          />
+                        </div>
+                      </div>
 
                 {/* Photo Upload */}
                 <div className="mb-6">
@@ -557,24 +514,23 @@ export default function SubmitSightingPage() {
                   </div>
                 </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-600" 
-                  disabled={!selectedCategory || !speciesName || !dateObserved || !locationText || !description || isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                      Submitting...
-                    </>
-                  ) : (
-                    <>
-                      <Camera className="w-5 h-5 mr-2" />
-                      Submit Sighting
-                    </>
-                  )}
-                </Button>
+                <div className="text-center pt-2">
+                          <Button 
+                            type="submit" 
+                            disabled={isSubmitting || !selectedCategory || !speciesName || !dateObserved || !locationText || !description}
+                            className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white min-w-[200px]"
+                          >
+                            {isSubmitting ? (
+                              <span className="flex items-center justify-center gap-2">
+                                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" /> Submitting...
+                              </span>
+                            ) : (
+                              <span className="flex items-center justify-center gap-2">
+                                Submit Observation <ArrowRight className="w-4 h-4" />
+                              </span>
+                            )}
+                          </Button>
+                        </div>
               </form>
             </Card>
 

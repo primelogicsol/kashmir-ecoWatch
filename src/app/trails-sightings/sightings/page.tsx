@@ -53,7 +53,7 @@ export default function SightingsPage() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-amber-600 hover:to-orange-700 text-white shadow-xl"
-              onClick={() => router.push('/submit-sighting')}
+              onClick={() => router.push('/submit-observation')}
             >
               <Camera className="w-5 h-5 mr-2" />
               Submit Sighting

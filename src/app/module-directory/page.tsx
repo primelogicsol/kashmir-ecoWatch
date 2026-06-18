@@ -167,7 +167,7 @@ const moduleGroups: ModuleGroup[] = [
     gradient: 'from-sky-500 to-indigo-600',
     modules: [
       { name: 'Report an Issue', route: '/report-issue', description: 'Environmental incident reporting', icon: AlertTriangle },
-      { name: 'Submit a Sighting', route: '/submit-sighting', description: 'Wildlife and species observation logging', icon: Eye },
+      { name: 'Submit a Sighting', route: '/submit-observation', description: 'Wildlife and species observation logging', icon: Eye },
       { name: 'Contribute Data', route: '/contribute-data', description: 'Dataset and research submission', icon: Database },
       { name: 'Citizen Science', route: '/citizen-science', description: 'Public participation programs', icon: Users },
       { name: 'Contribution Hub', route: '/contribute', description: 'Central contribution gateway', icon: Upload },

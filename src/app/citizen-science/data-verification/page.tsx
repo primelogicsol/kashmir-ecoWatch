@@ -148,7 +148,7 @@ export default function DataVerificationPage() {
                 <h3 className="text-sm font-bold text-white mb-3">Related Links</h3>
                 <div className="space-y-2">
                   <Link href="/contribute-data" className="block text-sm text-violet-400 hover:text-violet-300">→ Contribute Data</Link>
-                  <Link href="/submit-sighting" className="block text-sm text-violet-400 hover:text-violet-300">→ Submit a Sighting</Link>
+                  <Link href="/submit-observation" className="block text-sm text-violet-400 hover:text-violet-300">→ Submit a Sighting</Link>
                   <Link href="/citizen-science" className="block text-sm text-violet-400 hover:text-violet-300">→ Citizen Science Hub</Link>
                   <Link href="/contribute" className="block text-sm text-violet-400 hover:text-violet-300">→ Verification Model</Link>
                 </div>

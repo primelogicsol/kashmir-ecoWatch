@@ -358,7 +358,7 @@ export default function ContributeDataPage() {
                 Report an Issue
               </Button>
             </Link>
-            <Link href="/submit-sighting">
+            <Link href="/submit-observation">
               <Button variant="outline" className="border-white/20 text-white">
                 <ArrowRight className="w-4 h-4 mr-2" />
                 Submit a Sighting

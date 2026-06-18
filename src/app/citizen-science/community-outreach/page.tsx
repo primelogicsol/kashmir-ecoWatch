@@ -158,7 +158,7 @@ export default function CommunityOutreachPage() {
                   <Link href="/citizen-science" className="block text-sm text-amber-400 hover:text-amber-300">→ Citizen Science Hub</Link>
                   <Link href="/contribute-data" className="block text-sm text-amber-400 hover:text-amber-300">→ Contribute Data</Link>
                   <Link href="/contribute" className="block text-sm text-amber-400 hover:text-amber-300">→ All Contribution Paths</Link>
-                  <Link href="/submit-sighting" className="block text-sm text-amber-400 hover:text-amber-300">→ Submit a Sighting</Link>
+                  <Link href="/submit-observation" className="block text-sm text-amber-400 hover:text-amber-300">→ Submit a Sighting</Link>
                 </div>
               </Card>
             </div>

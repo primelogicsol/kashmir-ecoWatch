@@ -262,7 +262,7 @@ export default function SpeciesSurveyRecordsPage() {
                 <h3 className="text-sm font-bold text-white mb-3">Related Links</h3>
                 <div className="space-y-2">
                   <Link href="/report-issue" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Report an Issue</Link>
-                  <Link href="/submit-sighting" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Submit a Sighting</Link>
+                  <Link href="/submit-observation" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Submit a Sighting</Link>
                   <Link href="/citizen-science" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Citizen Science</Link>
                   <Link href="/contribute-data" className="block text-sm text-emerald-400 hover:text-emerald-300">→ All Contribution Tracks</Link>
                 </div>

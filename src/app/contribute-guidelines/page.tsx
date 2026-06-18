@@ -140,7 +140,7 @@ const sensitivityRules = [
 
 const quickActions = [
   { label: 'Report an Issue', route: '/report-issue', icon: AlertTriangle, gradient: 'from-red-500 to-orange-600' },
-  { label: 'Submit a Sighting', route: '/submit-sighting', icon: Camera, gradient: 'from-emerald-500 to-teal-600' },
+  { label: 'Submit a Sighting', route: '/submit-observation', icon: Camera, gradient: 'from-emerald-500 to-teal-600' },
   { label: 'Contribute Data', route: '/contribute-data', icon: Database, gradient: 'from-blue-500 to-indigo-600' },
   { label: 'Citizen Science', route: '/citizen-science', icon: Users, gradient: 'from-violet-500 to-purple-600' },
   { label: 'Return to Contribute Hub', route: '/contribute', icon: BookOpen, gradient: 'from-slate-500 to-slate-600' },

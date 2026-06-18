@@ -64,7 +64,7 @@ export default function TrailsAndSightingsPage() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-600 hover:to-teal-700 text-white shadow-xl"
-              onClick={() => router.push('/submit-sighting')}
+              onClick={() => router.push('/submit-observation')}
             >
               <Plus className="w-5 h-5 mr-2" />
               Submit Sighting
@@ -442,7 +442,7 @@ export default function TrailsAndSightingsPage() {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-xl"
-                    onClick={() => router.push('/submit-sighting')}
+                    onClick={() => router.push('/submit-observation')}
                   >
                     <Plus className="w-5 h-5 mr-2" />
                     Submit a Sighting

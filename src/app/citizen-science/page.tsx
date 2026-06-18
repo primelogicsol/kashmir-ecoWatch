@@ -99,7 +99,7 @@ export default function CitizenSciencePage() {
         label="Community Science Program"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Link href="/submit-sighting">
+            <Link href="/submit-observation">
               <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500">
                 <Camera className="w-5 h-5 mr-2" />
                 Start Contributing
@@ -366,7 +366,7 @@ export default function CitizenSciencePage() {
                   for better conservation decisions, policy-making, and public awareness
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
-                  <Link href="/submit-sighting">
+                  <Link href="/submit-observation">
                     <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600">
                       <Camera className="w-5 h-5 mr-2" />
                       Submit Your First Sighting

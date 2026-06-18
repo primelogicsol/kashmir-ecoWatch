@@ -35,7 +35,7 @@ const contributionPathways = [
     description: 'Contribute wildlife observations and species records to build the biodiversity database',
     icon: Camera,
     color: 'from-emerald-500 to-teal-600',
-    route: '/submit-sighting',
+    route: '/submit-observation',
     bestFor: 'Ecological observations',
     examples: ['Bird and wildlife sightings', 'Flowering and pollinator records', 'Habitat and trail observations'],
     cta: 'Submit a Sighting',
@@ -325,7 +325,7 @@ export default function ContributeHubPage() {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-emerald-500 to-teal-600"
-                    onClick={() => router.push('/submit-sighting')}
+                    onClick={() => router.push('/submit-observation')}
                   >
                     <Camera className="w-5 h-5 mr-2" />
                     Submit Sighting

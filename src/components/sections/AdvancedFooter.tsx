@@ -35,8 +35,8 @@ const footerLinks = {
     { label: 'Methodology', href: '/about/methodology' },
   ],
   contribute: [
-    { label: 'Share Data', href: '/submit-sighting' },
-    { label: 'Submit Observation', href: '/submit-sighting' },
+    { label: 'Share Data', href: '/share-data' },
+    { label: 'Submit Observation', href: '/submit-observation' },
     { label: 'Join Citizen Science', href: '/about/contact' },
     { label: 'Become Research Partner', href: '/about/support-sponsorship' },
     { label: 'Report Environmental Issue', href: '/report-issue' },

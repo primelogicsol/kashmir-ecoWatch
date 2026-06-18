@@ -837,7 +837,7 @@ export default function PartnersPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { icon: Siren, label: 'Report an Issue', href: '/report-issue', desc: 'File a structured environmental incident report' },
-                { icon: Binoculars, label: 'Submit Sighting', href: '/submit-sighting', desc: 'Log a wildlife or plant species observation' },
+                { icon: Binoculars, label: 'Submit Sighting', href: '/submit-observation', desc: 'Log a wildlife or plant species observation' },
                 { icon: Leaf, label: 'Join Citizen Science', href: '/citizen-science', desc: 'Participate in community science programs' },
                 { icon: FileText, label: 'Contribute Field Records', href: '/contribute-data', desc: 'Share field documentation and evidence' },
               ].map(action => (

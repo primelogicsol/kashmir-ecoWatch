@@ -12,6 +12,16 @@ const nextConfig = {
     unoptimized: true,
   },
 
+  async redirects() {
+    return [
+      {
+        source: '/submit-sighting',
+        destination: '/submit-observation',
+        permanent: true,
+      },
+    ];
+  },
+
   webpack: (config, { isServer }) => {
     config.cache = false;
 

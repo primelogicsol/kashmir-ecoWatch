@@ -74,7 +74,7 @@ export default function WildlifeMonitoringPage() {
                 <p className="text-sm text-slate-400">Join 234+ volunteers already contributing wildlife observations</p>
               </div>
               <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                <Link href="/submit-sighting">
+                <Link href="/submit-observation">
                   <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white">
                     <Camera className="w-5 h-5 mr-2" />
                     Submit a Sighting
@@ -190,7 +190,7 @@ export default function WildlifeMonitoringPage() {
               <Card className="glass-intense border-white/10 p-6">
                 <h3 className="text-sm font-bold text-white mb-3">Related Links</h3>
                 <div className="space-y-2">
-                  <Link href="/submit-sighting" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Submit a Sighting</Link>
+                  <Link href="/submit-observation" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Submit a Sighting</Link>
                   <Link href="/contribute-data" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Contribute Data</Link>
                   <Link href="/citizen-science" className="block text-sm text-emerald-400 hover:text-emerald-300">→ Citizen Science Hub</Link>
                   <Link href="/contribute" className="block text-sm text-emerald-400 hover:text-emerald-300">→ All Contribution Paths</Link>

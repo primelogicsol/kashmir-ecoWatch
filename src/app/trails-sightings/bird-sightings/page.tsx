@@ -32,7 +32,7 @@ export default function BirdSightingsPage() {
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/trails-sightings')}><ArrowRight className="w-5 h-5 mr-2" />Back to Trails</Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/submit-sighting')}><Camera className="w-5 h-5 mr-2" />Submit Sighting</Button>
+            <Button size="lg" variant="outline" className="border-white/20 text-white" onClick={() => router.push('/submit-observation')}><Camera className="w-5 h-5 mr-2" />Submit Sighting</Button>
           </div>
         }
       />

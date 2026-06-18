@@ -433,7 +433,7 @@ export default function RiskMonitoringOverviewPage() {
                     size="lg"
                     variant="outline"
                     className="border-white/20 text-white hover:bg-white/5"
-                    onClick={() => router.push('/submit-sighting')}
+                    onClick={() => router.push('/submit-observation')}
                   >
                     <Eye className="w-5 h-5 mr-2" />
                     Submit a Sighting

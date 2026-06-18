@@ -393,7 +393,7 @@ export default function WaterQualityReadingsPage() {
                   <Link href="/report-issue" className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
                     → Report an Issue
                   </Link>
-                  <Link href="/submit-sighting" className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                  <Link href="/submit-observation" className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
                     → Submit a Sighting
                   </Link>
                   <Link href="/citizen-science" className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
