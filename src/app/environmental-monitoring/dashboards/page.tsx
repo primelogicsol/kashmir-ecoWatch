@@ -405,7 +405,7 @@ export default function DashboardsPage() {
               { label: 'Solid Waste', href: '/environmental-monitoring/solid-waste', desc: 'Dumping & landfill stress', icon: ExternalLink, color: 'from-gray-500 to-slate-600' },
               { label: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Quality & supply intelligence', icon: ExternalLink, color: 'from-cyan-500 to-teal-600' },
               { label: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI & pollutant tracking', icon: ExternalLink, color: 'from-slate-500 to-gray-600' },
-              { label: 'Utility Incidents', href: '/environmental-monitoring/utility-incidents', desc: 'Emergency & service failures', icon: ExternalLink, color: 'from-red-500 to-rose-600' },
+              { label: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity', icon: ExternalLink, color: 'from-teal-500 to-cyan-600' },
             ].map((link, i) => (
               <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -10,40 +9,41 @@ import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 
 import {
-  Factory, ArrowRight, Map, BarChart3, Eye,
+  Factory, Map, BarChart3, Eye,
   Trash2, Droplets, Wind, AlertTriangle, Waves,
-  Building2, Cloud, Shield, Activity, ChevronRight
+  Building2, Cloud, Shield, Activity, ShieldCheck, Globe
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
 const submodules = [
-  { name: 'Solid Waste', href: '/environmental-monitoring/solid-waste', icon: Trash2, color: 'from-gray-500 to-slate-600', status: '8 hotspots', statusColor: 'warning' },
-  { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', icon: Cloud, color: 'from-emerald-500 to-green-600', status: '3 zones', statusColor: 'info' },
-  { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', icon: Droplets, color: 'from-blue-500 to-cyan-600', status: '5 outfalls active', statusColor: 'danger' },
-  { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', icon: Waves, color: 'from-cyan-500 to-teal-600', status: '2 advisories', statusColor: 'warning' },
-  { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', icon: Building2, color: 'from-indigo-500 to-blue-600', status: '122 assets', statusColor: 'info' },
-  { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', icon: Wind, color: 'from-slate-500 to-gray-600', status: 'AQI: Moderate', statusColor: 'info' },
-  { name: 'Environmental Health', href: '/environmental-monitoring/environmental-health', icon: Shield, color: 'from-amber-500 to-orange-600', status: '6 signals', statusColor: 'warning' },
-  { name: 'Utility Incidents', href: '/environmental-monitoring/utility-incidents', icon: AlertTriangle, color: 'from-red-500 to-orange-600', status: '3 active', statusColor: 'danger' },
-  { name: 'Dashboards', href: '/environmental-monitoring/dashboards', icon: BarChart3, color: 'from-violet-500 to-purple-600', status: 'Analytics', statusColor: 'default' },
+  { name: 'Solid Waste',                href: '/environmental-monitoring/solid-waste',               icon: Trash2,       color: 'from-gray-500 to-slate-600',   status: '8 hotspots',    statusColor: 'warning' },
+  { name: 'Bio-Waste',                  href: '/environmental-monitoring/bio-waste',                 icon: Cloud,        color: 'from-emerald-500 to-green-600', status: '3 zones',       statusColor: 'info'    },
+  { name: 'Sewage & Wastewater',        href: '/environmental-monitoring/sewage-wastewater',         icon: Droplets,     color: 'from-blue-500 to-cyan-600',     status: '5 outfalls',    statusColor: 'danger'  },
+  { name: 'Drinking Water',             href: '/environmental-monitoring/drinking-water',             icon: Waves,        color: 'from-cyan-500 to-teal-600',     status: '2 advisories',  statusColor: 'warning' },
+  { name: 'Critical Infrastructure',    href: '/environmental-monitoring/critical-infrastructure',    icon: Building2,    color: 'from-indigo-500 to-blue-600',   status: '122 assets',    statusColor: 'info'    },
+  { name: 'Air Pollution',              href: '/environmental-monitoring/air-pollution',              icon: Wind,         color: 'from-slate-500 to-gray-600',    status: 'AQI: Moderate', statusColor: 'info'    },
+  { name: 'Ecological Health',          href: '/environmental-monitoring/environmental-health',       icon: Shield,       color: 'from-amber-500 to-orange-600',  status: '6 signals',     statusColor: 'warning' },
+  { name: 'Environmental Resilience',   href: '/environmental-monitoring/environmental-resilience',  icon: ShieldCheck,  color: 'from-teal-500 to-cyan-600',     status: '30 systems',    statusColor: 'info'    },
+  { name: 'SDG Monitoring',             href: '/environmental-monitoring/sdg-monitoring',             icon: Globe,        color: 'from-green-500 to-emerald-700',  status: '36 indicators', statusColor: 'info'    },
+  { name: 'Dashboards',                 href: '/environmental-monitoring/dashboards',                 icon: BarChart3,    color: 'from-violet-500 to-purple-600', status: 'Analytics',     statusColor: 'default' },
 ];
 
 const districtStress = [
-  { district: 'Srinagar', stress: 'High', alerts: 12, trend: 'worsening' as const },
-  { district: 'Anantnag', stress: 'Moderate', alerts: 7, trend: 'stable' as const },
-  { district: 'Baramulla', stress: 'Moderate', alerts: 5, trend: 'improving' as const },
-  { district: 'Pulwama', stress: 'Moderate', alerts: 6, trend: 'worsening' as const },
-  { district: 'Budgam', stress: 'Low', alerts: 3, trend: 'stable' as const },
-  { district: 'Ganderbal', stress: 'Low', alerts: 2, trend: 'stable' as const },
+  { district: 'Srinagar', stress: 'High',     alerts: 12, trend: 'worsening'  as const },
+  { district: 'Anantnag', stress: 'Moderate', alerts: 7,  trend: 'stable'     as const },
+  { district: 'Baramulla', stress: 'Moderate',alerts: 5,  trend: 'improving'  as const },
+  { district: 'Pulwama',  stress: 'Moderate', alerts: 6,  trend: 'worsening'  as const },
+  { district: 'Budgam',   stress: 'Low',      alerts: 3,  trend: 'stable'     as const },
+  { district: 'Ganderbal',stress: 'Low',      alerts: 2,  trend: 'stable'     as const },
 ];
 
 const recentReports = [
-  { type: 'Sewage Overflow', location: 'Dal Lake periphery, Srinagar', severity: 'High', time: '2h ago', verified: true },
-  { type: 'Open Waste Burning', location: 'Nowhatta, Srinagar', severity: 'Moderate', time: '5h ago', verified: true },
-  { type: 'Drinking Water Contamination', location: 'Kulgam town', severity: 'High', time: '8h ago', verified: false },
-  { type: 'Bio-Waste Accumulation', location: 'Market area, Anantnag', severity: 'Low', time: '1d ago', verified: true },
-  { type: 'Air Quality Event', location: 'Traffic corridor, Baramulla', severity: 'Moderate', time: '1d ago', verified: true },
+  { type: 'Sewage Overflow',              location: 'Dal Lake periphery, Srinagar', severity: 'High',     time: '2h ago', verified: true  },
+  { type: 'Open Waste Burning',           location: 'Nowhatta, Srinagar',           severity: 'Moderate', time: '5h ago', verified: true  },
+  { type: 'Drinking Water Contamination', location: 'Kulgam town',                  severity: 'High',     time: '8h ago', verified: false },
+  { type: 'Bio-Waste Accumulation',       location: 'Market area, Anantnag',        severity: 'Low',      time: '1d ago', verified: true  },
+  { type: 'Air Quality Event',            location: 'Traffic corridor, Baramulla',   severity: 'Moderate', time: '1d ago', verified: true  },
 ];
 
 export default function EnvironmentalMonitoringOverview() {
@@ -61,17 +61,18 @@ export default function EnvironmentalMonitoringOverview() {
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
           </>}
-        subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and public ecological service risks across Kashmir"
+        subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and ecological service resilience across Kashmir"
         icon={<Factory className="w-6 h-6 text-emerald-400" />}
       />
 
       <ModuleKpiStrip kpis={[
-        { label: 'Active Alerts',    value: 38,    icon: 'AlertTriangle', color: 'text-red-400'     },
-        { label: 'Sewage Outfalls',  value: 5,     icon: 'Droplets',      color: 'text-blue-400'   },
-        { label: 'Waste Hotspots',   value: 8,     icon: 'Trash2',        color: 'text-amber-400'  },
-        { label: 'AQI Status',       value: 'Mod', icon: 'Wind',          color: 'text-slate-400'  },
-        { label: 'Water Advisories', value: 2,     icon: 'Shield',        color: 'text-cyan-400'   },
+        { label: 'Active Alerts',    value: 38,    icon: 'AlertTriangle', color: 'text-red-400'    },
+        { label: 'Sewage Outfalls',  value: 5,     icon: 'Droplets',      color: 'text-blue-400'  },
+        { label: 'Waste Hotspots',   value: 8,     icon: 'Trash2',        color: 'text-amber-400' },
+        { label: 'AQI Status',       value: 'Mod', icon: 'Wind',          color: 'text-slate-400' },
+        { label: 'Water Advisories', value: 2,     icon: 'Shield',        color: 'text-cyan-400'  },
       ]} />
+
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
         <GlobalFilterBar
           extraFilters={
@@ -80,14 +81,14 @@ export default function EnvironmentalMonitoringOverview() {
               onChange={setDomainFilter}
               placeholder="All Domains"
               options={[
-                { value: 'solid-waste',            label: 'Solid Waste'              },
-                { value: 'bio-waste',              label: 'Bio-Waste'                },
-                { value: 'sewage-wastewater',      label: 'Sewage & Wastewater'     },
-                { value: 'drinking-water',         label: 'Drinking Water'           },
-                { value: 'critical-infrastructure',label: 'Critical Infrastructure'  },
-                { value: 'air-pollution',          label: 'Air Pollution'            },
-                { value: 'environmental-health',   label: 'Environmental Health'     },
-                { value: 'utility-incidents',      label: 'Utility Incidents'        },
+                { value: 'solid-waste',              label: 'Solid Waste'              },
+                { value: 'bio-waste',                label: 'Bio-Waste'                },
+                { value: 'sewage-wastewater',        label: 'Sewage & Wastewater'      },
+                { value: 'drinking-water',           label: 'Drinking Water'           },
+                { value: 'critical-infrastructure',  label: 'Critical Infrastructure'  },
+                { value: 'air-pollution',            label: 'Air Pollution'            },
+                { value: 'environmental-health',     label: 'Ecological Health'        },
+                { value: 'environmental-resilience', label: 'Environmental Resilience' },
               ]}
             />
           }
@@ -117,7 +118,7 @@ export default function EnvironmentalMonitoringOverview() {
                         <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{mod.name}</h3>
                         <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
                       </div>
-                      <p className="text-xs text-slate-400">{(mod as any).desc || 'Environmental intelligence module'}</p>
+                      <p className="text-xs text-slate-400">Environmental intelligence module</p>
                     </div>
                   </div>
                 </Card>
@@ -233,7 +234,6 @@ export default function EnvironmentalMonitoringOverview() {
         </div>
       </section>
 
-      
     </main>
   );
 }

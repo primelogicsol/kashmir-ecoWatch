@@ -39,13 +39,11 @@ import { useScrolledHeader } from '@/hooks/useScrolledHeader';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Protected Areas', href: '/protected-network', hasDropdown: true },
-  { label: 'Biodiversity', href: '/biodiversity', hasDropdown: true },
-  { label: 'Water Systems', href: '/water-systems', hasDropdown: true },
-  { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true },
-  { label: 'Hazard Intelligence', href: '/hazard-intelligence', hasDropdown: true },
-  { label: 'Field Intelligence', href: '/field-reports', hasDropdown: true },
-  { label: 'Risk & Monitoring', href: '/risk-monitoring', hasDropdown: true },
+  { label: 'Protected Areas',         href: '/protected-network',        hasDropdown: true },
+  { label: 'Biodiversity',            href: '/biodiversity',             hasDropdown: true },
+  { label: 'Water Systems',           href: '/water-systems',            hasDropdown: true },
+  { label: 'Environmental Monitoring',href: '/environmental-monitoring', hasDropdown: true },
+  { label: 'Hazard Intelligence',     href: '/hazard-intelligence',      hasDropdown: true },
 ];
 
 interface DropdownItem {
@@ -168,7 +166,8 @@ export function PremiumStickyHeader() {
           { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets' },
           { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning' },
           { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water' },
-          { name: 'Utility Incidents & Advisories', href: '/environmental-monitoring/utility-incidents', desc: 'Service failures, emergency notices' },
+          { name: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity' },
+          { name: 'SDG Monitoring', href: '/environmental-monitoring/sdg-monitoring', desc: 'Environmental UN SDG performance tracking' },
         ];
       case 'Hazard Intelligence':
         return [
@@ -184,23 +183,7 @@ export function PremiumStickyHeader() {
           { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence' },
           { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring' },
         ];
-      case 'Field Intelligence':
-        return [
-          { name: '📊 Field Reports Overview', href: '/field-reports', desc: 'All field intelligence reports' },
-          { name: '📁 Monthly Environmental Bulletins', href: '/field-reports/monthly-bulletins', desc: 'Monthly environmental bulletins' },
-          { name: '🦋 Species Surveys', href: '/field-reports/species-surveys', desc: 'Wildlife and species surveys' },
-          { name: '💧 Wetland Assessments', href: '/field-reports/wetland-assessments', desc: 'Wetland health reports' },
-          { name: '⚠️ Risk Assessments', href: '/field-reports/risk-assessments', desc: 'Fire and hazard risk reports' },
-          { name: '🔬 Technical Reports', href: '/field-reports/technical-reports', desc: 'Scientific and technical studies' },
-          { name: '📚 Library Collections', href: '/library', desc: 'Archived and catalogued reports' },
-        ];
 
-      case 'Risk & Monitoring':
-        return [
-          { name: '⚠️ Overview', href: '/risk-monitoring', desc: 'Risk monitoring dashboard' },
-          { name: '📊 Dashboards', href: '/risk-monitoring/dashboards', desc: 'Risk monitoring dashboards' },
-          { name: '🦌 Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks', desc: 'Species threat intelligence' },
-        ];
       default:
         return [];
     }

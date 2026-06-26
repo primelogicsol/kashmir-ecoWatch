@@ -1,7 +1,6 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
@@ -458,7 +457,6 @@ export default function BirdingHotspotsPage() {
         )}
       </AnimatePresence>
 
-      <AdvancedFooter />
     </main>
   );
 }

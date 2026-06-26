@@ -1,7 +1,6 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -433,7 +432,6 @@ export default function AlertsPage() {
       </section>
 
       {/* Footer */}
-      <AdvancedFooter />
     </main>
   );
 }

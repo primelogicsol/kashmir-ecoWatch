@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -209,7 +209,7 @@ export default function DistrictProfileDetail() {
         </div>
       </div>
       
-      <AdvancedFooter />
+
     </main>
   );
 }

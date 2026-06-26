@@ -1,7 +1,6 @@
-'use client';
+﻿'use client';
 
 import React, { useRef } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -125,7 +124,8 @@ const moduleGroups: ModuleGroup[] = [
       { name: 'Critical Infrastructure', route: '/environmental-monitoring/critical-infrastructure', description: 'Reservoirs, utilities, waste assets', icon: FactoryIcon },
       { name: 'Air Pollution', route: '/environmental-monitoring/air-pollution', description: 'AQI, particulate, smoke, burning', icon: Wind },
       { name: 'Environmental Health Signals', route: '/environmental-monitoring/environmental-health', description: 'Odor, fish kill, stagnant water', icon: Thermometer },
-      { name: 'Utility Incidents & Advisories', route: '/environmental-monitoring/utility-incidents', description: 'Service failures, emergency notices', icon: Bell },
+      { name: 'Environmental Resilience', route: '/environmental-monitoring/environmental-resilience', description: 'Resilience, recovery & stress capacity', icon: Bell },
+      { name: 'SDG Monitoring', route: '/environmental-monitoring/sdg-monitoring', description: 'Environmental UN SDG performance tracking', icon: TrendingUp },
       { name: 'Environmental Monitoring Dashboards', route: '/environmental-monitoring/dashboards', description: 'District comparison and stress heatmaps', icon: TrendingUp },
     ],
   },
@@ -369,7 +369,6 @@ export default function ModuleDirectoryPage() {
         </section>
       ))}
 
-      <AdvancedFooter />
     </main>
   );
 }

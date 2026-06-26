@@ -1,11 +1,10 @@
-'use client';
+﻿'use client';
 
 import React, { useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Heading } from '@/components/common/Heading';
 import { 
   Footprints, Shield, Download, Lock, CheckCircle2, 
@@ -471,7 +470,6 @@ function RequestFormContent() {
           </div>
         </div>
       </div>
-      <AdvancedFooter />
     </main>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -32,7 +31,7 @@ export default function DistrictsPage() {
   const [sortBy, setSortBy] = useState<DistrictSortKey>('name');
 
   const stats = useMemo(() => getDistrictSummaryStats(), []);
-  
+
   const allDistricts = useMemo(() => {
     return getAllDistrictIntelligence(region);
   }, [region]);
@@ -40,7 +39,6 @@ export default function DistrictsPage() {
   const filteredDistricts = useMemo(() => {
     let result = [...allDistricts];
 
-    // Search filter
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       result = result.filter(d =>
@@ -50,12 +48,10 @@ export default function DistrictsPage() {
       );
     }
 
-    // Risk level filter
     if (riskLevel !== 'all') {
       result = result.filter(d => d.riskLevel === riskLevel);
     }
 
-    // Sort
     result = sortDistricts(result, sortBy);
 
     return result;
@@ -96,15 +92,16 @@ export default function DistrictsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-<Heading
-  title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Profiles</span>
-          </>}
-  subtitle="Integrated district-level environmental intelligence bringing together ecological systems, water networks, monitoring, risk, evidence, and public contribution across the platform. Geographic Scope: Currently covering Kashmir Valley districts, with select profiles from Jammu Division and Ladakh. Expanded J&K coverage in progress."
-  icon={<Map className="w-6 h-6 text-emerald-400" />}
-  label="District Intelligence"
-/>
+      <Heading
+        breadcrumbs={[{ label: 'Resources', href: '/research-library' }, { label: 'Regional Profiles' }]}
+        title={<>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Regional</span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
+        </>}
+        subtitle="Integrated district-level environmental intelligence bringing together ecological systems, water networks, monitoring, risk, evidence, and public contribution across the platform. Geographic Scope: Currently covering Kashmir Valley districts, with select profiles from Jammu Division and Ladakh. Expanded coverage in progress."
+        icon={<Map className="w-6 h-6 text-emerald-400" />}
+        label="District Intelligence"
+      />
 
       <section className="relative bg-slate-900/50">
         <div className="container mx-auto px-6 relative z-10 pb-8">
@@ -176,7 +173,7 @@ export default function DistrictsPage() {
                       className="cursor-pointer bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
                       onClick={() => setSearchQuery('')}
                     >
-                      Search: "{searchQuery}" <X className="w-3 h-3 ml-1" />
+                      Search: &quot;{searchQuery}&quot; <X className="w-3 h-3 ml-1" />
                     </Badge>
                   )}
                 </motion.div>
@@ -323,26 +320,18 @@ export default function DistrictsPage() {
                   and monitoring-linked stress indicators used for comparative district-level interpretation.
                 </p>
                 <div className="space-y-3 text-sm text-slate-400">
-                  <div className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-400 flex-shrink-0 mt-1.5" />
-                    <span><strong className="text-white">Flood Risk:</strong> River overflow potential, flash flood exposure, historical incident patterns</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0 mt-1.5" />
-                    <span><strong className="text-white">Landslide & Slope:</strong> Terrain instability, road vulnerability, slope saturation levels</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-1.5" />
-                    <span><strong className="text-white">Forest Fire:</strong> Fire weather indices, fuel dryness, historical fire frequency</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0 mt-1.5" />
-                    <span><strong className="text-white">Seismic Exposure:</strong> Earthquake zone classification, infrastructure readiness</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0 mt-1.5" />
-                    <span><strong className="text-white">Climate Vulnerability:</strong> Exposure, sensitivity, and adaptive capacity composite index</span>
-                  </div>
+                  {[
+                    { color: 'bg-red-400',    label: 'Flood Risk',            desc: 'River overflow potential, flash flood exposure, historical incident patterns' },
+                    { color: 'bg-orange-400', label: 'Landslide & Slope',     desc: 'Terrain instability, road vulnerability, slope saturation levels' },
+                    { color: 'bg-amber-400',  label: 'Forest Fire',           desc: 'Fire weather indices, fuel dryness, historical fire frequency' },
+                    { color: 'bg-purple-400', label: 'Seismic Exposure',      desc: 'Earthquake zone classification, infrastructure readiness' },
+                    { color: 'bg-blue-400',   label: 'Climate Vulnerability', desc: 'Exposure, sensitivity, and adaptive capacity composite index' },
+                  ].map(({ color, label, desc }) => (
+                    <div key={label} className="flex items-start gap-2">
+                      <div className={`w-1.5 h-1.5 rounded-full ${color} flex-shrink-0 mt-1.5`} />
+                      <span><strong className="text-white">{label}:</strong> {desc}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -370,48 +359,12 @@ export default function DistrictsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                {
-                  icon: Leaf,
-                  title: 'Biodiversity Intelligence',
-                  description: 'Species inventories, habitat mapping, threatened species tracking, and protected area overlap analysis.',
-                  color: 'from-emerald-500/20 to-teal-500/20',
-                  textColor: 'text-emerald-400',
-                },
-                {
-                  icon: Droplets,
-                  title: 'Water Systems',
-                  description: 'Lake health, river flow, wetland extent, groundwater trends, and water quality monitoring.',
-                  color: 'from-blue-500/20 to-indigo-500/20',
-                  textColor: 'text-blue-400',
-                },
-                {
-                  icon: Activity,
-                  title: 'Environmental Monitoring',
-                  description: 'Air quality, pollution signals, waste management, and environmental health indicators.',
-                  color: 'from-purple-500/20 to-pink-500/20',
-                  textColor: 'text-purple-400',
-                },
-                {
-                  icon: AlertTriangle,
-                  title: 'Risk & Monitoring',
-                  description: 'Multi-hazard risk, active alerts, emergency response capacity, and infrastructure vulnerability.',
-                  color: 'from-red-500/20 to-orange-500/20',
-                  textColor: 'text-red-400',
-                },
-                {
-                  icon: FileText,
-                  title: 'Evidence Library',
-                  description: 'Linked research studies, field reports, assessments, and policy documents.',
-                  color: 'from-amber-500/20 to-orange-500/20',
-                  textColor: 'text-amber-400',
-                },
-                {
-                  icon: Map,
-                  title: 'Spatial & Atlas Context',
-                  description: 'GIS mapping, hazard overlays, habitat boundaries, and administrative boundaries.',
-                  color: 'from-cyan-500/20 to-blue-500/20',
-                  textColor: 'text-cyan-400',
-                },
+                { icon: Leaf,          title: 'Biodiversity Intelligence',  color: 'from-emerald-500/20 to-teal-500/20',  textColor: 'text-emerald-400', description: 'Species inventories, habitat mapping, threatened species tracking, and protected area overlap analysis.' },
+                { icon: Droplets,      title: 'Water Systems',              color: 'from-blue-500/20 to-indigo-500/20',   textColor: 'text-blue-400',    description: 'Lake health, river flow, wetland extent, groundwater trends, and water quality monitoring.' },
+                { icon: Activity,      title: 'Environmental Monitoring',   color: 'from-purple-500/20 to-pink-500/20',   textColor: 'text-purple-400',  description: 'Air quality, pollution signals, waste management, and environmental health indicators.' },
+                { icon: AlertTriangle, title: 'Risk & Monitoring',          color: 'from-red-500/20 to-orange-500/20',    textColor: 'text-red-400',     description: 'Multi-hazard risk, active alerts, emergency response capacity, and infrastructure vulnerability.' },
+                { icon: FileText,      title: 'Evidence Library',           color: 'from-amber-500/20 to-orange-500/20',  textColor: 'text-amber-400',   description: 'Linked research studies, field reports, assessments, and policy documents.' },
+                { icon: Map,           title: 'Spatial & Atlas Context',    color: 'from-cyan-500/20 to-blue-500/20',     textColor: 'text-cyan-400',    description: 'GIS mapping, hazard overlays, habitat boundaries, and administrative boundaries.' },
               ].map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -435,8 +388,6 @@ export default function DistrictsPage() {
           </motion.div>
         </div>
       </section>
-
-      
     </main>
   );
 }

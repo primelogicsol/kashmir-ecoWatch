@@ -1,8 +1,7 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { ReportCard } from '@/components/field-reports/ReportCard';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
@@ -65,7 +64,6 @@ export default function WaterSystemsReportsPage() {
         </div>
       </section>
 
-      <AdvancedFooter />
     </main>
   );
 }
