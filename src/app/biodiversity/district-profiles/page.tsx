@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -41,7 +41,16 @@ export default function DistrictProfilesPage() {
               <Building2 className="w-6 h-6 text-violet-400" />
               <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">Biodiversity Intelligence</span>
             </div>
-            <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">District Biodiversity Profiles</h1>
+            <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+              <span className="flex items-center gap-5 whitespace-nowrap pb-2">
+                <span
+                  className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
+                  style={{ fontSize: '0.58em' }}
+                >KEW</span>
+                <span>District Biodiversity</span>
+              </span>
+              <span className="block bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
+            </h1>
             <p className="text-lg text-slate-400 mb-6">
               Real-time regional biodiversity intelligence aggregated directly from Kashmir Eco Watch databases — species richness, key habitats, verified sightings, and ecological intelligence.
             </p>

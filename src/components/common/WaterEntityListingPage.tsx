@@ -242,14 +242,21 @@ export function WaterEntityListingPage({
         label="Water Systems"
         icon={<LucideIcon className="w-6 h-6 text-emerald-400" />}
         title={(() => {
-          // Rule: Line 1 = "[Module Name] Across"
-          //       Line 2 = "Western Himalayan"  (accent gradient)
-          const acrossIdx = title.indexOf(' Across');
-          const line1 = acrossIdx !== -1 ? title.slice(0, acrossIdx + ' Across'.length) : title.split(' ').slice(0, -1).join(' ');
-          const line2 = acrossIdx !== -1 ? title.slice(acrossIdx + ' Across'.length).trim() : title.split(' ').slice(-1)[0];
+          // Rule: Line 1 = "Western Himalayan", Line 2 = page subject
+          const WH = 'Western Himalayan';
+          const line1 = WH;
+          const line2 = title.startsWith(WH + ' ') ? title.slice(WH.length + 1) : title;
           return (
             <>
-              <span className="block leading-[1.12] overflow-visible whitespace-nowrap">{line1}</span>
+              <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+                <span
+                  className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
+                  style={{ fontSize: '0.58em' }}
+                >
+                  KEW
+                </span>
+                <span>{line1}</span>
+              </span>
               <span className={`block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {line2}
               </span>
@@ -281,6 +288,18 @@ export function WaterEntityListingPage({
             </Button>
           </div>
         }
+        images={[
+          '/images/water-module/water1.png',
+          '/images/water-module/rivers.png',
+          '/images/water-module/Wetlands.png',
+          '/images/water-module/watersheds.png',
+          '/images/water-module/springs.jpg',
+          '/images/water-module/water-lake.jpg',
+          '/images/water-module/water-glacier.jpg',
+          '/images/water-module/water-wetland.jpg',
+          '/images/water-module/water-river.jpg',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI Strip ──────────────────────────────────────────────────────────────── */}

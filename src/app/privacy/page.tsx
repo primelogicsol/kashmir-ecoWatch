@@ -244,14 +244,22 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        breadcrumbs={[{ label: 'Legal', href: '/legal-notice' }, { label: 'Privacy Policy' }]}
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Privacy</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Policy</span>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span
+              className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
+              style={{ fontSize: '0.58em' }}
+            >
+              KEW
+            </span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Privacy Policy</span>
         </>}
         subtitle="Kashmir EcoWatch is committed to protecting your privacy and handling personal information responsibly."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}
-        label="Legal"
+        label="Privacy Policy"
       />
 
       <section className="py-8 md:py-12">

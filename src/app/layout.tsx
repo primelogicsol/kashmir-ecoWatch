@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { PremiumStickyHeader } from '@/components/sections/PremiumStickyHeader';
 import './globals.css';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Providers } from '@/app/providers';
+import { SafeHeader } from '@/components/common/SafeHeader';
+import { SafeFooter } from '@/components/common/SafeFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,11 +42,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <PremiumStickyHeader />
+        <SafeHeader />
         <Providers>
           {children}
         </Providers>
-        <AdvancedFooter />
+        <SafeFooter />
       </body>
     </html>
   );

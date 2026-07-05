@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -75,7 +75,13 @@ export default function PollinatorActivityPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Western Himalayan Pollinator Activity"
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Pollinator Activity</span>
+        </>}
         subtitle="Master phenology database tracking flowering-linked pollinator windows, orchard dynamics, and alpine ecology."
         icon={<Bug className="w-6 h-6 text-fuchsia-400" />}
         label="Biodiversity Intelligence"

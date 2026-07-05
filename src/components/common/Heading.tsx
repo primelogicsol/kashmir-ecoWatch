@@ -18,6 +18,7 @@ interface HeadingProps {
   label?: string;
   badge?: React.ReactNode;
   images?: string[];
+  overlayClassName?: string;
   breadcrumbs?: Breadcrumb[];
   actions?: React.ReactNode;
   gridOverlay?: boolean;
@@ -32,6 +33,7 @@ export function Heading({
   label,
   badge,
   images = ['/images/protected-network.png'],
+  overlayClassName,
   breadcrumbs,
   actions,
   gridOverlay = false,
@@ -42,7 +44,7 @@ export function Heading({
 
   return (
     <div className={cn('relative bg-slate-900/50 overflow-visible', className)}>
-      <BackgroundCarousel images={images} />
+      <BackgroundCarousel images={images} overlayClassName={overlayClassName} />
 
       {gridOverlay && (
         <div className="absolute inset-0 bg-grid" />

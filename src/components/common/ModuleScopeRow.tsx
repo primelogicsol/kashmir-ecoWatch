@@ -80,7 +80,7 @@ export function ModuleScopeRow({
   onScopeChange,
 }: ModuleScopeRowProps) {
   const { filter, setScope } = useGlobalFilter();
-  const scopes = [...GEOGRAPHY.scopes];
+  const scopes = GEOGRAPHY.scopes.filter(s => s !== 'All');
 
   const handleScope = (scope: string) => {
     setScope(scope as Scope | 'All');

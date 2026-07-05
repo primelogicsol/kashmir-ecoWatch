@@ -255,14 +255,22 @@ export default function AccessibilityPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        breadcrumbs={[{ label: 'Legal', href: '/legal-notice' }, { label: 'Accessibility Statement' }]}
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Accessibility Statement' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Accessibility</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Statement</span>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span
+              className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
+              style={{ fontSize: '0.58em' }}
+            >
+              KEW
+            </span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Accessibility Statement</span>
         </>}
         subtitle="Kashmir EcoWatch is committed to providing an inclusive, accessible, and user-friendly experience for everyone — across all abilities, devices, and assistive technologies."
         icon={<Eye className="w-6 h-6 text-emerald-400" />}
-        label="Legal"
+        label="Accessibility Statement"
       />
 
       <section className="py-8 md:py-12">

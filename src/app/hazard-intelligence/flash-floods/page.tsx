@@ -281,7 +281,10 @@ export default function FlashFloodsPage() {
       <Heading
         label="Hazard Intelligence"
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+              <span>Western Himalayan</span>
+            </span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-blue-300 bg-clip-text text-transparent">Flash Flood Intelligence</span>
           </>}
         subtitle="Monitoring flash flood zones across nallahs, glacial catchments, and urban corridors with real-time alert intelligence, historical casualty data, and trigger classification."
@@ -290,6 +293,14 @@ export default function FlashFloodsPage() {
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
           { label: 'Flash Floods' },
+        ]}
+                images={[
+          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+          '/images/hazard-intelligence/AVA.webp',
+          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
+          '/images/hazard-intelligence/LANDSLIDE.jpg',
+          '/images/hazard-intelligence/FLOODS.jpg',
+          '/images/hazard-intelligence/SEWAGE.jpg',
         ]}
       />
 

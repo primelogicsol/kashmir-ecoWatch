@@ -133,7 +133,13 @@ export default function ProtectedNetworkPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<><span className="block whitespace-nowrap">Western Himalayan Protected</span><span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Area Network</span></>}
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Area Network</span>
+        </>}
         subtitle="A geospatial conservation intelligence layer mapping Kashmir's protected areas, wetlands, wildlife corridors, and sensitive ecosystems. Integrating biodiversity data, habitat assessments, and real-time threat signals for monitoring and spatial analysis."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}
         label="Conservation Intelligence"

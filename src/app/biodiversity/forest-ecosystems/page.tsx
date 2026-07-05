@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -109,7 +109,13 @@ export default function ForestEcosystemsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title="Western Himalayan Forest Ecosystems"
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Forest Ecosystems</span>
+        </>}
         subtitle="The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics."
         icon={<TreePine className="w-6 h-6 text-emerald-400" />}
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Forest Ecosystems' }]}

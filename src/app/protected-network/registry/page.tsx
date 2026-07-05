@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
@@ -162,7 +162,10 @@ export default function ProtectedAreasRegistryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+              <span>Western Himalayan</span>
+            </span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Areas Registry</span>
           </>}
         subtitle="Complete inventory of all protected areas across the global ecological scope. Filter by scope, category, and search by name. Integrated with the entire regional database."

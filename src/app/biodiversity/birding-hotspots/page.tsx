@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -60,7 +60,13 @@ export default function BirdingHotspotsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title="Western Himalayan Observation Hotspots"
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Observation Hotspots</span>
+        </>}
         subtitle="A scientifically validated directory of the region's most important habitats for birding, conservation monitoring, and citizen science across the Kashmir Eco Watch geography."
         icon={<Wind className="w-6 h-6 text-sky-400" />}
         label="Biodiversity Intelligence"

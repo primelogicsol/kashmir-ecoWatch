@@ -108,7 +108,13 @@ export default function WaterSystemsDashboardsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Water Systems Analytics"
-        title="Western Himalayan Water Dashboards"
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Water Dashboards</span>
+        </>}
         subtitle="Real-time analytics, trends, and heatmaps for hydrological monitoring, water quality tracking, and aquatic ecosystem health across Kashmir."
         icon={<BarChart3 className="w-6 h-6 text-cyan-400" />}
         breadcrumbs={[{ label: 'Water Systems', href: '/water-systems' }, { label: 'Dashboards' }]}
@@ -134,6 +140,18 @@ export default function WaterSystemsDashboardsPage() {
             </Button>
           </>
         }
+        images={[
+          '/images/water-module/water1.png',
+          '/images/water-module/rivers.png',
+          '/images/water-module/Wetlands.png',
+          '/images/water-module/watersheds.png',
+          '/images/water-module/springs.jpg',
+          '/images/water-module/water-lake.jpg',
+          '/images/water-module/water-glacier.jpg',
+          '/images/water-module/water-wetland.jpg',
+          '/images/water-module/water-river.jpg',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={[

@@ -163,7 +163,13 @@ export default function BiodiversityDashboardsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Analytics & Trends"
-        title="Biodiversity Intelligence Dashboards"
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Biodiversity Intelligence</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Dashboards</span>
+        </>}
         subtitle={`Comprehensive analytics covering ${biodiversityMetrics.totalSpecies.toLocaleString()} species across ${biodiversityIntelligenceMetrics.totalHabitats} habitat systems and ${biodiversityIntelligenceMetrics.totalDistricts} districts — species composition, conservation status distribution, sightings trends, district comparisons, habitat diversity, and threat analysis.`}
         icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Dashboards' }]}

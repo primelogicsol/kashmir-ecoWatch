@@ -134,7 +134,27 @@ export function BiodiversityCategoryPage({
     <main className="min-h-screen bg-slate-950">
       <Heading
         label="Biodiversity Intelligence"
-        title={title}
+        title={(() => {
+          const parts = title.split(' ');
+          const firstTwo = parts.slice(0, 2).join(' ');
+          const rest = parts.slice(2).join(' ');
+          return (
+            <>
+              <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+                <span
+                  className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
+                  style={{ fontSize: '0.58em' }}
+                >
+                  KEW
+                </span>
+                <span>{firstTwo}</span>
+              </span>
+              <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                {rest}
+              </span>
+            </>
+          );
+        })()}
         subtitle={subtitle}
         icon={<Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />}
         gridOverlay

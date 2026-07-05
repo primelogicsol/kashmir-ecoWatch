@@ -1,12 +1,12 @@
 'use client';
 
+import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { ImmersiveHero } from '@/components/sections/ImmersiveHero';
 import { AsymmetricModuleSurface } from '@/components/sections/AsymmetricModuleSurface';
 import { ExpandableLivePanels } from '@/components/sections/ExpandableLivePanels';
 import { NextGenDashboardPreview } from '@/components/sections/NextGenDashboardPreview';
 import { FeaturedEntityStrip } from '@/components/sections/FeaturedEntityStrip';
 import { AlertResponseSystem } from '@/components/sections/AlertResponseSystem';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { PublicParticipationIntelligence } from '@/components/sections/PublicParticipationIntelligence';
 import { DistrictIntelligenceStrip } from '@/components/sections/DistrictIntelligenceStrip';
 import { OnboardingStrip } from '@/components/sections/OnboardingStrip';
@@ -29,26 +29,44 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Band 1: Hero Command Surface */}
-      <ImmersiveHero />
+      <ErrorBoundary sectionName="Hero">
+        <ImmersiveHero />
+      </ErrorBoundary>
 
       {/* Band 2: Core Intelligence Modules */}
-      <AsymmetricModuleSurface />
+      <ErrorBoundary sectionName="Intelligence Modules">
+        <AsymmetricModuleSurface />
+      </ErrorBoundary>
 
       {/* Band 3: Atlas + Live Monitoring */}
-      <MapIntelligenceCore />
-      <ExpandableLivePanels />
+      <ErrorBoundary sectionName="Map Intelligence">
+        <MapIntelligenceCore />
+      </ErrorBoundary>
+      <ErrorBoundary sectionName="Live Panels">
+        <ExpandableLivePanels />
+      </ErrorBoundary>
 
       {/* Band 4: District Intelligence & Featured Entities */}
-      <OnboardingStrip />
-      <DistrictIntelligenceStrip />
-      <FeaturedEntityStrip />
+      <ErrorBoundary sectionName="Onboarding">
+        <OnboardingStrip />
+      </ErrorBoundary>
+      <ErrorBoundary sectionName="District Intelligence">
+        <DistrictIntelligenceStrip />
+      </ErrorBoundary>
+      <ErrorBoundary sectionName="Featured Entities">
+        <FeaturedEntityStrip />
+      </ErrorBoundary>
 
       {/* Band 5: Participation, Dashboards & Alerts */}
-      <PublicParticipationIntelligence />
-      <NextGenDashboardPreview />
-      <AlertResponseSystem />
-
-      
+      <ErrorBoundary sectionName="Public Participation">
+        <PublicParticipationIntelligence />
+      </ErrorBoundary>
+      <ErrorBoundary sectionName="Dashboard Preview">
+        <NextGenDashboardPreview />
+      </ErrorBoundary>
+      <ErrorBoundary sectionName="Alert System">
+        <AlertResponseSystem />
+      </ErrorBoundary>
     </main>
   );
 }

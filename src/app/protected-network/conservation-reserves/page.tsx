@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import { ProtectedCategoryPage } from '@/components/common/ProtectedCategoryPage';
@@ -30,7 +30,10 @@ export default function ConservationReservesPage() {
   return (
     <ProtectedCategoryPage
       title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+              <span>Western Himalayan</span>
+            </span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Conservation Reserves</span>
           </>}
       subtitle="Community-supported conservation landscapes, ecological buffers, and transition zones across Kashmir. Integrates land-use intelligence, community stewardship data, habitat assessments, and ecological condition monitoring."
