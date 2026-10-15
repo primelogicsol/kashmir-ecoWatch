@@ -247,7 +247,7 @@ const ecologicalHealthRegistry: EcologicalHealthRecord[] = [
     trend: 'Stable', lastUpdated: '2026-06-01', notes: 'Neelum Valley temperate forests under logging and landslide pressure.',
   },
   {
-    id: 'kew-eh-017', region: 'Rawalakot', district: 'Poonch (AJK)', scope: 'Transboundary / Extended',
+    id: 'kew-eh-024', region: 'Rawalakot', district: 'Poonch (AJK)', scope: 'Transboundary / Extended',
     ecosystemType: 'Sub-Alpine', healthIndex: 74, healthGrade: 'Healthy', stressLevel: 'Low',
     waterScore: 78, vegetationScore: 75, biodiversityScore: 72, soilScore: 70,
     hazardExposure: 'Low', degradationRisk: 'Low', restorationPriority: 'Low',
@@ -255,7 +255,7 @@ const ecologicalHealthRegistry: EcologicalHealthRecord[] = [
     trend: 'Stable', lastUpdated: '2026-05-28', notes: 'Sub-alpine grasslands showing stable cover; limited ground data.',
   },
   {
-    id: 'kew-eh-018', region: 'Gilgit', district: 'Gilgit', scope: 'Transboundary / Extended',
+    id: 'kew-eh-025', region: 'Gilgit', district: 'Gilgit', scope: 'Transboundary / Extended',
     ecosystemType: 'Alpine', healthIndex: 79, healthGrade: 'Healthy', stressLevel: 'Low',
     waterScore: 82, vegetationScore: 68, biodiversityScore: 84, soilScore: 80,
     hazardExposure: 'Moderate', degradationRisk: 'Low', restorationPriority: 'Low',
@@ -263,7 +263,7 @@ const ecologicalHealthRegistry: EcologicalHealthRecord[] = [
     trend: 'Stable', lastUpdated: '2026-05-25', notes: 'Karakoram range ecosystem; GLOF risk from glacial lake expansion.',
   },
   {
-    id: 'kew-eh-019', region: 'Hunza', district: 'Hunza-Nagar', scope: 'Transboundary / Extended',
+    id: 'kew-eh-026', region: 'Hunza', district: 'Hunza-Nagar', scope: 'Transboundary / Extended',
     ecosystemType: 'Alpine', healthIndex: 85, healthGrade: 'Healthy', stressLevel: 'Low',
     waterScore: 90, vegetationScore: 72, biodiversityScore: 88, soilScore: 84,
     hazardExposure: 'Low', degradationRisk: 'Low', restorationPriority: 'Low',
@@ -271,7 +271,7 @@ const ecologicalHealthRegistry: EcologicalHealthRecord[] = [
     trend: 'Stable', lastUpdated: '2026-05-20', notes: 'High-altitude ecosystem in excellent condition; minimal anthropogenic pressure.',
   },
   {
-    id: 'kew-eh-020', region: 'Skardu', district: 'Skardu', scope: 'Transboundary / Extended',
+    id: 'kew-eh-027', region: 'Skardu', district: 'Skardu', scope: 'Transboundary / Extended',
     ecosystemType: 'Arid', healthIndex: 76, healthGrade: 'Healthy', stressLevel: 'Low',
     waterScore: 80, vegetationScore: 62, biodiversityScore: 80, soilScore: 82,
     hazardExposure: 'Moderate', degradationRisk: 'Low', restorationPriority: 'Low',
