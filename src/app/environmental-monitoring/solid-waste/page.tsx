@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import {
   Trash2, ChevronRight, Droplets, MapPin, 
-  Shield, Activity, CheckCircle, Search, 
+  Shield, Activity, CheckCircle, Search, Database,
   ChevronLeft, Building2, Factory, AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
