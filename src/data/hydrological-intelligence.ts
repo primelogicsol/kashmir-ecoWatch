@@ -242,7 +242,7 @@ function calculateThreatPressureScore(lake: WaterEntity): number {
 }
 
 export function getLakeHealthScorecard(lakeSlug: string): LakeHealthScorecard | null {
-  const lake = lakesData.find((l) => l.slug === lakeSlug);
+  const lake = lakesData.find((l) => l?.slug === lakeSlug);
   if (!lake) return null;
 
   const waterQualityScore = calculateWaterQualityScore(lake.waterQuality);
@@ -342,7 +342,7 @@ function getTrophicStateLabel(score: number): string {
 // ============================================================================
 
 export function getSpringVulnerability(springSlug: string): SpringVulnerability | null {
-  const spring = springsData.find((s) => s.slug === springSlug);
+  const spring = springsData.find((s) => s?.slug === springSlug);
   if (!spring) return null;
 
   // Discharge trend from hydrological data
@@ -399,7 +399,7 @@ export function getAllSpringVulnerability(): SpringVulnerability[] {
 // ============================================================================
 
 export function getWetlandCondition(wetlandSlug: string): WetlandCondition | null {
-  const wetland = wetlandsData.find((w) => w.slug === wetlandSlug);
+  const wetland = wetlandsData.find((w) => w?.slug === wetlandSlug);
   if (!wetland) return null;
 
   // Hydrology assessment
@@ -489,7 +489,7 @@ export function getAllWetlandConditions(): WetlandCondition[] {
 // ============================================================================
 
 export function getRiverCorridorStress(riverSlug: string): RiverCorridorStress | null {
-  const river = riversData.find((r) => r.slug === riverSlug);
+  const river = riversData.find((r) => r?.slug === riverSlug);
   if (!river) return null;
 
   // Riparian buffer (estimated)
@@ -569,7 +569,7 @@ export function getAllRiverCorridorStress(): RiverCorridorStress[] {
 // ============================================================================
 
 export function getWaterQualityTrends(siteSlug: string): WaterQualityTrend[] {
-  const site = waterQualitySites.find((s) => s.slug === siteSlug);
+  const site = waterQualitySites.find((s) => s?.slug === siteSlug);
   if (!site || !site.waterQuality) return [];
 
   const trends: WaterQualityTrend[] = [];

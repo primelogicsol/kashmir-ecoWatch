@@ -11861,10110 +11861,6 @@ export const riversData: WaterEntity[] = [
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "river-rambiara",
-    "slug": "rambiara-river",
-    "name": "Rambiara River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major mountain stream that dries up significantly in the autumn but is highly prone to sudden, severe summer flash floods.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 58,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.5855,
-      "lng": 74.5218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doodhganga",
-    "slug": "doodhganga-river",
-    "name": "Doodhganga River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Its name literally means \"River of Milk\" due to its frothy white flow in high elevations. Now highly degraded downstream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 46,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 33.7842,
-      "lng": 74.5518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-pohru",
-    "slug": "pohru-river",
-    "name": "Pohru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Brings immense silt load to the Jhelum River, which has significantly choked the Jhelum outflow channel near Baramulla.",
-    "district": "Multiple",
-    "watershed": "Pohru Basin",
-    "length": 56,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.4315,
-      "lng": 74.2818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-madhumati",
-    "slug": "madhumati-stream",
-    "name": "Madhumati Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A glacier-fed stream with significant flow throughout the year, especially during summer snowmelt.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 38,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.4518,
-      "lng": 74.8815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-erin",
-    "slug": "erin-stream",
-    "name": "Erin Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major source of freshwater for Wular Lake. Very sensitive alpine catchment.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 32,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.4358,
-      "lng": 74.9215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sandran",
-    "slug": "sandran-river",
-    "name": "Sandran River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows parallel to the Srinagar-Jammu National Highway (NH 44). Highly dynamic riverbed shifting.",
-    "district": "Anantnag",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.5518,
-      "lng": 75.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ningli",
-    "slug": "ningli-stream",
-    "name": "Ningli Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Originates from a high alpine glacial lake at the base of Apharwat peak.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 36,
-    "elevation": 3840,
-    "coordinates": {
-      "lat": 34.0255,
-      "lng": 74.3518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shaliganga",
-    "slug": "shaliganga-stream",
-    "name": "Shaliganga Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Flows through the beautiful meadows of Doodhpathri tourist resort.",
-    "district": "Budgam",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 32,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.8815,
-      "lng": 74.5242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ferozpora",
-    "slug": "ferozpora-nallah",
-    "name": "Ferozpora Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A trout-bearing stream in its upper reaches. Forms a vital hydrological connection to the Mirgund wetland.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 45,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.0682,
-      "lng": 74.3215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sukhnag",
-    "slug": "sukhnag-river",
-    "name": "Sukhnag River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Known for its beautiful waterfalls (Sukhnag waterfall) in upper reaches. Excellent sport fishing stream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 52,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.9215,
-      "lng": 74.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-tsuntkol",
-    "slug": "tsunt-kol",
-    "name": "Tsunt Kol",
-    "type": "stream",
-    "category": "Urban Stream",
-    "description": "A historical urban loop channel regulating the water levels of Dal Lake. Heavily encroached.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 3.5,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0855,
-      "lng": 74.8315
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-braricumb",
-    "slug": "brari-nambal-cut",
-    "name": "Brari Nambal Cut",
-    "type": "stream",
-    "category": "Drainage Channel",
-    "description": "Crucial for flushing Brari Nambal lagoon. Restoring this channel is vital to save the lagoon from complete eutrophication.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 1.2,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0982,
-      "lng": 74.8155
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "channel-srinagarflood",
-    "slug": "srinagar-flood-spill-channel",
-    "name": "Srinagar Flood Spill Channel",
-    "type": "stream",
-    "category": "Flood Channel",
-    "description": "Designed during the early 20th century to divert excess floodwaters of Jhelum away from Srinagar city.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 1590,
-    "coordinates": {
-      "lat": 33.9115,
-      "lng": 75.0118
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "mixed",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-chenab",
-    "slug": "chenab-river",
-    "name": "Chenab River",
-    "type": "river",
-    "category": "River",
-    "description": "One of the primary rivers of the Indus Water Treaty. Carries massive silt loads from glacial erosion in Kishtwar.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 960,
-    "elevation": 2280,
-    "coordinates": {
-      "lat": 32.5714,
-      "lng": 76.9728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tawi",
-    "slug": "tawi-river",
-    "name": "Tawi River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Regarded as a sacred river (Surya Putri) by locals. The Tawi riverfront project is undergoing construction to restore banks.",
-    "district": "Multiple",
-    "watershed": "Tawi Basin",
-    "length": 141,
-    "elevation": 4000,
-    "coordinates": {
-      "lat": 32.8815,
-      "lng": 75.7742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ravi",
-    "slug": "ravi-river",
-    "name": "Ravi River",
-    "type": "river",
-    "category": "River",
-    "description": "Serves as the international border between India and Pakistan along several stretches in Kathua.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 720,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 32.3218,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ujh",
-    "slug": "ujh-river",
-    "name": "Ujh River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major flash-flood-prone river in Kathua district. Flows through steep gorges in upper reaches.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 65,
-    "elevation": 3200,
-    "coordinates": {
-      "lat": 32.8518,
-      "lng": 75.6842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-basantar",
-    "slug": "basantar-river",
-    "name": "Basantar River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major seasonal river in the Samba district. Historical battle site (Battle of Basantar, 1971).",
-    "district": "Samba",
-    "watershed": "Ravi Basin Catchment",
-    "length": 48,
-    "elevation": 1200,
-    "coordinates": {
-      "lat": 32.7215,
-      "lng": 75.1842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-munawartawi",
-    "slug": "munawar-tawi",
-    "name": "Munawar Tawi",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major left-bank tributary of the Chenab. Crosses the Line of Control into Pakistan-administered territory before joining the Chenab.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 110,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.4815,
-      "lng": 74.3242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ans",
-    "slug": "ans-river",
-    "name": "Ans River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "An important right-bank tributary of the Chenab River. Flows through a deep, rugged mountainous valley.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 62,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.3755,
-      "lng": 74.6218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-marusudar",
-    "slug": "marusudar-river",
-    "name": "Marusudar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The largest tributary of the Chenab River. Flows through the beautiful valleys of Warwan and Marwah.",
-    "district": "Kishtwar",
-    "watershed": "Chenab Basin Catchment",
-    "length": 133,
-    "elevation": 5100,
-    "coordinates": {
-      "lat": 33.8542,
-      "lng": 75.9218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-devak",
-    "slug": "devak-river",
-    "name": "Devak River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Revered as the elder sister of River Ganga. Undergoing restoration under the National River Conservation Plan (NRCP).",
-    "district": "Multiple",
-    "watershed": "Ravi Basin Catchment",
-    "length": 55,
-    "elevation": 1600,
-    "coordinates": {
-      "lat": 32.9315,
-      "lng": 75.1742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neeru",
-    "slug": "neeru-nallah",
-    "name": "Neeru Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A major trout-rich stream in the Jammu division. Extremely scenic alpine course.",
-    "district": "Doda",
-    "watershed": "Chenab Basin Catchment",
-    "length": 30,
-    "elevation": 3900,
-    "coordinates": {
-      "lat": 32.8715,
-      "lng": 75.6518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-zanskar",
-    "slug": "zanskar-river",
-    "name": "Zanskar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Famous for the winter \"Chadar Trek\" where hikers walk on the frozen ice riverbed. Highly glaciated basin.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 3700,
-    "coordinates": {
-      "lat": 33.4755,
-      "lng": 76.8818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shyok",
-    "slug": "shyok-river",
-    "name": "Shyok River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major transboundary river originating near the Line of Actual Control (LAC). Historic trade route river.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 550,
-    "elevation": 5300,
-    "coordinates": {
-      "lat": 35.2215,
-      "lng": 77.6328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-nubra",
-    "slug": "nubra-river",
-    "name": "Nubra River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Fed entirely by the melting waters of the Siachen Glacier. Known for thermal springs along its banks (Panamik).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5400,
-    "coordinates": {
-      "lat": 35.5342,
-      "lng": 77.0515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-suru",
-    "slug": "suru-river",
-    "name": "Suru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A key river defining the geography of Kargil. Encircles the Nun Kun mountain massif.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 185,
-    "elevation": 4400,
-    "coordinates": {
-      "lat": 33.9818,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-dras",
-    "slug": "dras-river",
-    "name": "Dras River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows through the second coldest inhabited place in the world. Merges with Shingo River near the Line of Control.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 86,
-    "elevation": 3950,
-    "coordinates": {
-      "lat": 34.2542,
-      "lng": 75.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-galwan",
-    "slug": "galwan-river",
-    "name": "Galwan River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major geopolitical site. Flow is fast and cold, draining the high Aksai Chin plateau.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5200,
-    "coordinates": {
-      "lat": 34.7818,
-      "lng": 78.8828
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-changchenmo",
-    "slug": "chang-chenmo-river",
-    "name": "Chang Chenmo River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Geopolitically sensitive transboundary stream near the Line of Actual Control (LAC).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 125,
-    "elevation": 5500,
-    "coordinates": {
-      "lat": 34.3315,
-      "lng": 79.1728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hanle",
-    "slug": "hanle-river",
-    "name": "Hanle River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major high-altitude wetland corridor supporting endangered Himalayan avifauna. Dark Sky Reserve zone.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 92,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 32.6518,
-      "lng": 79.0342
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doda",
-    "slug": "doda-river",
-    "name": "Doda River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Forms the main hydrological source of the Padum valley in Zanskar. Fed by the largest glacier in Ladakh accessible by road.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 79,
-    "elevation": 4450,
-    "coordinates": {
-      "lat": 33.9515,
-      "lng": 76.4328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tsarap",
-    "slug": "tsarap-river",
-    "name": "Tsarap River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A wildly turbulent river that flows beneath the famous cliff-side Phuktal Monastery. Landslide block in 2015 formed a 15km lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 182,
-    "elevation": 4950,
-    "coordinates": {
-      "lat": 32.8855,
-      "lng": 77.3718
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-jhelum-ajk",
-    "slug": "jhelum-river-ajk-section",
-    "name": "Jhelum River (AJK Section)",
-    "type": "river",
-    "category": "River",
-    "description": "The diversion of water for the Neelum-Jhelum project has significantly reduced the flow through Muzaffarabad city, causing environmental concerns.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 725,
-    "elevation": 1000,
-    "coordinates": {
-      "lat": 34.1142,
-      "lng": 73.8825
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neelum",
-    "slug": "neelum-river",
-    "name": "Neelum River",
-    "type": "river",
-    "category": "River",
-    "description": "A major transboundary river. Known as Kishanganga in India and Neelum in Pakistan. Domel is a major geographical confluence.",
-    "district": "Multiple",
-    "watershed": "Kishanganga Basin",
-    "length": 245,
-    "elevation": 2400,
-    "coordinates": {
-      "lat": 34.6182,
-      "lng": 74.4015
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-poonch",
-    "slug": "poonch-river",
-    "name": "Poonch River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The Poonch River National Park is the first aquatic protected area in AJK. Illegal sand mining remains a severe threat.",
-    "district": "Multiple",
-    "watershed": "Poonch Basin",
-    "length": 150,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.7655,
-      "lng": 74.0818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-kunhar",
-    "slug": "kunhar-river",
-    "name": "Kunhar River",
-    "type": "river",
-    "category": "River",
-    "description": "A major source of cold water for the Jhelum River. Famous for the legendary love story of Saif-ul-Muluk linked to the basin.",
-    "district": "Muzaffarabad",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 166,
-    "elevation": 3405,
-    "coordinates": {
-      "lat": 35.0833,
-      "lng": 74.0255
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-shounter",
-    "slug": "shounter-nallah",
-    "name": "Shounter Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "Flows through the highly scenic Shounter Valley. Lacks official gauged monitoring station. Mouth confluence coordinates are approximate.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 26,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 34.9655,
-      "lng": 74.3728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-chittakatha",
-    "slug": "chitta-katha-nallah",
-    "name": "Chitta Katha Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "Drains the holy alpine lake Chitta Katha. High altitude and rough terrain prevent physical gauging stations.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 14,
-    "elevation": 4350,
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-dudipat",
-    "slug": "dudipat-nallah",
-    "name": "Dudipat Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A rugged mountain stream. Closed during winter due to heavy snow blockages.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 35.0118,
-      "lng": 74.0903
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-indus-gb",
-    "slug": "upper-indus-river-gb-section",
-    "name": "Upper Indus River (GB Section)",
-    "type": "river",
-    "category": "River",
-    "description": "Flows through deep gorges in Karakoram and Hindu Kush ranges. Extremely high sediment load due to Karakoram tectonic activity.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 3180,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.5015,
-      "lng": 76.2258
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hunza",
-    "slug": "hunza-river",
-    "name": "Hunza River",
-    "type": "river",
-    "category": "River",
-    "description": "A major Karakoram river. The 2010 landslide at Attabad blocked the river to create the 21km long Attabad Lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 190,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 36.7518,
-      "lng": 74.8842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-gilgit",
-    "slug": "gilgit-river",
-    "name": "Gilgit River",
-    "type": "river",
-    "category": "River",
-    "description": "A major glacier and spring-fed river. Known as Ghizer River in its upper western reaches.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 240,
-    "elevation": 3730,
-    "coordinates": {
-      "lat": 36.0842,
-      "lng": 72.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shigar",
-    "slug": "shigar-river",
-    "name": "Shigar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major glacier-fed tributary. Formed by the drainage of Baltoro and Biafo glaciers, two of the longest non-polar glaciers.",
-    "district": "Shigar",
-    "watershed": "Indus Basin Catchment",
-    "length": 62,
-    "elevation": 3100,
-    "coordinates": {
-      "lat": 35.6815,
-      "lng": 75.7242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-astore",
-    "slug": "astore-river",
-    "name": "Astore River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Drains the eastern slopes of Nanga Parbat and the high Deosai plateau.",
-    "district": "Astore",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.9015,
-      "lng": 75.1242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hispar",
-    "slug": "hispar-river",
-    "name": "Hispar River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A classic glacier-fed mountain torrent. Flows through a deep, unstable valley carved by the Hispar glacier.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 48,
-    "elevation": 4300,
-    "coordinates": {
-      "lat": 36.1215,
-      "lng": 74.9818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shimshal",
-    "slug": "shimshal-river",
-    "name": "Shimshal River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A major hazard zone. The Khurdopin glacier periodically surges and blocks the river, forming unstable lakes that threaten Hunza Valley downstream.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 82,
-    "elevation": 4730,
-    "coordinates": {
-      "lat": 36.4328,
-      "lng": 75.6515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-rambiara",
-    "slug": "rambiara-river",
-    "name": "Rambiara River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major mountain stream that dries up significantly in the autumn but is highly prone to sudden, severe summer flash floods.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 58,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.5855,
-      "lng": 74.5218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doodhganga",
-    "slug": "doodhganga-river",
-    "name": "Doodhganga River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Its name literally means \"River of Milk\" due to its frothy white flow in high elevations. Now highly degraded downstream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 46,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 33.7842,
-      "lng": 74.5518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-pohru",
-    "slug": "pohru-river",
-    "name": "Pohru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Brings immense silt load to the Jhelum River, which has significantly choked the Jhelum outflow channel near Baramulla.",
-    "district": "Multiple",
-    "watershed": "Pohru Basin",
-    "length": 56,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.4315,
-      "lng": 74.2818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-madhumati",
-    "slug": "madhumati-stream",
-    "name": "Madhumati Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A glacier-fed stream with significant flow throughout the year, especially during summer snowmelt.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 38,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.4518,
-      "lng": 74.8815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-erin",
-    "slug": "erin-stream",
-    "name": "Erin Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major source of freshwater for Wular Lake. Very sensitive alpine catchment.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 32,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.4358,
-      "lng": 74.9215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sandran",
-    "slug": "sandran-river",
-    "name": "Sandran River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows parallel to the Srinagar-Jammu National Highway (NH 44). Highly dynamic riverbed shifting.",
-    "district": "Anantnag",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.5518,
-      "lng": 75.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ningli",
-    "slug": "ningli-stream",
-    "name": "Ningli Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Originates from a high alpine glacial lake at the base of Apharwat peak.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 36,
-    "elevation": 3840,
-    "coordinates": {
-      "lat": 34.0255,
-      "lng": 74.3518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shaliganga",
-    "slug": "shaliganga-stream",
-    "name": "Shaliganga Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Flows through the beautiful meadows of Doodhpathri tourist resort.",
-    "district": "Budgam",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 32,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.8815,
-      "lng": 74.5242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ferozpora",
-    "slug": "ferozpora-nallah",
-    "name": "Ferozpora Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A trout-bearing stream in its upper reaches. Forms a vital hydrological connection to the Mirgund wetland.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 45,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.0682,
-      "lng": 74.3215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sukhnag",
-    "slug": "sukhnag-river",
-    "name": "Sukhnag River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Known for its beautiful waterfalls (Sukhnag waterfall) in upper reaches. Excellent sport fishing stream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 52,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.9215,
-      "lng": 74.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-tsuntkol",
-    "slug": "tsunt-kol",
-    "name": "Tsunt Kol",
-    "type": "stream",
-    "category": "Urban Stream",
-    "description": "A historical urban loop channel regulating the water levels of Dal Lake. Heavily encroached.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 3.5,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0855,
-      "lng": 74.8315
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-braricumb",
-    "slug": "brari-nambal-cut",
-    "name": "Brari Nambal Cut",
-    "type": "stream",
-    "category": "Drainage Channel",
-    "description": "Crucial for flushing Brari Nambal lagoon. Restoring this channel is vital to save the lagoon from complete eutrophication.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 1.2,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0982,
-      "lng": 74.8155
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "channel-srinagarflood",
-    "slug": "srinagar-flood-spill-channel",
-    "name": "Srinagar Flood Spill Channel",
-    "type": "stream",
-    "category": "Flood Channel",
-    "description": "Designed during the early 20th century to divert excess floodwaters of Jhelum away from Srinagar city.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 1590,
-    "coordinates": {
-      "lat": 33.9115,
-      "lng": 75.0118
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "mixed",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-chenab",
-    "slug": "chenab-river",
-    "name": "Chenab River",
-    "type": "river",
-    "category": "River",
-    "description": "One of the primary rivers of the Indus Water Treaty. Carries massive silt loads from glacial erosion in Kishtwar.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 960,
-    "elevation": 2280,
-    "coordinates": {
-      "lat": 32.5714,
-      "lng": 76.9728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tawi",
-    "slug": "tawi-river",
-    "name": "Tawi River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Regarded as a sacred river (Surya Putri) by locals. The Tawi riverfront project is undergoing construction to restore banks.",
-    "district": "Multiple",
-    "watershed": "Tawi Basin",
-    "length": 141,
-    "elevation": 4000,
-    "coordinates": {
-      "lat": 32.8815,
-      "lng": 75.7742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ravi",
-    "slug": "ravi-river",
-    "name": "Ravi River",
-    "type": "river",
-    "category": "River",
-    "description": "Serves as the international border between India and Pakistan along several stretches in Kathua.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 720,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 32.3218,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ujh",
-    "slug": "ujh-river",
-    "name": "Ujh River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major flash-flood-prone river in Kathua district. Flows through steep gorges in upper reaches.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 65,
-    "elevation": 3200,
-    "coordinates": {
-      "lat": 32.8518,
-      "lng": 75.6842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-basantar",
-    "slug": "basantar-river",
-    "name": "Basantar River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major seasonal river in the Samba district. Historical battle site (Battle of Basantar, 1971).",
-    "district": "Samba",
-    "watershed": "Ravi Basin Catchment",
-    "length": 48,
-    "elevation": 1200,
-    "coordinates": {
-      "lat": 32.7215,
-      "lng": 75.1842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-munawartawi",
-    "slug": "munawar-tawi",
-    "name": "Munawar Tawi",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major left-bank tributary of the Chenab. Crosses the Line of Control into Pakistan-administered territory before joining the Chenab.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 110,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.4815,
-      "lng": 74.3242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ans",
-    "slug": "ans-river",
-    "name": "Ans River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "An important right-bank tributary of the Chenab River. Flows through a deep, rugged mountainous valley.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 62,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.3755,
-      "lng": 74.6218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-marusudar",
-    "slug": "marusudar-river",
-    "name": "Marusudar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The largest tributary of the Chenab River. Flows through the beautiful valleys of Warwan and Marwah.",
-    "district": "Kishtwar",
-    "watershed": "Chenab Basin Catchment",
-    "length": 133,
-    "elevation": 5100,
-    "coordinates": {
-      "lat": 33.8542,
-      "lng": 75.9218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-devak",
-    "slug": "devak-river",
-    "name": "Devak River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Revered as the elder sister of River Ganga. Undergoing restoration under the National River Conservation Plan (NRCP).",
-    "district": "Multiple",
-    "watershed": "Ravi Basin Catchment",
-    "length": 55,
-    "elevation": 1600,
-    "coordinates": {
-      "lat": 32.9315,
-      "lng": 75.1742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neeru",
-    "slug": "neeru-nallah",
-    "name": "Neeru Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A major trout-rich stream in the Jammu division. Extremely scenic alpine course.",
-    "district": "Doda",
-    "watershed": "Chenab Basin Catchment",
-    "length": 30,
-    "elevation": 3900,
-    "coordinates": {
-      "lat": 32.8715,
-      "lng": 75.6518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-zanskar",
-    "slug": "zanskar-river",
-    "name": "Zanskar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Famous for the winter \"Chadar Trek\" where hikers walk on the frozen ice riverbed. Highly glaciated basin.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 3700,
-    "coordinates": {
-      "lat": 33.4755,
-      "lng": 76.8818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shyok",
-    "slug": "shyok-river",
-    "name": "Shyok River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major transboundary river originating near the Line of Actual Control (LAC). Historic trade route river.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 550,
-    "elevation": 5300,
-    "coordinates": {
-      "lat": 35.2215,
-      "lng": 77.6328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-nubra",
-    "slug": "nubra-river",
-    "name": "Nubra River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Fed entirely by the melting waters of the Siachen Glacier. Known for thermal springs along its banks (Panamik).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5400,
-    "coordinates": {
-      "lat": 35.5342,
-      "lng": 77.0515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-suru",
-    "slug": "suru-river",
-    "name": "Suru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A key river defining the geography of Kargil. Encircles the Nun Kun mountain massif.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 185,
-    "elevation": 4400,
-    "coordinates": {
-      "lat": 33.9818,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-dras",
-    "slug": "dras-river",
-    "name": "Dras River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows through the second coldest inhabited place in the world. Merges with Shingo River near the Line of Control.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 86,
-    "elevation": 3950,
-    "coordinates": {
-      "lat": 34.2542,
-      "lng": 75.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-galwan",
-    "slug": "galwan-river",
-    "name": "Galwan River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major geopolitical site. Flow is fast and cold, draining the high Aksai Chin plateau.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5200,
-    "coordinates": {
-      "lat": 34.7818,
-      "lng": 78.8828
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-changchenmo",
-    "slug": "chang-chenmo-river",
-    "name": "Chang Chenmo River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Geopolitically sensitive transboundary stream near the Line of Actual Control (LAC).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 125,
-    "elevation": 5500,
-    "coordinates": {
-      "lat": 34.3315,
-      "lng": 79.1728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hanle",
-    "slug": "hanle-river",
-    "name": "Hanle River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major high-altitude wetland corridor supporting endangered Himalayan avifauna. Dark Sky Reserve zone.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 92,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 32.6518,
-      "lng": 79.0342
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doda",
-    "slug": "doda-river",
-    "name": "Doda River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Forms the main hydrological source of the Padum valley in Zanskar. Fed by the largest glacier in Ladakh accessible by road.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 79,
-    "elevation": 4450,
-    "coordinates": {
-      "lat": 33.9515,
-      "lng": 76.4328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tsarap",
-    "slug": "tsarap-river",
-    "name": "Tsarap River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A wildly turbulent river that flows beneath the famous cliff-side Phuktal Monastery. Landslide block in 2015 formed a 15km lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 182,
-    "elevation": 4950,
-    "coordinates": {
-      "lat": 32.8855,
-      "lng": 77.3718
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-jhelum-ajk",
-    "slug": "jhelum-river-ajk-section",
-    "name": "Jhelum River (AJK Section)",
-    "type": "river",
-    "category": "River",
-    "description": "The diversion of water for the Neelum-Jhelum project has significantly reduced the flow through Muzaffarabad city, causing environmental concerns.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 725,
-    "elevation": 1000,
-    "coordinates": {
-      "lat": 34.1142,
-      "lng": 73.8825
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neelum",
-    "slug": "neelum-river",
-    "name": "Neelum River",
-    "type": "river",
-    "category": "River",
-    "description": "A major transboundary river. Known as Kishanganga in India and Neelum in Pakistan. Domel is a major geographical confluence.",
-    "district": "Multiple",
-    "watershed": "Kishanganga Basin",
-    "length": 245,
-    "elevation": 2400,
-    "coordinates": {
-      "lat": 34.6182,
-      "lng": 74.4015
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-poonch",
-    "slug": "poonch-river",
-    "name": "Poonch River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The Poonch River National Park is the first aquatic protected area in AJK. Illegal sand mining remains a severe threat.",
-    "district": "Multiple",
-    "watershed": "Poonch Basin",
-    "length": 150,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.7655,
-      "lng": 74.0818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-kunhar",
-    "slug": "kunhar-river",
-    "name": "Kunhar River",
-    "type": "river",
-    "category": "River",
-    "description": "A major source of cold water for the Jhelum River. Famous for the legendary love story of Saif-ul-Muluk linked to the basin.",
-    "district": "Muzaffarabad",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 166,
-    "elevation": 3405,
-    "coordinates": {
-      "lat": 35.0833,
-      "lng": 74.0255
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-shounter",
-    "slug": "shounter-nallah",
-    "name": "Shounter Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "Flows through the highly scenic Shounter Valley. Lacks official gauged monitoring station. Mouth confluence coordinates are approximate.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 26,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 34.9655,
-      "lng": 74.3728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-chittakatha",
-    "slug": "chitta-katha-nallah",
-    "name": "Chitta Katha Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "Drains the holy alpine lake Chitta Katha. High altitude and rough terrain prevent physical gauging stations.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 14,
-    "elevation": 4350,
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-dudipat",
-    "slug": "dudipat-nallah",
-    "name": "Dudipat Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A rugged mountain stream. Closed during winter due to heavy snow blockages.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 35.0118,
-      "lng": 74.0903
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-indus-gb",
-    "slug": "upper-indus-river-gb-section",
-    "name": "Upper Indus River (GB Section)",
-    "type": "river",
-    "category": "River",
-    "description": "Flows through deep gorges in Karakoram and Hindu Kush ranges. Extremely high sediment load due to Karakoram tectonic activity.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 3180,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.5015,
-      "lng": 76.2258
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hunza",
-    "slug": "hunza-river",
-    "name": "Hunza River",
-    "type": "river",
-    "category": "River",
-    "description": "A major Karakoram river. The 2010 landslide at Attabad blocked the river to create the 21km long Attabad Lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 190,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 36.7518,
-      "lng": 74.8842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-gilgit",
-    "slug": "gilgit-river",
-    "name": "Gilgit River",
-    "type": "river",
-    "category": "River",
-    "description": "A major glacier and spring-fed river. Known as Ghizer River in its upper western reaches.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 240,
-    "elevation": 3730,
-    "coordinates": {
-      "lat": 36.0842,
-      "lng": 72.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shigar",
-    "slug": "shigar-river",
-    "name": "Shigar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major glacier-fed tributary. Formed by the drainage of Baltoro and Biafo glaciers, two of the longest non-polar glaciers.",
-    "district": "Shigar",
-    "watershed": "Indus Basin Catchment",
-    "length": 62,
-    "elevation": 3100,
-    "coordinates": {
-      "lat": 35.6815,
-      "lng": 75.7242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-astore",
-    "slug": "astore-river",
-    "name": "Astore River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Drains the eastern slopes of Nanga Parbat and the high Deosai plateau.",
-    "district": "Astore",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.9015,
-      "lng": 75.1242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hispar",
-    "slug": "hispar-river",
-    "name": "Hispar River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A classic glacier-fed mountain torrent. Flows through a deep, unstable valley carved by the Hispar glacier.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 48,
-    "elevation": 4300,
-    "coordinates": {
-      "lat": 36.1215,
-      "lng": 74.9818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shimshal",
-    "slug": "shimshal-river",
-    "name": "Shimshal River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A major hazard zone. The Khurdopin glacier periodically surges and blocks the river, forming unstable lakes that threaten Hunza Valley downstream.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 82,
-    "elevation": 4730,
-    "coordinates": {
-      "lat": 36.4328,
-      "lng": 75.6515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-rambiara",
-    "slug": "rambiara-river",
-    "name": "Rambiara River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major mountain stream that dries up significantly in the autumn but is highly prone to sudden, severe summer flash floods.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 58,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.5855,
-      "lng": 74.5218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doodhganga",
-    "slug": "doodhganga-river",
-    "name": "Doodhganga River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Its name literally means \"River of Milk\" due to its frothy white flow in high elevations. Now highly degraded downstream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 46,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 33.7842,
-      "lng": 74.5518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-pohru",
-    "slug": "pohru-river",
-    "name": "Pohru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Brings immense silt load to the Jhelum River, which has significantly choked the Jhelum outflow channel near Baramulla.",
-    "district": "Multiple",
-    "watershed": "Pohru Basin",
-    "length": 56,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.4315,
-      "lng": 74.2818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-madhumati",
-    "slug": "madhumati-stream",
-    "name": "Madhumati Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A glacier-fed stream with significant flow throughout the year, especially during summer snowmelt.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 38,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.4518,
-      "lng": 74.8815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-erin",
-    "slug": "erin-stream",
-    "name": "Erin Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major source of freshwater for Wular Lake. Very sensitive alpine catchment.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 32,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.4358,
-      "lng": 74.9215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sandran",
-    "slug": "sandran-river",
-    "name": "Sandran River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows parallel to the Srinagar-Jammu National Highway (NH 44). Highly dynamic riverbed shifting.",
-    "district": "Anantnag",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.5518,
-      "lng": 75.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ningli",
-    "slug": "ningli-stream",
-    "name": "Ningli Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Originates from a high alpine glacial lake at the base of Apharwat peak.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 36,
-    "elevation": 3840,
-    "coordinates": {
-      "lat": 34.0255,
-      "lng": 74.3518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shaliganga",
-    "slug": "shaliganga-stream",
-    "name": "Shaliganga Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Flows through the beautiful meadows of Doodhpathri tourist resort.",
-    "district": "Budgam",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 32,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.8815,
-      "lng": 74.5242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ferozpora",
-    "slug": "ferozpora-nallah",
-    "name": "Ferozpora Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A trout-bearing stream in its upper reaches. Forms a vital hydrological connection to the Mirgund wetland.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 45,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.0682,
-      "lng": 74.3215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sukhnag",
-    "slug": "sukhnag-river",
-    "name": "Sukhnag River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Known for its beautiful waterfalls (Sukhnag waterfall) in upper reaches. Excellent sport fishing stream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 52,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.9215,
-      "lng": 74.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-tsuntkol",
-    "slug": "tsunt-kol",
-    "name": "Tsunt Kol",
-    "type": "stream",
-    "category": "Urban Stream",
-    "description": "A historical urban loop channel regulating the water levels of Dal Lake. Heavily encroached.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 3.5,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0855,
-      "lng": 74.8315
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-braricumb",
-    "slug": "brari-nambal-cut",
-    "name": "Brari Nambal Cut",
-    "type": "stream",
-    "category": "Drainage Channel",
-    "description": "Crucial for flushing Brari Nambal lagoon. Restoring this channel is vital to save the lagoon from complete eutrophication.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 1.2,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0982,
-      "lng": 74.8155
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "channel-srinagarflood",
-    "slug": "srinagar-flood-spill-channel",
-    "name": "Srinagar Flood Spill Channel",
-    "type": "stream",
-    "category": "Flood Channel",
-    "description": "Designed during the early 20th century to divert excess floodwaters of Jhelum away from Srinagar city.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 1590,
-    "coordinates": {
-      "lat": 33.9115,
-      "lng": 75.0118
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "mixed",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-chenab",
-    "slug": "chenab-river",
-    "name": "Chenab River",
-    "type": "river",
-    "category": "River",
-    "description": "One of the primary rivers of the Indus Water Treaty. Carries massive silt loads from glacial erosion in Kishtwar.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 960,
-    "elevation": 2280,
-    "coordinates": {
-      "lat": 32.5714,
-      "lng": 76.9728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tawi",
-    "slug": "tawi-river",
-    "name": "Tawi River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Regarded as a sacred river (Surya Putri) by locals. The Tawi riverfront project is undergoing construction to restore banks.",
-    "district": "Multiple",
-    "watershed": "Tawi Basin",
-    "length": 141,
-    "elevation": 4000,
-    "coordinates": {
-      "lat": 32.8815,
-      "lng": 75.7742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ravi",
-    "slug": "ravi-river",
-    "name": "Ravi River",
-    "type": "river",
-    "category": "River",
-    "description": "Serves as the international border between India and Pakistan along several stretches in Kathua.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 720,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 32.3218,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ujh",
-    "slug": "ujh-river",
-    "name": "Ujh River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major flash-flood-prone river in Kathua district. Flows through steep gorges in upper reaches.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 65,
-    "elevation": 3200,
-    "coordinates": {
-      "lat": 32.8518,
-      "lng": 75.6842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-basantar",
-    "slug": "basantar-river",
-    "name": "Basantar River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major seasonal river in the Samba district. Historical battle site (Battle of Basantar, 1971).",
-    "district": "Samba",
-    "watershed": "Ravi Basin Catchment",
-    "length": 48,
-    "elevation": 1200,
-    "coordinates": {
-      "lat": 32.7215,
-      "lng": 75.1842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-munawartawi",
-    "slug": "munawar-tawi",
-    "name": "Munawar Tawi",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major left-bank tributary of the Chenab. Crosses the Line of Control into Pakistan-administered territory before joining the Chenab.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 110,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.4815,
-      "lng": 74.3242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ans",
-    "slug": "ans-river",
-    "name": "Ans River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "An important right-bank tributary of the Chenab River. Flows through a deep, rugged mountainous valley.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 62,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.3755,
-      "lng": 74.6218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-marusudar",
-    "slug": "marusudar-river",
-    "name": "Marusudar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The largest tributary of the Chenab River. Flows through the beautiful valleys of Warwan and Marwah.",
-    "district": "Kishtwar",
-    "watershed": "Chenab Basin Catchment",
-    "length": 133,
-    "elevation": 5100,
-    "coordinates": {
-      "lat": 33.8542,
-      "lng": 75.9218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-devak",
-    "slug": "devak-river",
-    "name": "Devak River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Revered as the elder sister of River Ganga. Undergoing restoration under the National River Conservation Plan (NRCP).",
-    "district": "Multiple",
-    "watershed": "Ravi Basin Catchment",
-    "length": 55,
-    "elevation": 1600,
-    "coordinates": {
-      "lat": 32.9315,
-      "lng": 75.1742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neeru",
-    "slug": "neeru-nallah",
-    "name": "Neeru Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A major trout-rich stream in the Jammu division. Extremely scenic alpine course.",
-    "district": "Doda",
-    "watershed": "Chenab Basin Catchment",
-    "length": 30,
-    "elevation": 3900,
-    "coordinates": {
-      "lat": 32.8715,
-      "lng": 75.6518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-zanskar",
-    "slug": "zanskar-river",
-    "name": "Zanskar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Famous for the winter \"Chadar Trek\" where hikers walk on the frozen ice riverbed. Highly glaciated basin.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 3700,
-    "coordinates": {
-      "lat": 33.4755,
-      "lng": 76.8818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shyok",
-    "slug": "shyok-river",
-    "name": "Shyok River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major transboundary river originating near the Line of Actual Control (LAC). Historic trade route river.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 550,
-    "elevation": 5300,
-    "coordinates": {
-      "lat": 35.2215,
-      "lng": 77.6328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-nubra",
-    "slug": "nubra-river",
-    "name": "Nubra River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Fed entirely by the melting waters of the Siachen Glacier. Known for thermal springs along its banks (Panamik).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5400,
-    "coordinates": {
-      "lat": 35.5342,
-      "lng": 77.0515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-suru",
-    "slug": "suru-river",
-    "name": "Suru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A key river defining the geography of Kargil. Encircles the Nun Kun mountain massif.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 185,
-    "elevation": 4400,
-    "coordinates": {
-      "lat": 33.9818,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-dras",
-    "slug": "dras-river",
-    "name": "Dras River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows through the second coldest inhabited place in the world. Merges with Shingo River near the Line of Control.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 86,
-    "elevation": 3950,
-    "coordinates": {
-      "lat": 34.2542,
-      "lng": 75.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-galwan",
-    "slug": "galwan-river",
-    "name": "Galwan River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major geopolitical site. Flow is fast and cold, draining the high Aksai Chin plateau.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5200,
-    "coordinates": {
-      "lat": 34.7818,
-      "lng": 78.8828
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-changchenmo",
-    "slug": "chang-chenmo-river",
-    "name": "Chang Chenmo River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Geopolitically sensitive transboundary stream near the Line of Actual Control (LAC).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 125,
-    "elevation": 5500,
-    "coordinates": {
-      "lat": 34.3315,
-      "lng": 79.1728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hanle",
-    "slug": "hanle-river",
-    "name": "Hanle River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major high-altitude wetland corridor supporting endangered Himalayan avifauna. Dark Sky Reserve zone.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 92,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 32.6518,
-      "lng": 79.0342
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doda",
-    "slug": "doda-river",
-    "name": "Doda River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Forms the main hydrological source of the Padum valley in Zanskar. Fed by the largest glacier in Ladakh accessible by road.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 79,
-    "elevation": 4450,
-    "coordinates": {
-      "lat": 33.9515,
-      "lng": 76.4328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tsarap",
-    "slug": "tsarap-river",
-    "name": "Tsarap River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A wildly turbulent river that flows beneath the famous cliff-side Phuktal Monastery. Landslide block in 2015 formed a 15km lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 182,
-    "elevation": 4950,
-    "coordinates": {
-      "lat": 32.8855,
-      "lng": 77.3718
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-jhelum-ajk",
-    "slug": "jhelum-river-ajk-section",
-    "name": "Jhelum River (AJK Section)",
-    "type": "river",
-    "category": "River",
-    "description": "The diversion of water for the Neelum-Jhelum project has significantly reduced the flow through Muzaffarabad city, causing environmental concerns.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 725,
-    "elevation": 1000,
-    "coordinates": {
-      "lat": 34.1142,
-      "lng": 73.8825
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neelum",
-    "slug": "neelum-river",
-    "name": "Neelum River",
-    "type": "river",
-    "category": "River",
-    "description": "A major transboundary river. Known as Kishanganga in India and Neelum in Pakistan. Domel is a major geographical confluence.",
-    "district": "Multiple",
-    "watershed": "Kishanganga Basin",
-    "length": 245,
-    "elevation": 2400,
-    "coordinates": {
-      "lat": 34.6182,
-      "lng": 74.4015
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-poonch",
-    "slug": "poonch-river",
-    "name": "Poonch River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The Poonch River National Park is the first aquatic protected area in AJK. Illegal sand mining remains a severe threat.",
-    "district": "Multiple",
-    "watershed": "Poonch Basin",
-    "length": 150,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.7655,
-      "lng": 74.0818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-kunhar",
-    "slug": "kunhar-river",
-    "name": "Kunhar River",
-    "type": "river",
-    "category": "River",
-    "description": "A major source of cold water for the Jhelum River. Famous for the legendary love story of Saif-ul-Muluk linked to the basin.",
-    "district": "Muzaffarabad",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 166,
-    "elevation": 3405,
-    "coordinates": {
-      "lat": 35.0833,
-      "lng": 74.0255
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-shounter",
-    "slug": "shounter-nallah",
-    "name": "Shounter Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "Flows through the highly scenic Shounter Valley. Lacks official gauged monitoring station. Mouth confluence coordinates are approximate.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 26,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 34.9655,
-      "lng": 74.3728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-chittakatha",
-    "slug": "chitta-katha-nallah",
-    "name": "Chitta Katha Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "Drains the holy alpine lake Chitta Katha. High altitude and rough terrain prevent physical gauging stations.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 14,
-    "elevation": 4350,
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-dudipat",
-    "slug": "dudipat-nallah",
-    "name": "Dudipat Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A rugged mountain stream. Closed during winter due to heavy snow blockages.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 35.0118,
-      "lng": 74.0903
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-indus-gb",
-    "slug": "upper-indus-river-gb-section",
-    "name": "Upper Indus River (GB Section)",
-    "type": "river",
-    "category": "River",
-    "description": "Flows through deep gorges in Karakoram and Hindu Kush ranges. Extremely high sediment load due to Karakoram tectonic activity.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 3180,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.5015,
-      "lng": 76.2258
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hunza",
-    "slug": "hunza-river",
-    "name": "Hunza River",
-    "type": "river",
-    "category": "River",
-    "description": "A major Karakoram river. The 2010 landslide at Attabad blocked the river to create the 21km long Attabad Lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 190,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 36.7518,
-      "lng": 74.8842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-gilgit",
-    "slug": "gilgit-river",
-    "name": "Gilgit River",
-    "type": "river",
-    "category": "River",
-    "description": "A major glacier and spring-fed river. Known as Ghizer River in its upper western reaches.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 240,
-    "elevation": 3730,
-    "coordinates": {
-      "lat": 36.0842,
-      "lng": 72.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shigar",
-    "slug": "shigar-river",
-    "name": "Shigar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major glacier-fed tributary. Formed by the drainage of Baltoro and Biafo glaciers, two of the longest non-polar glaciers.",
-    "district": "Shigar",
-    "watershed": "Indus Basin Catchment",
-    "length": 62,
-    "elevation": 3100,
-    "coordinates": {
-      "lat": 35.6815,
-      "lng": 75.7242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-astore",
-    "slug": "astore-river",
-    "name": "Astore River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Drains the eastern slopes of Nanga Parbat and the high Deosai plateau.",
-    "district": "Astore",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.9015,
-      "lng": 75.1242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hispar",
-    "slug": "hispar-river",
-    "name": "Hispar River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A classic glacier-fed mountain torrent. Flows through a deep, unstable valley carved by the Hispar glacier.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 48,
-    "elevation": 4300,
-    "coordinates": {
-      "lat": 36.1215,
-      "lng": 74.9818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shimshal",
-    "slug": "shimshal-river",
-    "name": "Shimshal River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A major hazard zone. The Khurdopin glacier periodically surges and blocks the river, forming unstable lakes that threaten Hunza Valley downstream.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 82,
-    "elevation": 4730,
-    "coordinates": {
-      "lat": 36.4328,
-      "lng": 75.6515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-rambiara",
-    "slug": "rambiara-river",
-    "name": "Rambiara River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major mountain stream that dries up significantly in the autumn but is highly prone to sudden, severe summer flash floods.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 58,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.5855,
-      "lng": 74.5218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doodhganga",
-    "slug": "doodhganga-river",
-    "name": "Doodhganga River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Its name literally means \"River of Milk\" due to its frothy white flow in high elevations. Now highly degraded downstream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 46,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 33.7842,
-      "lng": 74.5518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-pohru",
-    "slug": "pohru-river",
-    "name": "Pohru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Brings immense silt load to the Jhelum River, which has significantly choked the Jhelum outflow channel near Baramulla.",
-    "district": "Multiple",
-    "watershed": "Pohru Basin",
-    "length": 56,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.4315,
-      "lng": 74.2818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-madhumati",
-    "slug": "madhumati-stream",
-    "name": "Madhumati Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A glacier-fed stream with significant flow throughout the year, especially during summer snowmelt.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 38,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.4518,
-      "lng": 74.8815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-erin",
-    "slug": "erin-stream",
-    "name": "Erin Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major source of freshwater for Wular Lake. Very sensitive alpine catchment.",
-    "district": "Bandipora",
-    "watershed": "Wular Lake Catchment",
-    "length": 32,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.4358,
-      "lng": 74.9215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sandran",
-    "slug": "sandran-river",
-    "name": "Sandran River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows parallel to the Srinagar-Jammu National Highway (NH 44). Highly dynamic riverbed shifting.",
-    "district": "Anantnag",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.5518,
-      "lng": 75.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ningli",
-    "slug": "ningli-stream",
-    "name": "Ningli Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Originates from a high alpine glacial lake at the base of Apharwat peak.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 36,
-    "elevation": 3840,
-    "coordinates": {
-      "lat": 34.0255,
-      "lng": 74.3518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shaliganga",
-    "slug": "shaliganga-stream",
-    "name": "Shaliganga Stream",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Flows through the beautiful meadows of Doodhpathri tourist resort.",
-    "district": "Budgam",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 32,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 33.8815,
-      "lng": 74.5242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ferozpora",
-    "slug": "ferozpora-nallah",
-    "name": "Ferozpora Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A trout-bearing stream in its upper reaches. Forms a vital hydrological connection to the Mirgund wetland.",
-    "district": "Baramulla",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 45,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 34.0682,
-      "lng": 74.3215
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-sukhnag",
-    "slug": "sukhnag-river",
-    "name": "Sukhnag River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Known for its beautiful waterfalls (Sukhnag waterfall) in upper reaches. Excellent sport fishing stream.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 52,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.9215,
-      "lng": 74.4542
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-tsuntkol",
-    "slug": "tsunt-kol",
-    "name": "Tsunt Kol",
-    "type": "stream",
-    "category": "Urban Stream",
-    "description": "A historical urban loop channel regulating the water levels of Dal Lake. Heavily encroached.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 3.5,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0855,
-      "lng": 74.8315
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "stream-braricumb",
-    "slug": "brari-nambal-cut",
-    "name": "Brari Nambal Cut",
-    "type": "stream",
-    "category": "Drainage Channel",
-    "description": "Crucial for flushing Brari Nambal lagoon. Restoring this channel is vital to save the lagoon from complete eutrophication.",
-    "district": "Srinagar",
-    "watershed": "Dal-Nigeen Catchment",
-    "length": 1.2,
-    "elevation": 1583,
-    "coordinates": {
-      "lat": 34.0982,
-      "lng": 74.8155
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "critical",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "channel-srinagarflood",
-    "slug": "srinagar-flood-spill-channel",
-    "name": "Srinagar Flood Spill Channel",
-    "type": "stream",
-    "category": "Flood Channel",
-    "description": "Designed during the early 20th century to divert excess floodwaters of Jhelum away from Srinagar city.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 42,
-    "elevation": 1590,
-    "coordinates": {
-      "lat": 33.9115,
-      "lng": 75.0118
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "mixed",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-chenab",
-    "slug": "chenab-river",
-    "name": "Chenab River",
-    "type": "river",
-    "category": "River",
-    "description": "One of the primary rivers of the Indus Water Treaty. Carries massive silt loads from glacial erosion in Kishtwar.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 960,
-    "elevation": 2280,
-    "coordinates": {
-      "lat": 32.5714,
-      "lng": 76.9728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tawi",
-    "slug": "tawi-river",
-    "name": "Tawi River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Regarded as a sacred river (Surya Putri) by locals. The Tawi riverfront project is undergoing construction to restore banks.",
-    "district": "Multiple",
-    "watershed": "Tawi Basin",
-    "length": 141,
-    "elevation": 4000,
-    "coordinates": {
-      "lat": 32.8815,
-      "lng": 75.7742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ravi",
-    "slug": "ravi-river",
-    "name": "Ravi River",
-    "type": "river",
-    "category": "River",
-    "description": "Serves as the international border between India and Pakistan along several stretches in Kathua.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 720,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 32.3218,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ujh",
-    "slug": "ujh-river",
-    "name": "Ujh River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major flash-flood-prone river in Kathua district. Flows through steep gorges in upper reaches.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin Catchment",
-    "length": 65,
-    "elevation": 3200,
-    "coordinates": {
-      "lat": 32.8518,
-      "lng": 75.6842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-basantar",
-    "slug": "basantar-river",
-    "name": "Basantar River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major seasonal river in the Samba district. Historical battle site (Battle of Basantar, 1971).",
-    "district": "Samba",
-    "watershed": "Ravi Basin Catchment",
-    "length": 48,
-    "elevation": 1200,
-    "coordinates": {
-      "lat": 32.7215,
-      "lng": 75.1842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-munawartawi",
-    "slug": "munawar-tawi",
-    "name": "Munawar Tawi",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major left-bank tributary of the Chenab. Crosses the Line of Control into Pakistan-administered territory before joining the Chenab.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 110,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.4815,
-      "lng": 74.3242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-ans",
-    "slug": "ans-river",
-    "name": "Ans River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "An important right-bank tributary of the Chenab River. Flows through a deep, rugged mountainous valley.",
-    "district": "Multiple",
-    "watershed": "Chenab Basin Catchment",
-    "length": 62,
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 33.3755,
-      "lng": 74.6218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-marusudar",
-    "slug": "marusudar-river",
-    "name": "Marusudar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The largest tributary of the Chenab River. Flows through the beautiful valleys of Warwan and Marwah.",
-    "district": "Kishtwar",
-    "watershed": "Chenab Basin Catchment",
-    "length": 133,
-    "elevation": 5100,
-    "coordinates": {
-      "lat": 33.8542,
-      "lng": 75.9218
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-devak",
-    "slug": "devak-river",
-    "name": "Devak River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Revered as the elder sister of River Ganga. Undergoing restoration under the National River Conservation Plan (NRCP).",
-    "district": "Multiple",
-    "watershed": "Ravi Basin Catchment",
-    "length": 55,
-    "elevation": 1600,
-    "coordinates": {
-      "lat": 32.9315,
-      "lng": 75.1742
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "poor",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "seasonal",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neeru",
-    "slug": "neeru-nallah",
-    "name": "Neeru Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "A major trout-rich stream in the Jammu division. Extremely scenic alpine course.",
-    "district": "Doda",
-    "watershed": "Chenab Basin Catchment",
-    "length": 30,
-    "elevation": 3900,
-    "coordinates": {
-      "lat": 32.8715,
-      "lng": 75.6518
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Jammu",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-zanskar",
-    "slug": "zanskar-river",
-    "name": "Zanskar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Famous for the winter \"Chadar Trek\" where hikers walk on the frozen ice riverbed. Highly glaciated basin.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 3700,
-    "coordinates": {
-      "lat": 33.4755,
-      "lng": 76.8818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shyok",
-    "slug": "shyok-river",
-    "name": "Shyok River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major transboundary river originating near the Line of Actual Control (LAC). Historic trade route river.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 550,
-    "elevation": 5300,
-    "coordinates": {
-      "lat": 35.2215,
-      "lng": 77.6328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-nubra",
-    "slug": "nubra-river",
-    "name": "Nubra River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Fed entirely by the melting waters of the Siachen Glacier. Known for thermal springs along its banks (Panamik).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5400,
-    "coordinates": {
-      "lat": 35.5342,
-      "lng": 77.0515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-suru",
-    "slug": "suru-river",
-    "name": "Suru River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A key river defining the geography of Kargil. Encircles the Nun Kun mountain massif.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 185,
-    "elevation": 4400,
-    "coordinates": {
-      "lat": 33.9818,
-      "lng": 76.3815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-dras",
-    "slug": "dras-river",
-    "name": "Dras River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Flows through the second coldest inhabited place in the world. Merges with Shingo River near the Line of Control.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 86,
-    "elevation": 3950,
-    "coordinates": {
-      "lat": 34.2542,
-      "lng": 75.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-galwan",
-    "slug": "galwan-river",
-    "name": "Galwan River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major geopolitical site. Flow is fast and cold, draining the high Aksai Chin plateau.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 80,
-    "elevation": 5200,
-    "coordinates": {
-      "lat": 34.7818,
-      "lng": 78.8828
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-changchenmo",
-    "slug": "chang-chenmo-river",
-    "name": "Chang Chenmo River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "Geopolitically sensitive transboundary stream near the Line of Actual Control (LAC).",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 125,
-    "elevation": 5500,
-    "coordinates": {
-      "lat": 34.3315,
-      "lng": 79.1728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hanle",
-    "slug": "hanle-river",
-    "name": "Hanle River",
-    "type": "stream",
-    "category": "Stream",
-    "description": "A major high-altitude wetland corridor supporting endangered Himalayan avifauna. Dark Sky Reserve zone.",
-    "district": "Leh",
-    "watershed": "Indus Basin Catchment",
-    "length": 92,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 32.6518,
-      "lng": 79.0342
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "moderate"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-doda",
-    "slug": "doda-river",
-    "name": "Doda River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Forms the main hydrological source of the Padum valley in Zanskar. Fed by the largest glacier in Ladakh accessible by road.",
-    "district": "Kargil",
-    "watershed": "Indus Basin Catchment",
-    "length": 79,
-    "elevation": 4450,
-    "coordinates": {
-      "lat": 33.9515,
-      "lng": 76.4328
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Ladakh",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-tsarap",
-    "slug": "tsarap-river",
-    "name": "Tsarap River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A wildly turbulent river that flows beneath the famous cliff-side Phuktal Monastery. Landslide block in 2015 formed a 15km lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 182,
-    "elevation": 4950,
-    "coordinates": {
-      "lat": 32.8855,
-      "lng": 77.3718
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-jhelum-ajk",
-    "slug": "jhelum-river-ajk-section",
-    "name": "Jhelum River (AJK Section)",
-    "type": "river",
-    "category": "River",
-    "description": "The diversion of water for the Neelum-Jhelum project has significantly reduced the flow through Muzaffarabad city, causing environmental concerns.",
-    "district": "Multiple",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 725,
-    "elevation": 1000,
-    "coordinates": {
-      "lat": 34.1142,
-      "lng": 73.8825
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "encroachment",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-neelum",
-    "slug": "neelum-river",
-    "name": "Neelum River",
-    "type": "river",
-    "category": "River",
-    "description": "A major transboundary river. Known as Kishanganga in India and Neelum in Pakistan. Domel is a major geographical confluence.",
-    "district": "Multiple",
-    "watershed": "Kishanganga Basin",
-    "length": 245,
-    "elevation": 2400,
-    "coordinates": {
-      "lat": 34.6182,
-      "lng": 74.4015
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-poonch",
-    "slug": "poonch-river",
-    "name": "Poonch River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "The Poonch River National Park is the first aquatic protected area in AJK. Illegal sand mining remains a severe threat.",
-    "district": "Multiple",
-    "watershed": "Poonch Basin",
-    "length": 150,
-    "elevation": 3500,
-    "coordinates": {
-      "lat": 33.7655,
-      "lng": 74.0818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-kunhar",
-    "slug": "kunhar-river",
-    "name": "Kunhar River",
-    "type": "river",
-    "category": "River",
-    "description": "A major source of cold water for the Jhelum River. Famous for the legendary love story of Saif-ul-Muluk linked to the basin.",
-    "district": "Muzaffarabad",
-    "watershed": "Jhelum River Basin Catchment",
-    "length": 166,
-    "elevation": 3405,
-    "coordinates": {
-      "lat": 35.0833,
-      "lng": 74.0255
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-shounter",
-    "slug": "shounter-nallah",
-    "name": "Shounter Nallah",
-    "type": "stream",
-    "category": "Nallah",
-    "description": "Flows through the highly scenic Shounter Valley. Lacks official gauged monitoring station. Mouth confluence coordinates are approximate.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 26,
-    "elevation": 4200,
-    "coordinates": {
-      "lat": 34.9655,
-      "lng": 74.3728
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-chittakatha",
-    "slug": "chitta-katha-nallah",
-    "name": "Chitta Katha Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "Drains the holy alpine lake Chitta Katha. High altitude and rough terrain prevent physical gauging stations.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "length": 14,
-    "elevation": 4350,
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "nallah-dudipat",
-    "slug": "dudipat-nallah",
-    "name": "Dudipat Nallah",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A rugged mountain stream. Closed during winter due to heavy snow blockages.",
-    "district": "Neelum",
-    "watershed": "Kishanganga Basin",
-    "elevation": 3800,
-    "coordinates": {
-      "lat": 35.0118,
-      "lng": 74.0903
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "floodRisk": "high"
-    },
-    "region": "AJK",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-indus-gb",
-    "slug": "upper-indus-river-gb-section",
-    "name": "Upper Indus River (GB Section)",
-    "type": "river",
-    "category": "River",
-    "description": "Flows through deep gorges in Karakoram and Hindu Kush ranges. Extremely high sediment load due to Karakoram tectonic activity.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 3180,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.5015,
-      "lng": 76.2258
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hunza",
-    "slug": "hunza-river",
-    "name": "Hunza River",
-    "type": "river",
-    "category": "River",
-    "description": "A major Karakoram river. The 2010 landslide at Attabad blocked the river to create the 21km long Attabad Lake.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 190,
-    "elevation": 4800,
-    "coordinates": {
-      "lat": 36.7518,
-      "lng": 74.8842
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-gilgit",
-    "slug": "gilgit-river",
-    "name": "Gilgit River",
-    "type": "river",
-    "category": "River",
-    "description": "A major glacier and spring-fed river. Known as Ghizer River in its upper western reaches.",
-    "district": "Multiple",
-    "watershed": "Indus Basin Catchment",
-    "length": 240,
-    "elevation": 3730,
-    "coordinates": {
-      "lat": 36.0842,
-      "lng": 72.5815
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "good",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "pollution",
-      "sand-mining",
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Kashmir Core",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shigar",
-    "slug": "shigar-river",
-    "name": "Shigar River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "A major glacier-fed tributary. Formed by the drainage of Baltoro and Biafo glaciers, two of the longest non-polar glaciers.",
-    "district": "Shigar",
-    "watershed": "Indus Basin Catchment",
-    "length": 62,
-    "elevation": 3100,
-    "coordinates": {
-      "lat": 35.6815,
-      "lng": 75.7242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-astore",
-    "slug": "astore-river",
-    "name": "Astore River",
-    "type": "stream",
-    "category": "Tributary",
-    "description": "Drains the eastern slopes of Nanga Parbat and the high Deosai plateau.",
-    "district": "Astore",
-    "watershed": "Indus Basin Catchment",
-    "length": 120,
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.9015,
-      "lng": 75.1242
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "snow-trout",
-      "schizothorax",
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-hispar",
-    "slug": "hispar-river",
-    "name": "Hispar River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A classic glacier-fed mountain torrent. Flows through a deep, unstable valley carved by the Hispar glacier.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 48,
-    "elevation": 4300,
-    "coordinates": {
-      "lat": 36.1215,
-      "lng": 74.9818
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "river-shimshal",
-    "slug": "shimshal-river",
-    "name": "Shimshal River",
-    "type": "stream",
-    "category": "Mountain Torrent",
-    "description": "A major hazard zone. The Khurdopin glacier periodically surges and blocks the river, forming unstable lakes that threaten Hunza Valley downstream.",
-    "district": "Hunza",
-    "watershed": "Data Pending",
-    "length": 82,
-    "elevation": 4730,
-    "coordinates": {
-      "lat": 36.4328,
-      "lng": 75.6515
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 8,
-      "turbidity": 10,
-      "conductivity": 180,
-      "temperature": 12,
-      "nitrates": 0.8,
-      "phosphates": 0.06,
-      "biologicalOxygenDemand": 2.2,
-      "totalDissolvedSolids": 130,
-      "fecalColiform": 150,
-      "lastTested": "2026-03-15",
-      "status": "excellent",
-      "trends": {
-        "pH": "stable",
-        "dissolvedOxygen": "stable",
-        "turbidity": "stable"
-      }
-    },
-    "biodiversity": [
-      "riverine-birds",
-      "aquatic-plants"
-    ],
-    "threats": [
-      "bank-erosion",
-      "climate-change"
-    ],
-    "hydrologicalData": {
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "critical"
-    },
-    "region": "Gilgit-Baltistan",
-    "verificationStatus": "under-review",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
     "id": "kishanganga-river",
     "slug": "kishanganga-river",
     "name": "Kishanganga River",
@@ -22023,7 +11919,4101 @@ export const riversData: WaterEntity[] = [
     "updatedAt": "2026-03-20T14:00:00Z",
     "region": "Kashmir Core"
   }
-
+,
+  {
+    "id": "river-wangath",
+    "slug": "river-wangath",
+    "name": "Wangath Nallah",
+    "type": "stream",
+    "category": "Trout Stream",
+    "description": "Legendary alpine trout stream fed by Gangabal and Nundkol glacial lakes. Flows past the ancient Naranag stone temple complex before joining the Sindh River at Wangath.",
+    "district": "Ganderbal",
+    "watershed": "Sindh Basin",
+    "length": 28,
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 34.2965,
+      "lng": 74.9815
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 4,
+      "conductivity": 120,
+      "temperature": 9.5,
+      "nitrates": 0.4,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "rainbow-trout",
+      "schizothorax",
+      "himalayan-dipper",
+      "stonefly-larvae"
+    ],
+    "threats": [
+      "unregulated-angling",
+      "tourism-litter",
+      "sedimentation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 16.5,
+      "discharge": 340,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "glacial-lake-outflow",
+      "drainageArea": 280,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-mawar",
+    "slug": "river-mawar",
+    "name": "Mawar River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Perennial cold-water river originating from the dense pine forests of Rajwar. Flows through Langate before merging with Pohru River. Famed for angling and agricultural irrigation.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "length": 44,
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 34.3644,
+      "lng": 74.2482
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 7,
+      "conductivity": 155,
+      "temperature": 11.2,
+      "nitrates": 0.8,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 110,
+      "fecalColiform": 110,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "kashmir-carp",
+      "otter",
+      "kingfisher"
+    ],
+    "threats": [
+      "sand-mining",
+      "pesticide-runoff",
+      "bank-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 24.2,
+      "discharge": 520,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-spring",
+      "drainageArea": 420,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-kamil",
+    "slug": "river-kamil",
+    "name": "Kamil River (Kehmil)",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Drains the picturesque Lolab Valley and northern Shamsabari ranges, providing vital water for Kupwara orchards and rice paddies before joining Pohru near Nutnussa.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "length": 52,
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 34.4215,
+      "lng": 74.2055
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 9,
+      "conductivity": 178,
+      "temperature": 12.5,
+      "nitrates": 1.1,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.2,
+      "totalDissolvedSolids": 135,
+      "fecalColiform": 220,
+      "lastTested": "2026-03-19",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "schizothorax",
+      "common-carp",
+      "water-hen",
+      "willow-flycatcher"
+    ],
+    "threats": [
+      "encroachment",
+      "agricultural-runoff",
+      "plastic-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 28.5,
+      "discharge": 640,
+      "waterLevel": 2.1,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt",
+      "drainageArea": 560,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-talri",
+    "slug": "river-talri",
+    "name": "Talri Nallah (Karnah Stream)",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "High-gradient mountain torrent draining Sadhna Pass and Kafir Kund slopes across the Karnah-Tangdhar frontier, discharging into the Kishanganga gorge.",
+    "district": "Kupwara",
+    "watershed": "Kishanganga Basin",
+    "length": 36,
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.3912,
+      "lng": 73.8562
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 5,
+      "conductivity": 140,
+      "temperature": 10,
+      "nitrates": 0.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 92,
+      "fecalColiform": 60,
+      "lastTested": "2026-03-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "torrent-catfish",
+      "himalayan-monal-riparian"
+    ],
+    "threats": [
+      "flash-floods",
+      "soil-erosion",
+      "landslide-debris"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18,
+      "discharge": 380,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt",
+      "drainageArea": 310,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-telbal",
+    "slug": "stream-telbal",
+    "name": "Telbal Nallah",
+    "type": "stream",
+    "category": "Lake Feeder Stream",
+    "description": "Crucial perennial freshwater artery originating from Marsar Lake and Dachigam upper catchment; supplies over 75% of inflow into Dal Lake at Hazratbal basin.",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "length": 22,
+    "elevation": 1590,
+    "coordinates": {
+      "lat": 34.1485,
+      "lng": 74.8712
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 7.1,
+      "turbidity": 14,
+      "conductivity": 220,
+      "temperature": 13.8,
+      "nitrates": 1.8,
+      "phosphates": 0.14,
+      "biologicalOxygenDemand": 3.4,
+      "totalDissolvedSolids": 165,
+      "fecalColiform": 480,
+      "lastTested": "2026-03-24",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "biodiversity": [
+      "common-carp",
+      "crucian-carp",
+      "water-lilies",
+      "mallard",
+      "heron"
+    ],
+    "threats": [
+      "siltation",
+      "nutrient-loading",
+      "urban-settlements",
+      "solid-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14.2,
+      "discharge": 290,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "alpine-lake-outflow",
+      "drainageArea": 215,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-harwan",
+    "slug": "stream-harwan",
+    "name": "Harwan Stream (Mahadev Nallah)",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Crystal mountain stream draining Mount Mahadev and Dachigam heights into Harwan Reservoir, the historic source of filtered drinking water for Srinagar city.",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "length": 18,
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 34.1528,
+      "lng": 74.8967
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 3,
+      "conductivity": 125,
+      "temperature": 9.8,
+      "nitrates": 0.35,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "brown-trout",
+      "caddisfly",
+      "white-capped-water-redstart"
+    ],
+    "threats": [
+      "tourist-footfall",
+      "catchment-degradation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9.5,
+      "discharge": 180,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "spring-snowmelt",
+      "drainageArea": 135,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-amirkhan",
+    "slug": "stream-amirkhan",
+    "name": "Amir Khan Nallah",
+    "type": "stream",
+    "category": "Urban Conduit",
+    "description": "Historic navigation and hydrological canal connecting Nigeen Lake through historic stone bridges to Khushalsar and Anchar lakes in northern Srinagar.",
+    "district": "Srinagar",
+    "watershed": "Srinagar Waterways",
+    "length": 5.5,
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.1189,
+      "lng": 74.8082
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 5.2,
+      "turbidity": 24,
+      "conductivity": 310,
+      "temperature": 15.5,
+      "nitrates": 2.8,
+      "phosphates": 0.28,
+      "biologicalOxygenDemand": 5.8,
+      "totalDissolvedSolids": 240,
+      "fecalColiform": 1400,
+      "lastTested": "2026-03-25",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "biodiversity": [
+      "common-carp",
+      "azolla",
+      "lemna",
+      "pond-heron"
+    ],
+    "threats": [
+      "raw-sewage",
+      "solid-waste-dumping",
+      "encroachment",
+      "weed-choking"
+    ],
+    "hydrologicalData": {
+      "flowRate": 3.8,
+      "discharge": 75,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "lake-overflow",
+      "drainageArea": 35,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-kokernag-stream",
+    "slug": "river-kokernag-stream",
+    "name": "Kokernag Stream (Brengi Tributary)",
+    "type": "stream",
+    "category": "Springhead Stream",
+    "description": "Prolific freshwater stream gushing directly from the Kokernag karst spring complex. Famed across Asia for pure cold-water trout aquaculture and horticulture.",
+    "district": "Anantnag",
+    "watershed": "Brengi Basin",
+    "length": 38,
+    "elevation": 1980,
+    "coordinates": {
+      "lat": 33.5822,
+      "lng": 75.3045
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 3,
+      "conductivity": 135,
+      "temperature": 9.2,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 90,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "brown-trout",
+      "schizothorax",
+      "freshwater-crabs"
+    ],
+    "threats": [
+      "urbanization-near-spring",
+      "tourist-pressures"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18.5,
+      "discharge": 390,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "karst-springhead",
+      "drainageArea": 320,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-achabal",
+    "slug": "stream-achabal",
+    "name": "Achabal Nallah (Koutahar Stream)",
+    "type": "stream",
+    "category": "Springhead Stream",
+    "description": "Perennial stream fed by the historic Mughal spring at Achabal, meandering through apple orchards of Koutahar before joining Jhelum near Khanabal.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "length": 24,
+    "elevation": 1670,
+    "coordinates": {
+      "lat": 33.6812,
+      "lng": 75.2285
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 6,
+      "conductivity": 168,
+      "temperature": 11.5,
+      "nitrates": 0.9,
+      "phosphates": 0.07,
+      "biologicalOxygenDemand": 1.9,
+      "totalDissolvedSolids": 125,
+      "fecalColiform": 140,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "common-carp",
+      "pond-heron",
+      "willow-warbler"
+    ],
+    "threats": [
+      "agricultural-runoff",
+      "plastic-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12,
+      "discharge": 240,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "karst-spring",
+      "drainageArea": 180,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-aripal",
+    "slug": "stream-aripal",
+    "name": "Aripal Stream (Tral Stream)",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Originates in the pristine cedar and pine ridges of Shikargah and Tral Wildlife Sanctuary. Crucial watering corridor for endangered Hangul deer before joining Jhelum.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "length": 32,
+    "elevation": 1720,
+    "coordinates": {
+      "lat": 33.9285,
+      "lng": 75.0512
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 5,
+      "conductivity": 145,
+      "temperature": 10.8,
+      "nitrates": 0.6,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 85,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "hangul-corridor",
+      "himalayan-black-bear-use"
+    ],
+    "threats": [
+      "timber-logging",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 15.2,
+      "discharge": 310,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "spring-snowmelt",
+      "drainageArea": 260,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-hirpora",
+    "slug": "stream-hirpora",
+    "name": "Hirpora Nallah (Upper Rambiara)",
+    "type": "stream",
+    "category": "Glacial Torrent",
+    "description": "High-altitude torrent rushing down Pir Ki Gali and the Mughal Road pass through Hirpora Wildlife Sanctuary, forming the primary source of the Rambiara River.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "length": 26,
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 33.6385,
+      "lng": 74.7215
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 4,
+      "conductivity": 115,
+      "temperature": 8.4,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 76,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "pir-panjal-markhor",
+      "snow-trout",
+      "himalayan-griffon"
+    ],
+    "threats": [
+      "mughal-road-traffic",
+      "avalanche-debris"
+    ],
+    "hydrologicalData": {
+      "flowRate": 17.5,
+      "discharge": 360,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-alpine-springs",
+      "drainageArea": 220,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-sasara",
+    "slug": "stream-sasara",
+    "name": "Sasara Stream",
+    "type": "stream",
+    "category": "Tributary",
+    "description": "Originates along the northern slopes of Pir Panjal, winding across Karewa tablelands and saffron terraces before discharging into Jhelum near Kakapora.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "length": 34,
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 33.9542,
+      "lng": 74.9215
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 7.5,
+      "turbidity": 11,
+      "conductivity": 195,
+      "temperature": 13,
+      "nitrates": 1.3,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 2.4,
+      "totalDissolvedSolids": 145,
+      "fecalColiform": 280,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "kashmir-carp",
+      "cyprinid-species",
+      "kingfisher"
+    ],
+    "threats": [
+      "brick-kiln-dust",
+      "karewa-excavation",
+      "siltation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11.2,
+      "discharge": 220,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-spring",
+      "drainageArea": 240,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-buniyar",
+    "slug": "stream-buniyar",
+    "name": "Buniyar Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Rushing gorge torrent descending from Kazinag National Park slopes, carving a deep ravine before joining the Lower Jhelum River downstream of Baramulla.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "length": 27,
+    "elevation": 1450,
+    "coordinates": {
+      "lat": 34.1352,
+      "lng": 74.1845
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 6,
+      "conductivity": 148,
+      "temperature": 11,
+      "nitrates": 0.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 96,
+      "fecalColiform": 75,
+      "lastTested": "2026-03-17",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "markhor-riparian-use",
+      "stone-loach"
+    ],
+    "threats": [
+      "road-widening",
+      "slope-destabilization"
+    ],
+    "hydrologicalData": {
+      "flowRate": 16,
+      "discharge": 330,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt",
+      "drainageArea": 210,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-hapathkhai",
+    "slug": "stream-hapathkhai",
+    "name": "Hapathkhai Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial mountain stream descending from Gulmarg and Apharwat foothills, feeding historic irrigation watermills and paddy belts before meeting the Jhelum.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "length": 29,
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 34.1812,
+      "lng": 74.3125
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 6,
+      "conductivity": 152,
+      "temperature": 11.4,
+      "nitrates": 0.65,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 105,
+      "fecalColiform": 90,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "schizothorax",
+      "himalayan-trout",
+      "water-thrush"
+    ],
+    "threats": [
+      "agricultural-runoff",
+      "gravel-extraction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14.8,
+      "discharge": 295,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-forest-springs",
+      "drainageArea": 230,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-dachigam",
+    "slug": "stream-dachigam",
+    "name": "Dachigam Nallah",
+    "type": "stream",
+    "category": "Coldwater Stream",
+    "description": "Strictly protected pristine alpine stream flowing through the core sanctuary of Dachigam National Park, providing uncontaminated habitat for Hangul and otters.",
+    "district": "Srinagar",
+    "watershed": "Dachigam Catchment",
+    "length": 25,
+    "elevation": 1950,
+    "coordinates": {
+      "lat": 34.1378,
+      "lng": 74.9452
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 2,
+      "conductivity": 105,
+      "temperature": 8.1,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 65,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "hangul",
+      "brown-bear",
+      "eurasian-otter",
+      "brown-trout",
+      "caddis-fly"
+    ],
+    "threats": [
+      "climate-variability",
+      "wildfire-risk"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12.5,
+      "discharge": 250,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "glacial-tarn-marsar",
+      "drainageArea": 175,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-daksum",
+    "slug": "stream-daksum",
+    "name": "Daksum Stream (Dessu Nallah)",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Enchanting conifer-flanked torrent descending from Sinthan Pass and Kishtwar frontier to merge with Brengi at Daksum, creating legendary trout angling pools.",
+    "district": "Anantnag",
+    "watershed": "Brengi Basin",
+    "length": 31,
+    "elevation": 2438,
+    "coordinates": {
+      "lat": 33.6125,
+      "lng": 75.4312
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 3,
+      "conductivity": 118,
+      "temperature": 8.7,
+      "nitrates": 0.35,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "rainbow-trout",
+      "schizothorax",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "highway-construction",
+      "tourist-camping"
+    ],
+    "hydrologicalData": {
+      "flowRate": 15,
+      "discharge": 310,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-alpine-springs",
+      "drainageArea": 210,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-east-lidder",
+    "slug": "river-east-lidder",
+    "name": "East Lidder River (Sheshnag Torrent)",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Originates from the high glacial waters of Sheshnag Lake, roaring down Chandanwari gorge before merging with the West Lidder at Pahalgam.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "length": 35,
+    "elevation": 2950,
+    "coordinates": {
+      "lat": 34.0512,
+      "lng": 75.3345
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 3,
+      "conductivity": 110,
+      "temperature": 7.8,
+      "nitrates": 0.25,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 70,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "snow-trout",
+      "torrent-bullhead",
+      "whistling-thrush"
+    ],
+    "threats": [
+      "pilgrimage-season-waste",
+      "flash-floods"
+    ],
+    "hydrologicalData": {
+      "flowRate": 26,
+      "discharge": 580,
+      "waterLevel": 1.7,
+      "seasonalVariation": "perennial",
+      "source": "glacial-lake-sheshnag",
+      "drainageArea": 410,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-west-lidder",
+    "slug": "river-west-lidder",
+    "name": "West Lidder River (Kolahoi Melt Stream)",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Carved directly from the snouts of Kolahoi Glacier, flowing across Aru Valley through emerald pine meadows to join the East Lidder at Pahalgam.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "length": 38,
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 34.0885,
+      "lng": 75.2812
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9,
+      "turbidity": 4,
+      "conductivity": 112,
+      "temperature": 7.5,
+      "nitrates": 0.28,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "rainbow-trout",
+      "mayfly-nymphs",
+      "alpine-swift"
+    ],
+    "threats": [
+      "glacial-retreat",
+      "adventure-tourism-pressures"
+    ],
+    "hydrologicalData": {
+      "flowRate": 30.5,
+      "discharge": 690,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "kolahoi-glacier",
+      "drainageArea": 480,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-baltal",
+    "slug": "stream-baltal",
+    "name": "Sindh Baltal Headwaters",
+    "type": "stream",
+    "category": "Glacial Torrent",
+    "description": "Turbulent source torrent emerging from the base of Amarnath mountain and Zojila snowfields, rushing through Baltal valley to initiate the Sindh River.",
+    "district": "Ganderbal",
+    "watershed": "Sindh Basin",
+    "length": 21,
+    "elevation": 2740,
+    "coordinates": {
+      "lat": 34.2545,
+      "lng": 75.4125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 8,
+      "conductivity": 128,
+      "temperature": 6.8,
+      "nitrates": 0.4,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 82,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "stonefly",
+      "himalayan-accentor"
+    ],
+    "threats": [
+      "zojila-tunnel-construction",
+      "pilgrimage-camps"
+    ],
+    "hydrologicalData": {
+      "flowRate": 22,
+      "discharge": 480,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "glacial-snowpack",
+      "drainageArea": 290,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-ahlan",
+    "slug": "stream-ahlan",
+    "name": "Ahlan Gadool Stream",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial mountain stream draining the alpine ridges bordering Kishtwar, traversing dense deodar forests before joining the Bringi River.",
+    "district": "Anantnag",
+    "watershed": "Brengi Basin",
+    "length": 22,
+    "elevation": 2300,
+    "coordinates": {
+      "lat": 33.5412,
+      "lng": 75.3912
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 4,
+      "conductivity": 126,
+      "temperature": 9.8,
+      "nitrates": 0.4,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 50,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "otter",
+      "cheer-pheasant"
+    ],
+    "threats": [
+      "timber-felling",
+      "erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 10.5,
+      "discharge": 210,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-spring",
+      "drainageArea": 160,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-kulangam",
+    "slug": "stream-kulangam",
+    "name": "Kulangam Stream",
+    "type": "stream",
+    "category": "Tributary",
+    "description": "Essential tributary of Pohru River flowing past Handwara and Kulangam, irrigating broad expanses of rice terraces in northern Baramulla-Kupwara borderland.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "length": 26,
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.4012,
+      "lng": 74.2815
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.6,
+      "turbidity": 10,
+      "conductivity": 182,
+      "temperature": 12.8,
+      "nitrates": 1.2,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 2.3,
+      "totalDissolvedSolids": 140,
+      "fecalColiform": 240,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "kashmir-carp",
+      "catfish",
+      "little-grebe"
+    ],
+    "threats": [
+      "siltation",
+      "pesticides",
+      "bank-cutting"
+    ],
+    "hydrologicalData": {
+      "flowRate": 13.5,
+      "discharge": 270,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "spring-runoff",
+      "drainageArea": 220,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-shalimar",
+    "slug": "stream-shalimar",
+    "name": "Shalimar Nallah",
+    "type": "stream",
+    "category": "Heritage Stream",
+    "description": "Historic canalized stream flowing through the iconic cascades of Shalimar Garden into Dal Lake, diverted from Dachigam catchment by Mughal emperors.",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "length": 12,
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.1489,
+      "lng": 74.8725
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 8,
+      "conductivity": 170,
+      "temperature": 12.2,
+      "nitrates": 0.9,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 2,
+      "totalDissolvedSolids": 120,
+      "fecalColiform": 180,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "carp",
+      "kingfisher",
+      "willow-species"
+    ],
+    "threats": [
+      "tourist-litter",
+      "urban-runoff"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "discharge": 110,
+      "waterLevel": 0.9,
+      "seasonalVariation": "perennial",
+      "source": "catchment-diversion",
+      "drainageArea": 65,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-viji",
+    "slug": "stream-viji",
+    "name": "Viji Nallah (Pattang Stream)",
+    "type": "stream",
+    "category": "Trout Stream",
+    "description": "Originates in the high meadows of Tosamaidan alpine plateau, cascading down granite boulders to nourish Sukhnag River with cold trout waters.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "length": 28,
+    "elevation": 2280,
+    "coordinates": {
+      "lat": 33.9845,
+      "lng": 74.5215
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 3,
+      "conductivity": 122,
+      "temperature": 9.1,
+      "nitrates": 0.38,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 78,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "snow-trout",
+      "caddisfly",
+      "himalayan-woodpecker"
+    ],
+    "threats": [
+      "grazing-pressures",
+      "unregulated-trekking"
+    ],
+    "hydrologicalData": {
+      "flowRate": 13.8,
+      "discharge": 285,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "tosamaidan-meadow-springs",
+      "drainageArea": 210,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-malaikhor",
+    "slug": "stream-malaikhor",
+    "name": "Malaikhor Nallah",
+    "type": "stream",
+    "category": "Coldwater Stream",
+    "description": "Descending from Tatakooti peak glaciers, running past high shepherd pastures to augment Doodhganga River with glacial silt and pristine snowmelt.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "length": 25,
+    "elevation": 2510,
+    "coordinates": {
+      "lat": 33.8912,
+      "lng": 74.5845
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 5,
+      "conductivity": 118,
+      "temperature": 8.8,
+      "nitrates": 0.32,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "stonefly",
+      "alpine-accentor"
+    ],
+    "threats": [
+      "overgrazing",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14.5,
+      "discharge": 305,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "tatakooti-glacier",
+      "drainageArea": 195,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-doodhpathri",
+    "slug": "stream-doodhpathri",
+    "name": "Doodhpathri Stream",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Rushing frothy white torrent cascading over smooth river stones across the alpine meadows of Doodhpathri ('Valley of Milk'), forming the upper Shaliganga.",
+    "district": "Budgam",
+    "watershed": "Shaliganga Basin",
+    "length": 23,
+    "elevation": 2730,
+    "coordinates": {
+      "lat": 33.8825,
+      "lng": 74.5512
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 2,
+      "conductivity": 108,
+      "temperature": 7.9,
+      "nitrates": 0.22,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 68,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "brown-trout",
+      "himalayan-dipper",
+      "water-shrew"
+    ],
+    "threats": [
+      "tourism-litter",
+      "uncontrolled-horse-riding"
+    ],
+    "hydrologicalData": {
+      "flowRate": 15.2,
+      "discharge": 320,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-snowmelt",
+      "drainageArea": 180,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-gurez-kishanganga",
+    "slug": "river-gurez-kishanganga",
+    "name": "Upper Kishanganga (Gurez Valley)",
+    "type": "river",
+    "category": "High Alpine River",
+    "description": "Majestic high-altitude reach of Kishanganga meandering past the pyramid peak of Habba Khatoon and Dawar fortress before crossing the Line of Control.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "length": 55,
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 34.6312,
+      "lng": 74.8512
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 5,
+      "conductivity": 142,
+      "temperature": 8.2,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "schizothorax",
+      "himalayan-otter",
+      "black-necked-grebe"
+    ],
+    "threats": [
+      "hydropower-dam-diversion",
+      "border-tensions"
+    ],
+    "hydrologicalData": {
+      "flowRate": 48,
+      "discharge": 1120,
+      "waterLevel": 2.4,
+      "seasonalVariation": "perennial",
+      "source": "glacial-snowpack",
+      "drainageArea": 1250,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-ahij",
+    "slug": "stream-ahij",
+    "name": "Ahij Stream (Khag Nallah)",
+    "type": "stream",
+    "category": "Tributary",
+    "description": "Originating in the alpine forests of Khag, cascading through apple-rich valleys to join Sukhnag River near Beerwah.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "length": 22,
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 34.0215,
+      "lng": 74.5612
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 5,
+      "conductivity": 145,
+      "temperature": 10.5,
+      "nitrates": 0.55,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 95,
+      "fecalColiform": 75,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "stone-loach",
+      "riverine-birds"
+    ],
+    "threats": [
+      "agricultural-runoff",
+      "gravel-extraction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11,
+      "discharge": 225,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "forest-springs",
+      "drainageArea": 170,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-warwan",
+    "slug": "river-warwan",
+    "name": "Warwan River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "One of the most remote and pristine glacial rivers of the Western Himalayas. Drains northern Nun-Kun massif through Warwan Valley, joining Marusudar at Inshan.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "length": 85,
+    "elevation": 2600,
+    "coordinates": {
+      "lat": 33.8542,
+      "lng": 75.7612
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 4,
+      "conductivity": 102,
+      "temperature": 7.2,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 64,
+      "fecalColiform": 18,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "himalayan-brown-bear",
+      "tibetan-wolf-riparian"
+    ],
+    "threats": [
+      "road-connectivity-impacts",
+      "climate-warming"
+    ],
+    "hydrologicalData": {
+      "flowRate": 65,
+      "discharge": 1850,
+      "waterLevel": 2.8,
+      "seasonalVariation": "perennial",
+      "source": "nun-kun-glaciers",
+      "drainageArea": 1850,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-kalnai",
+    "slug": "river-kalnai",
+    "name": "Kalnai River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Major right-bank tributary of the Chenab River originating in the high meadows of Bhalessa and Kahara, carving a steep canyon before joining Chenab at Thatri.",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "length": 68,
+    "elevation": 1420,
+    "coordinates": {
+      "lat": 33.0845,
+      "lng": 75.7915
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 7,
+      "conductivity": 165,
+      "temperature": 12,
+      "nitrates": 0.6,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 115,
+      "fecalColiform": 95,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "tor-putitora",
+      "himalayan-swift"
+    ],
+    "threats": [
+      "hydroelectric-projects",
+      "road-slashing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 42,
+      "discharge": 940,
+      "waterLevel": 2.2,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-springs",
+      "drainageArea": 920,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-bichleri",
+    "slug": "stream-bichleri",
+    "name": "Bichleri Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Deep mountain torrent draining the southern approaches of the Pir Panjal range and Banihal Pass, cutting a rugged gorge down to the Chenab near Ramban.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "length": 42,
+    "elevation": 1150,
+    "coordinates": {
+      "lat": 33.2415,
+      "lng": 75.1912
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 12,
+      "conductivity": 190,
+      "temperature": 13.5,
+      "nitrates": 0.95,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.2,
+      "totalDissolvedSolids": 142,
+      "fecalColiform": 210,
+      "lastTested": "2026-03-19",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "biodiversity": [
+      "tor-tor",
+      "schizothorax",
+      "river-lapwing"
+    ],
+    "threats": [
+      "railway-tunnel-muck",
+      "nh-44-debris",
+      "landslides"
+    ],
+    "hydrologicalData": {
+      "flowRate": 26.5,
+      "discharge": 580,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-springs",
+      "drainageArea": 460,
+      "floodRisk": "critical"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-pogal",
+    "slug": "stream-pogal",
+    "name": "Pogal Paristan Stream",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial mountain stream draining the secluded forested valleys of Pogal and Paristan into the Bichleri gorge and Chenab basin.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "length": 31,
+    "elevation": 1350,
+    "coordinates": {
+      "lat": 33.2845,
+      "lng": 75.2512
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 6,
+      "conductivity": 155,
+      "temperature": 11.8,
+      "nitrates": 0.55,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 102,
+      "fecalColiform": 85,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "mountain-crabs",
+      "white-capped-redstart"
+    ],
+    "threats": [
+      "soil-erosion",
+      "rural-road-construction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 16,
+      "discharge": 340,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "spring-snowmelt",
+      "drainageArea": 270,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-gool",
+    "slug": "stream-gool",
+    "name": "Gool Gulabgarh Stream",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Glacial-melt and karst-fed torrent draining the southern high ridges of Konsarnag and Bramsar peaks, flowing south through Mahore to the Chenab.",
+    "district": "Reasi",
+    "watershed": "Chenab Basin",
+    "length": 45,
+    "elevation": 1250,
+    "coordinates": {
+      "lat": 33.3125,
+      "lng": 74.9125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 5,
+      "conductivity": 142,
+      "temperature": 11.2,
+      "nitrates": 0.45,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 92,
+      "fecalColiform": 65,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "golden-mahseer",
+      "snow-trout",
+      "otter"
+    ],
+    "threats": [
+      "flash-floods",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 22,
+      "discharge": 490,
+      "waterLevel": 1.7,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-alpine-springs",
+      "drainageArea": 390,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-sewa",
+    "slug": "river-sewa",
+    "name": "Sewa River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Major tributary of the Ravi River, flowing through the spectacular Bani-Sarthal valley, supporting the Sewa-II Hydroelectric Project and rich riparian habitats.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "length": 78,
+    "elevation": 1180,
+    "coordinates": {
+      "lat": 32.7125,
+      "lng": 75.8145
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 6,
+      "conductivity": 158,
+      "temperature": 13.2,
+      "nitrates": 0.58,
+      "phosphates": 0.045,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 105,
+      "fecalColiform": 90,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "mahseer",
+      "schizothorax",
+      "goral",
+      "crested-kingfisher"
+    ],
+    "threats": [
+      "hydropower-dam-impacts",
+      "quarrying"
+    ],
+    "hydrologicalData": {
+      "flowRate": 38,
+      "discharge": 850,
+      "waterLevel": 2.1,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-kailash-kund",
+      "drainageArea": 890,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-suran",
+    "slug": "river-suran",
+    "name": "Suran River",
+    "type": "river",
+    "category": "Major River",
+    "description": "Principal river of Poonch district, originating in the high Pir Panjal pass slopes, flowing past Surankote to merge with Poonch River at Poonch city.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "length": 86,
+    "elevation": 1020,
+    "coordinates": {
+      "lat": 33.7645,
+      "lng": 74.1528
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 10,
+      "conductivity": 185,
+      "temperature": 14.5,
+      "nitrates": 1.1,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.1,
+      "totalDissolvedSolids": 138,
+      "fecalColiform": 250,
+      "lastTested": "2026-03-19",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tor-putitora",
+      "snow-trout",
+      "river-lapwing",
+      "grey-wagtail"
+    ],
+    "threats": [
+      "unregulated-boulder-mining",
+      "urban-sewage-poonch",
+      "flash-floods"
+    ],
+    "hydrologicalData": {
+      "flowRate": 52,
+      "discharge": 1180,
+      "waterLevel": 2.5,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-snowpack",
+      "drainageArea": 1450,
+      "floodRisk": "critical"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-mandi",
+    "slug": "stream-mandi",
+    "name": "Mandi River",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial river draining the high alpine peaks of Loran and Mandi valleys of Pir Panjal, merging with the Suran River downstream.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "length": 38,
+    "elevation": 1190,
+    "coordinates": {
+      "lat": 33.8012,
+      "lng": 74.2545
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 6,
+      "conductivity": 150,
+      "temperature": 11.5,
+      "nitrates": 0.6,
+      "phosphates": 0.045,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 100,
+      "fecalColiform": 85,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "schizothorax",
+      "trout",
+      "dipper"
+    ],
+    "threats": [
+      "flash-floods",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 20,
+      "discharge": 420,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-springs",
+      "drainageArea": 350,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-betar",
+    "slug": "stream-betar",
+    "name": "Betar Nallah",
+    "type": "stream",
+    "category": "Border Stream",
+    "description": "Cross-border mountain torrent originating near the Line of Control ridge heights, flowing past border outposts to empty into the Poonch River.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "length": 32,
+    "elevation": 980,
+    "coordinates": {
+      "lat": 33.7845,
+      "lng": 74.0812
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 9,
+      "conductivity": 175,
+      "temperature": 13.8,
+      "nitrates": 0.9,
+      "phosphates": 0.07,
+      "biologicalOxygenDemand": 2,
+      "totalDissolvedSolids": 130,
+      "fecalColiform": 170,
+      "lastTested": "2026-03-19",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "carp",
+      "snow-trout",
+      "river-lapwing"
+    ],
+    "threats": [
+      "border-fortifications",
+      "gravel-extraction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 16.5,
+      "discharge": 360,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-springs",
+      "drainageArea": 280,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-darhal",
+    "slug": "stream-darhal",
+    "name": "Darhal Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial mountain river originating from Shakermarg tarns and Pir Panjal heights, flowing through Darhal bowl to join the Rajouri Tawi.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "length": 35,
+    "elevation": 1050,
+    "coordinates": {
+      "lat": 33.4812,
+      "lng": 74.4125
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 7,
+      "conductivity": 162,
+      "temperature": 12.5,
+      "nitrates": 0.7,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.7,
+      "totalDissolvedSolids": 112,
+      "fecalColiform": 120,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "golden-mahseer",
+      "snow-trout",
+      "wagtail"
+    ],
+    "threats": [
+      "sand-gravel-mining",
+      "flash-floods"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18,
+      "discharge": 390,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "alpine-springs-snowmelt",
+      "drainageArea": 310,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-suketan",
+    "slug": "stream-suketan",
+    "name": "Suket Stream (Thannamandi River)",
+    "type": "stream",
+    "category": "Tributary",
+    "description": "Drains the historic Mughal pass route at Thannamandi and eastern Rajouri hills, providing irrigation before feeding into the Manawar Tawi system.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "length": 30,
+    "elevation": 920,
+    "coordinates": {
+      "lat": 33.4512,
+      "lng": 74.3512
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.7,
+      "turbidity": 11,
+      "conductivity": 188,
+      "temperature": 14.2,
+      "nitrates": 1.1,
+      "phosphates": 0.085,
+      "biologicalOxygenDemand": 2.2,
+      "totalDissolvedSolids": 140,
+      "fecalColiform": 230,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "mahseer",
+      "carp",
+      "cormorant"
+    ],
+    "threats": [
+      "agricultural-runoff",
+      "quarrying"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14.5,
+      "discharge": 310,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "spring-snowmelt",
+      "drainageArea": 260,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-chenani",
+    "slug": "stream-chenani",
+    "name": "Chenani Upper Tawi",
+    "type": "stream",
+    "category": "River Headwaters",
+    "description": "Glacier and sacred springhead source of the Tawi River originating at Kali Kundi glacier on the Seoj Dhar plateau, carving a steep gorge down to Chenani.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "length": 48,
+    "elevation": 1280,
+    "coordinates": {
+      "lat": 32.9512,
+      "lng": 75.3145
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 5,
+      "conductivity": 145,
+      "temperature": 11,
+      "nitrates": 0.45,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 95,
+      "fecalColiform": 65,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "mahseer-fingerlings",
+      "otter"
+    ],
+    "threats": [
+      "chenani-hydroelectric-diversion",
+      "landslides"
+    ],
+    "hydrologicalData": {
+      "flowRate": 24,
+      "discharge": 520,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "kali-kundi-glacial-spring",
+      "drainageArea": 430,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-markha",
+    "slug": "river-markha",
+    "name": "Markha River",
+    "type": "river",
+    "category": "Alpine River",
+    "description": "Legendary high-altitude river flowing through the core of Hemis National Park from Kang Yatse glaciers, carving one of the most famous trekking valleys into the Zanskar River.",
+    "district": "Leh",
+    "watershed": "Zanskar Basin",
+    "length": 65,
+    "elevation": 3750,
+    "coordinates": {
+      "lat": 33.9125,
+      "lng": 77.3412
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 4,
+      "conductivity": 98,
+      "temperature": 5.8,
+      "nitrates": 0.18,
+      "phosphates": 0.012,
+      "biologicalOxygenDemand": 0.7,
+      "totalDissolvedSolids": 58,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard-riparian",
+      "blue-sheep",
+      "tibetan-snowcock",
+      "triplophysa-loach"
+    ],
+    "threats": [
+      "glacial-melt-surges",
+      "trekking-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18.5,
+      "discharge": 410,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "kang-yatse-glaciers",
+      "drainageArea": 780,
+      "floodRisk": "moderate"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-tangtse",
+    "slug": "river-tangtse",
+    "name": "Tangtse River",
+    "type": "river",
+    "category": "Cold Desert River",
+    "description": "Glacial river draining the high plateaus north of Pangong Tso, flowing northwest through dramatic arid granite valleys toward the Shyok River.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "length": 48,
+    "elevation": 3950,
+    "coordinates": {
+      "lat": 34.0215,
+      "lng": 78.1645
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 5,
+      "conductivity": 120,
+      "temperature": 5.2,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "triplophysa",
+      "black-necked-crane",
+      "tibetan-partridge"
+    ],
+    "threats": [
+      "border-road-construction",
+      "permafrost-thaw"
+    ],
+    "hydrologicalData": {
+      "flowRate": 15,
+      "discharge": 320,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "changchenmo-glaciers",
+      "drainageArea": 620,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-chipchap",
+    "slug": "river-chipchap",
+    "name": "Chip Chap River",
+    "type": "river",
+    "category": "Trans-Himalayan River",
+    "description": "Originates on the desolate Depsang Plains near the Aksai Chin plateau, flowing westward through high sub-zero deserts to feed the Upper Shyok River.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "length": 75,
+    "elevation": 4850,
+    "coordinates": {
+      "lat": 35.2512,
+      "lng": 77.9845
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 6,
+      "conductivity": 115,
+      "temperature": 3.8,
+      "nitrates": 0.15,
+      "phosphates": 0.01,
+      "biologicalOxygenDemand": 0.6,
+      "totalDissolvedSolids": 65,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tibetan-antelope-habitat",
+      "kiang-range",
+      "alpine-lichens"
+    ],
+    "threats": [
+      "military-logistics-infrastructure",
+      "extreme-climate-change"
+    ],
+    "hydrologicalData": {
+      "flowRate": 22,
+      "discharge": 480,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "depsang-glaciers",
+      "drainageArea": 1100,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-shingo",
+    "slug": "river-shingo",
+    "name": "Shingo River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Crosses the Line of Control near Kargil, carrying glacial meltwaters from the Deosai Plateau to merge with the Dras River and ultimately the Suru and Indus.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "length": 100,
+    "elevation": 2750,
+    "coordinates": {
+      "lat": 34.5812,
+      "lng": 76.1245
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 5,
+      "conductivity": 138,
+      "temperature": 7.8,
+      "nitrates": 0.35,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "himalayan-brown-bear",
+      "triplophysa"
+    ],
+    "threats": [
+      "transboundary-security-works",
+      "flash-floods"
+    ],
+    "hydrologicalData": {
+      "flowRate": 55,
+      "discharge": 1250,
+      "waterLevel": 2.4,
+      "seasonalVariation": "perennial",
+      "source": "deosai-snowpack-glaciers",
+      "drainageArea": 1650,
+      "floodRisk": "high"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-wakha",
+    "slug": "river-wakha",
+    "name": "Wakha River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Originating near Namika La pass, flowing past the historic rock-cut Buddha at Mulbekh and Shergol monastery to join the Suru River at Kargil town.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "length": 54,
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 34.5215,
+      "lng": 76.2145
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 8,
+      "conductivity": 165,
+      "temperature": 9.2,
+      "nitrates": 0.65,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 110,
+      "fecalColiform": 90,
+      "lastTested": "2026-03-20",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "mountain-finch",
+      "ladakhi-willow"
+    ],
+    "threats": [
+      "kargil-urban-waste",
+      "national-highway-widening"
+    ],
+    "hydrologicalData": {
+      "flowRate": 24,
+      "discharge": 520,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "namika-la-snowmelt",
+      "drainageArea": 520,
+      "floodRisk": "moderate"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-kangi",
+    "slug": "stream-kangi",
+    "name": "Kangi Nallah",
+    "type": "stream",
+    "category": "Alpine Gorge Stream",
+    "description": "Dramatic canyon torrent descending steeply from Kangi La pass through sheer limestone and shale cliffs to feed the Doda River in western Zanskar.",
+    "district": "Kargil",
+    "watershed": "Zanskar Basin",
+    "length": 34,
+    "elevation": 3850,
+    "coordinates": {
+      "lat": 34.2145,
+      "lng": 76.5125
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 3,
+      "conductivity": 105,
+      "temperature": 5.4,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 65,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard-prey-zone",
+      "ibex",
+      "triplophysa"
+    ],
+    "threats": [
+      "flash-floods",
+      "rockfall-debris"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12,
+      "discharge": 260,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "kangi-la-glaciers",
+      "drainageArea": 320,
+      "floodRisk": "moderate"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-lungnak",
+    "slug": "river-lungnak",
+    "name": "Lungnak River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Formed by the confluence of Tsarap and Kargyag rivers, winding past Bardan and Phuktal monasteries before joining Doda river at Padum to form Zanskar River.",
+    "district": "Kargil",
+    "watershed": "Zanskar Basin",
+    "length": 62,
+    "elevation": 3620,
+    "coordinates": {
+      "lat": 33.4512,
+      "lng": 76.9215
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 4,
+      "conductivity": 112,
+      "temperature": 6.2,
+      "nitrates": 0.22,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "tibetan-wolf",
+      "bar-headed-goose-riparian"
+    ],
+    "threats": [
+      "nimu-padum-darcha-road-cutting",
+      "landslide-dams"
+    ],
+    "hydrologicalData": {
+      "flowRate": 45,
+      "discharge": 1050,
+      "waterLevel": 2.2,
+      "seasonalVariation": "perennial",
+      "source": "tsarap-kargyag-confluence",
+      "drainageArea": 1420,
+      "floodRisk": "high"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-kargyag",
+    "slug": "river-kargyag",
+    "name": "Kargyag River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Glacial stream originating near Shingo La pass, draining south Zanskar valley beneath the sacred monolithic spire of Mount Gumbok Rangan.",
+    "district": "Kargil",
+    "watershed": "Zanskar Basin",
+    "length": 46,
+    "elevation": 4120,
+    "coordinates": {
+      "lat": 33.1512,
+      "lng": 77.1845
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 3,
+      "conductivity": 95,
+      "temperature": 4.8,
+      "nitrates": 0.15,
+      "phosphates": 0.012,
+      "biologicalOxygenDemand": 0.7,
+      "totalDissolvedSolids": 58,
+      "fecalColiform": 12,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "triplophysa",
+      "himalayan-marmot",
+      "bearded-vulture"
+    ],
+    "threats": [
+      "shingo-la-tunnel-works",
+      "glacial-lake-outbursts"
+    ],
+    "hydrologicalData": {
+      "flowRate": 25,
+      "discharge": 580,
+      "waterLevel": 1.7,
+      "seasonalVariation": "perennial",
+      "source": "shingo-la-glaciers",
+      "drainageArea": 640,
+      "floodRisk": "moderate"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-chuchot",
+    "slug": "stream-chuchot",
+    "name": "Chuchot Stream",
+    "type": "stream",
+    "category": "Floodplain Stream",
+    "description": "Glacier melt stream feeding the historic riparian willow belts and bird marshes of Chuchot along the southern bank of the Indus near Leh.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "length": 19,
+    "elevation": 3250,
+    "coordinates": {
+      "lat": 34.0845,
+      "lng": 77.6125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 6,
+      "conductivity": 140,
+      "temperature": 10.5,
+      "nitrates": 0.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 92,
+      "fecalColiform": 65,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "black-necked-crane",
+      "common-teal",
+      "indus-willow-flycatcher"
+    ],
+    "threats": [
+      "residential-expansion",
+      "agricultural-drainage"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "discharge": 170,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "stok-range-snowmelt",
+      "drainageArea": 120,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-hemis",
+    "slug": "stream-hemis",
+    "name": "Hemis Monastery Stream",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Sacred gorge stream descending from the high glaciated crags behind Hemis Monastery, sustaining ancient juniper groves and wild roses down to the Indus.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "length": 16,
+    "elevation": 3550,
+    "coordinates": {
+      "lat": 33.9125,
+      "lng": 77.7085
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 3,
+      "conductivity": 115,
+      "temperature": 8,
+      "nitrates": 0.25,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "chukar-partridge",
+      "snow-leopard",
+      "wild-rose-riparian"
+    ],
+    "threats": [
+      "festival-tourist-footfall",
+      "flash-surges"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.2,
+      "discharge": 145,
+      "waterLevel": 0.95,
+      "seasonalVariation": "perennial",
+      "source": "stok-kangri-spur-glaciers",
+      "drainageArea": 95,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-braldu",
+    "slug": "river-braldu",
+    "name": "Braldu River",
+    "type": "river",
+    "category": "Glacial Torrent",
+    "description": "One of the most furious glacial rivers on Earth. Drains the colossal Baltoro, Godwin-Austen, and Biafo glaciers beneath K2 and Broad Peak, surging through Askole to form the Shigar.",
+    "district": "Shigar",
+    "watershed": "Indus Basin",
+    "length": 78,
+    "elevation": 3050,
+    "coordinates": {
+      "lat": 35.6512,
+      "lng": 75.8542
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 18,
+      "conductivity": 125,
+      "temperature": 4.5,
+      "nitrates": 0.22,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "increasing"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard",
+      "triplophysa-silt-adapted",
+      "himalayan-ibex"
+    ],
+    "threats": [
+      "glofs-from-baltoro",
+      "glacial-lake-outbursts",
+      "extreme-velocity"
+    ],
+    "hydrologicalData": {
+      "flowRate": 95,
+      "discharge": 2850,
+      "waterLevel": 3.4,
+      "seasonalVariation": "perennial",
+      "source": "baltoro-biafo-glaciers",
+      "drainageArea": 2650,
+      "floodRisk": "critical"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-basha",
+    "slug": "river-basha",
+    "name": "Basha River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Glacial river originating from Chogo Lungma Glacier in northern Baltistan, uniting with the Braldu River at Tisar to form the Shigar River.",
+    "district": "Shigar",
+    "watershed": "Indus Basin",
+    "length": 62,
+    "elevation": 2950,
+    "coordinates": {
+      "lat": 35.7125,
+      "lng": 75.5215
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9,
+      "turbidity": 14,
+      "conductivity": 120,
+      "temperature": 5.2,
+      "nitrates": 0.25,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "golden-eagle",
+      "karakoram-loach"
+    ],
+    "threats": [
+      "glacial-surge-floods",
+      "riverbank-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 68,
+      "discharge": 1820,
+      "waterLevel": 2.8,
+      "seasonalVariation": "perennial",
+      "source": "chogo-lungma-glacier",
+      "drainageArea": 1620,
+      "floodRisk": "high"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-hushe",
+    "slug": "river-hushe",
+    "name": "Hushe River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Pristine glacial river draining Masherbrum, Charakusa, and Gondogoro glaciers, roaring down Hushe valley to join the Shyok River near Khaplu.",
+    "district": "Ghanche",
+    "watershed": "Shyok Basin",
+    "length": 55,
+    "elevation": 3100,
+    "coordinates": {
+      "lat": 35.3812,
+      "lng": 76.3512
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 6,
+      "conductivity": 105,
+      "temperature": 5.6,
+      "nitrates": 0.18,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.75,
+      "totalDissolvedSolids": 68,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard",
+      "triplophysa",
+      "himalayan-ibex",
+      "chough"
+    ],
+    "threats": [
+      "glacial-retreat",
+      "extreme-winter-freezing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 48,
+      "discharge": 1150,
+      "waterLevel": 2.2,
+      "seasonalVariation": "perennial",
+      "source": "masherbrum-glaciers",
+      "drainageArea": 1280,
+      "floodRisk": "moderate"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-saltoro",
+    "slug": "river-saltoro",
+    "name": "Saltoro River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Glacial river originating from Bilafond and Saltoro glaciers along the Saltoro Ridge near Siachen, merging with Hushe River above the Shyok confluence.",
+    "district": "Ghanche",
+    "watershed": "Shyok Basin",
+    "length": 48,
+    "elevation": 3200,
+    "coordinates": {
+      "lat": 35.2812,
+      "lng": 76.5412
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 5,
+      "conductivity": 108,
+      "temperature": 5,
+      "nitrates": 0.16,
+      "phosphates": 0.012,
+      "biologicalOxygenDemand": 0.7,
+      "totalDissolvedSolids": 65,
+      "fecalColiform": 12,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "karakoram-loach",
+      "snowcock",
+      "ibex"
+    ],
+    "threats": [
+      "glacier-lake-hazards",
+      "high-altitude-military-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 38,
+      "discharge": 890,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "bilafond-saltoro-glaciers",
+      "drainageArea": 960,
+      "floodRisk": "moderate"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-ishkoman",
+    "slug": "river-ishkoman",
+    "name": "Ishkoman River (Karambar River)",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Drains the remote Karambar Lake on the Afghan Wakhan-Pamir frontier, flowing through Ishkoman Valley to join the Gilgit River at Gahkuch.",
+    "district": "Ghizer",
+    "watershed": "Gilgit Basin",
+    "length": 88,
+    "elevation": 2350,
+    "coordinates": {
+      "lat": 36.3512,
+      "lng": 73.9125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9,
+      "turbidity": 6,
+      "conductivity": 128,
+      "temperature": 7.4,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 82,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "triplophysa",
+      "eurasian-otter",
+      "dipper"
+    ],
+    "threats": [
+      "glofs-from-chateperk",
+      "slope-destabilization"
+    ],
+    "hydrologicalData": {
+      "flowRate": 58,
+      "discharge": 1420,
+      "waterLevel": 2.5,
+      "seasonalVariation": "perennial",
+      "source": "karambar-lake-glaciers",
+      "drainageArea": 1820,
+      "floodRisk": "high"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-yasin",
+    "slug": "river-yasin",
+    "name": "Yasin River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "High-velocity river draining the Darkot Pass and Hindu Raj glaciated walls, flowing south through Yasin Valley into the Ghizer River.",
+    "district": "Ghizer",
+    "watershed": "Gilgit Basin",
+    "length": 68,
+    "elevation": 2480,
+    "coordinates": {
+      "lat": 36.4215,
+      "lng": 73.5412
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 7,
+      "conductivity": 132,
+      "temperature": 7.8,
+      "nitrates": 0.32,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "triplophysa",
+      "himalayan-monal-valley"
+    ],
+    "threats": [
+      "landslides",
+      "flash-surges"
+    ],
+    "hydrologicalData": {
+      "flowRate": 44,
+      "discharge": 1050,
+      "waterLevel": 2.1,
+      "seasonalVariation": "perennial",
+      "source": "darkot-glaciers",
+      "drainageArea": 1350,
+      "floodRisk": "high"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-phander",
+    "slug": "river-phander",
+    "name": "Phander / Ghizer River",
+    "type": "river",
+    "category": "Major River",
+    "description": "Turquoise blue trout river flowing out of Shandur Pass and Phander Lake, creating world-famous angling meanders before becoming the Gilgit River.",
+    "district": "Ghizer",
+    "watershed": "Gilgit Basin",
+    "length": 95,
+    "elevation": 2750,
+    "coordinates": {
+      "lat": 36.1845,
+      "lng": 72.9512
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 3,
+      "conductivity": 115,
+      "temperature": 8.2,
+      "nitrates": 0.25,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 74,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-23",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "rainbow-trout",
+      "dipper",
+      "water-hen"
+    ],
+    "threats": [
+      "unregulated-tourism",
+      "overfishing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 62,
+      "discharge": 1550,
+      "waterLevel": 2.6,
+      "seasonalVariation": "perennial",
+      "source": "shandur-springs-phander-lake",
+      "drainageArea": 2100,
+      "floodRisk": "moderate"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-chapursan",
+    "slug": "river-chapursan",
+    "name": "Chapursan River",
+    "type": "river",
+    "category": "Border River",
+    "description": "Remote glacial river flowing along the Afghan Wakhan corridor through the legendary Chapursan Valley past Baba Ghundi shrine, joining Hunza River above Sost.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "length": 72,
+    "elevation": 3100,
+    "coordinates": {
+      "lat": 36.8125,
+      "lng": 74.4512
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 6,
+      "conductivity": 125,
+      "temperature": 5.8,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 78,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard",
+      "marco-polo-sheep-edge",
+      "ibex",
+      "triplophysa"
+    ],
+    "threats": [
+      "glacial-mudflows",
+      "permafrost-melting"
+    ],
+    "hydrologicalData": {
+      "flowRate": 36,
+      "discharge": 820,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "irshad-pass-glaciers",
+      "drainageArea": 1250,
+      "floodRisk": "high"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-khunjerab",
+    "slug": "river-khunjerab",
+    "name": "Khunjerab River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "High alpine river draining Khunjerab National Park on the Pakistan-China Karakoram frontier, roaring south along the Karakoram Highway to form the Hunza River.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "length": 65,
+    "elevation": 3450,
+    "coordinates": {
+      "lat": 36.8512,
+      "lng": 75.0512
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 5,
+      "conductivity": 118,
+      "temperature": 4.9,
+      "nitrates": 0.18,
+      "phosphates": 0.012,
+      "biologicalOxygenDemand": 0.75,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "marco-polo-sheep",
+      "snow-leopard",
+      "golden-marmot",
+      "tibetan-wolf"
+    ],
+    "threats": [
+      "karakoram-highway-freight",
+      "avalanche-surges"
+    ],
+    "hydrologicalData": {
+      "flowRate": 42,
+      "discharge": 980,
+      "waterLevel": 2.1,
+      "seasonalVariation": "perennial",
+      "source": "khunjerab-glaciers",
+      "drainageArea": 1450,
+      "floodRisk": "moderate"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-rupal",
+    "slug": "river-rupal",
+    "name": "Rupal River",
+    "type": "river",
+    "category": "Glacial Torrent",
+    "description": "Glacial monster originating directly at the snout of Rupal Glacier beneath the 4,600-meter sheer South Face of Nanga Parbat, raging east into the Astore River.",
+    "district": "Astore",
+    "watershed": "Astore Basin",
+    "length": 36,
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 35.2145,
+      "lng": 74.7812
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 12,
+      "conductivity": 112,
+      "temperature": 5.2,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 18,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-leopard",
+      "himalayan-brown-bear",
+      "ibex",
+      "glacial-loach"
+    ],
+    "threats": [
+      "nanga-parbat-glofs",
+      "rock-avalanches"
+    ],
+    "hydrologicalData": {
+      "flowRate": 34,
+      "discharge": 810,
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "rupal-glacier-nanga-parbat",
+      "drainageArea": 580,
+      "floodRisk": "high"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-rama",
+    "slug": "stream-rama",
+    "name": "Rama Stream",
+    "type": "stream",
+    "category": "Alpine Stream",
+    "description": "Drains the turquoise waters of Rama Lake and the dense cedar-pine forests of Rama Meadow beneath Nanga Parbat eastern flank into Astore River.",
+    "district": "Astore",
+    "watershed": "Astore Basin",
+    "length": 22,
+    "elevation": 3150,
+    "coordinates": {
+      "lat": 35.3612,
+      "lng": 74.8125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 3,
+      "conductivity": 105,
+      "temperature": 6.8,
+      "nitrates": 0.22,
+      "phosphates": 0.016,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 68,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "brown-bear-range",
+      "western-tragopan-edge"
+    ],
+    "threats": [
+      "summer-tourist-encampments"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11.5,
+      "discharge": 240,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "rama-lake-sacche-glacier",
+      "drainageArea": 160,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-bagrot",
+    "slug": "river-bagrot",
+    "name": "Bagrot River",
+    "type": "river",
+    "category": "Glacial River",
+    "description": "Raging river draining Hinarche, Dobani, and Rakaposhi south-face glaciers, cascading through the fertile terraced villages of Bagrot Valley into Gilgit River.",
+    "district": "Gilgit",
+    "watershed": "Gilgit Basin",
+    "length": 42,
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 35.9512,
+      "lng": 74.5215
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 8,
+      "conductivity": 135,
+      "temperature": 7.5,
+      "nitrates": 0.35,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "karakoram-loach",
+      "ibex",
+      "dipper"
+    ],
+    "threats": [
+      "hinarche-glof-history",
+      "flood-surges"
+    ],
+    "hydrologicalData": {
+      "flowRate": 32,
+      "discharge": 760,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "rakaposhi-hinarche-glaciers",
+      "drainageArea": 720,
+      "floodRisk": "critical"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-naltar",
+    "slug": "stream-naltar",
+    "name": "Naltar River",
+    "type": "stream",
+    "category": "Coldwater Stream",
+    "description": "World-famous emerald river fed by the three Naltar glacial lakes, cascading past ski slopes and pine forests to merge with Hunza River at Nomal.",
+    "district": "Gilgit",
+    "watershed": "Hunza Basin",
+    "length": 38,
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 36.1425,
+      "lng": 74.1912
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 3,
+      "conductivity": 110,
+      "temperature": 7.1,
+      "nitrates": 0.22,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 70,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-23",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "brown-trout",
+      "markhor-sanctuary",
+      "himalayan-woodpecker"
+    ],
+    "threats": [
+      "tourism-expansion",
+      "waste-management"
+    ],
+    "hydrologicalData": {
+      "flowRate": 20,
+      "discharge": 450,
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "naltar-lakes-glaciers",
+      "drainageArea": 420,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-kandia",
+    "slug": "river-kandia",
+    "name": "Kandia River",
+    "type": "river",
+    "category": "Gorge River",
+    "description": "Massive gorge river descending from high glaciers of the Swat-Kohistan-Karakoram junction, roaring through Kandia Valley into the Indus gorge.",
+    "district": "Kohistan",
+    "watershed": "Indus Basin",
+    "length": 58,
+    "elevation": 1450,
+    "coordinates": {
+      "lat": 35.3125,
+      "lng": 73.2845
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 10,
+      "conductivity": 155,
+      "temperature": 11.2,
+      "nitrates": 0.48,
+      "phosphates": 0.038,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 102,
+      "fecalColiform": 70,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "tor-putitora",
+      "himalayan-black-bear"
+    ],
+    "threats": [
+      "dam-backwater-inundation",
+      "extreme-flash-floods"
+    ],
+    "hydrologicalData": {
+      "flowRate": 48,
+      "discharge": 1180,
+      "waterLevel": 2.3,
+      "seasonalVariation": "perennial",
+      "source": "hindu-raj-glaciers",
+      "drainageArea": 1220,
+      "floodRisk": "critical"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-jagran",
+    "slug": "stream-jagran",
+    "name": "Jagran Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Major right-bank tributary of the Neelum River originating in the high alpine glaciers of Kutton, site of Jagran Hydropower project and renowned trout habitat.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "length": 45,
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 34.5812,
+      "lng": 73.8412
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 4,
+      "conductivity": 132,
+      "temperature": 9.5,
+      "nitrates": 0.42,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 86,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "rainbow-trout",
+      "schizothorax",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "hydropower-diversion",
+      "landslides"
+    ],
+    "hydrologicalData": {
+      "flowRate": 25,
+      "discharge": 580,
+      "waterLevel": 1.7,
+      "seasonalVariation": "perennial",
+      "source": "jagran-glaciers-kutton",
+      "drainageArea": 520,
+      "floodRisk": "high"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-kutton",
+    "slug": "stream-kutton",
+    "name": "Kutton / Kundal Shahi Nallah",
+    "type": "stream",
+    "category": "Trout Stream",
+    "description": "Crystal clear alpine stream flowing through the conifer forests of Kundal Shahi into Neelum River, famous for trout angling and eco-tourism.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "length": 28,
+    "elevation": 1720,
+    "coordinates": {
+      "lat": 34.5512,
+      "lng": 73.8125
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 3,
+      "conductivity": 125,
+      "temperature": 9.8,
+      "nitrates": 0.38,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "snow-trout",
+      "caddisfly",
+      "grey-wagtail"
+    ],
+    "threats": [
+      "tourist-litter",
+      "unplanned-construction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 16.5,
+      "discharge": 340,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "snowmelt-springs",
+      "drainageArea": 290,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-surgan",
+    "slug": "stream-surgan",
+    "name": "Surgan Nallah",
+    "type": "stream",
+    "category": "Glacial Torrent",
+    "description": "Originates from glaciated border crests near Sharda, carrying icy meltwaters through virgin fir forests into the upper Neelum River.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "length": 32,
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 34.7812,
+      "lng": 74.1915
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9,
+      "turbidity": 4,
+      "conductivity": 115,
+      "temperature": 8.2,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "musk-deer-habitat",
+      "snowcock"
+    ],
+    "threats": [
+      "avalanche-debris",
+      "logging"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18,
+      "discharge": 390,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "sharda-border-glaciers",
+      "drainageArea": 340,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-leepa",
+    "slug": "river-leepa",
+    "name": "Leepa River",
+    "type": "river",
+    "category": "Tributary",
+    "description": "Meanders through the enchanted Leepa Valley across wooden shingle-roofed hamlets and rice terraces, joining the Jhelum River downstream of Hattian Bala.",
+    "district": "Hattian Bala",
+    "watershed": "Jhelum Basin",
+    "length": 48,
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 34.2512,
+      "lng": 73.8912
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 6,
+      "conductivity": 150,
+      "temperature": 11.5,
+      "nitrates": 0.65,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 85,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "kashmir-flying-squirrel-riparian",
+      "cheer-pheasant"
+    ],
+    "threats": [
+      "cross-border-shelling-debris",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 22,
+      "discharge": 480,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "reshian-shamsabari-snowmelt",
+      "drainageArea": 460,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-mahal",
+    "slug": "stream-mahal",
+    "name": "Mahal Nallah",
+    "type": "stream",
+    "category": "Mountain Stream",
+    "description": "Perennial mountain stream draining Ganga Chotti mountain heights and pine ridges of Bagh district into Mahl River and Jhelum.",
+    "district": "Bagh",
+    "watershed": "Jhelum Basin",
+    "length": 34,
+    "elevation": 1420,
+    "coordinates": {
+      "lat": 33.9845,
+      "lng": 73.7812
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8,
+      "turbidity": 8,
+      "conductivity": 168,
+      "temperature": 12.8,
+      "nitrates": 0.8,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 115,
+      "fecalColiform": 140,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tor-tor",
+      "schizothorax",
+      "kingfisher"
+    ],
+    "threats": [
+      "road-cutting-landslides",
+      "agricultural-runoff"
+    ],
+    "hydrologicalData": {
+      "flowRate": 15.5,
+      "discharge": 320,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "ganga-chotti-springs",
+      "drainageArea": 310,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-bhimber",
+    "slug": "stream-bhimber",
+    "name": "Bhimber Nallah",
+    "type": "stream",
+    "category": "Foothill Stream",
+    "description": "Originates in the sub-Himalayan Shiwalik foothills, draining through Bhimber valley toward the Punjab plains, forming an important regional ecological corridor.",
+    "district": "Bhimber",
+    "watershed": "Chenab Basin",
+    "length": 52,
+    "elevation": 480,
+    "coordinates": {
+      "lat": 32.9812,
+      "lng": 74.0712
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 14,
+      "conductivity": 220,
+      "temperature": 16.5,
+      "nitrates": 1.4,
+      "phosphates": 0.11,
+      "biologicalOxygenDemand": 2.8,
+      "totalDissolvedSolids": 165,
+      "fecalColiform": 380,
+      "lastTested": "2026-03-17",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "biodiversity": [
+      "rohu",
+      "mrigal",
+      "catla",
+      "black-ibis",
+      "pond-heron"
+    ],
+    "threats": [
+      "monsoon-spates",
+      "agricultural-runoff",
+      "quarrying"
+    ],
+    "hydrologicalData": {
+      "flowRate": 18,
+      "discharge": 410,
+      "waterLevel": 1.6,
+      "seasonalVariation": "spate-perennial",
+      "source": "shiwalik-monsoon-springs",
+      "drainageArea": 580,
+      "floodRisk": "critical"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "river-poonch-kotli",
+    "slug": "river-poonch-kotli",
+    "name": "Lower Poonch River (Kotli Gorge)",
+    "type": "river",
+    "category": "River Sanctuary",
+    "description": "Deep carved canyon of Poonch River entering Mangla Reservoir, designated as a protected Mahseer and aquatic biodiversity sanctuary.",
+    "district": "Kotli",
+    "watershed": "Poonch Basin",
+    "length": 65,
+    "elevation": 620,
+    "coordinates": {
+      "lat": 33.5125,
+      "lng": 73.9012
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 12,
+      "conductivity": 195,
+      "temperature": 15.2,
+      "nitrates": 1.1,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.1,
+      "totalDissolvedSolids": 145,
+      "fecalColiform": 260,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tor-putitora-spawning-grounds",
+      "mahseer",
+      "cormorant",
+      "softshell-turtle"
+    ],
+    "threats": [
+      "gulpur-hydropower-dam",
+      "illegal-netting"
+    ],
+    "hydrologicalData": {
+      "flowRate": 65,
+      "discharge": 1580,
+      "waterLevel": 3,
+      "seasonalVariation": "perennial",
+      "source": "poonch-suran-confluence",
+      "drainageArea": 3200,
+      "floodRisk": "high"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "stream-qazinag",
+    "slug": "stream-qazinag",
+    "name": "Qazinag Transboundary Stream",
+    "type": "stream",
+    "category": "Border Stream",
+    "description": "Cross-border mountain torrent descending from Kazinag mountain massif across the Line of Control into the Lower Jhelum gorge near Chakothi.",
+    "district": "Jhelum Valley",
+    "watershed": "Lower Jhelum Basin",
+    "length": 24,
+    "elevation": 1520,
+    "coordinates": {
+      "lat": 34.1912,
+      "lng": 74.0512
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 6,
+      "conductivity": 152,
+      "temperature": 11.5,
+      "nitrates": 0.55,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 80,
+      "lastTested": "2026-03-17",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "markhor",
+      "snow-trout",
+      "himalayan-monal"
+    ],
+    "threats": [
+      "border-infrastructure",
+      "unstable-slopes"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14,
+      "discharge": 290,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "kazinag-snowpack",
+      "drainageArea": 210,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  }
 ];
 // Water Systems Data - Part 2 (Springs and Data Access)
 
@@ -24299,32 +18289,32 @@ export const springsData: WaterEntity[] = [
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "spring-tatta-pani-kotli",
-    "slug": "tatta-pani-hot-springs-kotli",
-    "name": "Tatta Pani Hot Springs (Kotli)",
+    "id": "spring-vimal-kamal-mattan",
+    "slug": "spring-vimal-kamal-mattan",
+    "name": "Mattan Sacred Springs (Vimal Nag & Kamal Nag)",
     "type": "spring",
-    "category": "Geothermal Spring",
-    "description": "Situated on the banks of the Poonch River. Legend attributes the heat of the water to the presence of volcanic minerals.",
-    "district": "Kotli",
-    "watershed": "Poonch River Basin",
-    "elevation": 650,
+    "category": "Sacred Spring",
+    "description": "Twin sacred karst springs at the base of the Martand plateau in Mattan. Ancient pilgrimage site where clear, cold waters fill twin fish tanks harboring sacred snow trout.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 1600,
     "coordinates": {
-      "lat": 33.5833,
-      "lng": 73.9667
+      "lat": 33.7712,
+      "lng": 75.2125
     },
     "waterQuality": {
       "pH": 7.5,
-      "dissolvedOxygen": 8.5,
-      "turbidity": 3,
-      "conductivity": 180,
-      "temperature": 10,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 2,
+      "conductivity": 150,
+      "temperature": 11.2,
       "nitrates": 0.5,
-      "phosphates": 0.04,
-      "biologicalOxygenDemand": 1.5,
-      "totalDissolvedSolids": 120,
-      "fecalColiform": 50,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
       "trends": {
         "pH": "stable",
         "dissolvedOxygen": "stable",
@@ -24332,107 +18322,113 @@ export const springsData: WaterEntity[] = [
       }
     },
     "biodiversity": [
-      "aquatic-plants",
-      "amphibians"
+      "schizothorax",
+      "holy-trout",
+      "sacred-cyprinids",
+      "aquatic-moss"
     ],
     "threats": [
-      "climate-change"
+      "pilgrimage-offerings",
+      "concrete-paving-around-recharge-zone"
     ],
     "hydrologicalData": {
-      "rechargeRate": 400,
-      "waterLevel": 1.2,
+      "flowRate": 14.5,
+      "discharge": 220,
+      "waterLevel": 1.8,
       "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "drainageArea": 50,
-      "floodRisk": "low",
-      "discharge": 8
+      "source": "karst-aquifer-martand",
+      "drainageArea": 45,
+      "floodRisk": "low"
     },
-    "region": "AJK",
+    "region": "Kashmir Core",
     "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
   },
   {
-    "id": "spring-tatta-pani-kotli",
-    "slug": "tatta-pani-hot-springs-kotli",
-    "name": "Tatta Pani Hot Springs (Kotli)",
+    "id": "spring-vicharnag",
+    "slug": "spring-vicharnag",
+    "name": "Vicharnag Spring",
     "type": "spring",
-    "category": "Geothermal Spring",
-    "description": "Situated on the banks of the Poonch River. Legend attributes the heat of the water to the presence of volcanic minerals.",
-    "district": "Kotli",
-    "watershed": "Poonch River Basin",
-    "elevation": 650,
+    "category": "Sacred Spring",
+    "description": "Historic sacred spring complex in northern Srinagar (Soura), traditionally the seat where Kashmiri astronomers and scholars gathered to calculate the official lunar calendar.",
+    "district": "Srinagar",
+    "watershed": "Anchar Catchment",
+    "elevation": 1588,
     "coordinates": {
-      "lat": 33.5833,
-      "lng": 73.9667
+      "lat": 34.1352,
+      "lng": 74.8085
     },
     "waterQuality": {
-      "pH": 7.5,
-      "dissolvedOxygen": 8.5,
-      "turbidity": 3,
-      "conductivity": 180,
-      "temperature": 10,
-      "nitrates": 0.5,
-      "phosphates": 0.04,
-      "biologicalOxygenDemand": 1.5,
-      "totalDissolvedSolids": 120,
-      "fecalColiform": 50,
-      "lastTested": "2026-03-15",
+      "pH": 7.3,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 6,
+      "conductivity": 210,
+      "temperature": 13.5,
+      "nitrates": 1.4,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 2.2,
+      "totalDissolvedSolids": 145,
+      "fecalColiform": 180,
+      "lastTested": "2026-03-24",
       "status": "moderate",
       "trends": {
         "pH": "stable",
-        "dissolvedOxygen": "stable",
+        "dissolvedOxygen": "declining",
         "turbidity": "stable"
       }
     },
     "biodiversity": [
-      "aquatic-plants",
-      "amphibians"
+      "common-carp",
+      "cyprinids",
+      "water-cress"
     ],
     "threats": [
-      "climate-change"
+      "urban-encroachment",
+      "sewage-ingress",
+      "weed-infestation"
     ],
     "hydrologicalData": {
-      "rechargeRate": 400,
+      "flowRate": 6.8,
+      "discharge": 95,
       "waterLevel": 1.2,
       "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "drainageArea": 50,
-      "floodRisk": "low",
-      "discharge": 8
+      "source": "alluvial-confined-aquifer",
+      "drainageArea": 28,
+      "floodRisk": "low"
     },
-    "region": "AJK",
+    "region": "Kashmir Core",
     "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
   },
   {
-    "id": "spring-tatta-pani-kotli",
-    "slug": "tatta-pani-hot-springs-kotli",
-    "name": "Tatta Pani Hot Springs (Kotli)",
+    "id": "spring-nagbal-anantnag",
+    "slug": "spring-nagbal-anantnag",
+    "name": "Nagbal Spring Complex",
     "type": "spring",
-    "category": "Geothermal Spring",
-    "description": "Situated on the banks of the Poonch River. Legend attributes the heat of the water to the presence of volcanic minerals.",
-    "district": "Kotli",
-    "watershed": "Poonch River Basin",
-    "elevation": 650,
+    "category": "Major Spring",
+    "description": "The quintessential urban spring of Anantnag (Islamabad), from which the historic town takes its name. Multiple subterranean springs bubble up into stone-paved tanks.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1605,
     "coordinates": {
-      "lat": 33.5833,
-      "lng": 73.9667
+      "lat": 33.7312,
+      "lng": 75.1528
     },
     "waterQuality": {
-      "pH": 7.5,
-      "dissolvedOxygen": 8.5,
-      "turbidity": 3,
-      "conductivity": 180,
-      "temperature": 10,
-      "nitrates": 0.5,
-      "phosphates": 0.04,
-      "biologicalOxygenDemand": 1.5,
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 4,
+      "conductivity": 185,
+      "temperature": 12.2,
+      "nitrates": 0.85,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.8,
       "totalDissolvedSolids": 120,
-      "fecalColiform": 50,
-      "lastTested": "2026-03-15",
-      "status": "moderate",
+      "fecalColiform": 120,
+      "lastTested": "2026-03-21",
+      "status": "good",
       "trends": {
         "pH": "stable",
         "dissolvedOxygen": "stable",
@@ -24440,52 +18436,221 @@ export const springsData: WaterEntity[] = [
       }
     },
     "biodiversity": [
-      "aquatic-plants",
-      "amphibians"
+      "schizothorax",
+      "sacred-fish",
+      "pond-heron"
     ],
     "threats": [
-      "climate-change"
+      "commercial-encroachment",
+      "plastic-litter"
     ],
     "hydrologicalData": {
-      "rechargeRate": 400,
-      "waterLevel": 1.2,
+      "flowRate": 16,
+      "discharge": 280,
+      "waterLevel": 1.5,
       "seasonalVariation": "perennial",
-      "source": "groundwater",
-      "drainageArea": 50,
-      "floodRisk": "low",
-      "discharge": 8
+      "source": "limestone-karst-complex",
+      "drainageArea": 65,
+      "floodRisk": "low"
     },
-    "region": "AJK",
+    "region": "Kashmir Core",
     "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
   },
   {
-    "id": "spring-tatta-pani-kotli",
-    "slug": "tatta-pani-hot-springs-kotli",
-    "name": "Tatta Pani Hot Springs (Kotli)",
+    "id": "spring-wasaknag",
+    "slug": "spring-wasaknag",
+    "name": "Wasaknag Pulsating Spring (Kund)",
     "type": "spring",
-    "category": "Geothermal Spring",
-    "description": "Situated on the banks of the Poonch River. Legend attributes the heat of the water to the presence of volcanic minerals.",
-    "district": "Kotli",
-    "watershed": "Poonch River Basin",
-    "elevation": 650,
+    "category": "Pulsating Spring",
+    "description": "Geological marvel in Kund, Kulgam. Flows vigorously for six months starting in spring (around Navreh) and completely recedes during autumn and winter, governed by karst siphon mechanics.",
+    "district": "Kulgam",
+    "watershed": "Veshaw Basin",
+    "elevation": 1850,
     "coordinates": {
-      "lat": 33.5833,
-      "lng": 73.9667
+      "lat": 33.5645,
+      "lng": 75.0512
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 3,
+      "conductivity": 140,
+      "temperature": 10.4,
+      "nitrates": 0.4,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "freshwater-algae",
+      "kingfisher"
+    ],
+    "threats": [
+      "uncontrolled-water-extraction",
+      "deforestation-in-recharge-zone"
+    ],
+    "hydrologicalData": {
+      "flowRate": 22,
+      "discharge": 420,
+      "waterLevel": 1.6,
+      "seasonalVariation": "seasonal",
+      "source": "karst-siphon-pir-panjal",
+      "drainageArea": 85,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-devibal",
+    "slug": "spring-devibal",
+    "name": "Devibal Spring",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Revered perennial spring situated near Anantnag town, encased in ancient stone enclosures and supplying domestic water to surrounding agrarian hamlets.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 33.7255,
+      "lng": 75.1612
     },
     "waterQuality": {
       "pH": 7.5,
-      "dissolvedOxygen": 8.5,
+      "dissolvedOxygen": 8.1,
       "turbidity": 3,
-      "conductivity": 180,
-      "temperature": 10,
-      "nitrates": 0.5,
+      "conductivity": 160,
+      "temperature": 11.8,
+      "nitrates": 0.6,
       "phosphates": 0.04,
-      "biologicalOxygenDemand": 1.5,
-      "totalDissolvedSolids": 120,
-      "fecalColiform": 50,
-      "lastTested": "2026-03-15",
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 105,
+      "fecalColiform": 55,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "schizothorax",
+      "aquatic-flora"
+    ],
+    "threats": [
+      "drainage-alteration",
+      "domestic-wash-runoff"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "discharge": 130,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "karst-limestone",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kothar-nag",
+    "slug": "spring-kothar-nag",
+    "name": "Kothar Nag Spring",
+    "type": "spring",
+    "category": "Karst Spring",
+    "description": "Perennial karst spring flowing out of the base of Achabal limestone ridge, irrigating terraced orchards in the Kothar valley.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 33.6712,
+      "lng": 75.2415
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 3,
+      "conductivity": 155,
+      "temperature": 11,
+      "nitrates": 0.52,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "freshwater-mussels",
+      "dipper"
+    ],
+    "threats": [
+      "agricultural-encroachment",
+      "pesticides"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11.2,
+      "discharge": 180,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "achabal-ridge-karst",
+      "drainageArea": 48,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-wanpoh",
+    "slug": "spring-wanpoh",
+    "name": "Wanpoh Spring",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Historic high-discharge spring near the Jhelum flood corridor in Wanpoh, sustaining wetland rice agriculture and community drinking networks.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1595,
+    "coordinates": {
+      "lat": 33.7285,
+      "lng": 75.0912
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.6,
+      "turbidity": 5,
+      "conductivity": 190,
+      "temperature": 12.8,
+      "nitrates": 0.95,
+      "phosphates": 0.07,
+      "biologicalOxygenDemand": 1.9,
+      "totalDissolvedSolids": 130,
+      "fecalColiform": 140,
+      "lastTested": "2026-03-21",
       "status": "moderate",
       "trends": {
         "pH": "stable",
@@ -24494,27 +18659,2877 @@ export const springsData: WaterEntity[] = [
       }
     },
     "biodiversity": [
-      "aquatic-plants",
-      "amphibians"
+      "carp",
+      "pond-heron",
+      "water-cress"
     ],
     "threats": [
-      "climate-change"
+      "highway-drainage-pollution",
+      "siltation"
     ],
     "hydrologicalData": {
-      "rechargeRate": 400,
+      "flowRate": 9.8,
+      "discharge": 155,
       "waterLevel": 1.2,
       "seasonalVariation": "perennial",
-      "source": "groundwater",
+      "source": "valley-floor-aquifer",
+      "drainageArea": 40,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-baba-reshi",
+    "slug": "spring-baba-reshi",
+    "name": "Baba Reshi Cold Forest Springs",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Crystal pure sub-alpine springs emerging in the virgin deodar forests below Gulmarg at Baba Reshi shrine. Revered for purity and therapeutic qualities.",
+    "district": "Baramulla",
+    "watershed": "Ferozpora Basin",
+    "elevation": 2135,
+    "coordinates": {
+      "lat": 34.0712,
+      "lng": 74.3915
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2,
+      "conductivity": 115,
+      "temperature": 8.5,
+      "nitrates": 0.28,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-23",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "caddis-fly",
+      "white-capped-redstart"
+    ],
+    "threats": [
+      "pilgrim-footfall",
+      "plastic-litter"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12,
+      "discharge": 195,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "apharwat-conifer-recharge",
+      "drainageArea": 52,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-chadoora",
+    "slug": "spring-chadoora",
+    "name": "Chadoora Cold Springs",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Network of perennial artesian springs bubbling up along the Doodhganga floodplain terrace at Chadoora, providing drinking water and feeding local trout streams.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 33.9512,
+      "lng": 74.8012
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 4,
+      "conductivity": 172,
+      "temperature": 11.5,
+      "nitrates": 0.75,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 112,
+      "fecalColiform": 80,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "kashmir-carp",
+      "cyprinids",
+      "pond-heron"
+    ],
+    "threats": [
+      "urbanization-chadoora",
+      "siltation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.2,
+      "discharge": 125,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "karewa-unconfined-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-tral-nagbal",
+    "slug": "spring-tral-nagbal",
+    "name": "Tral Nagbal Spring",
+    "type": "spring",
+    "category": "Karst Spring",
+    "description": "Historic spring at the threshold of the Tral Wildlife Sanctuary, whose cold outflows create the Aripal Stream and supply the saffron-rich Tral valley.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1710,
+    "coordinates": {
+      "lat": 33.9312,
+      "lng": 75.1125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 3,
+      "conductivity": 145,
+      "temperature": 10.8,
+      "nitrates": 0.48,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 92,
+      "fecalColiform": 50,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "stream-dipper",
+      "hangul-watering-edge"
+    ],
+    "threats": [
+      "agricultural-runoff",
+      "quarrying-in-foothills"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11.5,
+      "discharge": 185,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "shikargah-limestone-aquifer",
+      "drainageArea": 55,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-batapora-shopian",
+    "slug": "spring-batapora-shopian",
+    "name": "Batapora Spring",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Famous perennial spring in the apple heartland of Shopian, emerging from Karewa gravel beds and irrigating high-density apple orchards.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "elevation": 2045,
+    "coordinates": {
+      "lat": 33.7215,
+      "lng": 74.8312
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 4,
+      "conductivity": 150,
+      "temperature": 10.2,
+      "nitrates": 0.62,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 65,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "cyprinids",
+      "wagtail"
+    ],
+    "threats": [
+      "pesticide-spray-drift",
+      "urban-expansion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.5,
+      "discharge": 115,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-gravel-aquifer",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-badran",
+    "slug": "spring-badran",
+    "name": "Badran Spring",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "High-volume spring in the Magam-Beerwah belt of Budgam, feeding extensive trout ponds and serving as a critical drought-resilience water source.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 1640,
+    "coordinates": {
+      "lat": 34.0512,
+      "lng": 74.5812
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8,
+      "turbidity": 4,
+      "conductivity": 165,
+      "temperature": 11.2,
+      "nitrates": 0.68,
+      "phosphates": 0.045,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 108,
+      "fecalColiform": 75,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "carp",
+      "water-hen"
+    ],
+    "threats": [
+      "agricultural-fertilizers",
+      "drain-blocking"
+    ],
+    "hydrologicalData": {
+      "flowRate": 10.2,
+      "discharge": 160,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "tosamaidan-alluvial-recharge",
+      "drainageArea": 42,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-vithavatur",
+    "slug": "spring-vithavatur",
+    "name": "Vithavatur Spring (Vitasta Source Co-Spring)",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Situated just one kilometer from Verinag, traditionally revered as the secondary sacred headwater of the river Vitasta (Jhelum) mentioned in the Nilamata Purana.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1880,
+    "coordinates": {
+      "lat": 33.5412,
+      "lng": 75.2412
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 2,
+      "conductivity": 135,
+      "temperature": 9.8,
+      "nitrates": 0.35,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "aquatic-moss",
+      "torrent-minnow"
+    ],
+    "threats": [
+      "land-use-change-in-recharge",
+      "silt-ingress"
+    ],
+    "hydrologicalData": {
+      "flowRate": 13.5,
+      "discharge": 210,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-karst-strata",
       "drainageArea": 50,
-      "floodRisk": "low",
-      "discharge": 8
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-duderhama",
+    "slug": "spring-duderhama",
+    "name": "Duderhama Spring",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Large artesian spring complex located in central Ganderbal town near the Sindh River bank, sustaining community tap points and vegetable nursery beds.",
+    "district": "Ganderbal",
+    "watershed": "Sindh Basin",
+    "elevation": 1615,
+    "coordinates": {
+      "lat": 34.2215,
+      "lng": 74.7812
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 4,
+      "conductivity": 160,
+      "temperature": 11,
+      "nitrates": 0.65,
+      "phosphates": 0.045,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 102,
+      "fecalColiform": 70,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "carp",
+      "water-wagtail"
+    ],
+    "threats": [
+      "urban-construction",
+      "plastic-litter"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9.2,
+      "discharge": 140,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "sindh-valley-alluvium",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-manasbal-sublacustrine",
+    "slug": "spring-manasbal-sublacustrine",
+    "name": "Manasbal Sub-lacustrine Springs",
+    "type": "spring",
+    "category": "Karst Spring",
+    "description": "Massive deep underwater springs bubbling up through fissures at the deepest point of Manasbal Lake (13m depth), maintaining its exceptional clarity and aquatic life.",
+    "district": "Ganderbal",
+    "watershed": "Manasbal Catchment",
+    "elevation": 1583,
+    "coordinates": {
+      "lat": 34.2485,
+      "lng": 74.6712
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 2,
+      "conductivity": 140,
+      "temperature": 10.2,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 90,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "nelumbo-nucifera",
+      "schizothorax",
+      "common-carp",
+      "chara-beds"
+    ],
+    "threats": [
+      "limestone-quarrying-above-lake",
+      "sedimentation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 25,
+      "discharge": 480,
+      "waterLevel": 13,
+      "seasonalVariation": "perennial",
+      "source": "limestone-subterranean-fissures",
+      "drainageArea": 120,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-harwan-karst",
+    "slug": "spring-harwan-karst",
+    "name": "Harwan Karst Infiltration Springs",
+    "type": "spring",
+    "category": "Karst Spring",
+    "description": "Perennial springs emerging near the ancient Buddhist site of Harwan, carrying crystal filtered meltwaters from the Mount Mahadev massive directly into the Srinagar water system.",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "elevation": 1690,
+    "coordinates": {
+      "lat": 34.1585,
+      "lng": 74.8985
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 2,
+      "conductivity": 120,
+      "temperature": 9.2,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "rainbow-trout",
+      "caddis-fly",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "tourist-development",
+      "fencing-restrictions"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11,
+      "discharge": 175,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "mount-mahadev-karst",
+      "drainageArea": 45,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-pari-mahal",
+    "slug": "spring-pari-mahal",
+    "name": "Pari Mahal Natural Springhead",
+    "type": "spring",
+    "category": "Perched Spring",
+    "description": "High-perched spring on the Zabarwan spur that historically powered the seven-terraced Mughal observatory and gardens of Pari Mahal overlooking Dal Lake.",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "elevation": 1780,
+    "coordinates": {
+      "lat": 34.0812,
+      "lng": 74.8785
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 3,
+      "conductivity": 145,
+      "temperature": 11.5,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 90,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "heron",
+      "willow-warbler",
+      "aquatic-moss"
+    ],
+    "threats": [
+      "catchment-afforestation-pressures",
+      "seasonal-drying"
+    ],
+    "hydrologicalData": {
+      "flowRate": 4.5,
+      "discharge": 65,
+      "waterLevel": 0.8,
+      "seasonalVariation": "perennial",
+      "source": "zabarwan-perched-aquifer",
+      "drainageArea": 18,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-naranag-alpine",
+    "slug": "spring-naranag-alpine",
+    "name": "Naranag Alpine Springs",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Sacred stone-channeled springs next to the 8th-century Lalitaditya temple complex at Naranag, discharging icy meltwater into the Wangath River.",
+    "district": "Ganderbal",
+    "watershed": "Sindh Basin",
+    "elevation": 2180,
+    "coordinates": {
+      "lat": 34.3012,
+      "lng": 74.9785
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 2,
+      "conductivity": 110,
+      "temperature": 8,
+      "nitrates": 0.22,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 68,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "torrent-stonefly",
+      "himalayan-monal-valley"
+    ],
+    "threats": [
+      "unregulated-trekking",
+      "littering"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12.5,
+      "discharge": 205,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "harmukh-gangabal-recharge",
+      "drainageArea": 52,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-bhairav-chattergul",
+    "slug": "spring-bhairav-chattergul",
+    "name": "Bhairav Spring (Chattergul)",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Ancient sacred spring at Chattergul in Shangus-Kothar valley, revered by local communities and producing vigorous cold outflows year-round.",
+    "district": "Anantnag",
+    "watershed": "Brengi Basin",
+    "elevation": 1780,
+    "coordinates": {
+      "lat": 33.6845,
+      "lng": 75.3212
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 3,
+      "conductivity": 142,
+      "temperature": 10.5,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "aquatic-plants"
+    ],
+    "threats": [
+      "encroachment",
+      "agricultural-fertilizers"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.8,
+      "discharge": 135,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "karst-limestone",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-sangam-nag",
+    "slug": "spring-sangam-nag",
+    "name": "Sangam Nag",
+    "type": "spring",
+    "category": "Major Spring",
+    "description": "Vibrant spring emerging right above the grand confluence of Lidder and Jhelum at Sangam, providing sweet drinking water unaffected by river sediment.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1590,
+    "coordinates": {
+      "lat": 33.7912,
+      "lng": 75.0815
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 5,
+      "conductivity": 178,
+      "temperature": 12.2,
+      "nitrates": 0.85,
+      "phosphates": 0.065,
+      "biologicalOxygenDemand": 1.7,
+      "totalDissolvedSolids": 118,
+      "fecalColiform": 95,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "cyprinids",
+      "common-carp",
+      "wagtail"
+    ],
+    "threats": [
+      "flood-inundation",
+      "highway-expansion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 10.5,
+      "discharge": 165,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "alluvial-gravel-bed",
+      "drainageArea": 45,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kupwara-nagbal",
+    "slug": "spring-kupwara-nagbal",
+    "name": "Kupwara Nagbal Spring",
+    "type": "spring",
+    "category": "Major Spring",
+    "description": "Central freshwater spring in Kupwara town, originating from the deodar-covered Shamsabari spurs, supplying the town and nourishing paddy nurseries.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.4312,
+      "lng": 74.2545
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8,
+      "turbidity": 4,
+      "conductivity": 162,
+      "temperature": 11.2,
+      "nitrates": 0.7,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 105,
+      "fecalColiform": 75,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "carp",
+      "pond-heron"
+    ],
+    "threats": [
+      "commercial-encroachment",
+      "drainage-blockage"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11,
+      "discharge": 170,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "shamsabari-springs",
+      "drainageArea": 44,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-sadhna-top",
+    "slug": "spring-sadhna-top",
+    "name": "Sadhna Pass High Alpine Spring",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Perennial high-pass spring just below Sadhna Pass (3,100m), crucial life-saving water station for military convoys, travelers, and nomadic Gujjar herds.",
+    "district": "Kupwara",
+    "watershed": "Kishanganga Basin",
+    "elevation": 3050,
+    "coordinates": {
+      "lat": 34.3812,
+      "lng": 73.9512
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 2,
+      "conductivity": 95,
+      "temperature": 5.4,
+      "nitrates": 0.15,
+      "phosphates": 0.012,
+      "biologicalOxygenDemand": 0.7,
+      "totalDissolvedSolids": 58,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-15",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "alpine-lichens",
+      "himalayan-snowcock",
+      "water-pipit"
+    ],
+    "threats": [
+      "highway-spills",
+      "severe-winter-freezing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 3.5,
+      "discharge": 50,
+      "waterLevel": 0.6,
+      "seasonalVariation": "perennial",
+      "source": "high-altitude-permafrost-snowmelt",
+      "drainageArea": 12,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-sudh-mahadev",
+    "slug": "spring-sudh-mahadev",
+    "name": "Sudh Mahadev Sacred Springs (Pap Nashani Bowli)",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Ancient sacred spring at the famous Sudh Mahadev temple in the Chenani hills. Revered as 'Pap Nashani' (cleanser of sins), feeding perennial stone bathing tanks.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "elevation": 1225,
+    "coordinates": {
+      "lat": 33.0215,
+      "lng": 75.3612
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.3,
+      "turbidity": 3,
+      "conductivity": 150,
+      "temperature": 12,
+      "nitrates": 0.5,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 45,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "mahseer-fingerlings",
+      "hill-stream-loach",
+      "dipper"
+    ],
+    "threats": [
+      "festival-pilgrimage-footfall",
+      "drainage-construction"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9.5,
+      "discharge": 145,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "pine-forest-subterranean-karst",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-mantalai",
+    "slug": "spring-mantalai",
+    "name": "Mantalai Sacred Spring Pool",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Mythological spring-fed pool surrounded by towering deodar forests at Mantalai (appx 2,000m), traditionally associated with the wedding of Shiva and Parvati.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "elevation": 2000,
+    "coordinates": {
+      "lat": 33.0112,
+      "lng": 75.4012
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 2,
+      "conductivity": 125,
+      "temperature": 10.2,
+      "nitrates": 0.35,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-19",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "aquatic-moss",
+      "white-throated-laughingthrush"
+    ],
+    "threats": [
+      "tourism-complex-construction",
+      "siltation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 11,
+      "discharge": 170,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "seoj-dhar-deodar-aquifer",
+      "drainageArea": 42,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kud-cold",
+    "slug": "spring-kud-cold",
+    "name": "Kud Mineral Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Naturally cold mineral spring along the Patnitop pine slopes in Kud, historically celebrated by travelers for its high mineral clarity and refreshing taste.",
+    "district": "Udhampur",
+    "watershed": "Chenab Basin",
+    "elevation": 1735,
+    "coordinates": {
+      "lat": 33.0812,
+      "lng": 75.2815
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 3,
+      "conductivity": 148,
+      "temperature": 10.8,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 95,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "hill-stream-crabs",
+      "dipper"
+    ],
+    "threats": [
+      "highway-expansion",
+      "waste-dumping"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "discharge": 95,
+      "waterLevel": 0.9,
+      "seasonalVariation": "perennial",
+      "source": "patnitop-conifer-karst",
+      "drainageArea": 25,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-batote",
+    "slug": "spring-batote",
+    "name": "Batote Highway Cold Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Famous perennial cold mountain spring at the Batote junction overlooking the Chenab gorge, supplying highway travellers and local town water supply.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "elevation": 1560,
+    "coordinates": {
+      "lat": 33.1612,
+      "lng": 75.3185
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 4,
+      "conductivity": 160,
+      "temperature": 11.5,
+      "nitrates": 0.55,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 102,
+      "fecalColiform": 60,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "loach",
+      "mosses",
+      "pied-kingfisher"
+    ],
+    "threats": [
+      "road-dust",
+      "seepage-alteration"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.8,
+      "discharge": 115,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "batote-forest-strata",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-billawar",
+    "slug": "spring-billawar",
+    "name": "Billawar Billakeshwar Bowli",
+    "type": "spring",
+    "category": "Bowli",
+    "description": "Historic stepped stone bowli adjacent to the 10th-century medieval Mahabilvakeshwar temple in Billawar, fed by deep Shiwalik sandstone aquifers.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 840,
+    "coordinates": {
+      "lat": 32.6125,
+      "lng": 75.6012
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.7,
+      "turbidity": 4,
+      "conductivity": 180,
+      "temperature": 15.2,
+      "nitrates": 0.85,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.7,
+      "totalDissolvedSolids": 125,
+      "fecalColiform": 95,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tor-putitora",
+      "carp",
+      "freshwater-turtle-edge"
+    ],
+    "threats": [
+      "urbanization-around-temple",
+      "algal-growth"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8,
+      "discharge": 120,
+      "waterLevel": 1.4,
+      "seasonalVariation": "perennial",
+      "source": "shiwalik-sandstone-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-airwan",
+    "slug": "spring-airwan",
+    "name": "Airwan Sacred Springs Complex",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Celebrated group of ancient springs and stone tanks near Nagri Parole in Kathua, said to have been consecrated by Vikramaditya, creating a major sub-tropical water oasis.",
+    "district": "Kathua",
+    "watershed": "Ujh Basin",
+    "elevation": 360,
+    "coordinates": {
+      "lat": 32.3512,
+      "lng": 75.4812
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.5,
+      "turbidity": 5,
+      "conductivity": 195,
+      "temperature": 17.5,
+      "nitrates": 1.1,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.1,
+      "totalDissolvedSolids": 140,
+      "fecalColiform": 150,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "golden-mahseer",
+      "carp",
+      "pond-heron",
+      "cormorant"
+    ],
+    "threats": [
+      "agricultural-chemical-runoff",
+      "bathing-soap-pollution"
+    ],
+    "hydrologicalData": {
+      "flowRate": 14,
+      "discharge": 220,
+      "waterLevel": 1.6,
+      "seasonalVariation": "perennial",
+      "source": "sub-shiwalik-alluvial-recharge",
+      "drainageArea": 60,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-jasrota",
+    "slug": "spring-jasrota",
+    "name": "Jasrota Palace Bowli Springs",
+    "type": "spring",
+    "category": "Bowli",
+    "description": "Historic natural springs inside the ruins of Jasrota Fort and Wildlife Sanctuary, nourishing ancient mango and bamboo groves and providing critical wildlife water.",
+    "district": "Kathua",
+    "watershed": "Ujh Basin",
+    "elevation": 420,
+    "coordinates": {
+      "lat": 32.4812,
+      "lng": 75.4215
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.6,
+      "turbidity": 4,
+      "conductivity": 185,
+      "temperature": 16.8,
+      "nitrates": 0.75,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 125,
+      "fecalColiform": 90,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "spotted-deer-waterhole",
+      "nilgai",
+      "peafowl",
+      "wild-boar"
+    ],
+    "threats": [
+      "siltation",
+      "overgrowth-of-prosopis"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "discharge": 95,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "shiwalik-perched-aquifer",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-surinsar-perched",
+    "slug": "spring-surinsar-perched",
+    "name": "Surinsar Karst Perched Springs",
+    "type": "spring",
+    "category": "Perched Spring",
+    "description": "Perched subterranean spring systems in the Shiwalik ridges above Surinsar Lake that feed the Ramsar wetland composite via subsurface fractured sandstone channels.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 680,
+    "coordinates": {
+      "lat": 32.7712,
+      "lng": 75.0215
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 3,
+      "conductivity": 170,
+      "temperature": 15.5,
+      "nitrates": 0.65,
+      "phosphates": 0.045,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 115,
+      "fecalColiform": 70,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "softshell-turtle-recharge",
+      "cyprinids",
+      "grey-hornbill"
+    ],
+    "threats": [
+      "deforestation-on-ridges",
+      "quarrying"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.2,
+      "discharge": 110,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "shiwalik-ridge-fractured-sandstone",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-pancheri",
+    "slug": "spring-pancheri",
+    "name": "Pancheri Forest Springs",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Pristine mountain springs emerging beneath dense banj oak and pine canopies in Pancheri hill station, feeding tributaries of the Chenab and Tawi.",
+    "district": "Udhampur",
+    "watershed": "Chenab Basin",
+    "elevation": 1820,
+    "coordinates": {
+      "lat": 33.1512,
+      "lng": 75.1215
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 2,
+      "conductivity": 130,
+      "temperature": 10.5,
+      "nitrates": 0.38,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-19",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout",
+      "mountain-crab",
+      "cheer-pheasant"
+    ],
+    "threats": [
+      "unplanned-resort-construction",
+      "tree-felling"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "discharge": 135,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "oak-forest-recharge-zone",
+      "drainageArea": 34,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-gool-sulphur",
+    "slug": "spring-gool-sulphur",
+    "name": "Gool Sulphur & Mineral Springs",
+    "type": "spring",
+    "category": "Thermal Spring",
+    "description": "Naturally warm mineral spring with distinct sulfur odor located in Gool Gulabgarh, known locally for therapeutic treatment of arthritis and dermatological ailments.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 33.2512,
+      "lng": 74.9812
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 6.8,
+      "turbidity": 5,
+      "conductivity": 380,
+      "temperature": 32.5,
+      "nitrates": 0.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 320,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-20",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "sulfur-tolerant-microorganisms",
+      "thermophilic-algae"
+    ],
+    "threats": [
+      "unregulated-bathing-tanks",
+      "litter"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6,
+      "discharge": 90,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "deep-faultline-geothermal",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-lamberi",
+    "slug": "spring-lamberi",
+    "name": "Lamberi Spring",
+    "type": "spring",
+    "category": "Bowli",
+    "description": "Perennial cold spring located in Nowshera-Lamberi foothills along the Pir Panjal southern rim, historically maintaining village water supply in arid dry seasons.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "elevation": 780,
+    "coordinates": {
+      "lat": 33.1512,
+      "lng": 74.3212
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 4,
+      "conductivity": 175,
+      "temperature": 15,
+      "nitrates": 0.8,
+      "phosphates": 0.055,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 120,
+      "fecalColiform": 85,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "tor-tor",
+      "pond-heron",
+      "willow"
+    ],
+    "threats": [
+      "drought-subsidence",
+      "borewell-depletion-around"
+    ],
+    "hydrologicalData": {
+      "flowRate": 5.8,
+      "discharge": 85,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "shiwalik-fractured-rock",
+      "drainageArea": 24,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-poonch-fort",
+    "slug": "spring-poonch-fort",
+    "name": "Poonch Historical Bowli Complex",
+    "type": "spring",
+    "category": "Bowli",
+    "description": "Cluster of medieval masonry bowlis located near Poonch Fort and Bagh-e-Bahar, fed by perennial springs descending from the Loran-Suran divide.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1010,
+    "coordinates": {
+      "lat": 33.7685,
+      "lng": 74.1012
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 5,
+      "conductivity": 180,
+      "temperature": 14.2,
+      "nitrates": 0.9,
+      "phosphates": 0.065,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 128,
+      "fecalColiform": 110,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "carp",
+      "wagtail"
+    ],
+    "threats": [
+      "urban-construction",
+      "neglect-of-masonry"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.5,
+      "discharge": 115,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-gravel-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kalakote-mineral",
+    "slug": "spring-kalakote-mineral",
+    "name": "Kalakote Mineral Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Mineral-rich spring originating in the coal-bearing sedimentary formations of Kalakote, displaying mild thermal qualities and high bicarbonate content.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "elevation": 720,
+    "coordinates": {
+      "lat": 33.2112,
+      "lng": 74.4125
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 6,
+      "conductivity": 280,
+      "temperature": 24.5,
+      "nitrates": 0.7,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 210,
+      "fecalColiform": 65,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "algae",
+      "cyprinids"
+    ],
+    "threats": [
+      "coal-mine-drainage",
+      "water-table-drawdown"
+    ],
+    "hydrologicalData": {
+      "flowRate": 5.2,
+      "discharge": 80,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "sub-surface-sedimentary-fault",
+      "drainageArea": 26,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-demchok",
+    "slug": "spring-demchok",
+    "name": "Demchok Geothermal Springs",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "High-altitude geothermal hot springs on the Indus River border near Demchok (4,250m). Rich in sulfur and borax, used for generations for healing and winter survival.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 4250,
+    "coordinates": {
+      "lat": 32.6985,
+      "lng": 79.4512
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 4,
+      "conductivity": 420,
+      "temperature": 48,
+      "nitrates": 0.35,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 380,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "thermophilic-cyanobacteria",
+      "tibetan-snowfinch-edge"
+    ],
+    "threats": [
+      "border-security-infrastructure",
+      "unregulated-bathing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8,
+      "discharge": 125,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "indus-suture-geothermal",
+      "drainageArea": 45,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-gaik",
+    "slug": "spring-gaik",
+    "name": "Gaik Hot Springs",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "Geothermal springs bubbling along the rocky banks of the Indus between Upshi and Chumathang, creating mineral-encrusted warm pools amidst snow.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3980,
+    "coordinates": {
+      "lat": 33.6512,
+      "lng": 78.1125
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 6.1,
+      "turbidity": 5,
+      "conductivity": 390,
+      "temperature": 44.5,
+      "nitrates": 0.4,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 340,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "algal-mats",
+      "triplophysa-in-mixing-zone"
+    ],
+    "threats": [
+      "road-widening-debris",
+      "tourist-footfall"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "discharge": 95,
+      "waterLevel": 0.9,
+      "seasonalVariation": "perennial",
+      "source": "deep-fault-geothermal",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kayam",
+    "slug": "spring-kayam",
+    "name": "Kayam Geothermal Springs",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "Extremely remote hot springs in the Chang Chenmo valley (4,600m), venting boiling mineral waters that sustain an unexpected micro-oasis of green grass in the sub-zero high plateau.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 4600,
+    "coordinates": {
+      "lat": 34.2812,
+      "lng": 78.8512
+    },
+    "waterQuality": {
+      "pH": 8.2,
+      "dissolvedOxygen": 5.4,
+      "turbidity": 4,
+      "conductivity": 450,
+      "temperature": 52,
+      "nitrates": 0.25,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 410,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "kiang-winter-pasture",
+      "thermophilic-algae",
+      "tibetan-sandgrouse"
+    ],
+    "threats": [
+      "military-logistics",
+      "extreme-climate"
+    ],
+    "hydrologicalData": {
+      "flowRate": 5.5,
+      "discharge": 85,
+      "waterLevel": 0.8,
+      "seasonalVariation": "perennial",
+      "source": "changchenmo-fault-geothermal",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-hemis-shukpachan",
+    "slug": "spring-hemis-shukpachan",
+    "name": "Hemis Shukpachan Sacred Juniper Springs",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Perennial cold spring oasis in lower Ladakh that nourishes the ancient, religiously protected cedar and juniper forest ('Shukpa') in an otherwise barren moonscape.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3600,
+    "coordinates": {
+      "lat": 34.3125,
+      "lng": 76.9812
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 2,
+      "conductivity": 120,
+      "temperature": 8.2,
+      "nitrates": 0.25,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 75,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "juniperus-excelsa",
+      "chukar-partridge",
+      "himalayan-blue-sheep"
+    ],
+    "threats": [
+      "groundwater-drawdown",
+      "unregulated-homestays"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7,
+      "discharge": 110,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "granite-fissure-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-diskit-oasis",
+    "slug": "spring-diskit-oasis",
+    "name": "Diskit Desert Oasis Springs",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Cold desert artesian spring complex feeding the historic seabuckthorn and apricot oases beneath the 14th-century Diskit Monastery in the Nubra Valley.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 3140,
+    "coordinates": {
+      "lat": 34.5712,
+      "lng": 77.5612
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 3,
+      "conductivity": 135,
+      "temperature": 9.5,
+      "nitrates": 0.35,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "bactrian-camel-watering",
+      "hippophae-rhamnoides",
+      "triplophysa"
+    ],
+    "threats": [
+      "tourism-water-pumping",
+      "sand-dune-encroachment"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9.2,
+      "discharge": 145,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "karakoram-snowmelt-alluvial",
+      "drainageArea": 40,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-turtuk-mineral",
+    "slug": "spring-turtuk-mineral",
+    "name": "Turtuk Cold Mineral Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Natural cold mountain spring in the Balti border village of Turtuk, used through ancient stone-lined aqueducts ('nang-phey') to power traditional flour mills and preserve food.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 3000,
+    "coordinates": {
+      "lat": 34.8412,
+      "lng": 76.8212
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2,
+      "conductivity": 115,
+      "temperature": 7.8,
+      "nitrates": 0.28,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "apricot-groves",
+      "mountain-loach",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "concrete-pipe-replacements-of-stone-channels",
+      "tourism-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "discharge": 130,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "karakoram-granite-fractures",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-skurbuchan",
+    "slug": "spring-skurbuchan",
+    "name": "Skurbuchan High Altitude Spring",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "High-discharge spring sustaining the sprawling cliffside apricot and apple terraces of Skurbuchan in lower Ladakh overlooking the Indus canyon.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3150,
+    "coordinates": {
+      "lat": 34.4512,
+      "lng": 76.8512
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 3,
+      "conductivity": 128,
+      "temperature": 8.8,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "apricot-orchard-canopy",
+      "ladakh-partridge"
+    ],
+    "threats": [
+      "flash-flood-siltation",
+      "channel-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9,
+      "discharge": 140,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "ladakh-range-granite-aquifer",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kargil-baroo",
+    "slug": "spring-kargil-baroo",
+    "name": "Kargil Baroo Springs",
+    "type": "spring",
+    "category": "Community Spring",
+    "description": "Perennial artesian spring group in the Baroo plateau of Kargil town, providing uninterrupted drinking water during harsh sub-zero winter freeze.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "elevation": 2720,
+    "coordinates": {
+      "lat": 34.5512,
+      "lng": 76.1312
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 4,
+      "conductivity": 150,
+      "temperature": 9,
+      "nitrates": 0.5,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 55,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "triplophysa",
+      "mountain-willow",
+      "black-redstart"
+    ],
+    "threats": [
+      "town-drainage-encroachment",
+      "freezing-pipe-hazards"
+    ],
+    "hydrologicalData": {
+      "flowRate": 10.5,
+      "discharge": 165,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "suru-terrace-alluvial-aquifer",
+      "drainageArea": 42,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-bodhkharbu",
+    "slug": "spring-bodhkharbu",
+    "name": "Bodhkharbu Mountain Springs",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Mountain springs descending through steep willow-lined ravines into the historic Buddhist settlement of Bodhkharbu on the Kargil-Leh highway.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "elevation": 3320,
+    "coordinates": {
+      "lat": 34.3612,
+      "lng": 76.5812
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 3,
+      "conductivity": 135,
+      "temperature": 8.2,
+      "nitrates": 0.35,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "loach",
+      "ladakhi-willow",
+      "chukar"
+    ],
+    "threats": [
+      "national-highway-widening",
+      "soil-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.8,
+      "discharge": 120,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "fotu-la-snowmelt-recharge",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-darkot-thermal",
+    "slug": "spring-darkot-thermal",
+    "name": "Darkot Thermal Springs",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "Geothermal springs bubbling near Darkot Pass (Yasin Valley) at the base of the Hindu Raj range. Well-known for natural curative bathing by mountain communities.",
+    "district": "Ghizer",
+    "watershed": "Gilgit Basin",
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 36.6512,
+      "lng": 73.4215
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 5.9,
+      "turbidity": 4,
+      "conductivity": 410,
+      "temperature": 43,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 360,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "thermophilic-mats",
+      "trout-downstream"
+    ],
+    "threats": [
+      "landslides",
+      "mudflow-debris"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.5,
+      "discharge": 115,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "hindu-raj-faultline-geothermal",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-aliabad-glacier",
+    "slug": "spring-aliabad-glacier",
+    "name": "Aliabad Hunza Glacier Springs",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Century-old spring heads in central Hunza fed by Ultar glacier and subterranean karst gravels, channeled into intricate cliffside aqueducts ('kuhls').",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "elevation": 2250,
+    "coordinates": {
+      "lat": 36.3125,
+      "lng": 74.6125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 3,
+      "conductivity": 125,
+      "temperature": 8,
+      "nitrates": 0.25,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 76,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "apricot-groves",
+      "walnut-trees",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "rapid-hotel-construction",
+      "plastic-waste"
+    ],
+    "hydrologicalData": {
+      "flowRate": 12,
+      "discharge": 190,
+      "waterLevel": 1.3,
+      "seasonalVariation": "perennial",
+      "source": "ultar-glacier-moraine-filtration",
+      "drainageArea": 55,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-ganesh-oasis",
+    "slug": "spring-ganesh-oasis",
+    "name": "Ganish Ancient Oasis Springs",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Historic Silk Road oasis springs preserved for a millennium in the UNESCO-awarded ancient fortified village of Ganish, feeding communal water tanks ('phari').",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "elevation": 2180,
+    "coordinates": {
+      "lat": 36.3185,
+      "lng": 74.6512
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 3,
+      "conductivity": 135,
+      "temperature": 9.2,
+      "nitrates": 0.35,
+      "phosphates": 0.022,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 30,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "mulberry-trees",
+      "apricot",
+      "kingfisher"
+    ],
+    "threats": [
+      "road-vibrations",
+      "sewerage-modernization-mismatch"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8,
+      "discharge": 125,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "hunza-valley-terraced-aquifer",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-tato-hot",
+    "slug": "spring-tato-hot",
+    "name": "Tato Hot Springs (Raikot)",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "Natural geothermal springs on the trail to Fairy Meadows and Nanga Parbat North Face, venting hot sulfuric mineral water in the rugged Raikot gorge.",
+    "district": "Diamer",
+    "watershed": "Indus Basin",
+    "elevation": 2600,
+    "coordinates": {
+      "lat": 35.4125,
+      "lng": 74.5812
+    },
+    "waterQuality": {
+      "pH": 8.2,
+      "dissolvedOxygen": 5.6,
+      "turbidity": 4,
+      "conductivity": 430,
+      "temperature": 55,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 390,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "thermophilic-microbes",
+      "blue-sheep-salt-lick"
+    ],
+    "threats": [
+      "rockfalls",
+      "jeep-track-destabilization"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.8,
+      "discharge": 105,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "raikot-fault-crustal-geothermal",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kondus-thermal",
+    "slug": "spring-kondus-thermal",
+    "name": "Kondus Thermal Springs",
+    "type": "spring",
+    "category": "Hot Spring",
+    "description": "Geothermal springs located deep in the glaciated Kondus and Saltoro valleys, bubbling through granite scree near ancient rock petroglyphs.",
+    "district": "Ghanche",
+    "watershed": "Shyok Basin",
+    "elevation": 3150,
+    "coordinates": {
+      "lat": 35.3125,
+      "lng": 76.6215
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 6,
+      "turbidity": 4,
+      "conductivity": 390,
+      "temperature": 46.5,
+      "nitrates": 0.28,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 340,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "karakoram-lichen",
+      "thermophilic-algae",
+      "ibex"
+    ],
+    "threats": [
+      "glacial-lake-surges",
+      "extreme-winter-isolation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 5.8,
+      "discharge": 90,
+      "waterLevel": 0.9,
+      "seasonalVariation": "perennial",
+      "source": "karakoram-suture-geothermal",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-bilamik-mineral",
+    "slug": "spring-bilamik-mineral",
+    "name": "Bilamik Mineral Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Effervescent mineral cold spring located in the Rondu gorge of the Indus River between Gilgit and Skardu, famed across Baltistan for digestive remedies.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2100,
+    "coordinates": {
+      "lat": 35.5215,
+      "lng": 75.1812
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 4,
+      "conductivity": 240,
+      "temperature": 12,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 185,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "loach",
+      "river-lapwing",
+      "willow"
+    ],
+    "threats": [
+      "skardu-road-blasting",
+      "siltation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7,
+      "discharge": 110,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "indus-gorge-mineralized-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-sost-cold",
+    "slug": "spring-sost-cold",
+    "name": "Sost Alpine Oasis Spring",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "Perennial mountain spring in Upper Gojal at Sost border dry port, serving international transit traffic and nurturing terraced potato and barley fields.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "elevation": 2800,
+    "coordinates": {
+      "lat": 36.6812,
+      "lng": 74.8212
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 3,
+      "conductivity": 130,
+      "temperature": 7.5,
+      "nitrates": 0.28,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 80,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "sea-buckthorn",
+      "chough",
+      "triplophysa"
+    ],
+    "threats": [
+      "truck-traffic-emissions",
+      "fuel-spills"
+    ],
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "discharge": 135,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "karakoram-scree-aquifer",
+      "drainageArea": 36,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-manthoka-springhead",
+    "slug": "spring-manthoka-springhead",
+    "name": "Manthoka Springhead",
+    "type": "spring",
+    "category": "Major Spring",
+    "description": "Colossal karst spring emerging atop sheer limestone cliffs in Kharmang, cascading downward as the celebrated 180-foot Manthoka Waterfall into the Indus River.",
+    "district": "Kharmang",
+    "watershed": "Indus Basin",
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 35.1512,
+      "lng": 76.1215
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 2,
+      "conductivity": 115,
+      "temperature": 8.2,
+      "nitrates": 0.22,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "trout-aquaculture",
+      "apricot",
+      "himalayan-swift"
+    ],
+    "threats": [
+      "tourist-litter",
+      "unplanned-kiosks"
+    ],
+    "hydrologicalData": {
+      "flowRate": 26,
+      "discharge": 420,
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "karst-limestone-aquifer-deosai-edge",
+      "drainageArea": 85,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-ganga-chotti",
+    "slug": "spring-ganga-chotti",
+    "name": "Ganga Chotti Ridge Springs",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "High alpine springs descending from the 3,044m Ganga Chotti pyramid peak in Bagh, nourishing high pastures and feeding tributaries of the Mahl and Jhelum rivers.",
+    "district": "Bagh",
+    "watershed": "Jhelum Basin",
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 34.0215,
+      "lng": 73.8512
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2,
+      "conductivity": 110,
+      "temperature": 8.5,
+      "nitrates": 0.25,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 70,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "cheer-pheasant",
+      "snow-trout",
+      "pine-marten"
+    ],
+    "threats": [
+      "tourist-camp-litter",
+      "overgrazing"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.8,
+      "discharge": 120,
+      "waterLevel": 1,
+      "seasonalVariation": "perennial",
+      "source": "ganga-chotti-fir-recharge",
+      "drainageArea": 35,
+      "floodRisk": "low"
     },
     "region": "AJK",
     "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-muzaffarabad-domel",
+    "slug": "spring-muzaffarabad-domel",
+    "name": "Domel Confluence Springs",
+    "type": "spring",
+    "category": "Karst Spring",
+    "description": "Perennial limestone spring emerging along the cliff face near Domel, where the blue Neelum River unites with the brownish Jhelum River in Muzaffarabad.",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 720,
+    "coordinates": {
+      "lat": 34.3712,
+      "lng": 73.4712
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 4,
+      "conductivity": 175,
+      "temperature": 14.5,
+      "nitrates": 0.85,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 120,
+      "fecalColiform": 90,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "snow-trout",
+      "tor-putitora",
+      "cormorant"
+    ],
+    "threats": [
+      "urban-construction",
+      "sewage-proximity"
+    ],
+    "hydrologicalData": {
+      "flowRate": 9.5,
+      "discharge": 145,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "limestone-cliff-fractures",
+      "drainageArea": 40,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-toli-pir",
+    "slug": "spring-toli-pir",
+    "name": "Toli Pir Mountain Spring",
+    "type": "spring",
+    "category": "Alpine Spring",
+    "description": "High-altitude spring on the picturesque Toli Pir plateau (2,600m), offering crystal mountain water amid expansive alpine meadows and conifer ridges.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 2600,
+    "coordinates": {
+      "lat": 33.8845,
+      "lng": 73.8812
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 2,
+      "conductivity": 115,
+      "temperature": 9,
+      "nitrates": 0.28,
+      "phosphates": 0.018,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-19",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "western-tragopan-edge",
+      "alpine-birds"
+    ],
+    "threats": [
+      "uncontrolled-picnicking",
+      "litter"
+    ],
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "discharge": 95,
+      "waterLevel": 0.9,
+      "seasonalVariation": "perennial",
+      "source": "toli-pir-pine-strata",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-pir-chinasi",
+    "slug": "spring-pir-chinasi",
+    "name": "Pir Chinasi Alpine Springs",
+    "type": "spring",
+    "category": "Sacred Spring",
+    "description": "Perennial springs emerging on the high mountain crest of Pir Chinasi (2,900m) east of Muzaffarabad, providing cold water for pilgrims and wildlife.",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 2900,
+    "coordinates": {
+      "lat": 34.3912,
+      "lng": 73.5512
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9,
+      "turbidity": 2,
+      "conductivity": 105,
+      "temperature": 7.8,
+      "nitrates": 0.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 68,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-19",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "monal-pheasant",
+      "snowcock",
+      "himalayan-griffon"
+    ],
+    "threats": [
+      "shrine-tourism-waste",
+      "slope-erosion"
+    ],
+    "hydrologicalData": {
+      "flowRate": 5.5,
+      "discharge": 85,
+      "waterLevel": 0.8,
+      "seasonalVariation": "perennial",
+      "source": "high-ridge-conifer-recharge",
+      "drainageArea": 24,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-banjosa-forest",
+    "slug": "spring-banjosa-forest",
+    "name": "Banjosa Pine Forest Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Cold, pine-filtered mineral spring that continuously replenishes Banjosa Lake amidst lush blue pine and silver fir forests near Rawalakot.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1875,
+    "coordinates": {
+      "lat": 33.8125,
+      "lng": 73.8125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 3,
+      "conductivity": 138,
+      "temperature": 11.2,
+      "nitrates": 0.45,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "carp",
+      "kingfisher",
+      "grey-wagtail"
+    ],
+    "threats": [
+      "lakeside-resort-effluents",
+      "tourism-footfall"
+    ],
+    "hydrologicalData": {
+      "flowRate": 7.2,
+      "discharge": 110,
+      "waterLevel": 1.1,
+      "seasonalVariation": "perennial",
+      "source": "blue-pine-soil-strata",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "spring-kutton-mineral",
+    "slug": "spring-kutton-mineral",
+    "name": "Kutton Valley Mineral Spring",
+    "type": "spring",
+    "category": "Mineral Spring",
+    "description": "Renowned cold-water mineral spring in Kutton (Jagran Valley), flowing into trout nursery raceways and supplying pure mountain drinking water.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 1750,
+    "coordinates": {
+      "lat": 34.5612,
+      "lng": 73.8212
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 2,
+      "conductivity": 120,
+      "temperature": 9.5,
+      "nitrates": 0.32,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 78,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "biodiversity": [
+      "brown-trout",
+      "stonefly",
+      "himalayan-dipper"
+    ],
+    "threats": [
+      "unplanned-tourism",
+      "sedimentation"
+    ],
+    "hydrologicalData": {
+      "flowRate": 10,
+      "discharge": 155,
+      "waterLevel": 1.2,
+      "seasonalVariation": "perennial",
+      "source": "jagran-glacier-moraine-recharge",
+      "drainageArea": 42,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
   }
-
 ];
 
 // Metrics
@@ -34721,37 +31736,7 @@ export const watershedsData: WaterEntity[] = [
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
-  {
-    "id": "kunhar-catchment",
-    "slug": "kunhar-catchment",
-    "name": "Kunhar Catchment",
-    "type": "watershed",
-    "category": "Catchment",
-    "description": "Originating from Lulusar Lake, Kunhar flows through the Kaghan Valley and joins the Jhelum River near Muzaffarabad.",
-    "district": "Muzaffarabad",
-    "area": 185.2,
-    "elevation": 2300,
-    "coordinates": {
-      "lat": 34.35,
-      "lng": 73.5
-    },
-    "hydrologicalData": {
-      "drainageArea": 185.2,
-      "rechargeRate": 125,
-      "seasonalVariation": "perennial",
-      "source": "glacial",
-      "floodRisk": "high"
-    },
-    "threats": [
-      "climate-change",
-      "soil-erosion",
-      "flooding"
-    ],
-    "region": "AJK",
-    "verificationStatus": "reviewed",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
+  
   {
     "id": "kel-catchment",
     "slug": "kel-catchment",

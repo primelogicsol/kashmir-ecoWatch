@@ -12969,45 +12969,6 @@ export const watershedsRecords: MigratedWaterRecord[] = [
     }
   },
   {
-    "id": "kunhar-catchment",
-    "Legacy_ID": "kunhar-catchment",
-    "slug": "kunhar-catchment",
-    "Migration_Status": "Legacy Imported",
-    "Verification_Status": "Source Linked",
-    "Source_ID": "SRC-PAK-PCRWR",
-    "Confidence_Level": "Medium",
-    "Last_Updated": "2026-06-16T16:28:50.849Z",
-    "name": "Kunhar Catchment",
-    "type": "watershed",
-    "category": "Catchment",
-    "description": "Originating from Lulusar Lake, Kunhar flows through the Kaghan Valley and joins the Jhelum River near Muzaffarabad.",
-    "District_ID": "Muzaffarabad",
-    "Ecological_Scope_ID": "Transboundary / Extended",
-    "district": "Muzaffarabad",
-    "watershed": "Pending",
-    "coordinates": {
-      "lat": 34.35,
-      "lng": 73.5
-    },
-    "elevation": 2300,
-    "area": 185.2,
-    "length": null,
-    "waterQuality_status": "Pending",
-    "Dashboard_Locked": true,
-    "Dashboard_Lock_Reason": "Locked — Pending validation of GIS boundaries or hydrometric datasets",
-    "Legacy_Metadata": {
-      "Alternative_Names": [
-        "Kunhar River Basin",
-        "Kaghan Valley Watershed"
-      ],
-      "Watershed_Level": "Catchment",
-      "Basin": "Indus Basin",
-      "Sub_Basin": "Neelum Lower Watershed",
-      "River_System": "Jhelum System",
-      "Main_River_or_Stream": "Kunhar River"
-    }
-  },
-  {
     "id": "kel-catchment",
     "Legacy_ID": "kel-catchment",
     "slug": "kel-catchment",

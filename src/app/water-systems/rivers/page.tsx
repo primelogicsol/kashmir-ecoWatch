@@ -13,7 +13,7 @@ export default function RiversPage() {
   const goodPlus  = React.useMemo(() => riversData.filter(r => ['excellent','good'].includes(r.waterQuality?.status||'')).length, []);
   const threatened= React.useMemo(() => riversData.filter(r => r.threats && r.threats.length > 0).length, []);
   const withFlow  = React.useMemo(() => riversData.filter(r => r.hydrologicalData?.discharge).length, []);
-  const transboundary = React.useMemo(() => riversData.filter(r => r.district?.toLowerCase().includes('neelum') || r.district?.toLowerCase().includes('hunza') || r.district?.toLowerCase().includes('gilgit')).length, []);
+  const transboundary = React.useMemo(() => riversData.filter(r => r.region === 'AJK' || r.region === 'Gilgit-Baltistan').length, []);
 
   return (
     <WaterEntityListingPage
@@ -34,10 +34,10 @@ export default function RiversPage() {
         { label: 'Districts',       value: districts.length,    icon: 'MapPin'         },
       ]}
       filters={{
+        districts,
         categories,
         qualityStatuses: ['excellent', 'good', 'moderate', 'poor', 'critical', 'data-deficient'],
       }}
-      hideDistrictFilter={true}
       getEntitySlug={entity => `/water-systems/rivers/${entity.slug}`}
       getCategory={entity => entity.category}
       getSecondaryMetric={entity => entity.length ? { label: 'Length', value: `${entity.length} km` } : null}
