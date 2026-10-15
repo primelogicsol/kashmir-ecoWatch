@@ -35843,13 +35843,2460 @@ export const waterQualitySites: WaterEntity[] = [
     verificationStatus: "under-review",
     createdAt: "2026-01-01T00:00:00Z",
     updatedAt: "2026-06-16T16:28:51.336Z"
+  },
+  {
+    "id": "wq-dal-lake-nishat-basin",
+    "slug": "wq-dal-lake-nishat-basin",
+    "name": "Dal Lake — Nishat & Foreshore Basin Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Continuous telemetry station monitoring nutrient influx, macrophyte expansion, and surface runoff from the Boulevard and Foreshore road corridor.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1584,
+    "coordinates": {
+      "lat": 34.1245,
+      "lng": 74.8789
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.9,
+      "turbidity": 10,
+      "conductivity": 230,
+      "temperature": 17,
+      "nitrates": 1.6,
+      "phosphates": 0.12,
+      "biologicalOxygenDemand": 3.8,
+      "totalDissolvedSolids": 175,
+      "fecalColiform": 450,
+      "lastTested": "2026-06-10",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "eutrophication",
+      "tourism-houseboat-waste",
+      "weed-infestation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-nigeen-lake-center",
+    "slug": "wq-nigeen-lake-center",
+    "name": "Nigeen Lake — Deep Central Basin Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Deep-water monitoring buoy measuring hypolimnetic oxygen depletion, thermal stratification, and phosphorus re-suspension in Nigeen Lake.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.1167,
+      "lng": 74.8333
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 6.4,
+      "turbidity": 14,
+      "conductivity": 255,
+      "temperature": 18,
+      "nitrates": 2.1,
+      "phosphates": 0.16,
+      "biologicalOxygenDemand": 4.5,
+      "totalDissolvedSolids": 190,
+      "fecalColiform": 680,
+      "lastTested": "2026-06-12",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "sewage-inflow",
+      "eutrophication",
+      "hypoxia"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-brari-nambal-lagoon-outfall",
+    "slug": "wq-brari-nambal-lagoon",
+    "name": "Brari Nambal Lagoon & Sewage Outfall Station",
+    "type": "water-quality",
+    "category": "Urban Outfall Monitoring",
+    "description": "Critical hyper-eutrophic lagoon monitoring point at the historic entrance to Downtown Srinagar. Tracks heavy municipal sewage and untreated storm drain effluent.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.0889,
+      "lng": 74.8145
+    },
+    "waterQuality": {
+      "pH": 6.9,
+      "dissolvedOxygen": 1.8,
+      "turbidity": 68,
+      "conductivity": 480,
+      "temperature": 21,
+      "nitrates": 8.5,
+      "phosphates": 1.4,
+      "biologicalOxygenDemand": 28,
+      "chemicalOxygenDemand": 85,
+      "totalDissolvedSolids": 410,
+      "fecalColiform": 24000,
+      "lastTested": "2026-06-14",
+      "status": "critical",
+      "trends": {
+        "pH": "declining",
+        "dissolvedOxygen": "critical",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "anoxia",
+      "heavy-sewage",
+      "sludge-accumulation",
+      "fish-kills"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-jhelum-chattabal-weir",
+    "slug": "wq-jhelum-chattabal-weir",
+    "name": "Jhelum River — Chattabal Weir Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Downstream boundary monitoring station for Srinagar urban agglomeration at the historic navigational lock gate and weir. Measures cumulative city waste export.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1576,
+    "coordinates": {
+      "lat": 34.1025,
+      "lng": 74.7789
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 4.8,
+      "turbidity": 26,
+      "conductivity": 310,
+      "temperature": 19,
+      "nitrates": 3.8,
+      "phosphates": 0.35,
+      "biologicalOxygenDemand": 7.2,
+      "totalDissolvedSolids": 245,
+      "fecalColiform": 2800,
+      "lastTested": "2026-06-15",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "urban-sewage-export",
+      "high-turbidity",
+      "pathogen-loading"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-doodhganga-barzulla-bridge",
+    "slug": "wq-doodhganga-barzulla",
+    "name": "Doodhganga Stream — Barzulla Bridge Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Heavily impacted urban stream monitoring point where Doodhganga traverses the southern suburbs of Srinagar before joining the flood spill channel.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.0512,
+      "lng": 74.8014
+    },
+    "waterQuality": {
+      "pH": 7,
+      "dissolvedOxygen": 3.9,
+      "turbidity": 32,
+      "conductivity": 340,
+      "temperature": 20,
+      "nitrates": 4.2,
+      "phosphates": 0.42,
+      "biologicalOxygenDemand": 9.5,
+      "totalDissolvedSolids": 260,
+      "fecalColiform": 4200,
+      "lastTested": "2026-06-14",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "solid-waste-dumping",
+      "raw-sewage",
+      "encroachment"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-achan-landfill-leachate-station",
+    "slug": "wq-achan-landfill-station",
+    "name": "Saidapora / Achan Landfill Leachate Quality Station",
+    "type": "water-quality",
+    "category": "Urban Outfall Monitoring",
+    "description": "Groundwater and surface drainage monitoring post adjacent to the municipal solid waste dump at Achan. Monitors hazardous leachate infiltration.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.1402,
+      "lng": 74.7915
+    },
+    "waterQuality": {
+      "pH": 6.5,
+      "dissolvedOxygen": 0.9,
+      "turbidity": 95,
+      "conductivity": 820,
+      "temperature": 23,
+      "nitrates": 14.2,
+      "phosphates": 2.8,
+      "biologicalOxygenDemand": 48,
+      "chemicalOxygenDemand": 165,
+      "totalDissolvedSolids": 780,
+      "fecalColiform": 38000,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "acidic",
+        "dissolvedOxygen": "critical",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "heavy-metals",
+      "leachate-plume",
+      "aquifer-toxification"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-chashmashahi-springhead-station",
+    "slug": "wq-chashmashahi-springhead",
+    "name": "Cheshmashahi Protected Springhead Laboratory Station",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Benchmark pristine mineral spring station on the Zabarwan foothills. Sourced from deep Cretaceous limestone fractures with naturally balanced mineral content.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1720,
+    "coordinates": {
+      "lat": 34.0854,
+      "lng": 74.8889
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 0.8,
+      "conductivity": 145,
+      "temperature": 11,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 98,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "tourism-litter",
+      "microclimate-warming"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-sind-river-wayil-headworks",
+    "slug": "wq-sind-river-wayil",
+    "name": "Sind River — Wayil Aqueduct & Headworks Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Key upstream monitoring station supplying raw water to the Rangil and Alesteng municipal treatment plants. High dissolved oxygen from glacial turbulent flow.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1640,
+    "coordinates": {
+      "lat": 34.2254,
+      "lng": 74.7912
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 4,
+      "conductivity": 125,
+      "temperature": 10,
+      "nitrates": 0.5,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 45,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "seasonal-turbidity",
+      "riverbed-gravel-mining"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-manasbal-lake-deep-station",
+    "slug": "wq-manasbal-lake",
+    "name": "Manasbal Lake — Deep Limnological Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Deepest lake in Kashmir (13m). Monitored for meromictic stratification, submerged charophyte meadows, and nutrient dynamics from Lar agricultural runoff.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1583,
+    "coordinates": {
+      "lat": 34.25,
+      "lng": 74.6833
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 7.6,
+      "turbidity": 6,
+      "conductivity": 195,
+      "temperature": 15,
+      "nitrates": 1.1,
+      "phosphates": 0.07,
+      "biologicalOxygenDemand": 2.2,
+      "totalDissolvedSolids": 135,
+      "fecalColiform": 180,
+      "lastTested": "2026-06-11",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "agricultural-runoff",
+      "water-extraction",
+      "shoreline-siltation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-gangabal-high-altitude-station",
+    "slug": "wq-gangabal-high-altitude",
+    "name": "Gangabal Lake — High Alpine Baseline Station",
+    "type": "water-quality",
+    "category": "Alpine Cryosphere Baseline Station",
+    "description": "Oligotrophic alpine benchmark station at 3,570m on Mount Harmukh. Measures pristine cryospheric baseline chemistry and atmospheric deposition.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 3570,
+    "coordinates": {
+      "lat": 34.4333,
+      "lng": 74.9167
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 10.4,
+      "turbidity": 0.5,
+      "conductivity": 45,
+      "temperature": 6,
+      "nitrates": 0.1,
+      "phosphates": 0.01,
+      "biologicalOxygenDemand": 0.6,
+      "totalDissolvedSolids": 32,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-15",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "black-carbon-deposition",
+      "trekking-camp-waste"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-shallabugh-wetland-station",
+    "slug": "wq-shallabugh-wetland",
+    "name": "Shallabugh Wetland — Ramsar Core Station",
+    "type": "water-quality",
+    "category": "Wetland Quality Monitoring",
+    "description": "Ramsar wetland sanctuary monitoring station tracking seasonal waterbird staging habitat, pesticide residues from surrounding paddy fields, and macrophyte density.",
+    "district": "Ganderbal",
+    "watershed": "Sind-Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.1833,
+      "lng": 74.7167
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.4,
+      "turbidity": 8,
+      "conductivity": 215,
+      "temperature": 17,
+      "nitrates": 1.4,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 2.6,
+      "totalDissolvedSolids": 155,
+      "fecalColiform": 290,
+      "lastTested": "2026-06-08",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "agricultural-pesticide-drift",
+      "siltation",
+      "seasonal-drying"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-verinag-mother-spring-station",
+    "slug": "wq-verinag-mother-spring",
+    "name": "Verinag Mother Spring — Octagonal Basin Station",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "The historical origin point of the Jhelum River. High-flow artesian karst spring discharging from Triassic limestone with exceptional clarity and low dissolved solids.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1870,
+    "coordinates": {
+      "lat": 33.5333,
+      "lng": 75.25
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.6,
+      "turbidity": 1,
+      "conductivity": 155,
+      "temperature": 10,
+      "nitrates": 0.4,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 105,
+      "fecalColiform": 15,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "tourist-footfall",
+      "recharge-zone-quarrying"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-achabal-karst-spring-station",
+    "slug": "wq-achabal-karst-spring",
+    "name": "Achabal Mughal Garden Karst Spring Station",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Major karst resurgence fed by the Bringi River subterranean sinkholes. Monitored for transit times, turbidity breakthrough, and agricultural agrochemical traces.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1675,
+    "coordinates": {
+      "lat": 33.6833,
+      "lng": 75.2333
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2.5,
+      "conductivity": 175,
+      "temperature": 11,
+      "nitrates": 0.7,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 120,
+      "fecalColiform": 60,
+      "lastTested": "2026-06-14",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "sinkhole-contamination",
+      "pesticide-leaching"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-jhelum-khanabal-anantnag",
+    "slug": "wq-jhelum-khanabal",
+    "name": "Jhelum River — Khanabal Confluence Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Upper Jhelum basin monitoring station where Lidder, Bringi, and Sandran rivers merge. Records urban effluent from Anantnag municipal drains.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1595,
+    "coordinates": {
+      "lat": 33.7345,
+      "lng": 75.1412
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 6.5,
+      "turbidity": 16,
+      "conductivity": 240,
+      "temperature": 16,
+      "nitrates": 2.4,
+      "phosphates": 0.22,
+      "biologicalOxygenDemand": 4.8,
+      "totalDissolvedSolids": 180,
+      "fecalColiform": 950,
+      "lastTested": "2026-06-15",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "municipal-sewage",
+      "agricultural-runoff",
+      "riverbed-encroachment"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-mattan-karst-conduit-defunct-station",
+    "slug": "wq-mattan-karst-conduit",
+    "name": "Mattan Town Karst Conduit Water Quality Station",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Vulnerable karst conduit station repeatedly affected by raw sewage breakthrough from unlined town cesspools directly entering underground swallow holes.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 33.7712,
+      "lng": 75.2105
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 4.2,
+      "turbidity": 28,
+      "conductivity": 380,
+      "temperature": 17,
+      "nitrates": 6.8,
+      "phosphates": 0.58,
+      "biologicalOxygenDemand": 11.5,
+      "totalDissolvedSolids": 295,
+      "fecalColiform": 5800,
+      "lastTested": "2026-06-13",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "karst-pathogen-breakthrough",
+      "enteric-outbreaks",
+      "cesspool-leakage"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-sheshnag-alpine-lake-station",
+    "slug": "wq-sheshnag-lake",
+    "name": "Sheshnag Lake — High Alpine Glacial Station",
+    "type": "water-quality",
+    "category": "Alpine Cryosphere Baseline Station",
+    "description": "Glacier-fed alpine oligotrophic lake at 3,590m along the Amarnath Yatra trekking trail. Monitors seasonal pilgrimage impact and cryospheric melt chemistry.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 3590,
+    "coordinates": {
+      "lat": 34.1167,
+      "lng": 75.5167
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 10.2,
+      "turbidity": 1.2,
+      "conductivity": 55,
+      "temperature": 7,
+      "nitrates": 0.2,
+      "phosphates": 0.01,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 42,
+      "fecalColiform": 10,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "yatra-pilgrimage-waste",
+      "glacial-moraine-erosion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-lassipora-sidco-industrial-outfall",
+    "slug": "wq-lassipora-industrial-outfall",
+    "name": "Lassipora Industrial Estate Effluent Monitoring Station",
+    "type": "water-quality",
+    "category": "Urban Outfall Monitoring",
+    "description": "Monitors chemical effluent outfall from pesticide packaging, leather processing, and cold storage units into local agricultural irrigation drains.",
+    "district": "Pulwama",
+    "watershed": "Rambiara Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 33.7915,
+      "lng": 74.9312
+    },
+    "waterQuality": {
+      "pH": 6.4,
+      "dissolvedOxygen": 1.5,
+      "turbidity": 75,
+      "conductivity": 740,
+      "temperature": 22,
+      "nitrates": 12.5,
+      "phosphates": 2.1,
+      "biologicalOxygenDemand": 36,
+      "chemicalOxygenDemand": 125,
+      "totalDissolvedSolids": 620,
+      "fecalColiform": 18000,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "acidic",
+        "dissolvedOxygen": "critical",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "toxic-industrial-effluent",
+      "pesticide-residues",
+      "groundwater-plume"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-veshav-river-aharbal-gorge",
+    "slug": "wq-veshav-river-aharbal",
+    "name": "Veshav River — Aharbal Gorge Water Quality Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "High-gradient snowmelt monitoring station at the famous Aharbal Waterfall (24m). High turbulence and oxygenation before water enters south Kashmir plains.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "elevation": 2260,
+    "coordinates": {
+      "lat": 33.6482,
+      "lng": 74.7812
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.7,
+      "turbidity": 3.5,
+      "conductivity": 135,
+      "temperature": 11,
+      "nitrates": 0.4,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 92,
+      "fecalColiform": 30,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "tourism-litter",
+      "riverbed-gravel-extraction-downstream"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-kousarnag-alpine-tarn-station",
+    "slug": "wq-kousarnag-lake",
+    "name": "Kousarnag Alpine Tarn — Pir Panjal Baseline Station",
+    "type": "water-quality",
+    "category": "Alpine Cryosphere Baseline Station",
+    "description": "High-altitude glacial tarn at 3,960m nestled under the Brahma Sakli peaks. Ultra-oligotrophic water body feeding the Veshav River network.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "elevation": 3960,
+    "coordinates": {
+      "lat": 33.5188,
+      "lng": 74.8315
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 10.6,
+      "turbidity": 0.4,
+      "conductivity": 38,
+      "temperature": 5,
+      "nitrates": 0.1,
+      "phosphates": 0.01,
+      "biologicalOxygenDemand": 0.5,
+      "totalDissolvedSolids": 28,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-15",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "climate-warming",
+      "pastoral-encroachment"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-rambiara-river-shopian-town",
+    "slug": "wq-rambiara-shopian",
+    "name": "Rambiara River — Shopian Municipal Reach Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Tracks seasonal flow fluctuations, massive boulder-mining sediment plumes, and orchard pesticide runoff in the Rambiara River at Shopian.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "elevation": 2050,
+    "coordinates": {
+      "lat": 33.7214,
+      "lng": 74.8345
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 16,
+      "conductivity": 195,
+      "temperature": 14,
+      "nitrates": 1.8,
+      "phosphates": 0.14,
+      "biologicalOxygenDemand": 3.4,
+      "totalDissolvedSolids": 155,
+      "fecalColiform": 420,
+      "lastTested": "2026-06-13",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "riverbed-mining",
+      "pesticide-spraying",
+      "siltation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-jhelum-sopore-fruit-mandi",
+    "slug": "wq-jhelum-sopore-outfall",
+    "name": "Jhelum River — Sopore Fruit Mandi Outfall Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Major pollution hotspot monitoring station on the Jhelum River downstream of Asia's second largest fruit market. Records severe organic and pesticide loads.",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1575,
+    "coordinates": {
+      "lat": 34.2989,
+      "lng": 74.4712
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 3.2,
+      "turbidity": 42,
+      "conductivity": 390,
+      "temperature": 20,
+      "nitrates": 5.6,
+      "phosphates": 0.65,
+      "biologicalOxygenDemand": 14.5,
+      "chemicalOxygenDemand": 52,
+      "totalDissolvedSolids": 310,
+      "fecalColiform": 8200,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "fruit-waste-dumping",
+      "pesticide-leachate",
+      "untreated-sewage"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-hygam-wetland-reserve",
+    "slug": "wq-hygam-wetland",
+    "name": "Hygam Wetland Reserve — Sanctuary Station",
+    "type": "water-quality",
+    "category": "Wetland Quality Monitoring",
+    "description": "Monitors hydrological health of Hygam Wetland, a Ramsar candidate site. Records water depth, nutrient levels, and agricultural encroachment along the margins.",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1578,
+    "coordinates": {
+      "lat": 34.2333,
+      "lng": 74.5167
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.1,
+      "turbidity": 9,
+      "conductivity": 220,
+      "temperature": 17,
+      "nitrates": 1.5,
+      "phosphates": 0.11,
+      "biologicalOxygenDemand": 2.9,
+      "totalDissolvedSolids": 160,
+      "fecalColiform": 380,
+      "lastTested": "2026-06-10",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "paddy-field-encroachment",
+      "pesticide-drift",
+      "siltation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-pohru-river-handwara",
+    "slug": "wq-pohru-river",
+    "name": "Pohru River — Handwara Basin Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors sediment dynamics, clay erosion, and drinking water intake raw water quality for northern Baramulla and Kupwara settlements.",
+    "district": "Baramulla",
+    "watershed": "Pohru Basin",
+    "elevation": 1600,
+    "coordinates": {
+      "lat": 34.3415,
+      "lng": 74.3125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 15,
+      "conductivity": 205,
+      "temperature": 15,
+      "nitrates": 1.2,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.5,
+      "totalDissolvedSolids": 148,
+      "fecalColiform": 220,
+      "lastTested": "2026-06-11",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "soil-erosion",
+      "seasonal-sediment-load"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-madhumati-river-papchan",
+    "slug": "wq-madhumati-papchan",
+    "name": "Madhumati River — Papchan Waterworks Intake Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Raw water intake quality monitoring point supplying Bandipora town. Sourced from Mount Harmukh north-facing glaciers with clean mountain water profile.",
+    "district": "Bandipora",
+    "watershed": "Wular Basin",
+    "elevation": 1615,
+    "coordinates": {
+      "lat": 34.4214,
+      "lng": 74.6542
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 4.8,
+      "conductivity": 140,
+      "temperature": 12,
+      "nitrates": 0.6,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 96,
+      "fecalColiform": 75,
+      "lastTested": "2026-06-15",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "flash-flood-turbidity",
+      "upstream-livestock-grazing"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-gurez-kishanganga-dawar",
+    "slug": "wq-gurez-kishanganga",
+    "name": "Kishanganga River — Dawar Gurez Border Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "High-latitude trans-Himalayan station at 2,370m on the Kishanganga (Neelum) River. Exceptional dissolved oxygen, cold temperature, and zero industrial contamination.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2370,
+    "coordinates": {
+      "lat": 34.6312,
+      "lng": 74.7712
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.1,
+      "turbidity": 2.2,
+      "conductivity": 110,
+      "temperature": 8,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 72,
+      "fecalColiform": 20,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "dam-reservoir-siltation",
+      "military-camp-waste"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-lolab-stream-sogam",
+    "slug": "wq-lolab-sogam",
+    "name": "Lolab Stream — Sogam Coniferous Catchment Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Forest-dominated catchment monitoring station in Sogam, Lolab Valley. Baseline indicators reflect dense cedar and pine forest soil filtration.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 34.4812,
+      "lng": 74.3812
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 3.2,
+      "conductivity": 160,
+      "temperature": 13,
+      "nitrates": 0.5,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 110,
+      "fecalColiform": 90,
+      "lastTested": "2026-06-14",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "timber-harvesting-silt",
+      "pesticide-application-in-valleys"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-tawi-river-gujjar-nagar",
+    "slug": "wq-tawi-gujjar-nagar",
+    "name": "Tawi River — Gujjar Nagar Urban Bridge Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Primary municipal pollution monitoring station on the Tawi River directly downstream of Old Jammu City. Records massive urban sewage and domestic discharges.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 320,
+    "coordinates": {
+      "lat": 32.7215,
+      "lng": 74.8789
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 3.6,
+      "turbidity": 38,
+      "conductivity": 420,
+      "temperature": 24,
+      "nitrates": 6.2,
+      "phosphates": 0.72,
+      "biologicalOxygenDemand": 16,
+      "chemicalOxygenDemand": 58,
+      "totalDissolvedSolids": 380,
+      "fecalColiform": 9800,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "untreated-urban-sewage",
+      "plastic-waste",
+      "encroachment"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-chenab-river-akhnoor-gorge",
+    "slug": "wq-chenab-akhnoor",
+    "name": "Chenab River — Akhnoor Himalayan Emergence Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Major regional river monitoring station where the Chenab emerges from the Shivalik foothills into the plains. Enormous discharge with high glacial dissolved oxygen.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 310,
+    "coordinates": {
+      "lat": 32.8989,
+      "lng": 74.7312
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 18,
+      "conductivity": 195,
+      "temperature": 16,
+      "nitrates": 1.1,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.1,
+      "totalDissolvedSolids": 155,
+      "fecalColiform": 210,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "monsoon-sedimentation",
+      "dam-regulation-pulses"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-bari-brahmana-industrial-nullah",
+    "slug": "wq-bari-brahmana-etp",
+    "name": "Bari Brahmana Industrial Complex Nullah Station",
+    "type": "water-quality",
+    "category": "Urban Outfall Monitoring",
+    "description": "High-hazard industrial monitoring point on the stream receiving effluent from Bari Brahmana electroplating, pharmaceutical, and chemical factories.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 340,
+    "coordinates": {
+      "lat": 32.6412,
+      "lng": 74.9312
+    },
+    "waterQuality": {
+      "pH": 6.1,
+      "dissolvedOxygen": 1.2,
+      "turbidity": 88,
+      "conductivity": 950,
+      "temperature": 26,
+      "nitrates": 16.5,
+      "phosphates": 3.2,
+      "biologicalOxygenDemand": 42,
+      "chemicalOxygenDemand": 175,
+      "totalDissolvedSolids": 890,
+      "fecalColiform": 32000,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "acidic",
+        "dissolvedOxygen": "critical",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "heavy-metals-chromium",
+      "toxic-chemical-effluent",
+      "kandi-aquifer-pollution"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-devika-river-udhampur-sacred-station",
+    "slug": "wq-devika-river",
+    "name": "Devika River — Udhampur Sacred Bathing Ghat Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors the sacred Devika subterranean river at Udhampur town. Suffering from severe domestic sewage ingress, detergent foaming, and low seasonal dilution.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "elevation": 750,
+    "coordinates": {
+      "lat": 32.9254,
+      "lng": 75.1389
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 4.1,
+      "turbidity": 24,
+      "conductivity": 360,
+      "temperature": 21,
+      "nitrates": 4.8,
+      "phosphates": 0.52,
+      "biologicalOxygenDemand": 8.4,
+      "totalDissolvedSolids": 280,
+      "fecalColiform": 3600,
+      "lastTested": "2026-06-14",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "untreated-sewage",
+      "bathing-ghat-soaps",
+      "low-winter-flow"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-mansar-lake-ramsar-station",
+    "slug": "wq-mansar-lake",
+    "name": "Mansar Lake — Ramsar Wetland Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Protected Ramsar lake in the Shivalik hills. Monitors sacred fish habitat, softshell turtle colonies, and surface nutrient runoff from pilgrimage activities.",
+    "district": "Udhampur",
+    "watershed": "Beas-Chenab Basin",
+    "elevation": 666,
+    "coordinates": {
+      "lat": 32.6989,
+      "lng": 75.1489
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 7.5,
+      "turbidity": 7.8,
+      "conductivity": 210,
+      "temperature": 20,
+      "nitrates": 1.3,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 2.8,
+      "totalDissolvedSolids": 165,
+      "fecalColiform": 240,
+      "lastTested": "2026-06-12",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "religious-food-waste",
+      "tourism-litter",
+      "shoreline-erosion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-surinsar-lake-ramsar-station",
+    "slug": "wq-surinsar-lake",
+    "name": "Surinsar Lake — Ramsar Wetland Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Sister lake to Mansar in the Shivalik pine belt. Semi-closed basin with high aquatic macrophyte biodiversity and vulnerability to sediment choking.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 605,
+    "coordinates": {
+      "lat": 32.7712,
+      "lng": 75.0312
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 8.5,
+      "conductivity": 225,
+      "temperature": 21,
+      "nitrates": 1.4,
+      "phosphates": 0.1,
+      "biologicalOxygenDemand": 3.1,
+      "totalDissolvedSolids": 178,
+      "fecalColiform": 280,
+      "lastTested": "2026-06-12",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "siltation",
+      "weed-encroachment",
+      "tourist-impacts"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-kathua-ravi-canal-headworks",
+    "slug": "wq-kathua-ravi-canal",
+    "name": "Ravi River Canal — Kathua Municipal Headworks Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Raw drinking water testing point for the Kathua city water supply network, monitoring Ravi river water divert from Madhopur barrage.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 320,
+    "coordinates": {
+      "lat": 32.3689,
+      "lng": 75.5214
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 12,
+      "conductivity": 210,
+      "temperature": 19,
+      "nitrates": 1.2,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 2.4,
+      "totalDissolvedSolids": 160,
+      "fecalColiform": 190,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "canal-bank-siltation",
+      "upstream-industrial-discharges"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-doda-neeru-stream-bhaderwah",
+    "slug": "wq-neeru-stream",
+    "name": "Neeru Stream — Bhaderwah Valley Trout Reach",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Pristine Himalayan cold-water trout stream flowing from the Kaplas glacier into the Chenab River. High dissolved oxygen and gravel substrate.",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 32.9812,
+      "lng": 75.7145
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 2.8,
+      "conductivity": 130,
+      "temperature": 10,
+      "nitrates": 0.4,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 85,
+      "fecalColiform": 40,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "town-solid-waste",
+      "sand-gravel-mining"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-kishtwar-marusudar-river-station",
+    "slug": "wq-marusudar-river",
+    "name": "Marusudar River — Warwan Valley Hydrological Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Largest glacial tributary of the Chenab River, draining glaciers of the Nun-Kun and Sickle Moon massifs. Pristine cryospheric discharge profile.",
+    "district": "Kishtwar",
+    "watershed": "Marusudar-Chenab Basin",
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 33.55,
+      "lng": 75.8
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10,
+      "turbidity": 5.5,
+      "conductivity": 115,
+      "temperature": 8,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 78,
+      "fecalColiform": 25,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "hydropower-dam-construction",
+      "heavy-glacial-silt"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-poonch-betar-river-station",
+    "slug": "wq-poonch-betar-river",
+    "name": "Betar Nullah — Poonch Border Valley Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Perennial mountain stream providing municipal drinking water to Poonch town. High dissolved oxygen and low organic loading in its upper reach.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 980,
+    "coordinates": {
+      "lat": 33.7712,
+      "lng": 74.1012
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 6.5,
+      "conductivity": 170,
+      "temperature": 15,
+      "nitrates": 0.8,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 125,
+      "fecalColiform": 110,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "monsoon-turbidity-pulses",
+      "border-area-roadwork-erosion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-indus-river-choglamsar-leh",
+    "slug": "wq-indus-choglamsar",
+    "name": "Indus River — Choglamsar Municipal Intake Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Baseline water quality monitoring on the Upper Indus River at 3,250m. Evaluates riverbed filtration and upstream glacial melt quality before municipal extraction.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3250,
+    "coordinates": {
+      "lat": 34.1214,
+      "lng": 77.5812
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 7.5,
+      "conductivity": 185,
+      "temperature": 11,
+      "nitrates": 0.7,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 138,
+      "fecalColiform": 85,
+      "lastTested": "2026-06-16",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "high-glacial-rock-flour",
+      "town-expansion-runoff"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-pangong-tso-saline-station",
+    "slug": "wq-pangong-tso",
+    "name": "Pangong Tso — High-Altitude Saline Lake Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Endorheic transboundary lake at 4,225m spanning Ladakh and Tibet. Monitored for salinity gradients, boron concentrations, and sub-zero freeze dynamics.",
+    "district": "Leh",
+    "watershed": "Pangong Endorheic Basin",
+    "elevation": 4225,
+    "coordinates": {
+      "lat": 33.75,
+      "lng": 78.6667
+    },
+    "waterQuality": {
+      "pH": 8.8,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 2.1,
+      "conductivity": 9800,
+      "temperature": 9,
+      "nitrates": 0.8,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 8400,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-15",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "unregulated-tourist-camps",
+      "vehicular-emission-soot"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-tso-moriri-ramsar-station",
+    "slug": "wq-tso-moriri",
+    "name": "Tso Moriri — High Changthang Ramsar Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Ramsar wetland of international importance at 4,522m on the Changthang plateau. Tracks brackish water chemistry and black-necked crane nesting habitat.",
+    "district": "Leh",
+    "watershed": "Changthang Endorheic Basin",
+    "elevation": 4522,
+    "coordinates": {
+      "lat": 32.9,
+      "lng": 78.3167
+    },
+    "waterQuality": {
+      "pH": 8.5,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 1.8,
+      "conductivity": 4200,
+      "temperature": 7,
+      "nitrates": 0.5,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 3100,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "unregulated-camping",
+      "solid-waste-accumulation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-suru-river-kargil-town",
+    "slug": "wq-suru-river-kargil",
+    "name": "Suru River — Kargil Municipal Basin Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors cold glacial water chemistry descending from Nun-Kun glaciers through Suru Valley before joining the Dras and Indus rivers.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "elevation": 2676,
+    "coordinates": {
+      "lat": 34.5542,
+      "lng": 76.1312
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 8.5,
+      "conductivity": 165,
+      "temperature": 9,
+      "nitrates": 0.6,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.7,
+      "totalDissolvedSolids": 115,
+      "fecalColiform": 95,
+      "lastTested": "2026-06-16",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "town-sewage-ingress",
+      "high-glacial-silt-in-summer"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-dras-river-mushkoh-confluence",
+    "slug": "wq-dras-river",
+    "name": "Dras River — Mushkoh Confluence Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors the frigid river basin in Dras, recording pristine glacial runoff from Tiger Hill and Mushkoh valley with high dissolved oxygen (>9.8 mg/L).",
+    "district": "Kargil",
+    "watershed": "Dras-Suru Basin",
+    "elevation": 3120,
+    "coordinates": {
+      "lat": 34.4289,
+      "lng": 75.7512
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 10.1,
+      "turbidity": 3.5,
+      "conductivity": 125,
+      "temperature": 7,
+      "nitrates": 0.3,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 82,
+      "fecalColiform": 30,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "highway-washoff",
+      "extreme-winter-freezing"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-neelum-river-muzaffarabad",
+    "slug": "wq-neelum-muzaffarabad",
+    "name": "Neelum River — Muzaffarabad City Confluence Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors the lower Neelum (Kishanganga) River immediately upstream of its confluence with the Jhelum River in Muzaffarabad city. Records urban domestic load.",
+    "district": "Muzaffarabad",
+    "watershed": "Neelum-Jhelum Basin",
+    "elevation": 710,
+    "coordinates": {
+      "lat": 34.3712,
+      "lng": 73.4712
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 18,
+      "conductivity": 235,
+      "temperature": 17,
+      "nitrates": 2.1,
+      "phosphates": 0.18,
+      "biologicalOxygenDemand": 4.2,
+      "totalDissolvedSolids": 185,
+      "fecalColiform": 750,
+      "lastTested": "2026-06-15",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "reduced-flow-from-diversion",
+      "city-sewage-ingress"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-sadpara-lake-skardu",
+    "slug": "wq-sadpara-lake",
+    "name": "Sadpara Lake — Skardu Municipal Drinking Reservoir",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Turquoise alpine glacial reservoir at 2,636m feeding Skardu town. Pristine water quality sourced from the high Deosai plateau meltwater streams.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2636,
+    "coordinates": {
+      "lat": 35.2412,
+      "lng": 75.6312
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 2,
+      "conductivity": 135,
+      "temperature": 10,
+      "nitrates": 0.4,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 15,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "winter-freezing",
+      "recreational-boating-fuel"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-gilgit-river-downtown",
+    "slug": "wq-gilgit-river",
+    "name": "Gilgit River — Downtown Municipal Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors heavy glacial rock flour, dissolved oxygen, and city effluent in the Gilgit River where Hindu Kush and Karakoram meltwaters merge.",
+    "district": "Gilgit",
+    "watershed": "Indus Basin",
+    "elevation": 1500,
+    "coordinates": {
+      "lat": 35.9214,
+      "lng": 74.3112
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 22,
+      "conductivity": 195,
+      "temperature": 14,
+      "nitrates": 1.5,
+      "phosphates": 0.12,
+      "biologicalOxygenDemand": 3.2,
+      "totalDissolvedSolids": 165,
+      "fecalColiform": 480,
+      "lastTested": "2026-06-15",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "glacial-rock-flour",
+      "untreated-municipal-outfalls"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-mangla-dam-reservoir-mirpur",
+    "slug": "wq-mangla-reservoir",
+    "name": "Mangla Dam Reservoir — Mirpur Deep Bay Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Major water quality station on the 250 sq km Mangla Reservoir tracking sedimentation, thermal stratification, and limnological health of the Jhelum-Poonch catchment.",
+    "district": "Mirpur",
+    "watershed": "Jhelum-Poonch Basin",
+    "elevation": 380,
+    "coordinates": {
+      "lat": 33.1489,
+      "lng": 73.7512
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 7.7,
+      "turbidity": 14,
+      "conductivity": 240,
+      "temperature": 22,
+      "nitrates": 1.6,
+      "phosphates": 0.12,
+      "biologicalOxygenDemand": 2.8,
+      "totalDissolvedSolids": 180,
+      "fecalColiform": 310,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "reservoir-siltation",
+      "agricultural-fertilizer-runoff"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-sukhnag-river-beerwah",
+    "slug": "wq-sukhnag-river-beerwah",
+    "name": "Sukhnag River — Beerwah Municipal Reach Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors upper Sukhnag river quality flowing down from Tosa Maidan. High dissolved oxygen with minor organic load from village agricultural drains.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 34.0189,
+      "lng": 74.5912
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 5.2,
+      "conductivity": 165,
+      "temperature": 13,
+      "nitrates": 0.8,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 118,
+      "fecalColiform": 110,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "clay-mining-silt",
+      "pesticide-drift"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-ahad-karewa-spring-budgam",
+    "slug": "wq-ahad-karewa-spring",
+    "name": "Nagam Karewa Spring Station — Budgam",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Perched Karewa spring monitoring station in Chadoora block. Evaluates seasonal discharge decline and pesticide infiltration from adjoining apple orchards.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 33.9412,
+      "lng": 74.7915
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 3,
+      "conductivity": 190,
+      "temperature": 12,
+      "nitrates": 1.5,
+      "phosphates": 0.1,
+      "biologicalOxygenDemand": 2.1,
+      "totalDissolvedSolids": 140,
+      "fecalColiform": 160,
+      "lastTested": "2026-06-14",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "horticultural-chemicals",
+      "aquifer-overdraft"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-reasi-chenab-arch-bridge",
+    "slug": "wq-reasi-chenab-bridge",
+    "name": "Chenab River — Bakkal Gorge / Arch Bridge Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Deep gorge monitoring station below the world's highest railway bridge. High velocity, cold glacial water, and high dissolved oxygen.",
+    "district": "Reasi",
+    "watershed": "Chenab Basin",
+    "elevation": 450,
+    "coordinates": {
+      "lat": 33.1512,
+      "lng": 74.8812
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 14,
+      "conductivity": 180,
+      "temperature": 14,
+      "nitrates": 0.8,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 135,
+      "fecalColiform": 80,
+      "lastTested": "2026-06-16",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "railway-tunnel-muck-dumping",
+      "monsoon-high-silt"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-katra-bhanganga-sacred-stream",
+    "slug": "wq-katra-bhanganga",
+    "name": "Banganga Sacred Stream — Katra Pilgrimage Reach",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors microbiological indicators, detergent residues, and organic waste in the Banganga stream along the Vaishno Devi pilgrimage track.",
+    "district": "Reasi",
+    "watershed": "Chenab Basin",
+    "elevation": 850,
+    "coordinates": {
+      "lat": 32.9989,
+      "lng": 74.9452
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 18,
+      "conductivity": 285,
+      "temperature": 19,
+      "nitrates": 3.2,
+      "phosphates": 0.35,
+      "biologicalOxygenDemand": 6.5,
+      "totalDissolvedSolids": 220,
+      "fecalColiform": 1950,
+      "lastTested": "2026-06-15",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "pilgrimage-footfall-surges",
+      "mule-dung-washoff",
+      "soap-detergents"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-ramban-maitra-nullah",
+    "slug": "wq-ramban-maitra",
+    "name": "Maitra Nullah — Ramban Highway Confluence Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors severe turbidity and suspended solids originating from NH-44 highway widening muck debris entering Chenab tributaries.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "elevation": 720,
+    "coordinates": {
+      "lat": 33.2415,
+      "lng": 75.2412
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 6.8,
+      "turbidity": 35,
+      "conductivity": 260,
+      "temperature": 18,
+      "nitrates": 2.2,
+      "phosphates": 0.2,
+      "biologicalOxygenDemand": 4.8,
+      "totalDissolvedSolids": 240,
+      "fecalColiform": 850,
+      "lastTested": "2026-06-14",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "road-construction-debris",
+      "slope-erosion-silt"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-rajouri-manawar-tawi-town",
+    "slug": "wq-rajouri-manawar-tawi",
+    "name": "Manawar Tawi River — Rajouri Downtown Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Urban reach monitoring station at Rajouri town bridge recording municipal sewage, commercial automobile service runoff, and low summer baseflow.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "elevation": 915,
+    "coordinates": {
+      "lat": 33.3812,
+      "lng": 74.3012
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 4.5,
+      "turbidity": 25,
+      "conductivity": 320,
+      "temperature": 22,
+      "nitrates": 4.5,
+      "phosphates": 0.45,
+      "biologicalOxygenDemand": 8.2,
+      "totalDissolvedSolids": 265,
+      "fecalColiform": 2400,
+      "lastTested": "2026-06-15",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "untreated-town-sewage",
+      "solid-waste-dumping",
+      "low-winter-discharge"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-darhal-malkan-springs-station",
+    "slug": "wq-darhal-malkan-springs",
+    "name": "Darhal Malkan Mountain Spring Station — Rajouri",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Pristine mountain spring collection headwater in upper Rajouri Pir Panjal foothills. High dissolved oxygen with zero coliform count.",
+    "district": "Rajouri",
+    "watershed": "Manawar Tawi Basin",
+    "elevation": 1450,
+    "coordinates": {
+      "lat": 33.4812,
+      "lng": 74.4125
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 1.2,
+      "conductivity": 135,
+      "temperature": 11,
+      "nitrates": 0.4,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 88,
+      "fecalColiform": 10,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "flash-flood-erosion",
+      "grazing-animal-access"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-basantar-river-samba-industrial",
+    "slug": "wq-basantar-samba",
+    "name": "Basantar River — Samba Industrial Corridor Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors heavy industrial effluent dilution in the seasonal Basantar River from Samba SIDCO pharmaceutical and pesticide factories.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 320,
+    "coordinates": {
+      "lat": 32.5589,
+      "lng": 75.1189
+    },
+    "waterQuality": {
+      "pH": 6.8,
+      "dissolvedOxygen": 3.4,
+      "turbidity": 45,
+      "conductivity": 580,
+      "temperature": 25,
+      "nitrates": 8.2,
+      "phosphates": 1.1,
+      "biologicalOxygenDemand": 18,
+      "chemicalOxygenDemand": 68,
+      "totalDissolvedSolids": 480,
+      "fecalColiform": 7500,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "declining",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "industrial-effluent-dumping",
+      "chemical-oxygen-demand",
+      "heavy-metals"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-govindsar-industrial-drain-kathua",
+    "slug": "wq-govindsar-drain",
+    "name": "Govindsar Industrial Drain Station — Kathua",
+    "type": "water-quality",
+    "category": "Urban Outfall Monitoring",
+    "description": "Tracks toxic industrial effluent from Kathua chemical, dye, and textile manufacturing units prior to discharging into agricultural channels.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 315,
+    "coordinates": {
+      "lat": 32.3812,
+      "lng": 75.5112
+    },
+    "waterQuality": {
+      "pH": 6.3,
+      "dissolvedOxygen": 1.4,
+      "turbidity": 82,
+      "conductivity": 860,
+      "temperature": 26,
+      "nitrates": 14.8,
+      "phosphates": 2.6,
+      "biologicalOxygenDemand": 38,
+      "chemicalOxygenDemand": 145,
+      "totalDissolvedSolids": 740,
+      "fecalColiform": 21000,
+      "lastTested": "2026-06-15",
+      "status": "critical",
+      "trends": {
+        "pH": "acidic",
+        "dissolvedOxygen": "critical",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "toxic-dyes",
+      "chemical-effluent",
+      "heavy-metals-lead"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-gharana-wetland-reserve-jammu",
+    "slug": "wq-gharana-wetland",
+    "name": "Gharana Wetland Reserve — Indo-Pak Border Station",
+    "type": "water-quality",
+    "category": "Wetland Quality Monitoring",
+    "description": "Crucial international migratory bird haven in R.S. Pura. Monitors agricultural pesticide runoff, village sewage drains, and bar-headed geese habitat water quality.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 280,
+    "coordinates": {
+      "lat": 32.5333,
+      "lng": 74.6833
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.5,
+      "turbidity": 16,
+      "conductivity": 310,
+      "temperature": 22,
+      "nitrates": 3.4,
+      "phosphates": 0.38,
+      "biologicalOxygenDemand": 5.8,
+      "totalDissolvedSolids": 245,
+      "fecalColiform": 1850,
+      "lastTested": "2026-06-13",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "village-sewage-ingress",
+      "weed-choking-eichhornia",
+      "pesticides"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-shounter-lake-neelum-valley",
+    "slug": "wq-shounter-lake",
+    "name": "Shounter Lake — High Alpine Glacial Station",
+    "type": "water-quality",
+    "category": "Alpine Cryosphere Baseline Station",
+    "description": "High alpine glacial lake at 3,100m in Shounter Valley, Neelum. Pure glacial melt from Sarwali peak with near-zero chemical contaminants.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 3100,
+    "coordinates": {
+      "lat": 34.9189,
+      "lng": 74.5214
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 10.3,
+      "turbidity": 0.8,
+      "conductivity": 42,
+      "temperature": 6,
+      "nitrates": 0.1,
+      "phosphates": 0.01,
+      "biologicalOxygenDemand": 0.5,
+      "totalDissolvedSolids": 35,
+      "fecalColiform": 0,
+      "lastTested": "2026-06-16",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "unregulated-camping-litter",
+      "climate-warming"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-rawalakot-subsurface-springs",
+    "slug": "wq-rawalakot-springs",
+    "name": "Rawalakot Mountain Springshead Station — AJK",
+    "type": "water-quality",
+    "category": "Spring Quality Monitoring",
+    "description": "Monitors drinking water springsheads across the Rawalakot high plateau. Evaluates coliform presence from peri-urban residential growth.",
+    "district": "Poonch (AJK)",
+    "watershed": "Poonch Basin",
+    "elevation": 1638,
+    "coordinates": {
+      "lat": 33.8589,
+      "lng": 73.7612
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 3.5,
+      "conductivity": 185,
+      "temperature": 14,
+      "nitrates": 1.1,
+      "phosphates": 0.07,
+      "biologicalOxygenDemand": 2,
+      "totalDissolvedSolids": 135,
+      "fecalColiform": 120,
+      "lastTested": "2026-06-15",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "threats": [
+      "septic-tank-seepage",
+      "deforestation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-hunza-river-aliabad-station",
+    "slug": "wq-hunza-river-aliabad",
+    "name": "Hunza River — Aliabad Hydrological Station",
+    "type": "water-quality",
+    "category": "River Quality Monitoring",
+    "description": "Monitors massive glacier meltwater volumes carrying natural pulverized mineral rock flour from Batura, Passu, and Ultar glaciers.",
+    "district": "Hunza",
+    "watershed": "Hunza-Indus Basin",
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 36.3167,
+      "lng": 74.6167
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 9,
+      "turbidity": 28,
+      "conductivity": 210,
+      "temperature": 9,
+      "nitrates": 0.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 175,
+      "fecalColiform": 45,
+      "lastTested": "2026-06-16",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "worsening"
+      }
+    },
+    "threats": [
+      "high-glacial-sediment-abrasion",
+      "glos-outburst-turbidity"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "wq-attabad-lake-deep-water-station",
+    "slug": "wq-attabad-lake",
+    "name": "Attabad Barrier Lake — Deep Water Station",
+    "type": "water-quality",
+    "category": "Lake Quality Monitoring",
+    "description": "Landslide-dammed turquoise lake formed in 2010 on the Hunza River (100m deep). Monitored for sediment settlement, dissolved minerals, and motorboat fuel residues.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "elevation": 2557,
+    "coordinates": {
+      "lat": 36.3333,
+      "lng": 74.8667
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 6.8,
+      "conductivity": 190,
+      "temperature": 11,
+      "nitrates": 0.6,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 150,
+      "fecalColiform": 25,
+      "lastTested": "2026-06-16",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "improving"
+      }
+    },
+    "threats": [
+      "commercial-tourist-boat-oil",
+      "spillway-erosion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
   }
-
 ];
-
-// ============================================================================
-// FISHERIES AND AQUATIC LIFE
-// ============================================================================
 
 export const fisheriesData: WaterEntity[] = [
   {
@@ -36038,11 +38485,1500 @@ export const fisheriesData: WaterEntity[] = [
     createdAt: '2026-01-12T00:00:00Z',
     updatedAt: '2026-03-22T09:00:00Z',
   },
+  {
+    "id": "fishery-lidder-upper-pahalgam",
+    "slug": "fishery-lidder-upper-pahalgam",
+    "name": "Lidder River Upper Trout Beat — Laripora to Batakote",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "World-renowned fast-flowing glacier-fed brown and rainbow trout angling stream. Monitored angling beats with strict catch-and-release rules and dry fly fishing regulations.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 2130,
+    "coordinates": {
+      "lat": 34.0212,
+      "lng": 75.3189
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout",
+        "schizothorax-plagiostomus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "dry-fly-only",
+        "bag-limits",
+        "spawning-gravel-protection",
+        "anti-poaching-watch"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 3.5,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "tourist-riverbed-trampling",
+      "gravel-extraction",
+      "water-temperature-rise"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sind-river-kangan",
+    "slug": "fishery-sind-river-kangan",
+    "name": "Sind River Trout Sanctuary — Wayil to Sonamarg",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Premier high-gradient mountain river fishery flowing from the Zoji La and Harmukh glaciers. Prime habitat for trophy wild brown trout and endemic torrent loaches.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 34.2654,
+      "lng": 74.9012
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "permitted-beats-only",
+        "artificial-lures-prohibited",
+        "river-warden-telemetry"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.9,
+      "turbidity": 4.2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "highway-expansion-blasting",
+      "flash-flood-siltation",
+      "hydropower-peaking-shocks"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kokernag-raceway-complex",
+    "slug": "fishery-kokernag-raceway-complex",
+    "name": "Kokernag Commercial Trout Raceway & Breeding Station",
+    "type": "fishery",
+    "category": "Commercial Aquaculture",
+    "description": "Asia's largest coldwater rainbow trout production and breeding center. Utilizing massive perennial karst spring discharge to supply seed stock across the Western Himalaya.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1980,
+    "coordinates": {
+      "lat": 33.5833,
+      "lng": 75.3167
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "danish-rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "commercial-harvest-year-round",
+      "permits": false,
+      "conservationMeasures": [
+        "biosecurity-quarantine",
+        "dna-fingerprinting-broodstock",
+        "effluent-settling-ponds"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.6,
+      "turbidity": 1.2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "disease-transmission-risk",
+      "feed-ingredient-inflation",
+      "autumn-discharge-variation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-laribal-dachigam-hatchery",
+    "slug": "fishery-laribal-dachigam-hatchery",
+    "name": "Laribal Historic Trout Hatchery & Dachigam Stream",
+    "type": "fishery",
+    "category": "Commercial Aquaculture",
+    "description": "Historic trout breeding station founded in 1901 by the Maharaja of Kashmir with eggs from Scotland. Produces wild brown trout fingerlings for stocking pristine valley streams.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1750,
+    "coordinates": {
+      "lat": 34.1354,
+      "lng": 74.9125
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "stocking-only-anglers-closed",
+      "permits": true,
+      "conservationMeasures": [
+        "heritage-broodstock-preservation",
+        "predator-netting",
+        "water-temperature-monitoring"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 1,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "summer-water-temperature-spikes",
+      "otter-predation",
+      "flash-flood-silt"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-achabal-spring-beat",
+    "slug": "fishery-achabal-spring-beat",
+    "name": "Achabal Karst Spring Trout Sanctuary & Beat",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Cold karst spring run harboring stable populations of brown trout and native Schizothorax. Serves as both an ecological nursery and regulated angling beat.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1675,
+    "coordinates": {
+      "lat": 33.6833,
+      "lng": 75.2333
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "may-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "barbless-hooks-only",
+        "spawning-sanctuary-fencing",
+        "catch-quotas"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9,
+      "turbidity": 2.1,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "agricultural-pesticide-leaching",
+      "water-diversion-for-irrigation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sukhnag-trout-beerwah",
+    "slug": "fishery-sukhnag-trout",
+    "name": "Sukhnag River High-Meadow Trout Beat — Khag to Magam",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Meandering alpine stream issuing from the Tosa Maidan plateau. Renowned for elusive wild brown trout lurking in deep granite pools and undercut willow banks.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 1780,
+    "coordinates": {
+      "lat": 34.0189,
+      "lng": 74.5912
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout",
+        "schizothorax-labiatus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "may-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "anti-poaching-patrols",
+        "bankside-willow-conservation",
+        "artificial-spawning-gravel"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 4.5,
+      "lastTested": "2026-06-15",
+      "status": "good"
+    },
+    "threats": [
+      "illegal-netting",
+      "clay-mining-siltation",
+      "summer-irrigation-offtakes"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ferozepora-tangmarg-beat",
+    "slug": "fishery-ferozepora-tangmarg-beat",
+    "name": "Ferozepora Nullah Trout Beat — Drung to Tangmarg",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Cascading bouldery stream flowing down from Mount Apharwat. Celebrated for wild rainbow trout and coldwater torrent biodiversity.",
+    "district": "Baramulla",
+    "watershed": "Ferozepora Basin",
+    "elevation": 2020,
+    "coordinates": {
+      "lat": 34.0542,
+      "lng": 74.4215
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "seasonal-closure-during-spawning",
+        "minimum-size-limits",
+        "patrol-checkposts"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 3,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "winter-stream-freezing",
+      "gravel-extraction-downstream",
+      "plastic-litter-at-drung"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-madhumati-erin-bandipora",
+    "slug": "fishery-madhumati-erin",
+    "name": "Madhumati & Erin Nullah Trout Streams — Bandipora",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Twin mountain streams draining the northern slopes of Mount Harmukh into Wular Lake. Exceptional wild brown trout habitat with dense benthic insect life.",
+    "district": "Bandipora",
+    "watershed": "Wular Basin",
+    "elevation": 1720,
+    "coordinates": {
+      "lat": 34.4214,
+      "lng": 74.6542
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout",
+        "schizothorax-curvifrons"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "stream-sanctuary-declaration",
+        "riparian-buffer-restoration"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 4,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "flash-floods",
+      "boulder-crushing-plants",
+      "illicit-bleach-poisoning"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gurez-kishanganga-trout",
+    "slug": "fishery-gurez-kishanganga",
+    "name": "Kishanganga River Wild Trout Sanctuary — Gurez Valley",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "One of the most pristine brown trout fisheries on Earth. The wide, crystal-clear Kishanganga River in Gurez produces wild brown trout exceeding 5 kilograms.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2380,
+    "coordinates": {
+      "lat": 34.6312,
+      "lng": 74.7712
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout",
+        "glyptosternon-reticulatum"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "june-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "strictly-licensed-anglers",
+        "catch-and-release-recommended",
+        "army-civil-patrols"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.2,
+      "turbidity": 2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "hydroelectric-dam-barrier",
+      "sub-zero-winter-icing",
+      "military-infrastructure"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gangabal-alpine-lake-trout",
+    "slug": "fishery-gangabal-alpine-lake",
+    "name": "Gangabal & Nundkol Alpine Lakes Brown Trout Fishery",
+    "type": "fishery",
+    "category": "Alpine Lake Fishery",
+    "description": "High-altitude glacial tarns at 3,570m on Mount Harmukh stocked with brown trout in 1912. Internationally famous among wilderness anglers for self-sustaining wild trout.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 3570,
+    "coordinates": {
+      "lat": 34.4333,
+      "lng": 74.9167
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "salmo-trutta-fario"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "july-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "wilderness-permit-system",
+        "single-hook-artificial-flies",
+        "pack-it-in-pack-it-out"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 10.5,
+      "turbidity": 0.6,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "climate-warming-altering-lake-ecology",
+      "illegal-gillnetting-by-poachers",
+      "trekker-waste"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-vishansar-kishansar-trout",
+    "slug": "fishery-vishansar-kishansar-trout",
+    "name": "Vishansar & Kishansar Lakes Wild Trout Reserve",
+    "type": "fishery",
+    "category": "Alpine Lake Fishery",
+    "description": "Twin turquoise alpine lakes at 3,710m along the Great Lakes trail. Flourishing populations of wild brown trout feeding on gammarid amphipods.",
+    "district": "Ganderbal",
+    "watershed": "Kishanganga Basin",
+    "elevation": 3710,
+    "coordinates": {
+      "lat": 34.3756,
+      "lng": 75.1582
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "july-to-august",
+      "permits": true,
+      "conservationMeasures": [
+        "strict-catch-and-release",
+        "wilderness-ranger-monitoring"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 10.3,
+      "turbidity": 0.8,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "short-ice-free-window",
+      "grazing-animal-eutrophication-risk"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-aharbal-veshav-trout",
+    "slug": "fishery-aharbal-veshav-trout",
+    "name": "Veshav River Aharbal Trout Beat — Kulgam",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "High-energy trout beat spanning the Veshav river canyon below Aharbal falls. Excellent coldwater rapids nurturing rainbow trout and indigenous snow trout.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "elevation": 2240,
+    "coordinates": {
+      "lat": 33.6482,
+      "lng": 74.7812
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "licensed-beats",
+        "spawning-pool-protection",
+        "warden-surveillance"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.7,
+      "turbidity": 3.8,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "downstream-boulder-blasting",
+      "flash-flood-damage"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-hirpora-rambiara-trout",
+    "slug": "fishery-hirpora-rambiara-trout",
+    "name": "Rambiara River Upper Trout Beat — Hirpora Sanctuary",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Pristine upper headwaters of the Rambiara River inside the Hirpora Wildlife Sanctuary along the Mughal Road. Prime habitat for wild brown trout.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 33.6812,
+      "lng": 74.7412
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "may-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "wildlife-sanctuary-co-management",
+        "anti-poaching-sensors"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 2.5,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "mughal-road-runoff",
+      "heavy-grazing-soil-erosion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-jhelum-indigenous-sanctuary",
+    "slug": "fishery-jhelum-indigenous-sanctuary",
+    "name": "Jhelum River Indigenous Snow Trout Sanctuary — Pampore to Sangam",
+    "type": "fishery",
+    "category": "Native Snow Trout System",
+    "description": "Core spawning and riverine migratory corridor for endemic Kashmir snow trout (Kasheer Gaad). Crucial deep pools and gravel beds supporting local artisan casting-net fishermen.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 33.9112,
+      "lng": 75.0412
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "snow-trout",
+        "schizothorax-esocinus",
+        "schizothorax-niger",
+        "common-carp",
+        "labeo-diplostomus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round-except-june-july-spawning",
+      "permits": true,
+      "conservationMeasures": [
+        "monsoon-closed-season",
+        "minimum-mesh-size-enforcement",
+        "riverbed-gravel-mining-bans"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 14,
+      "lastTested": "2026-06-14",
+      "status": "moderate"
+    },
+    "threats": [
+      "invasive-common-carp-competition",
+      "sewage-inflow",
+      "unregulated-sand-dredging"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-wular-lake-carp-fishery",
+    "slug": "fishery-wular-lake-carp",
+    "name": "Wular Lake Commercial Fish Production Hub",
+    "type": "fishery",
+    "category": "Lake Fisheries",
+    "description": "The economic powerhouse of Kashmir freshwater fisheries, generating over 60% of the valley's total commercial catch. Sustains over 10,000 fisher families living along its shores.",
+    "district": "Bandipora",
+    "watershed": "Wular Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.4167,
+      "lng": 74.6333
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "grass-carp",
+        "silver-carp",
+        "snow-trout",
+        "schizothorax-curvifrons"
+      ],
+      "fisheryType": "wild-capture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "sanctuary-breeding-zones",
+        "weed-harvesting-for-nursery",
+        "fishermen-cooperative-licensing"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 8,
+      "lastTested": "2026-06-10",
+      "status": "good"
+    },
+    "threats": [
+      "invasive-weeds-trapa",
+      "siltation-choking-spawning-beds",
+      "agricultural-fertilizer-runoff"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-anchar-lake-schizothorax",
+    "slug": "fishery-anchar-lake",
+    "name": "Anchar Lake Traditional Fisheries Sanctuary",
+    "type": "fishery",
+    "category": "Lake Fisheries",
+    "description": "Highly productive peri-urban shallow wetland lake connected to Nigeen via Amir Khan Nallah. Traditional habitat for endemic herbivorous snow trout (Schizothorax niger).",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.15,
+      "lng": 74.7833
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "snow-trout",
+        "schizothorax-niger",
+        "common-carp",
+        "crucian-carp"
+      ],
+      "fisheryType": "wild-capture",
+      "productivity": "moderate",
+      "fishingSeason": "year-round",
+      "permits": false,
+      "conservationMeasures": [
+        "wetland-demarcation",
+        "sewage-interception-diversion"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 4.8,
+      "turbidity": 22,
+      "lastTested": "2026-06-12",
+      "status": "poor"
+    },
+    "threats": [
+      "encroachment-for-vegetable-gardens",
+      "untreated-skims-hospital-waste",
+      "siltation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-hokersar-fish-spawning-grounds",
+    "slug": "fishery-hokersar-spawning",
+    "name": "Hokersar Wetland Fish Breeding Grounds",
+    "type": "fishery",
+    "category": "Wetland Fisheries",
+    "description": "Protected Ramsar wetland acting as an essential nursery for juvenile fish that repopulate the Jhelum River network during seasonal high-water flood pulses.",
+    "district": "Budgam",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.25,
+      "lng": 74.85
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "snow-trout",
+        "schizothorax",
+        "common-carp",
+        "puntius-conchonius",
+        "gambusia-affinis"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "commercial-fishing-prohibited-breeding-only",
+      "permits": false,
+      "conservationMeasures": [
+        "wildlife-wetland-protection",
+        "no-fishing-zone",
+        "water-level-regulation"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 6,
+      "lastTested": "2026-06-10",
+      "status": "good"
+    },
+    "threats": [
+      "siltation-from-doodhganga-flood-channel",
+      "pesticides-from-orchards",
+      "drought-drying"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-pohru-river-kupwara",
+    "slug": "fishery-pohru-river",
+    "name": "Pohru River Native Schizothorax Spawning Grounds",
+    "type": "fishery",
+    "category": "Native Snow Trout System",
+    "description": "Major northern tributary river with extensive cobble-gravel riffles essential for seasonal potamodromous snow trout spawning migrations from Wular Lake.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.4012,
+      "lng": 74.2812
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "snow-trout",
+        "schizothorax-richardsonii",
+        "schizothorax-progastus",
+        "loach"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "august-to-april",
+      "permits": true,
+      "conservationMeasures": [
+        "spawning-run-protection",
+        "dynamite-blast-prevention",
+        "mesh-size-rules"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 11,
+      "lastTested": "2026-06-14",
+      "status": "good"
+    },
+    "threats": [
+      "riverbed-clay-mining",
+      "deforestation-sedimentation",
+      "pesticide-spraying-runoff"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chenab-akhnoor-mahseer",
+    "slug": "fishery-chenab-akhnoor-mahseer",
+    "name": "Chenab River Golden Mahseer & Snow Trout Fishery — Akhnoor",
+    "type": "fishery",
+    "category": "Warmwater / Mahseer Fishery",
+    "description": "The premier sport fishery in Jammu foothills where deep river pools and turbulent rapids harbor the endangered Golden Mahseer (Tor putitora) and migratory snow trout.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 310,
+    "coordinates": {
+      "lat": 32.8989,
+      "lng": 74.7312
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "golden-mahseer",
+        "tor-putitora",
+        "snow-trout",
+        "labeo-rohita",
+        "mystus-bleekeri"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "september-to-may",
+      "permits": true,
+      "conservationMeasures": [
+        "mahseer-broodstock-protection",
+        "spawning-tributary-sanctuaries",
+        "anti-dynamiting-enforcement"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 18,
+      "lastTested": "2026-06-15",
+      "status": "good"
+    },
+    "threats": [
+      "upstream-damming-blocking-migration",
+      "poaching-during-monsoon-spawning-runs",
+      "sand-mining"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-tawi-nagrota-riverine",
+    "slug": "fishery-tawi-nagrota",
+    "name": "Tawi River Nagrota Foothills Fishery",
+    "type": "fishery",
+    "category": "Warmwater / Mahseer Fishery",
+    "description": "Shivalik foothill fishery supporting diverse cyprinids, Indian major carps, and juvenile Golden Mahseer descending from upper Chenani mountain reaches.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 410,
+    "coordinates": {
+      "lat": 32.7889,
+      "lng": 74.9125
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "golden-mahseer",
+        "labeo-calbasu",
+        "cirrhinus-mrigala",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "october-to-april",
+      "permits": true,
+      "conservationMeasures": [
+        "closed-season-june-august",
+        "sanctuary-pools"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 7.4,
+      "turbidity": 12,
+      "lastTested": "2026-06-15",
+      "status": "good"
+    },
+    "threats": [
+      "flash-flood-turbidity",
+      "suburban-sewage-outfalls",
+      "summer-flow-depletion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-neeru-stream-bhaderwah-trout",
+    "slug": "fishery-neeru-bhaderwah-trout",
+    "name": "Neeru Stream Wild Trout Sanctuary — Bhaderwah",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Pristine mountain stream fed by Kaplas glaciers. Renowned as the prime trout angling destination of Jammu province with robust brown and rainbow trout stocks.",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 32.9812,
+      "lng": 75.7145
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "may-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "licensed-angling-beats",
+        "hatchery-fingerling-replenishment",
+        "wild-river-patrols"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 2.8,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "town-sewage-ingress",
+      "gravel-extraction-at-doda-confluence",
+      "climate-warming"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-naigad-kishtwar-trout",
+    "slug": "fishery-naigad-kishtwar-trout",
+    "name": "Naigad High Alpine Trout Stream — Kishtwar",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Glacial torrent descending from Sickle Moon peaks. Cold, fast-flowing water sustaining pure wild brown trout populations in remote Himalayan solitude.",
+    "district": "Kishtwar",
+    "watershed": "Marusudar Basin",
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 33.3154,
+      "lng": 75.7689
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "june-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "catch-and-release",
+        "wilderness-patrolling"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10,
+      "turbidity": 2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "winter-avalanches",
+      "natural-gorge-landslides"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-suran-river-poonch-trout",
+    "slug": "fishery-suran-river-poonch",
+    "name": "Suran River Trout Beat — Bafliaz to Chandimarh",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Cascading Pir Panjal stream along the historic Mughal Road. Highly productive trout water supporting both rainbow trout and indigenous hill-stream cyprinids.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1750,
+    "coordinates": {
+      "lat": 33.6412,
+      "lng": 74.2542
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout",
+        "snow-trout",
+        "garra-gotyla"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "april-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "fisheries-warden-posts",
+        "spawning-gravel-fencing"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 4.8,
+      "lastTested": "2026-06-15",
+      "status": "excellent"
+    },
+    "threats": [
+      "road-widening-debris",
+      "seasonal-monsoon-turbidity-surges"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kathua-ranjit-sagar-reservoir",
+    "slug": "fishery-kathua-ranjit-sagar",
+    "name": "Ranjit Sagar Dam Lake Fishery — Basohli / Kathua",
+    "type": "fishery",
+    "category": "Lake Fisheries",
+    "description": "Vast 88 sq km impoundment on the Ravi River. Commercial cage-culture operations and deep reservoir fisheries producing Indian major carps, catfish, and mahseer.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 530,
+    "coordinates": {
+      "lat": 32.4333,
+      "lng": 75.8167
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "golden-mahseer",
+        "labeo-rohita",
+        "catla-catla",
+        "cirrhinus-mrigala",
+        "wallago-attu"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "august-to-june",
+      "permits": true,
+      "conservationMeasures": [
+        "floating-cage-culture-permits",
+        "reservoir-fish-seed-ranching",
+        "patrol-boats"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 9,
+      "lastTested": "2026-06-15",
+      "status": "good"
+    },
+    "threats": [
+      "reservoir-drawdown-stranding-fry",
+      "poaching-in-remote-bays"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chenani-trout-farm-udhampur",
+    "slug": "fishery-chenani-trout-farm",
+    "name": "Chenani Trout Demonstration Farm & Hatchery",
+    "type": "fishery",
+    "category": "Commercial Aquaculture",
+    "description": "Government coldwater demonstration farm on the upper Tawi River at Chenani. Cultivates rainbow trout and distributes seed to private trout entrepreneurs.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "elevation": 1250,
+    "coordinates": {
+      "lat": 33.0312,
+      "lng": 75.2812
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "commercial-year-round",
+      "permits": false,
+      "conservationMeasures": [
+        "controlled-water-chilling",
+        "raceway-filtration-systems"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 3.5,
+      "lastTested": "2026-06-14",
+      "status": "good"
+    },
+    "threats": [
+      "summer-water-scarcity",
+      "high-summer-ambient-temperature"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-choglamsar-solar-trout-leh",
+    "slug": "fishery-choglamsar-solar-trout",
+    "name": "Leh High-Altitude Solar-Greenhouse Trout Hatchery — Choglamsar",
+    "type": "fishery",
+    "category": "Commercial Aquaculture",
+    "description": "Innovative high-altitude aquaculture facility at 3,250m on the Indus River. Utilizes passive solar insulation and Indus sub-surface water to culture rainbow trout in sub-zero winters.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3250,
+    "coordinates": {
+      "lat": 34.1214,
+      "lng": 77.5812
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "commercial-year-round",
+      "permits": false,
+      "conservationMeasures": [
+        "thermal-polycarbonate-enclosures",
+        "recirculating-aquaculture-filtration"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9,
+      "turbidity": 2.5,
+      "lastTested": "2026-06-16",
+      "status": "good"
+    },
+    "threats": [
+      "extreme-winter-freezing-below-minus-25C",
+      "high-operational-feed-cost"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-indus-river-wild-fishery-leh",
+    "slug": "fishery-indus-river-wild-fishery",
+    "name": "Indus River Native Snow Trout Fishery — Spituk to Nimoo",
+    "type": "fishery",
+    "category": "Native Snow Trout System",
+    "description": "Cold-arid trans-Himalayan river fishery harboring native snow trout (Schizothorax stoliczkai and S. labiatus) adapted to high UV radiation and extreme glacial silt.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3150,
+    "coordinates": {
+      "lat": 34.1812,
+      "lng": 77.3412
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "snow-trout",
+        "schizothorax-stoliczkai",
+        "triplophysa-stoliczkai"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "may-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "indigenous-fishery-sanctuary",
+        "seasonal-monastery-protection"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 14,
+      "lastTested": "2026-06-16",
+      "status": "good"
+    },
+    "threats": [
+      "glacial-silt-smothering-gravel",
+      "bridge-construction-pollution"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-suru-dras-confluence-kargil",
+    "slug": "fishery-suru-dras-confluence",
+    "name": "Suru & Dras Rivers Confluence Fishery — Kargil",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Rugged trans-Himalayan confluence fishery where the icy waters of the Dras and Suru rivers converge. Sustains wild brown trout and endemic Tibetan stone loaches.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "elevation": 2676,
+    "coordinates": {
+      "lat": 34.5542,
+      "lng": 76.1312
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout",
+        "schizothorax-richardsonii"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "june-to-september",
+      "permits": true,
+      "conservationMeasures": [
+        "licensed-recreational-angling",
+        "strict-bag-limits"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.6,
+      "turbidity": 7,
+      "lastTested": "2026-06-16",
+      "status": "good"
+    },
+    "threats": [
+      "chutuk-dam-downstream-flow-alteration",
+      "winter-ice-scour"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-neelum-taobat-shounter-trout",
+    "slug": "fishery-neelum-taobat-shounter",
+    "name": "Neelum River Wild Trout Waters — Shounter & Taobat",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Remote high-mountain valley along the upper Neelum River near the LoC. Internationally recognized for dense populations of wild riverine brown trout.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 2280,
+    "coordinates": {
+      "lat": 34.9189,
+      "lng": 74.5214
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "may-to-october",
+      "permits": true,
+      "conservationMeasures": [
+        "tourist-angling-permits",
+        "community-trout-watch"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 10.1,
+      "turbidity": 2.2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "unregulated-tourist-angling",
+      "avalanche-sediment-pulses"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-skardu-sadpara-coldwater",
+    "slug": "fishery-skardu-sadpara",
+    "name": "Sadpara Lake Coldwater Trout Fishery — Skardu",
+    "type": "fishery",
+    "category": "Alpine Lake Fishery",
+    "description": "Glacial meltwater reservoir at 2,636m under the Deosai Plateau. High dissolved oxygen supports wild brown trout and rainbow trout aquaculture cages.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2636,
+    "coordinates": {
+      "lat": 35.2412,
+      "lng": 75.6312
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "snow-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "april-to-november",
+      "permits": true,
+      "conservationMeasures": [
+        "community-cage-aquaculture",
+        "catch-limits-for-boaters"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 2,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "winter-surface-freeze",
+      "sediment-washoff-from-deosai"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gilgit-river-hunza-confluence",
+    "slug": "fishery-gilgit-river-confluence",
+    "name": "Gilgit River Coldwater Fishery — Hunza Confluence",
+    "type": "fishery",
+    "category": "Trout Stream / Beat",
+    "description": "Expansive Karakoram river fishery where glacial melt from Hunza joins the Gilgit River. Supports cold-adapted brown trout and Schizothoracinae.",
+    "district": "Gilgit",
+    "watershed": "Indus Basin",
+    "elevation": 1480,
+    "coordinates": {
+      "lat": 35.9214,
+      "lng": 74.3112
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "snow-trout",
+        "schizothorax-plagiostomus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "october-to-may",
+      "permits": true,
+      "conservationMeasures": [
+        "angling-licensing",
+        "riverbed-gravel-zoning"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.4,
+      "turbidity": 20,
+      "lastTested": "2026-06-15",
+      "status": "moderate"
+    },
+    "threats": [
+      "heavy-glacial-rock-flour",
+      "town-effluent"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-patehika-trout-hatchery-ajk",
+    "slug": "fishery-patehika-trout-hatchery",
+    "name": "Patehika Commercial Trout Hatchery & Research Complex",
+    "type": "fishery",
+    "category": "Commercial Aquaculture",
+    "description": "Government trout breeding facility in lower Neelum Valley producing rainbow trout fingerlings for private raceway fish farmers across AJK.",
+    "district": "Muzaffarabad",
+    "watershed": "Neelum Basin",
+    "elevation": 950,
+    "coordinates": {
+      "lat": 34.4215,
+      "lng": 73.5512
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "commercial-year-round",
+      "permits": false,
+      "conservationMeasures": [
+        "disease-free-certified-broodstock",
+        "gravity-sedimentation-ponds"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 4,
+      "lastTested": "2026-06-15",
+      "status": "good"
+    },
+    "threats": [
+      "monsoon-stream-flooding",
+      "high-summer-ambient-temperature"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chitta-katha-lake-trout",
+    "slug": "fishery-chitta-katha-lake",
+    "name": "Chitta Katha Alpine Lake Trout Sanctuary",
+    "type": "fishery",
+    "category": "Alpine Lake Fishery",
+    "description": "Pristine glacial lake situated at 4,100m beneath Sarwali peak in Shounter Valley. High dissolved oxygen supporting thriving wild brown trout.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 4100,
+    "coordinates": {
+      "lat": 34.9189,
+      "lng": 74.5214
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "july-to-august",
+      "permits": true,
+      "conservationMeasures": [
+        "wilderness-permit-required",
+        "catch-and-release"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 10.3,
+      "turbidity": 0.8,
+      "lastTested": "2026-06-16",
+      "status": "excellent"
+    },
+    "threats": [
+      "extreme-ice-cover-season-9-months",
+      "backpacker-litter"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  }
 ];
-
-// ============================================================================
-// FLOOD AND HYDROLOGICAL RISK ZONES
-// ============================================================================
 
 export const floodRiskZones: WaterEntity[] = [
   {
