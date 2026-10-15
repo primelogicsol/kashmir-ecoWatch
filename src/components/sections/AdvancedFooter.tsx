@@ -79,7 +79,16 @@ export function AdvancedFooter() {
               A Kashmir Diaspora-Supported Initiative for Environmental Intelligence and Scientific Stewardship
             </p>
             <p className="text-[10px] sm:text-xs text-slate-500 mb-4 leading-relaxed">
-              Operated & Supported by Dr. Kumar Foundation USA & Kumar Trust USA
+              Operated &amp; Supported by{' '}
+              <a
+                href="https://dkf.sufisciencecenter.info/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-emerald-400 transition-colors underline-offset-2 hover:underline"
+              >
+                Dr. Kumar Foundation USA
+              </a>{' '}
+              &amp; Kumar Trust USA
             </p>
 
             {/* Contact info */}
@@ -197,17 +206,23 @@ export function AdvancedFooter() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             {/* Left side: Dr. Kumar Foundation & Legal/Governance Policy Links */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 text-xs sm:text-sm">
-                <span className="text-slate-400 font-medium">© {new Date().getFullYear()} Kashmir EcoWatch.</span>
-                <span className="text-slate-600 hidden sm:inline">•</span>
-                <span className="text-slate-300 font-medium">
-                  Operated &amp; Supported by{' '}
-                  <span className="text-emerald-400 font-semibold">Dr. Kumar Foundation USA</span>
-                </span>
+              <div className="text-xs sm:text-sm text-slate-300 font-medium">
+                Spearheaded &amp; Supported by{' '}
+                <a
+                  href="https://dkf.sufisciencecenter.info/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
+                >
+                  Dr. Kumar Foundation USA
+                </a>
+              </div>
+              <div className="text-[11px] text-slate-500 leading-tight">
+                As part of its Western Himalayan Ecological Stewardship Initiative.
               </div>
 
               {/* Policy & Governance Links */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 sm:gap-x-4 gap-y-1 text-xs text-slate-500">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 sm:gap-x-4 gap-y-1 text-xs text-slate-500 pt-1">
                 <a href="/privacy" className="hover:text-emerald-400 transition-colors">
                   Privacy Policy
                 </a>
@@ -230,7 +245,7 @@ export function AdvancedFooter() {
               </div>
 
               <div className="flex items-center justify-center md:justify-start gap-3 pt-0.5 text-[11px] text-slate-500">
-                <span>Independent • Non-Commercial • Open Data</span>
+                <span>© {new Date().getFullYear()} Kashmir EcoWatch. Independent • Non-Commercial • Open Data</span>
                 <span className="text-slate-700">•</span>
                 <a href="/geographic-scope" className="inline-flex items-center gap-1 text-emerald-500 hover:text-emerald-400 transition-colors">
                   <Globe className="w-3 h-3" />
@@ -240,8 +255,8 @@ export function AdvancedFooter() {
             </div>
 
             {/* Right side: Prime Logic Solutions CSR Attribution */}
-            <div className="flex flex-col items-center md:items-end text-center md:text-right shrink-0">
-              <div className="text-xs text-slate-400 leading-relaxed">
+            <div className="flex flex-col items-center md:items-end text-center md:text-right shrink-0 space-y-1">
+              <div className="text-xs sm:text-sm text-slate-300 font-medium">
                 Web Portal Developed &amp; Maintained by{' '}
                 <a
                   href="https://primelogicsol.com"
@@ -252,7 +267,7 @@ export function AdvancedFooter() {
                   Prime Logic Solutions
                 </a>
               </div>
-              <div className="text-[11px] text-slate-500 leading-tight mt-0.5">
+              <div className="text-[11px] text-slate-500 leading-tight">
                 As part of its Corporate Social Responsibility (CSR) Initiative.
               </div>
             </div>
