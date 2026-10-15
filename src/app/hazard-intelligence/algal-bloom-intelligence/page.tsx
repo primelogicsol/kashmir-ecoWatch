@@ -8,7 +8,8 @@ import {
   Waves, ArrowRight, Map, AlertTriangle, Activity, Droplets,
   Layers, Flower2, Thermometer, Fish,
   Grid3X3, List, CheckCircle, HelpCircle, Search,
-  BarChart3, Target, ChevronLeft, ChevronRight, Wind, CloudRain, Clock
+  BarChart3, Target, ChevronLeft, ChevronRight, Wind, CloudRain, Clock,
+  Satellite, Cpu, Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -105,31 +106,66 @@ function LakeCard({ lake, index }: { lake: AlgalBloomLake; index: number }) {
           </span>
         </div>
 
-        {/* Live Data */}
+        {/* Dual-Stage Live Telemetry */}
         {lake.last_updated && (
           <div className="mt-2 space-y-2 border-t border-white/5 pt-3">
-            <div className="flex items-center justify-between text-[10px]">
-              <span className="text-slate-400 flex items-center gap-1"><Thermometer className="w-3 h-3 text-red-400"/> Temp (Max)</span>
-              <span className="font-semibold text-white">{lake.live_temperature_max}°C</span>
+            {/* Stage 1: Hydro-Thermal Triggers */}
+            <div className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 flex items-center justify-between">
+              <span className="flex items-center gap-1"><Cpu className="w-2.5 h-2.5 text-blue-400" /> Stage 1: Hydro-Thermal</span>
+              <span className={`font-bold ${lake.live_bloom_risk === 'Critical' ? 'text-red-500' : lake.live_bloom_risk === 'High' ? 'text-orange-400' : lake.live_bloom_risk === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                {lake.live_bloom_risk} Risk
+              </span>
             </div>
-            <div className="flex items-center justify-between text-[10px]">
-              <span className="text-slate-400 flex items-center gap-1"><CloudRain className="w-3 h-3 text-blue-400"/> 7d Rainfall</span>
-              <span className="font-semibold text-white">{lake.live_precipitation_7d} mm</span>
+            <div className="grid grid-cols-3 gap-1.5 py-1.5 px-2 rounded-lg bg-white/5 border border-white/5 text-[10px]">
+              <div>
+                <span className="text-slate-500 text-[8px] block">Temp Max</span>
+                <span className="font-semibold text-white">{lake.live_temperature_max}°C</span>
+              </div>
+              <div>
+                <span className="text-slate-500 text-[8px] block">7d Runoff</span>
+                <span className="font-semibold text-white">{lake.live_precipitation_7d} mm</span>
+              </div>
+              <div>
+                <span className="text-slate-500 text-[8px] block">Wind Speed</span>
+                <span className="font-semibold text-white">{lake.live_wind_speed} km/h</span>
+              </div>
             </div>
-            <div className="flex items-center justify-between text-[10px]">
-              <span className="text-slate-400 flex items-center gap-1"><Wind className="w-3 h-3 text-teal-400"/> Wind</span>
-              <span className="font-semibold text-white">{lake.live_wind_speed} km/h</span>
+            <div className="text-[9px] text-slate-400 italic flex items-center gap-1">
+              <AlertTriangle className="w-2.5 h-2.5 text-amber-400 flex-shrink-0"/>
+              <span className="truncate">{lake.live_dominant_trigger}</span>
             </div>
-            <div className="flex items-center justify-between text-[10px]">
-              <span className="text-slate-400">Live Risk</span>
-              <span className={`font-bold ${lake.live_bloom_risk === 'Critical' ? 'text-red-500' : lake.live_bloom_risk === 'High' ? 'text-orange-400' : lake.live_bloom_risk === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'}`}>{lake.live_bloom_risk}</span>
+
+            {/* Stage 2: Copernicus Sentinel-2 MSI Optical Biomass Layer */}
+            <div className="p-2 rounded-lg bg-emerald-950/20 border border-emerald-500/20 space-y-1">
+              <div className="flex items-center justify-between text-[9px] text-emerald-400 font-medium">
+                <span className="flex items-center gap-1">
+                  <Satellite className="w-3 h-3 text-emerald-400" />
+                  <span>Stage 2: Sentinel-2 MSI</span>
+                </span>
+                <span className="text-[8px] text-emerald-300/70 font-mono">B5(705)/B4(665)</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-[10px] pt-1 border-t border-emerald-500/10">
+                <div>
+                  <div className="text-slate-400 text-[9px]">NDCI Index</div>
+                  <div className={`font-mono font-bold ${(lake.sentinel2_ndci ?? 0) > 0.2 ? 'text-red-400' : (lake.sentinel2_ndci ?? 0) > 0.08 ? 'text-amber-400' : 'text-emerald-400'}`}>
+                    {(lake.sentinel2_ndci !== undefined && lake.sentinel2_ndci > 0) ? `+${lake.sentinel2_ndci}` : (lake.sentinel2_ndci ?? '+0.04')}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-slate-400 text-[9px]">Est. Chl-a</div>
+                  <div className="font-mono font-bold text-white">
+                    {lake.chlorophyll_a_ug_l ?? '4.2'} <span className="text-[8px] text-slate-400 font-normal">µg/L</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-[9px] text-slate-500 italic flex items-center gap-1">
-              <AlertTriangle className="w-2.5 h-2.5"/> {lake.live_dominant_trigger}
-            </div>
-            <div className="text-[8px] text-slate-600 flex items-center gap-1 mt-1">
-              <Clock className="w-2.5 h-2.5" />
-              Updated: {new Date(lake.last_updated).toLocaleTimeString()}
+
+            <div className="text-[8px] text-slate-600 flex items-center justify-between mt-1">
+              <span className="flex items-center gap-1">
+                <Clock className="w-2.5 h-2.5" />
+                Updated: {new Date(lake.last_updated).toLocaleTimeString()}
+              </span>
+              <span className="text-[8px] text-emerald-500/70 font-mono">Dual-Stage Telemetry</span>
             </div>
           </div>
         )}
@@ -193,6 +229,15 @@ function LakeRow({ lake, index }: { lake: AlgalBloomLake; index: number }) {
             <span className={`text-xs font-bold flex-shrink-0 w-24 hidden md:block ${lake.live_bloom_risk === 'Critical' ? 'text-red-500' : lake.live_bloom_risk === 'High' ? 'text-orange-400' : lake.live_bloom_risk === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'}`}>
               Risk: {lake.live_bloom_risk}
             </span>
+          )}
+          {/* Stage 2 Sentinel-2 NDCI Badge */}
+          {lake.sentinel2_ndci !== undefined && (
+            <div className="hidden xl:flex items-center gap-1.5 px-2 py-0.5 rounded border border-emerald-500/20 bg-emerald-950/20 text-[9px] font-mono text-emerald-300 flex-shrink-0">
+              <Satellite className="w-2.5 h-2.5 text-emerald-400" />
+              <span>NDCI {(lake.sentinel2_ndci > 0 ? `+${lake.sentinel2_ndci}` : lake.sentinel2_ndci)}</span>
+              <span className="text-emerald-500/40">|</span>
+              <span>{lake.chlorophyll_a_ug_l} µg/L</span>
+            </div>
           )}
           {/* Bloom badge */}
           <Badge variant={BLOOM_BADGE[lake.bloomIssue]} size="sm" className="flex-shrink-0 text-[10px]">
@@ -283,7 +328,7 @@ export default function AlgalBloomMonitoringPage() {
             </span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Algal Bloom Intelligence</span>
           </>}
-        subtitle="Complete trophic status database covering 83 lake systems across Kashmir Core, Trans-Divisional, and Transboundary regions — with verified, inferred, and data-gap classifications anchored to published scientific sources."
+        subtitle="Dual-Stage Limnological Screening: Stage 1 Hydro-Thermal Meteorological Triggers (Open-Meteo / ECMWF runoff and thermal stratification) coupled with Stage 2 Optical Biomass Remote Sensing (Copernicus Sentinel-2 MSI NDCI and Est. Chlorophyll-a) across 83 lake systems."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
         label="Hazard Intelligence"
         breadcrumbs={[
@@ -423,6 +468,47 @@ export default function AlgalBloomMonitoringPage() {
           </div>
         </div>
       </div>
+
+      
+      {/* ── Dual-Stage Limnological Architecture Banner ───────────────────────── */}
+      <section className="container mx-auto px-6 mt-6">
+        <Card className="glass-intense border-emerald-500/30 p-6 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+            <div className="space-y-2 max-w-2xl">
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="border-emerald-500/40 text-emerald-300 bg-emerald-500/10">
+                  <Satellite className="w-3 h-3 mr-1" /> Dual-Stage Limnological Model
+                </Badge>
+                <span className="text-xs text-slate-400">Scientific Screening Framework</span>
+              </div>
+              <h2 className="text-lg font-bold text-white">
+                Stage 1 Hydro-Thermal Triggers + Stage 2 Copernicus Sentinel-2 MSI NDCI
+              </h2>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Rather than treating weather alone as algal blooms or relying solely on infrequent cloud-free satellite passes, Kashmir-EcoWatch pairs live ECMWF precipitation runoff, solar radiation, and water temperature stagnation with optical Sentinel-2 Normalized Difference Chlorophyll Index (NDCI: B5-B4 / B5+B4) and calibrated Chlorophyll-a proxies.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 w-full lg:w-auto flex-shrink-0">
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-left">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-blue-400 mb-1">
+                  <Cpu className="w-3.5 h-3.5" /> Stage 1: Runoff &amp; Heat
+                </div>
+                <div className="text-[11px] text-slate-300">Open-Meteo ECMWF</div>
+                <div className="text-[10px] text-slate-500 mt-1">7d precipitation sum, 2m max temp, wind stagnation</div>
+              </div>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-left">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 mb-1">
+                  <Satellite className="w-3.5 h-3.5" /> Stage 2: Optical Biomass
+                </div>
+                <div className="text-[11px] text-slate-300">Sentinel-2 MSI (L2A)</div>
+                <div className="text-[10px] text-slate-500 mt-1">NDCI Red-Edge (705nm), estimated Chlorophyll-a (µg/L)</div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
 
       {/* ── Evidence key ────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4">

@@ -67,6 +67,10 @@ export interface AlgalBloomLake {
   live_bloom_risk?: 'Low' | 'Moderate' | 'High' | 'Critical';
   live_dominant_trigger?: string;
   last_updated?: string;
+  sentinel2_ndci?: number;
+  chlorophyll_a_ug_l?: number;
+  satellite_pass_date?: string;
+  satellite_sensor?: string;
 }
 
 export const algalBloomLakes: AlgalBloomLake[] = [
