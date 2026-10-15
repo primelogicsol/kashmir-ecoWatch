@@ -196,7 +196,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
-            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · by Dr. Kumar Foundation USA — Western Himalayan Ecological Intelligence Platform
+            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · Operated by Dr. Kumar Foundation USA — Western Himalayan Ecological Intelligence Platform
           </motion.p>
 
           {/* Product descriptor */}
