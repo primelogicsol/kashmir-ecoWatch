@@ -4005,6 +4005,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Ramsar site and most important wetland in Kashmir for migratory waterfowl. Critical stopover on Central Asian Flyway. Supports over 100,000 wintering birds.",
     district: "Srinagar",
+    region: "Kashmir Core",
     watershed: "Srinagar-Budgam Watershed",
     area: 13.75,
     elevation: 1585,
@@ -4068,6 +4069,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Important Ramsar wetland for wintering waterfowl. Second largest wetland in Kashmir after Wular. Critical for biodiversity and flood regulation.",
     district: "Ganderbal",
+    region: "Kashmir Core",
     watershed: "Sindh-Jhelum Watershed",
     area: 16.75,
     elevation: 1585,
@@ -4129,6 +4131,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Wetland reserve in northern Kashmir. Important for wintering waterfowl and resident species. Community-managed conservation area.",
     district: "Baramulla",
+    region: "Kashmir Core",
     watershed: "Ningli Nallah Watershed",
     area: 8.02,
     elevation: 1585,
@@ -4189,6 +4192,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "Small but ecologically significant wetland in Ganderbal. Important for local biodiversity and groundwater recharge.",
     district: "Baramulla",
+    region: "Kashmir Core",
     watershed: "Srinagar-Baramulla Border Basin",
     area: 2.8,
     elevation: 1590,
@@ -4248,6 +4252,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Conservation Wetland Reserve",
     description: "Wetland in Baramulla district. Supports diverse bird life and local fisheries. Important for flood buffering.",
     district: "Baramulla",
+    region: "Kashmir Core",
     watershed: "Sopore Watershed",
     area: 3.5,
     elevation: 1580,
@@ -4308,6 +4313,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Conservation Wetland Reserve",
     description: "Wetland in Ganderbal with high bird diversity. Important for local ecology and groundwater recharge.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Wular Basin Watershed",
     area: 2.2,
     elevation: 1588,
@@ -4367,6 +4373,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Local Wetland Conservation Area",
     description: "Small wetland in Anantnag district. Supports local biodiversity and agriculture. Community-managed.",
     district: "Anantnag",
+    region: "Kashmir Core",
     watershed: "Bringi-Jhelum Watershed",
     area: 1.8,
     elevation: 1600,
@@ -4425,6 +4432,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Conservation Wetland Reserve",
     description: "Wetland near Pampore town. Supports local agriculture and biodiversity. Under pressure from urban expansion.",
     district: "Pulwama",
+    region: "Kashmir Core",
     watershed: "Pampore Watershed",
     area: 2.5,
     elevation: 1590,
@@ -4484,6 +4492,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "The largest wetland in the Pampore cluster. Notable for hosting thousands of wintering migratory ducks and nesting resident birds. Fenced to prevent encroachment.",
     district: "Pulwama",
+    region: "Kashmir Core",
     watershed: "Pampore Watershed",
     area: 2.1,
     elevation: 1585,
@@ -4545,6 +4554,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "Located in Pampore town limit. Facing critical urban pollution, sewage inflows, and solid waste dumps.",
     district: "Pulwama",
+    region: "Kashmir Core",
     watershed: "Pampore Watershed",
     area: 0.14,
     elevation: 1588,
@@ -4606,6 +4616,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "A peatland and wet meadow habitat. Heavily encroached for paddy cultivation and brick kiln development.",
     district: "Pulwama",
+    region: "Kashmir Core",
     watershed: "Pampore Watershed",
     area: 1.06,
     elevation: 1584,
@@ -4668,6 +4679,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "Smallest wetland in the Pampore group. Primarily supports wading birds and migratory birds during early winter migrations.",
     district: "Pulwama",
+    region: "Kashmir Core",
     watershed: "Pampore Watershed",
     area: 0.064,
     elevation: 1586,
@@ -4729,6 +4741,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Unprotected Wetland",
     description: "A severely degraded wetland linked to the Wular basin. Suffers from heavy encroachment by paddy fields and willow plantations.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Wular Lake Basin",
     elevation: 1582,
     coordinates: {
@@ -4789,6 +4802,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Proposed Conservation Reserve",
     description: "A small perennial marsh near Sumbal, under increasing threat from agricultural pesticide runoff and weed infestation.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Sumbal-Wular Watershed",
     area: 0.85,
     elevation: 1585,
@@ -4852,6 +4866,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Designated as a Ramsar site in 1990. The largest freshwater lake in South Asia. Critical flood-absorption basin for the Kashmir Valley, supporting thousands of fishermen and millions of migratory birds.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Wular Basin Watershed",
     area: 189,
     elevation: 1575,
@@ -4915,6 +4930,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "Notified in 1981. A critical stopover on the Central Asian Flyway. Notable for hosting thousands of migratory bar-headed geese. Located directly on the Indo-Pak border.",
     district: "Jammu",
+    region: "Jammu",
     watershed: "R.S. Pura Watershed",
     area: 0.75,
     elevation: 280,
@@ -4977,6 +4993,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Designated a Ramsar site in 2005. A twin lake system with high religious importance and dense sub-tropical pine forest catchments. Supports rich populations of flapshell turtles and wintering migratory waterfowl.",
     district: "Jammu",
+    region: "Jammu",
     watershed: "Devika River Watershed",
     area: 3.5,
     elevation: 600,
@@ -5040,6 +5057,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "A dynamic floodplain wetland on the Chenab River, crucial for flood retention. Located near the border (Chicken Neck area).",
     district: "Jammu",
+    region: "Jammu",
     watershed: "Akhnoor-Chenab Watershed",
     elevation: 295,
     coordinates: {
@@ -5100,6 +5118,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "Notified in 1981. Serves as a vital habitat for resident wetland species and wintering waders.",
     district: "Jammu",
+    region: "Jammu",
     watershed: "Tawi-Chenab Watershed",
     elevation: 290,
     coordinates: {
@@ -5160,6 +5179,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "A border wetland complex notified in 1981, providing buffer habitats close to Gharana Wetland.",
     district: "Jammu",
+    region: "Jammu",
     watershed: "R.S. Pura Watershed",
     elevation: 275,
     coordinates: {
@@ -5220,6 +5240,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wetland Conservation Reserve",
     description: "A minor protected wetland near Ramgarh. Important local groundwater recharge node.",
     district: "Samba",
+    region: "Jammu",
     watershed: "Devak-Basantar Watershed",
     elevation: 270,
     coordinates: {
@@ -5278,6 +5299,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Important Bird Area (IBA) & Wildlife Sanctuary (Proposed)",
     description: "Critical nesting ground for the Globally Threatened Black-necked Crane (Grus nigricollis) and Bar-headed Goose. One of the highest marsh systems in the world.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Hanle River Watershed",
     area: 54,
     elevation: 4250,
@@ -5337,6 +5359,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "A unique closed basin complex containing Startsapuk Tso (freshwater) and Tso Kar proper (hypersaline). Major breeding ground for Black-necked Cranes and Kiangs.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Tso Kar Endorheic Basin",
     area: 95,
     elevation: 4530,
@@ -5396,6 +5419,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Wetland",
     description: "Designated Ramsar site in 2002. Supports key populations of bar-headed goose, black-necked crane, and brown-headed gull.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Tso Moriri Watershed",
     area: 120,
     elevation: 4522,
@@ -5456,6 +5480,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Important Bird Area (IBA)",
     description: "A critical nesting zone for the bar-headed goose and black-necked crane, located along the Line of Actual Control.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Chushul River Watershed",
     area: 15,
     elevation: 4350,
@@ -5515,6 +5540,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Proposed Biodiversity Heritage Site",
     description: "A highly unusual wetland featuring thermal pools, sulphur deposits, and unique halophytic vegetation. Important winter roost for ruddy shelduck.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Puga Stream Watershed",
     area: 5.5,
     elevation: 4400,
@@ -5574,6 +5600,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Important Bird Area (IBA)",
     description: "A rare lower-elevation valley wetland along the Indus, critical for passage migrants. Very popular birdwatching site.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Leh-Indus Watershed",
     area: 2.5,
     elevation: 3200,
@@ -5633,6 +5660,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Unprotected Wetland",
     description: "A remote wetland situated near the LAC. Visible on Bhuvan satellite imagery as a network of braided channels and marshes.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Chushul-Pangong Watershed",
     elevation: 4550,
     coordinates: {
@@ -5690,6 +5718,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Ramsar Buffer Zone",
     description: "Located at the southern inlet of Tso Moriri. Vital pasture and waterfowl nesting ground. Prone to compaction by grazing.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Tso Moriri Watershed",
     elevation: 4600,
     coordinates: {
@@ -5747,6 +5776,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Unprotected Wetland",
     description: "Formed in the 1970s by a massive landslide blocking the Jhelum river flow. Serves as a local wetland ecosystem but is rapidly siltising.",
     district: "Muzaffarabad",
+    region: "AJK",
     watershed: "Muzaffarabad Watershed",
     area: 1,
     elevation: 650,
@@ -5807,7 +5837,8 @@ export const wetlandsData: WaterEntity[] = [
     type: "wetland",
     category: "Local Forest Reserve",
     description: "A small pine-ringed artificial/natural wetland system. Primarily valuable for montane forest ecology and ecotourism.",
-    district: "Poonch",
+    district: "Poonch (AJK)",
+    region: "AJK",
     watershed: "Poonch River Watershed",
     area: 0.3,
     elevation: 1981,
@@ -5867,6 +5898,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Game Reserve & Wildlife Sanctuary",
     description: "A major staging and wintering ground for up to 50,000 waterfowl. One of Pakistans largest inland waterbodies.",
     district: "Mirpur",
+    region: "AJK",
     watershed: "Jhelum Basin Watershed",
     area: 250,
     elevation: 380,
@@ -5929,6 +5961,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Proposed Wildlife Sanctuary",
     description: "Notable for its water lily cover and historical Mughal fort on the ridge. Major refuge for local waterfowl.",
     district: "Bhimber",
+    region: "AJK",
     watershed: "Bhimber-Nullah Watershed",
     area: 0.8,
     elevation: 975,
@@ -5991,6 +6024,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "National Park",
     description: "A sprawling alpine plateau wetland complex. Crucial habitat for the Himalayan Brown Bear and breeding grounds for migratory birds.",
     district: "Astore",
+    region: "Gilgit-Baltistan",
     watershed: "Shigar-Indus Watershed",
     area: 150,
     elevation: 4114,
@@ -6050,6 +6084,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Shandur-Handrup National Park",
     description: "Located at the Shandur Pass border. Includes Shandur Lake and surrounding peat meadows. Important grazing and nesting ground.",
     district: "Ghizer",
+    region: "Gilgit-Baltistan",
     watershed: "Ghizer River Watershed",
     area: 10,
     elevation: 3700,
@@ -6109,6 +6144,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Community Conservation Area",
     description: "A brackish high-altitude saline wetland, a critical oasis for passage migrants over the Karakoram Range.",
     district: "Hunza",
+    region: "Gilgit-Baltistan",
     watershed: "Hunza River Watershed",
     area: 0.5,
     elevation: 2600,
@@ -6169,6 +6205,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Khunjerab National Park Zone",
     description: "Located in the remote Shimshal Pamir. Crucial summer pasture and staging wetland for trans-Karakoram migratory birds.",
     district: "Hunza",
+    region: "Gilgit-Baltistan",
     watershed: "Shimshal River Watershed",
     area: 8,
     elevation: 4700,
@@ -6227,6 +6264,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Proposed Forest Reserve",
     description: "A beautiful forested alpine wet meadow beneath Nanga Parbat. Facing environmental pressures from expanding tourist kiosks.",
     district: "Astore",
+    region: "Gilgit-Baltistan",
     watershed: "Astore River Watershed",
     area: 1.5,
     elevation: 3150,
@@ -6287,6 +6325,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Wildlife Sanctuary",
     description: "A scenic group of lakes and wet marshes, famous for their dense subaquatic vegetation. Part of Naltar Wildlife Sanctuary.",
     district: "Gilgit",
+    region: "Gilgit-Baltistan",
     watershed: "Naltar Nallah Watershed",
     area: 2.2,
     elevation: 2800,
@@ -6346,6 +6385,7 @@ export const wetlandsData: WaterEntity[] = [
     category: "Unprotected Wetland Zone",
     description: "Historically large flood-absorption basins (including Rambirgarh, Hokersar buffer channels). Critically reduced, leading to increased flood risks in Srinagar city.",
     district: "Srinagar",
+    region: "Kashmir Core",
     watershed: "Srinagar Basin Watershed",
     elevation: 1582,
     waterQuality: {
@@ -6393,12 +6433,2404 @@ export const wetlandsData: WaterEntity[] = [
     verificationStatus: "under-review",
     createdAt: "2026-06-16T02:00:00Z",
     updatedAt: "2026-06-16T02:00:00Z"
+  },
+  {
+      "id": "wetland-narkara",
+      "slug": "narkara-wetland",
+      "name": "Narkara Wetland Basin",
+      "type": "wetland",
+      "category": "Floodplain Wetland",
+      "description": "A critical urban flood-absorption marshland located in Budgam district on the outskirts of Srinagar along the airport road corridor. Acting as a vital sponge for the Doodhganga drainage network, Narkara moderates peak monsoonal floods and provides extensive foraging grounds for migratory ardeids and wintering waterfowl.",
+      "district": "Budgam",
+      "region": "Kashmir Core",
+      "watershed": "Doodhganga Watershed",
+      "area": 3.5,
+      "elevation": 1585,
+      "coordinates": {
+          "lat": 34.0325,
+          "lng": 74.7758
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 6.2,
+          "turbidity": 6.8,
+          "conductivity": 340,
+          "temperature": 16.5,
+          "nitrates": 1.45,
+          "phosphates": 0.22,
+          "biologicalOxygenDemand": 3.8,
+          "totalDissolvedSolids": 215,
+          "lastTested": "2026-05-18",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Phragmites australis",
+          "Typha angustifolia",
+          "Nycticorax nycticorax (Black-crowned Night Heron)",
+          "Ardeola grayii",
+          "Schizothorax niger",
+          "Cyprinus carpio"
+      ],
+      "threats": [
+          "urban-construction-encroachment",
+          "highway-widening",
+          "solid-waste-dumping",
+          "siltation"
+      ],
+      "conservationStatus": "Critical Urban Flood Buffer Zone",
+      "hydrologicalData": {
+          "waterLevel": 2.1,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 42,
+          "floodRisk": "critical"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Crucial flood-retention wetland basin protecting southern Srinagar and Budgam from Doodhganga inundation.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-ajas",
+      "slug": "ajas-wetland",
+      "name": "Ajas Wetland Marshes",
+      "type": "wetland",
+      "category": "Floodplain Littoral Wetland",
+      "description": "A major eastern littoral marshland complex of the Wular Lake ecosystem situated in Bandipora district. Draining runnels from Mount Haramukh, Ajas features extensive emergent macrophyte beds, submerged willow carrs, and seasonal nurseries for indigenous snow trout and carps.",
+      "district": "Bandipora",
+      "region": "Kashmir Core",
+      "watershed": "Wular Basin",
+      "area": 4.2,
+      "elevation": 1578,
+      "coordinates": {
+          "lat": 34.3412,
+          "lng": 74.6854
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 6.8,
+          "turbidity": 5.1,
+          "conductivity": 280,
+          "temperature": 17.2,
+          "nitrates": 0.95,
+          "phosphates": 0.14,
+          "biologicalOxygenDemand": 2.9,
+          "totalDissolvedSolids": 175,
+          "lastTested": "2026-05-20",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Trapa natans (Water Chestnut)",
+          "Nelumbo nucifera",
+          "Anas platyrhynchos (Mallard)",
+          "Common Pochard",
+          "Schizothorax curvifrons"
+      ],
+      "threats": [
+          "siltation-from-degraded-eastern-catchment",
+          "willow-plantation-encroachment",
+          "agricultural-runoff"
+      ],
+      "conservationStatus": "Wular Ramsar Buffer Marsh",
+      "hydrologicalData": {
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 65,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Eastern hydrological filter and fish-breeding marsh for the Wular Ramsar wetland system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-khaigam",
+      "slug": "khaigam-wetland",
+      "name": "Khaigam Wetland Reserve",
+      "type": "wetland",
+      "category": "Riverine Wetland Reserve",
+      "description": "A historical semi-drainage wetland located in the Romshi River sub-basin in Pulwama district. Comprising shallow marsh pools, sedge beds, and seasonal agricultural backwaters, Khaigam supports migrating wildfowl during spring and autumn flyway transits.",
+      "district": "Pulwama",
+      "region": "Kashmir Core",
+      "watershed": "Romshi Watershed",
+      "area": 1.8,
+      "elevation": 1590,
+      "coordinates": {
+          "lat": 33.8845,
+          "lng": 74.9212
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 6.5,
+          "turbidity": 4.8,
+          "conductivity": 295,
+          "temperature": 16.8,
+          "nitrates": 1.1,
+          "phosphates": 0.16,
+          "biologicalOxygenDemand": 3.1,
+          "totalDissolvedSolids": 188,
+          "lastTested": "2026-05-17",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Anas crecca (Common Teal)",
+          "Gallinago gallinago (Common Snipe)",
+          "Carex spp.",
+          "Phragmites karka"
+      ],
+      "threats": [
+          "conversion-to-paddy-land",
+          "drainage-ditches",
+          "pesticide-drift"
+      ],
+      "conservationStatus": "District Wetland Conservation Site",
+      "hydrologicalData": {
+          "waterLevel": 1.6,
+          "seasonalVariation": "seasonal",
+          "source": "rainfall",
+          "drainageArea": 28,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Intermediate retention wetland mitigating peak runoff surges along the Romshi River tributary.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-archanderhama",
+      "slug": "archanderhama-wetland",
+      "name": "Archanderhama Wetland",
+      "type": "wetland",
+      "category": "Flood Spill Basin",
+      "description": "An extensive flood spill depression wetland spanning the boundary of Budgam and Baramulla districts, linked directly to the Jhelum Flood Spill Channel. During high-discharge episodes, it stores millions of cubic meters of excess river volume, dissipating hydraulic pressure on downstream urban settlements.",
+      "district": "Budgam",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 2.4,
+      "elevation": 1582,
+      "coordinates": {
+          "lat": 34.1125,
+          "lng": 74.6514
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 6.4,
+          "turbidity": 7.5,
+          "conductivity": 320,
+          "temperature": 17,
+          "nitrates": 1.35,
+          "phosphates": 0.2,
+          "biologicalOxygenDemand": 3.6,
+          "totalDissolvedSolids": 205,
+          "lastTested": "2026-05-18",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Typha latifolia",
+          "Phragmites australis",
+          "Anas acuta (Northern Pintail)",
+          "Fulica atra",
+          "Common carp"
+      ],
+      "threats": [
+          "illegal-bund-construction",
+          "clay-mining",
+          "siltation"
+      ],
+      "conservationStatus": "Designated Flood Detention Basin",
+      "hydrologicalData": {
+          "waterLevel": 2.5,
+          "seasonalVariation": "seasonal",
+          "source": "mixed",
+          "drainageArea": 38,
+          "floodRisk": "critical"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Strategic spillover depression buffering the mid-valley Jhelum flood relief network.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-bemina-khushipora",
+      "slug": "bemina-khushipora-marshes",
+      "name": "Bemina-Khushipora Flood Marshes",
+      "type": "wetland",
+      "category": "Urban Floodplain Marsh",
+      "description": "Low-lying floodplain marshes in west Srinagar and central Budgam that historically functioned as the primary western flood detention sink for the Sukhnag and Doodhganga overflows before they join the Flood Spill Channel.",
+      "district": "Srinagar",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 1.6,
+      "elevation": 1582,
+      "coordinates": {
+          "lat": 34.0782,
+          "lng": 74.7548
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 5.4,
+          "turbidity": 8.2,
+          "conductivity": 395,
+          "temperature": 17.8,
+          "nitrates": 2.15,
+          "phosphates": 0.35,
+          "biologicalOxygenDemand": 4.9,
+          "totalDissolvedSolids": 250,
+          "lastTested": "2026-05-19",
+          "status": "poor",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Sparganium ramosum",
+          "Egretta garzetta",
+          "Alcedo atthis (Common Kingfisher)",
+          "Amphibian breeding colonies"
+      ],
+      "threats": [
+          "commercial-housing-encroachment",
+          "sewage-outfalls",
+          "unregulated-landfill"
+      ],
+      "conservationStatus": "Urban Ecological Restoration Zone",
+      "hydrologicalData": {
+          "waterLevel": 1.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 24,
+          "floodRisk": "critical"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Urban detention marsh reducing flood waterlogging in central and western Srinagar.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-sangam-marshes",
+      "slug": "sangam-riverine-marshes",
+      "name": "Sangam Confluence Riverine Marshes",
+      "type": "wetland",
+      "category": "River Confluence Wetland",
+      "description": "A wide alluvial confluence wetland in Anantnag district where the major southern tributaries (Lidder, Bringi, Sandran, and Veshaw) merge to form the main stem of the Jhelum River. Dynamic gravel bars, backwater side-channels, and seasonal marshlands characterize this hydrological crossroads.",
+      "district": "Anantnag",
+      "region": "Kashmir Core",
+      "watershed": "Upper Jhelum Basin",
+      "area": 3.8,
+      "elevation": 1595,
+      "coordinates": {
+          "lat": 33.8052,
+          "lng": 75.0742
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 8.2,
+          "turbidity": 5.6,
+          "conductivity": 245,
+          "temperature": 15.4,
+          "nitrates": 0.82,
+          "phosphates": 0.11,
+          "biologicalOxygenDemand": 2.4,
+          "totalDissolvedSolids": 155,
+          "lastTested": "2026-05-22",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Schizothorax esocinus",
+          "Salmo trutta fario",
+          "Myricaria germanica",
+          "Tadorna ferruginea (Ruddy Shelduck)",
+          "River tern"
+      ],
+      "threats": [
+          "sand-and-boulder-mining-in-riverbed",
+          "embankment-breaches",
+          "silt-load"
+      ],
+      "conservationStatus": "Key Hydrological Monitoring Gauge & Wetland",
+      "hydrologicalData": {
+          "flowRate": 180,
+          "waterLevel": 3.5,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 3200,
+          "floodRisk": "critical"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Primary confluence wetland and master hydrological metering nodal point for the entire Upper Jhelum basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-kanispora",
+      "slug": "kanispora-delina-wetland",
+      "name": "Kanispora-Delina Wetland Basin",
+      "type": "wetland",
+      "category": "Floodplain Wetland",
+      "description": "A semi-drainage floodplain wetland located along the left bank of the Jhelum near Baramulla town. Receiving groundwater seepage from the surrounding Karewas, it retains vital irrigation reserves for paddy cultivation and supports breeding waterfowl.",
+      "district": "Baramulla",
+      "region": "Kashmir Core",
+      "watershed": "Lower Jhelum Basin",
+      "area": 2.1,
+      "elevation": 1580,
+      "coordinates": {
+          "lat": 34.2185,
+          "lng": 74.3912
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 6.6,
+          "turbidity": 5.2,
+          "conductivity": 310,
+          "temperature": 16.9,
+          "nitrates": 1.15,
+          "phosphates": 0.18,
+          "biologicalOxygenDemand": 3.2,
+          "totalDissolvedSolids": 195,
+          "lastTested": "2026-05-19",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Phragmites australis",
+          "Anas platyrhynchos",
+          "Ardea cinerea (Grey Heron)",
+          "Kashmiri carp"
+      ],
+      "threats": [
+          "clay-extraction-for-brick-kilns",
+          "agricultural-encroachment",
+          "drainage"
+      ],
+      "conservationStatus": "Local Watershed Protection Area",
+      "hydrologicalData": {
+          "waterLevel": 1.9,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 32,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Lower Jhelum Karewa-fringe wetland buffering localized runoff before discharge into the Baramulla gorge.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-lolab-marshes",
+      "slug": "lolab-valley-marshlands",
+      "name": "Lolab Valley Marshland Complex",
+      "type": "wetland",
+      "category": "Valley Floor Stream Wetland",
+      "description": "A pristine rural wetland complex traversing the verdant Lolab Valley in Kupwara district. Fed by cold forest springs and the Lahwal River, this mosaic of marsh meadows, watercress pools, and alder groves represents one of northern Kashmir's least-disturbed riparian habitats.",
+      "district": "Kupwara",
+      "region": "Kashmir Core",
+      "watershed": "Pohru Watershed",
+      "area": 2.9,
+      "elevation": 1620,
+      "coordinates": {
+          "lat": 34.3842,
+          "lng": 74.3218
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 8.5,
+          "turbidity": 2.1,
+          "conductivity": 160,
+          "temperature": 13.8,
+          "nitrates": 0.42,
+          "phosphates": 0.05,
+          "biologicalOxygenDemand": 1.5,
+          "totalDissolvedSolids": 105,
+          "lastTested": "2026-05-23",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Alnus nitida (Himalayan Alder)",
+          "Nasturtium officinale (Watercress)",
+          "Schizothorax plagiostomus",
+          "White-throated Kingfisher",
+          "Black Kite"
+      ],
+      "threats": [
+          "streambank-erosion",
+          "timber-harvesting-along-margins"
+      ],
+      "conservationStatus": "Rural Riparian Conservation Zone",
+      "hydrologicalData": {
+          "waterLevel": 1.4,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 85,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Headwater sponge wetland regulating baseflow for the Lahwal stream in the Kupwara basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-pohru-marshes",
+      "slug": "pohru-river-floodplain-marshes",
+      "name": "Pohru River Floodplain Marshes",
+      "type": "wetland",
+      "category": "Riparian Floodplain Wetland",
+      "description": "An extensive network of riparian marshes and sediment traps extending along the Pohru River before its confluence with the Jhelum near Doabgah. Known for carrying the heaviest sediment load in the valley from the shale-rich Kupwara catchments, these marshes play a critical role in natural sediment retention.",
+      "district": "Kupwara",
+      "region": "Kashmir Core",
+      "watershed": "Pohru Watershed",
+      "area": 3.4,
+      "elevation": 1585,
+      "coordinates": {
+          "lat": 34.3182,
+          "lng": 74.3542
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 7.1,
+          "turbidity": 9.8,
+          "conductivity": 290,
+          "temperature": 16.2,
+          "nitrates": 1.05,
+          "phosphates": 0.15,
+          "biologicalOxygenDemand": 2.8,
+          "totalDissolvedSolids": 220,
+          "lastTested": "2026-05-20",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salix alba (White Willow)",
+          "Typha angustata",
+          "Schizothorax spp.",
+          "Migratory waders",
+          "Common Moorhen"
+      ],
+      "threats": [
+          "extreme-siltation",
+          "catchment-deforestation",
+          "streambed-sand-extraction"
+      ],
+      "conservationStatus": "Sediment Management & Riparian Zone",
+      "hydrologicalData": {
+          "flowRate": 65,
+          "waterLevel": 2.4,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 1850,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Major sediment-trapping wetland buffer reducing siltation ingress into Wular Lake.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-bongam",
+      "slug": "bongam-wetland-meadows",
+      "name": "Bongam Sub-Alpine Riparian Meadows",
+      "type": "wetland",
+      "category": "Sub-Alpine Wet Meadow",
+      "description": "A highland riparian meadow wetland nestled along the upper Rambi Ara River in Shopian district. Fed by snowmelt runnels from the Pir Panjal crest, this sponge wetland replenishes regional groundwater tables and sustains local apple orchards downstream.",
+      "district": "Shopian",
+      "region": "Kashmir Core",
+      "watershed": "Rambi Ara Watershed",
+      "area": 1.1,
+      "elevation": 2050,
+      "coordinates": {
+          "lat": 33.7214,
+          "lng": 74.8325
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.1,
+          "turbidity": 1.8,
+          "conductivity": 110,
+          "temperature": 11.8,
+          "nitrates": 0.35,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.2,
+          "totalDissolvedSolids": 72,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Iris kashmiriana",
+          "Primula denticulata",
+          "Cold-water stonefly nymphs",
+          "Himalayan trout proxy"
+      ],
+      "threats": [
+          "boulder-quarrying-in-riverbed",
+          "orchard-expansion-on-meadow-margins"
+      ],
+      "conservationStatus": "Highland Watershed Protection Site",
+      "hydrologicalData": {
+          "waterLevel": 1.1,
+          "seasonalVariation": "seasonal",
+          "source": "glacial",
+          "drainageArea": 45,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Upper Pir Panjal recharge wetland regulating early summer baseflows in the Rambi Ara.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-shikargah-peatlands",
+      "slug": "shikargah-alpine-peatlands",
+      "name": "Shikargah Alpine Peatlands & Springs",
+      "type": "wetland",
+      "category": "High Altitude Peat Bog",
+      "description": "A rare high-altitude peat bog and cold springhead wetland located in the Tral range of Pulwama district. Embedded within the Shikargah Wildlife Sanctuary, these spongy peat deposits act as a critical water filter and natural salt lick for the critically endangered Hangul (Kashmir Stag).",
+      "district": "Pulwama",
+      "region": "Kashmir Core",
+      "watershed": "Tral-Jhelum Basin",
+      "area": 1.5,
+      "elevation": 2150,
+      "coordinates": {
+          "lat": 33.9512,
+          "lng": 75.1482
+      },
+      "waterQuality": {
+          "pH": 7.1,
+          "dissolvedOxygen": 9.4,
+          "turbidity": 0.9,
+          "conductivity": 75,
+          "temperature": 9.8,
+          "nitrates": 0.18,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.8,
+          "totalDissolvedSolids": 50,
+          "lastTested": "2026-05-24",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Sphagnum moss",
+          "Cervus hanglu hanglu (Hangul - Kashmir Stag habitat)",
+          "Ursus thibetanus (Himalayan Black Bear)",
+          "Lophophorus impejanus"
+      ],
+      "threats": [
+          "climate-warming-peat-desiccation",
+          "grazing-pressure"
+      ],
+      "conservationStatus": "Shikargah Wildlife Sanctuary Core Buffer",
+      "hydrologicalData": {
+          "waterLevel": 1.2,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 25,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Unique carbon-rich peat bog and wildlife springhead anchoring the Tral sub-catchment.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-veshaw-marshes",
+      "slug": "veshaw-floodplain-marshes",
+      "name": "Veshaw Riverine Floodplain Marshes",
+      "type": "wetland",
+      "category": "Braided Floodplain Wetland",
+      "description": "Dynamic braided riverbed marshes of the Veshaw River below Aharbal in Kulgam district. The wide, multi-channel gravel floodplain absorbs sudden torrents from Kausar Nag and the Pir Panjal passes, buffering agricultural valleys before reaching Sangam.",
+      "district": "Kulgam",
+      "region": "Kashmir Core",
+      "watershed": "Veshaw Watershed",
+      "area": 3.1,
+      "elevation": 1680,
+      "coordinates": {
+          "lat": 33.6482,
+          "lng": 74.9814
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 8.8,
+          "turbidity": 4.5,
+          "conductivity": 195,
+          "temperature": 13.5,
+          "nitrates": 0.55,
+          "phosphates": 0.07,
+          "biologicalOxygenDemand": 1.8,
+          "totalDissolvedSolids": 125,
+          "lastTested": "2026-05-22",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Schizothorax plagiostomus",
+          "Hippophae rhamnoides (Seabuckthorn scrub)",
+          "White-capped Redstart"
+      ],
+      "threats": [
+          "flash-flood-channel-migration",
+          "unregulated-aggregate-extraction"
+      ],
+      "conservationStatus": "Riparian Hydrological Buffer",
+      "hydrologicalData": {
+          "flowRate": 85,
+          "waterLevel": 2.2,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 920,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Primary flash-flood dissipation marshland for the south Kashmir Pir Panjal drainage.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-gund-khaja",
+      "slug": "gund-khaja-qasim-wetland",
+      "name": "Gund-i-Khaja Qasim Wetland",
+      "type": "wetland",
+      "category": "Floodplain Wetland",
+      "description": "A semi-drainage reedbed wetland situated near Pattan in Baramulla district, historically functioning in conjunction with the Mirgund and Hygam conservation complexes. It provides sanctuary for early arriving migratory waterbirds and yields reeds for local mat weaving.",
+      "district": "Baramulla",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 1.7,
+      "elevation": 1582,
+      "coordinates": {
+          "lat": 34.1645,
+          "lng": 74.5582
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 6.3,
+          "turbidity": 6.2,
+          "conductivity": 315,
+          "temperature": 16.7,
+          "nitrates": 1.25,
+          "phosphates": 0.19,
+          "biologicalOxygenDemand": 3.4,
+          "totalDissolvedSolids": 200,
+          "lastTested": "2026-05-20",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Typha angustata",
+          "Phragmites australis",
+          "Anas querquedula (Garganey)",
+          "Porzana porzana (Spotted Crake)"
+      ],
+      "threats": [
+          "drainage-for-agriculture",
+          "silt-infilling",
+          "water-abstraction"
+      ],
+      "conservationStatus": "Community Wetland Protection Reserve",
+      "hydrologicalData": {
+          "waterLevel": 1.7,
+          "seasonalVariation": "seasonal",
+          "source": "mixed",
+          "drainageArea": 26,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Intermediate reed marsh filtering agricultural runoff before reaching the Hygam-Wular waterway.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-ranjit-sagar",
+      "slug": "ranjit-sagar-reservoir-wetland",
+      "name": "Ranjit Sagar Reservoir Wetland",
+      "type": "wetland",
+      "category": "Major Man-made Reservoir Wetland",
+      "description": "A colossal interstate reservoir wetland spanning 88 km² along the Ravi River in Kathua district. Impounded by the Thein Dam, this deep oligotrophic to mesotrophic waterbody has become one of northern India's premier inland wintering refuges, regularly hosting over 35,000 migratory waterfowl including common mergansers and bar-headed geese.",
+      "district": "Kathua",
+      "region": "Jammu",
+      "watershed": "Ravi Basin",
+      "area": 88,
+      "elevation": 525,
+      "coordinates": {
+          "lat": 32.4412,
+          "lng": 75.7418
+      },
+      "waterQuality": {
+          "pH": 7.9,
+          "dissolvedOxygen": 8.4,
+          "turbidity": 3.1,
+          "conductivity": 260,
+          "temperature": 19.5,
+          "nitrates": 0.52,
+          "phosphates": 0.08,
+          "biologicalOxygenDemand": 2.1,
+          "totalDissolvedSolids": 165,
+          "lastTested": "2026-05-16",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Mergus merganser (Goosander / Common Merganser)",
+          "Anser indicus",
+          "Aythya ferina",
+          "Tor putitora (Golden Mahseer)",
+          "Labeo rohita"
+      ],
+      "threats": [
+          "water-level-drawdown-for-hydropower",
+          "shoreline-erosion",
+          "commercial-gill-net-pressures"
+      ],
+      "conservationStatus": "Important Bird Area (IBA) & Wildlife Sanctuary Zone",
+      "hydrologicalData": {
+          "discharge": 3200,
+          "waterLevel": 65,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 6086,
+          "floodRisk": "moderate"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Tor putitora",
+              "Labeo calbasu",
+              "Catla catla",
+              "Cyprinus carpio"
+          ],
+          "fisheryType": "managed",
+          "productivity": "high",
+          "permits": true
+      },
+      "nwiaCode": "1201",
+      "nwiaSignificance": "Largest standing waterbody in the Jammu division, acting as a massive regional biodiversity and flood moderator.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-tawi-floodplain",
+      "slug": "tawi-riverine-floodplain",
+      "name": "Tawi Riverine Floodplain Marshes",
+      "type": "wetland",
+      "category": "Riverine Floodplain Wetland",
+      "description": "Braided riverbed marshes, sandbars, and oxbow wetlands located along the lower Tawi River from Jammu city to the international border in Samba district. Providing critical winter resting habitat for waterfowl crossing the Punjab plains, these riverine wetlands buffer monsoonal flash-floods issuing from the Chenani hills.",
+      "district": "Jammu",
+      "region": "Jammu",
+      "watershed": "Tawi Watershed",
+      "area": 6.5,
+      "elevation": 310,
+      "coordinates": {
+          "lat": 32.6854,
+          "lng": 74.8214
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 6.9,
+          "turbidity": 6.8,
+          "conductivity": 380,
+          "temperature": 23.5,
+          "nitrates": 1.4,
+          "phosphates": 0.25,
+          "biologicalOxygenDemand": 3.8,
+          "totalDissolvedSolids": 240,
+          "lastTested": "2026-05-20",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Sterna aurantia (River Tern)",
+          "Vanellus indicus",
+          "Labeo dyocheilus",
+          "Puntius sophore",
+          "Otter proxy habitat"
+      ],
+      "threats": [
+          "urban-untreated-sewage",
+          "riverbed-gravel-mining",
+          "encroachment-on-floodplains"
+      ],
+      "conservationStatus": "Tawi Riverfront Conservation Zone",
+      "hydrologicalData": {
+          "flowRate": 95,
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 2168,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Primary riverine flood absorption corridor for Jammu urban agglomeration.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-chenab-marshes",
+      "slug": "chenab-riverine-marshes-akhnoor",
+      "name": "Chenab Riverine Marshes (Akhnoor-Pargwal)",
+      "type": "wetland",
+      "category": "Riverine Island & Marsh Complex",
+      "description": "An extensive network of braided riverine channels, islands (belas), and marshy backwaters along the mighty Chenab River as it debouches from the Himalayas into the plains between Akhnoor and Pargwal in Jammu district. Critical winter sanctuary for endangered cranes and migratory ducks.",
+      "district": "Jammu",
+      "region": "Jammu",
+      "watershed": "Chenab Basin",
+      "area": 8.2,
+      "elevation": 290,
+      "coordinates": {
+          "lat": 32.8942,
+          "lng": 74.7218
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 8.1,
+          "turbidity": 5.4,
+          "conductivity": 285,
+          "temperature": 21,
+          "nitrates": 0.75,
+          "phosphates": 0.12,
+          "biologicalOxygenDemand": 2.2,
+          "totalDissolvedSolids": 180,
+          "lastTested": "2026-05-20",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Grus virgo (Demoiselle Crane)",
+          "Tadorna ferruginea",
+          "Tor putitora",
+          "Gavialis gangeticus historic corridor",
+          "Phragmites karka"
+      ],
+      "threats": [
+          "border-fencing-restrictions",
+          "flash-floods-from-upstream-dams",
+          "sand-quarrying"
+      ],
+      "conservationStatus": "Border Wetland Wildlife Reserve",
+      "hydrologicalData": {
+          "flowRate": 350,
+          "waterLevel": 4.2,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 26000,
+          "floodRisk": "critical"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Major braided riverbed wetland moderating massive Chenab discharges before the international border.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-dhar-udhampur",
+      "slug": "dhar-udhampur-marsh",
+      "name": "Dhar-Udhampur Springhead Marsh",
+      "type": "wetland",
+      "category": "Foothill Springhead Wetland",
+      "description": "A freshwater springhead marsh located in the Shivalik transition zone of Udhampur district. Sustained by subterranean karst aquifers, it maintains year-round moisture, supporting endemic broadleaf riparian scrub and replenishing local drinking water catchments.",
+      "district": "Udhampur",
+      "region": "Jammu",
+      "watershed": "Tawi Watershed",
+      "area": 1.4,
+      "elevation": 750,
+      "coordinates": {
+          "lat": 32.9214,
+          "lng": 75.1325
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 7.5,
+          "turbidity": 3.2,
+          "conductivity": 290,
+          "temperature": 20.5,
+          "nitrates": 0.65,
+          "phosphates": 0.09,
+          "biologicalOxygenDemand": 2,
+          "totalDissolvedSolids": 185,
+          "lastTested": "2026-05-21",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Equisetum arvense",
+          "Freshwater minnows",
+          "Little Egret",
+          "Indian bullfrog"
+      ],
+      "threats": [
+          "road-construction-runoff",
+          "groundwater-pumping",
+          "plastic-litter"
+      ],
+      "conservationStatus": "Springhead Recharge Protection Site",
+      "hydrologicalData": {
+          "waterLevel": 1.5,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 22,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Key Shivalik springhead wetland maintaining baseflow in northern Tawi headwater streams.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-bhaderwah-marshes",
+      "slug": "bhaderwah-sarthal-meadows",
+      "name": "Bhaderwah-Sarthal Highland Wetland Meadows",
+      "type": "wetland",
+      "category": "High Altitude Valley Bog",
+      "description": "A highland wetland meadow and peat sponge complex located in the Chintapani and Sarthal plateau above Bhaderwah in Doda district. These high-altitude bogs store glacial snowpack runnels, slowly releasing cold, filtered water into the Neeru River throughout late summer.",
+      "district": "Doda",
+      "region": "Jammu",
+      "watershed": "Chenab Basin",
+      "area": 2.2,
+      "elevation": 2200,
+      "coordinates": {
+          "lat": 32.9812,
+          "lng": 75.7145
+      },
+      "waterQuality": {
+          "pH": 7.2,
+          "dissolvedOxygen": 9.3,
+          "turbidity": 1.1,
+          "conductivity": 85,
+          "temperature": 11.2,
+          "nitrates": 0.22,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.9,
+          "totalDissolvedSolids": 58,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Alpine sedges (Carex spp.)",
+          "Schizothorax richardsonii",
+          "Himalayan Monal",
+          "Musk deer proxy habitat"
+      ],
+      "threats": [
+          "seasonal-livestock-overgrazing",
+          "soil-compaction-from-tourist-vehicles"
+      ],
+      "conservationStatus": "Highland Sponge Catchment",
+      "hydrologicalData": {
+          "waterLevel": 1.3,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 35,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Crucial hydrological sponge regulating baseflow for the Neeru tributary of the Chenab.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-paddar-bogs",
+      "slug": "paddar-alpine-bogs",
+      "name": "Paddar Alpine Bogs & Glacial Marshes",
+      "type": "wetland",
+      "category": "High Altitude Glacial Peatland",
+      "description": "Pristine alpine peatlands and glacial stream marshes tucked inside the high-altitude sapphire-bearing Paddar Valley of Kishtwar district. Bordering the Chenab/Chanderbhaga canyon, these periglacial wetlands support specialized cold-adapted flora and mitigate downstream flash-surges.",
+      "district": "Kishtwar",
+      "region": "Jammu",
+      "watershed": "Chenab Basin",
+      "area": 1.9,
+      "elevation": 2850,
+      "coordinates": {
+          "lat": 33.2642,
+          "lng": 76.1582
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 0.8,
+          "conductivity": 55,
+          "temperature": 7.8,
+          "nitrates": 0.12,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 38,
+          "lastTested": "2026-05-23",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cryophilic mosses",
+          "Alpine snowcock",
+          "Himalayan Ibex corridors",
+          "Brown Bear habitat proxy"
+      ],
+      "threats": [
+          "cryosphere-retreat",
+          "permafrost-melting",
+          "road-construction-blasting"
+      ],
+      "conservationStatus": "Kishtwar High Altitude National Park Buffer",
+      "hydrologicalData": {
+          "waterLevel": 1.1,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 48,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Periglacial sponge wetland regulating upper Chenab headwater releases.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-surankote-marshes",
+      "slug": "surankote-riverine-marshes",
+      "name": "Surankote Riverine Marshes",
+      "type": "wetland",
+      "category": "Riverine Valley Wetland",
+      "description": "Riparian wetlands and oxbow channels bordering the Suran River in Poonch district. Formed by seasonal river braiding, these wetlands absorb sudden runoff from the Pir Panjal passes and replenish alluvial aquifers supporting valley agriculture.",
+      "district": "Poonch",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 1.6,
+      "elevation": 1020,
+      "coordinates": {
+          "lat": 33.6425,
+          "lng": 74.2618
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 7.8,
+          "turbidity": 4.8,
+          "conductivity": 240,
+          "temperature": 17.5,
+          "nitrates": 0.85,
+          "phosphates": 0.12,
+          "biologicalOxygenDemand": 2.4,
+          "totalDissolvedSolids": 155,
+          "lastTested": "2026-05-21",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Tor putitora (Golden Mahseer)",
+          "Schizothorax spp.",
+          "White-breasted Waterhen",
+          "Riparian willow groves"
+      ],
+      "threats": [
+          "gravel-and-sand-mining",
+          "flash-flood-bank-erosion"
+      ],
+      "conservationStatus": "Local Riparian Conservation Area",
+      "hydrologicalData": {
+          "flowRate": 45,
+          "waterLevel": 1.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 480,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Flood dissipation buffer in the upper Poonch river drainage network.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-suru-wetlands",
+      "slug": "suru-riverine-wetlands",
+      "name": "Suru Riverine Wetlands & Floodplains",
+      "type": "wetland",
+      "category": "High Altitude Glacial Riverine Wetland",
+      "description": "Expansive braided riverine wetlands, willow groves, and sediment floodplains extending along the Suru River from Sankoo to Kargil town. Fed by massive glacial snouts like Nun-Kun and Parkachik, these high-altitude wetlands provide life-sustaining irrigation, trout habitat, and migratory bird staging grounds in a high-altitude cold desert.",
+      "district": "Kargil",
+      "region": "Ladakh",
+      "watershed": "Suru-Zanskar Watershed",
+      "area": 5.4,
+      "elevation": 3050,
+      "coordinates": {
+          "lat": 34.4218,
+          "lng": 75.9812
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 9.5,
+          "turbidity": 3.2,
+          "conductivity": 135,
+          "temperature": 8.9,
+          "nitrates": 0.28,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.1,
+          "totalDissolvedSolids": 92,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Salix fragilis (Crack Willow)",
+          "Hippophae rhamnoides",
+          "Brown Trout",
+          "Brahminy Duck",
+          "Tibetan Sandgrouse"
+      ],
+      "threats": [
+          "highway-expansion-debris",
+          "seasonal-glacial-outburst-surges",
+          "bank-erosion"
+      ],
+      "conservationStatus": "Kargil Cold-Desert Wetland Corridor",
+      "hydrologicalData": {
+          "flowRate": 85,
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 4200,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Chief ecological and agricultural wetland lifeline of central Kargil district.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-drass-marshes",
+      "slug": "drass-valley-marshlands",
+      "name": "Drass Valley High-Altitude Marshes",
+      "type": "wetland",
+      "category": "Sub-Zero Cold-Desert Marsh",
+      "description": "High-altitude valley-bottom marshes situated in Drass, the second coldest inhabited place on Earth. Freezing solid for nearly six months under sub-zero temperatures (-40°C), these summer marshes burst into lush sedges and provide critical fuel and foraging habitat for migratory trans-Himalayan waterfowl.",
+      "district": "Kargil",
+      "region": "Ladakh",
+      "watershed": "Suru-Zanskar Watershed",
+      "area": 4.1,
+      "elevation": 3230,
+      "coordinates": {
+          "lat": 34.4285,
+          "lng": 75.7548
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 1.8,
+          "conductivity": 110,
+          "temperature": 6.8,
+          "nitrates": 0.21,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.8,
+          "totalDissolvedSolids": 75,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Carex microglochin",
+          "Tadorna ferruginea (Ruddy Shelduck)",
+          "Common Greenshank",
+          "Snow trout (Schizothorax)",
+          "Himalayan Marmot"
+      ],
+      "threats": [
+          "highway-diesel-particulate-deposition",
+          "extreme-winter-desiccation"
+      ],
+      "conservationStatus": "High Altitude Trans-Himalayan Staging Site",
+      "hydrologicalData": {
+          "waterLevel": 1.5,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 1450,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Extreme sub-zero wetland sanctuary regulating headwater flows into the Drass-Shingo river system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-wakhasar",
+      "slug": "wakhasar-wetland-kargil",
+      "name": "Wakhasar Plateau Wetland",
+      "type": "wetland",
+      "category": "Plateau Springs Wetland",
+      "description": "A compact, spring-fed marshland located near the historic Wakha rock carvings along the Kargil-Leh corridor. Nourished by cold springs issuing from the limestone ridges, it provides a vital green oasis and resting point for migratory bird flocks.",
+      "district": "Kargil",
+      "region": "Ladakh",
+      "watershed": "Suru-Zanskar Watershed",
+      "area": 1.3,
+      "elevation": 3450,
+      "coordinates": {
+          "lat": 34.3512,
+          "lng": 76.2814
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 9.1,
+          "turbidity": 1.2,
+          "conductivity": 165,
+          "temperature": 9.5,
+          "nitrates": 0.25,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.9,
+          "totalDissolvedSolids": 110,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Willow carrs",
+          "Chukar Partridge",
+          "Black-headed gull stopover",
+          "Cold-water stoneflies"
+      ],
+      "threats": [
+          "highway-drainage-diversion",
+          "tourist-stopping-waste"
+      ],
+      "conservationStatus": "Local Heritage Wetland",
+      "hydrologicalData": {
+          "waterLevel": 1.1,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 18,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Springhead oasis regulating baseflow for the Wakha stream.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-loma-nidar",
+      "slug": "loma-nidar-wetland-complex",
+      "name": "Loma-Nidar Indus Wetland Complex",
+      "type": "wetland",
+      "category": "High Altitude Braided Riverine Wetland",
+      "description": "A vast high-altitude braided wetland complex situated along the Indus River between Nyoma and Loma in eastern Ladakh at over 4,180 meters. Featuring countless meandering channels, saline marshflats, and sandbars, it serves as one of the most critical breeding territories in the world for the vulnerable Black-necked Crane.",
+      "district": "Leh",
+      "region": "Ladakh",
+      "watershed": "Indus Basin",
+      "area": 7.8,
+      "elevation": 4180,
+      "coordinates": {
+          "lat": 33.1582,
+          "lng": 78.6125
+      },
+      "waterQuality": {
+          "pH": 8.4,
+          "dissolvedOxygen": 8.6,
+          "turbidity": 2.1,
+          "conductivity": 950,
+          "temperature": 9.8,
+          "nitrates": 0.32,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.4,
+          "totalDissolvedSolids": 650,
+          "lastTested": "2026-05-18",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Grus nigricollis (Black-necked Crane nesting)",
+          "Anser indicus (Bar-headed Goose)",
+          "Tadorna ferruginea",
+          "Equus kiang (Tibetan Wild Ass)",
+          "Ptychobarbus conirostris"
+      ],
+      "threats": [
+          "feral-dog-predation-on-crane-nests",
+          "military-convoy-dust",
+          "climate-drought-cycles"
+      ],
+      "conservationStatus": "Changthang Cold Desert Wildlife Sanctuary Zone",
+      "hydrologicalData": {
+          "flowRate": 110,
+          "waterLevel": 2.2,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 28000,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Premier high-altitude avian breeding complex along the Upper Indus in Changthang.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-dungti-marshes",
+      "slug": "dungti-wetland-marshes",
+      "name": "Dungti Wetland Marshes",
+      "type": "wetland",
+      "category": "High Altitude Saline Marsh",
+      "description": "An isolated trans-Himalayan wetland situated at 4,210 meters near the Indo-Tibetan border in eastern Ladakh. Fed by glacial seepage runnels from the surrounding snowfields, the shallow saline pools sustain rich benthic invertebrate biomass that feeds nesting waders and cranes.",
+      "district": "Leh",
+      "region": "Ladakh",
+      "watershed": "Indus Basin",
+      "area": 6.2,
+      "elevation": 4210,
+      "coordinates": {
+          "lat": 33.1952,
+          "lng": 78.9814
+      },
+      "waterQuality": {
+          "pH": 8.5,
+          "dissolvedOxygen": 8.2,
+          "turbidity": 1.9,
+          "conductivity": 1400,
+          "temperature": 8.2,
+          "nitrates": 0.28,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.2,
+          "totalDissolvedSolids": 980,
+          "lastTested": "2026-05-18",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Black-necked Crane",
+          "Bar-headed Goose",
+          "Tibetan Lark",
+          "Artemia proxy",
+          "Caragana pygmaea scrub"
+      ],
+      "threats": [
+          "extreme-aridity",
+          "permafrost-thaw-drainage",
+          "border-activity"
+      ],
+      "conservationStatus": "High Altitude Critical Avian Breeding Habitat",
+      "hydrologicalData": {
+          "waterLevel": 1.1,
+          "seasonalVariation": "seasonal",
+          "source": "glacial",
+          "drainageArea": 320,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1104",
+      "nwiaSignificance": "Extreme eastern Ladakh high-altitude wetland supporting transboundary Central Asian Flyway avifauna.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-khunjerab-alpine",
+      "slug": "khunjerab-alpine-wetlands",
+      "name": "Khunjerab Alpine Wetlands",
+      "type": "wetland",
+      "category": "High Altitude Alpine Bog & Tundra",
+      "description": "An internationally famous high-altitude alpine wetland ecosystem located at 4,693 meters in Khunjerab National Park on the border of Hunza and China. Acting as the highest paved international border crossing in the world, the spongy tundra wetlands and glacial streams provide critical habitat for the Marco Polo sheep, Himalayan ibex, and snow leopard.",
+      "district": "Hunza",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Hunza River Basin",
+      "area": 8.5,
+      "elevation": 4693,
+      "coordinates": {
+          "lat": 36.8492,
+          "lng": 75.4285
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 10.1,
+          "turbidity": 0.8,
+          "conductivity": 42,
+          "temperature": 4.5,
+          "nitrates": 0.1,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 30,
+          "lastTested": "2026-05-14",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Ovis ammon polii (Marco Polo Sheep)",
+          "Capra sibirica (Himalayan Ibex)",
+          "Panthera uncia (Snow Leopard)",
+          "Tibetan Snowcock",
+          "High alpine sedges"
+      ],
+      "threats": [
+          "highway-exhaust-emissions",
+          "tourist-plastic-pollution",
+          "permafrost-degradation"
+      ],
+      "conservationStatus": "Khunjerab National Park Core Zone",
+      "hydrologicalData": {
+          "waterLevel": 1.2,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 240,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Karakoram high alpine headwater wetland regulating melt flows into the Khunjerab and Hunza rivers.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-blind-lake-zharba",
+      "slug": "blind-lake-zharba-tso-wetlands",
+      "name": "Blind Lake (Zharba Tso) Desert Wetlands",
+      "type": "wetland",
+      "category": "Cold Desert Oasis Wetland",
+      "description": "A breathtaking cold-desert oasis wetland situated in Shigar Valley near the Shigar River. Enclosed by rolling golden sand dunes and sheer Karakoram granite cliffs, Blind Lake is fed by subterranean springs and seasonal snowmelt, supporting wild bar-headed geese and lush willow groves.",
+      "district": "Shigar",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 1.2,
+      "elevation": 2260,
+      "coordinates": {
+          "lat": 35.4214,
+          "lng": 75.7412
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 8.6,
+          "turbidity": 1.4,
+          "conductivity": 210,
+          "temperature": 13.5,
+          "nitrates": 0.35,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.4,
+          "totalDissolvedSolids": 140,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salix babylonica",
+          "Phragmites australis",
+          "Anas platyrhynchos",
+          "Brown trout",
+          "Eurasian Coot"
+      ],
+      "threats": [
+          "unregulated-desert-tourism",
+          "off-road-jeep-activity",
+          "litter"
+      ],
+      "conservationStatus": "Shigar Ecotourism & Wetland Reserve",
+      "hydrologicalData": {
+          "waterLevel": 6.5,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 35,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Rare high-altitude cold-desert springhead wetland maintaining microclimatic stability in Shigar.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-sarfaranga-wetland",
+      "slug": "sarfaranga-cold-desert-wetland",
+      "name": "Sarfaranga Cold Desert Oasis Wetland",
+      "type": "wetland",
+      "category": "Desert Floodplain Wetland",
+      "description": "An extraordinary high-altitude wetland situated in the world's highest cold desert at Sarfaranga in Shigar district. Sitting along the wide braids of the Shigar River, this oasis wetland features crystal-clear spring pools surrounded by sand dunes and snow-capped peaks.",
+      "district": "Shigar",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 2.5,
+      "elevation": 2230,
+      "coordinates": {
+          "lat": 35.3952,
+          "lng": 75.6814
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 8.4,
+          "turbidity": 2.1,
+          "conductivity": 225,
+          "temperature": 14.1,
+          "nitrates": 0.4,
+          "phosphates": 0.05,
+          "biologicalOxygenDemand": 1.5,
+          "totalDissolvedSolids": 150,
+          "lastTested": "2026-05-16",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Myricaria squamosa",
+          "Migratory waders",
+          "Chukar",
+          "Schizothorax spp."
+      ],
+      "threats": [
+          "off-road-rally-events",
+          "sand-movement",
+          "visitor-waste"
+      ],
+      "conservationStatus": "Cold Desert Fragile Ecosystem Site",
+      "hydrologicalData": {
+          "waterLevel": 1.6,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 120,
+          "floodRisk": "moderate"
+      },
+      "nwiaSignificance": "Crucial desert oasis ecosystem buffering the confluence of Shigar and Indus rivers.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-skardu-indus-marshes",
+      "slug": "skardu-indus-floodplain-marshes",
+      "name": "Skardu Indus-Shigar Confluence Marshes",
+      "type": "wetland",
+      "category": "Wide Alluvial Floodplain Wetland",
+      "description": "A monumental braided riverbed and wetland complex spanning 11 km² where the mighty Indus River and Shigar River merge across wide alluvial flats in the Skardu basin. Massive sandbars, side-channels, and emergent willow wetlands create a premier sanctuary for wildfowl migrating over the Karakoram.",
+      "district": "Skardu",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 11,
+      "elevation": 2220,
+      "coordinates": {
+          "lat": 35.3125,
+          "lng": 75.5912
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 8.8,
+          "turbidity": 4.2,
+          "conductivity": 260,
+          "temperature": 13.8,
+          "nitrates": 0.48,
+          "phosphates": 0.06,
+          "biologicalOxygenDemand": 1.8,
+          "totalDissolvedSolids": 175,
+          "lastTested": "2026-05-17",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Anser indicus",
+          "Tadorna tadorna (Common Shelduck)",
+          "Brown Trout",
+          "Indigenous Snow Trout",
+          "River terns"
+      ],
+      "threats": [
+          "airport-expansion-fill",
+          "urban-solid-waste-discharge",
+          "channel-embankment-works"
+      ],
+      "conservationStatus": "Major Central Baltistan Wetland Complex",
+      "hydrologicalData": {
+          "flowRate": 480,
+          "waterLevel": 3.5,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 48000,
+          "floodRisk": "high"
+      },
+      "nwiaSignificance": "Master hydrological confluence wetland in central Baltistan regulating Indus river throughput.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-passu-marshes",
+      "slug": "passu-glacier-melt-marshes",
+      "name": "Passu Glacier Melt Marshes",
+      "type": "wetland",
+      "category": "Proglacial Moraine Marsh",
+      "description": "A periglacial wetland complex situated below the jagged granite spires of the Passu Cones in Upper Hunza. Fed by glacial melt and morainic seepage from Passu and Batura glaciers, these icy pools and braided channels form a vital resting oasis along the Karakoram Highway.",
+      "district": "Hunza",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Hunza River Basin",
+      "area": 1.8,
+      "elevation": 2480,
+      "coordinates": {
+          "lat": 36.4682,
+          "lng": 74.8814
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 2.8,
+          "conductivity": 120,
+          "temperature": 7.4,
+          "nitrates": 0.15,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.7,
+          "totalDissolvedSolids": 82,
+          "lastTested": "2026-05-14",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Hippophae scrub",
+          "Alpine mosses",
+          "Snowcock",
+          "Common sandpiper",
+          "Ibex corridors"
+      ],
+      "threats": [
+          "glacial-outburst-surges (GLOF)",
+          "moraine-destabilization",
+          "highway-widening"
+      ],
+      "conservationStatus": "Proglacial Monitoring Sentinel Wetland",
+      "hydrologicalData": {
+          "waterLevel": 1.5,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 420,
+          "floodRisk": "high"
+      },
+      "nwiaSignificance": "Moraine-dammed meltwater marsh monitoring Batura and Passu cryospheric dynamics.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-yasin-wetlands",
+      "slug": "yasin-valley-riverine-wetlands",
+      "name": "Yasin Valley Riverine Wetlands",
+      "type": "wetland",
+      "category": "Riverine Valley Wetland",
+      "description": "Picturesque riverine wetlands, willow groves, and oxbow channels extending along the Yasin River in Ghizer district. Originating from high Hindu Kush glaciers near Darkot Pass, these wetlands provide prime trout fisheries and irrigate traditional terraced villages.",
+      "district": "Ghizer",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Gilgit River Basin",
+      "area": 3.2,
+      "elevation": 2600,
+      "coordinates": {
+          "lat": 36.3812,
+          "lng": 73.4418
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 9.2,
+          "turbidity": 1.8,
+          "conductivity": 140,
+          "temperature": 9.8,
+          "nitrates": 0.22,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 1,
+          "totalDissolvedSolids": 95,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Salix spp.",
+          "Dipper",
+          "Common Greenshank",
+          "Migratory teal"
+      ],
+      "threats": [
+          "streambank-erosion-during-spring-melt",
+          "overfishing"
+      ],
+      "conservationStatus": "Ghizer Trout & Riparian Protection Zone",
+      "hydrologicalData": {
+          "flowRate": 55,
+          "waterLevel": 1.9,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 2100,
+          "floodRisk": "moderate"
+      },
+      "nwiaSignificance": "High Hindu Kush riverine wetland regulating water delivery into the main Gilgit River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-chilm-bogs",
+      "slug": "chilm-alpine-bogs",
+      "name": "Chilm Alpine Sponge Bogs",
+      "type": "wetland",
+      "category": "High Altitude Alpine Sponge Bog",
+      "description": "An expansive sub-alpine peat bog and sponge wetland situated at Chilm in Astore district, serving as the southern gateway to the Deosai plateau. Capturing melting snow from the surrounding massifs, these deep peat deposits maintain perennial baseflow for the Astore River.",
+      "district": "Astore",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Astore Basin",
+      "area": 2.4,
+      "elevation": 3600,
+      "coordinates": {
+          "lat": 35.0812,
+          "lng": 75.0542
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.7,
+          "conductivity": 52,
+          "temperature": 6.2,
+          "nitrates": 0.12,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 35,
+          "lastTested": "2026-05-17",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Carex and Juncus bogs",
+          "Himalayan Brown Bear (Ursus arctos isabellinus corridor)",
+          "Golden Marmot",
+          "Tibetan Snowcock"
+      ],
+      "threats": [
+          "road-construction",
+          "livestock-grazing",
+          "permafrost-melting"
+      ],
+      "conservationStatus": "Deosai Gateway Ecological Corridor",
+      "hydrologicalData": {
+          "waterLevel": 1.3,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 65,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "High-altitude peatland sponge crucial for stabilizing summer hydrological discharge into the Astore basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-hushe-wetlands",
+      "slug": "hushe-valley-glacial-wetlands",
+      "name": "Hushe Valley Glacial Stream Wetlands",
+      "type": "wetland",
+      "category": "High Altitude Glacial Stream Wetland",
+      "description": "A series of high-altitude glacial stream wetlands nestled beneath the colossal peaks of Masherbrum (7,821 m) and K6 in Ghanche district. Nourished by cold glacier melt, these wetlands support ancient juniper forests and cold-water snow trout fisheries.",
+      "district": "Ghanche",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Shyok River Basin",
+      "area": 2.8,
+      "elevation": 3050,
+      "coordinates": {
+          "lat": 35.4214,
+          "lng": 76.3548
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 1.6,
+          "conductivity": 95,
+          "temperature": 7.2,
+          "nitrates": 0.18,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.8,
+          "totalDissolvedSolids": 65,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Juniperus macropoda",
+          "Schizothorax spp.",
+          "Snow leopard habitat buffer",
+          "Himalayan Ibex"
+      ],
+      "threats": [
+          "expedition-solid-waste",
+          "permafrost-thaw"
+      ],
+      "conservationStatus": "Central Karakoram National Park Buffer",
+      "hydrologicalData": {
+          "flowRate": 35,
+          "waterLevel": 1.6,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 850,
+          "floodRisk": "moderate"
+      },
+      "nwiaSignificance": "Periglacial stream wetland regulating runoff from the Masherbrum massif into the Shyok river.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-khaplu-marshes",
+      "slug": "khaplu-confluence-marshes",
+      "name": "Khaplu Shyok-Indus Confluence Marshes",
+      "type": "wetland",
+      "category": "River Confluence Wetland",
+      "description": "Wide riverine marshes, sandbars, and willow thickets located along the braided channels of the Shyok River near Khaplu palace in Ghanche district. As the Shyok flows down from the Siachen and Rimo glaciers, this confluence wetland performs critical sediment deposition before meeting the Indus.",
+      "district": "Ghanche",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Shyok River Basin",
+      "area": 4.5,
+      "elevation": 2600,
+      "coordinates": {
+          "lat": 35.1582,
+          "lng": 76.3214
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 9,
+          "turbidity": 3.8,
+          "conductivity": 180,
+          "temperature": 11.5,
+          "nitrates": 0.32,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.3,
+          "totalDissolvedSolids": 120,
+          "lastTested": "2026-05-16",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Hippophae scrub",
+          "Brown trout",
+          "Bar-headed goose stopover",
+          "Eurasian otter proxy"
+      ],
+      "threats": [
+          "streambank-erosion",
+          "aggregate-mining"
+      ],
+      "conservationStatus": "Eastern Baltistan Riparian Sanctuary",
+      "hydrologicalData": {
+          "flowRate": 140,
+          "waterLevel": 2.6,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 33000,
+          "floodRisk": "high"
+      },
+      "nwiaSignificance": "Primary confluence and sediment-moderating wetland along the lower Shyok River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-neelum-riverine",
+      "slug": "neelum-riverine-marshes",
+      "name": "Neelum Riverine Marshes",
+      "type": "wetland",
+      "category": "Riverine Valley Wetland",
+      "description": "Riparian braided riverbed wetlands and side-channel marshes running along the Neelum/Kishanganga River in Azad Jammu and Kashmir. Originating in Gurez and flowing through deep gorges, these cold-water riverine wetlands support premier cold-water trout fisheries and riverine kingfishers.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 3.1,
+      "elevation": 1650,
+      "coordinates": {
+          "lat": 34.5842,
+          "lng": 73.8912
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 9.4,
+          "turbidity": 2.8,
+          "conductivity": 165,
+          "temperature": 12.2,
+          "nitrates": 0.38,
+          "phosphates": 0.05,
+          "biologicalOxygenDemand": 1.4,
+          "totalDissolvedSolids": 110,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Schizothorax plagiostomus",
+          "Alcedo atthis",
+          "River otter proxy habitat",
+          "Riparian alders"
+      ],
+      "threats": [
+          "hydropower-diversions",
+          "debris-from-highway-blasting",
+          "tourist-camp-waste"
+      ],
+      "conservationStatus": "Neelum Cold-Water Fish Reserve",
+      "hydrologicalData": {
+          "flowRate": 120,
+          "waterLevel": 3.1,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 7300,
+          "floodRisk": "high"
+      },
+      "nwiaSignificance": "Master riverine wetland corridor along the Neelum/Kishanganga river system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-sharda-marshes",
+      "slug": "sharda-river-marshes",
+      "name": "Sharda Riparian Marshes",
+      "type": "wetland",
+      "category": "Valley Riverine Wetland",
+      "description": "Historical riparian wetlands located at the confluence of the Surgan Nallah and Neelum River at Sharda. Overlooked by the ancient Sharada Peeth university ruins, these shallow backwaters support rich aquatic macrophyte communities and wintering waterfowl.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 1.5,
+      "elevation": 1980,
+      "coordinates": {
+          "lat": 34.7925,
+          "lng": 74.1852
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 2.1,
+          "conductivity": 140,
+          "temperature": 10.8,
+          "nitrates": 0.28,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 1.1,
+          "totalDissolvedSolids": 92,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Brown Trout",
+          "Snow Trout",
+          "Mallard",
+          "Alnus nitida",
+          "Primula spp."
+      ],
+      "threats": [
+          "unregulated-hotel-effluents",
+          "riverbank-erosion"
+      ],
+      "conservationStatus": "Heritage Riparian Wetland",
+      "hydrologicalData": {
+          "waterLevel": 2.1,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 420,
+          "floodRisk": "moderate"
+      },
+      "nwiaSignificance": "Confluence wetland moderating Surgan tributary discharge into the Neelum River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-kel-marshes",
+      "slug": "kel-marshland-meadows",
+      "name": "Kel Marshland Meadows",
+      "type": "wetland",
+      "category": "Sub-Alpine Valley Floor Wetland",
+      "description": "Sub-alpine valley floor marshes and wet meadows situated below Arang Kel in Upper Neelum. Fed by hanging glaciers and cold mountain brooks, this wetland mosaic represents a vital staging point for birds crossing into the Astore pass.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 1.8,
+      "elevation": 2097,
+      "coordinates": {
+          "lat": 34.8252,
+          "lng": 74.3514
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 1.4,
+          "conductivity": 95,
+          "temperature": 9.2,
+          "nitrates": 0.19,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.8,
+          "totalDissolvedSolids": 62,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "High-altitude Primula",
+          "Carex sedges",
+          "Brown trout",
+          "Himalayan Snowcock",
+          "White-capped water redstart"
+      ],
+      "threats": [
+          "tourist-footfall-trampling",
+          "unmanaged-camping-waste"
+      ],
+      "conservationStatus": "Upper Neelum Alpine Protection Zone",
+      "hydrologicalData": {
+          "waterLevel": 1.4,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 280,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Upper Neelum valley floor wetland buffering glacier melt and spring flows.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-rawalakot-peatlands",
+      "slug": "rawalakot-highland-peatlands",
+      "name": "Rawalakot Highland Peatlands",
+      "type": "wetland",
+      "category": "Upland Peatland Bog",
+      "description": "Upland rainfed peat bogs and agricultural wetland terraces nestled in the Rawalakot bowl in Poonch (AJK). Functioning as a natural sponge, the peat deposits filter monsoon precipitation, replenishing groundwater and springs across the plateau.",
+      "district": "Poonch (AJK)",
+      "region": "AJK",
+      "watershed": "Poonch Watershed",
+      "area": 2.2,
+      "elevation": 1638,
+      "coordinates": {
+          "lat": 33.8582,
+          "lng": 73.7614
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 7.6,
+          "turbidity": 3.8,
+          "conductivity": 210,
+          "temperature": 18.2,
+          "nitrates": 0.65,
+          "phosphates": 0.09,
+          "biologicalOxygenDemand": 2.1,
+          "totalDissolvedSolids": 140,
+          "lastTested": "2026-05-20",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Typha spp.",
+          "Freshwater crabs",
+          "Amphibian breeding populations",
+          "Migratory ardeids"
+      ],
+      "threats": [
+          "urban-expansion-of-rawalakot",
+          "drainage-ditches",
+          "solid-waste"
+      ],
+      "conservationStatus": "Plateau Groundwater Recharge Site",
+      "hydrologicalData": {
+          "waterLevel": 1.2,
+          "seasonalVariation": "perennial",
+          "source": "rainfall",
+          "drainageArea": 55,
+          "floodRisk": "moderate"
+      },
+      "nwiaSignificance": "Primary highland aquifer recharge wetland for the Rawalakot plateau.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-kotli-marshes",
+      "slug": "kotli-poonch-riverine-wetlands",
+      "name": "Kotli Poonch-Riverine Wetlands",
+      "type": "wetland",
+      "category": "Sub-Tropical Riverine Wetland",
+      "description": "Sub-tropical riverine wetlands, gravel bars, and deep canyon pools along the lower Poonch River in Kotli district. Celebrated as the primary wild breeding sanctuary of the endangered Golden Mahseer (Tor putitora), these warm-water wetlands support extraordinary ichthyofaunal diversity.",
+      "district": "Kotli",
+      "region": "AJK",
+      "watershed": "Poonch Watershed",
+      "area": 3.8,
+      "elevation": 610,
+      "coordinates": {
+          "lat": 33.5182,
+          "lng": 73.9014
+      },
+      "waterQuality": {
+          "pH": 7.9,
+          "dissolvedOxygen": 8.2,
+          "turbidity": 4.8,
+          "conductivity": 310,
+          "temperature": 24.5,
+          "nitrates": 0.78,
+          "phosphates": 0.12,
+          "biologicalOxygenDemand": 2.6,
+          "totalDissolvedSolids": 195,
+          "lastTested": "2026-05-18",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Tor putitora (Golden Mahseer National Sanctuary)",
+          "Mastacembelus armatus",
+          "Otter proxy habitat",
+          "Pond heron",
+          "Kingfishers"
+      ],
+      "threats": [
+          "illegal-dynamite-and-electro-fishing",
+          "unregulated-gravel-mining",
+          "dam-hydrology-alterations"
+      ],
+      "conservationStatus": "Poonch River National Park (Mahseer Sanctuary)",
+      "hydrologicalData": {
+          "flowRate": 110,
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 4100,
+          "floodRisk": "high"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Tor putitora",
+              "Labeo dero",
+              "Garra gotyla"
+          ],
+          "fisheryType": "wild",
+          "productivity": "high",
+          "permits": true,
+          "conservationMeasures": [
+              "Protected under Poonch River National Park Fisheries Rules"
+          ]
+      },
+      "nwiaSignificance": "Premier sub-tropical fish sanctuary and riverine wetland in the lower Poonch basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "wetland-ganga-chotti-bogs",
+      "slug": "ganga-chotti-alpine-bogs",
+      "name": "Ganga Chotti Highland Sponge Bogs",
+      "type": "wetland",
+      "category": "High Altitude Ridge Peat Bog",
+      "description": "High-altitude ridge peat bogs and cold springhead wetlands situated below the scenic Ganga Chotti peak at 3,040 meters in Bagh district. Acting as a natural hydrological sponge, these alpine meadows capture precipitation and feed headwater streams supplying drinking water to Bagh valley.",
+      "district": "Bagh",
+      "region": "AJK",
+      "watershed": "Mahal Watershed",
+      "area": 1.4,
+      "elevation": 3040,
+      "coordinates": {
+          "lat": 34.0214,
+          "lng": 73.8412
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 0.9,
+          "conductivity": 65,
+          "temperature": 8.5,
+          "nitrates": 0.15,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 42,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Sphagnum moss",
+          "Alpine buttercups",
+          "Himalayan Monal",
+          "Koklass Pheasant",
+          "Sub-alpine fir canopy"
+      ],
+      "threats": [
+          "mass-tourist-trampling",
+          "off-road-erosion",
+          "litter-accumulation"
+      ],
+      "conservationStatus": "High Altitude Watershed Sponge Site",
+      "hydrologicalData": {
+          "waterLevel": 1.1,
+          "seasonalVariation": "perennial",
+          "source": "rainfall",
+          "drainageArea": 28,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Ridge-top sponge bog maintaining perennial springhead yield for the Bagh district catchment.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
   }
 ];
-
-// ============================================================================
-// RIVERS AND STREAMS DATA
-// ============================================================================
 
 export const riversData: WaterEntity[] = [
   {
