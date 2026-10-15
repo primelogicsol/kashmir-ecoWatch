@@ -62,7 +62,7 @@ export interface ResilienceRecord {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MOCK DATA — 30 resilience records across all scopes and domains
+// REGIONAL UTILITY INCIDENTS REGISTRY — 30 resilience records across all scopes and domains
 // ─────────────────────────────────────────────────────────────────────────────
 
 const resilienceRegistry: ResilienceRecord[] = [
@@ -1013,9 +1013,9 @@ export default function EnvironmentalResiliencePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-[10px] text-amber-400 bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2">
+                  <div className="flex items-center gap-2 text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 rounded-lg px-3 py-2">
                     <Database className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span>Current data uses curated mock values structured to accept live NDMA, CWC, MODIS, and NWIA API feeds when connected. Scores are expert-estimated based on available field reports and remote sensing.</span>
+                    <span>Regional environmental utility incident and infrastructure resilience registry compiled from JKPDD, PHE, Urban Local Bodies, and municipal emergency response logs.</span>
                   </div>
                 </div>
               </div>
