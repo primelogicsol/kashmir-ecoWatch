@@ -122,11 +122,11 @@ export default function FounderPage() {
     },
     {
       degree: 'Advanced Specialization',
-      period: 'Cloud Engineering',
-      field: 'SaaS Platforms and Infrastructure',
-      institution: 'Global Mission-Critical Cloud Operations and Enterprise Delivery Hubs',
-      specialization: 'Focus: Multi-tenant SaaS architectures, continuous cloud delivery, and zero-trust security',
-      icon: Cloud,
+      period: 'Critical Infrastructure',
+      field: 'Critical Infrastructure Systems and Resilience',
+      institution: 'Mission-Critical Infrastructure Operations and Enterprise Cloud Hubs',
+      specialization: 'Focus: Lifeline utility networks, critical infrastructure protection, and mission-critical cloud resilience',
+      icon: Building2,
       color: 'text-teal-400',
       bg: 'bg-teal-500/10 border-teal-500/20'
     }
