@@ -123,7 +123,7 @@ export default function FounderPage() {
     {
       degree: 'Advanced Specialization',
       period: 'Critical Infrastructure',
-      field: 'Critical Infrastructure Systems and Resilience',
+      field: 'Critical Infrastructure & Resilience',
       institution: 'Mission-Critical Infrastructure Operations and Enterprise Cloud Hubs',
       specialization: 'Focus: Lifeline utility networks, critical infrastructure protection, and mission-critical cloud resilience',
       icon: Building2,
