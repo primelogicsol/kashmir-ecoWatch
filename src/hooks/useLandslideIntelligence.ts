@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { LandslideRecord, LandslideRiskLevel } from '@/data/hazard-landslides';
+import { landslideData, LandslideRecord, LandslideScope, SlideType, LandslideRiskLevel, LandslideTrigger, LandslideVerification, LandslideStatus } from '@/data/hazard-landslides';
+export type { LandslideScope, SlideType, LandslideRiskLevel, LandslideTrigger, LandslideVerification, LandslideStatus, LandslideRecord };
 
-const CACHE_KEY = 'landslide_intelligence_data';
-const CACHE_EXPIRATION = 45 * 60 * 1000; // 45 minutes
+const CACHE_KEY = 'landslide_intelligence_v2';
+const CACHE_EXPIRATION = 5 * 60 * 1000; // 5 minutes
 
-export interface EnhancedLandslideRecord extends LandslideRecord {
+export interface EnhancedLandslideRecord extends Omit<LandslideRecord, 'id'> {
+  id: string;
   live_soil_moisture?: number;
   live_precipitation_24h?: number;
   live_precipitation_72h?: number;
@@ -13,8 +15,8 @@ export interface EnhancedLandslideRecord extends LandslideRecord {
   last_updated?: string;
 }
 
-export function useLandslideIntelligence(records: LandslideRecord[]) {
-  const [data, setData] = useState<EnhancedLandslideRecord[]>(records);
+export function useLandslideIntelligence() {
+  const [data, setData] = useState<EnhancedLandslideRecord[]>(landslideData);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [isStale, setIsStale] = useState<boolean>(false);
@@ -24,82 +26,52 @@ export function useLandslideIntelligence(records: LandslideRecord[]) {
 
     async function fetchData() {
       try {
-        // Check cache first
         const cached = localStorage.getItem(CACHE_KEY);
         if (cached) {
-          const { timestamp, payload } = JSON.parse(cached);
-          if (Date.now() - timestamp < CACHE_EXPIRATION) {
-            setData(payload);
-            setLoading(false);
-            return;
-          } else {
-            // Data is stale, we'll try to fetch, but set stale in case fetch fails
-            setIsStale(true);
-            setData(payload);
+          try {
+            const { timestamp, payload } = JSON.parse(cached);
+            if (Date.now() - timestamp < CACHE_EXPIRATION && Array.isArray(payload) && payload.length > 0 && payload[0].live_soil_moisture !== undefined) {
+              setData(payload);
+              setLoading(false);
+              return;
+            }
+          } catch (e) {
+            // invalid cache, continue
           }
         }
 
-        // We only fetch for records that have lat/lon
-        const validRecords = records.filter(r => r.latitude !== undefined && r.longitude !== undefined);
-        if (validRecords.length === 0) {
-          setData(records);
-          setLoading(false);
-          return;
+        // Try direct Open-Meteo client-side fetch (same resilient pattern as useFlashFloodIntelligence)
+        const lats = landslideData.map(d => d.latitude.toFixed(4)).join(',');
+        const lons = landslideData.map(d => d.longitude.toFixed(4)).join(',');
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&current=soil_moisture_0_to_7cm,precipitation&daily=precipitation_sum&timezone=auto&forecast_days=2`;
+
+        const response = await fetch(weatherUrl);
+        if (!response.ok) {
+          throw new Error(`Open-Meteo HTTP ${response.status}`);
         }
 
-        const lats = validRecords.map(r => r.latitude).join(',');
-        const lons = validRecords.map(r => r.longitude).join(',');
+        const weatherData = await response.json();
+        const results = Array.isArray(weatherData) ? weatherData : [weatherData];
+        const nowIso = new Date().toISOString();
 
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&current=soil_moisture_0_to_7cm,precipitation&daily=precipitation_sum&timezone=auto&past_days=3&forecast_days=1`;
+        const enhanced = landslideData.map((record, index) => {
+          const loc = results[index];
+          if (!loc || !loc.current) return record;
 
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error('API fetch failed');
-        }
+          const soilMoisture = typeof loc.current.soil_moisture_0_to_7cm === 'number' ? loc.current.soil_moisture_0_to_7cm : 0.32;
+          const daily = loc.daily?.precipitation_sum || [];
+          const precip24h = daily.length > 0 ? (daily[0] || 0) : (loc.current.precipitation || 0);
+          const precip72h = daily.reduce((acc: number, val: number) => acc + (val || 0), 0);
 
-        const apiData = await res.json();
-        
-        // Open Meteo returns an array if multiple coordinates, or a single object if one coordinate
-        const results = Array.isArray(apiData) ? apiData : [apiData];
-
-        const enhancedData: EnhancedLandslideRecord[] = records.map((record) => {
-          // If no coordinate, return as is
-          if (record.latitude === undefined || record.longitude === undefined) {
-            return record;
-          }
-
-          // Find the corresponding result by index
-          const index = validRecords.findIndex(vr => vr.id === record.id);
-          const locationData = results[index];
-
-          if (!locationData || !locationData.current || !locationData.daily) {
-            return record;
-          }
-
-          const soilMoisture = locationData.current.soil_moisture_0_to_7cm || 0;
-          
-          // Calculate 24h and 72h precipitation
-          // The daily array for past_days=3 & forecast_days=1 gives 4 days: [-3, -2, -1, 0(today)]
-          const dailyPrecip = locationData.daily.precipitation_sum || [];
-          
-          // Last element is today's precipitation
-          const precip24h = dailyPrecip.length > 0 ? dailyPrecip[dailyPrecip.length - 1] : 0;
-          
-          // Sum of last 3 elements (today, yesterday, day before)
-          const precip72h = dailyPrecip.slice(-3).reduce((acc: number, val: number) => acc + (val || 0), 0);
-
-          let risk: LandslideRiskLevel = record.risk_level;
+          let risk = record.risk_level;
           let triggerDesc = record.trigger;
 
-          // Risk logic
-          const isExtremeRain = precip24h > 50 || precip72h > 50;
-          const isHeavyRain = precip24h > 30 || precip72h > 30;
-          const isModerateRain = precip24h > 10 || precip72h > 10;
-          
-          const isVeryHighMoisture = soilMoisture > 0.4;
-          const isHighMoisture = soilMoisture > 0.3;
+          const isExtremeRain = precip24h > 40 || precip72h > 50;
+          const isHeavyRain = precip24h > 20 || precip72h > 30;
+          const isModerateRain = precip24h > 8 || precip72h > 12;
+          const isHighMoisture = soilMoisture > 0.35;
 
-          if (isVeryHighMoisture && isExtremeRain) {
+          if (isHighMoisture && isExtremeRain) {
             risk = 'Critical';
             triggerDesc = 'Saturated Soil + Extreme Rain';
           } else if (isHighMoisture && isHeavyRain) {
@@ -110,8 +82,13 @@ export function useLandslideIntelligence(records: LandslideRecord[]) {
             triggerDesc = isHighMoisture ? 'High Soil Moisture' : 'Moderate Rainfall';
           } else {
             risk = 'Low';
-            triggerDesc = 'Low Moisture/Rainfall';
+            triggerDesc = 'Stable / Low Moisture';
           }
+
+          let currentStatus = record.current_status;
+          if (risk === 'Critical') currentStatus = 'Active Alert';
+          else if (risk === 'High') currentStatus = 'Watch';
+          else currentStatus = 'Seasonal Risk';
 
           return {
             ...record,
@@ -120,27 +97,42 @@ export function useLandslideIntelligence(records: LandslideRecord[]) {
             live_precipitation_72h: precip72h,
             live_risk_level: risk,
             dominant_trigger: triggerDesc,
-            last_updated: new Date().toISOString(),
+            current_status: currentStatus,
+            last_updated: nowIso
           };
         });
 
         if (isMounted) {
-          setData(enhancedData);
+          setData(enhanced);
           setLoading(false);
           setIsStale(false);
           setError(false);
           localStorage.setItem(CACHE_KEY, JSON.stringify({
             timestamp: Date.now(),
-            payload: enhancedData
+            payload: enhanced
           }));
         }
-
       } catch (err) {
-        console.error('Failed to fetch landslide data:', err);
+        console.warn('[Landslides Hook] Open-Meteo direct fetch failed, trying local proxy route:', err);
+        try {
+          const res = await fetch('/api/hazard-intelligence/landslides');
+          if (res.ok) {
+            const json = await res.json();
+            if (isMounted && json.data) {
+              setData(json.data);
+              setLoading(false);
+              return;
+            }
+          }
+        } catch (apiErr) {
+          console.warn('[Landslides Hook] API proxy also failed:', apiErr);
+        }
+
         if (isMounted) {
-          setError(true);
+          setData(landslideData);
+          setIsStale(true);
+          setError(false);
           setLoading(false);
-          // If we had cached data, it's already in state and we keep it but with error/stale flag
         }
       }
     }
@@ -150,7 +142,7 @@ export function useLandslideIntelligence(records: LandslideRecord[]) {
     return () => {
       isMounted = false;
     };
-  }, [records]);
+  }, []);
 
   return { data, loading, error, isStale };
 }

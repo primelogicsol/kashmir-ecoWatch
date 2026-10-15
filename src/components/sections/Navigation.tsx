@@ -55,6 +55,7 @@ const navItems = [
   { label: 'Water Systems',            href: '/water-systems',            hasDropdown: true  },
   { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true  },
   { label: 'Hazard Intelligence',      href: '/hazard-intelligence',      hasDropdown: true  },
+  { label: 'NGO Impact',               href: '/ngo-impact',               hasDropdown: false },
 ];
 
 export function Navigation() {

@@ -12,12 +12,11 @@ import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import {
   Mountain, Activity, MapPin, AlertTriangle, Shield, CheckCircle,
   Clock, TrendingUp, Eye, ChevronRight, Triangle,
-  Waves, BarChart3, Calendar, Zap
+  Waves, BarChart3, Calendar, Zap, PhoneCall
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { landslideData, LandslideRecord } from '@/data/hazard-landslides';
 import { useLandslideIntelligence, EnhancedLandslideRecord } from '@/hooks/useLandslideIntelligence';
 
 // ─── Risk colour helpers ──────────────────────────────────────────────────────
@@ -216,7 +215,7 @@ export default function LandslidesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
-  const { data: liveLandslideData, loading, error, isStale } = useLandslideIntelligence(landslideData);
+  const { data: landslideData, loading, error, isStale } = useLandslideIntelligence();
 
   // Filter options
   const slideTypeOptions = useMemo(() =>
@@ -226,7 +225,7 @@ export default function LandslidesPage() {
 
   // Filtered data
   const filteredData = useMemo(() => {
-    return liveLandslideData.filter(d => {
+    return landslideData.filter(d => {
       const matchSearch = filter.searchQuery === '' ||
         d.name.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
         d.district.toLowerCase().includes(filter.searchQuery.toLowerCase()) ||
@@ -238,7 +237,7 @@ export default function LandslidesPage() {
       const matchRisk = riskFilter === 'all' || (d.live_risk_level || d.risk_level) === riskFilter;
       return matchSearch && matchScope && matchDistrict && matchSlideType && matchRisk;
     });
-  }, [liveLandslideData, filter, slideTypeFilter, riskFilter]);
+  }, [landslideData, filter, slideTypeFilter, riskFilter]);
 
   const totalCount = landslideData.length;
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
@@ -314,6 +313,32 @@ export default function LandslidesPage() {
 
       {/* ── KPI STRIP ──────────────────────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} iconColor="text-amber-500" />
+
+      {/* ── HIGHWAY & EMERGENCY ADVISORY ─────────────────────────────────────── */}
+      <div className="container mx-auto px-6 mt-6 relative z-30">
+        <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-start md:items-center">
+          <div className="bg-blue-500/20 p-2.5 rounded-lg flex-shrink-0">
+            <Shield className="w-6 h-6 text-blue-400" />
+          </div>
+          <div className="flex-1">
+            <h4 className="text-sm font-bold text-blue-100 mb-1">Official Highway & Disaster Advisories</h4>
+            <p className="text-xs text-blue-200/70 leading-relaxed">
+              While our platform models real-time slope saturation, official road closures (e.g., NH-44) and evacuation orders are managed by state authorities. 
+              Use the <strong className="text-white">SACHET App</strong> (NDMA India) or <strong className="text-white">Pak NDMA Disaster Alert</strong> for geo-targeted warnings.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 flex-shrink-0">
+             <div className="bg-black/20 border border-white/5 rounded p-2 text-[10px]">
+               <div className="text-slate-400 mb-0.5 font-medium uppercase tracking-wider">J&K Traffic Control</div>
+               <div className="text-white flex items-center gap-1.5"><PhoneCall className="w-3 h-3 text-emerald-400" /> 1800-180-7091</div>
+             </div>
+             <div className="bg-black/20 border border-white/5 rounded p-2 text-[10px]">
+               <div className="text-slate-400 mb-0.5 font-medium uppercase tracking-wider">NDMA Control Room</div>
+               <div className="text-white flex items-center gap-1.5"><PhoneCall className="w-3 h-3 text-blue-400" /> 1070</div>
+             </div>
+          </div>
+        </div>
+      </div>
 
       {/* ── FILTER BAR ─────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4 relative z-30 overflow-visible">

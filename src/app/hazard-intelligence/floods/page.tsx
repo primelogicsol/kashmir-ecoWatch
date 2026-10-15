@@ -60,6 +60,7 @@ export type FloodZoneLiveRecord = FloodZoneRecord & {
   trend: "Rising" | "Falling" | "Stable";
   dominant_trigger: string;
   last_updated: string;
+  field_gauge?: string | null;
 };
 
 const CACHE_KEY = "flood_data_cache_v2";
@@ -96,6 +97,17 @@ function useFloodData() {
         const forecastRes = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=precipitation_sum,rain_sum,showers_sum,snowfall_sum&past_days=1&forecast_days=3&timezone=auto`,
         );
+
+        let kfwData: any[] = [];
+        try {
+          const kfwRes = await fetch('/api/floods/live');
+          if (kfwRes.ok) {
+            const kfwJson = await kfwRes.json();
+            kfwData = kfwJson.data || [];
+          }
+        } catch (e) {
+          console.warn("Failed to fetch field gauges", e);
+        }
 
         if (!floodRes.ok || !forecastRes.ok)
           throw new Error("API fetch failed");
@@ -141,6 +153,9 @@ function useFloodData() {
               (dailyWeather.precipitation_sum?.[todayIdxWeather + 1] || 0) +
               (dailyWeather.precipitation_sum?.[todayIdxWeather + 2] || 0) +
               (dailyWeather.precipitation_sum?.[todayIdxWeather + 3] || 0);
+
+            const kfwMatch = kfwData.find(k => k.name.toLowerCase().includes(zone.name.toLowerCase()) || zone.name.toLowerCase().includes(k.name.toLowerCase()));
+            const field_gauge = kfwMatch ? `${kfwMatch.levelStrMeters} / ${kfwMatch.levelStrFeet} (${kfwMatch.time})` : null;
 
             let trend: "Rising" | "Falling" | "Stable" = "Stable";
             if (latest_discharge >= prev_discharge * 1.1) trend = "Rising";
@@ -188,6 +203,7 @@ function useFloodData() {
               live_risk_level,
               trend,
               dominant_trigger,
+              field_gauge,
               last_updated: new Date().toISOString(),
             };
           },
@@ -333,6 +349,16 @@ function FloodZoneCard({
               {record.dominant_trigger}
             </div>
           </div>
+          {record.field_gauge && (
+            <div className="bg-white/5 rounded p-2 border border-blue-500/30 col-span-2">
+              <div className="text-[9px] text-blue-400 uppercase tracking-wider mb-0.5 flex items-center gap-1">
+                <Activity className="w-3 h-3" /> Field Gauge Reading
+              </div>
+              <div className="font-bold text-blue-100 truncate">
+                {record.field_gauge}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer: Infrastructure at Risk */}
@@ -564,7 +590,7 @@ export default function FloodsPage() {
             </span>
           </>
         }
-        subtitle="Real-time river discharge and heavy rainfall tracking powered by Open-Meteo Flood API. Enriched with Google Flood Hub and Copernicus verifications."
+        subtitle="Real-time river discharge and heavy rainfall tracking powered by internal telemetry and forecast models. Enriched with ground-truth field gauge measurements."
         icon={<Waves className="w-6 h-6 text-blue-400" />}
                 images={[
           '/images/hazard-intelligence/25851504_af_aspera.jpg',

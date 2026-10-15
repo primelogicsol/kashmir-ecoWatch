@@ -58,13 +58,28 @@ export function AtlasMap({ children, className, onMapReady }: AtlasMapProps) {
         className="h-full w-full bg-slate-950"
         style={{ background: '#0f172a' }}
       >
-        {/* Dark matter basemap for premium scientific theme */}
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          subdomains="abcd"
-          maxZoom={20}
-        />
+        {/* Dark matter / dark canvas basemap (zero watermarks, no API key required) */}
+        {process.env.NEXT_PUBLIC_CARTO_API_KEY ? (
+          <TileLayer
+            url={`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?api_key=${process.env.NEXT_PUBLIC_CARTO_API_KEY}`}
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            subdomains="abcd"
+            maxZoom={20}
+          />
+        ) : (
+          <>
+            <TileLayer
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+              attribution='&copy; <a href="https://www.esri.com/">Esri</a> &copy; OpenStreetMap contributors'
+              maxZoom={16}
+            />
+            <TileLayer
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+              attribution=""
+              maxZoom={16}
+            />
+          </>
+        )}
 
         {/* Expose map instance */}
         <MapController onMapReady={onMapReady} />

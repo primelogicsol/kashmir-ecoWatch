@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -6,7 +8,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  turbopack: {},
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
 
   images: {
     unoptimized: true,

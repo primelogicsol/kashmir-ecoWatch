@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── UNIVERSAL SPATIAL ENTITY ────────────────────────────────────────────────────────
+// The core entity representing any geographical or operational unit.
+// e.g. 'Geological Unit', 'Hazard Zone', 'Infrastructure Asset', 'Community', 'Lake', 'Protected Area'
+model spatial_entities {
+  id              String   @id @default(uuid())
+  entity_type     String   // e.g. 'Geological Unit', 'Infrastructure Asset', 'Community'
+  name            String
+  description     String?
+  geometry        Unsupported("geometry(Geometry, 4326)")? // PostGIS native geometry
+  district        String?
+  region          String?
+  
+  // Relations
+  hazard_zones    hazard_zones[]
+  incidents       hazard_incidents[]
+  observations    observations_ts[]
+  forecasts       forecasts_ts[]
+
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+}
+
+// ─── HAZARD ZONES ──────────────────────────────────────────────────────────────────
+// Defines baseline susceptibility and thresholds for a spatial entity
+model hazard_zones {
+  id                 String   @id @default(uuid())
+  spatial_entity_id  String
+  hazard_type        String   // e.g. 'Landslide', 'Flood', 'Avalanche'
+  
+  // Static Susceptibility Modeling (from Terrain + Geology + Land Cover)
+  baseline_susceptibility Float // 0.0 to 1.0
+  slope_factor            Float?
+  lithology_factor        Float?
+  drainage_density        Float?
+  
+  // Relations
+  entity             spatial_entities @relation(fields: [spatial_entity_id], references: [id], onDelete: Cascade)
+
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+}
+
+// ─── HAZARD INCIDENTS ──────────────────────────────────────────────────────────────
+// Historical catalog of actual landslide/hazard occurrences
+model hazard_incidents {
+  id                 String   @id @default(uuid())
+  spatial_entity_id  String?
+  hazard_type        String   // 'Landslide'
+  severity           String   // 'Low', 'Moderate', 'High', 'Critical'
+  description        String?
+  
+  // Temporal bounds
+  occurred_at        DateTime
+  resolved_at        DateTime?
+  
+  // PostGIS location point
+  location           Unsupported("geometry(Point, 4326)")?
+
+  // Relations
+  entity             spatial_entities? @relation(fields: [spatial_entity_id], references: [id])
+
+  created_at         DateTime @default(now())
+}
+
+// ─── TIME-SERIES TELEMETRY & OBSERVATIONS ──────────────────────────────────────────
+// High-frequency ingestion of triggers (Rainfall, Soil Moisture, Anomaly spikes)
+model observations_ts {
+  id                 String   @id @default(uuid())
+  spatial_entity_id  String
+  source_id          String   // e.g., 'Open-Meteo', 'GPM', 'Sentinel-2'
+  observation_type   String   // 'Rainfall', 'Soil Moisture', 'NDVI', 'Trigger'
+  value              Float
+  unit               String   // 'mm', 'volumetric', 'index'
+  
+  observed_at        DateTime @default(now())
+
+  // Relations
+  entity             spatial_entities @relation(fields: [spatial_entity_id], references: [id], onDelete: Cascade)
+
+  @@index([observed_at(sort: Desc)])
+  @@index([spatial_entity_id, observation_type])
+}
+
+// ─── TIME-SERIES FORECASTS ─────────────────────────────────────────────────────────
+// AI-generated predictive hazard states
+model forecasts_ts {
+  id                 String   @id @default(uuid())
+  spatial_entity_id  String
+  model_version      String   // e.g., 'LISDS-AHP-v1.0'
+  hazard_type        String   // 'Landslide'
+  
+  forecast_value     Float    // Hazard Index score (0.0 to 1.0)
+  confidence_score   Float    // Statistical reliability
+  
+  target_time        DateTime // The future time this forecast applies to
+  generated_at       DateTime @default(now())
+
+  // Relations
+  entity             spatial_entities @relation(fields: [spatial_entity_id], references: [id], onDelete: Cascade)
+
+  @@index([target_time(sort: Asc)])
+}
