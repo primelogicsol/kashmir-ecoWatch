@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
-import { Button } from '@/components/ui/Button';
+import {
+  Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
@@ -10,10 +11,7 @@ import { EnvironmentalObserveSpotlight } from '@/components/common/Environmental
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import {
-  Leaf, ChevronRight, AlertTriangle, Activity, MapPin, ExternalLink,
-  Droplets, TreePine, Mountain, Wind, Waves, Shield, TrendingUp,
-  TrendingDown, Minus, Database, FlaskConical, BarChart3, RefreshCw, Zap, Globe,
-  Satellite, Thermometer, CheckCircle2, X
+  Leaf, ChevronRight, AlertTriangle, Activity, MapPin, ExternalLink, Droplets, TreePine, Mountain, Wind, Waves, Shield, TrendingUp, TrendingDown, Minus, Database, FlaskConical, BarChart3, RefreshCw, Zap, Globe, Satellite, Thermometer, CheckCircle2, X, Search
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -1024,7 +1022,7 @@ export default function EcologicalHealthPage() {
 
       {/* ── Hero Heading ──────────────────────────────────────────────────────── */}
       <Heading
-        label="Environmental Monitoring"
+        label="Environmental Monitoring · Ecological Health & Odor Signals"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
@@ -1038,13 +1036,35 @@ export default function EcologicalHealthPage() {
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Ecological Health</span>
           </>}
         subtitle="Ecosystem condition, environmental stress, and habitat integrity intelligence across all 27 KEW regional units — water, vegetation, biodiversity, soil, and live microclimate indicators."
-        icon={<Leaf className="w-6 h-6 text-emerald-400" />}
+        icon={<Shield className="w-6 h-6 text-emerald-400" />}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => { const el = document.querySelector('section.py-8'); el?.scrollIntoView({ behavior: 'smooth' }); }}
+            >
+              Explore Regional Health Units
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboard
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI Strip ─────────────────────────────────────────────────────────── */}

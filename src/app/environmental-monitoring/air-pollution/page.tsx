@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import { Button } from '@/components/ui/Button';
+import {
+  Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
@@ -9,10 +10,7 @@ import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
-  Wind, ChevronRight, AlertTriangle,
-  Activity, Clock,
-  MapPin, ExternalLink, Cloud,
-  TrendingUp, RefreshCw, ShieldAlert, Shield, Zap
+  Wind, ChevronRight, AlertTriangle, Activity, Clock, MapPin, ExternalLink, Cloud, TrendingUp, RefreshCw, ShieldAlert, Shield, Zap, Search, Database
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -454,7 +452,7 @@ export default function AirPollutionPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
-        label="Environmental Monitoring"
+        label="Environmental Monitoring · Atmospheric Air Quality"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
@@ -469,12 +467,34 @@ export default function AirPollutionPage() {
           </>}
         subtitle="Real-time air quality monitoring via Open-Meteo hourly API across all 44 regional units — PM2.5, PM10, NO₂, SO₂, CO, O₃, and US AQI with dynamic trend computation."
         icon={<Wind className="w-6 h-6 text-emerald-400" />}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => { const el = document.querySelector('section.py-8'); el?.scrollIntoView({ behavior: 'smooth' }); }}
+            >
+              Explore Air Stations
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboard
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={[

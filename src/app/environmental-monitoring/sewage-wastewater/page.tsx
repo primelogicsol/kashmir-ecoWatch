@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Button } from '@/components/ui/Button';
+import {
+  Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import {
-  Waves, ChevronRight, MapPin, Building2,
-  Shield, Activity, CheckCircle, Search, 
-  ChevronLeft, Factory, Droplets, AlertTriangle
+  Waves, ChevronRight, MapPin, Building2, Shield, Activity, CheckCircle, Search, ChevronLeft, Factory, Droplets, AlertTriangle, Database
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -363,7 +362,12 @@ export default function SewageWastewaterPage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Environmental Monitoring"
+        label="Environmental Monitoring · Sewage & STP Intelligence"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
+          { label: 'Sewage & Wastewater' }
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -373,16 +377,34 @@ export default function SewageWastewaterPage() {
           </>}
         subtitle="Monitoring sewage generation, wastewater discharge, STP capacity, drainage pathways, septic dependence, and contamination routes across Kashmir's ecological systems."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
-        breadcrumbs={[
-          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Sewage & Wastewater' },
-        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => { const el = document.querySelector('section.py-8'); el?.scrollIntoView({ behavior: 'smooth' }); }}
+            >
+              Explore Outfalls & STPs
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboard
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}

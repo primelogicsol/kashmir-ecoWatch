@@ -321,6 +321,12 @@ export default function AlgalBloomMonitoringPage() {
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <Heading
+        label="Hazard Intelligence · Aquatic Eutrophication & Bloom Sentinel"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Algal Blooms' },
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -330,37 +336,33 @@ export default function AlgalBloomMonitoringPage() {
           </>}
         subtitle="Dual-Stage Limnological Screening: Stage 1 Hydro-Thermal Meteorological Triggers (Open-Meteo / ECMWF runoff and thermal stratification) coupled with Stage 2 Optical Biomass Remote Sensing (Copernicus Sentinel-2 MSI NDCI and Est. Chlorophyll-a) across 83 lake systems."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
-        label="Hazard Intelligence"
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
-          { label: 'Algal Blooms' },
-        ]}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
-        ]}
-        gridOverlay
         actions={
-          <>
-            <a href="/water-systems/lakes">
-              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500">
-                <Map className="w-5 h-5 mr-2" />
-                All Lakes
-              </Button>
-            </a>
-            <a href="/water-systems/water-quality">
-              <Button size="lg" variant="outline" className="border-white/20 text-white">
-                <Droplets className="w-5 h-5 mr-2" />
-                Water Quality
-              </Button>
-            </a>
-          </>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-teal-600 font-bold text-white"
+              icon={<Map className="w-5 h-5" />}
+              onClick={() => router.push('/water-systems/lakes')}
+            >
+              Explore All Lakes
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Droplets className="w-5 h-5" />}
+              onClick={() => router.push('/water-systems/water-quality')}
+            >
+              Water Quality Network
+            </Button>
+          </div>
         }
+        images={[
+          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+          '/images/water-module/water-lake.jpg',
+          '/images/water-module/Wetlands.png',
+          '/images/water-module/water-wetland.jpg',
+          '/images/protected-network.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI Strip ───────────────────────────────────────────────────────── */}

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import {
+  useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -11,7 +12,8 @@ import { EnvironmentalObserveSpotlight } from '@/components/common/Environmental
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
-import { Droplets, Activity, MapPin, FlaskConical, AlertTriangle, Shield, CheckCircle, Info, Waves, Map } from 'lucide-react';
+import { Droplets, Activity, MapPin, FlaskConical, AlertTriangle, Shield, CheckCircle, Info, Waves, Map, Search, Database
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { drinkingWaterData, DrinkingWaterRecord, drinkingWaterQualitySourceRegistry } from '@/data/drinking-water';
@@ -257,7 +259,12 @@ export default function DrinkingWaterPage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Environmental Monitoring"
+        label="Environmental Monitoring · Drinking Water Safety"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
+          { label: 'Drinking Water Safety' }
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -267,16 +274,34 @@ export default function DrinkingWaterPage() {
           </>}
         subtitle="Monitoring verified PCRWR & JJM/WQMIS supply system records, urban/rural coverage, and specific quality contamination risks."
         icon={<Droplets className="w-6 h-6 text-blue-400" />}
-        breadcrumbs={[
-          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Drinking Water Safety' },
-        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => { const el = document.querySelector('section.py-8'); el?.scrollIntoView({ behavior: 'smooth' }); }}
+            >
+              Explore Water Supplies
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboard
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}

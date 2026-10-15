@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React, { useState, useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -214,6 +215,7 @@ function FlashFloodRow({ record, index }: { record: FlashFloodRecord; index: num
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function FlashFloodsPage() {
+  const router = useRouter();
   const { filter } = useGlobalFilter();
 
   const [triggerFilter, setTriggerFilter] = useState('all');
@@ -279,7 +281,12 @@ export default function FlashFloodsPage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · Cloudburst & Rapid Runoff Early Warning"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Flash Floods' },
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -289,19 +296,33 @@ export default function FlashFloodsPage() {
           </>}
         subtitle="Monitoring flash flood zones across nallahs, glacial catchments, and urban corridors with real-time alert intelligence, historical casualty data, and trigger classification."
         icon={<Zap className="w-6 h-6 text-indigo-400" />}
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
-          { label: 'Flash Floods' },
-        ]}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-indigo-600 to-blue-600 font-bold text-white"
+              icon={<Waves className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/floods')}
+            >
+              Riverine Flood Basins
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
           '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/hazard-intelligence/LANDSLIDE.jpg',
+          '/images/water-module/rivers.png',
+          '/images/water-module/water-river.jpg',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI STRIP ──────────────────────────────────────────────────────── */}

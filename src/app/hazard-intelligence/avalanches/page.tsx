@@ -4,11 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import {
-  Snowflake, ChevronRight, AlertTriangle, MapPin,
-  Shield, Activity, CheckCircle, Mountain,
-  ChevronLeft, Eye, TrendingUp, BarChart3, Clock, Triangle
-} from 'lucide-react';
+import { Snowflake, ChevronRight, AlertTriangle, MapPin, Shield, Activity, CheckCircle, Mountain, ChevronLeft, Eye, TrendingUp, BarChart3, Clock, Triangle, Droplets } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
@@ -293,7 +289,12 @@ export default function AvalanchesPage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · High-Altitude Cryosphere & Snow Dynamics"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Avalanches' },
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -303,18 +304,32 @@ export default function AvalanchesPage() {
           </>}
         subtitle="Monitoring avalanche-prone corridors, high-altitude passes, and critical road infrastructure across the Western Himalayan ecological domain using verified field data and remote-sensing intelligence."
         icon={<Snowflake className="w-6 h-6 text-cyan-400" />}
-        breadcrumbs={[
-          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
-          { label: 'Avalanches' },
-        ]}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-cyan-600 to-sky-600 font-bold text-white"
+              icon={<Droplets className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/glofs')}
+            >
+              Glacial Lake & GLOF Sentinel
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
           '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
+          '/images/water-module/water-glacier.jpg',
           '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}

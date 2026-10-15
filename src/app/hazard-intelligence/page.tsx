@@ -60,6 +60,7 @@ export default function HazardIntelligenceOverview() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
+        label="Hazard Intelligence · Early Warning Network"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence' }
@@ -73,14 +74,34 @@ export default function HazardIntelligenceOverview() {
           </>}
         subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Western Himalayan ecological region"
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-red-600 to-amber-600 font-bold text-white"
+              icon={<Map className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Explore Multi-Hazard Map
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<AlertTriangle className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/floods')}
+            >
+              Active Alert Registry
+            </Button>
+          </div>
+        }
+        images={[
+          '/images/hazard-intelligence/FLOODS.jpg',
+          '/images/hazard-intelligence/LANDSLIDE.jpg',
           '/images/hazard-intelligence/AVA.webp',
           '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={[

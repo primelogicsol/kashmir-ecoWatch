@@ -11,11 +11,7 @@ import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/Modu
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import {
-  Droplets, ChevronRight, AlertTriangle,
-  Activity, Clock, MapPin, ExternalLink,
-  TrendingUp, Shield, Zap, Eye, Mountain, Snowflake
-} from 'lucide-react';
+import { Droplets, ChevronRight, AlertTriangle, Activity, Clock, MapPin, ExternalLink, TrendingUp, Shield, Zap, Eye, Mountain, Snowflake, BarChart3 } from 'lucide-react';
 import {
   glofRegistry, glofKpis,
   GLOFRecord,
@@ -268,7 +264,7 @@ export default function GLOFsPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · Glacial Lake Outburst Flood Sentinel"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
@@ -283,14 +279,33 @@ export default function GLOFsPage() {
           </>}
         subtitle="Glacial Lake Outburst Flood risk monitoring across 27 high-altitude glacial zones spanning Kashmir Core, Trans-Divisional, and Transboundary ecological scopes. Integrates moraine dam assessments, ice-dam surveillance, and downstream exposure intelligence."
         icon={<Droplets className="w-6 h-6 text-teal-400" />}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-teal-600 to-emerald-600 font-bold text-white"
+              icon={<Mountain className="w-5 h-5" />}
+              onClick={() => router.push('/water-systems/glaciers')}
+            >
+              Cryosphere & Glaciers
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
+          '/images/water-module/water-glacier.jpg',
           '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/hazard-intelligence/AVA.webp',
+          '/images/water-module/rivers.png',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={glofKpis} iconColor="text-teal-500" />

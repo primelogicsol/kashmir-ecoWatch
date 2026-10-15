@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import {
+  useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -11,7 +12,8 @@ import { EnvironmentalObserveSpotlight } from '@/components/common/Environmental
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
-import { Building2, Activity, FlaskConical, MapPin, AlertTriangle, Shield, CheckCircle, Info, Settings, Trash2, Droplet, Zap } from 'lucide-react';
+import { Building2, Activity, FlaskConical, MapPin, AlertTriangle, Shield, CheckCircle, Info, Settings, Trash2, Droplet, Zap, Search, Database
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { infrastructureData, InfrastructureRecord } from '@/data/critical-infrastructure';
@@ -255,7 +257,12 @@ export default function CriticalInfrastructurePage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Environmental Monitoring"
+        label="Environmental Monitoring · Critical Infrastructure Assets"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
+          { label: 'Critical Infrastructure' }
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -265,16 +272,34 @@ export default function CriticalInfrastructurePage() {
           </>}
         subtitle="Monitoring the capacity, operational load, and environmental risk of major dams, STPs, WTPs, landfills, and outfalls forming the ecological backbone."
         icon={<Building2 className="w-6 h-6 text-blue-400" />}
-        breadcrumbs={[
-          { label: 'Environmental Monitoring', href: '/environmental-monitoring' },
-          { label: 'Critical Infrastructure' },
-        ]}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => { const el = document.querySelector('section.py-8'); el?.scrollIntoView({ behavior: 'smooth' }); }}
+            >
+              Explore Infrastructure Assets
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboard
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}

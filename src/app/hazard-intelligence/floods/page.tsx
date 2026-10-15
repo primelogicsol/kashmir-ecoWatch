@@ -574,10 +574,11 @@ export default function FloodsPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
+        label="Hazard Intelligence · Riverine & Floodplain Monitoring"
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Hazard Intelligence", href: "/hazard-intelligence" },
-          { label: "Floods" },
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Floods' },
         ]}
         title={
           <>
@@ -592,14 +593,34 @@ export default function FloodsPage() {
         }
         subtitle="Real-time river discharge and heavy rainfall tracking powered by internal telemetry and forecast models. Enriched with ground-truth field gauge measurements."
         icon={<Waves className="w-6 h-6 text-blue-400" />}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 font-bold text-white"
+              icon={<CloudRain className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/flash-floods')}
+            >
+              Flash Flood Early Warning
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
           '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/water-module/rivers.png',
+          '/images/water-module/water-river.jpg',
+          '/images/water-module/water1.png',
+          '/images/hazard-intelligence/LANDSLIDE.jpg',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {isStale && (

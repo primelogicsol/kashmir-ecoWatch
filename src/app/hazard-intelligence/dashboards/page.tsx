@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
@@ -63,7 +64,7 @@ export default function HazardDashboardsPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · Multi-Hazard Analytics"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
@@ -78,14 +79,33 @@ export default function HazardDashboardsPage() {
           </>}
         subtitle="Integrated hazard analytics dashboards spanning multi-hazard risk mapping, seismic timelines, GLOF monitoring, fire detection, flood heatmaps, and landslide susceptibility across Western Himalayan ecology."
         icon={<BarChart3 className="w-6 h-6 text-violet-400" />}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-violet-600 to-purple-600 font-bold text-white"
+              icon={<Map className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence')}
+            >
+              Multi-Hazard Risk Map
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<AlertTriangle className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/floods')}
+            >
+              Active Alert Registry
+            </Button>
+          </div>
+        }
+        images={[
+          '/images/hazard-intelligence/FLOODS.jpg',
+          '/images/hazard-intelligence/LANDSLIDE.jpg',
           '/images/hazard-intelligence/AVA.webp',
           '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/protected-network.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ── Dashboard Cards Grid ────────────────────────────────────────────── */}

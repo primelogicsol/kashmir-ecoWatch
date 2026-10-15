@@ -312,7 +312,12 @@ export default function EarthquakesPage() {
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · Seismic Belts & Fault Line Dynamics"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
+          { label: 'Earthquakes' },
+        ]}
         title={<>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
               <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
@@ -322,18 +327,32 @@ export default function EarthquakesPage() {
           </>}
         subtitle="Mapping seismic fault systems, zone classifications, and building vulnerability across the Western Himalayan ecological domain using verified geological surveys and continuous monitoring data."
         icon={<Activity className="w-6 h-6 text-red-400" />}
-        breadcrumbs={[
-          { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
-          { label: 'Earthquakes' },
-        ]}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-red-600 to-rose-600 font-bold text-white"
+              icon={<Mountain className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/landslides')}
+            >
+              Slope & Landslide Registry
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
           '/images/hazard-intelligence/LANDSLIDE.jpg',
           '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {isStale && (

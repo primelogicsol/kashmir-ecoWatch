@@ -11,11 +11,7 @@ import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/Modu
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import {
-  Flame, ChevronRight, AlertTriangle,
-  Activity, Clock, MapPin, ExternalLink,
-  TrendingUp, Shield, Zap, Eye, Mountain, Users, Calendar, RefreshCw, Thermometer, Droplets, Wind
-} from 'lucide-react';
+import { Flame, ChevronRight, AlertTriangle, Activity, Clock, MapPin, ExternalLink, TrendingUp, Shield, Zap, Eye, Mountain, Users, Calendar, RefreshCw, Thermometer, Droplets, Wind, Map, BarChart3 } from 'lucide-react';
 import {
   forestFireRegistry, forestFireKpis,
   ForestFireRecord,
@@ -243,7 +239,7 @@ export default function ForestFiresPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Heading
-        label="Hazard Intelligence"
+        label="Hazard Intelligence · Wildfire & Thermal Hotspot Sentinel"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Hazard Intelligence', href: '/hazard-intelligence' },
@@ -258,14 +254,32 @@ export default function ForestFiresPage() {
           </>}
         subtitle="Forest fire risk intelligence across 32 vulnerability zones spanning coniferous, broadleaf, mixed, and scrubland ecosystems. Integrates satellite detection, community reporting, and ground station monitoring with fire frequency and causal analysis."
         icon={<Flame className="w-6 h-6 text-orange-400" />}
-                images={[
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/hazard-intelligence/AVA.webp',
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-orange-600 to-red-600 font-bold text-white"
+              icon={<Map className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence')}
+            >
+              Multi-Hazard Risk Map
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<BarChart3 className="w-5 h-5" />}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
+            >
+              Hazard Dashboards
+            </Button>
+          </div>
+        }
+        images={[
           '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
+          '/images/protected-network.png',
+          '/images/bear.png',
           '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/SEWAGE.jpg',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={forestFireKpis} iconColor="text-orange-500" />
