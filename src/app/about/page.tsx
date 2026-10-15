@@ -404,14 +404,23 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/60 border border-white/5 text-xs text-slate-300 space-y-1">
-                  <div className="font-semibold text-white flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Living Bridge Principle</span>
+                <div className="space-y-3">
+                  <div className="p-4 rounded-xl bg-slate-950/60 border border-white/5 text-xs text-slate-300 space-y-1">
+                    <div className="font-semibold text-white flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Living Bridge Principle</span>
+                    </div>
+                    <p className="text-slate-400 text-[11px] leading-relaxed">
+                      Connecting global remote sensing telemetry with local indigenous ecological memory and district stewardship.
+                    </p>
                   </div>
-                  <p className="text-slate-400 text-[11px] leading-relaxed">
-                    Connecting global remote sensing telemetry with local indigenous ecological memory and district stewardship.
-                  </p>
+
+                  <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-200/90 italic flex items-start gap-2.5">
+                    <Sparkles className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <p className="text-[11px] leading-relaxed">
+                      &ldquo;<strong className="text-emerald-300 font-semibold">Kashmir EcoWatch</strong> is the 2026 digital revision of Alamdar-e-Kashmir&rsquo;s vision — translating timeless Himalayan forest and water ethics into open satellite telemetry and living community science.&rdquo;
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
