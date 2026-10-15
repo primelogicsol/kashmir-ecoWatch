@@ -33533,13 +33533,2063 @@ export const glaciersData: WaterEntity[] = [
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-tulian-cirque",
+    "slug": "tulian-cirque-glacier",
+    "name": "Tulian Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High-altitude amphitheater cirque glacier perched at 3,980m above Pahalgam between Zanskar and Pir Panjal spurs. Directly nourishes the alpine tarn of Tulian Lake and the downstream Lidder West tributary.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "area": 2.4,
+    "elevation": 3980,
+    "coordinates": {
+      "lat": 33.9922,
+      "lng": 75.3181
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "tarn-overflow-risk"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-sekiwas-hanging",
+    "slug": "sekiwas-hanging-glacier",
+    "name": "Sekiwas Hanging Glacier",
+    "type": "glacier",
+    "category": "Hanging Glacier",
+    "description": "Perched ice apron on the upper ridgeline above the Sekiwas sub-alpine meadow. Provides cold meltwater baseflow into Dachigam Creek headwaters and northern Lidder pastures.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "area": 1.8,
+    "elevation": 4150,
+    "coordinates": {
+      "lat": 34.1534,
+      "lng": 75.2218
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-amarnath-cave-moraine",
+    "slug": "amarnath-cave-glacier",
+    "name": "Amarnath Cave Glacial Moraine",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High-altitude glacial headwall and snow-ice cirque flanking the sacred Amarnath sanctuary at 3,888m. Feeds the Amaravati tributary descending towards Baltal and the Sind River.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 3.1,
+    "elevation": 4320,
+    "coordinates": {
+      "lat": 34.2155,
+      "lng": 75.5033
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "flash-flood-risk"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-hapatnar-morainic",
+    "slug": "hapatnar-glacier",
+    "name": "Hapatnar Valley Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Moraine-covered valley glacier in the upper eastern Lidder drainage. Exhibits substantial debris insulation on its ablation tongue with active melt streams feeding the East Lidder.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "area": 5.6,
+    "elevation": 4420,
+    "coordinates": {
+      "lat": 34.1205,
+      "lng": 75.4412
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "debris-mantle-decay"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-gangabal-feeder-cirque",
+    "slug": "gangabal-feeder-glacier",
+    "name": "Gangabal Feeder Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "North-facing glacial apron clinging to Mount Harmukh's precipitous cliffs. Directly calves and drains meltwater into Lake Gangabal and downstream Wangath Nullah.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 4.2,
+    "elevation": 4750,
+    "coordinates": {
+      "lat": 34.4388,
+      "lng": 74.9214
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-nundkol-cirque",
+    "slug": "nundkol-cirque-glacier",
+    "name": "Nundkol Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Glacial amphitheater ice mass situated directly beneath the jagged pinnacles of Harmukh. Nourishes Nundkol Lake and sustains perennial flows for local trout hatcheries in Kangan.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 2.9,
+    "elevation": 4620,
+    "coordinates": {
+      "lat": 34.4172,
+      "lng": 74.9351
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "morainic-collapse"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-nichnai-pass",
+    "slug": "nichnai-pass-glacier",
+    "name": "Nichnai Pass Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Prominent high-pass glacier along the Great Lakes trekking corridor. Sustains heavy seasonal firn accumulation, discharging crystalline melt into Nichnai Nullah and the Sind.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 3.5,
+    "elevation": 4210,
+    "coordinates": {
+      "lat": 34.3382,
+      "lng": 75.1925
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-vishansar-feeder",
+    "slug": "vishansar-feeder-glacier",
+    "name": "Vishansar Feeder Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Perennial hanging glacier located above the southern cirque wall of Vishansar Lake. Forms the prime hydrological genesis of the Kishanganga (Neelum) River headwater network.",
+    "district": "Ganderbal",
+    "watershed": "Kishanganga Basin",
+    "area": 3.8,
+    "elevation": 4350,
+    "coordinates": {
+      "lat": 34.3756,
+      "lng": 75.1582
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kishansar-cirque",
+    "slug": "kishansar-cirque-glacier",
+    "name": "Kishansar Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Compact glacial body embedded beneath the Gadsar Pass ridge. Supplies glacial melt directly into Kishansar Lake and regulates alpine lake storage throughout late summer.",
+    "district": "Ganderbal",
+    "watershed": "Kishanganga Basin",
+    "area": 2.2,
+    "elevation": 4280,
+    "coordinates": {
+      "lat": 34.3891,
+      "lng": 75.1429
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-gadsar-ice-tongue",
+    "slug": "gadsar-ice-tongue-glacier",
+    "name": "Gadsar Ice Tongue Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Picturesque cascading glacier that terminates near the edge of Gadsar Lake (Lake of Flowers). Famous for floating ice chunks and sub-surface glacial caves.",
+    "district": "Ganderbal",
+    "watershed": "Kishanganga Basin",
+    "area": 4.6,
+    "elevation": 4400,
+    "coordinates": {
+      "lat": 34.4419,
+      "lng": 75.0452
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "crevasse-loosening"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-satsar-morainic",
+    "slug": "satsar-morainic-glacier",
+    "name": "Satsar Morainic Glacier Complex",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Discontinuous rock-glacier and debris-covered ice complex that dams and feeds the cascade of the seven Satsar alpine tarns along the Zanskar-Kashmir divide.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 5.1,
+    "elevation": 4180,
+    "coordinates": {
+      "lat": 34.4308,
+      "lng": 74.9814
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "morainic-seepage"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-nilnai-valley",
+    "slug": "nilnai-valley-glacier",
+    "name": "Nilnai Valley Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Stretching down from the southern slopes of Mount Harmukh, Nilnai feeds the pristine Nilnai stream and downstream coniferous woodlands with steady summer glacial melt.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "area": 3.4,
+    "elevation": 4300,
+    "coordinates": {
+      "lat": 34.3921,
+      "lng": 74.9123
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-habba-khatoon-cirque",
+    "slug": "habba-khatoon-glacier",
+    "name": "Habba Khatoon Glacial Cirque",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High north-facing snow and ice niche directly behind the pyramidal Habba Khatoon peak in Gurez Valley. Nourishes the cold mountain springs that feed the Kishanganga.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "area": 2.1,
+    "elevation": 3950,
+    "coordinates": {
+      "lat": 34.6412,
+      "lng": 74.8722
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "rapid-summer-ablation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kaobal-gali-complex",
+    "slug": "kaobal-gali-glacier",
+    "name": "Kaobal Gali Glacial Complex",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Sprawling high-altitude glacier at 4,160m straddling the historic mountain pass connecting Tilel Valley (Gurez) with Dras in Kargil. Major snow accumulation reservoir for upper Kishanganga.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "area": 8.7,
+    "elevation": 4160,
+    "coordinates": {
+      "lat": 34.5822,
+      "lng": 75.3114
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "avalanche-triggering"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-razdan-rock-glacier",
+    "slug": "razdan-rock-glacier",
+    "name": "Razdan Pass Periglacial Rock Glacier",
+    "type": "glacier",
+    "category": "Rock Glacier",
+    "description": "Active permafrost and boulder-armored rock glacier situated at 3,556m above Bandipora. Functions as a climate-resilient subterranean water reserve during warm summer months.",
+    "district": "Bandipora",
+    "watershed": "Wular-Madhumati Basin",
+    "area": 1.5,
+    "elevation": 3556,
+    "coordinates": {
+      "lat": 34.5417,
+      "lng": 74.6711
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "perennial",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "permafrost-thaw",
+      "slope-destabilization"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kousarnag-cirque",
+    "slug": "kousarnag-cirque-glacier",
+    "name": "Kousarnag Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Majestic cirque glacier nestled beneath the Brahma Sakli peaks of the Pir Panjal at 3,960m. Feeds the 3km-long oligotrophic Kousarnag alpine lake and the Veshav River.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "area": 3.2,
+    "elevation": 3960,
+    "coordinates": {
+      "lat": 33.5188,
+      "lng": 74.8315
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-tatakooti-ice-apron",
+    "slug": "tatakooti-glacier",
+    "name": "Tatakooti Peak Glacier",
+    "type": "glacier",
+    "category": "Mountain Glacier",
+    "description": "Dominant glaciated horn of the Pir Panjal Range standing at 4,725m between Shopian and Poonch. Nourishes the upper tributaries of both the Rambiara River and Suran River.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "area": 4.8,
+    "elevation": 4725,
+    "coordinates": {
+      "lat": 33.7542,
+      "lng": 74.5518
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "firn-line-elevation-rise"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-sunset-peak-field",
+    "slug": "sunset-peak-glacial-field",
+    "name": "Sunset Peak Glacial Field",
+    "type": "glacier",
+    "category": "Mountain Glacier",
+    "description": "High alpine glacial carapace surrounding Romesh Thok and Sunset Peak (4,745m) along the historic Mughal Road crest. Primary snowpack reserve feeding the Poonch river system.",
+    "district": "Shopian",
+    "watershed": "Rambiara & Poonch Basin",
+    "area": 6.2,
+    "elevation": 4745,
+    "coordinates": {
+      "lat": 33.6821,
+      "lng": 74.6124
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-brahma-sakli-icefall",
+    "slug": "brahma-sakli-glacier",
+    "name": "Brahma Sakli Glacial Icefall",
+    "type": "glacier",
+    "category": "Hanging Glacier",
+    "description": "Twin hanging glacial tongues terminating in sheer seracs above the high Kulgam valleys. Vital hydrological headwater for southern Kashmir orchard irrigation.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "area": 2.8,
+    "elevation": 4250,
+    "coordinates": {
+      "lat": 33.5412,
+      "lng": 74.7925
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "serac-collapse"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-apharwat-snowfield",
+    "slug": "apharwat-glacial-relict",
+    "name": "Mount Apharwat Glacial Relict",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High alpine cirque snowfield and remnant glacier at 4,140m above Gulmarg. Feeds Apharwat Lake and the Ferozepora Nullah, critical for northern Baramulla drinking water supplies.",
+    "district": "Baramulla",
+    "watershed": "Ferozepora Basin",
+    "area": 1.2,
+    "elevation": 4140,
+    "coordinates": {
+      "lat": 34.0255,
+      "lng": 74.3312
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "touristic-pressure",
+      "early-spring-thaw"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-sickle-moon",
+    "slug": "sickle-moon-glacier",
+    "name": "Sickle Moon Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Massive glaciated massif flanking Sickle Moon Peak (Bharanzar, 6,574m), the highest mountain in Kishtwar Himalaya. Major feeder of the Rin Nullah and the Marusudar River.",
+    "district": "Kishtwar",
+    "watershed": "Marusudar Basin",
+    "area": 24.5,
+    "elevation": 6574,
+    "coordinates": {
+      "lat": 33.6042,
+      "lng": 76.0667
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-brammah-two",
+    "slug": "brammah-two-glacier",
+    "name": "Brammah II Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "High-gradient valley glacier descending from Brammah II (6,485m) in the Kishtwar National Park. Dense moraines dam multiple high proglacial tarns feeding the Chenab River.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "area": 16.8,
+    "elevation": 6485,
+    "coordinates": {
+      "lat": 33.5833,
+      "lng": 76.0833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-hagshu-pass",
+    "slug": "hagshu-pass-glacier",
+    "name": "Hagshu Pass Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Cross-divide glacier linking Warwan Valley in Kishtwar with the Zanskar Range. Perennial ice tongue spanning 14km provides substantial discharge into the Marusudar River.",
+    "district": "Kishtwar",
+    "watershed": "Marusudar & Zanskar Basin",
+    "area": 22.1,
+    "elevation": 5120,
+    "coordinates": {
+      "lat": 33.8833,
+      "lng": 76.35
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-cerro-kishtwar",
+    "slug": "cerro-kishtwar-glacier",
+    "name": "Cerro Kishtwar Glacial Cirque",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Steep granite-walled hanging glacier clinging to Cerro Kishtwar (6,155m). Releases seasonal ice avalanches that recharge lower valley snow bridges in the Doda-Kishtwar corridor.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "area": 8.4,
+    "elevation": 6155,
+    "coordinates": {
+      "lat": 33.6333,
+      "lng": 76.1667
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "avalanche-shedding"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-agyasol-valley",
+    "slug": "agyasol-glacier",
+    "name": "Agyasol Valley Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Massive ice stream situated beneath Agyasol Peak (6,200m) in the Kishtwar Himalaya. Feeds Kiar Nullah and contributes steady flow to downstream Chenab hydroelectric reservoirs.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "area": 14.3,
+    "elevation": 6200,
+    "coordinates": {
+      "lat": 33.6833,
+      "lng": 76.2167
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-sinthan-top-cirque",
+    "slug": "sinthan-top-glacier",
+    "name": "Sinthan Top Glacial Cirque",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High mountain cirque glacier at 3,748m straddling the boundary of Anantnag and Kishtwar. Supplies melt to both the Bringi River and the Chatroo Nullah.",
+    "district": "Kishtwar",
+    "watershed": "Bringi & Chenab Basin",
+    "area": 1.8,
+    "elevation": 3748,
+    "coordinates": {
+      "lat": 33.5654,
+      "lng": 75.4988
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "rapid-summer-thaw"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-margan-top-periglacial",
+    "slug": "margan-top-glacier",
+    "name": "Margan Top Periglacial Icefield",
+    "type": "glacier",
+    "category": "Rock Glacier",
+    "description": "Extensive permafrost rock glacier and snowpack plateau at 4,200m linking Kashmir Valley with Warwan. Sustains numerous high wetland tarns including Choharnag.",
+    "district": "Kishtwar",
+    "watershed": "Warwan-Marusudar Basin",
+    "area": 2.9,
+    "elevation": 4200,
+    "coordinates": {
+      "lat": 33.7312,
+      "lng": 75.5245
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "perennial",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "permafrost-degradation",
+      "temperature-anomalies"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kaplas-cirque",
+    "slug": "kaplas-cirque-glacier",
+    "name": "Kaplas Kund High Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Perennial high-elevation snowfield and glacial relict beneath the sacred Kaplas Kund peak (3,900m) in Bhaderwah. Nourishes the Neeru stream and mountain springs.",
+    "district": "Doda",
+    "watershed": "Neeru-Chenab Basin",
+    "area": 1.6,
+    "elevation": 3900,
+    "coordinates": {
+      "lat": 32.9125,
+      "lng": 75.7812
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "reduced-winter-snowfall"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-nun-kun-kangriz",
+    "slug": "kangriz-glacier",
+    "name": "Kangriz (Nun-Kun) Glacial Massif",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Giant glaciated dome enveloping the twin peaks of Nun (7,135m) and Kun (7,077m) in the Great Himalayan Range. Major hydrological engine of the entire Suru River valley.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "area": 84.5,
+    "elevation": 7135,
+    "coordinates": {
+      "lat": 33.9808,
+      "lng": 76.0222
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "moraine-dammed-lake-expansion"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kun-north-tongue",
+    "slug": "kun-north-glacier",
+    "name": "Kun North Glacial Tongue",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Northern effluent ice tongue descending steeply from Mount Kun into the upper Suru gorge. Carries enormous lateral moraines and feeds the Shafat Nullah.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "area": 28.3,
+    "elevation": 6400,
+    "coordinates": {
+      "lat": 34.015,
+      "lng": 76.05
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-pensila-complex",
+    "slug": "pensila-glacier",
+    "name": "Pensi La Glacial Complex",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Extensive icefield encompassing the Pensi La pass (4,400m) at the gateway of Zanskar. Discharges west into Suru River and south into the Doda (Stod) River.",
+    "district": "Kargil",
+    "watershed": "Suru & Zanskar Basin",
+    "area": 32,
+    "elevation": 4400,
+    "coordinates": {
+      "lat": 33.85,
+      "lng": 76.3833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-phuktal-catchment",
+    "slug": "phuktal-glacier",
+    "name": "Phuktal Glacial Catchment",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Remote high-altitude valley glacier in southern Zanskar above the historic Phuktal cave monastery. Feeds the Tsarap Chu River tributary of the Zanskar.",
+    "district": "Kargil",
+    "watershed": "Zanskar Basin",
+    "area": 19.5,
+    "elevation": 4950,
+    "coordinates": {
+      "lat": 33.2542,
+      "lng": 77.1681
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "landslide-damming-risk"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-chilung-zanskar",
+    "slug": "chilung-glacier",
+    "name": "Chilung Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Prominent valley glacier situated in the Lungnak valley of eastern Zanskar. Key contributor to baseflow volume of the Zanskar River throughout winter freeze-up.",
+    "district": "Kargil",
+    "watershed": "Zanskar Basin",
+    "area": 14.8,
+    "elevation": 5100,
+    "coordinates": {
+      "lat": 33.4215,
+      "lng": 76.8821
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-mushkoh-valley",
+    "slug": "mushkoh-glacier",
+    "name": "Mushkoh Valley Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "High valley glacier terminating above Dras at 4,120m. Feeds the Mushkoh stream which joins the Dras River, nourishing sub-alpine willow patches and cold-arid pastoral communities.",
+    "district": "Kargil",
+    "watershed": "Dras Basin",
+    "area": 9.2,
+    "elevation": 4120,
+    "coordinates": {
+      "lat": 34.4125,
+      "lng": 75.6421
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-tiger-hill-face",
+    "slug": "tiger-hill-glacier",
+    "name": "Tiger Hill Glacial Face",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "North-facing glacial cirque and permanent snowpack on the flanks of Tiger Hill (5,062m) overlooking Dras. Feeds cold melt into the Tololing Nullah.",
+    "district": "Kargil",
+    "watershed": "Dras Basin",
+    "area": 3.6,
+    "elevation": 5062,
+    "coordinates": {
+      "lat": 34.4682,
+      "lng": 75.8214
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "ablation-acceleration"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-teram-shehr",
+    "slug": "teram-shehr-glacier",
+    "name": "Teram Shehr Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Major eastern tributary glacier of the Siachen Glacier system spanning 27km. Feeds enormous ice volumes into the central Siachen trunk and the Nubra River.",
+    "district": "Leh",
+    "watershed": "Nubra-Shyok Basin",
+    "area": 88,
+    "elevation": 5850,
+    "coordinates": {
+      "lat": 35.4833,
+      "lng": 77.25
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "crevasse-field-instability"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-north-shukpa-kunchang",
+    "slug": "north-shukpa-kunchang-glacier",
+    "name": "North Shukpa Kunchang Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Sprawling 20km valley glacier located in the eastern Karakoram range near Saser Muztagh. Feeds the Shukpa stream and downstream Nubra River valley.",
+    "district": "Leh",
+    "watershed": "Nubra Basin",
+    "area": 64.2,
+    "elevation": 5600,
+    "coordinates": {
+      "lat": 34.9833,
+      "lng": 77.8167
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-south-shukpa-kunchang",
+    "slug": "south-shukpa-kunchang-glacier",
+    "name": "South Shukpa Kunchang Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Twin sister glacier to North Shukpa Kunchang in the Saser Kangri massif. Exhibits active terminal moraine lagoons discharging into the Nubra drainage.",
+    "district": "Leh",
+    "watershed": "Nubra Basin",
+    "area": 52,
+    "elevation": 5520,
+    "coordinates": {
+      "lat": 34.9167,
+      "lng": 77.85
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-mamostong",
+    "slug": "mamostong-glacier",
+    "name": "Mamostong Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Grand valley glacier descending from Mamostong Kangri (7,516m), the highest peak in the Rimo Muztagh. Source of the Mamostong River, tributary to the Shyok.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "area": 72.4,
+    "elevation": 7516,
+    "coordinates": {
+      "lat": 35.1333,
+      "lng": 77.5667
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-chong-kumdan",
+    "slug": "chong-kumdan-glacier",
+    "name": "Chong Kumdan Surge Glacier",
+    "type": "glacier",
+    "category": "Surge Glacier",
+    "description": "Historically celebrated Karakoram surging glacier in the upper Shyok Valley. Known for repeatedly surging across the riverbed to form massive ice-dams that historically created catastrophic GLOF events.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "area": 58.6,
+    "elevation": 5350,
+    "coordinates": {
+      "lat": 35.2167,
+      "lng": 77.8333
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "critical"
+    },
+    "threats": [
+      "glacial-surges",
+      "ice-dam-breaches",
+      "glof-risk"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kichik-kumdan",
+    "slug": "kichik-kumdan-glacier",
+    "name": "Kichik Kumdan Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Valley glacier located slightly south of Chong Kumdan in the upper Shyok valley. Features heavily fractured seracs and active proglacial sediment discharge.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "area": 34,
+    "elevation": 5280,
+    "coordinates": {
+      "lat": 35.15,
+      "lng": 77.8667
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "periodic-surging"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-aktash",
+    "slug": "aktash-glacier",
+    "name": "Aktash Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Eastern Karakoram glacier draining into the Shyok River near the Daulat Beg Oldi (DBO) plateau. Critical high-altitude indicator for Himalayan cryospheric monitoring.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "area": 42.1,
+    "elevation": 5400,
+    "coordinates": {
+      "lat": 35.0833,
+      "lng": 77.9167
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "morainic-melting"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-saser-kangri-icefield",
+    "slug": "saser-kangri-glacier",
+    "name": "Saser Kangri Glacial Complex",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Sublime mountain icefield draping Saser Kangri I (7,672m), the 35th highest mountain in the world. Feeds vast glacier tongues branching into both the Nubra and Shyok valleys.",
+    "district": "Leh",
+    "watershed": "Nubra-Shyok Basin",
+    "area": 96,
+    "elevation": 7672,
+    "coordinates": {
+      "lat": 34.8667,
+      "lng": 77.75
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-stok-kangri",
+    "slug": "stok-kangri-glacier",
+    "name": "Stok Kangri Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High mountain cirque glacier nestled on the northern face of Stok Kangri (6,153m). Primary drinking water and irrigation source for the entire downstream Stok village oasis.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "area": 3.8,
+    "elevation": 6153,
+    "coordinates": {
+      "lat": 33.9858,
+      "lng": 77.4431
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "water-scarcity-for-villages"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-kang-yaze",
+    "slug": "kang-yaze-glacier",
+    "name": "Kang Yaze Glacier",
+    "type": "glacier",
+    "category": "Mountain Glacier",
+    "description": "Pyramidal mountain glacier dominating the head of Markha Valley at 6,400m in Hemis National Park. Sustains perennial baseflow for Markha stream and downstream oasis agriculture.",
+    "district": "Leh",
+    "watershed": "Zanskar-Indus Basin",
+    "area": 8.5,
+    "elevation": 6400,
+    "coordinates": {
+      "lat": 33.7482,
+      "lng": 77.5614
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-khardung-la",
+    "slug": "khardung-la-glacier",
+    "name": "Khardung La Glacial System",
+    "type": "glacier",
+    "category": "Periglacial Icefield",
+    "description": "Periglacial ice mass and rock glacier perched below Khardung La (5,359m). Provides crucial early summer melt runoff into Leh Nullah and feeds the city of Leh.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "area": 2.6,
+    "elevation": 5359,
+    "coordinates": {
+      "lat": 34.2789,
+      "lng": 77.6044
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "highway-vehicular-soot-deposition"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-chang-la",
+    "slug": "chang-la-glacier",
+    "name": "Chang La Glacial Pass System",
+    "type": "glacier",
+    "category": "Periglacial Icefield",
+    "description": "High mountain pass ice complex at 5,360m on the route to Pangong Tso. Sustains extensive permafrost and sub-surface rock glaciers feeding Tangtse River tributaries.",
+    "district": "Leh",
+    "watershed": "Shyok & Pangong Basin",
+    "area": 3.2,
+    "elevation": 5360,
+    "coordinates": {
+      "lat": 34.0483,
+      "lng": 77.9297
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "permafrost-thaw"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-tanglang-la",
+    "slug": "tanglang-la-glacier",
+    "name": "Tanglang La Periglacial Field",
+    "type": "glacier",
+    "category": "Rock Glacier",
+    "description": "High-altitude periglacial rock glacier and frozen scree field at 5,328m on the Leh-Manali highway divide. Regulates water release across the arid Changthang plateau.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "area": 2.1,
+    "elevation": 5328,
+    "coordinates": {
+      "lat": 33.5078,
+      "lng": 77.7014
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "perennial",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "permafrost-degradation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-godwin-austen",
+    "slug": "godwin-austen-glacier",
+    "name": "Godwin-Austen Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Famous Karakoram valley glacier originating on the sheer northeast slopes of K2 (8,611m). Merges with the Baltoro Glacier at Concordia, creating one of Earth's greatest glacial junctions.",
+    "district": "Shigar",
+    "watershed": "Indus-Shigar Basin",
+    "area": 110,
+    "elevation": 8611,
+    "coordinates": {
+      "lat": 35.8458,
+      "lng": 76.5133
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-dynamics"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-broad-peak",
+    "slug": "broad-peak-glacier",
+    "name": "Broad Peak Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "High Karakoram ice stream flanking Broad Peak (8,051m) in the Baltoro Muztagh. Contributes massive ice avalanches and melt into the upper Baltoro trunk.",
+    "district": "Shigar",
+    "watershed": "Shigar Basin",
+    "area": 45,
+    "elevation": 8051,
+    "coordinates": {
+      "lat": 35.8111,
+      "lng": 76.5658
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-gasherbrum",
+    "slug": "gasherbrum-glacier",
+    "name": "Gasherbrum Glacial Complex",
+    "type": "glacier",
+    "category": "Glacial Complex",
+    "description": "Vast icefield spanning Gasherbrum I (8,080m) through IV in the Karakoram. Houses South Gasherbrum and Urdok glaciers discharging toward the Shaksgam and Indus basins.",
+    "district": "Shigar",
+    "watershed": "Shigar Basin",
+    "area": 125,
+    "elevation": 8080,
+    "coordinates": {
+      "lat": 35.7242,
+      "lng": 76.7039
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-movement"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-vigne",
+    "slug": "vigne-glacier",
+    "name": "Vigne Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Tributary glacier linking Gondogoro La pass (5,585m) with Concordia on the Baltoro. Popularized as the alpine crossing between Hushe Valley and Baltoro.",
+    "district": "Shigar",
+    "watershed": "Shigar & Shyok Basin",
+    "area": 28.5,
+    "elevation": 5585,
+    "coordinates": {
+      "lat": 35.6833,
+      "lng": 76.4333
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "crevasse-opening"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-trango",
+    "slug": "trango-glacier",
+    "name": "Trango Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Sprawling tributary of the lower Baltoro flowing beneath the world-famous vertical granite cliffs of the Trango Towers (6,286m). Substantial debris mantling on terminus.",
+    "district": "Shigar",
+    "watershed": "Shigar Basin",
+    "area": 32,
+    "elevation": 6286,
+    "coordinates": {
+      "lat": 35.75,
+      "lng": 76.1833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "debris-cover-loss"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-panmah",
+    "slug": "panmah-glacier",
+    "name": "Panmah Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Major 44km Karakoram glacier in the central Karakoram mountains. Drains south into the Shigar River and joins with the Nobande Sobande glacier network.",
+    "district": "Shigar",
+    "watershed": "Shigar Basin",
+    "area": 92,
+    "elevation": 5400,
+    "coordinates": {
+      "lat": 35.9167,
+      "lng": 75.9667
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-nobande-sobande",
+    "slug": "nobande-sobande-glacier",
+    "name": "Nobande Sobande Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "One of the longest tributary glaciers in the Karakoram at 45km length, connecting Panmah with the high Skam La pass (5,630m). Feeds massive sub-surface melt.",
+    "district": "Shigar",
+    "watershed": "Shigar Basin",
+    "area": 86.4,
+    "elevation": 5630,
+    "coordinates": {
+      "lat": 35.9833,
+      "lng": 75.8833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-shisper-surge",
+    "slug": "shisper-surge-glacier",
+    "name": "Shisper Surging Glacier",
+    "type": "glacier",
+    "category": "Surge Glacier",
+    "description": "Fast-moving surge glacier in Hasanabad Valley, Hunza. Surged catastrophically in 2019-2022, blocking the Hasanabad stream and repeatedly threatening the Karakoram Highway with outburst floods.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "area": 48,
+    "elevation": 4850,
+    "coordinates": {
+      "lat": 36.3167,
+      "lng": 74.5833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "critical"
+    },
+    "threats": [
+      "surging-dynamics",
+      "glof-outbursts",
+      "highway-bridge-threat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-ultar-icefall",
+    "slug": "ultar-glacier",
+    "name": "Ultar Glacier & Icefall",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Dramatic glacier directly terminating above Karimabad and Altit in Hunza Valley beneath Ultar Sar (7,388m). Sole water source for centuries-old irrigation aqueducts in central Hunza.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "area": 26.5,
+    "elevation": 7388,
+    "coordinates": {
+      "lat": 36.3458,
+      "lng": 74.6983
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-lake-development"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-ghulkin-morainic",
+    "slug": "ghulkin-glacier",
+    "name": "Ghulkin Morainic Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Heavily debris-mantled glacier flowing through Upper Hunza (Gojal) between Gulmit and Passu. Features active supra-glacial lakes and dynamic ice pinnacles.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "area": 36,
+    "elevation": 4400,
+    "coordinates": {
+      "lat": 36.4333,
+      "lng": 74.8333
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "moraine-dam-breaches"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-yazghil-shimshal",
+    "slug": "yazghil-glacier",
+    "name": "Yazghil Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "30km-long Karakoram glacier entering Shimshal Valley from the south beneath Distaghil Sar (7,885m). Drains into the Shimshal River and periodically forms temporary water dams.",
+    "district": "Hunza",
+    "watershed": "Shimshal-Hunza Basin",
+    "area": 74,
+    "elevation": 7885,
+    "coordinates": {
+      "lat": 36.3667,
+      "lng": 75.3167
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "ice-dam-formation"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-malangutti-shimshal",
+    "slug": "malangutti-glacier",
+    "name": "Malangutti Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "High Karakoram glacier extending down to the valley floor in Shimshal. Exhibits massive lateral moraines and sustained firn accumulation along the main ridge.",
+    "district": "Hunza",
+    "watershed": "Shimshal Basin",
+    "area": 42,
+    "elevation": 5100,
+    "coordinates": {
+      "lat": 36.4,
+      "lng": 75.1833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-diran-minapin",
+    "slug": "diran-glacier",
+    "name": "Diran Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Steep amphitheater glacier descending from Diran Peak (7,266m) into Minapin Valley in Nagar. Feeds the Minapin stream and supplies local irrigation channels.",
+    "district": "Nagar",
+    "watershed": "Nagar-Hunza Basin",
+    "area": 38,
+    "elevation": 7266,
+    "coordinates": {
+      "lat": 36.1167,
+      "lng": 74.65
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "ice-avalanches"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-rakaposhi-north",
+    "slug": "rakaposhi-north-glacier",
+    "name": "Rakaposhi North Glacier",
+    "type": "glacier",
+    "category": "Mountain Glacier",
+    "description": "Precipitous glacial wall descending unbroken for 5,000 vertical meters from Rakaposhi (7,788m) into Nagar Valley. Produces powerful meltwater streams that feed the Hunza River.",
+    "district": "Nagar",
+    "watershed": "Hunza Basin",
+    "area": 46.2,
+    "elevation": 7788,
+    "coordinates": {
+      "lat": 36.1417,
+      "lng": 74.4917
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "vertical-ice-shedding"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-barpu-hoper",
+    "slug": "barpu-glacier",
+    "name": "Barpu Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "30km-long glacier in Hoper Valley, Nagar, flowing parallel to Bualtar glacier. Highly researched for sediment dynamics, morainic stability, and high Karakoram melt.",
+    "district": "Nagar",
+    "watershed": "Nagar Basin",
+    "area": 68,
+    "elevation": 4300,
+    "coordinates": {
+      "lat": 36.1833,
+      "lng": 74.8833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "periodic-surges"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-rupal-nanga-parbat",
+    "slug": "rupal-glacier",
+    "name": "Rupal Glacier (Nanga Parbat South)",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Spectacular 16km valley glacier flowing at the foot of the Rupal Face (4,600m high) of Nanga Parbat (8,126m). Primary origin of the Rupal River, tributary to the Astor River.",
+    "district": "Astore",
+    "watershed": "Astor-Indus Basin",
+    "area": 62,
+    "elevation": 8126,
+    "coordinates": {
+      "lat": 35.2167,
+      "lng": 74.75
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "ice-avalanches"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-raikhot-nanga-parbat",
+    "slug": "raikhot-glacier",
+    "name": "Raikhot Glacier (Fairy Meadows)",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Famous northern glacier of Nanga Parbat cascading down to Fairy Meadows and the Raikhot Bridge at the Indus River gorge. Retreating rapidly at its debris-covered snout.",
+    "district": "Diamer",
+    "watershed": "Indus Basin",
+    "area": 44.5,
+    "elevation": 7200,
+    "coordinates": {
+      "lat": 35.3333,
+      "lng": 74.6
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "rapid-snout-retreat",
+      "tourist-impacts"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-diamir-nanga-parbat",
+    "slug": "diamir-glacier",
+    "name": "Diamir Glacier (Nanga Parbat West)",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Western drainage glacier of Nanga Parbat flowing down the Diamir flank into the Bunar Nullah. Crucial hydrological headwater for down-valley agricultural oases in Chilas.",
+    "district": "Diamer",
+    "watershed": "Indus Basin",
+    "area": 39,
+    "elevation": 7600,
+    "coordinates": {
+      "lat": 35.25,
+      "lng": 74.5
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-bazhin-astor",
+    "slug": "bazhin-glacier",
+    "name": "Bazhin Glacier",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Glacial stream descending southeast from Nanga Parbat towards Rama and Astor. Merges into the Astor River catchment providing steady summertime glacier run-off.",
+    "district": "Astore",
+    "watershed": "Astor Basin",
+    "area": 28,
+    "elevation": 5800,
+    "coordinates": {
+      "lat": 35.2667,
+      "lng": 74.8333
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-rama-cirque",
+    "slug": "rama-cirque-glacier",
+    "name": "Rama Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High alpine cirque glacier overlooking Rama Meadow and Rama Lake in Astore. Feeds perennial meltwater into pine-forested pastures and local irrigation nullahs.",
+    "district": "Astore",
+    "watershed": "Astor Basin",
+    "area": 6.5,
+    "elevation": 4300,
+    "coordinates": {
+      "lat": 35.35,
+      "lng": 74.8
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-sarwali-shounter",
+    "slug": "sarwali-glacier",
+    "name": "Sarwali Glacier (Toshain)",
+    "type": "glacier",
+    "category": "Valley Glacier",
+    "description": "Largest glacier in Azad Jammu & Kashmir clinging to Sarwali Peak (Toshain I, 6,326m) at the head of Neelum Valley. Main source of the Shounter Nullah and the Neelum River.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "area": 21,
+    "elevation": 6326,
+    "coordinates": {
+      "lat": 34.9833,
+      "lng": 74.6833
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "high"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat",
+      "avalanche-hazard"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-chitta-katha-cirque",
+    "slug": "chitta-katha-glacier",
+    "name": "Chitta Katha Cirque Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Turquoise-fringed glacial cirque situated at 4,100m directly feeding the pristine Chitta Katha alpine lake in Shounter Valley. Sustains rich aquatic flora and alpine meadows.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "area": 3.5,
+    "elevation": 4100,
+    "coordinates": {
+      "lat": 34.9189,
+      "lng": 74.5214
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "moderate"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-ratti-gali-feeder",
+    "slug": "ratti-gali-glacier",
+    "name": "Ratti Gali Feeder Glacier",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "Dramatic amphitheater glacier perched on the high divide between Neelum Valley and Kaghan at 3,700m. Nourishes the emerald Ratti Gali Lake and the Dowarian stream.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "area": 2.8,
+    "elevation": 3700,
+    "coordinates": {
+      "lat": 34.8214,
+      "lng": 74.3642
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "tourism-overload"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-baboon-valley-cirque",
+    "slug": "baboon-valley-glacier",
+    "name": "Baboon Valley Glacial Cirque",
+    "type": "glacier",
+    "category": "Cirque Glacier",
+    "description": "High mountain cirque snowfield and hanging glacier nestled in the Baboon Valley of upper Neelum at 3,950m. Feeds the Kutton/Jagran hydropower catchment.",
+    "district": "Neelum",
+    "watershed": "Jagran-Neelum Basin",
+    "area": 2.4,
+    "elevation": 3950,
+    "coordinates": {
+      "lat": 34.6854,
+      "lng": 74.2215
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-change",
+      "glacial-retreat"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "glacier-ganga-choti-snowfield",
+    "slug": "ganga-choti-glacier",
+    "name": "Ganga Choti Glacial Relict",
+    "type": "glacier",
+    "category": "Rock Glacier",
+    "description": "Periglacial relict and high winter firn snowfield clinging beneath the pyramid of Ganga Choti (3,044m) in Bagh. Functions as key aquifer recharge for surrounding hill settlements.",
+    "district": "Bagh",
+    "watershed": "Jhelum Basin",
+    "area": 1.1,
+    "elevation": 3044,
+    "coordinates": {
+      "lat": 34.15,
+      "lng": 73.85
+    },
+    "hydrologicalData": {
+      "seasonalVariation": "seasonal",
+      "source": "glacial",
+      "floodRisk": "low"
+    },
+    "threats": [
+      "climate-warming",
+      "deforestation-microclimate-shifts"
+    ],
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
   }
-
 ];
-
-// ============================================================================
-// WATER QUALITY MONITORING SITES
-// ============================================================================
 
 export const waterQualitySites: WaterEntity[] = [
   {
