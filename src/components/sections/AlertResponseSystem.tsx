@@ -5,25 +5,34 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
-import { alerts } from '@/lib/data';
+import { useLiveAlerts } from '@/hooks/useLiveAlerts';
 import {
   AlertTriangle, Bell, MapPin, Calendar, Clock, ChevronRight,
   Filter, CheckCircle2, Shield, Zap, Radio, Activity, ExternalLink,
-  TrendingUp, AlertCircle
+  TrendingUp, AlertCircle, RotateCw
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function AlertResponseSystem() {
   const router = useRouter();
+  const { alerts, isLoading, isLive, lastUpdated, refetch } = useLiveAlerts();
   const [activeFilter, setActiveFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
 
   const filteredAlerts = alerts.filter(alert => {
     if (activeFilter === 'all') return true;
-    return alert.severity === activeFilter;
+    if (activeFilter === 'high') return alert.severity === 'critical' || alert.severity === 'high';
+    if (activeFilter === 'medium') return alert.severity === 'moderate';
+    if (activeFilter === 'low') return alert.severity === 'low';
+    return true;
   });
+
+  const criticalCount = alerts.filter(a => a.severity === 'critical' || a.severity === 'high').length;
+  const warningCount = alerts.filter(a => a.severity === 'moderate').length;
+  const infoCount = alerts.filter(a => a.severity === 'low').length;
 
   const getSeverityStyles = (severity: string) => {
     switch (severity) {
+      case 'critical':
       case 'high':
         return { 
           bg: 'alert-critical', 
@@ -31,6 +40,7 @@ export function AlertResponseSystem() {
           pulse: 'bg-red-500',
           icon: <AlertTriangle className="w-5 h-5" />
         };
+      case 'moderate':
       case 'medium':
         return { 
           bg: 'alert-warning', 
@@ -39,30 +49,27 @@ export function AlertResponseSystem() {
           icon: <AlertCircle className="w-5 h-5" />
         };
       case 'low':
+      default:
         return { 
           bg: 'alert-info', 
           badge: 'info' as const, 
           pulse: 'bg-blue-500',
           icon: <Activity className="w-5 h-5" />
         };
-      default:
-        return { 
-          bg: 'alert-info', 
-          badge: 'info' as const, 
-          pulse: 'bg-slate-500',
-          icon: <Activity className="w-5 h-5" />
-        };
     }
   };
 
-  const getTimeAgo = (date: Date) => {
+  const getTimeAgo = (dateInput: string | Date | undefined) => {
+    if (!dateInput) return 'Recently';
+    const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput;
+    if (isNaN(date.getTime())) return 'Recently';
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMins / 60);
     const diffDays = Math.floor(diffHours / 24);
 
-    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffMins < 60) return `${Math.max(1, diffMins)}m ago`;
     if (diffHours < 24) return `${diffHours}h ago`;
     return `${diffDays}d ago`;
   };
@@ -94,9 +101,25 @@ export function AlertResponseSystem() {
           </div>
           <div className="flex flex-col gap-6">
             <div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-3 sm:mb-4 tracking-tight">
-                Alert & Response System
-              </h2>
+              <div className="flex flex-wrap items-center gap-3 mb-3 sm:mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                  Alert & Response System
+                </h2>
+                {isLive ? (
+                  <Badge variant="success" size="sm" className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 py-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Live Telemetry Active
+                  </Badge>
+                ) : (
+                  <Badge variant="default" size="sm" className="bg-slate-800 text-slate-300 border border-slate-700 flex items-center gap-1.5 py-1">
+                    <span className="w-2 h-2 rounded-full bg-amber-400" />
+                    Baseline Telemetry
+                  </Badge>
+                )}
+                {isLoading && (
+                  <RotateCw className="w-3.5 h-3.5 text-slate-400 animate-spin" />
+                )}
+              </div>
               <p className="text-slate-400 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
                 Real-time environmental alerts, hazard warnings, and monitoring
                 anomalies with severity classification and response tracking.
@@ -120,9 +143,9 @@ export function AlertResponseSystem() {
           <div className="flex flex-wrap gap-2 text-xs sm:text-sm mb-6 p-2 sm:p-3 glass-light rounded-xl border border-white/10">{/* responsive-md-fix */}
             {[
               { id: 'all', label: 'All Alerts', count: alerts.length },
-              { id: 'high', label: 'Critical', count: alerts.filter(a => a.severity === 'high').length },
-              { id: 'medium', label: 'Warning', count: alerts.filter(a => a.severity === 'medium').length },
-              { id: 'low', label: 'Info', count: alerts.filter(a => a.severity === 'low').length },
+              { id: 'high', label: 'Critical', count: criticalCount },
+              { id: 'medium', label: 'Warning', count: warningCount },
+              { id: 'low', label: 'Info', count: infoCount },
             ].map((filter) => (
               <button
                 key={filter.id}
@@ -143,8 +166,11 @@ export function AlertResponseSystem() {
 
             {/* Alert list */}
             <motion.div className="flex flex-col gap-3">{/* responsive-md-fix */}
-              {filteredAlerts.map((alert, index) => {
+              {filteredAlerts.slice(0, 6).map((alert, index) => {
                 const styles = getSeverityStyles(alert.severity);
+                const displayLocation = (alert as any).location || (alert as any).affectedArea || `${alert.district || ''}`;
+                const displayTime = (alert as any).timestamp || (alert as any).issued || (alert as any).updated;
+                const displayDescription = (alert as any).description || (alert as any).summary;
 
                 return (
                   <motion.div
@@ -153,6 +179,7 @@ export function AlertResponseSystem() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05, duration: 0.4 }}
+                    onClick={() => router.push('/alerts')}
                   >
                     <Card
                       className={`p-4 rounded-xl flex flex-col gap-2 group cursor-pointer transition-all duration-300 ${styles.bg} hover:shadow-lg hover:shadow-red-500/10 card-intelligence`}
@@ -176,7 +203,7 @@ export function AlertResponseSystem() {
                                 {alert.title}
                               </h4>
                               <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                                {alert.description}
+                                {displayDescription}
                               </p>
                             </div>
                             <Badge variant={styles.badge} size="sm" className="text-xs px-2 py-0.5 flex-shrink-0 whitespace-nowrap">{/* responsive-md-fix */}
@@ -185,16 +212,22 @@ export function AlertResponseSystem() {
                           </div>
 
                           <div className="text-xs flex flex-wrap gap-2 text-slate-400">{/* responsive-md-fix */}
-                            {alert.location && (
+                            {displayLocation && (
                               <div className="flex items-center gap-1 min-w-0 flex-[1_1_100%] sm:flex-[1_1_auto]">
                                 <MapPin className="w-3 h-3 flex-shrink-0" />
-                                <span className="truncate">{alert.location}</span>
+                                <span className="truncate">{displayLocation}</span>
                               </div>
                             )}
                             <div className="flex items-center gap-1 flex-shrink-0">
                               <Clock className="w-3 h-3 flex-shrink-0" />
-                              <span className="whitespace-nowrap">{getTimeAgo(alert.timestamp)}</span>
+                              <span className="whitespace-nowrap">{getTimeAgo(displayTime)}</span>
                             </div>
+                            {(alert as any).source && (
+                              <div className="flex items-center gap-1 flex-shrink-0 text-slate-400 text-[11px]">
+                                <span>•</span>
+                                <span className="capitalize">{(alert as any).issuedBy || (alert as any).source}</span>
+                              </div>
+                            )}
                           </div>
                         </div>
 
@@ -216,7 +249,7 @@ export function AlertResponseSystem() {
               className="mt-6 sm:mt-8"
             >
               <Button variant="outline" className="w-full border-white/20 text-white hover:border-forest-400" icon={<Bell className="w-4 h-4" />} onClick={() => router.push('/alerts')}>
-                View All Alerts
+                View All Alerts ({alerts.length})
               </Button>
             </motion.div>
           </div>
@@ -240,9 +273,9 @@ export function AlertResponseSystem() {
                 <CardContent>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">{/* responsive-md-fix */}
                     {[
-                      { label: 'Critical', count: 3, color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20' },
-                      { label: 'Warning', count: 8, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
-                      { label: 'Informational', count: 6, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
+                      { label: 'Critical', count: criticalCount, color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20' },
+                      { label: 'Warning', count: warningCount, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
+                      { label: 'Informational', count: infoCount, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
                     ].map((item) => (
                       <div
                         key={item.label}

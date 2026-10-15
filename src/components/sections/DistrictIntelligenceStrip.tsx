@@ -22,7 +22,7 @@ const districtData = [
     trend: 'declining',
     strength: 'Wetland Diversity',
     challenge: 'Urban Pressure',
-    route: '/districts/srinagar',
+    route: '/biodiversity/district/srinagar',
   },
   {
     name: 'Anantnag',
@@ -34,7 +34,7 @@ const districtData = [
     trend: 'stable',
     strength: 'Biodiversity Rich',
     challenge: 'HWC Pressure',
-    route: '/districts/anantnag',
+    route: '/biodiversity/district/anantnag',
   },
   {
     name: 'Baramulla',
@@ -46,7 +46,7 @@ const districtData = [
     trend: 'improving',
     strength: 'Wular Lake',
     challenge: 'Agricultural Runoff',
-    route: '/districts/baramulla',
+    route: '/biodiversity/district/baramulla',
   },
   {
     name: 'Ganderbal',
@@ -58,7 +58,7 @@ const districtData = [
     trend: 'stable',
     strength: 'Protected Areas',
     challenge: 'Tourism Pressure',
-    route: '/districts/ganderbal',
+    route: '/biodiversity/district/ganderbal',
   },
   {
     name: 'Kupwara',
@@ -70,7 +70,7 @@ const districtData = [
     trend: 'stable',
     strength: 'Forest Cover',
     challenge: 'Remote Access',
-    route: '/districts/kupwara',
+    route: '/biodiversity/district/kupwara',
   },
   {
     name: 'Pulwama',
@@ -82,7 +82,7 @@ const districtData = [
     trend: 'declining',
     strength: 'Agricultural Zone',
     challenge: 'Habitat Loss',
-    route: '/districts/pulwama',
+    route: '/biodiversity/district/pulwama',
   },
 ];
 

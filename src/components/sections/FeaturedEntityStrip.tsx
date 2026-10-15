@@ -173,7 +173,7 @@ function EntityCard({ entity, onNavigate }: EntityCardProps) {
                   )}
                 </div>
                 <div className="text-base sm:text-lg font-bold text-white tabular-nums">
-                  {metric.value.toLocaleString()}
+                  {typeof metric.value === "number" ? metric.value.toLocaleString() : metric.value}
                 </div>
                 <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider mt-0.5">
                   {metric.unit || metric.label}
@@ -349,6 +349,7 @@ export function FeaturedEntityStrip() {
             >{/* responsive-md-fix */}
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.id;
+                const tabCount = counts[tab.id as keyof typeof counts];
                 return (
                   <button
                     key={tab.id}
@@ -366,8 +367,12 @@ export function FeaturedEntityStrip() {
                     <tab.icon className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${
                       isActive ? 'text-white' : ''
                     }`} />
-                    <span className="hidden md:inline">{tab.label}</span>
-                    <span className="md:hidden">{tab.label}</span>
+                    <span>{tab.label}</span>
+                    <span className={`text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-full ${
+                      isActive ? 'bg-white/20 text-white' : 'bg-white/5 text-slate-400'
+                    }`}>
+                      {tabCount}
+                    </span>
                   </button>
                 );
               })}

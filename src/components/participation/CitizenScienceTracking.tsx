@@ -4,7 +4,13 @@ import React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { citizenScienceMembers, CitizenScienceMember, getParticipationByDistrict } from '@/data/contribution-intelligence';
+import {
+  citizenScienceMembers,
+  CitizenScienceMember,
+  getParticipationByDistrict,
+  participationMetrics,
+  districtParticipation
+} from '@/data/contribution-intelligence';
 import { Users, Star, Calendar, MapPin, TrendingUp, Award, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -26,11 +32,22 @@ const badgeColors: Record<string, string> = {
 
 export function CitizenScienceTracking({ compact = false, district }: CitizenScienceTrackingProps) {
   const members = district
-    ? citizenScienceMembers.filter(m => m.district === district)
+    ? citizenScienceMembers.filter(m => m.district.toLowerCase() === district.toLowerCase())
     : citizenScienceMembers;
 
-  const totalMembers = citizenScienceMembers.length;
-  const activeMembers = citizenScienceMembers.filter(m => m.status === 'active').length;
+  const districtData = district ? getParticipationByDistrict(district) : undefined;
+
+  const totalMembers = districtData
+    ? districtData.members
+    : participationMetrics.totalMembers;
+
+  const activeMembers = districtData
+    ? districtData.activeMembers
+    : districtParticipation.reduce((acc, d) => acc + d.activeMembers, 0);
+
+  const totalSightings = districtData
+    ? districtData.sightings
+    : participationMetrics.totalSightings;
 
   const topContributors = [...members].sort(
     (a, b) => (b.contributions.issues + b.contributions.sightings + b.contributions.datasets) -
@@ -45,20 +62,20 @@ export function CitizenScienceTracking({ compact = false, district }: CitizenSci
             <Users className="w-5 h-5 text-purple-400" />
             Citizen Science Members
           </h3>
-          <Badge variant="secondary" size="sm">{activeMembers} active</Badge>
+          <Badge variant="secondary" size="sm">{activeMembers.toLocaleString()} active</Badge>
         </div>
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div className="text-center">
-            <div className="text-2xl font-bold text-white">{totalMembers}</div>
+            <div className="text-2xl font-bold text-white">{totalMembers.toLocaleString()}</div>
             <div className="text-xs text-slate-400">Total</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-400">{activeMembers}</div>
+            <div className="text-2xl font-bold text-emerald-400">{activeMembers.toLocaleString()}</div>
             <div className="text-xs text-slate-400">Active</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-400">
-              {members.reduce((acc, m) => acc + m.contributions.sightings, 0)}
+              {totalSightings.toLocaleString()}
             </div>
             <div className="text-xs text-slate-400">Sightings</div>
           </div>
@@ -89,12 +106,12 @@ export function CitizenScienceTracking({ compact = false, district }: CitizenSci
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="glass-intense border-white/10 p-5 text-center">
           <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-          <div className="text-3xl font-bold text-white mb-1">{totalMembers}</div>
+          <div className="text-3xl font-bold text-white mb-1">{totalMembers.toLocaleString()}</div>
           <div className="text-sm text-slate-400">Total Members</div>
         </Card>
         <Card className="glass-intense border-white/10 p-5 text-center">
           <Activity className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-          <div className="text-3xl font-bold text-white mb-1">{activeMembers}</div>
+          <div className="text-3xl font-bold text-white mb-1">{activeMembers.toLocaleString()}</div>
           <div className="text-sm text-slate-400">Active Members</div>
         </Card>
         <Card className="glass-intense border-white/10 p-5 text-center">

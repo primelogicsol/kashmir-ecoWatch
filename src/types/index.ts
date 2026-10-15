@@ -1,6 +1,6 @@
 export interface Metric {
   label: string;
-  value: number;
+  value: number | string;
   unit?: string;
   trend?: 'up' | 'down' | 'stable';
   trendValue?: number;
