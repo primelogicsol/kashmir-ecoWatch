@@ -34,7 +34,7 @@ export interface InsightItem {
 
 export interface FeaturedEntity {
   id: string;
-  type: 'protected_area' | 'lake' | 'species' | 'bloom' | 'trail' | 'district';
+  type: 'protected_area' | 'lake' | 'species' | 'bloom' | 'trail' | 'district' | 'wetland' | 'hazard';
   name: string;
   description: string;
   image: string;

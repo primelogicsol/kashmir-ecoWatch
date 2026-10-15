@@ -523,6 +523,144 @@ export const featuredEntities: FeaturedEntity[] = [
     ],
     link: '/trails-sightings/wetland-trails',
   },
+
+  // ── Bloom Zones ──
+  {
+    id: 'tulip-bloom',
+    type: 'bloom',
+    name: 'Wild Tulip & Alpine Geophytes',
+    description: 'Phenological spring flush in Srinagar and lower Zabarwan terraces featuring endemic Tulipa clusiana and Fritillaria.',
+    image: '/images/tulip-bloom.jpg',
+    metrics: [
+      { label: 'Peak Window', value: 'Apr-May', unit: 'Spring' },
+      { label: 'Species', value: 28, unit: 'Taxa' },
+      { label: 'Density', value: 'High', unit: 'Zones' },
+    ],
+    link: '/seasonal-ecology/bloom-mapping',
+  },
+  {
+    id: 'tosamaidan-alpine-bloom',
+    type: 'bloom',
+    name: 'Tosamaidan Alpine Wildflower Meadows',
+    description: 'High-altitude subalpine expanse blooming profusely with Primula, Iris, and Aconitum following snowmelt in Budgam.',
+    image: '/images/tosamaidan.jpg',
+    metrics: [
+      { label: 'Altitude', value: 3100, unit: 'm' },
+      { label: 'Endemics', value: 42, unit: 'Flora' },
+      { label: 'Peak Window', value: 'Jun-Jul', unit: 'Summer' },
+    ],
+    link: '/seasonal-ecology/bloom-mapping',
+  },
+
+    {
+    id: 'pampore-saffron-bloom',
+    type: 'bloom',
+    name: 'Pampore Saffron Karewa Bloom',
+    description: 'Iconic autumn purple carpet of Crocus sativus across elevated lacustrine Karewa plateaus in Pulwama.',
+    image: '/images/pampore-saffron.jpg',
+    metrics: [
+      { label: 'Bloom Window', value: 'Oct-Nov', unit: 'Autumn' },
+      { label: 'Crocus Area', value: 210, unit: 'km²' },
+      { label: 'Pollinators', value: 'Apis', unit: 'Honeybee' },
+    ],
+    link: '/seasonal-ecology/bloom-mapping',
+  },
+  {
+    id: 'badamwari-almond-bloom',
+    type: 'bloom',
+    name: 'Badamwari Historic Almond Bloom',
+    description: 'Historic Mughal-era almond orchard at the foot of Koh-i-Maran marking the traditional herald of spring in Srinagar.',
+    image: '/images/badamwari.jpg',
+    metrics: [
+      { label: 'Herald Window', value: 'Mid-Mar', unit: 'Spring' },
+      { label: 'Elevation', value: 1590, unit: 'm' },
+      { label: 'Heritage', value: 'Mughal', unit: 'Historical' },
+    ],
+    link: '/seasonal-ecology/bloom-mapping',
+  },
+
+  // ── Wetlands & Ramsar Sites ──
+  {
+    id: 'shallabugh-wetland',
+    type: 'wetland',
+    name: 'Shallabugh Wetland Wildlife Sanctuary',
+    description: 'Extensive floodplain reedbed ecosystem in Ganderbal supporting vast congregations of wintering Anatidae waterfowl.',
+    image: '/images/shallabugh.jpg',
+    metrics: [
+      { label: 'Area', value: 16.75, unit: 'km²' },
+      { label: 'Status', value: 'Ramsar', unit: 'Designated' },
+      { label: 'Waterfowl', value: 180000, unit: 'Peak' },
+    ],
+    link: '/water-systems/wetlands',
+  },
+  {
+    id: 'hygam-wetland',
+    type: 'wetland',
+    name: 'Hygam Wetland Reserve',
+    description: 'Baramulla floodplain sanctuary vital for breeding resident moorhens, bitterns, and Central Asian migratory pintails.',
+    image: '/images/hygam.jpg',
+    metrics: [
+      { label: 'Area', value: 7.25, unit: 'km²' },
+      { label: 'Status', value: 'Ramsar', unit: 'Designated' },
+      { label: 'Avifauna', value: 92, unit: 'Species' },
+    ],
+    link: '/water-systems/wetlands',
+  },
+
+    {
+    id: 'mirgund-wetland',
+    type: 'wetland',
+    name: 'Mirgund Wetland Reserve',
+    description: 'Vital marshland habitat along the Baramulla-Budgam border providing breeding sanctuary for water rail and garganey.',
+    image: '/images/mirgund.jpg',
+    metrics: [
+      { label: 'Area', value: 4.0, unit: 'km²' },
+      { label: 'Migrants', value: 45000, unit: 'Seasonal' },
+      { label: 'Status', value: 'State', unit: 'Protected' },
+    ],
+    link: '/water-systems/wetlands',
+  },
+  {
+    id: 'chatlam-wetland',
+    type: 'wetland',
+    name: 'Chatlam Wetland Reserve',
+    description: 'Spring-fed Pampore wetland complex supporting rare wintering ferruginous ducks and resident grebes.',
+    image: '/images/chatlam.jpg',
+    metrics: [
+      { label: 'Area', value: 0.25, unit: 'km²' },
+      { label: 'Spring Fed', value: 'Perennial', unit: 'Hydrology' },
+      { label: 'Avifauna', value: 68, unit: 'Species' },
+    ],
+    link: '/water-systems/wetlands',
+  },
+
+  // ── Hazard & Flood Zones ──
+  {
+    id: 'jhelum-flood-plain',
+    type: 'hazard',
+    name: 'Jhelum Basin High-Exposure Flood Zone',
+    description: 'Riverine floodplain corridor spanning Sangam to Srinagar with active gauge telemetry, embankments, and hydraulic monitoring.',
+    image: '/images/jhelum-flood.jpg',
+    metrics: [
+      { label: 'Risk Level', value: 'Critical', unit: 'Zone 5' },
+      { label: 'Population', value: 185000, unit: 'Exposed' },
+      { label: 'Cycle', value: '25-50y', unit: 'Return' },
+    ],
+    link: '/hazard-intelligence/floods',
+  },
+  {
+    id: 'panzath-karst-springs',
+    type: 'hazard',
+    name: 'Panzath Karst Springs & Aquifer',
+    description: 'Perennial karst hydrological spring shed in Qazigund feeding trout hatcheries, monitored for discharge stress.',
+    image: '/images/panzath.jpg',
+    metrics: [
+      { label: 'Discharge', value: 450, unit: 'L/sec' },
+      { label: 'Health', value: 'Good', unit: 'Potable' },
+      { label: 'Vulnerability', value: 'Moderate', unit: 'Recharge' },
+    ],
+    link: '/water-systems/springs',
+  },
 ];
 
 export const alerts: Alert[] = [

@@ -58,11 +58,32 @@ const iconConfig: Record<string, React.ComponentType<{ className?: string }>> = 
 
 export function ExpandableLivePanels() {
   const router = useRouter();
-  const [expandedPanel, setExpandedPanel] = useState<string | null>('wetland-stress');
+  // All cards opened by default per user specification
+  const [expandedPanels, setExpandedPanels] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    insightPanels.forEach(panel => {
+      initial[panel.id] = true;
+    });
+    return initial;
+  });
   const [activeTab, setActiveTab] = useState<'all' | 'critical' | 'warning'>('all');
 
   const togglePanel = (id: string) => {
-    setExpandedPanel(expandedPanel === id ? null : id);
+    setExpandedPanels(prev => ({
+      ...prev,
+      [id]: !(prev[id] ?? true),
+    }));
+  };
+
+  const areAllExpanded = insightPanels.every(p => expandedPanels[p.id] ?? true);
+
+  const toggleAll = () => {
+    const nextVal = !areAllExpanded;
+    const nextState: Record<string, boolean> = {};
+    insightPanels.forEach(p => {
+      nextState[p.id] = nextVal;
+    });
+    setExpandedPanels(nextState);
   };
 
   const getSeverityBadge = (severity?: string) => {
@@ -129,25 +150,34 @@ export function ExpandableLivePanels() {
               </p>
             </div>
 
-            {/* Filter tabs - scrollable on mobile */}
-            <div className="flex flex-wrap gap-2 text-xs sm:text-sm p-1 glass-light rounded-lg border border-white/10 w-full sm:w-max">{/* responsive-md-fix */}
-              {[
-                { id: 'all', label: 'All Feeds' },
-                { id: 'critical', label: 'Critical' },
-                { id: 'warning', label: 'Warnings' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                  className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
-                    activeTab === tab.id
-                      ? 'bg-forest-500/20 text-forest-400'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            {/* Filter tabs and Expand/Collapse toggle */}
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap gap-2 text-xs sm:text-sm p-1 glass-light rounded-lg border border-white/10 w-full sm:w-max">
+                {[
+                  { id: 'all', label: 'All Feeds' },
+                  { id: 'critical', label: 'Critical' },
+                  { id: 'warning', label: 'Warnings' },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                    className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
+                      activeTab === tab.id
+                        ? 'bg-forest-500/20 text-forest-400'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={toggleAll}
+                className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 glass-light transition-colors"
+              >
+                {areAllExpanded ? 'Collapse All Cards' : 'Expand All Cards'}
+              </button>
             </div>
           </div>
         </motion.div>
@@ -157,7 +187,7 @@ export function ExpandableLivePanels() {
           {filteredPanels.map((panel, index) => {
             const status = statusConfig[panel.status];
             const IconComponent = iconConfig[panel.id] || Activity;
-            const isExpanded = expandedPanel === panel.id;
+            const isExpanded = expandedPanels[panel.id] ?? true;
 
             return (
               <motion.div

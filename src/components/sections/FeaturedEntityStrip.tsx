@@ -10,7 +10,8 @@ import { featuredEntities } from '@/lib/data';
 import {
   MapPin, Mountain, Flower2, Footprints, Building2,
   ArrowRight, Heart, Share2, ArrowUpRight, Info,
-  Shield, Droplet, Leaf, Ruler, Activity, TrendingUp
+  Shield, Droplet, Leaf, Ruler, Activity, TrendingUp,
+  Waves, AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -67,6 +68,20 @@ const typeConfig: Record<string, {
     label: 'District',
     gradient: 'bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800',
   },
+  wetland: {
+    icon: <Waves className="w-4 h-4" />,
+    color: 'text-cyan-400',
+    bgColor: 'bg-cyan-500',
+    label: 'Wetland Reserve',
+    gradient: 'bg-gradient-to-br from-cyan-600 via-teal-700 to-blue-800',
+  },
+  hazard: {
+    icon: <AlertTriangle className="w-4 h-4" />,
+    color: 'text-rose-400',
+    bgColor: 'bg-rose-500',
+    label: 'Hazard & Springs',
+    gradient: 'bg-gradient-to-br from-rose-600 via-red-700 to-amber-800',
+  },
 };
 
 // ============================================================================
@@ -80,6 +95,9 @@ const tabs = [
   { id: 'species', label: 'Species', icon: Leaf },
   { id: 'districts', label: 'Districts', icon: Building2 },
   { id: 'trails', label: 'Trails', icon: Footprints },
+  { id: 'wetlands', label: 'Wetlands', icon: Waves },
+  { id: 'bloom_zones', label: 'Bloom Zones', icon: Flower2 },
+  { id: 'hazards', label: 'Hazard Systems', icon: AlertTriangle },
 ];
 
 // ============================================================================
@@ -262,6 +280,9 @@ export function FeaturedEntityStrip() {
       species: 'species',
       districts: 'district',
       trails: 'trail',
+      wetlands: 'wetland',
+      bloom_zones: 'bloom',
+      hazards: 'hazard',
     };
     
     const targetType = typeMap[activeTab];
@@ -277,6 +298,9 @@ export function FeaturedEntityStrip() {
       species: featuredEntities.filter(e => e.type === 'species').length,
       districts: featuredEntities.filter(e => e.type === 'district').length,
       trails: featuredEntities.filter(e => e.type === 'trail').length,
+      wetlands: featuredEntities.filter(e => e.type === 'wetland').length,
+      bloom_zones: featuredEntities.filter(e => e.type === 'bloom').length,
+      hazards: featuredEntities.filter(e => e.type === 'hazard').length,
     };
     return baseCounts;
   }, []);
@@ -444,7 +468,7 @@ export function FeaturedEntityStrip() {
             </span>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
             {tabs.filter(t => t.id !== 'all').map((tab) => (
               <CategorySummary
                 key={tab.id}

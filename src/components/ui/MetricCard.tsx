@@ -4,7 +4,7 @@ import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 interface MetricCardProps {
   label: string;
-  value: number;
+  value: number | string;
   unit?: string;
   trend?: 'up' | 'down' | 'stable';
   trendValue?: number;
