@@ -311,7 +311,7 @@ export function PremiumStickyHeader() {
         isCompact && 'bg-slate-950/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/10'
       )}
     >
-      <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div
           className={cn(
             'flex items-center justify-between transition-all duration-300 ease-out',
@@ -485,7 +485,7 @@ export function PremiumStickyHeader() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
-              'lg:hidden p-2 rounded-lg transition-colors',
+              'lg:hidden p-2 rounded-lg transition-colors flex items-center justify-center shrink-0 ml-auto',
               isCompact ? 'hover:bg-white/10' : 'hover:bg-white/5'
             )}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}

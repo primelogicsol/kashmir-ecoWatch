@@ -179,7 +179,7 @@ export default function AdminDashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+        <nav className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6">
           <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
           <ChevronRight className="w-3.5 h-3.5" />
           <Link href="/dashboard" className="hover:text-emerald-400 transition-colors">User Workspace</Link>
