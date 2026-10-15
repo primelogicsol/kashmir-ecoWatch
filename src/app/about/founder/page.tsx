@@ -104,7 +104,7 @@ export default function FounderPage() {
       degree: 'Specialized Qualification',
       period: 'Quantitative Analytics',
       field: 'Environmental Data and Informatics',
-      institution: 'Statistical Analysis and Environmental Sensor Telemetry',
+      institution: 'Advanced Statistical Analysis and Environmental Sensor Telemetry',
       specialization: 'Focus: Time-series ecological telemetry, spatial analytics, and watershed data processing',
       icon: BarChart3,
       color: 'text-indigo-400',
