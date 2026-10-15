@@ -133,6 +133,9 @@ export const lakesData: WaterEntity[] = [
     category: "Urban Lake",
     description: "Iconic urban lake and second largest in J&K. Famous for houseboats, shikaras, and floating gardens. Critical for tourism, fisheries, and local livelihoods.",
     district: "Srinagar",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 18,
     elevation: 1583,
@@ -196,6 +199,9 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "Largest freshwater lake in South Asia. Ramsar site of international importance. Critical for flood regulation, fisheries, and migratory waterfowl.",
     district: "Bandipora",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 189,
     elevation: 1575,
@@ -250,6 +256,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-01T00:00:00Z",
     updatedAt: "2026-03-25T10:00:00Z"
   },
+  
   {
     id: "nigeen-lake",
     slug: "nigeen-lake",
@@ -258,6 +265,7 @@ export const lakesData: WaterEntity[] = [
     category: "Urban Lake",
     description: "Pristine urban lake connected to Dal Lake. Known for clear waters and houseboat tourism. Ecologically linked to Dal ecosystem.",
     district: "Srinagar",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 2.8,
     elevation: 1583,
@@ -319,6 +327,11 @@ export const lakesData: WaterEntity[] = [
     category: "Freshwater Lake",
     description: "Deepest lake in Kashmir Valley. Important for lotus cultivation, fisheries, and wintering waterfowl. Surrounded by Mughal gardens.",
     district: "Ganderbal",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 2.8,
     elevation: 1583,
@@ -372,6 +385,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-01T00:00:00Z",
     updatedAt: "2026-03-22T09:00:00Z"
   },
+  
   {
     id: "anu-char",
     slug: "anu-char",
@@ -380,6 +394,7 @@ export const lakesData: WaterEntity[] = [
     category: "High-Altitude Lake",
     description: "Pristine high-altitude glacial lake in Gurez Valley. Fed by surrounding glaciers. Critical for local hydrology and biodiversity.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Kishanganga Basin",
     area: 0.8,
     elevation: 3200,
@@ -436,6 +451,8 @@ export const lakesData: WaterEntity[] = [
     category: "Alpine Lake",
     description: "Stunning alpine lake in Lidder Valley. Popular trekking destination. Part of twin lake system with Marsar. Critical for local hydrology.",
     district: "Anantnag",
+    region: "Kashmir Core",
+    region: "Kashmir Core",
     watershed: "Lidder Basin",
     area: 0.5,
     elevation: 3800,
@@ -485,6 +502,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-15T00:00:00Z",
     updatedAt: "2026-03-10T16:00:00Z"
   },
+  
   {
     id: "marsar-lake",
     slug: "marsar-lake",
@@ -493,6 +511,7 @@ export const lakesData: WaterEntity[] = [
     category: "Alpine Lake",
     description: "Sister lake to Tarsar. High-altitude alpine lake with crystal-clear waters. Important for local hydrology and trekking tourism.",
     district: "Anantnag",
+    region: "Kashmir Core",
     watershed: "Lidder Basin",
     area: 0.4,
     elevation: 3900,
@@ -541,6 +560,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-15T00:00:00Z",
     updatedAt: "2026-03-10T16:00:00Z"
   },
+  
   {
     id: "gangabal-lake",
     slug: "gangabal-lake",
@@ -549,6 +569,7 @@ export const lakesData: WaterEntity[] = [
     category: "Glacial Lake",
     description: "Sacred glacial lake at foothills of Harmukh Peak. Important pilgrimage site. Fed by glaciers. Crystal-clear waters with high spiritual significance.",
     district: "Ganderbal",
+    region: "Kashmir Core",
     watershed: "Sind Basin",
     area: 0.6,
     elevation: 3570,
@@ -599,6 +620,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-10T00:00:00Z",
     updatedAt: "2026-03-15T12:00:00Z"
   },
+  
   {
     id: "krishansar-lake",
     slug: "krishansar-lake",
@@ -607,6 +629,7 @@ export const lakesData: WaterEntity[] = [
     category: "Glacial Lake",
     description: "High-altitude glacial lake near Vishansar. Part of Kashmir Great Lakes trek. Sacred lake with crystal-clear waters.",
     district: "Ganderbal",
+    region: "Kashmir Core",
     watershed: "Sind Basin",
     area: 0.3,
     elevation: 3750,
@@ -655,6 +678,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-10T00:00:00Z",
     updatedAt: "2026-03-15T12:00:00Z"
   },
+  
   {
     id: "vishansar-lake",
     slug: "vishansar-lake",
@@ -663,6 +687,7 @@ export const lakesData: WaterEntity[] = [
     category: "Glacial Lake",
     description: "High-altitude glacial lake connected to Krishansar. Part of Kashmir Great Lakes trek. Pristine alpine ecosystem.",
     district: "Ganderbal",
+    region: "Kashmir Core",
     watershed: "Sind Basin",
     area: 0.35,
     elevation: 3650,
@@ -711,6 +736,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-10T00:00:00Z",
     updatedAt: "2026-03-15T12:00:00Z"
   },
+  
   {
     id: "sheer-kol",
     slug: "sheer-kol",
@@ -719,6 +745,7 @@ export const lakesData: WaterEntity[] = [
     category: "High-Altitude Lake",
     description: "Remote high-altitude lake in Gurez region. Pristine ecosystem with minimal human impact. Important for local hydrology.",
     district: "Bandipora",
+    region: "Kashmir Core",
     watershed: "Kishanganga Basin",
     area: 0.6,
     elevation: 3400,
@@ -766,6 +793,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-20T00:00:00Z",
     updatedAt: "2026-03-12T10:00:00Z"
   },
+  
   {
     id: "pant-chowk-lake",
     slug: "pant-chowk-lake",
@@ -774,6 +802,7 @@ export const lakesData: WaterEntity[] = [
     category: "Rural Lake",
     description: "Rural lake in Ganderbal district. Important for local agriculture and fisheries. Community-managed water body.",
     district: "Ganderbal",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 1.2,
     elevation: 1590,
@@ -824,6 +853,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-01-25T00:00:00Z",
     updatedAt: "2026-03-20T08:00:00Z"
   },
+  
   {
     id: "hokersar-lake",
     slug: "hokersar-lake",
@@ -832,6 +862,7 @@ export const lakesData: WaterEntity[] = [
     category: "Wetland Lake",
     description: "Lake component of Hokersar Wetland Reserve. Critical for migratory waterfowl. Ramsar site with high conservation value.",
     district: "Srinagar",
+    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 8.5,
     elevation: 1585,
@@ -890,6 +921,8 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "A pristine high-altitude lake in the Changthang plateau of Ladakh. Designated as a Ramsar site in 2002. Crucial breeding site for the endangered black-necked crane and bar-headed goose.",
     district: "Leh",
+    region: "Ladakh",
+    region: "Ladakh",
     watershed: "Tso Moriri Watershed",
     area: 120,
     elevation: 4522,
@@ -943,6 +976,7 @@ export const lakesData: WaterEntity[] = [
     createdAt: "2026-06-16T02:00:00Z",
     updatedAt: "2026-06-16T02:00:00Z"
   },
+  
   {
     id: "tso-kar-lake",
     slug: "tsokar-lake",
@@ -951,6 +985,7 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "A fluctuating salt lake in the Changthang region of Ladakh. Part of the Tso Kar Basin Ramsar site (designated in 2020). Famous for its extreme salinity and birdlife.",
     district: "Leh",
+    region: "Ladakh",
     watershed: "Tso Kar Endorheic Basin",
     area: 95,
     elevation: 4530,
@@ -1010,6 +1045,7 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "A twin freshwater lake system in the Shivalik foothills of Jammu. Designated as a Ramsar site in 2005. Features dense sub-tropical pine forest catchments and high cultural and biodiversity significance.",
     district: "Jammu",
+    region: "Jammu",
     watershed: "Devika River Watershed",
     area: 3.5,
     elevation: 600,
@@ -1063,12 +1099,2902 @@ export const lakesData: WaterEntity[] = [
     verificationStatus: "verified",
     createdAt: "2026-06-16T02:00:00Z",
     updatedAt: "2026-06-16T02:00:00Z"
+  },
+  {
+      "id": "gadsar-lake",
+      "slug": "gadsar-lake",
+      "name": "Gadsar Lake (Yemsar)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "Known as the 'Lake of Fish' or 'Yemsar' (Lake of Death/Demons in folklore), this pristine oligotrophic alpine glacial lake sits nestled among flower-laden alpine meadows. Fed by glacier meltwater, it drains into the Sind River tributary and remains ice-covered from November to June.",
+      "district": "Ganderbal",
+      "region": "Kashmir Core",
+      "watershed": "Sind Watershed",
+      "area": 0.85,
+      "elevation": 3600,
+      "coordinates": {
+          "lat": 34.4058,
+          "lng": 75.0452
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.9,
+          "conductivity": 48,
+          "temperature": 7.2,
+          "nitrates": 0.18,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.8,
+          "totalDissolvedSolids": 35,
+          "lastTested": "2026-05-18",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Alpine Potamogeton",
+          "Himalayan Primula",
+          "Snow Leopard habitat proxy",
+          "Himalayan Marmot"
+      ],
+      "threats": [
+          "trekking-waste",
+          "unregulated-camping",
+          "cryosphere-retreat"
+      ],
+      "conservationStatus": "High Altitude Protected Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 28,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 32,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout (Salmo trutta)",
+              "Schizothorax (Snow Trout)"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": true,
+          "conservationMeasures": [
+              "Catch and release angling regulation",
+              "Plastics ban in alpine perimeter"
+          ]
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Pristine high-altitude oligotrophic glacial tarn serving as critical headwater recharge for the Sind River network.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "satsar-lake",
+      "slug": "satsar-lake",
+      "name": "Satsar Lake (Seven Lakes Cascade)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "A cascade of seven small alpine glacial tarns interconnected by subterranean channels and glacial runnels in the upper Sind basin. During late summer, some smaller lakes disconnect, creating a dramatic stepped limnological cascade surrounded by alpine tundra.",
+      "district": "Ganderbal",
+      "region": "Kashmir Core",
+      "watershed": "Sind Watershed",
+      "area": 0.45,
+      "elevation": 3610,
+      "coordinates": {
+          "lat": 34.4294,
+          "lng": 74.9814
+      },
+      "waterQuality": {
+          "pH": 7.2,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 1.1,
+          "conductivity": 52,
+          "temperature": 6.8,
+          "nitrates": 0.15,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.7,
+          "totalDissolvedSolids": 38,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "High-altitude benthic diatoms",
+          "Alpine Snowcock",
+          "Himalayan Marmot",
+          "Salmo trutta fario"
+      ],
+      "threats": [
+          "glacial-retreat",
+          "solid-waste-from-expeditions",
+          "permafrost-thaw"
+      ],
+      "conservationStatus": "Sub-alpine Fragile Ecosystem",
+      "hydrologicalData": {
+          "waterLevel": 14,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 24,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "High-altitude interconnected tarn cascade with subterranean percolation dynamics regulating Sind baseflows.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "nundkol-lake",
+      "slug": "nundkol-lake",
+      "name": "Nundkol Lake (Kalodaka)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "Nestled directly at the foot of Mount Haramukh and fed by the melting snout of the Haramukh Glacier. Known historically as Kalodaka, it drains via the Wangath Nallah into the Sind River and sits just 1.5 km south of Gangabal Lake.",
+      "district": "Ganderbal",
+      "region": "Kashmir Core",
+      "watershed": "Sind Watershed",
+      "area": 0.62,
+      "elevation": 3505,
+      "coordinates": {
+          "lat": 34.4217,
+          "lng": 74.9258
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.9,
+          "turbidity": 0.8,
+          "conductivity": 42,
+          "temperature": 6.5,
+          "nitrates": 0.12,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 30,
+          "lastTested": "2026-05-25",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Brown Trout (Salmo trutta fario)",
+          "Rainbow Trout",
+          "Alpine choughs",
+          "Himalayan musk deer proxy habitat"
+      ],
+      "threats": [
+          "unregulated-camp-waste",
+          "glacial-moraine-instability",
+          "livestock-grazing-margins"
+      ],
+      "conservationStatus": "Sacred Alpine Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 22,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 28,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Salmo trutta fario",
+              "Oncorhynchus mykiss"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "fishingSeason": "May to October",
+          "permits": true,
+          "conservationMeasures": [
+              "State fisheries department licensed angling only"
+          ]
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Glacier-dammed tarn under Mount Haramukh feeding the Wangath hydro-ecological sub-basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "kausarnag-lake",
+      "slug": "kausarnag-lake",
+      "name": "Kausar Nag (Konsarnag)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "An awe-inspiring, high-altitude oligotrophic tarn in the southern Pir Panjal range. Spanning over 3 km in length, this deep blue glacial lake is the primary glacial source of the Veshaw River, which powers the renowned Aharbal Waterfall downstream.",
+      "district": "Kulgam",
+      "region": "Kashmir Core",
+      "watershed": "Veshaw Watershed",
+      "area": 1.65,
+      "elevation": 3960,
+      "coordinates": {
+          "lat": 33.5186,
+          "lng": 74.8322
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 10.2,
+          "turbidity": 0.6,
+          "conductivity": 36,
+          "temperature": 5.2,
+          "nitrates": 0.1,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 26,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Himalayan snow trout (Schizothorax spp.)",
+          "Alpine mosses",
+          "Tibetan snowcock",
+          "Golden eagle"
+      ],
+      "threats": [
+          "cryosphere-retreat",
+          "unmanaged-pilgrimage-footfall",
+          "geomorphological-moraine-creep"
+      ],
+      "conservationStatus": "High Altitude Alpine Sanctuary",
+      "hydrologicalData": {
+          "waterLevel": 45,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 48,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Massive Pir Panjal glacial tarn serving as the primary perennial origin of the Veshaw hydrological sub-basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "sheshnag-lake",
+      "slug": "sheshnag-lake",
+      "name": "Sheshnag Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "A legendary oligotrophic alpine lake nestled in the Lidder Valley on the pilgrimage trail to Amarnath. Fed by snowmelt and mountain streams issuing from surrounding glacier snouts, it is famous for its greenish-blue water and gives rise to the East Lidder River.",
+      "district": "Anantnag",
+      "region": "Kashmir Core",
+      "watershed": "Lidder Watershed",
+      "area": 1.2,
+      "elevation": 3590,
+      "coordinates": {
+          "lat": 34.0931,
+          "lng": 75.4981
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 1.2,
+          "conductivity": 58,
+          "temperature": 6.2,
+          "nitrates": 0.22,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.9,
+          "totalDissolvedSolids": 44,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Brown Trout",
+          "Oligotrophic micro-crustaceans",
+          "Alpine sedges",
+          "Himalayan Griffon vulture"
+      ],
+      "threats": [
+          "pilgrimage-solid-waste",
+          "seasonal-sanitation-pressures",
+          "moraine-erosion"
+      ],
+      "conservationStatus": "Protected Alpine Pilgrimage Zone",
+      "hydrologicalData": {
+          "waterLevel": 32,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 38,
+          "floodRisk": "moderate"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout (Salmo trutta fario)"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": true
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Lidder Valley alpine glacial tarn that regulates downstream irrigation and drinking supplies for southern Kashmir.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "nilnag-lake",
+      "slug": "nilnag-lake",
+      "name": "Nilnag Lake",
+      "type": "lake",
+      "category": "Freshwater Forest Lake",
+      "description": "A tranquil, pine-encircled freshwater lake nestled in the Pir Panjal foothills near Yusmarg. Known for its clear blue water, it receives underground springs and surface runoff from pine-clad hills, feeding the Doodhganga tributary network.",
+      "district": "Budgam",
+      "region": "Kashmir Core",
+      "watershed": "Doodhganga Watershed",
+      "area": 0.18,
+      "elevation": 2180,
+      "coordinates": {
+          "lat": 33.8291,
+          "lng": 74.6897
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 7.8,
+          "turbidity": 2.4,
+          "conductivity": 110,
+          "temperature": 13.5,
+          "nitrates": 0.45,
+          "phosphates": 0.06,
+          "biologicalOxygenDemand": 1.8,
+          "totalDissolvedSolids": 88,
+          "lastTested": "2026-05-24",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "improving",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Kashmiri Carp (Cyprinus carpio)",
+          "Schizothorax niger",
+          "Pinus wallichiana canopy",
+          "Waterfowl"
+      ],
+      "threats": [
+          "siltation-from-catchment-trails",
+          "tourism-litter",
+          "eutrophication-risk"
+      ],
+      "conservationStatus": "Community Watershed Conservation Site",
+      "hydrologicalData": {
+          "waterLevel": 6.5,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 14,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Natural mid-altitude forest lake providing essential micro-catchment retention in the Doodhganga basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "tulian-lake",
+      "slug": "tulian-lake",
+      "name": "Tulian Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "Cradled in a steep amphitheater between the Pir Panjal and Zanskar ranges above Pahalgam. Shaped like a number eight, this high-altitude tarn frequently carries floating ice floes well into mid-summer, surrounded by jagged scree slopes.",
+      "district": "Anantnag",
+      "region": "Kashmir Core",
+      "watershed": "Lidder Watershed",
+      "area": 0.7,
+      "elevation": 3684,
+      "coordinates": {
+          "lat": 33.9782,
+          "lng": 75.3428
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.7,
+          "conductivity": 44,
+          "temperature": 5.8,
+          "nitrates": 0.14,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 32,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Himalayan snow trout",
+          "Alpine lichens and bryophytes",
+          "Himalayan Monal habitat proxy",
+          "Ibex corridors"
+      ],
+      "threats": [
+          "glacier-snowpack-depletion",
+          "trekking-corridor-waste",
+          "slope-erosion"
+      ],
+      "conservationStatus": "High Altitude Eco-Sensitive Zone",
+      "hydrologicalData": {
+          "waterLevel": 18,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 22,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "High-altitude glacial amphitheater tarn acting as an upper cold-water buffer for the Lidder River system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "alpather-lake",
+      "slug": "alpather-lake",
+      "name": "Alpather Lake (Frozen Lake)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "Perched at the foot of the Apharwat Peaks above Gulmarg, this glacial cirque lake remains completely frozen until late June, earning it the moniker 'Frozen Lake'. Fed by Apharwat snowpack, it drains down the Ningli Nallah into the Jhelum.",
+      "district": "Baramulla",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.35,
+      "elevation": 3840,
+      "coordinates": {
+          "lat": 34.0205,
+          "lng": 74.3467
+      },
+      "waterQuality": {
+          "pH": 7.2,
+          "dissolvedOxygen": 10.1,
+          "turbidity": 0.6,
+          "conductivity": 38,
+          "temperature": 4.8,
+          "nitrates": 0.11,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 28,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cryophilic algae",
+          "Alpine choughs",
+          "Himalayan Marmot",
+          "Snowcock"
+      ],
+      "threats": [
+          "unregulated-horse-and-snowmobile-traffic",
+          "waste-dumping",
+          "accelerated-snowpack-melt"
+      ],
+      "conservationStatus": "Gulmarg Biosphere Buffer Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 12,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 16,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Cirque glacier lake feeding the Ningli Nallah and replenishing sub-alpine groundwater around Gulmarg.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "ahansar-lake",
+      "slug": "ahansar-lake",
+      "name": "Ahansar Lake",
+      "type": "lake",
+      "category": "Floodplain Wetland Lake",
+      "description": "A semi-drainage freshwater floodplain lake located in the lower Jhelum floodplain near Sumbal, downstream of Manasbal Lake. Rich in rooted submerged vegetation and surrounded by rural willow plantations, it supports local carp and lotus rhizome harvesting.",
+      "district": "Ganderbal",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.28,
+      "elevation": 1580,
+      "coordinates": {
+          "lat": 34.2384,
+          "lng": 74.6715
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 6.2,
+          "turbidity": 5.4,
+          "conductivity": 285,
+          "temperature": 17.5,
+          "nitrates": 1.15,
+          "phosphates": 0.18,
+          "biologicalOxygenDemand": 3.4,
+          "totalDissolvedSolids": 185,
+          "lastTested": "2026-05-15",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "declining",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Nelumbo nucifera (Sacred Lotus)",
+          "Cyprinus carpio",
+          "Schizothorax esocinus",
+          "Common Moorhen",
+          "Mallard"
+      ],
+      "threats": [
+          "agricultural-runoff",
+          "siltation",
+          "weed-infestation-azolla",
+          "encroachment"
+      ],
+      "conservationStatus": "Floodplain Conservation Reserve",
+      "hydrologicalData": {
+          "waterLevel": 3.5,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 20,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Key flood-moderating backwater in the Manasbal-Sumbal riparian cluster of the Jhelum riverine corridor.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "waskursar-lake",
+      "slug": "waskursar-lake",
+      "name": "Waskursar Lake",
+      "type": "lake",
+      "category": "Rural Freshwater Lake",
+      "description": "An oxbow-type rural freshwater lake situated in Ganderbal district on the left bank of the Jhelum River. Connected to the regional canal network, it sustains village irrigation, extensive reed beds (Phragmites), and wintering wildfowl.",
+      "district": "Ganderbal",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.32,
+      "elevation": 1580,
+      "coordinates": {
+          "lat": 34.2581,
+          "lng": 74.6542
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 6.4,
+          "turbidity": 4.8,
+          "conductivity": 260,
+          "temperature": 16.8,
+          "nitrates": 1.05,
+          "phosphates": 0.16,
+          "biologicalOxygenDemand": 3.1,
+          "totalDissolvedSolids": 172,
+          "lastTested": "2026-05-15",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Phragmites australis",
+          "Typha angustifolia",
+          "Cyprinus carpio",
+          "Kingfishers",
+          "Little Grebe"
+      ],
+      "threats": [
+          "nutrient-enrichment",
+          "encroachment-by-willow-culture",
+          "domestic-effluent"
+      ],
+      "conservationStatus": "Local Ecological Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 4,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 18,
+          "floodRisk": "moderate"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Floodplain lake providing localized sediment trapping and natural bio-filtration before waters rejoin the Jhelum.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "khushalsar-lake",
+      "slug": "khushalsar-lake",
+      "name": "Khushalsar Lake",
+      "type": "lake",
+      "category": "Urban Lake",
+      "description": "A historic urban waterbody in downtown Srinagar, once critically choked by sewage and encroachment, now the focal point of pioneering community-driven ecological restoration. Connected to Gilsar and Anchar lakes, revitalizing its waterways has restored traditional navigation.",
+      "district": "Srinagar",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.65,
+      "elevation": 1582,
+      "coordinates": {
+          "lat": 34.1167,
+          "lng": 74.7925
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 5.6,
+          "turbidity": 8.5,
+          "conductivity": 390,
+          "temperature": 18.2,
+          "nitrates": 2.1,
+          "phosphates": 0.38,
+          "biologicalOxygenDemand": 5.2,
+          "totalDissolvedSolids": 245,
+          "lastTested": "2026-05-26",
+          "status": "poor",
+          "trends": {
+              "pH": "improving",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Re-emerging Nelumbo nucifera",
+          "Schizothorax niger",
+          "Common Coot",
+          "White-breasted Kingfisher"
+      ],
+      "threats": [
+          "urban-solid-waste-discharge",
+          "encroachment",
+          "untreated-sewage-inlets"
+      ],
+      "conservationStatus": "Active Urban Eco-Restoration Priority",
+      "hydrologicalData": {
+          "waterLevel": 2.5,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 12,
+          "floodRisk": "high"
+      },
+      "restorationData": {
+          "restorationType": "lake-restoration",
+          "status": "ongoing",
+          "startDate": "2021-02-01",
+          "implementingAgency": "LCMA & Community Volunteer Collectives",
+          "objectives": [
+              "Channel desiltation",
+              "Removal of illegal bunds",
+              "Sewage interception",
+              "Restoration of historic shikara navigation"
+          ],
+          "areaTreated": 0.65,
+          "communityInvolvement": true
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Crucial urban hydrological link between Nigeen, Gilsar, and Anchar lake ecosystems.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "gilsar-lake",
+      "slug": "gilsar-lake",
+      "name": "Gilsar Lake",
+      "type": "lake",
+      "category": "Urban Lake",
+      "description": "A connecting urban waterbody situated between Nigeen Lake and Khushalsar Lake, linked via the Amir Khan Nallah. Subjected to extensive dredging and cleanup operations, Gilsar plays a decisive role in regulating urban drainage and flood dissipation in northern Srinagar.",
+      "district": "Srinagar",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.42,
+      "elevation": 1582,
+      "coordinates": {
+          "lat": 34.1235,
+          "lng": 74.8012
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 5.8,
+          "turbidity": 7.8,
+          "conductivity": 375,
+          "temperature": 17.9,
+          "nitrates": 1.95,
+          "phosphates": 0.34,
+          "biologicalOxygenDemand": 4.8,
+          "totalDissolvedSolids": 230,
+          "lastTested": "2026-05-26",
+          "status": "poor",
+          "trends": {
+              "pH": "improving",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Re-established aquatic vegetation",
+          "Kashmiri carp",
+          "Migratory egrets",
+          "Moorhens"
+      ],
+      "threats": [
+          "solid-waste-dumping",
+          "inflow-sewage",
+          "historical-siltation"
+      ],
+      "conservationStatus": "Urban Waterway Rehabilitation Project",
+      "hydrologicalData": {
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 10,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Hydro-dynamic conduit regulating flow between the Dal-Nigeen basin and the Anchar wetland depression.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "bramsar-lake",
+      "slug": "bramsar-lake",
+      "name": "Bramsar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "An isolated alpine glacial tarn situated deep within the Pir Panjal range in southern Kashmir near Kausar Nag. Perched at nearly 4,000 meters above sea level, Bramsar remains under snow for nine months of the year and releases icy meltwaters into the Veshaw headwaters.",
+      "district": "Kulgam",
+      "region": "Kashmir Core",
+      "watershed": "Veshaw Watershed",
+      "area": 0.5,
+      "elevation": 3950,
+      "coordinates": {
+          "lat": 33.4925,
+          "lng": 74.8115
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 10.3,
+          "turbidity": 0.5,
+          "conductivity": 32,
+          "temperature": 4.5,
+          "nitrates": 0.08,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.4,
+          "totalDissolvedSolids": 24,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Glacial snow algae",
+          "High-altitude microflora",
+          "Snowcock",
+          "Ibex corridors"
+      ],
+      "threats": [
+          "cryospheric-retreat",
+          "permafrost-degradation"
+      ],
+      "conservationStatus": "Untouched Alpine Wilderness",
+      "hydrologicalData": {
+          "waterLevel": 16,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 15,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Ultra-oligotrophic cirque reservoir acting as a headwater perennial anchor for the Veshaw River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "pangong-tso",
+      "slug": "pangong-tso",
+      "name": "Pangong Tso (Bangong Co)",
+      "type": "lake",
+      "category": "Endorheic Saline Lake",
+      "description": "The world's highest endorheic saltwater lake, situated in the Changthang plateau of eastern Ladakh at 4,225 meters. Stretching 134 km in total length across the Line of Actual Control into Tibet, the lake is famed for its ever-shifting shades of azure, cobalt, and turquoise. Despite saline water, it freezes solid in winter.",
+      "district": "Leh",
+      "region": "Ladakh",
+      "watershed": "Pangong Endorheic Basin",
+      "area": 604,
+      "elevation": 4225,
+      "coordinates": {
+          "lat": 33.7595,
+          "lng": 78.6674
+      },
+      "waterQuality": {
+          "pH": 8.8,
+          "dissolvedOxygen": 7.2,
+          "turbidity": 0.9,
+          "conductivity": 14200,
+          "temperature": 8.1,
+          "nitrates": 0.22,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.1,
+          "totalDissolvedSolids": 9600,
+          "lastTested": "2026-05-20",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Bar-headed Goose (Anser indicus)",
+          "Brahminy Duck",
+          "Black-necked Crane nesting grounds",
+          "Artemia salina",
+          "Himalayan Marmot"
+      ],
+      "threats": [
+          "mass-tourism-vehicular-emissions",
+          "plastic-waste-accumulation",
+          "unregulated-construction-along-shore"
+      ],
+      "conservationStatus": "High Altitude Wetland of International Significance",
+      "hydrologicalData": {
+          "waterLevel": 100,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 4000,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Largest transboundary high-altitude endorheic lake system in the Tibetan Plateau margin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "mansar-lake",
+      "slug": "mansar-lake",
+      "name": "Mansar Lake",
+      "type": "lake",
+      "category": "Sub-tropical Freshwater Lake",
+      "description": "A picturesque sub-tropical freshwater lake located in the Shivalik foothills of Samba and Udhampur districts. Designated as a Ramsar site alongside Surinsar, Mansar is surrounded by pine-covered hills and holds immense religious and biological significance, supporting multiple endemic turtle species.",
+      "district": "Samba",
+      "region": "Jammu",
+      "watershed": "Tawi Watershed",
+      "area": 0.59,
+      "elevation": 666,
+      "coordinates": {
+          "lat": 32.6975,
+          "lng": 75.1481
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 6.9,
+          "turbidity": 4.2,
+          "conductivity": 310,
+          "temperature": 24.2,
+          "nitrates": 0.65,
+          "phosphates": 0.12,
+          "biologicalOxygenDemand": 2.8,
+          "totalDissolvedSolids": 195,
+          "lastTested": "2026-05-23",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Lissemys punctata (Indian Flapshell Turtle)",
+          "Nilssonia gangetica (Indian Softshell Turtle)",
+          "Tor putitora (Golden Mahseer)",
+          "Spotted Deer",
+          "Migratory waterfowl"
+      ],
+      "threats": [
+          "tourism-pressures",
+          "religious-offerings-eutrophication",
+          "siltation-from-degraded-slopes"
+      ],
+      "conservationStatus": "Ramsar Site #1573",
+      "hydrologicalData": {
+          "waterLevel": 38,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 28,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Tor putitora (Golden Mahseer)",
+              "Labeo rohita",
+              "Cirrhinus mrigala"
+          ],
+          "fisheryType": "managed",
+          "productivity": "moderate",
+          "permits": false,
+          "conservationMeasures": [
+              "Holy lake designation - fishing strictly prohibited for conservation"
+          ]
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Sub-tropical tectonic freshwater lake with subterranean karst linkages providing biodiversity refugium in the Outer Himalayas.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "surinsar-lake",
+      "slug": "surinsar-lake",
+      "name": "Surinsar Lake",
+      "type": "lake",
+      "category": "Sub-tropical Freshwater Lake",
+      "description": "The twin sister lake of Mansar, situated 9 km northwest in Jammu district amidst lush pine and broadleaf forests. Part of the designated Surinsar-Mansar Ramsar complex, it features floating vegetation islands and supports diverse aquatic avifauna and indigenous freshwater turtles.",
+      "district": "Jammu",
+      "region": "Jammu",
+      "watershed": "Tawi Watershed",
+      "area": 0.29,
+      "elevation": 605,
+      "coordinates": {
+          "lat": 32.7762,
+          "lng": 75.0418
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 6.8,
+          "turbidity": 4.6,
+          "conductivity": 325,
+          "temperature": 24.8,
+          "nitrates": 0.72,
+          "phosphates": 0.14,
+          "biologicalOxygenDemand": 2.9,
+          "totalDissolvedSolids": 205,
+          "lastTested": "2026-05-23",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Lissemys punctata",
+          "Nelumbo nucifera",
+          "Nymphaea alba",
+          "Waterhen",
+          "Kingfishers",
+          "Barking Deer"
+      ],
+      "threats": [
+          "siltation",
+          "weed-proliferation",
+          "tourist-litter",
+          "runoff-nutrients"
+      ],
+      "conservationStatus": "Ramsar Site #1573",
+      "hydrologicalData": {
+          "waterLevel": 24,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 22,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Composite Ramsar wetland complex providing regional microclimatic stabilization and aquifer replenishment.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "sanasar-lake",
+      "slug": "sanasar-lake",
+      "name": "Sanasar Lake",
+      "type": "lake",
+      "category": "High Altitude Meadow Lake",
+      "description": "A charming cup-shaped meadow lake situated in a highland depression near Patnitop in Ramban district. Surrounded by dense conifer and cedar forests, it receives meltwater and underground springs, playing a vital role in local pastoral grazing ecology and ecotourism.",
+      "district": "Ramban",
+      "region": "Jammu",
+      "watershed": "Chenab Basin",
+      "area": 0.12,
+      "elevation": 2050,
+      "coordinates": {
+          "lat": 33.0911,
+          "lng": 75.2954
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 7.6,
+          "turbidity": 2.8,
+          "conductivity": 135,
+          "temperature": 15.2,
+          "nitrates": 0.42,
+          "phosphates": 0.06,
+          "biologicalOxygenDemand": 1.6,
+          "totalDissolvedSolids": 92,
+          "lastTested": "2026-05-21",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Sub-alpine meadow grasses",
+          "Freshwater minnows",
+          "Cedar and Pine canopy avifauna",
+          "Eurasian Coot"
+      ],
+      "threats": [
+          "siltation-from-surrounding-slopes",
+          "tourist-footfall-trampling",
+          "weed-growth"
+      ],
+      "conservationStatus": "Ecotourism Conservation Zone",
+      "hydrologicalData": {
+          "waterLevel": 5.2,
+          "seasonalVariation": "perennial",
+          "source": "rainfall",
+          "drainageArea": 8.5,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Highland tectonic depression serving as localized catchment sink in the Middle Chenab watershed.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "kyagar-tso",
+      "slug": "kyagar-tso",
+      "name": "Kyagar Tso",
+      "type": "lake",
+      "category": "Plateau Brackish Lake",
+      "description": "A compact, intensely blue brackish lake set in the barren expanses of the Rupshu plateau along the route from Leh to Tso Moriri. Perched at an altitude of 4,570 meters, this cold-desert lake is bordered by saline efflorescence and provides a crucial resting point for migratory waterbirds.",
+      "district": "Leh",
+      "region": "Ladakh",
+      "watershed": "Indus Basin",
+      "area": 3.2,
+      "elevation": 4570,
+      "coordinates": {
+          "lat": 33.1118,
+          "lng": 78.2917
+      },
+      "waterQuality": {
+          "pH": 8.6,
+          "dissolvedOxygen": 7.5,
+          "turbidity": 1.2,
+          "conductivity": 5800,
+          "temperature": 6.4,
+          "nitrates": 0.19,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.9,
+          "totalDissolvedSolids": 4100,
+          "lastTested": "2026-05-18",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Bar-headed Goose",
+          "Ruddy Shelduck",
+          "Tibetan Wild Ass (Kiang)",
+          "Chukar Partridge"
+      ],
+      "threats": [
+          "highway-runoff",
+          "climate-induced-permafrost-melting",
+          "dust-deposition"
+      ],
+      "conservationStatus": "Changthang Wildlife Sanctuary Zone",
+      "hydrologicalData": {
+          "waterLevel": 18,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 85,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "High-altitude saline-brackish steppe lake providing crucial habitat along the Central Asian Flyway.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "stat-tso-lang-tso",
+      "slug": "stat-tso-lang-tso",
+      "name": "Stat Tso & Lang Tso (Twin Lakes of Pensi La)",
+      "type": "lake",
+      "category": "High Altitude Glacial Lake",
+      "description": "The scenic twin glacial tarns located at the summit of Pensi La (4,400 m), the gateway pass connecting the Suru Valley with Zanskar. Fed by the mighty Drang-Drung Glacier moraine and snowfields, these pristine sapphire waterbodies reflect the towering snow peaks of the Greater Himalayas.",
+      "district": "Kargil",
+      "region": "Ladakh",
+      "watershed": "Suru-Zanskar Watershed",
+      "area": 1.8,
+      "elevation": 4400,
+      "coordinates": {
+          "lat": 33.8562,
+          "lng": 76.3688
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.7,
+          "conductivity": 45,
+          "temperature": 4.8,
+          "nitrates": 0.12,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 31,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Brahminy ducks (Tadorna ferruginea)",
+          "Alpine sedges",
+          "Himalayan Marmot",
+          "Tibetan Snowcock"
+      ],
+      "threats": [
+          "highway-expansion-impacts",
+          "cryosphere-thinning",
+          "unmanaged-tourist-stops"
+      ],
+      "conservationStatus": "Zanskar Eco-Sensitive Glacier Buffer",
+      "hydrologicalData": {
+          "waterLevel": 14,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 42,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Glacial pass tarns regulating headwater discharge into both the Suru River and the Stod/Doda rivers.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "nandan-sar",
+      "slug": "nandan-sar",
+      "name": "Nandan Sar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "The largest of the famous Seven Lakes (Sar) circuit in the Pir Panjal range in Rajouri and Poonch. Oval-shaped and spanning over a kilometer in length, Nandan Sar's crystal blue waters drain southward into the Poonch river basin, surrounded by alpine scree and wild rhododendron scrub.",
+      "district": "Rajouri",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 0.95,
+      "elevation": 3500,
+      "coordinates": {
+          "lat": 33.5684,
+          "lng": 74.5241
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.5,
+          "turbidity": 0.8,
+          "conductivity": 52,
+          "temperature": 7.1,
+          "nitrates": 0.16,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.7,
+          "totalDissolvedSolids": 37,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Indigenous snow trout",
+          "Alpine dwarf shrubs",
+          "Himalayan Griffon",
+          "Snow Partridge"
+      ],
+      "threats": [
+          "unregulated-grazing",
+          "trekking-waste",
+          "slope-degradation"
+      ],
+      "conservationStatus": "Pir Panjal Alpine Protected Zone",
+      "hydrologicalData": {
+          "waterLevel": 25,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 30,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Crown waterbody of the southern Pir Panjal alpine cluster supplying the Bafliaz-Poonch headwaters.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "chandan-sar",
+      "slug": "chandan-sar",
+      "name": "Chandan Sar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "A magnificent high-altitude alpine lake situated at 3,600 meters in the Pir Panjal range of Rajouri. Fed by snowmelt from surrounding jagged crags, it features a unique crescent contour and remains frozen until early summer.",
+      "district": "Rajouri",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 0.52,
+      "elevation": 3600,
+      "coordinates": {
+          "lat": 33.5821,
+          "lng": 74.5385
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 0.7,
+          "conductivity": 46,
+          "temperature": 6.2,
+          "nitrates": 0.13,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 33,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cold-water diatoms",
+          "Alpine flora",
+          "Marmots",
+          "Snow leopard corridor proxy"
+      ],
+      "threats": [
+          "glacier-recession",
+          "livestock-pressure-on-rims"
+      ],
+      "conservationStatus": "Pir Panjal Wilderness Area",
+      "hydrologicalData": {
+          "waterLevel": 18,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 19,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Glacial amphitheater tarn sustaining headwater discharge for the Mandi-Poonch drainage.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "katori-sar",
+      "slug": "katori-sar",
+      "name": "Katori Sar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "Named for its distinctive bowl ('katori') shaped cirque basin, this high-altitude glacial tarn lies in the alpine crest of the Pir Panjal in Rajouri district. Its turquoise waters are fed by perennial snowbanks clinging to adjacent peaks.",
+      "district": "Rajouri",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 0.38,
+      "elevation": 3550,
+      "coordinates": {
+          "lat": 33.5742,
+          "lng": 74.5492
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 0.6,
+          "conductivity": 40,
+          "temperature": 6.5,
+          "nitrates": 0.11,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 29,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "High alpine bryophytes",
+          "Snowcock",
+          "Ibex",
+          "Dwarf alpine willow"
+      ],
+      "threats": [
+          "seasonal-snowpack-variability",
+          "unmanaged-grazing-margins"
+      ],
+      "conservationStatus": "High Altitude Natural Heritage Site",
+      "hydrologicalData": {
+          "waterLevel": 15,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 14,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "High alpine cirque reservoir providing baseline snowmelt discharge in the Upper Poonch basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "kailash-kund",
+      "slug": "kailash-kund",
+      "name": "Kailash Kund (Vasuki Kund)",
+      "type": "lake",
+      "category": "High Altitude Alpine Tarn",
+      "description": "A sacred high-altitude alpine lake perched at an elevation of 3,900 meters atop the Kaplash ridge in Doda district. Regarded as the mythological abode of serpent king Vasuki Nag, this glacial tarn drains into the Neeru stream and onwards into the Chenab River.",
+      "district": "Doda",
+      "region": "Jammu",
+      "watershed": "Chenab Basin",
+      "area": 0.4,
+      "elevation": 3900,
+      "coordinates": {
+          "lat": 32.9125,
+          "lng": 75.7258
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.8,
+          "conductivity": 45,
+          "temperature": 5.5,
+          "nitrates": 0.14,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 32,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Alpine meadows of Bhaderwah",
+          "Himalayan Monal",
+          "Musk Deer habitat proxy",
+          "Snow trout"
+      ],
+      "threats": [
+          "pilgrimage-waste-generation",
+          "climatic-snow-reduction",
+          "soil-erosion"
+      ],
+      "conservationStatus": "Sacred High Altitude Catchment",
+      "hydrologicalData": {
+          "waterLevel": 12,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 18,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Primary source of the Neeru stream sustaining irrigation and municipal water across Bhaderwah valley.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "attabad-lake",
+      "slug": "attabad-lake",
+      "name": "Attabad Lake (Gojal Lake)",
+      "type": "lake",
+      "category": "Barrier Glacial-River Lake",
+      "description": "A monumental turquoise-colored barrier lake formed in January 2010 when a massive landslide dammed the Hunza River at Attabad. Stretching over 21 kilometers in length with depths exceeding 100 meters, it has evolved into a cornerstone of Gilgit-Baltistan's ecotourism, transport, and trout aquaculture.",
+      "district": "Hunza",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Hunza River Basin",
+      "area": 13.5,
+      "elevation": 2559,
+      "coordinates": {
+          "lat": 36.3344,
+          "lng": 74.8692
+      },
+      "waterQuality": {
+          "pH": 7.9,
+          "dissolvedOxygen": 8.6,
+          "turbidity": 3.5,
+          "conductivity": 290,
+          "temperature": 11.2,
+          "nitrates": 0.38,
+          "phosphates": 0.05,
+          "biologicalOxygenDemand": 1.4,
+          "totalDissolvedSolids": 185,
+          "lastTested": "2026-05-12",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta (Brown Trout)",
+          "Rainbow Trout",
+          "Glacial sediment phytoplankton",
+          "Chukar Partridge",
+          "Snow Leopard corridor"
+      ],
+      "threats": [
+          "landslide-dam-erosion-spillway-risk",
+          "boat-fuel-emissions",
+          "tourism-waste"
+      ],
+      "conservationStatus": "Major Transboundary Waterbody",
+      "hydrologicalData": {
+          "flowRate": 145,
+          "waterLevel": 109,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 13500,
+          "floodRisk": "high"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout",
+              "Rainbow Trout",
+              "Schizothorax plagiostomus"
+          ],
+          "fisheryType": "aquaculture",
+          "productivity": "high",
+          "permits": true
+      },
+      "nwiaSignificance": "Massive natural barrier reservoir modulating discharge into the Indus Basin and serving as vital regional transboundary infrastructure.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "ratti-gali-lake",
+      "slug": "ratti-gali-lake",
+      "name": "Ratti Gali Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "A mesmerizing red-flower fringed glacial alpine lake situated at 3,700 meters in the Neelum Valley of Azad Jammu and Kashmir. Fed directly by glacial meltwaters tumbling from surrounding peaks of the Hindu Kush-Himalayan transition, its deep sapphire waters feed the Ratti Gali stream into the Neelum River.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 0.85,
+      "elevation": 3700,
+      "coordinates": {
+          "lat": 34.8297,
+          "lng": 74.0583
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.9,
+          "turbidity": 0.8,
+          "conductivity": 48,
+          "temperature": 5.6,
+          "nitrates": 0.14,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 34,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Indigenous trout species",
+          "Alpine meadow flora",
+          "Himalayan Snowcock",
+          "Musk deer proxy habitat"
+      ],
+      "threats": [
+          "unregulated-camping-and-litter",
+          "pack-animal-overgrazing",
+          "climate-accelerated-glacier-melt"
+      ],
+      "conservationStatus": "Protected High Alpine Wetland",
+      "hydrologicalData": {
+          "waterLevel": 32,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 35,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Glacial tarn providing headwater streamflow into the Neelum/Kishanganga river system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "chitta-katha-lake",
+      "slug": "chitta-katha-lake",
+      "name": "Chitta Katha Lake",
+      "type": "lake",
+      "category": "High Altitude Glacial Tarn",
+      "description": "A sacred and spellbinding alpine tarn located in the Shounter Valley of Neelum at 4,100 meters. Sitting directly below the majestic pyramid of Mount Hari Parbat, the lake is fed by hanging glaciers and yields the Chitta Katha stream that plunges into the Shounter Nallah.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 0.72,
+      "elevation": 4100,
+      "coordinates": {
+          "lat": 34.9214,
+          "lng": 74.5218
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 10.1,
+          "turbidity": 0.6,
+          "conductivity": 38,
+          "temperature": 4.8,
+          "nitrates": 0.11,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 28,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cold-hardy alpine lichens",
+          "Snowcock",
+          "Ibex corridors",
+          "Himalayan Brown Bear corridor proxy"
+      ],
+      "threats": [
+          "glacier-mass-balance-deficit",
+          "expedition-refuse",
+          "steep-slope-scree-slides"
+      ],
+      "conservationStatus": "Sacred Alpine Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 28,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 25,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "High alpine glacial tarn in the upper Shounter cirque feeding key right-bank tributaries of the Neelum River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "sheosar-lake",
+      "slug": "sheosar-lake",
+      "name": "Sheosar Lake",
+      "type": "lake",
+      "category": "High Altitude Plateau Lake",
+      "description": "One of the highest and most spectacular plateau lakes on Earth, situated at 4,142 meters in the heart of Deosai National Park ('The Land of Giants'). Framed by endless rolling alpine tundra and providing vistas of Nanga Parbat, the lake supports vital habitat for the endangered Himalayan Brown Bear.",
+      "district": "Astore",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Astore Basin",
+      "area": 1.95,
+      "elevation": 4142,
+      "coordinates": {
+          "lat": 35.0347,
+          "lng": 75.2472
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 0.8,
+          "conductivity": 56,
+          "temperature": 5.8,
+          "nitrates": 0.15,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 40,
+          "lastTested": "2026-05-18",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Ursus arctos isabellinus (Himalayan Brown Bear)",
+          "Tibetan Wolf",
+          "Golden Marmot",
+          "Bar-headed Goose",
+          "Schizothorax spp."
+      ],
+      "threats": [
+          "tourist-jeep-off-roading-in-tundra",
+          "solid-waste-in-park",
+          "permafrost-melting"
+      ],
+      "conservationStatus": "Deosai National Park Core Waterbody",
+      "hydrologicalData": {
+          "waterLevel": 40,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 65,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Tibetan Snow Trout (Schizothorax)"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": false,
+          "conservationMeasures": [
+              "Protected under National Park Wildlife Ordinance"
+          ]
+      },
+      "nwiaSignificance": "High alpine plateau lake of international bioclimatic significance anchoring the Deosai hydrological sponge.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "shangrila-lower-kachura",
+      "slug": "shangrila-lower-kachura",
+      "name": "Lower Kachura Lake (Shangrila Lake)",
+      "type": "lake",
+      "category": "Freshwater Mountain Lake",
+      "description": "Renowned globally as Shangrila Lake, this heart-shaped freshwater mountain lake sits at 2,500 meters in Skardu. Surrounded by traditional Tibetan-style pavilions, fruit orchards, and sheer Karakoram granite cliffs, it is famous for its placid mirror-like reflections and healthy trout population.",
+      "district": "Skardu",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 0.35,
+      "elevation": 2500,
+      "coordinates": {
+          "lat": 35.4244,
+          "lng": 75.4461
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 8.2,
+          "turbidity": 1.8,
+          "conductivity": 185,
+          "temperature": 12.8,
+          "nitrates": 0.48,
+          "phosphates": 0.07,
+          "biologicalOxygenDemand": 1.8,
+          "totalDissolvedSolids": 125,
+          "lastTested": "2026-05-15",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Oncorhynchus mykiss (Rainbow Trout)",
+          "Brown Trout",
+          "Apricot and apple orchard fringes",
+          "Kingfishers"
+      ],
+      "threats": [
+          "resort-effluents",
+          "plastic-packaging-waste",
+          "eutrophication-risk"
+      ],
+      "conservationStatus": "Managed Ecotourism Lake",
+      "hydrologicalData": {
+          "waterLevel": 15,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 18,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Rainbow Trout",
+              "Brown Trout"
+          ],
+          "fisheryType": "managed",
+          "productivity": "high",
+          "permits": true
+      },
+      "nwiaSignificance": "Perennial spring and melt-fed mountain lake buffering local hydrological discharge to the Indus river.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "upper-kachura-lake",
+      "slug": "upper-kachura-lake",
+      "name": "Upper Kachura Lake",
+      "type": "lake",
+      "category": "Glacial Freshwater Lake",
+      "description": "A pristine, deep glacial lake located 2.5 km upstream from Lower Kachura in Skardu. With depths exceeding 70 meters and clear turquoise waters maintaining exceptional purity due to subterranean drainage, it is encircled by wild apricot groves and dramatic Karakoram bluffs.",
+      "district": "Skardu",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 0.6,
+      "elevation": 2500,
+      "coordinates": {
+          "lat": 35.4475,
+          "lng": 75.4489
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 8.8,
+          "turbidity": 1.1,
+          "conductivity": 160,
+          "temperature": 11.5,
+          "nitrates": 0.32,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.2,
+          "totalDissolvedSolids": 108,
+          "lastTested": "2026-05-15",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Schizothorax spp.",
+          "Aquatic mosses",
+          "Wild rose and apricot groves"
+      ],
+      "threats": [
+          "boating-fuel-residues",
+          "shoreline-litter",
+          "unmonitored-bathing"
+      ],
+      "conservationStatus": "Protected High Altitude Freshwater Body",
+      "hydrologicalData": {
+          "waterLevel": 70,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 25,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout",
+              "Indigenous Snow Trout"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": true
+      },
+      "nwiaSignificance": "Subterranean drainage regulator discharging directly into the adjacent Indus River gorge.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "satpara-lake",
+      "slug": "satpara-lake",
+      "name": "Satpara Lake",
+      "type": "lake",
+      "category": "Glacial Reservoir Lake",
+      "description": "A magnificent natural freshwater lake enlarged by the Satpara Dam in Skardu valley. Fed by melting snows of the Deosai plateau via the Satpara Stream, this turquoise reservoir provides 17.3 MW of hydroelectricity, drinking water, and agricultural irrigation to the entire Skardu municipality.",
+      "district": "Skardu",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 2.5,
+      "elevation": 2636,
+      "coordinates": {
+          "lat": 35.2347,
+          "lng": 75.6267
+      },
+      "waterQuality": {
+          "pH": 7.8,
+          "dissolvedOxygen": 8.5,
+          "turbidity": 2.2,
+          "conductivity": 210,
+          "temperature": 10.4,
+          "nitrates": 0.4,
+          "phosphates": 0.05,
+          "biologicalOxygenDemand": 1.5,
+          "totalDissolvedSolids": 140,
+          "lastTested": "2026-05-17",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Brown Trout",
+          "Rainbow Trout",
+          "Tibetan Snow Trout",
+          "Waterfowl stopover"
+      ],
+      "threats": [
+          "siltation-from-upstream-moraines",
+          "dam-operational-fluctuations",
+          "catchment-erosion"
+      ],
+      "conservationStatus": "Critical Municipal Water & Power Reservoir",
+      "hydrologicalData": {
+          "discharge": 120,
+          "waterLevel": 35,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 350,
+          "floodRisk": "moderate"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout",
+              "Rainbow Trout",
+              "Schizothorax"
+          ],
+          "fisheryType": "managed",
+          "productivity": "high",
+          "permits": true
+      },
+      "nwiaSignificance": "Vital multipurpose reservoir anchoring the municipal, agricultural, and energy security of central Baltistan.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "rush-lake",
+      "slug": "rush-lake",
+      "name": "Rush Lake",
+      "type": "lake",
+      "category": "Ultra-High Altitude Glacial Lake",
+      "description": "One of the highest alpine lakes in the world, sitting at an astounding 4,694 meters in Nagar Valley near Rush Pari Peak. Overlooking the colossal peaks of Spantik (Golden Peak) and Malubiting, this pristine glacial tarn represents an extreme alpine cryospheric ecosystem.",
+      "district": "Nagar",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Hunza River Basin",
+      "area": 0.45,
+      "elevation": 4694,
+      "coordinates": {
+          "lat": 36.1667,
+          "lng": 74.9167
+      },
+      "waterQuality": {
+          "pH": 7.2,
+          "dissolvedOxygen": 10.2,
+          "turbidity": 0.5,
+          "conductivity": 28,
+          "temperature": 3.8,
+          "nitrates": 0.08,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.4,
+          "totalDissolvedSolids": 20,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cryo-algae",
+          "Himalayan Snowcock",
+          "Alpine choughs",
+          "Snow Leopard corridor"
+      ],
+      "threats": [
+          "rapid-cryosphere-recession",
+          "permafrost-melting",
+          "expedition-footprints"
+      ],
+      "conservationStatus": "Extreme High Altitude Cryosphere Heritage",
+      "hydrologicalData": {
+          "waterLevel": 10,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 12,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Extreme altitude glacial tarn serving as a sensitive barometer for Karakoram cryospheric fluctuations.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "karambar-lake",
+      "slug": "karambar-lake",
+      "name": "Karambar Lake (Qurumbar Lake)",
+      "type": "lake",
+      "category": "High Altitude Glacial Lake",
+      "description": "The 31st highest lake in the world, spanning over 3.3 km in length at an elevation of 4,272 meters on the border of the Hindu Kush and Pamir mountain ranges in Ghizer district. Feeding the Karambar River, its biological clarity is legendary, supporting endemic planktonic communities.",
+      "district": "Ghizer",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Gilgit River Basin",
+      "area": 2.6,
+      "elevation": 4272,
+      "coordinates": {
+          "lat": 36.8833,
+          "lng": 73.9833
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.8,
+          "turbidity": 0.6,
+          "conductivity": 42,
+          "temperature": 5.2,
+          "nitrates": 0.1,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 30,
+          "lastTested": "2026-05-18",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Oligotrophic benthic diatoms",
+          "Pamir argali proxy",
+          "Snowcock",
+          "Ibex"
+      ],
+      "threats": [
+          "permafrost-subsidence",
+          "glacial-moraine-movement",
+          "climate-warming"
+      ],
+      "conservationStatus": "Pamir-Hindu Kush Transboundary Biosphere Candidate",
+      "hydrologicalData": {
+          "waterLevel": 55,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 80,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Massive high-altitude headwater regulator anchoring the Ishkoman and Gilgit river systems.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "borith-lake",
+      "slug": "borith-lake",
+      "name": "Borith Lake",
+      "type": "lake",
+      "category": "Saline-Alkaline High Altitude Lake",
+      "description": "A unique saline-alkaline closed-basin lake situated at 2,600 meters in Gojal, Upper Hunza, fed by meltwater seepage from the Ghulkin Glacier. Acting as a premier sanctuary and sanctuary stopover for waterfowl migrating across the Karakoram between Central Asia and the subcontinent.",
+      "district": "Hunza",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Hunza River Basin",
+      "area": 0.3,
+      "elevation": 2600,
+      "coordinates": {
+          "lat": 36.4308,
+          "lng": 74.8622
+      },
+      "waterQuality": {
+          "pH": 8.5,
+          "dissolvedOxygen": 7.4,
+          "turbidity": 2.8,
+          "conductivity": 4200,
+          "temperature": 13.8,
+          "nitrates": 0.35,
+          "phosphates": 0.06,
+          "biologicalOxygenDemand": 1.6,
+          "totalDissolvedSolids": 2800,
+          "lastTested": "2026-05-14",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Mallard",
+          "Northern Pintail",
+          "Common Teal",
+          "Artemia salina",
+          "Saline tolerant reeds"
+      ],
+      "threats": [
+          "tourism-disruption-to-avifauna",
+          "glacier-melt-fluctuations",
+          "water-abstraction"
+      ],
+      "conservationStatus": "Recognized Avian Flyway Sanctuary",
+      "hydrologicalData": {
+          "waterLevel": 12,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 14,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Key high-altitude alkaline avian refuge along the Trans-Himalayan flyway.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "naltar-lakes",
+      "slug": "naltar-lakes",
+      "name": "Naltar Lakes (Bashkiri Lakes)",
+      "type": "lake",
+      "category": "Glacial Forest Lakes",
+      "description": "A world-famous series of three vibrant emerald-green and azure glacial tarns nestled in the pine-forested Naltar Valley of Gilgit. Fed by glacial melt and subterranean springs, their brilliant coloration stems from rich aquatic microflora and glacial flour sediment reflections.",
+      "district": "Gilgit",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Gilgit River Basin",
+      "area": 0.48,
+      "elevation": 3080,
+      "coordinates": {
+          "lat": 36.1952,
+          "lng": 74.1542
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 9.1,
+          "turbidity": 1.4,
+          "conductivity": 110,
+          "temperature": 9.2,
+          "nitrates": 0.24,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 0.9,
+          "totalDissolvedSolids": 78,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Rainbow Trout",
+          "Brown Trout",
+          "Sub-alpine Pinus wallichiana canopy",
+          "Chukar",
+          "Snow Leopard buffer zone"
+      ],
+      "threats": [
+          "4x4-jeep-track-erosion",
+          "litter-from-tourists",
+          "unmanaged-camping"
+      ],
+      "conservationStatus": "Naltar Wildlife Sanctuary Core",
+      "hydrologicalData": {
+          "waterLevel": 15,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 22,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Rainbow Trout (Oncorhynchus mykiss)",
+              "Brown Trout"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": true
+      },
+      "nwiaSignificance": "Cascade of sub-alpine tarns regulating stream discharge within the Naltar Wildlife Sanctuary.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "phander-lake",
+      "slug": "phander-lake",
+      "name": "Phander Lake",
+      "type": "lake",
+      "category": "Freshwater Riverine Lake",
+      "description": "A strikingly beautiful turquoise freshwater lake situated at 2,850 meters in the Phander Valley of Ghizer. Created by the meandering widening of the Gilgit River amid lush willow groves and green terraces, it is celebrated as an angling paradise for wild brown trout.",
+      "district": "Ghizer",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Gilgit River Basin",
+      "area": 1.1,
+      "elevation": 2850,
+      "coordinates": {
+          "lat": 36.1772,
+          "lng": 73.4739
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 8.9,
+          "turbidity": 1.8,
+          "conductivity": 145,
+          "temperature": 10.8,
+          "nitrates": 0.28,
+          "phosphates": 0.04,
+          "biologicalOxygenDemand": 1.1,
+          "totalDissolvedSolids": 98,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Willow and poplar riverine ecosystems",
+          "Migratory wildfowl",
+          "Otter proxy habitat"
+      ],
+      "threats": [
+          "over-angling-pressures",
+          "agricultural-fertilizer-drift",
+          "sedimentation"
+      ],
+      "conservationStatus": "Premier Trout Sanctuary & Wetland",
+      "hydrologicalData": {
+          "flowRate": 35,
+          "waterLevel": 12,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 480,
+          "floodRisk": "moderate"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout",
+              "Rainbow Trout"
+          ],
+          "fisheryType": "managed",
+          "productivity": "high",
+          "fishingSeason": "April to October",
+          "permits": true
+      },
+      "nwiaSignificance": "Valley-bottom riverine lake performing vital natural retention and sediment settling along the upper Gilgit River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "rama-lake",
+      "slug": "rama-lake",
+      "name": "Rama Lake",
+      "type": "lake",
+      "category": "Glacial Pine-Forest Lake",
+      "description": "An idyllic alpine glacial lake nestled in the Rama Valley of Astore at 3,180 meters, located beneath the eastern forested slopes leading towards the colossal Nanga Parbat massif. Bordered by ancient Himalayan cedar and pine forests, it is fed by icefall melt from Chongra Peak.",
+      "district": "Astore",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Astore Basin",
+      "area": 0.4,
+      "elevation": 3180,
+      "coordinates": {
+          "lat": 35.3347,
+          "lng": 74.8028
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 9.3,
+          "turbidity": 1,
+          "conductivity": 75,
+          "temperature": 8.5,
+          "nitrates": 0.18,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.7,
+          "totalDissolvedSolids": 52,
+          "lastTested": "2026-05-17",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cedrus deodara & Pinus wallichiana canopy",
+          "Snow Leopard habitat buffer",
+          "Himalayan Ibex",
+          "Snowcock"
+      ],
+      "threats": [
+          "tourist-camp-refuse",
+          "timber-cutting-pressures-in-buffer",
+          "glacier-thinning"
+      ],
+      "conservationStatus": "Astore Biosphere Reserve Zone",
+      "hydrologicalData": {
+          "waterLevel": 14,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 20,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Periglacial forest lake recharging the Rama stream and moderating downstream discharges into the Astore River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "subri-lake",
+      "slug": "subri-lake",
+      "name": "Subri Lake (Chinar Lake)",
+      "type": "lake",
+      "category": "Barrier Mountain Lake",
+      "description": "A scenic natural barrier lake situated 10 km outside Muzaffarabad in Azad Jammu and Kashmir. Formed in 1975 when a major hillside slip blocked the confluence of the Jhelum and Neelum tributary streams, Subri Lake serves as a key riparian habitat and regional recreational center.",
+      "district": "Muzaffarabad",
+      "region": "AJK",
+      "watershed": "Jhelum Basin",
+      "area": 0.55,
+      "elevation": 1080,
+      "coordinates": {
+          "lat": 34.3312,
+          "lng": 73.5184
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 7.5,
+          "turbidity": 4.8,
+          "conductivity": 280,
+          "temperature": 18.5,
+          "nitrates": 0.72,
+          "phosphates": 0.11,
+          "biologicalOxygenDemand": 2.4,
+          "totalDissolvedSolids": 180,
+          "lastTested": "2026-05-14",
+          "status": "good",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Mahseer (Tor putitora)",
+          "Schizothorax plagiostomus",
+          "Kingfishers",
+          "Oriental Chinar trees (Platanus orientalis)"
+      ],
+      "threats": [
+          "siltation-from-unstable-catchments",
+          "tourism-litter",
+          "highway-widening-runoff"
+      ],
+      "conservationStatus": "Riparian Rehabilitation Area",
+      "hydrologicalData": {
+          "flowRate": 28,
+          "waterLevel": 18,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 140,
+          "floodRisk": "moderate"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Tor putitora (Golden Mahseer)",
+              "Snow Trout"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": true
+      },
+      "nwiaSignificance": "Downstream landslide barrier lake buffering flood surges before the Jhelum enters the lower basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "shounter-lake",
+      "slug": "shounter-lake",
+      "name": "Shounter Lake",
+      "type": "lake",
+      "category": "High Altitude Glacial Lake",
+      "description": "A pristine spoon-shaped glacial tarn situated at 3,100 meters in the upper Shounter Valley of Neelum. Fed by melting glaciers from the surrounding snow-bound jagged peaks, the lake is enveloped by sub-alpine iris meadows and serves as a basecamp for high-altitude passes into Astore.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 0.25,
+      "elevation": 3100,
+      "coordinates": {
+          "lat": 34.9744,
+          "lng": 74.4989
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.7,
+          "turbidity": 0.9,
+          "conductivity": 44,
+          "temperature": 6.8,
+          "nitrates": 0.12,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 32,
+          "lastTested": "2026-05-22",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "High-altitude Iris and Primula",
+          "Snow Trout",
+          "Marmots",
+          "Snowcock"
+      ],
+      "threats": [
+          "unregulated-camp-waste",
+          "grazing-degradation",
+          "glacier-recession"
+      ],
+      "conservationStatus": "High Altitude Wilderness Lake",
+      "hydrologicalData": {
+          "waterLevel": 12,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 16,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Glacial meltwater collector feeding the Shounter Nallah in the upper reaches of the Neelum drainage basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "anchar-lake",
+      "slug": "anchar-lake",
+      "name": "Anchar Lake",
+      "type": "lake",
+      "category": "Freshwater Wetland Lake",
+      "description": "A historically vital semi-drainage freshwater wetland lake connected to Dal Lake via the Amir Khan Nallah and receiving outflows from the Sind River network. Located northwest of Srinagar, it serves as a massive natural flood-absorption sponge and wintering sanctuary for migratory waterfowl, currently undergoing priority ecological desiltation and boundary demarkation.",
+      "district": "Srinagar",
+      "region": "Kashmir Core",
+      "watershed": "Sind-Jhelum Confluence Basin",
+      "area": 6.8,
+      "elevation": 1584,
+      "coordinates": {
+          "lat": 34.1458,
+          "lng": 74.7792
+      },
+      "waterQuality": {
+          "pH": 7.6,
+          "dissolvedOxygen": 5.9,
+          "turbidity": 7.2,
+          "conductivity": 360,
+          "temperature": 17.5,
+          "nitrates": 1.85,
+          "phosphates": 0.32,
+          "biologicalOxygenDemand": 4.6,
+          "totalDissolvedSolids": 240,
+          "lastTested": "2026-05-24",
+          "status": "moderate",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Schizothorax niger",
+          "Cyprinus carpio",
+          "Phragmites australis",
+          "Typha angustata",
+          "Mallard (Anas platyrhynchos)",
+          "Common Teal"
+      ],
+      "threats": [
+          "urban-encroachment",
+          "solid-waste-dumping",
+          "siltation",
+          "weed-proliferation"
+      ],
+      "conservationStatus": "Critical Wetland Basin Conservation Area",
+      "hydrologicalData": {
+          "waterLevel": 3.2,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 48,
+          "floodRisk": "critical"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Schizothorax niger",
+              "Cyprinus carpio specularis"
+          ],
+          "fisheryType": "wild",
+          "productivity": "moderate",
+          "permits": false,
+          "conservationMeasures": [
+              "Gill net size restrictions",
+              "Seasonal spawning sanctuaries"
+          ]
+      },
+      "restorationData": {
+          "restorationType": "lake-restoration",
+          "status": "ongoing",
+          "startDate": "2022-03-01",
+          "implementingAgency": "LCMA / Department of Environment and Remote Sensing",
+          "objectives": [
+              "Removal of encroached willow plantations",
+              "Perimeter boundary geolocation fencing",
+              "Amir Khan Nallah flushing flow restoration"
+          ],
+          "areaTreated": 4.2,
+          "communityInvolvement": true
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Primary urban flood buffer and wetland sink between the Sindh delta and the central Kashmir floodplain.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "brari-nambal",
+      "slug": "brari-nambal",
+      "name": "Brari Nambal Lagoon (Bab Demb)",
+      "type": "lake",
+      "category": "Urban Lagoon Lake",
+      "description": "An internal urban lagoon of Dal Lake, popularly known as Bab Demb, connected to Dal Lake via a conduit gate and historically discharging through the Mar Canal into the Jhelum. Having suffered heavy eutrophication, modern aerators, dredging, and a specialized sewage treatment plant have significantly reversed hypoxia in the water column.",
+      "district": "Srinagar",
+      "region": "Kashmir Core",
+      "watershed": "Jhelum Basin",
+      "area": 0.85,
+      "elevation": 1583,
+      "coordinates": {
+          "lat": 34.0883,
+          "lng": 74.8211
+      },
+      "waterQuality": {
+          "pH": 7.5,
+          "dissolvedOxygen": 5.2,
+          "turbidity": 8.9,
+          "conductivity": 410,
+          "temperature": 18.6,
+          "nitrates": 2.3,
+          "phosphates": 0.42,
+          "biologicalOxygenDemand": 5.8,
+          "totalDissolvedSolids": 270,
+          "lastTested": "2026-05-25",
+          "status": "poor",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "improving",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Nelumbo nucifera (Sacred Lotus)",
+          "Puntius conchonius",
+          "Common Moorhen",
+          "Little Egret"
+      ],
+      "threats": [
+          "stormwater-inflow",
+          "urban-litter",
+          "eutrophication"
+      ],
+      "conservationStatus": "Dal Lake Restoration Buffer Sub-basin",
+      "hydrologicalData": {
+          "waterLevel": 2.8,
+          "seasonalVariation": "perennial",
+          "source": "mixed",
+          "drainageArea": 8.5,
+          "floodRisk": "high"
+      },
+      "restorationData": {
+          "restorationType": "lake-restoration",
+          "status": "ongoing",
+          "startDate": "2021-08-15",
+          "implementingAgency": "J&K Lake Conservation and Management Authority (LCMA)",
+          "objectives": [
+              "Aeration fountain installations",
+              "Mechanical weed harvesting",
+              "Interceptor sewer line completion"
+          ],
+          "areaTreated": 0.85,
+          "communityInvolvement": true
+      },
+      "nwiaCode": "1101",
+      "nwiaSignificance": "Hydrodynamic retention lagoon regulating western outflow of the Dal Lake system into downtown Srinagar.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "sonasar-lake",
+      "slug": "sonasar-lake",
+      "name": "Sonasar Lake (Golden Lake)",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "An extraordinary high-altitude alpine lake resting at 3,850 meters in the eastern Lidder Valley above Lidderwat. Sitting in a glacial cirque beneath Kolahoi Peak, its icy golden-sheened waters are fed by snow avalanches and morainic seepage, feeding the western arm of the Lidder River.",
+      "district": "Anantnag",
+      "region": "Kashmir Core",
+      "watershed": "Lidder Watershed",
+      "area": 0.48,
+      "elevation": 3850,
+      "coordinates": {
+          "lat": 34.1611,
+          "lng": 75.3125
+      },
+      "waterQuality": {
+          "pH": 7.2,
+          "dissolvedOxygen": 10.1,
+          "turbidity": 0.5,
+          "conductivity": 34,
+          "temperature": 5.1,
+          "nitrates": 0.09,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.4,
+          "totalDissolvedSolids": 22,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Himalayan snow trout",
+          "Alpine lichens",
+          "Snowcock",
+          "Ibex"
+      ],
+      "threats": [
+          "glacier-retreat",
+          "unmanaged-trekking-footsteps"
+      ],
+      "conservationStatus": "Kolahoi Biosphere Alpine Core",
+      "hydrologicalData": {
+          "waterLevel": 14,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 18,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "High-altitude glacial cirque tarn sustaining perennial baseflow to the Lidder River system.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "kolahoi-tarn",
+      "slug": "kolahoi-tarn",
+      "name": "Kolahoi Glacial Tarn (Harbhagwan Lake)",
+      "type": "lake",
+      "category": "Proglacial Moraine Lake",
+      "description": "A proglacial lake formed immediately below the snout of the retreating Kolahoi Glacier ('Goddess of Light') at 3,920 meters. As Kashmir's largest glacier undergoes warming-induced retreat, this proglacial lake serves as a real-time sentinel for cryospheric changes, GLOF monitoring, and downstream water security.",
+      "district": "Anantnag",
+      "region": "Kashmir Core",
+      "watershed": "Lidder Watershed",
+      "area": 0.38,
+      "elevation": 3920,
+      "coordinates": {
+          "lat": 34.1847,
+          "lng": 75.3218
+      },
+      "waterQuality": {
+          "pH": 7.1,
+          "dissolvedOxygen": 10.4,
+          "turbidity": 1.8,
+          "conductivity": 28,
+          "temperature": 3.9,
+          "nitrates": 0.07,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.3,
+          "totalDissolvedSolids": 19,
+          "lastTested": "2026-05-19",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Cryospheric microbial consortia",
+          "High-altitude microalgae",
+          "Snowcock",
+          "Himalayan musk deer corridor"
+      ],
+      "threats": [
+          "rapid-glacier-thinning",
+          "moraine-dam-breach-risk-glof",
+          "permafrost-melting"
+      ],
+      "conservationStatus": "Glacier Outburst Hazard Monitoring Sentinel",
+      "hydrologicalData": {
+          "waterLevel": 20,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 25,
+          "floodRisk": "high"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Proglacial sentinel tarn regulating meltwater surges from the Kolahoi glacier snout.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "neel-sar",
+      "slug": "neel-sar",
+      "name": "Neel Sar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "A sapphire-blue high alpine lake nestled in the Pir Panjal mountain chain in Rajouri district at 3,450 meters. Part of the renowned Seven Lakes trail, Neel Sar receives pristine snowmelt from jagged cirque walls and feeds down towards the Mandi stream.",
+      "district": "Rajouri",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 0.42,
+      "elevation": 3450,
+      "coordinates": {
+          "lat": 33.5512,
+          "lng": 74.5125
+      },
+      "waterQuality": {
+          "pH": 7.4,
+          "dissolvedOxygen": 9.6,
+          "turbidity": 0.7,
+          "conductivity": 48,
+          "temperature": 6.8,
+          "nitrates": 0.12,
+          "phosphates": 0.02,
+          "biologicalOxygenDemand": 0.6,
+          "totalDissolvedSolids": 32,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Snow trout",
+          "Alpine dwarf juniper",
+          "Himalayan Griffon",
+          "Snowcock"
+      ],
+      "threats": [
+          "summer-pastoral-overgrazing",
+          "trekking-waste"
+      ],
+      "conservationStatus": "Pir Panjal Alpine Protected Zone",
+      "hydrologicalData": {
+          "waterLevel": 16,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 18,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Alpine glacial tarn supplying upper baseflows to the Poonch river basin.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "bhag-sar",
+      "slug": "bhag-sar",
+      "name": "Bhag Sar Lake",
+      "type": "lake",
+      "category": "High Altitude Alpine Lake",
+      "description": "The highest and most isolated alpine tarn in the Pir Panjal Seven Lakes circuit in Rajouri, perched at an elevation of 3,950 meters. Framed by vertical granite towers and permanent snow aprons, Bhag Sar remains ice-bound for 9 months annually and commands breathtaking panoramic views.",
+      "district": "Rajouri",
+      "region": "Jammu",
+      "watershed": "Poonch Watershed",
+      "area": 0.65,
+      "elevation": 3950,
+      "coordinates": {
+          "lat": 33.5954,
+          "lng": 74.5618
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 10.2,
+          "turbidity": 0.5,
+          "conductivity": 32,
+          "temperature": 4.4,
+          "nitrates": 0.09,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.4,
+          "totalDissolvedSolids": 24,
+          "lastTested": "2026-05-21",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Benthic cryophilic flora",
+          "High-altitude snowcock",
+          "Ibex corridors"
+      ],
+      "threats": [
+          "cryospheric-retreat",
+          "permafrost-thaw"
+      ],
+      "conservationStatus": "High Altitude Natural Heritage Site",
+      "hydrologicalData": {
+          "waterLevel": 22,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 20,
+          "floodRisk": "low"
+      },
+      "nwiaCode": "1103",
+      "nwiaSignificance": "Highest glacial tarn in the southwestern Pir Panjal, regulating cold-water headwater supply to the Poonch drainage.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "saral-lake",
+      "slug": "saral-lake",
+      "name": "Saral Lake",
+      "type": "lake",
+      "category": "High Altitude Glacial Tarn",
+      "description": "A pristine high alpine glacial lake resting at 4,100 meters on the northern crest of the Neelum Valley in Azad Jammu and Kashmir. Situated near Gumut National Park, this isolated azure tarn is fed by icefields and feeds the Saral stream descending into the Neelum River.",
+      "district": "Neelum",
+      "region": "AJK",
+      "watershed": "Neelum Watershed",
+      "area": 0.6,
+      "elevation": 4100,
+      "coordinates": {
+          "lat": 34.9625,
+          "lng": 74.3417
+      },
+      "waterQuality": {
+          "pH": 7.3,
+          "dissolvedOxygen": 10,
+          "turbidity": 0.7,
+          "conductivity": 36,
+          "temperature": 5,
+          "nitrates": 0.1,
+          "phosphates": 0.01,
+          "biologicalOxygenDemand": 0.5,
+          "totalDissolvedSolids": 26,
+          "lastTested": "2026-05-20",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "stable"
+          }
+      },
+      "biodiversity": [
+          "Snow trout",
+          "Alpine lichens",
+          "Snow Leopard habitat proxy",
+          "Himalayan Brown Bear corridor"
+      ],
+      "threats": [
+          "climatic-snow-reduction",
+          "isolated-camp-waste"
+      ],
+      "conservationStatus": "Protected High Alpine Wetland",
+      "hydrologicalData": {
+          "waterLevel": 20,
+          "seasonalVariation": "perennial",
+          "source": "glacial",
+          "drainageArea": 22,
+          "floodRisk": "low"
+      },
+      "nwiaSignificance": "Glacial amphitheater tarn sustaining headwater discharge for northern tributaries of the Neelum River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+      "id": "kharmang-manthoka-lake",
+      "slug": "kharmang-manthoka-lake",
+      "name": "Manthoka Cold Springs Lake",
+      "type": "lake",
+      "category": "Spring-Fed Mountain Lake",
+      "description": "A crystal-clear cold-spring lake located in the Kharmang Valley of Gilgit-Baltistan near the spectacular Manthoka Waterfall. Fed by deep sub-surface artesian springs emerging from the Karakoram limestone aquifers, it maintains cold year-round temperatures and provides vital habitat for cold-water trout aquaculture and local orchards.",
+      "district": "Kharmang",
+      "region": "Gilgit-Baltistan",
+      "watershed": "Indus Basin",
+      "area": 0.35,
+      "elevation": 2450,
+      "coordinates": {
+          "lat": 35.1528,
+          "lng": 75.9861
+      },
+      "waterQuality": {
+          "pH": 7.7,
+          "dissolvedOxygen": 9,
+          "turbidity": 1.2,
+          "conductivity": 170,
+          "temperature": 10.2,
+          "nitrates": 0.25,
+          "phosphates": 0.03,
+          "biologicalOxygenDemand": 1,
+          "totalDissolvedSolids": 110,
+          "lastTested": "2026-05-16",
+          "status": "excellent",
+          "trends": {
+              "pH": "stable",
+              "dissolvedOxygen": "stable",
+              "turbidity": "improving"
+          }
+      },
+      "biodiversity": [
+          "Salmo trutta fario (Brown Trout)",
+          "Rainbow Trout",
+          "Riparian willows and poplars",
+          "Black-necked Crane stopover proxy"
+      ],
+      "threats": [
+          "tourist-footfall-pressures",
+          "springhead-siltation"
+      ],
+      "conservationStatus": "Springhead Ecological Conservation Site",
+      "hydrologicalData": {
+          "waterLevel": 8.5,
+          "seasonalVariation": "perennial",
+          "source": "groundwater",
+          "drainageArea": 35,
+          "floodRisk": "low"
+      },
+      "fisheryData": {
+          "fishSpecies": [
+              "Brown Trout",
+              "Rainbow Trout"
+          ],
+          "fisheryType": "managed",
+          "productivity": "high",
+          "permits": true
+      },
+      "nwiaSignificance": "High-yield artesian springhead lake providing stable thermal and hydrological inputs directly to the Indus River.",
+      "verificationStatus": "verified",
+      "createdAt": "2026-06-18T00:00:00Z",
+      "updatedAt": "2026-06-18T00:00:00Z"
   }
 ];
-
-// ============================================================================
-// WETLANDS DATA
-// ============================================================================
 
 export const wetlandsData: WaterEntity[] = [
   {

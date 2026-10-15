@@ -23,7 +23,7 @@ const dashboardModules = [
     metrics: ['pH Levels', 'Dissolved Oxygen', 'Turbidity', 'Contaminants'],
     status: 'Live' as const,
     statusVariant: 'success' as const,
-    route: '/dashboards/water-quality',
+    route: '/water-systems/water-quality',
   },
   {
     title: 'Hydrological Monitoring',
@@ -33,6 +33,7 @@ const dashboardModules = [
     metrics: ['Flow Velocity', 'Discharge Rate', 'Water Level', 'Seasonal Variation'],
     status: 'Live' as const,
     statusVariant: 'success' as const,
+    route: '/water-systems/dashboards/water-intelligence',
   },
   {
     title: 'Lake Health Scorecard',
@@ -42,15 +43,17 @@ const dashboardModules = [
     metrics: ['Trophic State', 'Biodiversity Index', 'Pollution Load', 'Recovery Rate'],
     status: 'Live' as const,
     statusVariant: 'success' as const,
+    route: '/water-systems/lakes',
   },
   {
     title: 'Algal Bloom Intelligence',
     description: 'Early warning and monitoring of harmful algal blooms across water bodies',
     icon: Activity,
     color: 'from-amber-500 to-orange-600',
-    metrics: ['Chlorophyll-a', 'Cyanobacteria', ' bloom Risk', 'Toxin Levels'],
+    metrics: ['Chlorophyll-a', 'Cyanobacteria', 'Bloom Risk', 'NDCI Proxy'],
     status: 'Live' as const,
     statusVariant: 'success' as const,
+    route: '/hazard-intelligence/algal-bloom-intelligence',
   },
   {
     title: 'Flood Risk & Forecasting',
@@ -58,8 +61,9 @@ const dashboardModules = [
     icon: AlertTriangle,
     color: 'from-red-500 to-rose-600',
     metrics: ['Risk Zones', 'Water Level', 'Precipitation', 'Forecast Window'],
-    status: 'Beta' as const,
-    statusVariant: 'warning' as const,
+    status: 'Live' as const,
+    statusVariant: 'success' as const,
+    route: '/hazard-intelligence/floods',
   },
   {
     title: 'Watershed Intelligence',
@@ -69,6 +73,7 @@ const dashboardModules = [
     metrics: ['Catchment Area', 'Runoff Volume', 'Groundwater Recharge', 'Land Use'],
     status: 'Live' as const,
     statusVariant: 'success' as const,
+    route: '/water-systems/watersheds',
   },
 ];
 
@@ -96,9 +101,9 @@ const subPageLinks = [
   { label: 'Springs', href: '/water-systems/springs', icon: Thermometer },
   { label: 'Groundwater', href: '/water-systems/groundwater', icon: Map },
   { label: 'Water Quality', href: '/water-systems/water-quality', icon: Activity },
-  { label: 'Flood Monitoring', href: '/water-systems/flood-monitoring', icon: AlertTriangle },
+  { label: 'Flood Risk', href: '/water-systems/flood-risk', icon: AlertTriangle },
   { label: 'Wetlands', href: '/water-systems/wetlands', icon: Waves },
-  { label: 'Conservation Areas', href: '/water-systems/conservation-areas', icon: Database },
+  { label: 'Restoration Sites', href: '/water-systems/restoration', icon: Database },
 ];
 
 export default function WaterSystemsDashboardsPage() {

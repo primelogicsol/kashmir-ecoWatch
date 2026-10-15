@@ -186,7 +186,7 @@ export default function WaterSystemsPage() {
               variant="outline"
               className="border-white/20 text-white"
               icon={<Database className="w-5 h-5" />}
-              onClick={() => router.push('/dashboards/water-systems')}
+              onClick={() => router.push('/water-systems/dashboards')}
             >
               View Dashboard
             </Button>
@@ -216,6 +216,45 @@ export default function WaterSystemsPage() {
         { label: 'Quality Sites', value: metrics.totalWaterQualitySites,                  icon: 'Thermometer'   },
         { label: 'Fisheries',     value: metrics.totalFisheries,                          icon: 'Fish'          },
       ]} />
+
+      {/* ── Live Hydrological Telemetry & Basin Monitoring Banner ── */}
+      <section className="container mx-auto px-6 mt-4">
+        <Card className="glass-intense border-emerald-500/30 p-4 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
+                <Waves className="w-5 h-5 text-emerald-400 animate-pulse" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">
+                    Western Himalayan Hydrological & Limnological Telemetry
+                  </span>
+                  <Badge variant="success" size="sm" className="text-[9px]">
+                    Basin Ingestion Live
+                  </Badge>
+                  <span className="text-[10px] text-emerald-400/90 font-mono">
+                    NWIA (2010) + Open-Meteo ECMWF Hydro
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400 mt-0.5">
+                  Multi-basin intelligence synthesizing 1,230+ lakes, 165+ wetlands, river corridors, and glacial melt telemetry across Kashmir, Jammu, and Ladakh watersheds.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap text-xs self-stretch md:self-auto justify-between md:justify-end">
+              <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[11px]">
+                Monitored Catchments: <strong className="text-white font-mono">3 Major Basins</strong>
+              </div>
+              <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 flex items-center gap-1.5 text-[11px]">
+                <Activity className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Streamflow: <strong>Synchronized</strong></span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
 
       {/* Quality Overview */}
       <div className="container mx-auto px-6 py-12">
