@@ -79,7 +79,7 @@ export function AdvancedFooter() {
               A Kashmir Diaspora-Supported Initiative for Environmental Intelligence and Scientific Stewardship
             </p>
             <p className="text-[10px] sm:text-xs text-slate-500 mb-4 leading-relaxed">
-              Supported and sponsored by Dr. Kumar Foundation USA
+              Operated & Supported by Dr. Kumar Foundation USA & Kumar Trust USA
             </p>
 
             {/* Contact info */}

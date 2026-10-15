@@ -10,10 +10,11 @@ import {
   Bell, AlertTriangle, Clock, Calendar, ArrowRight, Filter, X,
   MapPin, Shield, TrendingUp, CheckCircle2, AlertCircle,
   Droplets, Mountain, Snowflake, Flame, Wind, ThermometerSun,
-  ChevronDown, ChevronUp, RotateCw, Radio
+  ChevronDown, ChevronUp, RotateCw, Radio, Settings
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { AlertPreferencesModal } from '@/components/alerts/AlertPreferencesModal';
 import {
   alertRegistry, getAlertStats, getActiveAlerts, getExpiredAlerts, getMonitoringAlerts,
   categoryLabels, categoryColors, severityDisplayLabels, severityColors,
@@ -53,6 +54,8 @@ export default function AlertsPage() {
   
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState<'subscribe' | 'settings'>('subscribe');
   const [activeTab, setActiveTab] = useState<'all' | 'active' | 'monitoring' | 'expired'>('all');
   const [filters, setFilters] = useState<{
     severities: AlertSeverity[];
@@ -183,6 +186,20 @@ export default function AlertsPage() {
             >
               <RotateCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-emerald-400' : ''}`} />
               <span>Refresh APIs</span>
+            </button>
+            <button
+              onClick={() => { setModalMode('subscribe'); setIsModalOpen(true); }}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400 transition-all shadow-sm"
+            >
+              <Bell className="w-3.5 h-3.5" />
+              <span>Subscribe</span>
+            </button>
+            <button
+              onClick={() => { setModalMode('settings'); setIsModalOpen(true); }}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 text-white font-semibold hover:bg-white/15 border border-white/10 transition-all"
+            >
+              <Settings className="w-3.5 h-3.5" />
+              <span>Preferences</span>
             </button>
           </div>
         </div>
@@ -473,6 +490,11 @@ export default function AlertsPage() {
       </section>
 
       {/* Footer */}
+      <AlertPreferencesModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialMode={modalMode}
+      />
     </main>
   );
 }

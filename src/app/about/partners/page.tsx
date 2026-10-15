@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
@@ -27,6 +27,7 @@ const VALUE_CARDS = [
 
 const TRUSTED_NETWORK = [
   { name: 'Dr. Kumar Foundation USA', type: 'Institution', domain: 'Institutional Support', geography: 'United States', role: 'Primary Supporter', badge: 'Supporting Institution' },
+  { name: 'Kumar Trust USA', type: 'Trust', domain: 'Philanthropic Trust & Stewardship', geography: 'United States', role: 'Institutional Supporter', badge: 'Supporting Trust' },
   { name: 'University of Kashmir — Environmental Science', type: 'Institution', domain: 'Environmental Research', geography: 'Srinagar, Kashmir', role: 'Academic Collaboration', badge: 'Research Partner' },
   { name: 'SKUAST-Kashmir', type: 'Institution', domain: 'Agricultural & Environmental Sciences', geography: 'Kashmir', role: 'Research & Data Contribution', badge: 'Research Partner' },
   { name: 'J&K Pollution Control Committee', type: 'Authority', domain: 'Environmental Governance', geography: 'Jammu & Kashmir', role: 'Authority Reference', badge: 'Government Authority' },

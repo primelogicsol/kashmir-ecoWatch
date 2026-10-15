@@ -77,6 +77,8 @@ export function ExpandableLivePanels() {
     return initial;
   });
   const [activeTab, setActiveTab] = useState<'all' | 'critical' | 'warning'>('all');
+  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
+  const [alertModalMode, setAlertModalMode] = useState<'subscribe' | 'settings'>('subscribe');
 
   // Connect to live third-party APIs (Open-Meteo European CAMS, GloFAS, and live telemetry)
   useEffect(() => {
@@ -661,14 +663,20 @@ export function ExpandableLivePanels() {
                 variant="outline"
                 className="border-white/20 text-white hover:border-forest-400 w-full sm:w-auto text-xs sm:text-sm"
                 icon={<Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-                onClick={() => router.push('/alerts')}
+                onClick={() => {
+                  setAlertModalMode('settings');
+                  setIsAlertModalOpen(true);
+                }}
               >
                 Settings
               </Button>
               <Button
-                className="bg-gradient-to-r from-forest-600 to-forest-500 w-full sm:w-auto text-xs sm:text-sm"
+                className="bg-gradient-to-r from-forest-600 to-forest-500 hover:from-forest-500 hover:to-forest-400 text-white w-full sm:w-auto text-xs sm:text-sm shadow-lg shadow-forest-600/20"
                 icon={<Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-                onClick={() => router.push('/alerts')}
+                onClick={() => {
+                  setAlertModalMode('subscribe');
+                  setIsAlertModalOpen(true);
+                }}
               >
                 Subscribe to Alerts
               </Button>
@@ -676,6 +684,13 @@ export function ExpandableLivePanels() {
           </div>
         </motion.div>
       </div>
+
+      {/* Interactive Alert Preferences & Subscription Modal */}
+      <AlertPreferencesModal
+        isOpen={isAlertModalOpen}
+        onClose={() => setIsAlertModalOpen(false)}
+        initialMode={alertModalMode}
+      />
     </section>
   );
 }

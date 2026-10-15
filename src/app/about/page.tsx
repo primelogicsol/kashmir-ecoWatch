@@ -239,7 +239,7 @@ export default function AboutPage() {
   const faqs = [
     {
       q: 'What is Kashmir EcoWatch and who maintains it?',
-      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Mr. Fayaz Ahmad Khan, supported and sponsored philanthropically by Dr. Kumar Foundation USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
+      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Mr. Fayaz Ahmad Khan, operated and supported philanthropically by Dr. Kumar Foundation USA & Kumar Trust USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
     },
     {
       q: 'Why is it termed a "Knowledge Return System"?',
