@@ -589,8 +589,8 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
 
 export const studentProgramHighlights = {
   legacyProgramName: 'Outdoor Classroom (OD) — Learning Beyond the Classroom',
-  legacyPioneers: 'Initiative of eIEN Kashmir & eTA (2002–2007)',
-  annualStudentEnrollment: '2,270 to 2,500 students annually across Kashmir schools and colleges',
+  legacyPioneers: 'Initiative of eIEN Kashmir & ESRO',
+  annualStudentEnrollment: 'Students and educators across high schools and colleges in the Kashmir Valley',
   corePillars: [
     {
       title: 'Curriculum & Coursework Support',

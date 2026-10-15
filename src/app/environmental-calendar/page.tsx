@@ -428,10 +428,10 @@ export default function EnvironmentalCalendarPage() {
             <div className="p-4 rounded-xl glass-light border border-white/10 bg-slate-900/60 backdrop-blur-md">
               <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono mb-1">
                 <Users className="w-4 h-4" />
-                <span>ANNUAL STUDENT IMPACT</span>
+                <span>STUDENT ENGAGEMENT</span>
               </div>
-              <div className="text-2xl sm:text-3xl font-black text-white">2,500+</div>
-              <p className="text-[11px] text-slate-400 mt-1">School & college youth enrolled yearly</p>
+              <div className="text-2xl sm:text-3xl font-black text-white">Valley-Wide</div>
+              <p className="text-[11px] text-slate-400 mt-1">School & college youth participating</p>
             </div>
 
             <div className="p-4 rounded-xl glass-light border border-white/10 bg-slate-900/60 backdrop-blur-md">
@@ -773,8 +773,7 @@ export default function EnvironmentalCalendarPage() {
                 </span>
               </h2>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                Pioneered by the Environment Services & Research Organization (ESRO) and eIEN Kashmir between 2002 and 2007, the Outdoor Classroom curriculum has engaged between{' '}
-                <strong className="text-emerald-400">2,270 and 2,500 students annually</strong> across high schools and colleges in the Kashmir Valley. We provide practical logistical frameworks, fieldwork protocols, and experiential study tours linking academic textbooks with real Himalayan ecosystems.
+                Pioneered by the Environment Services & Research Organization (ESRO) and eIEN Kashmir, the Outdoor Classroom curriculum engages students and educators across high schools and colleges in the Kashmir Valley. We provide practical logistical frameworks, fieldwork protocols, and experiential study tours linking academic textbooks with real Himalayan ecosystems.
               </p>
             </div>
 
