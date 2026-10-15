@@ -388,7 +388,7 @@ export default function AirPollutionPage() {
       }
     } catch (e) {}
     doFetch();
-  }, [doFetch]);
+  }, []);
 
   // ─── Computed KPI metrics ──────────────────────────────────────────────────
 
