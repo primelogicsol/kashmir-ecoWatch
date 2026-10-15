@@ -455,7 +455,7 @@ export default function SupportSponsorshipPage() {
                   <span>Philanthropic Sponsorship & Engineering Delivery</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  Spearheaded by Mr. Fayaz Ahmad Khan & Supported by Dr. Kumar Foundation USA
+                  Spearheaded & Supported by Dr. Kumar Foundation USA
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 max-w-2xl">
                   Maintained with zero commercial monetization as a permanent Knowledge Return System for Kashmir, with enterprise cloud engineering provided gratis by Prime Logic Solutions under Corporate Social Responsibility (CSR).
