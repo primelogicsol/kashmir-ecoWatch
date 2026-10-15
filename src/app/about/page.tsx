@@ -349,10 +349,10 @@ export default function AboutPage() {
               <div className="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 bg-slate-900/50 space-y-6 flex flex-col justify-between">
                 <div className="space-y-4">
                   <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-light">
-                    Kashmir EcoWatch was conceived around a fundamental premise: <strong className="text-white font-semibold">knowledge about Kashmir belongs first and foremost to Kashmir.</strong>
+                    Kashmir <strong className="text-emerald-400 font-semibold">EcoWatch</strong> was conceived around a fundamental premise: <strong className="text-white font-semibold">knowledge about Kashmir belongs first and foremost to Kashmir.</strong>
                   </p>
                   <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
-                    Originally established in <strong className="text-white font-semibold">2004</strong> as <strong className="text-emerald-400 font-semibold">ESRO (Environment and Service Research Organization)</strong>, our work began with grassroots field investigations, river and wetland monitoring, biodiversity surveys, and youth environmental education across the Kashmir Valley. Over more than two decades of dedicated scientific documentation, ESRO laid the foundation for Kashmir EcoWatch — evolving from grassroots field reports and community service into a comprehensive, high-resolution digital intelligence observatory.
+                    Originally established in <strong className="text-white font-semibold">2004</strong> as <strong className="text-emerald-400 font-semibold">ESRO (Environment and Service Research Organization)</strong>, our work began with grassroots field investigations, river and wetland monitoring, biodiversity surveys, and youth environmental education across the Kashmir Valley. Over more than two decades of dedicated scientific documentation, ESRO laid the foundation for Kashmir <strong className="text-emerald-400 font-semibold">EcoWatch</strong> — evolving from grassroots field reports and community service into a comprehensive, high-resolution digital intelligence observatory.
                   </p>
                   <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
                     For centuries, explorers, glaciologists, and naturalists have traversed the Pir Panjal, Zanskar, and Greater Himalayan ranges. Yet, the empirical results of that work often stayed trapped in overseas repositories, subscription journals, or departmental silos.
@@ -618,7 +618,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold text-white">Mr. Fayaz Ahmad Khan</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Kashmiri-American environmental scientist and SaaS platform architect with <strong className="text-white">25+ years of experience</strong> leading 600+ multi-disciplinary disaster and critical infrastructure teams. Founder of <strong className="text-emerald-400">ESRO (Environment and Service Research Organization)</strong> in 2004, establishing the two-decade research lineage culminating in Kashmir EcoWatch. PhD in Environmental Geospatial Information Science with FEMA APS, EPA, and UN water security credentials.
+                    Kashmiri-American environmental scientist and SaaS platform architect with <strong className="text-white">25+ years of experience</strong> leading 600+ multi-disciplinary disaster and critical infrastructure teams. Founder of <strong className="text-emerald-400 font-semibold">ESRO (Environment and Service Research Organization)</strong> in 2004, establishing the two-decade research lineage culminating in Kashmir <strong className="text-emerald-400 font-semibold">EcoWatch</strong>. PhD in Environmental Geospatial Information Science with FEMA APS, EPA, and UN water security credentials.
                   </p>
                   <div className="pt-2 flex items-center gap-4 flex-wrap">
                     <Link
