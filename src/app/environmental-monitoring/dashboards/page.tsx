@@ -224,10 +224,14 @@ export default function DashboardsPage() {
       />
 
       <ModuleKpiStrip kpis={[
-        { label: 'Env Stress Index',    value: '64/100', icon: 'BarChart3', color: 'text-amber-400'   },
-        { label: 'District Compliance', value: '67%',    icon: 'Shield',    color: 'text-blue-400'   },
-        { label: 'Active Monitors',     value: 247,      icon: 'Activity',  color: 'text-emerald-400'},
-        { label: 'Data Availability',   value: '94.2%',  icon: 'Database',  color: 'text-emerald-400'},
+        { label: 'Env Stress Index',    value: '64/100', icon: 'BarChart3',   color: 'text-amber-400'   },
+        { label: 'District Compliance', value: '67%',    icon: 'Shield',      color: 'text-blue-400'    },
+        { label: 'Active Monitors',     value: 247,      icon: 'Activity',    color: 'text-emerald-400' },
+        { label: 'Data Availability',   value: '94.2%',  icon: 'Database',    color: 'text-cyan-400'    },
+        { label: 'Tracked Districts',   value: 20,       icon: 'Map',         color: 'text-white'       },
+        { label: 'Resolved Incidents',  value: 142,      icon: 'ShieldCheck', color: 'text-emerald-400' },
+        { label: 'Avg Incident Response',value: '4.2h',  icon: 'Clock',       color: 'text-purple-400'  },
+        { label: 'Telemetry Refresh',   value: 'Live',   icon: 'Globe',       color: 'text-teal-400'    },
       ]} />
       
       {/* ── Live Environmental Intelligence Synthesis Banner ─────────────── */}

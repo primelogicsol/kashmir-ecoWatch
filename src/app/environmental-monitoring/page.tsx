@@ -99,11 +99,14 @@ export default function EnvironmentalMonitoringOverview() {
       />
 
       <ModuleKpiStrip kpis={[
-        { label: 'Active Alerts',    value: 38,    icon: 'AlertTriangle', color: 'text-red-400'    },
-        { label: 'Sewage Outfalls',  value: 5,     icon: 'Droplets',      color: 'text-blue-400'  },
-        { label: 'Waste Hotspots',   value: 8,     icon: 'Trash2',        color: 'text-amber-400' },
-        { label: 'AQI Status',       value: 'Mod', icon: 'Wind',          color: 'text-slate-400' },
-        { label: 'Water Advisories', value: 2,     icon: 'Shield',        color: 'text-cyan-400'  },
+        { label: 'Active Alerts',    value: 38,     icon: 'AlertTriangle', color: 'text-red-400'     },
+        { label: 'Waste Hotspots',   value: 8,      icon: 'Trash2',        color: 'text-amber-400'   },
+        { label: 'Bio-Waste Zones',  value: 3,      icon: 'Cloud',         color: 'text-emerald-400' },
+        { label: 'Sewage Outfalls',  value: 5,      icon: 'Droplets',      color: 'text-blue-400'    },
+        { label: 'Water Advisories', value: 2,      icon: 'Waves',         color: 'text-cyan-400'    },
+        { label: 'Critical Assets',  value: 122,    icon: 'Building2',     color: 'text-indigo-400'  },
+        { label: 'Avg Air AQI',      value: 'Mod',  icon: 'Wind',          color: 'text-slate-300'   },
+        { label: 'Resilience Score', value: '74%',  icon: 'ShieldCheck',   color: 'text-emerald-400' },
       ]} />
 
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
