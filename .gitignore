@@ -68,3 +68,6 @@ yarn-error.log*
 
 # Microfrontend
 **/node_modules/
+
+# Test artifacts
+test_screenshots/
