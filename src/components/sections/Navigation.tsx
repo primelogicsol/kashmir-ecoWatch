@@ -45,10 +45,12 @@ import {
   Clock,
   MapPin,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 const navItems = [
   { label: 'Protected Areas',          href: '/protected-network',        hasDropdown: true  },
@@ -62,6 +64,7 @@ const navItems = [
 
 export function Navigation() {
   const router = useRouter();
+  const { user, isLoggedIn, openAuthModal, signOut } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -775,23 +778,92 @@ export function Navigation() {
               className="absolute top-16 right-4 sm:right-8 lg:right-[calc(50%-32rem)] w-72 glass-intense rounded-xl border border-white/10 shadow-2xl overflow-hidden"
               style={{ right: '2rem' }}
             >
-              <div className="px-5 py-4 border-b border-white/10">
-                <h3 className="text-sm font-bold text-white">Sign In</h3>
-                <p className="text-xs text-slate-400 mt-1">Access your workspace and contributions</p>
-              </div>
-              <div className="p-4 space-y-2">
-                <Button className="w-full text-sm bg-emerald-600 hover:bg-emerald-700 text-white">
-                  Sign In
-                </Button>
-                <Button variant="outline" className="w-full text-sm border-white/20 text-white">
-                  Create Account
-                </Button>
-                <div className="pt-2 border-t border-white/5">
-                  <Button variant="ghost" className="w-full text-sm text-slate-400 hover:text-white">
-                    Continue as Guest
-                  </Button>
-                </div>
-              </div>
+              {isLoggedIn && user ? (
+                <>
+                  <div className="px-5 py-4 border-b border-white/10 bg-slate-950/60">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                        {user.name.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-sm font-bold text-white truncate">{user.name}</h3>
+                        <p className="text-[11px] text-emerald-400 font-medium truncate capitalize">{user.role}</p>
+                        <p className="text-[10px] text-slate-400 truncate">{user.email}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 space-y-1 text-xs">
+                    <Link
+                      href="/dashboard"
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); }}
+                      className="block px-3 py-2 rounded-lg bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/15 border border-emerald-500/20 font-semibold transition-colors"
+                    >
+                      Go to Contributor Dashboard
+                    </Link>
+                    <Link
+                      href="/admin/dashboard"
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); }}
+                      className="block px-3 py-2 rounded-lg bg-purple-500/10 text-purple-300 hover:bg-purple-500/15 border border-purple-500/20 font-semibold transition-colors"
+                    >
+                      Admin Command Center
+                    </Link>
+                    <Link
+                      href="/contribute-data"
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); }}
+                      className="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      Deposit Research Data
+                    </Link>
+                    <Link
+                      href="/submit-observation"
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); }}
+                      className="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      Submit Field Observation
+                    </Link>
+                    <div className="pt-2 border-t border-white/5">
+                      <button
+                        onClick={() => { signOut(); setProfileOpen(false); setActivePanel(null); }}
+                        className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors font-medium text-xs"
+                      >
+                        <LogOut className="w-3.5 h-3.5" />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="px-5 py-4 border-b border-white/10">
+                    <h3 className="text-sm font-bold text-white">Sign In</h3>
+                    <p className="text-xs text-slate-400 mt-1">Access your ecological workspace & intelligence</p>
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <Button 
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); openAuthModal('signin'); }}
+                      className="w-full text-sm bg-emerald-600 hover:bg-emerald-700 text-white"
+                    >
+                      Sign In
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => { setProfileOpen(false); setActivePanel(null); openAuthModal('signup'); }}
+                      className="w-full text-sm border-white/20 text-white hover:bg-white/10"
+                    >
+                      Create Account
+                    </Button>
+                    <div className="pt-2 border-t border-white/5">
+                      <Button 
+                        variant="ghost" 
+                        onClick={() => { setProfileOpen(false); setActivePanel(null); }}
+                        className="w-full text-sm text-slate-400 hover:text-white"
+                      >
+                        Continue as Guest
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -1181,15 +1253,36 @@ export function Navigation() {
 
                 {/* Footer actions */}
                 <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/10 space-y-3 sm:space-y-4">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pl-9 sm:pl-10 rounded-lg bg-white/5 border border-white/10 outline-none text-xs sm:text-sm text-white placeholder:text-slate-500 focus:border-white/20 focus:bg-white/10 transition-colors"
-                    />
-                    <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2" />
-                  </div>
-                  <Button className="w-full text-sm sm:text-base">Access Platform</Button>
+                  {isLoggedIn && user ? (
+                    <div className="p-3 rounded-xl bg-slate-900/90 border border-white/10 flex items-center justify-between">
+                      <div className="min-w-0 pr-2">
+                        <p className="text-xs font-semibold text-white truncate">{user.name}</p>
+                        <p className="text-[10px] text-emerald-400 capitalize">{user.role}</p>
+                      </div>
+                      <button
+                        onClick={() => { signOut(); setIsMobileMenuOpen(false); }}
+                        className="text-xs text-red-400 hover:text-red-300 font-medium px-2 py-1 rounded bg-red-500/10"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button 
+                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signin'); }}
+                        className="w-full text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700"
+                      >
+                        Sign In
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signup'); }}
+                        className="w-full text-xs sm:text-sm border-white/20 text-white"
+                      >
+                        Register
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </nav>
             </motion.div>

@@ -42,11 +42,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <SafeHeader />
         <Providers>
+          <SafeHeader />
           {children}
+          <SafeFooter />
         </Providers>
-        <SafeFooter />
       </body>
     </html>
   );

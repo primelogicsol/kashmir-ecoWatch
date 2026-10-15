@@ -1,60 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { 
   User, Shield, Upload, FileText, 
   Award, CheckCircle2, LogIn, LogOut,
   ExternalLink, Sparkles, BookOpen, Layers, X
 } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
 
 interface ProfileDropdownProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export interface UserSession {
-  isLoggedIn: boolean;
-  name: string;
-  role: string;
-  affiliation: string;
-  contributionsCount: number;
-}
-
-const DEFAULT_SESSION: UserSession = {
-  isLoggedIn: true,
-  name: 'Field Contributor & Researcher',
-  role: 'Observer Credentialed',
-  affiliation: 'Kashmir Scientific Consortium',
-  contributionsCount: 14
-};
-
 export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
-  const [session, setSession] = useState<UserSession>(DEFAULT_SESSION);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('kew_user_session');
-      if (stored) {
-        setSession(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error('Failed to load session:', e);
-    }
-  }, []);
-
-  const toggleAuth = () => {
-    const updated: UserSession = session.isLoggedIn 
-      ? { isLoggedIn: false, name: 'Guest Observer', role: 'Anonymous Access', affiliation: 'Public Open Data', contributionsCount: 0 }
-      : DEFAULT_SESSION;
-    
-    setSession(updated);
-    try {
-      localStorage.setItem('kew_user_session', JSON.stringify(updated));
-    } catch (e) {
-      console.error('Failed to save session:', e);
-    }
-  };
+  const { user, isLoggedIn, signOut, openAuthModal } = useAuth();
 
   if (!isOpen) return null;
 
@@ -67,14 +28,16 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
       <div className="p-4 border-b border-white/10 bg-slate-950/60">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <User className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+              {isLoggedIn && user ? user.name.charAt(0).toUpperCase() : <User className="w-5 h-5" />}
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white leading-tight">{session.name}</h3>
-              <p className="text-[11px] text-emerald-400 font-medium flex items-center gap-1 mt-0.5">
+              <h3 className="text-sm font-bold text-white leading-tight">
+                {isLoggedIn && user ? user.name : 'Guest Observer'}
+              </h3>
+              <p className="text-[11px] text-emerald-400 font-medium flex items-center gap-1 mt-0.5 capitalize">
                 <CheckCircle2 className="w-3 h-3" />
-                <span>{session.role}</span>
+                <span>{isLoggedIn && user ? user.role : 'Public Open Access'}</span>
               </p>
             </div>
           </div>
@@ -89,12 +52,38 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
 
         <div className="mt-3 p-2.5 rounded-xl bg-slate-900/80 border border-white/5 flex items-center justify-between text-[11px]">
           <span className="text-slate-400">Affiliation:</span>
-          <span className="text-white font-medium truncate ml-2">{session.affiliation}</span>
+          <span className="text-white font-medium truncate ml-2">
+            {isLoggedIn && user?.institution ? user.institution : (isLoggedIn && user?.district ? `${user.district} District` : 'Kashmir Scientific Consortium')}
+          </span>
         </div>
       </div>
 
       {/* Action Links */}
       <div className="p-2 space-y-1 text-xs">
+        <Link
+          href="/dashboard"
+          onClick={onClose}
+          className="flex items-center gap-2.5 p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-300 hover:text-emerald-200 transition-colors border border-emerald-500/20"
+        >
+          <Layers className="w-4 h-4 text-emerald-400" />
+          <div>
+            <p className="font-bold leading-none">My Contributor Dashboard</p>
+            <p className="text-[10px] text-emerald-400/80 mt-1">Telemetry, submissions & alerts</p>
+          </div>
+        </Link>
+
+        <Link
+          href="/admin/dashboard"
+          onClick={onClose}
+          className="flex items-center gap-2.5 p-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/15 text-purple-300 hover:text-purple-200 transition-colors border border-purple-500/20"
+        >
+          <Shield className="w-4 h-4 text-purple-400" />
+          <div>
+            <p className="font-bold leading-none">Admin Command Center</p>
+            <p className="text-[10px] text-purple-400/80 mt-1">Review queue & observer grid</p>
+          </div>
+        </Link>
+
         <Link
           href="/contribute-data"
           onClick={onClose}
@@ -144,27 +133,28 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
         </Link>
       </div>
 
-      {/* Footer Toggle (Simulate Sign in / Out) */}
+      {/* Footer Toggle (Sign in / Out) */}
       <div className="p-3 bg-slate-950/80 border-t border-white/10 flex items-center justify-between text-xs">
         <span className="text-[11px] text-slate-400">
-          {session.isLoggedIn ? 'Active Contributor' : 'Guest Mode'}
+          {isLoggedIn ? 'Authenticated Contributor' : 'Guest Mode'}
         </span>
-        <button
-          onClick={toggleAuth}
-          className="text-slate-300 hover:text-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-[11px] font-medium"
-        >
-          {session.isLoggedIn ? (
-            <>
-              <LogOut className="w-3.5 h-3.5 text-rose-400" />
-              <span>Switch to Guest</span>
-            </>
-          ) : (
-            <>
-              <LogIn className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Authenticate Contributor</span>
-            </>
-          )}
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={() => { signOut(); onClose(); }}
+            className="text-slate-300 hover:text-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors text-[11px] font-medium"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Sign Out</span>
+          </button>
+        ) : (
+          <button
+            onClick={() => { onClose(); openAuthModal('signin'); }}
+            className="text-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-[11px] font-semibold"
+          >
+            <LogIn className="w-3.5 h-3.5" />
+            <span>Sign In / Join</span>
+          </button>
+        )}
       </div>
     </div>
   );
