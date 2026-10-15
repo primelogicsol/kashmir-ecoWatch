@@ -454,7 +454,7 @@ export default function FounderPage() {
       <Heading 
         icon={<Award className="w-5 h-5 text-emerald-400" />}
         label="Honorary Director & Founder Profile"
-        title="Western Himalayan Dr. Fayaz Ahmad Khan"
+        title="Western Himalayan Mr. Fayaz Ahmad Khan"
         subtitle="Kashmiri-American environmental scientist, SaaS platform architect, and disaster resilience professional with 25+ years of progressive leadership."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -540,7 +540,7 @@ export default function FounderPage() {
                   <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl relative mb-4 bg-slate-800">
                     <Image
                       src="/images/founder-profile.jpg"
-                      alt="Dr. Fayaz Ahmad Khan"
+                      alt="Mr. Fayaz Ahmad Khan"
                       fill
                       className="object-cover"
                     />

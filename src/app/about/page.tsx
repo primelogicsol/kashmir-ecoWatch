@@ -172,7 +172,7 @@ export default function AboutPage() {
     },
     {
       title: 'Founder & Leadership',
-      desc: 'Biography and 25+ year credentials of Dr. Fayaz Ahmad Khan (PhD, FEMA APS, EPA, UN Certified).',
+      desc: 'Biography and 25+ year credentials of Mr. Fayaz Ahmad Khan (PhD, FEMA APS, EPA, UN Certified).',
       href: '/about/founder',
       icon: Award,
       tag: 'Leadership'
@@ -239,7 +239,7 @@ export default function AboutPage() {
   const faqs = [
     {
       q: 'What is Kashmir EcoWatch and who maintains it?',
-      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Dr. Fayaz Ahmad Khan, supported and sponsored philanthropically by Dr. Kumar Foundation USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
+      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Mr. Fayaz Ahmad Khan, supported and sponsored philanthropically by Dr. Kumar Foundation USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
     },
     {
       q: 'Why is it termed a "Knowledge Return System"?',
@@ -606,7 +606,7 @@ export default function AboutPage() {
                 <div className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-xl relative bg-slate-800">
                   <Image
                     src="/images/founder-profile.jpg"
-                    alt="Dr. Fayaz Ahmad Khan"
+                    alt="Mr. Fayaz Ahmad Khan"
                     fill
                     className="object-cover"
                   />
@@ -616,7 +616,7 @@ export default function AboutPage() {
                     <GraduationCap className="w-3.5 h-3.5" />
                     <span>Honorary Director & Founder</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Dr. Fayaz Ahmad Khan</h3>
+                  <h3 className="text-2xl font-bold text-white">Mr. Fayaz Ahmad Khan</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Kashmiri-American environmental scientist and SaaS platform architect with <strong className="text-white">25+ years of experience</strong> leading 600+ multi-disciplinary disaster and critical infrastructure teams. Founder of <strong className="text-emerald-400">ESRO (Environment and Service Research Organization)</strong> in 2004, establishing the two-decade research lineage culminating in Kashmir EcoWatch. PhD in Environmental Geospatial Information Science with FEMA APS, EPA, and UN water security credentials.
                   </p>

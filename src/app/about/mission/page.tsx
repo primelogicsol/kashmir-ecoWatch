@@ -214,7 +214,7 @@ export default function MissionPage() {
   // Subpages Navigation Links
   const relatedModules = [
     { title: 'Platform Overview', href: '/about', desc: 'The overarching architectural vision and vital statistics of KEW.', icon: Globe },
-    { title: 'Founder Leadership', href: '/about/founder', desc: '25+ year career of Dr. Fayaz Ahmad Khan (PhD, FEMA APS, UN Certified).', icon: Award },
+    { title: 'Founder Leadership', href: '/about/founder', desc: '25+ year career of Mr. Fayaz Ahmad Khan (PhD, FEMA APS, UN Certified).', icon: Award },
     { title: 'Ecological Governance', href: '/about/governance', desc: 'Sheikh Noor-ud-Din’s civilizational forest ethics & planetary boundaries.', icon: Scale },
     { title: 'Scientific Methodology', href: '/about/methodology', desc: '19-section documentation of data pipelines, taxonomic criteria & QA.', icon: BookOpen },
     { title: 'Institutional Partners', href: '/about/partners', desc: 'Academic institutions, universities, and research consortiums.', icon: Milestone },
