@@ -31,6 +31,15 @@ function getEntityRoute(category: string, item: any): string {
       if (item.type === 'wetland' || item.category?.toLowerCase().includes('wetland') || item.slug?.includes('wetland')) {
         return `/water-systems/wetlands/${item.slug}`;
       }
+      if (item.type === 'river' || item.slug?.includes('river')) {
+        return `/water-systems/rivers/${item.slug}`;
+      }
+      if (item.type === 'spring' || item.slug?.includes('spring')) {
+        return `/water-systems/springs/${item.slug}`;
+      }
+      if (item.type === 'glacier' || item.slug?.includes('glacier')) {
+        return `/water-systems/glaciers/${item.slug}`;
+      }
       return `/water-systems/lakes/${item.slug}`;
     case 'districts':
       return `/districts/${item.slug}`;
@@ -70,12 +79,17 @@ function SearchContent() {
   const router = useRouter();
   
   const initialQuery = searchParams.get('q') || '';
+  const initialCategory = searchParams.get('category') || 'all';
   const [query, setQuery] = useState(initialQuery);
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState(initialCategory);
 
   useEffect(() => {
     const q = searchParams.get('q') || '';
+    const cat = searchParams.get('category') || 'all';
     setQuery(q);
+    if (cat && categoryMeta[cat]) {
+      setActiveFilter(cat);
+    }
   }, [searchParams]);
 
   // Perform search across all collections

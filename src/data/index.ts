@@ -1,6 +1,10 @@
 // Centralized data service for the entire platform
 // This provides structured mock data that is API-ready
 import { alertRegistry } from './alert-registry';
+import { getProtectedAreas } from './protected-network';
+import { lakesData, wetlandsData } from './water-systems';
+import { mammalsData, birdsData } from './biodiversity';
+import { trailIntelligenceData } from './trails-sightings';
 
 export interface Entity {
   id: string;
@@ -150,7 +154,7 @@ export interface DashboardData {
 export const speciesData: Species[] = [
   {
     id: 'hangul',
-    slug: 'hangul',
+    slug: 'hangul-kashmir-stag',
     name: 'Hangul (Kashmir Stag)',
     scientificName: 'Cervus hanglu hanglu',
     commonName: 'Kashmir Stag',
@@ -192,7 +196,7 @@ export const speciesData: Species[] = [
   },
   {
     id: 'himlayan-monals',
-    slug: 'himlayan-monals',
+    slug: 'himalayan-monal',
     name: 'Himalayan Monal',
     scientificName: 'Lophophorus impejanus',
     commonName: 'Himalayan Monal',
@@ -350,6 +354,182 @@ export const districtsData: District[] = [
     environmentalScore: 84,
     hazards: ['Landslide', 'Flash floods'],
   },
+  {
+    id: 'baramulla',
+    slug: 'baramulla',
+    name: 'Baramulla',
+    area: 4243,
+    population: 1008039,
+    headquarters: 'Baramulla',
+    ecologicalSummary: {
+      protectedAreas: 4,
+      waterBodies: 65,
+      forestCover: 46,
+      speciesCount: 380,
+    },
+    environmentalScore: 81,
+    hazards: ['Flash floods', 'Soil erosion'],
+  },
+  {
+    id: 'budgam',
+    slug: 'budgam',
+    name: 'Budgam',
+    area: 1371,
+    population: 753745,
+    headquarters: 'Budgam',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 38,
+      forestCover: 28,
+      speciesCount: 290,
+    },
+    environmentalScore: 75,
+    hazards: ['Wetland degradation', 'Karewa mining'],
+  },
+  {
+    id: 'pulwama',
+    slug: 'pulwama',
+    name: 'Pulwama',
+    area: 1090,
+    population: 560440,
+    headquarters: 'Pulwama',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 32,
+      forestCover: 31,
+      speciesCount: 275,
+    },
+    environmentalScore: 76,
+    hazards: ['Agricultural runoff', 'Riverbed mining'],
+  },
+  {
+    id: 'kupwara',
+    slug: 'kupwara',
+    name: 'Kupwara',
+    area: 2379,
+    population: 870354,
+    headquarters: 'Kupwara',
+    ecologicalSummary: {
+      protectedAreas: 3,
+      waterBodies: 45,
+      forestCover: 58,
+      speciesCount: 410,
+    },
+    environmentalScore: 86,
+    hazards: ['Flash floods', 'Deforestation'],
+  },
+  {
+    id: 'ganderbal',
+    slug: 'ganderbal',
+    name: 'Ganderbal',
+    area: 1045,
+    population: 297446,
+    headquarters: 'Ganderbal',
+    ecologicalSummary: {
+      protectedAreas: 3,
+      waterBodies: 52,
+      forestCover: 42,
+      speciesCount: 345,
+    },
+    environmentalScore: 82,
+    hazards: ['Flash floods', 'Glacial retreat'],
+  },
+  {
+    id: 'bandipora',
+    slug: 'bandipora',
+    name: 'Bandipora',
+    area: 345,
+    population: 392601,
+    headquarters: 'Bandipora',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 41,
+      forestCover: 49,
+      speciesCount: 360,
+    },
+    environmentalScore: 80,
+    hazards: ['Wular siltation', 'Soil erosion'],
+  },
+  {
+    id: 'kulgam',
+    slug: 'kulgam',
+    name: 'Kulgam',
+    area: 1067,
+    population: 424483,
+    headquarters: 'Kulgam',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 34,
+      forestCover: 39,
+      speciesCount: 295,
+    },
+    environmentalScore: 79,
+    hazards: ['Flash floods', 'River erosion'],
+  },
+  {
+    id: 'shopian',
+    slug: 'shopian',
+    name: 'Shopian',
+    area: 612,
+    population: 266215,
+    headquarters: 'Shopian',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 28,
+      forestCover: 45,
+      speciesCount: 310,
+    },
+    environmentalScore: 83,
+    hazards: ['Pesticide residue', 'Soil erosion'],
+  },
+  {
+    id: 'jammu',
+    slug: 'jammu',
+    name: 'Jammu',
+    area: 2342,
+    population: 1529958,
+    headquarters: 'Jammu',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 35,
+      forestCover: 22,
+      speciesCount: 280,
+    },
+    environmentalScore: 70,
+    hazards: ['Urban heat island', 'Air pollution'],
+  },
+  {
+    id: 'leh',
+    slug: 'leh',
+    name: 'Leh',
+    area: 45110,
+    population: 133487,
+    headquarters: 'Leh',
+    ecologicalSummary: {
+      protectedAreas: 4,
+      waterBodies: 62,
+      forestCover: 3,
+      speciesCount: 240,
+    },
+    environmentalScore: 88,
+    hazards: ['Glacial retreat', 'Water scarcity'],
+  },
+  {
+    id: 'kargil',
+    slug: 'kargil',
+    name: 'Kargil',
+    area: 14036,
+    population: 140802,
+    headquarters: 'Kargil',
+    ecologicalSummary: {
+      protectedAreas: 2,
+      waterBodies: 48,
+      forestCover: 4,
+      speciesCount: 215,
+    },
+    environmentalScore: 85,
+    hazards: ['Avalanches', 'Flash floods'],
+  },
 ];
 
 export const alertsData: Alert[] = [
@@ -467,56 +647,265 @@ export const getData = {
 
 // Search function
 export const searchAll = (query: string) => {
-  const lowerQuery = query.toLowerCase();
-  
-  return {
-    species: speciesData.filter(s => 
+  const lowerQuery = (query || '').toLowerCase().trim();
+  if (!lowerQuery) {
+    return {
+      species: [],
+      protectedAreas: [],
+      waterBodies: [],
+      trails: [],
+      districts: [],
+      alerts: [],
+      reports: []
+    };
+  }
+
+  const isProtectedCategory = ['protected', 'protected area', 'protected areas', 'national park', 'sanctuary', 'reserve'].some(t => lowerQuery.includes(t));
+  const isWaterCategory = ['water', 'water body', 'water bodies', 'lake', 'lakes', 'wetland', 'wetlands', 'river', 'spring', 'glacier'].some(t => lowerQuery.includes(t));
+  const isSpeciesCategory = ['species', 'wildlife', 'fauna', 'flora', 'animal', 'bird', 'mammal', 'fish', 'plant', 'stag', 'deer', 'leopard'].some(t => lowerQuery.includes(t));
+  const isDistrictCategory = ['district', 'districts'].some(t => lowerQuery.includes(t));
+  const isTrailCategory = ['trail', 'trails', 'trek', 'hike', 'hiking'].some(t => lowerQuery.includes(t));
+  const isAlertCategory = ['alert', 'alerts', 'hazard', 'warning', 'risk', 'emergency', 'flood'].some(t => lowerQuery.includes(t));
+
+  // 1. Species: check speciesData + mammals + birds
+  const matchedSpecies = [
+    ...speciesData.filter(s => 
       s.name.toLowerCase().includes(lowerQuery) ||
       s.scientificName.toLowerCase().includes(lowerQuery) ||
-      s.commonName.toLowerCase().includes(lowerQuery)
+      s.commonName.toLowerCase().includes(lowerQuery) ||
+      s.slug.toLowerCase().includes(lowerQuery) ||
+      (isSpeciesCategory && lowerQuery.length <= 8)
     ),
-    protectedAreas: protectedAreasData.filter(pa => 
-      pa.name.toLowerCase().includes(lowerQuery)
+    ...mammalsData
+      .filter(s => 
+        s.commonName.toLowerCase().includes(lowerQuery) ||
+        s.scientificName.toLowerCase().includes(lowerQuery) ||
+        s.slug.toLowerCase().includes(lowerQuery)
+      )
+      .slice(0, 10)
+      .map(s => ({
+        id: s.id,
+        slug: s.slug,
+        name: s.commonName,
+        scientificName: s.scientificName,
+        commonName: s.commonName,
+        localName: s.localName,
+        description: s.description || '',
+        type: 'species' as const,
+        taxonomicGroup: 'mammals' as const,
+        conservationStatus: (s.conservationStatus as any) || 'LC',
+        habitat: s.habitat || [],
+        elevationRange: s.elevationRange || { min: 1500, max: 4000 },
+        districts: s.districts || [],
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      })),
+    ...birdsData
+      .filter(s => 
+        s.commonName.toLowerCase().includes(lowerQuery) ||
+        s.scientificName.toLowerCase().includes(lowerQuery) ||
+        s.slug.toLowerCase().includes(lowerQuery)
+      )
+      .slice(0, 10)
+      .map(s => ({
+        id: s.id,
+        slug: s.slug,
+        name: s.commonName,
+        scientificName: s.scientificName,
+        commonName: s.commonName,
+        localName: s.localName,
+        description: s.description || '',
+        type: 'species' as const,
+        taxonomicGroup: 'birds' as const,
+        conservationStatus: (s.conservationStatus as any) || 'LC',
+        habitat: s.habitat || [],
+        elevationRange: s.elevationRange || { min: 1500, max: 4000 },
+        districts: s.districts || [],
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      })),
+  ];
+  const uniqueSpecies = Array.from(new Map(matchedSpecies.map(item => [item.slug, item])).values());
+
+  // 2. Protected Areas: check protectedAreasData + getProtectedAreas.all()
+  const allPA = getProtectedAreas.all();
+  const matchedPA = [
+    ...protectedAreasData.filter(pa => 
+      pa.name.toLowerCase().includes(lowerQuery) ||
+      pa.slug.toLowerCase().includes(lowerQuery) ||
+      pa.district.toLowerCase().includes(lowerQuery) ||
+      (isProtectedCategory && lowerQuery.length <= 16)
     ),
-    waterBodies: waterBodiesData.filter(wb => 
-      wb.name.toLowerCase().includes(lowerQuery)
+    ...allPA
+      .filter(pa => 
+        pa.name.toLowerCase().includes(lowerQuery) ||
+        pa.slug.toLowerCase().includes(lowerQuery) ||
+        (pa.district && pa.district.toLowerCase().includes(lowerQuery)) ||
+        (isProtectedCategory && lowerQuery.length <= 16)
+      )
+      .slice(0, 12)
+      .map(pa => ({
+        id: pa.id,
+        slug: pa.slug,
+        name: pa.name,
+        description: pa.description,
+        type: 'protected_area' as const,
+        category: (pa.category as any) || 'national_park',
+        area: pa.area || 0,
+        district: pa.district || 'Kashmir',
+        established: pa.established || 1980,
+        ecosystems: pa.ecosystems || [],
+        keySpecies: pa.keySpecies || [],
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      }))
+  ];
+  const uniqueProtectedAreas = Array.from(new Map(matchedPA.map(item => [item.slug, item])).values());
+
+  // 3. Water Bodies: check waterBodiesData + lakesData + wetlandsData
+  const matchedWater = [
+    ...waterBodiesData.filter(wb => 
+      wb.name.toLowerCase().includes(lowerQuery) ||
+      wb.slug.toLowerCase().includes(lowerQuery) ||
+      wb.district.toLowerCase().includes(lowerQuery) ||
+      (isWaterCategory && lowerQuery.length <= 13)
     ),
-    trails: trailsData.filter(t => 
-      t.name.toLowerCase().includes(lowerQuery)
+    ...lakesData
+      .filter(l => 
+        l.name.toLowerCase().includes(lowerQuery) ||
+        l.slug.toLowerCase().includes(lowerQuery) ||
+        (l.district && l.district.toLowerCase().includes(lowerQuery)) ||
+        (isWaterCategory && lowerQuery.length <= 13)
+      )
+      .slice(0, 8)
+      .map(l => ({
+        id: l.id,
+        slug: l.slug,
+        name: l.name,
+        description: l.description || '',
+        type: 'lake' as const,
+        category: 'Urban Lake',
+        area: (l as any).surfaceAreaKm2 || (l as any).area || 10,
+        depth: (l as any).maxDepthM || 5,
+        elevation: (l as any).elevationM || 1580,
+        district: l.district || 'Srinagar',
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      })),
+    ...wetlandsData
+      .filter(w => 
+        w.name.toLowerCase().includes(lowerQuery) ||
+        w.slug.toLowerCase().includes(lowerQuery) ||
+        (w.district && w.district.toLowerCase().includes(lowerQuery)) ||
+        (isWaterCategory && lowerQuery.length <= 13)
+      )
+      .slice(0, 8)
+      .map(w => ({
+        id: w.id,
+        slug: w.slug,
+        name: w.name,
+        description: w.description || '',
+        type: 'wetland' as const,
+        category: 'Wetland Reserve',
+        area: (w as any).surfaceAreaKm2 || (w as any).area || 10,
+        elevation: (w as any).elevationM || 1580,
+        district: w.district || 'Srinagar',
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      })),
+  ];
+  const uniqueWaterBodies = Array.from(new Map(matchedWater.map(item => [item.slug, item])).values());
+
+  // 4. Districts
+  const matchedDistricts = districtsData.filter(d => 
+    d.name.toLowerCase().includes(lowerQuery) ||
+    d.slug.toLowerCase().includes(lowerQuery) ||
+    (isDistrictCategory && lowerQuery.length <= 10)
+  );
+
+  // 5. Trails
+  const matchedTrails = [
+    ...trailsData.filter(t => 
+      t.name.toLowerCase().includes(lowerQuery) ||
+      t.slug.toLowerCase().includes(lowerQuery) ||
+      t.district.toLowerCase().includes(lowerQuery) ||
+      (isTrailCategory && lowerQuery.length <= 8)
     ),
-    districts: districtsData.filter(d => 
-      d.name.toLowerCase().includes(lowerQuery)
+    ...trailIntelligenceData
+      .filter(t => 
+        t.name.toLowerCase().includes(lowerQuery) ||
+        t.slug.toLowerCase().includes(lowerQuery) ||
+        (t.district && t.district.toLowerCase().includes(lowerQuery)) ||
+        (isTrailCategory && lowerQuery.length <= 8)
+      )
+      .slice(0, 8)
+      .map(t => ({
+        id: t.id,
+        slug: t.slug,
+        name: t.name,
+        description: t.description || '',
+        type: 'trail' as const,
+        trailType: (t.category as any) || 'hiking',
+        distance: t.distanceKm || 15,
+        duration: t.duration || '1 day',
+        difficulty: (t.difficulty as any) || 'moderate',
+        elevationGain: t.elevationGainM || 600,
+        district: t.district || 'Kashmir',
+        habitats: [],
+        bestSeason: [],
+        permitRequired: t.permitRequired || false,
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-03-26T00:00:00Z',
+      }))
+  ];
+  const uniqueTrails = Array.from(new Map(matchedTrails.map(item => [item.slug, item])).values());
+
+  // 6. Alerts
+  const matchedAlerts = [
+    ...alertsData.filter(a => 
+      a.title.toLowerCase().includes(lowerQuery) ||
+      a.description.toLowerCase().includes(lowerQuery) ||
+      (isAlertCategory && lowerQuery.length <= 8)
     ),
-    alerts: [
-      ...alertsData.filter(a => 
-        a.title.toLowerCase().includes(lowerQuery) ||
-        a.description.toLowerCase().includes(lowerQuery)
-      ),
-      ...alertRegistry
-        .filter(ar => 
-          ar.title.toLowerCase().includes(lowerQuery) ||
-          ar.summary.toLowerCase().includes(lowerQuery) ||
-          ar.district.toLowerCase().includes(lowerQuery) ||
-          ar.category.toLowerCase().includes(lowerQuery) ||
-          ar.tags.some(t => t.toLowerCase().includes(lowerQuery))
-        )
-        .map(ar => ({
-          id: ar.id,
-          slug: ar.id,
-          title: ar.title,
-          description: ar.summary,
-          severity: ar.severity as any,
-          district: ar.district,
-          type: ar.category as any,
-          status: ar.status as any,
-          location: ar.affectedArea,
-          timestamp: ar.issued,
-          updatedAt: ar.updated
-        }))
-    ],
-    reports: reportsData.filter(r => 
-      r.title.toLowerCase().includes(lowerQuery) ||
-      r.abstract.toLowerCase().includes(lowerQuery)
-    ),
+    ...alertRegistry
+      .filter(ar => 
+        ar.title.toLowerCase().includes(lowerQuery) ||
+        ar.summary.toLowerCase().includes(lowerQuery) ||
+        ar.district.toLowerCase().includes(lowerQuery) ||
+        ar.category.toLowerCase().includes(lowerQuery) ||
+        ar.tags.some(t => t.toLowerCase().includes(lowerQuery)) ||
+        (isAlertCategory && lowerQuery.length <= 8)
+      )
+      .slice(0, 8)
+      .map(ar => ({
+        id: ar.id,
+        slug: ar.id,
+        title: ar.title,
+        description: ar.summary,
+        severity: ar.severity as any,
+        district: ar.district,
+        type: ar.category as any,
+        status: ar.status as any,
+        location: ar.affectedArea,
+        timestamp: ar.issued,
+        updatedAt: ar.updated
+      }))
+  ];
+  const uniqueAlerts = Array.from(new Map(matchedAlerts.map(item => [item.slug, item])).values());
+
+  // 7. Reports
+  const matchedReports = reportsData.filter(r => 
+    r.title.toLowerCase().includes(lowerQuery) ||
+    r.abstract.toLowerCase().includes(lowerQuery)
+  );
+
+  return {
+    species: uniqueSpecies,
+    protectedAreas: uniqueProtectedAreas,
+    waterBodies: uniqueWaterBodies,
+    trails: uniqueTrails,
+    districts: matchedDistricts,
+    alerts: uniqueAlerts,
+    reports: matchedReports,
   };
 };

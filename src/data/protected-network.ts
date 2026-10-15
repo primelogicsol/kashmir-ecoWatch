@@ -4264,7 +4264,10 @@ export const getProtectedAreas = {
       ...conservationReservesData,
       ...birdHabitatAreasData,
     ];
-    return all.find(pa => pa.slug === slug);
+    const direct = all.find(pa => pa.slug === slug);
+    if (direct) return direct;
+    const clean = (slug || '').toLowerCase().trim();
+    return all.find(pa => pa.slug === clean || pa.slug.startsWith(clean) || pa.id === clean || pa.name.toLowerCase().includes(clean));
   },
   nationalParks: () => nationalParksData,
   wildlifeSanctuaries: () => wildlifeSanctuariesData,

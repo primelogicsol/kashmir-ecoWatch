@@ -49,13 +49,21 @@ export const getBiodiversityData = {
   },
   all: {
     bySlug: (slug: string): BiodiversitySpecies | undefined => {
-      return [
+      const cleanSlug = (slug || '').toLowerCase().trim();
+      const allSpecies = [
         ...mammalsData,
         ...birdsData,
         ...fishData,
         ...plantsData,
         ...medicinalPlantsData,
-      ].find(s => s.slug === slug);
+      ];
+      const direct = allSpecies.find(s => s.slug === cleanSlug || s.id === cleanSlug);
+      if (direct) return direct;
+      return allSpecies.find(s => 
+        s.slug.startsWith(cleanSlug) || 
+        s.slug.includes(cleanSlug) ||
+        s.commonName.toLowerCase().includes(cleanSlug)
+      );
     },
   },
 };

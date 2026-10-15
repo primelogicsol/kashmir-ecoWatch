@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
-import { Map, Leaf, BarChart3, ArrowRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database } from 'lucide-react';
+import { Map, Leaf, BarChart3, ArrowRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { searchAll } from '@/data';
 import { useRouter } from 'next/navigation';
@@ -23,6 +23,7 @@ export function ImmersiveHero() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const searchContainerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,16 +35,29 @@ export function ImmersiveHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Click outside listener to dismiss search dropdown
   useEffect(() => {
-    if (query.length >= 2) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+        setIsSearchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (query.trim().length >= 2) {
       setIsLoading(true);
-      setTimeout(() => {
-        const searchResults = searchAll(query);
+      const timer = setTimeout(() => {
+        const searchResults = searchAll(query.trim());
         setResults(searchResults);
         setIsLoading(false);
-      }, 300);
+      }, 150);
+      return () => clearTimeout(timer);
     } else {
       setResults(null);
+      setIsLoading(false);
     }
   }, [query]);
 
@@ -70,6 +84,15 @@ export function ImmersiveHero() {
         if (item?.type === 'wetland' || item?.category?.toLowerCase().includes('wetland') || slug.includes('wetland')) {
           return `/water-systems/wetlands/${slug}`;
         }
+        if (item?.type === 'river' || slug.includes('river')) {
+          return `/water-systems/rivers/${slug}`;
+        }
+        if (item?.type === 'spring' || slug.includes('spring')) {
+          return `/water-systems/springs/${slug}`;
+        }
+        if (item?.type === 'glacier' || slug.includes('glacier')) {
+          return `/water-systems/glaciers/${slug}`;
+        }
         return `/water-systems/lakes/${slug}`;
       case 'districts':
         return `/districts/${slug}`;
@@ -90,22 +113,56 @@ export function ImmersiveHero() {
     router.push(getRouteForType(type, slug, item));
   };
 
+  const executeSearch = (targetQuery?: string) => {
+    const q = (targetQuery !== undefined ? targetQuery : query).trim();
+    setIsSearchOpen(false);
+    if (q) {
+      router.push(`/search?q=${encodeURIComponent(q)}`);
+    } else {
+      router.push('/search');
+    }
+  };
+
   const hasResults = results && getResultCount(results) > 0;
 
   const suggestionChips = [
-    { label: 'Protected Areas', icon: Shield, query: 'protected areas' },
-    { label: 'Species', icon: Activity, query: 'hangul' },
-    { label: 'Water Bodies', icon: Droplet, query: 'dal lake' },
-    { label: 'Districts', icon: Map, query: 'srinagar' },
-    { label: 'Trails', icon: Footprints, query: 'trails' },
-    { label: 'Alerts', icon: AlertTriangle, query: 'flood' },
+    { label: 'Protected Areas', icon: Shield, route: '/protected-areas' },
+    { label: 'Species', icon: Activity, route: '/biodiversity' },
+    { label: 'Water Bodies', icon: Droplet, route: '/water-systems' },
+    { label: 'Districts', icon: Map, route: '/districts' },
+    { label: 'Trails', icon: Footprints, route: '/trails-sightings/hiking-trails' },
+    { label: 'Alerts', icon: AlertTriangle, route: '/risk-monitoring/live-alerts-advisories' },
   ];
 
   const exampleSearches = [
-    { label: 'Dachigam', type: 'National Park' },
-    { label: 'Dal Lake', type: 'Water Body' },
-    { label: 'Hangul', type: 'Species' },
-    { label: 'Srinagar', type: 'District' },
+    { 
+      label: 'Dachigam', 
+      type: 'National Park', 
+      route: '/protected-areas/dachigam-national-park',
+      badge: 'Protected Area',
+      detail: 'Last viable habitat of Hangul deer'
+    },
+    { 
+      label: 'Dal Lake', 
+      type: 'Water Body', 
+      route: '/water-systems/lakes/dal-lake',
+      badge: 'Urban Lake',
+      detail: 'Floating gardens & hydrological monitoring'
+    },
+    { 
+      label: 'Hangul', 
+      type: 'Species', 
+      route: '/biodiversity/species/hangul-kashmir-stag',
+      badge: 'Critically Endangered',
+      detail: 'Kashmir Stag (Cervus hanglu hanglu)'
+    },
+    { 
+      label: 'Srinagar', 
+      type: 'District', 
+      route: '/districts/srinagar',
+      badge: 'District Profile',
+      detail: 'Jhelum Basin ecological baseline'
+    },
   ];
 
   return (
@@ -268,21 +325,23 @@ export function ImmersiveHero() {
             className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl"
           >
             {/* Search input */}
-            <div className="relative">
-              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl glass-intense border border-white/10 shadow-2xl backdrop-blur-xl focus-within:border-forest-500/50 focus-within:ring-2 focus-within:ring-forest-500/20 transition-all">
-                <Search className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-slate-400 flex-shrink-0" />
+            <div ref={searchContainerRef} className="relative">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 p-2.5 sm:p-3.5 md:p-4 rounded-xl sm:rounded-2xl glass-intense border border-white/10 shadow-2xl backdrop-blur-xl focus-within:border-emerald-500/50 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-emerald-400 flex-shrink-0 ml-1" />
                 <input
                   type="text"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setIsSearchOpen(true);
+                  }}
                   onFocus={() => setIsSearchOpen(true)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       e.preventDefault();
-                      if (query.trim()) {
-                        setIsSearchOpen(false);
-                        router.push(`/search?q=${encodeURIComponent(query.trim())}`);
-                      }
+                      executeSearch();
+                    } else if (e.key === 'Escape') {
+                      setIsSearchOpen(false);
                     }
                   }}
                   placeholder="Search districts, species, lakes, wetlands, trails, alerts..."
@@ -294,23 +353,21 @@ export function ImmersiveHero() {
                       setQuery('');
                       setIsSearchOpen(true);
                     }}
-                    className="p-1.5 sm:p-2 rounded-lg hover:bg-white/5 transition-colors flex-shrink-0"
+                    className="p-1.5 sm:p-2 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors flex-shrink-0"
+                    title="Clear input"
                   >
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 )}
                 <button
                   type="button"
-                  onClick={() => {
-                    if (query.trim()) {
-                      setIsSearchOpen(false);
-                      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
-                    }
-                  }}
-                  className="hidden sm:inline-flex px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs bg-white/5 hover:bg-white/15 hover:text-white rounded border border-white/10 text-slate-400 transition-colors cursor-pointer"
-                  title="Search intelligence"
+                  onClick={() => executeSearch()}
+                  className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg sm:rounded-xl shadow-lg shadow-emerald-900/30 transition-all flex-shrink-0 cursor-pointer active:scale-95"
+                  title="Search environmental intelligence"
                 >
-                  Enter
+                  <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="hidden xs:inline">Search</span>
+                  <span className="hidden md:inline text-[10px] text-emerald-200/80 font-mono border-l border-emerald-400/40 pl-1.5 ml-0.5">↵</span>
                 </button>
               </div>
 
@@ -550,41 +607,68 @@ export function ImmersiveHero() {
                       {!isLoading && !query && (
                         <div className="p-4 sm:p-6">
                           {/* Quick chips */}
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                            {suggestionChips.map((chip) => (
-                              <button
-                                key={chip.label}
-                                onClick={() => {
-                                  setQuery(chip.query);
-                                  setIsSearchOpen(true);
-                                }}
-                                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-light border border-white/10 text-xs sm:text-sm text-slate-300 hover:text-white hover:border-forest-500/50 transition-all"
-                              >
-                                <chip.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                {chip.label}
-                              </button>
-                            ))}
+                          <div className="mb-2">
+                            <p className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mb-2 sm:mb-2.5">
+                              Intelligence Categories
+                            </p>
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-6">
+                              {suggestionChips.map((chip) => (
+                                <button
+                                  key={chip.label}
+                                  onClick={() => {
+                                    setIsSearchOpen(false);
+                                    setQuery('');
+                                    router.push(chip.route);
+                                  }}
+                                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-light border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-xs sm:text-sm text-slate-300 hover:text-white transition-all cursor-pointer group"
+                                  title={`Explore ${chip.label}`}
+                                >
+                                  <chip.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+                                  <span>{chip.label}</span>
+                                  <ArrowRight className="w-3 h-3 text-emerald-400/50 group-hover:text-emerald-300 group-hover:translate-x-0.5 transition-all" />
+                                </button>
+                              ))}
+                            </div>
                           </div>
 
                           {/* Example searches */}
                           <div>
-                            <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider mb-2 sm:mb-3">Try searching</p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                            <div className="flex items-center justify-between mb-2 sm:mb-3">
+                              <p className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">
+                                Verified Ecological Entities
+                              </p>
+                              <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-medium">
+                                <Sparkles className="w-3 h-3" />
+                                Direct Exploration
+                              </span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                               {exampleSearches.map((example) => (
                                 <button
                                   key={example.label}
                                   onClick={() => {
-                                    setQuery(example.label.toLowerCase());
-                                    setIsSearchOpen(true);
+                                    setIsSearchOpen(false);
+                                    setQuery('');
+                                    router.push(example.route);
                                   }}
-                                  className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                                  className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/50 transition-all text-left group cursor-pointer"
+                                  title={`View ${example.label} Profile`}
                                 >
-                                  <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 group-hover:text-forest-400 transition-colors flex-shrink-0" />
                                   <div className="min-w-0 flex-1">
-                                    <div className="text-xs sm:text-sm font-medium text-white group-hover:text-forest-300 transition-colors truncate">
-                                      {example.label}
+                                    <div className="flex items-center gap-2 mb-0.5">
+                                      <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors truncate">
+                                        {example.label}
+                                      </span>
+                                      <span className="text-[9px] sm:text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                                        {example.type}
+                                      </span>
                                     </div>
-                                    <div className="text-[10px] sm:text-xs text-slate-500 truncate">{example.type}</div>
+                                    <div className="text-[11px] text-slate-400 truncate">
+                                      {example.detail}
+                                    </div>
+                                  </div>
+                                  <div className="p-1.5 rounded-lg bg-white/5 group-hover:bg-emerald-500/20 text-slate-400 group-hover:text-emerald-300 transition-all flex-shrink-0 ml-2">
+                                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                                   </div>
                                 </button>
                               ))}
@@ -592,21 +676,33 @@ export function ImmersiveHero() {
                           </div>
 
                           {/* Footer hint */}
-                          <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5">
-                            <p className="text-[10px] sm:text-xs text-slate-500 text-center leading-relaxed">
-                              Search across species, protected areas, water bodies, trails, districts, alerts, and reports
-                            </p>
+                          <div className="mt-4 sm:mt-5 pt-3 sm:pt-3.5 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500">
+                            <span>Search 2,800+ species, wetlands, GIS atlas & real-time alerts</span>
+                            <button
+                              onClick={() => executeSearch()}
+                              className="text-emerald-400 hover:text-emerald-300 font-medium hover:underline cursor-pointer"
+                            >
+                              Open Advanced Search &rarr;
+                            </button>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    {/* Results count */}
+                    {/* Results count & View All CTA */}
                     {!isLoading && hasResults && (
-                      <div className="p-4 border-t border-white/5 bg-white/[0.02]">
-                        <p className="text-xs text-slate-500 text-center">
-                          {getResultCount(results)} result{getResultCount(results) !== 1 ? 's' : ''} found
+                      <div className="p-3 sm:p-4 border-t border-white/10 bg-white/[0.03] flex items-center justify-between gap-3">
+                        <p className="text-xs text-slate-400">
+                          <strong className="text-white">{getResultCount(results)}</strong> record{getResultCount(results) !== 1 ? 's' : ''} found
                         </p>
+                        <button
+                          type="button"
+                          onClick={() => executeSearch()}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer"
+                        >
+                          <span>Explore all in Search</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                     )}
                   </motion.div>
