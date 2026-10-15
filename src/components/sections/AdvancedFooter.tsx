@@ -209,18 +209,21 @@ export function AdvancedFooter() {
               <div className="w-fit flex flex-col items-end">
 
                 {/* Legal links */}
-                <div className="flex flex-wrap justify-end gap-x-8 gap-y-2 text-xs sm:text-sm">
-                  <a href="/privacy" className="text-slate-500 hover:text-forest-400 transition-colors">
+                <div className="flex flex-wrap justify-end gap-x-6 sm:gap-x-8 gap-y-2 text-xs sm:text-sm">
+                  <a href="/privacy" className="text-slate-500 hover:text-emerald-400 transition-colors">
                     Privacy Policy
                   </a>
-                  <a href="/terms" className="text-slate-500 hover:text-forest-400 transition-colors">
+                  <a href="/terms" className="text-slate-500 hover:text-emerald-400 transition-colors">
                     Terms of Use
                   </a>
-                  <a href="/accessibility" className="text-slate-500 hover:text-forest-400 transition-colors">
+                  <a href="/accessibility" className="text-slate-500 hover:text-emerald-400 transition-colors">
                     Accessibility Statement
                   </a>
-                  <a href="/legal-notice" className="text-slate-500 hover:text-forest-400 transition-colors">
+                  <a href="/legal-notice" className="text-slate-500 hover:text-emerald-400 transition-colors">
                     Legal Notice
+                  </a>
+                  <a href="/geographic-notice" className="text-slate-500 hover:text-emerald-400 transition-colors">
+                    Geographic Notice
                   </a>
                 </div>
 

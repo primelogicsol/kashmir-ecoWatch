@@ -10,7 +10,20 @@ import {
   MapPin, Droplets, Mountain, AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AtlasMap } from '@/components/maps/AtlasMap';
+import dynamic from 'next/dynamic';
+
+const AtlasMap = dynamic(
+  () => import('@/components/maps/AtlasMap').then((m) => m.AtlasMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-full w-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4">
+        <div className="w-10 h-10 border-2 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+        <p className="text-xs font-mono tracking-widest uppercase">Loading Kashmir Geospatial Intelligence...</p>
+      </div>
+    )
+  }
+);
 import { DistrictLayer, ProtectedAreaLayer, WaterBodyLayer, HazardLayer } from '@/components/maps/layers';
 
 const mapLayers = [

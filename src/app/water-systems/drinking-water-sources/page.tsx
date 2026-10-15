@@ -26,42 +26,18 @@ function formatPopulation(pop: number): string {
   return pop.toString();
 }
 
-/** Maps DrinkingWaterSource → WaterEntity so WaterEntityListingPage can render it. */
-function toWaterEntity(s: typeof drinkingWaterSources[0]): WaterEntity {
-  const qualityMap: Record<string, string> = {
-    safe: 'excellent',
-    'at-risk': 'moderate',
-    contaminated: 'critical',
-    unknown: 'data-deficient',
-  };
-  return {
-    id: s.id,
-    slug: s.slug,
-    name: s.name,
-    type: 'spring',
-    category: s.type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
-    description: s.description,
-    district: s.district,
-    elevation: 0,
-    verificationStatus: 'verified',
-    createdAt: s.lastUpdated,
-    updatedAt: s.lastUpdated,
-    waterQuality: {
-      pH: 7,
-      dissolvedOxygen: 8,
-      turbidity: 5,
-      status: qualityMap[s.waterQualityStatus] || 'data-deficient',
-    } as any,
-    conservationStatus: s.status,
-    threats: s.challenges,
-  } as unknown as WaterEntity;
-}
+import {
+  drinkingWaterEntities,
+  toDrinkingWaterEntity,
+} from '@/data/drinking-water-sources';
 
-const entities: WaterEntity[] = drinkingWaterSources.map(toWaterEntity);
+const entities: WaterEntity[] = drinkingWaterEntities;
 
 const categories = Array.from(new Set(drinkingWaterSources.map(s =>
   s.type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
 ))).sort();
+
+const districts = Array.from(new Set(drinkingWaterSources.map(s => s.district))).filter(Boolean).sort();
 
 // ─── Sub-module nav cards ─────────────────────────────────────────────────────
 
@@ -322,27 +298,43 @@ function AdditionalContent() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function DrinkingWaterSourcesPage() {
-  const stats = drinkingWaterStats;
+  const stats = React.useMemo(() => ({
+    totalSources: drinkingWaterSources.length,
+    operational: drinkingWaterSources.filter(s => s.status === 'operational').length,
+    partial: drinkingWaterSources.filter(s => s.status === 'partial').length,
+    nonFunctional: drinkingWaterSources.filter(s => s.status === 'non-functional').length,
+    underUpgrade: drinkingWaterSources.filter(s => s.status === 'under-upgrade').length,
+    safe: drinkingWaterSources.filter(s => s.waterQualityStatus === 'safe').length,
+    atRisk: drinkingWaterSources.filter(s => s.waterQualityStatus === 'at-risk').length,
+    contaminated: drinkingWaterSources.filter(s => s.waterQualityStatus === 'contaminated').length,
+    totalPopulationServed: drinkingWaterSources.reduce((sum, s) => sum + (s.populationServed || 0), 0),
+  }), []);
 
   return (
     <WaterEntityListingPage
       title="Western Himalayan Drinking Water Sources"
-      description="Comprehensive monitoring and intelligence for Kashmir's drinking water sources — springs, river intakes, groundwater schemes, piped supply, and treatment networks. Sourced from the ESRO/eIEN Kashmir environmental archive."
+      description="Authoritative directory of drinking water sources, treatment plants, gravity supply networks, sub-surface infiltration galleries, and community wellheads across Jammu & Kashmir, Ladakh, AJK, and Gilgit-Baltistan."
       icon="Droplets"
       color="from-blue-500 to-cyan-600"
       entities={entities}
       entityType="Water Sources"
       kpis={[
-        { label: 'Total Sources',   value: stats.totalSources,                               icon: 'Droplet'        },
+        { label: 'Total Sources',   value: stats.totalSources,                               icon: 'Droplet',       color: 'text-blue-400'    },
         { label: 'Operational',     value: stats.operational,                                icon: 'CheckCircle',   color: 'text-emerald-400' },
-        { label: 'Partial',         value: stats.partial,                                    icon: 'Clock',         color: 'text-amber-400'  },
-        { label: 'Non-Functional',  value: stats.nonFunctional,                              icon: 'XCircle',       color: 'text-red-400'    },
-        { label: 'Under Upgrade',   value: stats.underUpgrade,                               icon: 'Wrench',        color: 'text-blue-400'   },
-        { label: 'Safe Quality',    value: stats.safe,                                       icon: 'Shield',        color: 'text-emerald-400' },
-        { label: 'At Risk',         value: stats.atRisk,                                     icon: 'AlertTriangle', color: 'text-orange-400' },
-        { label: 'Pop. Served',     value: formatPopulation(stats.totalPopulationServed),    icon: 'Users',         color: 'text-purple-400' },
+        { label: 'Partial Supply',  value: stats.partial,                                    icon: 'Clock',         color: 'text-amber-400'   },
+        { label: 'Non-Functional',  value: stats.nonFunctional,                              icon: 'XCircle',       color: 'text-red-400'     },
+        { label: 'Under Upgrade',   value: stats.underUpgrade,                               icon: 'Wrench',        color: 'text-sky-400'     },
+        { label: 'Safe Quality',    value: stats.safe,                                       icon: 'Shield',        color: 'text-teal-400'    },
+        { label: 'At Risk',         value: stats.atRisk,                                     icon: 'AlertTriangle', color: 'text-orange-400'  },
+        { label: 'Contaminated',    value: stats.contaminated,                               icon: 'Activity',      color: 'text-rose-400'    },
+        { label: 'Pop. Served',     value: formatPopulation(stats.totalPopulationServed),    icon: 'Users',         color: 'text-purple-400'  },
+        { label: 'Districts Mapped',value: districts.length,                                 icon: 'MapPin'                                    },
       ]}
-      filters={{ categories }}
+      filters={{
+        categories,
+        districts,
+        qualityStatuses: ['excellent', 'good', 'moderate', 'poor', 'critical', 'data-deficient'],
+      }}
       getEntitySlug={e => `/water-systems/drinking-water-sources/${e.slug}`}
       getCategory={e => e.category}
       getSecondaryMetric={e => {

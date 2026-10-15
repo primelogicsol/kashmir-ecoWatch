@@ -1,9 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
-import { AtlasMap } from '@/components/maps/AtlasMap';
 import { FeatureDrawer } from '@/components/maps/FeatureDrawer';
+
+// Dynamically import AtlasMap with ssr: false in Client Component
+const AtlasMap = dynamic(
+  () => import('@/components/maps/AtlasMap').then((m) => m.AtlasMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-full w-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4">
+        <div className="w-10 h-10 border-2 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+        <p className="text-xs font-mono tracking-widest uppercase">Loading Kashmir Geospatial Canvas...</p>
+      </div>
+    )
+  }
+);
 import {
   DistrictLayer,
   ProtectedAreaLayer,

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Logo } from '@/components/common/Logo';
 import Link from 'next/link';
@@ -37,6 +37,11 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrolledHeader } from '@/hooks/useScrolledHeader';
 import { cn } from '@/lib/utils';
+import { HeaderSearch } from '@/components/navigation/HeaderSearch';
+import { NotificationDropdown } from '@/components/navigation/NotificationDropdown';
+import { SettingsModal } from '@/components/navigation/SettingsModal';
+import { ProfileDropdown } from '@/components/navigation/ProfileDropdown';
+import { alertRegistry } from '@/data/alert-registry';
 
 const navItems = [
   { label: 'Protected Areas',         href: '/protected-network',        hasDropdown: true },
@@ -61,7 +66,64 @@ export function PremiumStickyHeader() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSubmenus, setExpandedMobileSubmenus] = useState<Set<string>>(new Set());
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [activeHeaderModal, setActiveHeaderModal] = useState<'search' | 'notifications' | 'settings' | 'profile' | null>(null);
+  const [unreadCount, setUnreadCount] = useState<number>(alertRegistry.length);
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
+  const headerActionsRef = useRef<HTMLDivElement>(null);
+
+  // Sync unread alerts
+  useEffect(() => {
+    const updateUnread = () => {
+      try {
+        const stored = localStorage.getItem('kew_read_notifications');
+        const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
+        const count = alertRegistry.filter(a => !readIds.has(a.id)).length;
+        setUnreadCount(count);
+      } catch {
+        setUnreadCount(alertRegistry.length);
+      }
+    };
+
+    updateUnread();
+    window.addEventListener('storage', updateUnread);
+    window.addEventListener('kew_alerts_updated', updateUnread);
+    return () => {
+      window.removeEventListener('storage', updateUnread);
+      window.removeEventListener('kew_alerts_updated', updateUnread);
+    };
+  }, []);
+
+  // Global hotkeys (Cmd+K / Ctrl+K to toggle search, Escape to close)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setActiveHeaderModal(prev => (prev === 'search' ? null : 'search'));
+      } else if (e.key === 'Escape') {
+        setActiveHeaderModal(null);
+        setActiveDropdown(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Close modals when clicking outside header actions
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (headerActionsRef.current && !headerActionsRef.current.contains(e.target as Node)) {
+        setActiveHeaderModal(null);
+      }
+    };
+
+    if (activeHeaderModal) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeHeaderModal]);
 
   // Body scroll lock when mobile menu is open
   useEffect(() => {
@@ -303,56 +365,97 @@ export function PremiumStickyHeader() {
           </nav>
 
           {/* Right side actions */}
-          <div className="hidden lg:flex items-center gap-1">
-            {/* Search toggle */}
-            <AnimatePresence>
-              {searchOpen && (
-                <motion.div
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 'auto', opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      className="w-48 px-3 py-1.5 pl-9 text-sm rounded-lg bg-slate-800/50 border border-white/10 outline-none text-white placeholder:text-slate-500 focus:border-white/20 focus:bg-slate-800 transition-colors"
-                      autoFocus
-                      onBlur={() => setSearchOpen(false)}
-                    />
-                    <Search className="w-4 h-4 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
-                  </div>
-                </motion.div>
+          <div ref={headerActionsRef} className="hidden lg:flex items-center gap-1.5 relative">
+            {/* Search button with Cmd+K badge */}
+            <button
+              onClick={() => setActiveHeaderModal(prev => (prev === 'search' ? null : 'search'))}
+              className={cn(
+                "flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer",
+                activeHeaderModal === 'search'
+                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
               )}
-            </AnimatePresence>
-
-            {/* Search button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="text-slate-300 hover:text-white p-1.5"
+              title="Search environmental intelligence (Ctrl+K / ⌘K)"
+              aria-label="Search environmental intelligence"
+              aria-expanded={activeHeaderModal === 'search'}
             >
-              <Search className="w-5 h-5" />
-            </Button>
+              <Search className="w-4 h-4 text-emerald-400" />
+              <span className="hidden xl:inline text-slate-300">Search</span>
+              <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-white/10 text-slate-400 border border-white/10">
+                ⌘K
+              </kbd>
+            </button>
 
-            {/* Alerts */}
-            <Button variant="ghost" size="sm" className="relative text-slate-300 hover:text-white p-1.5">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            </Button>
+            {/* Notification Bell */}
+            <button
+              onClick={() => setActiveHeaderModal(prev => (prev === 'notifications' ? null : 'notifications'))}
+              className={cn(
+                "relative p-2 rounded-xl border transition-all cursor-pointer",
+                activeHeaderModal === 'notifications'
+                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
+              )}
+              title={unreadCount > 0 ? `${unreadCount} unread environmental alerts` : "Environmental alerts stream"}
+              aria-label="Environmental alerts"
+              aria-expanded={activeHeaderModal === 'notifications'}
+            >
+              <Bell className="w-4 h-4" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center animate-pulse shadow-lg shadow-red-500/50">
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
+            </button>
 
-            {/* Settings */}
-            <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white p-1.5">
-              <Settings className="w-5 h-5" />
-            </Button>
+            {/* Settings Gear */}
+            <button
+              onClick={() => setActiveHeaderModal(prev => (prev === 'settings' ? null : 'settings'))}
+              className={cn(
+                "p-2 rounded-xl border transition-all cursor-pointer",
+                activeHeaderModal === 'settings'
+                  ? "bg-purple-500/20 text-purple-300 border-purple-500/40"
+                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
+              )}
+              title="Platform preferences & telemetry settings"
+              aria-label="Platform settings"
+              aria-expanded={activeHeaderModal === 'settings'}
+            >
+              <Settings className="w-4 h-4" />
+            </button>
 
-            {/* Profile */}
-            <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white p-1.5">
-              <User className="w-5 h-5" />
-            </Button>
+            {/* Contributor / User Profile */}
+            <button
+              onClick={() => setActiveHeaderModal(prev => (prev === 'profile' ? null : 'profile'))}
+              className={cn(
+                "p-2 rounded-xl border transition-all cursor-pointer",
+                activeHeaderModal === 'profile'
+                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
+              )}
+              title="Contributor credentials & actions"
+              aria-label="Contributor profile and actions"
+              aria-expanded={activeHeaderModal === 'profile'}
+            >
+              <User className="w-4 h-4" />
+            </button>
+
+            {/* Dropdown Portals */}
+            <HeaderSearch
+              isOpen={activeHeaderModal === 'search'}
+              onClose={() => setActiveHeaderModal(null)}
+            />
+            <NotificationDropdown
+              isOpen={activeHeaderModal === 'notifications'}
+              onClose={() => setActiveHeaderModal(null)}
+            />
+            <SettingsModal
+              isOpen={activeHeaderModal === 'settings'}
+              onClose={() => setActiveHeaderModal(null)}
+            />
+            <ProfileDropdown
+              isOpen={activeHeaderModal === 'profile'}
+              onClose={() => setActiveHeaderModal(null)}
+            />
           </div>
 
           {/* Mobile menu button */}
@@ -475,15 +578,75 @@ export function PremiumStickyHeader() {
 
                 {/* Mobile search and actions */}
                 <div className="pt-6 mt-6 border-t border-white/10 space-y-4">
-                  <div className="relative">
+                  {/* Real Search Form */}
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (mobileSearchQuery.trim()) {
+                        setIsMobileMenuOpen(false);
+                        window.location.href = `/search?q=${encodeURIComponent(mobileSearchQuery.trim())}`;
+                      }
+                    }}
+                    className="relative"
+                  >
                     <input
                       type="text"
-                      placeholder="Search..."
-                      className="w-full px-4 py-3 pl-11 rounded-lg bg-white/5 border border-white/10 outline-none text-sm text-white placeholder:text-slate-500 focus:border-white/20 focus:bg-white/10 transition-colors"
+                      value={mobileSearchQuery}
+                      onChange={(e) => setMobileSearchQuery(e.target.value)}
+                      placeholder="Search species, water, hazards..."
+                      className="w-full px-4 py-3 pl-11 rounded-xl bg-white/5 border border-white/10 outline-none text-sm text-white placeholder:text-slate-500 focus:border-emerald-500/40 focus:bg-white/10 transition-colors"
                     />
-                    <Search className="w-5 h-5 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <button
+                      type="submit"
+                      aria-label="Submit search"
+                      className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-400"
+                    >
+                      <Search className="w-5 h-5" />
+                    </button>
+                  </form>
+
+                  {/* Mobile Quick Action Tiles */}
+                  <div className="grid grid-cols-3 gap-2">
+                    <Link
+                      href="/risk-monitoring/live-alerts-advisories"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors relative"
+                    >
+                      <Bell className="w-4 h-4 text-amber-400 mb-1" />
+                      <span className="text-[11px] font-medium text-slate-300">Alerts</span>
+                      {unreadCount > 0 && (
+                        <span className="absolute top-1 right-2 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                      )}
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setActiveHeaderModal('settings');
+                      }}
+                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors"
+                    >
+                      <Settings className="w-4 h-4 text-purple-400 mb-1" />
+                      <span className="text-[11px] font-medium text-slate-300">Settings</span>
+                    </button>
+
+                    <Link
+                      href="/contribute-data"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors"
+                    >
+                      <User className="w-4 h-4 text-emerald-400 mb-1" />
+                      <span className="text-[11px] font-medium text-slate-300">Deposit</span>
+                    </Link>
                   </div>
-                  <Button className="w-full text-sm">Access Platform</Button>
+
+                  <Link
+                    href="/atlas"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-center text-sm shadow-lg shadow-emerald-950/40 transition-all"
+                  >
+                    Launch Interactive Atlas
+                  </Link>
                 </div>
               </nav>
             </motion.div>

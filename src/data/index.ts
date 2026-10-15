@@ -1,5 +1,6 @@
 // Centralized data service for the entire platform
 // This provides structured mock data that is API-ready
+import { alertRegistry } from './alert-registry';
 
 export interface Entity {
   id: string;
@@ -486,10 +487,33 @@ export const searchAll = (query: string) => {
     districts: districtsData.filter(d => 
       d.name.toLowerCase().includes(lowerQuery)
     ),
-    alerts: alertsData.filter(a => 
-      a.title.toLowerCase().includes(lowerQuery) ||
-      a.description.toLowerCase().includes(lowerQuery)
-    ),
+    alerts: [
+      ...alertsData.filter(a => 
+        a.title.toLowerCase().includes(lowerQuery) ||
+        a.description.toLowerCase().includes(lowerQuery)
+      ),
+      ...alertRegistry
+        .filter(ar => 
+          ar.title.toLowerCase().includes(lowerQuery) ||
+          ar.summary.toLowerCase().includes(lowerQuery) ||
+          ar.district.toLowerCase().includes(lowerQuery) ||
+          ar.category.toLowerCase().includes(lowerQuery) ||
+          ar.tags.some(t => t.toLowerCase().includes(lowerQuery))
+        )
+        .map(ar => ({
+          id: ar.id,
+          slug: ar.id,
+          title: ar.title,
+          description: ar.summary,
+          severity: ar.severity as any,
+          district: ar.district,
+          type: ar.category as any,
+          status: ar.status as any,
+          location: ar.affectedArea,
+          timestamp: ar.issued,
+          updatedAt: ar.updated
+        }))
+    ],
     reports: reportsData.filter(r => 
       r.title.toLowerCase().includes(lowerQuery) ||
       r.abstract.toLowerCase().includes(lowerQuery)

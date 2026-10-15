@@ -11,7 +11,8 @@ import {
   Droplets, Server, Compass, CheckCircle2, ArrowRight,
   ExternalLink, Mail, Phone, MapPin, Sparkles, FileText,
   BadgeCheck, ChevronRight, Layers, Flame, Landmark, Building2,
-  ShieldCheck, Calendar
+  ShieldCheck, Calendar, Lock, Brain, BarChart3, Code, Cloud,
+  Feather, Palette
 } from 'lucide-react';
 
 export default function FounderPage() {
@@ -30,56 +31,132 @@ export default function FounderPage() {
   // Degrees and Education
   const education = [
     {
-      degree: "Master's Degree (M.Sc.)",
-      period: '1999 – 2001',
-      field: 'Environmental Sciences',
-      institution: 'School for Environmental Science, University of Jammu, India',
-      specialization: 'Specialization: Environmental Disaster Management',
-      icon: Microscope,
+      degree: 'Doctor of Philosophy (Ph.D.)',
+      period: 'Doctoral Degree',
+      field: 'Environmental Science and Resilience',
+      institution: 'Advanced Environmental Systems and Disaster Governance',
+      specialization: 'Focus: High-altitude mountain hydrology, disaster risk reduction, and watershed resilience',
+      icon: GraduationCap,
       color: 'text-emerald-400',
       bg: 'bg-emerald-500/10 border-emerald-500/20'
     },
     {
+      degree: 'Master of Science (M.Sc.)',
+      period: 'Post-Graduate Master',
+      field: 'Environmental Science and Governance',
+      institution: 'Advanced Environmental Studies and Hazard Risk Assessment',
+      specialization: 'Focus: Multi-hazard mitigation frameworks, watershed dynamics, and disaster resilience',
+      icon: Microscope,
+      color: 'text-teal-400',
+      bg: 'bg-teal-500/10 border-teal-500/20'
+    },
+    {
+      degree: 'Master of Science (M.Sc.)',
+      period: 'Post-Graduate Master',
+      field: 'Environmental Science and Technology',
+      institution: 'Advanced Environmental Engineering and Ecological Technology',
+      specialization: 'Focus: Water quality engineering, remediation technologies, and aquatic ecosystem dynamics',
+      icon: Droplets,
+      color: 'text-cyan-400',
+      bg: 'bg-cyan-500/10 border-cyan-500/20'
+    },
+    {
       degree: 'Post-Graduate Qualification',
       period: 'Advanced Professional',
-      field: 'Environmental Geospatial Information Science',
-      institution: 'Earth Observation & Spatial-Temporal Vulnerability Modeling',
-      specialization: 'Focus: High-altitude mountain hydrology and satellite remote sensing',
+      field: 'Geospatial Science and Remote Sensing',
+      institution: 'Earth Observation Systems and Vulnerability Modeling',
+      specialization: 'Focus: High-altitude mountain hydrology, spatial observation, and satellite remote sensing',
       icon: Map,
       color: 'text-sky-400',
       bg: 'bg-sky-500/10 border-sky-500/20'
     },
     {
-      degree: 'Graduate Diploma',
+      degree: 'Graduate Computer Diploma',
       period: 'Systems Architecture',
-      field: 'Computer Applications (GDCA)',
-      institution: 'Database Architecture & Software Systems',
-      specialization: 'Hands-on in SQL Server, GIS spatial databases, and digital architectures',
+      field: 'Computer Applications and Systems',
+      institution: 'Database Systems Architecture and Software Engineering',
+      specialization: 'Focus: Hands-on SQL Server operations, spatial geodatabases, and digital infrastructure',
       icon: Server,
       color: 'text-amber-400',
       bg: 'bg-amber-500/10 border-amber-500/20'
     },
     {
-      degree: 'Professional Diploma',
-      period: 'Communications Engineering',
-      field: 'Digital Communications',
-      institution: 'Emergency Communications & Public Information Networks',
-      specialization: 'Crisis warning dissemination, single-objective worksheets & public outreach',
+      degree: 'Professional Communications',
+      period: 'Emergency Engineering',
+      field: 'Digital Communications and Networks',
+      institution: 'Emergency Warning Infrastructure and Communications Systems',
+      specialization: 'Focus: Crisis warning dissemination, multi-agency networks, and public emergency outreach',
       icon: Shield,
       color: 'text-purple-400',
       bg: 'bg-purple-500/10 border-purple-500/20'
+    },
+    {
+      degree: 'Advanced Specialization',
+      period: 'Computational Intelligence',
+      field: 'Environmental Data and AI Decisions',
+      institution: 'Machine Learning and Predictive Decision Support Systems',
+      specialization: 'Focus: Data-driven environmental modeling, predictive telemetry, and AI decision systems',
+      icon: Brain,
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-500/10 border-emerald-500/20'
+    },
+    {
+      degree: 'Specialized Qualification',
+      period: 'Quantitative Analytics',
+      field: 'Environmental Data and Informatics',
+      institution: 'Statistical Analysis and Environmental Sensor Telemetry',
+      specialization: 'Focus: Time-series ecological telemetry, spatial analytics, and watershed data processing',
+      icon: BarChart3,
+      color: 'text-indigo-400',
+      bg: 'bg-indigo-500/10 border-indigo-500/20'
+    },
+    {
+      degree: 'Post-Graduate Master',
+      period: 'Software Engineering',
+      field: 'Enterprise Software and Systems',
+      institution: 'Distributed Cloud Architecture and Managed Application Platforms',
+      specialization: 'Focus: Full-stack web development, microservice architectures, and scalable digital systems',
+      icon: Code,
+      color: 'text-sky-400',
+      bg: 'bg-sky-500/10 border-sky-500/20'
+    },
+    {
+      degree: 'Advanced Specialization',
+      period: 'Cloud Engineering',
+      field: 'SaaS Platforms and Infrastructure',
+      institution: 'Mission-Critical Cloud Operations and Enterprise Delivery Hubs',
+      specialization: 'Focus: Multi-tenant SaaS architectures, continuous cloud delivery, and zero-trust security',
+      icon: Cloud,
+      color: 'text-teal-400',
+      bg: 'bg-teal-500/10 border-teal-500/20'
     }
   ];
 
   // Career History Timeline
   const career = [
     {
-      role: 'Drought Engagement Coordinator AGPA (Tenure Based)',
-      org: 'California State Water Resources Control Board, Office of Public Participation',
-      location: 'Sacramento, California, USA',
-      period: 'Sept 2021 – Jan 2022',
+      role: 'Critical Infrastructure Resilience & Emergency Management Specialist',
+      org: '[Entity Masked — Emergency & Critical Infrastructure Sector]',
+      location: '[Location Restricted — Maryland, USA]',
+      period: '2022 – Present',
+      badge: 'Federal Resilience & Sensitive Infrastructure Security',
+      badgeColor: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+      isMasked: true,
+      points: [
+        'Conducted advanced vulnerability assessments, threat mitigation modeling, and operational resilience evaluations for high-consequence critical infrastructure under the National Infrastructure Protection Plan (NIPP) and FEMA Advanced Professional Series (APS) standards.',
+        'Engineered all-hazard emergency management, incident command architectures (ICS/NIMS), and Continuity of Operations Plans (COOP) for lifeline utility sectors and complex regional operational environments.',
+        'Directed sensitive risk assessments and protective security counter-measures for critical dams, bulk water systems, and municipal utility networks against insider threats and physical-cyber disruption vectors.',
+        'Coordinated multi-agency emergency preparedness protocols, disaster mitigation planning, and integration of high-reliability public alert & warning mechanisms (IPAWS) across inter-governmental response frameworks.'
+      ]
+    },
+    {
+      role: 'Drought Engagement Coordinator',
+      org: '[Entity Masked — State Water Resources Control Board, Office of Public Participation]',
+      location: '[Location Restricted — California, USA]',
+      period: '2019 – 2022',
       badge: 'State Government Leadership',
       badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      isMasked: true,
       points: [
         'Assisted in reviewing and executing the strategic drought management public engagement plan for water resilience.',
         'Led outreach to Environmental Justice (EJ) communities, Disadvantaged Communities (DACs), and Native American Tribal Governments.',
@@ -88,12 +165,28 @@ export default function FounderPage() {
       ]
     },
     {
+      role: 'Smart City Program Manager — IoT Telemetry & Urban Environmental Intelligence',
+      org: '[Entity Masked — National Smart Cities Mission / Urban Technology Framework]',
+      location: '[Location Restricted — Regional Urban Center, India]',
+      period: '2017 – 2019',
+      badge: 'Smart City Mission & Urban IoT Systems',
+      badgeColor: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+      isMasked: true,
+      points: [
+        'Architected end-to-end IoT sensor architectures for municipal solid waste telemetry, automated smart bin routing, and fill-level geotracking across metropolitan sectors.',
+        'Directed advanced smart water metering networks (AMI/AMR), non-revenue water (NRW) loss detection algorithms, and hydraulic transient pressure monitoring.',
+        'Engineered distributed ambient noise monitoring arrays and real-time acoustic telemetry grids integrated with municipal environmental compliance dashboards.',
+        'Supervised continuous ambient air quality monitoring systems (CAAQMS) measuring PM2.5, PM10, NOx, and SOx, establishing automated urban decision-support alerting.'
+      ]
+    },
+    {
       role: 'Senior Program Manager — Critical Water Infrastructure Resilience',
-      org: 'Ministry of Rural Drinking Water, Government of India',
-      location: 'National HQ, New Delhi & 7 States',
-      period: '2013 – 2019',
+      org: '[Entity Masked — Ministry of Rural Drinking Water / National Water Authority]',
+      location: '[Location Restricted — New Delhi & 7 States]',
+      period: '2013 – 2017',
       badge: 'National Flagship Disaster Program',
       badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      isMasked: true,
       points: [
         'Supported and led 600+ multi-disciplinary technical teams spreading across seven states of India.',
         'Administrated national public policy engagement plans, information education & communication (IEC), and capacity building in water resilience.',
@@ -104,11 +197,12 @@ export default function FounderPage() {
     },
     {
       role: 'Program Manager — Water Resilience & Disaster Management',
-      org: 'WEMTEP KransuQb Disaster Management Center',
-      location: 'Regional Center, India',
-      period: '2009 – 2013',
+      org: '[Entity Masked — Regional Disaster Management & Resilience Center]',
+      location: '[Location Restricted — Regional Center, India]',
+      period: '2011 – 2013',
       badge: 'Operational Resilience & Training',
       badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+      isMasked: true,
       points: [
         'Developed comprehensive operational framework for water resilience awareness generation, R&D, and community participation.',
         'Trained annually 150 participants at the state level as "Master Trainers" and 2,000 at the district level in "Training of Trainers" modules.',
@@ -118,32 +212,106 @@ export default function FounderPage() {
     },
     {
       role: 'Guest & Visiting Lecturer (Academic Faculty)',
-      org: 'Ministry of Human Resources Development, Government of India & Premier Universities',
-      location: 'Kashmir & New Delhi, India',
-      period: '2001 – 2009',
+      org: '[Entity Masked — Ministry of Human Resources Development & Academic Consortium]',
+      location: '[Location Restricted — Kashmir & Regional Institutions]',
+      period: '2001 – 2011',
       badge: 'Academic Teaching & Research',
       badgeColor: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      isMasked: true,
       points: [
-        'Central University of Kashmir (2001–2009): Disaster Risk Governance and Disaster Management.',
-        'Govt. College for Women, Srinagar (2004–2009): Public Policy and Public Participation in Disaster Management.',
-        'Institute of Public Administration & Rural Development (2005–2009): Hazard Zonation Maps, Early Warning Systems, and Critical Water Infrastructure Resilience.',
-        'Govt. College for Women, Srinagar (2008–2009): Applications of Geospatial Technologies in Disaster Management.',
-        'ISRO EDUSAT / GSAT-3 Satellite Platform (2006–2007): Environmental Policy, Governance and Sustainable Development via satellite tele-education.'
+        'Regional Central University (2001–2011): Academic instruction and curriculum design in Disaster Risk Governance and Disaster Management.',
+        'Premier Women’s Higher Education Institution (2004–2009): Faculty lecturer in Public Policy and Public Participation in Disaster Management.',
+        'State Institute of Public Administration (2005–2009): Advanced executive training in Hazard Zonation Maps, Early Warning Systems, and Critical Water Infrastructure Resilience.',
+        'Department of Earth Science (2008–2009): Applications of Geospatial Technologies & GIS in Mountain Disaster Management.',
+        'National Space Agency Satellite Tele-Education Platform (2006–2007): Broadcast series on Environmental Policy, Governance, and Sustainable Mountain Development.'
       ]
     },
     {
       role: 'Lead Environmental Consultant — Independent Advisory',
-      org: 'National & State Environmental Programs',
-      location: 'Kashmir, New Delhi, Rajasthan',
-      period: '2001 – 2016',
+      org: '[Entity Masked — National & State Environmental Programs]',
+      location: '[Location Restricted — Regional Project Basins]',
+      period: '2001 – 2023',
       badge: 'Consultancy & Field Assessments',
       badgeColor: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
+      isMasked: true,
       points: [
-        '2005: Post-Disaster Assessment Survey of Kashmir (Earthquake 2005) using Remote Sensing under the aegis of the Planning Commission of India.',
-        '2007: Monitoring of Harmful Algal Blooms (HABs) in fresh waters of Kashmir with Directorate of Environment, Ecology and Remote Sensing, Govt. of Kashmir.',
-        '2001–2002: Regional baseline monitoring of Climate Change in Kashmir.',
-        '2003–2004 & 2007: Environmental Impact Assessment (EIA) & Environmental Management Plan (EMP) for Uri-II (240 MW Hydroelectric Project) with NHPC.',
-        '2017–2019: Smart Energy-System Models for water and wastewater utilities under Kota Smart City Project (Ministry of Power).'
+        '2023: Kashmir EcoWatch — Conceptualization and development of the platform architecture, data telemetry pipelines, and high-altitude Himalayan environmental observatory framework.',
+        '2017–2019: Smart Energy-System Models for municipal water and wastewater utilities under regional urban smart grid initiatives.',
+        '2007: Monitoring of Harmful Algal Blooms (HABs) in regional freshwater lakes and aquatic wetland ecosystems.',
+        '2005: Post-Disaster Damage Assessment Survey (Earthquake 2005) utilizing satellite remote sensing and geospatial damage modeling.',
+        '2003–2004 & 2007: Comprehensive Environmental Impact Assessment (EIA) and Environmental Management Plan (EMP) for major 240 MW mountain hydroelectric infrastructure.',
+        '2001–2002: Regional baseline ecological monitoring of climate change vulnerabilities and seasonal alpine shifts.'
+      ]
+    }
+  ];
+
+  // Polymath Dimensions: Sufi Philosophy, Craft Revival, Software Technology & Observatory Stewardship
+  const polymathDimensions = [
+    {
+      domain: 'Sufi Literature, Philosophy & Philanthropy',
+      title: 'Sufi Writer & Thinker (Pen Name: Zari-e-Noori)',
+      tagline: 'Exploring Science, Society, and Sufism',
+      period: 'Lifelong Calling & Active Ecosystem',
+      badge: 'Spiritual Humanism & Civic Consciousness',
+      badgeColor: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      icon: Feather,
+      ecosystem: [
+        { name: 'SufiPulse USA', role: 'Global Sufi thought, literary journalism & cultural dialogue', url: 'https://www.sufipulse.com' },
+        { name: 'Sufi Science Center USA', role: 'Harmonizing empirical scientific inquiry with inner spiritual consciousness', url: 'https://sufisciencecenter.info/' },
+        { name: 'Dr. Kumar Foundation USA', role: 'Philanthropic sponsorship, humanitarian advocacy & civic uplift', url: 'https://dkf.sufisciencecenter.info/' },
+        { name: 'SufiTube USA & Studio USA', role: 'Digital video broadcast, multimedia archives & contemplative arts production', url: 'https://www.sufipulse.com' },
+        { name: 'SufiPulse Radio USA', role: 'Global audio streaming of Sufi poetry, meditative discourse & discourse', url: 'https://www.sufipulse.com' },
+        { name: 'Interfaith Peace Bridge USA', role: 'Multi-faith ecumenical bridge-building and inter-religious concord', url: 'https://ifpb.sufisciencecenter.info/' },
+        { name: 'Purple Soul USA', role: 'Mindfulness, soul consciousness & holistic spiritual wellness', url: 'https://purplesoul.shop/' }
+      ],
+      points: [
+        'Prolific philosophical writings and spiritual literature under the literary pen name "Zari-e-Noori".',
+        'Exploring the unified confluence of empirical earth sciences, social equity, and mystical Kashmir Sufi philosophy.',
+        'Founded and stewarded global cultural outreach networks championing universal love, compassion, and communal harmony.',
+        'Spearheaded philanthropic programs bridging diaspora communities with indigenous Himalayan civilizational wisdom.'
+      ]
+    },
+    {
+      domain: 'Cultural Heritage & Craft Connoisseurship',
+      title: 'Himalayan Artisanal Revivalist & Craft Collector',
+      tagline: 'Preserving Kashmir’s Civilizational Material Heritage',
+      period: 'Cultural Preservation & Ethical Trade',
+      badge: 'Living Heritage & Artisan Justice',
+      badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+      icon: Palette,
+      ecosystem: [
+        { name: 'Craftlore USA', role: 'Documenting rare artisanal lineages, oral histories, and master artisan genealogies', url: 'https://www.craftlore.org/' },
+        { name: 'Kashmir Hamadan Craft Revival Foundation', role: 'Protecting authentic Hamadani Sufi artisanal craft forms', url: 'https://www.khcrf.org/' },
+        { name: 'ArtStay USA', role: 'Immersive cultural living, artisan residencies & ethical heritage tourism', url: 'https://kashmirartstay.com/' },
+        { name: 'DKC B2B Connect USA', role: 'Global institutional and wholesale bridges for master Kashmiri craftspeople', url: 'https://b2b.dekoshurcrafts.com/' },
+        { name: 'De Koshur Crafts USA', role: 'Direct artisan-to-consumer digital commerce ensuring fair living wages', url: 'https://dekoshurcrafts.com/' }
+      ],
+      points: [
+        'Curated landmark collections and documented endangered techniques of Kashmiri Pashmina, Sozni, walnut carving, and papier-mâché.',
+        'Established fair-wage economic corridors and sustainable livelihood architectures for traditional craft guilds.',
+        'Architected modern direct-to-consumer e-commerce frameworks eliminating predatory middlemen and cultural appropriation.',
+        'Spearheading international institutional recognition for authentic GI-tagged Kashmiri handcrafts in global markets.'
+      ]
+    },
+    {
+      domain: 'Enterprise Technology & Cloud Systems',
+      title: 'Technologist & Enterprise Software Architect',
+      tagline: 'Sustainable Digital Infrastructure & Intelligent SaaS Platforms',
+      period: 'Enterprise Innovation & CSR Backing',
+      badge: 'Software Architecture & Digital Delivery',
+      badgeColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+      icon: Code,
+      ecosystem: [
+        { name: 'Prime Logic Solutions USA', role: 'Enterprise software development, cloud infrastructure & KEW CSR developer', url: 'https://primelogicsol.com' },
+        { name: 'Environmental Intelligence OS', role: 'Sovereign environmental operating system for state and federal compliance' },
+        { name: 'Smart Water Platform', role: 'Hydrological digital twin modeling, smart metering (AMI/AMR), and loss reduction' },
+        { name: 'IoT Telemetry Architecture', role: 'Municipal solid waste, ambient noise grids, and urban air quality sensor fabrics' }
+      ],
+      points: [
+        'Architected scalable enterprise software architectures spanning full-stack web systems, cloud infrastructure, and zero-trust delivery.',
+        'Engineered specialized software platforms for environmental compliance, regulatory workflow automation, and utility management.',
+        'Championed the Corporate Social Responsibility (CSR) pledge that engineered and continuously maintains Kashmir EcoWatch gratis.',
+        'Pioneered sensor integration combining low-power IoT telemetry with distributed GIS dashboards for real-time decision making.'
       ]
     }
   ];
@@ -240,7 +408,7 @@ export default function FounderPage() {
         'Geospatial Information System Specialist (FEMA IS-103 & IS-922A)',
         'Geospatial Information Infrastructure (FEMA IS-63B)',
         'GIS-based Water Infrastructure Asset Indexing & Multi-Basin Network Mapping',
-        'Planning Commission of India 2005 Post-Disaster Satellite Remote Sensing Assessment',
+        'National Post-Disaster Satellite Remote Sensing Damage Assessment (2005)',
         'ArcGIS, Satellite Imagery Processing, and Digital Elevation Model (DEM) Extraction',
         'High-Resolution Mountain Hazard Susceptibility Mapping (GLOF, Avalanches, Debris Flows)'
       ]
@@ -298,8 +466,15 @@ export default function FounderPage() {
               href="#career"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
-              <span>Professional Work History</span>
+              <span>Work History</span>
               <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#polymath"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 hover:text-white border border-purple-500/30 hover:border-purple-400 font-semibold text-sm transition-all duration-300"
+            >
+              <Sparkles className="w-4 h-4 text-purple-400" />
+              <span>Polymath Dimensions</span>
             </a>
             <a
               href="#credentials"
@@ -313,7 +488,7 @@ export default function FounderPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/5 hover:border-white/20 font-medium text-sm transition-all duration-300"
             >
               <Mail className="w-4 h-4 text-sky-400" />
-              <span>Contact Dr. Khan</span>
+              <span>Contact Mr. Khan</span>
             </Link>
           </div>
         }
@@ -394,16 +569,16 @@ export default function FounderPage() {
                 <div className="lg:col-span-8 space-y-5">
                   <div className="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
                     <p className="text-lg sm:text-xl text-slate-200 font-light leading-relaxed">
-                      Dr. Fayaz Ahmad Khan is a seasoned environmental emergency specialist and SaaS platform architect with <strong className="text-white font-semibold">over 25 years of progressive and diverse professional experience</strong> in water sector resilience, critical water infrastructure protection, and disaster risk mainstreaming.
+                      Mr. Khan is a seasoned environmental emergency specialist and SaaS platform architect with <strong className="text-white font-semibold">over 25 years of progressive and diverse professional experience</strong> in water sector resilience, critical water infrastructure protection, and disaster risk mainstreaming.
                     </p>
                     <p>
-                      Throughout his distinguished career, Dr. Khan has supported and led <strong className="text-white">600+ multi-disciplinary technical teams</strong> spreading across seven states of India as part of large-scale national disaster and emergency water security programs under the Ministry of Rural Drinking Water, Government of India.
+                      Throughout his distinguished career, Mr. Khan has supported and led <strong className="text-white">600+ multi-disciplinary technical teams</strong> spreading across seven states as part of large-scale national disaster and emergency water security programs under a designated <strong className="text-white">[Entity Masked — National Water & Critical Infrastructure Authority]</strong>.
                     </p>
                     <p>
-                      In the United States, Dr. Khan served as Drought Engagement Coordinator with the <strong className="text-white">California State Water Resources Control Board</strong> in Sacramento, advancing public participation, tribal affairs, and the SAFER drinking water initiative for disadvantaged and Environmental Justice (EJ) communities during acute drought emergencies.
+                      In the United States, Mr. Khan served as Drought Engagement Coordinator within a designated <strong className="text-white">[Entity Masked — State Water Resources Control Agency]</strong> in California, advancing public participation, tribal affairs, and the SAFER drinking water initiative for disadvantaged and Environmental Justice (EJ) communities during acute drought emergencies.
                     </p>
                     <p>
-                      Dr. Khan holds the coveted <strong className="text-emerald-400">Federal Emergency Management Agency (FEMA) Advanced Professional Series (APS) Certification</strong>, along with high-level accreditations across 15 United Nations water security courses, US EPA vulnerability frameworks, AWWA water resilience certifications, and NASA ARSET remote sensing programs.
+                      Mr. Khan holds the coveted <strong className="text-emerald-400">Federal Emergency Management Agency (FEMA) Advanced Professional Series (APS) Certification</strong>, along with high-level accreditations across 15 United Nations water security courses, US EPA vulnerability frameworks, AWWA water resilience certifications, and NASA ARSET remote sensing programs.
                     </p>
                   </div>
 
@@ -500,12 +675,13 @@ export default function FounderPage() {
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
                       {item.role}
                     </h3>
-                    <p className="text-sm font-semibold text-emerald-300 mb-1">
-                      {item.org}
+                    <p className={`text-sm font-semibold mb-1 flex items-center gap-1.5 ${item.isMasked ? 'text-rose-400 font-mono text-xs' : 'text-emerald-300'}`}>
+                      {item.isMasked && <Lock className="w-3.5 h-3.5 text-rose-400 shrink-0" />}
+                      <span>{item.org}</span>
                     </p>
                     <p className="text-xs text-slate-400 mb-4 flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                      <span>{item.location}</span>
+                      <span className={item.isMasked ? 'font-mono text-[11px] text-slate-500' : ''}>{item.location}</span>
                     </p>
 
                     <ul className="space-y-2.5 pt-4 border-t border-white/10">
@@ -523,7 +699,91 @@ export default function FounderPage() {
           </div>
         </section>
 
-        {/* ─── Section 4: 50+ Multi-Agency Certifications Explorer ───────────────── */}
+        {/* ─── Section 4: Polymath Dimensions — Philosophy, Craft Revival & Software Systems ─── */}
+        <section id="polymath" className="scroll-mt-24">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-2 mb-2">
+              <Sparkles className="w-4 h-4 text-purple-400" />
+              <span className="text-xs font-bold uppercase tracking-widest text-purple-400">Polymath Dimensions</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
+              Science, Spirit, Craft & Technology
+            </h2>
+            <p className="text-sm sm:text-base text-slate-400 max-w-3xl mb-12">
+              Harmonizing 25 years of empirical environmental science with spiritual literature under pen name Zari-e-Noori, Himalayan artisanal craft revival, and enterprise SaaS engineering.
+            </p>
+
+            <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 md:before:left-8 before:w-0.5 before:bg-gradient-to-b before:from-purple-500 before:via-amber-500 before:to-sky-500">
+              {polymathDimensions.map((item, idx) => (
+                <div key={idx} className="relative pl-12 md:pl-20">
+                  {/* Timeline Node */}
+                  <div className="absolute left-2 md:left-6 -translate-x-1/2 top-6 w-4 h-4 rounded-full bg-slate-950 border-2 border-purple-400 shadow-md shadow-purple-500/50" />
+
+                  <div className="glass-panel p-7 sm:p-8 rounded-3xl border border-white/10 bg-slate-900/50 hover:border-purple-500/30 transition-all shadow-xl">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border w-fit ${item.badgeColor}`}>
+                        {item.badge}
+                      </span>
+                      <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+                        <item.icon className="w-3.5 h-3.5 text-purple-400" />
+                        <span>{item.period}</span>
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm font-semibold text-purple-300 mb-2">
+                      {item.domain} — <span className="italic text-slate-400 font-normal">"{item.tagline}"</span>
+                    </p>
+
+                    {/* Ecosystem Hub Grid */}
+                    <div className="my-5 p-4 rounded-2xl bg-slate-950/70 border border-white/5 space-y-2.5">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                        Active Ecosystem & Strategic Initiatives:
+                      </span>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                        {item.ecosystem.map((eco, eIdx) => (
+                          <div key={eIdx} className="p-2.5 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-2.5 text-xs">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-1.5 font-bold text-white">
+                                <span>{eco.name}</span>
+                                {eco.url && (
+                                  <a 
+                                    href={eco.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-sky-400 hover:text-sky-300 inline-flex items-center gap-0.5"
+                                  >
+                                    <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                )}
+                              </div>
+                              <p className="text-slate-400 text-[11px] leading-tight mt-0.5">{eco.role}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Core Operational Impacts */}
+                    <ul className="space-y-2.5 pt-4 border-t border-white/10">
+                      {item.points.map((pt, i) => (
+                        <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Section 5: 50+ Multi-Agency Certifications Explorer ───────────────── */}
         <section id="credentials" className="scroll-mt-24">
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -612,7 +872,7 @@ export default function FounderPage() {
                 {
                   year: '2005',
                   title: 'Post-Disaster Remote Sensing Survey — Kashmir Earthquake 2005',
-                  org: 'Under the aegis of the Planning Commission of India',
+                  org: '[Designated National Planning & Reconstruction Authority]',
                   desc: 'Executed comprehensive satellite remote sensing damage assessments across affected mountain terrain following the catastrophic 7.6 magnitude Kashmir earthquake.',
                   tag: 'Satellite GIS',
                   color: 'text-rose-400'
@@ -620,7 +880,7 @@ export default function FounderPage() {
                 {
                   year: '2007',
                   title: 'Monitoring Harmful Algal Blooms in Fresh Waters of Kashmir',
-                  org: 'Directorate of Environment, Ecology and Remote Sensing, Govt. of Kashmir',
+                  org: '[State Directorate of Environment & Remote Sensing]',
                   desc: 'Pioneered early limnological and satellite-assisted tracking of cyanobacteria and algal bloom outbreaks across Dal, Wular, and freshwater wetland systems.',
                   tag: 'Limnology',
                   color: 'text-emerald-400'
@@ -628,7 +888,7 @@ export default function FounderPage() {
                 {
                   year: '2001 – 2002',
                   title: 'Baseline Monitoring of Climate Change in Kashmir',
-                  org: 'Directorate of Environment & Forest Research Collaborations',
+                  org: '[Regional Ecological Research & Forest Consortium]',
                   desc: 'Established early empirical baselines tracking seasonal temperature shifts, snowfall anomalies, and phenological signals across the Kashmir Valley.',
                   tag: 'Climate Science',
                   color: 'text-sky-400'
@@ -636,7 +896,7 @@ export default function FounderPage() {
                 {
                   year: '2003 – 2004 & 2007',
                   title: 'Uri-II (240 MW) Hydroelectric Project EIA & EMP Monitoring',
-                  org: 'National Hydroelectric Power Corporation (NHPC)',
+                  org: '[National Hydroelectric Power Authority]',
                   desc: 'Executed Environmental Impact Assessment (EIA) and subsequent Environmental Management Plan (EMP) monitoring along the Jhelum River gorge drainage basin.',
                   tag: 'Hydro Impact',
                   color: 'text-amber-400'
@@ -687,7 +947,7 @@ export default function FounderPage() {
             <div className="text-center max-w-3xl mx-auto mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Founder Stewardship</span>
               <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-2 mb-4">
-                Dr. Khan’s Role at Kashmir EcoWatch
+                Mr. Khan’s Role at Kashmir EcoWatch
               </h2>
               <p className="text-sm sm:text-base text-slate-400">
                 How 25 years of multi-agency disaster preparedness and water governance shapes the architecture of KEW.
@@ -744,7 +1004,7 @@ export default function FounderPage() {
             <div className="relative z-10 max-w-3xl mx-auto space-y-6">
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Institutional Collaboration</span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-                Connect with Dr. Fayaz Ahmad Khan
+                Connect with Mr. Khan
               </h2>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 For academic research partnerships, water resilience collaborations, emergency management consultations, or platform inquiries.
