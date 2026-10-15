@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { 
   Building2, MapPin, Target, Shield, Upload, 
-  CheckCircle2, ChevronRight, Users, BookOpen, Star, Globe, Lock
+  CheckCircle2, ChevronRight, Users, BookOpen, Star, Globe, Lock, ShieldCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -122,6 +123,7 @@ function DataSecurity() {
 /* ─── Main Component ─────────────────────────────────────────────────── */
 
 export default function NGOSubmitPage() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const totalSteps = 5;
 
@@ -136,10 +138,47 @@ export default function NGOSubmitPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col pb-24">
       <Heading
-        label="Join the Registry"
-        title="NGO Profile Registration"
-        subtitle="Submit your organization's comprehensive profile to initiate the formal verification workflow."
-        align="center"
+        label="Civil Society Network · Onboarding & Verification"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'NGO Impact', href: '/ngo-impact' },
+          { label: 'Submit NGO' }
+        ]}
+        icon={<ShieldCheck className="w-6 h-6 text-emerald-400" />}
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
+          </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">NGO Profile Registration</span>
+        </>}
+        subtitle="Submit your organization's comprehensive profile, leadership credentials, and field evidence to initiate the formal KEW verification workflow."
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 font-bold text-white"
+              icon={<Building2 className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/directory')}
+            >
+              Browse Directory
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Target className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/projects')}
+            >
+              Active Projects
+            </Button>
+          </div>
+        }
+        images={[
+          '/images/ngo-module/community.jpg',
+          '/images/ngo-module/field_work.jpg',
+          '/images/ngo-module/lake_clean.jpg',
+          '/images/protected-network.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <div className="w-full max-w-7xl mx-auto px-4 xl:px-8 py-8">

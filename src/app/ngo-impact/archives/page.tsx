@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -11,8 +12,10 @@ import {
   Archive, FileText, ChevronRight, CheckCircle, Search, Target, Building
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function ArchivesPage() {
+  const router = useRouter();
   const { filter } = useGlobalFilter();
   const [selectedYear, setSelectedYear] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
@@ -74,25 +77,48 @@ export default function ArchivesPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
-      {/* Breadcrumb */}
-      <div className="bg-slate-900 border-b border-slate-800 py-3 px-6 text-xs text-slate-400">
-        <div className="max-w-[1600px] mx-auto flex items-center gap-2">
-          <Link href="/ngo-impact" className="hover:text-white transition-colors">NGO Impact Registry</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-slate-200 font-medium">Archives</span>
-        </div>
-      </div>
-
       <Heading
-        label="Historical Data"
-        title={
-          <span className="flex items-center gap-4">
-            <Archive className="w-8 h-8 text-amber-500" />
-            Impact Archives
+        label="Civil Society Network · Historical Evidence"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'NGO Impact', href: '/ngo-impact' },
+          { label: 'Archives' }
+        ]}
+        icon={<Archive className="w-6 h-6 text-amber-400" />}
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
           </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Impact Archives</span>
+        </>}
+        subtitle="Explore completed projects, past verification reports, retired campaigns, and historical field evidence recorded across Kashmir."
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-amber-600 to-orange-500 font-bold text-white"
+              icon={<Building className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/directory')}
+            >
+              Active Directory
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Target className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/projects')}
+            >
+              Current Projects
+            </Button>
+          </div>
         }
-        subtitle="Explore completed projects, past reports, retired campaigns, and historical field evidence."
-        align="left"
+        images={[
+          '/images/ngo-module/lake_clean.jpg',
+          '/images/ngo-module/field_work.jpg',
+          '/images/ngo-module/community.jpg',
+          '/images/protected-network.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col gap-6">
