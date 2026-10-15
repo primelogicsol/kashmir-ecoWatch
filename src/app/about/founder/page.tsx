@@ -33,7 +33,7 @@ export default function FounderPage() {
     {
       degree: 'Doctor of Philosophy (Ph.D.)',
       period: 'Doctoral Degree',
-      field: 'Environmental Geospatial Information Science',
+      field: 'Environmental Geospatial Information Sc.',
       institution: 'Advanced Environmental Geospatial Systems and Disaster Governance',
       specialization: 'Focus: High-altitude mountain hydrology, disaster risk reduction, and watershed resilience',
       icon: GraduationCap,
