@@ -195,8 +195,9 @@ export function AdvancedFooter() {
       <div className="border-t border-white/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <div className="text-xs sm:text-sm text-slate-500">
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 mb-1">
+            {/* Left side: Dr. Kumar Foundation & Legal/Governance Policy Links */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 text-xs sm:text-sm">
                 <span className="text-slate-400 font-medium">© {new Date().getFullYear()} Kashmir EcoWatch.</span>
                 <span className="text-slate-600 hidden sm:inline">•</span>
                 <span className="text-slate-300 font-medium">
@@ -204,54 +205,55 @@ export function AdvancedFooter() {
                   <span className="text-emerald-400 font-semibold">Dr. Kumar Foundation USA</span>
                 </span>
               </div>
-              <span className="block text-[11px] text-slate-500 mb-1">Independent • Non-Commercial • Open Data</span>
-              <a href="/geographic-scope" className="inline-flex items-center gap-1.5 text-emerald-500 hover:text-emerald-400 transition-colors mt-1 text-xs">
-                <Globe className="w-3.5 h-3.5" />
-                <span>Geographic Scope &amp; Environmental Coverage</span>
-              </a>
+
+              {/* Policy & Governance Links */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 sm:gap-x-4 gap-y-1 text-xs text-slate-500">
+                <a href="/privacy" className="hover:text-emerald-400 transition-colors">
+                  Privacy Policy
+                </a>
+                <span className="text-slate-700">•</span>
+                <a href="/terms" className="hover:text-emerald-400 transition-colors">
+                  Terms of Use
+                </a>
+                <span className="text-slate-700">•</span>
+                <a href="/accessibility" className="hover:text-emerald-400 transition-colors">
+                  Accessibility Statement
+                </a>
+                <span className="text-slate-700">•</span>
+                <a href="/legal-notice" className="hover:text-emerald-400 transition-colors">
+                  Legal Notice
+                </a>
+                <span className="text-slate-700">•</span>
+                <a href="/geographic-notice" className="hover:text-emerald-400 transition-colors">
+                  Geographic Notice
+                </a>
+              </div>
+
+              <div className="flex items-center justify-center md:justify-start gap-3 pt-0.5 text-[11px] text-slate-500">
+                <span>Independent • Non-Commercial • Open Data</span>
+                <span className="text-slate-700">•</span>
+                <a href="/geographic-scope" className="inline-flex items-center gap-1 text-emerald-500 hover:text-emerald-400 transition-colors">
+                  <Globe className="w-3 h-3" />
+                  <span>Geographic Scope</span>
+                </a>
+              </div>
             </div>
 
-            {/* Legal links + CSR credit — w-fit container, right edge */}
-            <div className="flex justify-end">
-              <div className="w-fit flex flex-col items-center md:items-end">
-
-                {/* Legal links */}
-                <div className="flex flex-wrap justify-center md:justify-end gap-x-6 sm:gap-x-8 gap-y-2 text-xs sm:text-sm">
-                  <a href="/privacy" className="text-slate-500 hover:text-emerald-400 transition-colors">
-                    Privacy Policy
-                  </a>
-                  <a href="/terms" className="text-slate-500 hover:text-emerald-400 transition-colors">
-                    Terms of Use
-                  </a>
-                  <a href="/accessibility" className="text-slate-500 hover:text-emerald-400 transition-colors">
-                    Accessibility Statement
-                  </a>
-                  <a href="/legal-notice" className="text-slate-500 hover:text-emerald-400 transition-colors">
-                    Legal Notice
-                  </a>
-                  <a href="/geographic-notice" className="text-slate-500 hover:text-emerald-400 transition-colors">
-                    Geographic Notice
-                  </a>
-                </div>
-
-                {/* CSR credit — constrained to same w-fit width, text-right only */}
-                <div className="mt-3 text-center md:text-right">
-                  <div className="text-[11px] text-slate-400 leading-relaxed">
-                    Web Portal Developed &amp; Maintained by{' '}
-                    <a
-                      href="https://primelogicsol.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
-                    >
-                      Prime Logic Solutions
-                    </a>
-                  </div>
-                  <div className="text-[11px] text-slate-500 leading-tight">
-                    As part of its Corporate Social Responsibility (CSR) Initiative.
-                  </div>
-                </div>
-
+            {/* Right side: Prime Logic Solutions CSR Attribution */}
+            <div className="flex flex-col items-center md:items-end text-center md:text-right shrink-0">
+              <div className="text-xs text-slate-400 leading-relaxed">
+                Web Portal Developed &amp; Maintained by{' '}
+                <a
+                  href="https://primelogicsol.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
+                >
+                  Prime Logic Solutions
+                </a>
+              </div>
+              <div className="text-[11px] text-slate-500 leading-tight mt-0.5">
+                As part of its Corporate Social Responsibility (CSR) Initiative.
               </div>
             </div>
 
