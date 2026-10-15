@@ -10,10 +10,11 @@ import { GlobalFilterBar } from '@/components/common/GlobalFilterBar';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { ngoRegistryData, NGOProject } from '@/data/ngo-impact';
 import { 
-  Target, MapPin, ShieldCheck, Leaf, Clock
+  Target, MapPin, ShieldCheck, Leaf, Clock, Building
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ProjectCard } from '@/components/common/ProjectCard';
 
 // Flatmap all projects and inject the NGO name
@@ -23,6 +24,7 @@ interface ProjectWithNGO extends NGOProject {
 }
 
 export default function NGOProjectsPage() {
+  const router = useRouter();
   const { filter } = useGlobalFilter();
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;

@@ -71,29 +71,59 @@ export default function NGOImpactLandingPage() {
       
       {/* ─── 1. HERO SECTION ────────────────────────────────────────────────────── */}
       <Heading
-        label="Civil Society Network"
+        label="Civil Society & Grassroots Stewardship Network"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'NGO Impact' }
+        ]}
         icon={<Users className="w-6 h-6 text-emerald-400" />}
         title={
           <>
             <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span className="text-slate-400">Kashmir</span>
+              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+              <span>Western Himalayan</span>
             </span>
-            <span className="block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r from-emerald-400 to-teal-600 bg-clip-text text-transparent">
+            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
               NGO Impact Registry
             </span>
           </>
         }
         subtitle="A centralized registry uniting grassroots organizations, civil society groups, and volunteers dedicated to protecting the ecology of Jammu & Kashmir."
         actions={
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-            <Button onClick={() => scrollToSection('ngos')} size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600 border-0 text-white" icon={<Search className="w-5 h-5" />}>Explore NGOs</Button>
-            <Button onClick={() => scrollToSection('projects')} size="lg" variant="outline" className="border-white/20 text-white" icon={<Target className="w-5 h-5" />}>View Projects</Button>
-            <Button onClick={() => router.push('/ngo-impact/submit')} size="lg" variant="outline" className="border-white/20 text-white" icon={<Shield className="w-5 h-5" />}>Submit NGO</Button>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 font-bold text-white"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => scrollToSection('ngos')}
+            >
+              Explore NGOs
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Target className="w-5 h-5" />}
+              onClick={() => scrollToSection('projects')}
+            >
+              View Projects
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<ShieldCheck className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/submit')}
+            >
+              Submit NGO Profile
+            </Button>
           </div>
         }
-        images={['/images/ngo-module/community.jpg', '/images/ngo-module/field_work.jpg', '/images/ngo-module/lake_clean.jpg']}
-        overlayClassName="bg-gradient-to-b from-slate-950/85 via-slate-900/65 to-slate-950/85"
+        images={[
+          '/images/ngo-module/community.jpg',
+          '/images/ngo-module/field_work.jpg',
+          '/images/ngo-module/lake_clean.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       {/* ─── 2. 8 KPI CARDS (ModuleKpiStrip) ────────────────────────────────────── */}

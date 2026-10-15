@@ -43,7 +43,7 @@ export default function FounderPage() {
     {
       degree: 'Master of Science (M.Sc.)',
       period: 'Post-Graduate Master',
-      field: 'Environmental Science and Governance',
+      field: 'Environmental Science',
       institution: 'Advanced Environmental Studies and Hazard Risk Assessment',
       specialization: 'Focus: Multi-hazard mitigation frameworks, watershed dynamics, and disaster resilience',
       icon: Microscope,

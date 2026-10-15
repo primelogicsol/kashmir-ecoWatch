@@ -3,19 +3,20 @@
 import React, { useState, useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { ngoRegistryData, NGORecord } from '@/data/ngo-impact';
 import { 
-  Building, MapPin, ShieldCheck, Search, Users, ArrowRight, ChevronRight
+  Building, MapPin, ShieldCheck, Search, Users, ArrowRight, ChevronRight, Target
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { NGOCard } from '@/components/common/NGOCard';
 
-
-
 export default function NGODirectoryPage() {
+  const router = useRouter();
   const { filter } = useGlobalFilter();
   
   const [selectedVerification, setSelectedVerification] = useState('all');
@@ -61,25 +62,48 @@ export default function NGODirectoryPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
-      {/* Breadcrumb */}
-      <div className="bg-slate-900 border-b border-slate-800 py-3 px-6 text-xs text-slate-400">
-        <div className="max-w-[1600px] mx-auto flex items-center gap-2">
-          <Link href="/ngo-impact" className="hover:text-white transition-colors">NGO Impact Registry</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-emerald-400 font-medium">Directory</span>
-        </div>
-      </div>
-
       <Heading
-        label="Organization Directory"
-        title={
-          <span className="flex items-center gap-4">
-            <Building className="w-8 h-8 text-emerald-500" />
-            Verified NGO Directory
+        label="Civil Society Network · Organization Directory"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'NGO Impact', href: '/ngo-impact' },
+          { label: 'Directory' }
+        ]}
+        icon={<Building className="w-6 h-6 text-emerald-400" />}
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
           </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Verified NGO Directory</span>
+        </>}
+        subtitle="Browse the complete database of civil society organizations, grassroots foundations, and volunteer groups actively protecting the region's environment."
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 font-bold text-white"
+              icon={<Target className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/projects')}
+            >
+              Civil Society Projects
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<ShieldCheck className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/submit')}
+            >
+              Submit NGO Profile
+            </Button>
+          </div>
         }
-        subtitle="Browse the complete database of civil society organizations actively protecting the region's environment."
-        align="left"
+        images={[
+          '/images/ngo-module/community.jpg',
+          '/images/ngo-module/field_work.jpg',
+          '/images/ngo-module/lake_clean.jpg',
+          '/images/protected-network.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col gap-6">
