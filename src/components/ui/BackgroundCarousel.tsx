@@ -32,11 +32,16 @@ export function BackgroundCarousel({
     return () => clearInterval(timer);
   }, [next, interval, images.length]);
 
+  const uniqueImages = React.useMemo(() => {
+    const valid = (images || []).filter(Boolean);
+    return Array.from(new Set(valid));
+  }, [images]);
+
   return (
     <>
-      {images.map((src, i) => (
+      {uniqueImages.map((src, i) => (
         <div
-          key={src}
+          key={`${src}-${i}`}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
           style={{
             backgroundImage: `url(${src})`,
