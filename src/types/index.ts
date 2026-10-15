@@ -30,6 +30,7 @@ export interface InsightItem {
   location?: string;
   timestamp: Date;
   severity?: 'high' | 'medium' | 'low';
+  isLive?: boolean;
 }
 
 export interface FeaturedEntity {

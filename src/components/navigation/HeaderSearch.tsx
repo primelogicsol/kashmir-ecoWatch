@@ -50,10 +50,14 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
           router.push(`/biodiversity/species/${results.species[0].slug}`);
           onClose();
         } else if (results.protectedAreas?.length) {
-          router.push(`/protected-network/${results.protectedAreas[0].slug}`);
+          router.push(`/protected-areas/${results.protectedAreas[0].slug}`);
           onClose();
         } else if (results.waterBodies?.length) {
-          router.push(`/water-systems/${results.waterBodies[0].slug}`);
+          const wb = results.waterBodies[0];
+          const path = (wb.type === 'wetland' || wb.category?.toLowerCase().includes('wetland') || wb.slug?.includes('wetland'))
+            ? `/water-systems/wetlands/${wb.slug}`
+            : `/water-systems/lakes/${wb.slug}`;
+          router.push(path);
           onClose();
         } else if (results.districts?.length) {
           router.push(`/districts/${results.districts[0].slug}`);
@@ -62,6 +66,9 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
           router.push(`/search?q=${encodeURIComponent(query)}`);
           onClose();
         }
+      } else {
+        router.push(`/search?q=${encodeURIComponent(query)}`);
+        onClose();
       }
     }
   };
@@ -178,7 +185,7 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
                   {results.protectedAreas.slice(0, 3).map((item: any) => (
                     <Link
                       key={item.id}
-                      href={`/protected-network/${item.slug}`}
+                      href={`/protected-areas/${item.slug}`}
                       onClick={onClose}
                       className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
                     >
@@ -207,7 +214,7 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
                   {results.waterBodies.slice(0, 3).map((item: any) => (
                     <Link
                       key={item.id}
-                      href={`/water-systems/${item.slug}`}
+                      href={(item.type === 'wetland' || item.category?.toLowerCase().includes('wetland') || item.slug?.includes('wetland')) ? `/water-systems/wetlands/${item.slug}` : `/water-systems/lakes/${item.slug}`}
                       onClick={onClose}
                       className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
                     >

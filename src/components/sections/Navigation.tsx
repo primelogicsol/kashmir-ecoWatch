@@ -48,6 +48,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const navItems = [
   { label: 'Protected Areas',          href: '/protected-network',        hasDropdown: true  },
@@ -60,6 +61,7 @@ const navItems = [
 ];
 
 export function Navigation() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -590,6 +592,13 @@ export function Navigation() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && searchQuery.trim()) {
+                      setSearchOpen(false);
+                      setActivePanel(null);
+                      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+                    }
+                  }}
                   placeholder="Search modules, districts, species, alerts..."
                   className="flex-1 bg-transparent text-white placeholder-slate-500 outline-none text-sm"
                   autoFocus

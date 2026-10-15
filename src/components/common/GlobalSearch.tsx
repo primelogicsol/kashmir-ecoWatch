@@ -79,23 +79,34 @@ export function GlobalSearch() {
     return icons[type] || <MapPin className="w-4 h-4" />;
   };
 
-  const getRouteForType = (type: string, slug: string) => {
-    const routes: Record<string, string> = {
-      species: `/biodiversity/${slug}`,
-      protectedAreas: `/protected-network/${slug}`,
-      waterBodies: `/water-systems/lakes/${slug}`,
-      trails: `/trails-sightings/hiking-trails/${slug}`,
-      districts: `/districts/${slug}`,
-      alerts: `/risk-monitoring/live-alerts-advisories`,
-      reports: `/library/reports/${slug}`,
-    };
-    return routes[type] || '#';
+  const getRouteForType = (type: string, slug: string, item?: any) => {
+    switch (type) {
+      case 'species':
+        return `/biodiversity/species/${slug}`;
+      case 'protectedAreas':
+        return `/protected-areas/${slug}`;
+      case 'waterBodies':
+        if (item?.type === 'wetland' || item?.category?.toLowerCase().includes('wetland') || slug.includes('wetland')) {
+          return `/water-systems/wetlands/${slug}`;
+        }
+        return `/water-systems/lakes/${slug}`;
+      case 'districts':
+        return `/districts/${slug}`;
+      case 'trails':
+        return `/trails-sightings/hiking-trails`;
+      case 'alerts':
+        return `/risk-monitoring/live-alerts-advisories`;
+      case 'reports':
+        return `/library`;
+      default:
+        return `/search?q=${encodeURIComponent(slug)}`;
+    }
   };
 
-  const handleSelect = (type: string, slug: string) => {
+  const handleSelect = (type: string, slug: string, item?: any) => {
     setIsOpen(false);
     setQuery('');
-    router.push(getRouteForType(type, slug));
+    router.push(getRouteForType(type, slug, item));
   };
 
   const hasResults = results && getResultCount(results) > 0;
@@ -142,6 +153,15 @@ export function GlobalSearch() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (query.trim()) {
+                        setIsOpen(false);
+                        router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+                      }
+                    }
+                  }}
                   placeholder="Search species, protected areas, lakes, trails, districts, reports..."
                   className="flex-1 bg-transparent border-none outline-none text-white text-lg placeholder-slate-500"
                   autoFocus
@@ -191,7 +211,7 @@ export function GlobalSearch() {
                           {results.species.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('species', item.slug)}
+                              onClick={() => handleSelect('species', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>
@@ -220,7 +240,7 @@ export function GlobalSearch() {
                           {results.protectedAreas.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('protectedAreas', item.slug)}
+                              onClick={() => handleSelect('protectedAreas', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>
@@ -249,14 +269,14 @@ export function GlobalSearch() {
                           {results.waterBodies.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('waterBodies', item.slug)}
+                              onClick={() => handleSelect('waterBodies', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>
                                 <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
                                   {item.name}
                                 </div>
-                                <div className="text-sm text-slate-500">{item.district}</div>
+                                <div className="text-sm text-slate-500">{item.district} &bull; {item.type}</div>
                               </div>
                               <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
                             </button>
@@ -278,7 +298,7 @@ export function GlobalSearch() {
                           {results.districts.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('districts', item.slug)}
+                              onClick={() => handleSelect('districts', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>
@@ -307,7 +327,7 @@ export function GlobalSearch() {
                           {results.alerts.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('alerts', item.slug)}
+                              onClick={() => handleSelect('alerts', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>
@@ -336,7 +356,7 @@ export function GlobalSearch() {
                           {results.reports.map((item) => (
                             <button
                               key={item.id}
-                              onClick={() => handleSelect('reports', item.slug)}
+                              onClick={() => handleSelect('reports', item.slug, item)}
                               className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                             >
                               <div>

@@ -354,7 +354,7 @@ export function ImmersiveHero() {
                                 {results.species.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('species', item.slug)}
+                                    onClick={() => handleSelect('species', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
@@ -383,7 +383,7 @@ export function ImmersiveHero() {
                                 {results.protectedAreas.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('protectedAreas', item.slug)}
+                                    onClick={() => handleSelect('protectedAreas', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
@@ -405,21 +405,21 @@ export function ImmersiveHero() {
                               <div className="flex items-center gap-2 mb-3 px-2">
                                 <Droplet className="w-4 h-4 text-blue-400" />
                                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Water Bodies ({results.waterBodies.length})
+                                  Water Bodies & Wetlands ({results.waterBodies.length})
                                 </span>
                               </div>
                               <div className="space-y-2">
                                 {results.waterBodies.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('waterBodies', item.slug)}
+                                    onClick={() => handleSelect('waterBodies', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
                                       <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
                                         {item.name}
                                       </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district}</div>
+                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district} &bull; {item.type}</div>
                                     </div>
                                     <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
                                   </button>
@@ -441,7 +441,7 @@ export function ImmersiveHero() {
                                 {results.districts.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('districts', item.slug)}
+                                    onClick={() => handleSelect('districts', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
@@ -449,6 +449,35 @@ export function ImmersiveHero() {
                                         {item.name}
                                       </div>
                                       <div className="text-xs sm:text-sm text-slate-500 truncate">District</div>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Trails */}
+                          {results?.trails && results.trails.length > 0 && (
+                            <div>
+                              <div className="flex items-center gap-2 mb-3 px-2">
+                                <Footprints className="w-4 h-4 text-cyan-400" />
+                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                                  Trails & Routes ({results.trails.length})
+                                </span>
+                              </div>
+                              <div className="space-y-2">
+                                {results.trails.map((item) => (
+                                  <button
+                                    key={item.id}
+                                    onClick={() => handleSelect('trails', item.slug, item)}
+                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                                  >
+                                    <div className="min-w-0 flex-1">
+                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
+                                        {item.name}
+                                      </div>
+                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district} &bull; {item.difficulty || 'Trail'}</div>
                                     </div>
                                     <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
                                   </button>
@@ -470,7 +499,7 @@ export function ImmersiveHero() {
                                 {results.alerts.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('alerts', item.slug)}
+                                    onClick={() => handleSelect('alerts', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
@@ -499,7 +528,7 @@ export function ImmersiveHero() {
                                 {results.reports.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('reports', item.slug)}
+                                    onClick={() => handleSelect('reports', item.slug, item)}
                                     className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
                                   >
                                     <div className="min-w-0 flex-1">
