@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { AvalancheRecord } from '@/data/hazard-avalanches';
 
 // Caching key
-const CACHE_KEY = 'avalanche_api_cache';
-const CACHE_DURATION_MS = 45 * 60 * 1000; // 45 minutes
+const CACHE_KEY = 'avalanche_api_cache_v2';
+const CACHE_DURATION_MS = 15 * 60 * 1000; // 15 minutes
 
 export function useAvalancheIntelligence(initialData: AvalancheRecord[]) {
   const [data, setData] = useState<AvalancheRecord[]>(initialData);
