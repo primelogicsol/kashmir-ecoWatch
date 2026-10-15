@@ -196,20 +196,27 @@ export function AdvancedFooter() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <div className="text-xs sm:text-sm text-slate-500">
-              <span className="block mb-1">© {new Date().getFullYear()} Kashmir EcoWatch. All Rights Reserved.</span>
-              <span className="block mb-1">Independent • Non-Commercial • Open Data.</span>
-              <a href="/geographic-scope" className="inline-flex items-center gap-1.5 text-emerald-500 hover:text-emerald-400 transition-colors mt-2">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 mb-1">
+                <span className="text-slate-400 font-medium">© {new Date().getFullYear()} Kashmir EcoWatch.</span>
+                <span className="text-slate-600 hidden sm:inline">•</span>
+                <span className="text-slate-300 font-medium">
+                  Operated &amp; Supported by{' '}
+                  <span className="text-emerald-400 font-semibold">Dr. Kumar Foundation USA</span>
+                </span>
+              </div>
+              <span className="block text-[11px] text-slate-500 mb-1">Independent • Non-Commercial • Open Data</span>
+              <a href="/geographic-scope" className="inline-flex items-center gap-1.5 text-emerald-500 hover:text-emerald-400 transition-colors mt-1 text-xs">
                 <Globe className="w-3.5 h-3.5" />
-                <span>Geographic Scope & Environmental Coverage</span>
+                <span>Geographic Scope &amp; Environmental Coverage</span>
               </a>
             </div>
 
             {/* Legal links + CSR credit — w-fit container, right edge */}
             <div className="flex justify-end">
-              <div className="w-fit flex flex-col items-end">
+              <div className="w-fit flex flex-col items-center md:items-end">
 
                 {/* Legal links */}
-                <div className="flex flex-wrap justify-end gap-x-6 sm:gap-x-8 gap-y-2 text-xs sm:text-sm">
+                <div className="flex flex-wrap justify-center md:justify-end gap-x-6 sm:gap-x-8 gap-y-2 text-xs sm:text-sm">
                   <a href="/privacy" className="text-slate-500 hover:text-emerald-400 transition-colors">
                     Privacy Policy
                   </a>
@@ -228,19 +235,19 @@ export function AdvancedFooter() {
                 </div>
 
                 {/* CSR credit — constrained to same w-fit width, text-right only */}
-                <div className="mt-3 text-right">
-                  <div className="text-[11px] text-slate-600 leading-relaxed">
+                <div className="mt-3 text-center md:text-right">
+                  <div className="text-[11px] text-slate-400 leading-relaxed">
                     Web Portal Developed &amp; Maintained by{' '}
                     <a
                       href="https://primelogicsol.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-500 hover:text-emerald-400 transition-colors font-medium"
+                      className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
                     >
                       Prime Logic Solutions
                     </a>
                   </div>
-                  <div className="text-[11px] text-slate-600 leading-tight">
+                  <div className="text-[11px] text-slate-500 leading-tight">
                     As part of its Corporate Social Responsibility (CSR) Initiative.
                   </div>
                 </div>
