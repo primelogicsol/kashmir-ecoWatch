@@ -68,24 +68,48 @@ export default function NGOProjectsPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
-      {/* Breadcrumb */}
-      <div className="bg-slate-900 border-b border-slate-800 py-3 px-6 text-xs text-slate-400">
-        <div className="max-w-[1600px] mx-auto flex items-center gap-2">
-          <Link href="/ngo-impact" className="hover:text-white transition-colors">NGO Impact Registry</Link>
-          <span className="text-slate-600 font-bold">&gt;</span>
-          <span className="text-sky-400 font-medium">Projects</span>
-        </div>
-      </div>
       <Heading
-        label="Project Registry"
-        title={
-          <span className="flex items-center gap-4">
-            <Target className="w-8 h-8 text-sky-500" />
-            Civil Society Projects
+        label="Civil Society Network · Project Registry"
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'NGO Impact', href: '/ngo-impact' },
+          { label: 'Projects' }
+        ]}
+        icon={<Target className="w-6 h-6 text-sky-400" />}
+        title={<>
+          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
+            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
+            <span>Western Himalayan</span>
           </span>
+          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-blue-300 bg-clip-text text-transparent">Civil Society Projects</span>
+        </>}
+        subtitle="Explore specific environmental interventions, ecological outcomes, and verified field restoration projects executed across Jammu & Kashmir."
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-sky-600 to-blue-600 font-bold text-white"
+              icon={<Building className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/directory')}
+            >
+              NGO Directory
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<ShieldCheck className="w-5 h-5" />}
+              onClick={() => router.push('/ngo-impact/submit')}
+            >
+              Submit Project Evidence
+            </Button>
+          </div>
         }
-        subtitle="Explore specific environmental interventions, outcomes, and field projects executed by verified NGOs."
-        align="left"
+        images={[
+          '/images/ngo-module/field_work.jpg',
+          '/images/ngo-module/lake_clean.jpg',
+          '/images/ngo-module/community.jpg',
+          '/images/protected-network.png',
+        ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col gap-6">
