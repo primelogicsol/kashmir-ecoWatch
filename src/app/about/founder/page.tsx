@@ -74,7 +74,7 @@ export default function FounderPage() {
       degree: 'Graduate Computer Diploma',
       period: 'Systems Architecture',
       field: 'Computer Applications and Systems',
-      institution: 'Database Systems Architecture and Software Engineering',
+      institution: 'Enterprise Database Systems Architecture and Software Engineering',
       specialization: 'Focus: Hands-on SQL Server operations, spatial geodatabases, and digital infrastructure',
       icon: Server,
       color: 'text-amber-400',
