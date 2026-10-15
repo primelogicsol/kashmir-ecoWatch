@@ -64,7 +64,7 @@ export default function FounderPage() {
       degree: 'Post-Graduate Qualification',
       period: 'Advanced Professional',
       field: 'Geospatial Science and Remote Sensing',
-      institution: 'Earth Observation Systems and Vulnerability Modeling',
+      institution: 'Satellite Earth Observation Systems and Vulnerability Modeling',
       specialization: 'Focus: High-altitude mountain hydrology, spatial observation, and satellite remote sensing',
       icon: Map,
       color: 'text-sky-400',
