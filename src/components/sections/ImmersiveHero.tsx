@@ -60,23 +60,34 @@ export function ImmersiveHero() {
     );
   };
 
-  const getRouteForType = (type: string, slug: string) => {
-    const routes: Record<string, string> = {
-      species: `/biodiversity/${slug}`,
-      protectedAreas: `/protected-network/${slug}`,
-      waterBodies: `/water-systems/lakes/${slug}`,
-      trails: `/trails-sightings/hiking-trails/${slug}`,
-      districts: `/districts/${slug}`,
-      alerts: `/risk-monitoring/live-alerts-advisories`,
-      reports: `/library/reports/${slug}`,
-    };
-    return routes[type] || '#';
+  const getRouteForType = (type: string, slug: string, item?: any) => {
+    switch (type) {
+      case 'species':
+        return `/biodiversity/species/${slug}`;
+      case 'protectedAreas':
+        return `/protected-areas/${slug}`;
+      case 'waterBodies':
+        if (item?.type === 'wetland' || item?.category?.toLowerCase().includes('wetland') || slug.includes('wetland')) {
+          return `/water-systems/wetlands/${slug}`;
+        }
+        return `/water-systems/lakes/${slug}`;
+      case 'districts':
+        return `/districts/${slug}`;
+      case 'trails':
+        return `/trails-sightings/hiking-trails`;
+      case 'alerts':
+        return `/risk-monitoring/live-alerts-advisories`;
+      case 'reports':
+        return `/library`;
+      default:
+        return `/search?q=${encodeURIComponent(slug)}`;
+    }
   };
 
-  const handleSelect = (type: string, slug: string) => {
+  const handleSelect = (type: string, slug: string, item?: any) => {
     setIsSearchOpen(false);
     setQuery('');
-    router.push(getRouteForType(type, slug));
+    router.push(getRouteForType(type, slug, item));
   };
 
   const hasResults = results && getResultCount(results) > 0;
@@ -196,7 +207,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
-            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · Operated by Dr. Kumar Foundation USA — Western Himalayan Ecological Intelligence Platform
+            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · by Dr. Kumar Foundation USA — Western Himalayan Ecological Intelligence Platform
           </motion.p>
 
           {/* Product descriptor */}
@@ -265,6 +276,15 @@ export function ImmersiveHero() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onFocus={() => setIsSearchOpen(true)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (query.trim()) {
+                        setIsSearchOpen(false);
+                        router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+                      }
+                    }
+                  }}
                   placeholder="Search districts, species, lakes, wetlands, trails, alerts..."
                   className="flex-1 bg-transparent border-none outline-none text-white text-sm sm:text-base md:text-lg placeholder-slate-500 min-w-0"
                 />
@@ -279,9 +299,19 @@ export function ImmersiveHero() {
                     <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                   </button>
                 )}
-                <kbd className="hidden sm:inline-flex px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs bg-white/5 rounded border border-white/10 text-slate-400">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (query.trim()) {
+                      setIsSearchOpen(false);
+                      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+                    }
+                  }}
+                  className="hidden sm:inline-flex px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs bg-white/5 hover:bg-white/15 hover:text-white rounded border border-white/10 text-slate-400 transition-colors cursor-pointer"
+                  title="Search intelligence"
+                >
                   Enter
-                </kbd>
+                </button>
               </div>
 
               {/* Search results dropdown */}

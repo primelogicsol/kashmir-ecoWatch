@@ -185,7 +185,7 @@ export function ExpandableLivePanels() {
         </motion.div>
 
         {/* Panels grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">{/* responsive-md-fix */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 items-stretch">{/* responsive-md-fix */}
           {filteredPanels.map((panel, index) => {
             const status = statusConfig[panel.status];
             const IconComponent = iconConfig[panel.id] || Activity;
@@ -198,9 +198,10 @@ export function ExpandableLivePanels() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full flex flex-col"
               >
                 <Card
-                  className={`glass-light border transition-all duration-500 overflow-hidden ${
+                  className={`glass-light border transition-all duration-500 overflow-hidden h-full flex flex-col justify-between ${
                     isExpanded
                       ? 'border-forest-500/30 shadow-lg shadow-forest-500/10'
                       : 'border-white/5 hover:border-white/10'
@@ -209,7 +210,7 @@ export function ExpandableLivePanels() {
                 >
                   {/* Panel header */}
                   <div
-                    className="flex items-center justify-between p-4 sm:p-5 cursor-pointer hover:bg-white/[0.02] transition-colors rounded-xl"
+                    className="flex items-center justify-between p-4 sm:p-5 cursor-pointer hover:bg-white/[0.02] transition-colors rounded-xl min-h-[92px]"
                     onClick={() => togglePanel(panel.id)}
                   >
                     {/* responsive-md-fix */}
@@ -225,13 +226,13 @@ export function ExpandableLivePanels() {
                       {/* Title and meta */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 flex-wrap mb-1">{/* responsive-md-fix */}
-                          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white truncate">
+                          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white line-clamp-1 flex-1">
                             {panel.title}
                           </h3>
                           <Badge
                             variant={panel.status === 'critical' ? 'danger' : panel.status === 'warning' ? 'warning' : 'info'}
                             size="sm"
-                            className="text-xs px-2 py-0.5 rounded whitespace-nowrap"
+                            className="text-xs px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0"
                           >{/* responsive-md-fix */}
                             {panel.status.toUpperCase()}
                           </Badge>
@@ -247,7 +248,7 @@ export function ExpandableLivePanels() {
                     </div>
 
                     {/* Expand indicator */}
-                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg glass-light border border-white/10 flex items-center justify-center transition-transform duration-300 flex-shrink-0 ${isExpanded && 'rotate-180'}`}>
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg glass-light border border-white/10 flex items-center justify-center transition-transform duration-300 flex-shrink-0 ml-2 ${isExpanded && 'rotate-180'}`}>
                       <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                     </div>
                   </div>
@@ -260,25 +261,26 @@ export function ExpandableLivePanels() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
+                        className="flex-1 flex flex-col"
                       >
                         <div className="border-t border-white/5" />
-                        <div className="p-4 sm:p-5">{/* responsive-md-fix */}
+                        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">{/* responsive-md-fix */}
                           {/* Description */}
-                          <p className="text-xs sm:text-sm text-slate-400 mb-4 sm:mb-6 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-slate-400 mb-4 sm:mb-6 leading-relaxed line-clamp-2 min-h-[2.5rem]">
                             {panel.description}
                           </p>
 
                           {/* Items list */}
-                          <div className="space-y-2 sm:space-y-3">
+                          <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col justify-start">
                             {panel.items.map((item, idx) => (
                               <motion.div
                                 key={item.id}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 hover:border-forest-500/30 transition-all cursor-pointer"
+                                className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 hover:border-forest-500/30 transition-all cursor-pointer min-h-[74px] flex items-center"
                               >
-                                <div className="flex items-start justify-between gap-2 py-2">{/* responsive-md-fix */}
+                                <div className="flex items-start justify-between gap-2 py-1 w-full">{/* responsive-md-fix */}
                                   {/* Severity indicator */}
                                   <div className="flex-shrink-0 mt-1">
                                     <div className={`w-2 h-2 rounded-full ${
@@ -291,7 +293,7 @@ export function ExpandableLivePanels() {
                                   {/* Content */}
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2 sm:gap-4 mb-2 flex-wrap">
-                                      <h4 className="text-sm flex-1 min-w-0 truncate font-semibold text-white group-hover:text-forest-300 transition-colors">{/* responsive-md-fix */}
+                                      <h4 className="text-sm flex-1 min-w-0 line-clamp-1 font-semibold text-white group-hover:text-forest-300 transition-colors">{/* responsive-md-fix */}
                                         {item.title}
                                       </h4>
                                       {getSeverityBadge(item.severity)}
@@ -318,7 +320,7 @@ export function ExpandableLivePanels() {
                           </div>
 
                           {/* View all link */}
-                          <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                          <div className="mt-auto pt-4 sm:pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                             <button
                               onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}
                               className="text-xs mt-3 block text-right font-medium text-forest-400 hover:text-forest-300 transition-colors group w-full"

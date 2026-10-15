@@ -255,7 +255,7 @@ export const insightPanels: InsightPanel[] = [
     id: 'cryosphere-watch',
     title: 'Glacial Lake & Cryosphere Watch',
     status: 'critical',
-    description: 'High-altitude moraine dam stability, snout retreat, and cryospheric hazard telemetry',
+    description: 'High-altitude moraine dam stability, glacier snout retreat, and hazard signals',
     items: [
       {
         id: '1',
