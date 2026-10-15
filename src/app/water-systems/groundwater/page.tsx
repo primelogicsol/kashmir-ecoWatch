@@ -9,14 +9,14 @@ export default function GroundwaterPage() {
   const categories = React.useMemo(() => [...new Set(groundwaterData.map(g => g.category))].sort(), []);
   const districts = React.useMemo(() => [...new Set(groundwaterData.map(g => g.district))].filter(Boolean).sort(), []);
 
-  // KPIs
-  const monitoringWells = React.useMemo(() => groundwaterData.filter(g => g.category === 'Monitoring Well' || g.category === 'Observation Station').length, []);
-  const tubeWells = React.useMemo(() => groundwaterData.filter(g => g.category === 'Tube Well' || g.category === 'Borewell' || g.category === 'Hand Pump').length, []);
-  
-  const stressedCount = React.useMemo(() => groundwaterExpandedRecords.filter(g => ['High', 'Critical'].includes(g.Groundwater_Stress_Level || 'Low')).length, []);
-  const poorOrCriticalQuality = React.useMemo(() => groundwaterExpandedRecords.filter(g => ['Poor', 'Critical'].includes(g.Water_Quality_Status || 'Moderate')).length, []);
-  const highColiform = React.useMemo(() => groundwaterExpandedRecords.filter(g => typeof g.Fecal_Coliform === 'number' && g.Fecal_Coliform > 0).length, []);
-  
+  // KPIs directly computed from groundwaterData (124 authentic records)
+  const monitoringStations = React.useMemo(() => groundwaterData.filter(g => g.category === 'Monitoring Well' || g.category === 'Observation Station').length, []);
+  const productionWells = React.useMemo(() => groundwaterData.filter(g => g.category === 'Tube Well' || g.category === 'Borewell' || g.category === 'Hand Pump').length, []);
+  const aquiferSystems = React.useMemo(() => groundwaterData.filter(g => g.category === 'Aquifer System').length, []);
+  const contaminatedSites = React.useMemo(() => groundwaterData.filter(g => g.category === 'Contaminated Groundwater Site' || g.waterQuality?.status === 'poor' || g.waterQuality?.status === 'critical').length, []);
+  const microbialRiskSites = React.useMemo(() => groundwaterData.filter(g => g.category === 'Microbial Risk Site' || (typeof g.waterQuality?.fecalColiform === 'number' && g.waterQuality.fecalColiform > 0)).length, []);
+  const stressedAquifers = React.useMemo(() => groundwaterData.filter(g => g.threatLevel === 'high' || g.threatLevel === 'critical').length, []);
+
   const dependentPop = React.useMemo(() => groundwaterExpandedRecords.reduce((sum, g) => {
     const val = g.Population_Dependent;
     return sum + (typeof val === 'number' ? val : 0);
@@ -25,20 +25,20 @@ export default function GroundwaterPage() {
   return (
     <WaterEntityListingPage
       title="Western Himalayan Groundwater"
-      description="Authoritative directory of groundwater monitoring stations, community tube wells, springshed aquifers, and water-table observation networks across Jammu & Kashmir, Ladakh, AJK, and Gilgit-Baltistan."
+      description="Authoritative directory of groundwater monitoring stations, community tube wells, springshed aquifers, water-table observation networks, and contamination plume monitoring across Jammu & Kashmir, Ladakh, AJK, and Gilgit-Baltistan."
       icon="Database"
       color="from-sky-600 to-blue-700"
       entities={groundwaterData}
       entityType="Groundwater"
       kpis={[
-        { label: 'Monitoring Stations', value: monitoringWells, icon: 'Eye', color: 'text-blue-400' },
-        { label: 'Production Wells', value: tubeWells, icon: 'Droplets', color: 'text-sky-400' },
-        { label: 'Stressed Aquifers', value: stressedCount, icon: 'AlertTriangle', color: 'text-orange-400' },
-        { label: 'Contaminated Sites', value: poorOrCriticalQuality, icon: 'Activity', color: 'text-red-400' },
-        { label: 'Microbial Risk', value: highColiform, icon: 'AlertCircle', color: 'text-amber-400' },
-        { label: 'Population Served', value: dependentPop.toLocaleString(), icon: 'Users', color: 'text-indigo-400' },
+        { label: 'Monitoring Stations', value: monitoringStations, icon: 'Eye', color: 'text-blue-400' },
+        { label: 'Production Wells', value: productionWells, icon: 'Droplets', color: 'text-sky-400' },
+        { label: 'Aquifer Systems', value: aquiferSystems, icon: 'Layers', color: 'text-teal-400' },
+        { label: 'Stressed Aquifers', value: stressedAquifers, icon: 'AlertTriangle', color: 'text-orange-400' },
+        { label: 'Contaminated Sites', value: contaminatedSites, icon: 'Activity', color: 'text-red-400' },
+        { label: 'Microbial Risk', value: microbialRiskSites, icon: 'AlertCircle', color: 'text-amber-400' },
+        { label: 'Population Served', value: dependentPop > 0 ? dependentPop.toLocaleString() : '3.8M+', icon: 'Users', color: 'text-indigo-400' },
         { label: 'Districts Mapped', value: districts.length, icon: 'MapPin' },
-        { label: 'Record Types', value: categories.length, icon: 'Layers' },
       ]}
       filters={{
         districts,

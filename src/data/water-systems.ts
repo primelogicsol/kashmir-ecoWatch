@@ -37103,6 +37103,2951 @@ export const groundwaterData: WaterEntity[] = [
     "createdAt": "2026-06-16T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   }
+,
+  {
+    "id": "gw-karewa-aquifer-system",
+    "slug": "gw-karewa-aquifer-system",
+    "name": "Karewa Lacustrine Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Massive Plio-Pleistocene intermontane lacustrine aquifer comprising alternating sand, silt, and gravel beds capped by clay. Primary groundwater source for Budgam, Pulwama, Baramulla, and Anantnag plateaus.",
+    "district": "Budgam",
+    "watershed": "Jhelum Basin",
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 34.025,
+      "lng": 74.715
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.5,
+      "turbidity": 2,
+      "conductivity": 420,
+      "temperature": 14.5,
+      "nitrates": 14,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 290,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-20",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 210,
+      "waterLevel": 48.5,
+      "seasonalVariation": "perennial",
+      "source": "rainfall-and-snowmelt-infiltration",
+      "drainageArea": 3200,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-jhelum-alluvial-aquifer",
+    "slug": "gw-jhelum-alluvial-aquifer",
+    "name": "Jhelum Valley Alluvial Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Quaternary valley-fill aquifer flanking the Jhelum river mainstem through Srinagar, Anantnag, and Baramulla. Unconsolidated sands, gravels, and silt beds with shallow, highly productive water table.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.0836,
+      "lng": 74.7973
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.2,
+      "turbidity": 3,
+      "conductivity": 380,
+      "temperature": 15,
+      "nitrates": 16.5,
+      "phosphates": 0.08,
+      "biologicalOxygenDemand": 1.5,
+      "totalDissolvedSolids": 260,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-22",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 340,
+      "waterLevel": 4.2,
+      "seasonalVariation": "perennial",
+      "source": "jhelum-river-seepage-and-monsoon-recharge",
+      "drainageArea": 2500,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-pir-panjal-karst-aquifer",
+    "slug": "gw-pir-panjal-karst-aquifer",
+    "name": "Pir Panjal Triassic Karst Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Massive cavernous Triassic limestone and dolomitic karst network underlying south Kashmir (Anantnag, Kulgam, Shangus). Feeds prolific regional springs like Kokernag, Achabal, and Verinag.",
+    "district": "Anantnag",
+    "watershed": "Brengi Basin",
+    "elevation": 1950,
+    "coordinates": {
+      "lat": 33.6212,
+      "lng": 75.3125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 1,
+      "conductivity": 240,
+      "temperature": 9.5,
+      "nitrates": 4.5,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 160,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 480,
+      "waterLevel": 18.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial-snowpack-and-alpine-precipitation",
+      "drainageArea": 1200,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-jammu-kandi-gravel-aquifer",
+    "slug": "gw-jammu-kandi-gravel-aquifer",
+    "name": "Jammu Kandi Belt Gravelly Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Upper Siwalik boulder and gravel bed formation extending across Jammu, Samba, and Kathua foothill belts. Highly permeable with deep water tables, serving as principal transmission conduit.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 420,
+    "coordinates": {
+      "lat": 32.7512,
+      "lng": 74.9125
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.2,
+      "turbidity": 3,
+      "conductivity": 350,
+      "temperature": 18.5,
+      "nitrates": 11.2,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 235,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 290,
+      "waterLevel": 58.2,
+      "seasonalVariation": "perennial",
+      "source": "siwalik-hills-monsoon-runoff",
+      "drainageArea": 1800,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-outer-plains-alluvial-aquifer",
+    "slug": "gw-outer-plains-alluvial-aquifer",
+    "name": "Jammu Outer Plains Indo-Gangetic Alluvial Aquifer",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Multi-layered quaternary Indo-Gangetic margin alluvial aquifer beneath the fertile plain belts of RS Pura, Bishnah, Samba, and Kathua. Extensively tapped for irrigation and domestic wells.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 290,
+    "coordinates": {
+      "lat": 32.6125,
+      "lng": 74.7812
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5,
+      "turbidity": 4,
+      "conductivity": 520,
+      "temperature": 21,
+      "nitrates": 22,
+      "phosphates": 0.12,
+      "biologicalOxygenDemand": 1.8,
+      "totalDissolvedSolids": 340,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 380,
+      "waterLevel": 12.8,
+      "seasonalVariation": "perennial",
+      "source": "chenab-and-ravi-canal-networks-and-monsoon",
+      "drainageArea": 2200,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-indus-valley-alluvial-aquifer",
+    "slug": "gw-indus-valley-alluvial-aquifer",
+    "name": "Indus Valley Glacio-Fluvial Cold-Desert Aquifer",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Shallow glacio-fluvial and morainic gravel aquifer along the Indus River terraces between Upshi, Leh, and Khalatse. Vital perennial reservoir in the trans-Himalayan rain shadow desert.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3500,
+    "coordinates": {
+      "lat": 34.1525,
+      "lng": 77.5785
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 2,
+      "conductivity": 210,
+      "temperature": 7.2,
+      "nitrates": 5.8,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 145,
+      "fecalColiform": 5,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 120,
+      "waterLevel": 8.5,
+      "seasonalVariation": "perennial",
+      "source": "glacier-melt-streams-and-indus-subsurface-flow",
+      "drainageArea": 850,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-shyok-valley-fractured-aquifer",
+    "slug": "gw-shyok-valley-fractured-aquifer",
+    "name": "Shyok-Nubra Tectonic Fractured Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Deep tectonic fracture and shear zone aquifer in the Karakoram metamorphic complex and ophiolites, sustaining cold springs and riverbed tube wells in the Nubra and Shyok valleys.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 3200,
+    "coordinates": {
+      "lat": 34.6125,
+      "lng": 77.5125
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8,
+      "turbidity": 3,
+      "conductivity": 260,
+      "temperature": 8.5,
+      "nitrates": 4.2,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 175,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 140,
+      "waterLevel": 14.2,
+      "seasonalVariation": "perennial",
+      "source": "karakoram-snowpack-and-glacier-melt",
+      "drainageArea": 950,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-muzaffarabad-carbonate-aquifer",
+    "slug": "gw-muzaffarabad-carbonate-aquifer",
+    "name": "Muzaffarabad Dolomitic Karst Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Fissured and cavernous Abbottabad formation carbonate and dolomite aquifer along the Main Boundary Thrust (MBT) fault corridor in Muzaffarabad and Hattian Bala.",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 820,
+    "coordinates": {
+      "lat": 34.3645,
+      "lng": 73.4812
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 6.8,
+      "turbidity": 4,
+      "conductivity": 340,
+      "temperature": 16.2,
+      "nitrates": 12,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 230,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 360,
+      "waterLevel": 22.4,
+      "seasonalVariation": "perennial",
+      "source": "monsoon-rains-and-margarita-foothill-recharge",
+      "drainageArea": 600,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-neelum-valley-granite-aquifer",
+    "slug": "gw-neelum-valley-granite-aquifer",
+    "name": "Neelum Valley Fractured Crystalline Aquifer",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Hard-rock crystalline aquifer in Salkhala formation fractured gneiss, schist, and granites, feeding high-discharge cold springs and trout aquaculture along the Neelum gorge.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 1820,
+    "coordinates": {
+      "lat": 34.6125,
+      "lng": 73.9125
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 2,
+      "conductivity": 180,
+      "temperature": 9.8,
+      "nitrates": 3.8,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 120,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-20",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 420,
+      "waterLevel": 16,
+      "seasonalVariation": "perennial",
+      "source": "glacier-melt-and-conifer-forest-sponge-effect",
+      "drainageArea": 1400,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-gilgit-alluvial-fan-aquifer",
+    "slug": "gw-gilgit-alluvial-fan-aquifer",
+    "name": "Gilgit River Alluvial Fan Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Quaternary torrential alluvial fan and scree aquifer along the Gilgit and Hunza confluence basin. Provides freeze-proof domestic water during sub-zero winters.",
+    "district": "Gilgit",
+    "watershed": "Gilgit Basin",
+    "elevation": 1500,
+    "coordinates": {
+      "lat": 35.9215,
+      "lng": 74.3212
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 3,
+      "conductivity": 280,
+      "temperature": 11.2,
+      "nitrates": 7.5,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 190,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-23",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 180,
+      "waterLevel": 15.5,
+      "seasonalVariation": "perennial",
+      "source": "gilgit-river-subsurface-flow-and-alluvial-fans",
+      "drainageArea": 400,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-hunza-glacio-fluvial-aquifer",
+    "slug": "gw-hunza-glacio-fluvial-aquifer",
+    "name": "Hunza Glacio-Fluvial Terrace Aquifer System",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "High-gradient moraine and glacio-fluvial terrace aquifer underlying Karimabad, Aliabad, and Ganish in central Hunza, filtered through terminal moraines.",
+    "district": "Hunza",
+    "watershed": "Hunza Basin",
+    "elevation": 2300,
+    "coordinates": {
+      "lat": 36.3212,
+      "lng": 74.625
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 2,
+      "conductivity": 195,
+      "temperature": 8.2,
+      "nitrates": 3.2,
+      "phosphates": 0.015,
+      "biologicalOxygenDemand": 0.75,
+      "totalDissolvedSolids": 130,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 220,
+      "waterLevel": 20,
+      "seasonalVariation": "perennial",
+      "source": "ultar-and-baltoro-ice-melt-subsurface-percolation",
+      "drainageArea": 300,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-skardu-basin-lacustrine-aquifer",
+    "slug": "gw-skardu-basin-lacustrine-aquifer",
+    "name": "Skardu Intermontane Basin Lacustrine-Alluvial Aquifer",
+    "type": "groundwater",
+    "category": "Aquifer System",
+    "description": "Broad intermontane bowl aquifer composed of ancient paleolake silts, sand dunes, and river gravels at the Indus-Shigar confluence, supporting Skardu town and agriculture.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2225,
+    "coordinates": {
+      "lat": 35.3125,
+      "lng": 75.6212
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 3,
+      "conductivity": 240,
+      "temperature": 9.5,
+      "nitrates": 6,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 165,
+      "fecalColiform": 5,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "rechargeRate": 160,
+      "waterLevel": 11.2,
+      "seasonalVariation": "perennial",
+      "source": "indus-and-shigar-subsurface-alluvial-recharge",
+      "drainageArea": 550,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-srinagar-secretariat",
+    "slug": "gw-obs-srinagar-secretariat",
+    "name": "Srinagar Civil Secretariat Central Piezometer Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Central Ground Water Board automated digital water-level recorder (DWLR) station monitoring urban shallow alluvial water table and flood response.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.0725,
+      "lng": 74.805
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.8,
+      "turbidity": 2,
+      "conductivity": 410,
+      "temperature": 15.2,
+      "nitrates": 15.8,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 275,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 3.8,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "shallow-alluvium-dwlr",
+      "drainageArea": 35,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-rangreth-deep",
+    "slug": "gw-obs-rangreth-deep",
+    "name": "Rangreth Tech Park Deep Observation Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "120-meter deep exploratory monitoring well on the upper Karewa plateau tracking long-term hydraulic head decline and industrial groundwater withdrawal.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Catchment",
+    "elevation": 1640,
+    "coordinates": {
+      "lat": 34.005,
+      "lng": 74.785
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 4,
+      "turbidity": 2,
+      "conductivity": 460,
+      "temperature": 14.8,
+      "nitrates": 18.2,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 310,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-20",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 62.4,
+      "rechargeRate": 190,
+      "seasonalVariation": "perennial",
+      "source": "karewa-confined-aquifer",
+      "drainageArea": 45,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-khanabal-hydrometric",
+    "slug": "gw-obs-khanabal-hydrometric",
+    "name": "Khanabal Hydrometric Groundwater Observation Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Hydrological station situated at the confluence of Lidder and Jhelum, tracking interaction between karst spring discharge and alluvial shallow aquifers.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1600,
+    "coordinates": {
+      "lat": 33.7385,
+      "lng": 75.1412
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.5,
+      "turbidity": 2,
+      "conductivity": 310,
+      "temperature": 12.8,
+      "nitrates": 8.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 210,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 5.4,
+      "rechargeRate": 410,
+      "seasonalVariation": "perennial",
+      "source": "alluvium-karst-interface",
+      "drainageArea": 50,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-kanispora-baramulla",
+    "slug": "gw-obs-kanispora-baramulla",
+    "name": "Kanispora Baramulla Valley-fill Observation Well",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Baseline monitoring station situated in the Lower Jhelum gorge entrance tracking seasonal recharge and agricultural pumping effects.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "elevation": 1590,
+    "coordinates": {
+      "lat": 34.215,
+      "lng": 74.385
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 3,
+      "conductivity": 360,
+      "temperature": 13.5,
+      "nitrates": 11.5,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 240,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 7.8,
+      "rechargeRate": 320,
+      "seasonalVariation": "perennial",
+      "source": "valley-fill-gravel",
+      "drainageArea": 40,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-handwara-kupwara",
+    "slug": "gw-obs-handwara-kupwara",
+    "name": "Handwara Pohru Basin Piezometer Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Continuous telemetry monitoring station tracking Pohru riverbed aquifer recharge and seasonal snowmelt dynamics in northern Kashmir.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.405,
+      "lng": 74.285
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.2,
+      "turbidity": 2,
+      "conductivity": 320,
+      "temperature": 12,
+      "nitrates": 9,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 215,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.2,
+      "rechargeRate": 350,
+      "seasonalVariation": "perennial",
+      "source": "pohru-alluvial-aquifer",
+      "drainageArea": 42,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-pulwama-prichoo",
+    "slug": "gw-obs-pulwama-prichoo",
+    "name": "Pulwama Prichoo Karewa Observation Well",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Automated groundwater observation well tracking agricultural irrigation extraction rates across the saffron and apple karewa terraces.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1630,
+    "coordinates": {
+      "lat": 33.875,
+      "lng": 74.895
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.6,
+      "turbidity": 3,
+      "conductivity": 440,
+      "temperature": 14,
+      "nitrates": 16,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 295,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 38.5,
+      "rechargeRate": 230,
+      "seasonalVariation": "perennial",
+      "source": "karewa-unconfined-sands",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-shopian-padgampora",
+    "slug": "gw-obs-shopian-padgampora",
+    "name": "Shopian Tableland Groundwater Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "High-altitude Karewa groundwater monitoring station tracking snowmelt infiltration from the Pir Panjal foothills into deep volcanic gravel aquifers.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "elevation": 2050,
+    "coordinates": {
+      "lat": 33.725,
+      "lng": 74.825
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 2,
+      "conductivity": 280,
+      "temperature": 10.8,
+      "nitrates": 6.5,
+      "phosphates": 0.025,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 185,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 28,
+      "rechargeRate": 380,
+      "seasonalVariation": "perennial",
+      "source": "pir-panjal-recharge-zone",
+      "drainageArea": 48,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-narwal-jammu",
+    "slug": "gw-obs-narwal-jammu",
+    "name": "Narwal Industrial Monitoring Well",
+    "type": "groundwater",
+    "category": "Monitoring Well",
+    "description": "CGWB dedicated groundwater quality and level monitoring well near the Tawi riverbed, tracking urban-industrial effluent percolation into the unconfined aquifer.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 320,
+    "coordinates": {
+      "lat": 32.705,
+      "lng": 74.885
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 4.2,
+      "turbidity": 5,
+      "conductivity": 620,
+      "temperature": 22.5,
+      "nitrates": 26.5,
+      "phosphates": 0.15,
+      "biologicalOxygenDemand": 2.4,
+      "totalDissolvedSolids": 410,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 9.4,
+      "rechargeRate": 270,
+      "seasonalVariation": "perennial",
+      "source": "tawi-alluvial-recharge",
+      "drainageArea": 30,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-samba-kandi",
+    "slug": "gw-obs-samba-kandi",
+    "name": "Samba Kandi Deep Observation Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "180-meter deep exploratory borehole in the boulder-gravel Kandi belt, evaluating deep aquifer potential and monitoring water-table drawdown.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 380,
+    "coordinates": {
+      "lat": 32.565,
+      "lng": 75.115
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 5.9,
+      "turbidity": 2,
+      "conductivity": 380,
+      "temperature": 20,
+      "nitrates": 12,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 255,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 64.5,
+      "rechargeRate": 250,
+      "seasonalVariation": "perennial",
+      "source": "siwalik-boulder-beds",
+      "drainageArea": 55,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-kathua-hiranagar",
+    "slug": "gw-obs-kathua-hiranagar",
+    "name": "Hiranagar Multi-Aquifer Piezometer Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Nested piezometer measuring hydraulic heads across both shallow phreatic and deep semi-confined aquifers in the fertile Indo-Gangetic border plain.",
+    "district": "Kathua",
+    "watershed": "Ujh Basin",
+    "elevation": 310,
+    "coordinates": {
+      "lat": 32.455,
+      "lng": 75.275
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.4,
+      "turbidity": 3,
+      "conductivity": 490,
+      "temperature": 21.5,
+      "nitrates": 19.5,
+      "phosphates": 0.09,
+      "biologicalOxygenDemand": 1.6,
+      "totalDissolvedSolids": 325,
+      "fecalColiform": 5,
+      "lastTested": "2026-03-18",
+      "status": "moderate",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 11.8,
+      "rechargeRate": 360,
+      "seasonalVariation": "perennial",
+      "source": "ujh-alluvial-floodplain",
+      "drainageArea": 45,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-leh-bombgarh",
+    "slug": "gw-obs-leh-bombgarh",
+    "name": "Leh Bombgarh Cold-Desert Piezometer",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "High-altitude automated telemetry well tracking seasonal glacier melt infiltration and hotel borewell drawdown in the Leh town sub-basin.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3520,
+    "coordinates": {
+      "lat": 34.1625,
+      "lng": 77.585
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8,
+      "turbidity": 2,
+      "conductivity": 220,
+      "temperature": 6.8,
+      "nitrates": 7.5,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 150,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 12.4,
+      "rechargeRate": 130,
+      "seasonalVariation": "perennial",
+      "source": "glacier-melt-gravels",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-kargil-suru",
+    "slug": "gw-obs-kargil-suru",
+    "name": "Kargil Suru Floodplain Groundwater Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Monitors alluvium and sub-permafrost groundwater exchange along the Suru River plain, critical for Kargil town drinking infrastructure.",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "elevation": 2680,
+    "coordinates": {
+      "lat": 34.5625,
+      "lng": 76.125
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 3,
+      "conductivity": 260,
+      "temperature": 8.5,
+      "nitrates": 6.2,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 1,
+      "totalDissolvedSolids": 175,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 4.5,
+      "rechargeRate": 260,
+      "seasonalVariation": "perennial",
+      "source": "suru-river-percolation",
+      "drainageArea": 40,
+      "floodRisk": "moderate"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-muzaffarabad-plate",
+    "slug": "gw-obs-muzaffarabad-plate",
+    "name": "Muzaffarabad Fault Observation Piezometer",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "PCRWR hydro-seismic observation station installed along the active Kashmir boundary faultline, recording groundwater table shifts and radon anomalies.",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 750,
+    "coordinates": {
+      "lat": 34.375,
+      "lng": 73.475
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 6.4,
+      "turbidity": 3,
+      "conductivity": 350,
+      "temperature": 17,
+      "nitrates": 10.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 235,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 18.2,
+      "rechargeRate": 340,
+      "seasonalVariation": "perennial",
+      "source": "faultline-fractured-rock",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-obs-skardu-airport",
+    "slug": "gw-obs-skardu-airport",
+    "name": "Skardu Airport Basin Observation Station",
+    "type": "groundwater",
+    "category": "Observation Station",
+    "description": "Continuous monitoring well in the Skardu cold desert sandy basin, measuring deep glacio-lacustrine groundwater reserves beneath the sand dunes.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2230,
+    "coordinates": {
+      "lat": 35.335,
+      "lng": 75.545
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 2,
+      "conductivity": 220,
+      "temperature": 9.2,
+      "nitrates": 4.8,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 150,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-22",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 16.8,
+      "rechargeRate": 150,
+      "seasonalVariation": "perennial",
+      "source": "skardu-lacustrine-sediments",
+      "drainageArea": 45,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-nowgam-railway",
+    "slug": "gw-well-nowgam-railway",
+    "name": "Nowgam Railway Municipal Wellfield",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Major four-well municipal production wellfield tapping confined gravels at 85m depth, supplying over 85,000 residents across south Srinagar.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1590,
+    "coordinates": {
+      "lat": 34.025,
+      "lng": 74.835
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 5,
+      "turbidity": 1,
+      "conductivity": 390,
+      "temperature": 15,
+      "nitrates": 12,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 260,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8.5,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "jhelum-deep-alluvial-strata",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-shadi-pora",
+    "slug": "gw-well-shadi-pora",
+    "name": "Shadipora Confluence High-Yield Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "High-discharge tube well yielding over 50,000 GPH near the Jhelum-Sindh confluence, feeding regional rural water schemes across Bandipora-Ganderbal.",
+    "district": "Bandipora",
+    "watershed": "Sindh Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.185,
+      "lng": 74.685
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 6,
+      "turbidity": 2,
+      "conductivity": 320,
+      "temperature": 13.5,
+      "nitrates": 9.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 215,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 3.5,
+      "rechargeRate": 420,
+      "seasonalVariation": "perennial",
+      "source": "sindh-jhelum-alluvium",
+      "drainageArea": 40,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-pampore-saffron",
+    "slug": "gw-well-pampore-saffron",
+    "name": "Pampore Saffron Irrigation Borewell Cluster",
+    "type": "groundwater",
+    "category": "Borewell",
+    "description": "Deep sprinkler-irrigation tube well complex on the upper Karewa terraces of Pampore, critical for sustaining Kashmir's GI-tagged saffron corms during dry autumns.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1625,
+    "coordinates": {
+      "lat": 34.0215,
+      "lng": 74.925
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.5,
+      "turbidity": 2,
+      "conductivity": 410,
+      "temperature": 14.5,
+      "nitrates": 15,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 275,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 42,
+      "rechargeRate": 220,
+      "seasonalVariation": "perennial",
+      "source": "pampore-karewa-aquifer",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-sopore-mandi",
+    "slug": "gw-well-sopore-mandi",
+    "name": "Sopore Fruit Mandi Deep Wellfield",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "High-capacity production wellfield providing commercial and drinking supply to the massive Sopore Fruit Mandi trading hub.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.305,
+      "lng": 74.465
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.4,
+      "turbidity": 3,
+      "conductivity": 420,
+      "temperature": 14.2,
+      "nitrates": 14.5,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.4,
+      "totalDissolvedSolids": 280,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-19",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.8,
+      "rechargeRate": 330,
+      "seasonalVariation": "perennial",
+      "source": "jhelum-floodplain-gravels",
+      "drainageArea": 36,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-lassipora-sidco",
+    "slug": "gw-well-lassipora-sidco",
+    "name": "Lassipora SIDCO Industrial Production Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Heavy-duty industrial water supply well servicing CA cold-storage apple packaging plants and food processing industries at Lassipora.",
+    "district": "Pulwama",
+    "watershed": "Rambiara Basin",
+    "elevation": 1640,
+    "coordinates": {
+      "lat": 33.795,
+      "lng": 74.945
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.8,
+      "turbidity": 2,
+      "conductivity": 450,
+      "temperature": 14,
+      "nitrates": 16.5,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 300,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 45,
+      "rechargeRate": 240,
+      "seasonalVariation": "perennial",
+      "source": "karewa-alluvial-interface",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-kulgam-chawalgam",
+    "slug": "gw-well-kulgam-chawalgam",
+    "name": "Kulgam Chawalgam Water Supply Tube Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Public Health Engineering tube well tapping Veshaw river alluvium, supplying treated potable water to Kulgam town.",
+    "district": "Kulgam",
+    "watershed": "Veshaw Basin",
+    "elevation": 1720,
+    "coordinates": {
+      "lat": 33.645,
+      "lng": 75.015
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.8,
+      "turbidity": 2,
+      "conductivity": 310,
+      "temperature": 11.5,
+      "nitrates": 8,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 205,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-21",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 7.2,
+      "rechargeRate": 390,
+      "seasonalVariation": "perennial",
+      "source": "veshaw-alluvial-aquifer",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-jammu-akhnoor",
+    "slug": "gw-well-jammu-akhnoor",
+    "name": "Akhnoor Chenab Riverbed Production Wellfield",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "High-yield sub-surface intake wellfield tapping coarse Chenab river gravels, pumping over 15 MLD for the Greater Jammu water augmentation network.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 310,
+    "coordinates": {
+      "lat": 32.895,
+      "lng": 74.735
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 6.5,
+      "turbidity": 2,
+      "conductivity": 360,
+      "temperature": 19.5,
+      "nitrates": 9.5,
+      "phosphates": 0.04,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 240,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 4.8,
+      "rechargeRate": 480,
+      "seasonalVariation": "perennial",
+      "source": "chenab-riverbed-infiltration",
+      "drainageArea": 50,
+      "floodRisk": "high"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-bari-brahmana",
+    "slug": "gw-well-bari-brahmana",
+    "name": "Bari Brahmana Municipal Production Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Deep 140m borehole in the Kandi-Alluvial transition zone supplying residential colonies and municipal water reservoirs in Bari Brahmana.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 335,
+    "coordinates": {
+      "lat": 32.645,
+      "lng": 74.925
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.2,
+      "turbidity": 2,
+      "conductivity": 440,
+      "temperature": 21,
+      "nitrates": 15.5,
+      "phosphates": 0.06,
+      "biologicalOxygenDemand": 1.3,
+      "totalDissolvedSolids": 290,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 32.5,
+      "rechargeRate": 280,
+      "seasonalVariation": "perennial",
+      "source": "kandi-semi-confined-aquifer",
+      "drainageArea": 35,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-chatha-farm",
+    "slug": "gw-well-chatha-farm",
+    "name": "Chatha Agricultural University Production Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Heavy agricultural research well supporting experimental wheat and basmati rice breeding plots with automated telemetry monitoring.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 305,
+    "coordinates": {
+      "lat": 32.665,
+      "lng": 74.815
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 3,
+      "conductivity": 420,
+      "temperature": 20.5,
+      "nitrates": 14,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 275,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 14.2,
+      "rechargeRate": 340,
+      "seasonalVariation": "perennial",
+      "source": "tawi-alluvial-plain",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-diskit-riverbed",
+    "slug": "gw-well-diskit-riverbed",
+    "name": "Diskit Nubra Riverbed Community Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Frost-insulated deep riverbed wellhead installed in the Shyok-Nubra flood plain, providing winter drinking water when surface streams freeze solid.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 3140,
+    "coordinates": {
+      "lat": 34.565,
+      "lng": 77.565
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 2,
+      "conductivity": 240,
+      "temperature": 8,
+      "nitrates": 4.5,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.8,
+      "totalDissolvedSolids": 160,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 5.2,
+      "rechargeRate": 160,
+      "seasonalVariation": "perennial",
+      "source": "shyok-riverbed-gravels",
+      "drainageArea": 32,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-chogamsar-pumping",
+    "slug": "gw-well-chogamsar-pumping",
+    "name": "Chogamsar Leh Water Supply Wellfield",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Primary wellfield cluster supplying the municipal booster network of Leh town, tapping high-permeability glacio-fluvial Indus gravels.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3280,
+    "coordinates": {
+      "lat": 34.115,
+      "lng": 77.595
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 8.1,
+      "turbidity": 1,
+      "conductivity": 210,
+      "temperature": 7.5,
+      "nitrates": 6.8,
+      "phosphates": 0.02,
+      "biologicalOxygenDemand": 0.85,
+      "totalDissolvedSolids": 140,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.5,
+      "rechargeRate": 210,
+      "seasonalVariation": "perennial",
+      "source": "indus-glacio-fluvial-gravels",
+      "drainageArea": 38,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-chilas-town",
+    "slug": "gw-well-chilas-town",
+    "name": "Chilas Indus Riverbank Production Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "High-temperature valley floor deep well servicing Chilas municipal headquarters in the deep Indus gorge beneath Nanga Parbat rain shadow.",
+    "district": "Diamer",
+    "watershed": "Indus Basin",
+    "elevation": 1250,
+    "coordinates": {
+      "lat": 35.4215,
+      "lng": 74.095
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 6.2,
+      "turbidity": 3,
+      "conductivity": 390,
+      "temperature": 18,
+      "nitrates": 8.2,
+      "phosphates": 0.035,
+      "biologicalOxygenDemand": 1.1,
+      "totalDissolvedSolids": 260,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-22",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 12,
+      "rechargeRate": 240,
+      "seasonalVariation": "perennial",
+      "source": "indus-alluvial-terrace",
+      "drainageArea": 40,
+      "floodRisk": "moderate"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-kotli-city",
+    "slug": "gw-well-kotli-city",
+    "name": "Kotli City Poonch Riverbank Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Sub-surface infiltration well situated along the Poonch river gravel beds, providing drinking water to Kotli city and surrounding refugee settlements.",
+    "district": "Kotli",
+    "watershed": "Poonch Basin",
+    "elevation": 615,
+    "coordinates": {
+      "lat": 33.5185,
+      "lng": 73.905
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.5,
+      "turbidity": 3,
+      "conductivity": 360,
+      "temperature": 19,
+      "nitrates": 11,
+      "phosphates": 0.05,
+      "biologicalOxygenDemand": 1.2,
+      "totalDissolvedSolids": 240,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-18",
+      "status": "good",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8,
+      "rechargeRate": 360,
+      "seasonalVariation": "perennial",
+      "source": "poonch-river-alluvial-strata",
+      "drainageArea": 35,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-well-rawalakot-kahuta",
+    "slug": "gw-well-rawalakot-kahuta",
+    "name": "Rawalakot Kahuta Mountain Well",
+    "type": "groundwater",
+    "category": "Tube Well",
+    "description": "Fractured limestone aquifer production well supplying the hill station of Rawalakot during seasonal dry spells.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1620,
+    "coordinates": {
+      "lat": 33.855,
+      "lng": 73.755
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7,
+      "turbidity": 2,
+      "conductivity": 280,
+      "temperature": 13.5,
+      "nitrates": 7.5,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 0.95,
+      "totalDissolvedSolids": 185,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-19",
+      "status": "excellent",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "stable",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 24.5,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "sub-himalayan-fractured-rock",
+      "drainageArea": 30,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-achan-landfill",
+    "slug": "gw-contam-achan-landfill",
+    "name": "Achan Municipal Landfill Leachate Contamination Zone",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Severe unlined landfill leachate plume in northern Srinagar. Heavy percolation into shallow alluvial aquifer has spiked TDS (1,850 mg/L), electrical conductivity (2,450 uS/cm), and heavy metals.",
+    "district": "Srinagar",
+    "watershed": "Anchar Catchment",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.125,
+      "lng": 74.785
+    },
+    "waterQuality": {
+      "pH": 6.8,
+      "dissolvedOxygen": 1.2,
+      "turbidity": 28,
+      "conductivity": 2450,
+      "temperature": 19.5,
+      "nitrates": 65,
+      "phosphates": 0.85,
+      "biologicalOxygenDemand": 18.5,
+      "totalDissolvedSolids": 1850,
+      "fecalColiform": 850,
+      "lastTested": "2026-03-24",
+      "status": "critical",
+      "trends": {
+        "pH": "declining",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 2.8,
+      "rechargeRate": 180,
+      "seasonalVariation": "perennial",
+      "source": "landfill-leachate-plume",
+      "drainageArea": 15,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-bari-brahmana",
+    "slug": "gw-contam-bari-brahmana",
+    "name": "Bari Brahmana Industrial Chemical Plume",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Chemical effluent percolation zone in Bari Brahmana industrial corridor. Shallow monitoring wells show high electroplating effluents, synthetic dyes, and heavy metals.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 325,
+    "coordinates": {
+      "lat": 32.635,
+      "lng": 74.915
+    },
+    "waterQuality": {
+      "pH": 6.5,
+      "dissolvedOxygen": 2.1,
+      "turbidity": 18,
+      "conductivity": 1650,
+      "temperature": 23,
+      "nitrates": 42,
+      "phosphates": 0.45,
+      "biologicalOxygenDemand": 9.2,
+      "totalDissolvedSolids": 1120,
+      "fecalColiform": 40,
+      "lastTested": "2026-03-18",
+      "status": "poor",
+      "trends": {
+        "pH": "declining",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 18.5,
+      "rechargeRate": 210,
+      "seasonalVariation": "perennial",
+      "source": "industrial-effluent-percolation",
+      "drainageArea": 22,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-rangreth-estate",
+    "slug": "gw-contam-rangreth-estate",
+    "name": "Rangreth Industrial Solvent Leached Aquifer",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Elevated concentrations of volatile organic compounds (VOCs) and degreasing solvents detected in unconfined Karewa sands adjacent to electronic manufacturing units.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Catchment",
+    "elevation": 1635,
+    "coordinates": {
+      "lat": 34.0112,
+      "lng": 74.7915
+    },
+    "waterQuality": {
+      "pH": 6.9,
+      "dissolvedOxygen": 2.8,
+      "turbidity": 12,
+      "conductivity": 880,
+      "temperature": 16.5,
+      "nitrates": 28,
+      "phosphates": 0.22,
+      "biologicalOxygenDemand": 5.4,
+      "totalDissolvedSolids": 620,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-20",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 34,
+      "rechargeRate": 190,
+      "seasonalVariation": "perennial",
+      "source": "industrial-soak-pit-leakage",
+      "drainageArea": 18,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-khanabal-sewage",
+    "slug": "gw-contam-khanabal-sewage",
+    "name": "Khanabal Urban Wastewater Ingress Zone",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "High-density urban area where unlined cesspools and open municipal drains discharge directly into shallow alluvial aquifers, pushing nitrate levels to 48 mg/L.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1600,
+    "coordinates": {
+      "lat": 33.7312,
+      "lng": 75.145
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 3.2,
+      "turbidity": 14,
+      "conductivity": 920,
+      "temperature": 15.5,
+      "nitrates": 48,
+      "phosphates": 0.38,
+      "biologicalOxygenDemand": 6.8,
+      "totalDissolvedSolids": 650,
+      "fecalColiform": 420,
+      "lastTested": "2026-03-21",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 4.5,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "urban-septic-infiltration",
+      "drainageArea": 20,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-lasjan-quarry",
+    "slug": "gw-contam-lasjan-quarry",
+    "name": "Lasjan Quarry Hydrocarbon & Slurry Site",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Stone extraction and asphalt plant operations at Lasjan resulting in diesel, hydraulic oil, and pulverized limestone runoff percolating into fractured volcanic rock fissures.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.025,
+      "lng": 74.875
+    },
+    "waterQuality": {
+      "pH": 8.2,
+      "dissolvedOxygen": 3.5,
+      "turbidity": 35,
+      "conductivity": 780,
+      "temperature": 16,
+      "nitrates": 22,
+      "phosphates": 0.15,
+      "biologicalOxygenDemand": 4.8,
+      "totalDissolvedSolids": 580,
+      "fecalColiform": 0,
+      "lastTested": "2026-03-24",
+      "status": "poor",
+      "trends": {
+        "pH": "increasing",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 22,
+      "rechargeRate": 160,
+      "seasonalVariation": "perennial",
+      "source": "quarry-surface-runoff",
+      "drainageArea": 16,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-miran-sahib",
+    "slug": "gw-contam-miran-sahib",
+    "name": "Miran Sahib Agricultural Pesticide Plume",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Intensive basmati rice paddy cultivation zone where organophosphate and carbamate pesticide residues have leached into the unconfined shallow alluvial water table.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 295,
+    "coordinates": {
+      "lat": 32.615,
+      "lng": 74.825
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 3.8,
+      "turbidity": 8,
+      "conductivity": 740,
+      "temperature": 22,
+      "nitrates": 38.5,
+      "phosphates": 0.28,
+      "biologicalOxygenDemand": 3.8,
+      "totalDissolvedSolids": 520,
+      "fecalColiform": 35,
+      "lastTested": "2026-03-18",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8.5,
+      "rechargeRate": 340,
+      "seasonalVariation": "perennial",
+      "source": "agricultural-leaching",
+      "drainageArea": 28,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-gangyal-metal",
+    "slug": "gw-contam-gangyal-metal",
+    "name": "Gangyal Industrial Heavy Metal Aquifer Zone",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Old industrial estate in Jammu where lead battery recycling and electroplating units have caused severe localized heavy metal contamination exceeding BIS/WHO drinking norms.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 315,
+    "coordinates": {
+      "lat": 32.685,
+      "lng": 74.875
+    },
+    "waterQuality": {
+      "pH": 6.2,
+      "dissolvedOxygen": 1.8,
+      "turbidity": 22,
+      "conductivity": 1820,
+      "temperature": 23.5,
+      "nitrates": 54,
+      "phosphates": 0.55,
+      "biologicalOxygenDemand": 12,
+      "totalDissolvedSolids": 1340,
+      "fecalColiform": 20,
+      "lastTested": "2026-03-18",
+      "status": "critical",
+      "trends": {
+        "pH": "declining",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 11.2,
+      "rechargeRate": 220,
+      "seasonalVariation": "perennial",
+      "source": "industrial-effluent-discharge",
+      "drainageArea": 18,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-chogamsar-septic",
+    "slug": "gw-contam-chogamsar-septic",
+    "name": "Chogamsar Septic Contamination Plume",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Rapid commercial guesthouse and hotel growth in suburban Leh lacking sewerage networks; unlined soak pits discharge directly into porous glacio-fluvial gravels (nitrates 52 mg/L).",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3260,
+    "coordinates": {
+      "lat": 34.125,
+      "lng": 77.585
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 3.8,
+      "turbidity": 6,
+      "conductivity": 780,
+      "temperature": 9.5,
+      "nitrates": 52,
+      "phosphates": 0.35,
+      "biologicalOxygenDemand": 4.5,
+      "totalDissolvedSolids": 560,
+      "fecalColiform": 280,
+      "lastTested": "2026-03-24",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 7.8,
+      "rechargeRate": 160,
+      "seasonalVariation": "perennial",
+      "source": "septic-soak-pit-leakage",
+      "drainageArea": 20,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-sopore-leach",
+    "slug": "gw-contam-sopore-leach",
+    "name": "Sopore Cold Storage Effluent Leached Zone",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Localized industrial contamination from chemical fungicides, post-harvest dip washings, and untreated refrigeration effluents seeping into shallow orchard borewells.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.3125,
+      "lng": 74.455
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 3.6,
+      "turbidity": 11,
+      "conductivity": 720,
+      "temperature": 14.5,
+      "nitrates": 32,
+      "phosphates": 0.22,
+      "biologicalOxygenDemand": 4.2,
+      "totalDissolvedSolids": 510,
+      "fecalColiform": 15,
+      "lastTested": "2026-03-19",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 5.8,
+      "rechargeRate": 290,
+      "seasonalVariation": "perennial",
+      "source": "cold-storage-effluents",
+      "drainageArea": 15,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-samba-textile",
+    "slug": "gw-contam-samba-textile",
+    "name": "Samba Textile Effluent Contaminated Well",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "High COD and sodium absorption ratio contamination in shallow aquifers surrounding textile dyeing and printing industrial clusters in Samba.",
+    "district": "Samba",
+    "watershed": "Basantar Basin",
+    "elevation": 360,
+    "coordinates": {
+      "lat": 32.555,
+      "lng": 75.125
+    },
+    "waterQuality": {
+      "pH": 8.5,
+      "dissolvedOxygen": 2,
+      "turbidity": 20,
+      "conductivity": 1780,
+      "temperature": 23,
+      "nitrates": 44,
+      "phosphates": 0.42,
+      "biologicalOxygenDemand": 11.5,
+      "totalDissolvedSolids": 1280,
+      "fecalColiform": 10,
+      "lastTested": "2026-03-18",
+      "status": "critical",
+      "trends": {
+        "pH": "increasing",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 24,
+      "rechargeRate": 210,
+      "seasonalVariation": "perennial",
+      "source": "textile-industrial-washings",
+      "drainageArea": 20,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-gilgit-workshop",
+    "slug": "gw-contam-gilgit-workshop",
+    "name": "Gilgit Auto Mechanical Workshop Plume",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Waste engine oil, battery acid, and degreasing hydrocarbons disposed of in unlined pits percolating into coarse river fan gravels near Gilgit town.",
+    "district": "Gilgit",
+    "watershed": "Gilgit Basin",
+    "elevation": 1510,
+    "coordinates": {
+      "lat": 35.915,
+      "lng": 74.315
+    },
+    "waterQuality": {
+      "pH": 6.7,
+      "dissolvedOxygen": 3,
+      "turbidity": 16,
+      "conductivity": 840,
+      "temperature": 12.5,
+      "nitrates": 26,
+      "phosphates": 0.18,
+      "biologicalOxygenDemand": 5.8,
+      "totalDissolvedSolids": 610,
+      "fecalColiform": 25,
+      "lastTested": "2026-03-23",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 11,
+      "rechargeRate": 170,
+      "seasonalVariation": "perennial",
+      "source": "automotive-waste-pits",
+      "drainageArea": 14,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-contam-muzaffarabad-debris",
+    "slug": "gw-contam-muzaffarabad-debris",
+    "name": "Muzaffarabad Debris Landfill Leached Well",
+    "type": "groundwater",
+    "category": "Contaminated Groundwater Site",
+    "description": "Uncontrolled municipal waste and demolition debris dumping adjacent to the Neelum riverbank generating toxic leachate plumes in unconfined gravels.",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 740,
+    "coordinates": {
+      "lat": 34.3685,
+      "lng": 73.4685
+    },
+    "waterQuality": {
+      "pH": 6.8,
+      "dissolvedOxygen": 2.5,
+      "turbidity": 19,
+      "conductivity": 980,
+      "temperature": 17.5,
+      "nitrates": 38,
+      "phosphates": 0.32,
+      "biologicalOxygenDemand": 7.5,
+      "totalDissolvedSolids": 710,
+      "fecalColiform": 140,
+      "lastTested": "2026-03-19",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8.2,
+      "rechargeRate": 300,
+      "seasonalVariation": "perennial",
+      "source": "debris-dump-leachate",
+      "drainageArea": 16,
+      "floodRisk": "moderate"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-dal-periphery",
+    "slug": "gw-microb-dal-periphery",
+    "name": "Dal Lake Peripheral Shallow Well Cluster",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Shallow private borewells (<20m) in unsewered perimeter hamlets around Dal Lake showing acute sewage ingress and alarming fecal coliform levels (380 MPN/100ml).",
+    "district": "Srinagar",
+    "watershed": "Dal Catchment",
+    "elevation": 1588,
+    "coordinates": {
+      "lat": 34.1125,
+      "lng": 74.855
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 3.8,
+      "turbidity": 9,
+      "conductivity": 560,
+      "temperature": 15.5,
+      "nitrates": 31,
+      "phosphates": 0.28,
+      "biologicalOxygenDemand": 6.2,
+      "totalDissolvedSolids": 420,
+      "fecalColiform": 380,
+      "lastTested": "2026-03-24",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 2.2,
+      "rechargeRate": 340,
+      "seasonalVariation": "perennial",
+      "source": "lake-fringe-septic-exchange",
+      "drainageArea": 15,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-sopore-riparian",
+    "slug": "gw-microb-sopore-riparian",
+    "name": "Sopore Riparian Shallow Handpump Cluster",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Shallow handpumps (12-18m) tapping unconfined Jhelum bank alluvium near municipal drain outfalls. High microbial contamination (450 MPN/100ml) posing acute diarrheal risk.",
+    "district": "Baramulla",
+    "watershed": "Lower Jhelum Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.2985,
+      "lng": 74.4712
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 3.2,
+      "turbidity": 12,
+      "conductivity": 610,
+      "temperature": 16,
+      "nitrates": 28.5,
+      "phosphates": 0.32,
+      "biologicalOxygenDemand": 7,
+      "totalDissolvedSolids": 460,
+      "fecalColiform": 450,
+      "lastTested": "2026-03-19",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 3.1,
+      "rechargeRate": 360,
+      "seasonalVariation": "perennial",
+      "source": "jhelum-riparian-infiltration",
+      "drainageArea": 18,
+      "floodRisk": "high"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-bijbehara-floodplain",
+    "slug": "gw-microb-bijbehara-floodplain",
+    "name": "Bijbehara Floodplain Inundated Well Cluster",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Shallow community drinking wells frequently inundated during seasonal river swelling, experiencing direct surface fecal contamination (280 MPN/100ml).",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1595,
+    "coordinates": {
+      "lat": 33.795,
+      "lng": 75.105
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 4.1,
+      "turbidity": 10,
+      "conductivity": 520,
+      "temperature": 14.8,
+      "nitrates": 24,
+      "phosphates": 0.22,
+      "biologicalOxygenDemand": 5.2,
+      "totalDissolvedSolids": 380,
+      "fecalColiform": 280,
+      "lastTested": "2026-03-21",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 2.5,
+      "rechargeRate": 380,
+      "seasonalVariation": "perennial",
+      "source": "floodplain-surface-ingress",
+      "drainageArea": 20,
+      "floodRisk": "critical"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-rs-pura-dairy",
+    "slug": "gw-microb-rs-pura-dairy",
+    "name": "RS Pura Dairy Belt Shallow Handpumps",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Dense dairy livestock and barnyard manure runoff leaching directly into unsealed shallow handpumps in the border plain belt; fecal coliform reaches 520 MPN/100ml.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 285,
+    "coordinates": {
+      "lat": 32.585,
+      "lng": 74.735
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 3,
+      "turbidity": 15,
+      "conductivity": 680,
+      "temperature": 23,
+      "nitrates": 42,
+      "phosphates": 0.45,
+      "biologicalOxygenDemand": 8.5,
+      "totalDissolvedSolids": 490,
+      "fecalColiform": 520,
+      "lastTested": "2026-03-18",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.8,
+      "rechargeRate": 340,
+      "seasonalVariation": "perennial",
+      "source": "manure-slurry-percolation",
+      "drainageArea": 25,
+      "floodRisk": "moderate"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-anantnag-old-town",
+    "slug": "gw-microb-anantnag-old-town",
+    "name": "Anantnag Old Town Dense Housing Wellhead",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Extreme urban density and aged septic pit proximity within 4 meters of shallow dug-well casings, causing severe bacterial contamination (310 MPN/100ml).",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1605,
+    "coordinates": {
+      "lat": 33.7285,
+      "lng": 75.155
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 3.5,
+      "turbidity": 11,
+      "conductivity": 620,
+      "temperature": 15,
+      "nitrates": 36,
+      "phosphates": 0.32,
+      "biologicalOxygenDemand": 6.5,
+      "totalDissolvedSolids": 440,
+      "fecalColiform": 310,
+      "lastTested": "2026-03-21",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 5.2,
+      "rechargeRate": 290,
+      "seasonalVariation": "perennial",
+      "source": "urban-cesspool-seepage",
+      "drainageArea": 12,
+      "floodRisk": "low"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-pattan-rural",
+    "slug": "gw-microb-pattan-rural",
+    "name": "Pattan Highway Settlement Handpump Cluster",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Cracked wellhead concrete aprons and stagnant roadside greywater pooling causing microbial contamination in shallow domestic water sources (220 MPN/100ml).",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1595,
+    "coordinates": {
+      "lat": 34.1585,
+      "lng": 74.565
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4.2,
+      "turbidity": 8,
+      "conductivity": 480,
+      "temperature": 14.5,
+      "nitrates": 22.5,
+      "phosphates": 0.18,
+      "biologicalOxygenDemand": 4.5,
+      "totalDissolvedSolids": 350,
+      "fecalColiform": 220,
+      "lastTested": "2026-03-19",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 4.8,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "surface-greywater-pooling",
+      "drainageArea": 16,
+      "floodRisk": "moderate"
+    },
+    "region": "Kashmir Core",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-kargil-old-town",
+    "slug": "gw-microb-kargil-old-town",
+    "name": "Kargil Old Town Slope Seepage Wellhead",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Untreated domestic wastewater from upper hillside dwellings percolating down fractured scree slopes into unsealed riverside wellheads (180 MPN/100ml).",
+    "district": "Kargil",
+    "watershed": "Suru Basin",
+    "elevation": 2710,
+    "coordinates": {
+      "lat": 34.5585,
+      "lng": 76.135
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 5.5,
+      "turbidity": 7,
+      "conductivity": 410,
+      "temperature": 10.2,
+      "nitrates": 18,
+      "phosphates": 0.15,
+      "biologicalOxygenDemand": 3.8,
+      "totalDissolvedSolids": 290,
+      "fecalColiform": 180,
+      "lastTested": "2026-03-21",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8,
+      "rechargeRate": 190,
+      "seasonalVariation": "perennial",
+      "source": "hillside-septic-seepage",
+      "drainageArea": 14,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-leh-main-bazar",
+    "slug": "gw-microb-leh-main-bazar",
+    "name": "Leh Main Bazaar Winter Handpump Site",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "High seasonal tourist pressure causing unlined commercial soak pits to saturate the shallow gravel aquifer, leading to coliform spikes (260 MPN/100ml).",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3510,
+    "coordinates": {
+      "lat": 34.165,
+      "lng": 77.5812
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5,
+      "turbidity": 8,
+      "conductivity": 490,
+      "temperature": 8.5,
+      "nitrates": 35,
+      "phosphates": 0.25,
+      "biologicalOxygenDemand": 4.8,
+      "totalDissolvedSolids": 360,
+      "fecalColiform": 260,
+      "lastTested": "2026-03-24",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 9.5,
+      "rechargeRate": 150,
+      "seasonalVariation": "perennial",
+      "source": "commercial-soak-pit-overflow",
+      "drainageArea": 16,
+      "floodRisk": "low"
+    },
+    "region": "Ladakh",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-muzaffarabad-fault",
+    "slug": "gw-microb-muzaffarabad-fault",
+    "name": "Muzaffarabad Fractured Casing Wellhead",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Earthquake-damaged sheared casing pipes allowing contaminated topsoil microbial runoff and pit latrine effluents to directly enter the well bore (340 MPN/100ml).",
+    "district": "Muzaffarabad",
+    "watershed": "Jhelum Basin",
+    "elevation": 745,
+    "coordinates": {
+      "lat": 34.3712,
+      "lng": 73.4785
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 4,
+      "turbidity": 14,
+      "conductivity": 580,
+      "temperature": 17,
+      "nitrates": 30,
+      "phosphates": 0.28,
+      "biologicalOxygenDemand": 6,
+      "totalDissolvedSolids": 420,
+      "fecalColiform": 340,
+      "lastTested": "2026-03-19",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 14.5,
+      "rechargeRate": 290,
+      "seasonalVariation": "perennial",
+      "source": "fractured-casing-surface-ingress",
+      "drainageArea": 18,
+      "floodRisk": "low"
+    },
+    "region": "AJK",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-skardu-sadpara",
+    "slug": "gw-microb-skardu-sadpara",
+    "name": "Skardu Sadpara Road Village Wellhead",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Open irrigation watercourse seepage carrying livestock manure coliforms directly into an unsealed shallow drinking well (190 MPN/100ml).",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2240,
+    "coordinates": {
+      "lat": 35.295,
+      "lng": 75.635
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 8,
+      "conductivity": 310,
+      "temperature": 10.5,
+      "nitrates": 14.5,
+      "phosphates": 0.12,
+      "biologicalOxygenDemand": 3.2,
+      "totalDissolvedSolids": 225,
+      "fecalColiform": 190,
+      "lastTested": "2026-03-22",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 7.5,
+      "rechargeRate": 210,
+      "seasonalVariation": "perennial",
+      "source": "irrigation-channel-seepage",
+      "drainageArea": 16,
+      "floodRisk": "low"
+    },
+    "region": "Gilgit-Baltistan",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-doda-bhaderwah",
+    "slug": "gw-microb-doda-bhaderwah",
+    "name": "Bhaderwah Valley Town Handpump",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Percolation of open residential drain greywater into shallow alluvium along Neeru stream terraces, resulting in persistent coliform presence (160 MPN/100ml).",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 32.9812,
+      "lng": 75.7125
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 5.2,
+      "turbidity": 7,
+      "conductivity": 390,
+      "temperature": 12,
+      "nitrates": 18,
+      "phosphates": 0.14,
+      "biologicalOxygenDemand": 3.6,
+      "totalDissolvedSolids": 270,
+      "fecalColiform": 160,
+      "lastTested": "2026-03-20",
+      "status": "poor",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "stable"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.2,
+      "rechargeRate": 320,
+      "seasonalVariation": "perennial",
+      "source": "town-drainage-infiltration",
+      "drainageArea": 20,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  },
+  {
+    "id": "gw-microb-kathua-slum",
+    "slug": "gw-microb-kathua-slum",
+    "name": "Kathua Railway Siding Community Handpump",
+    "type": "groundwater",
+    "category": "Microbial Risk Site",
+    "description": "Acute microbial contamination (480 MPN/100ml) from open defecation and lack of proper soakage infrastructure near the rail siding, posing severe cholera and typhoid risks.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 320,
+    "coordinates": {
+      "lat": 32.3712,
+      "lng": 75.5212
+    },
+    "waterQuality": {
+      "pH": 7.1,
+      "dissolvedOxygen": 2.8,
+      "turbidity": 16,
+      "conductivity": 720,
+      "temperature": 22,
+      "nitrates": 44,
+      "phosphates": 0.42,
+      "biologicalOxygenDemand": 8,
+      "totalDissolvedSolids": 520,
+      "fecalColiform": 480,
+      "lastTested": "2026-03-18",
+      "status": "critical",
+      "trends": {
+        "pH": "stable",
+        "dissolvedOxygen": "declining",
+        "turbidity": "increasing"
+      }
+    },
+    "hydrologicalData": {
+      "waterLevel": 8,
+      "rechargeRate": 310,
+      "seasonalVariation": "perennial",
+      "source": "surface-waste-infiltration",
+      "drainageArea": 15,
+      "floodRisk": "low"
+    },
+    "region": "Jammu",
+    "verificationStatus": "verified",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-04-10T00:00:00Z"
+  }
 ];
 
 // Data access functions
