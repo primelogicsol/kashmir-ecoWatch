@@ -115,7 +115,7 @@ export default function FounderPage() {
       period: 'Software Engineering',
       field: 'Enterprise Software and Systems',
       institution: 'Distributed Cloud Architecture and Managed Application Platforms',
-      specialization: 'Focus: Full-stack web development, microservice architectures, and scalable digital systems',
+      specialization: 'Focus: Full-stack web development, microservice architectures, and critical infrastructure digital systems',
       icon: Code,
       color: 'text-sky-400',
       bg: 'bg-sky-500/10 border-sky-500/20'
