@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { algalBloomLakes, AlgalBloomLake } from '@/data/algal-bloom-lakes';
 
-const CACHE_KEY = 'algalBloomMeteoCache';
-const CACHE_DURATION = 45 * 60 * 1000; // 45 minutes
+const CACHE_KEY = 'algalBloomMeteoCache_v2';
+const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
 
 export function useAlgalBloomIntelligence() {
   const [lakesWithLiveData, setLakesWithLiveData] = useState<AlgalBloomLake[]>(algalBloomLakes);
