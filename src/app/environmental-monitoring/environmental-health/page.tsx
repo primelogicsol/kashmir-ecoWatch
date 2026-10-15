@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import {
@@ -880,6 +881,7 @@ export default function EcologicalHealthPage() {
   const [ecosystemFilter, setEcosystemFilter] = useState('all');
   const [stressFilter, setStressFilter] = useState('all');
   const [restoPriorityFilter, setRestoPriorityFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
 
   // Live telemetry state
   const [liveTelemetry, setLiveTelemetry] = useState<Record<string, LiveAtmosphericTelemetry>>(BASELINE_TELEMETRY);
@@ -1139,6 +1141,127 @@ export default function EcologicalHealthPage() {
           onExtraFiltersClear={() => { setEcosystemFilter('all'); setStressFilter('all'); setRestoPriorityFilter('all'); }}
         />
       </div>
+
+      
+      {/* ── Ecological Health Typologies & Citizen Field Protocols ─────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Ecological Health Typologies & Bio-Indicator Sentinel Belts"
+          typologySubtitle="Select an ecological biome, stress rating, or restoration priority to monitor remote-sensing and biological health scores."
+          typologyIcon={Activity}
+          typologies={[
+            { id: 'all', label: 'All Ecosystem Units', count: ecologicalHealthRegistry.length, icon: Leaf, color: 'emerald' },
+            { id: 'critical', label: 'High / Critical Stress', count: ecologicalHealthRegistry.filter(r => ['Critical', 'High'].includes(r.stressLevel)).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'wetland', label: 'Wetland Habitats (Ramsar)', count: ecologicalHealthRegistry.filter(r => r.ecosystemType === 'Wetland').length, icon: Waves, color: 'cyan' },
+            { id: 'riverine', label: 'Fluvial Riverine Corridors', count: ecologicalHealthRegistry.filter(r => r.ecosystemType === 'Riverine').length, icon: Droplets, color: 'sky' },
+            { id: 'forest', label: 'Temperate & Sub-Alpine Forests', count: ecologicalHealthRegistry.filter(r => r.ecosystemType === 'Temperate Forest' || r.ecosystemType === 'Sub-Alpine').length, icon: TreePine, color: 'teal' },
+            { id: 'alpine', label: 'High Alpine Grasslands', count: ecologicalHealthRegistry.filter(r => r.ecosystemType === 'Alpine').length, icon: Mountain, color: 'indigo' },
+            { id: 'urgent', label: 'Urgent Restoration Priority', count: ecologicalHealthRegistry.filter(r => r.restorationPriority === 'Urgent').length, icon: Shield, color: 'violet' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={ecologicalHealthRegistry.length}
+          entityLabel="ecosystem units"
+          spotlightTitle="Sentinel Bio-Indicators & Remote Sensing Telemetry"
+          spotlightSubtitle="Coupling Copernicus Sentinel-2 MSI NDVI vegetation indices with ground-truthed biotic index benchmarks across Kashmir's biomes."
+          tabs={[
+            {
+              id: 'bio-indicators',
+              label: 'Macroinvertebrate & Fish Hypoxia Signals',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Coldwater Salmonid Sentinels</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Brown Trout (*Salmo trutta fario*)</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Require dissolved oxygen &gt; 7.0 mg/L and water temperatures &lt; 18°C in Lidder, Sind, and Madhumati streams. Sudden fish distress flags acute oxygen depletion or toxic pesticide runoff.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Biotic Index: Intolerant stenothermal species</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <span className="text-xs font-bold text-emerald-400 block mb-1">Benthic Macroinvertebrates</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">EPT Taxa (Mayfly, Stonefly, Caddisfly)</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Abundance of Ephemeroptera, Plecoptera, and Trichoptera larvae in mountain streams signifies pristine oligotrophic conditions, while dominance of Chironomid bloodworms flags organic sewage ingress.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Protocol: CPCB Biological Water Quality Criteria</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <span className="text-xs font-bold text-rose-400 block mb-1">Macrophyte Encroachment</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Azolla &amp; Water Hyacinth Blooms</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Dense surface carpets of *Azolla cristata* on Dal and Wular lakes choke solar irradiance, creating sub-surface anoxia that suffocates indigenous *Schizothorax* snow trout breeding gravels.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Satellite Index: Sentinel-2 NDCI Chlorophyll Proxy</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'canopy-ndvi',
+              label: 'Copernicus Sentinel-2 NDVI & Forest Stress',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Coniferous Canopy Vigor Tracking</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Normalized Difference Vegetation Index (NDVI) monitoring across Gulmarg, Lidder, and Pir Panjal fir/pine forests detects early moisture stress and bark beetle defoliation prior to visible canopy dieback.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">NDVI Resolution: 10m spatial resolution at 5-day revisit</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Alpine Meadow Soil Desiccation</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Overgrazing and unseasonal heatwaves dry high-altitude hummocky turf soils, accelerating gully erosion along pastoral trekking trails in Gurez, Sonamarg, and Tarsar cirques.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Soil Moisture Proxy: Sentinel-1 SAR C-band backscatter</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="environmental"
+          observeTitle="Citizen Ecological Health Sentinel &amp; Bio-Indicator Hub"
+          observeSubtitle="Submit benthic stream samples, log fish distress incidents, or record invasive vegetative mats on local waterbodies."
+          observeBadge="CPCB Biomonitoring Standard"
+          protocols={[
+            {
+              number: '1',
+              title: 'Benthic Macroinvertebrate Kick-Sampling',
+              desc: 'Rinse riffle gravel into a 500-micron net; tally presence of Mayflies, Stoneflies, and Caddisflies to calculate stream biotic index.',
+              benchmark: 'CPCB Biological Water Quality Criteria (BWQC)',
+              icon: FlaskConical,
+              color: 'emerald',
+            },
+            {
+              number: '2',
+              title: 'Fish Distress & Hypoxia Event Logging',
+              desc: 'Document fish gasping at the water surface, erratic swimming, or mortality with water temperature and weather conditions.',
+              benchmark: 'Inland Fisheries Environmental Assessment Protocol',
+              icon: Droplets,
+              color: 'cyan',
+            },
+            {
+              number: '3',
+              title: 'Invasive Weed Carpet Geo-Mapping',
+              desc: 'Photograph dense Azolla, Alternanthera, or Lemna blooms choking wetland bays and record estimated surface area.',
+              benchmark: 'Ramsar Wetland Invasive Species Management Standard',
+              icon: Leaf,
+              color: 'teal',
+            },
+            {
+              number: '4',
+              title: 'Conifer Dieback & Forest Pest Survey',
+              desc: 'Flag patches of red-needle discoloration, defoliation, or resin bleeding on Deodar and Blue Pine forest perimeters.',
+              benchmark: 'Forest Survey of India Pest & Blight Protocol',
+              icon: TreePine,
+              color: 'amber',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── Scope Row ─────────────────────────────────────────────────────────── */}
       <ModuleScopeRow

@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import {
   Wind, ChevronRight, AlertTriangle,
@@ -333,6 +334,7 @@ export default function AirPollutionPage() {
   const router = useRouter();
   const { filter } = useGlobalFilter();
   const [aqiFilter, setAqiFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [liveData, setLiveData] = useState<AirQualityLiveRecord[]>([]);
   const [loading, setLoading] = useState(true);
@@ -428,8 +430,16 @@ export default function AirPollutionPage() {
     else if (aqiFilter === 'moderate') matchAqi = d.aqi > 50 && d.aqi <= 100;
     else if (aqiFilter === 'good') matchAqi = d.aqi <= 50;
 
-    return matchSearch && matchScope && matchDistrict && matchAqi;
-  }), [liveData, filter, aqiFilter]);
+    const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'unhealthy' && (d.aqi >= 100 || d.aqiCategory === 'Poor' || d.aqiCategory === 'Very Poor' || d.aqiCategory === 'Severe')) ||
+        (activeTypology === 'kiln' && (d.district === 'Budgam' || d.district === 'Pulwama')) ||
+        (activeTypology === 'highway' && (d.district === 'Ramban' || d.district === 'Anantnag' || d.district === 'Baramulla')) ||
+        (activeTypology === 'alpine' && (d.scope?.toLowerCase().includes('regional') || d.district === 'Ganderbal' || d.district === 'Kupwara' || d.aqi < 50)) ||
+        (activeTypology === 'satisfactory' && d.aqi < 100);
+
+      return matchSearch && matchScope && matchDistrict && matchAqi && matchTypology;
+  }), [liveData, filter, aqiFilter, activeTypology]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -539,6 +549,125 @@ export default function AirPollutionPage() {
           }
           extraActiveCount={aqiFilter !== 'all' ? 1 : 0}
           onExtraFiltersClear={() => setAqiFilter('all')}
+        />
+      </div>
+
+      
+      {/* ── Air Quality Typologies & Citizen Field Protocols ───────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Air Quality Focus Typologies &amp; Particulate Regimes"
+          typologySubtitle="Filter telemetry stations by air quality severity, brick kiln emission corridors, highway dust, or pristine alpine baselines."
+          typologyIcon={Wind}
+          typologies={[
+            { id: 'all', label: 'All Monitoring Stations', count: liveData.length, icon: Wind, color: 'emerald' },
+            { id: 'unhealthy', label: 'Moderate &amp; Unhealthy AQI', count: liveData.filter(d => d.aqi >= 80).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'kiln', label: 'Brick Kiln Corridors (Budgam/Pulwama)', count: liveData.filter(d => ['Budgam', 'Pulwama'].includes(d.district)).length, icon: Cloud, color: 'amber' },
+            { id: 'highway', label: 'NH-44 &amp; Transit Belts', count: liveData.filter(d => ['Ramban', 'Anantnag', 'Baramulla'].includes(d.district)).length, icon: TrendingUp, color: 'violet' },
+            { id: 'alpine', label: 'High-Altitude Baselines', count: liveData.filter(d => ['Ganderbal', 'Kupwara'].includes(d.district) || d.aqi < 50).length, icon: Shield, color: 'sky' },
+            { id: 'satisfactory', label: 'Good &amp; Satisfactory AQI', count: liveData.filter(d => d.aqi < 80).length, icon: Zap, color: 'teal' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={liveData.length}
+          entityLabel="active telemetry stations"
+          spotlightTitle="Himalayan Atmospheric Dynamics &amp; Particulate Inversion"
+          spotlightSubtitle="Continuous multi-pollutant monitoring analyzing PM2.5, PM10, thermal air stagnation, and winter biomass smoke."
+          tabs={[
+            {
+              id: 'winter-smog',
+              label: 'Winter Chillai Kalan Valley Stagnation',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                    <span className="text-xs font-bold text-violet-400 block mb-1">Atmospheric Inversion</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Thermal Trapping Mechanics</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Cold mountain breezes cascade down surrounding Pir Panjal and Zabarwan ridges into the flat valley basin, creating an impenetrable warm inversion lid at 200–400m altitude.
+                    </p>
+                    <div className="text-[11px] text-violet-300 font-mono">Ventilation Coefficient: &lt; 2,000 m²/s during Dec-Jan</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <span className="text-xs font-bold text-rose-400 block mb-1">Biomass Heating Footprint</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Kangri Charcoal &amp; Bukharis</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Residential heating relies heavily on traditional charcoal Kangris and wood-fired bukharis. Emits fine black carbon and volatile organic compounds (VOCs) lingering in urban air.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">PM2.5 Peak: 160–240 µg/m³ during calm morning hours</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Point Sources</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Brick Kiln Clusters</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Over 280 traditional Bull's Trench brick kilns across Budgam and Pulwama burn low-grade coal and agricultural stubble, creating dense particulate plumes across adjacent karewa lands.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Mitigation Policy: Transition to Zig-Zag induced draft kilns</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'standards',
+              label: 'NAAQS &amp; WHO Ambient Standards',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Central Pollution Control Board Standards</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      National Ambient Air Quality Standards (NAAQS) benchmark 24-hour PM2.5 at 60 µg/m³ and PM10 at 100 µg/m³. Exceedances trigger public health advisories for children and elderly residents.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Standard: NAAQS (Notification No. B-29016/20/90/PCI-L)</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">WHO Air Quality Guidelines (AQG 2021)</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Stringent international guideline recommending 24h PM2.5 &lt; 15 µg/m³. KEW continuous monitors compare local readings against both national and international thresholds.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">WHO Benchmark: 15 µg/m³ (24h) | 5 µg/m³ (Annual)</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="air"
+          observeTitle="Citizen Air Quality Surveillance &amp; Open Burning Reporting"
+          observeSubtitle="Submit handheld PM2.5 readings, photograph dense smoke plumes, or report illegal orchard biomass burning."
+          observeBadge="NAAQS Air Monitoring Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Handheld Laser Sensor PM2.5 Reading',
+              desc: 'Record 5-minute average PM2.5/PM10 concentrations using calibrated optical particle counters (Sensirion/Plantower).',
+              benchmark: 'NAAQS 24h Benchmark: PM2.5 &lt;= 60 ug/m3',
+              icon: Wind,
+              color: 'sky',
+            },
+            {
+              number: '2',
+              title: 'Visual Smoke Plume Opacity Assessment',
+              desc: 'Observe industrial or brick kiln smoke stacks against a clear sky using standard Ringelmann smoke charts (target &lt; Ringelmann 1).',
+              benchmark: 'CPCB Brick Kiln Stack Emission Norms',
+              icon: Cloud,
+              color: 'amber',
+            },
+            {
+              number: '3',
+              title: 'Open Orchard &amp; Stubble Burning Spotting',
+              desc: 'Geo-tag active burning of pruned apple branches, rice straw, or municipal trash generating roadside smog.',
+              benchmark: 'Air Act 1981 Section 19 Prohibition',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+            {
+              number: '4',
+              title: 'Vehicular Smoke &amp; Idling Corridor Survey',
+              desc: 'Document black exhaust emissions from heavy commercial diesel trucks on urban choke points (Pantha Chowk, Batamaloo).',
+              benchmark: 'Motor Vehicles Act BS-VI Emission Norms',
+              icon: Zap,
+              color: 'violet',
+            },
+          ]}
         />
       </div>
 

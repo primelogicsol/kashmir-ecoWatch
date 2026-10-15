@@ -56,6 +56,7 @@ const navItems = [
   { label: 'Environmental Monitoring', href: '/environmental-monitoring', hasDropdown: true  },
   { label: 'Hazard Intelligence',      href: '/hazard-intelligence',      hasDropdown: true  },
   { label: 'NGO Impact',               href: '/ngo-impact',               hasDropdown: false },
+  { label: 'Environmental Calendar',   href: '/environmental-calendar',   hasDropdown: false },
 ];
 
 export function Navigation() {
@@ -253,12 +254,35 @@ export function Navigation() {
                       {[
                         { name: 'Wildlife Sightings', href: '/biodiversity/wildlife-sightings', desc: 'Verified & community observations' },
                         { name: 'Birding & Observation Hotspots', href: '/biodiversity/birding-hotspots', desc: 'Prime observation areas' },
-                        { name: 'Migration Windows', href: '/biodiversity/migration-windows', desc: 'Migratory bird timing' },
-                        { name: 'Pollinator Activity', href: '/biodiversity/pollinator-activity', desc: 'Pollinator watch periods' },
-                        { name: 'Phenology & Flowering Records', href: '/biodiversity/phenology-flowering', desc: 'Flowering & seasonal records' },
                         { name: 'Forest Ecosystems', href: '/biodiversity/forest-ecosystems', desc: '10-module habitat intelligence layer' },
-                        { name: 'Habitat Signals', href: '/biodiversity/habitat-signals', desc: 'Habitat stress & transitions' },
-                        { name: 'Seasonal Species Activity', href: '/biodiversity/seasonal-activity', desc: 'Breeding & activity windows' },
+                      ].map((subitem) => (
+                        <Link
+                          key={subitem.name}
+                          href={subitem.href}
+                          className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                        >
+                          <span className="font-medium">{subitem.name}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Dedicated Seasonal Ecology & Phenology Module Space */}
+                    <div className="py-2 border-b border-white/5">
+                      <div className="px-4 py-1.5 bg-amber-500/10">
+                        <span className="text-[9px] font-semibold uppercase tracking-wider text-amber-400">Seasonal Ecology & Phenology</span>
+                      </div>
+                      {[
+                        { name: 'Seasonal Landscapes', href: '/seasonal-ecology/seasonal-landscapes', desc: 'Landscape-scale seasonal patterns' },
+                        { name: 'Bloom Mapping', href: '/seasonal-ecology/bloom-mapping', desc: 'Bloom zones and flowering landscapes' },
+                        { name: 'Migration Windows', href: '/seasonal-ecology/migration-windows', desc: 'Migration timing & wetland bird windows' },
+                        { name: 'Pollinator Activity', href: '/seasonal-ecology/pollinator-windows', desc: 'Pollinator activity timing across Kashmir' },
+                        { name: 'Phenology & Flowering Records', href: '/seasonal-ecology/phenology-records', desc: 'Flowering & observation-based records' },
+                        { name: 'Seasonal Habitat Signals', href: '/seasonal-ecology/habitat-signals', desc: 'Seasonal habitat changes & transitions' },
+                        { name: 'Water & Wetland Transitions', href: '/seasonal-ecology/water-transitions', desc: 'Seasonal water & wetland transitions' },
+                        { name: 'Seasonal Species Activity', href: '/seasonal-ecology/species-activity', desc: 'Seasonal species activity patterns' },
+                        { name: 'Climate & Visibility Windows', href: '/seasonal-ecology/climate-windows', desc: 'Climate-linked visibility & access' },
+                        { name: 'Seasonal Reports & References', href: '/seasonal-ecology/reports-references', desc: 'Kashmir seasonal research & evidence' },
                       ].map((subitem) => (
                         <Link
                           key={subitem.name}
@@ -989,8 +1013,15 @@ export function Navigation() {
 
                                   {item.label === 'Biodiversity' && (
                                     <>
+                                      <Link href="/biodiversity/overview" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        📊 Overview
+                                      </Link>
+                                      <Link href="/biodiversity/dashboards" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        📊 Dashboards
+                                      </Link>
+                                      <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-slate-500 bg-slate-800/10 mt-2">Species</div>
                                       <Link href="/biodiversity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        📊 All Species
+                                        Species Directory
                                       </Link>
                                       <Link href="/biodiversity/mammals" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                         Mammals
@@ -999,16 +1030,64 @@ export function Navigation() {
                                         Birds
                                       </Link>
                                       <Link href="/biodiversity/fish" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Fish
+                                        Fish & Aquatic Life
                                       </Link>
                                       <Link href="/biodiversity/plants" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Plants
+                                        Plants & Flora
                                       </Link>
                                       <Link href="/biodiversity/medicinal-plants" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Medicinal Plants
+                                        Medicinal Flora
                                       </Link>
                                       <Link href="/biodiversity/threatened-species" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
-                                        Threatened Species
+                                        Priority & Threatened Species
+                                      </Link>
+
+                                      <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-slate-500 bg-slate-800/10 mt-2">Observation & Ecology</div>
+                                      <Link href="/biodiversity/wildlife-sightings" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Wildlife Sightings
+                                      </Link>
+                                      <Link href="/biodiversity/birding-hotspots" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Birding & Observation Hotspots
+                                      </Link>
+                                      <Link href="/biodiversity/forest-ecosystems" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Forest Ecosystems
+                                      </Link>
+
+                                      <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 mt-2">Seasonal Ecology & Phenology</div>
+                                      <Link href="/seasonal-ecology/seasonal-landscapes" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Seasonal Landscapes
+                                      </Link>
+                                      <Link href="/seasonal-ecology/bloom-mapping" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Bloom Mapping
+                                      </Link>
+                                      <Link href="/seasonal-ecology/migration-windows" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Migration Windows
+                                      </Link>
+                                      <Link href="/seasonal-ecology/pollinator-windows" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Pollinator Activity
+                                      </Link>
+                                      <Link href="/seasonal-ecology/phenology-records" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Phenology & Flowering Records
+                                      </Link>
+                                      <Link href="/seasonal-ecology/habitat-signals" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Seasonal Habitat Signals
+                                      </Link>
+                                      <Link href="/seasonal-ecology/water-transitions" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Water & Wetland Transitions
+                                      </Link>
+                                      <Link href="/seasonal-ecology/species-activity" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Seasonal Species Activity
+                                      </Link>
+                                      <Link href="/seasonal-ecology/climate-windows" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Climate & Visibility Windows
+                                      </Link>
+                                      <Link href="/seasonal-ecology/reports-references" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        Seasonal Reports & References
+                                      </Link>
+
+                                      <div className="px-3 py-1 text-[9px] uppercase tracking-wider font-semibold text-slate-500 bg-slate-800/10 mt-2">Intelligence</div>
+                                      <Link href="/biodiversity/district-profiles" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                        District Biodiversity Profiles
                                       </Link>
                                     </>
                                   )}

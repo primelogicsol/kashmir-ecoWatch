@@ -348,61 +348,214 @@ export default function TrailsAndSightingsPage() {
     }
   };
 
-  return (
+    const [activeHeroIdx, setActiveHeroIdx] = useState(0);
+
+  const showcaseItems = [
+    { id: '1', title: 'Upper Dachigam Dagwan Trail', subtitle: 'Hangul Rutting & Alpine Meadows', location: 'Srinagar · 14.5 km', tag: 'Core Patrol', src: '/images/protected-network.png' },
+    { id: '2', title: 'Kazinag Limber Transect', subtitle: 'Markhor Cliff & Conifer Path', location: 'Baramulla · 11.2 km', tag: 'Caprinae Route', src: '/images/markhor.png' },
+    { id: '3', title: 'Overa–Lidderwat Alpine Trail', subtitle: 'Tarsar–Marsar Gateway Passage', location: 'Anantnag · 18.0 km', tag: 'Alpine Trek', src: '/images/bear.png' },
+    { id: '4', title: 'Hokersar Avian Boardwalk', subtitle: 'Central Asian Waterfowl Transect', location: 'Budgam · 4.8 km', tag: 'Birding Path', src: '/images/tiger.png' },
+  ];
+  const currentHero = showcaseItems[activeHeroIdx] || showcaseItems[0];
+
+  const heroShowcaseCard = (
+    <div className="relative rounded-2xl overflow-hidden border border-teal-500/40 shadow-2xl shadow-teal-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+      <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+          </span>
+          <span className="font-bold text-teal-300 uppercase tracking-wider text-[11px]">
+            Field Route & GPS Sentinel
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 text-[10px] font-mono font-semibold">
+          Active Stations 2026
+        </span>
+      </div>
+
+      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-white/10 group">
+        <img
+          key={currentHero.id}
+          src={currentHero.src}
+          alt={currentHero.title}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+        <div className="absolute bottom-2.5 left-3 right-3">
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md">{currentHero.title}</h4>
+            <span className="px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[10px] font-semibold flex-shrink-0">
+              {currentHero.tag}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] text-slate-300">
+            <span className="italic text-teal-300 font-medium">{currentHero.subtitle}</span>
+            <span className="text-slate-400 text-[10px]">{currentHero.location}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-1.5 mt-2.5">
+        {showcaseItems.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActiveHeroIdx(idx)}
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer ${
+              activeHeroIdx === idx
+                ? 'border-teal-400 ring-2 ring-teal-400/40 bg-teal-500/10 shadow-md'
+                : 'border-white/10 bg-slate-800/60 hover:border-teal-500/30 hover:bg-slate-800'
+            }`}
+          >
+            <div className="h-10 w-full rounded overflow-hidden relative">
+              <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-bold text-slate-300 truncate w-full text-center">
+              {item.title.split(' ')[0]}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails and Sightings</span>
-          </>}
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Trails, Routes &amp; Wildlife Sightings
+              </span>
+            </div>
+          </div>
+        }
         subtitle="Protected-area trails, ecological routes, birding paths, wildlife observation zones, and verified field sightings across Kashmir Core, Trans-Divisional, and Transboundary conservation landscapes. Integrates species observations, seasonal activity, visitor-use pressure, monitoring evidence, and protected-area profile links."
         icon={<Footprints className="w-6 h-6 text-emerald-400" />}
-        label="Recreation & Observation"
+        label="Recreation &amp; Observation"
         breadcrumbs={[{ label: 'Trails & Sightings' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        rightContent={heroShowcaseCard}
         actions={
           <>
-            <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Activity className="w-5 h-5" />} onClick={() => setActiveMainTab('citizen')}>
+            <div className="flex flex-wrap items-center gap-2">
+            <Button size="sm" className="bg-gradient-to-r from-emerald-600 to-teal-500 font-bold transition-all shadow-md shadow-emerald-500/20" icon={<Activity className="w-4 h-4" />} onClick={() => setActiveMainTab('citizen')}>
               Log Field Observation
             </Button>
-            <Button variant="outline" className="border-white/20 text-white" icon={<Database className="w-5 h-5" />} onClick={() => setActiveMainTab('spatial')}>
+            <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold transition-all" icon={<Database className="w-4 h-4" />} onClick={() => setActiveMainTab('spatial')}>
               Spatial Layers
             </Button>
+          </div>
           </>
         }
       />
 
-      {/* KPI Dashboard */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
-              {[
-                { label: 'Trail & Route Records', value: '300+', icon: Footprints },
-                { label: 'Observation Sites', value: '250+', icon: Compass },
-                { label: 'Verified Sightings', value: '50,000+', icon: CheckCircle2 },
-                { label: 'Bird Obs Records', value: '100,000+', icon: Eye },
-                { label: 'Species Recorded', value: '1,500+', icon: Shield },
-                { label: 'Protected Areas Linked', value: '80+', icon: LinkIcon },
-                { label: 'Field Contributors', value: '1,000+', icon: Users },
-                { label: 'Monitoring Routes', value: '100+', icon: Activity },
-              ].map((metric, idx) => (
-                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0 bg-white/5 border border-white/5 shadow-inner">
-                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                  <div className="text-sm sm:text-base lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                    {metric.value}
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-400 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K CONNECTIVITY SENTINEL         */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
+        <div className="bg-gradient-to-r from-slate-900/95 via-teal-950/50 to-slate-900/95 border border-teal-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-teal-500/10 rounded-xl border border-teal-500/20 text-teal-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
             </div>
-          </Card>
-        </motion.div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-teal-400">Field Intelligence &amp; GPS Trail Network</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Field Stations 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Verified high-altitude trekking routes, birding transects, patrol tracks, and citizen science telemetry across <strong className="text-white">Dachigam, Kazinag, Overa-Aru, Kishtwar, Hemis &amp; Wetland Reserves</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Mapped Field Routes</div>
+              <div className="text-sm font-bold text-teal-300">{trailsObservationsData.length} Documented Tracks</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-mono font-bold">
+              14 Primary PA Trails
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* 6-CARD INTERACTIVE KPI STRIP                                  */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 mb-6 relative z-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {/* Card 1: Mapped Routes */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Mapped Routes</span>
+              <Footprints className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-emerald-300">{trailsObservationsData.length}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Trails &amp; Transects</div>
+          </div>
+
+          {/* Card 2: Birding Routes */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Birding Paths</span>
+              <Eye className="w-4 h-4 text-teal-400" />
+            </div>
+            <div className="text-2xl font-black text-teal-300">{birdingRoutes.length}</div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">Avian Transects</div>
+          </div>
+
+          {/* Card 3: Field Observations */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Verified Obs</span>
+              <CheckCircle2 className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">{mockObservations.length}</div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Field Sighting Records</div>
+          </div>
+
+          {/* Card 4: Protected Areas */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Protected Areas</span>
+              <LinkIcon className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">47</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Associated Reserves</div>
+          </div>
+
+          {/* Card 5: Field Reports */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Field Reports</span>
+              <Database className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">{allReports.length}</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Linked Research Docs</div>
+          </div>
+
+          {/* Card 6: GPS Coverage */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">GPS Coverage</span>
+              <Compass className="w-4 h-4 text-indigo-400" />
+            </div>
+            <div className="text-2xl font-black text-indigo-300">100%</div>
+            <div className="text-[11px] text-indigo-400/90 font-mono mt-0.5">Georeferenced Paths</div>
+          </div>
+        </div>
       </div>
 
       {/* Main Scientific Tabs navigation */}

@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { AlertTriangle, Activity, Bell, ArrowRight, TrendingUp, Search, Filter, Grid3X3, List, Shield , ChevronLeft, ChevronRight } from 'lucide-react';
+import { AlertTriangle, Activity, Bell, ArrowRight, TrendingUp, Search, Filter, Grid3X3, List, Shield, ChevronLeft, ChevronRight, Compass, ShieldAlert, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getThreats, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
@@ -19,7 +19,7 @@ export default function MonitoringPage() {
   const [selectedDistrict, setSelectedDistrict] = useState('All');
   const [selectedEcologicalScope, setSelectedEcologicalScope] = useState<Scope | 'All'>('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   const availableDistricts = useMemo(() => getUnitsForScope(selectedEcologicalScope).sort(), [selectedEcologicalScope]);
   const availableScopes = [...GEOGRAPHY.scopes];
@@ -110,114 +110,226 @@ export default function MonitoringPage() {
     }
   };
 
-  return (
+    const [activeHeroIdx, setActiveHeroIdx] = useState(0);
+
+  const showcaseItems = [
+    { id: '1', title: 'Grazing & Human Incursion', subtitle: 'Overa-Aru Upper Meadows', location: 'Anantnag · High Altitude', tag: 'Active Alert', src: '/images/bear.png' },
+    { id: '2', title: 'Poaching Risk Surveillance', subtitle: 'Hirpora Markhor Corridor', location: 'Shopian · Buffer Edge', tag: 'WPA Protected', src: '/images/markhor.png' },
+    { id: '3', title: 'Wetland Encroachment Watch', subtitle: 'Hokersar Ramsar Basin Siltation', location: 'Budgam / Srinagar · Silt & Weed', tag: 'Ecological Stress', src: '/images/protected-network.png' },
+    { id: '4', title: 'Snow Leopard Habitat Pressure', subtitle: 'Hemis High Range Trans-Himalaya', location: 'Ladakh · Snow Line', tag: 'High Risk Alert', src: '/images/tiger.png' },
+  ];
+  const currentHero = showcaseItems[activeHeroIdx] || showcaseItems[0];
+
+  const heroShowcaseCard = (
+    <div className="relative rounded-2xl overflow-hidden border border-rose-500/40 shadow-2xl shadow-rose-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+      <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+          </span>
+          <span className="font-bold text-rose-300 uppercase tracking-wider text-[11px]">
+            Threat Early Warning Sentinel
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 text-[10px] font-mono font-semibold">
+          Active Monitoring 2026
+        </span>
+      </div>
+
+      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-white/10 group">
+        <img
+          key={currentHero.id}
+          src={currentHero.src}
+          alt={currentHero.title}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+        <div className="absolute bottom-2.5 left-3 right-3">
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md">{currentHero.title}</h4>
+            <span className="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-semibold flex-shrink-0">
+              {currentHero.tag}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] text-slate-300">
+            <span className="italic text-rose-300 font-medium">{currentHero.subtitle}</span>
+            <span className="text-slate-400 text-[10px]">{currentHero.location}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-1.5 mt-2.5">
+        {showcaseItems.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActiveHeroIdx(idx)}
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer ${
+              activeHeroIdx === idx
+                ? 'border-rose-400 ring-2 ring-rose-400/40 bg-rose-500/10 shadow-md'
+                : 'border-white/10 bg-slate-800/60 hover:border-rose-500/30 hover:bg-slate-800'
+            }`}
+          >
+            <div className="h-10 w-full rounded overflow-hidden relative">
+              <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-bold text-slate-300 truncate w-full text-center">
+              {item.title.split(' ')[0]}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring and Threats</span>
-          </>}
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Threat Intelligence &amp; Monitoring Sentinel
+              </span>
+            </div>
+          </div>
+        }
         subtitle="Pressure signals, encroachment records, habitat condition assessments, and active conservation alerts across Kashmir's protected areas. Data feeds into threat mapping and management planning."
         icon={<Bell className="w-6 h-6 text-emerald-400" />}
         label="Conservation Intelligence"
         breadcrumbs={[{ label: 'Monitoring & Threats' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        rightContent={heroShowcaseCard}
         actions={
           <>
-            <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Bell className="w-5 h-5" />}>Subscribe to Alerts</Button>
-            <Button variant="outline" className="border-white/20 text-white" icon={<TrendingUp className="w-5 h-5" />}>View Trends</Button>
+            <div className="flex flex-wrap items-center gap-2">
+            <Button size="sm" className="bg-gradient-to-r from-rose-600 to-red-500 font-bold transition-all shadow-md shadow-rose-500/20" icon={<Bell className="w-4 h-4" />}>
+              Subscribe to Alerts
+            </Button>
+            <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold transition-all" icon={<TrendingUp className="w-4 h-4" />}>
+              View Trends
+            </Button>
+          </div>
           </>
         }
       />
 
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
-              {[
-                { label: 'Active Alerts', value: threats.length, icon: Bell },
-                { label: 'Critical Threats', value: threats.filter(t => t.severity === 'critical').length, icon: AlertTriangle },
-                { label: 'Monitoring Stations', value: '234', icon: Activity },
-                { label: 'Resolved (30d)', value: '34', icon: TrendingUp },
-                { label: 'Core Area Alerts', value: coreCount, icon: Bell },
-                { label: 'Trans-Div alerts', value: transCount, icon: AlertTriangle },
-                { label: 'Transboundary alerts', value: extendedCount, icon: Activity },
-                { label: 'Unmitigated', value: threats.filter(t => t.mitigationStrategies.length === 0).length, icon: TrendingUp },
-              ].map((metric, idx) => (
-                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                    {metric.value}
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-
-            {filteredThreats.length > itemsPerPage && (
-              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
-                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </Button>
-                  
-                  <div className="flex items-center gap-1 mx-2">
-                    {Array.from({ length: Math.ceil(filteredThreats.length / itemsPerPage) }).map((_, i) => {
-                      const page = i + 1;
-                      const totalPages = Math.ceil(filteredThreats.length / itemsPerPage);
-                      
-                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
-                        return (
-                          <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
-                              currentPage === page
-                                ? 'bg-emerald-500 text-white'
-                                : 'text-slate-400 hover:text-white hover:bg-white/5'
-                            }`}
-                          >
-                            {page}
-                          </button>
-                        );
-                      }
-                      
-                      if (page === currentPage - 2 || page === currentPage + 2) {
-                        return <span key={page} className="text-slate-600 px-1">...</span>;
-                      }
-                      
-                      return null;
-                    })}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredThreats.length / itemsPerPage)))}
-                    disabled={currentPage === Math.ceil(filteredThreats.length / itemsPerPage)}
-                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </Button>
-                </div>
-                <div className="text-xs text-slate-500">
-                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredThreats.length)} of {filteredThreats.length} records
-                </div>
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K CONNECTIVITY SENTINEL         */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
+        <div className="bg-gradient-to-r from-slate-900/95 via-rose-950/40 to-slate-900/95 border border-rose-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-rose-500/10 rounded-xl border border-rose-500/20 text-rose-400 shrink-0">
+              <AlertTriangle className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-rose-400">Habitat Threat Sentinel &amp; Real-time Pressure Monitoring</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Early Warning System 2026</span>
               </div>
-            )}
+              <p className="text-sm text-slate-300 mt-0.5">
+                Monitoring active anthropogenic pressures, grazing incursions, poaching vectors, and land-use shifts across <strong className="text-white">25 Verified Vulnerability Hotspots</strong> in J&amp;K and Ladakh.
+              </p>
+            </div>
           </div>
-          </Card>
-        </motion.div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Active Sentinel Vectors</div>
+              <div className="text-sm font-bold text-rose-300">{threats.length} Documented Alerts</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono font-bold">
+              {threats.filter(t => t.severity === 'critical').length} Critical Alerts
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* 6-CARD INTERACTIVE KPI STRIP                                  */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 mb-6 relative z-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {/* Card 1: Total Alerts */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Alerts</span>
+              <Bell className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-emerald-300">
+              {threats.length}
+            </div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Active Threat Feeds</div>
+          </div>
+
+          {/* Card 2: Critical Severity */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Critical Threats</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">
+              {threats.filter(t => t.severity === 'critical').length}
+            </div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">High Red Alert</div>
+          </div>
+
+          {/* Card 3: High Severity */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">High Severity</span>
+              <ShieldAlert className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">
+              {threats.filter(t => t.severity === 'high').length}
+            </div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Priority Monitoring</div>
+          </div>
+
+          {/* Card 4: Core Area Alerts */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Kashmir Core</span>
+              <Activity className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">
+              {coreCount}
+            </div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Valley Focal Zones</div>
+          </div>
+
+          {/* Card 5: Trans-Divisional Alerts */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Trans-Divisional</span>
+              <Activity className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">
+              {transCount}
+            </div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">High Altitude &amp; Pir Panjal</div>
+          </div>
+
+          {/* Card 6: Mitigated / In Action */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Active Measures</span>
+              <CheckCircle2 className="w-4 h-4 text-teal-400" />
+            </div>
+            <div className="text-2xl font-black text-teal-300">
+              {threats.filter(t => t.mitigationStrategies.length > 0).length}
+            </div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">Mitigation In Play</div>
+          </div>
+        </div>
       </div>
 
       {/* Tab + Filters — single row */}
@@ -382,6 +494,64 @@ export default function MonitoringPage() {
                 </Card>
               </motion.a>
             ))}
+
+            {filteredThreats.length > itemsPerPage && (
+              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-1 mx-2">
+                    {Array.from({ length: Math.ceil(filteredThreats.length / itemsPerPage) }).map((_, i) => {
+                      const page = i + 1;
+                      const totalPages = Math.ceil(filteredThreats.length / itemsPerPage);
+                      
+                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      }
+                      
+                      if (page === currentPage - 2 || page === currentPage + 2) {
+                        return <span key={page} className="text-slate-600 px-1">...</span>;
+                      }
+                      
+                      return null;
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredThreats.length / itemsPerPage)))}
+                    disabled={currentPage === Math.ceil(filteredThreats.length / itemsPerPage)}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="text-xs text-slate-500">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredThreats.length)} of {filteredThreats.length} records
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-center py-24">

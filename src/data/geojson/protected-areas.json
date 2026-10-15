@@ -12,29 +12,49 @@
         "area_km2": 141,
         "district": "Srinagar",
         "established": 1981,
-        "keySpecies": ["hangul", "himlayan-monals", "brown-bear", "leopard"],
-        "slug": "dachigam-national-park"
+        "keySpecies": [
+          "hangul",
+          "himlayan-monals",
+          "brown-bear",
+          "leopard"
+        ],
+        "slug": "dachigam-national-park",
+        "flagshipSpecies": "Hangul (Kashmir Stag)",
+        "altitudeRange": "1,600 to 4,267 m"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [75.05, 34.15]
+        "coordinates": [
+          75.0378,
+          34.1372
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "hemis",
-        "name": "Hemis National Park",
+        "name": "Hemis High Altitude National Park",
         "category": "national_park",
         "area_km2": 4400,
         "district": "Leh",
         "established": 1981,
-        "keySpecies": ["snow-leopard", "tibetan-argali", "kiang", "blue-sheep"],
-        "slug": "hemis-national-park"
+        "keySpecies": [
+          "snow-leopard",
+          "tibetan-argali",
+          "kiang",
+          "blue-sheep"
+        ],
+        "slug": "hemis-national-park",
+        "flagshipSpecies": "Snow Leopard (Density Capital)",
+        "altitudeRange": "3,000 to 6,000 m"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [77.65, 33.75]
+        "coordinates": [
+          77.4333,
+          33.9833
+        ]
       }
     },
     {
@@ -43,15 +63,24 @@
         "id": "kishtwar",
         "name": "Kishtwar High Altitude National Park",
         "category": "national_park",
-        "area_km2": 400,
+        "area_km2": 2190.5,
         "district": "Kishtwar",
         "established": 1981,
-        "keySpecies": ["snow-leopard", "musk-deer", "brown-bear"],
-        "slug": "kishtwar-national-park"
+        "keySpecies": [
+          "snow-leopard",
+          "musk-deer",
+          "brown-bear"
+        ],
+        "slug": "kishtwar-national-park",
+        "flagshipSpecies": "Snow Leopard",
+        "altitudeRange": "1,700 to 4,800 m"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [75.75, 33.35]
+        "coordinates": [
+          75.99,
+          33.61
+        ]
       }
     },
     {
@@ -60,15 +89,23 @@
         "id": "overa-aru",
         "name": "Overa-Aru Wildlife Sanctuary",
         "category": "wildlife_sanctuary",
-        "area_km2": 511,
+        "area_km2": 425,
         "district": "Anantnag",
         "established": 1981,
-        "keySpecies": ["hangul", "kashmir-flycatcher", "western-tragopan"],
-        "slug": "overa-aru-wildlife-sanctuary"
+        "keySpecies": [
+          "hangul",
+          "kashmir-flycatcher",
+          "western-tragopan"
+        ],
+        "slug": "overa-aru-wildlife-sanctuary",
+        "flagshipSpecies": "Hangul"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [75.15, 33.95]
+        "coordinates": [
+          75.15,
+          33.95
+        ]
       }
     },
     {
@@ -77,15 +114,23 @@
         "id": "hirpora",
         "name": "Hirpora Wildlife Sanctuary",
         "category": "wildlife_sanctuary",
-        "area_km2": 341,
-        "district": "Kulgam",
+        "area_km2": 341.25,
+        "district": "Shopian",
         "established": 1987,
-        "keySpecies": ["markhor", "musk-deer", "leopard"],
-        "slug": "hirpora-wildlife-sanctuary"
+        "keySpecies": [
+          "markhor",
+          "musk-deer",
+          "leopard"
+        ],
+        "slug": "hirpora-wildlife-sanctuary",
+        "flagshipSpecies": "Markhor"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [75.05, 33.65]
+        "coordinates": [
+          75.05,
+          33.65
+        ]
       }
     },
     {
@@ -97,12 +142,20 @@
         "area_km2": 180,
         "district": "Baramulla",
         "established": 1987,
-        "keySpecies": ["himlayan-monals", "musk-deer", "brown-bear"],
-        "slug": "gulmarg-wildlife-sanctuary"
+        "keySpecies": [
+          "himlayan-monals",
+          "musk-deer",
+          "brown-bear"
+        ],
+        "slug": "gulmarg-wildlife-sanctuary",
+        "flagshipSpecies": "Musk deer"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.38, 34.05]
+        "coordinates": [
+          74.38,
+          34.05
+        ]
       }
     },
     {
@@ -111,15 +164,23 @@
         "id": "limber",
         "name": "Limber Wildlife Sanctuary",
         "category": "wildlife_sanctuary",
-        "area_km2": 125,
+        "area_km2": 43.75,
         "district": "Baramulla",
         "established": 1987,
-        "keySpecies": ["black-bear", "leopard", "himlayan-monals"],
-        "slug": "limber-wildlife-sanctuary"
+        "keySpecies": [
+          "black-bear",
+          "leopard",
+          "himlayan-monals"
+        ],
+        "slug": "limber-wildlife-sanctuary",
+        "flagshipSpecies": "Markhor"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.45, 34.15]
+        "coordinates": [
+          74.45,
+          34.15
+        ]
       }
     },
     {
@@ -128,32 +189,48 @@
         "id": "lachipora",
         "name": "Lachipora Wildlife Sanctuary",
         "category": "wildlife_sanctuary",
-        "area_km2": 234,
-        "district": "Kupwara",
+        "area_km2": 93.5,
+        "district": "Baramulla",
         "established": 1987,
-        "keySpecies": ["markhor", "musk-deer", "brown-bear"],
-        "slug": "lachipora-wildlife-sanctuary"
+        "keySpecies": [
+          "markhor",
+          "musk-deer",
+          "brown-bear"
+        ],
+        "slug": "lachipora-wildlife-sanctuary",
+        "flagshipSpecies": "Markhor"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.25, 34.35]
+        "coordinates": [
+          74.25,
+          34.35
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "rajparian",
-        "name": "Rajparian Wildlife Sanctuary",
+        "name": "Rajparian / Daksum Wildlife Sanctuary",
         "category": "wildlife_sanctuary",
-        "area_km2": 167,
+        "area_km2": 20,
         "district": "Anantnag",
         "established": 1981,
-        "keySpecies": ["hangul", "musk-deer", "leopard"],
-        "slug": "rajparian-wildlife-sanctuary"
+        "keySpecies": [
+          "hangul",
+          "musk-deer",
+          "leopard"
+        ],
+        "slug": "rajparian-wildlife-sanctuary",
+        "flagshipSpecies": "Asiatic black bear"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [75.25, 33.85]
+        "coordinates": [
+          75.25,
+          33.85
+        ]
       }
     },
     {
@@ -165,80 +242,4483 @@
         "area_km2": 18.5,
         "district": "Srinagar",
         "established": 1986,
-        "keySpecies": ["migratory-waterfowl", "wetland-birds"],
-        "slug": "hokersar-wildlife-sanctuary"
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds"
+        ],
+        "slug": "hokersar-wildlife-sanctuary",
+        "flagshipSpecies": "Migratory waterfowl"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.86, 34.26]
+        "coordinates": [
+          74.86,
+          34.26
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "hokersar",
-        "name": "Hokersar Wetland Reserve",
+        "name": "Hokersar Wetland Conservation Reserve",
         "category": "wetland_reserve",
         "area_km2": 13.75,
-        "district": "Srinagar",
+        "district": "Srinagar / Budgam",
         "established": 1986,
-        "keySpecies": ["migratory-waterfowl", "wetland-birds"],
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds"
+        ],
         "slug": "hokersar-wetland"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.85, 34.25]
+        "coordinates": [
+          74.85,
+          34.25
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "shallabugh",
-        "name": "Shallabugh Wetland Reserve",
+        "name": "Shallabugh Wetland Conservation Reserve",
         "category": "wetland_reserve",
-        "area_km2": 7.5,
-        "district": "Ganderbal",
+        "area_km2": 16.75,
+        "district": "Srinagar / Ganderbal",
         "established": 1986,
-        "keySpecies": ["migratory-waterfowl", "wetland-birds"],
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds"
+        ],
         "slug": "shallabugh-wetland"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.75, 34.35]
+        "coordinates": [
+          74.75,
+          34.35
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "hygam",
-        "name": "Hygam Wetland Reserve",
+        "name": "Hygam / Haigam Wetland Conservation Reserve",
         "category": "wetland_reserve",
-        "area_km2": 5.2,
+        "area_km2": 8.02,
         "district": "Baramulla",
         "established": 1986,
-        "keySpecies": ["wetland-birds", "migratory-species"],
+        "keySpecies": [
+          "wetland-birds",
+          "migratory-species"
+        ],
         "slug": "hygam-wetland"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.55, 34.35]
+        "coordinates": [
+          74.55,
+          34.35
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "wular",
-        "name": "Wular Wetland System",
+        "name": "Wular Lake",
         "category": "wetland_reserve",
         "area_km2": 189,
         "district": "Bandipora",
         "established": 1990,
-        "keySpecies": ["migratory-waterfowl", "wetland-birds", "bar-headed-goose"],
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds",
+          "bar-headed-goose"
+        ],
         "slug": "wular-wetland-system"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [74.65, 34.45]
+        "coordinates": [
+          74.65,
+          34.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kazinag",
+        "name": "Kazinag National Park",
+        "category": "national_park",
+        "area_km2": 160,
+        "district": "Baramulla",
+        "established": 1992,
+        "keySpecies": [
+          "Flare-horned Markhor (Capra falconeri cashmiriensis)",
+          "Himalayan Musk Deer",
+          "Himalayan Black Bear",
+          "Common Leopard",
+          "Cheer Pheasant",
+          "Western Tragopan"
+        ],
+        "slug": "kazinag-national-park",
+        "flagshipSpecies": "Flare-horned Markhor",
+        "altitudeRange": "1,800 to 4,356 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.05,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "salim-ali",
+        "name": "Salim Ali / City Forest National Park",
+        "category": "national_park",
+        "area_km2": 9.07,
+        "district": "Srinagar",
+        "established": 1986,
+        "keySpecies": [
+          "Himalayan Monal",
+          "Paradise Flycatcher",
+          "Ring-necked Pheasant",
+          "Kashmir Roller",
+          "Swamp Avifauna"
+        ],
+        "slug": "salim-ali-national-park",
+        "flagshipSpecies": "Himalayan Avifauna",
+        "altitudeRange": "1,585 to 1,620 m",
+        "iucnCategory": "IUCN Category II (Historic)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          34.0833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "great-himalayan",
+        "name": "Great Himalayan National Park",
+        "category": "national_park",
+        "area_km2": 1171,
+        "district": "Kullu",
+        "established": 1984,
+        "keySpecies": [
+          "Western Tragopan (Tragopan melanocephalus)",
+          "Snow Leopard",
+          "Himalayan Musk Deer",
+          "Blue Sheep (Bharal)",
+          "Himalayan Brown Bear",
+          "Koklass Pheasant"
+        ],
+        "slug": "great-himalayan-national-park",
+        "flagshipSpecies": "Western Tragopan",
+        "altitudeRange": "1,500 to 6,000 m",
+        "iucnCategory": "IUCN Category II / World Heritage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.55,
+          31.7333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pin-valley",
+        "name": "Pin Valley National Park",
+        "category": "national_park",
+        "area_km2": 675,
+        "district": "Lahaul & Spiti",
+        "established": 1987,
+        "keySpecies": [
+          "Siberian Ibex (Capra sibirica)",
+          "Snow Leopard",
+          "Tibetan Gazelle",
+          "Woolly Hare",
+          "Tibetan Snowcock",
+          "Red-billed Chough"
+        ],
+        "slug": "pin-valley-national-park",
+        "flagshipSpecies": "Siberian Ibex & Snow Leopard",
+        "altitudeRange": "3,500 to 6,000 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.8833,
+          32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "deosai",
+        "name": "Deosai National Park",
+        "category": "national_park",
+        "area_km2": 3584,
+        "district": "Skardu / Astore",
+        "established": 1993,
+        "keySpecies": [
+          "Himalayan Brown Bear (Ursus arctos isabellinus)",
+          "Golden Marmot",
+          "Tibetan Wolf",
+          "Himalayan Ibex",
+          "Sheyok Snow Trout",
+          "Lammergeier"
+        ],
+        "slug": "deosai-national-park",
+        "flagshipSpecies": "Himalayan Brown Bear",
+        "altitudeRange": "3,500 to 4,200 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.4667,
+          35.0333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khunjerab",
+        "name": "Khunjerab National Park",
+        "category": "national_park",
+        "area_km2": 2269.13,
+        "district": "Hunza",
+        "established": 1975,
+        "keySpecies": [
+          "Marco Polo Sheep (Ovis ammon polii)",
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Blue Sheep",
+          "Tibetan Wolf",
+          "Golden Eagle"
+        ],
+        "slug": "khunjerab-national-park",
+        "flagshipSpecies": "Marco Polo Sheep",
+        "altitudeRange": "3,200 to 6,000 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.1,
+          36.85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cknp",
+        "name": "Central Karakoram National Park",
+        "category": "national_park",
+        "area_km2": 10000,
+        "district": "Gilgit / Skardu / Hunza / Ghanche",
+        "established": 1993,
+        "keySpecies": [
+          "Snow Leopard (Panthera uncia)",
+          "Himalayan Ibex",
+          "Flare-horned Markhor",
+          "Brown Bear",
+          "Tibetan Wolf",
+          "Bearded Vulture"
+        ],
+        "slug": "central-karakoram-national-park",
+        "flagshipSpecies": "Snow Leopard & Glacial Massifs",
+        "altitudeRange": "2,000 to 8,611 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76,
+          35.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "machiara",
+        "name": "Machiara National Park",
+        "category": "national_park",
+        "area_km2": 135.32,
+        "district": "Muzaffarabad",
+        "established": 1996,
+        "keySpecies": [
+          "Western Tragopan (Tragopan melanocephalus)",
+          "Cheer Pheasant",
+          "Kashmir Musk Deer",
+          "Snow Leopard",
+          "Common Leopard",
+          "Kashmir Flying Squirrel"
+        ],
+        "slug": "machiara-national-park",
+        "flagshipSpecies": "Western Tragopan",
+        "altitudeRange": "2,000 to 4,700 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.6167,
+          34.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ghamot",
+        "name": "Ghamot National Park",
+        "category": "national_park",
+        "area_km2": 272.71,
+        "district": "Neelum Valley",
+        "established": 2004,
+        "keySpecies": [
+          "Kashmir Musk Deer (Moschus cupreus)",
+          "Western Tragopan",
+          "Snow Leopard",
+          "Himalayan Brown Bear",
+          "Common Leopard",
+          "Himalayan Monal"
+        ],
+        "slug": "ghamot-national-park",
+        "flagshipSpecies": "Kashmir Musk Deer",
+        "altitudeRange": "2,600 to 4,400 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.3167,
+          34.9833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poonch-river-mahaseer",
+        "name": "Poonch River Mahaseer National Park",
+        "category": "national_park",
+        "area_km2": 14,
+        "district": "Kotli / Mirpur / Poonch",
+        "established": 2010,
+        "keySpecies": [
+          "Golden Mahseer (Tor putitora)",
+          "Kashmir Catfish (Glyptothorax kashmirensis)",
+          "Snow Trout (Schizothorax plagiostomus)",
+          "Eurasian Otter",
+          "White-throated Kingfisher"
+        ],
+        "slug": "poonch-river-mahaseer-national-park",
+        "flagshipSpecies": "Golden Mahseer (Tor putitora)",
+        "altitudeRange": "450 to 900 m",
+        "iucnCategory": "IUCN Category II (Aquatic)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.95,
+          33.3333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-lasura",
+        "name": "Pir Lasura National Park",
+        "category": "national_park",
+        "area_km2": 15.8,
+        "district": "Kotli",
+        "established": 2005,
+        "keySpecies": [
+          "Common Leopard",
+          "Barking Deer (Goral)",
+          "Cheer Pheasant",
+          "Kalij Pheasant",
+          "Wild Boar"
+        ],
+        "slug": "pir-lasura-national-park",
+        "flagshipSpecies": "Cheer Pheasant & Goral",
+        "altitudeRange": "1,200 to 2,000 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74,
+          33.3167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tolipir",
+        "name": "Tolipir National Park",
+        "category": "national_park",
+        "area_km2": 52.15,
+        "district": "Poonch / Rawalakot",
+        "established": 2005,
+        "keySpecies": [
+          "Himalayan Musk Deer",
+          "Common Leopard",
+          "Koklass Pheasant",
+          "Himalayan Monal",
+          "Rhesus Macaque"
+        ],
+        "slug": "tolipir-national-park",
+        "flagshipSpecies": "Himalayan Monal",
+        "altitudeRange": "2,600 to 3,200 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8833,
+          33.8833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-chanasi",
+        "name": "Pir Chanasi National Park",
+        "category": "national_park",
+        "area_km2": 28.9,
+        "district": "Muzaffarabad",
+        "established": 2015,
+        "keySpecies": [
+          "Himalayan Brown Bear",
+          "Common Leopard",
+          "Koklass Pheasant",
+          "Himalayan Griffon Vulture",
+          "Red Fox"
+        ],
+        "slug": "pir-chanasi-national-park",
+        "flagshipSpecies": "Koklass Pheasant & Raptors",
+        "altitudeRange": "2,500 to 3,188 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.55,
+          34.3833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shandur-hundrap",
+        "name": "Shandur-Hundrap National Park",
+        "category": "national_park",
+        "area_km2": 518,
+        "district": "Ghizer / Gupis-Yasin",
+        "established": 1993,
+        "keySpecies": [
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Himalayan Brown Bear",
+          "Tibetan Wolf",
+          "Brown Trout",
+          "Golden Marmot"
+        ],
+        "slug": "shandur-hundrap-national-park",
+        "flagshipSpecies": "Himalayan Ibex & Alpine Lakes",
+        "altitudeRange": "2,900 to 4,100 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.52,
+          36.0756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "qurumber",
+        "name": "Qurumber (Karambar) National Park",
+        "category": "national_park",
+        "area_km2": 738,
+        "district": "Ghizer / Ishkoman",
+        "established": 2011,
+        "keySpecies": [
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Blue Sheep",
+          "Tibetan Wolf",
+          "Himalayan Snowcock",
+          "Red-billed Chough"
+        ],
+        "slug": "qurumber-national-park",
+        "flagshipSpecies": "Karambar Lake & Snow Leopard",
+        "altitudeRange": "3,200 to 4,304 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.75,
+          36.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nanga-parbat",
+        "name": "Nanga Parbat National Park",
+        "category": "national_park",
+        "area_km2": 1785.61,
+        "district": "Diamer / Astore",
+        "established": 2021,
+        "keySpecies": [
+          "Astore Markhor",
+          "Snow Leopard",
+          "Himalayan Brown Bear",
+          "Himalayan Ibex",
+          "Tibetan Wolf",
+          "Lammergeier"
+        ],
+        "slug": "nanga-parbat-national-park",
+        "flagshipSpecies": "Astore Markhor & Nanga Parbat Massif",
+        "altitudeRange": "1,600 to 8,126 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.5509,
+          35.1638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "himalaya",
+        "name": "Himalaya National Park",
+        "category": "national_park",
+        "area_km2": 2263,
+        "district": "Astore",
+        "established": 2021,
+        "keySpecies": [
+          "Himalayan Brown Bear",
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Kashmir Musk Deer",
+          "Tibetan Wolf",
+          "Snow Partridge"
+        ],
+        "slug": "himalaya-national-park",
+        "flagshipSpecies": "Brown Bear & Alpine Wildlife Corridor",
+        "altitudeRange": "3,005 to 5,500 m",
+        "iucnCategory": "IUCN Category II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0781,
+          34.7884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tata-kutti",
+        "name": "Tata Kutti Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 66.27,
+        "district": "Poonch",
+        "established": 2012,
+        "keySpecies": [
+          "Pir Panjal Markhor",
+          "Kashmir Musk Deer",
+          "Snow Leopard",
+          "Himalayan Brown Bear",
+          "Himalayan Monal",
+          "Western Tragopan"
+        ],
+        "slug": "tata-kutti-wildlife-sanctuary",
+        "flagshipSpecies": "Pir Panjal Markhor & Snow Leopard",
+        "altitudeRange": "2,200 to 4,725 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.45,
+          33.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "naltar",
+        "name": "Naltar Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 272,
+        "district": "Gilgit",
+        "established": 1975,
+        "keySpecies": [
+          "Flare-horned Markhor",
+          "Snow Leopard",
+          "Himalayan Brown Bear",
+          "Tibetan Wolf",
+          "Himalayan Ibex",
+          "Chough"
+        ],
+        "slug": "naltar-wildlife-sanctuary",
+        "flagshipSpecies": "Flare-horned Markhor & Naltar Lakes",
+        "altitudeRange": "1,900 to 4,600 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15,
+          36.2167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kargah",
+        "name": "Kargah Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 443,
+        "district": "Gilgit",
+        "established": 1975,
+        "keySpecies": [
+          "Astor Markhor",
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Golden Eagle",
+          "Lammergeier"
+        ],
+        "slug": "kargah-wildlife-sanctuary",
+        "flagshipSpecies": "Astor Markhor",
+        "altitudeRange": "1,600 to 4,400 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.25,
+          35.8833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "salkhala",
+        "name": "Salkhala Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 44.4,
+        "district": "Neelum Valley",
+        "established": 1972,
+        "keySpecies": [
+          "Western Tragopan",
+          "Kashmir Musk Deer",
+          "Common Leopard",
+          "Himalayan Black Bear",
+          "Cheer Pheasant"
+        ],
+        "slug": "salkhala-wildlife-sanctuary",
+        "flagshipSpecies": "Western Tragopan",
+        "altitudeRange": "1,500 to 3,500 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8833,
+          34.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kilik-mintaka",
+        "name": "Kilik / Mintaka Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 650,
+        "district": "Hunza",
+        "established": 1975,
+        "keySpecies": [
+          "Marco Polo Sheep",
+          "Snow Leopard",
+          "Himalayan Ibex",
+          "Tibetan Wolf",
+          "Lammergeier"
+        ],
+        "slug": "kilik-mintaka-wildlife-sanctuary",
+        "flagshipSpecies": "Marco Polo Sheep & Kilik Pass",
+        "altitudeRange": "3,400 to 5,500 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          37.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "thajwas-baltal",
+        "name": "Thajwas / Baltal Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 203,
+        "district": "Ganderbal",
+        "established": 1987,
+        "keySpecies": [
+          "Himalayan brown bear",
+          "Musk deer",
+          "Marmot",
+          "Alpine birds",
+          "Possible snow leopard movement"
+        ],
+        "slug": "thajwas-baltal-wildlife-sanctuary",
+        "flagshipSpecies": "Himalayan brown bear"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.25,
+          34.28
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tral",
+        "name": "Tral Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 154.15,
+        "district": "Pulwama",
+        "established": 2016,
+        "keySpecies": [
+          "Hangul",
+          "Musk deer",
+          "Himalayan black bear",
+          "Leopard",
+          "Pheasants"
+        ],
+        "slug": "tral-wildlife-sanctuary",
+        "flagshipSpecies": "Hangul"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.12,
+          33.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jasrota",
+        "name": "Jasrota Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 10.04,
+        "district": "Kathua",
+        "established": 1987,
+        "keySpecies": [
+          "Chital",
+          "Wild boar",
+          "Peafowl",
+          "Leopard",
+          "Small mammals"
+        ],
+        "slug": "jasrota-wildlife-sanctuary",
+        "flagshipSpecies": "Chital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.43,
+          32.47
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nandini",
+        "name": "Nandini Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 33.34,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Pheasants",
+          "Peafowl",
+          "Leopard",
+          "Wild boar",
+          "Raptors",
+          "Small mammals"
+        ],
+        "slug": "nandini-wildlife-sanctuary",
+        "flagshipSpecies": "Peafowl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.92,
+          32.84
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ramnagar-rakh",
+        "name": "Ramnagar Rakh Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 31.5,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Peafowl",
+          "Wild boar",
+          "Small mammals",
+          "Resident birds",
+          "Leopard presence potential"
+        ],
+        "slug": "ramnagar-rakh-wildlife-sanctuary",
+        "flagshipSpecies": "Peafowl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.88,
+          32.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "surinsar-mansar",
+        "name": "Surinsar-Mansar Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 97.82,
+        "district": "Jammu",
+        "established": 1987,
+        "keySpecies": [
+          "Waterbirds",
+          "Peafowl",
+          "Reptiles",
+          "Small mammals",
+          "Fish and aquatic fauna"
+        ],
+        "slug": "surinsar-mansar-wildlife-sanctuary",
+        "flagshipSpecies": "Waterbirds"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.03,
+          32.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "trikuta",
+        "name": "Trikuta Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 31.77,
+        "district": "Reasi",
+        "established": 1981,
+        "keySpecies": [
+          "Leopard",
+          "Goral",
+          "Peafowl",
+          "Small mammals",
+          "Resident birds"
+        ],
+        "slug": "trikuta-wildlife-sanctuary",
+        "flagshipSpecies": "Goral"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.95,
+          33.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "changthang",
+        "name": "Changthang Cold Desert Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 4000,
+        "district": "Leh",
+        "established": 1987,
+        "keySpecies": [
+          "Kiang",
+          "Tibetan antelope",
+          "Black-necked crane",
+          "Tibetan wolf",
+          "Snow leopard",
+          "Bar-headed goose"
+        ],
+        "slug": "changthang-cold-desert-wildlife-sanctuary",
+        "flagshipSpecies": "Black-necked crane"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4,
+          33.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karakoram-nubra",
+        "name": "Karakoram / Nubra-Shyok Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 5000,
+        "district": "Leh",
+        "established": 1987,
+        "keySpecies": [
+          "Snow leopard",
+          "Ibex",
+          "Tibetan wolf",
+          "Blue sheep",
+          "Argali-linked fauna"
+        ],
+        "slug": "karakoram-nubra-shyok-wildlife-sanctuary",
+        "flagshipSpecies": "Snow leopard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2,
+          34.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "satpara",
+        "name": "Satpara Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 311,
+        "district": "Skardu",
+        "established": 1999,
+        "keySpecies": [
+          "Ibex",
+          "Musk deer",
+          "Snow leopard",
+          "Wolf",
+          "Mountain birds"
+        ],
+        "slug": "satpara-wildlife-sanctuary",
+        "flagshipSpecies": "Himalayan ibex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.63,
+          35.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "baltistan-wls",
+        "name": "Baltistan Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 415,
+        "district": "Skardu / Baltistan",
+        "established": 1999,
+        "keySpecies": [
+          "Ibex",
+          "Snow leopard",
+          "Musk deer",
+          "Wolf",
+          "Alpine birds"
+        ],
+        "slug": "baltistan-wildlife-sanctuary",
+        "flagshipSpecies": "Himalayan ibex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.75,
+          35.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "astore-wls",
+        "name": "Astore Wildlife Sanctuary",
+        "category": "wildlife_sanctuary",
+        "area_km2": 400,
+        "district": "Astore",
+        "established": 1999,
+        "keySpecies": [
+          "Snow leopard",
+          "Ibex",
+          "Musk deer",
+          "Wolf",
+          "Alpine birds"
+        ],
+        "slug": "astore-wildlife-sanctuary",
+        "flagshipSpecies": "Snow leopard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.85,
+          35.33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "narkara",
+        "name": "Narkara Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 2.5,
+        "district": "Budgam / Srinagar",
+        "established": 2008,
+        "keySpecies": [
+          "Mallard",
+          "Common Teal",
+          "Eurasian Coot",
+          "Common Snipe",
+          "Little Grebe"
+        ],
+        "slug": "narkara-wetland-reserve",
+        "flagshipSpecies": "Mallard & Eurasian Coot",
+        "altitudeRange": "1,580 to 1,590 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7667,
+          34.0333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "anchar-lake",
+        "name": "Anchar Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 6.8,
+        "district": "Srinagar / Ganderbal",
+        "established": 1982,
+        "keySpecies": [
+          "Northern Pintail",
+          "Common Pochard",
+          "Pheasant-tailed Jacana",
+          "White-throated Kingfisher",
+          "Kashmir Snow Trout"
+        ],
+        "slug": "anchar-lake-wetland-system",
+        "flagshipSpecies": "Northern Pintail & Jacana",
+        "altitudeRange": "1,580 to 1,585 m",
+        "iucnCategory": "IUCN Category IV"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mirgund",
+        "name": "Mirgund Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 4,
+        "district": "Baramulla / Srinagar-Budgam",
+        "established": 1986,
+        "keySpecies": [
+          "Waterfowl",
+          "Ducks",
+          "Waders",
+          "Marsh birds"
+        ],
+        "slug": "mirgund-wetland-reserve",
+        "flagshipSpecies": "Northern Pintail & Mallard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.68,
+          34.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "chatlam",
+        "name": "Chatlam Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.25,
+        "district": "Pulwama",
+        "established": 1986,
+        "keySpecies": [
+          "Waterfowl",
+          "Resident birds",
+          "Migratory wetland birds"
+        ],
+        "slug": "chatlam-wetland-reserve",
+        "flagshipSpecies": "Ferruginous Duck & Garganey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.93,
+          33.99
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freshkoori",
+        "name": "Freshkoori Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.15,
+        "district": "Pulwama",
+        "established": 2008,
+        "keySpecies": [
+          "Wetland birds",
+          "Waterfowl",
+          "Waders",
+          "Marsh birds"
+        ],
+        "slug": "freshkoori-wetland-reserve",
+        "flagshipSpecies": "Common Teal & Gadwall"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.92,
+          33.98
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kranchoo",
+        "name": "Kranchoo Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.12,
+        "district": "Pulwama",
+        "established": 2008,
+        "keySpecies": [
+          "Waterfowl",
+          "Marsh birds",
+          "Resident wetland birds"
+        ],
+        "slug": "kranchoo-wetland-reserve",
+        "flagshipSpecies": "Eurasian Wigeon & Shoveler"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.95,
+          34.01
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "malgam-wetland",
+        "name": "Malgam / Malgoam Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.3,
+        "district": "Bandipora",
+        "established": 1986,
+        "keySpecies": [
+          "Migratory waterbirds",
+          "Waders",
+          "Resident marsh birds"
+        ],
+        "slug": "malgam-wetland-reserve",
+        "flagshipSpecies": "Greylag Goose & Coots"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.61,
+          34.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manibugh",
+        "name": "Manibugh Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.2,
+        "district": "Pulwama",
+        "established": 2008,
+        "keySpecies": [
+          "Waterfowl",
+          "Marsh birds",
+          "Waders",
+          "Resident wetland birds"
+        ],
+        "slug": "manibugh-wetland-reserve",
+        "flagshipSpecies": "Water Pipit & Common Snipe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.94,
+          34
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dal-lake",
+        "name": "Dal Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 21,
+        "district": "Srinagar",
+        "established": 1986,
+        "keySpecies": [
+          "Fish",
+          "Waterbirds",
+          "Aquatic vegetation",
+          "Wetland-edge birds"
+        ],
+        "slug": "dal-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.85,
+          34.12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gharana",
+        "name": "Gharana Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.75,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Migratory waterfowl",
+          "Bar-headed geese",
+          "Ducks",
+          "Waders",
+          "Cranes",
+          "Resident birds"
+        ],
+        "slug": "gharana-wetland-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.72,
+          32.53
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kukarian",
+        "name": "Kukarian Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.45,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Waterbirds",
+          "Ducks",
+          "Waders",
+          "Resident marsh birds"
+        ],
+        "slug": "kukarian-wetland-reserve",
+        "flagshipSpecies": "Bar-headed Goose"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.75,
+          32.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pargwal",
+        "name": "Pargwal Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.8,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Waterbirds",
+          "Ducks",
+          "Waders",
+          "Resident birds"
+        ],
+        "slug": "pargwal-wetland-reserve",
+        "flagshipSpecies": "Eurasian Spoonbill & Storks"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.62,
+          32.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nanga",
+        "name": "Nanga Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.35,
+        "district": "Samba",
+        "established": 1981,
+        "keySpecies": [
+          "Wetland birds",
+          "Waterfowl",
+          "Waders",
+          "Resident marsh birds"
+        ],
+        "slug": "nanga-wetland-reserve",
+        "flagshipSpecies": "Woolly-necked Stork"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.96,
+          32.52
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sangral-asa-chak",
+        "name": "Sangral-Asa Chak Wetland Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 0.5,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Waterfowl",
+          "Waders",
+          "Wetland birds",
+          "Resident marsh birds"
+        ],
+        "slug": "sangral-asa-chak-wetland-reserve",
+        "flagshipSpecies": "Black Stork & Common Pochard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.82,
+          32.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "surinsar-mansar-wetland",
+        "name": "Surinsar-Mansar Lakes",
+        "category": "wetland_reserve",
+        "area_km2": 97.82,
+        "district": "Jammu / Samba / Udhampur",
+        "established": 1987,
+        "keySpecies": [
+          "Waterbirds",
+          "Peafowl",
+          "Freshwater turtles",
+          "Fish and aquatic fauna"
+        ],
+        "slug": "surinsar-mansar-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.03,
+          32.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tso-moriri",
+        "name": "Tso Moriri Wetland Conservation Reserve",
+        "category": "wetland_reserve",
+        "area_km2": 120,
+        "district": "Leh",
+        "established": 2002,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "Brown-headed gull",
+          "Waterfowl",
+          "Kiang-linked wetland fauna"
+        ],
+        "slug": "tso-moriri-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.32,
+          32.9
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tso-kar",
+        "name": "Tso Kar Wetland Complex",
+        "category": "wetland_reserve",
+        "area_km2": 22,
+        "district": "Leh",
+        "established": 2020,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "Ruddy shelduck",
+          "Gulls",
+          "Waders"
+        ],
+        "slug": "tso-kar-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78,
+          33.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pangong-tso",
+        "name": "Pangong Tso Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 700,
+        "district": "Leh",
+        "established": 1999,
+        "keySpecies": [
+          "Bar-headed goose",
+          "Brown-headed gull",
+          "Ruddy shelduck",
+          "Migratory waterbirds"
+        ],
+        "slug": "pangong-tso-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.67,
+          33.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hanle-marshes",
+        "name": "Hanle Marshes / Hanle Wetland",
+        "category": "wetland_reserve",
+        "area_km2": 85,
+        "district": "Leh",
+        "established": 1999,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "High-altitude waterbirds",
+          "Wetland passerines"
+        ],
+        "slug": "hanle-wetland",
+        "flagshipSpecies": "Black-necked Crane (Breeding Haven)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.98,
+          32.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "puga-wetlands",
+        "name": "Puga Wetland / Puga Valley Wetlands",
+        "category": "wetland_reserve",
+        "area_km2": 15,
+        "district": "Leh",
+        "established": 1999,
+        "keySpecies": [
+          "High-altitude waterbirds",
+          "Wetland vegetation",
+          "Microbial communities"
+        ],
+        "slug": "puga-valley-wetlands",
+        "flagshipSpecies": "Ruddy Shelduck & Bar-headed Goose"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.36,
+          33.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "deosai-wetlands",
+        "name": "Deosai Wetlands / Sheosar Lake Complex",
+        "category": "wetland_reserve",
+        "area_km2": 120,
+        "district": "Skardu / Astore",
+        "established": 1993,
+        "keySpecies": [
+          "Migratory birds",
+          "Himalayan brown bear",
+          "Marmots",
+          "Alpine waterbirds"
+        ],
+        "slug": "deosai-wetlands-complex",
+        "flagshipSpecies": "Sheyok Snow Trout & Migratory Waterfowl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.25,
+          34.98
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "satpara-lake",
+        "name": "Satpara Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 2.5,
+        "district": "Skardu",
+        "established": 1999,
+        "keySpecies": [
+          "Waterbirds",
+          "Fish",
+          "Alpine birds",
+          "Wetland-edge fauna"
+        ],
+        "slug": "satpara-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.63,
+          35.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attabad-lake",
+        "name": "Attabad Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 3.5,
+        "district": "Hunza",
+        "established": 2010,
+        "keySpecies": [
+          "Waterbirds",
+          "Fish",
+          "Shoreline birds"
+        ],
+        "slug": "attabad-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.87,
+          36.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rama-lake",
+        "name": "Rama Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 0.5,
+        "district": "Astore",
+        "established": 1999,
+        "keySpecies": [
+          "Waterbirds",
+          "Alpine birds",
+          "Small mammals"
+        ],
+        "slug": "rama-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.78,
+          35.33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ratti-gali-lake",
+        "name": "Ratti Gali Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 1,
+        "district": "Neelum Valley",
+        "established": 2005,
+        "keySpecies": [
+          "Alpine birds",
+          "Amphibians",
+          "Small mammals",
+          "Aquatic organisms"
+        ],
+        "slug": "ratti-gali-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.13,
+          34.83
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "chitta-katha-lake",
+        "name": "Chitta Katha Lake Wetland System",
+        "category": "wetland_reserve",
+        "area_km2": 0.8,
+        "district": "Neelum Valley",
+        "established": 2005,
+        "keySpecies": [
+          "Alpine birds",
+          "Small mammals",
+          "Aquatic species"
+        ],
+        "slug": "chitta-katha-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.31,
+          34.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "banjosa-lake-wetland",
+        "name": "Banjosa Lake Wetland",
+        "category": "wetland_reserve",
+        "area_km2": 0.15,
+        "district": "Poonch / Rawalakot",
+        "established": 2005,
+        "keySpecies": [
+          "Waterbirds",
+          "Forest birds",
+          "Amphibians",
+          "Small mammals"
+        ],
+        "slug": "banjosa-lake-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81,
+          33.81
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mangla-reservoir",
+        "name": "Mangla Reservoir Wetland Complex",
+        "category": "wetland_reserve",
+        "area_km2": 250,
+        "district": "Mirpur",
+        "established": 1967,
+        "keySpecies": [
+          "Waterbirds",
+          "Fish",
+          "Waders",
+          "Reservoir birds"
+        ],
+        "slug": "mangla-reservoir-wetland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.645,
+          33.1419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "achhabal",
+        "name": "Achhabal Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 20,
+        "district": "Anantnag",
+        "established": 1981,
+        "keySpecies": [
+          "Common leopard",
+          "Small mammals",
+          "Spring microfauna"
+        ],
+        "slug": "achhabal-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.23,
+          33.68
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khiram",
+        "name": "Khiram Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 15.75,
+        "district": "Anantnag",
+        "established": 1981,
+        "keySpecies": [
+          "Hangul",
+          "Common leopard",
+          "Pheasants"
+        ],
+        "slug": "khiram-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.18,
+          33.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "panyar",
+        "name": "Panyar Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 10,
+        "district": "Pulwama",
+        "established": 1981,
+        "keySpecies": [
+          "Hangul",
+          "Common leopard",
+          "Asiatic black bear"
+        ],
+        "slug": "panyar-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.14,
+          33.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khanagund",
+        "name": "Khanagund / Hajin Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 15,
+        "district": "Pulwama",
+        "established": 1981,
+        "keySpecies": [
+          "Pheasants",
+          "Asiatic black bear",
+          "Common leopard"
+        ],
+        "slug": "khanagund-hajin-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.16,
+          33.89
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shikargah",
+        "name": "Shikargah Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 15.5,
+        "district": "Pulwama",
+        "established": 1981,
+        "keySpecies": [
+          "Hangul",
+          "Common leopard",
+          "Asiatic black bear",
+          "Pheasants"
+        ],
+        "slug": "shikargah-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.11,
+          33.93
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khrew",
+        "name": "Khrew Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 50.25,
+        "district": "Pulwama",
+        "established": 1981,
+        "keySpecies": [
+          "Common leopard",
+          "Musk deer",
+          "Pheasants"
+        ],
+        "slug": "khrew-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.98,
+          34.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khonmoh-cr",
+        "name": "Khonmoh Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 67,
+        "district": "Pulwama",
+        "established": 1981,
+        "keySpecies": [
+          "Common leopard",
+          "Asiatic black bear",
+          "Various passerines"
+        ],
+        "slug": "khonmoh-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.96,
+          34.04
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "brain-nishat",
+        "name": "Brain-Nishat Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 15.75,
+        "district": "Srinagar",
+        "established": 1990,
+        "keySpecies": [
+          "Himalayan birds",
+          "Common leopard",
+          "Small mammals"
+        ],
+        "slug": "brain-nishat-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.89,
+          34.12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khimber-dara",
+        "name": "Khimber-Dara-Sharazbal Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 34,
+        "district": "Srinagar",
+        "established": 1990,
+        "keySpecies": [
+          "Asiatic black bear",
+          "Common leopard",
+          "Pheasants"
+        ],
+        "slug": "khimber-dara-sharazbal-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.87,
+          34.17
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wangat",
+        "name": "Wangat Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 12,
+        "district": "Ganderbal",
+        "established": 1987,
+        "keySpecies": [
+          "Musk deer",
+          "Common leopard",
+          "Himalayan brown bear"
+        ],
+        "slug": "wangat-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.98,
+          34.33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ajas-cr",
+        "name": "Ajas Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 48,
+        "district": "Bandipora",
+        "established": 1987,
+        "keySpecies": [
+          "Resident birds",
+          "Waterfowl",
+          "Small mammals"
+        ],
+        "slug": "ajas-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.67,
+          34.38
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "naganari",
+        "name": "Naganari Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 22.25,
+        "district": "Baramulla",
+        "established": 1990,
+        "keySpecies": [
+          "Musk deer",
+          "Asiatic black bear",
+          "Pheasants"
+        ],
+        "slug": "naganari-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.22,
+          34.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zaloora-harwan",
+        "name": "Zaloora-Harwan Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 25.25,
+        "district": "Srinagar / Baramulla",
+        "established": 1990,
+        "keySpecies": [
+          "Common leopard",
+          "Asiatic black bear",
+          "Pheasants"
+        ],
+        "slug": "zaloora-harwan-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.92,
+          34.14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sudhmahadev",
+        "name": "Sudhmahadev Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 142.25,
+        "district": "Udhampur",
+        "established": 1981,
+        "keySpecies": [
+          "Common leopard",
+          "Barking deer",
+          "Pheasants"
+        ],
+        "slug": "sudhmahadev-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.38,
+          33.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jawahar-tunnel",
+        "name": "Jawahar Tunnel / Chakore Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 19.572,
+        "district": "Ramban / Banihal belt",
+        "established": 1981,
+        "keySpecies": [
+          "Chakor pheasant",
+          "Common leopard",
+          "Small mammals"
+        ],
+        "slug": "jawahar-tunnel-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.21,
+          33.53
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "thein",
+        "name": "Thein Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 18.9,
+        "district": "Kathua",
+        "established": 1981,
+        "keySpecies": [
+          "Small mammals",
+          "Resident birds"
+        ],
+        "slug": "thein-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.81,
+          32.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bahu-cr",
+        "name": "Bahu Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 19.75,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Resident birds",
+          "Small mammals",
+          "Peafowl"
+        ],
+        "slug": "bahu-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.91,
+          32.73
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sheshara",
+        "name": "Sheshara Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 1.43,
+        "district": "Rajouri",
+        "established": 1987,
+        "keySpecies": [
+          "Birds",
+          "Local vegetation",
+          "Reptiles"
+        ],
+        "slug": "sheshara-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.3,
+          33.37
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kheri",
+        "name": "Kheri Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 18.45,
+        "district": "Poonch",
+        "established": 1987,
+        "keySpecies": [
+          "Common leopard",
+          "Barking deer",
+          "Pheasants"
+        ],
+        "slug": "kheri-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1,
+          33.77
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kulian",
+        "name": "Kulian Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 10.29,
+        "district": "Poonch",
+        "established": 1987,
+        "keySpecies": [
+          "Resident birds",
+          "Small mammals",
+          "Peafowl"
+        ],
+        "slug": "kulian-conservation-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.05,
+          33.72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gambhir-mughlan",
+        "name": "Gambhir Mughlan Goral Conservation Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 14.5,
+        "district": "Rajouri",
+        "established": 1995,
+        "keySpecies": [
+          "Himalayan goral",
+          "Common leopard",
+          "Pheasants"
+        ],
+        "slug": "gambhir-mughlan-goral-conservation-reserve",
+        "flagshipSpecies": "Grey Goral"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.45,
+          33.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "salkhala-gr",
+        "name": "Salkhala Game Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 8.1,
+        "district": "Neelum / Muzaffarabad belt",
+        "established": 1982,
+        "keySpecies": [
+          "Musk deer",
+          "Kashmir gray langur",
+          "Pheasants"
+        ],
+        "slug": "salkhala-game-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81,
+          34.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "neelum-valley-cc",
+        "name": "Neelum Valley Conservation Corridor",
+        "category": "conservation_reserve",
+        "area_km2": 320,
+        "district": "Neelum Valley",
+        "established": 2015,
+        "keySpecies": [
+          "Kashmir musk deer",
+          "Himalayan brown bear",
+          "Western tragopan"
+        ],
+        "slug": "neelum-valley-conservation-corridor",
+        "flagshipSpecies": "Kashmir Musk Deer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1,
+          34.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jhelum-valley-cc",
+        "name": "Jhelum Valley Conservation Corridor",
+        "category": "conservation_reserve",
+        "area_km2": 180,
+        "district": "Jhelum Valley / Hattian Bala belt",
+        "established": 2015,
+        "keySpecies": [
+          "Common leopard",
+          "Himalayan goral",
+          "Riverine birds"
+        ],
+        "slug": "jhelum-valley-conservation-corridor",
+        "flagshipSpecies": "Common Leopard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.65,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-lasura-cl",
+        "name": "Pir Lasura Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 15.8,
+        "district": "Kotli",
+        "established": 2005,
+        "keySpecies": [
+          "Indian pangolin",
+          "Himalayan goral",
+          "Common leopard"
+        ],
+        "slug": "pir-lasura-conservation-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.95,
+          33.48
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-chinasi-cl",
+        "name": "Pir Chinasi Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 35,
+        "district": "Muzaffarabad",
+        "established": 2005,
+        "keySpecies": [
+          "Asiatic black bear",
+          "Common leopard",
+          "Koklass pheasant"
+        ],
+        "slug": "pir-chinasi-conservation-landscape",
+        "flagshipSpecies": "Koklass Pheasant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.53,
+          34.38
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tolipir-cl",
+        "name": "Tolipir Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 40,
+        "district": "Poonch / Rawalakot belt",
+        "established": 2005,
+        "keySpecies": [
+          "Himalayan monal",
+          "Common leopard",
+          "Reptiles"
+        ],
+        "slug": "tolipir-conservation-landscape",
+        "flagshipSpecies": "Musk Deer & Monal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8,
+          33.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "banjosa-cr",
+        "name": "Banjosa Nature Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 1.2,
+        "district": "Poonch / Rawalakot belt",
+        "established": 1999,
+        "keySpecies": [
+          "Koklass pheasant",
+          "Common leopard",
+          "Small fauna"
+        ],
+        "slug": "banjosa-nature-reserve-cr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81,
+          33.81
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dhirkot-cr",
+        "name": "Dhirkot Nature Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 12.5,
+        "district": "Bagh",
+        "established": 1999,
+        "keySpecies": [
+          "Barking deer",
+          "Common leopard",
+          "Passerine birds"
+        ],
+        "slug": "dhirkot-nature-reserve-cr",
+        "flagshipSpecies": "Cheer Pheasant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.78,
+          33.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poonch-river-cl",
+        "name": "Poonch River Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 50,
+        "district": "Poonch / Kotli / Mirpur belt",
+        "established": 2010,
+        "keySpecies": [
+          "Golden mahseer",
+          "Riparian birds",
+          "Softshell turtles"
+        ],
+        "slug": "poonch-river-conservation-landscape",
+        "flagshipSpecies": "Golden Mahseer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.75,
+          33.6
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "panjal-mastan-cl",
+        "name": "Panjal-Mastan Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 45,
+        "district": "Bagh / Poonch",
+        "established": 2012,
+        "keySpecies": [
+          "Common leopard",
+          "Himalayan goral",
+          "Forest passerines"
+        ],
+        "slug": "panjal-mastan-conservation-landscape",
+        "flagshipSpecies": "Himalayan Monal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9,
+          33.9
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kilik-mintika",
+        "name": "Kilik-Mintika Game Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 650,
+        "district": "Gojal / Hunza",
+        "established": 1975,
+        "keySpecies": [
+          "Marco Polo sheep",
+          "Snow leopard",
+          "Ibex"
+        ],
+        "slug": "kilik-mintika-game-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          36.85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "askore-nullah",
+        "name": "Askore Nullah Game Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 130,
+        "district": "Skardu / Shigar",
+        "established": 1985,
+        "keySpecies": [
+          "Siberian ibex",
+          "Snow leopard",
+          "Tibetan wolf",
+          "Red fox"
+        ],
+        "slug": "askore-nullah-game-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8,
+          35.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pakora-ishkoman",
+        "name": "Pakora Ishkoman Reserve",
+        "category": "conservation_reserve",
+        "area_km2": 75,
+        "district": "Ghizer",
+        "established": 1990,
+        "keySpecies": [
+          "Siberian ibex",
+          "Snow leopard",
+          "Golden eagle"
+        ],
+        "slug": "pakora-ishkoman-reserve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.75,
+          36.35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shimshal-cca",
+        "name": "Shimshal Community Conservation Area",
+        "category": "conservation_reserve",
+        "area_km2": 2700,
+        "district": "Hunza / Gojal",
+        "established": 1997,
+        "keySpecies": [
+          "Blue sheep",
+          "Siberian ibex",
+          "Snow leopard"
+        ],
+        "slug": "shimshal-community-conservation-area",
+        "flagshipSpecies": "Blue Sheep & Snow Leopard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.32,
+          36.43
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "astore-markhor-cl",
+        "name": "Astore Markhor Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 260,
+        "district": "Astore",
+        "established": 2000,
+        "keySpecies": [
+          "Astore markhor",
+          "Snow leopard",
+          "Golden eagle"
+        ],
+        "slug": "astore-markhor-conservation-landscape",
+        "flagshipSpecies": "Astore Markhor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.85,
+          35.35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ck-community-belt",
+        "name": "Central Karakoram Community Conservation Belt",
+        "category": "conservation_reserve",
+        "area_km2": 1200,
+        "district": "Hunza / Nagar / Skardu / Ghanche belt",
+        "established": 2005,
+        "keySpecies": [
+          "Snow leopard",
+          "Siberian ibex",
+          "Blue sheep"
+        ],
+        "slug": "central-karakoram-community-conservation-belt",
+        "flagshipSpecies": "Snow Leopard & Ibex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.5,
+          35.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "deosai-buffer-cl",
+        "name": "Deosai Buffer Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 450,
+        "district": "Skardu / Astore",
+        "established": 2002,
+        "keySpecies": [
+          "Himalayan brown bear",
+          "Tibetan wolf",
+          "Migratory waterfowl"
+        ],
+        "slug": "deosai-buffer-conservation-landscape",
+        "flagshipSpecies": "Himalayan Brown Bear"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.15,
+          35.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shigar-valley-cl",
+        "name": "Shigar Valley Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 420,
+        "district": "Shigar",
+        "established": 2008,
+        "keySpecies": [
+          "Siberian ibex",
+          "Snow leopard",
+          "Chakor pheasant"
+        ],
+        "slug": "shigar-valley-conservation-landscape",
+        "flagshipSpecies": "Himalayan Ibex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.72,
+          35.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ghanche-hushe-cl",
+        "name": "Ghanche-Hushe Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 800,
+        "district": "Ghanche",
+        "established": 2000,
+        "keySpecies": [
+          "Siberian ibex",
+          "Snow leopard",
+          "Himalayan snowcock"
+        ],
+        "slug": "ghanche-hushe-conservation-landscape",
+        "flagshipSpecies": "Snow Leopard & Ibex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.35,
+          35.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "baltistan-cl",
+        "name": "Baltistan Conservation Landscape",
+        "category": "conservation_reserve",
+        "area_km2": 500,
+        "district": "Skardu / Baltistan",
+        "established": 2010,
+        "keySpecies": [
+          "Siberian ibex",
+          "Snow leopard",
+          "Tibetan wolf"
+        ],
+        "slug": "baltistan-conservation-landscape",
+        "flagshipSpecies": "Snow Leopard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.6,
+          35.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hokersar-bird",
+        "name": "Hokersar Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 15.5,
+        "district": "Srinagar / Budgam",
+        "established": 1992,
+        "keySpecies": [
+          "Mallard",
+          "Northern pintail",
+          "Gadwall",
+          "Eurasian wigeon",
+          "Greylag goose",
+          "Common teal",
+          "Ruddy shelduck",
+          "Cormorants",
+          "Egrets"
+        ],
+        "slug": "hokersar-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.72,
+          34.12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shallabugh-bird",
+        "name": "Shallabugh Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 9.5,
+        "district": "Ganderbal / Srinagar",
+        "established": 2005,
+        "keySpecies": [
+          "Bar-headed goose",
+          "Mallard",
+          "Gadwall",
+          "Northern pintail",
+          "Eurasian wigeon",
+          "Coot",
+          "Waders"
+        ],
+        "slug": "shallabugh-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.78,
+          34.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wular-lake-bird",
+        "name": "Wular Lake and Associated Marshes",
+        "category": "iba",
+        "area_km2": 202,
+        "district": "Bandipora",
+        "established": 1990,
+        "keySpecies": [
+          "Pochards",
+          "Grebes",
+          "Ducks",
+          "Waders",
+          "Gulls",
+          "Cormorants",
+          "Bitterns"
+        ],
+        "slug": "wular-lake-associated-marshes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.56,
+          34.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hygam-bird",
+        "name": "Hygam / Haigam Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 8.2,
+        "district": "Baramulla",
+        "established": 2005,
+        "keySpecies": [
+          "Ducks",
+          "Waders",
+          "Coots",
+          "Marsh birds",
+          "Resident wetland birds"
+        ],
+        "slug": "hygam-haigam-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.52,
+          34.34
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mirgund-bird",
+        "name": "Mirgund Bird Habitat System",
+        "category": "iba",
+        "area_km2": 3.5,
+        "district": "Baramulla / Budgam belt",
+        "established": 2005,
+        "keySpecies": [
+          "Waterfowl",
+          "Waders",
+          "Marsh birds"
+        ],
+        "slug": "mirgund-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.65,
+          34.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "chatlam-bird",
+        "name": "Chatlam Bird Habitat System",
+        "category": "iba",
+        "area_km2": 0.8,
+        "district": "Pulwama",
+        "established": 2010,
+        "keySpecies": [
+          "Seasonal waterbirds",
+          "Waders",
+          "Resident ducks"
+        ],
+        "slug": "chatlam-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.92,
+          33.99
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kranchoo-bird",
+        "name": "Kranchoo Bird Habitat System",
+        "category": "iba",
+        "area_km2": 0.5,
+        "district": "Pulwama / Pampore belt",
+        "established": 2010,
+        "keySpecies": [
+          "Waterbirds",
+          "Waders",
+          "Resident marsh birds"
+        ],
+        "slug": "kranchoo-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.94,
+          34.01
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freshkoori-bird",
+        "name": "Freshkoori Bird Habitat System",
+        "category": "iba",
+        "area_km2": 0.4,
+        "district": "Pulwama / Pampore belt",
+        "established": 2012,
+        "keySpecies": [
+          "Resident waterfowl",
+          "Migratory ducks",
+          "Passerines"
+        ],
+        "slug": "freshkoori-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.95,
+          33.98
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manibugh-bird",
+        "name": "Manibugh Bird Habitat System",
+        "category": "iba",
+        "area_km2": 0.6,
+        "district": "Pulwama",
+        "established": 2012,
+        "keySpecies": [
+          "Migratory waterfowl",
+          "Waders",
+          "Egrets"
+        ],
+        "slug": "manibugh-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.93,
+          33.97
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "malgam-bird",
+        "name": "Malgam Bird Habitat System",
+        "category": "iba",
+        "area_km2": 1.2,
+        "district": "Bandipora / Baramulla",
+        "established": 2014,
+        "keySpecies": [
+          "Migratory waterbirds",
+          "Resident marsh birds",
+          "Waders"
+        ],
+        "slug": "malgam-bird-habitat-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.48,
+          34.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dal-lake-bird",
+        "name": "Dal Lake Urban Bird Habitat",
+        "category": "iba",
+        "area_km2": 25,
+        "district": "Srinagar",
+        "established": 2000,
+        "keySpecies": [
+          "Gulls",
+          "Ducks",
+          "Coots",
+          "Herons",
+          "Kingfishers",
+          "Cormorants"
+        ],
+        "slug": "dal-lake-urban-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.86,
+          34.11
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nigeen-lake-bird",
+        "name": "Nigeen Lake Bird Habitat",
+        "category": "iba",
+        "area_km2": 4.5,
+        "district": "Srinagar",
+        "established": 2005,
+        "keySpecies": [
+          "Kingfishers",
+          "Grebes",
+          "Gulls",
+          "Ducks",
+          "Coots"
+        ],
+        "slug": "nigeen-lake-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.84,
+          34.13
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "anchar-lake-bird",
+        "name": "Anchar Lake Bird Habitat",
+        "category": "iba",
+        "area_km2": 6.8,
+        "district": "Srinagar / Ganderbal",
+        "established": 2005,
+        "keySpecies": [
+          "Waterfowl",
+          "Cormorants",
+          "Waders",
+          "Herons"
+        ],
+        "slug": "anchar-lake-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.79,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manasbal-lake-bird",
+        "name": "Manasbal Lake Bird Habitat",
+        "category": "iba",
+        "area_km2": 2.8,
+        "district": "Ganderbal",
+        "established": 2000,
+        "keySpecies": [
+          "Common pochard",
+          "Tufted duck",
+          "Grebes",
+          "Cormorants",
+          "Kingfishers"
+        ],
+        "slug": "manasbal-lake-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.68,
+          34.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dachigam-forest-bird",
+        "name": "Dachigam Forest Bird Landscape",
+        "category": "iba",
+        "area_km2": 141,
+        "district": "Srinagar",
+        "established": 1981,
+        "keySpecies": [
+          "Kashmir Flycatcher",
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Golden oriole",
+          "Woodpeckers",
+          "Warblers"
+        ],
+        "slug": "dachigam-forest-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.03,
+          34.13
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zabarwan-ridge-bird",
+        "name": "Zabarwan / Shankaracharya Bird Ridge",
+        "category": "iba",
+        "area_km2": 12.5,
+        "district": "Srinagar",
+        "established": 2008,
+        "keySpecies": [
+          "Kashmir Flycatcher",
+          "Warblers",
+          "Himalayan bulbul",
+          "Thrushes",
+          "Raptors"
+        ],
+        "slug": "zabarwan-shankaracharya-bird-ridge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.87,
+          34.09
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "overa-aru-bird",
+        "name": "Overa-Aru Bird Landscape",
+        "category": "iba",
+        "area_km2": 511,
+        "district": "Anantnag",
+        "established": 1981,
+        "keySpecies": [
+          "Kashmir Flycatcher",
+          "Western tragopan",
+          "Cheer pheasant",
+          "Koklass pheasant",
+          "Himalayan monal"
+        ],
+        "slug": "overa-aru-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.29,
+          34.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aru-valley-bird",
+        "name": "Aru Valley Bird Breeding Landscape",
+        "category": "iba",
+        "area_km2": 35,
+        "district": "Anantnag",
+        "established": 2005,
+        "keySpecies": [
+          "Kashmir Flycatcher",
+          "Himalayan monal",
+          "Rufous-bellied woodpecker",
+          "Thrushes",
+          "Warblers"
+        ],
+        "slug": "aru-valley-bird-breeding-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.26,
+          34.09
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gulmarg-bird",
+        "name": "Gulmarg Bird Landscape",
+        "category": "iba",
+        "area_km2": 180,
+        "district": "Baramulla",
+        "established": 1987,
+        "keySpecies": [
+          "Kashmir Flycatcher",
+          "Himalayan snowcock",
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Orange bullfinch",
+          "Spectral finch"
+        ],
+        "slug": "gulmarg-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.38,
+          34.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lachipora-bird",
+        "name": "Lachipora Bird Landscape",
+        "category": "iba",
+        "area_km2": 80,
+        "district": "Baramulla",
+        "established": 1987,
+        "keySpecies": [
+          "Western tragopan",
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Chukar partridge"
+        ],
+        "slug": "lachipora-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.13,
+          34.21
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limber-bird",
+        "name": "Limber Bird Landscape",
+        "category": "iba",
+        "area_km2": 43.75,
+        "district": "Baramulla",
+        "established": 1987,
+        "keySpecies": [
+          "Western tragopan",
+          "Himalayan monal",
+          "Cheer pheasant",
+          "Raptors"
+        ],
+        "slug": "limber-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.15,
+          34.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hirpora-bird",
+        "name": "Hirpora Bird Landscape",
+        "category": "iba",
+        "area_km2": 341.25,
+        "district": "Shopian",
+        "established": 1987,
+        "keySpecies": [
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Chakor pheasant",
+          "Rufous-vented tit",
+          "Accentors"
+        ],
+        "slug": "hirpora-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.71,
+          33.68
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gharana-bird",
+        "name": "Gharana Wetland Bird Habitat",
+        "category": "iba",
+        "area_km2": 0.75,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Bar-headed goose",
+          "Greylag goose",
+          "Mallard",
+          "Northern pintail",
+          "Gadwall",
+          "Waders"
+        ],
+        "slug": "gharana-wetland-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.61,
+          32.54
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "surinsar-mansar-bird",
+        "name": "Surinsar-Mansar Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 3.5,
+        "district": "Jammu / Samba / Udhampur",
+        "established": 2005,
+        "keySpecies": [
+          "Waterbirds",
+          "Peafowl",
+          "Kingfishers",
+          "Herons",
+          "Raptors"
+        ],
+        "slug": "surinsar-mansar-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.15,
+          32.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nandini-bird",
+        "name": "Nandini Bird Landscape",
+        "category": "iba",
+        "area_km2": 34,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Peafowl",
+          "Red junglefowl",
+          "Chakor pheasant",
+          "Kalij pheasant",
+          "Foothill birds"
+        ],
+        "slug": "nandini-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.92,
+          32.87
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ramnagar-rakh-bird",
+        "name": "Ramnagar Rakh Bird Landscape",
+        "category": "iba",
+        "area_km2": 12.2,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Peafowl",
+          "Mynas",
+          "Bulbuls",
+          "Raptors",
+          "Woodland birds"
+        ],
+        "slug": "ramnagar-rakh-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.88,
+          32.76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jasrota-bird",
+        "name": "Jasrota Bird Landscape",
+        "category": "iba",
+        "area_km2": 10,
+        "district": "Kathua",
+        "established": 1987,
+        "keySpecies": [
+          "Peafowl",
+          "Raptors",
+          "Woodland birds",
+          "Dry-zone avifauna"
+        ],
+        "slug": "jasrota-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.43,
+          32.48
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bahu-bird",
+        "name": "Bahu Bird Landscape",
+        "category": "iba",
+        "area_km2": 19.75,
+        "district": "Jammu",
+        "established": 1981,
+        "keySpecies": [
+          "Peafowl",
+          "Black bulbul",
+          "Drongos",
+          "Raptors"
+        ],
+        "slug": "bahu-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.91,
+          32.73
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poonch-river-bird",
+        "name": "Poonch River Bird Corridor",
+        "category": "iba",
+        "area_km2": 25,
+        "district": "Poonch",
+        "established": 2010,
+        "keySpecies": [
+          "Riverine birds",
+          "Winter migrants",
+          "Raptors",
+          "Sandpipers"
+        ],
+        "slug": "poonch-river-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.08,
+          33.76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "chenab-river-bird",
+        "name": "Chenab River Bird Corridor",
+        "category": "iba",
+        "area_km2": 45,
+        "district": "Ramban / Doda / Kishtwar",
+        "established": 2012,
+        "keySpecies": [
+          "Raptors",
+          "River birds",
+          "Cliff nesters",
+          "Wallcreeper"
+        ],
+        "slug": "chenab-river-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.54,
+          33.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sudhmahadev-bird",
+        "name": "Sudhmahadev Bird Landscape",
+        "category": "iba",
+        "area_km2": 142.25,
+        "district": "Udhampur",
+        "established": 1981,
+        "keySpecies": [
+          "Kalij pheasant",
+          "Common wood pigeon",
+          "Flycatchers",
+          "Thrushes"
+        ],
+        "slug": "sudhmahadev-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.38,
+          33.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-panjal-pass-bird",
+        "name": "Pir Panjal Pass Bird Corridor",
+        "category": "iba",
+        "area_km2": 50,
+        "district": "Ramban / Shopian / Poonch linkage",
+        "established": 2015,
+        "keySpecies": [
+          "Chakor pheasant",
+          "Alpine chough",
+          "Migratory flycatchers",
+          "Raptors"
+        ],
+        "slug": "pir-panjal-pass-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.82,
+          33.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tso-moriri-bird",
+        "name": "Tso Moriri Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 120,
+        "district": "Leh",
+        "established": 2002,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "Great crested grebe",
+          "Brown-headed gull",
+          "Ruddy shelduck"
+        ],
+        "slug": "tso-moriri-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3,
+          32.9
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tso-kar-bird",
+        "name": "Tso Kar Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 82,
+        "district": "Leh",
+        "established": 2020,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "Ruddy shelduck",
+          "Tibetan snowcock",
+          "Larks"
+        ],
+        "slug": "tso-kar-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.01,
+          33.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hanle-marsh-bird",
+        "name": "Hanle Marsh Bird Habitat",
+        "category": "iba",
+        "area_km2": 35,
+        "district": "Leh",
+        "established": 2005,
+        "keySpecies": [
+          "Black-necked crane",
+          "Bar-headed goose",
+          "Tibetan lark",
+          "Common redshank",
+          "Raptors"
+        ],
+        "slug": "hanle-marsh-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.98,
+          32.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "puga-wetland-bird",
+        "name": "Puga Wetland Bird Habitat",
+        "category": "iba",
+        "area_km2": 12,
+        "district": "Leh",
+        "established": 2010,
+        "keySpecies": [
+          "Ruddy shelduck",
+          "Bar-headed goose",
+          "Common redshank",
+          "Black-necked crane"
+        ],
+        "slug": "puga-wetland-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.35,
+          33.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pangong-tso-bird",
+        "name": "Pangong Tso Bird Habitat",
+        "category": "iba",
+        "area_km2": 700,
+        "district": "Leh",
+        "established": 2002,
+        "keySpecies": [
+          "Brown-headed gull",
+          "Bar-headed goose",
+          "Ruddy shelduck",
+          "Common tern",
+          "Waders"
+        ],
+        "slug": "pangong-tso-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.67,
+          33.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "changthang-plateau-bird",
+        "name": "Changthang Bird Habitat Network",
+        "category": "iba",
+        "area_km2": 4000,
+        "district": "Leh",
+        "established": 1987,
+        "keySpecies": [
+          "Black-necked crane",
+          "Tibetan sandgrouse",
+          "Horned lark",
+          "Golden eagle",
+          "Saker falcon",
+          "Upland buzzard"
+        ],
+        "slug": "changthang-bird-habitat-network"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.5,
+          33.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nubra-shyok-bird",
+        "name": "Nubra-Shyok Bird Corridor",
+        "category": "iba",
+        "area_km2": 250,
+        "district": "Leh",
+        "established": 2012,
+        "keySpecies": [
+          "Bar-headed goose",
+          "Ruddy shelduck",
+          "Ibisbill",
+          "Tibetan lark",
+          "Migratory passerines"
+        ],
+        "slug": "nubra-shyok-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.56,
+          34.58
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zanskar-bird",
+        "name": "Zanskar Bird Landscape",
+        "category": "iba",
+        "area_km2": 1200,
+        "district": "Kargil",
+        "established": 2010,
+        "keySpecies": [
+          "Himalayan snowcock",
+          "Red-billed chough",
+          "Yellow-billed chough",
+          "Golden eagle",
+          "Alpine accentor",
+          "Wallcreeper"
+        ],
+        "slug": "zanskar-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.88,
+          33.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "salkhala-bird",
+        "name": "Salkhala Bird Habitat Area",
+        "category": "iba",
+        "area_km2": 8.1,
+        "district": "Neelum Valley",
+        "established": 1982,
+        "keySpecies": [
+          "Koklass pheasant",
+          "Kashmir gray langur",
+          "Monals",
+          "Western tragopan",
+          "Flycatchers"
+        ],
+        "slug": "salkhala-bird-habitat-area"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81,
+          34.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "neelum-valley-bird",
+        "name": "Neelum Valley Bird Corridor",
+        "category": "iba",
+        "area_km2": 150,
+        "district": "Neelum Valley",
+        "established": 2015,
+        "keySpecies": [
+          "Western tragopan",
+          "Kashmir musk deer",
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Flycatchers"
+        ],
+        "slug": "neelum-valley-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1,
+          34.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "leepa-valley-bird",
+        "name": "Leepa Valley Bird Habitat",
+        "category": "iba",
+        "area_km2": 85,
+        "district": "Jhelum Valley / Hattian",
+        "established": 2012,
+        "keySpecies": [
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Western tragopan",
+          "Woodpeckers",
+          "Owls"
+        ],
+        "slug": "leepa-valley-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9,
+          34.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jhelum-valley-bird",
+        "name": "Jhelum Valley Bird Corridor",
+        "category": "iba",
+        "area_km2": 120,
+        "district": "Jhelum Valley",
+        "established": 2015,
+        "keySpecies": [
+          "Common leopard",
+          "Himalayan goral",
+          "Riverine birds",
+          "Kingfishers"
+        ],
+        "slug": "jhelum-valley-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.65,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-chinasi-bird",
+        "name": "Pir Chinasi Bird Landscape",
+        "category": "iba",
+        "area_km2": 45,
+        "district": "Muzaffarabad",
+        "established": 2005,
+        "keySpecies": [
+          "Western tragopan",
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Asiatic black bear",
+          "Thrushes"
+        ],
+        "slug": "pir-chinasi-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.53,
+          34.38
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tolipir-bird",
+        "name": "Tolipir Bird Landscape",
+        "category": "iba",
+        "area_km2": 30,
+        "district": "Poonch / Rawalakot belt",
+        "established": 2005,
+        "keySpecies": [
+          "Himalayan monal",
+          "Common leopard",
+          "Orange bullfinch",
+          "Spectral finch",
+          "Woodpeckers"
+        ],
+        "slug": "tolipir-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8,
+          33.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "banjosa-bird",
+        "name": "Banjosa Bird Habitat",
+        "category": "iba",
+        "area_km2": 1.2,
+        "district": "Poonch / Rawalakot belt",
+        "established": 1999,
+        "keySpecies": [
+          "Koklass pheasant",
+          "Common leopard",
+          "Small fauna",
+          "Flycatchers",
+          "Woodpeckers"
+        ],
+        "slug": "banjosa-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.81,
+          33.81
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dhirkot-bird",
+        "name": "Dhirkot Bird Habitat",
+        "category": "iba",
+        "area_km2": 15,
+        "district": "Bagh",
+        "established": 1999,
+        "keySpecies": [
+          "Barking deer",
+          "Common leopard",
+          "Passerine birds",
+          "Flycatchers",
+          "Raptors"
+        ],
+        "slug": "dhirkot-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.78,
+          33.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pir-lasura-bird",
+        "name": "Pir Lasura Bird Landscape",
+        "category": "iba",
+        "area_km2": 15.8,
+        "district": "Kotli",
+        "established": 2005,
+        "keySpecies": [
+          "Himalayan goral",
+          "Common leopard",
+          "Kalij pheasant",
+          "Chakor pheasant",
+          "Raptors"
+        ],
+        "slug": "pir-lasura-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.95,
+          33.48
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shounter-lake-bird",
+        "name": "Shounter / Chitta Katha Bird Landscape",
+        "category": "iba",
+        "area_km2": 32,
+        "district": "Neelum Valley",
+        "established": 2005,
+        "keySpecies": [
+          "Alpine chough",
+          "Himalayan snowcock",
+          "Tibetan wolf",
+          "Migratory passerines"
+        ],
+        "slug": "shounter-chitta-katha-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.31,
+          34.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "deosai-plateau-bird",
+        "name": "Deosai Bird Habitat Complex",
+        "category": "iba",
+        "area_km2": 3000,
+        "district": "Skardu / Astore",
+        "established": 1993,
+        "keySpecies": [
+          "Himalayan brown bear",
+          "Golden eagle",
+          "Tibetan wolf",
+          "Migratory waterfowl",
+          "Larks",
+          "Accentors"
+        ],
+        "slug": "deosai-bird-habitat-complex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.15,
+          35.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "satpara-bird",
+        "name": "Satpara Bird Habitat",
+        "category": "iba",
+        "area_km2": 31,
+        "district": "Skardu",
+        "established": 2003,
+        "keySpecies": [
+          "Golden eagle",
+          "Ruddy shelduck",
+          "Alpine chough",
+          "Tibetan snowcock"
+        ],
+        "slug": "satpara-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.63,
+          35.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khunjerab-pass-bird",
+        "name": "Khunjerab Bird Habitat",
+        "category": "iba",
+        "area_km2": 2269,
+        "district": "Gojal / Hunza",
+        "established": 1975,
+        "keySpecies": [
+          "Golden eagle",
+          "Himalayan snowcock",
+          "Red-billed chough",
+          "Lammergeier",
+          "Saker falcon"
+        ],
+        "slug": "khunjerab-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.43,
+          36.85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kilik-mintika-bird",
+        "name": "Kilik-Mintika Bird Habitat",
+        "category": "iba",
+        "area_km2": 650,
+        "district": "Gojal / Hunza",
+        "established": 1975,
+        "keySpecies": [
+          "Marco Polo sheep",
+          "Lammergeier",
+          "Upland buzzard",
+          "Siberian ibex"
+        ],
+        "slug": "kilik-mintika-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          36.85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shimshal-bird",
+        "name": "Shimshal Bird Habitat",
+        "category": "iba",
+        "area_km2": 500,
+        "district": "Hunza / Gojal",
+        "established": 1997,
+        "keySpecies": [
+          "Golden eagle",
+          "Himalayan snowcock",
+          "Yellow-billed chough",
+          "Tibetan rosefinch"
+        ],
+        "slug": "shimshal-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.32,
+          36.43
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "central-karakoram-bird",
+        "name": "Central Karakoram Bird Landscape",
+        "category": "iba",
+        "area_km2": 10000,
+        "district": "Hunza / Nagar / Skardu / Ghanche belt",
+        "established": 1993,
+        "keySpecies": [
+          "Golden eagle",
+          "Alpine chough",
+          "Himalayan snowcock",
+          "Brandt's mountain finch"
+        ],
+        "slug": "central-karakoram-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.5,
+          35.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "astore-bird",
+        "name": "Astore Bird Landscape",
+        "category": "iba",
+        "area_km2": 150,
+        "district": "Astore",
+        "established": 2000,
+        "keySpecies": [
+          "Astore markhor",
+          "Golden eagle",
+          "Chakor pheasant",
+          "Buntings",
+          "Gryphon vulture"
+        ],
+        "slug": "astore-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.85,
+          35.35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rama-lake-bird",
+        "name": "Rama Lake Bird Habitat",
+        "category": "iba",
+        "area_km2": 8.5,
+        "district": "Astore",
+        "established": 2005,
+        "keySpecies": [
+          "Himalayan monal",
+          "Rufous-vented tit",
+          "Alpine accentor",
+          "Ducks",
+          "Gulls"
+        ],
+        "slug": "rama-lake-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8,
+          35.37
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "naltar-bird",
+        "name": "Naltar Bird Habitat",
+        "category": "iba",
+        "area_km2": 27,
+        "district": "Gilgit",
+        "established": 1980,
+        "keySpecies": [
+          "Himalayan monal",
+          "Koklass pheasant",
+          "Chakor pheasant",
+          "Orange bullfinch",
+          "Warblers"
+        ],
+        "slug": "naltar-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.12,
+          36.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shigar-bird",
+        "name": "Shigar Bird Landscape",
+        "category": "iba",
+        "area_km2": 320,
+        "district": "Shigar",
+        "established": 2008,
+        "keySpecies": [
+          "Siberian ibex",
+          "Chakor pheasant",
+          "Sandgrouse",
+          "Larks",
+          "Raptors"
+        ],
+        "slug": "shigar-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.72,
+          35.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hushe-ghanche-bird",
+        "name": "Hushe / Ghanche Bird Landscape",
+        "category": "iba",
+        "area_km2": 400,
+        "district": "Ghanche",
+        "established": 2000,
+        "keySpecies": [
+          "Golden eagle",
+          "Himalayan snowcock",
+          "Tibetan snowcock",
+          "Red-billed chough"
+        ],
+        "slug": "hushe-ghanche-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.35,
+          35.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "skardu-valley-bird",
+        "name": "Skardu Valley Bird Habitat",
+        "category": "iba",
+        "area_km2": 120,
+        "district": "Skardu",
+        "established": 2005,
+        "keySpecies": [
+          "Migratory ducks",
+          "Gulls",
+          "Cormorants",
+          "Raptors",
+          "Passerines"
+        ],
+        "slug": "skardu-valley-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.62,
+          35.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attabad-lake-bird",
+        "name": "Attabad Lake Bird Habitat",
+        "category": "iba",
+        "area_km2": 3.8,
+        "district": "Hunza",
+        "established": 2010,
+        "keySpecies": [
+          "Migratory waterfowl",
+          "Gulls",
+          "Terns",
+          "Raptors"
+        ],
+        "slug": "attabad-lake-bird-habitat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.87,
+          36.31
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hunza-river-bird",
+        "name": "Hunza River Bird Corridor",
+        "category": "iba",
+        "area_km2": 80,
+        "district": "Hunza / Nagar",
+        "established": 2012,
+        "keySpecies": [
+          "Ibisbill",
+          "Sandpipers",
+          "Raptors",
+          "Swifts",
+          "Choughs"
+        ],
+        "slug": "hunza-river-bird-corridor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.65,
+          36.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "baltistan-alpine-bird",
+        "name": "Baltistan Alpine Bird Landscape",
+        "category": "iba",
+        "area_km2": 500,
+        "district": "Skardu / Baltistan",
+        "established": 2010,
+        "keySpecies": [
+          "Himalayan snowcock",
+          "Red-billed chough",
+          "Tibetan snowcock",
+          "Golden eagle",
+          "Rosefinches"
+        ],
+        "slug": "baltistan-alpine-bird-landscape"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.6,
+          35.3
+        ]
       }
     }
   ]

@@ -1,17 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/Button';
+import {
+  Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { BiodiversityFilters } from '@/components/common/BiodiversityFilters';
+import { DistrictFiveIndicatorsMatrix } from '@/components/biodiversity/DistrictFiveIndicatorsMatrix';
 import { motion } from 'framer-motion';
 import { getForestIntelligence } from '@/data/forest-ecosystems';
 import { 
   Trees, Leaf, Activity, MapPin, Map, Shield, 
   ChevronRight, TrendingUp, TrendingDown, Search, Filter,
   AlertTriangle, Crosshair, CloudLightning, TreePine,
-  Grid3X3, List
+  Grid3X3, List, BarChart3, Flame, Layers, Mountain, Sprout,
+  Clock, BookOpen, Sparkles, CheckCircle2, ArrowRight, Compass,
+  Scale, FileText, Check, Award,
+  ShieldAlert
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { GEOGRAPHY, Scope } from '@/data/geography';
@@ -23,11 +29,15 @@ export default function ForestEcosystemsPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [activeFilters, setActiveFilters] = useState<any>({});
+  const [selectedScope, setSelectedScope] = useState<'all' | 'kashmir' | 'jammu' | 'ladakh' | 'ajk' | 'gb'>('all');
 
   const rawForests = getForestIntelligence.allDistricts();
   const rawTrees = getForestIntelligence.allTrees();
   const rawWildlife = getForestIntelligence.allWildlife();
   const rawHabitats = getForestIntelligence.allHabitats();
+  const chinarData = getForestIntelligence.chinarData();
+  const isfrData = getForestIntelligence.officialIsfrData();
+  const ntfpData = getForestIntelligence.ntfpData();
   const metrics = getForestIntelligence.metrics;
 
   const forests = React.useMemo(() => {
@@ -86,15 +96,15 @@ export default function ForestEcosystemsPage() {
     return generateDistrictCorridorMetrics(Array.from(activeDistrictNames));
   }, [activeDistrictNames]);
 
-  const kpis = [
-    { label: 'Districts Tracked', value: metrics.totalDistrictsMonitored, icon: MapPin },
-    { label: 'Dense Forests', value: metrics.denseForests, icon: Leaf },
-    { label: 'Critical Risks', value: metrics.criticalRisks, icon: AlertTriangle },
-    { label: 'Carbon Stock', value: `${metrics.totalCarbonStock} Tg`, icon: CloudLightning },
-    { label: 'Fragmentation', value: metrics.averageFragmentationIndex, icon: Crosshair },
-    { label: 'Disturbances', value: metrics.activeDisturbances, icon: AlertTriangle },
-    { label: 'Regeneration', value: metrics.regenerationSites, icon: TrendingUp },
-    { label: 'Data Sources', value: 6, icon: Shield },
+    const kpis = [
+    { label: 'Districts Monitored', value: metrics.totalDistrictsMonitored, icon: MapPin },
+    { label: 'Dense Forests', value: `${(metrics as any).denseForestCount || 26} Dists`, icon: Trees },
+    { label: 'Dense Canopy Area', value: `${((metrics as any).totalDenseForestAreaSqKm || 17358).toLocaleString()} km²`, icon: Shield },
+    { label: 'Critical Risks', value: `${(metrics as any).criticalRiskCount || 12} Alerts`, icon: AlertTriangle },
+    { label: 'High Fragility', value: `${(metrics as any).highFragmentationCount || 18} Dists`, icon: Crosshair },
+    { label: 'Severe Disturbances', value: `${(metrics as any).severeDisturbanceCount || 18} Dists`, icon: Activity },
+    { label: 'Robust Regen', value: `${(metrics as any).robustRegenerationCount || 16} Dists`, icon: TrendingUp },
+    { label: 'Heritage Chinars', value: chinarData.censusMetrics.totalTrees2025.toLocaleString(), icon: TreePine },
   ];
 
   const handleFilterChange = (newFilters: any) => {
@@ -108,64 +118,187 @@ export default function ForestEcosystemsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        label="Biodiversity Intelligence"
-        title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Forest Ecosystems</span>
-        </>}
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Forest Ecosystems &amp; Habitat Intelligence Layer
+              </span>
+            </div>
+          </div>
+        }
         subtitle="The authoritative habitat intelligence layer mapping Kashmir's ecological infrastructure. Connecting species distribution, carbon sequestration, landscape connectivity, and real-time disturbance analytics."
         icon={<TreePine className="w-6 h-6 text-emerald-400" />}
-        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Forest Ecosystems' }]}
-        gridOverlay
+        label="Biodiversity Intelligence · Habitat Matrix"
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity/overview' },
+          { label: 'Forest Ecosystems' }
+        ]}
+        images={['/images/protected-network.png']}
         actions={
-          <>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white border-0"
-              icon={<Search className="w-5 h-5" />}
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              className={`border-emerald-500/40 font-bold transition-all ${
+                activeTab === 'overview'
+                  ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-md shadow-emerald-500/30'
+                  : 'text-emerald-300 hover:bg-emerald-500/10'
+              }`}
+              onClick={() => setActiveTab('overview')}
             >
-              Search Forest Ecosystems
+              <TreePine className="w-4 h-4 mr-1.5" />
+              Forest Overview
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/20 text-white"
-              icon={<Map className="w-5 h-5" />}
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all"
+              onClick={() => setActiveTab('habitats')}
             >
-              Distribution Map
+              <Layers className="w-4 h-4 mr-1.5" />
+              16 Habitat Types
             </Button>
-          </>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-bold transition-all"
+              onClick={() => setActiveTab('corridors')}
+            >
+              <Compass className="w-4 h-4 mr-1.5" />
+              Corridors &amp; Connectivity
+            </Button>
+          </div>
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
-              {kpis.map((metric, idx) => {
-                return (
-                  <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                    <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                    <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                      {metric.value}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                      {metric.label}
-                    </div>
-                  </div>
-                );
-              })}
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
+        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
             </div>
-          </Card>
-        </motion.div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Canopy Biomass, Carbon Sinks &amp; Wildlife Corridor Layer</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Habitat Layer 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Key Habitat Divisions: <strong className="text-white">Pir Panjal Subalpine Conifers</strong>, <strong className="text-white">Sind Valley Deodar</strong>, <strong className="text-white">Kishtwar Pine-Oak</strong>, and <strong className="text-white">Dachigam Riverine Forest</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Dense Canopy Coverage</div>
+              <div className="text-sm font-bold text-emerald-300">{((metrics as any).totalDenseForestAreaSqKm || 17358).toLocaleString()} km² Forest</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span>{chinarData.censusMetrics.totalTrees2025.toLocaleString()} Chinars Censused</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ───────────────────────────────────────────────────────────── */}
+        {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
+        {/* ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+          {/* Card 1: Dense Forest Area */}
+          <div
+            onClick={() => setActiveTab('overview')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              activeTab === 'overview'
+                ? 'bg-emerald-500/20 border-emerald-500/60 shadow-lg shadow-emerald-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Dense Canopy</span>
+              <Trees className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-white">{((metrics as any).totalDenseForestAreaSqKm || 17358).toLocaleString()} km²</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">High Density Forests</div>
+          </div>
+
+          {/* Card 2: Monitored Districts */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Districts</span>
+              <MapPin className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">{metrics.totalDistrictsMonitored}</div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">All Forest Divisions</div>
+          </div>
+
+          {/* Card 3: Habitat Types */}
+          <div
+            onClick={() => setActiveTab('habitats')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              activeTab === 'habitats'
+                ? 'bg-purple-500/20 border-purple-500/60 shadow-lg shadow-purple-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Habitats</span>
+              <Layers className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">{rawHabitats.length || 16}</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Champion &amp; Seth Types</div>
+          </div>
+
+          {/* Card 4: Heritage Chinars */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Heritage Chinars</span>
+              <TreePine className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">{chinarData.censusMetrics.totalTrees2025.toLocaleString()}</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Census 2025 Trees</div>
+          </div>
+
+          {/* Card 5: Corridors */}
+          <div
+            onClick={() => setActiveTab('corridors')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              activeTab === 'corridors'
+                ? 'bg-blue-500/20 border-blue-500/60 shadow-lg shadow-blue-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">Corridors</span>
+              <Compass className="w-4 h-4 text-blue-400" />
+            </div>
+            <div className="text-2xl font-black text-blue-300">{masterCorridors.length}</div>
+            <div className="text-[11px] text-blue-400/90 font-mono mt-0.5">Wildlife Corridors</div>
+          </div>
+
+          {/* Card 6: Critical Alerts */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Fragility Alerts</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">{(metrics as any).criticalRiskCount || 12}</div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">Disturbance Hotspots</div>
+          </div>
+        </div>
       </div>
 
       {/* Content */}
@@ -200,6 +333,7 @@ export default function ForestEcosystemsPage() {
           </div>
           
           <BiodiversityFilters
+            defaultOpen={true}
             filters={activeFilters}
             onFilterChange={handleFilterChange}
             onReset={handleReset}
@@ -224,10 +358,14 @@ export default function ForestEcosystemsPage() {
             category2Options={Array.from(new Set(rawForests.map(f => f.Forest_Cover_Class)))}
             moduleOptions={[
               { id: 'overview', label: 'Overview' },
+              { id: 'official-telemetry', label: 'Official ISFR Telemetry' },
+              { id: 'chinar-heritage', label: 'Chinar & Heritage Trees' },
+              { id: 'tree-directory', label: 'Tree Directory (20 Species)' },
+              { id: 'ntfp-ethnobotany', label: 'NTFP & Medicinal Flora' },
+              { id: 'scope-comparison', label: 'Regional Macro Comparison' },
               { id: 'forest-types', label: 'Forest Types' },
               { id: 'forest-cover', label: 'Forest Cover' },
               { id: 'deforestation', label: 'Deforestation' },
-              { id: 'tree-directory', label: 'Tree Directory' },
               { id: 'wildlife', label: 'Wildlife' },
               { id: 'habitats', label: 'Habitats' },
               { id: 'health-monitoring', label: 'Health Monitoring' },
@@ -249,6 +387,11 @@ export default function ForestEcosystemsPage() {
           />
         </motion.div>
 
+                {/* 5-Indicator District Matrix Tab (Dense Forests, Critical Risks, Fragmentation, Disturbances, Regeneration) */}
+        {activeTab === 'district-indicators' && (
+          <DistrictFiveIndicatorsMatrix districts={forests} />
+        )}
+
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
             <div className="lg:col-span-2 space-y-8">
@@ -257,6 +400,27 @@ export default function ForestEcosystemsPage() {
                 Ecological Core Status
               </h2>
               
+                            {/* Quick Jump to 5-Pillar District Matrix */}
+              <div className="bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                    <Sparkles className="w-4 h-4" /> 5-Pillar Comprehensive Telemetry Active
+                  </div>
+                  <h3 className="text-lg font-bold text-white">46-District Environmental Matrix</h3>
+                  <p className="text-xs text-slate-300 max-w-xl">
+                    Full granular intelligence for Dense Forests, Critical Deforestation Risks, Spatial Fragmentation, Anthropogenic Disturbances, and Natural Regeneration across all 5 administrative scopes.
+                  </p>
+                </div>
+                <Button
+                  size="sm"
+                  onClick={() => setActiveTab('district-indicators')}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shrink-0"
+                  icon={<ArrowRight className="w-4 h-4" />}
+                >
+                  Open 5-Indicator Matrix
+                </Button>
+              </div>
+
               <div className="prose prose-invert max-w-none">
                 <p className="text-slate-300 leading-relaxed">
                   Forests act as the primary ecological infrastructure of the Kashmir Valley. They dictate hydrological cycles, support over 85% of terrestrial mammal diversity, and act as the principal carbon sink. The Forest Intelligence system monitors these landscapes in real-time.
@@ -327,6 +491,668 @@ export default function ForestEcosystemsPage() {
                   ))}
                 </div>
               </Card>
+            </div>
+          </div>
+        )}
+
+        {/* Official ISFR Telemetry Tab */}
+        {activeTab === 'official-telemetry' && (
+          <div className="space-y-8 mt-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
+                    ISFR 2021 & 2023 Verified
+                  </Badge>
+                  <Badge variant="outline" className="border-teal-500/30 text-teal-300 bg-teal-500/10">
+                    FSI Benchmark Methodology
+                  </Badge>
+                  <Badge variant="outline" className="border-cyan-500/30 text-cyan-300 bg-cyan-500/10">
+                    Multi-Scope Registry
+                  </Badge>
+                </div>
+                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                  <BarChart3 className="w-7 h-7 text-emerald-400" />
+                  Official Forest Cover & Biomass Telemetry
+                </h2>
+                <p className="text-sm text-slate-400 mt-2 max-w-3xl">
+                  Authoritative multi-tiered forest census synthesizing Forest Survey of India (ISFR 2023), J&K Forest Department Working Plans, AJK Forest Inventory, and ICIMOD transboundary spatial intelligence.
+                </p>
+              </div>
+
+              {/* Scope filter selector */}
+              <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-white/5 border border-white/10">
+                {[
+                  { id: 'all', label: 'All Scopes' },
+                  { id: 'kashmir', label: 'Kashmir Core (10)' },
+                  { id: 'jammu', label: 'Jammu (10)' },
+                  { id: 'ladakh', label: 'Ladakh (2)' },
+                  { id: 'ajk', label: 'Azad Kashmir (10)' },
+                  { id: 'gb', label: 'Gilgit-Baltistan (14)' },
+                ].map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setSelectedScope(tab.id as any)}
+                    className={cn(
+                      "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                      selectedScope === tab.id
+                        ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                        : "text-slate-400 hover:text-white hover:bg-white/5"
+                    )}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Macro Summary Highlights */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+              {[
+                { label: 'Kashmir Forest Cover', value: `${isfrData.kashmirDivision.totalForestCoverSqKm.toLocaleString()} km²`, icon: Trees, color: 'text-emerald-400' },
+                { label: 'Forest Percentage', value: `${isfrData.kashmirDivision.totalForestCoverPercent}%`, icon: BarChart3, color: 'text-teal-400' },
+                { label: 'Very Dense Forest', value: `${isfrData.kashmirDivision.veryDenseForestSqKm.toLocaleString()} km²`, icon: Shield, color: 'text-green-400' },
+                { label: 'Mod. Dense Forest', value: `${isfrData.kashmirDivision.moderatelyDenseForestSqKm.toLocaleString()} km²`, icon: Layers, color: 'text-cyan-400' },
+                { label: 'Open Forest', value: `${isfrData.kashmirDivision.openForestSqKm.toLocaleString()} km²`, icon: Leaf, color: 'text-sky-400' },
+                { label: 'Growing Stock', value: `${isfrData.kashmirDivision.growingStockMillionCuM} M m³`, icon: Mountain, color: 'text-amber-400' },
+                { label: 'Carbon Stock', value: `${isfrData.kashmirDivision.carbonStockMillionTonnesC} Mt C`, icon: CloudLightning, color: 'text-rose-400' }
+              ].map((item, idx) => (
+                <Card key={idx} className="glass-intense border-white/10 p-4 text-center">
+                  <item.icon className={cn("w-5 h-5 mx-auto mb-2", item.color)} />
+                  <div className="text-base font-bold text-white tabular-nums truncate">{item.value}</div>
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5 truncate">{item.label}</div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Kashmir Core Official Table */}
+            {(selectedScope === 'all' || selectedScope === 'kashmir') && (
+              <Card className="glass-intense border-emerald-500/20 p-6 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                      <TreePine className="w-5 h-5 text-emerald-400" />
+                      Kashmir Core Division (10 Districts - ISFR 2023 Verified)
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Total Geographic Area: 15,389 km² | Forest Cover: 6,377.97 km² (41.44%) | Net 2-Year Gain: +24.00 km²
+                    </p>
+                  </div>
+                  <Badge variant="outline" className="border-emerald-500/40 text-emerald-300">
+                    100% Monitored
+                  </Badge>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left text-slate-300">
+                    <thead className="text-[10px] uppercase font-bold tracking-wider text-slate-400 bg-white/5 border-b border-white/10">
+                      <tr>
+                        <th className="py-3 px-3">District</th>
+                        <th className="py-3 px-3">Geo Area</th>
+                        <th className="py-3 px-3">Forest Cover</th>
+                        <th className="py-3 px-3">Cover %</th>
+                        <th className="py-3 px-3">Very Dense</th>
+                        <th className="py-3 px-3">Mod. Dense</th>
+                        <th className="py-3 px-3">Open Forest</th>
+                        <th className="py-3 px-3">Net Gain</th>
+                        <th className="py-3 px-3">Growing Stock</th>
+                        <th className="py-3 px-3">Carbon</th>
+                        <th className="py-3 px-3">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5 font-mono">
+                      {isfrData.kashmirDivision.districts.map((d, i) => (
+                        <tr key={i} className="hover:bg-white/5 transition-colors">
+                          <td className="py-3 px-3 font-sans font-bold text-white">{d.district}</td>
+                          <td className="py-3 px-3">{d.geoArea} km²</td>
+                          <td className="py-3 px-3 text-emerald-400 font-bold">{d.coverSqKm.toFixed(2)} km²</td>
+                          <td className="py-3 px-3">
+                            <span className={cn(
+                              "px-2 py-0.5 rounded text-[11px] font-bold",
+                              d.percent >= 50 ? "bg-emerald-500/20 text-emerald-300" :
+                              d.percent >= 30 ? "bg-teal-500/20 text-teal-300" :
+                              "bg-amber-500/20 text-amber-300"
+                            )}>
+                              {d.percent.toFixed(2)}%
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-slate-300">{d.vdf.toFixed(2)} km²</td>
+                          <td className="py-3 px-3 text-slate-300">{d.mdf.toFixed(2)} km²</td>
+                          <td className="py-3 px-3 text-slate-300">{d.of.toFixed(2)} km²</td>
+                          <td className="py-3 px-3 text-green-400">+{d.change.toFixed(1)} km²</td>
+                          <td className="py-3 px-3 text-sky-300">{d.growingStock} M m³</td>
+                          <td className="py-3 px-3 text-cyan-300">{d.carbon} Mt</td>
+                          <td className="py-3 px-3 font-sans">
+                            <Badge variant={d.densityClass === 'Very Dense' ? 'success' : d.densityClass === 'Moderately Dense' ? 'info' : 'warning'} size="sm">
+                              {d.densityClass}
+                            </Badge>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+            )}
+
+            {/* Jammu Division Table */}
+            {(selectedScope === 'all' || selectedScope === 'jammu') && (
+              <Card className="glass-intense border-teal-500/20 p-6 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                      <Mountain className="w-5 h-5 text-teal-400" />
+                      Trans-Divisional: Jammu Division (10 Districts)
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Total Geographic Area: 26,293 km² | Total Forest Cover: 12,066.82 km² (45.89%)
+                    </p>
+                  </div>
+                  <Badge variant="outline" className="border-teal-500/40 text-teal-300">
+                    Chenab & Shivalik Belts
+                  </Badge>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {isfrData.jammuDivision.districts.map((d, i) => (
+                    <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-teal-500/30 transition-all">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h4 className="font-bold text-white text-base">{d.district}</h4>
+                          <span className="text-[11px] text-slate-400">Area: {d.geoArea} km²</span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-lg font-black text-teal-300 font-mono">{d.percent.toFixed(1)}%</span>
+                          <div className="text-[10px] text-slate-500 uppercase">Cover</div>
+                        </div>
+                      </div>
+                      <div className="space-y-1.5 text-xs text-slate-300 pt-2 border-t border-white/5 font-mono">
+                        <div className="flex justify-between">
+                          <span className="text-slate-400">Total Cover:</span>
+                          <span className="font-bold text-white">{d.coverSqKm.toFixed(2)} km²</span>
+                        </div>
+                        {d.vdf && (
+                          <div className="flex justify-between text-[11px]">
+                            <span className="text-slate-400">VDF / MDF / OF:</span>
+                            <span>{d.vdf.toFixed(0)} / {d.mdf.toFixed(0)} / {d.of.toFixed(0)} km²</span>
+                          </div>
+                        )}
+                        <p className="text-[11px] text-teal-400/90 font-sans pt-1 line-clamp-2">
+                          {d.primaryType}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            )}
+
+            {/* Ladakh Division Table */}
+            {(selectedScope === 'all' || selectedScope === 'ladakh') && (
+              <Card className="glass-intense border-sky-500/20 p-6 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                      <Compass className="w-5 h-5 text-sky-400" />
+                      Trans-Divisional: Ladakh High-Altitude Cold Arid Forestry (2 Districts)
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Total Area: 59,146 km² | Cold Arid Tree & Riparian Cover: 213.00 km² (0.36%)
+                    </p>
+                  </div>
+                  <Badge variant="outline" className="border-sky-500/40 text-sky-300">
+                    Trans-Himalayan Cold Desert
+                  </Badge>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {isfrData.ladakhDivision.districts.map((d, i) => (
+                    <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h4 className="font-bold text-white text-base">{d.district} District</h4>
+                          <span className="text-[11px] text-slate-400">Geographic Area: {d.geoArea.toLocaleString()} km²</span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-lg font-black text-sky-300 font-mono">{d.coverSqKm.toFixed(1)} km²</span>
+                          <div className="text-[10px] text-slate-500 uppercase">{d.percent}% Cover</div>
+                        </div>
+                      </div>
+                      <p className="text-xs text-slate-300 mt-2 p-2 rounded bg-black/30 border border-white/5">
+                        {d.primaryType}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            )}
+
+            {/* Transboundary: Azad Kashmir & Gilgit-Baltistan */}
+            {(selectedScope === 'all' || selectedScope === 'ajk' || selectedScope === 'gb') && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {(selectedScope === 'all' || selectedScope === 'ajk') && (
+                  <Card className="glass-intense border-emerald-500/20 p-6 space-y-4">
+                    <div className="border-b border-white/10 pb-3">
+                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <Trees className="w-5 h-5 text-emerald-400" />
+                        Transboundary: Azad Kashmir (10 Districts)
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Total Forest Cover: ~4,894.20 km² (42.1% average cover)
+                      </p>
+                    </div>
+                    <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
+                      {isfrData.azadKashmir.districts.map((d, i) => (
+                        <div key={i} className="p-2.5 rounded-lg bg-white/5 border border-white/5 flex items-center justify-between">
+                          <div>
+                            <span className="text-sm font-bold text-white">{d.district}</span>
+                            <p className="text-[10px] text-slate-400">{d.primaryType}</p>
+                          </div>
+                          <div className="text-right font-mono">
+                            <span className="text-xs font-bold text-emerald-300">{d.coverSqKm.toFixed(1)} km²</span>
+                            <span className="text-[10px] text-slate-500 block">{d.percent}%</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                )}
+
+                {(selectedScope === 'all' || selectedScope === 'gb') && (
+                  <Card className="glass-intense border-cyan-500/20 p-6 space-y-4">
+                    <div className="border-b border-white/10 pb-3">
+                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <Mountain className="w-5 h-5 text-cyan-400" />
+                        Transboundary: Gilgit-Baltistan (14 Districts)
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Total Forest Cover: ~3,125.60 km² | Chilgoza Pine, Birch & Juniper
+                      </p>
+                    </div>
+                    <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
+                      {isfrData.gilgitBaltistan.districts.map((d, i) => (
+                        <div key={i} className="p-2.5 rounded-lg bg-white/5 border border-white/5 flex items-center justify-between">
+                          <div>
+                            <span className="text-sm font-bold text-white">{d.district}</span>
+                            <p className="text-[10px] text-slate-400">{d.primaryType}</p>
+                          </div>
+                          <div className="text-right font-mono">
+                            <span className="text-xs font-bold text-cyan-300">{d.coverSqKm.toFixed(1)} km²</span>
+                            <span className="text-[10px] text-slate-500 block">{d.percent}%</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Chinar & Heritage Trees Tab */}
+        {activeTab === 'chinar-heritage' && (
+          <div className="space-y-8 mt-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="outline" className="border-amber-500/30 text-amber-300 bg-amber-500/10">
+                    Platanus orientalis (Boen)
+                  </Badge>
+                  <Badge variant="outline" className="border-red-500/30 text-red-400 bg-red-500/10">
+                    65.6% Decadal Decline Since 1970
+                  </Badge>
+                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
+                    J&K Chinar Preservation Act 1969
+                  </Badge>
+                </div>
+                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                  <TreePine className="w-7 h-7 text-amber-400" />
+                  Chinar Conservation Network (CCN) & Heritage Registry
+                </h2>
+                <p className="text-sm text-slate-400 mt-2 max-w-3xl">
+                  Comprehensive telemetry for Kashmir’s cultural keystone species. Tracking population censuses, ancient champion trees, legal felling prohibitions, and traditional ethnobotanical uses.
+                </p>
+              </div>
+            </div>
+
+            {/* Chinar Census Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { label: 'Active Monitored Trees', value: chinarData.censusMetrics.totalTrees2025.toLocaleString(), color: 'text-amber-400', icon: TreePine },
+                { label: 'Decline Since 1970', value: `-${chinarData.censusMetrics.declinePercentage}%`, color: 'text-red-400', icon: TrendingDown },
+                { label: 'Healthy Canopy Trees', value: chinarData.censusMetrics.healthyTrees.toLocaleString(), color: 'text-emerald-400', icon: CheckCircle2 },
+                { label: 'Semi-Dry (At Risk)', value: chinarData.censusMetrics.semiDryTrees.toLocaleString(), color: 'text-yellow-400', icon: AlertTriangle },
+                { label: 'Dead / Decaying', value: chinarData.censusMetrics.dryDeadTrees.toLocaleString(), color: 'text-rose-500', icon: AlertTriangle },
+                { label: 'Protected Groves', value: chinarData.censusMetrics.protectedHeritageGroves, color: 'text-cyan-400', icon: Shield },
+              ].map((m, idx) => (
+                <Card key={idx} className="glass-intense border-white/10 p-4 text-center">
+                  <m.icon className={cn("w-5 h-5 mx-auto mb-1.5", m.color)} />
+                  <div className="text-xl font-bold text-white tabular-nums">{m.value}</div>
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">{m.label}</div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Decadal Decline & District Census Breakdown */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Decadal Timeline */}
+              <Card className="glass-intense border-amber-500/20 p-6 space-y-4">
+                <div className="border-b border-white/10 pb-3">
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-amber-400" />
+                    55-Year Population Decline Timeline (1970–2025)
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Census records reflect rapid loss from road expansions, urbanization, and illegal ring-barking.
+                  </p>
+                </div>
+                <div className="space-y-3 pt-2">
+                  {chinarData.decadalCensus.map((item, i) => {
+                    const maxCount = 42000;
+                    const pct = (item.count / maxCount) * 100;
+                    return (
+                      <div key={i} className="space-y-1">
+                        <div className="flex justify-between text-xs font-mono">
+                          <span className="font-bold text-white">{item.year}</span>
+                          <span className="text-amber-300 font-bold">{item.count.toLocaleString()} trees</span>
+                        </div>
+                        <div className="w-full bg-slate-900 rounded-full h-2">
+                          <div
+                            className={cn(
+                              "h-2 rounded-full transition-all duration-500",
+                              item.count > 30000 ? "bg-emerald-500" :
+                              item.count > 20000 ? "bg-amber-500" : "bg-red-500"
+                            )}
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                        <p className="text-[10px] text-slate-500 italic">{item.notes}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+
+              {/* District Census Table */}
+              <Card className="glass-intense border-amber-500/20 p-6 space-y-4">
+                <div className="border-b border-white/10 pb-3">
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-amber-400" />
+                    District-by-District Chinar Census Registry
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Anantnag holds the valley's highest surviving population (39.4%).
+                  </p>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left text-slate-300 font-mono">
+                    <thead className="text-[10px] uppercase font-bold text-slate-400 bg-white/5 border-b border-white/10">
+                      <tr>
+                        <th className="py-2.5 px-2">District</th>
+                        <th className="py-2.5 px-2 text-green-400">Green</th>
+                        <th className="py-2.5 px-2 text-amber-400">Semi-Dry</th>
+                        <th className="py-2.5 px-2 text-rose-400">Dry</th>
+                        <th className="py-2.5 px-2 text-white">Total</th>
+                        <th className="py-2.5 px-2">Valley Share</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5">
+                      {chinarData.districtCensus.map((d, i) => (
+                        <tr key={i} className="hover:bg-white/5">
+                          <td className="py-2.5 px-2 font-sans font-bold text-white">{d.district}</td>
+                          <td className="py-2.5 px-2 text-green-300">{d.green.toLocaleString()}</td>
+                          <td className="py-2.5 px-2 text-amber-300">{d.semiDry}</td>
+                          <td className="py-2.5 px-2 text-rose-400">{d.dry}</td>
+                          <td className="py-2.5 px-2 font-bold text-white">{d.total.toLocaleString()}</td>
+                          <td className="py-2.5 px-2 text-slate-400">{d.percent}%</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+            </div>
+
+            {/* Notable Ancient Champion Trees */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Award className="w-5 h-5 text-amber-400" />
+                Historic Champion & Ancient Trees Gallery
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {chinarData.notableHeritageTrees.map(tree => (
+                  <Card key={tree.id} className="glass-intense border-white/10 p-5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <Badge variant="outline" className="border-amber-500/30 text-amber-300 text-[10px]">
+                          {tree.age} Years Old
+                        </Badge>
+                        <Badge variant={tree.status === 'healthy' ? 'success' : 'warning'} size="sm">
+                          {tree.status}
+                        </Badge>
+                      </div>
+                      <h4 className="font-bold text-white text-base mb-1">{tree.location}</h4>
+                      <p className="text-xs text-slate-400 mb-3">{tree.significance}</p>
+                    </div>
+
+                    <div className="pt-3 border-t border-white/5 space-y-1 text-xs text-slate-400 font-mono">
+                      <div className="flex justify-between">
+                        <span>Girth (Ground):</span>
+                        <span className="text-white font-bold">{tree.girthMeters} m</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Planted In:</span>
+                        <span className="text-amber-300">{tree.yearPlanted} AD</span>
+                      </div>
+                      <div className="flex justify-between text-[11px] truncate">
+                        <span>Patron:</span>
+                        <span className="text-slate-300 truncate">{tree.plantedBy}</span>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Ethnobotanical & Cultural Heritage Card */}
+            <Card className="glass-intense border-white/10 p-6 bg-gradient-to-br from-amber-950/20 to-slate-900">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                <div className="lg:col-span-2 space-y-3">
+                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-400" />
+                    Ethnobotany: Kangri Charcoal & Village Sanctuaries
+                  </h3>
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    Beyond its monumental presence, the fallen autumnal foliage of the Chinar is harvested annually across Kashmir to make <strong className="text-amber-300">Pane Chinni</strong> (smoldering Chinar leaf charcoal). This charcoal provides the long-lasting, steady heat required for the traditional Kashmiri <em>Kangri</em> (wicker-encased terracotta firepot), remaining central to winter survival.
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    {chinarData.speciesInfo.legalProtection}
+                  </p>
+                </div>
+                <div className="space-y-2 p-4 rounded-xl bg-black/40 border border-white/5 text-xs text-slate-300">
+                  <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Species Specs</div>
+                  <div className="flex justify-between"><span className="text-slate-400">Botanical:</span><span className="italic text-white font-mono">{chinarData.speciesInfo.botanicalName}</span></div>
+                  <div className="flex justify-between"><span className="text-slate-400">Kashmiri:</span><span className="text-amber-300 font-bold">{chinarData.speciesInfo.localNames.kashmiri}</span></div>
+                  <div className="flex justify-between"><span className="text-slate-400">Max Height:</span><span className="text-white font-mono">{chinarData.speciesInfo.maxHeight}</span></div>
+                  <div className="flex justify-between"><span className="text-slate-400">Max Girth:</span><span className="text-white font-mono">{chinarData.speciesInfo.maxGirthRecorded}</span></div>
+                  <div className="flex justify-between"><span className="text-slate-400">Oldest Tree:</span><span className="text-white font-mono">{chinarData.speciesInfo.oldestRecordedAge}</span></div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        )}
+
+        {/* Non-Timber Forest Products (NTFP) Tab */}
+        {activeTab === 'ntfp-ethnobotany' && (
+          <div className="space-y-8 mt-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
+                    NTFP Telemetry
+                  </Badge>
+                  <Badge variant="outline" className="border-teal-500/30 text-teal-300 bg-teal-500/10">
+                    Sustainable Livelihoods & Ethnobotany
+                  </Badge>
+                </div>
+                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                  <Sprout className="w-7 h-7 text-emerald-400" />
+                  Non-Timber Forest Products (NTFP) & High-Altitude Flora
+                </h2>
+                <p className="text-sm text-slate-400 mt-2 max-w-3xl">
+                  Inventory of high-value wild edible fungi, medicinal rhizomes, and essential biochemical precursors harvested across Western Himalayan temperate and subalpine forest biomes.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ntfpData.map(item => (
+                <Card key={item.id} className="glass-intense border-white/10 p-5 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+                        {item.category}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mt-2">{item.name}</h3>
+                    <p className="text-xs italic text-emerald-400/80 mb-3">{item.scientificName}</p>
+                    
+                    <div className="space-y-2 text-xs text-slate-300 mb-4">
+                      <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
+                        <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1">Microhabitat</span>
+                        <p>{item.habitat}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/5 space-y-1.5 text-xs">
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Harvest Window:</span>
+                      <span className="text-amber-300 font-semibold">{item.harvestWindow}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Commercial Value:</span>
+                      <span className="text-cyan-300 font-mono font-medium">{item.marketValue}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Key Strongholds:</span>
+                      <span className="text-white font-medium truncate max-w-[170px]">{item.keyDistricts.join(', ')}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 italic pt-1 border-t border-white/5">
+                      {item.conservationStatus}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Regional Scope Comparison Tab */}
+        {activeTab === 'scope-comparison' && (
+          <div className="space-y-8 mt-4">
+            <div>
+              <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                <Scale className="w-7 h-7 text-emerald-400" />
+                Cross-Scope Regional Forest Intelligence
+              </h2>
+              <p className="text-sm text-slate-400 mt-2 max-w-3xl">
+                Comparative ecological audit evaluating forest cover percentages, biomass density, biome taxonomy, and disturbance indicators across all five administrative divisions.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  scope: 'Kashmir Core',
+                  subtitle: '10 Districts • Jhelum Basin',
+                  coverSqKm: '6,378 km²',
+                  percent: '41.4%',
+                  density: 'Very Dense / Moderately Dense Conifers',
+                  dominantTrees: 'Deodar, Kail, Silver Fir, Spruce, Chinar, Walnut',
+                  wildlife: 'Hangul, Kashmir Musk Deer, Black Bear',
+                  threats: 'Urban sprawl, high tourism corridors, timber smuggling',
+                  carbonIndex: '111 Mt C'
+                },
+                {
+                  scope: 'Jammu Division',
+                  subtitle: '10 Districts • Chenab & Shivalik Basins',
+                  coverSqKm: '12,067 km²',
+                  percent: '45.9%',
+                  density: 'Subtropical Pine to Moist Temperate Deodar Climax',
+                  dominantTrees: 'Chir Pine, Ban Oak, Deodar (Bhadarwah), Brown Oak',
+                  wildlife: 'Common Leopard, Barking Deer, Kalij Pheasant',
+                  threats: 'Pre-monsoon forest fires, slope instability, grazing pressure',
+                  carbonIndex: '190 Mt C'
+                },
+                {
+                  scope: 'Ladakh Division',
+                  subtitle: '2 Districts • Indus & Suru Basins',
+                  coverSqKm: '213 km²',
+                  percent: '0.36%',
+                  density: 'Cold Desert Riparian Oasis & Dwarf Scrub',
+                  dominantTrees: 'White Willow, Poplar, Seabuckthorn, Himalayan Juniper',
+                  wildlife: 'Snow Leopard, Tibetan Wolf, Himalayan Ibex',
+                  threats: 'Hyper-aridity, flash floods, fragile scree slopes',
+                  carbonIndex: '4 Mt C'
+                },
+                {
+                  scope: 'Azad Kashmir',
+                  subtitle: '10 Districts • Neelum & Jhelum Basins',
+                  coverSqKm: '4,894 km²',
+                  percent: '42.1%',
+                  density: 'Moist Temperate Fir-Deodar & Subtropical Pine',
+                  dominantTrees: 'Silver Fir, Kail, Deodar, Banj Oak, Chir Pine',
+                  wildlife: 'Western Tragopan, Musk Deer, Common Leopard',
+                  threats: 'Steep terrain erosion, commercial timber extraction',
+                  carbonIndex: '85 Mt C'
+                },
+                {
+                  scope: 'Gilgit-Baltistan',
+                  subtitle: '14 Districts • Karakoram & Upper Indus',
+                  coverSqKm: '3,126 km²',
+                  percent: '4.3%',
+                  density: 'Dry Temperate Chilgoza & Subalpine Birch',
+                  dominantTrees: 'Chilgoza Pine, Deodar, Himalayan Birch, Juniper',
+                  wildlife: 'Markhor, Snow Leopard, Brown Bear',
+                  threats: 'Aridity, illegal logging in Diamer, climate warming',
+                  carbonIndex: '52 Mt C'
+                }
+              ].map((card, i) => (
+                <Card key={i} className="glass-intense border-white/10 p-6 space-y-4 hover:border-emerald-500/40 transition-all">
+                  <div className="border-b border-white/10 pb-3">
+                    <span className="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">{card.subtitle}</span>
+                    <h3 className="text-xl font-bold text-white mt-1">{card.scope}</h3>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 font-mono">
+                    <div className="p-3 rounded-lg bg-white/5 border border-white/5">
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wide block">Forest Area</span>
+                      <span className="text-base font-bold text-white">{card.coverSqKm}</span>
+                    </div>
+                    <div className="p-3 rounded-lg bg-white/5 border border-white/5">
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wide block">Cover %</span>
+                      <span className="text-base font-bold text-emerald-400">{card.percent}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 text-xs text-slate-300">
+                    <div>
+                      <span className="text-slate-400 text-[10px] uppercase tracking-wide block">Dominant Trees:</span>
+                      <span className="text-white font-medium">{card.dominantTrees}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-400 text-[10px] uppercase tracking-wide block">Key Wildlife:</span>
+                      <span className="text-slate-300">{card.wildlife}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-400 text-[10px] uppercase tracking-wide block">Key Threat Profile:</span>
+                      <span className="text-amber-400">{card.threats}</span>
+                    </div>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
         )}
@@ -561,15 +1387,22 @@ export default function ForestEcosystemsPage() {
                 <Card key={tree.id} className="glass-intense border-white/10 p-5 hover:border-emerald-500/50 transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="text-lg font-bold text-white">{tree.commonName}</h3>
-                      <p className="text-xs italic text-emerald-400/70">{tree.scientificName}</p>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg font-bold text-white">{tree.commonName}</h3>
+                        {(tree as any).localName && (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+                            {(tree as any).localName}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs italic text-emerald-400/80 mt-0.5">{tree.scientificName}</p>
                     </div>
                     <Badge variant={tree.iucnStatus === 'LC' ? 'success' : tree.iucnStatus === 'NT' ? 'warning' : 'danger'} size="sm">
                       {tree.iucnStatus}
                     </Badge>
                   </div>
-                  <p className="text-sm text-slate-300 mt-4 mb-4 line-clamp-3">{tree.ecologicalImportance}</p>
-                  <div className="text-xs text-slate-500 bg-white/5 p-3 rounded flex flex-col gap-2">
+                  <p className="text-sm text-slate-300 mt-3 mb-4 line-clamp-3">{tree.ecologicalImportance}</p>
+                  <div className="text-xs text-slate-500 bg-white/5 p-3 rounded-xl flex flex-col gap-2 border border-white/5">
                     <div className="flex justify-between">
                       <span className="text-slate-400 uppercase tracking-wide text-[10px]">Elevation Range</span>
                       <span className="font-mono text-emerald-400">{tree.elevation.min}m - {tree.elevation.max}m</span>
@@ -578,9 +1411,21 @@ export default function ForestEcosystemsPage() {
                       <span className="text-slate-400 uppercase tracking-wide text-[10px]">Family</span>
                       <span className="text-white">{tree.family}</span>
                     </div>
+                    {(tree as any).carbonSequestrationRate && (
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 uppercase tracking-wide text-[10px]">Carbon Sequestration</span>
+                        <span className="font-mono text-cyan-400">{(tree as any).carbonSequestrationRate}</span>
+                      </div>
+                    )}
+                    {(tree as any).keyDistricts && (
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 uppercase tracking-wide text-[10px]">Key Strongholds</span>
+                        <span className="text-white text-right max-w-[170px] truncate">{(tree as any).keyDistricts.join(', ')}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between mt-1 pt-2 border-t border-white/5">
                       <span className="text-slate-400 uppercase tracking-wide text-[10px]">Ecosystem Links</span>
-                      <span className="text-white text-right max-w-[150px] truncate">{tree.associatedForestTypes.join(', ')}</span>
+                      <span className="text-slate-300 text-right max-w-[150px] truncate">{tree.associatedForestTypes.join(', ')}</span>
                     </div>
                   </div>
                 </Card>
@@ -1015,18 +1860,10 @@ export default function ForestEcosystemsPage() {
                 const themeColor = isCritical ? 'rose-500' : isHigh ? 'orange-500' : isMed ? 'amber-500' : 'emerald-500';
                 const bgGradient = isCritical ? 'from-[#2a0f0f] to-[#1a0f0f]' : isHigh ? 'from-[#2a1a0f] to-[#1a120f]' : 'from-[#1a1a0f] to-[#0f0f0f]';
                 
-                // Deterministic generation of specific disturbance vectors based on geography
-                const vectors: string[] = [];
-                const name = f.District_Name;
-                if (['Srinagar', 'Jammu', 'Mirpur'].includes(name)) vectors.push('Urban Encroachment', 'Waste Pollution');
-                if (['Kupwara', 'Bandipora', 'Poonch', 'Neelum'].includes(name)) vectors.push('Military Infrastructure', 'Timber Smuggling');
-                if (['Shopian', 'Pulwama', 'Kulgam'].includes(name)) vectors.push('Agricultural Expansion (Orchards)', 'Pesticide Runoff');
-                if (['Kishtwar', 'Doda', 'Reasi'].includes(name)) vectors.push('Hydroelectric Projects', 'Road Expansion');
-                if (['Leh', 'Kargil', 'Gilgit', 'Skardu'].includes(name)) vectors.push('Unregulated Tourism', 'Overgrazing');
-                if (vectors.length === 0) vectors.push('Illegal Logging', 'Nomadic Pastoralism');
-
-                // Generate an "Impact Score" mathematically
-                const impactScore = isCritical ? Math.floor(Math.random() * 15) + 85 : isHigh ? Math.floor(Math.random() * 15) + 70 : isMed ? Math.floor(Math.random() * 20) + 40 : Math.floor(Math.random() * 20) + 10;
+                const vectors: string[] = f.Disturbance_Vectors && f.Disturbance_Vectors.length > 0
+                  ? f.Disturbance_Vectors 
+                  : ['Livestock Grazing', 'Fuelwood Lopping'];
+                const impactScore = f.Disturbance_Score ?? (isCritical ? 85 : isHigh ? 72 : isMed ? 52 : 25);
 
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
@@ -1828,11 +2665,8 @@ export default function ForestEcosystemsPage() {
                 const themeColor = isGood ? 'emerald-500' : isMod ? 'amber-400' : 'rose-500';
                 const bgGradient = isGood ? 'from-[#0a1a0f] to-[#050f0a]' : isMod ? 'from-[#1f1a0a] to-[#0f0d05]' : 'from-[#1a0505] to-[#0a0202]';
 
-                // Algorithmic seedling density (seedlings per hectare)
-                const density = isGood ? Math.floor(Math.random() * 5000) + 4000 : isMod ? Math.floor(Math.random() * 2000) + 1500 : Math.floor(Math.random() * 800) + 200;
-                
-                // Recruitment rate (saplings surviving to tree class)
-                const recruitment = isGood ? (Math.random() * 15 + 40).toFixed(1) : isMod ? (Math.random() * 15 + 20).toFixed(1) : (Math.random() * 10 + 5).toFixed(1);
+                const density = f.Seedling_Density_Per_Ha ?? (isGood ? 3500 : isMod ? 1800 : 500);
+                const recruitment = f.Sapling_Recruitment_Rate ?? (isGood ? 52 : isMod ? 32 : 15);
 
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors relative overflow-hidden group`}>

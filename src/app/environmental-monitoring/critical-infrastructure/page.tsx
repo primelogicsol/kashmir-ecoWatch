@@ -7,10 +7,11 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
-import { Building2, Activity, MapPin, AlertTriangle, Shield, CheckCircle, Info, Settings, Trash2, Droplet, Zap } from 'lucide-react';
+import { Building2, Activity, FlaskConical, MapPin, AlertTriangle, Shield, CheckCircle, Info, Settings, Trash2, Droplet, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { infrastructureData, InfrastructureRecord } from '@/data/critical-infrastructure';
@@ -188,6 +189,7 @@ export default function CriticalInfrastructurePage() {
 
   const [assetFilter, setAssetFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
@@ -296,6 +298,126 @@ export default function CriticalInfrastructurePage() {
           }}
         />
       </div>
+
+      
+      {/* ── Critical Infrastructure Typologies & Citizen Field Protocols ──── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Critical Infrastructure Typologies & Asset Resilience"
+          typologySubtitle="Select an infrastructure category, flood protection barrier, or vulnerability tier across Kashmir's lifeline systems."
+          typologyIcon={Building2}
+          typologies={[
+            { id: 'all', label: 'All Lifeline Assets', count: infrastructureData.length, icon: Building2, color: 'emerald' },
+            { id: 'critical', label: 'Critical / High Exposure', count: infrastructureData.filter(d => d.priority_level === 'Critical' || d.risk_exposure.includes('Critical') || d.risk_exposure.includes('High')).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'water', label: 'Potable WTPs & Reservoirs', count: infrastructureData.filter(d => d.asset_type.toLowerCase().includes('water') || d.asset_type.toLowerCase().includes('reservoir') || d.asset_type.toLowerCase().includes('wtp')).length, icon: Droplet, color: 'cyan' },
+            { id: 'flood', label: 'Flood Spillways & Embankments', count: infrastructureData.filter(d => d.asset_type.toLowerCase().includes('flood') || d.asset_type.toLowerCase().includes('drain') || d.asset_type.toLowerCase().includes('spill') || d.asset_type.toLowerCase().includes('bund')).length, icon: Shield, color: 'sky' },
+            { id: 'waste', label: 'Waste Transfer & Landfills', count: infrastructureData.filter(d => d.asset_type.toLowerCase().includes('waste') || d.asset_type.toLowerCase().includes('landfill') || d.asset_type.toLowerCase().includes('transfer')).length, icon: Trash2, color: 'amber' },
+            { id: 'hydro', label: 'Dams & Hydropower Basins', count: infrastructureData.filter(d => d.asset_type.toLowerCase().includes('dam') || d.asset_type.toLowerCase().includes('power') || d.asset_type.toLowerCase().includes('hydro')).length, icon: Zap, color: 'violet' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={infrastructureData.length}
+          entityLabel="monitored assets"
+          spotlightTitle="Lifeline Asset Hardening & Urban Flood Defense Infrastructure"
+          spotlightSubtitle="Geo-inventory of critical water treatment plants, flood spill gates, wastewater pump stations, and mountain highway lifelines."
+          tabs={[
+            {
+              id: 'flood-spill',
+              label: 'Flood Spill Channel & Bund Defense Infrastructure',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-sky-500/20">
+                    <span className="text-xs font-bold text-sky-400 block mb-1">Primary Bypass Lifeline</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Padshahi Bagh Spill Channel Head</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Engineered to divert up to 17,000 cusecs excess flood discharge from River Jhelum around Srinagar city limits into Wular Lake via Hokersar wetland.
+                    </p>
+                    <div className="text-[11px] text-sky-300 font-mono">Current Safe Discharge: 12,500 cusecs</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Urban Drainage Hubs</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">High-Capacity Stormwater Pump Stations</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Over 84 dewatering stations in Srinagar (Bemina, Kursu, Dalgate, Shalteng) provide mechanical discharge into River Jhelum during high river stage conditions.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Pumping Reliability: 99.4% dual diesel backup</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Mountain Corridors</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">NH-44 &amp; Z-Morh Lifeline Tunnels</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      All-weather road connectivity through avalanche and landslide corridors. Protected with specialized rockfall barriers, avalanche sheds, and subsurface drainage conduits.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Corridor Clearance: 24/7 winter snowcutter deployment</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'wtp-stp',
+              label: 'Treatment Plants & Energy Backups',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Potable Water Treatment Redundancy</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Critical WTPs (Rangil, Kralpora, Alasteng, Nishat) maintain automated backwash cycles and reserve chemical stores to withstand high-turbidity glacial snowmelt events.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Standard: Central Public Health &amp; Environmental Engineering Org</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Substation &amp; Generator Resilience</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Dedicated 33kV express electrical feeders connect essential hospital facilities, municipal pumping stations, and cryogenic oxygen plants to prevent freeze-thaw blackout disruptions.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Uptime SLA: 99.9% emergency dual-grid feed</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="infrastructure"
+          observeTitle="Citizen Lifeline Infrastructure Watch &amp; Hazard Reporting"
+          observeSubtitle="Inspect river embankments for cracks, report stormwater pumping failures, or flag infrastructure encroachments."
+          observeBadge="Lifeline Protection Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Embankment & Bund Crack Inspection',
+              desc: 'Photograph slumping, tension cracks, or animal burrowing along River Jhelum flood protection earthen bunds.',
+              benchmark: 'Central Water Commission Dam & Bund Safety Code',
+              icon: Shield,
+              color: 'sky',
+            },
+            {
+              number: '2',
+              title: 'Stormwater Dewatering Station Status',
+              desc: 'Verify if local neighborhood dewatering pumps are operational during seasonal inundation and cloudbursts.',
+              benchmark: 'Urban Flood Disaster Management Guidelines (NDMA)',
+              icon: Droplet,
+              color: 'cyan',
+            },
+            {
+              number: '3',
+              title: 'WTP Chemical Coagulant & Chlorination Dosing',
+              desc: 'Inspect municipal treatment plants for adequate alum and chlorine supply reserves during winter access isolation.',
+              benchmark: 'PHE Infrastructure Operating Manual',
+              icon: FlaskConical,
+              color: 'teal',
+            },
+            {
+              number: '4',
+              title: 'Buffer Zone & Floodplain Encroachment',
+              desc: 'Log unauthorized concrete construction within 100 meters of riverbanks, canals, and flood retention wetlands.',
+              benchmark: 'J&K Water Resources Regulation & Management Act 2010',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow

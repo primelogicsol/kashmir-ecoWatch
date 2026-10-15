@@ -61,14 +61,15 @@ export interface WaterQualityData {
   nitrates?: number; // mg/L
   phosphates?: number; // mg/L
   biologicalOxygenDemand?: number; // mg/L
+  chemicalOxygenDemand?: number; // mg/L
   totalDissolvedSolids?: number; // mg/L
   fecalColiform?: number; // CFU/100mL
   lastTested: string;
   status: 'excellent' | 'good' | 'moderate' | 'poor' | 'critical' | 'data-deficient';
   trends?: {
-    pH: 'improving' | 'stable' | 'declining';
-    dissolvedOxygen: 'improving' | 'stable' | 'declining';
-    turbidity: 'improving' | 'stable' | 'declining';
+    pH: 'improving' | 'stable' | 'declining' | 'increasing' | (string & {});
+    dissolvedOxygen: 'improving' | 'stable' | 'declining' | 'increasing' | (string & {});
+    turbidity: 'improving' | 'stable' | 'declining' | 'increasing' | (string & {});
   };
 }
 
@@ -77,10 +78,10 @@ export interface HydrologicalData {
   discharge?: number; // million m³/year
   rechargeRate?: number; // mm/year
   waterLevel?: number; // meters
-  seasonalVariation: 'perennial' | 'seasonal' | 'intermittent';
-  source: 'glacial' | 'rainfall' | 'groundwater' | 'mixed';
+  seasonalVariation: 'perennial' | 'seasonal' | 'intermittent' | (string & {});
+  source: 'glacial' | 'rainfall' | 'groundwater' | 'mixed' | (string & {});
   drainageArea?: number; // km²
-  floodRisk: 'low' | 'moderate' | 'high' | 'critical';
+  floodRisk?: 'low' | 'moderate' | 'high' | 'critical';
 }
 
 export interface FisheryData {
@@ -133,8 +134,6 @@ export const lakesData: WaterEntity[] = [
     category: "Urban Lake",
     description: "Iconic urban lake and second largest in J&K. Famous for houseboats, shikaras, and floating gardens. Critical for tourism, fisheries, and local livelihoods.",
     district: "Srinagar",
-    region: "Kashmir Core",
-    region: "Kashmir Core",
     region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 18,
@@ -199,8 +198,6 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "Largest freshwater lake in South Asia. Ramsar site of international importance. Critical for flood regulation, fisheries, and migratory waterfowl.",
     district: "Bandipora",
-    region: "Kashmir Core",
-    region: "Kashmir Core",
     region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 189,
@@ -328,10 +325,6 @@ export const lakesData: WaterEntity[] = [
     description: "Deepest lake in Kashmir Valley. Important for lotus cultivation, fisheries, and wintering waterfowl. Surrounded by Mughal gardens.",
     district: "Ganderbal",
     region: "Kashmir Core",
-    region: "Kashmir Core",
-    region: "Kashmir Core",
-    region: "Kashmir Core",
-    region: "Kashmir Core",
     watershed: "Jhelum Basin",
     area: 2.8,
     elevation: 1583,
@@ -451,7 +444,6 @@ export const lakesData: WaterEntity[] = [
     category: "Alpine Lake",
     description: "Stunning alpine lake in Lidder Valley. Popular trekking destination. Part of twin lake system with Marsar. Critical for local hydrology.",
     district: "Anantnag",
-    region: "Kashmir Core",
     region: "Kashmir Core",
     watershed: "Lidder Basin",
     area: 0.5,
@@ -921,7 +913,6 @@ export const lakesData: WaterEntity[] = [
     category: "Ramsar Lake",
     description: "A pristine high-altitude lake in the Changthang plateau of Ladakh. Designated as a Ramsar site in 2002. Crucial breeding site for the endangered black-necked crane and bar-headed goose.",
     district: "Leh",
-    region: "Ladakh",
     region: "Ladakh",
     watershed: "Tso Moriri Watershed",
     area: 120,
@@ -38300,1015 +38291,1943 @@ export const waterQualitySites: WaterEntity[] = [
 
 export const fisheriesData: WaterEntity[] = [
   {
-    id: 'fishery-dal-lake',
-    slug: 'fishery-dal-lake',
-    name: 'Dal Lake Fisheries',
-    type: 'fishery',
-    category: 'Lake Fisheries',
-    description: 'Traditional lake fisheries supporting local communities. Common carp, grass carp, and snow trout. High production but facing eutrophication challenges.',
-    district: 'Srinagar',
-    watershed: 'Jhelum Basin',
-    elevation: 1580,
-    coordinates: { lat: 34.1150, lng: 74.8290 },
-    fisheryData: {
-      fishSpecies: ['common-carp', 'grass-carp', 'snow-trout', 'schizothorax'],
-      fisheryType: 'managed',
-      productivity: 'high',
-      fishingSeason: 'year-round',
-      permits: true,
-      conservationMeasures: ['catch-limits', 'closed-season', 'stock-enhancement']
-    },
-    waterQuality: {
-      pH: 7.2,
-      dissolvedOxygen: 6.8,
-      turbidity: 12,
-      lastTested: '2026-03-15',
-      status: 'moderate'
-    },
-    threats: ['eutrophication', 'overfishing', 'invasive-species', 'pollution'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-03-26T07:00:00Z',
-  },
-  {
-    id: 'fishery-wular-lake',
-    slug: 'fishery-wular-lake',
-    name: 'Wular Lake Fisheries',
-    type: 'fishery',
-    category: 'Lake Fisheries',
-    description: 'Largest fishery in Kashmir. Supports thousands of fishermen. Native schizothorax and introduced carp species.',
-    district: 'Bandipora',
-    watershed: 'Jhelum Basin',
-    elevation: 1580,
-    coordinates: { lat: 34.4167, lng: 74.6333 },
-    fisheryData: {
-      fishSpecies: ['schizothorax', 'common-carp', 'grass-carp', 'silver-carp'],
-      fisheryType: 'wild',
-      productivity: 'high',
-      fishingSeason: 'year-round',
-      permits: true,
-      conservationMeasures: ['mesh-size-regulation', 'closed-season', 'habitat-protection']
-    },
-    waterQuality: {
-      pH: 7.6,
-      dissolvedOxygen: 7.8,
-      turbidity: 8,
-      lastTested: '2026-03-10',
-      status: 'good'
-    },
-    threats: ['siltation', 'overfishing', 'invasive-species'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-03-25T10:00:00Z',
-  },
-  {
-    id: 'fishery-kokernag-trout',
-    slug: 'fishery-kokernag-trout',
-    name: 'Kokernag Trout Fishery',
-    type: 'fishery',
-    category: 'Trout Fishery',
-    description: 'Premier trout fishery. Brown and rainbow trout. Managed by fisheries department. High economic value.',
-    district: 'Anantnag',
-    watershed: 'Lidder Basin',
-    elevation: 1900,
-    coordinates: { lat: 33.8833, lng: 75.2500 },
-    fisheryData: {
-      fishSpecies: ['brown-trout', 'rainbow-trout'],
-      fisheryType: 'managed',
-      productivity: 'high',
-      fishingSeason: 'March-October',
-      permits: true,
-      conservationMeasures: ['catch-and-release', 'size-limits', 'stocking']
-    },
-    waterQuality: {
-      pH: 7.6,
-      dissolvedOxygen: 9.5,
-      turbidity: 2,
-      lastTested: '2026-03-18',
-      status: 'excellent'
-    },
-    threats: ['disease-outbreaks', 'climate-change', 'water-temperature-rise'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-05T00:00:00Z',
-    updatedAt: '2026-03-22T10:00:00Z',
-  },
-  {
-    id: 'fishery-lidder-river',
-    slug: 'fishery-lidder-river',
-    name: 'Lidder River Trout Fishery',
-    type: 'fishery',
-    category: 'River Fishery',
-    description: 'Wild trout fishery in Lidder River. Popular for sport fishing. Brown and rainbow trout populations.',
-    district: 'Anantnag',
-    watershed: 'Lidder Basin',
-    elevation: 2200,
-    coordinates: { lat: 33.9500, lng: 75.1500 },
-    fisheryData: {
-      fishSpecies: ['brown-trout', 'rainbow-trout', 'snow-trout'],
-      fisheryType: 'wild',
-      productivity: 'moderate',
-      fishingSeason: 'April-October',
-      permits: true,
-      conservationMeasures: ['catch-limits', 'size-limits', 'barbless-hooks']
-    },
-    waterQuality: {
-      pH: 7.5,
-      dissolvedOxygen: 8.0,
-      turbidity: 8,
-      lastTested: '2026-03-17',
-      status: 'good'
-    },
-    threats: ['overfishing', 'tourism-pressure', 'pollution'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-08T00:00:00Z',
-    updatedAt: '2026-03-19T11:00:00Z',
-  },
-  {
-    id: 'fishery-jhelum-river',
-    slug: 'fishery-jhelum-river',
-    name: 'Jhelum River Fishery',
-    type: 'fishery',
-    category: 'River Fishery',
-    description: 'Traditional river fishery. Native schizothorax and carp. Declining catches due to pollution and flow regulation.',
-    district: 'Multiple',
-    watershed: 'Jhelum Basin',
-    elevation: 1580,
-    coordinates: { lat: 34.0833, lng: 74.8000 },
-    fisheryData: {
-      fishSpecies: ['schizothorax', 'common-carp', 'snow-trout'],
-      fisheryType: 'wild',
-      productivity: 'low',
-      fishingSeason: 'year-round',
-      permits: true,
-      conservationMeasures: ['closed-season', 'mesh-regulation']
-    },
-    waterQuality: {
-      pH: 7.4,
-      dissolvedOxygen: 7.5,
-      turbidity: 15,
-      lastTested: '2026-03-20',
-      status: 'moderate'
-    },
-    threats: ['pollution', 'overfishing', 'flow-regulation', 'sand-mining'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-10T00:00:00Z',
-    updatedAt: '2026-03-25T08:00:00Z',
-  },
-  {
-    id: 'fishery-manasbal-lake',
-    slug: 'fishery-manasbal-lake',
-    name: 'Manasbal Lake Fishery',
-    type: 'fishery',
-    category: 'Lake Fisheries',
-    description: 'Small but productive fishery. Known for lotus root and fisheries. Good water quality supports healthy fish populations.',
-    district: 'Ganderbal',
-    watershed: 'Jhelum Basin',
-    elevation: 1580,
-    coordinates: { lat: 34.1667, lng: 74.7167 },
-    fisheryData: {
-      fishSpecies: ['common-carp', 'grass-carp', 'snow-trout'],
-      fisheryType: 'managed',
-      productivity: 'moderate',
-      fishingSeason: 'year-round',
-      permits: true,
-      conservationMeasures: ['stocking', 'predator-control']
-    },
-    waterQuality: {
-      pH: 7.8,
-      dissolvedOxygen: 8.2,
-      turbidity: 4,
-      lastTested: '2026-03-12',
-      status: 'good'
-    },
-    threats: ['tourism-pressure', 'invasive-species'],
-    verificationStatus: 'verified',
-    createdAt: '2026-01-12T00:00:00Z',
-    updatedAt: '2026-03-22T09:00:00Z',
-  },
-  {
-    "id": "fishery-lidder-upper-pahalgam",
-    "slug": "fishery-lidder-upper-pahalgam",
-    "name": "Lidder River Upper Trout Beat — Laripora to Batakote",
-    "type": "fishery",
+    "id": "fishery-lidder-laripora-pahalgam",
+    "slug": "fishery-lidder-laripora-pahalgam",
+    "name": "Lidder River Upper Trout Beat — Laripora to Pahalgam Club",
     "category": "Trout Stream / Beat",
-    "description": "World-renowned fast-flowing glacier-fed brown and rainbow trout angling stream. Monitored angling beats with strict catch-and-release rules and dry fly fishing regulations.",
+    "description": "World-renowned fast-flowing glacier-fed trout beat on the Lidder River. Cobble and boulder riffles provide ideal oxygenation for wild brown trout and rainbow trout. Managed under strict fly-fishing angling regulations with single barbless hook rules.",
     "district": "Anantnag",
     "watershed": "Lidder Basin",
-    "elevation": 2130,
+    "elevation": 2150,
     "coordinates": {
-      "lat": 34.0212,
-      "lng": 75.3189
+      "lat": 34.021,
+      "lng": 75.326
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout",
-        "schizothorax-plagiostomus"
+        "schizothorax-plagiostomus",
+        "gammarus-pulex",
+        "triplophysa-kashmirensis"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "april-to-october",
+      "fishingSeason": "April-September",
       "permits": true,
       "conservationMeasures": [
-        "dry-fly-only",
-        "bag-limits",
-        "spawning-gravel-protection",
-        "anti-poaching-watch"
+        "catch-and-release-zones",
+        "barbless-single-hook-only",
+        "daily-bag-limits",
+        "anti-poaching-patrols"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
       "dissolvedOxygen": 9.8,
-      "turbidity": 3.5,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "turbidity": 2.1,
+      "temperature": 9.2,
+      "status": "excellent",
+      "lastTested": "2026-05-18"
     },
-    "threats": [
-      "tourist-riverbed-trampling",
-      "gravel-extraction",
-      "water-temperature-rise"
+    "hydrologicalData": {
+      "flowRate": 16.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Schizothorax plagiostomus",
+      "Lutra lutra",
+      "Baetis rhodani",
+      "Ecdyonurus venosus"
     ],
+    "threats": [
+      "tourist-riverbank-encroachment",
+      "hotel-sewage-discharge",
+      "plastic-litter-in-pools"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-sind-river-kangan",
-    "slug": "fishery-sind-river-kangan",
-    "name": "Sind River Trout Sanctuary — Wayil to Sonamarg",
-    "type": "fishery",
+    "id": "fishery-lidder-batakote-langabal",
+    "slug": "fishery-lidder-batakote-langabal",
+    "name": "Lidder River Middle Trout Beat — Batakote to Langabal",
     "category": "Trout Stream / Beat",
-    "description": "Premier high-gradient mountain river fishery flowing from the Zoji La and Harmukh glaciers. Prime habitat for trophy wild brown trout and endemic torrent loaches.",
-    "district": "Ganderbal",
-    "watershed": "Sind Basin",
-    "elevation": 1850,
+    "description": "Expansive gravel-and-cobble riffle-pool complex on the middle Lidder. Highly productive for dry-fly and nymph angling. Natural nursery zone where juvenile trouts feed heavily on stonefly and caddisfly nymphs.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 1980,
     "coordinates": {
-      "lat": 34.2654,
-      "lng": 74.9012
+      "lat": 33.965,
+      "lng": 75.289
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout",
-        "triplophysa-kashmirensis"
+        "schizothorax-esocinus",
+        "triplophysa-marmorata"
       ],
       "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "april-to-september",
+      "fishingSeason": "April-October",
       "permits": true,
       "conservationMeasures": [
-        "permitted-beats-only",
-        "artificial-lures-prohibited",
-        "river-warden-telemetry"
+        "size-limits-minimum-25cm",
+        "seasonal-closure",
+        "juvenile-stocking-augmentation"
       ]
     },
     "waterQuality": {
-      "pH": 7.7,
-      "dissolvedOxygen": 9.9,
-      "turbidity": 4.2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "pH": 7.5,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 3.4,
+      "temperature": 11.5,
+      "status": "excellent",
+      "lastTested": "2026-05-20"
     },
-    "threats": [
-      "highway-expansion-blasting",
-      "flash-flood-siltation",
-      "hydropower-peaking-shocks"
+    "hydrologicalData": {
+      "flowRate": 22,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Triplophysa marmorata",
+      "Perla marginata",
+      "Alcedo atthis"
     ],
+    "threats": [
+      "agricultural-pesticide-drift",
+      "gravel-extraction-riffles"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-kokernag-raceway-complex",
-    "slug": "fishery-kokernag-raceway-complex",
-    "name": "Kokernag Commercial Trout Raceway & Breeding Station",
-    "type": "fishery",
-    "category": "Commercial Aquaculture",
-    "description": "Asia's largest coldwater rainbow trout production and breeding center. Utilizing massive perennial karst spring discharge to supply seed stock across the Western Himalaya.",
+    "id": "fishery-lidder-yaner-ganeshbal",
+    "slug": "fishery-lidder-yaner-ganeshbal",
+    "name": "Lidder River Lower Beat — Yaner to Ganeshbal",
+    "category": "Trout Stream / Beat",
+    "description": "Lower braided section of the Lidder river where cold glacial waters blend with spring seepages. Features deep holding pools for specimen brown trout exceeding 3 kg.",
     "district": "Anantnag",
-    "watershed": "Bringi Basin",
-    "elevation": 1980,
+    "watershed": "Lidder Basin",
+    "elevation": 1820,
     "coordinates": {
-      "lat": 33.5833,
-      "lng": 75.3167
+      "lat": 33.912,
+      "lng": 75.242
     },
     "fisheryData": {
       "fishSpecies": [
+        "brown-trout",
         "rainbow-trout",
-        "danish-rainbow-trout",
-        "brown-trout"
+        "schizothorax-niger",
+        "botia-birdi"
       ],
-      "fisheryType": "aquaculture",
+      "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "commercial-harvest-year-round",
-      "permits": false,
+      "fishingSeason": "March-October",
+      "permits": true,
       "conservationMeasures": [
-        "biosecurity-quarantine",
-        "dna-fingerprinting-broodstock",
-        "effluent-settling-ponds"
+        "night-fishing-prohibition",
+        "pool-habitat-retention"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 4.5,
+      "temperature": 12.8,
+      "status": "good",
+      "lastTested": "2026-06-02"
+    },
+    "hydrologicalData": {
+      "flowRate": 28.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Botia birdi",
+      "Hydropsyche siltalai",
+      "Cinclus pallasii"
+    ],
+    "threats": [
+      "unregulated-rafting-disruption",
+      "riverbed-sand-mining"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-aru-torrent-lidderwat",
+    "slug": "fishery-aru-torrent-lidderwat",
+    "name": "Aru Valley Torrent Beat — Aru to Lidderwat Glacial Confluence",
+    "category": "Trout Stream / Beat",
+    "description": "Pristine subalpine glacial torrent within the Overa-Aru sanctuary buffer. Oxygen levels remain at near-saturation throughout summer. Sustains wild, genetically pure strain of brown trout and cold-adapted mountain frogs.",
+    "district": "Anantnag",
+    "watershed": "Lidder Basin",
+    "elevation": 2750,
+    "coordinates": {
+      "lat": 34.098,
+      "lng": 75.275
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "triplophysa-kashmirensis",
+        "nanorana-liebigii"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "June-August",
+      "permits": true,
+      "conservationMeasures": [
+        "strict-catch-and-release",
+        "wilderness-zone-protections",
+        "no-motorized-access"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.6,
+      "turbidity": 1.2,
+      "temperature": 6.8,
+      "status": "excellent",
+      "lastTested": "2026-06-15"
+    },
+    "hydrologicalData": {
+      "flowRate": 8.4,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Nanorana liebigii",
+      "Lutra lutra",
+      "Rhyacophila fasciata"
+    ],
+    "threats": [
+      "climate-warming-glacial-melt-surge",
+      "pack-horse-bank-erosion"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sind-sonamarg-nilgrath",
+    "slug": "fishery-sind-sonamarg-nilgrath",
+    "name": "Sind River Upper Beat — Nilgrath to Sonamarg Golden Meadow",
+    "category": "Trout Stream / Beat",
+    "description": "High-altitude fast-flowing beat fed by the Thajiwas and Machoi glaciers. Turbulent whitewater cascades interspaced with deep oxygenated pools holding trophy-class wild brown trout.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 2740,
+    "coordinates": {
+      "lat": 34.305,
+      "lng": 75.295
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-plagiostomus",
+        "glyptosternon-reticulatum"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "artificial-fly-only",
+        "zero-retention-spawning-pools"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 10.2,
+      "turbidity": 2.8,
+      "temperature": 7.4,
+      "status": "excellent",
+      "lastTested": "2026-06-10"
+    },
+    "hydrologicalData": {
+      "flowRate": 18.2,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Glyptosternon reticulatum",
+      "Cinclus cinclus",
+      "Heptagenia sulphurea"
+    ],
+    "threats": [
+      "highway-widening-debris",
+      "tourist-camp-greywater"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sind-gagangeer-gund",
+    "slug": "fishery-sind-gagangeer-gund",
+    "name": "Sind River Middle Beat — Gagangeer Gorge to Gund",
+    "category": "Trout Stream / Beat",
+    "description": "Rugged canyon reach with massive granite boulders forming deep plunge pools. The dramatic temperature profile and heavy insect hatches support an exceptional density of wild brown and rainbow trout.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 2210,
+    "coordinates": {
+      "lat": 34.288,
+      "lng": 75.145
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-esocinus",
+        "triplophysa-marmorata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "daily-rod-caps",
+        "designated-beat-booking",
+        "anti-poaching-watch-towers"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
       "dissolvedOxygen": 9.6,
-      "turbidity": 1.2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "turbidity": 3.5,
+      "temperature": 9.8,
+      "status": "excellent",
+      "lastTested": "2026-05-25"
     },
-    "threats": [
-      "disease-transmission-risk",
-      "feed-ingredient-inflation",
-      "autumn-discharge-variation"
+    "hydrologicalData": {
+      "flowRate": 31,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Perla bipunctata",
+      "Lutra lutra"
     ],
+    "threats": [
+      "tunnel-construction-muck-dumping",
+      "flash-flood-siltation"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-laribal-dachigam-hatchery",
-    "slug": "fishery-laribal-dachigam-hatchery",
-    "name": "Laribal Historic Trout Hatchery & Dachigam Stream",
-    "type": "fishery",
-    "category": "Commercial Aquaculture",
-    "description": "Historic trout breeding station founded in 1901 by the Maharaja of Kashmir with eggs from Scotland. Produces wild brown trout fingerlings for stocking pristine valley streams.",
-    "district": "Srinagar",
-    "watershed": "Jhelum Basin",
-    "elevation": 1750,
+    "id": "fishery-sind-kangan-wayil",
+    "slug": "fishery-sind-kangan-wayil",
+    "name": "Sind River Lower Beat — Kangan to Wayil Bridge",
+    "category": "Trout Stream / Beat",
+    "description": "Lower transition zone of the Sind River where the trout fishery transitions into native snow trout spawning territory. Excellent spring and autumn angling conditions with prolific mayfly hatches.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1720,
     "coordinates": {
-      "lat": 34.1354,
-      "lng": 74.9125
+      "lat": 34.238,
+      "lng": 74.885
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout"
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "crossocheilus-diplochilus"
       ],
-      "fisheryType": "aquaculture",
+      "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "stocking-only-anglers-closed",
+      "fishingSeason": "March-October",
       "permits": true,
       "conservationMeasures": [
-        "heritage-broodstock-preservation",
-        "predator-netting",
-        "water-temperature-monitoring"
+        "mesh-size-enforcement",
+        "riverbank-tree-plantation"
       ]
     },
     "waterQuality": {
       "pH": 7.5,
-      "dissolvedOxygen": 9.4,
-      "turbidity": 1,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "dissolvedOxygen": 9,
+      "turbidity": 4.8,
+      "temperature": 12.4,
+      "status": "good",
+      "lastTested": "2026-06-04"
     },
-    "threats": [
-      "summer-water-temperature-spikes",
-      "otter-predation",
-      "flash-flood-silt"
+    "hydrologicalData": {
+      "flowRate": 42,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Salmo trutta fario",
+      "Crossocheilus diplochilus",
+      "Alcedo atthis"
     ],
+    "threats": [
+      "boulder-dredging",
+      "canal-diversions-for-irrigation"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-achabal-spring-beat",
-    "slug": "fishery-achabal-spring-beat",
-    "name": "Achabal Karst Spring Trout Sanctuary & Beat",
-    "type": "fishery",
+    "id": "fishery-bringi-daksum",
+    "slug": "fishery-bringi-daksum",
+    "name": "Bringi River Alpine Beat — Daksum to Sinthan Foothills",
     "category": "Trout Stream / Beat",
-    "description": "Cold karst spring run harboring stable populations of brown trout and native Schizothorax. Serves as both an ecological nursery and regulated angling beat.",
+    "description": "Hidden gem of Kashmir's trout network surrounded by virgin coniferous forests. Crystal-clear spring-fed mountain torrent renowned for pristine water purity and high brown trout fecundity.",
     "district": "Anantnag",
     "watershed": "Bringi Basin",
-    "elevation": 1675,
+    "elevation": 2430,
     "coordinates": {
-      "lat": 33.6833,
-      "lng": 75.2333
+      "lat": 33.612,
+      "lng": 75.435
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout"
+        "schizothorax-plagiostomus",
+        "gammarus-pulex-kashmiriensis"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "may-to-september",
+      "fishingSeason": "May-September",
       "permits": true,
       "conservationMeasures": [
-        "barbless-hooks-only",
-        "spawning-sanctuary-fencing",
-        "catch-quotas"
+        "wilderness-beat-protection",
+        "strict-catch-and-release",
+        "forest-canopy-retention"
       ]
     },
     "waterQuality": {
-      "pH": 7.6,
-      "dissolvedOxygen": 9,
-      "turbidity": 2.1,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
+      "pH": 7.8,
+      "dissolvedOxygen": 10.1,
+      "turbidity": 1.5,
+      "temperature": 8.5,
+      "status": "excellent",
+      "lastTested": "2026-06-01"
     },
-    "threats": [
-      "agricultural-pesticide-leaching",
-      "water-diversion-for-irrigation"
+    "hydrologicalData": {
+      "flowRate": 11.2,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex kashmiriensis",
+      "Ephemera danica",
+      "Lutra lutra"
     ],
+    "threats": [
+      "road-slump-runoff",
+      "overgrazing-along-riparian-banks"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-sukhnag-trout-beerwah",
-    "slug": "fishery-sukhnag-trout",
-    "name": "Sukhnag River High-Meadow Trout Beat — Khag to Magam",
-    "type": "fishery",
+    "id": "fishery-bringi-vailoo-dandipora",
+    "slug": "fishery-bringi-vailoo-dandipora",
+    "name": "Bringi River Middle Beat — Vailoo to Dandipora",
     "category": "Trout Stream / Beat",
-    "description": "Meandering alpine stream issuing from the Tosa Maidan plateau. Renowned for elusive wild brown trout lurking in deep granite pools and undercut willow banks.",
-    "district": "Budgam",
-    "watershed": "Sukhnag Basin",
-    "elevation": 1780,
+    "description": "Meandering coldwater beat in the Bringi valley known for limestone-rich waters that fuel explosive Gammarus crustacean growth. Trout achieve remarkable growth rates here.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 2050,
     "coordinates": {
-      "lat": 34.0189,
-      "lng": 74.5912
+      "lat": 33.645,
+      "lng": 75.345
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
-        "snow-trout",
-        "schizothorax-labiatus"
-      ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "may-to-october",
-      "permits": true,
-      "conservationMeasures": [
-        "anti-poaching-patrols",
-        "bankside-willow-conservation",
-        "artificial-spawning-gravel"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.6,
-      "dissolvedOxygen": 8.8,
-      "turbidity": 4.5,
-      "lastTested": "2026-06-15",
-      "status": "good"
-    },
-    "threats": [
-      "illegal-netting",
-      "clay-mining-siltation",
-      "summer-irrigation-offtakes"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-ferozepora-tangmarg-beat",
-    "slug": "fishery-ferozepora-tangmarg-beat",
-    "name": "Ferozepora Nullah Trout Beat — Drung to Tangmarg",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Cascading bouldery stream flowing down from Mount Apharwat. Celebrated for wild rainbow trout and coldwater torrent biodiversity.",
-    "district": "Baramulla",
-    "watershed": "Ferozepora Basin",
-    "elevation": 2020,
-    "coordinates": {
-      "lat": 34.0542,
-      "lng": 74.4215
-    },
-    "fisheryData": {
-      "fishSpecies": [
         "rainbow-trout",
-        "brown-trout",
-        "snow-trout"
-      ],
-      "fisheryType": "managed",
-      "productivity": "high",
-      "fishingSeason": "april-to-september",
-      "permits": true,
-      "conservationMeasures": [
-        "seasonal-closure-during-spawning",
-        "minimum-size-limits",
-        "patrol-checkposts"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.7,
-      "dissolvedOxygen": 9.5,
-      "turbidity": 3,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
-    },
-    "threats": [
-      "winter-stream-freezing",
-      "gravel-extraction-downstream",
-      "plastic-litter-at-drung"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-madhumati-erin-bandipora",
-    "slug": "fishery-madhumati-erin",
-    "name": "Madhumati & Erin Nullah Trout Streams — Bandipora",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Twin mountain streams draining the northern slopes of Mount Harmukh into Wular Lake. Exceptional wild brown trout habitat with dense benthic insect life.",
-    "district": "Bandipora",
-    "watershed": "Wular Basin",
-    "elevation": 1720,
-    "coordinates": {
-      "lat": 34.4214,
-      "lng": 74.6542
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "brown-trout",
-        "snow-trout",
         "schizothorax-curvifrons"
       ],
       "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "april-to-october",
+      "fishingSeason": "April-October",
       "permits": true,
       "conservationMeasures": [
-        "stream-sanctuary-declaration",
-        "riparian-buffer-restoration"
+        "size-limit-enforcement",
+        "riffle-habitat-enhancement"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 2.9,
+      "temperature": 10.2,
+      "status": "excellent",
+      "lastTested": "2026-05-28"
+    },
+    "hydrologicalData": {
+      "flowRate": 15.8,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Schizothorax curvifrons"
+    ],
+    "threats": [
+      "sinkhole-water-loss-in-karst-limestone",
+      "orchard-pesticides"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kokernag-karst-sanctuary",
+    "slug": "fishery-kokernag-karst-sanctuary",
+    "name": "Kokernag Karst Spring Trout Sanctuary & Stream Beat",
+    "category": "Trout Stream / Beat",
+    "description": "Fed directly by the massive gushing Kokernag karst spring bubbling out of limestone cliffs at 10-12°C year-round. Prime spawning sanctuary with zero winter freezing, supporting phenomenal biomass density.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1950,
+    "coordinates": {
+      "lat": 33.585,
+      "lng": 75.312
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout",
+        "gammarus-pulex-kashmiriensis",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "permanent-spawning-sanctuary",
+        "karst-aquifer-protection",
+        "no-commercial-netting"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 1.1,
+      "temperature": 10.5,
+      "status": "excellent",
+      "lastTested": "2026-06-08"
+    },
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Gammarus pulex kashmiriensis",
+      "Salmo trutta fario",
+      "Nasturtium officinale",
+      "Triplophysa kashmirensis"
+    ],
+    "threats": [
+      "tourist-litter-at-springhead",
+      "water-abstraction-for-drinking"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-achabal-karst-beat",
+    "slug": "fishery-achabal-karst-beat",
+    "name": "Achabal Karst Spring Trout Sanctuary & Outflow Beat",
+    "category": "Trout Stream / Beat",
+    "description": "Historic spring fishery fed by the majestic Achabal Mughal spring. Constant 11°C water temperature creates an idyllic thermal haven during freezing winter months when surrounding rivers freeze.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 33.682,
+      "lng": 75.235
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout",
+        "schizothorax-niger",
+        "gammarus-pulex-kashmiriensis"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "March-November",
+      "permits": true,
+      "conservationMeasures": [
+        "heritage-spring-preservation",
+        "continuous-flow-protection"
       ]
     },
     "waterQuality": {
       "pH": 7.7,
       "dissolvedOxygen": 9.3,
-      "turbidity": 4,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
+      "turbidity": 1.4,
+      "temperature": 11.2,
+      "status": "excellent",
+      "lastTested": "2026-06-05"
     },
-    "threats": [
-      "flash-floods",
-      "boulder-crushing-plants",
-      "illicit-bleach-poisoning"
+    "hydrologicalData": {
+      "flowRate": 6.2,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Gammarus pulex",
+      "Schizothorax niger"
     ],
+    "threats": [
+      "urban-drainage-near-tailrace",
+      "spring-discharge-fluctuation"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-gurez-kishanganga-trout",
-    "slug": "fishery-gurez-kishanganga",
-    "name": "Kishanganga River Wild Trout Sanctuary — Gurez Valley",
-    "type": "fishery",
+    "id": "fishery-madhumati-athwatoo",
+    "slug": "fishery-madhumati-athwatoo",
+    "name": "Madhumati Nullah Wild Beat — Athwatoo Gorge to Buthoo",
     "category": "Trout Stream / Beat",
-    "description": "One of the most pristine brown trout fisheries on Earth. The wide, crystal-clear Kishanganga River in Gurez produces wild brown trout exceeding 5 kilograms.",
+    "description": "Cascading boulder torrent draining the north slopes of Mount Haramukh into Wular Lake. Renowned for elusive wild brown trout that thrive among deep boulder caves and white water shoots.",
     "district": "Bandipora",
-    "watershed": "Kishanganga Basin",
-    "elevation": 2380,
+    "watershed": "Madhumati Basin",
+    "elevation": 2180,
     "coordinates": {
-      "lat": 34.6312,
-      "lng": 74.7712
+      "lat": 34.455,
+      "lng": 74.712
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-plagiostomus",
+        "schistura-alepidota"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "April-September",
+      "permits": true,
+      "conservationMeasures": [
+        "catch-and-release",
+        "forest-riparian-buffer-maintenance"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.7,
+      "turbidity": 2.2,
+      "temperature": 8.8,
+      "status": "excellent",
+      "lastTested": "2026-05-30"
+    },
+    "hydrologicalData": {
+      "flowRate": 12.4,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schistura alepidota",
+      "Lutra lutra",
+      "Cinclus cinclus"
+    ],
+    "threats": [
+      "timber-logging-sediment",
+      "illegal-bleaching-powder-poaching"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-erin-nullah-sanctuary",
+    "slug": "fishery-erin-nullah-sanctuary",
+    "name": "Erin Nullah Trout Sanctuary & Catchment Beat",
+    "category": "Trout Stream / Beat",
+    "description": "Direct mountain tributary feeding the northeastern horn of Wular Lake. Dense willow and alder riparian canopy keeps summer water temperatures cool and triggers massive caddisfly hatches.",
+    "district": "Bandipora",
+    "watershed": "Wular Basin",
+    "elevation": 1950,
+    "coordinates": {
+      "lat": 34.425,
+      "lng": 74.685
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout",
-        "glyptosternon-reticulatum"
+        "schizothorax-esocinus",
+        "triplophysa-kashmirensis"
       ],
       "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "june-to-september",
+      "fishingSeason": "March-October",
       "permits": true,
       "conservationMeasures": [
-        "strictly-licensed-anglers",
-        "catch-and-release-recommended",
-        "army-civil-patrols"
+        "stream-canopy-preservation",
+        "anti-poaching-squads"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 3.1,
+      "temperature": 10.8,
+      "status": "excellent",
+      "lastTested": "2026-06-03"
+    },
+    "hydrologicalData": {
+      "flowRate": 9.8,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax esocinus",
+      "Hydropsyche siltalai",
+      "Alcedo atthis"
+    ],
+    "threats": [
+      "flash-floods-eroding-riparian-banks",
+      "gravel-mining"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ferozepora-drung-gorge",
+    "slug": "fishery-ferozepora-drung-gorge",
+    "name": "Ferozepora Nullah Beat — Drung Gorge to Tangmarg",
+    "category": "Trout Stream / Beat",
+    "description": "Flowing down from the Apharwat heights past Drung waterfalls into Tangmarg. Cold torrential flow with turbulent pockets holding agile brown trout. Exceptional spring stonefly hatches.",
+    "district": "Baramulla",
+    "watershed": "Ferozepora Basin",
+    "elevation": 2020,
+    "coordinates": {
+      "lat": 34.055,
+      "lng": 74.415
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-plagiostomus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "waterfall-pool-protection",
+        "daily-angler-caps"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.9,
+      "turbidity": 2,
+      "temperature": 8.9,
+      "status": "excellent",
+      "lastTested": "2026-05-22"
+    },
+    "hydrologicalData": {
+      "flowRate": 14.2,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax plagiostomus",
+      "Potamon bilobatum",
+      "Cinclus pallasii"
+    ],
+    "threats": [
+      "tourist-plastic-waste-drung",
+      "hydel-canal-diversion-at-tangmarg"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sukhnag-khag-magam",
+    "slug": "fishery-sukhnag-khag-magam",
+    "name": "Sukhnag River High-Meadow Beat — Khag to Beerwah",
+    "category": "Trout Stream / Beat",
+    "description": "Meandering through subalpine meadow valleys of Khag. Fed by high-altitude springs of Tosamaidan. Remarkable clarity and consistent boulder pools provide sanctuary for wild brown trout.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 33.985,
+      "lng": 74.525
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-niger",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "April-September",
+      "permits": true,
+      "conservationMeasures": [
+        "tosamaidan-catchment-conservation",
+        "artificial-fly-only"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 2.5,
+      "temperature": 9.5,
+      "status": "excellent",
+      "lastTested": "2026-06-07"
+    },
+    "hydrologicalData": {
+      "flowRate": 13.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax niger",
+      "Gammarus pulex kashmiriensis"
+    ],
+    "threats": [
+      "unregulated-camping-along-khag",
+      "orchard-pesticides-lower-reach"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-doodhganga-yusmarg-beat",
+    "slug": "fishery-doodhganga-yusmarg-beat",
+    "name": "Doodhganga River Subalpine Beat — Yusmarg to Chadoora",
+    "category": "Trout Stream / Beat",
+    "description": "Named 'River of Milk' for its frothing white-water rapids draining the Pir Panjal glaciated cirques. Deep gorge pools provide critical refuge for wild brown trout and endemic torrent loaches.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 2320,
+    "coordinates": {
+      "lat": 33.825,
+      "lng": 74.675
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-plagiostomus",
+        "schistura-alepidota"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "doodhganga-ecological-protection-zone",
+        "sand-mining-complete-ban"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 3.2,
+      "temperature": 8.4,
+      "status": "excellent",
+      "lastTested": "2026-05-19"
+    },
+    "hydrologicalData": {
+      "flowRate": 15,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax plagiostomus",
+      "Pseudepidalea viridis",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "illegal-sand-and-boulder-mining",
+      "deforestation-in-catchment"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-veshav-aharbal-kungwattan",
+    "slug": "fishery-veshav-aharbal-kungwattan",
+    "name": "Veshav River Alpine Beat — Aharbal Waterfall to Kungwattan",
+    "category": "Trout Stream / Beat",
+    "description": "Draining Kausarnag glacial lake over the famous Aharbal waterfalls. Super-saturated with oxygen due to 25m sheer waterfall drops. Premium coldwater habitat for trophy brown trout.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "elevation": 2260,
+    "coordinates": {
+      "lat": 33.648,
+      "lng": 74.785
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-plagiostomus",
+        "nanorana-liebigii"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "waterfall-plunge-pool-sanctuary",
+        "zero-harvest-of-broodstock"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 10.4,
+      "turbidity": 1.8,
+      "temperature": 7.9,
+      "status": "excellent",
+      "lastTested": "2026-06-11"
+    },
+    "hydrologicalData": {
+      "flowRate": 19.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Nanorana liebigii",
+      "Baetis rhodani",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "tourist-litter-aharbal",
+      "extreme-spring-flash-floods"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-rambiara-hirpora-sanctuary",
+    "slug": "fishery-rambiara-hirpora-sanctuary",
+    "name": "Rambiara River High Beat — Hirpora Wildlife Sanctuary to Dubjan",
+    "category": "Trout Stream / Beat",
+    "description": "High mountain river flowing along the Mughal Road through dense fir-spruce forests of Hirpora sanctuary. Home to wild brown trout and the endangered Markhor in surrounding cliffs.",
+    "district": "Shopian",
+    "watershed": "Rambiara Basin",
+    "elevation": 2450,
+    "coordinates": {
+      "lat": 33.685,
+      "lng": 74.685
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-plagiostomus",
+        "schizothorax-planifrons"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-August",
+      "permits": true,
+      "conservationMeasures": [
+        "wildlife-sanctuary-angling-rules",
+        "strictly-barbless-hooks"
       ]
     },
     "waterQuality": {
       "pH": 7.8,
       "dissolvedOxygen": 10.2,
-      "turbidity": 2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "turbidity": 2.1,
+      "temperature": 7.5,
+      "status": "excellent",
+      "lastTested": "2026-06-12"
     },
-    "threats": [
-      "hydroelectric-dam-barrier",
-      "sub-zero-winter-icing",
-      "military-infrastructure"
+    "hydrologicalData": {
+      "flowRate": 14.8,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax planifrons",
+      "Lutra lutra",
+      "Perla marginata"
     ],
+    "threats": [
+      "mughal-road-salt-and-diesel-runoff",
+      "boulder-quarrying-lower-reach"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-gangabal-alpine-lake-trout",
-    "slug": "fishery-gangabal-alpine-lake",
-    "name": "Gangabal & Nundkol Alpine Lakes Brown Trout Fishery",
-    "type": "fishery",
-    "category": "Alpine Lake Fishery",
-    "description": "High-altitude glacial tarns at 3,570m on Mount Harmukh stocked with brown trout in 1912. Internationally famous among wilderness anglers for self-sustaining wild trout.",
-    "district": "Ganderbal",
-    "watershed": "Sind Basin",
-    "elevation": 3570,
-    "coordinates": {
-      "lat": 34.4333,
-      "lng": 74.9167
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "brown-trout",
-        "salmo-trutta-fario"
-      ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "july-to-september",
-      "permits": true,
-      "conservationMeasures": [
-        "wilderness-permit-system",
-        "single-hook-artificial-flies",
-        "pack-it-in-pack-it-out"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.4,
-      "dissolvedOxygen": 10.5,
-      "turbidity": 0.6,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
-    },
-    "threats": [
-      "climate-warming-altering-lake-ecology",
-      "illegal-gillnetting-by-poachers",
-      "trekker-waste"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-vishansar-kishansar-trout",
-    "slug": "fishery-vishansar-kishansar-trout",
-    "name": "Vishansar & Kishansar Lakes Wild Trout Reserve",
-    "type": "fishery",
-    "category": "Alpine Lake Fishery",
-    "description": "Twin turquoise alpine lakes at 3,710m along the Great Lakes trail. Flourishing populations of wild brown trout feeding on gammarid amphipods.",
-    "district": "Ganderbal",
-    "watershed": "Kishanganga Basin",
-    "elevation": 3710,
-    "coordinates": {
-      "lat": 34.3756,
-      "lng": 75.1582
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "brown-trout"
-      ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "july-to-august",
-      "permits": true,
-      "conservationMeasures": [
-        "strict-catch-and-release",
-        "wilderness-ranger-monitoring"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.5,
-      "dissolvedOxygen": 10.3,
-      "turbidity": 0.8,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
-    },
-    "threats": [
-      "short-ice-free-window",
-      "grazing-animal-eutrophication-risk"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-aharbal-veshav-trout",
-    "slug": "fishery-aharbal-veshav-trout",
-    "name": "Veshav River Aharbal Trout Beat — Kulgam",
-    "type": "fishery",
+    "id": "fishery-kishanganga-gurez-dawer",
+    "slug": "fishery-kishanganga-gurez-dawer",
+    "name": "Kishanganga River Wild Beat — Dawer to Bagtore (Gurez Valley)",
     "category": "Trout Stream / Beat",
-    "description": "High-energy trout beat spanning the Veshav river canyon below Aharbal falls. Excellent coldwater rapids nurturing rainbow trout and indigenous snow trout.",
-    "district": "Kulgam",
-    "watershed": "Veshav Basin",
-    "elevation": 2240,
+    "description": "Vast, untamed cross-border Himalayan river in the remote Gurez Valley. Turquoise glacial waters host massive wild brown trout up to 5 kg alongside rare endemic snow trout species.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2370,
     "coordinates": {
-      "lat": 33.6482,
-      "lng": 74.7812
+      "lat": 34.635,
+      "lng": 74.765
     },
     "fisheryData": {
       "fishSpecies": [
-        "rainbow-trout",
-        "brown-trout",
-        "snow-trout"
+        "wild-brown-trout",
+        "schizothorax-esocinus",
+        "schizothorax-labiatus",
+        "ptychobarbus-conirostris",
+        "glyptothorax-kashmirensis"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "april-to-october",
+      "fishingSeason": "May-September",
       "permits": true,
       "conservationMeasures": [
-        "licensed-beats",
-        "spawning-pool-protection",
-        "warden-surveillance"
+        "border-zone-anglers-registry",
+        "spawning-gravel-bed-protection",
+        "no-retention-of-large-breeders"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.5,
+      "turbidity": 3.2,
+      "temperature": 7.2,
+      "status": "excellent",
+      "lastTested": "2026-06-14"
+    },
+    "hydrologicalData": {
+      "flowRate": 68,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Ptychobarbus conirostris",
+      "Glyptothorax kashmirensis",
+      "Lutra lutra",
+      "Cinclus cinclus"
+    ],
+    "threats": [
+      "kishanganga-hydroelectric-dam-flow-diversion",
+      "border-fencing-habitat-fragmentation"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-tulail-valley-chakwali",
+    "slug": "fishery-tulail-valley-chakwali",
+    "name": "Tulail Valley Coldwater Beat — Barnoi to Chakwali Reach",
+    "category": "Trout Stream / Beat",
+    "description": "Deep, pristine upper Kishanganga valley bordering Dras. Completely free of industrial or heavy agricultural pollution. Extremely cold, high-gradient waters sheltering wild trout and snow trout.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2680,
+    "coordinates": {
+      "lat": 34.585,
+      "lng": 75.085
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "schizothorax-plagiostomus",
+        "ptychobarbus-conirostris"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "June-August",
+      "permits": true,
+      "conservationMeasures": [
+        "wilderness-angling-only",
+        "strict-bag-limits"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 10.8,
+      "turbidity": 1.6,
+      "temperature": 6.2,
+      "status": "excellent",
+      "lastTested": "2026-06-16"
+    },
+    "hydrologicalData": {
+      "flowRate": 24.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Ptychobarbus conirostris",
+      "Nanorana liebigii",
+      "Baetis rhodani"
+    ],
+    "threats": [
+      "extreme-winter-ice-gouging",
+      "isolated-poaching-in-remote-stretches"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-warwan-river-inshan",
+    "slug": "fishery-warwan-river-inshan",
+    "name": "Warwan River High Alpine Beat — Inshan to Sukhnai (Kishtwar)",
+    "category": "Trout Stream / Beat",
+    "description": "One of the most remote and isolated river valleys in the Western Himalayas. Glacial melt from Nun-Kun massifs feeds wide gravel floodplains holding untouched wild brown trout populations.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "elevation": 2580,
+    "coordinates": {
+      "lat": 33.885,
+      "lng": 75.645
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "schizothorax-plagiostomus",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "June-September",
+      "permits": true,
+      "conservationMeasures": [
+        "remote-wilderness-sanctuary",
+        "barbless-fly-angling-only"
       ]
     },
     "waterQuality": {
       "pH": 7.7,
-      "dissolvedOxygen": 9.7,
-      "turbidity": 3.8,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "dissolvedOxygen": 10.6,
+      "turbidity": 2,
+      "temperature": 6.9,
+      "status": "excellent",
+      "lastTested": "2026-06-18"
     },
-    "threats": [
-      "downstream-boulder-blasting",
-      "flash-flood-damage"
+    "hydrologicalData": {
+      "flowRate": 28,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax plagiostomus",
+      "Lutra lutra",
+      "Ecdyonurus venosus"
     ],
+    "threats": [
+      "proposed-inter-basin-water-transfer",
+      "road-construction-blasting"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-hirpora-rambiara-trout",
-    "slug": "fishery-hirpora-rambiara-trout",
-    "name": "Rambiara River Upper Trout Beat — Hirpora Sanctuary",
-    "type": "fishery",
+    "id": "fishery-neeru-stream-bhaderwah",
+    "slug": "fishery-neeru-stream-bhaderwah",
+    "name": "Neeru Stream Wild Trout Sanctuary — Bhaderwah Valley",
     "category": "Trout Stream / Beat",
-    "description": "Pristine upper headwaters of the Rambiara River inside the Hirpora Wildlife Sanctuary along the Mughal Road. Prime habitat for wild brown trout.",
-    "district": "Shopian",
-    "watershed": "Rambiara Basin",
-    "elevation": 2450,
+    "description": "Lush deodar-forested stream flowing through the Bhaderwah basin into the Chenab. Famous for cool, spring-fed waters supporting both stocked rainbow trout and wild brown trout beats.",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "elevation": 1650,
     "coordinates": {
-      "lat": 33.6812,
-      "lng": 74.7412
+      "lat": 32.975,
+      "lng": 75.715
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
-        "snow-trout"
+        "rainbow-trout",
+        "schizothorax-richardsonii",
+        "triplophysa-marmorata"
       ],
       "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "may-to-september",
+      "productivity": "high",
+      "fishingSeason": "March-October",
       "permits": true,
       "conservationMeasures": [
-        "wildlife-sanctuary-co-management",
-        "anti-poaching-sensors"
+        "closed-breeding-season",
+        "trout-beat-rotation"
       ]
     },
     "waterQuality": {
-      "pH": 7.6,
-      "dissolvedOxygen": 9.5,
-      "turbidity": 2.5,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
+      "pH": 7.5,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 3.8,
+      "temperature": 11.8,
+      "status": "excellent",
+      "lastTested": "2026-05-15"
     },
-    "threats": [
-      "mughal-road-runoff",
-      "heavy-grazing-soil-erosion"
+    "hydrologicalData": {
+      "flowRate": 16.2,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax richardsonii",
+      "Potamon bilobatum"
     ],
+    "threats": [
+      "urban-sewage-from-bhaderwah-town",
+      "illegal-netting-during-monsoon"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-jhelum-indigenous-sanctuary",
-    "slug": "fishery-jhelum-indigenous-sanctuary",
-    "name": "Jhelum River Indigenous Snow Trout Sanctuary — Pampore to Sangam",
+    "id": "fishery-suran-river-bafliaz",
+    "slug": "fishery-suran-river-bafliaz",
+    "name": "Suran River Beat — Bafliaz to Chandimarh (Poonch)",
+    "category": "Trout Stream / Beat",
+    "description": "Flowing down the southern Pir Panjal slopes along the historical imperial Mughal route. Deep rocky plunge pools harbor coldwater brown trout and native Schizothorax.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 33.625,
+      "lng": 74.345
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-richardsonii",
+        "tor-putitora",
+        "labeo-dero"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "trout-stocking-augmentation",
+        "anti-poaching-patrols"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 4.2,
+      "temperature": 13.5,
+      "status": "good",
+      "lastTested": "2026-05-12"
+    },
+    "hydrologicalData": {
+      "flowRate": 18,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax richardsonii",
+      "Tor putitora",
+      "Barilius bendelisis"
+    ],
+    "threats": [
+      "flash-floods-eroding-river-corridor",
+      "quarrying-of-riverbed-gravel"
+    ],
     "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-suru-river-kargil",
+    "slug": "fishery-suru-river-kargil",
+    "name": "Suru River Coldwater Fishery — Sankoo to Kargil",
+    "category": "Trout Stream / Beat",
+    "description": "Major cold-desert river fed by the Parkachik and Shafat glaciers. Silt-laden in summer, ultra-clear in autumn and winter. Holds hardy high-altitude snow trout and naturalized brown trout.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "elevation": 2780,
+    "coordinates": {
+      "lat": 34.485,
+      "lng": 76.125
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "ptychobarbus-conirostris",
+        "schizothorax-plagiostomus",
+        "brown-trout",
+        "triplophysa-ladacensis",
+        "glyptosternon-reticulatum"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "sub-zero-winter-pool-protection",
+        "no-gravel-mining-in-braided-channels"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 10.4,
+      "turbidity": 5.6,
+      "temperature": 7.8,
+      "status": "excellent",
+      "lastTested": "2026-06-20"
+    },
+    "hydrologicalData": {
+      "flowRate": 45,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Ptychobarbus conirostris",
+      "Triplophysa ladacensis",
+      "Glyptosternon reticulatum",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "heavy-glacial-siltation-in-july",
+      "road-construction-debris"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-dras-river-cold-beat",
+    "slug": "fishery-dras-river-cold-beat",
+    "name": "Dras River Sub-Zero Cold Torrent Beat — Dras to Kharbu",
+    "category": "Trout Stream / Beat",
+    "description": "Flowing through the second coldest inhabited place on earth. Experiences 5 months of ice cover. Deep wintering pools shelter cold-adapted Indus snow trout and brown trout.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "elevation": 3120,
+    "coordinates": {
+      "lat": 34.425,
+      "lng": 75.825
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "ptychobarbus-conirostris",
+        "diptychus-maculatus",
+        "brown-trout",
+        "triplophysa-stoliczkai"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "June-August",
+      "permits": true,
+      "conservationMeasures": [
+        "winter-pool-ice-cover-preservation",
+        "zero-harvest-during-spawning"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 11.2,
+      "turbidity": 2.1,
+      "temperature": 5.4,
+      "status": "excellent",
+      "lastTested": "2026-06-22"
+    },
+    "hydrologicalData": {
+      "flowRate": 22,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Ptychobarbus conirostris",
+      "Diptychus maculatus",
+      "Triplophysa stoliczkai"
+    ],
+    "threats": [
+      "highway-diesel-and-chemical-spills",
+      "sub-zero-ice-scour"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-indus-spituk-nimoo",
+    "slug": "fishery-indus-spituk-nimoo",
+    "name": "Indus River Coldwater Angling Reach — Spituk to Nimoo Confluence",
+    "category": "Trout Stream / Beat",
+    "description": "Wide braided stretch of the Lion River (Sengge Zangpo) through the high-altitude desert of Ladakh. Supports endemic False Osman, Indus Snow Trout, and brown trout stocked in quiet willow side channels.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3200,
+    "coordinates": {
+      "lat": 34.185,
+      "lng": 77.345
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "ptychobarbus-conirostris",
+        "schizopygopsis-stoliczkai",
+        "brown-trout",
+        "triplophysa-ladacensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-October",
+      "permits": true,
+      "conservationMeasures": [
+        "braided-island-habitat-protection",
+        "riparian-willow-conservation"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8.2,
+      "dissolvedOxygen": 10,
+      "turbidity": 4.5,
+      "temperature": 9.2,
+      "status": "excellent",
+      "lastTested": "2026-06-18"
+    },
+    "hydrologicalData": {
+      "flowRate": 85,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizopygopsis stoliczkai",
+      "Ptychobarbus conirostris",
+      "Triplophysa ladacensis",
+      "Tadorna ferruginea"
+    ],
+    "threats": [
+      "urban-wastewater-discharge-from-leh",
+      "sand-gravel-mining-in-floodplain"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-neelum-shounter-taobat",
+    "slug": "fishery-neelum-shounter-taobat",
+    "name": "Neelum River Wild Trout Waters — Shounter & Taobat Reach",
+    "category": "Trout Stream / Beat",
+    "description": "Transboundary coldwater tributary of the Jhelum river system. Dense alpine pine forests line raging turquoise torrents rich in wild brown trout and native Schizothorax.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 2350,
+    "coordinates": {
+      "lat": 34.725,
+      "lng": 74.455
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "schizothorax-plagiostomus",
+        "schizothorax-labiatus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "cross-border-riparian-monitoring",
+        "catch-and-release"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 10.2,
+      "turbidity": 2.8,
+      "temperature": 7.6,
+      "status": "excellent",
+      "lastTested": "2026-06-14"
+    },
+    "hydrologicalData": {
+      "flowRate": 55,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax labiatus",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "timber-harvesting-siltation",
+      "hydropower-weirs"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-jhelum-khanabal-sangam",
+    "slug": "fishery-jhelum-khanabal-sangam",
+    "name": "Upper Jhelum Indigenous Snow Trout Sanctuary — Khanabal to Sangam",
     "category": "Native Snow Trout System",
-    "description": "Core spawning and riverine migratory corridor for endemic Kashmir snow trout (Kasheer Gaad). Crucial deep pools and gravel beds supporting local artisan casting-net fishermen.",
+    "description": "Primary upstream spawning and nursery grounds for endemic Schizothorax species (Ale Gad, Sattar Gad). Braided gravel shoals and cool spring inflows provide indispensable egg-laying substrates during March to May.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1595,
+    "coordinates": {
+      "lat": 33.785,
+      "lng": 75.125
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "schizothorax-esocinus",
+        "crossocheilus-diplochilus",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "annual-spawning-ban-march-may",
+        "gravel-extraction-moratorium",
+        "springhead-connection-restoration"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.6,
+      "turbidity": 6.2,
+      "temperature": 14.2,
+      "status": "good",
+      "lastTested": "2026-05-16"
+    },
+    "hydrologicalData": {
+      "flowRate": 48,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Schizothorax curvifrons",
+      "Crossocheilus diplochilus",
+      "Lamellidens corrianus",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "unregulated-riverbed-sand-mining",
+      "domestic-untreated-sewage",
+      "agricultural-pesticide-drift"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-jhelum-pampore-kakapora",
+    "slug": "fishery-jhelum-pampore-kakapora",
+    "name": "Middle Jhelum Floodplain Spawning Channel — Pampore to Kakapora",
+    "category": "Native Snow Trout System",
+    "description": "Meandering floodplain section with slow backwaters, oxbow wetlands, and pebble riffles. Critical breeding refuge where endemic snow trouts graze on submerged periphyton and lay eggs in side channels.",
     "district": "Pulwama",
     "watershed": "Jhelum Basin",
     "elevation": 1585,
     "coordinates": {
-      "lat": 33.9112,
-      "lng": 75.0412
+      "lat": 34.015,
+      "lng": 74.925
     },
     "fisheryData": {
       "fishSpecies": [
-        "snow-trout",
-        "schizothorax-esocinus",
         "schizothorax-niger",
-        "common-carp",
-        "labeo-diplostomus"
+        "schizothorax-curvifrons",
+        "crossocheilus-diplochilus",
+        "botia-birdi",
+        "common-carp"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "year-round-except-june-july-spawning",
+      "fishingSeason": "year-round",
       "permits": true,
       "conservationMeasures": [
-        "monsoon-closed-season",
-        "minimum-mesh-size-enforcement",
-        "riverbed-gravel-mining-bans"
+        "backwater-wetland-reconnection",
+        "illegal-fine-mesh-net-seizures"
       ]
     },
     "waterQuality": {
       "pH": 7.4,
-      "dissolvedOxygen": 7.2,
-      "turbidity": 14,
-      "lastTested": "2026-06-14",
-      "status": "moderate"
+      "dissolvedOxygen": 8.1,
+      "turbidity": 8.4,
+      "temperature": 15.5,
+      "status": "good",
+      "lastTested": "2026-05-18"
     },
-    "threats": [
-      "invasive-common-carp-competition",
-      "sewage-inflow",
-      "unregulated-sand-dredging"
+    "hydrologicalData": {
+      "flowRate": 65,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax curvifrons",
+      "Botia birdi",
+      "Puntius conchonius",
+      "Potamogeton crispus"
     ],
+    "threats": [
+      "industrial-effluent-from-lasjan-stone-crushers",
+      "invasive-carp-competition"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-wular-lake-carp-fishery",
-    "slug": "fishery-wular-lake-carp",
-    "name": "Wular Lake Commercial Fish Production Hub",
-    "type": "fishery",
-    "category": "Lake Fisheries",
-    "description": "The economic powerhouse of Kashmir freshwater fisheries, generating over 60% of the valley's total commercial catch. Sustains over 10,000 fisher families living along its shores.",
-    "district": "Bandipora",
-    "watershed": "Wular Basin",
-    "elevation": 1580,
+    "id": "fishery-jhelum-baramulla-uri-gorge",
+    "slug": "fishery-jhelum-baramulla-uri-gorge",
+    "name": "Lower Jhelum Deep Gorge Sanctuary — Baramulla to Uri",
+    "category": "Native Snow Trout System",
+    "description": "Deep, turbulent gorge reach where the Jhelum cuts through the Pir Panjal range before entering Azad Kashmir. Massive boulder pools hold relict populations of the critically endangered Kashmir Catfish and Chirruh Snow Trout.",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1420,
     "coordinates": {
-      "lat": 34.4167,
-      "lng": 74.6333
+      "lat": 34.155,
+      "lng": 74.185
     },
     "fisheryData": {
       "fishSpecies": [
-        "common-carp",
-        "grass-carp",
-        "silver-carp",
-        "snow-trout",
-        "schizothorax-curvifrons"
+        "schizothorax-plagiostomus",
+        "schizothorax-labiatus",
+        "glyptothorax-kashmirensis",
+        "botia-birdi",
+        "schizothorax-progastus"
       ],
-      "fisheryType": "wild-capture",
-      "productivity": "high",
-      "fishingSeason": "year-round",
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "March-October",
       "permits": true,
       "conservationMeasures": [
-        "sanctuary-breeding-zones",
-        "weed-harvesting-for-nursery",
-        "fishermen-cooperative-licensing"
+        "gorge-sanctuary-declaration",
+        "minimum-environmental-flows-from-barrages"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
-      "dissolvedOxygen": 7.8,
-      "turbidity": 8,
-      "lastTested": "2026-06-10",
-      "status": "good"
+      "dissolvedOxygen": 9,
+      "turbidity": 5.5,
+      "temperature": 13.8,
+      "status": "good",
+      "lastTested": "2026-05-24"
     },
-    "threats": [
-      "invasive-weeds-trapa",
-      "siltation-choking-spawning-beds",
-      "agricultural-fertilizer-runoff"
+    "hydrologicalData": {
+      "flowRate": 110,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Glyptothorax kashmirensis",
+      "Schizothorax labiatus",
+      "Botia birdi",
+      "Nanorana liebigii"
     ],
+    "threats": [
+      "lower-jhelum-hydel-barrages",
+      "boulder-quarrying",
+      "dynamite-poaching"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-anchar-lake-schizothorax",
-    "slug": "fishery-anchar-lake",
-    "name": "Anchar Lake Traditional Fisheries Sanctuary",
-    "type": "fishery",
-    "category": "Lake Fisheries",
-    "description": "Highly productive peri-urban shallow wetland lake connected to Nigeen via Amir Khan Nallah. Traditional habitat for endemic herbivorous snow trout (Schizothorax niger).",
-    "district": "Srinagar",
-    "watershed": "Jhelum Basin",
-    "elevation": 1580,
-    "coordinates": {
-      "lat": 34.15,
-      "lng": 74.7833
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "snow-trout",
-        "schizothorax-niger",
-        "common-carp",
-        "crucian-carp"
-      ],
-      "fisheryType": "wild-capture",
-      "productivity": "moderate",
-      "fishingSeason": "year-round",
-      "permits": false,
-      "conservationMeasures": [
-        "wetland-demarcation",
-        "sewage-interception-diversion"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.1,
-      "dissolvedOxygen": 4.8,
-      "turbidity": 22,
-      "lastTested": "2026-06-12",
-      "status": "poor"
-    },
-    "threats": [
-      "encroachment-for-vegetable-gardens",
-      "untreated-skims-hospital-waste",
-      "siltation"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-hokersar-fish-spawning-grounds",
-    "slug": "fishery-hokersar-spawning",
-    "name": "Hokersar Wetland Fish Breeding Grounds",
-    "type": "fishery",
-    "category": "Wetland Fisheries",
-    "description": "Protected Ramsar wetland acting as an essential nursery for juvenile fish that repopulate the Jhelum River network during seasonal high-water flood pulses.",
-    "district": "Budgam",
-    "watershed": "Jhelum Basin",
-    "elevation": 1580,
-    "coordinates": {
-      "lat": 34.25,
-      "lng": 74.85
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "snow-trout",
-        "schizothorax",
-        "common-carp",
-        "puntius-conchonius",
-        "gambusia-affinis"
-      ],
-      "fisheryType": "managed",
-      "productivity": "high",
-      "fishingSeason": "commercial-fishing-prohibited-breeding-only",
-      "permits": false,
-      "conservationMeasures": [
-        "wildlife-wetland-protection",
-        "no-fishing-zone",
-        "water-level-regulation"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.6,
-      "dissolvedOxygen": 7.8,
-      "turbidity": 6,
-      "lastTested": "2026-06-10",
-      "status": "good"
-    },
-    "threats": [
-      "siltation-from-doodhganga-flood-channel",
-      "pesticides-from-orchards",
-      "drought-drying"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-pohru-river-kupwara",
-    "slug": "fishery-pohru-river",
-    "name": "Pohru River Native Schizothorax Spawning Grounds",
-    "type": "fishery",
+    "id": "fishery-pohru-river-nursery",
+    "slug": "fishery-pohru-river-nursery",
+    "name": "Pohru River Native Snow Trout Spawning Beds — Kupwara",
     "category": "Native Snow Trout System",
-    "description": "Major northern tributary river with extensive cobble-gravel riffles essential for seasonal potamodromous snow trout spawning migrations from Wular Lake.",
+    "description": "Major north-bank tributary of the Jhelum draining the Lolab and Kandi valleys. The extensive, undisturbed cobble-gravel reaches serve as the primary northern nursery for juvenile Schizothorax.",
     "district": "Kupwara",
     "watershed": "Pohru Basin",
-    "elevation": 1610,
+    "elevation": 1620,
     "coordinates": {
-      "lat": 34.4012,
-      "lng": 74.2812
+      "lat": 34.412,
+      "lng": 74.285
     },
     "fisheryData": {
       "fishSpecies": [
-        "snow-trout",
-        "schizothorax-richardsonii",
-        "schizothorax-progastus",
-        "loach"
+        "schizothorax-plagiostomus",
+        "schizothorax-esocinus",
+        "schizothorax-curvifrons",
+        "triplophysa-kashmirensis"
       ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "august-to-april",
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
       "permits": true,
       "conservationMeasures": [
-        "spawning-run-protection",
-        "dynamite-blast-prevention",
-        "mesh-size-rules"
+        "gravel-mining-exclusion-zones",
+        "community-river-guardians"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
-      "dissolvedOxygen": 8.2,
-      "turbidity": 11,
-      "lastTested": "2026-06-14",
-      "status": "good"
+      "dissolvedOxygen": 9.2,
+      "turbidity": 4.8,
+      "temperature": 12.2,
+      "status": "excellent",
+      "lastTested": "2026-05-27"
     },
-    "threats": [
-      "riverbed-clay-mining",
-      "deforestation-sedimentation",
-      "pesticide-spraying-runoff"
+    "hydrologicalData": {
+      "flowRate": 26.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax esocinus",
+      "Triplophysa kashmirensis",
+      "Lutra lutra",
+      "Baetis rhodani"
     ],
+    "threats": [
+      "agricultural-runoff-from-apple-orchards",
+      "localized-siltation"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-mawar-nullah-sanctuary",
+    "slug": "fishery-mawar-nullah-sanctuary",
+    "name": "Mawar Nullah Native Schizothorax Sanctuary — Langate",
+    "category": "Native Snow Trout System",
+    "description": "Pristine forest torrent flowing through dense deodar forests of Langate. Cold, highly oxygenated waters support high densities of indigenous snow trout and river loaches.",
+    "district": "Kupwara",
+    "watershed": "Pohru Basin",
+    "elevation": 1780,
+    "coordinates": {
+      "lat": 34.365,
+      "lng": 74.225
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-plagiostomus",
+        "schizothorax-labiatus",
+        "triplophysa-marmorata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "March-October",
+      "permits": true,
+      "conservationMeasures": [
+        "forest-sanctuary-protections",
+        "no-commercial-fishing"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.6,
+      "turbidity": 2.4,
+      "temperature": 10.4,
+      "status": "excellent",
+      "lastTested": "2026-05-29"
+    },
+    "hydrologicalData": {
+      "flowRate": 14,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizothorax plagiostomus",
+      "Triplophysa marmorata",
+      "Potamon bilobatum"
+    ],
+    "threats": [
+      "timber-floating-impacts",
+      "seasonal-water-extraction"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-romshi-nullah-gravel",
+    "slug": "fishery-romshi-nullah-gravel",
+    "name": "Romshi Nullah Native Spawning Torrents — Pakharpora to Pulwama",
+    "category": "Native Snow Trout System",
+    "description": "Flowing down from the Pir Panjal past Pakharpora. Extensive gravel riffles provide vital upstream spawning habitat for snow trout ascending from the Jhelum mainstream during spring.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1750,
+    "coordinates": {
+      "lat": 33.845,
+      "lng": 74.825
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-curvifrons",
+        "schizothorax-plagiostomus",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "March-September",
+      "permits": true,
+      "conservationMeasures": [
+        "springtime-spawning-run-protection",
+        "patrols-against-poisoning"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 4.1,
+      "temperature": 12,
+      "status": "good",
+      "lastTested": "2026-05-20"
+    },
+    "hydrologicalData": {
+      "flowRate": 12.5,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax curvifrons",
+      "Crossocheilus diplochilus",
+      "Gammarus pulex"
+    ],
+    "threats": [
+      "heavy-sand-mining",
+      "irrigation-bunds-blocking-fish-runs"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sandran-river-nursery",
+    "slug": "fishery-sandran-river-nursery",
+    "name": "Sandran River Native Nursery — Dooru Shahabad to Khanabal",
+    "category": "Native Snow Trout System",
+    "description": "Spring-rich southern tributary of the Jhelum arising in the Pir Panjal mountains near Verinag. Mild winter thermal regime allows continuous year-round growth of endemic fish fry.",
+    "district": "Anantnag",
+    "watershed": "Jhelum Basin",
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 33.615,
+      "lng": 75.185
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "triplophysa-kashmirensis",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "verinag-spring-corridor-protection",
+        "re-seeding-native-fingerlings"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 2.8,
+      "temperature": 11.8,
+      "status": "excellent",
+      "lastTested": "2026-06-02"
+    },
+    "hydrologicalData": {
+      "flowRate": 11.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Triplophysa kashmirensis",
+      "Gammarus pulex kashmiriensis"
+    ],
+    "threats": [
+      "spring-channel-concretisation",
+      "domestic-detergent-washing"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
@@ -39317,290 +40236,1072 @@ export const fisheriesData: WaterEntity[] = [
     "id": "fishery-chenab-akhnoor-mahseer",
     "slug": "fishery-chenab-akhnoor-mahseer",
     "name": "Chenab River Golden Mahseer & Snow Trout Fishery — Akhnoor",
-    "type": "fishery",
     "category": "Warmwater / Mahseer Fishery",
-    "description": "The premier sport fishery in Jammu foothills where deep river pools and turbulent rapids harbor the endangered Golden Mahseer (Tor putitora) and migratory snow trout.",
+    "description": "Spectacular confluence zone where the roaring mountain Chenab breaches the Shiwalik hills into the plains. Pristine spawning gravel bars host the legendary Golden Mahseer alongside Alwan Snow Trout.",
     "district": "Jammu",
     "watershed": "Chenab Basin",
-    "elevation": 310,
+    "elevation": 320,
     "coordinates": {
-      "lat": 32.8989,
-      "lng": 74.7312
+      "lat": 32.905,
+      "lng": 74.745
     },
     "fisheryData": {
       "fishSpecies": [
-        "golden-mahseer",
         "tor-putitora",
-        "snow-trout",
-        "labeo-rohita",
-        "mystus-bleekeri"
+        "schizothorax-richardsonii",
+        "labeo-dero",
+        "wallago-attu",
+        "mastacembelus-armatus",
+        "bangana-diphostoma"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "september-to-may",
+      "fishingSeason": "September-May",
       "permits": true,
       "conservationMeasures": [
-        "mahseer-broodstock-protection",
-        "spawning-tributary-sanctuaries",
-        "anti-dynamiting-enforcement"
+        "golden-mahseer-broodstock-sanctuary",
+        "strict-ban-on-dynamite-electro-fishing",
+        "seasonal-monsoon-spawning-ban"
       ]
     },
     "waterQuality": {
       "pH": 7.8,
-      "dissolvedOxygen": 8.5,
-      "turbidity": 18,
-      "lastTested": "2026-06-15",
-      "status": "good"
+      "dissolvedOxygen": 8.4,
+      "turbidity": 7.5,
+      "temperature": 18.2,
+      "status": "good",
+      "lastTested": "2026-05-10"
     },
-    "threats": [
-      "upstream-damming-blocking-migration",
-      "poaching-during-monsoon-spawning-runs",
-      "sand-mining"
+    "hydrologicalData": {
+      "flowRate": 350,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Schizothorax richardsonii",
+      "Labeo dero",
+      "Wallago attu",
+      "Lutrogale perspicillata"
     ],
+    "threats": [
+      "unregulated-mechanized-sand-mining",
+      "upstream-dam-peaking-flow-surges",
+      "industrial-plastic-waste"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-tawi-nagrota-riverine",
-    "slug": "fishery-tawi-nagrota",
-    "name": "Tawi River Nagrota Foothills Fishery",
-    "type": "fishery",
+    "id": "fishery-tawi-nagrota-foothills",
+    "slug": "fishery-tawi-nagrota-foothills",
+    "name": "Tawi River Foothills Fishery & Spawning Beds — Nagrota to Sidhra",
     "category": "Warmwater / Mahseer Fishery",
-    "description": "Shivalik foothill fishery supporting diverse cyprinids, Indian major carps, and juvenile Golden Mahseer descending from upper Chenani mountain reaches.",
+    "description": "Rocky and pebbly sub-Himalayan river reach famous for Tor putitora (Golden Mahseer) and Labeo dero (Gid). Natural deep pools carved into sandstone rocks provide vital overwintering sanctuaries.",
     "district": "Jammu",
     "watershed": "Tawi Basin",
-    "elevation": 410,
+    "elevation": 380,
     "coordinates": {
-      "lat": 32.7889,
-      "lng": 74.9125
+      "lat": 32.785,
+      "lng": 74.915
     },
     "fisheryData": {
       "fishSpecies": [
-        "golden-mahseer",
-        "labeo-calbasu",
-        "cirrhinus-mrigala",
-        "snow-trout"
+        "tor-putitora",
+        "labeo-dero",
+        "barilius-bendelisis",
+        "garra-gotyla",
+        "mastacembelus-armatus"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "moderate",
-      "fishingSeason": "october-to-april",
+      "fishingSeason": "October-April",
       "permits": true,
       "conservationMeasures": [
-        "closed-season-june-august",
-        "sanctuary-pools"
+        "anti-poaching-squads",
+        "pool-deepening-conservation"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 8.9,
+      "temperature": 19.5,
+      "status": "moderate",
+      "lastTested": "2026-05-08"
+    },
+    "hydrologicalData": {
+      "flowRate": 42,
+      "seasonalVariation": "seasonal",
+      "source": "rainfall"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Barilius bendelisis",
+      "Garra gotyla",
+      "Macrobrachium dayanum"
+    ],
+    "threats": [
+      "urban-sewage-from-jammu-city",
+      "riverbed-stone-crushers",
+      "dry-season-flow-depletion"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-dal-lake",
+    "slug": "fishery-dal-lake",
+    "name": "Dal Lake Multi-Basin Fishery — Hazratbal, Bod Dal & Nagin",
+    "category": "Lake Fisheries",
+    "description": "Centuries-old artisanal fishery supporting over 5,000 fisher families. Diverse multi-species community of mirror carp, scale carp, grass carp, and indigenous Schizothorax. Iconic lotus (Nadru) and water chestnut (Singhara) vegetation beds provide primary nursery habitats.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1584,
+    "coordinates": {
+      "lat": 34.115,
+      "lng": 74.829
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "mirror-carp",
+        "grass-carp",
+        "schizothorax-niger",
+        "crossocheilus-diplochilus",
+        "puntius-conchonius"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "mesh-size-regulation",
+        "closed-spawning-season-may",
+        "carp-harvest-incentivisation",
+        "macrophyte-sanctuary-zones"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 6.8,
+      "turbidity": 11.5,
+      "temperature": 16.8,
+      "status": "moderate",
+      "lastTested": "2026-06-01"
+    },
+    "hydrologicalData": {
+      "waterLevel": 2.8,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Cyprinus carpio specularis",
+      "Crossocheilus diplochilus",
+      "Nelumbo nucifera",
+      "Potamogeton crispus",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "eutrophication-from-houseboat-sewage",
+      "carp-overpopulation-displacing-schizothorax",
+      "excessive-mechanical-deweeders-destroying-spawn"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-wular-lake",
+    "slug": "fishery-wular-lake",
+    "name": "Wular Lake Commercial Fish Production Hub — Watlab & Banyari",
+    "category": "Lake Fisheries",
+    "description": "The largest freshwater lake in India and the economic backbone of Kashmir fisheries, generating over 60% of the valley's total fish harvest. Vast littoral marshes, river delta confluences, and extensive Trapa natans beds support thousands of commercial fishers.",
+    "district": "Bandipora",
+    "watershed": "Jhelum Basin",
+    "elevation": 1578,
+    "coordinates": {
+      "lat": 34.385,
+      "lng": 74.585
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "mirror-carp",
+        "schizothorax-esocinus",
+        "schizothorax-curvifrons",
+        "schizothorax-niger",
+        "crucian-carp",
+        "botia-birdi"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "ramsar-wetland-protection",
+        "sustainable-mesh-size-control",
+        "seasonal-breeding-area-closures",
+        "singhara-cooperative-management"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.6,
+      "turbidity": 8.5,
+      "temperature": 17.2,
+      "status": "good",
+      "lastTested": "2026-06-03"
+    },
+    "hydrologicalData": {
+      "waterLevel": 3.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax esocinus",
+      "Trapa natans var. bispinosa",
+      "Lamellidens corrianus",
+      "Lutra lutra",
+      "Anas crecca",
+      "Channa punctata"
+    ],
+    "threats": [
+      "heavy-siltation-from-jhelum-and-madhumati",
+      "willow-plantation-encroachment",
+      "pesticide-influx-from-apple-growing-catchment"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-manasbal-lake",
+    "slug": "fishery-manasbal-lake",
+    "name": "Manasbal Lake Deep Lacustrine Fishery — Safapora",
+    "category": "Lake Fisheries",
+    "description": "The deepest lake in the Kashmir Valley (13m maximum depth). Super-clear, subterranean spring-fed waters nourish extensive submerged beds of Ceratophyllum and Potamogeton. Pristine habitat for native snow trout and managed carp stocks.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1583,
+    "coordinates": {
+      "lat": 34.248,
+      "lng": 74.672
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "mirror-carp",
+        "grass-carp",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "deep-pool-hypolimnion-protection",
+        "eco-tourism-motorboat-prohibition",
+        "springhead-buffer-zones"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 4.2,
+      "temperature": 15.2,
+      "status": "good",
+      "lastTested": "2026-05-25"
+    },
+    "hydrologicalData": {
+      "waterLevel": 12.8,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Ceratophyllum demersum",
+      "Nelumbo nucifera",
+      "Pseudepidalea viridis",
+      "Aythya ferina"
+    ],
+    "threats": [
+      "limestone-quarrying-dust-deposition",
+      "agricultural-fertilizer-runoff"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-anchar-lake",
+    "slug": "fishery-anchar-lake",
+    "name": "Anchar Lake Traditional Fisheries Sanctuary — Soura",
+    "category": "Lake Fisheries",
+    "description": "Shallow, highly vegetated reed-fringed lake connected to Dal Lake via Nallah Amir Khan. High natural food availability provides a critical nursery for juvenile common carp and indigenous Schizothorax.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.145,
+      "lng": 74.785
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "mirror-carp",
+        "schizothorax-niger",
+        "puntius-conchonius",
+        "channa-punctata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "wetland-demarcation-and-fencing",
+        "sewage-interception-bunds"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 5.8,
+      "turbidity": 14.2,
+      "temperature": 18,
+      "status": "poor",
+      "lastTested": "2026-05-28"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.8,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Phragmites australis",
+      "Puntius conchonius",
+      "Channa punctata",
+      "Hydrophasianus chirurgus"
+    ],
+    "threats": [
+      "urban-encroachment-and-landfilling",
+      "untreated-hospital-and-domestic-sewage"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-nigeen-lake-sanctuary",
+    "slug": "fishery-nigeen-lake-sanctuary",
+    "name": "Nigeen Lake Sport Angling & Carp Sanctuary",
+    "category": "Lake Fisheries",
+    "description": "Deep, picturesque western basin of the Dal system flanked by willows and poplars. Better flushing characteristics and clearer waters allow healthy coexistence of sport-angling carp and endemic snow trout.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1584,
+    "coordinates": {
+      "lat": 34.125,
+      "lng": 74.815
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "grass-carp",
+        "schizothorax-niger",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "aeration-fountains-operation",
+        "houseboat-sewage-connection-enforcement"
       ]
     },
     "waterQuality": {
       "pH": 7.5,
       "dissolvedOxygen": 7.4,
-      "turbidity": 12,
-      "lastTested": "2026-06-15",
-      "status": "good"
+      "turbidity": 6.8,
+      "temperature": 16.2,
+      "status": "good",
+      "lastTested": "2026-06-02"
     },
-    "threats": [
-      "flash-flood-turbidity",
-      "suburban-sewage-outfalls",
-      "summer-flow-depletion"
+    "hydrologicalData": {
+      "waterLevel": 4.2,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Crossocheilus diplochilus",
+      "Nymphaea alba",
+      "Alcedo atthis"
     ],
+    "threats": [
+      "submerged-weed-overgrowth",
+      "houseboat-greywater-discharge"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-neeru-stream-bhaderwah-trout",
-    "slug": "fishery-neeru-bhaderwah-trout",
-    "name": "Neeru Stream Wild Trout Sanctuary — Bhaderwah",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Pristine mountain stream fed by Kaplas glaciers. Renowned as the prime trout angling destination of Jammu province with robust brown and rainbow trout stocks.",
-    "district": "Doda",
-    "watershed": "Chenab Basin",
-    "elevation": 1610,
+    "id": "fishery-mansar-lake-jammu",
+    "slug": "fishery-mansar-lake-jammu",
+    "name": "Mansar Lake Sub-Himalayan Freshwater Fishery — Samba",
+    "category": "Lake Fisheries",
+    "description": "Sacred sub-Himalayan lake ringed by pine-covered hills. Non-commercial sanctuary holding large religious stocks of Golden Mahseer, carps, and thousands of protected Indian Flapshell Turtles.",
+    "district": "Samba",
+    "watershed": "Tawi Basin",
+    "elevation": 665,
     "coordinates": {
-      "lat": 32.9812,
-      "lng": 75.7145
+      "lat": 32.698,
+      "lng": 75.148
     },
     "fisheryData": {
       "fishSpecies": [
-        "brown-trout",
-        "rainbow-trout",
-        "snow-trout"
+        "tor-putitora",
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "lissemys-punctata-andersoni",
+        "channa-punctata"
       ],
       "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "may-to-october",
+      "fishingSeason": "non-commercial-sanctuary",
+      "permits": false,
+      "conservationMeasures": [
+        "complete-commercial-fishing-ban",
+        "turtle-feeding-regulation",
+        "lake-aeration-diffusers"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 7.2,
+      "turbidity": 7.2,
+      "temperature": 22.4,
+      "status": "good",
+      "lastTested": "2026-05-14"
+    },
+    "hydrologicalData": {
+      "waterLevel": 38,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Lissemys punctata andersoni",
+      "Labeo rohita",
+      "Nilssonia gangetica"
+    ],
+    "threats": [
+      "unregulated-pilgrim-flour-feeding-polluting-water",
+      "soil-erosion-from-slopes"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ranjit-sagar-reservoir",
+    "slug": "fishery-ranjit-sagar-reservoir",
+    "name": "Ranjit Sagar Dam Reservoir Commercial Fishery — Basohli / Kathua",
+    "category": "Lake Fisheries",
+    "description": "Massive 87 sq km impoundment on the Ravi river. Major commercial fisheries production center yielding hundreds of tons of Indian Major Carps, Silver Carp, and Golden Mahseer annually.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 525,
+    "coordinates": {
+      "lat": 32.445,
+      "lng": 75.765
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "silver-carp",
+        "wallago-attu",
+        "channa-striata"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "September-June",
       "permits": true,
       "conservationMeasures": [
-        "licensed-angling-beats",
-        "hatchery-fingerling-replenishment",
-        "wild-river-patrols"
+        "cage-culture-zoning",
+        "fingerling-ranching-mandate",
+        "monsoon-closed-season"
       ]
     },
     "waterQuality": {
       "pH": 7.7,
-      "dissolvedOxygen": 9.5,
-      "turbidity": 2.8,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "dissolvedOxygen": 8,
+      "turbidity": 5.4,
+      "temperature": 20.5,
+      "status": "good",
+      "lastTested": "2026-05-18"
     },
-    "threats": [
-      "town-sewage-ingress",
-      "gravel-extraction-at-doda-confluence",
-      "climate-warming"
+    "hydrologicalData": {
+      "waterLevel": 75,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Labeo rohita",
+      "Wallago attu",
+      "Lutrogale perspicillata"
     ],
+    "threats": [
+      "water-level-drawdown-during-power-generation",
+      "overfishing-with-sub-mesh-gillnets"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-naigad-kishtwar-trout",
-    "slug": "fishery-naigad-kishtwar-trout",
-    "name": "Naigad High Alpine Trout Stream — Kishtwar",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Glacial torrent descending from Sickle Moon peaks. Cold, fast-flowing water sustaining pure wild brown trout populations in remote Himalayan solitude.",
-    "district": "Kishtwar",
-    "watershed": "Marusudar Basin",
-    "elevation": 2150,
+    "id": "fishery-gangabal-nundkol-trout",
+    "slug": "fishery-gangabal-nundkol-trout",
+    "name": "Gangabal & Nundkol Alpine Lakes Wild Trout Fishery",
+    "category": "Alpine Lake Fishery",
+    "description": "Twin high-altitude oligotrophic tarns (3,570m) at the foot of Mount Haramukh. Stocked in the early 20th century, these alpine waters sustain world-famous wild brown trout that attain giant proportions feeding on Gammarus scuds and stonefly larvae.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 3570,
     "coordinates": {
-      "lat": 33.3154,
-      "lng": 75.7689
+      "lat": 34.435,
+      "lng": 74.925
     },
     "fisheryData": {
       "fishSpecies": [
-        "brown-trout",
-        "snow-trout"
+        "wild-brown-trout",
+        "gammarus-pulex-kashmiriensis",
+        "nanorana-liebigii"
       ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "moderate",
-      "fishingSeason": "june-to-september",
+      "fishingSeason": "July-September",
       "permits": true,
       "conservationMeasures": [
-        "catch-and-release",
-        "wilderness-patrolling"
+        "wilderness-fly-fishing-only",
+        "strictly-catch-and-release",
+        "prohibition-on-fuel-and-detergent-washing"
       ]
     },
     "waterQuality": {
-      "pH": 7.8,
-      "dissolvedOxygen": 10,
-      "turbidity": 2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "pH": 7.9,
+      "dissolvedOxygen": 10.8,
+      "turbidity": 0.8,
+      "temperature": 5.5,
+      "status": "excellent",
+      "lastTested": "2026-06-25"
     },
-    "threats": [
-      "winter-avalanches",
-      "natural-gorge-landslides"
+    "hydrologicalData": {
+      "waterLevel": 18.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex kashmiriensis",
+      "Perla marginata"
     ],
+    "threats": [
+      "backpacker-plastic-pollution",
+      "winter-deep-freezing-events"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-suran-river-poonch-trout",
-    "slug": "fishery-suran-river-poonch",
-    "name": "Suran River Trout Beat — Bafliaz to Chandimarh",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Cascading Pir Panjal stream along the historic Mughal Road. Highly productive trout water supporting both rainbow trout and indigenous hill-stream cyprinids.",
-    "district": "Poonch",
-    "watershed": "Poonch Basin",
-    "elevation": 1750,
+    "id": "fishery-vishansar-kishansar-trout",
+    "slug": "fishery-vishansar-kishansar-trout",
+    "name": "Vishansar & Kishansar Lakes Wild Trout Reserve",
+    "category": "Alpine Lake Fishery",
+    "description": "Gem lakes along the famous Great Lakes Trek route at 3,710m. Sparkling turquoise waters fed by hanging glaciers, supporting healthy populations of self-reproducing wild brown trout.",
+    "district": "Ganderbal",
+    "watershed": "Kishanganga Basin",
+    "elevation": 3710,
     "coordinates": {
-      "lat": 33.6412,
-      "lng": 74.2542
+      "lat": 34.385,
+      "lng": 75.045
     },
     "fisheryData": {
       "fishSpecies": [
-        "rainbow-trout",
-        "brown-trout",
-        "snow-trout",
-        "garra-gotyla"
+        "wild-brown-trout",
+        "gammarus-pulex-kashmiriensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "July-August",
+      "permits": true,
+      "conservationMeasures": [
+        "trekker-waste-code-enforcement",
+        "strict-bag-limits"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 11,
+      "turbidity": 0.6,
+      "temperature": 4.8,
+      "status": "excellent",
+      "lastTested": "2026-06-28"
+    },
+    "hydrologicalData": {
+      "waterLevel": 22,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Tadorna ferruginea"
+    ],
+    "threats": [
+      "unmanaged-high-altitude-trekker-waste",
+      "short-summer-feeding-window"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kausarnag-glacial-tarn",
+    "slug": "fishery-kausarnag-glacial-tarn",
+    "name": "Kausarnag Glacial Tarn Wild Trout Fishery — Pir Panjal",
+    "category": "Alpine Lake Fishery",
+    "description": "High-altitude glacial tarn situated at 3,962m in the Pir Panjal range. Source of the roaring Veshav River. The lake remains frozen for eight months, but supports cold-hardy wild brown trout during the brief summer thaw.",
+    "district": "Kulgam",
+    "watershed": "Veshav Basin",
+    "elevation": 3962,
+    "coordinates": {
+      "lat": 33.525,
+      "lng": 74.825
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout"
+      ],
+      "fisheryType": "wild",
+      "productivity": "low",
+      "fishingSeason": "July-August",
+      "permits": true,
+      "conservationMeasures": [
+        "alpine-sanctuary-regulations",
+        "no-motorised-access"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 11.4,
+      "turbidity": 0.5,
+      "temperature": 4.2,
+      "status": "excellent",
+      "lastTested": "2026-07-02"
+    },
+    "hydrologicalData": {
+      "waterLevel": 28,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Pseudepidalea viridis kashmirensis",
+      "Baetis rhodani"
+    ],
+    "threats": [
+      "climate-induced-temperature-spikes",
+      "pilgrimage-litter"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-hokersar-wetland",
+    "slug": "fishery-hokersar-wetland",
+    "name": "Hokersar Wetland Fish Breeding Grounds & Aquatic Sanctuary",
+    "category": "Wetland Fisheries",
+    "description": "International Ramsar site functioning as the vital 'Queen of Wetlands'. Expansive reed-beds of Phragmites and Typha offer secure spawning sanctuaries for common carp and endemic loaches, while sustaining over 500,000 migratory waterfowl in the wetland food chain.",
+    "district": "Budgam",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.085,
+      "lng": 74.715
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "crucian-carp",
+        "schizothorax-niger",
+        "triplophysa-kashmirensis",
+        "puntius-conchonius"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "regulated-seasonal",
+      "permits": true,
+      "conservationMeasures": [
+        "ramsar-wetland-strict-protection",
+        "bird-sanctuary-buffer",
+        "anti-poaching-watch-towers"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.3,
+      "dissolvedOxygen": 6.4,
+      "turbidity": 12.8,
+      "temperature": 16.5,
+      "status": "moderate",
+      "lastTested": "2026-05-22"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.4,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Cyprinus carpio",
+      "Schizothorax niger",
+      "Puntius conchonius",
+      "Pseudepidalea viridis",
+      "Anas platyrhynchos",
+      "Ardea cinerea"
+    ],
+    "threats": [
+      "silt-accumulation-choking-channels",
+      "solid-waste-dumping-on-fringes",
+      "water-scarcity-during-autumn-drought"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-haigam-rakh-wetland",
+    "slug": "fishery-haigam-rakh-wetland",
+    "name": "Haigam Rakh Wetland Carp & Loach Spawning Grounds",
+    "category": "Wetland Fisheries",
+    "description": "Ramsar wetland located in Baramulla along the Jhelum flood spill channel. Dominated by dense willow groves and reed thickets that shelter dense populations of native loaches, carps, and juvenile snow trout.",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.255,
+      "lng": 74.525
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "mirror-carp",
+        "triplophysa-kashmirensis",
+        "puntius-conchonius",
+        "channa-punctata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "March-October",
+      "permits": true,
+      "conservationMeasures": [
+        "ramsar-restoration-plan",
+        "desilting-of-central-water-pockets"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7.1,
+      "turbidity": 9.2,
+      "temperature": 16,
+      "status": "good",
+      "lastTested": "2026-05-24"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.6,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Triplophysa kashmirensis",
+      "Phragmites australis",
+      "Channa punctata",
+      "Porphyrio porphyrio"
+    ],
+    "threats": [
+      "agricultural-encroachment-paddy-conversion",
+      "eutrophication"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-shallabugh-wetland-delta",
+    "slug": "fishery-shallabugh-wetland-delta",
+    "name": "Shallabugh Wetland Delta Aquatic Sanctuary — Ganderbal",
+    "category": "Wetland Fisheries",
+    "description": "Vast 16 sq km deltaic Ramsar wetland formed by the confluence of the Sind River and Anchar Lake channels. Exceptional aquatic diversity with flourishing beds of lotus, water lilies, and abundant fish food organisms.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.185,
+      "lng": 74.725
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "common-carp",
+        "crossocheilus-diplochilus",
+        "puntius-conchonius"
       ],
       "fisheryType": "managed",
       "productivity": "high",
-      "fishingSeason": "april-to-october",
+      "fishingSeason": "year-round",
       "permits": true,
       "conservationMeasures": [
-        "fisheries-warden-posts",
-        "spawning-gravel-fencing"
+        "seasonal-bird-breeding-closure",
+        "water-inlet-gate-regulation"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
-      "dissolvedOxygen": 9.1,
-      "turbidity": 4.8,
-      "lastTested": "2026-06-15",
-      "status": "excellent"
+      "dissolvedOxygen": 7.8,
+      "turbidity": 7.5,
+      "temperature": 15.8,
+      "status": "good",
+      "lastTested": "2026-05-26"
     },
-    "threats": [
-      "road-widening-debris",
-      "seasonal-monsoon-turbidity-surges"
+    "hydrologicalData": {
+      "waterLevel": 1.9,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Nelumbo nucifera",
+      "Nymphaea alba",
+      "Lutra lutra",
+      "Netta rufina"
     ],
+    "threats": [
+      "siltation-from-sind-river-floods",
+      "willow-plantation-proliferation"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-kathua-ranjit-sagar-reservoir",
-    "slug": "fishery-kathua-ranjit-sagar",
-    "name": "Ranjit Sagar Dam Lake Fishery — Basohli / Kathua",
-    "type": "fishery",
-    "category": "Lake Fisheries",
-    "description": "Vast 88 sq km impoundment on the Ravi River. Commercial cage-culture operations and deep reservoir fisheries producing Indian major carps, catfish, and mahseer.",
-    "district": "Kathua",
-    "watershed": "Ravi Basin",
-    "elevation": 530,
+    "id": "fishery-mirgund-wetland",
+    "slug": "fishery-mirgund-wetland",
+    "name": "Mirgund Wetland Seasonal Fish & Waterbird Community",
+    "category": "Wetland Fisheries",
+    "description": "Seasonal floodplain wetland fed by the Sukhnag River. Acts as an important temporary spawning basin for cyprinids during high spring water before gently draining into the Jhelum basin.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 1581,
     "coordinates": {
-      "lat": 32.4333,
-      "lng": 75.8167
+      "lat": 34.135,
+      "lng": 74.625
     },
     "fisheryData": {
       "fishSpecies": [
-        "golden-mahseer",
-        "labeo-rohita",
-        "catla-catla",
-        "cirrhinus-mrigala",
-        "wallago-attu"
+        "common-carp",
+        "crucian-carp",
+        "puntius-conchonius"
       ],
-      "fisheryType": "aquaculture",
-      "productivity": "high",
-      "fishingSeason": "august-to-june",
-      "permits": true,
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "April-August",
+      "permits": false,
       "conservationMeasures": [
-        "floating-cage-culture-permits",
-        "reservoir-fish-seed-ranching",
-        "patrol-boats"
+        "seasonal-water-bund-maintenance",
+        "protection-against-draining"
       ]
     },
     "waterQuality": {
-      "pH": 7.8,
-      "dissolvedOxygen": 8.2,
-      "turbidity": 9,
-      "lastTested": "2026-06-15",
-      "status": "good"
+      "pH": 7.3,
+      "dissolvedOxygen": 6.2,
+      "turbidity": 13.5,
+      "temperature": 17.5,
+      "status": "moderate",
+      "lastTested": "2026-05-19"
     },
-    "threats": [
-      "reservoir-drawdown-stranding-fry",
-      "poaching-in-remote-bays"
+    "hydrologicalData": {
+      "waterLevel": 1.1,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Cyprinus carpio",
+      "Carassius carassius",
+      "Anas acuta",
+      "Trapa natans"
     ],
+    "threats": [
+      "complete-drying-up-during-summer-drought",
+      "paddy-encroachment"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-chenani-trout-farm-udhampur",
-    "slug": "fishery-chenani-trout-farm",
-    "name": "Chenani Trout Demonstration Farm & Hatchery",
-    "type": "fishery",
-    "category": "Commercial Aquaculture",
-    "description": "Government coldwater demonstration farm on the upper Tawi River at Chenani. Cultivates rainbow trout and distributes seed to private trout entrepreneurs.",
-    "district": "Udhampur",
-    "watershed": "Tawi Basin",
-    "elevation": 1250,
+    "id": "fishery-chatlum-wetland-reserve",
+    "slug": "fishery-chatlum-wetland-reserve",
+    "name": "Chatlum Wetland Peatland & Spring-Fed Aquatic Sanctuary — Pampore",
+    "category": "Wetland Fisheries",
+    "description": "Spring-fed peat wetland in the saffron belt of Pampore. Unusually high dissolved mineral concentrations and pure spring upwellings support healthy endemic loach and snow trout populations.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1588,
     "coordinates": {
-      "lat": 33.0312,
-      "lng": 75.2812
+      "lat": 34.025,
+      "lng": 74.912
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "triplophysa-kashmirensis",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "saffron-belt-wetland-reserve-rules",
+        "anti-encroachment-fencing"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 3.5,
+      "temperature": 13.2,
+      "status": "excellent",
+      "lastTested": "2026-05-28"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Triplophysa kashmirensis",
+      "Gammarus pulex",
+      "Pseudepidalea viridis"
+    ],
+    "threats": [
+      "urban-construction-on-margins",
+      "spring-water-diversions"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gharana-wetland-jammu",
+    "slug": "fishery-gharana-wetland-jammu",
+    "name": "Gharana Wetland Subtropical Aquatic Community — R.S. Pura, Jammu",
+    "category": "Wetland Fisheries",
+    "description": "Famous international migratory bird habitat in the subtropical plains of Jammu. Warm, shallow, macrophyte-choked waters support air-breathing catfishes, snakeheads, barbs, and freshwater turtles.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 275,
+    "coordinates": {
+      "lat": 32.545,
+      "lng": 74.685
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "channa-punctata",
+        "heteropneustes-fossilis",
+        "clarias-magur",
+        "pethia-ticto",
+        "trichogaster-fasciata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "seasonal-regulated",
+      "permits": false,
+      "conservationMeasures": [
+        "wetland-wildlife-sanctuary-rules",
+        "village-sewage-diversion-drain",
+        "eco-restoration-bund"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 6.5,
+      "turbidity": 12,
+      "temperature": 24.5,
+      "status": "moderate",
+      "lastTested": "2026-05-05"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.2,
+      "seasonalVariation": "seasonal",
+      "source": "rainfall"
+    },
+    "biodiversity": [
+      "Heteropneustes fossilis",
+      "Channa punctata",
+      "Lissemys punctata andersoni",
+      "Anser indicus"
+    ],
+    "threats": [
+      "agricultural-fertilizer-runoff",
+      "village-effluent",
+      "subtropical-summer-drying"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kokernag-trout",
+    "slug": "fishery-kokernag-trout",
+    "name": "Kokernag Commercial Trout Raceway & Asia's Premier Breeding Complex",
+    "category": "Commercial Aquaculture",
+    "description": "Asia's largest coldwater trout facility, established with Danish and European collaboration. State-of-the-art raceway infrastructure producing millions of high-viability eyed ova, fingerlings, and table trout annually with continuous pure karst spring water.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1900,
+    "coordinates": {
+      "lat": 33.8833,
+      "lng": 75.25
     },
     "fisheryData": {
       "fishSpecies": [
@@ -39609,371 +41310,2407 @@ export const fisheriesData: WaterEntity[] = [
       ],
       "fisheryType": "aquaculture",
       "productivity": "high",
-      "fishingSeason": "commercial-year-round",
-      "permits": false,
-      "conservationMeasures": [
-        "controlled-water-chilling",
-        "raceway-filtration-systems"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.5,
-      "dissolvedOxygen": 8.6,
-      "turbidity": 3.5,
-      "lastTested": "2026-06-14",
-      "status": "good"
-    },
-    "threats": [
-      "summer-water-scarcity",
-      "high-summer-ambient-temperature"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-choglamsar-solar-trout-leh",
-    "slug": "fishery-choglamsar-solar-trout",
-    "name": "Leh High-Altitude Solar-Greenhouse Trout Hatchery — Choglamsar",
-    "type": "fishery",
-    "category": "Commercial Aquaculture",
-    "description": "Innovative high-altitude aquaculture facility at 3,250m on the Indus River. Utilizes passive solar insulation and Indus sub-surface water to culture rainbow trout in sub-zero winters.",
-    "district": "Leh",
-    "watershed": "Indus Basin",
-    "elevation": 3250,
-    "coordinates": {
-      "lat": 34.1214,
-      "lng": 77.5812
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "rainbow-trout",
-        "snow-trout"
-      ],
-      "fisheryType": "aquaculture",
-      "productivity": "high",
-      "fishingSeason": "commercial-year-round",
-      "permits": false,
-      "conservationMeasures": [
-        "thermal-polycarbonate-enclosures",
-        "recirculating-aquaculture-filtration"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.9,
-      "dissolvedOxygen": 9,
-      "turbidity": 2.5,
-      "lastTested": "2026-06-16",
-      "status": "good"
-    },
-    "threats": [
-      "extreme-winter-freezing-below-minus-25C",
-      "high-operational-feed-cost"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-indus-river-wild-fishery-leh",
-    "slug": "fishery-indus-river-wild-fishery",
-    "name": "Indus River Native Snow Trout Fishery — Spituk to Nimoo",
-    "type": "fishery",
-    "category": "Native Snow Trout System",
-    "description": "Cold-arid trans-Himalayan river fishery harboring native snow trout (Schizothorax stoliczkai and S. labiatus) adapted to high UV radiation and extreme glacial silt.",
-    "district": "Leh",
-    "watershed": "Indus Basin",
-    "elevation": 3150,
-    "coordinates": {
-      "lat": 34.1812,
-      "lng": 77.3412
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "snow-trout",
-        "schizothorax-stoliczkai",
-        "triplophysa-stoliczkai"
-      ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "may-to-october",
+      "fishingSeason": "year-round",
       "permits": true,
       "conservationMeasures": [
-        "indigenous-fishery-sanctuary",
-        "seasonal-monastery-protection"
+        "biosecure-broodstock-quarantine",
+        "spf-certified-eyed-ova-distribution",
+        "effluent-settling-ponds"
       ]
     },
     "waterQuality": {
-      "pH": 8,
-      "dissolvedOxygen": 8.8,
-      "turbidity": 14,
-      "lastTested": "2026-06-16",
-      "status": "good"
+      "pH": 7.7,
+      "dissolvedOxygen": 9.8,
+      "turbidity": 1.2,
+      "temperature": 10.8,
+      "status": "excellent",
+      "lastTested": "2026-06-10"
     },
-    "threats": [
-      "glacial-silt-smothering-gravel",
-      "bridge-construction-pollution"
+    "hydrologicalData": {
+      "flowRate": 25,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario",
+      "Gammarus pulex kashmiriensis"
     ],
+    "threats": [
+      "viral-haemorrhagic-septicaemia-biosecurity-risk",
+      "climate-driven-spring-discharge-fluctuation"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-suru-dras-confluence-kargil",
-    "slug": "fishery-suru-dras-confluence",
-    "name": "Suru & Dras Rivers Confluence Fishery — Kargil",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Rugged trans-Himalayan confluence fishery where the icy waters of the Dras and Suru rivers converge. Sustains wild brown trout and endemic Tibetan stone loaches.",
-    "district": "Kargil",
-    "watershed": "Suru Basin",
-    "elevation": 2676,
+    "id": "fishery-laribal-historic-hatchery",
+    "slug": "fishery-laribal-historic-hatchery",
+    "name": "Laribal Historic Trout Hatchery & Dachigam Cold Stream",
+    "category": "Commercial Aquaculture",
+    "description": "The birthplace of trout culture in the Indian subcontinent, established in 1901 by F.J. Mitchell. Located at the entrance to Dachigam National Park, it preserves the ancestral genetic lineages of Kashmir brown trout and produces broodstock for stocking mountain rivers.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1720,
     "coordinates": {
-      "lat": 34.5542,
-      "lng": 76.1312
+      "lat": 34.135,
+      "lng": 74.925
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
-        "snow-trout",
-        "schizothorax-richardsonii"
+        "rainbow-trout"
       ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "june-to-september",
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
       "permits": true,
       "conservationMeasures": [
-        "licensed-recreational-angling",
-        "strict-bag-limits"
+        "ancestral-broodstock-genetic-preservation",
+        "wild-river-replenishment-ranching"
       ]
     },
     "waterQuality": {
       "pH": 7.8,
-      "dissolvedOxygen": 9.6,
-      "turbidity": 7,
-      "lastTested": "2026-06-16",
-      "status": "good"
+      "dissolvedOxygen": 9.9,
+      "turbidity": 1.5,
+      "temperature": 9.4,
+      "status": "excellent",
+      "lastTested": "2026-06-08"
     },
-    "threats": [
-      "chutuk-dam-downstream-flow-alteration",
-      "winter-ice-scour"
+    "hydrologicalData": {
+      "flowRate": 8,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Lutra lutra",
+      "Triplophysa kashmirensis"
     ],
+    "threats": [
+      "flash-floods-from-dachigam-catchment",
+      "leopard-and-otter-predation-on-broodstock"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-neelum-taobat-shounter-trout",
-    "slug": "fishery-neelum-taobat-shounter",
-    "name": "Neelum River Wild Trout Waters — Shounter & Taobat",
-    "type": "fishery",
-    "category": "Trout Stream / Beat",
-    "description": "Remote high-mountain valley along the upper Neelum River near the LoC. Internationally recognized for dense populations of wild riverine brown trout.",
-    "district": "Neelum",
-    "watershed": "Neelum Basin",
-    "elevation": 2280,
+    "id": "fishery-harwan-national-hatchery",
+    "slug": "fishery-harwan-national-hatchery",
+    "name": "Harwan National Trout Seed Bank & Rearing Center",
+    "category": "Commercial Aquaculture",
+    "description": "Advanced coldwater research and broodstock multiplication complex situated downstream of the Sarband water reservoir. Feeds private trout farming ventures across Central and North Kashmir.",
+    "district": "Srinagar",
+    "watershed": "Jhelum Basin",
+    "elevation": 1690,
     "coordinates": {
-      "lat": 34.9189,
-      "lng": 74.5214
+      "lat": 34.165,
+      "lng": 74.895
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "selective-breeding-growth-enhancement",
+        "disease-surveillance-lab"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 1.8,
+      "temperature": 10.2,
+      "status": "excellent",
+      "lastTested": "2026-06-05"
+    },
+    "hydrologicalData": {
+      "flowRate": 6.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "urban-sprawl-around-harwan",
+      "water-flow-curtailment-during-dry-spells"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-leh-solar-trout-hatchery",
+    "slug": "fishery-leh-solar-trout-hatchery",
+    "name": "Leh High-Altitude Solar-Greenhouse Trout Hatchery — Choglamsar",
+    "category": "Commercial Aquaculture",
+    "description": "Pioneering high-altitude solar-insulated aquaculture facility operating at 3,250m. Utilizes passive solar heating and spring waters to sustain optimal incubation and feeding through brutal -25°C Himalayan winters.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3250,
+    "coordinates": {
+      "lat": 34.125,
+      "lng": 77.585
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "ptychobarbus-conirostris"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "passive-solar-water-tempering",
+        "indigenous-snow-trout-artificial-breeding"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 10.2,
+      "turbidity": 1,
+      "temperature": 9.8,
+      "status": "excellent",
+      "lastTested": "2026-06-15"
+    },
+    "hydrologicalData": {
+      "flowRate": 4.2,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Ptychobarbus conirostris"
+    ],
+    "threats": [
+      "severe-winter-freezing-risk-if-power-fails",
+      "extreme-diurnal-temperature-swings"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chenani-trout-farm",
+    "slug": "fishery-chenani-trout-farm",
+    "name": "Chenani Trout Demonstration Farm & Hatchery — Udhampur",
+    "category": "Commercial Aquaculture",
+    "description": "The primary coldwater trout facility of Jammu province. Situated on the cool upper reaches of the Tawi River beneath the Patnitop pine ridges, producing fingerlings for farmers across Jammu, Doda, and Kishtwar.",
+    "district": "Udhampur",
+    "watershed": "Tawi Basin",
+    "elevation": 1250,
+    "coordinates": {
+      "lat": 33.045,
+      "lng": 75.285
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "summer-water-chilling-aeration",
+        "feed-quality-standards"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2.5,
+      "temperature": 13.5,
+      "status": "good",
+      "lastTested": "2026-05-12"
+    },
+    "hydrologicalData": {
+      "flowRate": 5.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "monsoon-silt-clogging-intake-screens",
+      "summer-water-temperature-spikes"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-manasbal-fish-seed-farm",
+    "slug": "fishery-manasbal-fish-seed-farm",
+    "name": "National Fish Seed Farm Manasbal — Warm & Coldwater Carp Unit",
+    "category": "Commercial Aquaculture",
+    "description": "Vast state carp breeding farm supplying millions of high-grade carp fry (Grass carp, Silver carp, Common carp) to public water bodies and private fish ponds across Jammu & Kashmir.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.252,
+      "lng": 74.685
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "grass-carp",
+        "silver-carp",
+        "common-carp",
+        "schizothorax-curvifrons"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "induced-hypophysation-breeding",
+        "disease-free-seed-certification"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 5.2,
+      "temperature": 16.5,
+      "status": "good",
+      "lastTested": "2026-05-20"
+    },
+    "hydrologicalData": {
+      "flowRate": 12,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Ctenopharyngodon idella",
+      "Hypophthalmichthys molitrix",
+      "Cyprinus carpio"
+    ],
+    "threats": [
+      "bird-predation-cormorants-and-herons",
+      "algal-blooms-in-rearing-ponds"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-patehika-trout-research",
+    "slug": "fishery-patehika-trout-research",
+    "name": "Patehika Commercial Trout Hatchery & Research Complex — Muzaffarabad",
+    "category": "Commercial Aquaculture",
+    "description": "Premier coldwater breeding and research station in the Neelum River corridor. Produces certified rainbow trout seed and conducts coldwater ecological surveys of Western Himalayan drainages.",
+    "district": "Muzaffarabad",
+    "watershed": "Neelum Basin",
+    "elevation": 1100,
+    "coordinates": {
+      "lat": 34.425,
+      "lng": 73.585
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "broodstock-pedigree-tracking",
+        "sediment-filtration-tanks"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 2.1,
+      "temperature": 12,
+      "status": "excellent",
+      "lastTested": "2026-05-18"
+    },
+    "hydrologicalData": {
+      "flowRate": 7.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "summer-water-temperature-rises",
+      "monsoon-flash-flood-silt"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sukhnag-drang-sutharan",
+    "slug": "fishery-sukhnag-drang-sutharan",
+    "name": "Sukhnag River Subalpine Beat — Drang to Sutharan",
+    "category": "Trout Stream / Beat",
+    "description": "High-meadow cascading beat winding through pine and deodar forests beneath Tosamaidan. Exceptional water purity with thriving populations of wild brown trout.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 2350,
+    "coordinates": {
+      "lat": 33.945,
+      "lng": 74.485
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "triplophysa-kashmirensis",
+        "schizothorax-plagiostomus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "meadow-canopy-retention",
+        "artificial-fly-only"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.9,
+      "turbidity": 1.8,
+      "temperature": 8.8,
+      "status": "excellent",
+      "lastTested": "2026-06-02"
+    },
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Triplophysa kashmirensis",
+      "Potamon bilobatum"
+    ],
+    "threats": [
+      "gravel-extraction-lower-edge",
+      "nomad-livestock-bank-trampling"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-doodhganga-nilnag-feeder",
+    "slug": "fishery-doodhganga-nilnag-feeder",
+    "name": "Nilnag Lake Inflow & Doodhganga Feeder Beat",
+    "category": "Trout Stream / Beat",
+    "description": "Picturesque pine-sheltered mountain brook feeding into Nilnag Lake. Supports coldwater brown trout that migrate between the deep lake waters and upstream gravel spawning shallows.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 2180,
+    "coordinates": {
+      "lat": 33.855,
+      "lng": 74.725
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout"
+        "schizothorax-curvifrons"
       ],
-      "fisheryType": "managed",
-      "productivity": "high",
-      "fishingSeason": "may-to-october",
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
       "permits": true,
       "conservationMeasures": [
-        "tourist-angling-permits",
-        "community-trout-watch"
+        "pine-catchment-soil-conservation",
+        "barbless-hooks"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 9.4,
+      "turbidity": 2.2,
+      "temperature": 9.8,
+      "status": "excellent",
+      "lastTested": "2026-06-04"
+    },
+    "hydrologicalData": {
+      "flowRate": 4.8,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Cinclus cinclus"
+    ],
+    "threats": [
+      "tourist-litter-around-nilnag",
+      "unpaved-track-runoff"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kishanganga-bagtore-izmarg",
+    "slug": "fishery-kishanganga-bagtore-izmarg",
+    "name": "Kishanganga River Lower Gorge Beat — Bagtore to Izmarg",
+    "category": "Trout Stream / Beat",
+    "description": "Dramatic Himalayan river canyon near the Line of Control. Towering rocky cliffs and massive boulder cataracts provide secluded sanctuary for trophy wild brown trout and endemic loaches.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2280,
+    "coordinates": {
+      "lat": 34.685,
+      "lng": 74.645
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "schizothorax-labiatus",
+        "glyptosternon-reticulatum"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "border-ecosystem-sanctuary",
+        "no-commercial-netting"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.4,
+      "turbidity": 3,
+      "temperature": 7.5,
+      "status": "excellent",
+      "lastTested": "2026-06-12"
+    },
+    "hydrologicalData": {
+      "flowRate": 72,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax labiatus",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "hydroelectric-flow-fluctuations",
+      "rock-fall-debris"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-marwah-river-torrent",
+    "slug": "fishery-marwah-river-torrent",
+    "name": "Marwah River Coldwater Torrent Beat — Nawapachi to Sondar",
+    "category": "Trout Stream / Beat",
+    "description": "Glacier-fed mountain river in Kishtwar cascading through deep granite ravines. Known for pure glacial waters and thriving populations of snow trout and brown trout.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "elevation": 2150,
+    "coordinates": {
+      "lat": 33.625,
+      "lng": 75.785
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-plagiostomus",
+        "triplophysa-marmorata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "kishtwar-riparian-sanctuary",
+        "catch-and-release"
       ]
     },
     "waterQuality": {
       "pH": 7.7,
       "dissolvedOxygen": 10.1,
-      "turbidity": 2.2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "turbidity": 2.8,
+      "temperature": 8.2,
+      "status": "excellent",
+      "lastTested": "2026-06-15"
     },
-    "threats": [
-      "unregulated-tourist-angling",
-      "avalanche-sediment-pulses"
+    "hydrologicalData": {
+      "flowRate": 38,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax plagiostomus",
+      "Lutra lutra"
     ],
+    "threats": [
+      "hydropower-project-tunneling",
+      "road-cutting-debris"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-skardu-sadpara-coldwater",
-    "slug": "fishery-skardu-sadpara",
-    "name": "Sadpara Lake Coldwater Trout Fishery — Skardu",
-    "type": "fishery",
-    "category": "Alpine Lake Fishery",
-    "description": "Glacial meltwater reservoir at 2,636m under the Deosai Plateau. High dissolved oxygen supports wild brown trout and rainbow trout aquaculture cages.",
-    "district": "Skardu",
-    "watershed": "Indus Basin",
-    "elevation": 2636,
+    "id": "fishery-jai-valley-chinta-stream",
+    "slug": "fishery-jai-valley-chinta-stream",
+    "name": "Jai Valley & Chinta Stream Coldwater Beat — Bhaderwah",
+    "category": "Trout Stream / Beat",
+    "description": "Meandering through the emerald alpine bowls of Jai Valley. Crystal-clear waters fed by coniferous forest springs, famous for wild brown trout angling and natural Gammarus production.",
+    "district": "Doda",
+    "watershed": "Chenab Basin",
+    "elevation": 2200,
     "coordinates": {
-      "lat": 35.2412,
-      "lng": 75.6312
+      "lat": 33.025,
+      "lng": 75.765
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
         "rainbow-trout",
-        "snow-trout"
+        "schizothorax-richardsonii"
       ],
-      "fisheryType": "aquaculture",
+      "fisheryType": "wild",
       "productivity": "high",
-      "fishingSeason": "april-to-november",
+      "fishingSeason": "April-September",
       "permits": true,
       "conservationMeasures": [
-        "community-cage-aquaculture",
-        "catch-limits-for-boaters"
+        "alpine-pasture-water-protection",
+        "barbless-fly-angling"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.6,
+      "turbidity": 1.5,
+      "temperature": 9.5,
+      "status": "excellent",
+      "lastTested": "2026-05-30"
+    },
+    "hydrologicalData": {
+      "flowRate": 7.2,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Pseudepidalea viridis"
+    ],
+    "threats": [
+      "tourist-camp-plastic-pollution",
+      "meadow-bank-trampling"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-naigad-high-alpine-sanctuary",
+    "slug": "fishery-naigad-high-alpine-sanctuary",
+    "name": "Naigad High Alpine Trout Stream Sanctuary — Kishtwar",
+    "category": "Trout Stream / Beat",
+    "description": "Pristine glacial tributary located adjacent to Kishtwar High Altitude National Park. Sheltered deep gorge pools preserve an untouched wild brown trout population.",
+    "district": "Kishtwar",
+    "watershed": "Chenab Basin",
+    "elevation": 2850,
+    "coordinates": {
+      "lat": 33.485,
+      "lng": 75.845
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "schizothorax-plagiostomus",
+        "triplophysa-stoliczkai"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "June-August",
+      "permits": true,
+      "conservationMeasures": [
+        "national-park-buffer-sanctuary",
+        "strictly-no-kill"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.7,
+      "turbidity": 1.2,
+      "temperature": 6.4,
+      "status": "excellent",
+      "lastTested": "2026-06-20"
+    },
+    "hydrologicalData": {
+      "flowRate": 9.5,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Triplophysa stoliczkai",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "climate-driven-glacier-loss",
+      "extreme-winter-freeze-drying"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-mandi-loran-stream",
+    "slug": "fishery-mandi-loran-stream",
+    "name": "Mandi & Loran Stream Coldwater Beats — Poonch",
+    "category": "Trout Stream / Beat",
+    "description": "Draining the southern glaciated Pir Panjal passes into Poonch. Rushing boulder rapids and clean pebble pools supporting wild brown trout, snow trout, and endemic hillstream loaches.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 1950,
+    "coordinates": {
+      "lat": 33.785,
+      "lng": 74.285
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "schizothorax-richardsonii",
+        "schistura-alepidota"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "seasonal-spawning-ban",
+        "anti-bleach-poaching-vigils"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.2,
+      "turbidity": 3.5,
+      "temperature": 11.2,
+      "status": "excellent",
+      "lastTested": "2026-05-18"
+    },
+    "hydrologicalData": {
+      "flowRate": 12,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Schizothorax richardsonii",
+      "Schistura alepidota"
+    ],
+    "threats": [
+      "monsoon-flash-flood-damage",
+      "sand-gravel-quarrying"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ans-river-kotranka",
+    "slug": "fishery-ans-river-kotranka",
+    "name": "Ans River Coldwater Reach — Kotranka to Budhal (Rajouri)",
+    "category": "Trout Stream / Beat",
+    "description": "Coldwater mountain river draining the southern snowfields of the Pir Panjal in Rajouri. Provides a transitional ecological zone where coldwater trout coexist with Golden Mahseer.",
+    "district": "Rajouri",
+    "watershed": "Chenab Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 33.385,
+      "lng": 74.585
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "tor-putitora",
+        "schizothorax-richardsonii",
+        "labeo-dero"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "transition-zone-habitat-protection",
+        "fish-corridor-preservation"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 9,
+      "turbidity": 4.2,
+      "temperature": 13,
+      "status": "good",
+      "lastTested": "2026-05-22"
+    },
+    "hydrologicalData": {
+      "flowRate": 15.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Salmo trutta fario",
+      "Schizothorax richardsonii"
+    ],
+    "threats": [
+      "road-widening-slump-runoff",
+      "illegal-poisoning"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sewa-river-bani-sarthal",
+    "slug": "fishery-sewa-river-bani-sarthal",
+    "name": "Sewa River Coldwater Beat — Bani to Sarthal (Kathua)",
+    "category": "Trout Stream / Beat",
+    "description": "Subalpine coldwater stream in the upper highlands of Kathua district. Flows through lush deodar and oak forests, offering premier brown and rainbow trout angling in Jammu province.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 1850,
+    "coordinates": {
+      "lat": 32.715,
+      "lng": 75.815
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "schizothorax-richardsonii"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "March-October",
+      "permits": true,
+      "conservationMeasures": [
+        "trout-hatchery-fingerling-stocking",
+        "forest-shade-preservation"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 9.3,
+      "turbidity": 2.4,
+      "temperature": 11,
+      "status": "excellent",
+      "lastTested": "2026-05-16"
+    },
+    "hydrologicalData": {
+      "flowRate": 10.2,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Barilius bendelisis"
+    ],
+    "threats": [
+      "landslides-blocking-channel",
+      "summer-stream-abstraction"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-wakha-chu-kargil",
+    "slug": "fishery-wakha-chu-kargil",
+    "name": "Wakha Chu Coldwater Stream Beat — Mulbekh to Kargil",
+    "category": "Trout Stream / Beat",
+    "description": "High-altitude cold desert stream draining the Mulbekh granite spires into the Suru River. Clear pebble pools sustain resilient Tibetan and Indus snow trout.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "elevation": 2950,
+    "coordinates": {
+      "lat": 34.385,
+      "lng": 76.325
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "ptychobarbus-conirostris",
+        "diptychus-maculatus",
+        "triplophysa-ladacensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "cold-desert-stream-sanctuary",
+        "willow-corridor-retention"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 10.6,
+      "turbidity": 3.1,
+      "temperature": 7.2,
+      "status": "excellent",
+      "lastTested": "2026-06-18"
+    },
+    "hydrologicalData": {
+      "flowRate": 8,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Ptychobarbus conirostris",
+      "Diptychus maculatus",
+      "Triplophysa ladacensis"
+    ],
+    "threats": [
+      "winter-deep-ice-freezing",
+      "highway-runoff"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-nubra-hunder-stream",
+    "slug": "fishery-nubra-hunder-stream",
+    "name": "Nubra River & Hunder Stream Coldwater Beat — Nubra Valley",
+    "category": "Trout Stream / Beat",
+    "description": "Flowing through the dramatic cold desert dune valley of Nubra north of Khardung La. Glacial melt channels support high-altitude False Osman and naturalized brown trout in spring-fed side streams.",
+    "district": "Leh",
+    "watershed": "Shyok Basin",
+    "elevation": 3040,
+    "coordinates": {
+      "lat": 34.575,
+      "lng": 77.465
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizopygopsis-stoliczkai",
+        "ptychobarbus-conirostris",
+        "brown-trout",
+        "triplophysa-stoliczkai"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-September",
+      "permits": true,
+      "conservationMeasures": [
+        "side-channel-spring-sanctuary",
+        "sea-buckthorn-bank-protection"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8.1,
+      "dissolvedOxygen": 10.5,
+      "turbidity": 4.8,
+      "temperature": 8,
+      "status": "excellent",
+      "lastTested": "2026-06-20"
+    },
+    "hydrologicalData": {
+      "flowRate": 35,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizopygopsis stoliczkai",
+      "Triplophysa stoliczkai",
+      "Tadorna ferruginea"
+    ],
+    "threats": [
+      "glacial-lake-outburst-floods",
+      "tourist-atv-crossings-in-streams"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chitta-katha-alpine-sanctuary",
+    "slug": "fishery-chitta-katha-alpine-sanctuary",
+    "name": "Chitta Katha Alpine Lake Trout Sanctuary — Shounter Valley",
+    "category": "Alpine Lake Fishery",
+    "description": "High-altitude sub-glacial lake (3,960m) surrounded by snow-capped peaks in the upper Neelum catchment. Home to pure strain wild brown trout thriving in crystal-clear waters.",
+    "district": "Neelum",
+    "watershed": "Neelum Basin",
+    "elevation": 3960,
+    "coordinates": {
+      "lat": 34.915,
+      "lng": 74.525
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "gammarus-pulex"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "July-August",
+      "permits": true,
+      "conservationMeasures": [
+        "alpine-tarn-protection",
+        "catch-and-release-only"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 11.2,
+      "turbidity": 0.6,
+      "temperature": 4.5,
+      "status": "excellent",
+      "lastTested": "2026-06-24"
+    },
+    "hydrologicalData": {
+      "waterLevel": 25,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Pseudepidalea viridis"
+    ],
+    "threats": [
+      "extreme-9-month-ice-cover",
+      "trekker-litter"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sadpara-lake-skardu",
+    "slug": "fishery-sadpara-lake-skardu",
+    "name": "Sadpara Lake Coldwater Trout Fishery — Skardu",
+    "category": "Alpine Lake Fishery",
+    "description": "Iconic glacial lake in Baltistan at 2,636m feeding Skardu town. Famous for specimen-sized wild brown trout and rainbow trout thriving in nutrient-rich glacial meltwater.",
+    "district": "Skardu",
+    "watershed": "Indus Basin",
+    "elevation": 2636,
+    "coordinates": {
+      "lat": 35.235,
+      "lng": 75.625
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "rainbow-trout",
+        "ptychobarbus-conirostris"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "dam-reservoir-fishery-management",
+        "fingerling-stocking"
       ]
     },
     "waterQuality": {
       "pH": 7.8,
       "dissolvedOxygen": 9.8,
-      "turbidity": 2,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "turbidity": 2.5,
+      "temperature": 9.2,
+      "status": "excellent",
+      "lastTested": "2026-06-16"
     },
-    "threats": [
-      "winter-surface-freeze",
-      "sediment-washoff-from-deosai"
+    "hydrologicalData": {
+      "waterLevel": 45,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss",
+      "Ptychobarbus conirostris"
     ],
+    "threats": [
+      "reservoir-water-fluctuations",
+      "spillway-debris"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-gilgit-river-hunza-confluence",
-    "slug": "fishery-gilgit-river-confluence",
-    "name": "Gilgit River Coldwater Fishery — Hunza Confluence",
-    "type": "fishery",
+    "id": "fishery-gilgit-hunza-confluence",
+    "slug": "fishery-gilgit-hunza-confluence",
+    "name": "Gilgit & Hunza Rivers Confluence Coldwater Fishery",
     "category": "Trout Stream / Beat",
-    "description": "Expansive Karakoram river fishery where glacial melt from Hunza joins the Gilgit River. Supports cold-adapted brown trout and Schizothoracinae.",
+    "description": "Major Karakoram coldwater confluence where the milky glacial Hunza meets the clearer Gilgit River. Supports cold-adapted snow trout and wild brown trout in deep eddy pools.",
     "district": "Gilgit",
     "watershed": "Indus Basin",
-    "elevation": 1480,
+    "elevation": 1500,
     "coordinates": {
-      "lat": 35.9214,
-      "lng": 74.3112
+      "lat": 35.925,
+      "lng": 74.345
     },
     "fisheryData": {
       "fishSpecies": [
         "brown-trout",
-        "snow-trout",
-        "schizothorax-plagiostomus"
+        "ptychobarbus-conirostris",
+        "schizothorax-plagiostomus",
+        "triplophysa-yasinensis"
       ],
-      "fisheryType": "managed",
-      "productivity": "moderate",
-      "fishingSeason": "october-to-may",
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "March-November",
       "permits": true,
       "conservationMeasures": [
-        "angling-licensing",
-        "riverbed-gravel-zoning"
+        "eddy-pool-sanctuary",
+        "anti-dynamite-enforcement"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 9.5,
+      "turbidity": 8.5,
+      "temperature": 11.5,
+      "status": "good",
+      "lastTested": "2026-06-14"
+    },
+    "hydrologicalData": {
+      "flowRate": 180,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Triplophysa yasinensis",
+      "Ptychobarbus conirostris"
+    ],
+    "threats": [
+      "heavy-summer-glacial-siltation",
+      "urban-waste-from-gilgit-town"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-brengi-subterranean-spawning",
+    "slug": "fishery-brengi-subterranean-spawning",
+    "name": "Brengi River Karst Spawning Reach — Kokernag to Anantnag",
+    "category": "Native Snow Trout System",
+    "description": "Unique karst river that disappears into subterranean limestone sinkholes and re-emerges downstream. The constant groundwater temperature regime provides optimal conditions for snow trout egg incubation.",
+    "district": "Anantnag",
+    "watershed": "Bringi Basin",
+    "elevation": 1680,
+    "coordinates": {
+      "lat": 33.715,
+      "lng": 75.225
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "gammarus-pulex-kashmiriensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "sinkhole-protection-fencing",
+        "continuous-subterranean-monitoring"
       ]
     },
     "waterQuality": {
       "pH": 7.7,
-      "dissolvedOxygen": 8.4,
-      "turbidity": 20,
-      "lastTested": "2026-06-15",
-      "status": "moderate"
+      "dissolvedOxygen": 9.2,
+      "turbidity": 2.1,
+      "temperature": 11.5,
+      "status": "excellent",
+      "lastTested": "2026-06-01"
     },
-    "threats": [
-      "heavy-glacial-rock-flour",
-      "town-effluent"
+    "hydrologicalData": {
+      "flowRate": 18,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Schizothorax curvifrons",
+      "Gammarus pulex kashmiriensis"
     ],
+    "threats": [
+      "sinkhole-clogging-with-plastic-waste",
+      "pesticide-leaching-into-karst"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"
   },
   {
-    "id": "fishery-patehika-trout-hatchery-ajk",
-    "slug": "fishery-patehika-trout-hatchery",
-    "name": "Patehika Commercial Trout Hatchery & Research Complex",
-    "type": "fishery",
-    "category": "Commercial Aquaculture",
-    "description": "Government trout breeding facility in lower Neelum Valley producing rainbow trout fingerlings for private raceway fish farmers across AJK.",
-    "district": "Muzaffarabad",
-    "watershed": "Neelum Basin",
-    "elevation": 950,
+    "id": "fishery-arpal-nullah-tral-stream",
+    "slug": "fishery-arpal-nullah-tral-stream",
+    "name": "Arpal Nullah & Tral Stream Snow Trout Sanctuary — Pulwama",
+    "category": "Native Snow Trout System",
+    "description": "Flowing from the high Shikargah ridge through Tral. Pristine pebble gravel beds support the spawning runs of Schizothorax curvifrons and endemic stone loaches.",
+    "district": "Pulwama",
+    "watershed": "Jhelum Basin",
+    "elevation": 1720,
     "coordinates": {
-      "lat": 34.4215,
-      "lng": 73.5512
+      "lat": 33.925,
+      "lng": 75.115
     },
     "fisheryData": {
       "fishSpecies": [
-        "rainbow-trout"
+        "schizothorax-curvifrons",
+        "triplophysa-kashmirensis",
+        "crossocheilus-diplochilus"
       ],
-      "fisheryType": "aquaculture",
-      "productivity": "high",
-      "fishingSeason": "commercial-year-round",
-      "permits": false,
-      "conservationMeasures": [
-        "disease-free-certified-broodstock",
-        "gravity-sedimentation-ponds"
-      ]
-    },
-    "waterQuality": {
-      "pH": 7.5,
-      "dissolvedOxygen": 8.6,
-      "turbidity": 4,
-      "lastTested": "2026-06-15",
-      "status": "good"
-    },
-    "threats": [
-      "monsoon-stream-flooding",
-      "high-summer-ambient-temperature"
-    ],
-    "verificationStatus": "verified",
-    "createdAt": "2026-01-01T00:00:00Z",
-    "updatedAt": "2026-06-16T00:00:00Z"
-  },
-  {
-    "id": "fishery-chitta-katha-lake-trout",
-    "slug": "fishery-chitta-katha-lake",
-    "name": "Chitta Katha Alpine Lake Trout Sanctuary",
-    "type": "fishery",
-    "category": "Alpine Lake Fishery",
-    "description": "Pristine glacial lake situated at 4,100m beneath Sarwali peak in Shounter Valley. High dissolved oxygen supporting thriving wild brown trout.",
-    "district": "Neelum",
-    "watershed": "Neelum Basin",
-    "elevation": 4100,
-    "coordinates": {
-      "lat": 34.9189,
-      "lng": 74.5214
-    },
-    "fisheryData": {
-      "fishSpecies": [
-        "brown-trout"
-      ],
-      "fisheryType": "managed",
+      "fisheryType": "wild",
       "productivity": "moderate",
-      "fishingSeason": "july-to-august",
+      "fishingSeason": "March-October",
       "permits": true,
       "conservationMeasures": [
-        "wilderness-permit-required",
-        "catch-and-release"
+        "spawning-riffle-protection",
+        "shikargah-catchment-afforestation"
       ]
     },
     "waterQuality": {
       "pH": 7.6,
-      "dissolvedOxygen": 10.3,
-      "turbidity": 0.8,
-      "lastTested": "2026-06-16",
-      "status": "excellent"
+      "dissolvedOxygen": 9.3,
+      "turbidity": 3.2,
+      "temperature": 11.8,
+      "status": "excellent",
+      "lastTested": "2026-05-27"
     },
-    "threats": [
-      "extreme-ice-cover-season-9-months",
-      "backpacker-litter"
+    "hydrologicalData": {
+      "flowRate": 9.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax curvifrons",
+      "Triplophysa kashmirensis",
+      "Potamon bilobatum"
     ],
+    "threats": [
+      "uncontrolled-boulder-excavation",
+      "orchard-chemical-drift"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sukhnag-native-spawning-beds",
+    "slug": "fishery-sukhnag-native-spawning-beds",
+    "name": "Sukhnag Native Snow Trout Spawning Beds — Beerwah to Magam",
+    "category": "Native Snow Trout System",
+    "description": "Lower braided reaches of Sukhnag where river meanders over clean river gravel. Serves as a vital spring breeding corridor for Ale Gad and Sattar Gad traveling up from Jhelum basin.",
+    "district": "Budgam",
+    "watershed": "Sukhnag Basin",
+    "elevation": 1610,
+    "coordinates": {
+      "lat": 34.045,
+      "lng": 74.595
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-niger",
+        "schizothorax-curvifrons",
+        "crossocheilus-diplochilus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "March-November",
+      "permits": true,
+      "conservationMeasures": [
+        "seasonal-spawning-sanctuary",
+        "weir-fish-passes"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 5.2,
+      "temperature": 13.8,
+      "status": "good",
+      "lastTested": "2026-05-24"
+    },
+    "hydrologicalData": {
+      "flowRate": 22,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Crossocheilus diplochilus",
+      "Lamellidens corrianus"
+    ],
+    "threats": [
+      "sand-mining-disrupting-gravel-redds",
+      "irrigation-weir-blockages"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ningli-nullah-sanctuary",
+    "slug": "fishery-ningli-nullah-sanctuary",
+    "name": "Ningli Nullah Snow Trout & Loach Sanctuary — Baramulla",
+    "category": "Native Snow Trout System",
+    "description": "Originating from the Apharwat heights past Gulmarg and flowing into Wular Lake. Crystal-clear cobble beds host dense populations of endemic stone loaches and juvenile snow trout.",
+    "district": "Baramulla",
+    "watershed": "Ningli Basin",
+    "elevation": 1650,
+    "coordinates": {
+      "lat": 34.215,
+      "lng": 74.385
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-plagiostomus",
+        "triplophysa-kashmirensis",
+        "botia-birdi"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "March-October",
+      "permits": true,
+      "conservationMeasures": [
+        "wular-inflow-corridor-protection",
+        "anti-poaching-vigilance"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.1,
+      "turbidity": 3.8,
+      "temperature": 11.5,
+      "status": "excellent",
+      "lastTested": "2026-05-26"
+    },
+    "hydrologicalData": {
+      "flowRate": 11.8,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizothorax plagiostomus",
+      "Botia birdi",
+      "Cinclus cinclus"
+    ],
+    "threats": [
+      "solid-waste-from-gulmarg-highway",
+      "stream-bed-quarrying"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-sind-lower-braided-delta",
+    "slug": "fishery-sind-lower-braided-delta",
+    "name": "Sind River Lower Braided Spawning Delta — Shadipora to Ganderbal",
+    "category": "Native Snow Trout System",
+    "description": "The historic confluence of the Sind and Jhelum rivers at the sacred Prayag of Kashmir. Wide gravel banks and willow-covered islands provide indispensable snow trout nursery grounds.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 1585,
+    "coordinates": {
+      "lat": 34.185,
+      "lng": 74.685
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-esocinus",
+        "schizothorax-niger",
+        "crossocheilus-diplochilus",
+        "botia-birdi"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "shadipora-delta-sanctuary",
+        "mechanized-dredging-ban"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.5,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 6.5,
+      "temperature": 14.5,
+      "status": "good",
+      "lastTested": "2026-05-29"
+    },
+    "hydrologicalData": {
+      "flowRate": 48,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax esocinus",
+      "Botia birdi",
+      "Lutra lutra",
+      "Alcedo atthis"
+    ],
+    "threats": [
+      "mechanized-sand-mining-barges",
+      "agricultural-runoff"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-chenab-reasi-deep-pool",
+    "slug": "fishery-chenab-reasi-deep-pool",
+    "name": "Chenab River Deep Pool Sanctuary — Reasi to Ramban",
+    "category": "Native Snow Trout System",
+    "description": "Deep, swirling canyon pools carved into the Himalayas where cold glacial waters support the giant Golden Mahseer and Alwan Snow Trout during winter migration.",
+    "district": "Reasi",
+    "watershed": "Chenab Basin",
+    "elevation": 480,
+    "coordinates": {
+      "lat": 33.085,
+      "lng": 74.835
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "schizothorax-richardsonii",
+        "labeo-dyocheilus",
+        "bangana-diphostoma"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "September-May",
+      "permits": true,
+      "conservationMeasures": [
+        "deep-pool-winter-refugia-protection",
+        "strict-anti-poaching-squads"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.8,
+      "turbidity": 6.8,
+      "temperature": 15.8,
+      "status": "good",
+      "lastTested": "2026-05-15"
+    },
+    "hydrologicalData": {
+      "flowRate": 240,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Schizothorax richardsonii",
+      "Labeo dyocheilus",
+      "Lutrogale perspicillata"
+    ],
+    "threats": [
+      "salal-dam-hydro-peaking-flows",
+      "riverbank-blasting-for-railways"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-indus-alchi-khalsi-sanctuary",
+    "slug": "fishery-indus-alchi-khalsi-sanctuary",
+    "name": "Indus River Native Snow Trout Sanctuary — Alchi to Khalsi",
+    "category": "Native Snow Trout System",
+    "description": "Deep rock gorge of the Indus River in Lower Ladakh. Home to endemic False Osman (Schizopygopsis stoliczkai) and Stoliczka loaches surviving in turbulent cold torrents.",
+    "district": "Leh",
+    "watershed": "Indus Basin",
+    "elevation": 3100,
+    "coordinates": {
+      "lat": 34.325,
+      "lng": 76.885
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizopygopsis-stoliczkai",
+        "ptychobarbus-conirostris",
+        "triplophysa-ladacensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "May-October",
+      "permits": true,
+      "conservationMeasures": [
+        "alchi-heritage-corridor-protection",
+        "zero-industrial-discharge"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8.2,
+      "dissolvedOxygen": 10.3,
+      "turbidity": 4.2,
+      "temperature": 8.5,
+      "status": "excellent",
+      "lastTested": "2026-06-22"
+    },
+    "hydrologicalData": {
+      "flowRate": 95,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizopygopsis stoliczkai",
+      "Ptychobarbus conirostris",
+      "Triplophysa ladacensis"
+    ],
+    "threats": [
+      "dam-sediment-flushing-events",
+      "highway-bridge-debris"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ahansar-waskur-lakes",
+    "slug": "fishery-ahansar-waskur-lakes",
+    "name": "Ahansar & Waskur Oxbow Lakes Fishery — Sumbal Sonawari",
+    "category": "Lake Fisheries",
+    "description": "Twin semi-drainage oxbow lakes in the fertile alluvial belt of Sonawari. High macrophyte diversity creates sheltered spawning lagoons for common carp and native Schizothorax.",
+    "district": "Bandipora",
+    "watershed": "Jhelum Basin",
+    "elevation": 1580,
+    "coordinates": {
+      "lat": 34.225,
+      "lng": 74.635
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "mirror-carp",
+        "schizothorax-niger",
+        "crossocheilus-diplochilus",
+        "puntius-conchonius"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "oxbow-reconnection-bunds",
+        "seasonal-weed-control"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 7,
+      "turbidity": 8.2,
+      "temperature": 16.8,
+      "status": "good",
+      "lastTested": "2026-05-25"
+    },
+    "hydrologicalData": {
+      "waterLevel": 2.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Nelumbo nucifera",
+      "Hydrophasianus chirurgus"
+    ],
+    "threats": [
+      "pesticide-runoff-from-paddy-fields",
+      "reedbed-encroachment"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-nilnag-lake-budgam",
+    "slug": "fishery-nilnag-lake-budgam",
+    "name": "Nilnag Lake Pine-Fringed Mountain Fishery — Budgam",
+    "category": "Lake Fisheries",
+    "description": "Stunning blue-green pine-fringed lake at 2,180m near Yusmarg. Clear, cold waters support healthy stocks of wild brown trout and crucian carp.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 2180,
+    "coordinates": {
+      "lat": 33.845,
+      "lng": 74.715
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "brown-trout",
+        "crucian-carp",
+        "schizothorax-plagiostomus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
+      "permits": true,
+      "conservationMeasures": [
+        "pine-forest-catchment-buffer",
+        "no-motorboats"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.9,
+      "turbidity": 2.1,
+      "temperature": 11.2,
+      "status": "excellent",
+      "lastTested": "2026-06-05"
+    },
+    "hydrologicalData": {
+      "waterLevel": 6.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Potamogeton crispus",
+      "Pseudepidalea viridis"
+    ],
+    "threats": [
+      "unmanaged-tourist-camping-waste",
+      "soil-erosion-from-slopes"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-surinsar-lake-jammu",
+    "slug": "fishery-surinsar-lake-jammu",
+    "name": "Surinsar Lake Protected Wetland Fishery — Jammu",
+    "category": "Lake Fisheries",
+    "description": "Picturesque sub-Himalayan freshwater lake surrounded by mixed pine-broadleaf forests. Protected Ramsar site and bird sanctuary hosting indigenous carps, Golden Mahseer, and softshell turtles.",
+    "district": "Jammu",
+    "watershed": "Tawi Basin",
+    "elevation": 605,
+    "coordinates": {
+      "lat": 32.775,
+      "lng": 75.025
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "lissemys-punctata-andersoni"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "non-commercial-sanctuary",
+      "permits": false,
+      "conservationMeasures": [
+        "ramsar-sanctuary-protections",
+        "aeration-systems",
+        "catchment-soil-binding"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 7.4,
+      "turbidity": 6.5,
+      "temperature": 21.8,
+      "status": "good",
+      "lastTested": "2026-05-12"
+    },
+    "hydrologicalData": {
+      "waterLevel": 24,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Lissemys punctata andersoni",
+      "Parambassis ranga"
+    ],
+    "threats": [
+      "eutrophication-from-religious-offerings",
+      "silt-inflow-during-monsoons"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-baglihar-reservoir",
+    "slug": "fishery-baglihar-reservoir",
+    "name": "Baglihar Deep Gorge Hydel Reservoir Fishery — Ramban",
+    "category": "Lake Fisheries",
+    "description": "Deep canyon reservoir on the Chenab river spanning 35 km behind the Baglihar gravity dam. Supports commercial and subsistence fisheries targeting Alwan Snow Trout, Labeo dero, and Golden Mahseer.",
+    "district": "Ramban",
+    "watershed": "Chenab Basin",
+    "elevation": 840,
+    "coordinates": {
+      "lat": 33.175,
+      "lng": 75.315
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "schizothorax-richardsonii",
+        "tor-putitora",
+        "labeo-dero",
+        "labeo-dyocheilus"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "October-May",
+      "permits": true,
+      "conservationMeasures": [
+        "fingerling-ranching-scheme",
+        "drawdown-monitoring"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 5.8,
+      "temperature": 16.2,
+      "status": "good",
+      "lastTested": "2026-05-18"
+    },
+    "hydrologicalData": {
+      "waterLevel": 120,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Schizothorax richardsonii",
+      "Tor putitora",
+      "Labeo dyocheilus"
+    ],
+    "threats": [
+      "silt-sluicing-events",
+      "reservoir-level-fluctuations"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-salal-reservoir-reasi",
+    "slug": "fishery-salal-reservoir-reasi",
+    "name": "Salal Dam Impoundment Warmwater Fishery — Reasi",
+    "category": "Lake Fisheries",
+    "description": "Large reservoir formed by the Salal Rockfill Dam on the Chenab. Produces significant commercial landings of major carps, mahseer, and catfishes for Jammu and Punjab markets.",
+    "district": "Reasi",
+    "watershed": "Chenab Basin",
+    "elevation": 495,
+    "coordinates": {
+      "lat": 33.145,
+      "lng": 74.825
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "wallago-attu",
+        "labeo-dero"
+      ],
+      "fisheryType": "managed",
+      "productivity": "high",
+      "fishingSeason": "September-June",
+      "permits": true,
+      "conservationMeasures": [
+        "cage-aquaculture-regulation",
+        "broodstock-restocking"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 7.9,
+      "turbidity": 6.2,
+      "temperature": 19.5,
+      "status": "good",
+      "lastTested": "2026-05-16"
+    },
+    "hydrologicalData": {
+      "waterLevel": 65,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Wallago attu",
+      "Lutrogale perspicillata"
+    ],
+    "threats": [
+      "reservoir-sedimentation",
+      "illegal-netting-near-spillway"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gadsar-alpine-tarn",
+    "slug": "fishery-gadsar-alpine-tarn",
+    "name": "Gadsar Lake Cold Alpine Trout Waters — Mount Gadsar",
+    "category": "Alpine Lake Fishery",
+    "description": "Also known as the Lake of Flowers, perched at 3,600m along the Great Lakes Trek. Pristine glacial tarn famous for giant wild brown trout and vibrant meadows of alpine flowers.",
+    "district": "Ganderbal",
+    "watershed": "Sind Basin",
+    "elevation": 3600,
+    "coordinates": {
+      "lat": 34.485,
+      "lng": 75.145
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "gammarus-pulex-kashmiriensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "July-August",
+      "permits": true,
+      "conservationMeasures": [
+        "alpine-wilderness-code",
+        "strictly-single-barbless-hook"
+      ]
+    },
+    "waterQuality": {
+      "pH": 8,
+      "dissolvedOxygen": 10.9,
+      "turbidity": 0.7,
+      "temperature": 5.1,
+      "status": "excellent",
+      "lastTested": "2026-06-25"
+    },
+    "hydrologicalData": {
+      "waterLevel": 15,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex kashmiriensis"
+    ],
+    "threats": [
+      "short-warm-season-feeding-window",
+      "pack-horse-pasture-runoff"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-tarsar-marsar-alpine",
+    "slug": "fishery-tarsar-marsar-alpine",
+    "name": "Tarsar & Marsar Subalpine Oligotrophic Fishery — Dachigam Buffer",
+    "category": "Alpine Lake Fishery",
+    "description": "Almond-shaped twin oligotrophic tarns (3,795m) situated in the Kolahoi mountain range. Ultra-pure snowmelt waters nourish wild brown trout and rare subalpine invertebrates.",
+    "district": "Pulwama",
+    "watershed": "Lidder Basin",
+    "elevation": 3795,
+    "coordinates": {
+      "lat": 34.145,
+      "lng": 75.145
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "wild-brown-trout",
+        "gammarus-pulex"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "July-August",
+      "permits": true,
+      "conservationMeasures": [
+        "dachigam-buffer-strict-protection",
+        "catch-and-release"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 11.1,
+      "turbidity": 0.5,
+      "temperature": 4.9,
+      "status": "excellent",
+      "lastTested": "2026-06-28"
+    },
+    "hydrologicalData": {
+      "waterLevel": 20,
+      "seasonalVariation": "perennial",
+      "source": "glacial"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Gammarus pulex",
+      "Pseudepidalea viridis kashmirensis"
+    ],
+    "threats": [
+      "backpacker-waste-management",
+      "winter-severe-freeze"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-narkara-wetland-budgam",
+    "slug": "fishery-narkara-wetland-budgam",
+    "name": "Narkara Wetland Urban Aquatic Community — Budgam / Srinagar",
+    "category": "Wetland Fisheries",
+    "description": "Urban fringe wetland providing critical flood absorption and fish habitat. Dense reed beds support crucian carp, common carp, and amphibians.",
+    "district": "Budgam",
+    "watershed": "Doodhganga Basin",
+    "elevation": 1582,
+    "coordinates": {
+      "lat": 34.035,
+      "lng": 74.775
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "crucian-carp",
+        "puntius-conchonius",
+        "channa-punctata"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "March-October",
+      "permits": false,
+      "conservationMeasures": [
+        "urban-wetland-boundary-demarcation",
+        "solid-waste-cleanups"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.2,
+      "dissolvedOxygen": 5.5,
+      "turbidity": 15,
+      "temperature": 17.8,
+      "status": "poor",
+      "lastTested": "2026-05-20"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.2,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Carassius carassius",
+      "Channa punctata",
+      "Typha angustifolia"
+    ],
+    "threats": [
+      "rapid-urban-encroachment-and-landfilling",
+      "municipal-untreated-sewage"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-parihaspora-wetlands",
+    "slug": "fishery-parihaspora-wetlands",
+    "name": "Parihaspora Wetlands Historical Floodplain System — Baramulla",
+    "category": "Wetland Fisheries",
+    "description": "Historic floodplain wetlands surrounding the 8th-century capital of King Lalitaditya. Connected to Jhelum flood spill channels, serving as a tranquil nursery for fish fry and migratory birds.",
+    "district": "Baramulla",
+    "watershed": "Jhelum Basin",
+    "elevation": 1581,
+    "coordinates": {
+      "lat": 34.145,
+      "lng": 74.625
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "common-carp",
+        "schizothorax-niger",
+        "triplophysa-kashmirensis"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "April-October",
+      "permits": false,
+      "conservationMeasures": [
+        "archaeological-eco-buffer-protection",
+        "irrigation-gate-controls"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.4,
+      "dissolvedOxygen": 6.9,
+      "turbidity": 9.8,
+      "temperature": 16.5,
+      "status": "good",
+      "lastTested": "2026-05-23"
+    },
+    "hydrologicalData": {
+      "waterLevel": 1.4,
+      "seasonalVariation": "seasonal",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Schizothorax niger",
+      "Cyprinus carpio",
+      "Trapa natans"
+    ],
+    "threats": [
+      "paddy-expansion",
+      "summer-drying"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-kargil-coldwater-hatchery",
+    "slug": "fishery-kargil-coldwater-hatchery",
+    "name": "Kargil Coldwater Trout Hatchery & Broodstock Center — Dras/Kargil",
+    "category": "Commercial Aquaculture",
+    "description": "High-altitude coldwater demonstration hatchery supplying rainbow trout seed to local farmers in the Suru and Dras valleys. Pioneer in cold-climate feed formulation.",
+    "district": "Kargil",
+    "watershed": "Indus Basin",
+    "elevation": 2750,
+    "coordinates": {
+      "lat": 34.545,
+      "lng": 76.135
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "solar-tempered-water-supply",
+        "insulated-fry-rearing-troughs"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.9,
+      "dissolvedOxygen": 10.1,
+      "turbidity": 1.4,
+      "temperature": 9,
+      "status": "excellent",
+      "lastTested": "2026-06-12"
+    },
+    "hydrologicalData": {
+      "flowRate": 4.5,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "winter-pipeline-freezing-hazard",
+      "feed-transport-delays-over-zojila"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-tangmarg-coldwater-hatchery",
+    "slug": "fishery-tangmarg-coldwater-hatchery",
+    "name": "Tangmarg Coldwater Hatchery & Broodstock Unit — Baramulla",
+    "category": "Commercial Aquaculture",
+    "description": "Forest-fringed state trout unit utilizing spring waters from the Gulmarg range. Produces over 300,000 eyed ova annually for private raceway operators across North Kashmir.",
+    "district": "Baramulla",
+    "watershed": "Ferozepora Basin",
+    "elevation": 1980,
+    "coordinates": {
+      "lat": 34.058,
+      "lng": 74.425
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "springhead-chlorination-avoidance",
+        "egg-disinfection-protocols"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 9.7,
+      "turbidity": 1.5,
+      "temperature": 9.5,
+      "status": "excellent",
+      "lastTested": "2026-05-24"
+    },
+    "hydrologicalData": {
+      "flowRate": 5.8,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Oncorhynchus mykiss",
+      "Salmo trutta fario"
+    ],
+    "threats": [
+      "water-sharing-conflicts-with-township",
+      "flash-floods"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-gurez-coldwater-seed-farm",
+    "slug": "fishery-gurez-coldwater-seed-farm",
+    "name": "Gurez Coldwater Trout Seed Farm — Dawer (Bandipora)",
+    "category": "Commercial Aquaculture",
+    "description": "Strategically located trout breeding station in the border valley of Gurez. Produces hardy mountain-strain rainbow and brown trout fingerlings for river replenishment.",
+    "district": "Bandipora",
+    "watershed": "Kishanganga Basin",
+    "elevation": 2380,
+    "coordinates": {
+      "lat": 34.628,
+      "lng": 74.775
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "rainbow-trout",
+        "brown-trout"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "kishanganga-river-ranching",
+        "broodstock-isolation-protocols"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 10.3,
+      "turbidity": 1.2,
+      "temperature": 8.2,
+      "status": "excellent",
+      "lastTested": "2026-06-15"
+    },
+    "hydrologicalData": {
+      "flowRate": 6.2,
+      "seasonalVariation": "perennial",
+      "source": "groundwater"
+    },
+    "biodiversity": [
+      "Salmo trutta fario",
+      "Oncorhynchus mykiss"
+    ],
+    "threats": [
+      "6-month-winter-snowbound-isolation",
+      "extreme-cold-water-slowing-growth"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-basohli-warmwater-hatchery",
+    "slug": "fishery-basohli-warmwater-hatchery",
+    "name": "Basohli Commercial Warmwater Hatchery — Kathua",
+    "category": "Commercial Aquaculture",
+    "description": "Premier warmwater seed multiplication complex on the shores of Ranjit Sagar lake. Produces millions of Indian Major Carp and Golden Mahseer fingerlings for reservoir ranching.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 510,
+    "coordinates": {
+      "lat": 32.485,
+      "lng": 75.815
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "silver-carp"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "circular-eco-hatchery-pools",
+        "golden-mahseer-broodstock-bank"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.7,
+      "dissolvedOxygen": 8.2,
+      "turbidity": 3.5,
+      "temperature": 21,
+      "status": "good",
+      "lastTested": "2026-05-18"
+    },
+    "hydrologicalData": {
+      "flowRate": 8.5,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Labeo rohita",
+      "Cirrhinus mrigala"
+    ],
+    "threats": [
+      "summer-high-water-temperatures",
+      "reservoir-level-drop-affecting-intake"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-akhnoor-seed-center",
+    "slug": "fishery-akhnoor-seed-center",
+    "name": "Akhnoor Fish Seed Production Center — Jammu",
+    "category": "Commercial Aquaculture",
+    "description": "Major state fish farm situated along the Chenab river canal network. Specializes in induced breeding of carps and catfish for commercial fish ponds in the Jammu plains.",
+    "district": "Jammu",
+    "watershed": "Chenab Basin",
+    "elevation": 315,
+    "coordinates": {
+      "lat": 32.895,
+      "lng": 74.735
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "labeo-rohita",
+        "cirrhinus-mrigala",
+        "tor-putitora",
+        "channa-striata"
+      ],
+      "fisheryType": "aquaculture",
+      "productivity": "high",
+      "fishingSeason": "year-round",
+      "permits": true,
+      "conservationMeasures": [
+        "induced-breeding-hypophysation",
+        "quality-seed-distribution"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 7.8,
+      "turbidity": 4.8,
+      "temperature": 22.5,
+      "status": "good",
+      "lastTested": "2026-05-14"
+    },
+    "hydrologicalData": {
+      "flowRate": 9,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Labeo rohita",
+      "Tor putitora",
+      "Cirrhinus mrigala"
+    ],
+    "threats": [
+      "canal-water-closure-during-maintenance",
+      "parasitic-infections-in-nursery-ponds"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-ujh-river-kathua",
+    "slug": "fishery-ujh-river-kathua",
+    "name": "Ujh River Boulder Stream Fishery — Jasrota to Kathua",
+    "category": "Warmwater / Mahseer Fishery",
+    "description": "Dynamic boulder river descending from the Ramnagar hills past the Jasrota wildlife sanctuary. Renowned for seasonal spawning runs of Golden Mahseer and hillstream loaches.",
+    "district": "Kathua",
+    "watershed": "Ravi Basin",
+    "elevation": 390,
+    "coordinates": {
+      "lat": 32.465,
+      "lng": 75.485
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "labeo-dero",
+        "barilius-bendelisis",
+        "garra-gotyla",
+        "mastacembelus-armatus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "moderate",
+      "fishingSeason": "October-May",
+      "permits": true,
+      "conservationMeasures": [
+        "jasrota-sanctuary-riparian-buffer",
+        "anti-dynamite-enforcement"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.6,
+      "dissolvedOxygen": 8.5,
+      "turbidity": 6.8,
+      "temperature": 18.5,
+      "status": "good",
+      "lastTested": "2026-05-12"
+    },
+    "hydrologicalData": {
+      "flowRate": 28,
+      "seasonalVariation": "seasonal",
+      "source": "rainfall"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Barilius bendelisis",
+      "Garra gotyla",
+      "Lutrogale perspicillata"
+    ],
+    "threats": [
+      "ujh-multipurpose-dam-construction-impacts",
+      "riverbed-boulder-crushing"
+    ],
+    "type": "fishery",
+    "verificationStatus": "verified",
+    "createdAt": "2026-01-01T00:00:00Z",
+    "updatedAt": "2026-06-16T00:00:00Z"
+  },
+  {
+    "id": "fishery-poonch-river-mahseer",
+    "slug": "fishery-poonch-river-mahseer",
+    "name": "Poonch River Golden Mahseer Breeding Sanctuary — Poonch to Kotli",
+    "category": "Warmwater / Mahseer Fishery",
+    "description": "Major tributary of the Jhelum basin flowing through the southwestern foothills. Protected breeding zone for Golden Mahseer where natural rapids and deep rock pools offer vital spawning grounds.",
+    "district": "Poonch",
+    "watershed": "Poonch Basin",
+    "elevation": 980,
+    "coordinates": {
+      "lat": 33.745,
+      "lng": 74.085
+    },
+    "fisheryData": {
+      "fishSpecies": [
+        "tor-putitora",
+        "schizothorax-richardsonii",
+        "labeo-dero",
+        "mastacembelus-armatus"
+      ],
+      "fisheryType": "wild",
+      "productivity": "high",
+      "fishingSeason": "September-May",
+      "permits": true,
+      "conservationMeasures": [
+        "poonch-mahseer-national-park-regulations",
+        "spawning-season-complete-ban"
+      ]
+    },
+    "waterQuality": {
+      "pH": 7.8,
+      "dissolvedOxygen": 8.7,
+      "turbidity": 5.5,
+      "temperature": 17.5,
+      "status": "good",
+      "lastTested": "2026-05-16"
+    },
+    "hydrologicalData": {
+      "flowRate": 65,
+      "seasonalVariation": "perennial",
+      "source": "mixed"
+    },
+    "biodiversity": [
+      "Tor putitora",
+      "Schizothorax richardsonii",
+      "Labeo dero",
+      "Lutra lutra"
+    ],
+    "threats": [
+      "cross-border-water-flow-manipulations",
+      "illegal-explosives-fishing"
+    ],
+    "type": "fishery",
     "verificationStatus": "verified",
     "createdAt": "2026-01-01T00:00:00Z",
     "updatedAt": "2026-06-16T00:00:00Z"

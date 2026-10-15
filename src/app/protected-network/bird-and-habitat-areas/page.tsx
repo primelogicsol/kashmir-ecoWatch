@@ -16,26 +16,39 @@ export default function BirdHabitatAreasPage() {
   const [activeTab, setActiveTab] = useState<TabKey>('core');
   const allAreas = getProtectedAreas.birdHabitatAreas();
 
+    const coreIBAs = allAreas.filter(p => p.scope === 'Kashmir Core');
+  const transIBAs = allAreas.filter(p => p.scope === 'Trans-Divisional');
+  const extendedIBAs = allAreas.filter(p => p.scope === 'Transboundary / Extended');
+  const totalIBAArea = allAreas.reduce((sum, a) => sum + (a.area || 0), 0);
+
   const metrics = [
-    { label: 'Kashmir Core', value: '22', icon: 'Mountain' as const },
-    { label: 'Trans-Divisional', value: '18', icon: 'MapPin' as const },
-    { label: 'Transboundary / Extended', value: '25+', icon: 'Activity' as const },
-    { label: 'Total Seed Records', value: '65+', icon: 'Shield' as const },
-    { label: 'Recorded Bird Species', value: '599', icon: 'Bird' as const },
-    { label: 'Wetland Bird Sites', value: '20+', icon: 'Droplet' as const },
-    { label: 'Forest / Alpine Sites', value: '25+', icon: 'TreePine' as const },
-    { label: 'Habitat Types', value: '16+', icon: 'Leaf' as const },
+    { label: 'Total Designated IBAs',   value: allAreas.length,                               icon: 'Bird' as const },
+    { label: 'Total Avian Sanctuary',   value: `${Math.round(totalIBAArea).toLocaleString()} km²`, icon: 'Map' as const },
+    { label: 'Kashmir Core IBAs',       value: coreIBAs.length,                               icon: 'Shield' as const },
+    { label: 'Trans-Divisional IBAs',   value: transIBAs.length,                              icon: 'Mountain' as const },
+    { label: 'Transboundary IBAs',      value: extendedIBAs.length,                           icon: 'Activity' as const },
+    { label: 'Recorded Bird Species',   value: '599 Species',                                 icon: 'Eye' as const },
+    { label: 'Flyway Rest Basins',      value: '28 Wetlands',                                 icon: 'Droplet' as const },
+    { label: 'BirdLife / BNHS Global',  value: 'A1, A2, A3 Criteria',                         icon: 'Leaf' as const },
   ];
 
   return (
     <ProtectedCategoryPage
-      title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
+      title={
+        <div className="overflow-visible pb-2">
+          <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+            <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+              KEW
             </span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Habitat Network</span>
-          </>}
+            <span className="text-white">Western Himalayan</span>
+          </div>
+          <div className="leading-[1.15] overflow-visible pr-8">
+            <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+              Bird &amp; Biodiversity Areas (IBAs)
+            </span>
+          </div>
+        </div>
+      }
       subtitle="Important bird and biodiversity habitats across Kashmir supporting resident and migratory species. Integrates site assessments, species checklists, seasonal usage data, and habitat condition intelligence."
       icon="Bird"
       color="from-emerald-600 to-emerald-500"

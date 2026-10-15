@@ -13,24 +13,24 @@ export default function BloomMappingPage() {
   const bloomTypes = Array.from(new Set(blooms.map(b => b.bloomType)));
 
   return (
-    <main className="min-h-screen  mx-auto bg-slate-950">
+    <div className="min-h-screen mx-auto bg-slate-950">
       <SeasonalListingPage
-        title="Western Himalayan Bloom Mapping"
-        subtitle="Floral bloom zones and flowering landscapes across Kashmir"
+        title="Bloom Mapping &amp; Floral Landscapes"
+        subtitle="Floral bloom zones, orchard flower waves, alpine meadows, and autumn saffron landscapes across Kashmir"
         icon="Flower2"
         color="from-pink-500 to-rose-600"
         entities={blooms}
         entityVariant="bloom"
         metrics={[
           { label: 'Bloom Zones', value: blooms.length, icon: 'Flower2' },
-          { label: 'Orchard Blooms', value: blooms.filter(b => b.bloomType === 'orchard').length, icon: 'TreeDeciduous' },
-          { label: 'Alpine Blooms', value: blooms.filter(b => b.bloomType === 'alpine-meadow').length, icon: 'Mountain' },
-          { label: 'Medicinal Plants', value: blooms.filter(b => b.bloomType === 'medicinal-plant').length, icon: 'Leaf' },
+          { label: 'Orchard & Garden', value: blooms.filter(b => b.bloomType === 'orchard' || b.bloomType === 'garden').length, icon: 'TreeDeciduous' },
+          { label: 'Alpine Meadows', value: blooms.filter(b => b.bloomType === 'alpine-meadow').length, icon: 'Mountain' },
+          { label: 'Wild & Saffron Flora', value: blooms.filter(b => b.bloomType === 'wildflower' || b.bloomType === 'medicinal-plant').length, icon: 'Leaf' },
         ]}
         filters={{
           districts: districts as string[],
           elevationZones: elevationZones as string[],
-          seasons: ['spring', 'summer'],
+          seasons: ['spring', 'summer', 'autumn'],
           additionalFilters: [
             { label: 'Bloom Type', options: bloomTypes as string[] },
           ],
@@ -91,6 +91,6 @@ export default function BloomMappingPage() {
           </Card>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

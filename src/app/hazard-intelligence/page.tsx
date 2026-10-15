@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 
 import {
@@ -115,6 +116,127 @@ export default function HazardIntelligenceOverview() {
           onExtraFiltersClear={() => setHazardFilter('all')}
         />
       </div>
+
+      
+      {/* ── Multi-Hazard Typologies & Early Warning Citizen Protocols ──────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Western Himalayan Hazard Typologies & Crisis Regimes"
+          typologySubtitle="Select a geological, meteorological, or cryospheric hazard category to review real-time alerts across Kashmir and Ladakh."
+          typologyIcon={AlertTriangle}
+          typologies={[
+            { id: 'all', label: 'All Hazard Domains', count: 8, icon: AlertTriangle, color: 'rose' },
+            { id: 'floods', label: 'Riverine & Flash Floods', count: 41, icon: Waves, color: 'blue' },
+            { id: 'landslides', label: 'Slope Instability & Debris Flows', count: 48, icon: Mountain, color: 'amber' },
+            { id: 'avalanches', label: 'Alpine Snowpack & Avalanches', count: 18, icon: Snowflake, color: 'sky' },
+            { id: 'earthquakes', label: 'Seismic Faults & Quakes', count: 12, icon: Activity, color: 'rose' },
+            { id: 'glofs', label: 'Glacial Outburst Floods (GLOFs)', count: 18, icon: Droplets, color: 'teal' },
+            { id: 'fires', label: 'Wildfires & Forest Hotspots', count: 6, icon: Flame, color: 'orange' },
+          ]}
+          activeTypology={hazardFilter}
+          onSelectTypology={(id) => setHazardFilter(id)}
+          showingCount={hazardFilter === 'all' ? 8 : 1}
+          totalCount={8}
+          entityLabel="hazard submodules"
+          spotlightTitle="Multi-Hazard Early Warning & Cryospheric Risk Synthesis"
+          spotlightSubtitle="Integrating USGS seismic sensors, GloFAS flood forecasts, IMD meteorological radars, and field observers across 44 Himalayan districts."
+          tabs={[
+            {
+              id: 'landslide-corridors',
+              label: 'NH-44 & Mountain Highway Slope Instability',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Critical Highway Chokepoint</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Ramban-Banihal NH-44 Sector</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Sheared Murree formation siltstones and Panjal volcanics subjected to continuous road widening cut-slopes trigger recurring rockfalls and mudslides at Panthyal, Mehar, and Cafeteria Morh.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Hazard Index: Critical during rainfall &gt; 25 mm/24h</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Trans-Himalayan Arterial</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Zoji La (NH-1) Pass Axis</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Elevated at 3,528m connecting Kashmir to Ladakh. Prone to severe wind-slab avalanches and spring freeze-thaw rock detachment along steep serpentine cliffs near Gumri and Captain Morh.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Mitigation: 14.15 km all-weather Zoji La tunnel</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">High-Altitude Cryosphere</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Glacial Moraine Lake Outbursts</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Over 18 expanding proglacial lakes in Zanskar, Karakoram, and Upper Indus basin monitored via Sentinel-2 satellite imagery for moraine dam breaches and ice avalanche impact surges.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Early Warning: High-resolution satellite altimetry</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'seismic-faults',
+              label: 'Seismic Hazards & Active Himalayan Faults',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Main Boundary Thrust (MBT) &amp; Kashmir Seismic Gap</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      The tectonic collision between the Indian and Eurasian plates creates immense strain accumulation. The 2005 Kashmir earthquake (M7.6) ruptured the Muzaffarabad fault; active monitoring tracks microseismicity in Chenab and Pir Panjal.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Seismic Zone: Zone V (Highest Seismic Vulnerability)</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-blue-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">River Jhelum Hydraulic Flood Routing</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Automated ultrasonic river gauges at Sangam (Anantnag), Ram Munshi Bagh (Srinagar), and Asham (Bandipora) provide continuous discharge hydrographs to detect impending flood stage exceedance (target &lt; 21 ft at Sangam).
+                    </p>
+                    <div className="text-[11px] text-blue-300 font-mono">Flood Stage Benchmark: 21.0 ft (Alert) | 23.0 ft (Danger)</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="hazard"
+          observeTitle="Citizen Disaster &amp; Hazard Early Warning Sentinel Network"
+          observeSubtitle="Dispatch immediate crowd-sourced field alerts for flash floods, slope tension cracks, road blockages, or avalanche chutes."
+          observeBadge="SDMA Disaster Protocol Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Slope Tension Crack & Subsidence Spotting',
+              desc: 'Photograph newly emerging ground fractures or tilted telephone poles on mountain slopes indicating imminent landsliding.',
+              benchmark: 'Geological Survey of India Landslide Warning Protocol',
+              icon: Mountain,
+              color: 'amber',
+            },
+            {
+              number: '2',
+              title: 'Rapid River Gauge Water Level Spotting',
+              desc: 'Log and photograph river level markings on bridges or gauge poles during intense rainfall and cloudburst events.',
+              benchmark: 'Central Water Commission (CWC) Flood Alert Standard',
+              icon: Waves,
+              color: 'cyan',
+            },
+            {
+              number: '3',
+              title: 'Avalanche Crown Fracture Observation',
+              desc: 'Document visible fracture lines, shooting cracks in snowpack, or recent avalanche debris across backcountry ski and transit routes.',
+              benchmark: 'Defence Geoinformatics Research Establishment (DGRE)',
+              icon: Snowflake,
+              color: 'sky',
+            },
+            {
+              number: '4',
+              title: 'Forest Smoke Plume & Thermal Hotspot Dispatch',
+              desc: 'Report smoke plumes in pine forest ridges with GPS coordinates to mobilize local forest protection fire crews.',
+              benchmark: 'Forest Survey of India Fire Alert Protocol',
+              icon: Flame,
+              color: 'rose',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* Submodules Grid */}
       <section className="py-16">

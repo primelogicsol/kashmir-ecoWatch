@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Map, TrendingUp, ArrowRight, Search, Activity, Filter, Grid3X3, List, Shield , ChevronLeft, ChevronRight } from 'lucide-react';
+import { Map, TrendingUp, ArrowRight, Search, Activity, Filter, Grid3X3, List, Shield , ChevronLeft, ChevronRight, Compass } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getCorridors } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
@@ -19,7 +19,7 @@ export default function CorridorsPage() {
   const [selectedDistrict, setSelectedDistrict] = useState('All');
   const [selectedEcologicalScope, setSelectedEcologicalScope] = useState<Scope | 'All'>('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   const availableDistricts = useMemo(() => getUnitsForScope(selectedEcologicalScope).sort(), [selectedEcologicalScope]);
   const availableScopes = [...GEOGRAPHY.scopes];
@@ -76,6 +76,15 @@ export default function CorridorsPage() {
     }
   };
 
+  const getCorridorImage = (c: any) => {
+    const name = c.name.toLowerCase();
+    if (name.includes('markhor') || name.includes('cliff') || name.includes('pir panjal')) return '/images/markhor.png';
+    if (name.includes('snow leopard') || name.includes('tahr') || name.includes('chenab')) return '/images/tiger.png';
+    if (name.includes('bear') || name.includes('hangul') || name.includes('gurez')) return '/images/bear.png';
+    return '/images/protected-network.png';
+  };
+
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Active': return 'success';
@@ -85,115 +94,226 @@ export default function CorridorsPage() {
     }
   };
 
-  return (
+    const [activeHeroIdx, setActiveHeroIdx] = useState(0);
+
+  const showcaseItems = [
+    { id: '1', title: 'Dachigam–Tral Axis', subtitle: 'Prime Hangul Movement Corridor', location: 'Pulwama / Srinagar · 42 km', tag: 'Critical Corridor', src: '/images/bear.png' },
+    { id: '2', title: 'Kazinag–Limber Passage', subtitle: 'Pir Panjal Markhor Linkage', location: 'Baramulla · 28 km', tag: 'Caprinae Link', src: '/images/markhor.png' },
+    { id: '3', title: 'Hemis–Zanskar Corridor', subtitle: 'High-Altitude Snow Leopard Highway', location: 'Ladakh · 185 km', tag: 'Apex Cat Link', src: '/images/tiger.png' },
+    { id: '4', title: 'Kishtwar–Overa Alpine Path', subtitle: 'Subalpine & Forest Contiguity', location: 'Kishtwar / Anantnag · 65 km', tag: 'Landscape Matrix', src: '/images/protected-network.png' },
+  ];
+  const currentHero = showcaseItems[activeHeroIdx] || showcaseItems[0];
+
+  const heroShowcaseCard = (
+    <div className="relative rounded-2xl overflow-hidden border border-teal-500/40 shadow-2xl shadow-teal-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+      <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+          </span>
+          <span className="font-bold text-teal-300 uppercase tracking-wider text-[11px]">
+            Landscape Connectivity Sentinel
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 text-[10px] font-mono font-semibold">
+          Corridor Active 2026
+        </span>
+      </div>
+
+      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-white/10 group">
+        <img
+          key={currentHero.id}
+          src={currentHero.src}
+          alt={currentHero.title}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+        <div className="absolute bottom-2.5 left-3 right-3">
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md">{currentHero.title}</h4>
+            <span className="px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[10px] font-semibold flex-shrink-0">
+              {currentHero.tag}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] text-slate-300">
+            <span className="italic text-teal-300 font-medium">{currentHero.subtitle}</span>
+            <span className="text-slate-400 text-[10px]">{currentHero.location}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-1.5 mt-2.5">
+        {showcaseItems.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActiveHeroIdx(idx)}
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer ${
+              activeHeroIdx === idx
+                ? 'border-teal-400 ring-2 ring-teal-400/40 bg-teal-500/10 shadow-md'
+                : 'border-white/10 bg-slate-800/60 hover:border-teal-500/30 hover:bg-slate-800'
+            }`}
+          >
+            <div className="h-10 w-full rounded overflow-hidden relative">
+              <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-bold text-slate-300 truncate w-full text-center">
+              {item.title.split(' ')[0]}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Corridors and Connectivity</span>
-          </>}
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Corridors &amp; Ecological Connectivity
+              </span>
+            </div>
+          </div>
+        }
         subtitle="Landscape connectivity and habitat linkage analysis across Kashmir's protected area network. Identifies wildlife corridors, fragmentation zones, ecological bottlenecks, and movement pathways for conservation planning and spatial management."
         icon={<Map className="w-6 h-6 text-emerald-400" />}
         label="Ecological Intelligence"
         breadcrumbs={[{ label: 'Corridors & Connectivity' }]}
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        rightContent={heroShowcaseCard}
         actions={
           <>
-            <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500" icon={<Search className="w-5 h-5" />}>Search Corridors</Button>
-            <Button variant="outline" className="border-white/20 text-white" icon={<Map className="w-5 h-5" />}>Connectivity Map</Button>
+            <div className="flex flex-wrap items-center gap-2">
+            <Button size="sm" className="bg-gradient-to-r from-teal-600 to-emerald-500 font-bold transition-all shadow-md shadow-teal-500/20" icon={<Search className="w-4 h-4" />}>
+              Search Corridors
+            </Button>
+            <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold transition-all" icon={<Map className="w-4 h-4" />}>
+              Connectivity Map
+            </Button>
+          </div>
           </>
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
-              {[
-                { label: 'Identified Corridors', value: corridors.length, icon: Map },
-                { label: 'Critical Priority', value: corridors.filter(c => c.priority === 'Critical').length, icon: TrendingUp },
-                { label: 'Total Length', value: '287 km', icon: Search },
-                { label: 'Active Status', value: corridors.filter(c => c.status === 'Active').length, icon: Activity },
-                { label: 'Degraded', value: corridors.filter(c => c.status === 'Degraded').length, icon: TrendingUp },
-                { label: 'Threatened', value: corridors.filter(c => c.status === 'Threatened').length, icon: Map },
-                { label: 'PA Connections', value: 24, icon: Activity },
-                { label: 'Frag. Zones', value: 11, icon: Search },
-              ].map((metric, idx) => (
-                <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                  <metric.icon className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
-                    {metric.value}
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-
-            {filteredCorridors.length > itemsPerPage && (
-              <div className="flex flex-col items-center justify-center gap-4 mt-12 w-full col-span-full">
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
-                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </Button>
-                  
-                  <div className="flex items-center gap-1 mx-2">
-                    {Array.from({ length: Math.ceil(filteredCorridors.length / itemsPerPage) }).map((_, i) => {
-                      const page = i + 1;
-                      const totalPages = Math.ceil(filteredCorridors.length / itemsPerPage);
-                      
-                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
-                        return (
-                          <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
-                              currentPage === page
-                                ? 'bg-emerald-500 text-white'
-                                : 'text-slate-400 hover:text-white hover:bg-white/5'
-                            }`}
-                          >
-                            {page}
-                          </button>
-                        );
-                      }
-                      
-                      if (page === currentPage - 2 || page === currentPage + 2) {
-                        return <span key={page} className="text-slate-600 px-1">...</span>;
-                      }
-                      
-                      return null;
-                    })}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredCorridors.length / itemsPerPage)))}
-                    disabled={currentPage === Math.ceil(filteredCorridors.length / itemsPerPage)}
-                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </Button>
-                </div>
-                <div className="text-xs text-slate-500">
-                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredCorridors.length)} of {filteredCorridors.length} records
-                </div>
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K CONNECTIVITY SENTINEL         */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
+        <div className="bg-gradient-to-r from-slate-900/95 via-teal-950/70 to-slate-900/95 border border-teal-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-teal-500/10 rounded-xl border border-teal-500/20 text-teal-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-teal-400">Trans-Himalayan Wildlife Linkages &amp; Corridors</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Monitoring 2026</span>
               </div>
-            )}
+              <p className="text-sm text-slate-300 mt-0.5">
+                Monitoring critical movement pathways including <strong className="text-white">Dachigam–Tral Hangul Axis</strong>, <strong className="text-white">Pir Panjal Markhor Passages</strong>, and <strong className="text-white">Great Himalayan Snow Leopard Corridors</strong>.
+              </p>
+            </div>
           </div>
-          </Card>
-        </motion.div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Total Corridor Length</div>
+              <div className="text-sm font-bold text-teal-300">~1,420 km Mapped</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-mono font-bold">
+              {corridors.length} Verified Linkages
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* 6-CARD INTERACTIVE KPI STRIP                                  */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 mb-6 relative z-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {/* Card 1: Total Corridors */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Corridors</span>
+              <Map className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-emerald-300">
+              {corridors.length}
+            </div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Identified Linkages</div>
+          </div>
+
+          {/* Card 2: Critical Priority */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-red-400">Critical Priority</span>
+              <TrendingUp className="w-4 h-4 text-red-400" />
+            </div>
+            <div className="text-2xl font-black text-red-300">
+              {corridors.filter(c => c.priority === 'Critical').length}
+            </div>
+            <div className="text-[11px] text-red-400/90 font-mono mt-0.5">Immediate Action Req.</div>
+          </div>
+
+          {/* Card 3: Active Status */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Active Corridors</span>
+              <Activity className="w-4 h-4 text-teal-400" />
+            </div>
+            <div className="text-2xl font-black text-teal-300">
+              {corridors.filter(c => c.status === 'Active').length}
+            </div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">Functional Movement</div>
+          </div>
+
+          {/* Card 4: Threatened Corridors */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Threatened</span>
+              <Shield className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">
+              {corridors.filter(c => c.status === 'Threatened' || c.status === 'Degraded').length}
+            </div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">High Encroachment</div>
+          </div>
+
+          {/* Card 5: Core Scope */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Kashmir Core</span>
+              <Map className="w-4 h-4 text-cyan-400" />
+            </div>
+            <div className="text-2xl font-black text-cyan-300">
+              {coreCount}
+            </div>
+            <div className="text-[11px] text-cyan-400/90 font-mono mt-0.5">Valley Ecosystems</div>
+          </div>
+
+          {/* Card 6: Trans & Extended */}
+          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Transboundary</span>
+              <Activity className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">
+              {transCount + extendedCount}
+            </div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Regional Linkages</div>
+          </div>
+        </div>
       </div>
 
       {/* Tab + Filters — single row */}
@@ -353,6 +473,64 @@ export default function CorridorsPage() {
                 </Card>
               </motion.a>
             ))}
+
+            {filteredCorridors.length > itemsPerPage && (
+              <div className="flex flex-col items-center justify-center gap-4 mt-8 w-full col-span-full">
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-1 mx-2">
+                    {Array.from({ length: Math.ceil(filteredCorridors.length / itemsPerPage) }).map((_, i) => {
+                      const page = i + 1;
+                      const totalPages = Math.ceil(filteredCorridors.length / itemsPerPage);
+                      
+                      if (page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      }
+                      
+                      if (page === currentPage - 2 || page === currentPage + 2) {
+                        return <span key={page} className="text-slate-600 px-1">...</span>;
+                      }
+                      
+                      return null;
+                    })}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredCorridors.length / itemsPerPage)))}
+                    disabled={currentPage === Math.ceil(filteredCorridors.length / itemsPerPage)}
+                    className="border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+                <div className="text-xs text-slate-500">
+                  Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredCorridors.length)} of {filteredCorridors.length} records
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-center py-24">

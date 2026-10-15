@@ -50,6 +50,7 @@ const navItems = [
   { label: 'Environmental Monitoring',href: '/environmental-monitoring', hasDropdown: true },
   { label: 'Hazard Intelligence',     href: '/hazard-intelligence',      hasDropdown: true },
   { label: 'NGO Impact',              href: '/ngo-impact',               hasDropdown: false },
+  { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: false },
 ];
 
 interface DropdownItem {
@@ -71,16 +72,30 @@ export function PremiumStickyHeader() {
   const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   const headerActionsRef = useRef<HTMLDivElement>(null);
 
-  // Sync unread alerts
+  // Sync unread alerts with live telemetry stream
   useEffect(() => {
-    const updateUnread = () => {
+    let isMounted = true;
+    const updateUnread = async () => {
       try {
         const stored = localStorage.getItem('kew_read_notifications');
         const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
-        const count = alertRegistry.filter(a => !readIds.has(a.id)).length;
-        setUnreadCount(count);
-      } catch {
-        setUnreadCount(alertRegistry.length);
+        const res = await fetch('/api/alerts/live');
+        if (res.ok && isMounted) {
+          const data = await res.json();
+          const list = data.alerts || alertRegistry;
+          setUnreadCount(list.filter((a: any) => !readIds.has(a.id)).length);
+          return;
+        }
+      } catch {}
+
+      if (isMounted) {
+        try {
+          const stored = localStorage.getItem('kew_read_notifications');
+          const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
+          setUnreadCount(alertRegistry.filter(a => !readIds.has(a.id)).length);
+        } catch {
+          setUnreadCount(alertRegistry.length);
+        }
       }
     };
 
@@ -88,6 +103,7 @@ export function PremiumStickyHeader() {
     window.addEventListener('storage', updateUnread);
     window.addEventListener('kew_alerts_updated', updateUnread);
     return () => {
+      isMounted = false;
       window.removeEventListener('storage', updateUnread);
       window.removeEventListener('kew_alerts_updated', updateUnread);
     };
@@ -191,12 +207,19 @@ export function PremiumStickyHeader() {
           { name: '── Observation & Ecology ──', href: '#', desc: '', isHeader: true },
           { name: 'Wildlife Sightings', href: '/biodiversity/wildlife-sightings', desc: 'Verified & community observations' },
           { name: 'Birding & Observation Hotspots', href: '/biodiversity/birding-hotspots', desc: 'Prime observation areas' },
-          { name: 'Migration Windows', href: '/biodiversity/migration-windows', desc: 'Migratory bird timing' },
-          { name: 'Pollinator Activity', href: '/biodiversity/pollinator-activity', desc: 'Pollinator watch periods' },
-          { name: 'Phenology & Flowering Records', href: '/biodiversity/phenology-flowering', desc: 'Flowering & seasonal records' },
           { name: 'Forest Ecosystems', href: '/biodiversity/forest-ecosystems', desc: '10-module habitat intelligence layer' },
-          { name: 'Habitat Signals', href: '/biodiversity/habitat-signals', desc: 'Habitat stress & transitions' },
-          { name: 'Seasonal Species Activity', href: '/biodiversity/seasonal-activity', desc: 'Breeding & activity windows' },
+          // Dedicated Seasonal Ecology & Phenology Module Space
+          { name: '── Seasonal Ecology & Phenology ──', href: '#', desc: '', isHeader: true },
+          { name: 'Seasonal Landscapes', href: '/seasonal-ecology/seasonal-landscapes', desc: 'Landscape-scale seasonal patterns' },
+          { name: 'Bloom Mapping', href: '/seasonal-ecology/bloom-mapping', desc: 'Bloom zones and flowering landscapes' },
+          { name: 'Migration Windows', href: '/seasonal-ecology/migration-windows', desc: 'Migration timing & wetland bird windows' },
+          { name: 'Pollinator Activity', href: '/seasonal-ecology/pollinator-windows', desc: 'Pollinator activity timing across Kashmir' },
+          { name: 'Phenology & Flowering Records', href: '/seasonal-ecology/phenology-records', desc: 'Flowering & observation-based records' },
+          { name: 'Seasonal Habitat Signals', href: '/seasonal-ecology/habitat-signals', desc: 'Seasonal habitat changes & transitions' },
+          { name: 'Water & Wetland Transitions', href: '/seasonal-ecology/water-transitions', desc: 'Seasonal water & wetland transitions' },
+          { name: 'Seasonal Species Activity', href: '/seasonal-ecology/species-activity', desc: 'Seasonal species activity patterns' },
+          { name: 'Climate & Visibility Windows', href: '/seasonal-ecology/climate-windows', desc: 'Climate-linked visibility & access' },
+          { name: 'Seasonal Reports & References', href: '/seasonal-ecology/reports-references', desc: 'Kashmir seasonal research & evidence' },
           // Intelligence Group
           { name: '── Intelligence ──', href: '#', desc: '', isHeader: true },
           { name: 'District Biodiversity Profiles', href: '/biodiversity/district-profiles', desc: 'Regional intelligence' },

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import {
   drinkingWaterSources, drinkingWaterStats,
   waterQualityChallenges, infrastructureData, policyRecommendations,
@@ -16,6 +17,7 @@ import {
   CheckCircle, XCircle, Clock, Wrench,
   Shield, AlertTriangle, Users, Activity,
   FileText, Beaker, ArrowRight, ExternalLink,
+  Sparkles, Eye, Camera, CheckCircle2, Waves
 } from 'lucide-react';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -298,6 +300,9 @@ function AdditionalContent() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function DrinkingWaterSourcesPage() {
+  const [activeTab, setActiveTab] = React.useState<'all' | 'spring' | 'river' | 'groundwater' | 'operational' | 'safe' | 'atrisk'>('all');
+  const [activeInsight, setActiveInsight] = React.useState<'intakes' | 'standards' | 'network' | 'observe'>('intakes');
+
   const stats = React.useMemo(() => ({
     totalSources: drinkingWaterSources.length,
     operational: drinkingWaterSources.filter(s => s.status === 'operational').length,
@@ -310,13 +315,42 @@ export default function DrinkingWaterSourcesPage() {
     totalPopulationServed: drinkingWaterSources.reduce((sum, s) => sum + (s.populationServed || 0), 0),
   }), []);
 
+  const displayedEntities = React.useMemo(() => {
+    switch (activeTab) {
+      case 'spring':
+        return entities.filter(e => e.category.toLowerCase().includes('spring'));
+      case 'river':
+        return entities.filter(e => e.category.toLowerCase().includes('river') || e.category.toLowerCase().includes('stream') || e.category.toLowerCase().includes('surface'));
+      case 'groundwater':
+        return entities.filter(e => e.category.toLowerCase().includes('groundwater') || e.category.toLowerCase().includes('tube') || e.category.toLowerCase().includes('well'));
+      case 'operational':
+        return entities.filter(e => {
+          const src = drinkingWaterSources.find(s => s.id === e.id);
+          return src?.status === 'operational';
+        });
+      case 'safe':
+        return entities.filter(e => {
+          const src = drinkingWaterSources.find(s => s.id === e.id);
+          return src?.waterQualityStatus === 'safe';
+        });
+      case 'atrisk':
+        return entities.filter(e => {
+          const src = drinkingWaterSources.find(s => s.id === e.id);
+          return src?.waterQualityStatus === 'at-risk' || src?.waterQualityStatus === 'contaminated';
+        });
+      case 'all':
+      default:
+        return entities;
+    }
+  }, [activeTab]);
+
   return (
     <WaterEntityListingPage
       title="Western Himalayan Drinking Water Sources"
       description="Authoritative directory of drinking water sources, treatment plants, gravity supply networks, sub-surface infiltration galleries, and community wellheads across Jammu & Kashmir, Ladakh, AJK, and Gilgit-Baltistan."
       icon="Droplets"
       color="from-blue-500 to-cyan-600"
-      entities={entities}
+      entities={displayedEntities}
       entityType="Water Sources"
       kpis={[
         { label: 'Total Sources',   value: stats.totalSources,                               icon: 'Droplet',       color: 'text-blue-400'    },
@@ -360,6 +394,349 @@ export default function DrinkingWaterSourcesPage() {
         );
       }}
       renderAdditionalContent={() => <AdditionalContent />}
-    />
+    >
+      {/* ── Focus Categories Filter Bar ───────────────────────────────────── */}
+      <div className="mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+              <Droplet className="w-5 h-5 text-cyan-400" />
+              Drinking Water Supply Typologies &amp; Schemes
+            </h3>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Filter public water sources by raw intake typology, operational functionality, or potability safety.
+            </p>
+          </div>
+          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+            Showing <strong className="text-cyan-400">{displayedEntities.length}</strong> of {entities.length} sources
+          </span>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <Button
+            size="sm"
+            variant={activeTab === 'all' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('all')}
+            className={activeTab === 'all' ? 'bg-cyan-600 hover:bg-cyan-500 text-white font-medium shadow-lg shadow-cyan-950/40' : 'border-white/10 text-slate-400 hover:text-white'}
+          >
+            All Sources ({entities.length})
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'spring' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('spring')}
+            className={activeTab === 'spring' ? 'bg-emerald-600 hover:bg-emerald-500 text-white font-medium shadow-lg shadow-emerald-950/40' : 'border-white/10 text-emerald-300 hover:text-white'}
+          >
+            <Droplet className="w-3.5 h-3.5 mr-1 text-emerald-300" />
+            Natural Springs
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'river' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('river')}
+            className={activeTab === 'river' ? 'bg-blue-600 hover:bg-blue-500 text-white font-medium shadow-lg shadow-blue-950/40' : 'border-white/10 text-blue-300 hover:text-white'}
+          >
+            <Waves className="w-3.5 h-3.5 mr-1 text-blue-300" />
+            Surface River Intakes
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'groundwater' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('groundwater')}
+            className={activeTab === 'groundwater' ? 'bg-teal-600 hover:bg-teal-500 text-white font-medium shadow-lg shadow-teal-950/40' : 'border-white/10 text-teal-300 hover:text-white'}
+          >
+            <Database className="w-3.5 h-3.5 mr-1 text-teal-300" />
+            Groundwater Schemes
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'operational' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('operational')}
+            className={activeTab === 'operational' ? 'bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-950/40' : 'border-white/10 text-indigo-300 hover:text-white'}
+          >
+            <CheckCircle className="w-3.5 h-3.5 mr-1 text-indigo-300" />
+            Fully Operational ({stats.operational})
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'safe' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('safe')}
+            className={activeTab === 'safe' ? 'bg-green-600 hover:bg-green-500 text-white font-medium shadow-lg shadow-green-950/40' : 'border-white/10 text-green-300 hover:text-white'}
+          >
+            <Shield className="w-3.5 h-3.5 mr-1 text-green-300" />
+            Potable Safe ({stats.safe})
+          </Button>
+
+          <Button
+            size="sm"
+            variant={activeTab === 'atrisk' ? 'default' : 'outline'}
+            onClick={() => setActiveTab('atrisk')}
+            className={activeTab === 'atrisk' ? 'bg-rose-600 hover:bg-rose-500 text-white font-medium shadow-lg shadow-rose-950/40' : 'border-white/10 text-rose-300 hover:text-white'}
+          >
+            <AlertTriangle className="w-3.5 h-3.5 mr-1 text-rose-300" />
+            At-Risk / Stressed ({stats.atRisk + stats.contaminated})
+          </Button>
+        </div>
+      </div>
+
+      {/* ── Drinking Water Intelligence & Field Observation Spotlight ──────── */}
+      <div className="mb-10 rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-md p-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+          <div>
+            <h4 className="text-base font-bold text-white flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
+              Drinking Water Potability &amp; Surveillance Spotlight
+            </h4>
+            <p className="text-xs text-slate-400 mt-1">
+              Major municipal treatment plants, BIS 10500 standards, distribution leakages, and citizen tap water monitoring.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1.5 p-1 bg-slate-950/80 rounded-xl border border-white/5 flex-wrap sm:flex-nowrap">
+            <button
+              onClick={() => setActiveInsight('intakes')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                activeInsight === 'intakes'
+                  ? 'bg-cyan-500 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Major Treatment Plants
+            </button>
+            <button
+              onClick={() => setActiveInsight('standards')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                activeInsight === 'standards'
+                  ? 'bg-cyan-500 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              BIS 10500 Standards
+            </button>
+            <button
+              onClick={() => setActiveInsight('network')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                activeInsight === 'network'
+                  ? 'bg-cyan-500 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Distribution Networks
+            </button>
+            <button
+              onClick={() => setActiveInsight('observe')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 ${
+                activeInsight === 'observe'
+                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-emerald-400 hover:text-emerald-300'
+              }`}
+            >
+              <Eye className="w-3 h-3" />
+              Observe Here (Tap Water Watch)
+            </button>
+          </div>
+        </div>
+
+        <motion.div layout className="space-y-4">
+          {activeInsight === 'intakes' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                <span className="text-xs font-bold text-cyan-400 block mb-1">Apex Gravity Supply</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Rangil Water Treatment Plant</h5>
+                <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                  Sourced directly from Sindh River via high-elevation canal, delivering pristine snowmelt water (45 MGD) to downtown Srinagar with ultra-low raw turbidity.
+                </p>
+                <div className="text-[11px] text-slate-500 font-mono">Capacity: 45 MGD (Rapid Sand Filtration)</div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-blue-500/20">
+                <span className="text-xs font-bold text-blue-400 block mb-1">Heritage Urban Supply</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Nishat &amp; Harwan Waterworks</h5>
+                <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                  Century-old intake fed by Dachigam mountain catchments and Marsar overflow, supplying civil lines and medical institutes in Srinagar.
+                </p>
+                <div className="text-[11px] text-slate-500 font-mono">Status: Upgraded with SCADA Chlorination</div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                <span className="text-xs font-bold text-teal-400 block mb-1">South Basin Treatment</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Doodh Ganga &amp; Sukhnag Plants</h5>
+                <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                  Provides potable water for uptown Srinagar and Budgam towns, challenged during autumn low flows by riverbed sand mining turbidity.
+                </p>
+                <div className="text-[11px] text-slate-500 font-mono">Priority: Silt Trap Pre-Settling Upgrades</div>
+              </div>
+            </div>
+          )}
+
+          {activeInsight === 'standards' && (
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                <span className="text-xs font-bold text-emerald-400 block mb-1">Turbidity</span>
+                <h5 className="text-sm font-semibold text-white mb-2">&lt; 1.0 NTU</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Permissible limit under BIS 10500. Turbidity above 5 NTU impedes chlorine disinfection and protects pathogens from ultraviolet light.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                <span className="text-xs font-bold text-cyan-400 block mb-1">Free Residual Chlorine</span>
+                <h5 className="text-sm font-semibold text-white mb-2">0.2 – 0.5 mg/L</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Required at consumer tap end to ensure residual bactericidal protection against pipeline cross-contamination and sewage ingress.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                <span className="text-xs font-bold text-rose-400 block mb-1">E. coli / Coliforms</span>
+                <h5 className="text-sm font-semibold text-white mb-2">0 per 100 mL</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Zero tolerance in treated potable supplies. Any detection mandates immediate boil-water notices and network super-chlorination.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                <span className="text-xs font-bold text-amber-400 block mb-1">Total Dissolved Solids</span>
+                <h5 className="text-sm font-semibold text-white mb-2">&lt; 500 mg/L</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Acceptable palatability threshold. Kashmiri mountain surface waters typically range between 90–220 ppm TDS.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeInsight === 'network' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                <span className="text-xs font-bold text-amber-400 block mb-1">Aging Galvanized Pipelines</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Non-Revenue Water (38% Leakage)</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Decades-old galvanized iron and cast-iron distribution pipes suffer internal encrustation, tuberculation, and joint leaks, allowing suction of trench wastewater during pressure drops.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-sky-500/20">
+                <span className="text-xs font-bold text-sky-400 block mb-1">Winter Freeze-Thaw Vulnerability</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Sub-Zero Pipe Ruptures</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  During Chillai Kalan (-8°C), un-insulated shallow-buried pipes freeze and burst, leaving thousands of households reliant on tanker deliveries and open spring ice holes.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                <span className="text-xs font-bold text-teal-400 block mb-1">JJM Village Piped Supply</span>
+                <h5 className="text-sm font-semibold text-white mb-2">Jal Jeevan Mission Rollout</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Modernizing rural hamlets with high-density polyethylene (HDPE) lines connected directly to spring catchment chambers with solar-powered UV disinfection.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeInsight === 'observe' && (
+            <div className="space-y-4">
+              <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-emerald-950/60 border border-cyan-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 shrink-0">
+                    <Camera className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span>Consumer Tap Water &amp; Supply Watch Protocol</span>
+                      <Badge variant="outline" className="text-[10px] border-cyan-500/40 text-cyan-300">
+                        Potable Watch 2026
+                      </Badge>
+                    </h5>
+                    <p className="text-xs text-slate-300 mt-0.5">
+                      Submit tap water test strip results, report sewage-contaminated tap water, pipeline burst road washouts, or supply cuts.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 shrink-0">
+                  <Link href="/submit-observation?category=water">
+                    <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-950/50">
+                      <Camera className="w-3.5 h-3.5 mr-1 text-slate-950" />
+                      Submit Tap Water Test
+                    </Button>
+                  </Link>
+                  <Link href="/report-issue">
+                    <Button size="sm" variant="outline" className="border-rose-500/40 text-rose-300 hover:bg-rose-500/10">
+                      <AlertTriangle className="w-3.5 h-3.5 mr-1 text-rose-400" />
+                      Report Contaminated Tap
+                    </Button>
+                  </Link>
+                  <Link href="/trails-sightings/trail-field-records">
+                    <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5">
+                      <FileText className="w-3.5 h-3.5 mr-1 text-cyan-400" />
+                      Water Quality Logs
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                <div className="p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                    <Beaker className="w-4 h-4" />
+                    <h6 className="font-semibold text-white text-xs">1. DPD Chlorine Colorimetric Test</h6>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Dissolve a DPD-1 tablet in a 10 mL tap sample. Compare magenta pink intensity against color disk. Faint pink confirms safe residual disinfection (0.2–0.5 ppm).
+                  </p>
+                  <div className="mt-2.5 pt-2 border-t border-white/5 text-[10px] text-cyan-300/80 font-mono">
+                    Protocol: DPD Free Chlorine Colorimetry
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-950/70 border border-rose-500/20 hover:border-rose-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-2 text-rose-400">
+                    <AlertTriangle className="w-4 h-4" />
+                    <h6 className="font-semibold text-white text-xs">2. Sewage Odor &amp; Turbidity</h6>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Immediately report brown-tinted or sulphurous sewage-smelling tap water. Signals cross-contamination with broken road storm drains during supply depressurization.
+                  </p>
+                  <div className="mt-2.5 pt-2 border-t border-white/5 text-[10px] text-rose-300/80 font-mono">
+                    Emergency: Cross-Connection Alert
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-950/70 border border-amber-500/20 hover:border-amber-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-2 text-amber-400">
+                    <Droplets className="w-4 h-4" />
+                    <h6 className="font-semibold text-white text-xs">3. Main Pipeline Leakage Alert</h6>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Document clean water spurting through pavement cracks or creating roadside waterlogging. Leaks waste millions of liters and erode macadam foundations.
+                  </p>
+                  <div className="mt-2.5 pt-2 border-t border-white/5 text-[10px] text-amber-300/80 font-mono">
+                    Action: Jal Shakti Leakage Work Order
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-950/70 border border-emerald-500/20 hover:border-emerald-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-2 text-emerald-400">
+                    <Clock className="w-4 h-4" />
+                    <h6 className="font-semibold text-white text-xs">4. Daily Supply Hours Log</h6>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Record actual morning and evening supply pressure hours in your neighborhood. Helps document unserved tail-end habitations experiencing persistent water poverty.
+                  </p>
+                  <div className="mt-2.5 pt-2 border-t border-white/5 text-[10px] text-emerald-300/80 font-mono">
+                    Equity: Piped Water Reliability Index
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </WaterEntityListingPage>
   );
 }

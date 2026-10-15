@@ -20,26 +20,37 @@ export default function WetlandReservesPage() {
   const transWetlands   = allAreas.filter(p => p.scope === 'Trans-Divisional');
   const extendedWetlands = allAreas.filter(p => p.scope === 'Transboundary / Extended');
 
+    const totalWetlandArea = allAreas.reduce((sum, a) => sum + (a.area || 0), 0);
+  const ramsarCount = allAreas.filter(w => (w as any).ramsar_status?.includes('Ramsar') || w.name.includes('Ramsar')).length;
+
   const metrics = [
-    { label: 'Kashmir Core Wetlands', value: coreWetlands.length, icon: 'Droplet' as const },
-    { label: 'Jammu Wetland Reserves', value: transWetlands.filter(w => w.district !== 'Leh' && w.id !== 'surinsar-mansar-wetland').length, icon: 'Map' as const },
-    { label: 'Ladakh Wetlands', value: '5+', icon: 'Mountain' as const },
-    { label: 'Transboundary / Ext.', value: '10+', icon: 'Activity' as const },
-    { label: 'Official J&K Reserves', value: 14, icon: 'Shield' as const },
-    { label: 'Ramsar-linked Sites', value: '6+', icon: 'Eye' as const },
-    { label: 'Key Bird Groups', value: '25+', icon: 'Bird' as const },
-    { label: 'Ecosystem Types', value: '12+', icon: 'Leaf' as const },
+    { label: 'Total Mapped Wetlands',    value: allAreas.length,                               icon: 'Droplet' as const },
+    { label: 'Total Aquatic Coverage',   value: `${Math.round(totalWetlandArea).toLocaleString()} km²`, icon: 'Map' as const },
+    { label: 'Kashmir Core Wetlands',    value: coreWetlands.length,                           icon: 'Shield' as const },
+    { label: 'Jammu & Ladakh Wetlands',  value: transWetlands.length,                          icon: 'Mountain' as const },
+    { label: 'Transboundary Basins',     value: extendedWetlands.length,                       icon: 'Activity' as const },
+    { label: 'Ramsar Designated Sites',  value: ramsarCount || 7,                              icon: 'Eye' as const },
+    { label: 'Migratory Waterfowl',      value: '1.2M+ Birds',                                 icon: 'TrendingUp' as const },
+    { label: 'Hydrological Systems',     value: '16 Basins',                                   icon: 'Leaf' as const },
   ];
 
   return (
     <ProtectedCategoryPage
-      title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
+      title={
+        <div className="overflow-visible pb-2">
+          <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+            <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+              KEW
             </span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wetland Reserves</span>
-          </>}
+            <span className="text-white">Western Himalayan</span>
+          </div>
+          <div className="leading-[1.15] overflow-visible pr-8">
+            <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+              Wetland Reserves &amp; Ramsar Basins
+            </span>
+          </div>
+        </div>
+      }
       subtitle="Marshes, lakes, reedbeds, floodplain wetlands, and high-altitude wetland systems across Kashmir Core, Jammu-Ladakh trans-divisional zones, and the wider transboundary Kashmir ecological belt. Integrates hydrology, bird-use patterns, Ramsar status, land-cover change, threat signals, and conservation monitoring."
       icon="Droplet"
       color="from-emerald-600 to-emerald-500"

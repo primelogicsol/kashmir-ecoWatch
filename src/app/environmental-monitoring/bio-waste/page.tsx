@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -217,6 +218,7 @@ export default function BioWastePage() {
   const [collectionFilter, setCollectionFilter] = useState('all');
   const [treatmentFilter, setTreatmentFilter] = useState('all');
   const [surgeFilter, setSurgeFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
@@ -242,9 +244,17 @@ export default function BioWastePage() {
       const matchTreatment = treatmentFilter === 'all' || d.treatment_linkage === treatmentFilter;
       const matchSurge = surgeFilter === 'all' || d.seasonal_surge === surgeFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchCity && matchCollection && matchTreatment && matchSurge;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && ['Critical', 'High'].includes(d.risk_level)) ||
+        (activeTypology === 'mandi' && (d.ward_sector_name.toLowerCase().includes('mandi') || d.ward_category?.toLowerCase().includes('commercial') || d.primary_source?.toLowerCase().includes('market'))) ||
+        (activeTypology === 'abattoir' && (d.primary_source?.toLowerCase().includes('abattoir') || d.primary_source?.toLowerCase().includes('meat') || d.primary_source?.toLowerCase().includes('slaughter'))) ||
+        (activeTypology === 'surge' && ['High', 'Critical'].includes(d.seasonal_surge)) ||
+        (activeTypology === 'mapped' && d.collection_status === 'Mapped');
+
+      return matchSearch && matchScope && matchDistrict && matchCity && matchCollection && matchTreatment && matchSurge && matchTypology;
     });
-  }, [filter, cityFilter, collectionFilter, treatmentFilter, surgeFilter]);
+  }, [filter, cityFilter, collectionFilter, treatmentFilter, surgeFilter, activeTypology]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -325,6 +335,126 @@ export default function BioWastePage() {
           }}
         />
       </div>
+
+      
+      {/* ── Bio-Waste Typologies & Citizen Field Protocols ──────────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Bio-Waste Focus Typologies & Organic Streams"
+          typologySubtitle="Select an organic waste stream, wholesale market node, or seasonal surge risk to explore bio-waste dynamics."
+          typologyIcon={Leaf}
+          typologies={[
+            { id: 'all', label: 'All Organic Zones', count: bioWasteData.length, icon: Leaf, color: 'emerald' },
+            { id: 'critical', label: 'Critical Risk', count: bioWasteData.filter(d => ['Critical', 'High'].includes(d.risk_level)).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'mandi', label: 'Fruit & Veg Mandis', count: bioWasteData.filter(d => d.ward_sector_name.toLowerCase().includes('mandi') || d.ward_category?.toLowerCase().includes('commercial') || d.primary_source?.toLowerCase().includes('market')).length, icon: Building2, color: 'amber' },
+            { id: 'abattoir', label: 'Abattoirs & Meat Markets', count: bioWasteData.filter(d => d.primary_source?.toLowerCase().includes('abattoir') || d.primary_source?.toLowerCase().includes('meat') || d.primary_source?.toLowerCase().includes('slaughter')).length, icon: Shield, color: 'violet' },
+            { id: 'surge', label: 'High Seasonal Surges', count: bioWasteData.filter(d => ['High', 'Critical'].includes(d.seasonal_surge)).length, icon: Activity, color: 'sky' },
+            { id: 'mapped', label: 'Mapped Processing', count: bioWasteData.filter(d => d.collection_status === 'Mapped').length, icon: CheckCircle, color: 'teal' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={bioWasteData.length}
+          entityLabel="monitored zones"
+          spotlightTitle="Organic Degradation & Biomethanation Intelligence"
+          spotlightSubtitle="Managing high-moisture organic fractions from agricultural mandis, slaughterhouses, and seasonal apple harvesting."
+          tabs={[
+            {
+              id: 'mandi-streams',
+              label: 'Parimpora Fruit Mandi & Urban Wholesale Streams',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <span className="text-xs font-bold text-emerald-400 block mb-1">Wholesale Organic Volume</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Parimpora &amp; Sopore Mandis</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Asia's second largest fruit terminal creates seasonal peaks of over 85 TPD culled apples, pears, and stone fruits. Rapid putrefaction requires mechanized daily biomethanation feedstock loading.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Organic Moisture Content: &gt; 82%</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Biogas Conversion Capacity</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Decentralized Waste-to-Energy</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      High-rate anaerobic digesters convert vegetable waste into methane for captive electricity and nutrient-rich bio-slurry fertilizer used in floriculture nurseries.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Biogas Yield: ~110 m³/ton organic feedstock</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Autumn Orchard Pruning</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Lignocellulosic Biomass Surges</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Post-harvest apple tree pruning in Baramulla, Shopian, and Pulwama yields 180,000+ tons of woody biomass. Pelletization into clean heating fuel prevents widespread open burning.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Diversion Potential: 64% clean fuel pelletization</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'biomedical',
+              label: 'Biomedical & Pathogenic Segregation Integrity',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Tertiary Hospital Incinerator Corridors</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      SKIMS Soura, SMHS, and JLNM hospitals produce ~4.2 TPD yellow/red/blue bag biomedical streams. Monitored for continuous GPS barcoding, temperature double-chamber incinerator compliance (&gt;1100°C), and zero municipal landfill co-mingling.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Rule: Bio-Medical Waste Management Rules 2016</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Animal Husbandry &amp; Rendering Facilities</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Municipal rendering plants in Srinagar and Anantnag process offal and animal tissue into sterilized protein meal, safeguarding groundwater aquifers from anthropic pathogens.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Standard: FSSAI Meat &amp; Animal By-Product Hygiene Code</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="waste"
+          observeTitle="Citizen Bio-Waste Surveillance &amp; Composting Health Network"
+          observeSubtitle="Report foul odor outbreaks, uncollected mandi dumps, or verify community composting aerated pit operations."
+          observeBadge="Biological Safeguards Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Putrefaction & Anaerobic Odor Indexing',
+              desc: 'Evaluate decaying organic piles near residential or market perimeters on the standard anaerobic odor nuisance scale.',
+              benchmark: 'CPCB Odor Monitoring Guideline',
+              icon: Leaf,
+              color: 'amber',
+            },
+            {
+              number: '2',
+              title: 'Mandi Organic Disposal Verification',
+              desc: 'Verify if wholesale market produce waste is diverted directly to composting or anaerobic digestion facilities.',
+              benchmark: 'SWM Rules 2016 Rule 15(v)',
+              icon: Building2,
+              color: 'emerald',
+            },
+            {
+              number: '3',
+              title: 'Decentralized Composting Temperature Test',
+              desc: 'Check thermal rise (&gt;55°C for 3 consecutive days) in aerated community compost bins to ensure pathogen sanitization.',
+              benchmark: 'FCO Composting Quality Standard',
+              icon: Activity,
+              color: 'sky',
+            },
+            {
+              number: '4',
+              title: 'Abattoir Blood & Effluent Containment',
+              desc: 'Inspect slaughtering points to guarantee blood and biological wastewater are not discharged into street gutters.',
+              benchmark: 'Central Pollution Control Board Abattoir Norms',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow

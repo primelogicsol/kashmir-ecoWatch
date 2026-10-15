@@ -8,7 +8,8 @@ import { Badge } from '@/components/ui/Badge';
 import {
   Droplet, Waves, Wind, Mountain, Map, Thermometer, Fish,
   AlertTriangle, Hammer, ArrowRight, Search, TrendingUp,
-  Database, Layers, Activity, Shield, Leaf, Eye, Book
+  Database, Layers, Activity, Shield, Leaf, Eye, Book,
+  Sparkles, Camera, CheckCircle2, ChevronRight, FileText
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
@@ -347,7 +348,101 @@ export default function WaterSystemsPage() {
         </div>
       </div>
 
-      {/* Key Features Section */}
+            {/* ── Observe Here: Hydrological Intelligence & Field Observation ── */}
+      <section className="container mx-auto px-6 py-6">
+        <div className="rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-md p-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Citizen Limnology &amp; Basin Telemetry</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-400 uppercase font-semibold">Active Monitoring 2026</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mt-1 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-emerald-400" />
+                Observe Here: Hydrological Field Telemetry &amp; Citizen Science
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Contribute water quality readings, log lake water clarity, verify river gauge levels, or report ecological hazards across Kashmir&apos;s 20 monitored basins.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              <Button
+                onClick={() => router.push('/submit-observation?category=water')}
+                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-950/50 text-xs py-2 px-3.5"
+              >
+                <Camera className="w-3.5 h-3.5 mr-1 text-slate-950" />
+                Submit Water Observation
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => router.push('/report-issue')}
+                className="border-rose-500/40 text-rose-300 hover:bg-rose-500/10 text-xs py-2 px-3.5"
+              >
+                <AlertTriangle className="w-3.5 h-3.5 mr-1 text-rose-400" />
+                Report Threat / Hazard
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => router.push('/trails-sightings/trail-field-records')}
+                className="border-white/10 text-slate-300 hover:bg-white/5 text-xs py-2 px-3.5"
+              >
+                <FileText className="w-3.5 h-3.5 mr-1 text-emerald-400" />
+                Verified Field Records
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                <Droplet className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">1. Lakes &amp; Tarns Transparency</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Measure water column clarity with a standard 20cm Secchi disk. Pristine alpine tarns (Gangabal, Tarsar) exceed 5.0m; eutrophic urban basins drop below 1.2m.
+              </p>
+              <div className="text-[11px] text-cyan-300/80 font-mono">Standard: ISO 7027 Turbidity Assay</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-indigo-500/20 hover:border-indigo-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-indigo-400">
+                <Wind className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">2. Stream Velocity &amp; Gauges</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Log staff gauge readings and float velocity along River Jhelum and mountain torrents. Directly grounds automated Doppler and radar river telemetry.
+              </p>
+              <div className="text-[11px] text-indigo-300/80 font-mono">Telemetry: Sangam, RMB &amp; Asham</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20 hover:border-emerald-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-emerald-400">
+                <Mountain className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">3. Springshed Recharge Watch</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Track seasonal volumetric discharge rates and temperature stability at community drinking springs across Anantnag, Budgam, and Kupwara.
+              </p>
+              <div className="text-[11px] text-emerald-300/80 font-mono">Protocol: NITI Aayog Springshed Guide</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-sky-500/20 hover:border-sky-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-sky-400">
+                <Waves className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">4. Ramsar Waterfowl Census</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Feed winter waterfowl counts across Hokersar, Shallabugh, and Wular into the Asian Waterbird Census (AWC) database for flyway monitoring.
+              </p>
+              <div className="text-[11px] text-sky-300/80 font-mono">Network: Wetlands International AWC</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* Key Features Section */}
       <div className="container mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

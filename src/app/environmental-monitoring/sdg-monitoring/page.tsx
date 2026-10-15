@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -323,6 +324,7 @@ export default function SDGMonitoringPage() {
   const [goalFilter,   setGoalFilter]   = useState('all');
   const [themeFilter,  setThemeFilter]  = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [viewMode,     setViewMode]     = useState<'grid'|'list'>('grid');
   const [currentPage,  setCurrentPage]  = useState(1);
 
@@ -341,8 +343,16 @@ export default function SDGMonitoringPage() {
     const matchGoal     = goalFilter   === 'all' || r.goalNumber === Number(goalFilter);
     const matchTheme    = themeFilter  === 'all' || r.category === themeFilter;
     const matchStatus   = statusFilter === 'all' || r.status === statusFilter;
-    return matchSearch && matchScope && matchDistrict && matchGoal && matchTheme && matchStatus;
-  }), [filter, goalFilter, themeFilter, statusFilter]);
+    const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'sdg6' && r.goalNumber === 6) ||
+        (activeTypology === 'sdg11' && r.goalNumber === 11) ||
+        (activeTypology === 'sdg12' && r.goalNumber === 12) ||
+        (activeTypology === 'sdg13' && r.goalNumber === 13) ||
+        (activeTypology === 'sdg15' && r.goalNumber === 15) ||
+        (activeTypology === 'critical' && (r.status === 'Critical' || r.status === 'Off Track'));
+      return matchSearch && matchScope && matchDistrict && matchGoal && matchTheme && matchStatus && matchTypology;
+  }), [filter, goalFilter, themeFilter, statusFilter, activeTypology]);
 
   const totalPages    = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage-1)*ITEMS_PER_PAGE, currentPage*ITEMS_PER_PAGE);
@@ -461,6 +471,127 @@ export default function SDGMonitoringPage() {
       </div>
 
       {/* SCOPE ROW */}
+      
+      {/* ── SDG Focus Typologies & Citizen Field Protocols ────────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="UN Sustainable Development Goal (SDG) Typologies"
+          typologySubtitle="Select a target UN SDG framework, water goal, urban sustainability metric, or off-track indicator."
+          typologyIcon={Globe}
+          typologies={[
+            { id: 'all', label: 'All 36 SDG Indicators', count: sdgIndicators.length, icon: Globe, color: 'emerald' },
+            { id: 'critical', label: 'Off Track / Critical Gap', count: sdgIndicators.filter(d => d.status === 'Critical' || d.status === 'Off Track').length, icon: AlertTriangle, color: 'rose' },
+            { id: 'sdg6', label: 'SDG 6: Clean Water & Sanitation', count: sdgIndicators.filter(d => d.goalNumber === 6).length, icon: Droplets, color: 'cyan' },
+            { id: 'sdg11', label: 'SDG 11: Sustainable Cities', count: sdgIndicators.filter(d => d.goalNumber === 11).length, icon: Building2, color: 'amber' },
+            { id: 'sdg12', label: 'SDG 12: Responsible Consumption', count: sdgIndicators.filter(d => d.goalNumber === 12).length, icon: RefreshCw, color: 'teal' },
+            { id: 'sdg13', label: 'SDG 13: Climate Action', count: sdgIndicators.filter(d => d.goalNumber === 13).length, icon: Wind, color: 'sky' },
+            { id: 'sdg15', label: 'SDG 15: Life on Land', count: sdgIndicators.filter(d => d.goalNumber === 15).length, icon: TreePine, color: 'indigo' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={sdgIndicators.length}
+          entityLabel="monitored SDG indicators"
+          spotlightTitle="UN Agenda 2030 Himalayan Environmental Performance"
+          spotlightSubtitle="Benchmarking Jammu &amp; Kashmir district indicators against NITI Aayog SDG India Index 3.0 and global UN thresholds."
+          tabs={[
+            {
+              id: 'targets-water',
+              label: 'SDG 6 (Clean Water) & SDG 11 (Sustainable Cities)',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Target 6.3</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Halving Untreated Wastewater</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Kashmir urban centers currently treat ~48% of domestic blackwater. The 2030 target mandates 100% treatment coverage to protect River Jhelum and Ramsar lacustrine ecosystems.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Current Progress: 58.2% | Target: 100% (2030)</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Target 11.6</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Urban Air &amp; Municipal Waste</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Srinagar Smart City initiative targets reduction of annual mean PM2.5 to under 40 µg/m³ and 100% scientific municipal solid waste segregation at source under SBM-Urban 2.0.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Current Segregation: 62% | Air Score: 68/100</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Target 15.1 &amp; 15.4</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Conservation of Mountain Ecosystems</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Conservation of sub-alpine birch (*Betula utilis*) corridors and high-altitude wetland habitats across Ladakh, Gurez, and Pir Panjal under protected network frameworks.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Protected Area Coverage: 12.8% of geographical area</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'niti-index',
+              label: 'NITI Aayog SDG India Index Alignment',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Front-Runner Environmental Category</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      J&amp;K ranks in the 'Front Runner' tier (score 65–99) for SDG 15 (Life on Land) due to extensive forest cover (47% including recorded forest area) and tree density in North Kashmir.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">NITI Score: 74/100 for Goal 15</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Performer Category Catch-Up Challenges</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      SDG 6 and SDG 12 require accelerated capital investment in rural tap water chlorination reliability and elimination of legacy municipal waste dumping near riverbanks.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">NITI Score: 58/100 for Goal 6 (Needs Improvement)</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="environmental"
+          observeTitle="Citizen SDG Ground-Truthing &amp; Community Indicators"
+          observeSubtitle="Audit local village tap water, verify waste collection at school level, or report conservation milestones for UN tracking."
+          observeBadge="UN Agenda 2030 Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'SDG 6.3.2 Ambient Water Quality Testing',
+              desc: 'Measure core ambient water quality parameters (DO, pH, Electrical Conductivity) to compute the global water quality index.',
+              benchmark: 'UN-Water Global Environmental Monitoring System (GEMS)',
+              icon: Droplets,
+              color: 'cyan',
+            },
+            {
+              number: '2',
+              title: 'SDG 11.6.1 Municipal Waste Collection Tally',
+              desc: 'Audit whether municipal collection trucks service residential streets at least 3 times per week with dry/wet separation.',
+              benchmark: 'UN-Habitat Waste Wise Cities Tool (WaCT)',
+              icon: Building2,
+              color: 'amber',
+            },
+            {
+              number: '3',
+              title: 'SDG 12.5 Waste Recycling & Diversion Audit',
+              desc: 'Estimate the percentage of plastic and cardboard packaging collected by informal scrap dealers (kabadis) in your ward.',
+              benchmark: 'MoEFCC Plastic Waste Management Rules',
+              icon: RefreshCw,
+              color: 'teal',
+            },
+            {
+              number: '4',
+              title: 'SDG 15.1 Forest Cover Boundary Check',
+              desc: 'Document and flag boundary pillars where state demarcated forest land is cleared for horticulture or road building.',
+              benchmark: 'Forest Conservation Act 1980 / J&K Forest Act',
+              icon: TreePine,
+              color: 'emerald',
+            },
+          ]}
+        />
+      </div>
+
+
       <ModuleScopeRow filteredCount={filteredData.length} totalCount={sdgIndicators.length}
         entityLabel="SDG indicators" viewMode={viewMode} onViewModeChange={setViewMode}
         scopePillMap={DEFAULT_SCOPE_PILL_MAP('Indicators')} scopeCount={scopeCount}

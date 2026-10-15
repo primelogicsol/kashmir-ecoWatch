@@ -7,12 +7,13 @@ import { Badge } from '@/components/ui/Badge';
 import {
   Waves, ChevronRight, MapPin, Building2,
   Shield, Activity, CheckCircle, Search, 
-  ChevronLeft, Factory, Droplets
+  ChevronLeft, Factory, Droplets, AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -271,6 +272,7 @@ export default function SewageWastewaterPage() {
   
   const [infrastructureFilter, setInfrastructureFilter] = useState('all');
   const [treatmentFilter, setTreatmentFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [wastewaterFilter, setWastewaterFilter] = useState('all');
   const [waterbodyFilter, setWaterbodyFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
@@ -302,9 +304,17 @@ export default function SewageWastewaterPage() {
       const matchWaterbody = waterbodyFilter === 'all' || d.waterbody_type === waterbodyFilter;
       const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchInfrastructure && matchTreatment && matchWastewater && matchWaterbody && matchRisk;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && ['Critical', 'High'].includes(d.risk_level)) ||
+        (activeTypology === 'dal' && (d.ward_sector_name.toLowerCase().includes('dal') || d.city_region?.toLowerCase().includes('dal') || d.discharge_destination?.toLowerCase().includes('dal'))) ||
+        (activeTypology === 'jhelum' && (d.discharge_destination?.toLowerCase().includes('jhelum') || d.ward_sector_name.toLowerCase().includes('jhelum'))) ||
+        (activeTypology === 'stp' && (d.treatment_status?.toLowerCase().includes('treated') || d.treatment_status?.toLowerCase().includes('stp'))) ||
+        (activeTypology === 'raw' && (!d.treatment_status || d.treatment_status.toLowerCase().includes('untreated') || d.treatment_status.toLowerCase().includes('raw')));
+
+      return matchSearch && matchScope && matchDistrict && matchInfrastructure && matchTreatment && matchWastewater && matchWaterbody && matchRisk && matchTypology;
     });
-  }, [filter, infrastructureFilter, treatmentFilter, wastewaterFilter, waterbodyFilter, riskFilter]);
+  }, [filter, infrastructureFilter, treatmentFilter, wastewaterFilter, waterbodyFilter, riskFilter, activeTypology]);
 
   const filteredSTPs = useMemo(() => {
     return stpData.filter(d => {
@@ -424,6 +434,126 @@ export default function SewageWastewaterPage() {
           }}
         />
       </div>
+
+      
+      {/* ── Sewage & Wastewater Typologies & Citizen Field Protocols ───────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Sewage & Wastewater Typologies & Discharge Regimes"
+          typologySubtitle="Filter by sewage outfall severity, receiving waterbody, treatment linkage, or unsewered vulnerability."
+          typologyIcon={Waves}
+          typologies={[
+            { id: 'all', label: 'All Wards & Outfalls', count: sewageData.length, icon: Waves, color: 'emerald' },
+            { id: 'critical', label: 'Critical Outfalls', count: sewageData.filter(d => ['Critical', 'High'].includes(d.risk_level)).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'dal', label: 'Dal Lake Basin Catchment', count: sewageData.filter(d => d.ward_sector_name.toLowerCase().includes('dal') || d.city_region?.toLowerCase().includes('dal') || d.discharge_destination?.toLowerCase().includes('dal')).length, icon: Droplets, color: 'cyan' },
+            { id: 'jhelum', label: 'River Jhelum Direct Ingress', count: sewageData.filter(d => d.discharge_destination?.toLowerCase().includes('jhelum') || d.ward_sector_name.toLowerCase().includes('jhelum')).length, icon: Factory, color: 'sky' },
+            { id: 'stp', label: 'Connected to STP', count: sewageData.filter(d => d.treatment_status?.toLowerCase().includes('treated') || d.treatment_status?.toLowerCase().includes('stp')).length, icon: CheckCircle, color: 'teal' },
+            { id: 'raw', label: 'Untreated Raw Discharge', count: sewageData.filter(d => !d.treatment_status || d.treatment_status.toLowerCase().includes('untreated') || d.treatment_status.toLowerCase().includes('raw')).length, icon: Activity, color: 'amber' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredWards.length}
+          totalCount={sewageData.length}
+          entityLabel="monitored wards"
+          spotlightTitle="Urban Wastewater Infrastructure & Receiving Basin Limnology"
+          spotlightSubtitle="Monitoring sewage treatment plants (STPs), pumping substations, fecal coliform counts, and point-source effluent discharge."
+          tabs={[
+            {
+              id: 'stp-network',
+              label: 'Dal & Anchar STP Ring Infrastructure',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Major Peripheral Treatment</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Hazratbal &amp; Habak STPs</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Combined treatment capacity of 16.7 MLD utilizing Sequential Batch Reactor (SBR) and Fluidized Aerobic Bed (FAB) technology to intercept municipal runoff from the northern university and residential belts.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">BOD Inflow: ~220 mg/L &rarr; Effluent: &lt; 10 mg/L</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Eastern Shore Interception</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Laam &amp; Nishat Treatment Cells</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Servicing hotel chains and residential clusters along Boulevard and Foreshore Road. Designed with tertiary chlorination to neutralize fecal coliforms before lake effluent discharge.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Fecal Coliform: &lt; 100 MPN/100 mL target</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <span className="text-xs font-bold text-rose-400 block mb-1">Historical Lagoon Rehabilitation</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Brari Numbal Lagoon System</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      A pivotal hydrological conduit between Dal Lake and River Jhelum. Remediated with aerators and specialized macrophyte wetlands to counteract severe past anoxic blackwater stagnation.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Restoration Index: Dissolved Oxygen restored to 4.8 mg/L</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'jhelum-outfalls',
+              label: 'Jhelum River Trunk Outfalls & Doodh Ganga Basin',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Doodh Ganga Fluvial Contamination</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Municipal sewer overflows in Chanapora, Natipora, and Bagh-e-Mehtab empty untreated wastewater into Doodh Ganga, a primary potable water source downstream. Heavily scrutinized under National Green Tribunal (NGT) directives.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">NGT Compliance Mandate: 100% interceptor sewer commissioning</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-indigo-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Old City (Shah-e-Khas) Heritage Drainage</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Dense medieval urban fabric relies on legacy masonry combined sewers discharging directly into River Jhelum through historical ghat outfalls. Phased diversion to centralized trunk sewers is underway.
+                    </p>
+                    <div className="text-[11px] text-indigo-300 font-mono">Active Outfall Count: 38 legacy gravity pipes</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="water"
+          observeTitle="Citizen Sewage Surveillance &amp; Waterbody Ingress Reporting"
+          observeSubtitle="Report untreated blackwater outfalls, photograph bursting manholes, or document septic sucker truck illegal dumping."
+          observeBadge="Water Act Sec 24 Enforcement"
+          protocols={[
+            {
+              number: '1',
+              title: 'Untreated Sewage Outfall Geotagging',
+              desc: 'Photograph raw sewage gushing from pipes into public watercourses; note water color, turbidity, and foaming.',
+              benchmark: 'Water (Prevention and Control of Pollution) Act 1974',
+              icon: Waves,
+              color: 'cyan',
+            },
+            {
+              number: '2',
+              title: 'Dissolved Oxygen & Blackwater Testing',
+              desc: 'Test DO levels downstream of municipal outfalls using optical DO probes or chemical titration kits (target &gt; 5.0 mg/L).',
+              benchmark: 'CPCB Inland Surface Water Standard Class C',
+              icon: Droplets,
+              color: 'emerald',
+            },
+            {
+              number: '3',
+              title: 'Illegal Fecal Sludge Dumping Alert',
+              desc: 'Report commercial cesspool tankers emptying un-manifested septic waste into rivers, canals, or roadside ditches.',
+              benchmark: 'NGT National Policy on Fecal Sludge Management',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+            {
+              number: '4',
+              title: 'Sewer Overflow & Urban Waterlogging',
+              desc: 'Submit alerts for backflowing sewer manholes during rainfall inundating streets with contaminated blackwater.',
+              benchmark: 'Urban Drainage Service Benchmark (MoHUA)',
+              icon: Shield,
+              color: 'violet',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow

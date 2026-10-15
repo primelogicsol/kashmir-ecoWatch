@@ -239,6 +239,7 @@ export default function FounderPage() {
         '2017–2019: Smart Energy-System Models for municipal water and wastewater utilities under regional urban smart grid initiatives.',
         '2007: Monitoring of Harmful Algal Blooms (HABs) in regional freshwater lakes and aquatic wetland ecosystems.',
         '2005: Post-Disaster Damage Assessment Survey (Earthquake 2005) utilizing satellite remote sensing and geospatial damage modeling.',
+        '2004: Founded ESRO (Environment and Service Research Organization) in Kashmir, spearheading regional field studies, wetland audits, and environmental education that laid the foundation for Kashmir EcoWatch.',
         '2003–2004 & 2007: Comprehensive Environmental Impact Assessment (EIA) and Environmental Management Plan (EMP) for major 240 MW mountain hydroelectric infrastructure.',
         '2001–2002: Regional baseline ecological monitoring of climate change vulnerabilities and seasonal alpine shifts.'
       ]

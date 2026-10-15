@@ -64,7 +64,7 @@ export function useLandslideIntelligence() {
           const precip72h = daily.reduce((acc: number, val: number) => acc + (val || 0), 0);
 
           let risk = record.risk_level;
-          let triggerDesc = record.trigger;
+          let triggerDesc: string = record.dominant_trigger || record.trigger;
 
           const isExtremeRain = precip24h > 40 || precip72h > 50;
           const isHeavyRain = precip24h > 20 || precip72h > 30;

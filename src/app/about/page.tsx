@@ -239,7 +239,7 @@ export default function AboutPage() {
   const faqs = [
     {
       q: 'What is Kashmir EcoWatch and who maintains it?',
-      a: 'Kashmir EcoWatch (KEW) is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Dr. Fayaz Ahmad Khan, supported and sponsored philanthropically by Dr. Kumar Foundation USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
+      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Dr. Fayaz Ahmad Khan, supported and sponsored philanthropically by Dr. Kumar Foundation USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
     },
     {
       q: 'Why is it termed a "Knowledge Return System"?',
@@ -264,9 +264,9 @@ export default function AboutPage() {
       {/* ─── Hero Surface ────────────────────────────────────────────────────────── */}
       <Heading 
         icon={<Shield className="w-5 h-5 text-emerald-400" />}
-        label="Independent Environmental Intelligence Observatory"
+        label="Independent Environmental Intelligence Observatory · Est. 2004"
         title="Western Himalayan About the Platform"
-        subtitle="A unified scientific observatory synthesising biodiversity, water systems, climate resilience, and hazard intelligence across the Kashmir Himalayas."
+        subtitle="Kashmir EcoWatch — formerly ESRO (Environment and Service Research Organization), established in 2004 — is a unified scientific observatory synthesising biodiversity, water systems, climate resilience, and hazard intelligence across the Kashmir Himalayas."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'About Kashmir EcoWatch' }
@@ -330,9 +330,16 @@ export default function AboutPage() {
         {/* ─── Section 1: The Knowledge Return System & Manifesto ──────────────── */}
         <section className="relative">
           <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Our Core Thesis</span>
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Our Core Thesis</span>
+              </div>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-300">
+                <Landmark className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Formerly ESRO (Environment and Service Research Organization) · Established 2004</span>
+              </div>
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-8">
               A Knowledge Return System for Kashmir
@@ -343,6 +350,9 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-light">
                     Kashmir EcoWatch was conceived around a fundamental premise: <strong className="text-white font-semibold">knowledge about Kashmir belongs first and foremost to Kashmir.</strong>
+                  </p>
+                  <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
+                    Originally established in <strong className="text-white font-semibold">2004</strong> as <strong className="text-emerald-400 font-semibold">ESRO (Environment and Service Research Organization)</strong>, our work began with grassroots field investigations, river and wetland monitoring, biodiversity surveys, and youth environmental education across the Kashmir Valley. Over more than two decades of dedicated scientific documentation, ESRO laid the foundation for Kashmir EcoWatch — evolving from grassroots field reports and community service into a comprehensive, high-resolution digital intelligence observatory.
                   </p>
                   <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
                     For centuries, explorers, glaciologists, and naturalists have traversed the Pir Panjal, Zanskar, and Greater Himalayan ranges. Yet, the empirical results of that work often stayed trapped in overseas repositories, subscription journals, or departmental silos.
@@ -608,7 +618,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold text-white">Dr. Fayaz Ahmad Khan</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Kashmiri-American environmental scientist and SaaS platform architect with <strong className="text-white">25+ years of experience</strong> leading 600+ multi-disciplinary disaster and critical infrastructure teams. PhD in Environmental Geospatial Information Science with FEMA APS, EPA, and UN water security credentials.
+                    Kashmiri-American environmental scientist and SaaS platform architect with <strong className="text-white">25+ years of experience</strong> leading 600+ multi-disciplinary disaster and critical infrastructure teams. Founder of <strong className="text-emerald-400">ESRO (Environment and Service Research Organization)</strong> in 2004, establishing the two-decade research lineage culminating in Kashmir EcoWatch. PhD in Environmental Geospatial Information Science with FEMA APS, EPA, and UN water security credentials.
                   </p>
                   <div className="pt-2 flex items-center gap-4 flex-wrap">
                     <Link

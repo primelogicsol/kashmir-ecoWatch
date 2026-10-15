@@ -44,7 +44,7 @@ export function BackgroundCarousel({
           }}
         />
       ))}
-      <div className={cn("absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80", overlayClassName)} />
+      <div className={cn("absolute inset-0 bg-gradient-to-b from-slate-950/75 via-slate-950/45 to-slate-950/90", overlayClassName)} />
 
       {images.length > 1 && (
         <div className={cn('absolute z-20 flex gap-3 left-1/2 -translate-x-1/2 bottom-4 lg:left-auto lg:right-6 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:flex-col', className)}>

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Button } from '@/components/ui/Button';
+import {
+  Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Heading } from '@/components/common/Heading';
@@ -17,7 +18,8 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Map, MapPin, Search, Filter, 
-  ChevronLeft, ChevronRight, Activity, TrendingUp, TrendingDown, AlertTriangle, X, Shield, CheckCircle, Leaf, Droplet, Trees, Crosshair
+  ChevronLeft, ChevronRight, Activity, TrendingUp, TrendingDown, AlertTriangle, X, Shield, CheckCircle, Leaf, Droplet, Trees, Crosshair,
+  Compass, ShieldAlert, Mountain
 } from 'lucide-react';
 
 export default function HabitatSignalsPage() {
@@ -36,7 +38,7 @@ export default function HabitatSignalsPage() {
   const itemsPerPage = 9;
 
   const availableDistricts = useMemo(() => getUnitsForScope(selectedScope as Scope).sort(), [selectedScope]);
-  const availableScopes = ['All', ...GEOGRAPHY.scopes];
+  const availableScopes = [...GEOGRAPHY.scopes];
   
   const ecosystemTypes = Array.from(new Set(habitatSignalsData.map(m => m.ecosystemType))).sort();
   const signalCategories: SignalCategory[] = ['Stress', 'Transition', 'Species Use', 'Suitability Shift'];
@@ -88,54 +90,200 @@ export default function HabitatSignalsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Habitat Signals</span>
-        </>}
-        subtitle="Dynamic ecosystem monitoring detecting ecological change, degradation, and climate shifts across Kashmir Core."
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Habitat Signals &amp; Ecosystem Disturbance
+              </span>
+            </div>
+          </div>
+        }
+        subtitle="Dynamic ecosystem monitoring detecting ecological change, micro-habitat fragmentation, invasive pressures, and climate shifts across Kashmir's critical biospheres."
         icon={<Crosshair className="w-6 h-6 text-teal-400" />}
-        label="Ecosystem Intelligence"
-        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Habitat Signals' }]}
-        images={['/images/habitat.png']}
+        label="Biodiversity Intelligence · Habitat Signals"
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity/overview' },
+          { label: 'Habitat Signals' }
+        ]}
+        images={['/images/protected-network.png']}
         actions={
-          <Button size="lg" className="bg-gradient-to-r from-teal-600 to-teal-400 text-white" icon={<Activity className="w-5 h-5" />}>
-            Health Dashboards
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              className={`border-teal-500/40 font-bold transition-all ${
+                selectedSignal === 'All' && selectedStatus === 'All'
+                  ? 'bg-teal-500 text-slate-950 border-teal-400 shadow-md shadow-teal-500/30'
+                  : 'text-teal-300 hover:bg-teal-500/10'
+              }`}
+              onClick={() => { setSelectedSignal('All'); setSelectedStatus('All'); }}
+            >
+              <Crosshair className="w-4 h-4 mr-1.5" />
+              ALL {habitatSignalsData.length} Signals
+            </Button>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-rose-600 to-red-500 text-white font-bold transition-all"
+              onClick={() => setSelectedSignal('Stress')}
+            >
+              <AlertTriangle className="w-4 h-4 mr-1.5" />
+              Stress Alerts ({habitatSignalsData.filter(s => s.activeSignals.some(sig => sig.category === 'Stress')).length})
+            </Button>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all"
+              onClick={() => setSelectedStatus('Stable')}
+            >
+              <CheckCircle className="w-4 h-4 mr-1.5" />
+              Stable Havens
+            </Button>
+          </div>
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {dashboardMetrics.map((metric, idx) => {
-                const IconComponent = metric.icon === 'Map' ? Map 
-                                    : metric.icon === 'AlertTriangle' ? AlertTriangle 
-                                    : metric.icon === 'TrendingDown' ? TrendingDown 
-                                    : Activity;
-                return (
-                  <div key={idx} className="flex items-center gap-4 py-2 px-4 rounded-xl bg-white/5">
-                    <div className="p-3 bg-teal-500/10 rounded-lg">
-                      <IconComponent className="w-6 h-6 text-teal-400" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-white leading-tight">
-                        {metric.value}
-                      </div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                        {metric.label}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
+        <div className="bg-gradient-to-r from-slate-900/95 via-teal-950/70 to-slate-900/95 border border-teal-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-teal-500/10 rounded-xl border border-teal-500/20 text-teal-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
             </div>
-          </Card>
-        </motion.div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-teal-400">Microclimate Stress, Grazing &amp; Canopy Disturbance Sentinel</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Early Warning 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Sentinel Biomes: <strong className="text-white">Wular Catchment</strong>, <strong className="text-white">Pahalgam Subalpine Line</strong>, <strong className="text-white">Dachigam Buffer</strong>, and <strong className="text-white">Zabarwan Foothills</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Disturbance Status</div>
+              <div className="text-sm font-bold text-teal-300">{habitatSignalsData.filter(s => s.activeSignals.some(sig => sig.category === 'Stress')).length} Critical Flags</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-teal-500/10 border border-teal-500/30 text-xs font-semibold text-teal-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span>Real-Time Sensor Index</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ───────────────────────────────────────────────────────────── */}
+        {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
+        {/* ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+          {/* Card 1: Total Signals */}
+          <div
+            onClick={() => { setSelectedSignal('All'); setSelectedStatus('All'); }}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedSignal === 'All' && selectedStatus === 'All'
+                ? 'bg-teal-500/20 border-teal-500/60 shadow-lg shadow-teal-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Total Signals</span>
+              <Crosshair className="w-4 h-4 text-teal-400" />
+            </div>
+            <div className="text-2xl font-black text-white">{habitatSignalsData.length}</div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">Ecosystem Transects</div>
+          </div>
+
+          {/* Card 2: Stress Alerts */}
+          <div
+            onClick={() => setSelectedSignal(selectedSignal === 'Stress' ? 'All' : 'Stress')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedSignal === 'Stress'
+                ? 'bg-rose-500/20 border-rose-500/60 shadow-lg shadow-rose-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Stress Alerts</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">
+              {habitatSignalsData.filter(s => s.activeSignals.some(sig => sig.category === 'Stress')).length}
+            </div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">High Severity</div>
+          </div>
+
+          {/* Card 3: Transition Zones */}
+          <div
+            onClick={() => setSelectedSignal(selectedSignal === 'Transition' ? 'All' : 'Transition')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedSignal === 'Transition'
+                ? 'bg-sky-500/20 border-sky-500/60 shadow-lg shadow-sky-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Transitions</span>
+              <TrendingDown className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">
+              {habitatSignalsData.filter(s => s.activeSignals.some(sig => sig.category === 'Transition')).length}
+            </div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Ecological Shifts</div>
+          </div>
+
+          {/* Card 4: Stable Habitats */}
+          <div
+            onClick={() => setSelectedStatus(selectedStatus === 'Stable' ? 'All' : 'Stable')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedStatus === 'Stable'
+                ? 'bg-emerald-500/20 border-emerald-500/60 shadow-lg shadow-emerald-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Stable Biomes</span>
+              <CheckCircle className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-emerald-300">
+              {habitatSignalsData.filter(s => s.healthStatus === 'Stable' || s.healthStatus === 'Excellent').length}
+            </div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Resilient Havens</div>
+          </div>
+
+          {/* Card 5: Alpine / Wetlands */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">High Altitude</span>
+              <Mountain className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">
+              {habitatSignalsData.filter(s => s.ecosystemType.includes('Alpine') || s.ecosystemType.includes('Riparian')).length}
+            </div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Cryosphere &amp; Riparian</div>
+          </div>
+
+          {/* Card 6: Monitored Units */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Districts</span>
+              <MapPin className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">20</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Spatial Polygons</div>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}

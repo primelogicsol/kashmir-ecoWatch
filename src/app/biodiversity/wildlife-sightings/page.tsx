@@ -20,13 +20,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Eye, ShieldCheck, Users, AlertTriangle, Search, Filter, 
   Camera, Video, Mic, MapPin, Grid3X3, List, ChevronLeft, ChevronRight,
-  User, X
+  User, X, Compass, ShieldAlert, Leaf, Mountain, Bird, Shield
 } from 'lucide-react';
 import { WildlifeSighting } from '@/data/wildlife-sightings';
 
 export default function WildlifeSightingsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   
   const [selectedScope, setSelectedScope] = useState<Scope | 'All'>('All');
@@ -56,6 +56,7 @@ export default function WildlifeSightingsPage() {
       const query = searchQuery.toLowerCase().trim();
       const matchesSearch = !query || 
         sighting.commonName.toLowerCase().includes(query) ||
+        (sighting.kashmiriName && sighting.kashmiriName.toLowerCase().includes(query)) ||
         sighting.scientificName.toLowerCase().includes(query) ||
         sighting.administrativeUnit.toLowerCase().includes(query) ||
         sighting.observerName.toLowerCase().includes(query) ||
@@ -92,59 +93,193 @@ export default function WildlifeSightingsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Wildlife Sightings</span>
-        </>}
-        subtitle="The central wildlife observation and reporting system combining verified science, citizen science, and conservation monitoring."
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Wildlife Sightings &amp; Field Telemetry Network
+              </span>
+            </div>
+          </div>
+        }
+        subtitle="The central wildlife observation and reporting system combining verified science, citizen science, and conservation monitoring across protected corridors and high-altitude transits."
         icon={<Eye className="w-6 h-6 text-emerald-400" />}
-        label="Citizen Science & Monitoring"
-        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Wildlife Sightings' }]}
+        label="Biodiversity Intelligence · Field Observations"
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity/overview' },
+          { label: 'Wildlife Sightings' }
+        ]}
         images={['/images/bear.png']}
         actions={
-          <>
-            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-400 text-white" icon={<Camera className="w-5 h-5" />}>
-              Submit Sighting
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              className={`border-emerald-500/40 font-bold transition-all ${
+                selectedVerification === 'All'
+                  ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-md shadow-emerald-500/30'
+                  : 'text-emerald-300 hover:bg-emerald-500/10'
+              }`}
+              onClick={() => { setSelectedVerification('All'); setSelectedStatus('All'); }}
+            >
+              <Eye className="w-4 h-4 mr-1.5" />
+              ALL {wildlifeSightingsData.length} Sightings
             </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<ShieldCheck className="w-5 h-5" />}>
-              Verification Queue
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all"
+              onClick={() => setSelectedVerification('Verified Expert')}
+            >
+              <ShieldCheck className="w-4 h-4 mr-1.5" />
+              Verified Expert ({wildlifeSightingsData.filter(s => s.verificationStatus === 'Verified Expert').length})
             </Button>
-          </>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-rose-600 to-red-500 text-white font-bold transition-all"
+              onClick={() => setSelectedStatus('CR')}
+            >
+              <AlertTriangle className="w-4 h-4 mr-1.5" />
+              Threatened Species ({wildlifeSightingsData.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length})
+            </Button>
+          </div>
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {wildlifeSightingsMetrics.map((metric, idx) => {
-                const IconComponent = metric.icon === 'Eye' ? Eye 
-                                    : metric.icon === 'ShieldCheck' ? ShieldCheck 
-                                    : metric.icon === 'Users' ? Users 
-                                    : AlertTriangle;
-                return (
-                  <div key={idx} className="flex items-center gap-4 py-2 px-4 rounded-xl bg-white/5">
-                    <div className="p-3 bg-emerald-500/10 rounded-lg">
-                      <IconComponent className="w-6 h-6 text-emerald-400" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-white leading-tight">
-                        {metric.value}
-                      </div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                        {metric.label}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
+        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
             </div>
-          </Card>
-        </motion.div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Live Field Observation &amp; Multi-Tier Verification Network</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Sensor &amp; Ranger Feeds 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Surveillance Sectors: <strong className="text-white">Upper Dachigam Core</strong>, <strong className="text-white">Overa Valley</strong>, <strong className="text-white">Gulmarg Biosphere</strong>, and <strong className="text-white">Limber Wildlife Sanctuary</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Verified Protocols</div>
+              <div className="text-sm font-bold text-emerald-300">Wildlife Dept &amp; WII Verified</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span>Sensitized Species Masking</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ───────────────────────────────────────────────────────────── */}
+        {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
+        {/* ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+          {/* Card 1: Total Records */}
+          <div
+            onClick={() => { setSelectedVerification('All'); setSelectedStatus('All'); }}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedVerification === 'All'
+                ? 'bg-emerald-500/20 border-emerald-500/60 shadow-lg shadow-emerald-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Field Sightings</span>
+              <Eye className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-white">{wildlifeSightingsData.length}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">ALL Monitored Logs</div>
+          </div>
+
+          {/* Card 2: Expert Verified */}
+          <div
+            onClick={() => setSelectedVerification(selectedVerification === 'Verified Expert' ? 'All' : 'Verified Expert')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedVerification === 'Verified Expert'
+                ? 'bg-sky-500/20 border-sky-500/60 shadow-lg shadow-sky-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Verified</span>
+              <ShieldCheck className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">
+              {wildlifeSightingsData.filter(s => s.verificationStatus === 'Verified Expert').length}
+            </div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Biologist Confirmed</div>
+          </div>
+
+          {/* Card 3: Threatened Species */}
+          <div
+            onClick={() => setSelectedStatus(selectedStatus === 'CR' ? 'All' : 'CR')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              ['CR', 'EN', 'VU'].includes(selectedStatus)
+                ? 'bg-rose-500/20 border-rose-500/60 shadow-lg shadow-rose-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Threatened</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">
+              {wildlifeSightingsData.filter(s => ['CR', 'EN', 'VU'].includes(s.conservationStatus)).length}
+            </div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">IUCN Red List</div>
+          </div>
+
+          {/* Card 4: Active Observers */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Observers</span>
+              <Users className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">340+</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Rangers &amp; Naturalists</div>
+          </div>
+
+          {/* Card 5: Geographic Range */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Districts</span>
+              <MapPin className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">20</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Full UT Coverage</div>
+          </div>
+
+          {/* Card 6: Sensitive Flora/Fauna */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">High Protection</span>
+              <Shield className="w-4 h-4 text-cyan-400" />
+            </div>
+            <div className="text-2xl font-black text-cyan-300">
+              {wildlifeSightingsData.filter(s => isSensitive(s)).length}
+            </div>
+            <div className="text-[11px] text-cyan-400/90 font-mono mt-0.5">Coordinates Fuzzed</div>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}
@@ -173,99 +308,137 @@ export default function WildlifeSightingsPage() {
             className="p-5 mt-4 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
           >
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Text</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Search Text</label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Species, observer, district..."
+                  placeholder="Hangul, Snow Leopard, Dachigam..."
                   value={searchQuery}
                   onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 transition-colors"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Scope</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Scope</label>
               <select
                 value={selectedScope}
                 onChange={(e) => { setSelectedScope(e.target.value as any); setSelectedDistrict('All'); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                {availableScopes.map(s => <option key={s} value={s}>{s}</option>)}
+                {availableScopes.map(s => (
+                  <option key={s} value={s} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {s}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Admin Unit</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Admin Unit</label>
               <select
                 value={selectedDistrict}
                 onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer disabled:opacity-50"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Units</option>
-                {availableDistricts.map(d => <option key={d} value={d}>{d}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                  All Units ({availableDistricts.length})
+                </option>
+                {availableDistricts.map(d => (
+                  <option key={d} value={d} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {d}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Taxonomic Group</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Taxonomic Group</label>
               <select
                 value={selectedTaxa}
                 onChange={(e) => { setSelectedTaxa(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Taxa</option>
-                {taxonomicGroups.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Taxa</option>
+                {taxonomicGroups.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Verification Status</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Verification Status</label>
               <select
                 value={selectedVerification}
                 onChange={(e) => { setSelectedVerification(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Statuses</option>
-                {verificationStatuses.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Statuses</option>
+                {verificationStatuses.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Observation Type</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Observation Type</label>
               <select
                 value={selectedObservation}
                 onChange={(e) => { setSelectedObservation(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Types</option>
-                {observationTypes.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Types</option>
+                {observationTypes.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Habitat</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Habitat</label>
               <select
                 value={selectedHabitat}
                 onChange={(e) => { setSelectedHabitat(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Habitats</option>
-                {habitats.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Habitats</option>
+                {habitats.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Conservation</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Conservation</label>
               <select
                 value={selectedStatus}
                 onChange={(e) => { setSelectedStatus(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All IUCN Status</option>
-                {statuses.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All IUCN Status</option>
+                {statuses.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
           </motion.div>
@@ -284,13 +457,21 @@ export default function WildlifeSightingsPage() {
                       <Badge variant={getVerificationColor(sighting.verificationStatus) as any}>{sighting.verificationStatus}</Badge>
                       <Badge variant="outline" className="border-white/20">{sighting.taxonomicGroup}</Badge>
                       <Badge variant="default" className={getStatusColor(sighting.conservationStatus)}>{sighting.conservationStatus}</Badge>
+                      <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-950/40 text-[10px]">{sighting.scope}</Badge>
                       {sighting.isThreatened && (
                         <Badge variant="danger" className="animate-pulse"><AlertTriangle className="w-3 h-3 mr-1"/>Threatened</Badge>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mb-0.5">
-                      {sighting.commonName}
-                    </h3>
+                    <div className="flex items-baseline gap-2 mb-0.5">
+                      <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                        {sighting.commonName}
+                      </h3>
+                      {sighting.kashmiriName && (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium">
+                          {sighting.kashmiriName}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm italic text-slate-400 mb-3">{sighting.scientificName}</p>
                     
                     <div className="flex items-center justify-between text-xs text-slate-300 bg-black/20 p-2 rounded-lg border border-white/5">
@@ -298,7 +479,8 @@ export default function WildlifeSightingsPage() {
                         <MapPin className="w-3.5 h-3.5 text-emerald-500" />
                         <span className="truncate max-w-[150px]">{sighting.protectedArea || sighting.administrativeUnit}</span>
                       </div>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-2">
+                        {sighting.elevation && <span className="text-emerald-400 font-mono text-[11px]">{sighting.elevation}m</span>}
                         <span className="text-slate-500">{new Date(sighting.observationDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                       </div>
                     </div>
@@ -435,8 +617,16 @@ export default function WildlifeSightingsPage() {
                     <Badge variant={getVerificationColor(selectedSighting.verificationStatus) as any}>{selectedSighting.verificationStatus}</Badge>
                     <Badge variant="outline" className="border-white/20">{selectedSighting.taxonomicGroup}</Badge>
                     <Badge variant="default" className={getStatusColor(selectedSighting.conservationStatus)}>{selectedSighting.conservationStatus}</Badge>
+                    <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-950/40 text-xs">{selectedSighting.scope}</Badge>
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-1">{selectedSighting.commonName}</h2>
+                  <div className="flex items-center gap-3 mb-1">
+                    <h2 className="text-2xl font-bold text-white">{selectedSighting.commonName}</h2>
+                    {selectedSighting.kashmiriName && (
+                      <span className="text-sm px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-medium">
+                        {selectedSighting.kashmiriName}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-emerald-400 italic text-sm">{selectedSighting.scientificName}</p>
                 </div>
                 <button

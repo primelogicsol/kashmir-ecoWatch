@@ -89,6 +89,16 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
                 Sensitive
               </Badge>
             )}
+            {species.endemismStatus && (species.endemismStatus === 'kashmir-endemic' || species.endemismStatus === 'northwest-himalayan') && (
+              <Badge
+                variant="default"
+                size="sm"
+                className="text-xs px-2 py-0.5 rounded whitespace-nowrap bg-teal-500/20 text-teal-300 border border-teal-500/30 font-medium"
+              >
+                <MapPin className="w-3 h-3 mr-1" />
+                {species.endemismStatus === 'kashmir-endemic' ? 'Endemic' : 'NW Himalayan'}
+              </Badge>
+            )}
             <span className="text-xs capitalize text-slate-400">{species.taxonomicGroup.replace('-', ' ')}</span>
           </div>
           <div className="flex gap-1 flex-shrink-0">
@@ -102,9 +112,16 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
         </div>
 
         {/* 3. Title */}
-        <h3 className="text-base sm:text-lg font-semibold text-white line-clamp-2 leading-tight min-h-[2.5rem]">
-          {species.commonName}
-        </h3>
+        <div className="flex flex-wrap items-baseline gap-1.5 min-h-[2.5rem]">
+          <h3 className="text-base sm:text-lg font-semibold text-white line-clamp-1 leading-tight">
+            {species.commonName}
+          </h3>
+          {species.localName && (
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium shrink-0">
+              {species.localName}
+            </span>
+          )}
+        </div>
 
         {/* 4. Scientific name / subtitle */}
         <p className="text-xs italic text-slate-400 truncate">

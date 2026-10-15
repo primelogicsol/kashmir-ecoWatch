@@ -20,6 +20,7 @@ interface ModuleKpiStripProps {
   kpis: ModuleKpi[];
   /** Tailwind class for icon colour. Defaults to 'text-emerald-500' (matches national-parks). */
   iconColor?: string;
+  className?: string;
 }
 
 /**
@@ -28,11 +29,11 @@ interface ModuleKpiStripProps {
  * Layout:  -mt-8 overlap · z-20 · glass-intense card · 3-4-8 responsive grid
  * Max items: 8 (extras silently dropped)
  */
-export function ModuleKpiStrip({ kpis, iconColor = 'text-emerald-500' }: ModuleKpiStripProps) {
+export function ModuleKpiStrip({ kpis, iconColor = 'text-emerald-500', className }: ModuleKpiStripProps) {
   const items = kpis.slice(0, 8);
 
   return (
-    <div className="container mx-auto px-6 -mt-8 relative z-20">
+    <div className={className || "container mx-auto px-6 -mt-8 relative z-20"}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

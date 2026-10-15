@@ -46,7 +46,7 @@ const selectedFeatures = [
     wqi: 62,
     bloomRisk: 'Moderate',
     alerts: 2,
-    coordinates: '34.08°N, 74.84°E',
+    coordinates: '34.1150°N, 74.8650°E',
   },
   {
     id: 'dachigam',
@@ -59,7 +59,7 @@ const selectedFeatures = [
     species: 650,
     hangulPopulation: '~180',
     alerts: 0,
-    coordinates: '34.15°N, 75.06°E',
+    coordinates: '34.1372°N, 74.9382°E',
   },
   {
     id: 'hokersar',
@@ -72,7 +72,7 @@ const selectedFeatures = [
     birdCount: '12,000+',
     species: 89,
     alerts: 1,
-    coordinates: '34.17°N, 74.82°E',
+    coordinates: '34.0950°N, 74.7040°E',
   },
 ];
 

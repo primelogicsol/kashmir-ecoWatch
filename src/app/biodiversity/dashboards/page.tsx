@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import {
   BarChart3, Leaf, Bird, Mountain, Fish, Sprout,
   Shield, Eye, TrendingUp, ArrowRight, Building2,
-  AlertTriangle, Activity
+  AlertTriangle, Activity, Compass, ShieldAlert, MapPin, Clock
 } from 'lucide-react';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
@@ -162,24 +162,35 @@ export default function BiodiversityDashboardsPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        label="Analytics & Trends"
-        title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Biodiversity Intelligence</span>
-          </span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Dashboards</span>
-        </>}
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Biodiversity Analytics &amp; Trends Dashboards
+              </span>
+            </div>
+          </div>
+        }
         subtitle={`Comprehensive analytics covering ${biodiversityMetrics.totalSpecies.toLocaleString()} species across ${biodiversityIntelligenceMetrics.totalHabitats} habitat systems and ${biodiversityIntelligenceMetrics.totalDistricts} districts — species composition, conservation status distribution, sightings trends, district comparisons, habitat diversity, and threat analysis.`}
         icon={<BarChart3 className="w-6 h-6 text-emerald-400" />}
-        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Dashboards' }]}
-        gridOverlay
+        label="Biodiversity Intelligence · Analytics Engine"
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity/overview' },
+          { label: 'Analytics Dashboards' }
+        ]}
+        images={['/images/protected-network.png']}
         actions={
-          <>
+          <div className="flex flex-wrap items-center gap-2">
             <Button
+              size="sm"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/5"
-              icon={<TrendingUp className="w-4 h-4" />}
+              className="border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10 font-bold transition-all"
               onClick={() => {
                 const element = document.getElementById('analytics-start');
                 if (element) {
@@ -189,19 +200,142 @@ export default function BiodiversityDashboardsPage() {
                 }
               }}
             >
+              <TrendingUp className="w-4 h-4 mr-1.5" />
               View Analytics
             </Button>
             <Button
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/5"
-              icon={<ArrowRight className="w-4 h-4" />}
+              size="sm"
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all"
               onClick={() => router.push('/biodiversity/risk-dashboard')}
             >
+              <AlertTriangle className="w-4 h-4 mr-1.5" />
               Risk Dashboard
             </Button>
-          </>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-bold transition-all"
+              onClick={() => router.push('/biodiversity')}
+            >
+              <Leaf className="w-4 h-4 mr-1.5" />
+              Taxa Directory
+            </Button>
+          </div>
         }
       />
+
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
+        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Ecological Telemetry &amp; Conservation Analytics Matrix</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Live Dashboards 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Aggregated Regional Telemetry: <strong className="text-white">20 J&amp;K Districts</strong>, <strong className="text-white">6 Biogeographic Zones</strong>, and <strong className="text-white">10 Critical Ecosystems</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Total Observations</div>
+              <div className="text-sm font-bold text-emerald-300">{totalSightings.toLocaleString()} Verified Records</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span>Multi-Taxon Indexing</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ───────────────────────────────────────────────────────────── */}
+        {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
+        {/* ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+          {/* Card 1: Total Species */}
+          <div
+            onClick={() => router.push('/biodiversity')}
+            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-emerald-500/50 hover:bg-emerald-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Taxa</span>
+              <Leaf className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-white">{biodiversityMetrics.totalSpecies}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Vascular &amp; Vertebrates</div>
+          </div>
+
+          {/* Card 2: Habitats */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-sky-500/50 hover:bg-sky-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Habitats</span>
+              <Mountain className="w-4 h-4 text-sky-400" />
+            </div>
+            <div className="text-2xl font-black text-sky-300">{biodiversityIntelligenceMetrics.totalHabitats}</div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Ecosystem Zones</div>
+          </div>
+
+          {/* Card 3: Districts Monitored */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-purple-500/50 hover:bg-purple-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Districts</span>
+              <MapPin className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">{biodiversityIntelligenceMetrics.totalDistricts}</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Spatial Polygons</div>
+          </div>
+
+          {/* Card 4: Threatened Taxa */}
+          <div
+            onClick={() => router.push('/biodiversity/threatened-species')}
+            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-rose-500/50 hover:bg-rose-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Threatened</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">{biodiversityMetrics.threatened}</div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">CR, EN &amp; VU Taxa</div>
+          </div>
+
+          {/* Card 5: Field Sightings */}
+          <div
+            onClick={() => router.push('/biodiversity/wildlife-sightings')}
+            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-teal-500/50 hover:bg-teal-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Field Sightings</span>
+              <Eye className="w-4 h-4 text-teal-400" />
+            </div>
+            <div className="text-2xl font-black text-teal-300">{totalSightings.toLocaleString()}</div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">Verified &amp; Reviewed</div>
+          </div>
+
+          {/* Card 6: Threat Score */}
+          <div
+            onClick={() => router.push('/biodiversity/risk-dashboard')}
+            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-amber-500/50 hover:bg-amber-950/20"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Risk Severity</span>
+              <Activity className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">{riskDashboard.overallRiskScore}/100</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Ecological Pressure</div>
+          </div>
+        </div>
+      </div>
 
       <div className="container mx-auto px-6 py-12 space-y-16">
 

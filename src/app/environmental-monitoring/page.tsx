@@ -6,10 +6,11 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 
 import {
-  Factory, Map, BarChart3, Eye,
+  Factory, Map, BarChart3, Eye, Search, Database,
   Trash2, Droplets, Wind, AlertTriangle, Waves,
   Building2, Cloud, Shield, Activity, ShieldCheck, Globe
 } from 'lucide-react';
@@ -53,6 +54,7 @@ export default function EnvironmentalMonitoringOverview() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
+        label="Environmental Monitoring · Intelligence Command"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Monitoring' }
@@ -66,12 +68,34 @@ export default function EnvironmentalMonitoringOverview() {
           </>}
         subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and ecological service resilience across Kashmir"
         icon={<Factory className="w-6 h-6 text-emerald-400" />}
+        actions={
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+            <Button
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold"
+              icon={<Search className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/solid-waste')}
+            >
+              Explore Waste Systems
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white font-bold"
+              icon={<Database className="w-5 h-5" />}
+              onClick={() => router.push('/environmental-monitoring/dashboards')}
+            >
+              Analytics Dashboards
+            </Button>
+          </div>
+        }
         images={[
           '/images/env-monitoring/Thumb_Waste.jpg',
           '/images/env-monitoring/env.webp',
           '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
           '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
+          '/images/protected-network.png',
+          '/images/bear.png',
         ]}
+        overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
       <ModuleKpiStrip kpis={[
@@ -105,6 +129,135 @@ export default function EnvironmentalMonitoringOverview() {
           onExtraFiltersClear={() => setDomainFilter('all')}
         />
       </div>
+
+      
+      {/* ── Cross-Domain Typologies & Citizen Surveillance Spotlight ──────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Environmental Monitoring Focus Typologies & Cross-Basin Domains"
+          typologySubtitle="Select a monitoring domain or critical stress category to review specialized telemetry across the Kashmir valley."
+          typologyIcon={Factory}
+          typologies={[
+            { id: 'all', label: 'All Domains', count: 10, icon: Globe, color: 'emerald' },
+            { id: 'waste', label: 'Solid & Bio Waste', count: 11, icon: Trash2, color: 'amber' },
+            { id: 'sewage', label: 'Sewage & STPs', count: 5, icon: Droplets, color: 'cyan' },
+            { id: 'drinking', label: 'Potable Water Vulnerabilities', count: 2, icon: Waves, color: 'sky' },
+            { id: 'air', label: 'Atmospheric Air Quality', count: 8, icon: Wind, color: 'violet' },
+            { id: 'health', label: 'Ecological Sentinel Health', count: 6, icon: Shield, color: 'rose' },
+            { id: 'resilience', label: 'Resilience Systems', count: 30, icon: ShieldCheck, color: 'teal' },
+          ]}
+          activeTypology={domainFilter === 'all' ? 'all' : domainFilter.includes('waste') ? 'waste' : domainFilter.includes('sewage') ? 'sewage' : domainFilter.includes('drinking') ? 'drinking' : domainFilter.includes('air') ? 'air' : domainFilter.includes('health') ? 'health' : 'resilience'}
+          onSelectTypology={(id) => {
+            if (id === 'all') setDomainFilter('all');
+            else if (id === 'waste') setDomainFilter('solid-waste');
+            else if (id === 'sewage') setDomainFilter('sewage-wastewater');
+            else if (id === 'drinking') setDomainFilter('drinking-water');
+            else if (id === 'air') setDomainFilter('air-pollution');
+            else if (id === 'health') setDomainFilter('environmental-health');
+            else if (id === 'resilience') setDomainFilter('environmental-resilience');
+          }}
+          showingCount={domainFilter === 'all' ? 10 : 1}
+          totalCount={10}
+          entityLabel="intelligence submodules"
+          spotlightTitle="Western Himalayan Environmental Command & Baseline Intelligence"
+          spotlightSubtitle="Cross-domain monitoring synthesis linking satellite remote sensing, ground telemetry, municipal audits, and citizen observation."
+          tabs={[
+            {
+              id: 'cross-basin',
+              label: 'Cross-Basin Urban Stress Corridors',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <span className="text-xs font-bold text-emerald-400 block mb-1">Urban Core Fluvial Axis</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Jhelum River &amp; Dal Lake Catchment</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Srinagar metropolitan area generates ~550 TPD municipal waste and 140+ MLD domestic wastewater. Direct outfalls into Doodh Ganga, Dal Lake, and Jhelum riverine channels require continuous BOD and microbial monitoring.
+                    </p>
+                    <div className="text-[11px] text-slate-500">Key Nodes: <span className="text-slate-300">Dalgate, Achan, Brari Numbal, Hazratbal</span></div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Downstream Wetland Sinks</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Hokersar &amp; Wular Ramsar Basins</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Agricultural nutrient runoff and untreated municipal sewage accumulate in major downstream wetlands, driving eutrophic Azolla mats and siltation that reduce vital flood absorption capacity.
+                    </p>
+                    <div className="text-[11px] text-slate-500">Key Nodes: <span className="text-slate-300">Wular Lake (#461), Hokersar (#1570), Mirgund</span></div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">High-Altitude Vulnerability</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Tourism &amp; Cryosphere Corridors</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Pahalgam, Gulmarg, and Sonamarg experience rapid 300% solid waste surges during peak tourist and pilgrim seasons. Waste accumulation in alpine catchments threatens glacial melt streams.
+                    </p>
+                    <div className="text-[11px] text-slate-500">Key Nodes: <span className="text-slate-300">Lidder Valley, Thajiwas Glacial Stream, Gulmarg Bowl</span></div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'seasonal-inversion',
+              label: 'Winter Valley Thermal Inversion',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Valley Bowl Atmospheric Stagnation</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      During November to February, calm winds and steep mountain topography trap particulate emissions from Kangri charcoal, apple wood bukharis, and brick kilns under cold valley floor air layers.
+                    </p>
+                    <div className="text-[11px] text-violet-300 font-mono">Telemetry Peak: PM2.5 exceeds 180 µg/m³ during Chillai Kalan</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Wetland Evaporative Mitigation</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Large open water bodies like Wular and Dal Lake create microclimatic moisture corridors that modulate winter ground freezing, while open reeds filter atmospheric dust settling over lacustrine catchments.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Ecological Buffer: ~130 km² open water thermal damping</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="environmental"
+          observeTitle="Citizen Environmental Surveillance &amp; Ground-Truth Network"
+          observeSubtitle="Submit verifiable environmental observations across Kashmir, report illegal effluent discharge, waste burning, or track local compliance."
+          observeBadge="Pan-Kashmir Active Protocol"
+          protocols={[
+            {
+              number: '1',
+              title: 'Handheld Sensor & Visual Smoke Plume Telemetry',
+              desc: 'Log ambient PM2.5/PM10 readings using portable laser photometers or document open biomass/leaf burning plumes with GPS timestamp.',
+              benchmark: 'CPCB NAAQS 24h Standard: PM2.5 <= 60 ug/m3',
+              icon: Wind,
+              color: 'violet',
+            },
+            {
+              number: '2',
+              title: 'Untreated Effluent Outfall Spotting',
+              desc: 'Photograph and report untreated raw sewage or commercial discharge pipes pouring into Dal Lake, Doodh Ganga, or Jhelum tributaries.',
+              benchmark: 'Water Act 1974 Section 24 Zero-Discharge Standard',
+              icon: Droplets,
+              color: 'cyan',
+            },
+            {
+              number: '3',
+              title: 'Municipal Solid Waste Dumping Geo-Tagging',
+              desc: 'Record unmanaged open dumpsites exceeding 2m³ within 100m of water bodies, agricultural fields, or protected forest peripheries.',
+              benchmark: 'Solid Waste Management Rules 2016 Rule 15',
+              icon: Trash2,
+              color: 'amber',
+            },
+            {
+              number: '4',
+              title: 'Stagnant Sullage & Noxious Odor Rating',
+              desc: 'Assess hydrogen sulfide (H2S) odor intensity on the 5-point VDI scale and log standing septic blackwater creating vector hazards.',
+              benchmark: 'CPHEEO Vector & Public Health Hygiene Norm',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* Submodules Grid */}
       <section className="py-16">

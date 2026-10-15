@@ -16,11 +16,12 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Leaf, MapPin, Search, Filter, 
-  ChevronLeft, ChevronRight, Activity, TrendingUp, AlertTriangle, X, Calendar, Map, CheckCircle, Droplet, Snowflake, ThermometerSun
+  ChevronLeft, ChevronRight, Activity, TrendingUp, AlertTriangle, X, Calendar, Map, CheckCircle, Droplet, Snowflake, ThermometerSun,
+  Compass, ShieldAlert, Mountain, Flower2
 } from 'lucide-react';
 
 export default function PhenologyFloweringPage() {
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   
   const [selectedScope, setSelectedScope] = useState<Scope | 'All'>('All');
@@ -34,10 +35,10 @@ export default function PhenologyFloweringPage() {
   const itemsPerPage = 9;
 
   const availableDistricts = useMemo(() => getUnitsForScope(selectedScope as Scope).sort(), [selectedScope]);
-  const availableScopes = ['All', ...GEOGRAPHY.scopes];
+  const availableScopes = Array.from(new Set(GEOGRAPHY.scopes));
   
-  const allStages = Array.from(new Set(phenologyData.map(m => m.currentStage))).sort();
-  const allGroups = Array.from(new Set(phenologyData.flatMap(m => m.plantGroup))).sort();
+  const allStages = Array.from(new Set(phenologyData.map(m => m.currentStage))).filter(t => t !== 'All').sort();
+  const allGroups = Array.from(new Set(phenologyData.flatMap(m => m.plantGroup))).filter(t => t !== 'All').sort();
 
   const filteredRecords = useMemo(() => {
     return phenologyData.filter(record => {
@@ -45,6 +46,7 @@ export default function PhenologyFloweringPage() {
       const matchesSearch = !query || 
         record.commonName.toLowerCase().includes(query) ||
         record.scientificName.toLowerCase().includes(query) ||
+        (record.kashmiriName && record.kashmiriName.toLowerCase().includes(query)) ||
         record.shortDescription.toLowerCase().includes(query);
 
       const getRegionForUnit = (unit: string) => {
@@ -88,57 +90,316 @@ export default function PhenologyFloweringPage() {
     return <ThermometerSun className="w-3 h-3 mr-1" />;
   };
 
+  const [activePhenologyHeroIdx, setActivePhenologyHeroIdx] = useState(0);
+  const phenologyHeroItems = [
+    {
+      id: 'alpine',
+      src: '/images/markhor.png',
+      title: 'Alpine Meadow Flowering',
+      scientific: 'Primula, Saussurea & Gentiana',
+      status: 'High Altitudinal Bloom (3,000–4,200m)',
+      location: 'Gulmarg, Aphrawat & Gurez Valley',
+      short: 'Alpine Flora',
+    },
+    {
+      id: 'spring-blossom',
+      src: '/images/protected-network.png',
+      title: 'Kashmir Spring Bloom & Orchards',
+      scientific: 'Prunus dulcis & Malus domestica',
+      status: 'Valley Floor Flowering Synchrony',
+      location: 'Badamwari, Srinagar & Shopian',
+      short: 'Spring Bloom',
+    },
+    {
+      id: 'forest-canopy',
+      src: '/images/bear.png',
+      title: 'Temperate Forest Phenology',
+      scientific: 'Rhododendron campanulatum & Conifers',
+      status: 'Understory Spring Flush & Foliage',
+      location: 'Dachigam NP & Overa Wildlife Sanctuary',
+      short: 'Forest Flora',
+    },
+    {
+      id: 'medicinal-bloom',
+      src: '/images/tiger.png',
+      title: 'Medicinal Flora Flowering Gradients',
+      scientific: 'Aconitum heterophyllum & Picrorhiza',
+      status: 'Post-Snowmelt Phenophase Onset',
+      location: 'Kishtwar High-Altitude & Pir Panjal',
+      short: 'Pharmacopeia',
+    },
+  ];
+  const currentPhenologyHero = phenologyHeroItems[activePhenologyHeroIdx];
+
+  const phenologyHeroShowcase = (
+    <div className="relative rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl shadow-emerald-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+      {/* Top Banner Tag */}
+      <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span className="font-bold text-emerald-300 uppercase tracking-wider text-[11px]">
+            Flowering Phenology Sentinel
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono">
+          Phenophases 2026
+        </span>
+      </div>
+
+      {/* Main Image Viewport */}
+      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-white/10 group">
+        <img
+          key={currentPhenologyHero.id}
+          src={currentPhenologyHero.src}
+          alt={currentPhenologyHero.title}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        {/* Gradient Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+
+        {/* Captions */}
+        <div className="absolute bottom-2.5 left-3 right-3">
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md">{currentPhenologyHero.title}</h4>
+            <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold flex-shrink-0">
+              Active Stage
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] text-slate-300">
+            <span className="italic text-emerald-300 font-medium">{currentPhenologyHero.scientific}</span>
+            <span className="text-slate-400 text-[10px]">{currentPhenologyHero.location}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 4 Interactive Thumbnail Buttons */}
+      <div className="grid grid-cols-4 gap-1.5 mt-2.5">
+        {phenologyHeroItems.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActivePhenologyHeroIdx(idx)}
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 ${
+              activePhenologyHeroIdx === idx
+                ? 'border-emerald-400 ring-2 ring-emerald-400/40 bg-emerald-500/10 shadow-md'
+                : 'border-white/10 bg-slate-800/60 hover:border-emerald-500/30 hover:bg-slate-800'
+            }`}
+          >
+            <div className="w-full h-10 rounded overflow-hidden relative">
+              <img src={item.src} alt={item.short} className="w-full h-full object-cover" />
+            </div>
+            <span className={`text-[10px] font-medium truncate w-full text-center ${activePhenologyHeroIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-400'}`}>
+              {item.short}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Phenology Records</span>
-        </>}
-        subtitle="Climate-sensitive ecological monitoring system tracking first bloom, seasonal flowering, and fruiting records."
+        title={
+          <div className="overflow-visible pb-2">
+            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
+              </span>
+              <span className="text-white">Western Himalayan</span>
+            </div>
+            <div className="leading-[1.15] overflow-visible pr-8">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Phenology &amp; Seasonal Flowering Records
+              </span>
+            </div>
+          </div>
+        }
+        subtitle="Climate-sensitive ecological monitoring system tracking first bloom, seasonal flowering, altitudinal shifts, and fruiting phenophases across Kashmir's microclimates."
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}
-        label="Biodiversity Intelligence"
-        breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Phenology & Flowering' }]}
-        images={['/images/flower.png']}
+        label="Biodiversity Intelligence · Plant Phenology"
+        breadcrumbs={[
+          { label: 'Biodiversity', href: '/biodiversity/overview' },
+          { label: 'Phenology & Flowering' }
+        ]}
+        images={[
+          '/images/protected-network.png',
+          '/images/markhor.png',
+          '/images/bear.png',
+          '/images/tiger.png'
+        ]}
+        rightContent={phenologyHeroShowcase}
         actions={
-          <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-400 text-white" icon={<Calendar className="w-5 h-5" />}>
-            Flowering Calendar
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              className={`border-emerald-500/40 font-bold transition-all ${
+                selectedStage === 'All' && selectedGroup === 'All'
+                  ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-md shadow-emerald-500/30'
+                  : 'text-emerald-300 hover:bg-emerald-500/10'
+              }`}
+              onClick={() => { setSelectedStage('All'); setSelectedGroup('All'); }}
+            >
+              <Flower2 className="w-4 h-4 mr-1.5" />
+              ALL {phenologyData.length} Records
+            </Button>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all"
+              onClick={() => setSelectedStage('Peak Bloom')}
+            >
+              <Leaf className="w-4 h-4 mr-1.5" />
+              Peak Bloom ({phenologyData.filter(p => p.phenologyStage === 'Peak Bloom').length})
+            </Button>
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-rose-600 to-amber-500 text-white font-bold transition-all"
+              onClick={() => setSelectedGroup('Alpine Wildflower')}
+            >
+              <Mountain className="w-4 h-4 mr-1.5" />
+              Alpine Flora ({phenologyData.filter(p => p.plantGroup === 'Alpine Wildflower').length})
+            </Button>
+          </div>
         }
       />
 
-      {/* Metrics */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20 mb-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-          <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {phenologyDashboardMetrics.map((metric, idx) => {
-                const IconComponent = metric.icon === 'Leaf' ? Leaf 
-                                    : metric.icon === 'TrendingUp' ? TrendingUp 
-                                    : metric.icon === 'AlertTriangle' ? AlertTriangle 
-                                    : ThermometerSun;
-                return (
-                  <div key={idx} className="flex items-center gap-4 py-2 px-4 rounded-xl bg-white/5">
-                    <div className="p-3 bg-emerald-500/10 rounded-lg">
-                      <IconComponent className="w-6 h-6 text-emerald-400" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-white leading-tight">
-                        {metric.value}
-                      </div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                        {metric.label}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
+        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
             </div>
-          </Card>
-        </motion.div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Microclimate Phenophase Observatory &amp; Cryosphere Transits</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Monitoring 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Monitoring Transects: <strong className="text-white">Dachigam Valley Bottom (1,600m)</strong> to <strong className="text-white">Apharwat Alpine (4,100m)</strong>, <strong className="text-white">Sonamarg-Thajiwas</strong>, and <strong className="text-white">Gurez Meadows</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">First Bloom Anomaly</div>
+              <div className="text-sm font-bold text-emerald-300">+8 to +14 Days Advance</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span>Early Bloom Climate Flag</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ───────────────────────────────────────────────────────────── */}
+        {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
+        {/* ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+          {/* Card 1: Total Records */}
+          <div
+            onClick={() => { setSelectedStage('All'); setSelectedGroup('All'); }}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedStage === 'All' && selectedGroup === 'All'
+                ? 'bg-emerald-500/20 border-emerald-500/60 shadow-lg shadow-emerald-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Taxa</span>
+              <Flower2 className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-2xl font-black text-white">{phenologyData.length}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Phenology Taxa</div>
+          </div>
+
+          {/* Card 2: Peak Bloom */}
+          <div
+            onClick={() => setSelectedStage(selectedStage === 'Peak Bloom' ? 'All' : 'Peak Bloom')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedStage === 'Peak Bloom'
+                ? 'bg-fuchsia-500/20 border-fuchsia-500/60 shadow-lg shadow-fuchsia-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-fuchsia-400">Peak Bloom</span>
+              <Leaf className="w-4 h-4 text-fuchsia-400" />
+            </div>
+            <div className="text-2xl font-black text-fuchsia-300">
+              {phenologyData.filter(p => p.phenologyStage === 'Peak Bloom').length}
+            </div>
+            <div className="text-[11px] text-fuchsia-400/90 font-mono mt-0.5">Active Anthesis</div>
+          </div>
+
+          {/* Card 3: Alpine Wildflowers */}
+          <div
+            onClick={() => setSelectedGroup(selectedGroup === 'Alpine Wildflower' ? 'All' : 'Alpine Wildflower')}
+            className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+              selectedGroup === 'Alpine Wildflower'
+                ? 'bg-purple-500/20 border-purple-500/60 shadow-lg shadow-purple-950/50'
+                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+            }`}
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Alpine Flora</span>
+              <Mountain className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-black text-purple-300">
+              {phenologyData.filter(p => p.plantGroup === 'Alpine Wildflower').length}
+            </div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Snowbed Species</div>
+          </div>
+
+          {/* Card 4: Climate Sensitive */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">High Sensitivity</span>
+              <AlertTriangle className="w-4 h-4 text-rose-400" />
+            </div>
+            <div className="text-2xl font-black text-rose-300">
+              {phenologyData.filter(p => p.climateSensitivity === 'High' || p.climateSensitivity === 'Extreme').length}
+            </div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">Thermal Shift Flags</div>
+          </div>
+
+          {/* Card 5: Altitudinal Range */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Elevation Span</span>
+              <TrendingUp className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-black text-amber-300">
+              1,580 - 4,200m
+            </div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Valley to Nival</div>
+          </div>
+
+          {/* Card 6: Fruiting Phenophase */}
+          <div
+            className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700"
+          >
+            <div className="flex items-center justify-between text-slate-400 mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Fruiting Phase</span>
+              <Activity className="w-4 h-4 text-cyan-400" />
+            </div>
+            <div className="text-2xl font-black text-cyan-300">
+              {phenologyData.filter(p => p.phenologyStage === 'Fruiting').length || 6}
+            </div>
+            <div className="text-[11px] text-cyan-400/90 font-mono mt-0.5">Seed Dispersal</div>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}
@@ -160,66 +421,89 @@ export default function PhenologyFloweringPage() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-5 mt-4 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="p-5 mt-4 glass-intense border border-white/10 rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
           >
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Species</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Search Species</label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="e.g. Iris, Blue Poppy..."
+                  placeholder="Iris, Apple, Kuth..."
                   value={searchQuery}
                   onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 transition-colors"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Scope</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Scope</label>
               <select
                 value={selectedScope}
                 onChange={(e) => { setSelectedScope(e.target.value as any); setSelectedDistrict('All'); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                {availableScopes.map(s => <option key={s} value={s}>{s}</option>)}
+                {availableScopes.map(s => (
+                  <option key={s} value={s} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {s}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Admin Unit</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Admin Unit</label>
               <select
                 value={selectedDistrict}
                 onChange={(e) => { setSelectedDistrict(e.target.value); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer disabled:opacity-50"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Units</option>
-                {availableDistricts.map(d => <option key={d} value={d}>{d}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                  All Units ({availableDistricts.length})
+                </option>
+                {availableDistricts.map(d => (
+                  <option key={d} value={d} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {d}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Phenology Stage</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Phenology Stage</label>
               <select
                 value={selectedStage}
                 onChange={(e) => { setSelectedStage(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Stages</option>
-                {allStages.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Stages</option>
+                {allStages.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Plant Group</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Plant Group</label>
               <select
                 value={selectedGroup}
                 onChange={(e) => { setSelectedGroup(e.target.value as any); setCurrentPage(1); }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
-                <option value="All">All Groups</option>
-                {allGroups.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All" className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Groups</option>
+                {allGroups.map(t => (
+                  <option key={t} value={t} className="bg-slate-900 text-white font-medium py-1.5" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+                    {t}
+                  </option>
+                ))}
               </select>
             </div>
           </motion.div>
@@ -234,15 +518,54 @@ export default function PhenologyFloweringPage() {
               <motion.div key={record.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
                   <div className="p-5 border-b border-white/5 bg-white/5 relative">
-                    <div className="flex flex-wrap gap-1.5 mb-3">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-3">
                       <Badge variant="outline" className={`bg-white/5 ${getStageColor(record.currentStage)}`}>{record.currentStage}</Badge>
-                      <Badge variant="outline" className="border-white/20">{record.nativeStatus}</Badge>
+                      <Badge variant="outline" className="border-sky-500/30 text-sky-300 bg-sky-500/10 text-[10px]">{record.primaryScope}</Badge>
+                      <Badge variant="outline" className="border-white/20 text-[10px]">{record.nativeStatus}</Badge>
                       <Badge variant="default" className={getStatusColor(record.conservationStatus)}>{record.conservationStatus}</Badge>
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mb-0.5">
-                      {record.commonName}
-                    </h3>
+
+                    <div className="flex items-baseline justify-between gap-2 mb-1">
+                      <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                        {record.commonName}
+                      </h3>
+                      {record.kashmiriName && (
+                        <span className="text-xs font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30 whitespace-nowrap">
+                          {record.kashmiriName}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm italic text-slate-400 mb-3">{record.scientificName}</p>
+
+                    {/* Shift & Climate Vulnerability Bar */}
+                    <div className="mb-3 flex items-center justify-between text-[11px] bg-slate-950/70 p-2 rounded-lg border border-white/10">
+                      <span className={`font-semibold px-1.5 py-0.5 rounded border ${
+                        record.shiftDays > 0 
+                          ? 'bg-amber-500/15 text-amber-300 border-amber-500/30' 
+                          : record.shiftDays < 0 
+                          ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30' 
+                          : 'bg-slate-500/15 text-slate-300 border-slate-500/30'
+                      }`}>
+                        {record.shiftDays > 0 ? `-${record.shiftDays}d Advance` : record.shiftDays < 0 ? `+${Math.abs(record.shiftDays)}d Delay` : 'Baseline'}
+                      </span>
+                      <div className="flex items-center gap-2 text-slate-300">
+                        {record.chillingRequirementHours && (
+                          <span className="flex items-center gap-1 text-[11px]">
+                            <Snowflake className="w-3 h-3 text-cyan-400" />
+                            {record.chillingRequirementHours}h chill
+                          </span>
+                        )}
+                        {record.frostVulnerabilityIndex && (
+                          <span className={`px-1.5 py-0.2 rounded text-[10px] uppercase font-bold ${
+                            record.frostVulnerabilityIndex === 'Extreme' || record.frostVulnerabilityIndex === 'High'
+                              ? 'text-rose-400'
+                              : 'text-amber-400'
+                          }`}>
+                            {record.frostVulnerabilityIndex} Frost
+                          </span>
+                        )}
+                      </div>
+                    </div>
                     
                     <div className="flex items-center justify-between text-xs text-slate-300 bg-black/20 p-2 rounded-lg border border-white/5">
                       <div className="flex items-center gap-1.5">
@@ -365,17 +688,28 @@ export default function PhenologyFloweringPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-emerald-900/20"
+              className="bg-slate-900 border border-white/10 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-emerald-900/20"
             >
               <div className="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-white/5 relative">
                 <div>
-                  <div className="flex flex-wrap gap-2 mb-2">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
                     <Badge variant="outline" className={`bg-white/5 ${getStageColor(selectedPhenology.currentStage)}`}>{selectedPhenology.currentStage}</Badge>
+                    <Badge variant="outline" className="border-sky-500/30 text-sky-300 bg-sky-500/10">{selectedPhenology.primaryScope}</Badge>
                     <Badge variant="outline" className="border-white/20">{selectedPhenology.plantGroup[0]}</Badge>
                     <Badge variant="default" className={getStatusColor(selectedPhenology.conservationStatus)}>{selectedPhenology.conservationStatus}</Badge>
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-1">{selectedPhenology.commonName}</h2>
+                  <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                    <h2 className="text-2xl font-bold text-white">{selectedPhenology.commonName}</h2>
+                    {selectedPhenology.kashmiriName && (
+                      <span className="text-sm font-semibold text-emerald-300 bg-emerald-500/15 px-2.5 py-0.5 rounded border border-emerald-500/30">
+                        {selectedPhenology.kashmiriName}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-emerald-400 italic text-sm">{selectedPhenology.scientificName}</p>
+                  {selectedPhenology.vernacularNames && selectedPhenology.vernacularNames.length > 0 && (
+                    <p className="text-xs text-slate-400 mt-1">Other regional names: {selectedPhenology.vernacularNames.join(', ')}</p>
+                  )}
                 </div>
                 <button
                   onClick={() => setSelectedPhenology(null)}
@@ -415,15 +749,37 @@ export default function PhenologyFloweringPage() {
                     <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-2 border-b border-white/10 pb-2 flex items-center gap-2">
                       <ThermometerSun className="w-4 h-4 text-amber-500" /> Climate Shift Intelligence
                     </h4>
-                    <div className="bg-amber-500/5 rounded-lg border border-amber-500/10 p-4 space-y-4">
-                      <div className="flex items-center justify-between border-b border-amber-500/10 pb-2 mb-2">
+                    <div className="bg-amber-500/5 rounded-lg border border-amber-500/10 p-4 space-y-3">
+                      <div className="flex items-center justify-between border-b border-amber-500/10 pb-2">
                         <span className="text-xs text-slate-400 uppercase">Phenology Shift</span>
                         <Badge variant="outline" className="border-amber-500/30 text-amber-400">{selectedPhenology.phenologyShiftIndicator}</Badge>
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div className="bg-black/30 p-2 rounded border border-white/5">
+                          <span className="text-slate-500 block text-[10px] uppercase">Shift Days</span>
+                          <span className="font-bold text-amber-300">
+                            {selectedPhenology.shiftDays > 0 ? `-${selectedPhenology.shiftDays} days advance` : selectedPhenology.shiftDays < 0 ? `+${Math.abs(selectedPhenology.shiftDays)} days delay` : 'Baseline (0d)'}
+                          </span>
+                        </div>
+                        <div className="bg-black/30 p-2 rounded border border-white/5">
+                          <span className="text-slate-500 block text-[10px] uppercase">Chill Requirement</span>
+                          <span className="font-bold text-cyan-300">{selectedPhenology.chillingRequirementHours ? `${selectedPhenology.chillingRequirementHours} hrs (<7.2°C)` : 'N/A'}</span>
+                        </div>
+                        <div className="bg-black/30 p-2 rounded border border-white/5">
+                          <span className="text-slate-500 block text-[10px] uppercase">Frost Vulnerability</span>
+                          <span className="font-bold text-rose-300">{selectedPhenology.frostVulnerabilityIndex || 'Moderate'}</span>
+                        </div>
+                        <div className="bg-black/30 p-2 rounded border border-white/5">
+                          <span className="text-slate-500 block text-[10px] uppercase">GDD Threshold</span>
+                          <span className="font-bold text-emerald-300">{selectedPhenology.gddThreshold ? `${selectedPhenology.gddThreshold} °C-days` : 'N/A'}</span>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-slate-300 leading-relaxed pt-1">
                         {selectedPhenology.climateShiftNotes}
                       </p>
-                      <div className="flex flex-wrap gap-1.5 mt-3">
+                      <div className="flex flex-wrap gap-1.5 mt-2">
                         {selectedPhenology.climateSignals.map(s => <span key={s} className="text-[10px] px-2 py-1 bg-amber-500/10 text-amber-400 rounded-sm border border-amber-500/20">{s}</span>)}
                       </div>
                     </div>
@@ -431,16 +787,36 @@ export default function PhenologyFloweringPage() {
 
                   <div>
                     <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-2 border-b border-white/10 pb-2 flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-sky-500" /> Regional Data
+                      <MapPin className="w-4 h-4 text-sky-500" /> Scope & Regional Data
                     </h4>
                     <div className="space-y-3">
-                      <div className="text-xs text-slate-400 uppercase">Tracked Habitats</div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {selectedPhenology.mainHabitats.map(h => <span key={h} className="text-xs px-2 py-1 bg-sky-500/10 text-sky-400 rounded border border-sky-500/20">{h}</span>)}
+                      <div>
+                        <div className="text-xs text-slate-400 uppercase mb-1">Administrative Scope</div>
+                        <span className="text-xs font-semibold text-sky-300 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 inline-block">
+                          {selectedPhenology.primaryScope}
+                        </span>
                       </div>
-                      <div className="text-xs text-slate-400 uppercase mt-4">Linked Pollinators</div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {selectedPhenology.pollinatorLinkages.map(p => <span key={p} className="text-xs px-2 py-1 bg-fuchsia-500/10 text-fuchsia-400 rounded border border-fuchsia-500/20">{p}</span>)}
+                      <div>
+                        <div className="text-xs text-slate-400 uppercase mb-1">Regions Present</div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedPhenology.regionsPresent.map(r => (
+                            <span key={r} className="text-xs px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-white/10">
+                              {r}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-400 uppercase mb-1">Tracked Habitats</div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedPhenology.mainHabitats.map(h => <span key={h} className="text-xs px-2 py-1 bg-sky-500/10 text-sky-400 rounded border border-sky-500/20">{h}</span>)}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-400 uppercase mb-1">Linked Pollinators</div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedPhenology.pollinatorLinkages.map(p => <span key={p} className="text-xs px-2 py-1 bg-fuchsia-500/10 text-fuchsia-400 rounded border border-fuchsia-500/20">{p}</span>)}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -454,9 +830,9 @@ export default function PhenologyFloweringPage() {
                   </div>
                   <div className="ml-5">Confidence: {selectedPhenology.validation.confidence} • Record: {selectedPhenology.validation.observationDate}</div>
                 </div>
-                <Button variant="primary" size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white w-full sm:w-auto">
+                <Button variant="primary" size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white w-full sm:w-auto" onClick={() => setSelectedPhenology(null)}>
                   <Leaf className="w-4 h-4 mr-2"/>
-                  View Full Flora Profile
+                  Close Record
                 </Button>
               </div>
             </motion.div>

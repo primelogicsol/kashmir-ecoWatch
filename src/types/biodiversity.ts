@@ -226,6 +226,16 @@ export interface BiodiversitySpecies {
     threats: string;
     conservation: string;
   };
+
+  // Threatened Species Specific Intelligence
+  citesListing?: string;
+  estimatedWildPopulation?: string;
+  traffickingCorridor?: string;
+  traffickingRisk?: string;
+  effectivePopulationNe?: string;
+  inbreedingRisk?: string;
+  projectedAltitudinalShift?: string;
+  climateVulnerability?: string;
 }
 
 // ============================================================================

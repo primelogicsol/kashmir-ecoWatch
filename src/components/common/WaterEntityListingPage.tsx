@@ -52,6 +52,7 @@ interface ListingPageProps {
   getSecondaryMetric?: (entity: WaterEntity) => { label: string; value: string } | null;
   renderAdditionalInfo?: (entity: WaterEntity) => React.ReactNode;
   renderAdditionalContent?: () => React.ReactNode;
+  children?: React.ReactNode;
   hideDistrictFilter?: boolean;
 }
 
@@ -117,6 +118,7 @@ export function WaterEntityListingPage({
   getSecondaryMetric,
   renderAdditionalInfo,
   renderAdditionalContent,
+  children,
   hideDistrictFilter = false,
 }: ListingPageProps) {
   const LucideIcon = (Icons as unknown as Record<string, React.ElementType>)[iconName] || Icons.Droplet;
@@ -360,6 +362,12 @@ export function WaterEntityListingPage({
           }}
         />
       </div>
+
+      {children && (
+        <div className="container mx-auto px-6 py-4">
+          {children}
+        </div>
+      )}
 
       {/* ── Scope tabs + results action row ────────────────────────────────── */}
       <ModuleScopeRow

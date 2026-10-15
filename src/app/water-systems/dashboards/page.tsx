@@ -283,6 +283,100 @@ export default function WaterSystemsDashboardsPage() {
         </motion.div>
       </div>
 
+      {/* ── Observe Here: Field Intelligence & Citizen Telemetry ── */}
+      <section className="container mx-auto px-6 pb-12">
+        <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-md p-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-cyan-400">Citizen Intelligence Network</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-400 uppercase font-semibold">Live 2026</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mt-1 flex items-center gap-2">
+                <Eye className="w-5 h-5 text-cyan-400" />
+                Observe Here: Hydrological Field Telemetry &amp; Citizen Science
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Contribute water quality readings, log lake water clarity, verify river gauge levels, or report ecological hazards across Kashmir&apos;s 20 monitored basins.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              <Button
+                onClick={() => router.push('/submit-observation?category=water')}
+                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-950/50 text-xs py-2 px-3.5"
+              >
+                <Eye className="w-3.5 h-3.5 mr-1 text-slate-950" />
+                Submit Water Observation
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => router.push('/report-issue')}
+                className="border-rose-500/40 text-rose-300 hover:bg-rose-500/10 text-xs py-2 px-3.5"
+              >
+                <AlertTriangle className="w-3.5 h-3.5 mr-1 text-rose-400" />
+                Report Hazard
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => router.push('/trails-sightings/trail-field-records')}
+                className="border-white/10 text-slate-300 hover:bg-white/5 text-xs py-2 px-3.5"
+              >
+                <Database className="w-3.5 h-3.5 mr-1 text-cyan-400" />
+                Field Records
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                <Droplet className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">Lake Secchi Transparency</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Measure water column clarity with a standard 20cm Secchi disk. Pristine alpine tarns (Gangabal, Tarsar) exceed 5.0m; eutrophic urban basins drop below 1.2m.
+              </p>
+              <div className="text-[11px] text-cyan-300/80 font-mono">Benchmark: ISO 7027 Turbidity Standard</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-blue-500/20 hover:border-blue-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-blue-400">
+                <Waves className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">River Gauge Readings</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Photograph and log live staff gauge readings at Sangam, Ram Munshi Bagh, and Asham to ground-truth automated ultrasonic radar sensor telemetry.
+              </p>
+              <div className="text-[11px] text-blue-300/80 font-mono">Reference: I&amp;FC Jhelum Alert System</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20 hover:border-amber-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-amber-400">
+                <Activity className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">Algal Bloom Surveillance</h4>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                Flag blue-green cyanobacterial scum (*Microcystis*) on Dal and Wular lakes before blooms release microcystin toxins into potable treatment intakes.
+              </p>
+              <div className="text-[11px] text-amber-300/80 font-mono">Sentinel: Sentinel-2 NDCI Satellite Corroboration</div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20 hover:border-emerald-500/40 transition-colors">
+              <div className="flex items-center gap-2 mb-2 text-emerald-400">
+                <Thermometer className="w-4 h-4" />
+                <h4 className="font-semibold text-white text-sm">Spring Aquifer Sounding</h4>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-relaxed mb-3">
+                Track seasonal volumetric discharge rates and temperature stability at community drinking springs across Anantnag, Budgam, and Kupwara.
+              </p>
+              <div className="text-[11px] text-emerald-300/80 font-mono">Method: NITI Aayog Springshed Protocol</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Export / Share */}
       <section className="container mx-auto px-6 pb-16">
         <Card className="glass-intense border-white/10 bg-gradient-to-r from-cyan-900/20 to-blue-900/20" padding="lg">

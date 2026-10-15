@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ngoRegistryData, NGORecord, NGOProject } from '@/data/ngo-impact';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -131,6 +132,131 @@ export default function NGOImpactLandingPage() {
             }
           />
         </section>
+
+        
+        {/* ── NGO Focus Typologies & Citizen Field Protocols ───────────────── */}
+        <div>
+          <EnvironmentalObserveSpotlight
+            typologyTitle="Civil Society Focus Typologies & Conservation Guilds"
+            typologySubtitle="Select a grassroots intervention theme, verified NGO status, or volunteer program across Kashmir's civil society network."
+            typologyIcon={Users}
+            typologies={[
+              { id: 'all', label: 'All Organizations', count: ngoRegistryData.length, icon: Users, color: 'emerald' },
+              { id: 'verified', label: 'Verified & Audited NGOs', count: ngoRegistryData.filter(d => d.verification_status.includes('verified') || d.verification_status.includes('reviewed')).length, icon: ShieldCheck, color: 'teal' },
+              { id: 'lakes', label: 'Lake & Wetland Conservation', count: ngoRegistryData.filter(d => d.focus_areas.some(f => f.toLowerCase().includes('water') || f.toLowerCase().includes('lake') || f.toLowerCase().includes('wetland'))).length, icon: Droplet, color: 'cyan' },
+              { id: 'waste', label: 'Solid Waste & Cleanups', count: ngoRegistryData.filter(d => d.focus_areas.some(f => f.toLowerCase().includes('waste') || f.toLowerCase().includes('pollution'))).length, icon: Recycle, color: 'amber' },
+              { id: 'forest', label: 'Forests & Reforestation', count: ngoRegistryData.filter(d => d.focus_areas.some(f => f.toLowerCase().includes('forest') || f.toLowerCase().includes('biodiversity') || f.toLowerCase().includes('tree'))).length, icon: Leaf, color: 'emerald' },
+              { id: 'climate', label: 'Climate Education & Advocacy', count: ngoRegistryData.filter(d => d.focus_areas.some(f => f.toLowerCase().includes('climate') || f.toLowerCase().includes('education') || f.toLowerCase().includes('youth'))).length, icon: Book, color: 'violet' },
+            ]}
+            activeTypology={selectedFocus === 'all' ? 'all' : selectedFocus.toLowerCase().includes('water') ? 'lakes' : selectedFocus.toLowerCase().includes('waste') ? 'waste' : selectedFocus.toLowerCase().includes('forest') ? 'forest' : 'all'}
+            onSelectTypology={(id) => {
+              if (id === 'all') setSelectedFocus('all');
+              else if (id === 'lakes') setSelectedFocus('Water Conservation');
+              else if (id === 'waste') setSelectedFocus('Solid Waste');
+              else if (id === 'forest') setSelectedFocus('Forest Conservation');
+            }}
+            showingCount={ngoRegistryData.length}
+            totalCount={ngoRegistryData.length}
+            entityLabel="registered NGOs"
+            spotlightTitle="Grassroots Environmental Impact & Volunteer Mobilization"
+            spotlightSubtitle="Documenting certified environmental NGOs, lake restoration volunteer brigades, community afforestation, and public action."
+            tabs={[
+              {
+                id: 'lake-cleanups',
+                label: 'Community Lake Cleanups & De-Weeding Drives',
+                content: (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                      <span className="text-xs font-bold text-cyan-400 block mb-1">Grassroots Water Action</span>
+                      <h5 className="text-sm font-semibold text-white mb-2">Dal Lake &amp; Anchar Youth Volunteer Coalitions</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                        Student environmental clubs and shikarawallas conduct weekend plastic retrieval drives, extracting 12+ tons of floating polyethylene and PET bottles from interior lake channels.
+                      </p>
+                      <div className="text-[11px] text-cyan-300 font-mono">Volunteer Metric: 2,400+ citizen hours logged</div>
+                    </div>
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                      <span className="text-xs font-bold text-emerald-400 block mb-1">Reforestation Drives</span>
+                      <h5 className="text-sm font-semibold text-white mb-2">Community Springshed &amp; Native Afforestation</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                        Plantation of indigenous deodar, walnut, and willow saplings in degraded sub-catchments to restore vanishing village drinking springs and mitigate mudslides.
+                      </p>
+                      <div className="text-[11px] text-emerald-300 font-mono">Saplings Planted: 85,000+ with 88% survival rate</div>
+                    </div>
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                      <span className="text-xs font-bold text-violet-400 block mb-1">Alpine Mountain Ethics</span>
+                      <h5 className="text-sm font-semibold text-white mb-2">High-Altitude Leave-No-Trace Campaigns</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                        Trekking associations partner to evacuate plastic litter and metal cans from high alpine meadows (Kashmir Great Lakes trail, Tarsar-Marsar, Kolahoi basecamp).
+                      </p>
+                      <div className="text-[11px] text-violet-300 font-mono">High-Altitude Waste Evacuated: 6.8 MT safely disposed</div>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: 'verification-audit',
+                label: 'NGO Governance & Field Verification Standards',
+                content: (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                      <h5 className="text-sm font-semibold text-white mb-2">Transparent Field Audit Protocol</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                        Every partner organization featured in the KEW directory undergoes rigorous field verification: verifying 12A/80G status, auditing geotagged project impact reports, and confirming local community beneficiary feedback.
+                      </p>
+                      <div className="text-[11px] text-teal-300 font-mono">Governance: 100% verified grassroots impact documentation</div>
+                    </div>
+                    <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                      <h5 className="text-sm font-semibold text-white mb-2">Student &amp; Youth Eco-Clubs</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                        Over 140 school and college environmental clubs across Kashmir receive educational toolkits, field water-testing vials, and training on citizen biodiversity documenting.
+                      </p>
+                      <div className="text-[11px] text-amber-300 font-mono">Youth Network: Active in all 10 Kashmir valley districts</div>
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+            observeCategory="community"
+            observeTitle="Citizen Volunteer Action &amp; Community Project Verification"
+            observeSubtitle="Submit reports on completed cleanup drives, audit sapling survival rates, or nominate grassroots conservation leaders."
+            observeBadge="Civil Society Impact Active"
+            protocols={[
+              {
+                number: '1',
+                title: 'Volunteer Cleanup Brand & Weight Audit',
+                desc: 'Weigh collected trash by plastic type (PET, multi-layer packaging) and tally corporate producer brands for accountability.',
+                benchmark: 'Break Free From Plastic Global Brand Audit Protocol',
+                icon: Recycle,
+                color: 'amber',
+              },
+              {
+                number: '2',
+                title: 'Community Tree Sapling Survival Check',
+                desc: 'Inspect community plantation sites at 6-month and 12-month intervals to record sapling height, browsing damage, and survival %.',
+                benchmark: 'MoEFCC National Afforestation & Eco-Development Board',
+                icon: Leaf,
+                color: 'emerald',
+              },
+              {
+                number: '3',
+                title: 'Local Waterbody Guardian Observation',
+                desc: 'Adopt a local pond, spring, or canal section; perform monthly water clarity checks and report illegal dumping encroachment.',
+                benchmark: 'WASH Community Scorecard Protocol',
+                icon: Droplet,
+                color: 'cyan',
+              },
+              {
+                number: '4',
+                title: 'Wildlife Rescue & Injured Fauna Alert',
+                desc: 'Report distressed migratory waterfowl, injured Hangul, or human-wildlife encounters to rapid NGO response units.',
+                benchmark: 'Wildlife Protection Act 1972 Rescue Standard',
+                icon: Heart,
+                color: 'rose',
+              },
+            ]}
+          />
+        </div>
+
 
         {/* ─── 4. FEATURED NGOs ─────────────────────────────────────────────────── */}
         <section>

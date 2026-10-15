@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/Card';
 import * as Icons from 'lucide-react';
 import {
   MapPin, Activity, ArrowRight, Search,
-  Grid3X3, List, Map, TrendingUp, ChevronLeft, ChevronRight
+  Grid3X3, List, Map, TrendingUp, ChevronLeft, ChevronRight, Compass, Shield
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -18,6 +18,40 @@ import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { GEOGRAPHY, getScopeForUnit, Scope } from '@/data/geography';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import Link from 'next/link';
+
+const PROTECTED_SHOWCASE_PRESETS: Record<string, { id: string; title: string; subtitle: string; location: string; tag: string; src: string }[]> = {
+    national_park: [
+    { id: '1', title: 'Dachigam National Park', subtitle: 'Prime Hangul Sanctuary & Upper Forest', location: 'Srinagar · 141 km²', tag: 'National Park', src: '/images/protected-network.png' },
+    { id: '2', title: 'Kazinag National Park', subtitle: 'Markhor & Musk Deer Range', location: 'Baramulla · 160 km²', tag: 'Western Caprinae', src: '/images/markhor.png' },
+    { id: '3', title: 'Hemis High Altitude NP', subtitle: 'Global Snow Leopard Density Capital', location: 'Leh, Ladakh · 4,400 km²', tag: 'Trans-Himalayan', src: '/images/protected-network.png' },
+    { id: '4', title: 'Deosai National Park', subtitle: 'Himalayan Brown Bear Sanctuary', location: 'Skardu / Astore · 3,584 km²', tag: 'Alpine Tundra', src: '/images/bear.png' },
+  ],
+  wildlife_sanctuary: [
+    { id: '1', title: 'Overa-Aru Sanctuary', subtitle: 'Pahalgam Alpine & Hanging Valley', location: 'Anantnag · 511 km²', tag: 'Sanctuary', src: '/images/protected-network.png' },
+    { id: '2', title: 'Gulmarg Wildlife Sanctuary', subtitle: 'Apharwat Altitudinal Transect', location: 'Baramulla · 180 km²', tag: 'Alpine Biome', src: '/images/bear.png' },
+    { id: '3', title: 'Hirpora Wildlife Sanctuary', subtitle: 'Pir Panjal Markhor Highway', location: 'Shopian · 341 km²', tag: 'Corridor Node', src: '/images/markhor.png' },
+    { id: '4', title: 'Limber Wildlife Sanctuary', subtitle: 'Langate-Kazinag Buffer Matrix', location: 'Baramulla · 26 km²', tag: 'Conifer Forest', src: '/images/tiger.png' },
+  ],
+  wetland_reserve: [
+    { id: '1', title: 'Hokersar Ramsar Wetland', subtitle: 'Central Asian Flyway Haven', location: 'Budgam / Srinagar · 13.75 km²', tag: 'Ramsar Wetland', src: '/images/protected-network.png' },
+    { id: '2', title: 'Shallabugh Wetland Reserve', subtitle: 'Deltaic Marshes & Waterfowl Refuge', location: 'Ganderbal · 16 km²', tag: 'Ramsar Site', src: '/images/bear.png' },
+    { id: '3', title: 'Hygam Wetland Reserve', subtitle: 'Flood Basin & Reed Beds', location: 'Baramulla · 7.25 km²', tag: 'Ramsar Basin', src: '/images/markhor.png' },
+    { id: '4', title: 'Mirgund Wetland Reserve', subtitle: 'Seasonal Shallower Waterfowl Stop', location: 'Baramulla · 4.0 km²', tag: 'Flyway Rest', src: '/images/tiger.png' },
+  ],
+  conservation_reserve: [
+    { id: '1', title: 'Shikargah Tral Reserve', subtitle: 'Hangul Dispersal Corridor', location: 'Pulwama · 15.5 km²', tag: 'Conservation Reserve', src: '/images/protected-network.png' },
+    { id: '2', title: 'Khiram Conservation Reserve', subtitle: 'Overa Foothill Forest Matrix', location: 'Anantnag · 15.7 km²', tag: 'Oak & Pine', src: '/images/bear.png' },
+    { id: '3', title: 'Wangath Conservation Reserve', subtitle: 'Sindh Valley Riparian Buffer', location: 'Ganderbal · 12 km²', tag: 'Valley Corridor', src: '/images/markhor.png' },
+    { id: '4', title: 'Pani-Wah / Bren Reserve', subtitle: 'Dachigam Buffer Zone', location: 'Srinagar · 8.2 km²', tag: 'Community Edge', src: '/images/tiger.png' },
+  ],
+  bird_and_habitat_area: [
+    { id: '1', title: 'Wular Lake IBA', subtitle: 'Largest Freshwater Basin IBA', location: 'Bandipora · 189 km²', tag: 'Key Bird Area', src: '/images/protected-network.png' },
+    { id: '2', title: 'Dachigam-Harwan IBA', subtitle: 'Endemic Flycatcher & Monal Zone', location: 'Srinagar · 141 km²', tag: 'Himalayan IBA', src: '/images/bear.png' },
+    { id: '3', title: 'Overa-Aru IBA', subtitle: 'Subalpine & Alpine Birding Corridor', location: 'Anantnag · 511 km²', tag: 'High-Altitude IBA', src: '/images/markhor.png' },
+    { id: '4', title: 'Hokersar Avian Sanctuary', subtitle: 'Half-Million Wintering Migrants', location: 'Srinagar · 13.75 km²', tag: 'Ramsar IBA', src: '/images/tiger.png' },
+  ],
+};
 
 interface ProtectedArea {
   id: string;
@@ -69,7 +103,7 @@ export function ProtectedCategoryPage({
 
   const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = React.useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   // Derive available districts from the actual data for the current scope (data-driven, Bug #4 fix)
   const availableDistricts = React.useMemo(() => {
@@ -150,34 +184,188 @@ export function ProtectedCategoryPage({
     },
   };
 
+  const [activeHeroIdx, setActiveHeroIdx] = React.useState(0);
+
+  const categoryKey = areas[0]?.category || 'national_park';
+  const showcaseList = PROTECTED_SHOWCASE_PRESETS[categoryKey] || PROTECTED_SHOWCASE_PRESETS.national_park;
+  const currentHero = showcaseList[activeHeroIdx] || showcaseList[0];
+
+  const heroShowcaseCard = (
+    <div className="relative rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl shadow-emerald-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+      {/* Top Banner Tag */}
+      <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span className="font-bold text-emerald-300 uppercase tracking-wider text-[11px]">
+            Protected Area Sentinel
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+          Active 2026
+        </span>
+      </div>
+
+      {/* Main Image Viewport */}
+      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-white/10 group">
+        <img
+          key={currentHero.id}
+          src={currentHero.src}
+          alt={currentHero.title}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        {/* Gradient Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+
+        {/* Captions */}
+        <div className="absolute bottom-2.5 left-3 right-3">
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md">{currentHero.title}</h4>
+            <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold flex-shrink-0">
+              {currentHero.tag}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] text-slate-300">
+            <span className="italic text-emerald-300 font-medium">{currentHero.subtitle}</span>
+            <span className="text-slate-400 text-[10px]">{currentHero.location}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 4 Interactive Thumbnail Buttons */}
+      <div className="grid grid-cols-4 gap-1.5 mt-2.5">
+        {showcaseList.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActiveHeroIdx(idx)}
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer ${
+              activeHeroIdx === idx
+                ? 'border-emerald-400 ring-2 ring-emerald-400/40 bg-emerald-500/10 shadow-md'
+                : 'border-white/10 bg-slate-800/60 hover:border-emerald-500/30 hover:bg-slate-800'
+            }`}
+          >
+            <div className="h-10 w-full rounded overflow-hidden relative">
+              <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-bold text-slate-300 truncate w-full text-center">
+              {item.title.split(' ')[0]}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        title={title}
+        title={
+          typeof title === 'string' ? (
+            <div className="overflow-visible pb-2">
+              <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
+                <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                  KEW
+                </span>
+                <span className="text-white">Western Himalayan</span>
+              </div>
+              <div className="leading-[1.15] overflow-visible pr-8">
+                <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                  {title}
+                </span>
+              </div>
+            </div>
+          ) : (
+            title
+          )
+        }
         subtitle={subtitle}
         icon={<Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />}
-        label="KEW Protected Network"
+        label="KEW Protected Network · Conservation Domain"
         gridOverlay
         images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        rightContent={heroShowcaseCard}
         actions={
-          <>
-            <a href="/protected-network/atlas">
-              <Button size="lg" className={`bg-gradient-to-r ${color}`} icon={<Search className="w-5 h-5" />}>
-                Search
+          <div className="flex flex-wrap items-center gap-2">
+            <Link href="/protected-network/atlas">
+              <Button size="sm" className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold transition-all shadow-md shadow-emerald-500/20">
+                <Icons.Compass className="w-4 h-4 mr-1.5" />
+                GIS Interactive Atlas
               </Button>
-            </a>
-            <a href="/protected-network/atlas">
-              <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<Map className="w-5 h-5" />}>
-                Distribution Map
+            </Link>
+            <Link href="/protected-network">
+              <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold transition-all">
+                <Icons.Shield className="w-4 h-4 mr-1.5" />
+                Network Overview
               </Button>
-            </a>
-          </>
+            </Link>
+            <Link href="/protected-network/corridors-and-connectivity">
+              <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold transition-all">
+                <Icons.Map className="w-4 h-4 mr-1.5" />
+                Corridors &amp; Linkages
+              </Button>
+            </Link>
+          </div>
         }
       />
 
-      {/* ── KPI Strip ─────────────────────────────────────────────────────────── */}
-      <ModuleKpiStrip kpis={metrics} />
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* CORRIDOR TELEMETRY BANNER & J&K PROTECTED NETWORK SENTINEL    */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
+        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Compass className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Trans-Himalayan Wildlife Corridor &amp; Reserve Sentinel</span>
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[10px] text-emerald-300 uppercase font-semibold">Active Monitoring 2026</span>
+              </div>
+              <p className="text-sm text-slate-300 mt-0.5">
+                Core Conservation Landscapes: <strong className="text-white">Dachigam Hangul Sanctuary</strong>, <strong className="text-white">Kazinag Markhor Corridor</strong>, <strong className="text-white">Hokersar Ramsar Basin</strong>, <strong className="text-white">Overa-Aru Reserve</strong>, and <strong className="text-white">Hemis High-Altitude Network</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs text-slate-400">Total Classified Reserves</div>
+              <div className="text-sm font-bold text-emerald-300">{areas.length} Verified Sites</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
+              {filteredAreas.length} Filtered
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ───────────────────────────────────────────────────────────── */}
+      {/* 8-CARD INTERACTIVE KPI STRIP (ZERO OVERLAP)                    */}
+      {/* ───────────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-4 lg:px-6 mb-6 relative z-20">
+        <div className="glass-intense border-white/10 p-3 sm:p-4 lg:p-5 rounded-2xl shadow-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+            {metrics.map((kpi, idx) => {
+              const KpiIcon = (Icons as any)[kpi.icon] || Icons.Shield;
+              return (
+                <div key={idx} className="py-2.5 px-2 rounded-xl text-center min-w-0 bg-white/5 border border-white/5 shadow-inner">
+                  <KpiIcon className="w-4 h-4 text-emerald-400 mx-auto mb-1" />
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                    {typeof kpi.value === 'number' ? kpi.value.toLocaleString() : kpi.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                    {kpi.label}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* ── Global Filter Bar ─────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">
@@ -211,58 +399,130 @@ export function ProtectedCategoryPage({
                 transition={{ delay: index * 0.05 }}
                 className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
-                <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
-                  <div className="relative h-40 bg-slate-900/50">
-
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex flex-wrap gap-1 mb-2">
-                        <Badge variant="info" size="sm" className="capitalize">
+                <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-slate-900/60 hover:border-emerald-500/30 transition-all shadow-lg" padding="none">
+                  {/* Card Header with Real Photography & Gradient Scrim */}
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                    <img
+                      src={(area as any).imageUrl || (area.category === 'national_park' ? '/images/protected-network.png' : area.category === 'wildlife_sanctuary' ? '/images/bear.png' : area.category === 'wetland_reserve' ? '/images/tiger.png' : '/images/markhor.png')}
+                      alt={area.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+                    
+                    {/* Top overlay badges */}
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-1">
+                      <div className="flex flex-wrap gap-1">
+                        <Badge variant="info" size="sm" className="capitalize bg-slate-900/80 backdrop-blur-md border border-white/10 text-[10px]">
                           {area.category.replace('_', ' ')}
                         </Badge>
                         {(area as any).scope && (
-                          <Badge variant="default" size="sm">{(area as any).scope}</Badge>
-                        )}
-                        {(area as any).legalStatus && (area as any).legalStatus !== 'Verified' && (
-                          <Badge variant="warning" size="sm">{(area as any).legalStatus}</Badge>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-md border ${
+                            (area as any).scope === 'Kashmir Core' 
+                              ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+                              : (area as any).scope === 'Trans-Divisional'
+                              ? 'bg-sky-500/20 text-sky-300 border-sky-500/30'
+                              : 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                          }`}>
+                            {(area as any).scope}
+                          </span>
                         )}
                       </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
+                      {((area as any).latitude && (area as any).longitude) && (
+                        <span className="text-[10px] font-mono text-slate-300 bg-slate-950/80 px-2 py-0.5 rounded border border-white/10 shrink-0">
+                          {(area as any).latitude.toFixed(2)}°N, {(area as any).longitude.toFixed(2)}°E
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Bottom overlay with title and status tags */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                        {(area as any).established && (
+                          <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800/40 px-1.5 py-0.5 rounded">
+                            Est. {(area as any).established}
+                          </span>
+                        )}
+                        {(area as any).iucn_category && (
+                          <span className="text-[10px] font-semibold text-slate-300 bg-white/10 px-1.5 py-0.5 rounded border border-white/10">
+                            {(area as any).iucn_category}
+                          </span>
+                        )}
+                        {(area as any).legalStatus && (area as any).legalStatus !== 'Verified' && (
+                          <Badge variant="warning" size="sm" className="text-[10px]">{(area as any).legalStatus}</Badge>
+                        )}
+                      </div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors drop-shadow-md">
                         {area.name}
                       </h3>
                     </div>
                   </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-slate-400 mb-4 line-clamp-2">
+
+                  <div className="p-4 sm:p-5 flex flex-col flex-1">
+                    <p className="text-xs sm:text-sm text-slate-400 mb-3 line-clamp-2 leading-relaxed">
                       {area.description}
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-400">
+
+                    {/* 3-metric quick stats box */}
+                    <div className="grid grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-white/5 border border-white/5 mb-3 text-xs">
                       <div>
-                        <div className="text-xs text-slate-500 uppercase">Area</div>
-                        <div className="text-white font-semibold">{area.area > 0 ? `${area.area} km²` : 'TBC'}</div>
+                        <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Area</div>
+                        <div className="text-white font-bold">{area.area > 0 ? `${area.area} km²` : 'TBC'}</div>
                       </div>
                       <div>
-                        <div className="text-xs text-slate-500 uppercase">District</div>
-                        <div className="text-white font-semibold">{area.district}</div>
+                        <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">District</div>
+                        <div className="text-white font-bold truncate">{area.district}</div>
                       </div>
-                      {(area as any).flagshipSpecies && (
-                        <div>
-                          <div className="text-xs text-slate-500 uppercase">Flagship</div>
-                          <div className="text-white font-semibold text-sm">{(area as any).flagshipSpecies}</div>
-                        </div>
-                      )}
+                      <div>
+                        <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Elevation</div>
+                        <div className="text-emerald-400 font-bold truncate">{(area as any).altitudeRange || `${(area as any).elevation_min_m || 1500}m+`}</div>
+                      </div>
                     </div>
-                    {(area as any).altitudeRange && (
-                      <div className="mt-2 text-xs text-slate-400">
-                        <span className="text-slate-500 uppercase text-[10px]">Altitude: </span>{(area as any).altitudeRange}
+
+                    {/* Flagship Species Highlight */}
+                    {(area as any).flagshipSpecies && (
+                      <div className="mb-2.5 flex items-center gap-2 text-xs">
+                        <span className="text-[10px] text-slate-400 uppercase font-semibold shrink-0">Flagship:</span>
+                        <span className="text-emerald-300 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md truncate">
+                          {(area as any).flagshipSpecies}
+                        </span>
                       </div>
                     )}
-                    {(area as any).dataStatus && (
-                      <div className="text-[10px] text-slate-500 italic mt-1">{(area as any).dataStatus}</div>
+
+                    {/* Key Taxa Recorded Pills */}
+                    {area.keySpecies && area.keySpecies.length > 0 && (
+                      <div className="mb-2.5">
+                        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1 font-semibold">Key Species</div>
+                        <div className="flex flex-wrap gap-1">
+                          {area.keySpecies.slice(0, 3).map((sp, idx) => (
+                            <span key={idx} className="text-[10px] text-slate-300 bg-slate-800/80 border border-slate-700/60 px-1.5 py-0.5 rounded">
+                              {sp}
+                            </span>
+                          ))}
+                          {area.keySpecies.length > 3 && (
+                            <span className="text-[10px] text-slate-400 self-center px-1 font-medium">
+                              +{area.keySpecies.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     )}
-                    <div className="mt-auto pt-4 border-t border-white/5 flex justify-end">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
-                        View Details
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+                    {/* Hydrological system / river catchment */}
+                    {(area as any).hydrological_system && (
+                      <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mb-2 truncate">
+                        <Icons.Droplet className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                        <span className="truncate">{(area as any).hydrological_system}</span>
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between">
+                      <span className="text-xs text-slate-400 flex items-center gap-1">
+                        <Icons.MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                        {area.district}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 group-hover:bg-emerald-500 transition-colors text-xs font-semibold text-white">
+                        Explore Park
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </span>
                     </div>
                   </div>

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -630,6 +631,7 @@ export default function EnvironmentalResiliencePage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -658,9 +660,18 @@ export default function EnvironmentalResiliencePage() {
       const matchPriority = priorityFilter === 'all' || r.priorityLevel === priorityFilter;
       const matchRisk = riskFilter === 'all' || r.riskExposure === riskFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchDomain && matchStatus && matchPriority && matchRisk;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && (d.priorityLevel === 'Critical' || d.riskExposure === 'Extreme' || d.riskExposure === 'High')) ||
+        (activeTypology === 'flood' && (d.resilienceDomain === 'Flood Resilience' || d.resilienceDomain === 'Water System')) ||
+        (activeTypology === 'infrastructure' && (d.resilienceDomain === 'Critical Infrastructure' || d.resilienceDomain === 'Wastewater & Sanitation')) ||
+        (activeTypology === 'ecosystem' && (d.resilienceDomain === 'Ecosystem Recovery' || d.resilienceDomain === 'Restoration Readiness')) ||
+        (activeTypology === 'climate' && (d.resilienceDomain === 'Climate Extremes' || d.resilienceDomain === 'Landslide Resilience' || d.resilienceDomain === 'Forest Fire Resilience')) ||
+        (activeTypology === 'community' && (d.resilienceDomain === 'Community Preparedness' || d.resilienceDomain === 'Remote Area Access'));
+
+      return matchSearch && matchScope && matchDistrict && matchDomain && matchStatus && matchPriority && matchRisk && matchTypology;
     });
-  }, [filter, domainFilter, statusFilter, priorityFilter, riskFilter]);
+  }, [filter, domainFilter, statusFilter, priorityFilter, riskFilter, activeTypology]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -774,6 +785,127 @@ export default function EnvironmentalResiliencePage() {
           }}
         />
       </div>
+
+      
+      {/* ── Resilience Typologies & Citizen Field Protocols ────────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Environmental Resilience Typologies & Stress Buffers"
+          typologySubtitle="Select a resilience archetype, ecological sponge buffer, or recovery capacity tier across Kashmir's ecosystems."
+          typologyIcon={ShieldCheck}
+          typologies={[
+            { id: 'all', label: 'All Resilience Systems', count: resilienceRegistry.length, icon: ShieldCheck, color: 'emerald' },
+            { id: 'critical', label: 'Critical Priority / High Risk', count: resilienceRegistry.filter(d => d.priorityLevel === 'Critical' || d.riskExposure === 'Extreme' || d.riskExposure === 'High').length, icon: AlertTriangle, color: 'rose' },
+            { id: 'flood', label: 'Flood Sponge & Hydrological Buffers', count: resilienceRegistry.filter(d => d.resilienceDomain === 'Flood Resilience' || d.resilienceDomain === 'Water System').length, icon: Waves, color: 'cyan' },
+            { id: 'infrastructure', label: 'Lifeline Infrastructure Systems', count: resilienceRegistry.filter(d => d.resilienceDomain === 'Critical Infrastructure' || d.resilienceDomain === 'Wastewater & Sanitation').length, icon: Building2, color: 'sky' },
+            { id: 'ecosystem', label: 'Ecosystem & Forest Recovery', count: resilienceRegistry.filter(d => d.resilienceDomain === 'Ecosystem Recovery' || d.resilienceDomain === 'Restoration Readiness').length, icon: TreePine, color: 'teal' },
+            { id: 'climate', label: 'Climate Extremes & Slope Safety', count: resilienceRegistry.filter(d => d.resilienceDomain === 'Climate Extremes' || d.resilienceDomain === 'Landslide Resilience' || d.resilienceDomain === 'Forest Fire Resilience').length, icon: Mountain, color: 'amber' },
+            { id: 'community', label: 'Community & Remote Area Readiness', count: resilienceRegistry.filter(d => d.resilienceDomain === 'Community Preparedness' || d.resilienceDomain === 'Remote Area Access').length, icon: Activity, color: 'violet' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={resilienceRegistry.length}
+          entityLabel="resilience systems"
+          spotlightTitle="Ecosystem Adaptation & Climate Shock Absorption Capacity"
+          spotlightSubtitle="Benchmarking watershed retention capacity, flood detention sponge wetlands, and mountain slope binding resilience."
+          tabs={[
+            {
+              id: 'sponges',
+              label: 'Kashmir Natural Sponge Wetlands & Flood Detention',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Ramsar Site #1570</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Hokersar Wetland Sponge Basin</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Acts as the primary flood retention basin downstream of Srinagar, capable of buffering 45+ million cubic meters of flood surge from the Jhelum spill channel during peak snowmelt.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Retention Capacity: 45.2 MCM surge buffer</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Parihaspora Fluvial Plain</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Mirgund &amp; Shallabugh Wetlands</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Shallow interconnected marshes absorb Sukhnag and Ferozpora nallah flash runoff, decelerating flood wave velocities before entering Wular Lake.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Attenuation Rate: 38% peak hydrograph dampening</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <span className="text-xs font-bold text-emerald-400 block mb-1">Fluvial Riparian Buffer</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Jhelum River Willow &amp; Poplar Bunds</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Extensive root networks of indigenous *Salix tetrasperma* and *Populus ciliata* bind riverbank alluvial silts, preventing catastrophic levee breaches during high shear stress flows.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Bank Stabilization: 84 km vegetative revetment</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'springsheds',
+              label: 'Karst Springshed & Microclimate Buffers',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-sky-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">South Kashmir Karst Aquifer Recharge</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Limestone aquifers in Achabal, Kokernag, and Verinag provide perennial baseflow to River Jhelum even during extreme autumn dry spells, sustaining downstream drinking water and irrigation systems.
+                    </p>
+                    <div className="text-[11px] text-sky-300 font-mono">Hydrological Stability: Baseflow sustains 28% of dry-season Jhelum discharge</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Agro-Forestry Microclimate Modulation</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Terraced apple orchards and walnut groves on karewa slopes reduce wind velocities and soil moisture evaporation, mitigating frost damage and stabilizing fragile lacustrine clays.
+                    </p>
+                    <div className="text-[11px] text-violet-300 font-mono">Resilience Index: Karewa soil erosion reduced by 52%</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="resilience"
+          observeTitle="Citizen Resilience Monitoring &amp; Climate Adaptation Watch"
+          observeSubtitle="Audit riparian buffer health, verify wetland flood storage integrity, or report slope erosion along mountain highways."
+          observeBadge="Ecosystem-based Adaptation Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Wetland Flood Storage & Encroachment Audit',
+              desc: 'Inspect peripheral demarcations of declared wetlands for earth filling, road construction, or conversion to dry agriculture.',
+              benchmark: 'Ramsar Convention Wise Use Guidelines',
+              icon: Waves,
+              color: 'cyan',
+            },
+            {
+              number: '2',
+              title: 'Riparian Buffer Vegetation Canopy Assessment',
+              desc: 'Measure the continuous width (target &gt; 15m) of natural tree and shrub cover along riverbanks to assess bank stability.',
+              benchmark: 'USFS Stream Visual Assessment Protocol (SVAP)',
+              icon: TreePine,
+              color: 'emerald',
+            },
+            {
+              number: '3',
+              title: 'Slope Infiltration & Soil Runoff Testing',
+              desc: 'Document surface gullying and sheetwash on deforested mountain slopes following intense cloudburst events.',
+              benchmark: 'FAO Soil Conservation Field Manual',
+              icon: Mountain,
+              color: 'amber',
+            },
+            {
+              number: '4',
+              title: 'Community Emergency Water Source Readiness',
+              desc: 'Audit backup community handpumps, covered village springs, and rooftop rainwater harvesting drums in remote areas.',
+              benchmark: 'Sphere Humanitarian Minimum Water Standards',
+              icon: ShieldCheck,
+              color: 'teal',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE ROW ─────────────────────────────────────────────────────── */}
       <ModuleScopeRow

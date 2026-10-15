@@ -4,7 +4,8 @@ import { mammalsPhase1 } from './species/mammals';
 import { birdsPhase1 } from './species/birds';
 import { fishPhase1 } from './species/fish';
 import { threatenedPhase1 } from './species/threatened';
-import { medicinalPhase1 } from './species/medicinal';
+import { medicinalPhase1, medicinalEthnoDetails, type MedicinalEthnoDetail } from './species/medicinal';
+export { medicinalEthnoDetails, type MedicinalEthnoDetail };
 import { plantsPhase1 } from './species/plants';
 
 export const mammalsData: BiodiversitySpecies[] = mammalsPhase1;

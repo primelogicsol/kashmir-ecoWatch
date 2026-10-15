@@ -52,7 +52,7 @@ export default function SeasonalActivityPage() {
 
   const activities = useMemo(() => getSpeciesActivities(), []);
   const availableDistricts = useMemo(() => getUnitsForScope(selectedScope as Scope).sort(), [selectedScope]);
-  const availableScopes = ['All', ...GEOGRAPHY.scopes];
+  const availableScopes = [...GEOGRAPHY.scopes];
   
   const taxa = useMemo(() => Array.from(new Set(activities.map(a => a.taxonomicGroup))).sort(), [activities]);
   const activityTypes = useMemo(() => Array.from(new Set(activities.map(a => a.activityType))).sort(), [activities]);
@@ -97,7 +97,12 @@ export default function SeasonalActivityPage() {
         icon={<Calendar className="w-6 h-6 text-violet-400" />}
         label="Biodiversity Intelligence"
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Seasonal Activity' }]}
-        images={['/images/habitat.png']}
+        images={[
+          '/images/protected-network.png',
+          '/images/bear.png',
+          '/images/markhor.png',
+          '/images/tiger.png'
+        ]}
         actions={
           <div className="flex gap-3">
             <Button size="lg" variant="outline" className="border-white/20 text-white" icon={<Clock className="w-5 h-5" />} onClick={() => router.push('/biodiversity/migration-windows')}>

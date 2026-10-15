@@ -7,11 +7,12 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import {
-  ShieldCheck, AlertTriangle, MapPin, Activity, Waves, TreePine,
+  ShieldCheck, Shield, AlertTriangle, MapPin, Activity, Waves, TreePine,
   Droplets, Flame, Mountain, Wind, FlaskConical, CheckCircle2,
   TrendingUp, TrendingDown, Minus, ExternalLink, Info, Database,
   Zap, RefreshCw, Building2, CloudRain
@@ -629,12 +630,14 @@ export default function EnvironmentalResiliencePage() {
   const [domainFilter, setDomainFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
 
   // ── KPIs ──────────────────────────────────────────────────────────────────
 
+  const utilityIncidentsData = resilienceRegistry;
   const totalAssets = resilienceRegistry.length;
   const highRiskZones = resilienceRegistry.filter(r => r.riskExposure === 'Extreme' || r.riskExposure === 'High').length;
   const criticalPriority = resilienceRegistry.filter(r => r.priorityLevel === 'Critical').length;
@@ -658,9 +661,16 @@ export default function EnvironmentalResiliencePage() {
       const matchPriority = priorityFilter === 'all' || r.priorityLevel === priorityFilter;
       const matchRisk = riskFilter === 'all' || r.riskExposure === riskFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchDomain && matchStatus && matchPriority && matchRisk;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && (r.priorityLevel === 'Critical' || r.riskExposure === 'Extreme' || r.riskExposure === 'High')) ||
+        (activeTypology === 'active' && r.operationalStatus !== 'Stable') ||
+        (activeTypology === 'water' && (r.resilienceDomain === 'Water System')) ||
+        (activeTypology === 'sewage' && (r.resilienceDomain === 'Wastewater & Sanitation')) ||
+        (activeTypology === 'power' && (r.resilienceDomain === 'Critical Infrastructure'));
+      return matchSearch && matchScope && matchDistrict && matchDomain && matchStatus && matchPriority && matchRisk && matchTypology;
     });
-  }, [filter, domainFilter, statusFilter, priorityFilter, riskFilter]);
+  }, [filter, domainFilter, statusFilter, priorityFilter, riskFilter, activeTypology]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -774,6 +784,126 @@ export default function EnvironmentalResiliencePage() {
           }}
         />
       </div>
+
+      
+      {/* ── Utility Incidents Typologies & Citizen Field Protocols ─────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Utility Breakdown Typologies & Service Incident Regimes"
+          typologySubtitle="Filter incidents by critical failure severity, active response status, water main bursts, or drainage blockages."
+          typologyIcon={AlertTriangle}
+          typologies={[
+            { id: 'all', label: 'All Incidents', count: utilityIncidentsData.length, icon: AlertTriangle, color: 'emerald' },
+            { id: 'critical', label: 'Critical / High Severity', count: utilityIncidentsData.filter(d => d.severity === 'Critical' || d.severity === 'High').length, icon: Shield, color: 'rose' },
+            { id: 'active', label: 'Active Unresolved Cases', count: utilityIncidentsData.filter(d => d.status === 'Active').length, icon: Activity, color: 'amber' },
+            { id: 'water', label: 'Water Mains & Supply Failures', count: utilityIncidentsData.filter(d => d.utility_type?.toLowerCase().includes('water') || d.incident_category?.toLowerCase().includes('water') || d.incident_title?.toLowerCase().includes('water')).length, icon: Droplets, color: 'cyan' },
+            { id: 'sewage', label: 'Sewer & Drainage Blockages', count: utilityIncidentsData.filter(d => d.utility_type?.toLowerCase().includes('sewage') || d.incident_category?.toLowerCase().includes('drain') || d.incident_title?.toLowerCase().includes('sewer')).length, icon: Waves, color: 'sky' },
+            { id: 'power', label: 'Pumping Substation Outages', count: utilityIncidentsData.filter(d => d.utility_type?.toLowerCase().includes('power') || d.utility_type?.toLowerCase().includes('electric')).length, icon: Zap, color: 'violet' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={utilityIncidentsData.length}
+          entityLabel="tracked incidents"
+          spotlightTitle="Municipal Utility Reliability & Rapid Response Command"
+          spotlightSubtitle="Live incident tracking covering potable pipeline fractures, sub-zero freeze bursts, sewage pumping disruptions, and power outages."
+          tabs={[
+            {
+              id: 'freeze-thaw',
+              label: 'Winter Frost Freeze-Thaw Pipeline Fractures',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Sub-Zero Mechanics</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Exposed Distribution Pipe Freezing</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Temperatures dropping to -8°C during Chillai Kalan freeze shallow galvanized iron (GI) pipes crossing bridges and uninsulated exterior walls, leading to catastrophic longitudinal splitting upon morning thaw.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Peak Incident Season: January 5 to February 10</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Pumping Station Cavitation</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Trash Rake Icing &amp; Pump Tripping</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Floating slush and frazil ice jam intake trash racks at major drainage pump stations along River Jhelum, triggering impeller cavitation and automatic motor shutdown.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Operating Standard: Heated intake bar screens</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Rapid Repair SLA</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Jal Shakti Emergency Flying Squads</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Dedicated welding teams equipped with generator-driven hot-air thawing equipment maintain 4-hour target turnaround times for critical trunk feeder line fractures.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Response Standard: 4-hour critical turnaround SLA</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'spillway-breach',
+              label: 'Canal Breaches & Embankment Slumping',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Flood Spill Channel Riprap Erosion</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      High velocity water during spring cloudbursts scours earthen toe protection along the Padshahi Bagh–Wular flood spill channel, threatening adjacent farmland in Narbal and Hajin.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Surveillance Frequency: 12-hour patrol during flood alerts</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-sky-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Sewer Siphon Chokepoints</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Subsurface sewer siphons traversing beneath navigation canals in Srinagar require high-velocity hydro-jetting to clear gravel and non-biodegradable silt deposits.
+                    </p>
+                    <div className="text-[11px] text-sky-300 font-mono">Maintenance Protocol: Monthly vacuum desilting cycle</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="infrastructure"
+          observeTitle="Citizen Utility Breakdown Dispatch &amp; Pipe Burst Reporting"
+          observeSubtitle="Report high-pressure water main bursts, electric pump tripping, open sewer manholes, or canal leaks for emergency intervention."
+          observeBadge="PHE Emergency Response Active"
+          protocols={[
+            {
+              number: '1',
+              title: 'Water Main Burst & Road Undermining',
+              desc: 'Photograph surface water geysers or asphalt sinking caused by high-pressure distribution pipe fractures.',
+              benchmark: 'Jal Shakti Department Emergency Response Norm',
+              icon: Droplets,
+              color: 'cyan',
+            },
+            {
+              number: '2',
+              title: 'Missing Manhole Cover & Drain Hazard',
+              desc: 'Log open or displaced cast-iron sewer manhole lids on public roads posing fatal hazards to pedestrians and traffic.',
+              benchmark: 'Municipal Safety & Street Hazard Code',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+            {
+              number: '3',
+              title: 'Drainage Pumping Station Power Tripping',
+              desc: 'Verify if neighborhood stormwater pumps fail during rainstorms due to local electrical feeder disruptions.',
+              benchmark: 'Urban Drainage Operating Protocol (SMC)',
+              icon: Zap,
+              color: 'amber',
+            },
+            {
+              number: '4',
+              title: 'Canal Bank Seepage & Sandbag Breach Check',
+              desc: 'Identify water piping or muddy seepage through irrigation canal walls or emergency sandbag reinforcements.',
+              benchmark: 'Irrigation & Flood Control Department Manual',
+              icon: Waves,
+              color: 'teal',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE ROW ─────────────────────────────────────────────────────── */}
       <ModuleScopeRow

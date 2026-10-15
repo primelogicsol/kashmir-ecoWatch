@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -183,6 +184,7 @@ export default function DrinkingWaterPage() {
   const [supplyFilter, setSupplyFilter] = useState('all');
   const [qualityFilter, setQualityFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
   const [currentPage, setCurrentPage] = useState(1);
@@ -207,9 +209,17 @@ export default function DrinkingWaterPage() {
       const matchQuality = qualityFilter === 'all' || d.quality_issue === qualityFilter;
       const matchRisk = riskFilter === 'all' || d.risk_level === riskFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchSupply && matchQuality && matchRisk;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && ['Critical', 'High'].includes(d.risk_level)) ||
+        (activeTypology === 'surface' && (d.supply_type?.toLowerCase().includes('surface') || d.supply_type?.toLowerCase().includes('river') || d.supply_type?.toLowerCase().includes('canal'))) ||
+        (activeTypology === 'ground' && (d.supply_type?.toLowerCase().includes('ground') || d.supply_type?.toLowerCase().includes('tubewell') || d.supply_type?.toLowerCase().includes('borewell'))) ||
+        (activeTypology === 'spring' && (d.supply_type?.toLowerCase().includes('spring') || d.supply_type?.toLowerCase().includes('gravity'))) ||
+        (activeTypology === 'safe' && d.risk_level === 'Low');
+
+      return matchSearch && matchScope && matchDistrict && matchSupply && matchQuality && matchRisk && matchTypology;
     });
-  }, [filter, supplyFilter, qualityFilter, riskFilter]);
+  }, [filter, supplyFilter, qualityFilter, riskFilter, activeTypology]);
 
   const totalCount = drinkingWaterData.length;
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
@@ -290,6 +300,126 @@ export default function DrinkingWaterPage() {
           }}
         />
       </div>
+
+      
+      {/* ── Drinking Water Typologies & Citizen Field Protocols ────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Drinking Water Supply Typologies & Potability Vulnerabilities"
+          typologySubtitle="Select a water source typology, treatment scheme, or risk tier to audit potable supply health across Kashmir."
+          typologyIcon={Droplets}
+          typologies={[
+            { id: 'all', label: 'All Water Sources', count: drinkingWaterData.length, icon: Droplets, color: 'emerald' },
+            { id: 'critical', label: 'High / Critical Risk', count: drinkingWaterData.filter(d => ['Critical', 'High'].includes(d.risk_level)).length, icon: AlertTriangle, color: 'rose' },
+            { id: 'surface', label: 'Surface River & Canal Schemes', count: drinkingWaterData.filter(d => d.supply_type?.toLowerCase().includes('surface') || d.supply_type?.toLowerCase().includes('river') || d.supply_type?.toLowerCase().includes('canal')).length, icon: Waves, color: 'cyan' },
+            { id: 'ground', label: 'Deep Aquifer & Tubewells', count: drinkingWaterData.filter(d => d.supply_type?.toLowerCase().includes('ground') || d.supply_type?.toLowerCase().includes('tubewell') || d.supply_type?.toLowerCase().includes('borewell')).length, icon: MapPin, color: 'indigo' },
+            { id: 'spring', label: 'Spring-Fed Gravity Networks', count: drinkingWaterData.filter(d => d.supply_type?.toLowerCase().includes('spring') || d.supply_type?.toLowerCase().includes('gravity')).length, icon: FlaskConical, color: 'sky' },
+            { id: 'safe', label: 'Safe Baseline Schemes', count: drinkingWaterData.filter(d => d.risk_level === 'Low').length, icon: CheckCircle, color: 'teal' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={drinkingWaterData.length}
+          entityLabel="monitored supplies"
+          spotlightTitle="Potable Supply Infrastructure & Water Quality Benchmarks"
+          spotlightSubtitle="Surveillance of Public Health Engineering (PHE / Jal Shakti) filtration plants, chlorination dosages, and pipeline contamination."
+          tabs={[
+            {
+              id: 'filtration',
+              label: 'Rangil & Doodhpathri WTP Command Basins',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <span className="text-xs font-bold text-cyan-400 block mb-1">Northern Potable Backbone</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Rangil Water Treatment Plant</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Supplies ~36 MGD treated water drawn from the glacial Sind River via the Sind Extension Canal. Operates rapid gravity sand filters and automated alum dosing for low post-melt turbidity.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Service Population: ~650,000 residents</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-400 block mb-1">Southern Urban Supply</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Doodh Ganga / Kralpora WTP</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Supplies uptown Srinagar (Chanapora, Hyderpora, Rawalpora). High vulnerability during autumn/monsoon rainstorms due to upstream soil erosion and agricultural runoff in Budgam.
+                    </p>
+                    <div className="text-[11px] text-teal-300 font-mono">Capacity: 10 MGD with dual flocculation basins</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Springshed Gravity Schemes</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Rural Pir Panjal &amp; Anantnag Springs</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Community drinking water relies directly on natural karst springs (Achabal, Kokernag, Verinag). Vulnerable to surface microbial ingress where intake chambers lack fenced catchment sanitary buffers.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Risk Profile: Fecal coliform spikes post-rainfall</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'disinfection',
+              label: 'Chlorination Integrity & Microbial Safety',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Free Residual Chlorine (FRC) Monitoring</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Terminal consumer tap water must maintain minimum 0.2 mg/L free chlorine to safeguard against cross-contamination from negative pressure leaks in aging distribution networks.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Standard: BIS 10500:2012 Drinking Water Specification</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Bacteriological Surveillance &amp; Turbidity</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Periodic testing for E. coli / total coliform in peripheral overhead storage reservoirs (ESRs) ensures zero pathogenic transmission across schools and hospitals.
+                    </p>
+                    <div className="text-[11px] text-violet-300 font-mono">Target: 0 MPN/100 mL coliform count</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="water"
+          observeTitle="Citizen Potable Water Quality Surveillance &amp; Tap Testing Network"
+          observeSubtitle="Test tap water for residual chlorine, check turbidity, or report suspected waterborne illness outbreaks in your neighborhood."
+          observeBadge="BIS 10500 Potability Standard"
+          protocols={[
+            {
+              number: '1',
+              title: 'Free Residual Chlorine DPD Colorimetry',
+              desc: 'Use DPD-1 test tablets or strips to measure active chlorine in tap water (acceptable range: 0.2 to 0.5 mg/L).',
+              benchmark: 'BIS 10500:2012 Drinking Water Standard',
+              icon: FlaskConical,
+              color: 'cyan',
+            },
+            {
+              number: '2',
+              title: 'Turbidity & Sedimentation Observation',
+              desc: 'Inspect water clarity against white background or measure using portable nephelometer (acceptable: &lt; 1 NTU, max: 5 NTU).',
+              benchmark: 'Central Public Health Engineering Organization',
+              icon: Droplets,
+              color: 'teal',
+            },
+            {
+              number: '3',
+              title: 'H2S Strip Paper Coliform Screening',
+              desc: 'Incubate a sample with hydrogen sulfide test paper for 24 hours at 35°C; black coloration indicates pathogenic coliform presence.',
+              benchmark: 'WHO Field Bacteriological Water Protocol',
+              icon: AlertTriangle,
+              color: 'rose',
+            },
+            {
+              number: '4',
+              title: 'Pipeline Leakage & Contamination Ingress',
+              desc: 'Photograph broken or submerged potable water distribution pipes passing through dirty drainage ditches.',
+              benchmark: 'Jal Shakti Mission Distribution Safety Standard',
+              icon: Shield,
+              color: 'amber',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow

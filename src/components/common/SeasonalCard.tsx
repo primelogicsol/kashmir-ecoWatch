@@ -4,12 +4,14 @@ import React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import * as Icons from 'lucide-react';
+import Link from 'next/link';
 import { SeasonalLandscape, BloomZone, MigrationWindow, PollinatorWindow, PhenologyRecord, HabitatSignal, WaterTransition, SpeciesActivity, ClimateWindow, SeasonalReport } from '@/types/seasonal-ecology';
 
 interface SeasonalCardProps {
   entity: SeasonalLandscape | BloomZone | MigrationWindow | PollinatorWindow | PhenologyRecord | HabitatSignal | WaterTransition | SpeciesActivity | ClimateWindow | SeasonalReport;
   variant?: 'landscape' | 'bloom' | 'migration' | 'pollinator' | 'phenology' | 'habitat' | 'water' | 'species' | 'climate' | 'report';
   onClick?: () => void;
+  detailHref?: string;
 }
 
 const getIconForType = (iconName: string) => {
@@ -29,7 +31,7 @@ const getSeasonBadgeVariant = (season: string): 'default' | 'success' | 'warning
   return variants[season] || 'default';
 };
 
-export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'landscape', onClick }) => {
+export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'landscape', onClick, detailHref }) => {
   const getColorForVariant = () => {
     const colors: { [key: string]: string } = {
       landscape: 'from-emerald-500 to-teal-600',
@@ -79,21 +81,24 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
   };
 
   const getName = () => {
-    if ('name' in entity) return entity.name;
-    if ('title' in entity) return entity.title;
-    if ('speciesCommonName' in entity) return entity.speciesCommonName || entity.speciesName;
+    if ('name' in entity && (entity as any).name) return (entity as any).name;
+    if ('title' in entity && (entity as any).title) return (entity as any).title;
+    if ('speciesCommonName' in entity && (entity as any).speciesCommonName) return (entity as any).speciesCommonName || (entity as any).speciesName;
+    if ('commonName' in entity && (entity as any).commonName) return (entity as any).commonName;
     return 'Unknown';
   };
 
   const getDescription = () => {
-    if ('description' in entity) return entity.description;
+    if ('description' in entity && (entity as any).description) return (entity as any).description;
+    if ('shortDescription' in entity && (entity as any).shortDescription) return (entity as any).shortDescription;
     return '';
   };
 
   const getDistricts = () => {
-    if ('districts' in entity) return entity.districts;
-    if ('district' in entity) return [entity.district];
-    if ('linkedDistricts' in entity) return entity.linkedDistricts;
+    if ('districts' in entity && (entity as any).districts) return (entity as any).districts;
+    if ('district' in entity && (entity as any).district) return [(entity as any).district];
+    if ('linkedDistricts' in entity && (entity as any).linkedDistricts) return (entity as any).linkedDistricts;
+    if ('regionsPresent' in entity && (entity as any).regionsPresent) return (entity as any).regionsPresent;
     return [];
   };
 
@@ -196,7 +201,7 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
   const hoverTextClass = textColorClasses.split(' ')[1]; // Extract the group-hover class
   const baseTextClass = textColorClasses.split(' ')[0]; // Extract the base text class
 
-  return (
+  const cardElement = (
     <Card
       className="group relative overflow-hidden glass-intense border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer h-full flex flex-col justify-between"
       onClick={onClick}
@@ -294,4 +299,14 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
       </div>
     </Card>
   );
+
+  if (detailHref) {
+    return (
+      <Link href={detailHref} className="block h-full no-underline">
+        {cardElement}
+      </Link>
+    );
+  }
+
+  return cardElement;
 };

@@ -36,6 +36,7 @@ interface BiodiversityFiltersProps {
   hideHabitatFilter?: boolean;
   hideAdministrativeUnitFilter?: boolean;
   hideElevationFilter?: boolean;
+  defaultOpen?: boolean;
 }
 
 const conservationStatuses = [
@@ -82,8 +83,9 @@ export function BiodiversityFilters({
   hideHabitatFilter = false,
   hideAdministrativeUnitFilter = false,
   hideElevationFilter = false,
+  defaultOpen = false,
 }: BiodiversityFiltersProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(defaultOpen);
 
   const activeFilterCount = 
     (filters.searchQuery ? 1 : 0) +
@@ -147,14 +149,25 @@ export function BiodiversityFilters({
           >
             {moduleOptions && onModuleChange && (
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Module</label>
+                <label className="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                  <span>Module</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">Active View</span>
+                </label>
                 <select
                   value={activeModule || 'overview'}
                   onChange={(e) => onModuleChange(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-emerald-400 font-medium focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-emerald-500/40 text-emerald-300 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-400 transition-colors shadow-sm cursor-pointer"
+                  style={{ backgroundColor: '#020617', color: '#6ee7b7' }}
                 >
                   {moduleOptions.map(m => (
-                    <option key={m.id} value={m.id}>{m.label}</option>
+                    <option 
+                      key={m.id} 
+                      value={m.id}
+                      className="bg-slate-900 text-slate-100 font-medium py-1.5"
+                      style={{ backgroundColor: '#0f172a', color: '#f8fafc' }}
+                    >
+                      {m.label}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -169,22 +182,23 @@ export function BiodiversityFilters({
                   placeholder={searchPlaceholder}
                   value={filters.searchQuery || ''}
                   onChange={(e) => handleChange('searchQuery', e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-forest-500/50 transition-colors"
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/60 transition-colors" style={{ backgroundColor: "#020617", color: "#ffffff" }}
                 />
               </div>
             </div>
 
             {category1Key !== 'none' && (
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category1Label}</label>
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">{category1Label}</label>
                 <select
                   value={filters[category1Key] || 'all'}
                   onChange={(e) => handleChange(category1Key, e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500/60 transition-colors cursor-pointer"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 >
-                  <option value="all">All</option>
+                  <option value="all" className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All</option>
                   {category1Options.map(s => (
-                    <option key={s.id} value={s.id}>{s.label}</option>
+                    <option key={s.id} value={s.id} className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>{s.label}</option>
                   ))}
                 </select>
               </div>
@@ -192,22 +206,23 @@ export function BiodiversityFilters({
 
             {!hideHabitatFilter && (
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{category2Label}</label>
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">{category2Label}</label>
                 <select
                   value={filters[category2Key] || 'all'}
                   onChange={(e) => handleChange(category2Key, e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500/60 transition-colors cursor-pointer"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 >
-                  <option value="all">All</option>
+                  <option value="all" className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All</option>
                   {category2Options.map(h => (
-                    <option key={h} value={h}>{h}</option>
+                    <option key={h} value={h} className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>{h}</option>
                   ))}
                 </select>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Ecological Scope</label>
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Ecological Scope</label>
               <select
                 value={filters.scope || 'All'}
                 onChange={(e) => {
@@ -217,25 +232,27 @@ export function BiodiversityFilters({
                     administrativeUnit: undefined 
                   });
                 }}
-                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500/60 transition-colors cursor-pointer"
+                style={{ backgroundColor: '#020617', color: '#ffffff' }}
               >
                 {scopes.map(r => (
-                  <option key={r} value={r}>{r}</option>
+                  <option key={r} value={r} className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>{r}</option>
                 ))}
               </select>
             </div>
 
             {!hideAdministrativeUnitFilter && (
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Administrative Unit</label>
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Administrative Unit</label>
                 <select
                   value={filters.administrativeUnit || 'All'}
                   onChange={(e) => handleChange('administrativeUnit', e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors disabled:opacity-50"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500/60 transition-colors disabled:opacity-50 cursor-pointer"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 >
-                  <option value="All">All Units in {filters.scope || 'All'}</option>
+                  <option value="All" className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Units in {filters.scope || 'All'}</option>
                   {availableUnits.map(u => (
-                    <option key={u} value={u}>{u}</option>
+                    <option key={u} value={u} className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>{u}</option>
                   ))}
                 </select>
               </div>
@@ -243,15 +260,16 @@ export function BiodiversityFilters({
 
             {!hideElevationFilter && (
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Elevation Range</label>
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Elevation Range</label>
                 <select
                   value={filters.elevation || 'all'}
                   onChange={(e) => handleChange('elevation', e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-forest-500/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm rounded-lg bg-slate-950 border border-white/20 text-white font-medium focus:outline-none focus:border-emerald-500/60 transition-colors cursor-pointer"
+                  style={{ backgroundColor: '#020617', color: '#ffffff' }}
                 >
-                  <option value="all">All Elevations</option>
+                  <option value="all" className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>All Elevations</option>
                   {elevations.map(e => (
-                    <option key={e.id} value={e.id}>{e.label}</option>
+                    <option key={e.id} value={e.id} className="bg-slate-900 text-white font-medium" style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>{e.label}</option>
                   ))}
                 </select>
               </div>

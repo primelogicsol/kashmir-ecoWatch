@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
@@ -10,7 +10,7 @@ import {
   Bell, AlertTriangle, Clock, Calendar, ArrowRight, Filter, X,
   MapPin, Shield, TrendingUp, CheckCircle2, AlertCircle,
   Droplets, Mountain, Snowflake, Flame, Wind, ThermometerSun,
-  ChevronDown, ChevronUp
+  ChevronDown, ChevronUp, RotateCw, Radio
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -21,6 +21,7 @@ import {
   AlertItem, AlertSeverity, AlertStatus, AlertCategory
 } from '@/data/alert-registry';
 import { cn } from '@/lib/utils';
+import { useLiveAlerts } from '@/hooks/useLiveAlerts';
 
 const categoryIcons: Record<AlertCategory, React.ElementType> = {
   flood: Droplets,
@@ -33,11 +34,22 @@ const categoryIcons: Record<AlertCategory, React.ElementType> = {
   storm: Wind,
 };
 
-const districtList = Array.from(new Set(alertRegistry.map(a => a.district)));
+
 
 export default function AlertsPage() {
   const router = useRouter();
-  const stats = getAlertStats();
+  const { alerts, isLoading, isLive, lastUpdated, refetch } = useLiveAlerts();
+
+  const stats = useMemo(() => ({
+    total: alerts.length,
+    active: alerts.filter(a => a.status === 'active').length,
+    monitoring: alerts.filter(a => a.status === 'monitoring').length,
+    expired: alerts.filter(a => a.status === 'expired').length,
+    highSeverity: alerts.filter(a => a.severity === 'high' || a.severity === 'critical').length,
+    districtsAffected: new Set(alerts.map(a => a.district)).size,
+  }), [alerts]);
+
+  const districtList = useMemo(() => Array.from(new Set(alerts.map(a => a.district))), [alerts]);
   
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -54,7 +66,7 @@ export default function AlertsPage() {
 
   // Filter alerts based on tab and filters
   const filteredAlerts = useMemo(() => {
-    let result = [...alertRegistry];
+    let result = [...alerts];
 
     // Tab filter
     if (activeTab === 'active') {
@@ -147,6 +159,35 @@ export default function AlertsPage() {
         label="Risk & Monitoring"
       />
 
+      {/* Live Telemetry Status Banner */}
+      <section className="bg-emerald-950/20 border-b border-emerald-500/20 py-3">
+        <div className="container mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-300">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30 text-[11px]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+              LIVE TELEMETRY ACTIVE
+            </span>
+            <span className="text-slate-400 hidden md:inline">
+              Real-time multi-hazard telemetry feeds from <strong>Open-Meteo CAMS</strong>, <strong>GloFAS Hydrology</strong>, and <strong>USGS Real-Time Earthquakes</strong>.
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 text-[11px] self-end sm:self-auto">
+            <span className="text-slate-400 font-mono">
+              {lastUpdated ? `Updated: ${new Date(lastUpdated).toLocaleTimeString()}` : 'Connected'}
+            </span>
+            <button
+              onClick={() => refetch()}
+              disabled={isLoading}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all font-semibold disabled:opacity-50"
+            >
+              <RotateCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-emerald-400' : ''}`} />
+              <span>Refresh APIs</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Summary Strip */}
       <section className="py-8 bg-slate-900/50 border-y border-white/5">
         <div className="container mx-auto px-6">
@@ -182,7 +223,7 @@ export default function AlertsPage() {
             {/* Tabs */}
             <div className="flex items-center gap-2">
               {[
-                { key: 'all', label: 'All Alerts', count: alertRegistry.length },
+                { key: 'all', label: 'All Alerts', count: stats.total },
                 { key: 'active', label: 'Active', count: stats.active },
                 { key: 'monitoring', label: 'Monitoring', count: stats.monitoring },
                 { key: 'expired', label: 'Archived', count: stats.expired },

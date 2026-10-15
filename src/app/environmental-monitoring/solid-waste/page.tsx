@@ -7,12 +7,13 @@ import { Badge } from '@/components/ui/Badge';
 import {
   Trash2, ChevronRight, Droplets, MapPin, 
   Shield, Activity, CheckCircle, Search, 
-  ChevronLeft, Building2, Factory
+  ChevronLeft, Building2, Factory, AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
+import { EnvironmentalObserveSpotlight } from '@/components/common/EnvironmentalObserveSpotlight';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
@@ -217,6 +218,7 @@ export default function SolidWastePage() {
   const [collectionFilter, setCollectionFilter] = useState('all');
   const [treatmentFilter, setTreatmentFilter] = useState('all');
   const [surgeFilter, setSurgeFilter] = useState('all');
+  const [activeTypology, setActiveTypology] = useState('all');
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
@@ -242,9 +244,18 @@ export default function SolidWastePage() {
       const matchTreatment = treatmentFilter === 'all' || d.treatment_linkage === treatmentFilter;
       const matchSurge = surgeFilter === 'all' || d.seasonal_surge === surgeFilter;
 
-      return matchSearch && matchScope && matchDistrict && matchCity && matchCollection && matchTreatment && matchSurge;
+      const matchTypology = 
+        activeTypology === 'all' ||
+        (activeTypology === 'critical' && ['Critical', 'High'].includes(d.risk_level)) ||
+        (activeTypology === 'commercial' && (d.ward_category?.toLowerCase().includes('commercial') || d.ward_category?.toLowerCase().includes('market'))) ||
+        (activeTypology === 'residential' && d.ward_category?.toLowerCase().includes('residential')) ||
+        (activeTypology === 'tourist' && (d.ward_category?.toLowerCase().includes('tourist') || d.ward_category?.toLowerCase().includes('transit') || d.city_region?.toLowerCase().includes('gulmarg') || d.city_region?.toLowerCase().includes('pahalgam'))) ||
+        (activeTypology === 'mapped' && d.collection_status === 'Mapped') ||
+        (activeTypology === 'unlinked' && (!d.treatment_linkage || d.treatment_linkage.includes('None') || d.treatment_linkage.includes('Unlinked')));
+
+      return matchSearch && matchScope && matchDistrict && matchCity && matchCollection && matchTreatment && matchSurge && matchTypology;
     });
-  }, [filter, cityFilter, collectionFilter, treatmentFilter, surgeFilter]);
+  }, [filter, cityFilter, collectionFilter, treatmentFilter, surgeFilter, activeTypology]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -325,6 +336,127 @@ export default function SolidWastePage() {
           }}
         />
       </div>
+
+      
+      {/* ── Solid Waste Typologies & Citizen Field Protocols ───────────────── */}
+      <div className="container mx-auto px-6 mt-6">
+        <EnvironmentalObserveSpotlight
+          typologyTitle="Solid Waste Focus Typologies & Risk Tiers"
+          typologySubtitle="Select a municipal solid waste profile, risk tier, or collection status to filter ward-level intelligence."
+          typologyIcon={Trash2}
+          typologies={[
+            { id: 'all', label: 'All Wards & Sectors', count: solidWasteData.length, icon: Trash2, color: 'emerald' },
+            { id: 'critical', label: 'Critical & High Risk', count: solidWasteData.filter(d => ['Critical', 'High'].includes(d.risk_level)).length, icon: Shield, color: 'rose' },
+            { id: 'commercial', label: 'Commercial & Markets', count: solidWasteData.filter(d => d.ward_category?.toLowerCase().includes('commercial') || d.ward_category?.toLowerCase().includes('market')).length, icon: Building2, color: 'amber' },
+            { id: 'residential', label: 'Residential Density', count: solidWasteData.filter(d => d.ward_category?.toLowerCase().includes('residential')).length, icon: Factory, color: 'cyan' },
+            { id: 'tourist', label: 'Tourist & Pilgrim Hubs', count: solidWasteData.filter(d => d.ward_category?.toLowerCase().includes('tourist') || d.ward_category?.toLowerCase().includes('transit') || d.city_region?.toLowerCase().includes('gulmarg') || d.city_region?.toLowerCase().includes('pahalgam')).length, icon: MapPin, color: 'sky' },
+            { id: 'mapped', label: 'Mapped Collection', count: solidWasteData.filter(d => d.collection_status === 'Mapped').length, icon: CheckCircle, color: 'teal' },
+            { id: 'unlinked', label: 'Treatment Gaps', count: solidWasteData.filter(d => !d.treatment_linkage || d.treatment_linkage.includes('None') || d.treatment_linkage.includes('Unlinked')).length, icon: Activity, color: 'violet' },
+          ]}
+          activeTypology={activeTypology}
+          onSelectTypology={(id) => { setActiveTypology(id); setCurrentPage(1); }}
+          showingCount={filteredData.length}
+          totalCount={solidWasteData.length}
+          entityLabel="monitored wards"
+          spotlightTitle="Municipal Solid Waste Infrastructure & Hotspot Intelligence"
+          spotlightSubtitle="Granular tracking of primary dumpsites, landfill diversion targets, and collection logistics across Kashmir's urban and rural local bodies."
+          tabs={[
+            {
+              id: 'achan',
+              label: 'Achan Saidapora Landfill Stress',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20">
+                    <span className="text-xs font-bold text-rose-400 block mb-1">Primary Municipal Disposal</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Achan Landfill Site, Srinagar</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Receives ~550 TPD from Srinagar municipal limits. Existing engineered landfill cells face severe volumetric exhaustion, generating high biochemical oxygen demand (BOD) leachate.
+                    </p>
+                    <div className="text-[11px] text-rose-300 font-mono">Capacity Status: 92% footprint saturated</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-amber-500/20">
+                    <span className="text-xs font-bold text-amber-400 block mb-1">Catchment Ingress Threat</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Anchar Lake Hydrological Link</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Subsurface unlined leachate plumes threaten neighboring Anchar Lake and tributary wetlands. Active reverse osmosis treatment units operate under strict NGT discharge supervision.
+                    </p>
+                    <div className="text-[11px] text-amber-300 font-mono">Discharge Standard: COD &lt; 250 mg/L</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/20">
+                    <span className="text-xs font-bold text-emerald-400 block mb-1">Bioremediation Transition</span>
+                    <h5 className="text-sm font-semibold text-white mb-2">Legacy Waste Bio-Mining</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Trommel segregation lines and refuse-derived fuel (RDF) extraction projects aim to reclaim 12+ acres of legacy dumpsite land under Swachh Bharat Mission (Urban) 2.0.
+                    </p>
+                    <div className="text-[11px] text-emerald-300 font-mono">Target Recovery: 350,000 MT legacy waste</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              id: 'lakefront',
+              label: 'Dal Lakefront & Houseboat Zero-Discharge',
+              content: (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Waterborne Pontoon Collection Logistics</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Lakes and Waterways Development Authority (LCMA) operates motorized collection barges servicing 900+ registered houseboats and 58 interior island hamlets on Dal and Nigeen lakes.
+                    </p>
+                    <div className="text-[11px] text-cyan-300 font-mono">Daily Marine Extraction: 22.4 TPD segregated waste</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20">
+                    <h5 className="text-sm font-semibold text-white mb-2">Single-Use Plastic Ban &amp; Lake Barriers</h5>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                      Trash booms deployed at Pokhribal, Meerak Shah canal, and Telbal nallah intercept floating polyethylene and PET containers before dispersing into open water basins.
+                    </p>
+                    <div className="text-[11px] text-violet-300 font-mono">Boom Efficiency: 89% surface macro-plastic interception</div>
+                  </div>
+                </div>
+              ),
+            },
+          ]}
+          observeCategory="waste"
+          observeTitle="Citizen Solid Waste Auditing &amp; Litter Surveillance Network"
+          observeSubtitle="Document open illegal dumping, verify door-to-door segregation compliance, or report burning of municipal garbage."
+          observeBadge="SWM Rule 2016 Compliant"
+          protocols={[
+            {
+              number: '1',
+              title: 'Open Municipal Waste Dumping Spotting',
+              desc: 'Photograph and geo-tag unauthorized piles exceeding 2m³ within 100 meters of watercourses, schools, or fruit orchards.',
+              benchmark: 'CPCB SWM Rules 2016 Rule 15',
+              icon: Trash2,
+              color: 'rose',
+            },
+            {
+              number: '2',
+              title: 'Open Burning of Garbage & Plastic Detection',
+              desc: 'Report active smoldering or combustion of plastic packaging and domestic waste generating black acrid smoke.',
+              benchmark: 'Air (Prevention & Control of Pollution) Act Sec 19',
+              icon: AlertTriangle,
+              color: 'amber',
+            },
+            {
+              number: '3',
+              title: 'Waste Segregation Compliance Check',
+              desc: 'Audit whether local commercial shops or residential clusters utilize color-coded 2-bin (wet/dry) segregation systems.',
+              benchmark: 'Swachh Bharat Urban Segregation Protocol',
+              icon: CheckCircle,
+              color: 'teal',
+            },
+            {
+              number: '4',
+              title: 'Leachate Runoff & Drainage Seepage Audit',
+              desc: 'Identify dark anoxic runoff flowing out of waste transfer points or community garbage containers into public drains.',
+              benchmark: 'CPCB Municipal Leachate Standards',
+              icon: Droplets,
+              color: 'cyan',
+            },
+          ]}
+        />
+      </div>
+
 
       {/* ── SCOPE TABS & CONTROLS ────────────────────────────────────────── */}
       <ModuleScopeRow

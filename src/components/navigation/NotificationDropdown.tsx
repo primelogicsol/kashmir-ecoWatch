@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   Bell, Check, ExternalLink, AlertTriangle, 
   Droplets, Mountain, Flame, Wind, Activity, X,
-  Clock, Shield, ArrowRight
+  Clock, Shield, ArrowRight, RotateCw, Radio
 } from 'lucide-react';
-import { alertRegistry, AlertItem } from '@/data/alert-registry';
+import { AlertItem, AlertCategory } from '@/data/alert-registry';
+import { useLiveAlerts } from '@/hooks/useLiveAlerts';
 
 interface NotificationDropdownProps {
   isOpen: boolean;
@@ -15,56 +16,31 @@ interface NotificationDropdownProps {
 }
 
 export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownProps) {
-  const [readAlertIds, setReadAlertIds] = useState<Set<string>>(new Set());
+  const {
+    alerts,
+    isLoading,
+    isLive,
+    lastUpdated,
+    readAlertIds,
+    unreadCount,
+    refetch,
+    markAsRead,
+    markAllAsRead,
+  } = useLiveAlerts();
+
   const [filter, setFilter] = useState<'all' | 'unread' | 'critical'>('all');
 
-  // Load read status from localStorage
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('kew_read_notifications');
-      if (stored) {
-        setReadAlertIds(new Set(JSON.parse(stored)));
-      }
-    } catch (e) {
-      console.error('Failed to load read notifications:', e);
-    }
-  }, []);
-
-  const markAsRead = (id: string) => {
-    const updated = new Set(readAlertIds).add(id);
-    setReadAlertIds(updated);
-    try {
-      localStorage.setItem('kew_read_notifications', JSON.stringify(Array.from(updated)));
-      window.dispatchEvent(new Event('kew_alerts_updated'));
-    } catch (e) {
-      console.error('Failed to save read notifications:', e);
-    }
-  };
-
-  const markAllAsRead = () => {
-    const allIds = new Set(alertRegistry.map(a => a.id));
-    setReadAlertIds(allIds);
-    try {
-      localStorage.setItem('kew_read_notifications', JSON.stringify(Array.from(allIds)));
-      window.dispatchEvent(new Event('kew_alerts_updated'));
-    } catch (e) {
-      console.error('Failed to save read notifications:', e);
-    }
-  };
-
   const clearAllHistory = () => {
-    setReadAlertIds(new Set());
     try {
       localStorage.removeItem('kew_read_notifications');
       window.dispatchEvent(new Event('kew_alerts_updated'));
+      window.location.reload();
     } catch (e) {
       console.error('Failed to clear read notifications:', e);
     }
   };
 
-  const unreadCount = alertRegistry.filter(a => !readAlertIds.has(a.id)).length;
-
-  const filteredAlerts = alertRegistry.filter(alert => {
+  const filteredAlerts = alerts.filter(alert => {
     if (filter === 'unread') return !readAlertIds.has(alert.id);
     if (filter === 'critical') return alert.severity === 'high' || alert.severity === 'critical';
     return true;
@@ -78,6 +54,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
       case 'landslide': return Mountain;
       case 'fire': return Flame;
       case 'air-quality': return Wind;
+      case 'earthquake': return AlertTriangle;
       default: return Activity;
     }
   };
@@ -96,23 +73,46 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
 
   return (
     <div 
-      className="absolute right-0 top-full mt-2 w-96 max-w-[calc(100vw-1.5rem)] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
+      className="absolute right-0 top-full mt-2 w-[420px] max-w-[calc(100vw-1.5rem)] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
       onClick={e => e.stopPropagation()}
     >
       {/* Header */}
-      <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-950/60">
+      <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-950/70">
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
             <Bell className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white leading-tight">Live Alert Stream</h3>
-            <p className="text-[11px] text-slate-400">
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-bold text-white leading-tight">Live Alert Stream</h3>
+              {isLive ? (
+                <span className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
+                  LIVE API
+                </span>
+              ) : (
+                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
+                  CACHED
+                </span>
+              )}
+            </div>
+            <p className="text-[11px] text-slate-400 mt-0.5">
               {unreadCount > 0 ? `${unreadCount} unread environmental alerts` : 'All alerts up to date'}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => refetch()}
+            disabled={isLoading}
+            className="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-white/5 transition-colors disabled:opacity-50"
+            title="Refresh live telemetry APIs"
+            aria-label="Refresh live telemetry"
+          >
+            <RotateCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-emerald-400' : ''}`} />
+          </button>
+
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
@@ -122,14 +122,26 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
               Mark all read
             </button>
           )}
+
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
             aria-label="Close notifications"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
+      </div>
+
+      {/* Live Telemetry Info Banner */}
+      <div className="px-4 py-2 bg-emerald-950/30 border-b border-emerald-500/10 flex items-center justify-between text-[11px] text-slate-300">
+        <div className="flex items-center gap-1.5">
+          <Radio className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+          <span>Real-time feeds: <strong>Open-Meteo CAMS</strong>, <strong>GloFAS</strong> &amp; <strong>USGS</strong></span>
+        </div>
+        <span className="text-slate-500 font-mono text-[10px]">
+          {lastUpdated ? new Date(lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}
+        </span>
       </div>
 
       {/* Filter Tabs */}
@@ -176,24 +188,33 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300">
-                      {alert.district}
-                    </span>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${getSeverityBadge(alert.severity)}`}>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300 shrink-0">
+                        {alert.district}
+                      </span>
+                      {alert.id.startsWith('live-') && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 shrink-0">
+                          LIVE SENSOR
+                        </span>
+                      )}
+                    </div>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border shrink-0 ${getSeverityBadge(alert.severity)}`}>
                       {alert.severity}
                     </span>
                   </div>
+
                   <h4 className="text-xs font-bold text-white leading-snug line-clamp-1 mb-1">
                     {alert.title}
                   </h4>
                   <p className="text-[11px] text-slate-400 leading-relaxed line-clamp-2 mb-2">
                     {alert.summary}
                   </p>
+
                   <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-slate-500 font-mono text-[10px]">
+                    <span className="text-slate-500 font-mono text-[10px] truncate max-w-[180px]">
                       {alert.issuedBy}
                     </span>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 shrink-0">
                       <Link
                         href={alert.relatedModulePath}
                         onClick={() => {
@@ -226,11 +247,11 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
       {/* Footer */}
       <div className="p-3 bg-slate-950/80 border-t border-white/10 flex items-center justify-between text-xs">
         <Link
-          href="/risk-monitoring/live-alerts-advisories"
+          href="/alerts"
           onClick={onClose}
           className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
         >
-          <span>Open Full Alert Stream</span>
+          <span>Open Full Alert Observatory</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </Link>
         <button

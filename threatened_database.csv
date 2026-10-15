@@ -1,90 +1,61 @@
-Species ID,Common Name,Scientific Name,Taxonomic Group,Status,Elevation Min,Elevation Max,Sensitivity
-threatened-1,"Hangul","Cervus hanglu hanglu",mammals,CR,1500,3600,critical
-threatened-2,"Kashmir Musk Deer","Moschus cupreus",mammals,EN,2500,4000,high
-threatened-3,"Snow Leopard","Panthera uncia",mammals,VU,3000,5000,medium
-threatened-4,"Himalayan Brown Bear","Ursus arctos isabellinus",mammals,CR,2500,4500,critical
-threatened-5,"Markhor","Capra falconeri",mammals,NT,1000,3500,low
-threatened-6,"Himalayan Serow","Capricornis sumatraensis thar",mammals,VU,2000,3500,medium
-threatened-7,"Ladakh Urial","Ovis vignei vignei",mammals,VU,3000,4500,medium
-threatened-8,"Tibetan Antelope","Pantholops hodgsonii",mammals,NT,4000,5500,low
-threatened-9,"Tibetan Wild Ass","Equus kiang",mammals,LC,4000,5500,low
-threatened-10,"Himalayan Tahr","Hemitragus jemlahicus",mammals,NT,2000,4000,low
-threatened-11,"Eurasian Lynx","Lynx lynx isabellinus",mammals,LC,3000,4500,low
-threatened-12,"Pallas's Cat","Otocolobus manul",mammals,LC,3500,5000,low
-threatened-13,"Himalayan Black Bear","Ursus thibetanus laniger",mammals,VU,1500,3500,medium
-threatened-14,"Woolly Flying Squirrel","Eupetaurus cinereus",mammals,EN,2500,4000,high
-threatened-15,"Tibetan Wolf","Canis lupus chanco",mammals,LC,3000,5000,low
-threatened-16,"Western Tragopan","Tragopan melanocephalus",birds,VU,2400,3600,medium
-threatened-17,"Kashmir Flycatcher","Ficedula subrubra",birds,VU,1800,3000,medium
-threatened-18,"White-rumped Vulture","Gyps bengalensis",birds,CR,300,1500,critical
-threatened-19,"Slender-billed Vulture","Gyps tenuirostris",birds,CR,300,1500,critical
-threatened-20,"Red-headed Vulture","Sarcogyps calvus",birds,CR,300,2000,critical
-threatened-21,"Egyptian Vulture","Neophron percnopterus",birds,EN,300,2500,high
-threatened-22,"Steppe Eagle","Aquila nipalensis",birds,EN,1000,4000,high
-threatened-23,"Pallas's Fish Eagle","Haliaeetus leucoryphus",birds,EN,1000,3000,high
-threatened-24,"Saker Falcon","Falco cherrug",birds,EN,3000,5000,high
-threatened-25,"White-headed Duck","Oxyura leucocephala",birds,EN,1500,2000,high
-threatened-26,"Baer's Pochard","Aythya baeri",birds,CR,1500,2000,critical
-threatened-27,"Black-bellied Tern","Sterna acuticauda",birds,EN,300,1000,high
-threatened-28,"Cheer Pheasant","Catreus wallichii",birds,VU,1500,3000,medium
-threatened-29,"MacQueen's Bustard","Chlamydotis macqueenii",birds,VU,300,1500,medium
-threatened-30,"Marbled Teal","Marmaronetta angustirostris",birds,VU,1500,2000,medium
-threatened-31,"Greater Spotted Eagle","Clanga clanga",birds,VU,1500,3000,medium
-threatened-32,"Eastern Imperial Eagle","Aquila heliaca",birds,VU,1000,3000,medium
-threatened-33,"Sarus Crane","Antigone antigone",birds,VU,300,1000,medium
-threatened-34,"Black-necked Crane","Grus nigricollis",birds,NT,4000,5000,low
-threatened-35,"Ferruginous Duck","Aythya nyroca",birds,NT,1500,2000,low
-threatened-36,"Tytler's Leaf Warbler","Phylloscopus tytleri",birds,NT,2000,3500,low
-threatened-37,"Himalayan Monal","Lophophorus impejanus",birds,LC,2500,4500,low
-threatened-38,"Koklass Pheasant","Pucrasia macrolopha",birds,LC,2000,3500,low
-threatened-39,"Ibisbill","Ibidorhyncha struthersii",birds,LC,2000,4000,low
-threatened-40,"Kashmir Nuthatch","Sitta cashmirensis",birds,LC,2000,3000,low
-threatened-41,"Golden Mahseer","Tor putitora",fish,EN,300,1500,high
-threatened-42,"Kashmir Catfish","Glyptothorax kashmirensis",fish,CR,1000,2000,critical
-threatened-43,"Alwan Snow Trout","Schizothorax richardsonii",fish,VU,500,3000,medium
-threatened-44,"Helicopter Catfish","Wallago attu",fish,VU,300,1000,medium
-threatened-45,"Chirruh Snow Trout","Schizothorax esocinus",fish,LC,1500,3000,low
-threatened-46,"Kuth / Costus","Saussurea costus",medicinal-plants,CR,2500,3500,critical
-threatened-47,"Indian Aconite / Atis","Aconitum heterophyllum",medicinal-plants,EN,3000,4000,high
-threatened-48,"Himalayan Mayapple","Podophyllum hexandrum",medicinal-plants,EN,2500,4000,high
-threatened-49,"Salam Panja","Dactylorhiza hatagirea",medicinal-plants,EN,2800,4000,high
-threatened-50,"Kutki / Kour","Picrorhiza kurrooa",medicinal-plants,EN,3000,4500,high
-threatened-51,"Spikenard / Jatamansi","Nardostachys jatamansi",medicinal-plants,CR,3500,5000,critical
-threatened-52,"Himalayan Yew","Taxus wallichiana",medicinal-plants,EN,2000,3500,high
-threatened-53,"Himalayan Fritillary","Fritillaria roylei",medicinal-plants,VU,2500,4000,medium
-threatened-54,"Himalayan Trillium","Trillium govanianum",medicinal-plants,EN,2500,3500,high
-threatened-55,"Himalayan Blue Poppy","Meconopsis aculeata",plants,EN,3500,4500,high
-threatened-56,"Chora / Angelica","Angelica glauca",medicinal-plants,EN,2500,3500,high
-threatened-57,"Himalayan Rhubarb","Rheum australe",medicinal-plants,VU,3000,4500,medium
-threatened-58,"Gaozaban","Arnebia benthamii",medicinal-plants,EN,3000,4000,high
-threatened-59,"Black Cumin","Bunium persicum",medicinal-plants,VU,2000,3000,medium
-threatened-60,"Himalayan Yam","Dioscorea deltoidea",medicinal-plants,EN,1500,3000,high
-threatened-61,"Yellow Colchicum","Colchicum luteum",medicinal-plants,VU,1500,3000,medium
-threatened-62,"Indian Gentian","Gentiana kurroo",medicinal-plants,CR,1500,3000,critical
-threatened-63,"Somlata / Ephedra","Ephedra gerardiana",medicinal-plants,NT,2500,4500,low
-threatened-64,"Kashmir Sage","Artemisia amygdalina",medicinal-plants,CR,2000,3000,critical
-threatened-65,"Brahma Kamal","Saussurea obvallata",plants,LC,3500,5000,low
-threatened-66,"Snow Lotus","Saussurea simpsoniana",plants,LC,4500,5500,low
-threatened-67,"Dhup","Jurinea macrocephala",medicinal-plants,LC,3000,4000,low
-threatened-68,"Himalayan Elm","Ulmus wallichiana",plants,VU,2000,3000,medium
-threatened-69,"Chirayita","Swertia chirayita",medicinal-plants,VU,1500,3000,medium
-threatened-70,"Poison Aconite","Aconitum chasmanthum",medicinal-plants,CR,2500,4000,critical
-threatened-71,"Himalayan Birch","Betula utilis",plants,LC,3000,4000,low
-threatened-72,"Chilgoza Pine","Pinus gerardiana",plants,NT,2000,3000,low
-threatened-73,"Whorled Solomon's Seal","Polygonatum verticillatum",medicinal-plants,LC,2500,3500,low
-threatened-74,"Tendril Solomon's Seal","Polygonatum cirrhifolium",medicinal-plants,LC,2500,3500,low
-threatened-75,"Himalayan Paris","Paris polyphylla",medicinal-plants,VU,2000,3000,medium
-threatened-76,"Violet Aconite","Aconitum violaceum",medicinal-plants,VU,3000,4500,medium
-threatened-77,"Indian Valerian","Valeriana jatamansi",medicinal-plants,LC,1500,3000,low
-threatened-78,"Himalayan Bergenia","Bergenia ciliata",medicinal-plants,LC,1500,3000,low
-threatened-79,"Giant Fennel","Ferula jaeschkeana",medicinal-plants,LC,2000,3000,low
-threatened-80,"Pushkarmool","Inula racemosa",medicinal-plants,VU,2000,3000,medium
-threatened-81,"Himalayan Cherry","Prunus prostrata",plants,LC,2500,3500,low
-threatened-82,"Webb's Rose","Rosa webbiana",plants,LC,2000,3500,low
-threatened-83,"Dwarf Rhododendron","Rhododendron anthopogon",plants,LC,3500,4500,low
-threatened-84,"Bell Rhododendron","Rhododendron campanulatum",plants,LC,3000,4000,low
-threatened-85,"Kashmir Rowan","Sorbus kashmirica",plants,LC,2500,3500,low
-threatened-86,"Himalayan Juniper","Juniperus semiglobosa",plants,LC,3000,4500,low
-threatened-87,"Kashmir Corydalis","Corydalis cashmeriana",plants,LC,3000,4000,low
-threatened-88,"Snow Columbine","Aquilegia nivalis",plants,LC,3000,4000,low
-threatened-89,"Deodar Cedar","Cedrus deodara",plants,LC,1500,2500,low
+Species ID,Common Name,Scientific Name,Kashmiri Name,Taxonomic Group,IUCN Status,National Status,Elevation Min,Elevation Max,Estimated Population,Trafficking Corridor,Sensitivity
+thr-mam-01,"Hangul (Kashmir Stag)","Cervus hanglu hanglu","Kashur Hangul / ہانٛگُل",mammals,CR,"Schedule I (WPA 1972)",1600,3600,"289 individuals (2023 J&K Wildlife Dept Census)","Pir Panjal High Passes & Tral-Sindh Forest Transit",critical
+thr-mam-02,"Kashmir Musk Deer","Moschus cupreus","Kashur Rous / روٗس",mammals,EN,"Schedule I (WPA 1972)",2500,4100,"~450-600 fragmented individuals","Pir Panjal Passes & Kishtwar-Chamba High Alpine Axis",critical
+thr-mam-03,"Snow Leopard","Panthera uncia","Shen Suh / شین سُہ (Shan / ཤན)",mammals,VU,"Schedule I (WPA 1972)",3000,5500,"~450 in Ladakh, ~35-50 in J&K, ~200 in GB","Zojila - Kargil - Leh Axis & Karakoram Highway Transit",critical
+thr-mam-04,"Himalayan Brown Bear","Ursus arctos isabellinus","Lal-Haputh / لال ہاپُتھ",mammals,CR,"Schedule I (WPA 1972)",2800,4800,"~150-200 individuals in Kashmir, ~300 in Deosai","Zojila Route & Gurez-Astore Alpine Passes",critical
+thr-mam-05,"Flare-horned Markhor (Pir Panjal Markhor)","Capra falconeri cashmiriensis","Markhor / مارخور",mammals,EN,"Schedule I (WPA 1972)",1400,3800,"~350-400 individuals in Kazinag & Hirpora","Mughal Road / Pir Panjal Border Ridge",critical
+thr-mam-06,"Kashmir Gray Langur","Semnopithecus ajax","Ponz / پونٛز",mammals,EN,"Schedule I (WPA 1972)",2000,3200,"< 500 mature individuals remaining","Chenab Valley - Chamba Highland Passes",high
+thr-mam-07,"Woolly Flying Squirrel","Eupetaurus cinereus","Phor / پھور",mammals,EN,"Schedule I (WPA 1972)",2400,4000,"< 1,000 individuals globally","Gilgit-Baltistan & Northern Kupwara Gorge Axis",high
+thr-mam-08,"Ladakh Urial (Shapu)","Ovis vignei vignei","Shapu / ཤ་پུ",mammals,VU,"Schedule I (WPA 1972)",3000,4400,"~1,500-2,000 individuals along Indus valley","Indus Valley Highway & Kargil-Batalik Transit",medium
+thr-mam-09,"Tibetan Antelope (Chiru)","Pantholops hodgsonii","Tsos / གཙོད (Chiru)",mammals,NT,"Schedule I (WPA 1972)",4200,5500,"~100,000 global; seasonal migrants to Eastern Ladakh","Changchenmo Valley - Aksai Chin - Leh Artisanal Route",critical
+thr-mam-10,"Himalayan Serow","Capricornis sumatraensis thar","Ram-Hoon / رام ہوٗن",mammals,VU,"Schedule I (WPA 1972)",2000,3500,"Fragmented small populations in deep gorges","Pir Panjal - Banihal Forest Gorges",high
+thr-mam-11,"Himalayan Black Bear","Ursus thibetanus laniger","Haputh / ہاپُتھ",mammals,VU,"Schedule I (WPA 1972)",1400,3500,"~700-900 across J&K temperate forests","Kashmir Valley Orchard Fringes to Jammu Highway",high
+thr-mam-12,"Common Leopard","Panthera pardus fusca","Suh / سُہ",mammals,VU,"Schedule I (WPA 1972)",600,3400,"~400-500 across Kashmir & Jammu divisions","Peri-urban Forest Fringes & Banihal Transit Corridor",high
+thr-mam-13,"Eurasian Otter","Lutra lutra","Vouder / وۆدُر",mammals,NT,"Schedule I (WPA 1972)",1400,3200,"Drastic decline in Jhelum and Wular lake networks","Jhelum River & Wular-Hokersar Wetland Inlets",high
+thr-mam-14,"Smooth-coated Otter","Lutrogale perspicillata","Pani-Kutta / پانی کتا",mammals,VU,"Schedule I (WPA 1972)",250,800,"Restricted to isolated oxbows of lower Chenab and Ravi rivers","Lower Chenab - Ravi Riparian Border",high
+thr-mam-15,"Tibetan Wolf","Canis lupus chanco","Chanku / སྤྱང་ཀུ",mammals,NT,"Schedule I (WPA 1972)",3200,5400,"~250-350 individuals across Ladakh & upper valleys","Changthang - Kargil - Zanskar Alpine Axis",medium
+thr-mam-16,"Tibetan Gazelle (Goa)","Procapra picticaudata","Goa / གོ་ဝ",mammals,NT,"Schedule I (WPA 1972)",4200,5400,"< 150 individuals in Eastern Ladakh (Critically Endangered in India)","Hanle Valley - Chushul - Demchok High Steppe",critical
+thr-mam-17,"Tibetan Argali (Nyan)","Ovis ammon hodgsoni","Nyan / གཉན",mammals,NT,"Schedule I (WPA 1972)",4000,5500,"~300-400 individuals in Ladakh","Tso Moriri - Spiti - Aksai Chin High Ridges",high
+thr-mam-18,"Himalayan Tahr","Hemitragus jemlahicus","Kras / کراس",mammals,NT,"Schedule I (WPA 1972)",2200,4200,"~1,200 individuals across southern Pir Panjal & Chenab crags","Kishtwar - Bhaderwah - Himachal Border Crags",medium
+thr-brd-01,"Western Tragopan","Tragopan melanocephalus","Dan-Geer / دان گیٖر",birds,VU,"Schedule I (WPA 1972)",2400,3600,"~2,500-3,500 mature individuals globally","Neelum Valley - Kazinag Transboundary Crest",critical
+thr-brd-02,"Kashmir Flycatcher","Ficedula subrubra","Kashur Tont-Phor / توٗنٛتھ پھور",birds,VU,"Schedule I (WPA 1972)",1800,2800,"~1,500-2,500 breeding pairs","Western Ghats - Kashmir Spring Migration Flyway",high
+thr-brd-03,"White-rumped Vulture","Gyps bengalensis","Kruhun Gid / گِدھ",birds,CR,"Schedule I (WPA 1972)",300,1500,"< 6,000 globally (declined > 99% since 1990s)","Jammu Foothills & Chenab Plains Agricultural Belt",critical
+thr-brd-04,"Black-necked Crane","Grus nigricollis","Cha Thung / ཁྲུང་ཁྲུང",birds,NT,"Schedule I (WPA 1972)",3800,4900,"~120-150 breeding individuals in Ladakh","Changthang Wetlands - Tibet Transboundary Flyway",critical
+thr-brd-05,"White-headed Duck","Oxyura leucocephala","Chite-Kore / سفید بتھ",birds,EN,"Schedule I (WPA 1972)",1550,1650,"< 10,000 globally; rare winter visitor to Kashmir wetlands","Central Asian Flyway (Hokersar - Wular Axis)",high
+thr-brd-06,"Cheer Pheasant","Catreus wallichii","Cheer / چیٖر",birds,VU,"Schedule I (WPA 1972)",1500,3000,"~2,500-3,500 mature individuals","Chenab Valley & Pir Panjal Southern Slopes",high
+thr-brd-07,"Steppe Eagle","Aquila nipalensis","Gryd / گرٛید",birds,EN,"Schedule I (WPA 1972)",1000,4500,"Rapid global decline (> 60% over 3 generations)","Central Asian Flyway over Pir Panjal and Zojila",high
+thr-brd-08,"Pallas's Fish Eagle","Haliaeetus leucoryphus","Gaad-Baaz / گاد باز",birds,EN,"Schedule I (WPA 1972)",600,2000,"< 2,500 mature individuals globally","Wular Lake - Jhelum River - Chenab Basin Axis",critical
+thr-brd-09,"Egyptian Vulture","Neophron percnopterus","Gid / گِدھ",birds,EN,"Schedule I (WPA 1972)",300,2400,"Decline > 50% across South Asia","Jammu Foothills & Kashmir Valley Carcass Transit",high
+thr-brd-10,"Baer's Pochard","Aythya baeri","Chote Pochard / بتھ",birds,CR,"Schedule I (WPA 1972)",1550,1650,"< 1,000 mature individuals surviving globally","Central Asian Wetland Axis (Hokersar - Shallabugh)",critical
+thr-brd-11,"Ferruginous Duck","Aythya nyroca","Ratal-Kore / لال بتھ",birds,NT,"Schedule IV (WPA 1972)",1550,1650,"~1,500-3,000 wintering individuals in Kashmir valley","Hokersar - Mirgund - Wular Wetland Network",medium
+thr-brd-12,"Marbled Teal","Marmaronetta angustirostris","Batakh / بتھ",birds,VU,"Schedule I (WPA 1972)",1550,1650,"< 15,000 globally","Indus - Jhelum Riverine Wetland Axis",high
+thr-brd-13,"Tytler's Leaf Warbler","Phylloscopus tytleri","Phor / پھور",birds,NT,"Protected Endemic Breeder",2200,3500,"~10,000-20,000 individuals","Western Ghats - Kashmir Spring Migration Route",medium
+thr-brd-14,"Sarus Crane","Antigone antigone","Sarus / سارس",birds,VU,"Schedule I (WPA 1972)",250,600,"Extremely localized in Jammu plains marshes","Jammu - Punjab Agricultural Floodplain Border",high
+thr-fsh-01,"Golden Mahseer","Tor putitora","Mahseer / مہیٖسیر",fish,EN,"State Fish of Jammu & Kashmir",300,1500,"Decline > 50% across wild river stretches","Lower Chenab, Jhelum, Poonch & Tawi River Corridors",critical
+thr-fsh-02,"Kashmir Catfish","Glyptothorax kashmirensis","Gaad / گاد",fish,CR,"Protected Coldwater Endemic",1000,2200,"< 250 mature individuals in isolated streams","Jhelum and Kishanganga Upper River Basins",critical
+thr-fsh-03,"Alwan Snow Trout","Schizothorax richardsonii","Kashur Ale-Gaad / ایٚلہِ گاد",fish,VU,"Scheduled State Coldwater Fish",800,3000,"Substantial wild decline across all Himalayan rivers","Jhelum, Sindh, Chenab, and Kishanganga River Basins",high
+thr-fsh-04,"Chirruh Snow Trout","Schizothorax esocinus","Chirruh / چِروٗ",fish,VU,"Indigenous Game Fish",1400,2800,"Decline > 40% in valley lake and river reaches","Dal Lake, Wular Lake, and Jhelum Main Stem",high
+thr-fsh-05,"Sattar Snow Trout","Schizothorax curvifrons","Sattar Gaad / سَتار گاد",fish,VU,"Protected Coldwater Endemic",1500,3400,"Confined to high-altitude streams and lakes","Indus - Zanskar & Jhelum High River Branches",medium
+thr-fsh-06,"Reticulated Hillstream Loach","Triplophysa kashmirensis","Gurun / گُرُن",fish,CR,"Critically Endangered Coldwater Loach",1550,2400,"< 500 individuals remaining in fragmented springs","Kashmir Valley Limnocrene Spring Outlets",critical
+thr-fsh-07,"Helicopter Catfish (Wallago)","Wallago attu","Malli / ملّی",fish,VU,"Scheduled Inland River Fish",250,700,"Decline > 50% across wild lowland river channels","Lower Chenab, Tawi, and Ravi River Plains",high
+thr-fsh-08,"Indus River Dolphin","Platanista minor","Bhulan / بھولن",fish,EN,"Strictly Protected Transboundary Cetacean",200,500,"~1,800-2,000 in Indus mainstem, rare seasonal transboundary visitor","Indus Basin Transboundary River Channels",critical
+thr-flr-01,"Kuth (Costus)","Saussurea costus","Kuth / کُتھ",medicinal-plants,CR,"WPA 1972 Schedule VI & J&K Kuth Act",2500,3800,"< 1,200 wild mature individuals surviving","Kashmir Valley - Pir Panjal Banihal Highway & Jammu Border",critical
+thr-flr-02,"Indian Aconite (Atis)","Aconitum heterophyllum","Patrees / پٔتریٖس",medicinal-plants,EN,"WPA 1972 Scheduled Plant",2800,4200,"Decline > 60% over past two decades","Sinthan Top & Mughal Road Alpine Ridge Crossing",critical
+thr-flr-03,"Poison Aconite (Mohra)","Aconitum chasmanthum","Mohra / موہرا",medicinal-plants,CR,"Scheduled Toxic & Medicinal Flora",2600,4100,"< 800 reproductive colonies surviving","Sonamarg - Zojila - Drass Alpine Pass Axis",critical
+thr-flr-04,"Himalayan Mayapple","Podophyllum hexandrum","Wanwangan / ون ونٛگن",medicinal-plants,EN,"WPA 1972 Scheduled Plant",2400,3800,"Severe decline due to pharmaceutical demand","Gulmarg - Poonch Mountain Corridors & Chenab Axis",critical
+thr-flr-05,"Salam Panja (Himalayan Marsh Orchid)","Dactylorhiza hatagirea","Salam Panja / سلام پنجہ",medicinal-plants,EN,"Scheduled Endangered Plant",2800,4200,"Reduced to sparse patches in boggy meadows","Zojila - Drass Highway & Gurez Valley Border Road",critical
+thr-flr-06,"Kutki (Kour)","Picrorhiza kurrooa","Kour / کئور",medicinal-plants,EN,"WPA 1972 Scheduled Plant",3000,4500,"Severe wild decline across alpine rocky ledges","Pir Panjal Alpine Ridge & Banihal Transit Corridor",critical
+thr-flr-07,"Spikenard (Jatamansi)","Nardostachys jatamansi","Bhutkesh / بھوت کیش",medicinal-plants,CR,"Strictly Protected Botanical",3300,5000,"Critically endangered due to 80% wild decline","Sinthan Top - Kishtwar High Passes to Himachal",critical
+thr-flr-08,"Himalayan Yew","Taxus wallichiana","Posthal / پۆسْتھَل (Barmi)",plants,EN,"Protected Forest Flora",2000,3300,"Mature reproductive female trees severely depleted","Kupwara, Baramulla & Kishtwar Forest Transit",high
+thr-flr-09,"Himalayan Trillium (Nagchhatri)","Trillium govanianum","Nagchhatri / ناگ چھتری",medicinal-plants,EN,"WPA 1972 Scheduled Plant",2500,3700,"Collapsing under massive international smuggling","Pir Panjal - Banihal - Jammu Highway Illicit Trade Axis",critical
+thr-flr-10,"Kashmir Sage","Artemisia amygdalina","Veer-Tethwan / ویٖر تیٚتھوَن",medicinal-plants,CR,"Critically Endangered Endemic Flora",1800,2700,"< 250 wild individuals remaining in tiny isolated pockets","Sindh Valley - Pir Panjal Riparian Edge",critical
+thr-flr-11,"Indian Gentian","Gentiana kurroo","Nilkanth / نیل کنٹھ",medicinal-plants,CR,"Critically Endangered Botanical",1500,2800,"< 500 wild individuals surviving","Pir Panjal Dry Slopes & Banihal South Transit",critical
+thr-flr-12,"Himalayan Fritillary","Fritillaria roylei","Sheethkar / شیٖتھ کار",medicinal-plants,VU,"Scheduled Medicinal Plant",2500,4000,"Decline > 45% due to commercial bulb digging","Sonamarg - Zojila - Kargil Alpine Axis",high
+thr-flr-13,"Gaozaban (Ratanjot)","Arnebia benthamii","Kahzaban / کَہ زَبان (Ratanjot)",medicinal-plants,EN,"Scheduled High-Altitude Botanical",3000,4300,"Substantial contraction on alpine rocky slopes","Gurez Valley - Bandipora Highway Axis",high
+thr-flr-14,"Himalayan Blue Poppy","Meconopsis aculeata","Gul-e-Neel / گُلِ نیل",plants,EN,"Protected High-Altitude Flora",3500,4600,"Rare and fragmented across scree slopes","High Alpine Passes (Apharwat - Kolahoi - Zojila)",high
+thr-flr-15,"Chora (White Angelica)","Angelica glauca","Chora / چورا",medicinal-plants,EN,"Scheduled Aromatic Flora",2500,3700,"Decline > 50% across subalpine forest glades","Kishtwar - Paddar - Himachal Highland Transit",high
+thr-flr-16,"Himalayan Rhubarb","Rheum australe","Pambchalan / پامٛب چالان",medicinal-plants,VU,"Protected High-Altitude Botanical",2800,4400,"Marked decline on rocky subalpine scree slopes","Sinthan Top - Banihal Mountain Routes",medium
+thr-flr-17,"Black Cumin (Zeera Siyah)","Bunium persicum","Zeur / زێوُر (Kala Zeera)",medicinal-plants,VU,"Scheduled High-Value Forest Produce",1800,3200,"Severe wild decline due to commercial over-collection","Gurez Valley - Kishtwar - Drass Transit Axis",high
+thr-flr-18,"Himalayan Elm","Ulmus wallichiana","Bren / برین",plants,VU,"Protected Heritage Tree of Kashmir",1600,2800,"< 2,000 mature trees remaining in the wild","Kashmir Valley Rural Roads & Forest Encroachment Fringes",medium
+thr-flr-19,"Chilgoza Pine","Pinus gerardiana","Chilgoza / چلغوزہ (Neoza)",plants,NT,"Protected Economic Conifer",1800,3200,"Wild natural regeneration severely hampered by cone harvesting","Kishtwar - Paddar - Himachal & Gilgit-Baltistan Transit",high
+thr-flr-20,"Himalayan Birch","Betula utilis","Burza / بُرزٕ",plants,NT,"Protected Alpine Treeline Anchor",2800,4200,"Upper treeline under severe pressure from timber and pastoral fires","Subalpine Treeline across All High Mountain Ranges",medium
