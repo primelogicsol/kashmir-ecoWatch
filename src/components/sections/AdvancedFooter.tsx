@@ -257,14 +257,6 @@ export function AdvancedFooter() {
       <div className="border-t border-white/[0.04] bg-slate-950">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-4">
 
-          {/* Geographic Notice */}
-          <div className="flex items-start gap-3 border-l-2 border-emerald-500/30 pl-4">
-            <Globe className="w-3.5 h-3.5 text-emerald-500/60 mt-0.5 flex-shrink-0" />
-            <p className="text-[10px] sm:text-[11px] text-slate-500 leading-relaxed">
-              <span className="font-semibold text-slate-400">Geographic Notice: </span>
-              Kashmir EcoWatch is an independent environmental intelligence initiative. Geographic names, maps, and administrative references used within this platform are applied exclusively for scientific, environmental, and operational purposes and do not imply any position regarding sovereignty, international boundaries, or territorial claims.
-            </p>
-          </div>
 
           {/* Intellectual Property Notice */}
           <div className="flex items-start gap-3 border-l-2 border-slate-600/40 pl-4">
