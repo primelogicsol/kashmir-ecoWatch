@@ -250,7 +250,7 @@ export default function FounderPage() {
   const polymathDimensions = [
     {
       domain: 'Sufi Literature, Philosophy & Philanthropy',
-      title: 'Sufi Writer & Thinker (Pen Name: Dr. Zari-e-Noori)',
+      title: 'Sufi Writer & Thinker (Pen Name: Dr. Zarf-e-Noori)',
       tagline: 'Exploring Science, Society, and Sufism',
       period: 'Lifelong Calling & Active Ecosystem',
       badge: 'Spiritual Humanism & Civic Consciousness',
@@ -266,7 +266,7 @@ export default function FounderPage() {
         { name: 'Purple Soul USA', role: 'Mindfulness, soul consciousness & holistic spiritual wellness', url: 'https://purplesoul.shop/' }
       ],
       points: [
-        'Prolific philosophical writings and spiritual literature under the literary pen name "Dr. Zari-e-Noori".',
+        'Prolific philosophical writings and spiritual literature under the literary pen name "Dr. Zarf-e-Noori".',
         'Exploring the unified confluence of empirical earth sciences, social equity, and mystical Kashmir Sufi philosophy.',
         'Founded and stewarded global cultural outreach networks championing universal love, compassion, and communal harmony.',
         'Spearheaded philanthropic programs bridging diaspora communities with indigenous Himalayan civilizational wisdom.'
@@ -711,7 +711,7 @@ export default function FounderPage() {
               Science, Spirit, Craft & Technology
             </h2>
             <p className="text-sm sm:text-base text-slate-400 max-w-3xl mb-12">
-              Harmonizing 25 years of empirical environmental science with spiritual literature under pen name Dr. Zari-e-Noori, Himalayan artisanal craft revival, and enterprise SaaS engineering.
+              Harmonizing 25 years of empirical environmental science with spiritual literature under pen name Dr. Zarf-e-Noori, Himalayan artisanal craft revival, and enterprise SaaS engineering.
             </p>
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 md:before:left-8 before:w-0.5 before:bg-gradient-to-b before:from-purple-500 before:via-amber-500 before:to-sky-500">

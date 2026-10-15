@@ -304,7 +304,7 @@ export const featuredEntities: FeaturedEntity[] = [
       { label: 'Zones', value: 12 },
       { label: 'Species', value: 28 },
     ],
-    link: '/seasonal-ecology/bloom/tulip-meadows',
+    link: '/seasonal-ecology/bloom-mapping',
   },
   {
     id: 'tarsar-marsar',
@@ -317,7 +317,7 @@ export const featuredEntities: FeaturedEntity[] = [
       { label: 'Duration', value: 5, unit: 'days' },
       { label: 'Difficulty', value: 3, unit: 'Moderate' },
     ],
-    link: '/trails/tarsar-marsar',
+    link: '/trails-sightings/hiking-trails/tarsar-marsar-trek',
   },
   {
     id: 'srinagar',
@@ -330,7 +330,7 @@ export const featuredEntities: FeaturedEntity[] = [
       { label: 'Wetlands', value: 47 },
       { label: 'Green Cover', value: 23, unit: '%' },
     ],
-    link: '/districts/srinagar',
+    link: '/biodiversity/district/srinagar',
   },
 ];
 

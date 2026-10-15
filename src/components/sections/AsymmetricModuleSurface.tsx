@@ -83,7 +83,7 @@ export function AsymmetricModuleSurface() {
             </div>
             <div className="flex items-center gap-2">
               <button
-                onClick={() => router.push('/risk-monitoring')}
+                onClick={() => router.push('/module-directory')}
                 className="flex items-center gap-1.5 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg glass-light border border-white/10 text-xs sm:text-sm text-slate-300 hover:text-white hover:border-forest-500/50 transition-all flex-shrink-0"
               >
                 <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -225,7 +225,7 @@ export function AsymmetricModuleSurface() {
           <Button
             variant="outline"
             className="border-white/20 text-white hover:border-forest-400 text-xs sm:text-sm md:text-base w-full sm:w-auto"
-            onClick={() => router.push('/risk-monitoring')}
+            onClick={() => router.push('/module-directory')}
           >
             Browse Directory
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2" />

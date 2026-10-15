@@ -194,9 +194,9 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
-            by Dr. Kumar Foundation USA — Environmental Intelligence Platform for Kashmir
+            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · by Dr. Kumar Foundation USA — Western Himalayan Ecological Intelligence Platform
           </motion.p>
 
           {/* Product descriptor */}
@@ -204,10 +204,10 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-500 mb-8 sm:mb-10 md:mb-12 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
             A scientific, spatial, and real-time ecological intelligence system for biodiversity,
-            water, pollution, seasonal ecology, and disaster monitoring across Kashmir
+            water systems, hazard intelligence, environmental monitoring, seasonal phenology, and civil society impact across Kashmir & Ladakh.
           </motion.p>
 
           {/* Primary actions */}
@@ -221,7 +221,7 @@ export function ImmersiveHero() {
               size="lg"
               icon={<Map className="w-4 h-4 sm:w-5 sm:h-5" />}
               className="w-full sm:w-auto group relative overflow-hidden bg-gradient-to-r from-forest-600 to-forest-500 hover:from-forest-500 hover:to-forest-400 text-white shadow-2xl glow-forest px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
-              onClick={() => router.push('/atlas')}
+              onClick={() => router.push('/protected-network/atlas')}
             >
               <span className="relative z-10">Open Atlas</span>
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 group-hover:translate-x-1 transition-transform relative z-10" />
@@ -233,7 +233,7 @@ export function ImmersiveHero() {
               variant="outline"
               icon={<Leaf className="w-4 h-4 sm:w-5 sm:h-5" />}
               className="w-full sm:w-auto border-white/20 text-white hover:border-forest-400 hover:text-forest-300 glass-light backdrop-blur-xl px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
-              onClick={() => router.push('/risk-monitoring')}
+              onClick={() => router.push('/module-directory')}
             >
               Explore Intelligence
             </Button>
@@ -243,7 +243,7 @@ export function ImmersiveHero() {
               variant="outline"
               icon={<BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />}
               className="w-full sm:w-auto border-white/20 text-white hover:border-glacier-400 hover:text-glacier-300 glass-light backdrop-blur-xl px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
-              onClick={() => router.push('/risk-monitoring/dashboards')}
+              onClick={() => router.push('/hazard-intelligence/dashboards')}
             >
               Live Dashboards
             </Button>
@@ -564,10 +564,10 @@ export function ImmersiveHero() {
             className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl"
           >
             {[
-              { value: '2,847', label: 'Species Indexed', icon: Leaf, trend: '+156' },
-              { value: '47', label: 'Protected Areas', icon: Map, trend: '+2' },
-              { value: '1,253', label: 'Water Bodies', icon: Activity, trend: 'Active' },
-              { value: '234', label: 'Monitoring Stations', icon: Satellite, trend: 'Online' },
+              { value: '2,847+', label: 'Species Indexed', icon: Leaf, trend: '+156' },
+              { value: '47', label: 'Protected Areas', icon: Map, trend: '4,380 km²' },
+              { value: '1,435+', label: 'Water Systems', icon: Activity, trend: 'Active' },
+              { value: '240+', label: 'Monitoring Stations', icon: Satellite, trend: 'Online' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -600,7 +600,7 @@ export function ImmersiveHero() {
             <div className="inline-flex items-center gap-3 px-2 md:px-4 py-2 rounded-full glass-light border border-white/10">
               <Database className="w-4 h-4 text-blue-400" />
               <span className="text-[8px] md:text-xs text-slate-400">
-                Source-integrated metrics updated by module — mix of reference inventories, field surveys, and live monitoring layers
+                Source-integrated metrics updated across 24 specialized intelligence modules — synthesizing reference inventories, Copernicus/ECMWF satellite feeds, municipal audits, and field sensors
               </span>
             </div>
           </motion.div>

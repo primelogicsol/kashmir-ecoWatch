@@ -364,7 +364,7 @@ export default function GovernancePage() {
                         <span>SufiPulse & The Literary Tradition</span>
                       </h4>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        Explored continuously in contemporary writing and spiritual philosophy by Mr. Khan under the pen name <strong className="text-purple-300 font-semibold">&ldquo;Dr. Zari-e-Noori&rdquo;</strong> across the global SufiPulse ecosystem.
+                        Explored continuously in contemporary writing and spiritual philosophy by Mr. Khan under the pen name <strong className="text-purple-300 font-semibold">&ldquo;Dr. Zarf-e-Noori&rdquo;</strong> across the global SufiPulse ecosystem.
                       </p>
                     </div>
 
