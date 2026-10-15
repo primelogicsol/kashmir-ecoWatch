@@ -21,7 +21,8 @@ import {
   Activity,
   TrendingUp,
   ExternalLink,
-  Settings
+  Settings,
+  Mountain
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -54,6 +55,7 @@ const iconConfig: Record<string, React.ComponentType<{ className?: string }>> = 
   'wildlife-sightings': PawPrint,
   'air-quality': Wind,
   'spring-vulnerability': Droplets,
+  'cryosphere-watch': Mountain,
 };
 
 export function ExpandableLivePanels() {

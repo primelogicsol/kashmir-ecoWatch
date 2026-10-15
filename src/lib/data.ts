@@ -251,6 +251,35 @@ export const insightPanels: InsightPanel[] = [
       },
     ],
   },
+  {
+    id: 'cryosphere-watch',
+    title: 'Glacial Lake & Cryosphere Watch',
+    status: 'critical',
+    description: 'High-altitude moraine dam stability, snout retreat, and cryospheric hazard telemetry',
+    items: [
+      {
+        id: '1',
+        title: 'Kolhai Glacier Snout - Accelerated Melt Rate',
+        location: 'Lidder Basin, Anantnag',
+        timestamp: new Date('2026-03-29'),
+        severity: 'high',
+      },
+      {
+        id: '2',
+        title: 'Thajiwas Moraine Dam - Proglacial Pond Expansion',
+        location: 'Sonamarg, Ganderbal',
+        timestamp: new Date('2026-03-28'),
+        severity: 'high',
+      },
+      {
+        id: '3',
+        title: 'Machoi Glacier - Permafrost Slump Creep Signal',
+        location: 'Zojila Pass Zone, Ganderbal',
+        timestamp: new Date('2026-03-27'),
+        severity: 'medium',
+      },
+    ],
+  },
 ];
 
 export const featuredEntities: FeaturedEntity[] = [
@@ -660,6 +689,32 @@ export const featuredEntities: FeaturedEntity[] = [
       { label: 'Vulnerability', value: 'Moderate', unit: 'Recharge' },
     ],
     link: '/water-systems/springs',
+  },
+  {
+    id: 'apharwat-avalanche-chute',
+    type: 'hazard',
+    name: 'Gulmarg Apharwat Avalanche Chute',
+    description: 'High-altitude snowpack fracture zone along Apharwat Peak monitored with automated acoustic sensors and slope telemetry.',
+    image: '/images/apharwat-avalanche.jpg',
+    metrics: [
+      { label: 'Altitude', value: 4390, unit: 'm' },
+      { label: 'Risk Tier', value: 'High', unit: 'Zone 4' },
+      { label: 'Slope Incline', value: 38, unit: 'deg' },
+    ],
+    link: '/hazard-intelligence/avalanches',
+  },
+  {
+    id: 'pir-panjal-fire-corridor',
+    type: 'hazard',
+    name: 'Pir Panjal Conifer Wildfire Corridor',
+    description: 'Dry-season Pinus wallichiana canopy belts monitored via satellite MODIS thermal anomalies and rapid ground response units.',
+    image: '/images/forest-fire.jpg',
+    metrics: [
+      { label: 'Fuel Load', value: 'High', unit: 'Chir/Kail' },
+      { label: 'Alert Sensor', value: 'MODIS', unit: 'Thermal' },
+      { label: 'Response', value: 'Rapid', unit: 'Forest Dept' },
+    ],
+    link: '/hazard-intelligence/forest-fires',
   },
 ];
 
