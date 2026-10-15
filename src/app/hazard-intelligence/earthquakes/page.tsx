@@ -105,11 +105,11 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
             <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Seismic Zone</span>
           </div>
           <div className={`flex-1 flex flex-col gap-0.5 px-2.5 py-1.5 rounded-lg border text-[10px] bg-white/5 border-white/10`}>
-            <div className={`flex items-center gap-1.5 font-bold ${record.live_recent_quakes_30d ? 'text-orange-400' : 'text-slate-300'}`}>
+            <div className={`flex items-center gap-1.5 font-bold ${record.live_recent_quakes_30d ? 'text-red-400' : 'text-emerald-400'}`}>
               <Activity className="w-3 h-3 flex-shrink-0" />
               <span>{record.live_recent_quakes_30d || 0} Quakes</span>
             </div>
-            <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">Past 30 Days</span>
+            <span className="text-[9px] text-slate-400 uppercase tracking-wide leading-tight">USGS 100km (30d)</span>
           </div>
         </div>
 
@@ -117,7 +117,16 @@ function EarthquakeCard({ record, index }: { record: EarthquakeRecord; index: nu
         <div className="flex flex-col gap-1.5 text-xs mt-1 bg-white/[0.02] rounded-lg p-2 border border-white/5">
           <div className="flex items-center justify-between">
             <span className="text-slate-500">Live Latest Mag</span>
-            <span className="font-bold text-red-400">{record.live_latest_magnitude ? `M ${record.live_latest_magnitude.toFixed(1)}` : 'None'}</span>
+            {record.live_latest_magnitude ? (
+              <span className="font-bold text-red-400 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping" />
+                M {record.live_latest_magnitude.toFixed(1)}
+              </span>
+            ) : (
+              <span className="text-[10px] font-medium text-emerald-400/90 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                Quiet (&lt;M3.0)
+              </span>
+            )}
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-500">Historical Max</span>
@@ -178,9 +187,13 @@ function EarthquakeRow({ record, index }: { record: EarthquakeRecord; index: num
           </div>
 
           {/* Magnitude */}
-          <div className="w-20 hidden md:block">
+          <div className="w-24 hidden md:block">
             <div className="text-[10px] text-slate-500">Latest Mag.</div>
-            <div className="text-xs font-bold text-red-400">{record.live_latest_magnitude ? `M ${record.live_latest_magnitude.toFixed(1)}` : 'None'}</div>
+            {record.live_latest_magnitude ? (
+              <div className="text-xs font-bold text-red-400">M {record.live_latest_magnitude.toFixed(1)}</div>
+            ) : (
+              <div className="text-[10px] font-medium text-emerald-400/90">Quiet (&lt;M3.0)</div>
+            )}
           </div>
 
           {/* Zone */}
@@ -230,7 +243,7 @@ export default function EarthquakesPage() {
   const router = useRouter();
   const { filter, setScope, setDistrict } = useGlobalFilter();
 
-  const { data: liveData, loading, isStale, error } = useEarthquakeIntelligence();
+  const { data: liveData, recentEvents, totalRegionalQuakes, loading, isStale, error } = useEarthquakeIntelligence();
 
   const [zoneFilter, setZoneFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
@@ -288,11 +301,11 @@ export default function EarthquakesPage() {
     { label: 'Seismic Zones', value: liveData.length, icon: 'MapPin' },
     { label: 'Zone V Districts', value: zoneVCount, icon: 'AlertTriangle' },
     { label: 'Active Seismic Gaps', value: activeGaps, icon: 'Activity' },
+    { label: 'Live Tremors (30d)', value: totalRegionalQuakes || 0, icon: 'Zap', color: (totalRegionalQuakes || 0) > 0 ? 'text-red-400' : 'text-emerald-400' },
     { label: 'Critical Risk', value: criticalZones, icon: 'Shield' },
     { label: 'Fault Systems', value: faultSystems, icon: 'TrendingUp' },
-    { label: 'Max Magnitude', value: `M ${maxMag}`, icon: 'BarChart3' },
+    { label: 'Max Historical', value: `M ${maxMag}`, icon: 'BarChart3' },
     { label: 'High Vulnerability', value: highVulnCount, icon: 'Building2' },
-    { label: 'Verified Zones', value: verifiedCount, icon: 'CheckCircle' },
   ];
 
   return (
@@ -334,6 +347,41 @@ export default function EarthquakesPage() {
 
       {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} iconColor="text-red-500" />
+
+      
+      {/* ── Live USGS Regional Telemetry Banner ──────────────────────────── */}
+      <section className="container mx-auto px-6 mt-4">
+        <Card className="glass-intense border-red-500/20 p-4 bg-gradient-to-r from-red-950/30 via-slate-900 to-slate-950">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+                <Activity className="w-5 h-5 text-red-400 animate-pulse" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">USGS Global Seismographic Network</span>
+                  <Badge variant="success" size="sm" className="text-[9px]">Live API Active</Badge>
+                </div>
+                <p className="text-[11px] text-slate-400 mt-0.5">
+                  Real-time feed across Western Himalayan coordinates (32°N–37.5°N, 73°E–80.5°E) · 30-day continuous surveillance.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap text-xs">
+              <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">
+                Regional Tremors (30d): <strong className="text-white font-bold">{totalRegionalQuakes || 0}</strong>
+              </div>
+              {recentEvents && recentEvents.length > 0 && (
+                <div className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/25 text-red-300 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
+                  <span>Latest: <strong>M {recentEvents[0].mag.toFixed(1)}</strong> · {recentEvents[0].place} ({new Date(recentEvents[0].time).toLocaleDateString()})</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </Card>
+      </section>
 
       {/* ── FILTER BAR ───────────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 mt-4 relative z-40 overflow-visible">

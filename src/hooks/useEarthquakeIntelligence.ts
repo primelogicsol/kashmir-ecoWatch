@@ -19,16 +19,28 @@ function deg2rad(deg: number) {
   return deg * (Math.PI / 180);
 }
 
-const CACHE_KEY = 'earthquake_intelligence_cache';
-const CACHE_DURATION = 60 * 60 * 1000; // 60 minutes
+const CACHE_KEY = 'earthquake_intelligence_cache_v2';
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+
+export interface USGSEvent {
+  id: string;
+  title: string;
+  mag: number;
+  time: number;
+  depth_km: number;
+  place: string;
+  coordinates: [number, number]; // [lon, lat]
+}
 
 interface CacheData {
   timestamp: number;
   data: EarthquakeRecord[];
+  events: USGSEvent[];
 }
 
 export function useEarthquakeIntelligence() {
   const [data, setData] = useState<EarthquakeRecord[]>(earthquakeData);
+  const [recentEvents, setRecentEvents] = useState<USGSEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [isStale, setIsStale] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -42,6 +54,7 @@ export function useEarthquakeIntelligence() {
           const parsed: CacheData = JSON.parse(cached);
           if (Date.now() - parsed.timestamp < CACHE_DURATION) {
             setData(parsed.data);
+            setRecentEvents(parsed.events || []);
             setLoading(false);
             return;
           }
@@ -56,7 +69,17 @@ export function useEarthquakeIntelligence() {
         }
 
         const geojson = await response.json();
-        const events = geojson.features || [];
+        const rawEvents = geojson.features || [];
+
+        const parsedEvents: USGSEvent[] = rawEvents.map((f: any) => ({
+          id: f.id,
+          title: f.properties.title || `M ${f.properties.mag} Earthquake`,
+          mag: f.properties.mag,
+          time: f.properties.time,
+          depth_km: Math.round(f.geometry.coordinates[2] || 10),
+          place: f.properties.place || 'NW Himalayan Arc',
+          coordinates: [f.geometry.coordinates[0], f.geometry.coordinates[1]],
+        })).sort((a: USGSEvent, b: USGSEvent) => b.time - a.time);
 
         const updatedData = earthquakeData.map(zone => {
           let recentQuakesCount = 0;
@@ -65,10 +88,10 @@ export function useEarthquakeIntelligence() {
           let maxMagWithin50 = 0;
           let maxMagWithin100 = 0;
 
-          events.forEach((event: any) => {
-            const [lon, lat] = event.geometry.coordinates;
-            const mag = event.properties.mag;
-            const time = event.properties.time;
+          parsedEvents.forEach(event => {
+            const [lon, lat] = event.coordinates;
+            const mag = event.mag;
+            const time = event.time;
             
             const dist = getDistanceFromLatLonInKm(zone.latitude, zone.longitude, lat, lon);
             
@@ -102,13 +125,15 @@ export function useEarthquakeIntelligence() {
         });
 
         setData(updatedData);
+        setRecentEvents(parsedEvents);
         setLoading(false);
         setIsStale(false);
         setError(null);
         
         localStorage.setItem(CACHE_KEY, JSON.stringify({
           timestamp: Date.now(),
-          data: updatedData
+          data: updatedData,
+          events: parsedEvents
         }));
 
       } catch (err) {
@@ -118,10 +143,11 @@ export function useEarthquakeIntelligence() {
         if (cached) {
           const parsed: CacheData = JSON.parse(cached);
           setData(parsed.data);
+          setRecentEvents(parsed.events || []);
           setIsStale(true);
         } else {
-          // Fallback to static
           setData(earthquakeData);
+          setRecentEvents([]);
           setIsStale(true);
         }
         setError(err instanceof Error ? err.message : 'Unknown error');
@@ -132,5 +158,5 @@ export function useEarthquakeIntelligence() {
     fetchUSGSData();
   }, []);
 
-  return { data, loading, isStale, error };
+  return { data, recentEvents, totalRegionalQuakes: recentEvents.length, loading, isStale, error };
 }
