@@ -94,7 +94,7 @@ export default function FounderPage() {
       degree: 'Advanced Specialization',
       period: 'Computational Intelligence',
       field: 'Environmental Data and AI Decisions',
-      institution: 'Machine Learning and Predictive Decision Support Systems',
+      institution: 'Applied Machine Learning and Predictive Decision Support Systems',
       specialization: 'Focus: Data-driven environmental modeling, predictive telemetry, and AI decision systems',
       icon: Brain,
       color: 'text-emerald-400',
