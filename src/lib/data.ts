@@ -19,7 +19,7 @@ export const intelligenceCards: IntelligenceCard[] = [
       { label: 'Layers', value: 42 },
       { label: 'Coverage', value: 100, unit: '%' },
     ],
-    link: '/atlas',
+    link: '/protected-network/atlas',
     color: 'forest',
   },
   {
@@ -28,8 +28,8 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Comprehensive species database with distribution, habitat, and conservation status',
     icon: 'leaf',
     metrics: [
-      { label: 'Species', value: 73 },
-      { label: 'Threatened', value: 14 },
+      { label: 'Species', value: 2847 },
+      { label: 'Threatened', value: 312 },
     ],
     link: '/biodiversity',
     color: 'glacier',
@@ -40,8 +40,8 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'National parks, sanctuaries, reserves with ecological monitoring',
     icon: 'shield',
     metrics: [
-      { label: 'Areas', value: 39 },
-      { label: 'Coverage', value: 12.8, unit: '%' },
+      { label: 'Areas', value: 47 },
+      { label: 'Coverage', value: 4380, unit: 'km²' },
     ],
     link: '/protected-network',
     color: 'earth',
@@ -52,8 +52,8 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Lakes, wetlands, rivers, springs with hydrological intelligence',
     icon: 'droplet',
     metrics: [
-      { label: 'Lakes Monitored', value: 82 },
-      { label: 'Rivers & Basins', value: 15 },
+      { label: 'Water Bodies', value: 1435 },
+      { label: 'Ramsar Basins', value: 5 },
     ],
     link: '/water-systems',
     color: 'glacier',
@@ -76,8 +76,8 @@ export const intelligenceCards: IntelligenceCard[] = [
     description: 'Pollution, water quality, and environmental stress signals',
     icon: 'sun',
     metrics: [
-      { label: 'Monitored Assets', value: 45 },
-      { label: 'Active Alerts', value: 0 },
+      { label: 'Monitored Assets', value: 48 },
+      { label: 'Domains', value: 11 },
     ],
     link: '/environmental-monitoring',
     color: 'alert',
@@ -101,7 +101,7 @@ export const intelligenceCards: IntelligenceCard[] = [
     icon: 'book',
     metrics: [
       { label: 'Field Reports', value: 45 },
-      { label: 'Datasets', value: 12 },
+      { label: 'Datasets', value: 89 },
     ],
     link: '/field-reports',
     color: 'glacier',
