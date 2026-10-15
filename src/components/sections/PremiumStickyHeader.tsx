@@ -32,7 +32,9 @@ import {
   Factory,
   Recycle,
   Upload,
-  FileText
+  FileText,
+  LogIn,
+  LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrolledHeader } from '@/hooks/useScrolledHeader';
@@ -42,6 +44,7 @@ import { NotificationDropdown } from '@/components/navigation/NotificationDropdo
 import { SettingsModal } from '@/components/navigation/SettingsModal';
 import { ProfileDropdown } from '@/components/navigation/ProfileDropdown';
 import { alertRegistry } from '@/data/alert-registry';
+import { useAuth } from '@/context/AuthContext';
 
 const navItems = [
   { label: 'Protected Areas',         href: '/protected-network',        hasDropdown: true },
@@ -63,6 +66,7 @@ interface DropdownItem {
 }
 
 export function PremiumStickyHeader() {
+  const { user, isLoggedIn, signOut, openAuthModal } = useAuth();
   const { isScrolled, isCompact, scrollDirection } = useScrolledHeader({ threshold: 60, smoothTransition: true });
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -481,23 +485,49 @@ export function PremiumStickyHeader() {
             />
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={cn(
-              'lg:hidden p-2 rounded-lg transition-colors flex items-center justify-center shrink-0 ml-auto',
-              isCompact ? 'hover:bg-white/10' : 'hover:bg-white/5'
-            )}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu-drawer"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
+          {/* Mobile Right Controls: Sign In / User Dashboard quick trigger + Hamburger */}
+          <div className="lg:hidden flex items-center gap-1.5 shrink-0 ml-auto">
+            {isLoggedIn && user ? (
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-1 px-2 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold hover:bg-emerald-500/25 transition-colors"
+                aria-label="Contributor Workspace"
+                title={`${user.name} - Contributor Workspace`}
+              >
+                <div className="w-5 h-5 rounded-full bg-emerald-500/40 text-emerald-200 flex items-center justify-center text-[10px] font-bold">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+                <span className="hidden xs:inline max-w-[70px] truncate">{user.name.split(' ')[0]}</span>
+              </Link>
             ) : (
-              <Menu className="w-6 h-6 text-white" />
+              <button
+                onClick={() => openAuthModal('signin')}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+                aria-label="Sign In to platform"
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span className="hidden xs:inline">Sign In</span>
+              </button>
             )}
-          </button>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={cn(
+                'p-2 rounded-lg transition-colors flex items-center justify-center',
+                isCompact ? 'hover:bg-white/10' : 'hover:bg-white/5'
+              )}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu-drawer"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-white" />
+              ) : (
+                <Menu className="w-6 h-6 text-white" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -538,6 +568,97 @@ export function PremiumStickyHeader() {
                 >
                   <X className="w-6 h-6" />
                 </button>
+              </div>
+
+              {/* Contributor Mobile Account Card */}
+              <div className="p-3 mx-3 mt-3 mb-2 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-emerald-500/20 shadow-lg shrink-0">
+                {isLoggedIn && user ? (
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 flex items-center justify-center font-bold text-sm shrink-0">
+                          {user.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-white truncate">{user.name}</p>
+                          <p className="text-[10px] text-emerald-400 capitalize flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            {user.role}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => { signOut(); setIsMobileMenuOpen(false); }}
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        title="Sign Out"
+                      >
+                        <LogOut className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-1.5 pt-1 border-t border-white/5">
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="py-2 px-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-semibold text-center transition-colors shadow-sm"
+                      >
+                        Dashboard
+                      </Link>
+                      {user.role === 'administrator' ? (
+                        <Link
+                          href="/admin/dashboard"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="py-2 px-2.5 rounded-xl bg-purple-600/90 hover:bg-purple-500 text-white text-xs font-semibold text-center transition-colors shadow-sm"
+                        >
+                          Admin Command
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => { signOut(); setIsMobileMenuOpen(false); }}
+                          className="py-2 px-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 text-slate-300 hover:text-red-400 text-xs font-semibold text-center transition-colors"
+                        >
+                          Sign Out
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                          Contributor Observatory
+                        </span>
+                      </div>
+                      <Link 
+                        href="/auth" 
+                        onClick={() => setIsMobileMenuOpen(false)} 
+                        className="text-[10px] text-slate-400 hover:text-white underline"
+                      >
+                        Full Page
+                      </Link>
+                    </div>
+                    <p className="text-[11px] text-slate-400 leading-tight mb-3">
+                      Sign in to deposit field observations and track live telemetry.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signin'); }}
+                        className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs text-center shadow-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <LogIn className="w-3.5 h-3.5" />
+                        <span>Sign In</span>
+                      </button>
+                      <button
+                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signup'); }}
+                        className="w-full py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-semibold text-xs text-center flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <span>Register</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Scrollable menu content */}
@@ -653,14 +774,22 @@ export function PremiumStickyHeader() {
                       <span className="text-[11px] font-medium text-slate-300">Settings</span>
                     </button>
 
-                    <Link
-                      href="/contribute-data"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors"
+                    <button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        if (isLoggedIn) {
+                          window.location.href = '/dashboard';
+                        } else {
+                          openAuthModal('signin');
+                        }
+                      }}
+                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors cursor-pointer"
                     >
                       <User className="w-4 h-4 text-emerald-400 mb-1" />
-                      <span className="text-[11px] font-medium text-slate-300">Deposit</span>
-                    </Link>
+                      <span className="text-[11px] font-medium text-slate-300">
+                        {isLoggedIn ? 'Dashboard' : 'Sign In'}
+                      </span>
+                    </button>
                   </div>
 
                   <Link
