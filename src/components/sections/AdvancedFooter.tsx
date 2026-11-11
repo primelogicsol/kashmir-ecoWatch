@@ -64,7 +64,6 @@ function XIcon({ className }: { className?: string }) {
 
 const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook },
-  { label: 'GitHub', href: 'https://github.com', icon: Github },
   { label: 'X (Twitter)', href: 'https://x.com/KashmirEcoWatch', icon: XIcon },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin },
   { label: 'Official YouTube Playlist', href: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM', icon: Youtube },
