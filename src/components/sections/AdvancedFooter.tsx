@@ -58,7 +58,7 @@ const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook },
   { label: 'GitHub', href: 'https://github.com', icon: Github },
   { label: 'Twitter', href: 'https://twitter.com', icon: Twitter },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin },
   { label: 'YouTube', href: 'https://youtube.com', icon: Youtube },
 ];
 
