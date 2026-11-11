@@ -364,7 +364,7 @@ export function MapIntelligenceCore() {
                       </div>
                       <div className="p-2 sm:p-2.5 rounded-lg glass-light border border-white/5">
                         <div className="text-[10px] sm:text-xs text-slate-500 mb-1">Coordinates</div>
-                        <div className="text-[10px] sm:text-xs font-mono text-white truncate">{currentFeature.coordinates}</div>
+                        <div className="text-[10px] sm:text-xs font-mono text-white break-words">{currentFeature.coordinates}</div>
                       </div>
                     </div>
 

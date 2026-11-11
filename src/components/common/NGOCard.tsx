@@ -32,19 +32,19 @@ export function NGOCard({ record }: { record: NGORecord }) {
         
         {/* Body: NGO Name & Location */}
         <div className="mb-3">
-          <h3 className="text-lg font-bold text-slate-100 leading-tight mb-1.5 group-hover:text-emerald-400 transition-colors line-clamp-2">
+          <h3 className="text-lg font-bold text-slate-100 leading-tight mb-1.5 group-hover:text-emerald-400 transition-colors break-words">
             {record.name}
             {record.acronym && <span className="text-sm text-slate-400 font-medium ml-2">({record.acronym})</span>}
           </h3>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-            <MapPin className="w-3.5 h-3.5 text-slate-500" />
-            <span className="line-clamp-1">{record.operating_districts.join(', ')}</span>
+            <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            <span className="break-words">{record.operating_districts.join(', ')}</span>
           </div>
         </div>
 
-        {/* Mission Statement (Direct text, no dark box, 3-line clamp) */}
+        {/* Mission Statement (Direct text, no dark box) */}
         <div className="mb-4">
-          <p className="text-sm text-slate-300 font-medium leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          <p className="text-sm text-slate-300 font-medium leading-relaxed break-words">
             {record.mission_summary}
           </p>
           <span className="text-[10px] font-bold text-emerald-500 hover:text-emerald-400 mt-1.5 inline-block uppercase tracking-wide">
@@ -55,7 +55,7 @@ export function NGOCard({ record }: { record: NGORecord }) {
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
           {record.focus_areas.slice(0, 3).map(area => (
-            <span key={area} className="text-[10px] font-medium bg-slate-800 text-slate-300 px-2 py-1 rounded-md border border-slate-700/50 truncate max-w-[120px]">
+            <span key={area} className="text-[10px] font-medium bg-slate-800 text-slate-300 px-2 py-1 rounded-md border border-slate-700/50 break-words">
               {area}
             </span>
           ))}

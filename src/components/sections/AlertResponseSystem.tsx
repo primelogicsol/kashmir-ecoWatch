@@ -199,10 +199,10 @@ export function AlertResponseSystem() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2 flex-wrap mb-2">{/* responsive-md-fix */}
                             <div className="flex-1 min-w-[200px]">
-                              <h4 className="text-sm font-medium flex-1 min-w-0 truncate text-white group-hover:text-forest-300 transition-colors">{/* responsive-md-fix */}
+                              <h4 className="text-sm font-medium flex-1 min-w-0 break-words text-white group-hover:text-forest-300 transition-colors">
                                 {alert.title}
                               </h4>
-                              <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                              <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed break-words">
                                 {displayDescription}
                               </p>
                             </div>
@@ -215,7 +215,7 @@ export function AlertResponseSystem() {
                             {displayLocation && (
                               <div className="flex items-center gap-1 min-w-0 flex-[1_1_100%] sm:flex-[1_1_auto]">
                                 <MapPin className="w-3 h-3 flex-shrink-0" />
-                                <span className="truncate">{displayLocation}</span>
+                                <span className="break-words">{displayLocation}</span>
                               </div>
                             )}
                             <div className="flex items-center gap-1 flex-shrink-0">

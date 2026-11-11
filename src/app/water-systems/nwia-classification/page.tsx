@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';

@@ -56,7 +56,7 @@ export function ContributedDatasets({ compact = false, filterStatus }: Contribut
                   <TypeIcon className="w-5 h-5 text-blue-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-semibold text-white truncate mb-1">{dataset.title}</h4>
+                  <h4 className="text-sm font-semibold text-white break-words mb-1">{dataset.title}</h4>
                   <div className="flex items-center gap-3 text-xs text-slate-400">
                     <span>{dataset.organization}</span>
                     <span className="flex items-center gap-1">
@@ -104,7 +104,7 @@ export function ContributedDatasets({ compact = false, filterStatus }: Contribut
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <h4 className="text-base font-bold text-white mb-1">{dataset.title}</h4>
-                        <p className="text-sm text-slate-400 line-clamp-2">{dataset.description}</p>
+                        <p className="text-sm text-slate-400 break-words">{dataset.description}</p>
                       </div>
                       <Badge className={cn("border", statusColors[dataset.status])}>
                         {dataset.status}

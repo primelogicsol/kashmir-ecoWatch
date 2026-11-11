@@ -12,7 +12,6 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
 export interface UserSubmission {
   id: string;
@@ -133,7 +132,6 @@ export default function UserDashboardPage() {
             </Button>
           </div>
         </div>
-        <AdvancedFooter />
       </main>
     );
   }
@@ -640,8 +638,6 @@ export default function UserDashboardPage() {
           </div>
         </div>
       )}
-
-      <AdvancedFooter />
     </main>
   );
 }

@@ -111,7 +111,7 @@ export function ReportedIssuesDashboard({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-sm font-semibold text-white truncate">{issue.title}</h4>
+                    <h4 className="text-sm font-semibold text-white break-words">{issue.title}</h4>
                     <StatusIcon className={cn("w-4 h-4", statusColors[issue.status].split(' ')[1])} />
                   </div>
                   <div className="flex items-center gap-3 text-xs text-slate-400">
@@ -212,7 +212,7 @@ export function ReportedIssuesDashboard({
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <h4 className="text-base font-bold text-white mb-1">{issue.title}</h4>
-                        <p className="text-sm text-slate-400 line-clamp-2">{issue.description}</p>
+                        <p className="text-sm text-slate-400 break-words">{issue.description}</p>
                       </div>
                       <Badge className={cn("border", statusColors[issue.status])}>
                         <StatusIcon className="w-3 h-3 mr-1" />

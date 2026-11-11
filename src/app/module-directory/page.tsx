@@ -11,7 +11,7 @@ import {
   Landmark, Gavel, ShieldCheck, HandCoins, Database, Scale as ScaleIcon,
   Accessibility, LandPlot, MapPin, Route, Waves, Flame, Zap,
   Droplets, TestTube, Factory as FactoryIcon, Trash2, Recycle,
-  Wind, Thermometer, Info, Search, ListFilter
+  Wind, Thermometer, Info, Search, ListFilter, Activity, TreePine, Hammer, Wheat, Layers
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -35,6 +35,29 @@ interface ModuleGroup {
 }
 
 const moduleGroups: ModuleGroup[] = [
+  {
+    id: 'sectoral-eia',
+    title: 'Sectoral EIA Engine (SEIAE)',
+    description: 'Cross-sector ecological intelligence evaluating how economic sectors transform Western Himalayan landscapes, watersheds, and ecosystems.',
+    badge: 'Sectoral EIA Engine',
+    icon: Activity,
+    gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
+    modules: [
+      { name: 'SEIAE Portal Hub', route: '/sectoral-eia', description: 'Central intelligence command & architecture', icon: Layers },
+      { name: 'Architecture & Overview', route: '/sectoral-eia/overview', description: 'Systemic architecture & SEA mandate', icon: BookOpen },
+      { name: '9-Step Methodology', route: '/sectoral-eia/methodology', description: 'Standard operating assessment workflow', icon: ShieldCheck },
+      { name: 'Tourism EIA Engine', route: '/sectoral-eia/sectors/tourism', description: 'Carrying capacity & alpine visitor pressure', icon: Compass },
+      { name: 'Horticulture EIA Engine', route: '/sectoral-eia/sectors/horticulture', description: 'Orchard agrochemicals & Karewa aquifers', icon: TreePine },
+      { name: 'Handicrafts EIA Engine', route: '/sectoral-eia/sectors/handicrafts', description: 'Artisanal lifecycle & dye wastewater effluents', icon: Hammer },
+      { name: 'Agriculture EIA Engine', route: '/sectoral-eia/sectors/agriculture', description: 'Nutrient runoff, irrigation & soil health', icon: Wheat },
+      { name: 'Submit Assessment', route: '/sectoral-eia/assessment/new', description: 'Enterprise & scientific intake wizard', icon: Upload },
+      { name: 'Cumulative Impact Matrix', route: '/sectoral-eia/cumulative-impact', description: 'Multi-sector compounding stress convergence', icon: Activity },
+      { name: 'Scenario Modeling', route: '/sectoral-eia/scenario-modeling', description: '2026-2035 predictive trajectory simulations', icon: TrendingUp },
+      { name: 'GIS Impact Atlas', route: '/sectoral-eia/impact-atlas', description: 'Interactive spatial boundaries & cartography', icon: Map },
+      { name: 'Mitigation Tracker', route: '/sectoral-eia/mitigation-tracker', description: 'Track verified reduction milestones', icon: ShieldCheck },
+      { name: 'Scientific Reports', route: '/sectoral-eia/reports', description: 'Peer-reviewed assessment dossiers & monographs', icon: FileText },
+    ],
+  },
   {
     id: 'biodiversity',
     title: 'Biodiversity Intelligence',

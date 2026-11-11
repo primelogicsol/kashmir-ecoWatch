@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
@@ -190,7 +189,7 @@ export default function ProtectedNetworkPage() {
             <div className="h-10 w-full rounded overflow-hidden relative">
               <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
             </div>
-            <span className="text-[9px] font-bold text-slate-300 truncate w-full text-center">
+            <span className="text-[9px] font-bold text-slate-300 break-words w-full text-center">
               {item.title.split(' ')[0]}
             </span>
           </button>
@@ -405,7 +404,7 @@ export default function ProtectedNetworkPage() {
                     <div className="text-xs text-slate-500 uppercase">areas</div>
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-400 mb-4 leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-sm text-slate-400 mb-4 leading-relaxed break-words">
                   {category.description}
                 </p>
                 <div className="mt-auto w-full py-2 text-xs sm:text-sm rounded-lg flex items-center justify-center gap-2 font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors">
@@ -524,7 +523,7 @@ export default function ProtectedNetworkPage() {
                     </div>
                   </div>
                   <div className="p-5">
-                    <p className="text-sm text-slate-400 leading-relaxed line-clamp-3">
+                    <p className="text-sm text-slate-400 leading-relaxed break-words">
                       {pa.description}
                     </p>
                     <div className="grid grid-cols-3 gap-3 text-center mt-2">

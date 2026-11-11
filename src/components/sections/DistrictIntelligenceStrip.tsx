@@ -302,9 +302,9 @@ export function DistrictIntelligenceStrip() {
               >
                 <Card className="glass-light border-white/10 p-3 sm:p-4 rounded-xl text-center h-full hover:border-white/20 transition-all">{/* responsive-md-fix */}
                   <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.color} mx-auto mb-2 sm:mb-3`} />
-                  <div className="text-[10px] sm:text-xs text-slate-400 mb-1 sm:mb-2 leading-tight line-clamp-2">{item.label}</div>
-                  <div className="text-base sm:text-lg font-bold text-white mb-1 truncate">{item.district}</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 font-medium truncate">
+                  <div className="text-[10px] sm:text-xs text-slate-400 mb-1 sm:mb-2 leading-tight break-words">{item.label}</div>
+                  <div className="text-base sm:text-lg font-bold text-white mb-1 break-words">{item.district}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 font-medium break-words">
                     {'score' in item && `${item.score} score`}
                     {'count' in item && `${item.count} species`}
                     {'trend' in item && 'Improving'}
@@ -395,14 +395,14 @@ export function DistrictIntelligenceStrip() {
                     <div className="flex items-center gap-2">
                       <Leaf className="w-3 h-3 text-emerald-400 shrink-0" />
                       <span className="text-[10px] sm:text-xs text-slate-400 shrink-0">Strength:</span>
-                      <span className="text-[10px] sm:text-xs text-white truncate" title={district.strength}>
+                      <span className="text-[10px] sm:text-xs text-white break-words" title={district.strength}>
                         {district.strength}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <AlertTriangle className="w-3 h-3 text-amber-400 shrink-0" />
                       <span className="text-[10px] sm:text-xs text-slate-400 shrink-0">Challenge:</span>
-                      <span className="text-[10px] sm:text-xs text-white truncate" title={district.challenge}>
+                      <span className="text-[10px] sm:text-xs text-white break-words" title={district.challenge}>
                         {district.challenge}
                       </span>
                     </div>

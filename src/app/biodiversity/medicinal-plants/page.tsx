@@ -15,7 +15,6 @@ import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { medicinalPhase1, medicinalEthnoDetails, type MedicinalEthnoDetail } from '@/data/species/medicinal';
 import { type BiodiversitySpecies } from '@/types/biodiversity';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
 export default function MedicinalPlantsPage() {
   // Master Dataset (127 species)
@@ -1626,9 +1625,6 @@ export default function MedicinalPlantsPage() {
           </div>
         )}
       </AnimatePresence>
-
-      {/* Advanced Footer */}
-      <AdvancedFooter />
     </main>
   );
 }

@@ -170,7 +170,7 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-bold text-white group-hover:text-violet-400 transition-colors line-clamp-1">
+                      <h3 className="text-base font-bold text-white group-hover:text-violet-400 transition-colors break-words">
                         {link.label}
                       </h3>
                       {link.count !== undefined && (
@@ -181,7 +181,7 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
                     </div>
                   </div>
                   
-                  <p className="text-sm text-slate-400 mb-4 line-clamp-2 leading-relaxed">
+                  <p className="text-sm text-slate-400 mb-4 leading-relaxed break-words">
                     {link.description}
                   </p>
                   

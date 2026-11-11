@@ -60,15 +60,15 @@ export function Logo({ variant = 'expanded', className }: LogoProps) {
         )}
       />
 
-      {/* Wordmark */}
-      {config.showWordmark && (
-        <div className={config.wordmarkClass}>
-          <h1 className="text-sm md:text-base lg:text-lg font-bold text-white tracking-tight leading-tight">
+      {/* Institutional Wordmark - Proportioned for Wide & 4K Displays */}
+      {variant !== 'mobile' && (
+        <div className="hidden xl:flex flex-col justify-center ml-3 select-none">
+          <span className="text-sm 2xl:text-base font-bold text-white tracking-tight leading-tight whitespace-nowrap">
             Kashmir EcoWatch
-          </h1>
-          <p className="text-[10px] md:text-[11px] text-slate-400 tracking-wide font-medium">
+          </span>
+          <span className="text-[10px] 2xl:text-xs text-emerald-400 font-semibold tracking-wider uppercase whitespace-nowrap">
             Environmental Intelligence
-          </p>
+          </span>
         </div>
       )}
 

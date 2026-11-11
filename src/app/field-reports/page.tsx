@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { ReportCard } from '@/components/field-reports/ReportCard';
 import { FilterBar } from '@/components/field-reports/FilterBar';
 import { SummaryStrip } from '@/components/field-reports/SummaryStrip';

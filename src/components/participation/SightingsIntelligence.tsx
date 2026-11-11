@@ -67,7 +67,7 @@ export function SightingsIntelligence({ compact = false, filterStatus, onVerifyS
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <h4 className="text-sm font-semibold text-white truncate">{sighting.speciesName}</h4>
+                  <h4 className="text-sm font-semibold text-white break-words">{sighting.speciesName}</h4>
                   {sighting.status === 'featured' && <Star className="w-4 h-4 text-purple-400 fill-purple-400" />}
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-400">

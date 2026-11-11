@@ -9,6 +9,166 @@
   --foreground-rgb: 241, 245, 249;
   --background-start-rgb: 2, 6, 23;
   --background-end-rgb: 15, 23, 42;
+  --page-gutter: clamp(16px, 3.5vw, 24px);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: clamp(24px, 2.5vw, 36px);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-gutter: clamp(36px, 2.5vw, 48px);
+  }
+}
+
+.site-header__inner,
+.mega-menu__inner,
+.page-content__inner,
+.kew-header-inner {
+  width: 100%;
+  padding-inline: var(--page-gutter);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+/* =============================================
+   RESPONSIVE TWO-MODE INSTITUTIONAL HEADER
+   Wide 4K Desktop vs. Narrow / Vertical Desktop
+   ============================================= */
+
+.kew-header {
+  width: 100%;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.kew-header-inner,
+.site-header__inner {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.kew-logo,
+.site-logo {
+  flex: 0 0 auto;
+  margin-right: clamp(12px, 1vw, 24px);
+}
+
+.kew-navigation,
+.primary-navigation {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.5vw, 12px);
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.kew-header-actions,
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding-left: 12px;
+  flex: 0 0 auto;
+}
+
+/* Compact Explore Menu Toggle (hidden on wide desktop by default) */
+.kew-menu-toggle {
+  display: none;
+}
+
+/* Narrow desktop & portrait monitors (<= 1500px) */
+@media (max-width: 1500px) {
+  .kew-logo,
+  .site-logo {
+    margin-right: 24px;
+  }
+
+  .kew-navigation,
+  .primary-navigation {
+    gap: 16px;
+  }
+
+  .kew-search-label {
+    display: none !important;
+  }
+}
+
+/* Switch to compact navigation before overlap (<= 1580px)
+   Protects 1080x1920, 1200x1920 portrait monitors, 1440x2560 large portrait desktops, and 1366px laptops */
+@media (max-width: 1580px) {
+  .kew-navigation,
+  .primary-navigation {
+    display: none !important;
+  }
+
+  .kew-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .kew-header-actions,
+  .header-actions {
+    margin-left: auto;
+    padding-left: 8px;
+  }
+}
+
+/* Wide desktop (>= 1581px): Ensure full horizontal navigation */
+@media (min-width: 1581px) {
+  .kew-navigation,
+  .primary-navigation {
+    display: flex !important;
+  }
+
+  .kew-menu-toggle {
+    display: none !important;
+  }
+
+  #mobile-menu-drawer,
+  .kew-drawer-panel,
+  .kew-drawer-overlay {
+    display: none !important;
+  }
+}
+
+/* 4K Ultra-Wide Monitors (>= 2560px) */
+@media (min-width: 2560px) {
+  :root {
+    --page-gutter: clamp(48px, 3.5vw, 96px);
+  }
+
+  .kew-logo,
+  .site-logo {
+    margin-right: 48px;
+  }
+
+  .kew-logo img,
+  .site-logo img {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .kew-navigation,
+  .primary-navigation {
+    gap: 28px;
+  }
+
+  .kew-navigation a,
+  .primary-navigation a {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 /* =============================================

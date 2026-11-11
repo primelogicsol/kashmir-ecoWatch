@@ -7,7 +7,6 @@ import {
   Archive, Search, Filter, Calendar, Clock, MapPin, AlertTriangle,
   ChevronDown, BarChart3, FileText, ShieldAlert, Info
 } from 'lucide-react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';

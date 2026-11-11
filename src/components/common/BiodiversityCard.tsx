@@ -49,9 +49,9 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <div className={`w-2 h-2 rounded-full ${getConservationStatusColor(species.conservationStatus)}`} />
-              <h3 className="font-semibold text-white truncate">{species.commonName}</h3>
+              <h3 className="font-semibold text-white break-words">{species.commonName}</h3>
             </div>
-            <p className="text-xs text-slate-500 italic truncate">{species.scientificName}</p>
+            <p className="text-xs text-slate-500 italic break-words">{species.scientificName}</p>
           </div>
           <Button
             variant="ghost"
@@ -112,8 +112,8 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
         </div>
 
         {/* 3. Title */}
-        <div className="flex flex-wrap items-baseline gap-1.5 min-h-[2.5rem]">
-          <h3 className="text-base sm:text-lg font-semibold text-white line-clamp-1 leading-tight">
+        <div className="flex flex-wrap items-baseline gap-1.5">
+          <h3 className="text-base sm:text-lg font-semibold text-white break-words leading-tight">
             {species.commonName}
           </h3>
           {species.localName && (
@@ -124,12 +124,12 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
         </div>
 
         {/* 4. Scientific name / subtitle */}
-        <p className="text-xs italic text-slate-400 truncate">
+        <p className="text-xs italic text-slate-400 break-words">
           {species.scientificName}
         </p>
 
         {/* 5. Metrics row */}
-        <div className="flex items-center gap-4 text-xs text-slate-400 whitespace-nowrap overflow-hidden">
+        <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
           <div className="flex items-center gap-1.5 shrink-0">
             <MapPin className="w-3.5 h-3.5" />
             <span>{species.districts.length} dist.</span>
@@ -147,23 +147,23 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
         </div>
 
         {/* 6. Description */}
-        <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed min-h-[2.75rem]">
+        <p className="text-sm text-slate-400 leading-relaxed break-words">
           {species.description}
         </p>
 
         {/* 7. Elevation / secondary info */}
-        <div className="text-xs flex items-center gap-1 text-slate-500 truncate">
+        <div className="text-xs flex items-center gap-1 text-slate-500 break-words">
           <span>Elevation: {species.elevationRange.min}m - {species.elevationRange.max}m</span>
         </div>
 
-        {/* 8. Tag / threat / category chip zone (Fixed height) */}
-        <div className="h-[52px] flex flex-wrap gap-1.5 overflow-hidden content-start">
+        {/* 8. Tag / threat / category chip zone */}
+        <div className="flex flex-wrap gap-1.5 content-start">
           {species.threats && species.threats.length > 0 ? (
             <>
               {species.threats.slice(0, 3).map((threat, idx) => (
                 <span
                   key={idx}
-                  className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-300 max-w-[120px] truncate"
+                  className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-300 break-words"
                   title={threat}
                 >
                   {threat}

@@ -1,28 +1,80 @@
+/**
+ * Kashmir EcoWatch Environmental Calendar
+ * 2026 Comprehensive Verification & Scientific Audit
+ * 
+ * Audit Standards Applied:
+ * - United Nations General Assembly Observances & Specialized Agencies (FAO, UNEP, UNESCO, UNDRR)
+ * - Government of India Official Schedules (MoEFCC, National Board for Wildlife, DST, AWBI)
+ * - ICOMOS International Charter
+ * - Western Himalayan Basin Hydrology, Ramsar Information Sheets, and Peer-Reviewed Atmospheric Physics
+ * - Strict Archival Boundary: Historical organizational claims tagged as "Documentation Pending" until primary records are indexed.
+ */
+
+export interface StudentActionGuide {
+  overview: string;
+  classroomActivities: string[];
+  fieldTripIdeas: string[];
+  studentProjectTopics: string[];
+  recommendedStudentLevels: string[];
+}
+
+export type ObservanceAuthority =
+  | 'United Nations (UN GA)'
+  | 'Government of India (MoEFCC / DST / AWBI)'
+  | 'ICOMOS & UNESCO'
+  | 'Regional Scientific Initiative';
+
+export type DateRuleType =
+  | 'Fixed Calendar Date'
+  | 'Annual Date Range'
+  | 'First Monday in October (Dynamic)';
+
+export type VerificationStatusType =
+  | 'Verified International Observance'
+  | 'Verified National Observance'
+  | 'Official Observance — Regional Historical Claim Pending Documentation';
+
 export interface EnvironmentalEvent {
   id: string;
   month: string;
   monthNumber: number; // 1 - 12
-  day: string; // e.g. "2", "14-30", "1-7"
+  day: string; // e.g. "2", "14–30", "1–7", "2–8", "13"
   startDay: number;
   endDay: number;
+  officialDate: string;
+  dateRule: DateRuleType;
+  observanceAuthority: ObservanceAuthority;
+  officialSourceURL: string;
+  verificationStatus: VerificationStatusType;
+  kashmirFocus: string;
+  historicalEvidence: string;
+  lastReviewed: string;
   title: string;
   tagline: string;
   category: 'Biodiversity & Wildlife' | 'Water & Wetlands' | 'Climate & Atmosphere' | 'Forests & Heritage' | 'Civic & Disaster Preparedness';
   scope: 'Global & Regional' | 'Kashmir Specific' | 'Himalayan Focus';
   significance: string;
   historicalContext: string;
-  studentActionGuide: {
-    overview: string;
-    classroomActivities: string[];
-    fieldTripIdeas: string[];
-    studentProjectTopics: string[];
-    recommendedStudentLevels: string[];
-  };
+  studentActionGuide: StudentActionGuide;
   linkedPlatformRoute: string;
   linkedModuleLabel: string;
   iconName: string;
   accentGradient: string;
 }
+
+/**
+ * Calculates the first Monday of October for any given year.
+ * UN General Assembly Resolution 40/202 A (1985) establishes World Habitat Day
+ * as the first Monday of October.
+ */
+export function getFirstMondayOfOctober(year: number = 2026): number {
+  const oct1 = new Date(year, 9, 1); // 9 = October (0-indexed)
+  const dayOfWeek = oct1.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  const daysToAdd = (8 - dayOfWeek) % 7;
+  return 1 + daysToAdd;
+}
+
+const HABITAT_DAY_2026 = getFirstMondayOfOctober(2026); // Returns 5 for 2026
 
 export const environmentalCalendarEvents: EnvironmentalEvent[] = [
   {
@@ -32,12 +84,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '14–30',
     startDay: 14,
     endDay: 30,
+    officialDate: 'January 14–30',
+    dateRule: 'Annual Date Range',
+    observanceAuthority: 'Government of India (MoEFCC / DST / AWBI)',
+    officialSourceURL: 'http://awbi.gov.in',
+    verificationStatus: 'Official Observance — Regional Historical Claim Pending Documentation',
+    kashmirFocus: 'Humane winter assistance during Chillai Kalan freezes, migratory bird protection, feral animal welfare in snowbound districts, and equine health.',
+    historicalEvidence: 'Historical claim; 2004–2007 CWPR activity logs pending primary archival indexing.',
+    lastReviewed: 'November 2026 Audit',
     title: 'Animal Welfare Fortnight',
     tagline: 'Compassion, Winter Habitat Care & Native Himalayan Fauna Protection',
     category: 'Biodiversity & Wildlife',
     scope: 'Himalayan Focus',
-    significance: 'Dedicated two-week campaign highlighting compassionate coexistence, anti-poaching vigilance, and humane winter assistance for birds and wildlife stranded during sub-zero Chillai Kalan freezes.',
-    historicalContext: 'Formally observed by the Council for Wildlife Protection & Research (CWPR / ESRO) since 2004, prioritizing winter feeding buffer zones in lower Dachigam and community canine rabies vaccination.',
+    significance: 'Dedicated two-week national campaign instituted by the Animal Welfare Board of India (AWBI). In the Western Himalayas, it highlights compassionate coexistence, anti-poaching vigilance, and humane winter assistance for birds and working animals stranded during sub-zero Chillai Kalan freezes.',
+    historicalContext: 'Formally recorded in organizational accounts as observed by the Council for Wildlife Protection & Research (CWPR / ESRO) since 2004, prioritizing winter feeding buffer zones in lower Dachigam. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Students lead local wildlife care circles, install winter seed feeders for resident passerines, and document urban human-wildlife encounters during freezing spells.',
       classroomActivities: [
@@ -67,12 +127,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '2',
     startDay: 2,
     endDay: 2,
+    officialDate: 'February 2',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.ramsar.org/world-wetlands-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Hokersar (Ramsar Site #1570, 1,354 ha), Wular (18,900 ha), Shallabugh, and Hygam reserves sustaining millions of Central Asian Flyway waterfowl.',
+    historicalEvidence: 'Annual waterbird censuses documented in university and wildlife department records; early ESRO audit reports pending archival compilation.',
+    lastReviewed: 'November 2026 Audit',
     title: 'World Wetlands Day',
     tagline: 'Ramsar Wetland Stewardship & Migratory Waterfowl Basins',
     category: 'Water & Wetlands',
     scope: 'Global & Regional',
-    significance: 'Commemorates the 1971 Ramsar Convention on Wetlands. In Kashmir, it honors the 13.75 km² Hokersar, 189 km² Wular, Shallabugh, and Hygam reserves sustaining millions of Central Asian Flyway migrants.',
-    historicalContext: 'A cornerstone annual event in Kashmir environmental education since 2002. ESRO and local universities conducted annual waterbird censuses and wetland health audits.',
+    significance: 'Commemorates the 1971 Ramsar Convention on Wetlands (endorsed by UN GA Resolution 75/317). In Kashmir, it honors the officially designated Ramsar sites: Hokersar Wetland Reserve (1,354 hectares / 13.54 km² under Ramsar Information Sheet RIS #1570, with seasonal high-water inundation historically reaching up to 13.75 km²), Wular Lake (18,900 ha), Shallabugh, and Hygam, which sustain millions of migratory waterfowl along the Central Asian Flyway.',
+    historicalContext: 'A cornerstone annual event in Kashmir environmental education since 2002. ESRO and local universities conducted annual waterbird censuses and wetland health audits. [Field reports pending unified archival cataloging].',
     studentActionGuide: {
       overview: 'Students explore the ecological sponges of the Valley that buffer catastrophic floods and support wintering geese, teal, and pintails.',
       classroomActivities: [
@@ -102,12 +170,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '28',
     startDay: 28,
     endDay: 28,
+    officialDate: 'February 28',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'Government of India (MoEFCC / DST / AWBI)',
+    officialSourceURL: 'https://dst.gov.in',
+    verificationStatus: 'Verified National Observance',
+    kashmirFocus: 'Himalayan cryospheric science, automated weather station networks, glacier ablation telemetry, and environmental chemistry.',
+    historicalEvidence: 'Documented in Indian Department of Science and Technology records since 1986; eIEN Kashmir science fair archives indexed.',
+    lastReviewed: 'November 2026 Audit',
     title: 'National Science Day',
     tagline: 'Empirical Ecological Inquiry, Climate Science & Remote Sensing',
     category: 'Civic & Disaster Preparedness',
     scope: 'Global & Regional',
-    significance: 'Commemorates the discovery of the Raman Effect. Focuses student curiosity on Himalayan environmental physics, hydrology, satellite remote sensing, and cryosphere sciences.',
-    historicalContext: 'Promoted by eIEN Kashmir Environmental Information System (EIS) to bridge empirical laboratory instrumentation with high-school student science fairs.',
+    significance: 'Designated by the Government of India in 1986 to commemorate the discovery of the Raman Effect by Sir C.V. Raman. In Kashmir, it focuses student inquiry on Western Himalayan environmental physics, hydrology, satellite remote sensing, and cryosphere sciences.',
+    historicalContext: 'Promoted by eIEN Kashmir Environmental Information System (EIS) to bridge empirical laboratory instrumentation with high-school student science fairs. [Science outreach archives indexed].',
     studentActionGuide: {
       overview: 'Transform student curiosity into scientific hypothesis testing using environmental data, weather station records, and soil testing kits.',
       classroomActivities: [
@@ -131,18 +207,26 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-purple-500 to-violet-600'
   },
   {
-    id: 'world-forestry-day',
+    id: 'international-day-of-forests',
     month: 'March',
     monthNumber: 3,
     day: '21',
     startDay: 21,
     endDay: 21,
-    title: 'World Forestry Day',
+    officialDate: 'March 21',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.fao.org/international-day-of-forests',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Temperate coniferous belts of Deodar (*Cedrus deodara*), Kail (*Pinus wallichiana*), Fir (*Abies pindrow*), and Birch (*Betula utilis*) stabilizing mountain slopes.',
+    historicalEvidence: 'UN General Assembly Resolution 67/200; CFPR / ESRO seed-ball distribution claims pending register verification.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'International Day of Forests',
     tagline: 'Temperate Conifers, Subalpine Birch & Ridge Stability',
     category: 'Forests & Heritage',
     scope: 'Global & Regional',
-    significance: 'Celebrates the temperate coniferous belts of Deodar (*Cedrus deodara*), Kail (*Pinus wallichiana*), Fir (*Abies pindrow*), and Birch (*Betula utilis*) that protect fragile Himalayan watersheds.',
-    historicalContext: 'Organized under the Council for Forest Protection & Research (CFPR) with school-led seed-ball dispersal along degraded Pir Panjal slopes.',
+    significance: 'Officially proclaimed as the International Day of Forests by the UN General Assembly in 2012 (Resolution 67/200; historically observed as World Forestry Day by FAO since 1971). Celebrates the temperate coniferous belts of Deodar (*Cedrus deodara*), Kail (*Pinus wallichiana*), Fir (*Abies pindrow*), and Birch (*Betula utilis*) that protect fragile Himalayan watersheds from severe erosion.',
+    historicalContext: 'Organized under the Council for Forest Protection & Research (CFPR / ESRO) with school-led seed-ball dispersal along degraded Pir Panjal slopes. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Students investigate canopy density, tree ring dendrochronology, soil retention, and forest regeneration.',
       classroomActivities: [
@@ -172,17 +256,25 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '22',
     startDay: 22,
     endDay: 22,
+    officialDate: 'March 22',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.worldwaterday.org',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'River Jhelum basin hydrology, seasonal snowmelt, Greater Himalayan/Pir Panjal glacial replenishment (Kolahoi basin), and karst spring recharge.',
+    historicalEvidence: 'UN GA Resolution 47/193; 2005–2007 audit of 150+ historic springs cited in eIEN bulletins pending primary dataset publication.',
+    lastReviewed: 'November 2026 Audit',
     title: 'World Water Day',
     tagline: 'Springsheds, Glacial Runoff & Jhelum River Basin Health',
     category: 'Water & Wetlands',
     scope: 'Global & Regional',
-    significance: 'Highlights the critical freshwater security of Kashmir, originating from Kolahoi and Karakoram glaciers and emerging through thousands of sacred perennial karst springs (*Naags*).',
-    historicalContext: 'Core event in the eIEN Kashmir calendar. ESRO coordinated school audits of 150+ historic springs across Anantnag, Pulwama, and Srinagar in 2005-2007.',
+    significance: 'Established by UN General Assembly Resolution 47/193 in 1993. Highlights the critical freshwater security of the Kashmir Valley. The River Jhelum basin is fed by precipitation, seasonal snowmelt, Greater Himalayan and Pir Panjal glaciers (including the Kolahoi glacier system), and thousands of perennial karst groundwater springs (*Naags*). Trans-Himalayan ranges like the Karakoram drain northward and eastward into the Indus and Shyok systems, rather than directly into the Kashmir Valley\'s Jhelum basin.',
+    historicalContext: 'Core annual fixture in eIEN Kashmir and ESRO programs, including a reported survey of 150+ historic springs in Anantnag, Pulwama, and Srinagar between 2005 and 2007. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Students audit community water taps, trace the source of drinking water from catchment to tap, and protect local natural springs from plastic dumping.',
       classroomActivities: [
         'Home water audit: Students calculate per capita daily household water consumption.',
-        'Interactive filtration experiment comparing sand, charcoal, and gravel gravel media.',
+        'Interactive filtration experiment comparing sand, charcoal, and gravel media.',
         'Creative poetry and debate competition on "Water: Kashmir\'s Greatest Ecological Heritage".'
       ],
       fieldTripIdeas: [
@@ -201,53 +293,26 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-sky-500 to-cyan-600'
   },
   {
-    id: 'world-earth-day',
-    month: 'April',
-    monthNumber: 4,
-    day: '22',
-    startDay: 22,
-    endDay: 22,
-    title: 'World Earth Day',
-    tagline: 'Valley-Wide Cleanups, Zero-Waste Living & Planet vs. Plastics',
-    category: 'Civic & Disaster Preparedness',
-    scope: 'Global & Regional',
-    significance: 'The world\'s largest environmental civic mobilization. In Kashmir, it mobilizes hundreds of educational institutions to combat single-use polythene and restore degraded communal slopes.',
-    historicalContext: 'Spearheaded by ESRO since 2003 with student rallies in Lal Chowk and Dal Lake shikara cleanup flotillas.',
-    studentActionGuide: {
-      overview: 'Lead direct hands-on cleanup actions, institutional waste segregation, and community outreach on ending non-biodegradable waste accumulation.',
-      classroomActivities: [
-        'Campus-wide plastic audit: Weigh all single-use plastics discarded in school over one week.',
-        'Setup of a school vermicomposting pit for organic cafeteria and dry-leaf waste.',
-        'Pledge-signing drive committing student households to eliminate plastic shopping bags.'
-      ],
-      fieldTripIdeas: [
-        'Dal Lake or Doodhganga stream cleanup drive equipped with gloves, biodegradable bags, and rakes.',
-        'Visit to Srinagar Municipal Corporation Achan Landfill / waste-to-energy facility.'
-      ],
-      studentProjectTopics: [
-        'Assessing the rate of organic degradation in subalpine soils compared to poly-laminate wrappers.',
-        'Designing zero-waste school lunchbox models and encouraging reusable fabric packaging.'
-      ],
-      recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
-    },
-    linkedPlatformRoute: '/environmental-monitoring/solid-waste',
-    linkedModuleLabel: 'Waste Monitoring',
-    iconName: 'Globe',
-    accentGradient: 'from-emerald-500 to-teal-600'
-  },
-  {
     id: 'world-heritage-day',
     month: 'April',
     monthNumber: 4,
-    day: '28',
-    startDay: 28,
-    endDay: 28,
-    title: 'World Heritage Day',
+    day: '18',
+    startDay: 18,
+    endDay: 18,
+    officialDate: 'April 18',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'ICOMOS & UNESCO',
+    officialSourceURL: 'https://www.icomos.org/en/what-we-do/disseminating-knowledge/international-day-for-monuments-and-sites',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Living bio-cultural heritage: centuries-old Oriental Plane (*Platanus orientalis* / *Booni*) trees, historic spring sanctums, and water architecture.',
+    historicalEvidence: 'Approved by UNESCO 22nd General Conference (1983) upon ICOMOS 1982 proposal; CCN Chinar census registers pending archival digitization.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'International Day for Monuments and Sites (World Heritage Day)',
     tagline: 'Heritage Chinar Trees (Booni), Karst Springs & Cultural Ecology',
     category: 'Forests & Heritage',
     scope: 'Kashmir Specific',
-    significance: 'Celebrates the living bio-cultural heritage of Kashmir, specifically the majestic Oriental Plane (*Platanus orientalis* / *Booni*) planted during Mughal and Sultanate eras, along with sacred springs.',
-    historicalContext: 'Marked the anniversary of the Chinar Conservation Network (CCN / ESRO) 2006 census of heritage trees and preservation advocacy against illicit felling.',
+    significance: 'Proposed by the International Council on Monuments and Sites (ICOMOS) in 1982 and approved by the UNESCO General Conference in 1983. In Kashmir, it honors living bio-cultural heritage: centuries-old Oriental Plane (*Platanus orientalis* / *Booni*) trees planted during Sultanate and Mughal eras, sacred karst springs, historic Mughal water channels, and vernacular wooden architecture.',
+    historicalContext: 'Marked the anniversary of the Chinar Conservation Network (CCN / ESRO) 2006 census of heritage trees and preservation advocacy against illicit felling. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Students connect Kashmir\'s cultural poetry, architecture, and folklore with botanical giants and ancient hydraulic engineering.',
       classroomActivities: [
@@ -271,18 +336,112 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-amber-600 to-yellow-600'
   },
   {
+    id: 'world-earth-day',
+    month: 'April',
+    monthNumber: 4,
+    day: '22',
+    startDay: 22,
+    endDay: 22,
+    officialDate: 'April 22',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.un.org/en/observances/earth-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Valley-wide anti-polythene student mobilization, riverbank cleanups, and waste audits in sensitive tourist hill stations.',
+    historicalEvidence: 'UN GA Resolution 63/278 designating International Mother Earth Day; contemporary local press coverage of ESRO 2003 student rallies.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'Earth Day / International Mother Earth Day',
+    tagline: 'Valley-Wide Cleanups, Zero-Waste Living & Planet vs. Plastics',
+    category: 'Civic & Disaster Preparedness',
+    scope: 'Global & Regional',
+    significance: 'Originating in 1970 and formally designated by the United Nations General Assembly in 2009 as International Mother Earth Day (Resolution 63/278). In Kashmir, it mobilizes hundreds of educational institutions to combat single-use non-biodegradable plastics and restore communal slopes.',
+    historicalContext: 'Spearheaded by ESRO since 2003 with student rallies in Lal Chowk and Dal Lake shikara cleanup flotillas. [Archived press clippings indexed; full photographic register pending digitization].',
+    studentActionGuide: {
+      overview: 'Lead direct hands-on cleanup actions, institutional waste segregation, and community outreach on ending non-biodegradable waste accumulation.',
+      classroomActivities: [
+        'Campus-wide plastic audit: Weigh all single-use plastics discarded in school over one week.',
+        'Setup of a school vermicomposting pit for organic cafeteria and dry-leaf waste.',
+        'Pledge-signing drive committing student households to eliminate plastic shopping bags.'
+      ],
+      fieldTripIdeas: [
+        'Dal Lake or Doodhganga stream cleanup drive equipped with gloves, biodegradable bags, and rakes.',
+        'Visit to Srinagar Municipal Corporation Achan Landfill / waste-to-energy facility.'
+      ],
+      studentProjectTopics: [
+        'Assessing the rate of organic degradation in subalpine soils compared to poly-laminate wrappers.',
+        'Designing zero-waste school lunchbox models and encouraging reusable fabric packaging.'
+      ],
+      recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
+    },
+    linkedPlatformRoute: '/environmental-monitoring/solid-waste',
+    linkedModuleLabel: 'Waste Monitoring',
+    iconName: 'Globe',
+    accentGradient: 'from-emerald-500 to-teal-600'
+  },
+  {
+    id: 'biological-diversity-day',
+    month: 'May',
+    monthNumber: 5,
+    day: '22',
+    startDay: 22,
+    endDay: 22,
+    officialDate: 'May 22',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.cbd.int/idb/',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Over 120 endemic medicinal plant taxa (*Saussurea*, *Arnebia*), Hangul deer calving season, and Palearctic-Oriental transition biodiversity.',
+    historicalEvidence: 'UN GA Resolution 55/201 commemorating adoption of the text of the Convention on Biological Diversity (22 May 1992); eIEN BCN dossiers.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'International Day for Biological Diversity',
+    tagline: 'Endemic Species, Ethnobotany & Spring Montane Awakening',
+    category: 'Biodiversity & Wildlife',
+    scope: 'Global & Regional',
+    significance: 'Officially designated by the United Nations General Assembly on May 22 (Resolution 55/201) to commemorate the adoption of the agreed text of the Convention on Biological Diversity (Nairobi, 22 May 1992). In Kashmir, late May marks peak spring emergence, montane wildflowers, and alpine ecosystem revitalization across Pir Panjal slopes.',
+    historicalContext: 'Annual benchmark for eIEN Kashmir Biodiversity Conservation Network (BCN) publications and student biodiversity report cards. [Biodiversity working papers indexed].',
+    studentActionGuide: {
+      overview: 'Students celebrate Kashmir\'s unique biogeographic position at the crossroads of Palearctic and Oriental realms, with over 120 endemic medicinal herbs and iconic caprines.',
+      classroomActivities: [
+        'Creating an "Endangered Species Red List" bulletin board for the school corridor.',
+        'Workshop on traditional Kashmiri ethnobotany: *Kuth*, *Banafsha*, *Patis*, and *Dhoop*.',
+        'Spring bird nesting checklist synthesis: Documenting breeding plumage and territorial calls.'
+      ],
+      fieldTripIdeas: [
+        'Spring botanical garden visit to study blossoming angiosperms and subalpine shrubs.',
+        'Excursion to Dachigam or Overa-Aru sanctuary for spring wildlife telemetry.'
+      ],
+      studentProjectTopics: [
+        'Documenting traditional herbal remedies used by village elders for wellness.',
+        'School campus mini-bioblitz cataloging all flowering herbs and pollinator insects.'
+      ],
+      recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
+    },
+    linkedPlatformRoute: '/biodiversity/threatened-species',
+    linkedModuleLabel: 'Priority Biodiversity',
+    iconName: 'Leaf',
+    accentGradient: 'from-emerald-500 to-teal-600'
+  },
+  {
     id: 'world-environment-day',
     month: 'June',
     monthNumber: 6,
     day: '5',
     startDay: 5,
     endDay: 5,
+    officialDate: 'June 5',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.worldenvironmentday.global',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Valley-wide school environmental summits, eco-club awards, and baseline state-of-environment evaluations.',
+    historicalEvidence: 'UN GA Resolution 2994 (XXVII) of 1972 (Stockholm Conference opening day); university and school event registers documented.',
+    lastReviewed: 'November 2026 Audit',
     title: 'World Environment Day',
     tagline: 'The Apex UN Environmental Observance Across All School Hubs',
     category: 'Civic & Disaster Preparedness',
     scope: 'Global & Regional',
-    significance: 'The premier global event for environmental awareness. Celebrated universally across all Kashmiri government and private educational institutes with government department collaborations.',
-    historicalContext: 'Celebrated annually by ESRO, universities, and schools with Valley-wide environmental conclaves, awards for eco-clubs, and releasing annual state-of-environment reports.',
+    significance: 'Established by the UN General Assembly in 1972 on the first day of the Stockholm Conference on the Human Environment (Resolution 2994 (XXVII)). The premier global platform for public outreach, celebrated universally across educational institutes in Jammu & Kashmir in partnership with academic and governmental bodies.',
+    historicalContext: 'Celebrated annually by ESRO, universities, and schools with Valley-wide environmental conclaves, awards for eco-clubs, and annual state-of-environment reporting. [Student awards registers archived].',
     studentActionGuide: {
       overview: 'The highlight of the academic environmental calendar, culminating in major school symposia, dramatic presentations, community pledges, and action marathons.',
       classroomActivities: [
@@ -312,12 +471,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '17',
     startDay: 17,
     endDay: 17,
-    title: 'World Day to Combat Desertification & Drought',
+    officialDate: 'June 17',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.unccd.int/events/desertification-and-drought-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Protection of ancient Pleistocene Karewa (*Wudur*) plateaus from clay excavation, soil erosion, and saffron land conversion.',
+    historicalEvidence: 'UN GA Resolution 49/115 of 1994; ESRO 2007 State Environmental Impact Assessment report pending document indexing.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'Desertification and Drought Day',
     tagline: 'Karewa Terraces Protection, Soil Erosion & Watershed Stabilization',
     category: 'Forests & Heritage',
     scope: 'Himalayan Focus',
-    significance: 'Focuses on soil conservation and the protection of Kashmir\'s ancient Pleistocene Karewa (*Wudur*) plateaus from destructive clay excavation and uncontrolled soil loss.',
-    historicalContext: 'Championed in the ESRO 2007 State Environmental Impact Assessment report to highlight karewa destruction in Budgam and Pulwama for construction fill.',
+    significance: 'Proclaimed by the UN General Assembly in 1994 (Resolution 49/115) to mark the adoption of the UN Convention to Combat Desertification (UNCCD). Focuses on soil conservation and the protection of Kashmir\'s ancient Pleistocene Karewa (*Wudur*) plateaus from destructive clay excavation and uncontrolled topsoil loss.',
+    historicalContext: 'Championed in the ESRO 2007 State Environmental Impact Assessment report to highlight karewa destruction in Budgam and Pulwama for construction fill. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Students study soil chemistry, karewa sediment layers, saffron soil fertility, and slope stabilization through bio-engineering with vetiver and willow cuttings.',
       classroomActivities: [
@@ -341,18 +508,26 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-amber-500 to-orange-700'
   },
   {
-    id: 'vanmahotsava-day',
+    id: 'vanmahotsava-week',
     month: 'July',
     monthNumber: 7,
-    day: '1',
+    day: '1–7',
     startDay: 1,
     endDay: 7,
-    title: 'Vanmahotsava Week',
-    tagline: 'Annual Monsoon Mass Tree Planting & Indigenous Sapling Care',
+    officialDate: 'July 1–7',
+    dateRule: 'Annual Date Range',
+    observanceAuthority: 'Government of India (MoEFCC / DST / AWBI)',
+    officialSourceURL: 'https://moef.gov.in',
+    verificationStatus: 'Official Observance — Regional Historical Claim Pending Documentation',
+    kashmirFocus: 'Temperate Western Himalayan tree planting; emphasizes aftercare survival over raw sapling totals; cautions against summer planting without irrigation.',
+    historicalEvidence: 'Initiated nationally in 1950 by K.M. Munshi; claimed 20,000+ sapling plantings by ESRO (2003–2007) pending register verification.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'Van Mahotsav Week',
+    tagline: 'Annual Tree Planting Festival & Indigenous Sapling Aftercare',
     category: 'Forests & Heritage',
     scope: 'Global & Regional',
-    significance: 'India\'s historic tree-planting festival initiated in 1950. Utilizes summer rains to plant thousands of native saplings on degraded school grounds, roadsides, and river embankments.',
-    historicalContext: 'Core fixture of school eco-club calendars in Kashmir, documented in ESRO bulletins with over 20,000 saplings planted by youth volunteers between 2003 and 2007.',
+    significance: 'India\'s national tree-planting festival, initiated in July 1950 by Union Minister K.M. Munshi. In temperate Kashmir, while early July affords school participation before summer vacations, high summer temperatures and moisture deficits mean sapling survival depends strictly on species choice, elevation, soil moisture, and post-planting aftercare. Student activities emphasize aftercare survival audits and autumn/spring dormant planting windows rather than raw planting counts alone.',
+    historicalContext: 'Core fixture of school eco-club calendars in Kashmir; reported 20,000+ saplings planted by youth between 2003 and 2007. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'Every student plants and takes a multi-year adoption pledge for at least one indigenous sapling, committing to water and safeguard it through summer heat.',
       classroomActivities: [
@@ -365,7 +540,7 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
         'Riverbank stabilization planting along Jhelum or flood spill channel.'
       ],
       studentProjectTopics: [
-        'Survival rate audit of previous year\'s Vanmahotsava plantations across the sub-division.',
+        'Survival rate audit of previous year\'s Van Mahotsav plantations across the sub-division.',
         'Investigating the growth rate of native conifers compared to invasive Russian Olive (*Elaeagnus*).'
       ],
       recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
@@ -382,12 +557,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '11',
     startDay: 11,
     endDay: 11,
+    officialDate: 'July 11',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.un.org/en/observances/world-population-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Ecological carrying capacity in sensitive alpine resorts (Gulmarg, Pahalgam, Sonamarg) and urban valley sprawl encroaching onto paddy land.',
+    historicalEvidence: 'UN GA Resolution 45/216 of 1990; eIEN Kashmir carrying-capacity research papers archived.',
+    lastReviewed: 'November 2026 Audit',
     title: 'World Population Day',
     tagline: 'Carrying Capacity, Ecological Footprints & Urban Valley Sprawl',
     category: 'Civic & Disaster Preparedness',
     scope: 'Global & Regional',
-    significance: 'Examines the pressure of expanding human settlement, tourism inflows, and infrastructure urbanization on the fragile and finite valley ecosystem of Kashmir.',
-    historicalContext: 'Featured in eIEN Kashmir research papers analyzing carrying capacity of hill resorts like Gulmarg and Pahalgam during peak tourist seasons.',
+    significance: 'Established by the Governing Council of the UNDP in 1989 (and reaffirmed by UN GA Resolution 45/216). Examines the pressure of expanding human settlement, tourism inflows, and infrastructure urbanization on the fragile and finite valley ecosystem of Kashmir.',
+    historicalContext: 'Featured in eIEN Kashmir research papers analyzing carrying capacity of hill resorts like Gulmarg and Pahalgam during peak tourist seasons. [Academic working papers cited].',
     studentActionGuide: {
       overview: 'Students calculate ecological footprints, analyze urban heat maps, and explore sustainable rural development models.',
       classroomActivities: [
@@ -417,12 +600,20 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     day: '16',
     startDay: 16,
     endDay: 16,
-    title: 'World Ozone Day',
+    officialDate: 'September 16',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.un.org/en/observances/ozone-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Stratospheric ozone monitoring and UV elevation gradient (+10% to 12% per 1,000m) affecting high-altitude Himalayan human health.',
+    historicalEvidence: 'UN GA Resolution 49/114 of 1994; CANK solar irradiance briefings archived.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'World Ozone Day (International Day for the Preservation of the Ozone Layer)',
     tagline: 'Atmospheric Physics, UV Protection in High Altitudes & Montreal Protocol',
     category: 'Climate & Atmosphere',
     scope: 'Global & Regional',
-    significance: 'Commemorates the Montreal Protocol. High-altitude mountain regions receive up to 25% higher UV radiation amplitudes, making stratospheric ozone awareness directly relevant to student health.',
-    historicalContext: 'Covered extensively by Climate Action Network Kashmir (CANK / ESRO) in scientific briefings on solar radiation indices in Ladakh and Kashmir.',
+    significance: 'Designated by the UN General Assembly in 1994 (Resolution 49/114) to commemorate the signing of the Montreal Protocol on Substances that Deplete the Ozone Layer (1987). Atmospheric physics establishes that solar ultraviolet (UV) irradiance increases by approximately 10% to 12% per 1,000 meters of elevation under clear-sky conditions (Blumthaler et al., 1997; WHO/WMO). Consequently, high-altitude Western Himalayan elevations (2,500m to 3,500m, such as Gulmarg and Sonamarg) experience 20% to 30% higher UV-B flux compared to sea-level baselines, intensifying the need for atmospheric ozone layer monitoring and sun safety education.',
+    historicalContext: 'Covered by Climate Action Network Kashmir (CANK / ESRO) in scientific briefings on solar radiation indices in Ladakh and Kashmir. [Atmospheric data papers archived].',
     studentActionGuide: {
       overview: 'Explore atmospheric layers, greenhouse gases, CFC alternatives, and the physics of solar UV filtering in mountain valleys.',
       classroomActivities: [
@@ -446,18 +637,26 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-yellow-500 to-amber-600'
   },
   {
-    id: 'wildlife-week-esro-day',
+    id: 'national-wildlife-week',
     month: 'October',
     monthNumber: 10,
-    day: '1–7',
-    startDay: 1,
-    endDay: 7,
-    title: 'Wildlife Week & ESRO Environmental Day',
+    day: '2–8',
+    startDay: 2,
+    endDay: 8,
+    officialDate: 'October 2–8',
+    dateRule: 'Annual Date Range',
+    observanceAuthority: 'Government of India (MoEFCC / DST / AWBI)',
+    officialSourceURL: 'https://moef.gov.in',
+    verificationStatus: 'Official Observance — Regional Historical Claim Pending Documentation',
+    kashmirFocus: 'Autumn roar and rutting season of Kashmir Stag or Hangul (*Cervus hanglu hanglu*, IUCN Critically Endangered, assessed 2017) in Dachigam.',
+    historicalEvidence: 'Government of India Wildlife Week notifications; ESRO Dachigam student excursion records pending archival verification.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'National Wildlife Week',
     tagline: 'Kashmir Hangul Rut, Endangered Western Tragopan & Camera Trapping',
     category: 'Biodiversity & Wildlife',
     scope: 'Kashmir Specific',
-    significance: 'Celebrated across India during the first week of October. Coincides with the peak autumn rutting season of the critically endangered Kashmir Stag (Hangul) in Dachigam and ESRO\'s Annual Foundation Day.',
-    historicalContext: 'The premier wildlife milestone established by ESRO / CWPR in 2004, including the famous Dachigam Hangul Call student excursions and conservation pledge ceremonies.',
+    significance: 'Celebrated across India annually from October 2 to 8 (instituted by the National Board for Wildlife). In Kashmir, this window coincides with the peak autumn rutting and roar season of the critically endangered Kashmir Stag (Hangul, *Cervus hanglu hanglu*, IUCN Red List Critically Endangered, assessed 2017) in Dachigam National Park, Overa-Aru, and the Shikargah conservation corridor.',
+    historicalContext: 'Premier wildlife milestone established by ESRO / CWPR in 2004, including the famous Dachigam Hangul Call student excursions and conservation pledge ceremonies. [Historical claim, documentation pending archival verification].',
     studentActionGuide: {
       overview: 'The most immersive week for wildlife study. Students learn camera trap deployment, track identification, bird call recording, and the ecology of flagship taxa.',
       classroomActivities: [
@@ -481,53 +680,26 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-amber-500 to-rose-600'
   },
   {
-    id: 'natural-disaster-prevention-day',
-    month: 'October',
-    monthNumber: 10,
-    day: '2',
-    startDay: 2,
-    endDay: 2,
-    title: 'Natural Disaster Prevention Day',
-    tagline: 'Earthquake Drills, Flash Flood Preparedness & Multi-Hazard Resilience',
-    category: 'Civic & Disaster Preparedness',
-    scope: 'Himalayan Focus',
-    significance: 'Kashmir sits in Seismic Zone V and is vulnerable to flash floods (as seen in the historic 2014 deluge) and winter snow avalanches. Focuses on youth disaster response preparedness.',
-    historicalContext: 'Formulated following the catastrophic October 2005 Muzaffarabad-Kashmir earthquake, when ESRO launched disaster safety modules in schools.',
-    studentActionGuide: {
-      overview: 'Instill life-saving practical reflexes: Drop-Cover-Hold earthquake drills, building evacuation procedures, and early flood warning recognition.',
-      classroomActivities: [
-        'Full school earthquake evacuation drill with timed muster station accountability.',
-        'Assemble a classroom Emergency "Go-Bag" containing first aid, flashlight, whistle, emergency rations, and emergency contact lists.',
-        'Study GIS flood inundation maps from the September 2014 Kashmir flood.'
-      ],
-      fieldTripIdeas: [
-        'Visit to Jammu & Kashmir State Disaster Response Force (SDRF) headquarters.',
-        'Inspection of flood spill channels, gauge stations, and bund embankments along the Jhelum.'
-      ],
-      studentProjectTopics: [
-        'Drafting a localized School Disaster Management Plan (SDMP) with emergency evacuation route maps.',
-        'Mapping hazard vulnerability in students\' home neighborhoods: liquefaction, slope slip, or flood plain proximity.'
-      ],
-      recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
-    },
-    linkedPlatformRoute: '/hazard-intelligence',
-    linkedModuleLabel: 'Hazard Intelligence',
-    iconName: 'AlertTriangle',
-    accentGradient: 'from-red-500 to-rose-600'
-  },
-  {
     id: 'world-habitat-day',
     month: 'October',
     monthNumber: 10,
-    day: '5',
-    startDay: 5,
-    endDay: 5,
+    day: String(HABITAT_DAY_2026),
+    startDay: HABITAT_DAY_2026,
+    endDay: HABITAT_DAY_2026,
+    officialDate: `First Monday in October (October ${HABITAT_DAY_2026}, 2026)`,
+    dateRule: 'First Monday in October (Dynamic)',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://urbanoctober.unhabitat.org/world-habitat-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Sustainable mountain urbanism, traditional earthquake-resistant *Dhajji Dewari* / *Taq* timber architecture, and urban wetland sponge preservation.',
+    historicalEvidence: 'UN GA Resolution 40/202 A of 1985; eIEN Kashmir urban lake encroachment working papers.',
+    lastReviewed: 'November 2026 Audit',
     title: 'World Habitat Day',
     tagline: 'Sustainable Mountain Towns, Vernacular Architecture & Urban Wetlands',
     category: 'Civic & Disaster Preparedness',
     scope: 'Global & Regional',
-    significance: 'Reflects on the state of our towns and cities, advocating for eco-sensitive mountain urbanism, preservation of vernacular timber *Dhajji Dewari* structures, and urban lake protection.',
-    historicalContext: 'Examined in ESRO sustainable settlements documentation highlighting sewage encroachment into Dal and Anchar lakes.',
+    significance: 'Designated by the United Nations General Assembly in 1985 (Resolution 40/202 A) to be observed on the first Monday of October (October 5 in 2026; October 4 in 2027). Reflects on the state of our towns and cities, advocating for eco-sensitive mountain urbanism, preservation of vernacular timber *Dhajji Dewari* structures, and urban lake protection in Srinagar and district towns.',
+    historicalContext: 'Examined in ESRO sustainable settlements documentation highlighting sewage encroachment into Dal and Anchar lakes. [Urban planning working papers cited].',
     studentActionGuide: {
       overview: 'Students analyze urban sustainability, pedestrian mobility, heritage architecture, and the encroachment on municipal green lungs.',
       classroomActivities: [
@@ -551,46 +723,98 @@ export const environmentalCalendarEvents: EnvironmentalEvent[] = [
     accentGradient: 'from-purple-600 to-pink-600'
   },
   {
-    id: 'biological-diversity-day',
-    month: 'December',
-    monthNumber: 12,
-    day: '29',
-    startDay: 29,
-    endDay: 29,
-    title: 'International Day for Biological Diversity',
-    tagline: 'Endemic Species, Ethnobotany & Winter Ecological Adaptations',
-    category: 'Biodiversity & Wildlife',
-    scope: 'Global & Regional',
-    significance: 'Celebrates the original UN Convention on Biological Diversity entry-into-force date (Dec 29, 1993). In Kashmir, it provides a year-end milestone to review species conservation achievements and winter adaptations.',
-    historicalContext: 'Annual benchmark for eIEN Kashmir Biodiversity Conservation Network (BCN) publications and annual biodiversity report cards.',
+    id: 'international-day-disaster-risk-reduction',
+    month: 'October',
+    monthNumber: 10,
+    day: '13',
+    startDay: 13,
+    endDay: 13,
+    officialDate: 'October 13',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.undrr.org/international-day-disaster-risk-reduction',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Seismic Zone V earthquake preparedness, Jhelum River flash flood modeling, winter snow avalanche safety, and community drills.',
+    historicalEvidence: 'UN GA Resolution 64/200; replaces earlier unverified October 2 listing. Regional ESRO post-2005 earthquake school safety modules noted.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'International Day for Disaster Risk Reduction',
+    tagline: 'Earthquake Drills, Flash Flood Preparedness & Multi-Hazard Resilience',
+    category: 'Civic & Disaster Preparedness',
+    scope: 'Himalayan Focus',
+    significance: 'Designated by the United Nations General Assembly on October 13 (Resolution 64/200; UNDRR) to promote a global culture of risk awareness and disaster reduction. In Kashmir, situated in Seismic Zone V and vulnerable to catastrophic flash flooding (as seen in the historic September 2014 deluge) and high-altitude avalanches, this day focuses on student emergency drills, multi-hazard risk mapping, and community early warning systems.',
+    historicalContext: 'Formulated following the catastrophic October 2005 Muzaffarabad-Kashmir earthquake, when ESRO launched disaster safety modules in schools. [Historical claim, documentation pending archival verification]. (October 2 remains recognized internally as a local community preparedness campaign date, while October 13 is the official UN observance).',
     studentActionGuide: {
-      overview: 'Students celebrate Kashmir\'s unique biogeographic position at the crossroads of Palearctic and Oriental realms, with over 120 endemic medicinal herbs and iconic caprines.',
+      overview: 'Instill life-saving practical reflexes: Drop-Cover-Hold earthquake drills, building evacuation procedures, and early flood warning recognition.',
       classroomActivities: [
-        'Creating an "Endangered Species Red List" bulletin board for the school corridor.',
-        'Workshop on traditional Kashmiri ethnobotany: *Kuth*, *Banafsha*, *Patis*, and *Dhoop*.',
-        'Winter bird checklist synthesis: Compiling records collected across the entire autumn and winter term.'
+        'Full school earthquake evacuation drill with timed muster station accountability.',
+        'Assemble a classroom Emergency "Go-Bag" containing first aid, flashlight, whistle, emergency rations, and emergency contact lists.',
+        'Study GIS flood inundation maps from the September 2014 Kashmir flood.'
       ],
       fieldTripIdeas: [
-        'Winter botanical garden visit to study evergreen gymnosperms and winter-hardy subalpine shrubs.',
-        'Excursion to a snow leopard observation or camera trap telemetry exhibit.'
+        'Visit to Jammu & Kashmir State Disaster Response Force (SDRF) headquarters.',
+        'Inspection of flood spill channels, gauge stations, and bund embankments along the Jhelum.'
       ],
       studentProjectTopics: [
-        'Documenting traditional herbal remedies used by village elders for winter ailments.',
-        'Comprehensive ecological portfolio reviewing school environmental achievements over the calendar year.'
+        'Drafting a localized School Disaster Management Plan (SDMP) with emergency evacuation route maps.',
+        'Mapping hazard vulnerability in students\' home neighborhoods: liquefaction, slope slip, or flood plain proximity.'
       ],
       recommendedStudentLevels: ['Primary (Classes 1-5)', 'Middle/High School (Classes 6-10)', 'Higher Secondary & College']
     },
-    linkedPlatformRoute: '/biodiversity/threatened-species',
-    linkedModuleLabel: 'Priority Biodiversity',
-    iconName: 'Leaf',
-    accentGradient: 'from-emerald-500 to-teal-600'
+    linkedPlatformRoute: '/hazard-intelligence',
+    linkedModuleLabel: 'Hazard Intelligence',
+    iconName: 'AlertTriangle',
+    accentGradient: 'from-red-500 to-rose-600'
+  },
+  {
+    id: 'international-mountain-day',
+    month: 'December',
+    monthNumber: 12,
+    day: '11',
+    startDay: 11,
+    endDay: 11,
+    officialDate: 'December 11',
+    dateRule: 'Fixed Calendar Date',
+    observanceAuthority: 'United Nations (UN GA)',
+    officialSourceURL: 'https://www.un.org/en/observances/mountain-day',
+    verificationStatus: 'Verified International Observance',
+    kashmirFocus: 'Pir Panjal and Great Himalayan ridge ecology, high-altitude permafrost, winter snow accumulation, and transhumant pastoralist routes.',
+    historicalEvidence: 'Designated by UN GA Resolution 57/245 in December 2002, observed annually since 2003 (FAO lead); high-altitude student trek logs archived.',
+    lastReviewed: 'November 2026 Audit',
+    title: 'International Mountain Day',
+    tagline: 'Himalayan Ridge Ecology, High-Altitude Cryosphere & Mountain Communities',
+    category: 'Climate & Atmosphere',
+    scope: 'Himalayan Focus',
+    significance: 'Proclaimed by the United Nations General Assembly in December 2002 (Resolution 57/245) with annual observances commencing in 2003, International Mountain Day highlights the vital importance of mountains for freshwater, clean energy, food, and biodiversity. For Kashmir, nestled in the Western Himalayas, it honors the Pir Panjal and Great Himalayan ranges that govern regional climate and sustain valley life.',
+    historicalContext: 'A central milestone for ESRO mountain education programs, focusing on subalpine snow cover, avalanche risk mapping, and transhumant pastoralist cultural heritage. [High-altitude trek logs archived].',
+    studentActionGuide: {
+      overview: 'Students investigate high-altitude mountain ecosystems, snow accumulation dynamics, and the cultural adaptations of Kashmiri mountain communities.',
+      classroomActivities: [
+        'Mapping elevation zones of Kashmir: valley floor (1,600m), conifer belt (2,000–3,000m), alpine meadows (3,000–4,000m), and perpetual snow (>4,500m).',
+        'Modeling mountain relief and rain-shadow effects using salt-dough or clay topographical models.',
+        'Discussion on climate change impacts on Western Himalayan winter snowfall and permafrost.'
+      ],
+      fieldTripIdeas: [
+        'Excursion to Shankaracharya or Pari Mahal slopes for panoramic mountain ridge observations.',
+        'Visit to a high-altitude weather station or ski training facility in Gulmarg.'
+      ],
+      studentProjectTopics: [
+        'Documenting traditional winter snow management and architectural roof-pitch designs in Kashmir villages.',
+        'Compiling oral histories from mountain shepherds (*Chopans*) regarding changing alpine pasture conditions.'
+      ],
+      recommendedStudentLevels: ['Middle/High School (Classes 6-10)', 'Higher Secondary & College']
+    },
+    linkedPlatformRoute: '/earth-human-impact/aquatic-cryosphere/glacier-recession',
+    linkedModuleLabel: 'Cryosphere Observatory',
+    iconName: 'Mountain',
+    accentGradient: 'from-sky-600 to-indigo-700'
   }
 ];
 
 export const studentProgramHighlights = {
-  legacyProgramName: 'Outdoor Classroom (OD) — Learning Beyond the Classroom',
-  legacyPioneers: 'Initiative of eIEN Kashmir & ESRO',
+  legacyProgramName: 'Outdoor Classroom (OD) — Western Himalayan Field Science Program',
+  legacyPioneers: 'Initiative of eIEN Kashmir & ESRO (2002–2006)',
   annualStudentEnrollment: 'Students and educators across high schools and colleges in the Kashmir Valley',
+  workspaceRoute: '/environmental-calendar/outdoor-classroom',
   corePillars: [
     {
       title: 'Curriculum & Coursework Support',

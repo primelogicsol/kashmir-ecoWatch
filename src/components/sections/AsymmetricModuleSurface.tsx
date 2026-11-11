@@ -147,10 +147,10 @@ export function AsymmetricModuleSurface() {
 
                       {/* Title and description */}
                       <div className="mb-2 sm:mb-3 md:mb-4">
-                        <h3 className="text-base font-semibold line-clamp-1 text-white group-hover:text-forest-300 transition-colors">{/* responsive-md-fix */}
+                        <h3 className="text-base font-semibold text-white group-hover:text-forest-300 transition-colors leading-snug">
                           {card.title}
                         </h3>
-                        <p className="text-sm leading-relaxed line-clamp-3 text-slate-400">{/* responsive-md-fix */}
+                        <p className="text-sm leading-relaxed text-slate-400 break-words">
                           {card.description}
                         </p>
                       </div>

@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { useRouter } from 'next/navigation';
 
 // ============================================================================

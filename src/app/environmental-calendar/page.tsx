@@ -35,13 +35,16 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
-  FileText
+  FileText,
+  ExternalLink,
+  ShieldCheck,
+  Music
 } from 'lucide-react';
 import { Heading } from '@/components/common/Heading';
+import { OutdoorClassroomNav } from '@/components/outdoor-classroom/OutdoorClassroomNav';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import {
   environmentalCalendarEvents,
   studentProgramHighlights,
@@ -80,6 +83,7 @@ const MONTHS = [
   'February',
   'March',
   'April',
+  'May',
   'June',
   'July',
   'September',
@@ -196,7 +200,7 @@ export default function EnvironmentalCalendarPage() {
       id: 'wildlife-hangul',
       src: '/images/tiger.png',
       title: 'Wildlife Week & Hangul Rut',
-      date: 'October 1 – 7',
+      date: 'October 2 – 8',
       status: 'Wildlife Week J&K',
       location: 'Dachigam National Park & Overa-Aru',
       short: 'Wildlife Week',
@@ -239,7 +243,7 @@ export default function EnvironmentalCalendarPage() {
               {currentHero.status}
             </span>
           </div>
-          <p className="text-[11px] text-slate-300 line-clamp-1 mb-1">
+          <p className="text-[11px] text-slate-300 break-words mb-1">
             {currentHero.description}
           </p>
           <div className="flex items-center justify-between text-[10px] text-slate-400">
@@ -269,7 +273,7 @@ export default function EnvironmentalCalendarPage() {
               <img src={item.src} alt={item.short} className="w-full h-full object-cover" />
             </div>
             <span
-              className={`text-[9px] font-bold truncate w-full text-center ${
+              className={`text-[9px] font-bold break-words w-full text-center ${
                 activeHeroIdx === idx ? 'text-emerald-300' : 'text-slate-400'
               }`}
             >
@@ -321,6 +325,15 @@ export default function EnvironmentalCalendarPage() {
           rightContent={heroShowcaseCard}
           actions={
             <div className="flex flex-wrap items-center gap-2">
+              <Link href="/environmental-calendar/ecovoices">
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold transition-all shadow-md shadow-purple-500/20"
+                  icon={<Music className="w-4 h-4" />}
+                >
+                  EcoVoices Music
+                </Button>
+              </Link>
               <a href="#outdoor-classroom">
                 <Button
                   size="sm"
@@ -352,6 +365,9 @@ export default function EnvironmentalCalendarPage() {
             </div>
           }
         />
+
+        {/* Persistent Module Navigation */}
+        <OutdoorClassroomNav />
 
         {/* Telemetry / Upcoming Observance & KPI Strip */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mt-4 mb-6">
@@ -386,7 +402,7 @@ export default function EnvironmentalCalendarPage() {
                       {upcomingEvent.title}
                       <Sparkles className="w-4 h-4 text-amber-400" />
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 line-clamp-1 mt-0.5">
+                    <p className="text-xs sm:text-sm text-slate-300 break-words mt-0.5">
                       {upcomingEvent.tagline}
                     </p>
                   </div>
@@ -404,6 +420,50 @@ export default function EnvironmentalCalendarPage() {
               </div>
             </motion.div>
           )}
+
+          {/* ECOVOICES FEATURE SPOTLIGHT BANNER */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/30 backdrop-blur-xl relative overflow-hidden shadow-2xl mb-8">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+              <div className="space-y-2 max-w-3xl">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge className="bg-purple-900/80 text-purple-300 border-purple-500/40 text-[10px] font-mono">
+                    Creative Education Program
+                  </Badge>
+                  <span className="text-xs text-purple-400 font-mono">
+                    Kashmir EcoWatch × SufiPulse USA
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
+                  <Music className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 shrink-0" />
+                  <span>EcoVoices: Environmental Music &amp; Cultural Stewardship</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Where Western Himalayan scientific diagnostics meet sacred music and ecological kalam. Explore curated releases including <strong className="text-white">PANI GAWAH HAI</strong> (Water Stewardship), <strong className="text-white">Sufi Cry for a River</strong> (Jhelum Hydrology), and <strong className="text-white">Mirror of Hazratbal, Wound of Dal</strong> (Dal Lake Ecology), paired with Outdoor Classroom field activities.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 shrink-0 w-full sm:w-auto">
+                <Link
+                  href="/environmental-calendar/ecovoices"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-colors shadow-lg shadow-purple-600/30 w-full sm:w-auto"
+                >
+                  <Music className="w-4 h-4" />
+                  <span>Explore EcoVoices Program</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <a
+                  href="https://sufipulse.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-purple-300 border border-purple-500/30 text-xs font-semibold transition-colors w-full sm:w-auto"
+                >
+                  <span>SufiPulse.com</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
 
           {/* Quick Metrics Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -596,9 +656,14 @@ export default function EnvironmentalCalendarPage() {
                                 </span>
                               </div>
                               <div>
-                                <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                                  {event.category}
-                                </span>
+                                <div className="flex flex-wrap items-center gap-1.5">
+                                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                                    {event.category}
+                                  </span>
+                                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/10">
+                                    {event.observanceAuthority}
+                                  </span>
+                                </div>
                                 <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors mt-1">
                                   {event.title}
                                 </h3>
@@ -610,24 +675,70 @@ export default function EnvironmentalCalendarPage() {
                             </div>
                           </div>
 
+                          {/* Verification & Official Date Strip */}
+                          <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-2 border-b border-white/5 text-[10px] font-mono">
+                            <span className="text-slate-400">
+                              Official Date: <strong className="text-slate-200">{event.officialDate}</strong> ({event.dateRule})
+                            </span>
+                            <span className={`px-2 py-0.5 rounded border text-[9px] ${
+                              event.verificationStatus.includes('Pending')
+                                ? 'bg-amber-950/60 text-amber-300 border-amber-500/40'
+                                : 'bg-emerald-950/60 text-emerald-300 border-emerald-500/40'
+                            }`}>
+                              {event.verificationStatus}
+                            </span>
+                          </div>
+
                           {/* Tagline */}
                           <p className="text-xs font-medium text-emerald-300/90 mb-2">
                             {event.tagline}
                           </p>
 
                           {/* Significance Description */}
-                          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
                             {event.significance}
                           </p>
 
-                          {/* Historical ESRO Context Box */}
-                          <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 text-[11px] text-slate-400 mb-4 flex items-start gap-2.5">
-                            <Award className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                          {/* Regional Kashmir Ecological Relevance */}
+                          <div className="p-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-[11px] text-slate-300 mb-3 flex items-start gap-2">
+                            <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                             <div>
-                              <span className="text-slate-300 font-semibold block mb-0.5">
-                                Historical Background (ESRO / eIEN Kashmir):
+                              <strong className="text-emerald-300 font-semibold block text-[10px] uppercase font-mono mb-0.5">
+                                Kashmir Ecological Relevance:
+                              </strong>
+                              <span>{event.kashmirFocus}</span>
+                            </div>
+                          </div>
+
+                          {/* Historical ESRO Context Box with Documentary Safeguard */}
+                          <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5 text-[11px] text-slate-400 mb-4 space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <span className="text-slate-300 font-semibold flex items-center gap-1.5">
+                                <Award className="w-3.5 h-3.5 text-amber-400" />
+                                Historical Context (ESRO / eIEN Kashmir):
                               </span>
+                              <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${
+                                event.verificationStatus.includes('Pending')
+                                  ? 'bg-amber-950 text-amber-300 border-amber-500/30'
+                                  : 'bg-emerald-950 text-emerald-300 border-emerald-500/30'
+                              }`}>
+                                {event.verificationStatus.includes('Pending') ? 'Documentation Pending' : 'Documented Archive'}
+                              </span>
+                            </div>
+                            <p className="leading-relaxed text-slate-300 text-[11px]">
                               {event.historicalContext}
+                            </p>
+                            <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-400 pt-1.5 border-t border-white/5 font-mono">
+                              <span className="text-slate-500">Record: {event.historicalEvidence}</span>
+                              <a
+                                href={event.officialSourceURL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-emerald-400 hover:underline flex items-center gap-1"
+                              >
+                                <span>Authority Reference</span>
+                                <ExternalLink className="w-2.5 h-2.5" />
+                              </a>
                             </div>
                           </div>
 
@@ -761,20 +872,117 @@ export default function EnvironmentalCalendarPage() {
           <div className="absolute top-1/2 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mb-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
-                <GraduationCap className="w-3.5 h-3.5" />
-                <span>PEDAGOGICAL FRAMEWORK</span>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>EXPANDED PEDAGOGICAL FRAMEWORK • ESRO / eIEN KASHMIR REVIVAL</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+                  Outdoor Classroom (OD)
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                    Western Himalayan Field Science Program
+                  </span>
+                </h2>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                  Pioneered by the Environment Services & Research Organization (ESRO) and eIEN Kashmir (2002–2006) and revived 
+                  in 2026 as a complete 8-stage experiential learning lifecycle. Connecting school and college science curricula 
+                  with empirical wetland audits, forest biodiversity transects, and digital competency certification.
+                </p>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-                Outdoor Classroom (OD)
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-                  Learning Beyond the Classroom
-                </span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                Pioneered by the Environment Services & Research Organization (ESRO) and eIEN Kashmir, the Outdoor Classroom curriculum engages students and educators across high schools and colleges in the Kashmir Valley. We provide practical logistical frameworks, fieldwork protocols, and experiential study tours linking academic textbooks with real Himalayan ecosystems.
-              </p>
+
+              <div className="shrink-0">
+                <Link
+                  href="/environmental-calendar/outdoor-classroom"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-950/40 transition-all"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>Enter Outdoor Classroom Workspace</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Outdoor Classroom & EcoVoices Subpage Portals */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+              {[
+                {
+                  href: '/environmental-calendar/ecovoices',
+                  title: 'EcoVoices: Environmental Music',
+                  badge: 'SufiPulse USA × EcoWatch',
+                  desc: 'Sacred Sufi music, ecological kalam, and Outdoor Classroom field activities paired with Kashmir observances.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom',
+                  title: 'Program Overview & Lifecycle',
+                  badge: '8-Stage Lifecycle',
+                  desc: 'Complete operational workflow from school registration to GIS data publishing.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/curriculum',
+                  title: 'Curriculum Library',
+                  badge: '5 Grade Tiers',
+                  desc: 'Downloadable teacher guides, student workbooks, and oral history interview rubrics.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/adopt-an-ecosystem',
+                  title: 'Adopt-an-Ecosystem',
+                  badge: '20 Field Sites',
+                  desc: 'Non-exclusive educational stewardship registry across all 10 Kashmir districts.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/field-learning-programs',
+                  title: '8 Field Science Programs',
+                  badge: 'Complete Dossiers',
+                  desc: 'Wetlands, Forests, Karst Springs, Cryosphere, Agriculture, Urban, and Geology.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/institutional-registration',
+                  title: 'School Registration',
+                  badge: '100% Free Tuition',
+                  desc: 'Enrol your school or college Eco-Club in the Phase 1 pilot network.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/student-observations',
+                  title: 'Field Telemetry Stream',
+                  badge: 'Supervised Logs',
+                  desc: 'Empirical student measurements with teacher audit and scientific verification.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/certificates',
+                  title: 'Competency Certificates',
+                  badge: 'Cryptographic SHA-256',
+                  desc: 'Instant credential lookup and 5-tier verified student achievement badges.'
+                },
+                {
+                  href: '/environmental-calendar/outdoor-classroom/annual-report',
+                  title: 'Annual Pilot Report',
+                  badge: '2026 Baseline',
+                  desc: 'District participation metrics, water quality signals, and historical archival note.'
+                }
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="p-5 rounded-2xl bg-slate-900/60 border border-white/5 hover:border-emerald-500/40 hover:bg-slate-900 transition-all flex flex-col justify-between group space-y-3"
+                >
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {item.badge}
+                    </span>
+                    <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-400 leading-relaxed break-words">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-xs text-emerald-400 font-medium">
+                    <span>Explore Module</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -825,9 +1033,6 @@ export default function EnvironmentalCalendarPage() {
           </div>
         </section>
       </div>
-
-      {/* Footer */}
-      <AdvancedFooter />
     </main>
   );
 }

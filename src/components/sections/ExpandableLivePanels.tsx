@@ -506,7 +506,7 @@ export function ExpandableLivePanels() {
                       {/* Title and meta */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 flex-wrap mb-1">
-                          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white line-clamp-1 flex-1">
+                          <h3 className="text-sm sm:text-base md:text-lg font-bold text-white break-words flex-1">
                             {panel.title}
                           </h3>
                           <Badge
@@ -573,7 +573,7 @@ export function ExpandableLivePanels() {
                                   {/* Content */}
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2 sm:gap-4 mb-2 flex-wrap">
-                                      <h4 className="text-sm flex-1 min-w-0 line-clamp-1 font-semibold text-white group-hover:text-forest-300 transition-colors">
+                                      <h4 className="text-sm flex-1 min-w-0 break-words font-semibold text-white group-hover:text-forest-300 transition-colors">
                                         {item.title}
                                       </h4>
                                       <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -590,7 +590,7 @@ export function ExpandableLivePanels() {
                                       {item.location && (
                                         <div className="flex items-center gap-1 min-w-0 flex-[1_1_100%] sm:flex-[1_1_auto]">
                                           <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
-                                          <span className="truncate">{item.location}</span>
+                                          <span className="break-words">{item.location}</span>
                                         </div>
                                       )}
                                       <div className="flex items-center gap-1 flex-shrink-0">

@@ -56,7 +56,7 @@ export function Heading({
         <div className="absolute inset-0 bg-grid" />
       )}
 
-      <div className={cn('relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-6 sm:pb-10 md:pb-14 lg:pb-20 container mx-auto px-6', contentClassName)}>
+      <div className={cn('relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-6 sm:pb-10 md:pb-14 lg:pb-20 page-content__inner', contentClassName)}>
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -98,8 +98,8 @@ export function Heading({
                   const moduleName = title.replace(/^Western Himalayan\s*/i, '').trim();
                   return (
                     <>
-                      <span className="block leading-[1.12] overflow-visible whitespace-nowrap pb-2">Western Himalayan</span>
-                      <span className="block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
+                      <span className="block leading-[1.12] overflow-visible break-words pb-2">Western Himalayan</span>
+                      <span className="block leading-[1.12] pb-2 overflow-visible break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
                         {moduleName}
                       </span>
                     </>
@@ -111,7 +111,7 @@ export function Heading({
             </h1>
 
             {subtitle && (
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl line-clamp-3">
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl break-words">
                 {subtitle}
               </p>
             )}

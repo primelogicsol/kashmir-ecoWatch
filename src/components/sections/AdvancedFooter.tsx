@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {
-  Leaf, Mail, Phone, MapPin, Github, Twitter, Linkedin, Youtube,
-  Heart, Database, FileText, Users, Shield, Activity, Globe
+  Leaf, Mail, MapPin, Github, Twitter, Linkedin, Youtube,
+  Heart, Database, FileText, Users, Shield, Activity, Globe, MessageCircle
 } from 'lucide-react';
 
 const footerLinks = {
@@ -13,10 +14,14 @@ const footerLinks = {
     { label: 'Governance',    href: '/about/governance' },
     { label: 'Founder',       href: '/about/founder' },
     { label: 'Contributors',  href: '/about/contributors' },
+    { label: 'Webinars & Conferences', href: '/webinars' },
     { label: 'Support KEW',   href: '/about/support-sponsorship' },
+    { label: 'CSR & Grants',  href: '/about/csr-collaborations' },
     { label: 'Contact',       href: '/about/contact' },
   ],
   platform: [
+    { label: 'Sectoral EIA Engine',               href: '/sectoral-eia' },
+    { label: 'Cumulative Impact Modeling',        href: '/sectoral-eia/cumulative-impact' },
     { label: 'Global Dashboard',                  href: '/monitoring-overview' },
     { label: 'Biodiversity Dashboard',            href: '/biodiversity/dashboards' },
     { label: 'Water Systems Dashboard',           href: '/water-systems/dashboards' },
@@ -26,6 +31,8 @@ const footerLinks = {
     { label: 'SDG Dashboard',                     href: '/environmental-monitoring/sdg-monitoring' },
   ],
   resources: [
+    { label: 'Sectoral Impact Atlas',     href: '/sectoral-eia/impact-atlas' },
+    { label: 'SEIAE Scientific Reports',  href: '/sectoral-eia/reports' },
     { label: 'Research Library',          href: '/research-library' },
     { label: 'Ecological Atlas',          href: '/atlas' },
     { label: 'Regional Profiles',         href: '/districts' },
@@ -35,6 +42,8 @@ const footerLinks = {
     { label: 'Methodology',               href: '/about/methodology' },
   ],
   getInvolved: [
+    { label: 'Join Official WhatsApp Group', href: 'https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39' },
+    { label: 'Submit Sectoral Assessment',href: '/sectoral-eia/assessment/new' },
     { label: 'Submit Observation',        href: '/submit-observation' },
     { label: 'Report Environmental Issue',href: '/report-issue' },
     { label: 'Share Environmental Data',  href: '/share-data' },
@@ -75,36 +84,62 @@ export function AdvancedFooter() {
                 </div>
             </div>
             </a>
-            <p className="text-xs sm:text-sm text-slate-400 mb-2 leading-relaxed">
-              A Kashmir Diaspora-Supported Initiative for Environmental Intelligence and Scientific Stewardship
+            <p className="text-xs sm:text-sm text-slate-400 mb-3 leading-relaxed">
+              A Kashmir Diaspora-Supported Initiative for Environmental Intelligence, Scientific Stewardship, and Ecological Resilience.
             </p>
-            <p className="text-[10px] sm:text-xs text-slate-500 mb-4 leading-relaxed">
-              Operated &amp; Supported by{' '}
+            <div className="mb-4 text-xs leading-relaxed">
+              <span className="block text-slate-500 font-medium mb-0.5">Operated &amp; Supported by</span>
               <a
                 href="https://dkf.sufisciencecenter.info/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-emerald-400 transition-colors underline-offset-2 hover:underline"
+                className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors underline-offset-2 hover:underline"
               >
                 Dr. Kumar Foundation USA
               </a>{' '}
-              &amp; Kumar Trust USA
-            </p>
+              <span className="text-slate-400">&amp;</span>{' '}
+              <span className="text-slate-300 font-medium">Kumar Trust USA</span>
+            </div>
 
             {/* Contact info */}
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-2 sm:gap-3">
                 <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest-400 flex-shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-400 truncate">contact@kashmir-ecowatch.com</span>
+                <a
+                  href="mailto:contact@kashmir-ecowatch.com"
+                  className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-all"
+                >
+                  contact@kashmir-ecowatch.com
+                </a>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest-400 flex-shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-400 truncate">+1 916 699 0091</span>
+                <a
+                  href="https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-emerald-500 hover:underline"
+                  title="Connect with environmental scientists, researchers, NGOs and conservation professionals"
+                >
+                  <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
+                  <span className="text-xs sm:text-sm break-words font-medium">
+                    Join Our Official WhatsApp Group
+                  </span>
+                </a>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest-400 flex-shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-400 truncate">Loudoun County, VA, USA</span>
+                <span className="text-xs sm:text-sm text-slate-400 break-words">Loudoun County, Virginia, USA</span>
               </div>
+            </div>
+
+            {/* Western Himalayan Scientific Coverage */}
+            <div className="pt-3 border-t border-white/10 space-y-1 mb-4">
+              <div className="text-[11px] font-bold text-teal-400 uppercase tracking-wider">
+                Western Himalayan Scientific Coverage
+              </div>
+              <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                Jammu &amp; Kashmir, India · Ladakh, India · Azad Kashmir, Pakistan · Gilgit-Baltistan, Pakistan
+              </p>
             </div>
 
             {/* Social links */}
@@ -124,7 +159,7 @@ export function AdvancedFooter() {
 
           {/* Explore links */}
           <div className="col-span-1">
-            <h4 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-widest mb-3 sm:mb-4">
+            <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Explore
             </h4>
             <ul className="space-y-2 sm:space-y-3">
@@ -132,7 +167,8 @@ export function AdvancedFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-slate-400 hover:text-forest-400 transition-colors break-words"
+                    {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words"
                   >
                     {link.label}
                   </a>
@@ -143,7 +179,7 @@ export function AdvancedFooter() {
 
           {/* Platform links */}
           <div className="col-span-1">
-            <h4 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-widest mb-3 sm:mb-4">
+            <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Platform
             </h4>
             <ul className="space-y-2 sm:space-y-3">
@@ -151,7 +187,8 @@ export function AdvancedFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-slate-400 hover:text-forest-400 transition-colors break-words"
+                    {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words"
                   >
                     {link.label}
                   </a>
@@ -162,7 +199,7 @@ export function AdvancedFooter() {
 
           {/* Resources links */}
           <div className="col-span-1">
-            <h4 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-widest mb-3 sm:mb-4">
+            <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Resources
             </h4>
             <ul className="space-y-2 sm:space-y-3">
@@ -170,7 +207,8 @@ export function AdvancedFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-slate-400 hover:text-forest-400 transition-colors break-words"
+                    {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words"
                   >
                     {link.label}
                   </a>
@@ -181,7 +219,7 @@ export function AdvancedFooter() {
 
           {/* Contribute links */}
           <div className="col-span-1">
-            <h4 className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-widest mb-3 sm:mb-4">
+            <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Get Involved
             </h4>
             <ul className="space-y-2 sm:space-y-3">
@@ -189,7 +227,8 @@ export function AdvancedFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-slate-400 hover:text-forest-400 transition-colors break-words"
+                    {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words"
                   >
                     {link.label}
                   </a>
@@ -264,7 +303,7 @@ export function AdvancedFooter() {
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
                 >
-                  Prime Logic Solutions
+                  Prime Logic Solutions USA
                 </a>
               </div>
               <div className="text-[11px] text-slate-500 leading-tight">
@@ -287,7 +326,10 @@ export function AdvancedFooter() {
             <Shield className="w-3.5 h-3.5 text-slate-500/60 mt-0.5 flex-shrink-0" />
             <p className="text-[10px] sm:text-[11px] text-slate-500 leading-relaxed">
               <span className="font-semibold text-slate-400">Intellectual Property: </span>
-              Kashmir EcoWatch, including its environmental intelligence systems, databases, geospatial frameworks, analytical methodologies, visual assets, and associated digital infrastructure, is protected under applicable intellectual property and related laws. Unauthorized reproduction, extraction, redistribution, reverse engineering, imitation, or commercial exploitation is prohibited without prior written authorization.
+              Kashmir EcoWatch environmental intelligence systems, geospatial models, analytical registries, and digital architecture are protected under intellectual property laws. Unauthorized reproduction or commercial extraction is prohibited. Read our{' '}
+              <Link href="/legal-notice#ip" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 font-medium transition-colors">
+                Intellectual Property &amp; Legal Notice
+              </Link>.
             </p>
           </div>
 

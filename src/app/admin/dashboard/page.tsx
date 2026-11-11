@@ -12,7 +12,6 @@ import {
 import { useAuth, ContributorRole } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
 // Mock submission queue for admin verification
 interface PendingSubmission {
@@ -548,8 +547,6 @@ export default function AdminDashboardPage() {
         )}
 
       </div>
-
-      <AdvancedFooter />
     </main>
   );
 }

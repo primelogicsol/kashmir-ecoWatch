@@ -34,7 +34,8 @@ import {
   Upload,
   FileText,
   LogIn,
-  LogOut
+  LogOut,
+  Layers
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrolledHeader } from '@/hooks/useScrolledHeader';
@@ -52,8 +53,10 @@ const navItems = [
   { label: 'Water Systems',           href: '/water-systems',            hasDropdown: true },
   { label: 'Environmental Monitoring',href: '/environmental-monitoring', hasDropdown: true },
   { label: 'Hazard Intelligence',     href: '/hazard-intelligence',      hasDropdown: true },
+  { label: 'Earth & Human Impact',    href: '/earth-human-impact',       hasDropdown: true },
+  { label: 'Sectoral EIA',            href: '/sectoral-eia',             hasDropdown: true },
   { label: 'NGO Impact',              href: '/ngo-impact',               hasDropdown: false },
-  { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: false },
+  { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: true },
 ];
 
 interface DropdownItem {
@@ -274,6 +277,63 @@ export function PremiumStickyHeader() {
           { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring' },
         ];
 
+      case 'Earth & Human Impact':
+        return [
+          { name: '🌍 EHII Command Center', href: '/earth-human-impact', desc: 'Western Himalayan Earth Systems Observatory' },
+          { name: '🛰️ Satellite Change Observatory', href: '/earth-human-impact/change-detection-observatory', desc: 'Spaceborne multi-temporal detection core' },
+          { name: '🔔 Two-Tier Detection Alerts', href: '/earth-human-impact/change-detection-observatory/detection-alerts', desc: 'Preliminary alerts & verified findings' },
+          { name: '── The 7 Scientific Systems ──', href: '#', desc: '', isHeader: true },
+          { name: 'Climate & Atmosphere', href: '/earth-human-impact/climate-atmosphere', desc: 'Temperature, snowfall, rainfall & extremes' },
+          { name: 'Forest & Landscape', href: '/earth-human-impact/forests-landscapes', desc: 'Canopy density, biomass & fragmentation' },
+          { name: 'Land Use & Earth Systems', href: '/earth-human-impact/land-earth-systems', desc: 'Karewa destruction, conversion & erosion' },
+          { name: 'Aquatic & Cryosphere Change', href: '/earth-human-impact/aquatic-cryosphere', desc: 'Lake, wetland, glacier & springshed change detection' },
+          { name: 'Energy & Infrastructure', href: '/earth-human-impact/energy-infrastructure', desc: 'Hydropower, highways, tunnels & transmission' },
+          { name: 'Mining & Extraction', href: '/earth-human-impact/mining-extraction', desc: 'Riverbed excavation, quarries & brick kilns' },
+          { name: 'Urban Ecology', href: '/earth-human-impact/urban-ecology', desc: 'Urban heat islands, sprawl & impervious surface' },
+          { name: '── Spaceborne Tools & Evidence ──', href: '#', desc: '', isHeader: true },
+          { name: 'Loss & Recovery Ledger (1985–2026)', href: '/earth-human-impact/aquatic-cryosphere/loss-recovery-ledger', desc: 'Historical multi-decadal ecosystem balance sheet' },
+          { name: 'Historical Comparison (1982–2026)', href: '/earth-human-impact/change-detection-observatory/historical-comparison', desc: 'Pampore, Wular & Srinagar multi-epoch' },
+          { name: 'Spatial Change Atlas', href: '/earth-human-impact/change-detection-observatory/change-detection-atlas', desc: 'Interactive PostGIS vector boundaries' },
+          { name: 'Verification Queue', href: '/earth-human-impact/change-detection-observatory/verification-queue', desc: 'Step 7 scientific peer review workbench' },
+          { name: 'Scientific Evidence Dossiers', href: '/earth-human-impact/change-detection-observatory/scientific-dossiers', desc: 'Permanent assessment packages' },
+          { name: 'Cumulative Impact Matrix', href: '/earth-human-impact/cumulative-impact', desc: 'Compounding multi-stressor interactions' },
+        ];
+
+      case 'Sectoral EIA':
+        return [
+          { name: '🌐 SEIAE Portal Hub', href: '/sectoral-eia', desc: 'Sectoral Environmental Impact Assessment Engine' },
+          { name: '🏛️ Architecture & Overview', href: '/sectoral-eia/overview', desc: 'Scientific architecture & SEA mandate' },
+          { name: '📋 9-Step Methodology', href: '/sectoral-eia/methodology', desc: 'Standard assessment workflow' },
+          { name: '🗄️ Data Sources & Registry', href: '/sectoral-eia/data-sources', desc: 'External scientific acquisition catalog' },
+          { name: '── Sector Engines ──', href: '#', desc: '', isHeader: true },
+          { name: 'Tourism EIA', href: '/sectoral-eia/sectors/tourism', desc: 'Carrying capacity & visitor pressure' },
+          { name: 'Horticulture EIA', href: '/sectoral-eia/sectors/horticulture', desc: 'Orchard agrochemicals & Karewa aquifers' },
+          { name: 'Handicrafts EIA', href: '/sectoral-eia/sectors/handicrafts', desc: 'Artisanal lifecycle & dye wastewater' },
+          { name: 'Agriculture EIA', href: '/sectoral-eia/sectors/agriculture', desc: 'Nutrient runoff & soil health' },
+          { name: '── Intelligence & Tools ──', href: '#', desc: '', isHeader: true },
+          { name: '➕ Submit Assessment', href: '/sectoral-eia/assessment/new', desc: 'Enterprise & scientific intake portal' },
+          { name: 'Cumulative Impact Matrix', href: '/sectoral-eia/cumulative-impact', desc: 'Multi-sector compounding stress' },
+          { name: 'Scenario Modeling', href: '/sectoral-eia/scenario-modeling', desc: '2026-2035 predictive pathways' },
+          { name: 'GIS Impact Atlas', href: '/sectoral-eia/impact-atlas', desc: 'Interactive spatial boundaries' },
+          { name: 'Mitigation Tracker', href: '/sectoral-eia/mitigation-tracker', desc: 'Track verified reductions' },
+          { name: 'Scientific Reports', href: '/sectoral-eia/reports', desc: 'Peer-reviewed dossiers & monographs' },
+        ];
+
+      case 'Environmental Calendar':
+        return [
+          { name: '📅 Annual Calendar', href: '/environmental-calendar', desc: '17 UN & Western Himalayan observances' },
+          { name: '🎵 EcoVoices: Environmental Music', href: '/environmental-calendar/ecovoices', desc: 'SufiPulse USA × EcoWatch music & stewardship' },
+          { name: '── Outdoor Classroom (OD) ──', href: '#', desc: '', isHeader: true },
+          { name: '🧭 Program Overview', href: '/environmental-calendar/outdoor-classroom', desc: '8-stage experiential learning lifecycle' },
+          { name: '📚 Curriculum Library', href: '/environmental-calendar/outdoor-classroom/curriculum', desc: '5-tier teacher guides & student rubrics' },
+          { name: '🌐 Adopt-an-Ecosystem', href: '/environmental-calendar/outdoor-classroom/adopt-an-ecosystem', desc: '20 registered field sites across 10 districts' },
+          { name: '🔬 8 Field Programs', href: '/environmental-calendar/outdoor-classroom/field-learning-programs', desc: 'Wetlands, forests, karst springs & cryosphere' },
+          { name: '🏫 School Registration', href: '/environmental-calendar/outdoor-classroom/institutional-registration', desc: '100% free school & eco-club intake' },
+          { name: '📡 Field Telemetry', href: '/environmental-calendar/outdoor-classroom/student-observations', desc: 'Supervised student environmental logs' },
+          { name: '🏅 Competency Certificates', href: '/environmental-calendar/outdoor-classroom/certificates', desc: 'Cryptographically verifiable digital credentials' },
+          { name: '📊 Annual Pilot Report', href: '/environmental-calendar/outdoor-classroom/annual-report', desc: '2026 Phase 1 pilot findings & archive' },
+        ];
+
       default:
         return [];
     }
@@ -306,7 +366,7 @@ export function PremiumStickyHeader() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out',
+        'kew-header fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out',
         // Expanded state (hero)
         !isScrolled && 'bg-transparent',
         // Transitioning state
@@ -315,20 +375,22 @@ export function PremiumStickyHeader() {
         isCompact && 'bg-slate-950/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/10'
       )}
     >
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+      <div className="kew-header-inner site-header__inner">
         <div
           className={cn(
-            'flex items-center justify-between transition-all duration-300 ease-out',
+            'flex items-center w-full gap-0 transition-all duration-300 ease-out',
             // Height transitions
             !isCompact ? 'h-24 md:h-28' : 'h-16 md:h-18'
           )}
         >
-          {/* Logo - Premium with variants */}
-          <Logo variant={isCompact ? 'compact' : 'expanded'} />
+          {/* Logo - Premium with variants left-aligned */}
+          <div className="kew-logo site-logo flex-shrink-0">
+            <Logo variant={isCompact ? 'compact' : 'expanded'} />
+          </div>
 
-          {/* Desktop navigation */}
-          <nav className="hidden lg:flex items-center gap-0">
-            {navItems.map((item) => (
+          {/* Desktop navigation - Hidden on <= 1320px (e.g. portrait monitors) via kew-navigation CSS */}
+          <nav className="kew-navigation primary-navigation items-center min-w-0" role="navigation" aria-label="Main Navigation">
+            {navItems.map((item, idx) => (
               <div
                 key={item.label}
                 className="relative group"
@@ -338,7 +400,7 @@ export function PremiumStickyHeader() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-1 px-2 py-2 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer',
+                    'flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer whitespace-nowrap',
                     activeDropdown === item.label
                       ? 'text-white bg-white/10'
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -355,14 +417,17 @@ export function PremiumStickyHeader() {
                   )}
                 </Link>
 
-                {/* Dropdown Panel */}
+                {/* Dropdown Panel - Viewport-aware anchoring to prevent edge bleed */}
                 {item.hasDropdown && activeDropdown === item.label && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 w-80 max-w-[calc(100vw-2rem)] glass-intense rounded-xl shadow-2xl border border-white/10 overflow-hidden z-50 pt-2"
+                    className={cn(
+                      "absolute top-full w-80 max-w-[calc(100vw-2rem)] glass-intense rounded-xl shadow-2xl border border-white/10 overflow-hidden z-50 pt-2",
+                      idx >= 4 ? "right-0" : "left-0"
+                    )}
                   >
                     {/* Dropdown Header */}
                     <div className="px-4 py-3 border-b border-white/5 bg-gradient-to-r from-slate-900/50 to-slate-800/50">
@@ -372,9 +437,12 @@ export function PremiumStickyHeader() {
                         {item.label === 'Water Systems' && <Droplet className="w-4 h-4 text-sky-400" />}
                         {item.label === 'Environmental Monitoring' && <BarChart3 className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Hazard Intelligence' && <AlertTriangle className="w-4 h-4 text-red-400" />}
+                        {item.label === 'Earth & Human Impact' && <Globe className="w-4 h-4 text-emerald-400" />}
+                        {item.label === 'Sectoral EIA' && <Layers className="w-4 h-4 text-emerald-400" />}
                         {item.label === 'Field Intelligence' && <FileText className="w-4 h-4 text-orange-400" />}
                         {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}
+                        {item.label === 'Environmental Calendar' && <Calendar className="w-4 h-4 text-emerald-400" />}
                         <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           {item.label}
                         </span>
@@ -391,13 +459,13 @@ export function PremiumStickyHeader() {
             ))}
           </nav>
 
-          {/* Right side actions */}
-          <div ref={headerActionsRef} className="hidden lg:flex items-center gap-1.5 relative">
-            {/* Search button with Cmd+K badge */}
+          {/* Right side actions - Unified across wide desktop, portrait desktop, and mobile */}
+          <div ref={headerActionsRef} className="kew-header-actions header-actions flex items-center gap-1.5 sm:gap-2 relative flex-shrink-0 ml-auto">
+            {/* Search button with Cmd+K badge (full field on wide, icon on narrow) */}
             <button
               onClick={() => setActiveHeaderModal(prev => (prev === 'search' ? null : 'search'))}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer",
+                "flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer",
                 activeHeaderModal === 'search'
                   ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
                   : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
@@ -407,8 +475,8 @@ export function PremiumStickyHeader() {
               aria-expanded={activeHeaderModal === 'search'}
             >
               <Search className="w-4 h-4 text-emerald-400" />
-              <span className="hidden xl:inline text-slate-300">Search</span>
-              <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-white/10 text-slate-400 border border-white/10">
+              <span className="kew-search-label hidden 2xl:inline text-slate-300">Search</span>
+              <kbd className="kew-search-label hidden 2xl:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-white/10 text-slate-400 border border-white/10">
                 ⌘K
               </kbd>
             </button>
@@ -438,7 +506,7 @@ export function PremiumStickyHeader() {
             <button
               onClick={() => setActiveHeaderModal(prev => (prev === 'settings' ? null : 'settings'))}
               className={cn(
-                "p-2 rounded-xl border transition-all cursor-pointer",
+                "p-2 rounded-xl border transition-all cursor-pointer hidden sm:flex items-center justify-center",
                 activeHeaderModal === 'settings'
                   ? "bg-purple-500/20 text-purple-300 border-purple-500/40"
                   : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
@@ -450,20 +518,50 @@ export function PremiumStickyHeader() {
               <Settings className="w-4 h-4" />
             </button>
 
-            {/* Contributor / User Profile */}
+            {/* Contributor / User Profile or Quick Trigger */}
+            {isLoggedIn && user ? (
+              <button
+                onClick={() => setActiveHeaderModal(prev => (prev === 'profile' ? null : 'profile'))}
+                className={cn(
+                  "flex items-center gap-1.5 px-2 py-1.5 rounded-xl border transition-all cursor-pointer",
+                  activeHeaderModal === 'profile'
+                    ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                    : "bg-emerald-500/10 hover:bg-emerald-500/20 text-slate-200 border-emerald-500/30"
+                )}
+                title="Contributor Workspace & Actions"
+                aria-label="Contributor Workspace"
+                aria-expanded={activeHeaderModal === 'profile'}
+              >
+                <div className="w-5 h-5 rounded-full bg-emerald-500/40 text-emerald-200 flex items-center justify-center text-[10px] font-bold">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+                <span className="hidden md:inline text-xs font-semibold max-w-[80px] truncate">{user.name.split(' ')[0]}</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => openAuthModal('signin')}
+                className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+                aria-label="Sign In to platform"
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span className="hidden md:inline">Sign In</span>
+              </button>
+            )}
+
+            {/* Compact Explore Menu Toggle for Portrait / Narrow Desktops and Mobile */}
             <button
-              onClick={() => setActiveHeaderModal(prev => (prev === 'profile' ? null : 'profile'))}
-              className={cn(
-                "p-2 rounded-xl border transition-all cursor-pointer",
-                activeHeaderModal === 'profile'
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
-                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
-              )}
-              title="Contributor credentials & actions"
-              aria-label="Contributor profile and actions"
-              aria-expanded={activeHeaderModal === 'profile'}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="kew-menu-toggle flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all cursor-pointer"
+              aria-label={isMobileMenuOpen ? "Close Explore Navigation" : "Open Explore Navigation"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu-drawer"
             >
-              <User className="w-4 h-4" />
+              {isMobileMenuOpen ? (
+                <X className="w-4 h-4 text-emerald-400" />
+              ) : (
+                <Menu className="w-4 h-4 text-emerald-400" />
+              )}
+              <span className="hidden sm:inline">Explore</span>
             </button>
 
             {/* Dropdown Portals */}
@@ -484,50 +582,6 @@ export function PremiumStickyHeader() {
               onClose={() => setActiveHeaderModal(null)}
             />
           </div>
-
-          {/* Mobile Right Controls: Sign In / User Dashboard quick trigger + Hamburger */}
-          <div className="lg:hidden flex items-center gap-1.5 shrink-0 ml-auto">
-            {isLoggedIn && user ? (
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-1 px-2 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold hover:bg-emerald-500/25 transition-colors"
-                aria-label="Contributor Workspace"
-                title={`${user.name} - Contributor Workspace`}
-              >
-                <div className="w-5 h-5 rounded-full bg-emerald-500/40 text-emerald-200 flex items-center justify-center text-[10px] font-bold">
-                  {user.name.charAt(0).toUpperCase()}
-                </div>
-                <span className="hidden xs:inline max-w-[70px] truncate">{user.name.split(' ')[0]}</span>
-              </Link>
-            ) : (
-              <button
-                onClick={() => openAuthModal('signin')}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
-                aria-label="Sign In to platform"
-              >
-                <LogIn className="w-3.5 h-3.5" />
-                <span className="hidden xs:inline">Sign In</span>
-              </button>
-            )}
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(
-                'p-2 rounded-lg transition-colors flex items-center justify-center',
-                isCompact ? 'hover:bg-white/10' : 'hover:bg-white/5'
-              )}
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu-drawer"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-white" />
-              ) : (
-                <Menu className="w-6 h-6 text-white" />
-              )}
-            </button>
-          </div>
         </div>
       </div>
 
@@ -541,7 +595,7 @@ export function PremiumStickyHeader() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 z-50 lg:hidden"
+              className="kew-drawer-overlay fixed inset-0 bg-black/60 z-50"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-hidden="true"
             />
@@ -553,10 +607,10 @@ export function PremiumStickyHeader() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed inset-y-0 left-0 w-[85%] sm:w-[75%] max-w-[320px] bg-slate-900 z-[51] lg:hidden shadow-2xl flex flex-col h-dvh border-r border-white/10"
+              className="kew-drawer-panel fixed inset-y-0 left-0 w-[85%] sm:w-[75%] max-w-[340px] bg-slate-900 z-[51] shadow-2xl flex flex-col h-dvh border-r border-white/10"
               role="dialog"
               aria-modal="true"
-              aria-label="Mobile navigation menu"
+              aria-label="Navigation drawer"
             >
               {/* Drawer header */}
               <div className="shrink-0 flex items-center justify-between px-4 py-3 border-b border-white/10">

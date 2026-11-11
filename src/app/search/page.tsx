@@ -15,7 +15,6 @@ import { searchAll } from '@/data';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
 // ============================================================================
 // Category Config & Helper Routing
@@ -437,7 +436,6 @@ function SearchContent() {
         )}
       </main>
 
-      <AdvancedFooter />
     </div>
   );
 }

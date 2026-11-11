@@ -52,7 +52,7 @@ export function ContributionHeatmap({ compact = false, onSelectDistrict }: Contr
                 )}
                 onClick={() => onSelectDistrict?.(district.district)}
               >
-                <div className="text-[10px] sm:text-xs font-medium text-white truncate">{district.district}</div>
+                <div className="text-[10px] sm:text-xs font-medium text-white break-words">{district.district}</div>
                 <div className="text-xs sm:text-sm text-slate-300">{district.totalContributions}</div>
               </div>
             );
@@ -108,11 +108,11 @@ export function ContributionHeatmap({ compact = false, onSelectDistrict }: Contr
                   <MapPin className={cn("w-4 h-4 sm:w-5 sm:h-5", trendColor)} />
                   <TrendIcon className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", trendColor)} />
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mb-2 truncate">{district.district}</div>
+                <div className="text-base sm:text-lg font-bold text-white mb-2 break-words">{district.district}</div>
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{district.totalContributions}</div>
                 <div className="text-sm text-slate-400 mb-3">contributions</div>
                 <div className="flex items-center justify-between pt-3 border-t border-white/10">
-                  <span className="text-sm text-slate-500 truncate">{district.members} members</span>
+                  <span className="text-sm text-slate-500 break-words">{district.members} members</span>
                   <Badge variant="outline" size="sm" className="text-xs flex-shrink-0 ml-2">
                     {district.resolutionRate}% resolved
                   </Badge>

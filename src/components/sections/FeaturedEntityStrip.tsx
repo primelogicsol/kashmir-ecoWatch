@@ -164,7 +164,7 @@ function EntityCard({ entity, onNavigate }: EntityCardProps) {
 
           {/* Entity Name */}
           <div className="absolute bottom-3 left-3 right-3 z-10">
-            <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg line-clamp-2 leading-tight">
+            <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg break-words leading-tight">
               {entity.name}
             </h3>
           </div>
@@ -173,7 +173,7 @@ function EntityCard({ entity, onNavigate }: EntityCardProps) {
         {/* Content Section */}
         <div className="flex-1 p-4 sm:p-5 flex flex-col">
           {/* Description */}
-          <p className="text-xs sm:text-sm text-slate-400 mb-4 line-clamp-2 leading-relaxed flex-shrink-0">
+          <p className="text-xs sm:text-sm text-slate-400 mb-4 break-words leading-relaxed flex-shrink-0">
             {entity.description}
           </p>
 

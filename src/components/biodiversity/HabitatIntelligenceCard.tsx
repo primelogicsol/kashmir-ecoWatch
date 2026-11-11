@@ -69,7 +69,7 @@ export function HabitatIntelligenceCard({ habitat, onClick }: HabitatIntelligenc
             </Badge>
           </div>
           
-          <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-slate-400 leading-relaxed break-words">
             {habitat.description}
           </p>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface UseScrolledHeaderOptions {
   /** Scroll threshold in pixels to trigger compact state (default: 50) */
@@ -19,7 +19,7 @@ export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     let ticking = false;
@@ -29,12 +29,13 @@ export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const direction = currentScrollY > lastScrollY ? 'down' : 'up';
+          const prevScrollY = lastScrollYRef.current;
+          const direction = currentScrollY > prevScrollY ? 'down' : 'up';
           const isBelowThreshold = currentScrollY > threshold;
 
           // Update scroll direction
           setScrollDirection(direction);
-          setLastScrollY(currentScrollY);
+          lastScrollYRef.current = currentScrollY;
           setIsScrolled(isBelowThreshold);
 
           // Compact state logic with smooth transition
@@ -67,7 +68,7 @@ export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
       const initialScroll = window.scrollY;
       setIsScrolled(initialScroll > threshold);
       setIsCompact(initialScroll > threshold);
-      setLastScrollY(initialScroll);
+      lastScrollYRef.current = initialScroll;
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -76,7 +77,7 @@ export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(compactTimeout);
     };
-  }, [threshold, lastScrollY, smoothTransition]);
+  }, [threshold, smoothTransition]);
 
   return {
     isScrolled,

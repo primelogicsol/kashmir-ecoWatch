@@ -25,19 +25,19 @@ export function ProjectCard({ project, ngoName, ngoSlug }: { project: NGOProject
           </Badge>
         </div>
         
-        <h3 className="text-lg font-bold text-slate-100 leading-tight mb-2 group-hover:text-sky-400 transition-colors line-clamp-2">
+        <h3 className="text-lg font-bold text-slate-100 leading-tight mb-2 group-hover:text-sky-400 transition-colors break-words">
           {project.title}
         </h3>
         
         {ngoSlug ? (
           <div onClick={(e) => e.stopPropagation()} className="mb-4">
-            <Link href={`/ngo-impact/${ngoSlug}`} className="text-sm text-slate-400 hover:text-sky-400 transition-colors inline-block font-medium">
+            <Link href={`/ngo-impact/${ngoSlug}`} className="text-sm text-slate-400 hover:text-sky-400 transition-colors inline-block font-medium break-words">
               By {ngoName}
             </Link>
           </div>
         ) : (
-          <p className="text-sm text-slate-400 mb-4 flex items-center gap-1.5 font-medium">
-            <Building className="w-3.5 h-3.5 text-slate-500" /> {ngoName}
+          <p className="text-sm text-slate-400 mb-4 flex items-center gap-1.5 font-medium break-words">
+            <Building className="w-3.5 h-3.5 text-slate-500 shrink-0" /> {ngoName}
           </p>
         )}
         
@@ -45,20 +45,20 @@ export function ProjectCard({ project, ngoName, ngoSlug }: { project: NGOProject
           <div>
             <span className="text-slate-500 block mb-1 font-semibold uppercase text-[10px] tracking-wider">Location</span>
             <span className="text-slate-300 flex items-center gap-1 font-medium">
-              <MapPin className="w-3 h-3 text-slate-500"/> <span className="line-clamp-1">{project.location_district}</span>
+              <MapPin className="w-3 h-3 text-slate-500 shrink-0"/> <span className="break-words">{project.location_district}</span>
             </span>
           </div>
           <div>
             <span className="text-slate-500 block mb-1 font-semibold uppercase text-[10px] tracking-wider">Status</span>
             <span className={`flex items-center gap-1 font-medium ${isOngoing ? 'text-sky-400' : 'text-slate-300'}`}>
-              <Clock className="w-3 h-3 text-slate-500"/> {isOngoing ? 'Active / Ongoing' : 'Completed'}
+              <Clock className="w-3 h-3 text-slate-500 shrink-0"/> {isOngoing ? 'Active / Ongoing' : 'Completed'}
             </span>
           </div>
         </div>
 
         <div className="bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-sm mt-auto">
           <span className="text-emerald-500 font-semibold block mb-1.5 text-[10px] uppercase tracking-wider">Impact Summary</span>
-          <p className="text-slate-300 line-clamp-3 leading-relaxed">
+          <p className="text-slate-300 leading-relaxed break-words">
             {project.measurable_outputs || project.ecological_outcome}
           </p>
         </div>

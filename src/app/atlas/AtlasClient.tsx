@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { FeatureDrawer } from '@/components/maps/FeatureDrawer';
 
 // Dynamically import AtlasMap with ssr: false in Client Component

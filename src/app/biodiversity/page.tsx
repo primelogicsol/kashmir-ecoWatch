@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
@@ -316,7 +315,7 @@ export default function BiodiversityPage() {
             <div className="w-full h-10 rounded overflow-hidden relative">
               <img src={item.src} alt={item.short} className="w-full h-full object-cover" />
             </div>
-            <span className={`text-[10px] font-medium truncate w-full text-center ${activeHeroIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-400'}`}>
+            <span className={`text-[10px] font-medium break-words w-full text-center ${activeHeroIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-400'}`}>
               {item.short}
             </span>
           </button>
@@ -700,7 +699,7 @@ export default function BiodiversityPage() {
                 <div className="font-semibold text-white text-xs sm:text-sm mb-1 group-hover:text-amber-200 transition-colors">
                   {item.label}
                 </div>
-                <div className="text-[11px] text-slate-400 leading-relaxed line-clamp-2">
+                <div className="text-[11px] text-slate-400 leading-relaxed break-words">
                   {item.desc}
                 </div>
               </div>
@@ -823,7 +822,7 @@ export default function BiodiversityPage() {
               className="bg-white/5 border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all text-left"
             >
               <div className="text-2xl font-bold text-white">{district.totalSpecies}</div>
-              <div className="text-xs text-slate-400 truncate">{district.district}</div>
+              <div className="text-xs text-slate-400 break-words">{district.district}</div>
               <div className="text-xs text-slate-500 mt-1">
                 {district.threatenedSpecies} threatened
               </div>

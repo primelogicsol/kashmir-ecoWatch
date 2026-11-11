@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { useAuth, ContributorRole } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
 function AuthPageContent() {
   const searchParams = useSearchParams();
@@ -526,8 +525,6 @@ function AuthPageContent() {
           </div>
         </div>
       </main>
-
-      <AdvancedFooter />
     </div>
   );
 }

@@ -9,7 +9,6 @@ import {
   Shield, Eye, TrendingUp, ArrowRight, Building2,
   AlertTriangle, Activity, Compass, ShieldAlert, MapPin, Clock
 } from 'lucide-react';
-import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';

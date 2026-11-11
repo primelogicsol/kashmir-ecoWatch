@@ -71,3 +71,6 @@ yarn-error.log*
 
 # Test artifacts
 test_screenshots/
+scratch/
+scripts/audit/
+all-routes.json

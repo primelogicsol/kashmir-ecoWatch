@@ -10,6 +10,9 @@ import { AlertResponseSystem } from '@/components/sections/AlertResponseSystem';
 import { PublicParticipationIntelligence } from '@/components/sections/PublicParticipationIntelligence';
 import { DistrictIntelligenceStrip } from '@/components/sections/DistrictIntelligenceStrip';
 import { OnboardingStrip } from '@/components/sections/OnboardingStrip';
+import { EarthHumanImpactSection } from '@/components/sections/EarthHumanImpactSection';
+import { SectoralEiaSection } from '@/components/sections/SectoralEiaSection';
+import { EducationStewardshipActionSection } from '@/components/sections/EducationStewardshipActionSection';
 import dynamic from 'next/dynamic';
 
 // Dynamically import map component with SSR disabled (leaflet requires window)
@@ -38,6 +41,16 @@ export default function Home() {
         <AsymmetricModuleSurface />
       </ErrorBoundary>
 
+      {/* Band 2.1: Earth & Human Impact Intelligence (EHII) */}
+      <ErrorBoundary sectionName="Earth & Human Impact">
+        <EarthHumanImpactSection />
+      </ErrorBoundary>
+
+      {/* Band 2.2: Sectoral EIA Engine (SEIAE) */}
+      <ErrorBoundary sectionName="Sectoral EIA">
+        <SectoralEiaSection />
+      </ErrorBoundary>
+
       {/* Band 3: Atlas + Live Monitoring */}
       <ErrorBoundary sectionName="Map Intelligence">
         <MapIntelligenceCore />
@@ -61,6 +74,12 @@ export default function Home() {
       <ErrorBoundary sectionName="Public Participation">
         <PublicParticipationIntelligence />
       </ErrorBoundary>
+
+      {/* Band 5.1: Education, Creative Stewardship & Institutional Action Hub */}
+      <ErrorBoundary sectionName="Education & Action">
+        <EducationStewardshipActionSection />
+      </ErrorBoundary>
+
       <ErrorBoundary sectionName="Dashboard Preview">
         <NextGenDashboardPreview />
       </ErrorBoundary>
