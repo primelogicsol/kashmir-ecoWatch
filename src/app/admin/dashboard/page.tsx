@@ -9,7 +9,7 @@ import {
   Settings, Key, Download, RefreshCw, FileText, ChevronRight,
   Droplets, Leaf, MapPin, Eye, Lock, Unlock, Sparkles, LogOut,
   Calendar, Video, Building2, DollarSign, MessageSquare, Flame,
-  Layers, Activity, Send, Check, Phone, Globe, ExternalLink, HelpCircle
+  Layers, Activity, Send, Check, Phone, Globe, ExternalLink, HelpCircle, ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
