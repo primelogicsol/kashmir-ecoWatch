@@ -30,22 +30,41 @@ export interface OutdoorClassroomActivity {
   measurableLearningOutcome: string;
 }
 
+export interface YouTubeStats {
+  trackNumber: number;
+  duration: string;
+  views: string;
+  uploadedAge: string;
+  playlistUrl: string;
+  channelName: string;
+  originalTitle: string;
+  videoId: string;
+  thumbnailUrl: string;
+}
+
 export interface EcoVoiceRelease {
   id: string;
   slug: string;
+  trackOrder: number;
   title: string;
   subtitle: string;
   catalogNumber: string;
+  catalogCode: string;
   canonicalUrl: string;
   publisher: string;
   year: number;
   durationFormatted: string;
+  duration: string;
   audioSampleUrl?: string;
-  videoEmbedId?: string;
+  videoEmbedId: string;
+  youtubeVideoId: string;
+  thumbnailUrl: string;
   coverArtworkUrl: string;
+  coverImage: string;
   language: string;
   primaryTheme: string;
-  themeCategory: 'water_stewardship' | 'river_conservation' | 'lake_wetland_ecology' | 'forest_alpine' | 'sacred_springs';
+  environmentalTheme: string;
+  themeCategory: 'water_stewardship' | 'sustainable_development' | 'river_conservation' | 'lake_wetland_ecology' | 'forest_alpine' | 'sacred_springs';
   observances: string[];
   kalamPoetOrSource?: string;
   musicalStyle: string;
@@ -56,30 +75,40 @@ export interface EcoVoiceRelease {
   relatedScientificModules: RelatedScientificModule[];
   outdoorClassroomActivity: OutdoorClassroomActivity;
   verifiedSufiPulseRelease: boolean;
+  youtubeStats: YouTubeStats;
 }
 
 export const ECOVOICES_THEME_CATEGORIES = [
-  { id: 'all', label: 'All Environmental Releases', count: 3 },
+  { id: 'all', label: 'All Environmental Releases', count: 5 },
   { id: 'water_stewardship', label: 'Water Stewardship', count: 1 },
+  { id: 'sustainable_development', label: 'Sustainable Development & Forests', count: 1 },
   { id: 'river_conservation', label: 'River Conservation (Jhelum)', count: 1 },
-  { id: 'lake_wetland_ecology', label: 'Lakes & Wetlands (Dal)', count: 1 }
+  { id: 'lake_wetland_ecology', label: 'Lakes & Wetlands (Dal)', count: 1 },
+  { id: 'forest_alpine', label: 'Alpine Slopes & Springs', count: 1 }
 ] as const;
 
 export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
   {
     id: 'pani-gawah-hai',
     slug: 'pani-gawah-hai',
+    trackOrder: 1,
     title: 'PANI GAWAH HAI | Kashmir Water Bears Witness',
     subtitle: 'A Sufi Symphony on Kashmir\'s Freshwater Heritage & Riparian Memory',
     catalogNumber: 'SP-USA-ENV-001',
+    catalogCode: 'SP-USA-ENV-001',
     canonicalUrl: 'https://sufipulse.com/release-detail/pani-gawah-hai-kashmir-water-bears-witness-sufipulse-usa',
     publisher: 'SufiPulse USA',
     year: 2024,
-    durationFormatted: '6:42',
-    videoEmbedId: 'pani-gawah-hai-kashmir',
-    coverArtworkUrl: 'https://images.openai.com/static-rsc-4/1F5SpbTvOv3X-FxO0y7s_eeVAGrUPKncR2yqdmZG3xmM56H2kOX-cd1oJmCyBfIg_bCT5TgO0BByDbf3_rEJSgDBxMJitUF9A4Hfg5zAljySks4LKW9ztrzm2mYTXIzbLtijfSzRKiTZ6h9nzUGYNrlhbdFaUUCpB7EEk2yitmw?purpose=inline',
+    durationFormatted: '27:52',
+    duration: '27:52',
+    videoEmbedId: 'dXqkrpP-41I',
+    youtubeVideoId: 'dXqkrpP-41I',
+    thumbnailUrl: 'https://img.youtube.com/vi/dXqkrpP-41I/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/dXqkrpP-41I/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/dXqkrpP-41I/hqdefault.jpg',
     language: 'Kashmiri & Urdu with English Poetic Gloss',
     primaryTheme: 'Water Stewardship & Freshwater Riparian Memory',
+    environmentalTheme: 'Water Stewardship & Freshwater Riparian Memory',
     themeCategory: 'water_stewardship',
     observances: [
       'World Water Day (March 22)',
@@ -128,22 +157,122 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       fieldworkMethod: '1. Listen to the opening movement of "PANI GAWAH HAI" in the field classroom to establish thematic focus on water as a living legal and moral witness.\n2. Conduct a 3-point water quality transect along a local stream: Point A (Pristine spring head), Point B (Agricultural canal inflow), Point C (Downstream settlement egress).\n3. Record pH, DO, Temperature, and visual clarity.\n4. Interview two village elders regarding water discharge volumes and historical perennial permanence over the last 30 years.\n5. Log findings into the Kashmir EcoWatch Student Field Observation Registry.',
       measurableLearningOutcome: 'Students quantify the physicochemical degradation gradient along a catchment transect and synthesize oral environmental memory with empirical sensor data.'
     },
-    verifiedSufiPulseRelease: true
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 1,
+      duration: '27:52',
+      views: '116',
+      uploadedAge: '3mo ago',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'PANI GAWAH HAI | KASHMIR WATER BEARS WITNESS | SufiPulse USA',
+      videoId: 'dXqkrpP-41I',
+      thumbnailUrl: 'https://img.youtube.com/vi/dXqkrpP-41I/hqdefault.jpg'
+    }
+  },
+  {
+    id: 'sheikh-noorani-father-of-sustainable-development',
+    slug: 'sheikh-noorani-father-of-sustainable-development',
+    trackOrder: 2,
+    title: 'Sheikh! Sheikh! Noorani (RA) | Father of Sustainable Development',
+    subtitle: 'The Ecological Legacy of Alamdar-e-Kashmir & Western Himalayan Forest Guardianship',
+    catalogNumber: 'SP-USA-ENV-002',
+    catalogCode: 'SP-USA-ENV-002',
+    canonicalUrl: 'https://sufipulse.com/release-detail/sheikh-noorani-father-of-sustainable-development',
+    publisher: 'SufiPulse USA',
+    year: 2023,
+    durationFormatted: '8:26',
+    duration: '8:26',
+    videoEmbedId: 'hXAJUFwEuGk',
+    youtubeVideoId: 'hXAJUFwEuGk',
+    thumbnailUrl: 'https://img.youtube.com/vi/hXAJUFwEuGk/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/hXAJUFwEuGk/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/hXAJUFwEuGk/hqdefault.jpg',
+    language: 'Kashmiri & Urdu with English Poetic Gloss',
+    primaryTheme: 'Sustainable Development, Forest Guardianship & Ecological Forethought',
+    environmentalTheme: 'Sustainable Development & Alpine Forest Canopies',
+    themeCategory: 'sustainable_development',
+    observances: [
+      'World Environment Day (June 5)',
+      'International Day of Forests (March 21)',
+      'Kashmir Arbor & Heritage Tree Observance (September 12)'
+    ],
+    kalamPoetOrSource: 'Nund Rishi (Sheikh Noor-ud-Din Noorani RA / Alamdar-e-Kashmir, 1377–1440 CE)',
+    musicalStyle: 'Devotional Himalayan Choral Symphony with Santoor, Rabab & Resonant Drone',
+    instrumentsUsed: ['Kashmiri Santoor', 'Afghan Rabab', 'Bansuri (Bamboo Flute)', 'Dumbak Percussion', 'Acoustic Cello'],
+    poeticExcerptOriginal: 'اَن پوشِہ تَیلِہ یَلِہ وَن پوشِہ،\nیِم ہَنٛدِ کۄل ژھَنٛڈِو تِم ہَنٛدِ دارُن۔\nکوہَن مَنٛز چھُ رَب سُنٛد نُور چَمکان،\nکُنٛڈَن ہٕنٛز حِفاظَت کٔرِو زان۔',
+    poeticExcerptTranslation: 'Food will thrive only as long as the forests thrive,\nSeek the springs that sustain life across the valleys.\nDivine light shines upon these towering mountain crests;\nGuard every sacred aquifer and woodland grove with your soul.',
+    ecologicalDossier: 'Sheikh Noor-ud-Din Wali (RA), revered as Alamdar-e-Kashmir and the patron saint of Kashmir\'s cultural ethos, formulated what modern ecological economists recognize as the earliest vernacular manifesto of sustainable development: "Ann Poshi Teli Yeli Van Poshi" (Food will last only as long as forests thrive). This symphony translates his 14th-century ecological foresight into a Western Himalayan conservation call. It underscores the critical interdependence between catchment forest canopies (Cedrus deodara, Pinus wallichiana, Abies pindrow), soil erosion mitigation in the Pir Panjal range, and downstream food security across Kashmir\'s alluvial paddy plains.',
+    relatedScientificModules: [
+      {
+        title: 'Kashmir Forest Canopy & Carbon Telemetry',
+        category: 'Forest Ecology',
+        href: '/protected-network',
+        description: 'Western Himalayan forest crown density, deodar-fir subalpine reserves, and illegal timber felling defense.'
+      },
+      {
+        title: 'Biodiversity & Protected Alpine Corridors',
+        category: 'Conservation',
+        href: '/biodiversity',
+        description: 'Wildlife corridors linking Dachigam, Overa-Aru, and Gulmarg alpine preserves across the valley rim.'
+      },
+      {
+        title: 'Agro-Ecological Sustainability & Soil Health',
+        category: 'Agroforestry',
+        href: '/environmental-calendar',
+        description: 'Catchment soil organic carbon layers, terraced irrigation stability, and organic orchard conservation.'
+      }
+    ],
+    outdoorClassroomActivity: {
+      activityTitle: 'Forest Canopy Density, Soil Hydrology & Nund Rishi Woodland Quadrat Audit',
+      recommendedTier: 'Foundation Tier (11–13 Years) & Intermediate Tier (14–16 Years)',
+      curriculumLink: '/environmental-calendar/outdoor-classroom/curriculum',
+      duration: '3.5 Hours Subalpine Forest Field Lab',
+      fieldHypothesis: 'Soil organic layer depth and infiltration rates under intact multi-tiered deodar-pine canopies (>70% crown cover) are over 300% higher than compacted, deforested slope transects, confirming Sheikh Noorani\'s principle of forest-soil-water coupling.',
+      materialsNeeded: [
+        'Crown mirror densiometer or smartphone canopy cover analyzer',
+        'Double-ring soil infiltrometer with graduated water cylinder',
+        'Soil core probe and 100m metric field surveyor tape',
+        'EcoWatch Forest Layer Classification Key',
+        'Audio recording of "Sheikh! Sheikh! Noorani (RA) | Father of Sustainable Development"'
+      ],
+      fieldworkMethod: '1. Establish two 20m x 20m quadrats: Quadrat 1 in an undisturbed native deodar/pine grove; Quadrat 2 on a partially cleared or grazing-degraded adjacent hillside.\n2. Measure canopy closure percentage at four cardinal sub-points.\n3. Measure topsoil humus depth using soil core probe.\n4. Execute a 15-minute infiltration test measuring hydraulic intake rate (mm/hr).\n5. Recite and examine the ecological Shruks of Sheikh Noor-ud-Din Wali in the outdoor classroom shelter, drawing direct causal lines to modern hydrological science.',
+      measurableLearningOutcome: 'Students empirically validate the "Van Poshi" principle by linking canopy cover directly to soil water retention and slope stability.'
+    },
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 2,
+      duration: '8:26',
+      views: '554',
+      uploadedAge: '1y ago',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'Sheikh! Sheikh! Noorani (RA) | Father of Sustainable Development | SufiPulse USA',
+      videoId: 'hXAJUFwEuGk',
+      thumbnailUrl: 'https://img.youtube.com/vi/hXAJUFwEuGk/hqdefault.jpg'
+    }
   },
   {
     id: 'sufi-cry-for-a-river',
     slug: 'sufi-cry-for-a-river',
+    trackOrder: 3,
     title: 'Sufi Cry for a River | A Cry for the Jhelum (Vyeth)',
     subtitle: 'Elegy for Kashmir\'s Lifeline: The Hydrological & Cultural Trajectory of River Jhelum',
-    catalogNumber: 'SP-USA-ENV-002',
+    catalogNumber: 'SP-USA-ENV-003',
+    catalogCode: 'SP-USA-ENV-003',
     canonicalUrl: 'https://sufipulse.com/release-detail/sufi-cry-for-a-river',
     publisher: 'SufiPulse USA',
-    year: 2024,
-    durationFormatted: '7:15',
-    videoEmbedId: 'sufi-cry-for-a-river',
-    coverArtworkUrl: 'https://images.openai.com/static-rsc-4/-7mhzx6TzC7dPW7WH2naj-1lysCDSv-IJZ8GQ6y8toJ3VaF9GbT-YQWZuaso4d7ci-la-CZZP9r3dO9h8WkLiu5ArqEIV4h6cf5MKfvqbiWau0JdcnzdMQ6XEahAFowGoqtJCCgc9B1UMtd8Zdi9HOnJOHOs365CHpqQt9mEkjY?purpose=inline',
+    year: 2023,
+    durationFormatted: '10:58',
+    duration: '10:58',
+    videoEmbedId: '8qyLuPGLx7w',
+    youtubeVideoId: '8qyLuPGLx7w',
+    thumbnailUrl: 'https://img.youtube.com/vi/8qyLuPGLx7w/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/8qyLuPGLx7w/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/8qyLuPGLx7w/hqdefault.jpg',
     language: 'Kashmiri & Urdu',
     primaryTheme: 'River Conservation, Hydrological Integrity & Siltation Defense',
+    environmentalTheme: 'River Conservation, Hydrological Integrity & Siltation Defense',
     themeCategory: 'river_conservation',
     observances: [
       'International Day of Action for Rivers (March 14)',
@@ -192,22 +321,40 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       fieldworkMethod: '1. Conduct five 1-minute kick-net sampling runs across a 100-meter riffle zone along the Jhelum or a tributary.\n2. Sort organisms into taxonomic orders and calculate the Family Biotic Index (FBI).\n3. Measure turbidity and estimate percentage bank vegetation cover.\n4. Correlate findings with the lyrical themes of ecological mourning in "Sufi Cry for a River".\n5. Generate an Environmental Action Sheet proposing riparian re-vegetation with native Salix (willow) and Phragmites.',
       measurableLearningOutcome: 'Students calculate biological water quality index using living indicator organisms and diagnose the hydrological impact of bank degradation.'
     },
-    verifiedSufiPulseRelease: true
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 3,
+      duration: '10:58',
+      views: '1.8K',
+      uploadedAge: '1y ago',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'Sufi Cry for a River | A Cry for the Jhelum | SufiPulse USA',
+      videoId: '8qyLuPGLx7w',
+      thumbnailUrl: 'https://img.youtube.com/vi/8qyLuPGLx7w/hqdefault.jpg'
+    }
   },
   {
     id: 'mirror-of-hazratbal-wound-of-dal',
     slug: 'mirror-of-hazratbal-wound-of-dal',
+    trackOrder: 4,
     title: 'Mirror of Hazratbal, Wound of Dal',
     subtitle: 'Sacred Reflections, Ecological Trauma & the Restoration of Dal Lake',
-    catalogNumber: 'SP-USA-ENV-003',
+    catalogNumber: 'SP-USA-ENV-004',
+    catalogCode: 'SP-USA-ENV-004',
     canonicalUrl: 'https://sufipulse.com/release-detail/mirror-of-hazratbal-wound-of-dal',
     publisher: 'SufiPulse USA',
-    year: 2024,
-    durationFormatted: '8:04',
-    videoEmbedId: 'mirror-of-hazratbal-wound-of-dal',
-    coverArtworkUrl: 'https://images.openai.com/static-rsc-4/eItUN97blPIUO8Ru5NPQ01tlJVm96evnDiz9mwzjLeIlCGqfyGT2mGf_0qHQmq06PSXz_gZyDBy_vQUjDVg3nvi9gUD0v23ogMsmMlV3pXGZgw1LN3YOo1uvLKi84UQtncg4B0wxYcKt_ZtegvIfA4e_Ik5se99v74qgGvV_Y4Y?purpose=inline',
+    year: 2023,
+    durationFormatted: '7:40',
+    duration: '7:40',
+    videoEmbedId: 'nFAGGKia4aU',
+    youtubeVideoId: 'nFAGGKia4aU',
+    thumbnailUrl: 'https://img.youtube.com/vi/nFAGGKia4aU/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/nFAGGKia4aU/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/nFAGGKia4aU/hqdefault.jpg',
     language: 'Kashmiri & Urdu',
     primaryTheme: 'Dal Lake & Wetland Ecological Healing',
+    environmentalTheme: 'Dal Lake & Wetland Ecological Healing',
     themeCategory: 'lake_wetland_ecology',
     observances: [
       'World Wetlands Day (February 2)',
@@ -256,7 +403,100 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       fieldworkMethod: '1. Embark on a licensed field study tour from Hazratbal jetty to Nagin basin via Mirbehri.\n2. Lower Secchi disk on the shady side of the boat; record disappearance and reappearance depths.\n3. Sample surface water temperature and document macrophyte species composition (Nelumbo nucifera, Nymphaea alba, Potamogeton crispus, Azolla).\n4. Discuss the cultural and spiritual responsibility of keeping the lake mirror clear.\n5. Produce an illustrated "State of the Dal" field report comparing findings to Lake Conservation and Management Authority (LCMA) historical records.',
       measurableLearningOutcome: 'Students determine trophic state parameters through physical transparency measurement and link aquatic botany to cultural stewardship.'
     },
-    verifiedSufiPulseRelease: true
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 4,
+      duration: '7:40',
+      views: '263',
+      uploadedAge: '1y ago',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'Mirror of Hazratbal, Wound of Dal | SufiPulse USA',
+      videoId: 'nFAGGKia4aU',
+      thumbnailUrl: 'https://img.youtube.com/vi/nFAGGKia4aU/hqdefault.jpg'
+    }
+  },
+  {
+    id: 'cry-of-the-kashmir-valley',
+    slug: 'cry-of-the-kashmir-valley',
+    trackOrder: 5,
+    title: 'Cry of the Kashmir Valley | Come Light the Mystic Lamp',
+    subtitle: 'A Lament for Degraded Slopes, Vanishing Springs & Ecological Awakening',
+    catalogNumber: 'SP-USA-ENV-005',
+    catalogCode: 'SP-USA-ENV-005',
+    canonicalUrl: 'https://sufipulse.com/release-detail/cry-of-the-kashmir-valley-come-light-the-mystic-lamp',
+    publisher: 'SufiPulse USA',
+    year: 2023,
+    durationFormatted: '8:00',
+    duration: '8:00',
+    videoEmbedId: 'EtehDd3oUVc',
+    youtubeVideoId: 'EtehDd3oUVc',
+    thumbnailUrl: 'https://img.youtube.com/vi/EtehDd3oUVc/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/EtehDd3oUVc/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/EtehDd3oUVc/hqdefault.jpg',
+    language: 'Kashmiri & Urdu with English Poetic Gloss',
+    primaryTheme: 'Sacred Springs, Slope Degradation & Ecological Awakening',
+    environmentalTheme: 'Sacred Springs, Slope Degradation & Ecological Awakening',
+    themeCategory: 'forest_alpine',
+    observances: [
+      'World Environment Day (June 5)',
+      'Himalayan Ecology Day (September 9)',
+      'International Mountain Day (December 11)'
+    ],
+    kalamPoetOrSource: 'Mystic Valley Elegy & Contemporary Kashmiri Ecological Kalam',
+    musicalStyle: 'Haunting Ambient Sufiana with Ney, Cello, Kashmiri Rabab and Chiming Bells',
+    instrumentsUsed: ['Persian Ney', 'Afghan Rabab', 'Acoustic Cello', 'Tibetan Singing Bowls', 'Kashmiri Matka'],
+    poeticExcerptOriginal: 'ژہٕ پَلِ کٔرِو فِکر، کَہہ گۆو اَمِس کٔشیٖرِ؟\nناگہٕ سٲرؠ سُکھِ گٔے، گاش گۆو اندھیرس مَنٛز گُم۔\nوَلِو تَنہِ لۆسِ دِیُو، عِشٖقُک دیٖوَل بالِو،\nزِندٕ کٔرِو بییہِ اَمِکۍ آبشار تَہِ وۆنہِ۔',
+    poeticExcerptTranslation: 'Pause for a moment and reflect: what has become of Kashmir\'s pristine vale?\nHer sacred springs have fallen parched, the clarity swallowed by creeping shadows.\nCome, strike the mystic flame of awareness once more;\nRevive her crystal cascades and her sacred mountain groves before dusk falls.',
+    ecologicalDossier: '"Cry of the Kashmir Valley" is an urgent call addressing the cumulative trauma inflicted upon the valley\'s vulnerable biomes: rapidly receding high-altitude glaciers (Kolhai, Thajwas), desiccation of perennial karst springs ("Naags") across the karewa formations, unregulated mountain quarrying, and fragmentation of fragile temperate and subalpine habitats. Anchoring the metaphor of lighting a mystic lamp to active citizen science, the work calls on every resident and diaspora supporter to replace ecological grief with empirical vigilance, community wetland custodianship, and watershed regeneration.',
+    relatedScientificModules: [
+      {
+        title: 'Kashmir Karst Springs & Aquifer Mapping',
+        category: 'Hydrogeology',
+        href: '/water-systems/drinking-water-sources',
+        description: 'Sentinel spring discharge telemetry, perennial flow permanence, and karst catchment vulnerabilities.'
+      },
+      {
+        title: 'Himalayan Glaciology & Cryosphere Telemetry',
+        category: 'Cryosphere',
+        href: '/water-systems',
+        description: 'Mass balance deficits, glacial retreat rates, and alpine moraine-dammed lake hazard tracking.'
+      },
+      {
+        title: 'Karewa Geomorphology & Land Degradation',
+        category: 'Soil Science',
+        href: '/environmental-calendar',
+        description: 'Quarrying impact on ancient lacustrine plateau terraces, saffron soil stability, and siltation runoffs.'
+      }
+    ],
+    outdoorClassroomActivity: {
+      activityTitle: 'High-Altitude Spring Discharge & Karewa Land Degradation Mapping',
+      recommendedTier: 'Intermediate Tier (14–15 Years) & Advanced Tier (16–18 Years)',
+      curriculumLink: '/environmental-calendar/outdoor-classroom/curriculum',
+      duration: '3.5 Hours Field Geohydrology Lab',
+      fieldHypothesis: 'Deforested and quarried Karewa slopes experience accelerated rill erosion and spring yield declines exceeding 50% during dry autumn months compared to stabilized forested catchments.',
+      materialsNeeded: [
+        'Stopwatch and calibrated 10L volumetric container for spring discharge measurement',
+        'Digital soil penetrometer for compaction and shear resistance testing',
+        'Handheld GPS tracker and geological clinometer',
+        'Kashmir Springs Observatory Observation Log',
+        'Audio recording of "Cry of the Kashmir Valley"'
+      ],
+      fieldworkMethod: '1. Locate a historic mountain spring ("Naag") on a karewa or foothill transect.\n2. Measure volumetric discharge (liters per minute) over three consecutive replicates.\n3. Assess upstream vegetative slope cover, documenting degree of anthropogenic excavation or deforestation within a 200m radius.\n4. Test topsoil compaction using penetrometer.\n5. Engage students in listening to "Cry of the Kashmir Valley" and drafting a community Spring Custodianship Charter to preserve perennial discharge.',
+      measurableLearningOutcome: 'Students calculate volumetric discharge rates and evaluate the impact of uphill land use changes on perennial mountain groundwater supplies.'
+    },
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 5,
+      duration: '8:00',
+      views: '104',
+      uploadedAge: '1y ago',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'Cry of the Kashmir Valley | Come Light the Mystic Lamp | SufiPulse USA',
+      videoId: 'EtehDd3oUVc',
+      thumbnailUrl: 'https://img.youtube.com/vi/EtehDd3oUVc/hqdefault.jpg'
+    }
   }
 ];
 

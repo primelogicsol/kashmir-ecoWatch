@@ -66,7 +66,8 @@ export default function EcoVoicesPage() {
   }, [selectedCategory, searchQuery]);
 
   const [activeHeroIdx, setActiveHeroIdx] = useState(0);
-  const heroReleases = ECOVOICES_RELEASES.slice(0, 3);
+  const [heroPlayVideo, setHeroPlayVideo] = useState<boolean>(false);
+  const heroReleases = ECOVOICES_RELEASES.slice(0, 5);
   const currentHero = heroReleases[activeHeroIdx] || heroReleases[0];
 
   const heroShowcaseCard = currentHero ? (
@@ -75,68 +76,107 @@ export default function EcoVoicesPage() {
       <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
           </span>
-          <span className="font-bold text-purple-300 uppercase tracking-wider text-[11px]">
-            SufiPulse Official Audio
+          <span className="font-bold text-red-300 uppercase tracking-wider text-[11px] flex items-center gap-1">
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Track #{activeHeroIdx + 1} of 5</span>
           </span>
         </div>
-        <span className="text-[10px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded">
+        <span className="text-[10px] font-mono text-slate-300 bg-black/60 border border-white/10 px-2 py-0.5 rounded">
           {currentHero.catalogCode} • {currentHero.duration}
         </span>
       </div>
 
-      {/* Main Image Frame */}
-      <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden border border-white/10 group mb-3">
-        <img
-          key={currentHero.id}
-          src={currentHero.coverImage}
-          alt={currentHero.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
-        
-        <div className="absolute bottom-2.5 left-3 right-3">
-          <div className="flex items-center gap-1.5 mb-1">
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">
-              {currentHero.language}
-            </span>
-            <span className="text-[10px] text-slate-300">
-              {currentHero.environmentalTheme}
-            </span>
+      {/* Main Video / Image Frame */}
+      <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-white/10 group mb-3 bg-black">
+        {heroPlayVideo && currentHero.youtubeVideoId ? (
+          <div className="relative w-full h-full">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${currentHero.youtubeVideoId}?autoplay=1&rel=0`}
+              title={currentHero.title}
+              className="w-full h-full border-0 absolute inset-0 z-10"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <button
+              type="button"
+              onClick={() => setHeroPlayVideo(false)}
+              className="absolute top-2 right-2 bg-black/80 hover:bg-black text-white text-[10px] font-mono px-2 py-0.5 rounded border border-white/20 z-20"
+            >
+              ✕ Thumbnail
+            </button>
           </div>
-          <h4 className="text-sm font-bold text-white drop-shadow-md leading-tight">
-            {currentHero.title}
-          </h4>
-          <p className="text-[10px] text-purple-200 line-clamp-1 mt-0.5">
-            {currentHero.subtitle}
-          </p>
-        </div>
+        ) : (
+          <div className="relative w-full h-full">
+            <img
+              key={currentHero.id}
+              src={currentHero.coverImage}
+              alt={currentHero.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/30 group-hover:from-slate-950/90 transition-all" />
+            
+            {/* Center Play Button Overlay */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 z-10 pointer-events-auto">
+              <button
+                type="button"
+                onClick={() => setHeroPlayVideo(true)}
+                aria-label={`Play ${currentHero.title}`}
+                className="w-12 h-12 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shadow-xl shadow-red-600/50 hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-white/20"
+              >
+                <Play className="w-6 h-6 ml-0.5 fill-white" />
+              </button>
+              <span className="text-[10px] font-bold text-white bg-black/70 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-white/10 shadow">
+                Play YouTube Video
+              </span>
+            </div>
+
+            <div className="absolute bottom-2 left-3 right-3 z-10 pointer-events-none">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                  {currentHero.language}
+                </span>
+                <span className="text-[9px] text-slate-300">
+                  {currentHero.environmentalTheme}
+                </span>
+              </div>
+              <h4 className="text-xs sm:text-sm font-bold text-white drop-shadow-md leading-tight line-clamp-1">
+                {currentHero.title}
+              </h4>
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Selector Tabs */}
-      <div className="grid grid-cols-3 gap-1.5 pt-1 border-t border-white/10">
+      {/* Selector Tabs - All 5 Tracks with Thumbnails */}
+      <div className="grid grid-cols-5 gap-1.5 pt-1 border-t border-white/10">
         {heroReleases.map((item, idx) => (
           <button
             key={item.id}
             type="button"
-            onClick={() => setActiveHeroIdx(idx)}
-            className={`flex flex-col items-center gap-1 p-1.5 rounded-lg border transition-all text-left cursor-pointer ${
+            onClick={() => {
+              setActiveHeroIdx(idx);
+              setHeroPlayVideo(false);
+            }}
+            className={`flex flex-col items-center gap-1 p-1 rounded-lg border transition-all text-left cursor-pointer ${
               activeHeroIdx === idx
-                ? 'bg-purple-500/20 border-purple-500/60 shadow-sm'
+                ? 'bg-red-500/20 border-red-500/60 shadow-sm ring-1 ring-red-400/50'
                 : 'bg-white/5 border-white/5 hover:bg-white/10'
             }`}
           >
-            <div className="h-9 w-full rounded overflow-hidden relative">
+            <div className="h-8 w-full rounded overflow-hidden relative">
               <img src={item.coverImage} alt={item.title} className="w-full h-full object-cover" />
             </div>
             <span
-              className={`text-[9px] font-bold break-words w-full text-center ${
-                activeHeroIdx === idx ? 'text-purple-300' : 'text-slate-400'
+              className={`text-[8px] font-bold truncate w-full text-center ${
+                activeHeroIdx === idx ? 'text-red-300' : 'text-slate-400'
               }`}
             >
-              {item.title}
+              #{idx + 1}
             </span>
           </button>
         ))}
@@ -204,6 +244,18 @@ export default function EcoVoicesPage() {
               <Music className="w-4 h-4 mr-1.5" />
               Explore Music ({ECOVOICES_RELEASES.length})
             </Button>
+            <a
+              href="https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600/90 hover:bg-red-600 text-white border border-red-500/40 text-xs font-semibold shadow-md shadow-red-600/20 transition-all"
+            >
+              <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube Playlist (5 Tracks)</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
             <a
               href="https://sufipulse.com"
               target="_blank"
@@ -330,6 +382,44 @@ export default function EcoVoicesPage() {
         {/* ======================================================== */}
         {activeTab === 'library' && (
           <div className="space-y-6">
+            {/* OFFICIAL YOUTUBE PLAYLIST HERO BANNER */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-950/60 via-slate-900 to-purple-950/60 border border-red-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </div>
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 uppercase tracking-wider">
+                      Official YouTube Playlist
+                    </span>
+                    <span className="text-xs text-slate-400 font-mono">Date published (newest) • 5 Curated Tracks</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-white">
+                    SufiPulse USA Western Himalayan EcoVoices Series
+                  </h3>
+                  <p className="text-xs text-slate-300">
+                    Listen to all 5 releases in sequential chronological release order, with live harmonic previews and scientific fieldwork dossiers.
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg shadow-red-600/30 transition-all shrink-0"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>Open YouTube Playlist</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
             {/* SEARCH & CATEGORY FILTER BAR */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900 border border-white/10">
               {/* Category Pills */}
@@ -378,12 +468,23 @@ export default function EcoVoicesPage() {
                             <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/30">
                               {release.catalogNumber}
                             </span>
+                            <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-red-950/90 text-red-300 border border-red-500/40 flex items-center gap-1">
+                              <svg className="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                              </svg>
+                              <span>Playlist Track #{release.youtubeStats?.trackNumber || release.trackOrder}</span>
+                            </span>
                             <Badge className="bg-emerald-950/80 text-emerald-400 border-emerald-500/30 text-[10px]">
                               {release.language}
                             </Badge>
-                            <span className="text-[10px] text-slate-400 font-mono">
-                              {release.durationFormatted}
+                            <span className="text-[10px] text-slate-300 font-mono bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                              ⏱ {release.durationFormatted}
                             </span>
+                            {release.youtubeStats && (
+                              <span className="text-[10px] text-slate-400 font-mono bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                                👁 {release.youtubeStats.views} views • {release.youtubeStats.uploadedAge}
+                              </span>
+                            )}
                           </div>
                           <h3 className="text-xl font-bold text-white pt-1">
                             {release.title}
@@ -465,15 +566,32 @@ export default function EcoVoicesPage() {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
 
-                      <a
-                        href={release.canonicalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs text-purple-300 hover:text-purple-200 font-mono underline underline-offset-2"
-                      >
-                        <span>Canonical SufiPulse Release</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                      <div className="flex flex-wrap items-center gap-3">
+                        {release.youtubeStats && (
+                          <a
+                            href={release.youtubeStats.playlistUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 font-mono underline underline-offset-2"
+                          >
+                            <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+                              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span>Playlist Track #{release.youtubeStats.trackNumber}</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+
+                        <a
+                          href={release.canonicalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs text-purple-300 hover:text-purple-200 font-mono underline underline-offset-2"
+                        >
+                          <span>SufiPulse Master</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
                     </div>
                   </Card>
                 );
