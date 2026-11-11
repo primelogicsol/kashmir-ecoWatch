@@ -59,7 +59,7 @@ const socialLinks = [
   { label: 'GitHub', href: 'https://github.com', icon: Github },
   { label: 'Twitter', href: 'https://twitter.com', icon: Twitter },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin },
-  { label: 'YouTube', href: 'https://youtube.com', icon: Youtube },
+  { label: 'Official YouTube Playlist', href: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM', icon: Youtube },
 ];
 
 export function AdvancedFooter() {
@@ -153,6 +153,7 @@ export function AdvancedFooter() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 sm:w-10 sm:h-10 rounded-lg glass-light border border-white/10 hover:border-forest-500/50 flex items-center justify-center transition-all group flex-shrink-0"
                   aria-label={social.label}
+                  title={social.label}
                 >
                   <social.icon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-white transition-colors" />
                 </a>
