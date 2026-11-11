@@ -110,9 +110,17 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// PATCH /api/submissions: Admin approves or rejects a submission
+// PATCH /api/submissions: Admin approves or rejects a submission (Protected)
 export async function PATCH(req: NextRequest) {
   try {
+    const adminKey = req.headers.get('x-admin-key');
+    if (adminKey !== 'KEW-Admin-2026!') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Admin authentication key required.' },
+        { status: 401 }
+      );
+    }
+
     const { id, status } = await req.json();
 
     const dbStatus = 

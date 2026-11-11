@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Activity,
@@ -33,8 +33,38 @@ import { WebinarNav } from '@/components/webinars/WebinarNav';
 import { AdminSubNav } from '@/components/webinars/AdminSubNav';
 import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
 import { Button } from '@/components/ui/Button';
+import { useAuth } from '@/context/AuthContext';
 
 export default function WebinarAdminPage() {
+  const { user, isLoggedIn, openAuthModal } = useAuth();
+  const [isMasterUnlocked, setIsMasterUnlocked] = useState<boolean>(false);
+  const [passcode, setPasscode] = useState('');
+  const [passcodeError, setPasscodeError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = sessionStorage.getItem('kew_admin_authenticated');
+      if (stored === 'true') {
+        setIsMasterUnlocked(true);
+      }
+    }
+  }, []);
+
+  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isMasterUnlocked;
+
+  const handleUnlockWithPasscode = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode.trim() === 'KEW-Admin-2026!') {
+      setIsMasterUnlocked(true);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('kew_admin_authenticated', 'true');
+      }
+      setPasscodeError(null);
+    } else {
+      setPasscodeError('Invalid Administrator Passcode. Access denied.');
+    }
+  };
+
   const [tokenRoomCode, setTokenRoomCode] = useState('CRYO-ROOM-A');
   const [tokenRole, setTokenRole] = useState<'Host' | 'Moderator' | 'Speaker' | 'Delegate'>('Speaker');
   const [generatedToken, setGeneratedToken] = useState<string | null>(null);
@@ -77,6 +107,99 @@ export default function WebinarAdminPage() {
   const handleApprove = (id: string) => {
     setReviewQueue(prev => prev.map(p => p.id === id ? { ...p, status: 'Approved / Active' } : p));
   };
+
+  const handleLockDashboard = () => {
+    setIsMasterUnlocked(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('kew_admin_authenticated');
+    }
+  };
+
+  if (!isAuthorized) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(147,51,234,0.15),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.1),transparent_50%)] pointer-events-none" />
+
+        <div className="max-w-md w-full bg-slate-900/90 border border-purple-500/30 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl space-y-6 relative z-10">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950/50">
+              <Lock className="w-8 h-8 text-purple-300" />
+            </div>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-full inline-block">
+              Restricted Area &bull; Level 4 Clearance
+            </span>
+            <h1 className="text-2xl font-black text-white pt-1">
+              Webinar Admin Gate
+            </h1>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Access to conference scheduling, room controls, WebRTC tokens, and recording archives is restricted to authorized session administrators.
+            </p>
+          </div>
+
+          <form onSubmit={handleUnlockWithPasscode} className="space-y-4 pt-1">
+            <div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1.5 font-mono">
+                Admin Master Passcode / Security Key:
+              </label>
+              <input
+                type="password"
+                placeholder="Enter administrator passcode..."
+                value={passcode}
+                onChange={(e) => {
+                  setPasscode(e.target.value);
+                  if (passcodeError) setPasscodeError(null);
+                }}
+                className="w-full bg-slate-950 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 font-mono tracking-wider"
+                autoFocus
+              />
+              {passcodeError && (
+                <p className="text-[11px] text-red-400 mt-1.5 flex items-center gap-1 font-mono">
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                  <span>{passcodeError}</span>
+                </p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-2.5 rounded-xl shadow-lg shadow-purple-600/30 cursor-pointer"
+            >
+              <Key className="w-4 h-4 mr-1.5" />
+              <span>Unlock Admin Console</span>
+            </Button>
+          </form>
+
+          <div className="relative flex items-center justify-center">
+            <div className="border-t border-white/10 w-full" />
+            <span className="bg-slate-900 px-3 text-[10px] text-slate-500 font-mono uppercase">OR</span>
+            <div className="border-t border-white/10 w-full" />
+          </div>
+
+          <div className="space-y-2.5">
+            <Button
+              type="button"
+              onClick={() => openAuthModal('signin')}
+              variant="outline"
+              className="w-full border-white/15 text-slate-300 hover:bg-white/5 text-xs font-semibold rounded-xl cursor-pointer"
+            >
+              <ShieldCheck className="w-4 h-4 mr-1.5 text-purple-400" />
+              <span>Sign In with Administrator Account</span>
+            </Button>
+
+            <Link href="/webinars" className="block">
+              <Button
+                variant="ghost"
+                className="w-full text-slate-400 hover:text-white text-xs font-medium cursor-pointer"
+              >
+                Return to Webinars
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">

@@ -87,6 +87,42 @@ export default function AdminDashboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [actionNotice, setActionNotice] = useState<string | null>(null);
 
+  // Security & Admin Access Gate State
+  const [isMasterUnlocked, setIsMasterUnlocked] = useState<boolean>(false);
+  const [passcode, setPasscode] = useState('');
+  const [passcodeError, setPasscodeError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = sessionStorage.getItem('kew_admin_authenticated');
+      if (stored === 'true') {
+        setIsMasterUnlocked(true);
+      }
+    }
+  }, []);
+
+  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isMasterUnlocked;
+
+  const handleUnlockWithPasscode = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode.trim() === 'KEW-Admin-2026!') {
+      setIsMasterUnlocked(true);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('kew_admin_authenticated', 'true');
+      }
+      setPasscodeError(null);
+    } else {
+      setPasscodeError('Invalid Administrator Passcode. Access denied.');
+    }
+  };
+
+  const handleLockDashboard = () => {
+    setIsMasterUnlocked(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('kew_admin_authenticated');
+    }
+  };
+
   // Fetch real submissions from database
   const fetchSubmissions = async () => {
     setLoadingSubmissions(true);
@@ -126,7 +162,7 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch('/api/submissions', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
         body: JSON.stringify({ id, status: 'approved' }),
       });
       const json = await res.json();
@@ -146,7 +182,7 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch('/api/submissions', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
         body: JSON.stringify({ id, status: 'rejected' }),
       });
       const json = await res.json();
@@ -168,6 +204,103 @@ export default function AdminDashboardPage() {
                          s.district.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesQuery;
   });
+
+  // Access Restricted Gate: Rendered when user is neither logged in as admin nor unlocked via Master Key
+  if (!isAuthorized) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Background Ambience */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(147,51,234,0.15),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.1),transparent_50%)] pointer-events-none" />
+
+        <div className="max-w-md w-full bg-slate-900/90 border border-purple-500/30 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl space-y-6 relative z-10">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950/50">
+              <Lock className="w-8 h-8 text-purple-300" />
+            </div>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-full inline-block">
+              Restricted Area &bull; Level 4 Clearance
+            </span>
+            <h1 className="text-2xl font-black text-white pt-1">
+              Admin Orchestration Gate
+            </h1>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Access to the Kashmir EcoWatch Command Console, Telemetry Verification Queue, and PostGIS Database is strictly restricted to authenticated platform administrators.
+            </p>
+          </div>
+
+          {/* Master Passcode Form */}
+          <form onSubmit={handleUnlockWithPasscode} className="space-y-4 pt-1">
+            <div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1.5 font-mono">
+                Admin Master Passcode / Security Key:
+              </label>
+              <div className="relative">
+                <input
+                  type="password"
+                  placeholder="Enter administrator passcode..."
+                  value={passcode}
+                  onChange={(e) => {
+                    setPasscode(e.target.value);
+                    if (passcodeError) setPasscodeError(null);
+                  }}
+                  className="w-full bg-slate-950 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 font-mono tracking-wider"
+                  autoFocus
+                />
+              </div>
+              {passcodeError && (
+                <p className="text-[11px] text-red-400 mt-1.5 flex items-center gap-1 font-mono">
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                  <span>{passcodeError}</span>
+                </p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-2.5 rounded-xl shadow-lg shadow-purple-600/30 cursor-pointer"
+            >
+              <Key className="w-4 h-4 mr-1.5" />
+              <span>Unlock Admin Console</span>
+            </Button>
+          </form>
+
+          <div className="relative flex items-center justify-center">
+            <div className="border-t border-white/10 w-full" />
+            <span className="bg-slate-900 px-3 text-[10px] text-slate-500 font-mono uppercase">OR</span>
+            <div className="border-t border-white/10 w-full" />
+          </div>
+
+          <div className="space-y-2.5">
+            <Button
+              type="button"
+              onClick={() => openAuthModal('signin')}
+              variant="outline"
+              className="w-full border-white/15 text-slate-300 hover:bg-white/5 text-xs font-semibold rounded-xl cursor-pointer"
+            >
+              <Shield className="w-4 h-4 mr-1.5 text-purple-400" />
+              <span>Sign In with Administrator Account</span>
+            </Button>
+
+            <Link href="/" className="block">
+              <Button
+                variant="ghost"
+                className="w-full text-slate-400 hover:text-white text-xs font-medium cursor-pointer"
+              >
+                Return to Public Website
+              </Button>
+            </Link>
+          </div>
+
+          <div className="text-center pt-2 border-t border-white/5">
+            <span className="text-[10px] text-slate-500 font-mono">
+              IP &amp; Session Activity Geotagged &bull; Unauthorized Access Prohibited
+            </span>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 pt-24 pb-20 relative overflow-hidden">
@@ -236,6 +369,15 @@ export default function AdminDashboardPage() {
                   Switch to Contributor View
                 </Button>
               </Link>
+              <Button
+                type="button"
+                onClick={handleLockDashboard}
+                variant="outline"
+                className="border-red-500/30 text-red-300 hover:bg-red-500/10 text-xs sm:text-sm font-semibold rounded-xl cursor-pointer"
+              >
+                <Lock className="w-3.5 h-3.5 mr-1 text-red-400" />
+                <span>Lock Console</span>
+              </Button>
             </div>
           </div>
         </div>
