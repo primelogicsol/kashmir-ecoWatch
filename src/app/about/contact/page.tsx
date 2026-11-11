@@ -10,6 +10,7 @@ import {
   Copy, Check, Sparkles, Award, Users, Landmark, Cpu,
   Heart, ArrowRight, Activity, Shield, MessageSquare
 } from 'lucide-react';
+import { submitToOperations } from '@/lib/operationsClient';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ 
@@ -20,6 +21,8 @@ export default function ContactPage() {
     message: '' 
   });
   const [submitted, setSubmitted] = useState(false);
+  const [ticketId, setTicketId] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
 
   // Executive Metric Cards (Matching About, Mission, Founder, Contributors, Governance, Support)
@@ -38,22 +41,35 @@ export default function ContactPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.contact_name || !formData.email || !formData.message) return;
+    setIsSubmitting(true);
 
-    // Trigger direct mailto client with structured content
-    const subject = encodeURIComponent(`[KEW Inquiry - ${formData.partnership_type}] from ${formData.contact_name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.contact_name}\n` +
-      `Email: ${formData.email}\n` +
-      `Organization: ${formData.organization || 'Independent / Not specified'}\n` +
-      `Partnership Track: ${formData.partnership_type}\n\n` +
-      `Message:\n${formData.message}\n`
-    );
+    const res = await submitToOperations({
+      sourcePage: '/about/contact',
+      title: `[${formData.partnership_type}] from ${formData.contact_name}`,
+      category: formData.partnership_type,
+      ownerName: formData.contact_name,
+      ownerEmail: formData.email,
+      organization: formData.organization || undefined,
+      details: formData.message,
+      priority: formData.partnership_type.toLowerCase().includes('technical') ? 'MEDIUM' : 'LOW',
+    });
 
-    window.location.href = `mailto:contact@kashmir-ecowatch.com?subject=${subject}&body=${body}`;
+    const ref = res.success ? res.trackingId : `KEW-CON-${Date.now().toString().slice(-6)}`;
+    setTicketId(ref);
     setSubmitted(true);
+    setIsSubmitting(false);
+
+    // Also trigger mailto in background
+    try {
+      const subject = encodeURIComponent(`[${ref}] [KEW Inquiry - ${formData.partnership_type}] from ${formData.contact_name}`);
+      const body = encodeURIComponent(
+        `Ticket ID: ${ref}\nName: ${formData.contact_name}\nEmail: ${formData.email}\nOrganization: ${formData.organization || 'Independent'}\nPartnership Track: ${formData.partnership_type}\n\nMessage:\n${formData.message}\n`
+      );
+      window.location.href = `mailto:contact@kashmir-ecowatch.com?subject=${subject}&body=${body}`;
+    } catch {}
   };
 
   return (
@@ -240,13 +256,19 @@ export default function ContactPage() {
                     <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
                       <CheckCircle className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Message Dispatched</h3>
+                    <h3 className="text-xl font-bold text-white">Ticket Logged &amp; Dispatched</h3>
+                    {ticketId && (
+                      <div className="p-3 bg-slate-950/80 border border-emerald-500/30 rounded-xl inline-block">
+                        <span className="text-[11px] font-mono text-slate-400 block uppercase">Tracking Reference ID (&lt;24h SLA)</span>
+                        <span className="text-lg font-mono font-bold text-emerald-300">{ticketId}</span>
+                      </div>
+                    )}
                     <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                      Your inquiry has been formulated and dispatched to our scientific and administrative coordination team. You will receive an automated response via our mail gateway.
+                      Your inquiry has been formulated and dispatched to our scientific and administrative coordination team. Track progress anytime in your member workspace.
                     </p>
                     <button 
                       onClick={() => setSubmitted(false)}
-                      className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold transition-colors"
+                      className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold transition-colors cursor-pointer"
                     >
                       Send Another Message
                     </button>

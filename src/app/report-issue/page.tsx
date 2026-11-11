@@ -14,6 +14,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
+import { submitToOperations } from '@/lib/operationsClient';
+import { SubmissionPriority } from '@/lib/operations';
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 
@@ -331,9 +333,25 @@ export default function ReportIssuePage() {
     e.preventDefault();
     if (!selectedType || !locationText || !description) return;
     setIsSubmitting(true);
-    const newIncidentId = generateIncidentId();
+    
+    let priority: SubmissionPriority = 'MEDIUM';
+    if (selectedSeverity === 'critical') priority = 'CRITICAL';
+    else if (selectedSeverity === 'severe' || selectedSeverity === 'high') priority = 'HIGH';
+    else if (selectedSeverity === 'minor') priority = 'LOW';
+
+    const res = await submitToOperations({
+      sourcePage: '/report-issue',
+      title: `${selectedType} Incident (${locationText})`,
+      category: selectedType,
+      ownerName: anonymous ? 'Anonymous Informant' : (reporterName || 'Concerned Citizen'),
+      ownerEmail: reporterEmail || 'incident-desk@kashmirecowatch.org',
+      district: locationText.split(',')[0].trim(),
+      details: `${description} | Date: ${incidentDate || 'Today'} ${incidentTime || ''} | Severity: ${selectedSeverity}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
+      priority,
+    });
+
+    const newIncidentId = res.success ? res.trackingId : generateIncidentId();
     setIncidentId(newIncidentId);
-    await new Promise(resolve => setTimeout(resolve, 800));
     setSubmitted(true);
     setIsSubmitting(false);
   };

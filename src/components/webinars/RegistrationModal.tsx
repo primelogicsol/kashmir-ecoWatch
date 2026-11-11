@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { WebinarSession } from '@/data/webinars';
 import { Button } from '@/components/ui/Button';
+import { submitToOperations } from '@/lib/operationsClient';
 
 interface RegistrationModalProps {
   session: WebinarSession | null;
@@ -39,9 +40,22 @@ export function RegistrationModal({ session, isOpen, onClose }: RegistrationModa
 
   if (!isOpen || !session) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const generatedId = `KEW-DEL-2027-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const res = await submitToOperations({
+      sourcePage: '/webinars',
+      title: `Delegate Registration: ${session.title} (${formData.fullName})`,
+      category: 'Webinar & Conference Registration',
+      ownerName: formData.fullName,
+      ownerEmail: formData.email,
+      organization: formData.institution || undefined,
+      district: 'Himalayan Regional / International',
+      details: `Session: ${session.title} (${session.id}) | Room: ${session.roomCode} | Role: ${formData.role} | Designation: ${formData.designation} | Certificate: ${formData.requiresCertificate ? 'Yes' : 'No'}`,
+      priority: 'MEDIUM',
+    });
+
+    const generatedId = res.success ? res.trackingId : `KEW-DEL-2027-${Math.floor(1000 + Math.random() * 9000)}`;
     setDelegateId(generatedId);
     setIsSubmitted(true);
   };

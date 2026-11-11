@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { submitToOperations } from '@/lib/operationsClient';
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
 
@@ -346,6 +347,7 @@ export default function BecomeDataContributorPage() {
   const [message,          setMessage]          = useState('');
   const [needsDSA,         setNeedsDSA]         = useState(false);
   const [submitted,        setSubmitted]        = useState(false);
+  const [trackingId,       setTrackingId]       = useState('');
   const [isSubmitting,     setIsSubmitting]     = useState(false);
 
   const toggleType = (id: string) => {
@@ -358,7 +360,20 @@ export default function BecomeDataContributorPage() {
     e.preventDefault();
     if (!name || !email || selectedTypes.length === 0) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 900));
+
+    const res = await submitToOperations({
+      sourcePage: '/become-data-contributor',
+      title: `Data Contributor Accreditation (${name}${organisation ? ` - ${organisation}` : ''})`,
+      category: 'Contributor Accreditation',
+      ownerName: name,
+      ownerEmail: email,
+      organization: organisation || undefined,
+      district: region || 'Srinagar',
+      details: `Types: ${selectedTypes.join(', ')} | Role: ${role || 'Scientist'} | Frequency: ${dataFrequency || 'Monthly'} | Volume: ${dataVolume || 'Standard'} | DSA Requested: ${needsDSA ? 'Yes' : 'No'} | Note: ${message || 'Standard Application'}`,
+      priority: 'MEDIUM',
+    });
+
+    setTrackingId(res.success ? res.trackingId : `KEW-ACR-${Date.now().toString().slice(-6)}`);
     setIsSubmitting(false);
     setSubmitted(true);
   };
@@ -377,6 +392,15 @@ export default function BecomeDataContributorPage() {
                 {organisation && <> from <strong className="text-white">{organisation}</strong></>}.
                 {' '}Our data team will reach out at <strong className="text-teal-400">{email}</strong> within 3–5 working days to discuss onboarding and next steps.
               </p>
+              {trackingId && (
+                <div className="mb-6 p-4 bg-slate-900/90 border border-teal-500/30 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Accreditation Tracking ID</span>
+                    <span className="text-xl font-mono font-bold text-teal-400">{trackingId}</span>
+                  </div>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/20 font-mono">STATUS: ACCREDITATION QUEUE</span>
+                </div>
+              )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
                 <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Selected Data Domains</h3>
                 <div className="flex flex-wrap gap-2 mb-4">

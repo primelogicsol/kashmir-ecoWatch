@@ -2,90 +2,55 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, Users, Database, AlertTriangle, CheckCircle2, 
   XCircle, Clock, Search, Filter, ArrowUpRight, BarChart3, 
   Settings, Key, Download, RefreshCw, FileText, ChevronRight,
-  Droplets, Leaf, MapPin, Eye, Lock, Unlock, Sparkles, LogOut
+  Droplets, Leaf, MapPin, Eye, Lock, Unlock, Sparkles, LogOut,
+  Calendar, Video, Building2, DollarSign, MessageSquare, Flame,
+  Layers, Activity, Send, Check, Phone, Globe, ExternalLink, HelpCircle
 } from 'lucide-react';
-import { useAuth, ContributorRole } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { 
+  OperationRecord, 
+  ManagementCenter, 
+  SubmissionPriority, 
+  OperationStatus, 
+  INITIAL_OPERATIONS_RECORDS,
+  SOURCE_PAGE_MAP 
+} from '@/lib/operations';
+import { SCIENTIFIC_PROGRAM_TARGETS } from '@/data/scientific-program-2027-2028';
+import { CITIZEN_SCIENCE_PROGRAMS, CITIZEN_SCIENCE_METRICS } from '@/data/citizen-science-programs';
 
-// Mock submission queue for admin verification
-interface PendingSubmission {
-  id: string;
-  contributorName: string;
-  contributorEmail: string;
-  contributorRole: string;
-  title: string;
-  category: 'water_quality' | 'species_census' | 'hazard_incident' | 'gis_telemetry';
-  district: string;
-  submittedAt: string;
-  status: 'pending' | 'approved' | 'rejected';
-  details: string;
-}
-
-const INITIAL_SUBMISSIONS: PendingSubmission[] = [
-  {
-    id: 'SUB-2026-104',
-    contributorName: 'Dr. Tariq Lone',
-    contributorEmail: 'tariq.lone@skuast.edu.in',
-    contributorRole: 'Researcher',
-    title: 'Wular Lake Seasonal Eutrophication & Coliform Analysis',
-    category: 'water_quality',
-    district: 'Bandipora',
-    submittedAt: 'Today at 02:15 AM',
-    status: 'pending',
-    details: 'Laboratory verified sample #WL-92. pH 8.4, Dissolved Oxygen 3.2 mg/L, High Nitrate concentration.',
-  },
-  {
-    id: 'SUB-2026-103',
-    contributorName: 'Zubair Ahmad Ranger',
-    contributorEmail: 'z.ahmad@wildlifejk.gov.in',
-    contributorRole: 'Field Observer',
-    title: 'Hangul Female Herd with 3 Calves — Upper Dachigam Block 4',
-    category: 'species_census',
-    district: 'Srinagar',
-    submittedAt: 'Yesterday at 04:30 PM',
-    status: 'pending',
-    details: 'Direct observation with photographic evidence. 5km spatial masking recommended before public atlas release.',
-  },
-  {
-    id: 'SUB-2026-102',
-    contributorName: 'Irfan Nabi',
-    contributorEmail: 'irfan.eco@gmail.com',
-    contributorRole: 'Citizen Scientist',
-    title: 'Active Mudslide Debris Blocking Nallah Sindh Tributary',
-    category: 'hazard_incident',
-    district: 'Ganderbal',
-    submittedAt: 'Oct 14, 2026',
-    status: 'approved',
-    details: 'Verified by local telemetry sensor #GS-04. Road advisory dispatched to district administration.',
-  },
-  {
-    id: 'SUB-2026-101',
-    contributorName: 'Saima Parveen',
-    contributorEmail: 'saima.gis@gmail.com',
-    contributorRole: 'Student',
-    title: 'Hokersar Wetland Inundation Boundary Shapefile 2026',
-    category: 'gis_telemetry',
-    district: 'Budgam',
-    submittedAt: 'Oct 13, 2026',
-    status: 'approved',
-    details: 'Sentinel-2 derived NDVI and NDWI shapefiles validated with 96.2% precision index.',
-  },
-];
+type AdminTab = 
+  | 'queue' 
+  | 'events' 
+  | 'partnerships' 
+  | 'communications' 
+  | 'scientific' 
+  | 'community' 
+  | 'users' 
+  | 'system' 
+  | 'audit';
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, signOut, openAuthModal } = useAuth();
-  const [activeTab, setActiveTab] = useState<'queue' | 'users' | 'system' | 'audit'>('queue');
-  const [submissions, setSubmissions] = useState<PendingSubmission[]>([]);
-  const [loadingSubmissions, setLoadingSubmissions] = useState(false);
-  const [filterCategory, setFilterCategory] = useState<string>('all');
+  const [activeTab, setActiveTab] = useState<AdminTab>('queue');
+  
+  // Operations & Queues State
+  const [operations, setOperations] = useState<OperationRecord[]>(INITIAL_OPERATIONS_RECORDS);
+  const [loadingOps, setLoadingOps] = useState(false);
+  const [filterCenter, setFilterCenter] = useState<string>('ALL');
+  const [filterPriority, setFilterPriority] = useState<string>('ALL');
+  const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [actionNotice, setActionNotice] = useState<string | null>(null);
+
+  // Selected Record Drawer State
+  const [selectedRecord, setSelectedRecord] = useState<OperationRecord | null>(null);
 
   // Security & Admin Access Gate State
   const [isMasterUnlocked, setIsMasterUnlocked] = useState<boolean>(false);
@@ -123,86 +88,71 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Fetch real submissions from database
-  const fetchSubmissions = async () => {
-    setLoadingSubmissions(true);
+  // Fetch real operations from unified API
+  const fetchOperations = async () => {
+    setLoadingOps(true);
     try {
-      const res = await fetch('/api/submissions');
+      const res = await fetch('/api/operations');
       const json = await res.json();
       if (json.success && Array.isArray(json.data)) {
-        // Map database columns to PendingSubmission format
-        const mapped: PendingSubmission[] = json.data.map((row: any) => ({
-          id: row.id,
-          contributorName: row.contributorName || 'Field Observer',
-          contributorEmail: row.contributor_email || 'contributor@kashmirecowatch.org',
-          contributorRole: row.contributorType || 'Researcher',
-          title: row.title,
-          category: (row.category || 'water_quality') as any,
-          district: row.district || 'Srinagar',
-          submittedAt: new Date(row.createdAt).toLocaleDateString(),
-          status: row.status === 'EXPERT_VERIFIED' || row.status === 'COMMUNITY_VERIFIED' ? 'approved' :
-                  row.status === 'REJECTED' ? 'rejected' : 'pending',
-          details: row.details || row.title,
-        }));
-        setSubmissions(mapped);
+        setOperations(json.data);
       }
     } catch (err) {
-      console.error('Failed to fetch admin submissions:', err);
+      console.error('Failed to fetch operations:', err);
     } finally {
-      setLoadingSubmissions(false);
+      setLoadingOps(false);
     }
   };
 
   useEffect(() => {
-    fetchSubmissions();
+    fetchOperations();
   }, []);
 
-  // Approve a pending submission in PostgreSQL
-  const handleApprove = async (id: string) => {
+  // Update operation status
+  const handleUpdateStatus = async (trackingId: string, newStatus: OperationStatus, note?: string) => {
     try {
-      const res = await fetch('/api/submissions', {
+      const res = await fetch('/api/operations', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
-        body: JSON.stringify({ id, status: 'approved' }),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': 'KEW-Admin-2026!'
+        },
+        body: JSON.stringify({
+          trackingId,
+          status: newStatus,
+          note: note || `Admin updated status to ${newStatus}`
+        })
       });
       const json = await res.json();
-      if (json.success) {
-        setSubmissions(prev => prev.map(s => s.id === id ? { ...s, status: 'approved' } : s));
-        const target = submissions.find(s => s.id === id);
-        setActionNotice(`Approved "${target?.title}" — Live in PostgreSQL & Published to Atlas.`);
+      if (json.success && json.record) {
+        setOperations(prev => prev.map(r => r.trackingId === trackingId ? json.record : r));
+        if (selectedRecord && selectedRecord.trackingId === trackingId) {
+          setSelectedRecord(json.record);
+        }
+        setActionNotice(`Successfully marked ${trackingId} as ${newStatus}.`);
         setTimeout(() => setActionNotice(null), 4000);
+      } else {
+        alert(json.error || 'Action failed');
       }
     } catch (e: any) {
-      alert('Error updating database: ' + e.message);
+      alert('Error updating operation: ' + e.message);
     }
   };
 
-  // Reject a submission in PostgreSQL
-  const handleReject = async (id: string) => {
-    try {
-      const res = await fetch('/api/submissions', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
-        body: JSON.stringify({ id, status: 'rejected' }),
-      });
-      const json = await res.json();
-      if (json.success) {
-        setSubmissions(prev => prev.map(s => s.id === id ? { ...s, status: 'rejected' } : s));
-        const target = submissions.find(s => s.id === id);
-        setActionNotice(`Rejected "${target?.title}" — Status updated to REJECTED in database.`);
-        setTimeout(() => setActionNotice(null), 4000);
-      }
-    } catch (e: any) {
-      alert('Error updating database: ' + e.message);
-    }
-  };
-
-  const filtered = submissions.filter(s => {
-    const matchesCat = filterCategory === 'all' || s.category === filterCategory;
-    const matchesQuery = s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         s.contributorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         s.district.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCat && matchesQuery;
+  // Filtered operations list
+  const filteredOperations = operations.filter(op => {
+    const matchesCenter = filterCenter === 'ALL' || op.managementCenter === filterCenter;
+    const matchesPriority = filterPriority === 'ALL' || op.priority === filterPriority;
+    const matchesStatus = filterStatus === 'ALL' || op.status === filterStatus;
+    const q = searchQuery.toLowerCase();
+    const matchesQuery = 
+      op.trackingId.toLowerCase().includes(q) ||
+      op.title.toLowerCase().includes(q) ||
+      op.ownerName.toLowerCase().includes(q) ||
+      (op.district && op.district.toLowerCase().includes(q)) ||
+      (op.organization && op.organization.toLowerCase().includes(q)) ||
+      op.category.toLowerCase().includes(q);
+    return matchesCenter && matchesPriority && matchesStatus && matchesQuery;
   });
 
   // Access Restricted Gate: Rendered when user is neither logged in as admin nor unlocked via Master Key
@@ -347,346 +297,776 @@ export default function AdminDashboardPage() {
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
                   <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                    Admin Command & Intelligence Center
+                    Admin Command &amp; Intelligence Center
                   </h1>
                   <span className="px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider">
                     Superuser Tier
                   </span>
                 </div>
                 <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
-                  <span>Data Ingestion & Verification Queue</span>
-                  <span>•</span>
+                  <span>Data Ingestion &amp; Verification Queue</span>
+                  <span>&bull;</span>
                   <span>Observer Registry Management</span>
-                  <span>•</span>
-                  <span>PostgreSQL & PostGIS Gateway</span>
+                  <span>&bull;</span>
+                  <span>PostgreSQL &amp; PostGIS Gateway</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <Link href="/dashboard">
-                <Button variant="outline" className="border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10 text-xs sm:text-sm font-semibold rounded-xl">
-                  Switch to Contributor View
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="border-white/10 hover:bg-white/5 text-slate-300 text-xs font-semibold rounded-xl"
+                >
+                  <Eye className="w-3.5 h-3.5 mr-1.5 text-emerald-400" />
+                  <span>Switch to Contributor View</span>
                 </Button>
               </Link>
               <Button
-                type="button"
-                onClick={handleLockDashboard}
                 variant="outline"
-                className="border-red-500/30 text-red-300 hover:bg-red-500/10 text-xs sm:text-sm font-semibold rounded-xl cursor-pointer"
+                size="sm"
+                onClick={handleLockDashboard}
+                className="border-red-500/30 hover:bg-red-500/10 text-red-400 text-xs font-semibold rounded-xl"
               >
-                <Lock className="w-3.5 h-3.5 mr-1 text-red-400" />
+                <Lock className="w-3.5 h-3.5 mr-1.5" />
                 <span>Lock Console</span>
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-          <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-            <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-              <span>Pending Verifications</span>
-              <Clock className="w-4 h-4 text-amber-400" />
-            </div>
-            <div className="text-2xl font-black text-amber-400">
-              {submissions.filter(s => s.status === 'pending').length}
-            </div>
-            <p className="text-[11px] text-slate-400 mt-1">Requires ecological sign-off</p>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-            <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-              <span>Approved Datasets</span>
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            </div>
-            <div className="text-2xl font-black text-emerald-400">
-              {submissions.filter(s => s.status === 'approved').length + 84}
-            </div>
-            <p className="text-[11px] text-emerald-400 mt-1">Live in Open Atlas</p>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-            <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-              <span>Registered Contributors</span>
-              <Users className="w-4 h-4 text-sky-400" />
-            </div>
-            <div className="text-2xl font-black text-white">418</div>
-            <p className="text-[11px] text-sky-400 mt-1">20 J&K Districts</p>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-            <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-              <span>System Health</span>
-              <Database className="w-4 h-4 text-purple-400" />
-            </div>
-            <div className="text-2xl font-black text-purple-300">99.98%</div>
-            <p className="text-[11px] text-slate-400 mt-1">227 Routes Ingested</p>
-          </div>
-        </div>
-
-        {/* Tab Controls */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto no-scrollbar">
+        {/* 5 Management Centers Navigation Tabs */}
+        <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto">
           {[
-            { id: 'queue', label: 'Verification Queue', count: submissions.filter(s => s.status === 'pending').length, icon: Clock },
-            { id: 'users', label: 'Observer & Contributor Grid', count: 418, icon: Users },
-            { id: 'system', label: 'Hazard Ingestion Telemetry', icon: Database },
-            { id: 'audit', label: 'Security & Access Logs', icon: Key },
-          ].map(t => {
-            const Icon = t.icon;
-            const isSel = activeTab === t.id;
-            return (
-              <button
-                key={t.id}
-                onClick={() => setActiveTab(t.id as any)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
-                  isSel
-                    ? 'bg-purple-500/15 text-purple-300 border border-purple-500/30 shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{t.label}</span>
-                {t.count !== undefined && (
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${isSel ? 'bg-purple-500/30 text-purple-200' : 'bg-white/10 text-slate-400'}`}>
-                    {t.count}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+            { id: 'queue', label: 'Unified Operations Queue', icon: Activity, count: operations.length },
+            { id: 'events', label: 'Events & Conferences', icon: Calendar, badge: '104 Programs' },
+            { id: 'partnerships', label: 'Support, CSR & Grants', icon: DollarSign, badge: 'Compliance' },
+            { id: 'communications', label: 'Communications Center', icon: MessageSquare, badge: '<24h SLA' },
+            { id: 'scientific', label: 'Scientific Evidence & Incidents', icon: Flame, badge: 'Triage' },
+            { id: 'community', label: 'Community & Volunteers', icon: Users, badge: '845 Scientists' },
+            { id: 'system', label: 'PostGIS & Infrastructure', icon: Database },
+            { id: 'audit', label: 'Governance & Audit Trail', icon: FileText }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as AdminTab)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                activeTab === tab.id
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
+                  : 'bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800/80 border border-white/5'
+              }`}
+            >
+              <tab.icon className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
+              {tab.count !== undefined && (
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                  activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
+                }`}>
+                  {tab.count}
+                </span>
+              )}
+              {tab.badge && (
+                <span className={`px-1.5 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider ${
+                  activeTab === tab.id ? 'bg-purple-900/60 text-purple-200' : 'bg-purple-500/10 text-purple-300 border border-purple-500/20'
+                }`}>
+                  {tab.badge}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
 
-        {/* Tab Content: QUEUE */}
+        {/* Tab 1: Unified Operations Queue */}
         {activeTab === 'queue' && (
           <div className="space-y-6">
-            {/* Filter and Search Bar */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/60 border border-white/10">
-              <div className="relative flex-1">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder="Filter by title, contributor name, district..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-950/80 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500/50"
-                />
+            {/* Filter & Search Bar */}
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-4 sm:p-5 backdrop-blur-md space-y-4">
+              <div className="flex flex-col md:flex-row gap-3">
+                <div className="relative flex-1">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Search by Tracking ID (KEW-...), title, contributor, district, or organization..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-slate-950 border border-white/10 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 font-mono"
+                  />
+                </div>
+                <Button
+                  onClick={fetchOperations}
+                  variant="outline"
+                  size="sm"
+                  className="border-white/10 text-slate-300 hover:bg-white/5 text-xs font-semibold rounded-xl"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 mr-1.5 ${loadingOps ? 'animate-spin' : ''}`} />
+                  <span>Refresh Queue</span>
+                </Button>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">Category:</span>
-                <select
-                  value={filterCategory}
-                  onChange={(e) => setFilterCategory(e.target.value)}
-                  className="bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-purple-500/50"
-                >
-                  <option value="all">All Domains</option>
-                  <option value="water_quality">Water Quality</option>
-                  <option value="species_census">Species Census</option>
-                  <option value="hazard_incident">Hazard Incident</option>
-                  <option value="gis_telemetry">GIS & Telemetry</option>
-                </select>
+              {/* Multi-Filter Rows */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-white/5 text-xs">
+                {/* Center Filter */}
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-mono text-slate-400 mr-1">Center:</span>
+                  {[
+                    { id: 'ALL', label: 'All' },
+                    { id: 'EVENTS', label: 'Events' },
+                    { id: 'PARTNERSHIPS', label: 'Partnerships' },
+                    { id: 'COMMUNICATIONS', label: 'Communications' },
+                    { id: 'SCIENTIFIC_INTAKE', label: 'Scientific Intake' },
+                    { id: 'COMMUNITY_NETWORK', label: 'Community' }
+                  ].map(c => (
+                    <button
+                      key={c.id}
+                      onClick={() => setFilterCenter(c.id)}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors ${
+                        filterCenter === c.id
+                          ? 'bg-purple-600/30 border border-purple-500/50 text-purple-200'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                      }`}
+                    >
+                      {c.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Priority Filter */}
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-mono text-slate-400 mr-1">Priority:</span>
+                  {[
+                    { id: 'ALL', label: 'All' },
+                    { id: 'CRITICAL', label: 'Critical 🚨' },
+                    { id: 'HIGH', label: 'High' },
+                    { id: 'MEDIUM', label: 'Medium' },
+                    { id: 'LOW', label: 'Low' }
+                  ].map(p => (
+                    <button
+                      key={p.id}
+                      onClick={() => setFilterPriority(p.id)}
+                      className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors ${
+                        filterPriority === p.id
+                          ? 'bg-red-600/30 border border-red-500/50 text-red-200'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                      }`}
+                    >
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Status Filter */}
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-mono text-slate-400 mr-1">Status:</span>
+                  {['ALL', 'PENDING', 'IN_REVIEW', 'APPROVED', 'REFERRED', 'RESOLVED', 'REJECTED'].map(st => (
+                    <button
+                      key={st}
+                      onClick={() => setFilterStatus(st)}
+                      className={`px-2 py-1 rounded-lg text-[10px] font-mono transition-colors ${
+                        filterStatus === st
+                          ? 'bg-emerald-600/30 border border-emerald-500/50 text-emerald-200'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                      }`}
+                    >
+                      {st}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Submission Cards */}
-            <div className="space-y-4">
-              {filtered.map((item) => (
-                <div key={item.id} className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 hover:border-purple-500/20 transition-all shadow-md">
-                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-                    <div className="space-y-2 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400 text-[10px] font-mono">
-                          {item.id}
-                        </span>
-                        <span className="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[11px] font-semibold capitalize">
-                          {item.category.replace('_', ' ')}
-                        </span>
-                        <span className="text-xs text-slate-400 flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-emerald-400" />
-                          {item.district} District
-                        </span>
-                        <span className="text-xs text-slate-500">•</span>
-                        <span className="text-xs text-slate-500">{item.submittedAt}</span>
-                      </div>
+            {/* Operations Cards List */}
+            <div className="space-y-3">
+              {filteredOperations.length === 0 ? (
+                <div className="rounded-2xl bg-slate-900/50 border border-white/5 p-12 text-center text-slate-400 space-y-2">
+                  <Search className="w-8 h-8 mx-auto text-slate-600" />
+                  <p className="text-sm font-semibold text-white">No operations match your current filters.</p>
+                  <p className="text-xs text-slate-500">Try clearing priority or category filters.</p>
+                </div>
+              ) : (
+                filteredOperations.map(op => (
+                  <div
+                    key={op.id}
+                    className={`rounded-2xl border transition-all p-5 backdrop-blur-md ${
+                      op.priority === 'CRITICAL'
+                        ? 'bg-red-950/20 border-red-500/40 hover:border-red-500/60 shadow-lg shadow-red-950/30'
+                        : 'bg-slate-900/80 border-white/10 hover:border-purple-500/30 shadow-md'
+                    }`}
+                  >
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                      
+                      {/* Left: Metadata & Title */}
+                      <div className="space-y-2 flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="text-xs font-mono font-bold text-purple-300 bg-purple-500/10 border border-purple-500/30 px-2.5 py-0.5 rounded-md">
+                            {op.trackingId}
+                          </span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-white/5">
+                            {op.managementCenterLabel}
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-white/5">
+                            Source: {op.sourcePageLabel}
+                          </span>
+                          
+                          {/* Priority Badge */}
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
+                            op.priority === 'CRITICAL'
+                              ? 'bg-red-500/20 text-red-300 border border-red-500/50 animate-pulse'
+                              : op.priority === 'HIGH'
+                              ? 'bg-orange-500/15 text-orange-300 border border-orange-500/30'
+                              : 'bg-slate-800 text-slate-400'
+                          }`}>
+                            {op.priority} PRIORITY
+                          </span>
 
-                      <h3 className="text-base font-bold text-white leading-snug">{item.title}</h3>
-                      <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/50 p-3 rounded-xl border border-white/5">
-                        {item.details}
-                      </p>
-
-                      <div className="text-xs text-slate-400 flex items-center gap-2 pt-1">
-                        <span>Submitted by:</span>
-                        <span className="font-semibold text-white">{item.contributorName}</span>
-                        <span>({item.contributorRole})</span>
-                        <span>•</span>
-                        <span className="text-slate-500">{item.contributorEmail}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row lg:flex-col items-end gap-2.5 shrink-0 pt-2 lg:pt-0">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                        item.status === 'approved' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' :
-                        item.status === 'rejected' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' :
-                        'bg-amber-500/10 text-amber-300 border border-amber-500/30'
-                      }`}>
-                        {item.status}
-                      </span>
-
-                      {item.status === 'pending' && (
-                        <div className="flex items-center gap-2 mt-2">
-                          <Button 
-                            onClick={() => handleApprove(item.id)}
-                            className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1.5 h-8 rounded-lg"
-                          >
-                            <CheckCircle2 className="w-3.5 h-3.5 mr-1" /> Approve
-                          </Button>
-                          <Button 
-                            onClick={() => handleReject(item.id)}
-                            variant="outline"
-                            className="border-red-500/30 text-red-400 hover:bg-red-500/10 text-xs px-3 py-1.5 h-8 rounded-lg"
-                          >
-                            <XCircle className="w-3.5 h-3.5 mr-1" /> Reject
-                          </Button>
+                          {/* Status Badge */}
+                          <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                            op.status === 'APPROVED' || op.status === 'RESOLVED'
+                              ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+                              : op.status === 'REFERRED'
+                              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                              : op.status === 'REJECTED'
+                              ? 'bg-red-500/15 text-red-300 border border-red-500/30'
+                              : 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                          }`}>
+                            {op.status}
+                          </span>
                         </div>
-                      )}
+
+                        <h3 className="text-base font-bold text-white hover:text-purple-300 transition-colors">
+                          {op.title}
+                        </h3>
+
+                        <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                          {op.details}
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-4 text-[11px] text-slate-400 pt-1">
+                          <span className="flex items-center gap-1">
+                            <Users className="w-3 h-3 text-slate-500" />
+                            <strong className="text-slate-200">{op.ownerName}</strong>
+                            {op.organization && <span className="text-slate-400">({op.organization})</span>}
+                          </span>
+                          {op.district && (
+                            <span className="flex items-center gap-1">
+                              <MapPin className="w-3 h-3 text-slate-500" />
+                              <span>{op.district}</span>
+                            </span>
+                          )}
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3 text-slate-500" />
+                            <span>Submitted: {new Date(op.createdAt).toLocaleDateString()}</span>
+                          </span>
+                          {op.slaDeadline && (
+                            <span className="text-purple-400 font-mono">
+                              SLA: {op.slaDeadline}
+                            </span>
+                          )}
+                          {op.assignedTo && (
+                            <span className="text-teal-400 font-medium">
+                              Assigned: {op.assignedTo}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right: Quick Action Controls */}
+                      <div className="flex flex-wrap lg:flex-col items-end gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/5">
+                        <div className="flex items-center gap-1.5">
+                          {op.status !== 'APPROVED' && (
+                            <Button
+                              size="sm"
+                              onClick={() => handleUpdateStatus(op.trackingId, 'APPROVED', 'Admin verified and published')}
+                              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl cursor-pointer"
+                            >
+                              <Check className="w-3 h-3 mr-1" />
+                              <span>Approve</span>
+                            </Button>
+                          )}
+                          {op.status !== 'INFO_REQUESTED' && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleUpdateStatus(op.trackingId, 'INFO_REQUESTED', 'Requested additional field telemetry & photos')}
+                              className="border-white/15 hover:bg-white/5 text-amber-300 text-xs px-3 py-1.5 rounded-xl cursor-pointer"
+                            >
+                              <HelpCircle className="w-3 h-3 mr-1" />
+                              <span>Request Info</span>
+                            </Button>
+                          )}
+                          {op.priority === 'CRITICAL' && op.status !== 'REFERRED' && (
+                            <Button
+                              size="sm"
+                              onClick={() => handleUpdateStatus(op.trackingId, 'REFERRED', 'Formal incident referral dispatched to JKPCC & Emergency Response')}
+                              className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl cursor-pointer shadow-lg shadow-red-600/30"
+                            >
+                              <Flame className="w-3 h-3 mr-1" />
+                              <span>Refer to JKPCC</span>
+                            </Button>
+                          )}
+                          {op.status !== 'REJECTED' && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleUpdateStatus(op.trackingId, 'REJECTED', 'Rejected due to insufficient verification or duplicate entry')}
+                              className="border-red-500/20 hover:bg-red-500/10 text-red-400 text-xs px-2.5 py-1.5 rounded-xl cursor-pointer"
+                            >
+                              <span>Reject</span>
+                            </Button>
+                          )}
+                        </div>
+
+                        <button
+                          onClick={() => setSelectedRecord(op)}
+                          className="text-[11px] text-purple-400 hover:text-purple-300 font-mono underline pt-1 cursor-pointer"
+                        >
+                          View Full Audit Timeline ({op.timeline.length} events) &rarr;
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         )}
 
-        {/* Tab Content: USERS */}
-        {activeTab === 'users' && (
+        {/* Tab 2: Events & Conference Management */}
+        {activeTab === 'events' && (
           <div className="space-y-6">
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 flex items-center justify-between">
-              <div>
-                <h3 className="text-base font-bold text-white">Registered Observers & Field Network</h3>
-                <p className="text-xs text-slate-400 mt-1">Manage credentialed researchers, rangers, and community contributors</p>
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-purple-400" />
+                    <span>Scientific Events &amp; Conference Governance</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Manage the 2027–2028 program of 104 planned activities, speaker clearances, abstract reviews, and virtual hall tokens.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono">
+                  <span className="px-3 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-300">
+                    Targets: 8 Conferences &bull; 48 Webinars &bull; 24 Workshops &bull; 24 Observances
+                  </span>
+                </div>
               </div>
-            </div>
 
-            <div className="rounded-2xl bg-slate-900/60 border border-white/10 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-300">
-                  <thead className="bg-slate-950/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-white/10">
-                    <tr>
-                      <th className="px-5 py-3">Observer</th>
-                      <th className="px-5 py-3">Role</th>
-                      <th className="px-5 py-3">District</th>
-                      <th className="px-5 py-3">Submissions</th>
-                      <th className="px-5 py-3">Status</th>
-                      <th className="px-5 py-3 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5">
-                    {[
-                      { name: 'Dr. Tariq Lone', email: 'tariq.lone@skuast.edu.in', role: 'Academic Researcher', district: 'Bandipora', count: 18, status: 'Active Credentialed' },
-                      { name: 'Zubair Ahmad', email: 'z.ahmad@wildlifejk.gov.in', role: 'Wildlife Ranger', district: 'Srinagar', count: 32, status: 'Active Credentialed' },
-                      { name: 'Saima Parveen', email: 'saima.gis@gmail.com', role: 'Scholar', district: 'Budgam', count: 9, status: 'Active' },
-                      { name: 'Irfan Nabi', email: 'irfan.eco@gmail.com', role: 'Citizen Scientist', district: 'Ganderbal', count: 14, status: 'Active' },
-                      { name: 'Aaqib Bhat', email: 'aaqib.b@gmail.com', role: 'Field Observer', district: 'Anantnag', count: 7, status: 'Pending Verification' },
-                    ].map((row, i) => (
-                      <tr key={i} className="hover:bg-white/5 transition-colors">
-                        <td className="px-5 py-3.5 font-medium text-white">
-                          <div className="font-semibold">{row.name}</div>
-                          <div className="text-[11px] text-slate-500">{row.email}</div>
-                        </td>
-                        <td className="px-5 py-3.5 text-slate-300">{row.role}</td>
-                        <td className="px-5 py-3.5 text-slate-300">{row.district}</td>
-                        <td className="px-5 py-3.5 font-bold text-emerald-400">{row.count}</td>
-                        <td className="px-5 py-3.5">
-                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${row.status.includes('Credentialed') ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                            {row.status}
-                          </span>
-                        </td>
-                        <td className="px-5 py-3.5 text-right">
-                          <button className="text-purple-400 hover:text-purple-300 font-semibold text-xs">
-                            View Dossier
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Lifecycle Stage Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-8">
+                {[
+                  { stage: '1. Proposed', count: 78, desc: 'Draft scope & tracks', color: 'border-slate-700 bg-slate-900/50' },
+                  { stage: '2. Approved', count: 18, desc: 'Budget & host confirmed', color: 'border-blue-500/30 bg-blue-950/20 text-blue-300' },
+                  { stage: '3. Published', count: 6, desc: 'Registration live', color: 'border-amber-500/30 bg-amber-950/20 text-amber-300' },
+                  { stage: '4. Live Today', count: 1, desc: 'WebRTC active hall', color: 'border-emerald-500/30 bg-emerald-950/20 text-emerald-300' },
+                  { stage: '5. Archived', count: 1, desc: 'DOI & Proceedings', color: 'border-purple-500/30 bg-purple-950/20 text-purple-300' },
+                ].map(s => (
+                  <div key={s.stage} className={`p-4 rounded-2xl border ${s.color}`}>
+                    <div className="text-lg font-black text-white">{s.count}</div>
+                    <div className="text-xs font-bold mt-0.5">{s.stage}</div>
+                    <div className="text-[10px] text-slate-400 mt-1">{s.desc}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Active Events Queue */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                  Upcoming Priority Activities (2027 Himalayan Series)
+                </h3>
+                {[
+                  { id: 'CONF-2027-CRYO', title: 'Himalayan Cryosphere & Glacial Lake Outburst Floods (GLOF) Summit', type: 'Flagship Conference', date: 'May 24–26, 2027', hall: 'CRYO-ROOM-A', status: 'Approved / Registration Open' },
+                  { id: 'WEB-2027-01', title: 'InSAR Landslide Creep Telemetry Along National Highway 44', type: 'Specialist Webinar', date: 'Jan 15, 2027', hall: 'HAZARD-HALL-1', status: 'Published' },
+                  { id: 'WORK-2027-04', title: 'Riparian Wetland Buffer Modeling with Sentinel-2 Surface Water Arrays', type: 'Applied Workshop', date: 'Feb 02, 2027', hall: 'WETLAND-LAB-B', status: 'Proposed' }
+                ].map(ev => (
+                  <div key={ev.id} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">{ev.id}</span>
+                        <span className="text-[10px] font-mono text-emerald-400">{ev.type}</span>
+                        <span className="text-[10px] text-slate-400">&bull; {ev.date}</span>
+                      </div>
+                      <h4 className="text-sm font-bold text-white">{ev.title}</h4>
+                      <p className="text-xs text-slate-400 font-mono mt-0.5">Virtual Hall: {ev.hall} &bull; Status: {ev.status}</p>
+                    </div>
+                    <Link href="/webinars/admin">
+                      <Button size="sm" variant="outline" className="border-purple-500/30 text-purple-300 text-xs shrink-0">
+                        <span>Configure WebRTC Hall &rarr;</span>
+                      </Button>
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         )}
 
-        {/* Tab Content: SYSTEM */}
+        {/* Tab 3: Support, Sponsorship, CSR & Grants */}
+        {activeTab === 'partnerships' && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <DollarSign className="w-5 h-5 text-emerald-400" />
+                    <span>Support, Sponsorship, CSR &amp; Grants Management</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Manage institutional funding agreements, Section 135 compliance, CSR-1 non-profit implementing conduits, and milestone deliverables.
+                  </p>
+                </div>
+                <span className="text-xs px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-mono">
+                  Separate Technical vs Legal Financial Recipient
+                </span>
+              </div>
+
+              {/* Compliance Guidance Banner */}
+              <div className="p-4 rounded-2xl bg-amber-950/20 border border-amber-500/30 text-xs text-slate-300 leading-relaxed mb-6 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-amber-300">
+                  <ShieldCheck className="w-4 h-4 text-amber-400" />
+                  <span>Statutory Independence Covenant:</span>
+                </div>
+                <p>
+                  Kashmir EcoWatch provides open scientific telemetry, monitoring protocols, and impact verification. All corporate CSR contributions are administered strictly through accredited, vetted non-profit implementing conduits holding active MCA Form CSR-1 and Sections 12A/80G status.
+                </p>
+              </div>
+
+              {/* Active Proposals & Inquiries */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                  Active CSR Grant Proposals &amp; Sponsor Inquiries
+                </h3>
+                {[
+                  { code: 'KEW-CSR-2026-7734', org: 'Green Himalaya Trust', program: 'Freshwater Springhead Bio-Engineering', budget: 'INR 37.5 Lakhs ($45,000)', conduit: 'WISA Implementing Trust (CSR-1)', status: 'Under Compliance Review' },
+                  { code: 'KEW-SUP-2026-1102', org: 'Dr. Kumar Foundation USA', program: 'Philanthropic Server Infrastructure Grant', budget: 'Annual Hosting & Ingestion', conduit: 'Prime Logic Solutions USA (Gratis CSR Pledge)', status: 'Active / Executed' }
+                ].map(p => (
+                  <div key={p.code} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-emerald-400">{p.code}</span>
+                        <span className="text-xs font-bold text-white">&bull; {p.org}</span>
+                      </div>
+                      <p className="text-xs text-slate-300">{p.program}</p>
+                      <p className="text-[11px] font-mono text-slate-400">Budget: {p.budget} &bull; Legal Conduit: {p.conduit}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">
+                        {p.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 4: Communications & Contact Center */}
+        {activeTab === 'communications' && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5 text-sky-400" />
+                    <span>Centralized Inquiries &amp; Communications Desk</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Universal ticket queue for public contact forms, media requests, technical queries, and institutional correspondence.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono">
+                  <span className="px-3 py-1.5 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-300">
+                    SLA Commitment: &lt; 24h Response (Current Avg: 4.8h)
+                  </span>
+                </div>
+              </div>
+
+              {/* SLA Performance Metrics */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Total Tickets Logged</span>
+                  <span className="text-2xl font-bold text-white font-mono">142</span>
+                </div>
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Resolved Within SLA</span>
+                  <span className="text-2xl font-bold text-emerald-400 font-mono">98.4%</span>
+                </div>
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Open Scientific Queries</span>
+                  <span className="text-2xl font-bold text-sky-400 font-mono">4</span>
+                </div>
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Pending Escalations</span>
+                  <span className="text-2xl font-bold text-amber-400 font-mono">0</span>
+                </div>
+              </div>
+
+              {/* Recent Correspondence */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                  Recent Inquiries &amp; Dispatches
+                </h3>
+                {operations.filter(op => op.managementCenter === 'COMMUNICATIONS').map(ticket => (
+                  <div key={ticket.id} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-sky-400">{ticket.trackingId}</span>
+                        <span className="text-xs font-bold text-white">&bull; {ticket.ownerName}</span>
+                        {ticket.organization && <span className="text-xs text-slate-400">({ticket.organization})</span>}
+                      </div>
+                      <p className="text-xs text-slate-300 font-medium">{ticket.title}</p>
+                      <p className="text-[11px] text-slate-400 line-clamp-1">{ticket.details}</p>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-[11px] font-mono text-purple-400">{ticket.slaDeadline}</span>
+                      <Button size="sm" variant="outline" className="border-sky-500/30 text-sky-300 text-xs">
+                        <span>Reply &rarr;</span>
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 5: Scientific Evidence & Incidents */}
+        {activeTab === 'scientific' && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Flame className="w-5 h-5 text-red-400" />
+                    <span>Scientific Evidence &amp; Incident Triage Center</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Operate the 8-stage observation verification pipeline, emergency pollution triage, and structured NetCDF/GeoTIFF dataset ingest.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono">
+                  <span className="px-3 py-1.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300">
+                    Emergency Protocol: Rapid JKPCC &amp; Forest Dept Referral
+                  </span>
+                </div>
+              </div>
+
+              {/* Three Scientific Workflows */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-emerald-300 flex items-center gap-1.5">
+                      <Leaf className="w-4 h-4" /> Observations
+                    </h3>
+                    <span className="text-xs font-mono text-emerald-400">8-Stage Flow</span>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    Species censuses, botanical field vouchers, and wildlife sightings submitted by citizen scientists and field rangers.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-red-950/20 border border-red-500/30 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-red-300 flex items-center gap-1.5">
+                      <Flame className="w-4 h-4" /> Hazard Incidents
+                    </h3>
+                    <span className="text-xs font-mono text-red-400">Triage Queue</span>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    Pollution discharge, forest fires, flash floods, and chemical dumping. Prioritized for immediate regulatory referral.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-blue-950/20 border border-blue-500/30 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-bold text-blue-300 flex items-center gap-1.5">
+                      <Database className="w-4 h-4" /> Datasets
+                    </h3>
+                    <span className="text-xs font-mono text-blue-400">Darwin Core</span>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    Structured NetCDF, GeoTIFF, and PostGIS layers from university labs requiring CRS, metadata, and license audits.
+                  </p>
+                </div>
+              </div>
+
+              {/* Critical Incidents Warning Banner */}
+              <div className="p-4 rounded-xl bg-red-900/30 border border-red-500/40 text-xs text-red-200 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+                  <span>
+                    <strong>Statutory Disclaimer:</strong> Kashmir EcoWatch provides environmental intelligence and scientific documentation. It is not an emergency dispatch provider. Critical life-safety threats are routed to 112/101 and Forest Helpline 1800-180-1918.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 6: Community & Volunteer Network */}
+        {activeTab === 'community' && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <Users className="w-5 h-5 text-teal-400" />
+                    <span>Member, Volunteer &amp; Research Network (Unified Identity)</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Unified relationship system: One identity per person holding multiple verified roles across Citizen Scientist, Volunteer, Data Contributor, and Research Partner.
+                  </p>
+                </div>
+                <span className="text-xs px-3 py-1.5 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-300 font-mono">
+                  845 Active Scientists &bull; 6 Reconciled Programs
+                </span>
+              </div>
+
+              {/* 6 Reconciled Citizen Science Programs */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+                {CITIZEN_SCIENCE_PROGRAMS.map(prog => (
+                  <div key={prog.id} className="p-4 rounded-xl bg-slate-950 border border-white/10 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl">{prog.icon}</span>
+                      <span className="text-xs font-mono font-bold text-emerald-400">{prog.volunteers} Volunteers</span>
+                    </div>
+                    <h4 className="text-sm font-bold text-white">{prog.title}</h4>
+                    <p className="text-xs text-slate-400 line-clamp-2">{prog.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 7: PostGIS & System Gateway */}
         {activeTab === 'system' && (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-                <h4 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                  <Database className="w-4 h-4 text-emerald-400" />
-                  Prisma PostGIS Models
-                </h4>
-                <p className="text-xs text-slate-400 mb-4">5 Active spatial schemas: spatial_entities, hazard_zones, hazard_incidents, observations_ts, forecasts_ts.</p>
-                <div className="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-emerald-400">
-                  DATABASE_URL: Synced
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md space-y-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <Database className="w-5 h-5 text-purple-400" />
+                <span>PostgreSQL &amp; PostGIS Spatial Engine</span>
+              </h2>
+              <p className="text-xs text-slate-400">
+                Connected to local &amp; remote PostGIS cluster. Universal observation model with TimescaleDB hypertables, 423 pre-rendered routes, and active GIS telemetry ingestion.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Spatial Entities</span>
+                  <span className="text-2xl font-bold text-white font-mono">263</span>
+                  <span className="text-[10px] text-slate-500 block mt-1">Districts, Basins, Watersheds</span>
                 </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-                <h4 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                  <Key className="w-4 h-4 text-purple-400" />
-                  NextAuth.js Provider
-                </h4>
-                <p className="text-xs text-slate-400 mb-4">Multi-provider authentication engine running with Google OAuth, local credential fallbacks, and JWT sessions.</p>
-                <div className="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-purple-300">
-                  /api/auth/[...nextauth]: Healthy
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Telemetry Nodes</span>
+                  <span className="text-2xl font-bold text-emerald-400 font-mono">247</span>
+                  <span className="text-[10px] text-slate-500 block mt-1">Active IoT Gauges &amp; Sensors</span>
                 </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-                <h4 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-sky-400" />
-                  Telemetry Sync Worker
-                </h4>
-                <p className="text-xs text-slate-400 mb-4">Automated Open-Meteo, GPM precipitation, and Sentinel-2 vegetation index ingestion pipeline.</p>
-                <div className="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-sky-400">
-                  CRON_SECRET: Configured
+                <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                  <span className="text-xs text-slate-400 block">Ingestion Health</span>
+                  <span className="text-2xl font-bold text-purple-400 font-mono">ONLINE</span>
+                  <span className="text-[10px] text-slate-500 block mt-1">Copernicus Sentinel + Open-Meteo</span>
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Tab Content: AUDIT */}
+        {/* Tab 8: Audit Trail */}
         {activeTab === 'audit' && (
-          <div className="space-y-4">
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-              <h3 className="text-base font-bold text-white">Immutable Security Audit Log</h3>
-              <p className="text-xs text-slate-400 mt-1">Platform administrative events, credential verification, and elevation records</p>
-            </div>
-
-            <div className="space-y-2">
-              {[
-                { event: 'Admin Session Activated', actor: user?.name || 'Administrator', time: 'Just now', ip: '127.0.0.1 (Local)' },
-                { event: 'NextAuth Route Compiled', actor: 'System Worker', time: '12 mins ago', ip: 'Internal Turbopack' },
-                { event: 'Observer Dataset Approved #SUB-2026-102', actor: 'Dr. Kumar Foundation Team', time: '2 hours ago', ip: 'Internal Registry' },
-                { event: 'Public API Handshake: Open-Meteo', actor: 'Ingestion Service', time: '4 hours ago', ip: 'Telemetry Pipeline' },
-              ].map((log, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span className="font-semibold text-white">{log.event}</span>
-                    <span className="text-slate-500">•</span>
-                    <span className="text-slate-400">{log.actor}</span>
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md space-y-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <FileText className="w-5 h-5 text-purple-400" />
+                <span>Platform Governance &amp; Immutable Audit Trail</span>
+              </h2>
+              <p className="text-xs text-slate-400">
+                Every consequential action—status change, scientific rejection, regulatory referral, and role elevation—is logged with actor identity, timestamp, and immutable SHA-256 state hash.
+              </p>
+              <div className="space-y-2 pt-2">
+                {operations.slice(0, 8).map(op => (
+                  <div key={op.id} className="p-3 rounded-xl bg-slate-950 border border-white/5 flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-purple-300">{op.trackingId}</span>
+                      <span className="text-white font-medium">{op.title}</span>
+                    </div>
+                    <span className="font-mono text-slate-500">{new Date(op.updatedAt).toLocaleTimeString()}</span>
                   </div>
-                  <div className="flex items-center gap-4 text-slate-500">
-                    <span>{log.ip}</span>
-                    <span>{log.time}</span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         )}
+
+        {/* Record Audit Timeline Modal / Drawer */}
+        <AnimatePresence>
+          {selectedRecord && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="max-w-2xl w-full bg-slate-900 border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+              >
+                <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+                  <div>
+                    <span className="text-xs font-mono font-bold text-purple-300 bg-purple-500/10 border border-purple-500/30 px-2.5 py-0.5 rounded-md inline-block mb-1">
+                      {selectedRecord.trackingId}
+                    </span>
+                    <h3 className="text-lg font-bold text-white">{selectedRecord.title}</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      {selectedRecord.managementCenterLabel} &bull; Source: {selectedRecord.sourcePageLabel}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRecord(null)}
+                    className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center shrink-0 cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Submission Details</h4>
+                    <p className="text-xs text-slate-200 p-3 rounded-xl bg-slate-950 border border-white/10 leading-relaxed">
+                      {selectedRecord.details}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Immutable Processing Timeline</h4>
+                    <div className="space-y-2">
+                      {selectedRecord.timeline.map((evt, idx) => (
+                        <div key={idx} className="p-3 rounded-xl bg-slate-950 border border-white/5 flex items-start gap-3 text-xs">
+                          <div className="w-2 h-2 rounded-full bg-purple-400 mt-1.5 shrink-0" />
+                          <div className="space-y-0.5 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-white">{evt.action}</span>
+                              <span className="text-[10px] font-mono text-slate-500">{evt.timestamp}</span>
+                            </div>
+                            <div className="text-[11px] text-slate-400">Actor: <span className="text-purple-300">{evt.actor}</span></div>
+                            {evt.note && <div className="text-[11px] text-slate-300 italic pt-0.5">&ldquo;{evt.note}&rdquo;</div>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-end pt-4 border-t border-white/10">
+                  <Button
+                    onClick={() => setSelectedRecord(null)}
+                    className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-5 py-2 rounded-xl"
+                  >
+                    Close Audit Log
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
     </main>

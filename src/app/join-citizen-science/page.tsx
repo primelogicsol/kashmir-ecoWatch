@@ -12,6 +12,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { submitToOperations } from '@/lib/operationsClient';
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 
@@ -312,6 +313,7 @@ export default function JoinCitizenSciencePage() {
   const [motivation,       setMotivation]       = useState('');
   const [availability,     setAvailability]     = useState('');
   const [submitted,        setSubmitted]        = useState(false);
+  const [trackingId,       setTrackingId]       = useState('');
   const [isSubmitting,     setIsSubmitting]     = useState(false);
 
   const toggleProgram = (id: string) => {
@@ -324,7 +326,19 @@ export default function JoinCitizenSciencePage() {
     e.preventDefault();
     if (!name || !email || !region || selectedPrograms.length === 0) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 900));
+    
+    const res = await submitToOperations({
+      sourcePage: '/join-citizen-science',
+      title: `Citizen Science Enrollment: ${selectedPrograms.join(', ')}`,
+      category: 'Citizen Science',
+      ownerName: name,
+      ownerEmail: email,
+      district: region,
+      details: `Programs: ${selectedPrograms.join(', ')} | Background: ${background || 'Enthusiast'} | Availability: ${availability || 'Flexible'} | Motivation: ${motivation || 'Conservation interest'}`,
+      priority: 'MEDIUM',
+    });
+
+    setTrackingId(res.success ? res.trackingId : `KEW-PRG-${Date.now().toString().slice(-6)}`);
     setIsSubmitting(false);
     setSubmitted(true);
   };
@@ -342,6 +356,15 @@ export default function JoinCitizenSciencePage() {
                 Thank you, <strong className="text-white">{name}</strong>. Your interest has been registered.
                 You'll receive a welcome pack and onboarding guide at <strong className="text-emerald-400">{email}</strong> within 3–5 working days.
               </p>
+              {trackingId && (
+                <div className="mb-6 p-4 bg-slate-900/90 border border-emerald-500/30 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Enrollment Tracking Reference</span>
+                    <span className="text-xl font-mono font-bold text-emerald-400">{trackingId}</span>
+                  </div>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: PENDING REVIEW</span>
+                </div>
+              )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
                 <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Your Selected Programs</h3>
                 <div className="flex flex-wrap gap-2 mb-4">

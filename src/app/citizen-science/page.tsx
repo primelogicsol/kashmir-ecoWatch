@@ -58,6 +58,28 @@ const programs = [
     activities: ['Community workshops', 'School programs', 'Field training sessions', 'District participation drives'],
     cta: 'Join Outreach',
   },
+  {
+    id: 'water-monitoring',
+    title: 'Water Body Monitoring',
+    description: 'Monitor lakes, rivers, springs, and wetlands for changes in water quality, levels, and aquatic health',
+    icon: Route,
+    color: 'from-cyan-500 to-blue-600',
+    route: '/water-systems',
+    volunteers: 98,
+    activities: ['Lake level observation', 'Stream health recording', 'Water colour & turbidity', 'Aquatic species sighting'],
+    cta: 'Monitor Water',
+  },
+  {
+    id: 'hazard-reporting',
+    title: 'Hazard & Incident Reporting',
+    description: 'Report forest fires, floods, landslides, and pollution events in real time to support rapid environmental response',
+    icon: Shield,
+    color: 'from-orange-500 to-red-600',
+    route: '/report-issue',
+    volunteers: 112,
+    activities: ['Forest fire alerts', 'Flood boundary observation', 'Landslide early reporting', 'Pollution event documentation'],
+    cta: 'Report Hazard',
+  },
 ];
 
 const contributorBenefits = [
@@ -93,7 +115,7 @@ export default function CitizenSciencePage() {
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Citizen Science</span>
           </>}
-        subtitle="Join a growing community of 635+ citizen scientists contributing to Kashmir&#39;s environmental monitoring, data verification, and conservation efforts"
+        subtitle="Join a growing community of 845+ citizen scientists across 6 structured programs contributing to Kashmir's environmental monitoring, data verification, and conservation efforts"
         icon={<Users className="w-6 h-6 text-emerald-400" />}
         label="Community Science Program"
         actions={
@@ -119,7 +141,7 @@ export default function CitizenSciencePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-center">
-              <div className="text-4xl font-bold text-emerald-400 mb-2">635</div>
+              <div className="text-4xl font-bold text-emerald-400 mb-2">845</div>
               <div className="text-sm text-slate-400">Active Volunteers</div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-center">
@@ -127,11 +149,11 @@ export default function CitizenSciencePage() {
               <div className="text-sm text-slate-400">Submissions Verified</div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }} className="text-center">
-              <div className="text-4xl font-bold text-amber-400 mb-2">20</div>
+              <div className="text-4xl font-bold text-amber-400 mb-2">22</div>
               <div className="text-sm text-slate-400">Districts Participating</div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }} className="text-center">
-              <div className="text-4xl font-bold text-violet-400 mb-2">4</div>
+              <div className="text-4xl font-bold text-violet-400 mb-2">6</div>
               <div className="text-sm text-slate-400">Active Programs</div>
             </motion.div>
           </div>

@@ -2,642 +2,600 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  User, Shield, Upload, FileText, Award, Bell, 
+  User, Users, Shield, Upload, FileText, Award, Bell, 
   MapPin, CheckCircle2, Clock, AlertTriangle, ArrowRight,
   Droplets, Leaf, LogOut, ChevronRight, Settings, ExternalLink,
-  Sparkles, Layers, BookOpen, BarChart3, Lock, Plus, RefreshCw
+  Sparkles, Layers, BookOpen, BarChart3, Lock, Plus, RefreshCw,
+  Search, Calendar, DollarSign, MessageSquare, Flame, Check, HelpCircle,
+  Building2, Heart
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-
-export interface UserSubmission {
-  id: string;
-  title: string;
-  category: string;
-  district: string;
-  details: string;
-  status: 'PENDING' | 'EXPERT_VERIFIED' | 'COMMUNITY_VERIFIED' | 'REJECTED';
-  createdAt: string;
-}
+import { OperationRecord, SOURCE_PAGE_MAP, PublicSourcePage } from '@/lib/operations';
+import { getLocalUserOperations } from '@/lib/operationsClient';
 
 export default function UserDashboardPage() {
   const { user, isLoggedIn, signOut, openAuthModal } = useAuth();
-  const [activeTab, setActiveTab] = useState<'overview' | 'submissions' | 'alerts' | 'profile'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'tracking' | 'submissions' | 'alerts' | 'profile'>('overview');
   
-  // Real database-backed submissions state
-  const [submissions, setSubmissions] = useState<UserSubmission[]>([]);
-  const [loadingSubmissions, setLoadingSubmissions] = useState(false);
-  
-  // New Quick Submission Form State
-  const [showSubmitModal, setShowSubmitModal] = useState(false);
-  const [subTitle, setSubTitle] = useState('');
-  const [subCategory, setSubCategory] = useState('water_quality');
-  const [subDistrict, setSubDistrict] = useState(user?.district || 'Srinagar');
-  const [subDetails, setSubDetails] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [toastMsg, setToastMsg] = useState<string | null>(null);
+  // Real operations state
+  const [operations, setOperations] = useState<OperationRecord[]>([]);
+  const [loadingOps, setLoadingOps] = useState(false);
+  const [categoryFilter, setCategoryFilter] = useState<string>('ALL');
 
-  // Fetch real submissions from database on mount or when user changes
-  const fetchSubmissions = async () => {
-    if (!user?.email) return;
-    setLoadingSubmissions(true);
-    try {
-      const res = await fetch(`/api/submissions?email=${encodeURIComponent(user.email)}`);
-      const json = await res.json();
-      if (json.success && Array.isArray(json.data)) {
-        setSubmissions(json.data);
+  // Tracking lookup tool state
+  const [searchTrackingId, setSearchTrackingId] = useState('');
+  const [lookupResult, setLookupResult] = useState<OperationRecord | null>(null);
+  const [lookupLoading, setLookupLoading] = useState(false);
+  const [lookupError, setLookupError] = useState<string | null>(null);
+
+  // Selected Record Timeline Modal
+  const [selectedRecord, setSelectedRecord] = useState<OperationRecord | null>(null);
+
+  // Fetch operations from API & local storage
+  const fetchUserOperations = async () => {
+    setLoadingOps(true);
+    const local = getLocalUserOperations();
+    let apiRecords: OperationRecord[] = [];
+
+    if (user?.email) {
+      try {
+        const res = await fetch(`/api/operations?email=${encodeURIComponent(user.email)}`);
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          apiRecords = json.data;
+        }
+      } catch (e) {
+        console.error('Failed to fetch user operations:', e);
       }
-    } catch (e) {
-      console.error('Failed to fetch user submissions:', e);
-    } finally {
-      setLoadingSubmissions(false);
     }
+
+    // Merge and deduplicate by trackingId
+    const map = new Map<string, OperationRecord>();
+    [...apiRecords, ...local].forEach(r => map.set(r.trackingId, r));
+    setOperations(Array.from(map.values()));
+    setLoadingOps(false);
   };
 
   useEffect(() => {
-    fetchSubmissions();
+    fetchUserOperations();
+
+    const handleAdded = () => fetchUserOperations();
+    window.addEventListener('kew_operation_added', handleAdded);
+    return () => window.removeEventListener('kew_operation_added', handleAdded);
   }, [user?.email]);
 
-  // Handle creating a real submission to the database
-  const handleCreateSubmission = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!subTitle.trim()) return;
+  // Lookup single tracking ID
+  const handleLookup = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!searchTrackingId.trim()) return;
 
-    setSubmitting(true);
+    setLookupLoading(true);
+    setLookupError(null);
+    setLookupResult(null);
+
     try {
-      const res = await fetch('/api/submissions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: subTitle.trim(),
-          category: subCategory,
-          district: subDistrict || user?.district || 'Srinagar',
-          contributorName: user?.name || 'Field Contributor',
-          contributorEmail: user?.email,
-          contributorRole: user?.role,
-          details: subDetails.trim(),
-        }),
-      });
+      const res = await fetch(`/api/operations?trackingId=${encodeURIComponent(searchTrackingId.trim())}`);
       const json = await res.json();
-      if (json.success) {
-        setShowSubmitModal(false);
-        setSubTitle('');
-        setSubDetails('');
-        setToastMsg('Record successfully submitted to the Ecological Registry! It is now in the Admin Verification Queue.');
-        setTimeout(() => setToastMsg(null), 5000);
-        // Refresh live records
-        fetchSubmissions();
+      if (json.success && json.data) {
+        setLookupResult(json.data);
       } else {
-        alert(json.error || 'Failed to submit record.');
+        setLookupError(json.error || 'No matching submission found for that tracking ID.');
       }
     } catch (err: any) {
-      alert(err.message || 'Network error');
+      setLookupError('Failed to connect to tracking registry: ' + err.message);
     } finally {
-      setSubmitting(false);
+      setLookupLoading(false);
     }
   };
 
-  // If user is not logged in, show an authenticated access prompt
-  if (!isLoggedIn || !user) {
-    return (
-      <main className="min-h-screen bg-slate-950 text-slate-100 pt-28 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_60%)]" />
-        
-        <div className="max-w-xl mx-auto px-4 relative z-10 text-center py-20">
-          <div className="w-16 h-16 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6 shadow-xl">
-            <Lock className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight mb-3">
-            Contributor Workspace Required
-          </h1>
-          <p className="text-slate-400 text-sm leading-relaxed mb-8">
-            Access your field submissions, verified ecological data, telemetry feeds, and custom hazard notification preferences.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button 
-              onClick={() => openAuthModal('signin')}
-              className="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl text-sm"
-            >
-              Sign In to Dashboard
-            </Button>
-            <Button 
-              variant="outline"
-              onClick={() => openAuthModal('signup')}
-              className="w-full sm:w-auto px-6 py-3 border-white/20 text-white hover:bg-white/10 rounded-xl text-sm"
-            >
-              Create Contributor Account
-            </Button>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  const verifiedCount = submissions.filter(s => s.status === 'EXPERT_VERIFIED' || s.status === 'COMMUNITY_VERIFIED').length;
-  const pendingCount = submissions.filter(s => s.status === 'PENDING').length;
+  // Filtered submissions
+  const filteredOperations = operations.filter(op => {
+    if (categoryFilter === 'ALL') return true;
+    return op.userDashboardSection === categoryFilter;
+  });
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 pt-24 pb-20 relative overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.06),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.04),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(147,51,234,0.05),transparent_50%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Breadcrumb Navigation */}
         <nav className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6">
           <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-300 font-medium">Contributor Workspace</span>
+          <span className="text-emerald-400 font-semibold flex items-center gap-1">
+            <User className="w-3 h-3" /> Member Intelligence Workspace
+          </span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-emerald-400 font-semibold">{user.name}</span>
+          <Link href="/admin/dashboard" className="hover:text-purple-400 transition-colors text-[11px] font-mono ml-auto flex items-center gap-1 text-slate-500">
+            <Shield className="w-3 h-3 text-purple-400" /> Admin Command Center &rarr;
+          </Link>
         </nav>
 
-        {/* Real-time Toast Feedback */}
-        {toastMsg && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center justify-between shadow-xl backdrop-blur-md"
-          >
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>{toastMsg}</span>
-            </div>
-            <button onClick={() => setToastMsg(null)} className="text-emerald-400 hover:text-white">✕</button>
-          </motion.div>
-        )}
-
-        {/* Dashboard Header Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950/80 border border-white/10 p-6 sm:p-8 backdrop-blur-xl shadow-2xl mb-8">
+        {/* Member Header Banner */}
+        <div className="rounded-3xl bg-slate-900/80 border border-white/10 p-6 sm:p-8 backdrop-blur-xl shadow-2xl mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 border-2 border-emerald-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
-                {user.name.charAt(0).toUpperCase()}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-700 border-2 border-emerald-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+                {user?.name ? user.name.charAt(0).toUpperCase() : 'K'}
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
                   <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                    {user.name}
+                    {user?.name ? `${user.name}'s Workspace` : 'Personal Scientific & Environmental Workspace'}
                   </h1>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                    {user.role.replace('_', ' ')}
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[10px] font-bold">
-                    PostgreSQL Live Connected
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                    {user?.roleLabel || 'Verified Contributor'}
                   </span>
                 </div>
                 <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                    {user.district || 'Srinagar'} District
-                  </span>
-                  <span>•</span>
-                  <span>{user.institution || 'Kashmir Scientific Consortium'}</span>
-                  <span>•</span>
-                  <span>Joined {new Date(user.joinedAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' })}</span>
+                  <span>District: <strong className="text-slate-200">{user?.district || 'Kashmir Regional Observatory'}</strong></span>
+                  <span>&bull;</span>
+                  <span>Active Submissions: <strong className="text-emerald-400">{operations.length}</strong></span>
+                  <span>&bull;</span>
+                  <span>Institution: <strong className="text-slate-200">{user?.institution || 'Independent Researcher'}</strong></span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2.5">
-              <Link href="/admin/dashboard">
-                <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/10 text-xs sm:text-sm font-semibold rounded-xl">
-                  <Shield className="w-3.5 h-3.5 mr-1 text-purple-400" /> Admin Command
+            <div className="flex flex-wrap items-center gap-3">
+              <Link href="/submit-observation">
+                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20">
+                  <Plus className="w-4 h-4 mr-1.5" />
+                  <span>Submit Observation</span>
                 </Button>
               </Link>
-              <Button 
-                onClick={() => setShowSubmitModal(true)}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg"
-              >
-                <Plus className="w-4 h-4 mr-1.5" />
-                Submit New Record
-              </Button>
-              <button
-                onClick={signOut}
-                className="p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/10 hover:border-red-500/30 text-slate-400 hover:text-red-400 transition-colors text-xs font-medium flex items-center gap-1.5"
-                title="Sign Out"
-              >
-                <LogOut className="w-4 h-4" />
-                <span className="hidden sm:inline">Sign Out</span>
-              </button>
+              <Link href="/report-issue">
+                <Button size="sm" variant="outline" className="border-red-500/30 hover:bg-red-500/10 text-red-300 text-xs font-semibold rounded-xl">
+                  <Flame className="w-3.5 h-3.5 mr-1.5" />
+                  <span>Report Hazard</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto no-scrollbar">
+        <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4 mb-8">
           {[
-            { id: 'overview', label: 'Workspace Overview', icon: Layers },
-            { id: 'submissions', label: 'My Submissions', count: submissions.length, icon: FileText },
-            { id: 'alerts', label: 'Alert Subscriptions', count: 3, icon: Bell },
-            { id: 'profile', label: 'Credentials & Security', icon: Shield },
-          ].map((tab) => {
-            const Icon = tab.icon;
-            const isSel = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
-                  isSel
-                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{tab.label}</span>
-                {tab.count !== undefined && (
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${isSel ? 'bg-emerald-500/20 text-emerald-300' : 'bg-white/10 text-slate-400'}`}>
-                    {tab.count}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+            { id: 'overview', label: 'Workspace Overview', icon: BarChart3 },
+            { id: 'tracking', label: 'Track Any Submission', icon: Search, badge: 'Live Lookup' },
+            { id: 'submissions', label: 'My Submissions & Evidence', icon: FileText, count: operations.length },
+            { id: 'alerts', label: 'Regional Risk Alerts', icon: Bell },
+            { id: 'profile', label: 'Scientific Profile', icon: Award },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                activeTab === tab.id
+                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
+                  : 'bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800/80 border border-white/5'
+              }`}
+            >
+              <tab.icon className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
+              {tab.count !== undefined && (
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                  activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
+                }`}>
+                  {tab.count}
+                </span>
+              )}
+              {tab.badge && (
+                <span className={`px-1.5 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider ${
+                  activeTab === tab.id ? 'bg-emerald-900/60 text-emerald-200' : 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20'
+                }`}>
+                  {tab.badge}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
 
-        {/* Tab Content: OVERVIEW */}
-        {activeTab === 'overview' && (
-          <div className="space-y-8 animate-in fade-in duration-200">
-            {/* Quick Metrics Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                  <span>Your Submissions</span>
-                  <FileText className="w-4 h-4 text-emerald-400" />
-                </div>
-                <div className="text-2xl font-black text-white">{submissions.length}</div>
-                <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" />
-                  {verifiedCount} Verified in Database
+        {/* TAB: Track Any Submission */}
+        {activeTab === 'tracking' && (
+          <div className="space-y-6 max-w-4xl mx-auto">
+            <div className="rounded-3xl bg-slate-900/90 border border-emerald-500/30 p-6 sm:p-8 backdrop-blur-xl shadow-2xl space-y-6">
+              <div>
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                  <Search className="w-5 h-5 text-emerald-400" />
+                  <span>Submission Tracking &amp; Verification Lookup</span>
+                </h2>
+                <p className="text-xs text-slate-400 mt-1">
+                  Enter your permanent Tracking Reference ID (e.g., <code className="text-emerald-300 font-mono">KEW-OBS-2026-1041</code>, <code className="text-red-300 font-mono">KEW-INC-2026-9022</code>, <code className="text-purple-300 font-mono">KEW-CON-2026-6621</code>) to check review status, assigned coordinator, and processing milestones.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                  <span>In Review Queue</span>
-                  <Clock className="w-4 h-4 text-amber-400" />
-                </div>
-                <div className="text-2xl font-black text-amber-400">{pendingCount}</div>
-                <p className="text-[11px] text-slate-400 mt-1">Pending admin sign-off</p>
-              </div>
+              <form onSubmit={handleLookup} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="text"
+                  placeholder="Enter KEW Tracking ID (e.g. KEW-OBS-2026-1041)..."
+                  value={searchTrackingId}
+                  onChange={(e) => setSearchTrackingId(e.target.value)}
+                  className="flex-1 bg-slate-950 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-mono uppercase tracking-wider"
+                />
+                <Button
+                  type="submit"
+                  disabled={lookupLoading}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg shadow-emerald-600/30 cursor-pointer"
+                >
+                  {lookupLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <span>Track Record &rarr;</span>}
+                </Button>
+              </form>
 
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                  <span>District Coverage</span>
-                  <MapPin className="w-4 h-4 text-sky-400" />
+              {lookupError && (
+                <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/30 text-red-300 text-xs font-mono">
+                  {lookupError}
                 </div>
-                <div className="text-2xl font-black text-white">{user.district || 'Srinagar'}</div>
-                <p className="text-[11px] text-sky-400 mt-1">Active Field Basin</p>
-              </div>
+              )}
 
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                  <span>Observer Tier</span>
-                  <Award className="w-4 h-4 text-amber-400" />
+              {lookupResult && (
+                <div className="rounded-2xl bg-slate-950 border border-emerald-500/30 p-6 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-md">
+                          {lookupResult.trackingId}
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-400 uppercase bg-slate-900 px-2 py-0.5 rounded">
+                          {lookupResult.managementCenterLabel}
+                        </span>
+                        <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                          lookupResult.status === 'APPROVED' || lookupResult.status === 'RESOLVED'
+                            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                            : lookupResult.status === 'REFERRED'
+                            ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                            : 'bg-blue-500/20 text-blue-300 border border-blue-500/40'
+                        }`}>
+                          {lookupResult.status}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-white">{lookupResult.title}</h3>
+                    </div>
+                    {lookupResult.assignedTo && (
+                      <div className="text-right">
+                        <span className="text-[10px] font-mono text-slate-400 block uppercase">Assigned Coordinator</span>
+                        <span className="text-xs font-semibold text-teal-300">{lookupResult.assignedTo}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {lookupResult.details}
+                  </p>
+
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                      Processing Milestones ({lookupResult.timeline.length} Events)
+                    </h4>
+                    <div className="space-y-2">
+                      {lookupResult.timeline.map((evt, idx) => (
+                        <div key={idx} className="p-3 rounded-xl bg-slate-900 border border-white/5 flex items-start gap-3 text-xs">
+                          <div className="w-2 h-2 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                          <div className="space-y-0.5 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-white">{evt.action}</span>
+                              <span className="text-[10px] font-mono text-slate-500">{evt.timestamp}</span>
+                            </div>
+                            <div className="text-[11px] text-slate-400">Actor: <span className="text-emerald-300">{evt.actor}</span></div>
+                            {evt.note && <div className="text-[11px] text-slate-300 italic pt-0.5">&ldquo;{evt.note}&rdquo;</div>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-2xl font-black text-amber-400">Level 2</div>
-                <p className="text-[11px] text-slate-400 mt-1">Field Credentialed</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB: My Submissions & Evidence */}
+        {activeTab === 'submissions' && (
+          <div className="space-y-6">
+            {/* 11 Pathway Filter Badges */}
+            <div className="rounded-2xl bg-slate-900/60 border border-white/10 p-4 space-y-3">
+              <span className="text-[11px] font-mono text-slate-400 block">Filter by Submission Pathway:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  'ALL',
+                  'My Observations',
+                  'My Issue Reports',
+                  'My Datasets',
+                  'My Correspondence',
+                  'My Programs',
+                  'My Data Partnership',
+                  'My Research Partnerships',
+                  'My Grant/CSR Proposals',
+                  'My Events',
+                  'My Assignments'
+                ].map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setCategoryFilter(cat)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                      categoryFilter === cat
+                        ? 'bg-emerald-600 text-white font-bold shadow'
+                        : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Main Action Split */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left Column: Recent Submissions */}
-              <div className="lg:col-span-2 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-emerald-400" />
-                    Live Database Records
-                  </h2>
-                  <button 
-                    onClick={() => setShowSubmitModal(true)} 
-                    className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
-                  >
-                    Submit Record <ArrowRight className="w-3 h-3" />
-                  </button>
+            {/* Submissions List */}
+            <div className="space-y-3">
+              {filteredOperations.length === 0 ? (
+                <div className="rounded-2xl bg-slate-900/50 border border-white/5 p-12 text-center text-slate-400 space-y-2">
+                  <FileText className="w-8 h-8 mx-auto text-slate-600" />
+                  <p className="text-sm font-semibold text-white">No submissions recorded under this pathway yet.</p>
+                  <p className="text-xs text-slate-500">Submissions from any of the 11 public pages will appear here with live tracking status.</p>
                 </div>
-
-                {loadingSubmissions ? (
-                  <div className="p-8 rounded-2xl bg-slate-900/40 border border-white/5 text-center text-xs text-slate-400">
-                    <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-emerald-400" />
-                    Loading database submissions...
-                  </div>
-                ) : submissions.length === 0 ? (
-                  <div className="p-8 rounded-2xl bg-slate-900/40 border border-white/5 text-center">
-                    <p className="text-sm font-semibold text-white mb-1">No submissions yet for {user.email}</p>
-                    <p className="text-xs text-slate-400 mb-4">Deposit your first water chemistry sample, species observation, or hazard report.</p>
-                    <Button onClick={() => setShowSubmitModal(true)} className="bg-emerald-600 hover:bg-emerald-500 text-xs">
-                      Submit Your First Record
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {submissions.map((sub) => (
-                      <div key={sub.id} className="p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:border-white/10 transition-colors flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-3.5 min-w-0">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
-                            {sub.category === 'water_quality' ? <Droplets className="w-5 h-5 text-cyan-400" /> : <Leaf className="w-5 h-5 text-emerald-400" />}
-                          </div>
-                          <div className="min-w-0">
-                            <h4 className="text-sm font-semibold text-white truncate">{sub.title}</h4>
-                            <p className="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
-                              <span className="capitalize">{sub.category.replace('_', ' ')}</span>
-                              <span>•</span>
-                              <span>{sub.district} District</span>
-                              <span>•</span>
-                              <span>{new Date(sub.createdAt).toLocaleDateString()}</span>
-                            </p>
-                          </div>
-                        </div>
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-semibold shrink-0 ${
-                          sub.status === 'EXPERT_VERIFIED' || sub.status === 'COMMUNITY_VERIFIED'
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                            : sub.status === 'REJECTED'
-                            ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
-                            : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
-                        }`}>
-                          {sub.status.replace('_', ' ')}
+              ) : (
+                filteredOperations.map(op => (
+                  <div key={op.id} className="p-5 rounded-2xl bg-slate-900/80 border border-white/10 hover:border-emerald-500/30 transition-all space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">
+                          {op.trackingId}
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded">
+                          {op.userDashboardSection}
                         </span>
                       </div>
-                    ))}
+                      <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                        op.status === 'APPROVED' || op.status === 'RESOLVED'
+                          ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+                          : op.status === 'REFERRED'
+                          ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                          : op.status === 'REJECTED'
+                          ? 'bg-red-500/15 text-red-300 border border-red-500/30'
+                          : 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                      }`}>
+                        STATUS: {op.status}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold text-white">{op.title}</h3>
+                    <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">{op.details}</p>
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5 text-[11px] text-slate-400">
+                      <div className="flex items-center gap-3">
+                        <span>Submitted: {new Date(op.createdAt).toLocaleDateString()}</span>
+                        {op.assignedTo && <span>Coordinator: <strong className="text-slate-200">{op.assignedTo}</strong></span>}
+                      </div>
+                      <button
+                        onClick={() => setSelectedRecord(op)}
+                        className="text-emerald-400 hover:text-emerald-300 font-mono font-semibold underline cursor-pointer"
+                      >
+                        View Timeline ({op.timeline.length} updates) &rarr;
+                      </button>
+                    </div>
                   </div>
-                )}
+                ))
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB: Workspace Overview (Default) */}
+        {activeTab === 'overview' && (
+          <div className="space-y-6">
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-5 rounded-2xl bg-slate-900/70 border border-white/10 space-y-1">
+                <span className="text-xs text-slate-400">My Submissions</span>
+                <div className="text-2xl font-bold text-white font-mono">{operations.length}</div>
+                <span className="text-[10px] text-slate-500 block">Across 11 Public Pathways</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-slate-900/70 border border-white/10 space-y-1">
+                <span className="text-xs text-slate-400">Verified Evidence</span>
+                <div className="text-2xl font-bold text-emerald-400 font-mono">
+                  {operations.filter(o => o.status === 'APPROVED' || o.status === 'RESOLVED').length}
+                </div>
+                <span className="text-[10px] text-slate-500 block">Published in Atlas &amp; Catalog</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-slate-900/70 border border-white/10 space-y-1">
+                <span className="text-xs text-slate-400">Under Review</span>
+                <div className="text-2xl font-bold text-blue-400 font-mono">
+                  {operations.filter(o => o.status === 'PENDING' || o.status === 'IN_REVIEW').length}
+                </div>
+                <span className="text-[10px] text-slate-500 block">In Verification Pipeline</span>
+              </div>
+              <div className="p-5 rounded-2xl bg-slate-900/70 border border-white/10 space-y-1">
+                <span className="text-xs text-slate-400">Citizen Programs</span>
+                <div className="text-2xl font-bold text-purple-400 font-mono">6</div>
+                <span className="text-[10px] text-slate-500 block">Active Curriculum Modules</span>
+              </div>
+            </div>
+
+            {/* 11 Public Participation Portals Grid */}
+            <div className="rounded-3xl bg-slate-900/80 border border-white/10 p-6 sm:p-8 backdrop-blur-md space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white">Public Participation Portals (11 Pathways)</h3>
+                  <p className="text-xs text-slate-400 mt-0.5">Direct access to all public intake interfaces across scientific, hazard, event, and partnership workflows.</p>
+                </div>
               </div>
 
-              {/* Right Column: Platform Portals & Tools */}
-              <div className="space-y-4">
-                <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-emerald-400" />
-                  Your Active Workspaces
-                </h2>
-
-                <div className="space-y-3">
-                  <Link 
-                    href="/contribute-data"
-                    className="block p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:border-emerald-500/40 hover:bg-slate-900/80 transition-all group"
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+                {[
+                  { title: 'Webinars & Conferences', path: '/webinars', icon: Calendar, badge: 'Events' },
+                  { title: 'Support & Sponsorship', path: '/about/support-sponsorship', icon: DollarSign, badge: 'Partnerships' },
+                  { title: 'CSR & Grants', path: '/about/csr-collaborations', icon: Building2, badge: 'Partnerships' },
+                  { title: 'Contact & Inquiries', path: '/about/contact', icon: MessageSquare, badge: 'Communications' },
+                  { title: 'Submit Observation', path: '/submit-observation', icon: Leaf, badge: 'Scientific' },
+                  { title: 'Report Hazard Issue', path: '/report-issue', icon: Flame, badge: 'Incidents' },
+                  { title: 'Share Scientific Data', path: '/share-data', icon: Layers, badge: 'Datasets' },
+                  { title: 'Join Citizen Science', path: '/join-citizen-science', icon: Users, badge: 'Community' },
+                  { title: 'Become Data Contributor', path: '/become-data-contributor', icon: Upload, badge: 'Accreditation' },
+                  { title: 'Become Research Partner', path: '/become-research-partner', icon: Award, badge: 'MoU' },
+                  { title: 'Volunteer & Contribute', path: '/get-involved/volunteer', icon: Heart, badge: 'Volunteers' },
+                ].map(portal => (
+                  <Link
+                    key={portal.path}
+                    href={portal.path}
+                    className="p-4 rounded-xl bg-slate-950 border border-white/5 hover:border-emerald-500/40 hover:bg-slate-900 transition-all flex items-center justify-between group"
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                        Deposit Research Data
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <portal.icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-white block group-hover:text-emerald-300 transition-colors">{portal.title}</span>
+                        <span className="text-[10px] font-mono text-slate-500">{portal.path}</span>
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-400">Upload scientific GIS shapefiles, drone imagery, and field telemetry</p>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-white/5">
+                      {portal.badge}
+                    </span>
                   </Link>
-
-                  <Link 
-                    href="/submit-observation"
-                    className="block p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:border-sky-500/40 hover:bg-slate-900/80 transition-all group"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-semibold text-white group-hover:text-sky-400 transition-colors">
-                        Submit Field Observation
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-sky-400 transition-colors" />
-                    </div>
-                    <p className="text-xs text-slate-400">Record wildlife, wetland signals, and seasonal phenology sightings</p>
-                  </Link>
-
-                  <Link 
-                    href="/admin/dashboard"
-                    className="block p-4 rounded-2xl bg-slate-900/50 border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-950/20 transition-all group"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-semibold text-purple-300 group-hover:text-purple-200 transition-colors flex items-center gap-1.5">
-                        <Shield className="w-3.5 h-3.5" /> Admin Command Center
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-purple-300 transition-colors" />
-                    </div>
-                    <p className="text-xs text-slate-400">Review pending field submissions, manage observers, and inspect audit logs</p>
-                  </Link>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         )}
 
-        {/* Tab Content: SUBMISSIONS */}
-        {activeTab === 'submissions' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-              <div>
-                <h3 className="text-base font-bold text-white">Your Database Records ({submissions.length})</h3>
-                <p className="text-xs text-slate-400 mt-1">Live data queried from the PostgreSQL research_submissions table</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button 
-                  onClick={() => setShowSubmitModal(true)}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-xs px-3 py-2"
-                >
-                  <Plus className="w-3.5 h-3.5 mr-1" /> New Submission
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={fetchSubmissions}
-                  className="border-white/10 text-slate-300 hover:text-white text-xs px-2.5 py-2"
-                  title="Refresh Data"
-                >
-                  <RefreshCw className={`w-3.5 h-3.5 ${loadingSubmissions ? 'animate-spin' : ''}`} />
-                </Button>
-              </div>
-            </div>
-
-            {submissions.length === 0 ? (
-              <div className="p-8 rounded-2xl bg-slate-900/40 border border-white/5 text-center">
-                <p className="text-sm font-semibold text-white mb-1">No submissions yet for {user.email}</p>
-                <p className="text-xs text-slate-400 mb-4">Click "New Submission" above to record a telemetry sample or species sighting.</p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {submissions.map((rec) => (
-                  <div key={rec.id} className="p-4 rounded-2xl bg-slate-900/60 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-emerald-500/30 transition-colors">
+        {/* TAB: Regional Risk Alerts */}
+        {activeTab === 'alerts' && (
+          <div className="space-y-4">
+            <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 space-y-4">
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <Bell className="w-5 h-5 text-amber-400" />
+                <span>Regional Hazard &amp; Anomaly Signals</span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                Continuous telemetry streams from J&amp;K SDMA river gauges, Copernicus Sentinel-2 moisture arrays, and regional field sensors.
+              </p>
+              <div className="space-y-3 pt-2">
+                {[
+                  { region: 'Budgam (Doodh Ganga Basin)', alert: 'Chemical Turbidity Anomaly Detected', severity: 'Critical', time: '2 hours ago' },
+                  { region: 'Ramban (NH-44 Corridor)', alert: 'Sub-surface Soil Moisture Saturated (0.42)', severity: 'High', time: '6 hours ago' },
+                  { region: 'Srinagar (Dal Lake Basin)', alert: 'Dissolved Oxygen Stable at 7.2 mg/L', severity: 'Normal', time: '12 hours ago' }
+                ].map(a => (
+                  <div key={a.region} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex items-center justify-between text-xs">
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-semibold px-2 py-0.5 rounded bg-white/5 text-slate-300 capitalize">{rec.category.replace('_', ' ')}</span>
-                        <span className="text-xs text-slate-500">{new Date(rec.createdAt).toLocaleDateString()}</span>
-                      </div>
-                      <h4 className="text-sm font-bold text-white">{rec.title}</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">{rec.district} District • {rec.details}</p>
+                      <span className="font-bold text-white block">{a.region}</span>
+                      <span className="text-slate-400">{a.alert}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
-                        rec.status === 'EXPERT_VERIFIED' || rec.status === 'COMMUNITY_VERIFIED'
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                          : rec.status === 'REJECTED'
-                          ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
-                          : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
-                      }`}>
-                        {rec.status.replace('_', ' ')}
-                      </span>
-                    </div>
+                    <span className={`px-2.5 py-1 rounded-full font-mono text-[10px] font-bold ${
+                      a.severity === 'Critical' ? 'bg-red-500/20 text-red-300 border border-red-500/40' :
+                      a.severity === 'High' ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40' :
+                      'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                    }`}>
+                      {a.severity}
+                    </span>
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        )}
-
-        {/* Tab Content: ALERTS */}
-        {activeTab === 'alerts' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-white/10">
-              <h3 className="text-base font-bold text-white">Active Environmental Alert Subscriptions</h3>
-              <p className="text-xs text-slate-400 mt-1">Configure automated notifications dispatched to your registered email ({user.email})</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { title: 'Critical Avalanche Warnings', desc: 'Gulmarg, Apharwat, and Pir Panjal winter corridors', active: true, cat: 'Hazard' },
-                { title: 'Flash Flood & River Spikes', desc: 'Jhelum River gauge thresholds and Wular outflows', active: true, cat: 'Hydrology' },
-                { title: 'Toxic Algal Bloom Alerts', desc: 'Dal Lake & Nigeen cyanobacteria threshold spikes', active: true, cat: 'Water Quality' },
-                { title: 'Forest Fire Threat Signals', desc: 'Bandipora, Kupwara, and Baramulla forest ranges', active: false, cat: 'Forestry' },
-              ].map((al, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-slate-900/60 border border-white/10 flex items-start justify-between gap-4">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">{al.cat}</span>
-                    <h4 className="text-sm font-bold text-white mt-2">{al.title}</h4>
-                    <p className="text-xs text-slate-400 mt-1">{al.desc}</p>
-                  </div>
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-semibold shrink-0 ${al.active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-white/5 text-slate-500 border border-white/10'}`}>
-                    {al.active ? 'Subscribed' : 'Muted'}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         )}
 
-        {/* Tab Content: PROFILE */}
+        {/* TAB: Scientific Profile */}
         {activeTab === 'profile' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            <div className="p-6 rounded-2xl bg-slate-900/60 border border-white/10 max-w-2xl">
-              <h3 className="text-base font-bold text-white mb-4">Observer Account Information</h3>
-              
-              <div className="space-y-4 text-xs">
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">Full Contributor Name</span>
-                  <span className="text-white font-medium">{user.name}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">Email Address</span>
-                  <span className="text-white font-medium">{user.email}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">Assigned Contributor Role</span>
-                  <span className="text-emerald-400 font-semibold capitalize">{user.role}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">District Coverage</span>
-                  <span className="text-white font-medium">{user.district || 'Srinagar'}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">Institutional Affiliation</span>
-                  <span className="text-white font-medium">{user.institution || 'Kashmir Scientific Consortium'}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/5">
-                  <span className="text-slate-400">Database Synchronized</span>
-                  <span className="text-emerald-400 font-medium">PostgreSQL Database Active</span>
-                </div>
+          <div className="max-w-2xl mx-auto rounded-3xl bg-slate-900/80 border border-white/10 p-6 sm:p-8 space-y-6">
+            <div>
+              <h3 className="text-lg font-bold text-white">Scientific Profile &amp; Accreditation</h3>
+              <p className="text-xs text-slate-400 mt-0.5">Manage your credentials, ORCID identifier, and institutional affiliations.</p>
+            </div>
+            <div className="space-y-3 text-xs">
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10 flex justify-between items-center">
+                <span className="text-slate-400">Contributor Tier:</span>
+                <span className="font-bold text-emerald-400 font-mono">{user?.roleLabel || 'Verified Contributor'}</span>
               </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                <Button 
-                  onClick={signOut}
-                  variant="outline"
-                  className="border-red-500/30 text-red-400 hover:bg-red-500/10 text-xs px-4 py-2"
-                >
-                  <LogOut className="w-3.5 h-3.5 mr-1.5" /> Sign Out from This Device
-                </Button>
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10 flex justify-between items-center">
+                <span className="text-slate-400">Assigned Observatory:</span>
+                <span className="font-bold text-white">{user?.district || 'Kashmir Regional Basin'}</span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10 flex justify-between items-center">
+                <span className="text-slate-400">Institutional Email:</span>
+                <span className="font-mono text-purple-300">{user?.email || 'observer@kashmirecowatch.org'}</span>
               </div>
             </div>
           </div>
         )}
+
+        {/* Timeline Drawer / Modal */}
+        <AnimatePresence>
+          {selectedRecord && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="max-w-2xl w-full bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+              >
+                <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+                  <div>
+                    <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-md inline-block mb-1">
+                      {selectedRecord.trackingId}
+                    </span>
+                    <h3 className="text-lg font-bold text-white">{selectedRecord.title}</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      {selectedRecord.userDashboardSection} &bull; Center: {selectedRecord.managementCenterLabel}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRecord(null)}
+                    className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center shrink-0 cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Details</h4>
+                    <p className="text-xs text-slate-200 p-3 rounded-xl bg-slate-950 border border-white/10 leading-relaxed">
+                      {selectedRecord.details}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Review Progress &amp; Audit Trail</h4>
+                    <div className="space-y-2">
+                      {selectedRecord.timeline.map((evt, idx) => (
+                        <div key={idx} className="p-3 rounded-xl bg-slate-950 border border-white/5 flex items-start gap-3 text-xs">
+                          <div className="w-2 h-2 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                          <div className="space-y-0.5 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-white">{evt.action}</span>
+                              <span className="text-[10px] font-mono text-slate-500">{evt.timestamp}</span>
+                            </div>
+                            <div className="text-[11px] text-slate-400">Actor: <span className="text-emerald-300">{evt.actor}</span></div>
+                            {evt.note && <div className="text-[11px] text-slate-300 italic pt-0.5">&ldquo;{evt.note}&rdquo;</div>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-end pt-4 border-t border-white/10">
+                  <Button
+                    onClick={() => setSelectedRecord(null)}
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-5 py-2 rounded-xl"
+                  >
+                    Close
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
-
-      {/* Quick Submission Modal */}
-      {showSubmitModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-lg rounded-3xl bg-slate-900 border border-white/10 p-6 sm:p-8 shadow-2xl relative">
-            <h3 className="text-lg font-bold text-white mb-1">Submit Field Record</h3>
-            <p className="text-xs text-slate-400 mb-6">This will insert directly into PostgreSQL and show up in the Admin Verification Queue.</p>
-
-            <form onSubmit={handleCreateSubmission} className="space-y-4 text-xs">
-              <div>
-                <label className="block text-slate-300 font-semibold mb-1">Title / Finding</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Hangul Count or Dal Lake pH telemetry"
-                  value={subTitle}
-                  onChange={(e) => setSubTitle(e.target.value)}
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500/50"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-slate-300 font-semibold mb-1">Domain Category</label>
-                  <select
-                    value={subCategory}
-                    onChange={(e) => setSubCategory(e.target.value)}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500/50"
-                  >
-                    <option value="water_quality">Water Quality</option>
-                    <option value="species_census">Species Census</option>
-                    <option value="hazard_incident">Hazard Incident</option>
-                    <option value="gis_telemetry">GIS Telemetry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-slate-300 font-semibold mb-1">District</label>
-                  <input
-                    type="text"
-                    value={subDistrict}
-                    onChange={(e) => setSubDistrict(e.target.value)}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500/50"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-slate-300 font-semibold mb-1">Details & Telemetry Notes</label>
-                <textarea
-                  rows={3}
-                  placeholder="Sample values, coordinates, observations, or equipment calibration notes"
-                  value={subDetails}
-                  onChange={(e) => setSubDetails(e.target.value)}
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-emerald-500/50"
-                />
-              </div>
-
-              <div className="flex items-center justify-end gap-2 pt-4 border-t border-white/10">
-                <Button 
-                  type="button" 
-                  variant="ghost" 
-                  onClick={() => setShowSubmitModal(false)}
-                  className="text-slate-400 hover:text-white"
-                >
-                  Cancel
-                </Button>
-                <Button 
-                  type="submit" 
-                  disabled={submitting}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
-                >
-                  {submitting ? 'Writing to Database...' : 'Save to Registry'}
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </main>
   );
 }

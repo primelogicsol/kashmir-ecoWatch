@@ -14,6 +14,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { submitToOperations } from '@/lib/operationsClient';
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
 
@@ -328,6 +329,7 @@ export default function BecomeResearchPartnerPage() {
   const [message,          setMessage]          = useState('');
   const [requestProspectus,setRequestProspectus]= useState(false);
   const [submitted,        setSubmitted]        = useState(false);
+  const [trackingId,       setTrackingId]       = useState('');
   const [isSubmitting,     setIsSubmitting]     = useState(false);
 
   const toggleType = (id: string) => {
@@ -340,7 +342,20 @@ export default function BecomeResearchPartnerPage() {
     e.preventDefault();
     if (!name || !email || !organisation || selectedTypes.length === 0) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 900));
+
+    const res = await submitToOperations({
+      sourcePage: '/become-research-partner',
+      title: `Research Partnership Proposal (${organisation} - ${name})`,
+      category: 'Research Partnership',
+      ownerName: name,
+      ownerEmail: email,
+      organization: organisation,
+      district: country || 'International / Regional',
+      details: `Tracks: ${selectedTypes.join(', ')} | Role: ${role || 'Lead Investigator'} | Agreement: ${agreementType || 'MoU'} | Timeline: ${timeline || '6-12 Months'} | Prospectus: ${requestProspectus ? 'Yes' : 'No'} | Note: ${message || 'Research MoU application'}`,
+      priority: 'MEDIUM',
+    });
+
+    setTrackingId(res.success ? res.trackingId : `KEW-PAR-${Date.now().toString().slice(-6)}`);
     setIsSubmitting(false);
     setSubmitted(true);
   };
@@ -360,6 +375,15 @@ export default function BecomeResearchPartnerPage() {
                 contact you at <strong className="text-indigo-400">{email}</strong> within 5 working days
                 to schedule a discovery call and discuss the next steps.
               </p>
+              {trackingId && (
+                <div className="mb-6 p-4 bg-slate-900/90 border border-indigo-500/30 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Institutional Partnership Tracking ID</span>
+                    <span className="text-xl font-mono font-bold text-indigo-400">{trackingId}</span>
+                  </div>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-mono">STATUS: INSTITUTIONAL QUEUE</span>
+                </div>
+              )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
                 <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Selected Partnership Areas</h3>
                 <div className="flex flex-wrap gap-2 mb-4">

@@ -14,6 +14,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { submitToOperations } from '@/lib/operationsClient';
 
 /* ─── Contributor Categories ─────────────────────────────────────────── */
 
@@ -433,6 +434,7 @@ export default function VolunteerPage() {
   const [preferredMode,    setPreferredMode]      = useState('');
   const [introduction,     setIntroduction]       = useState('');
   const [submitted,        setSubmitted]          = useState(false);
+  const [trackingId,       setTrackingId]         = useState('');
   const [isSubmitting,     setIsSubmitting]       = useState(false);
 
   const toggleInterest = (item: string) => {
@@ -445,7 +447,20 @@ export default function VolunteerPage() {
     e.preventDefault();
     if (!name || !email || !contributorType) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 900));
+
+    const res = await submitToOperations({
+      sourcePage: '/get-involved/volunteer',
+      title: `Volunteer & Contributor Registration (${name} - ${contributorType})`,
+      category: contributorType,
+      ownerName: name,
+      ownerEmail: email,
+      organization: organisation || undefined,
+      district: district || 'Srinagar',
+      details: `Type: ${contributorType} | Phone: ${phone || 'N/A'} | Interests: ${interests.join(', ') || 'General'} | Availability: ${availability || 'Flexible'} | Photography: ${canPhoto || 'No'} | Verification: ${canVerify || 'No'} | Intro: ${introduction || 'Eager volunteer'}`,
+      priority: 'MEDIUM',
+    });
+
+    setTrackingId(res.success ? res.trackingId : `KEW-VOL-${Date.now().toString().slice(-6)}`);
     setIsSubmitting(false);
     setSubmitted(true);
   };
@@ -464,6 +479,15 @@ export default function VolunteerPage() {
                 Our team will reach out at <strong className="text-emerald-400">{email}</strong> with
                 onboarding details matched to your contributor type within 3–5 working days.
               </p>
+              {trackingId && (
+                <div className="mb-6 p-4 bg-slate-900/90 border border-emerald-500/30 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Volunteer Assignment Tracking ID</span>
+                    <span className="text-xl font-mono font-bold text-emerald-400">{trackingId}</span>
+                  </div>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: VOLUNTEER DESK</span>
+                </div>
+              )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
                 <h3 className="text-sm font-bold text-white mb-3 uppercase tracking-wider">Your Contributor Profile</h3>
                 <div className="space-y-2 text-sm">

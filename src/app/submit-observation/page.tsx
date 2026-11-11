@@ -16,6 +16,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
 
+import { submitToOperations } from '@/lib/operationsClient';
+
 /* ─── Data ─────────────────────────────────────────────────────────── */
 
 const observationCategories = [
@@ -402,9 +404,20 @@ export default function SubmitSightingPage() {
     e.preventDefault();
     if (!selectedCategory || !speciesName || !dateObserved || !locationText || !description) return;
     setIsSubmitting(true);
-    const newSightingId = generateSightingId();
+    
+    const res = await submitToOperations({
+      sourcePage: '/submit-observation',
+      title: `${speciesName} Observation (${locationText})`,
+      category: selectedCategory,
+      ownerName: contributorName || 'Field Observer',
+      ownerEmail: contributorEmail || 'observer@kashmirecowatch.org',
+      district: locationText.split(',')[0].trim(),
+      details: `${description} | Observed: ${dateObserved} | Habitat: ${habitatType || 'Unspecified'} | Confidence: ${confidence} | Count: ${countObserved || '1'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
+      priority: 'MEDIUM',
+    });
+
+    const newSightingId = res.success ? res.trackingId : generateSightingId();
     setSightingId(newSightingId);
-    await new Promise(resolve => setTimeout(resolve, 800));
     setSubmitted(true);
     setIsSubmitting(false);
   };

@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { submitToOperations } from '@/lib/operationsClient';
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 
@@ -440,8 +441,20 @@ export default function ShareDataPage() {
     e.preventDefault();
     if (currentStep < 4) { setCurrentStep(currentStep + 1); return; }
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmissionId(generateSubmissionId());
+    
+    const res = await submitToOperations({
+      sourcePage: '/share-data',
+      title: `${selectedDomain ? selectedDomain.toUpperCase() : 'Environmental'} Dataset (${locationText || 'Kashmir Basin'})`,
+      category: selectedDomain || 'dataset',
+      ownerName: isAnonymous ? 'Anonymous Scientist' : (contributorName || 'Research Contributor'),
+      ownerEmail: contributorEmail || 'data-desk@kashmirecowatch.org',
+      district: locationText ? locationText.split(',')[0].trim() : 'Srinagar',
+      details: `${description} | Domain: ${selectedDomain} | Darwin Core: ${agreeToDarwinCore ? 'Yes' : 'No'} | Method: ${observationMethod || 'Standard'} | Equipment: ${equipmentUsed || 'Field sensors'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
+      priority: 'HIGH',
+    });
+
+    const newId = res.success ? res.trackingId : generateSubmissionId();
+    setSubmissionId(newId);
     setIsSubmitting(false);
     setSubmitted(true);
   };

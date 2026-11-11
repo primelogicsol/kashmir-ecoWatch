@@ -42,6 +42,7 @@ import {
   SCIENTIFIC_INDEPENDENCE_COVENANT,
   CsrProgramDossier 
 } from '@/data/csr-collaborations';
+import { submitToOperations } from '@/lib/operationsClient';
 
 export default function CsrCollaborationsPage() {
   const [selectedProgramId, setSelectedProgramId] = useState<string>('outdoor-classroom-grid');
@@ -74,15 +75,26 @@ export default function CsrCollaborationsPage() {
 
   const activeProgram = CSR_PROGRAM_DOSSIERS.find(p => p.id === selectedProgramId) || CSR_PROGRAM_DOSSIERS[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.acceptedScientificIndependence) {
       alert('Please confirm adherence to the Kashmir EcoWatch Scientific Independence & Editorial Neutrality Covenant.');
       return;
     }
 
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const refCode = `KEW-CSR-2026-INQ-${randomSuffix}`;
+    const res = await submitToOperations({
+      sourcePage: '/about/csr-collaborations',
+      title: `CSR & Grant Proposal: ${formData.organizationName} (${formData.targetProgram})`,
+      category: 'CSR & Grants',
+      ownerName: formData.contactPerson,
+      ownerEmail: formData.email,
+      organization: formData.organizationName,
+      district: formData.targetGeography || 'Kashmir Basin',
+      details: `Program: ${formData.targetProgram} | Pathway: ${formData.fundingPathway} | Budget: ${formData.estimatedBudgetEnvelope} | Scale: ${formData.preferredScale} | Phone: ${formData.phone || 'N/A'} | Objectives: ${formData.specificObjectives || 'Environmental CSR deployment'}`,
+      priority: 'HIGH',
+    });
+
+    const refCode = res.success ? res.trackingId : `KEW-CSR-2026-INQ-${Math.floor(1000 + Math.random() * 9000)}`;
     setInquiryResult({
       submitted: true,
       referenceCode: refCode,
