@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Leaf, Mail, MapPin, Github, Twitter, Linkedin, Youtube,
+  Leaf, Mail, MapPin, Github, Twitter, Linkedin, Youtube, Facebook,
   Heart, Database, FileText, Users, Shield, Activity, Globe, MessageCircle
 } from 'lucide-react';
 
@@ -55,6 +55,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
+  { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook },
   { label: 'GitHub', href: 'https://github.com', icon: Github },
   { label: 'Twitter', href: 'https://twitter.com', icon: Twitter },
   { label: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
@@ -148,6 +149,8 @@ export function AdvancedFooter() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 sm:w-10 sm:h-10 rounded-lg glass-light border border-white/10 hover:border-forest-500/50 flex items-center justify-center transition-all group flex-shrink-0"
                   aria-label={social.label}
                 >
