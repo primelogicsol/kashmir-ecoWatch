@@ -9,7 +9,7 @@ import {
   Settings, Key, Download, RefreshCw, FileText, ChevronRight,
   Droplets, Leaf, MapPin, Eye, Lock, Unlock, Sparkles, LogOut,
   Calendar, Video, Building2, DollarSign, MessageSquare, Flame,
-  Layers, Activity, Send, Check, Phone, Globe, ExternalLink, HelpCircle, ShieldCheck
+  Layers, Activity, Send, Check, Phone, Globe, ExternalLink, HelpCircle, ShieldCheck, Mail
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
@@ -51,6 +51,13 @@ export default function AdminDashboardPage() {
 
   // Selected Record Drawer State
   const [selectedRecord, setSelectedRecord] = useState<OperationRecord | null>(null);
+
+  // Communications Dispatch & Reply Modal State
+  const [replyModalTicket, setReplyModalTicket] = useState<OperationRecord | null>(null);
+  const [replySubject, setReplySubject] = useState('');
+  const [replyBody, setReplyBody] = useState('');
+  const [replyTemplate, setReplyTemplate] = useState('ack');
+  const [isDispatching, setIsDispatching] = useState(false);
 
   // Security & Admin Access Gate State
   const [isMasterUnlocked, setIsMasterUnlocked] = useState<boolean>(false);
@@ -136,6 +143,94 @@ export default function AdminDashboardPage() {
       }
     } catch (e: any) {
       alert('Error updating operation: ' + e.message);
+    }
+  };
+
+  // Helper to generate template responses
+  const getTemplateBody = (type: string, ticket: OperationRecord) => {
+    switch (type) {
+      case 'science':
+        return `Dear ${ticket.ownerName},
+
+Regarding your inquiry [${ticket.trackingId}] on Kashmir EcoWatch data layers and scientific modeling:
+
+All public GIS layers, InSAR ground-deformation rasters, CWC hydrological telemetry, and high-altitude GLOF indices undergo rigorous eight-stage peer verification before ingestion. For detailed technical specifications, sensor calibrations, and data access policies, please consult our documentation at https://kashmir-ecowatch.com/about/methodology or contact our technical review desk.
+
+Please feel free to reply directly to this thread if you require additional spatial subsets or NetCDF/GeoJSON extracts.
+
+Warm regards,
+Scientific Review Board
+Kashmir EcoWatch (kashmir-ecowatch.com)`;
+
+      case 'referral':
+        return `Dear ${ticket.ownerName},
+
+Thank you for your report regarding "${ticket.title}" [${ticket.trackingId}].
+
+In accordance with Kashmir EcoWatch emergency environmental protocols, high-severity incident findings have been documented, geotagged, and formally forwarded to the Jammu & Kashmir Pollution Control Committee (JKPCC) and the Department of Ecology, Environment & Remote Sensing for administrative investigation.
+
+We will append official statutory response notices to your ticket as they are received. You may track updates at:
+https://kashmir-ecowatch.com/dashboard
+
+Warm regards,
+Environmental Incident Directorate
+Kashmir EcoWatch (kashmir-ecowatch.com)`;
+
+      case 'resolved':
+        return `Dear ${ticket.ownerName},
+
+In reference to your inquiry [${ticket.trackingId}] regarding "${ticket.title}":
+
+The administrative and technical actions requested have been completed and verified by our desk. The ticket has now been marked as RESOLVED under our operational SLA.
+
+Should you have any subsequent inquiries or supplementary data to contribute, please feel free to reach out to us at any time.
+
+Warm regards,
+Operations Desk
+Kashmir EcoWatch (kashmir-ecowatch.com)`;
+
+      case 'ack':
+      default:
+        return `Dear ${ticket.ownerName},
+
+Thank you for reaching out to Kashmir EcoWatch regarding "${ticket.title}".
+
+Your communication has been formally registered under Tracking Code ${ticket.trackingId} in our Central Communications Center and is being processed in compliance with our < 24-hour SLA commitment.
+
+Our environmental intelligence desk is reviewing the particulars of your inquiry. You can track live processing milestones directly on the platform at:
+https://kashmir-ecowatch.com/dashboard
+
+Warm regards,
+Communications Secretariat
+Kashmir EcoWatch (kashmir-ecowatch.com)`;
+    }
+  };
+
+  const handleOpenReplyModal = (ticket: OperationRecord) => {
+    setReplyModalTicket(ticket);
+    setReplySubject(`Re: [${ticket.trackingId}] ${ticket.title}`);
+    setReplyTemplate('ack');
+    setReplyBody(getTemplateBody('ack', ticket));
+  };
+
+  const handleSelectTemplate = (templateKey: string) => {
+    if (!replyModalTicket) return;
+    setReplyTemplate(templateKey);
+    setReplyBody(getTemplateBody(templateKey, replyModalTicket));
+  };
+
+  const handleSendReply = async (newStatus: 'IN_PROGRESS' | 'RESOLVED') => {
+    if (!replyModalTicket) return;
+    setIsDispatching(true);
+    try {
+      const noteText = `Dispatched Official Secretariat Reply (${newStatus}): "${replySubject}". Summary: "${replyBody.replace(/\n+/g, ' ').slice(0, 90)}..."`;
+      await handleUpdateStatus(replyModalTicket.trackingId, newStatus, noteText);
+      setActionNotice(`Official dispatch sent to ${replyModalTicket.ownerEmail} for ${replyModalTicket.trackingId} (SLA Logged & Status -> ${newStatus}).`);
+      setReplyModalTicket(null);
+    } catch (err: any) {
+      alert('Error dispatching reply: ' + err.message);
+    } finally {
+      setIsDispatching(false);
     }
   };
 
@@ -805,23 +900,44 @@ export default function AdminDashboardPage() {
 
               {/* Recent Correspondence */}
               <div className="space-y-3">
-                <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                  Recent Inquiries &amp; Dispatches
-                </h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+                    Recent Inquiries &amp; Dispatches
+                  </h3>
+                  <span className="text-[11px] font-mono text-slate-400">
+                    {operations.filter(op => op.managementCenter === 'COMMUNICATIONS').length} Inquiries Logged
+                  </span>
+                </div>
                 {operations.filter(op => op.managementCenter === 'COMMUNICATIONS').map(ticket => (
-                  <div key={ticket.id} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
+                  <div key={ticket.id} className="p-4 rounded-xl bg-slate-950 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-sky-500/20 transition-all">
+                    <div className="space-y-1 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-xs font-mono font-bold text-sky-400">{ticket.trackingId}</span>
                         <span className="text-xs font-bold text-white">&bull; {ticket.ownerName}</span>
-                        {ticket.organization && <span className="text-xs text-slate-400">({ticket.organization})</span>}
+                        <span className="text-xs text-slate-400">({ticket.ownerEmail})</span>
+                        {ticket.organization && <span className="text-[11px] text-slate-500 font-mono">[{ticket.organization}]</span>}
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
+                          ticket.status === 'RESOLVED' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                          ticket.status === 'IN_PROGRESS' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
+                          'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                        }`}>
+                          {ticket.status}
+                        </span>
                       </div>
                       <p className="text-xs text-slate-300 font-medium">{ticket.title}</p>
                       <p className="text-[11px] text-slate-400 line-clamp-1">{ticket.details}</p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-mono text-purple-400">{ticket.slaDeadline}</span>
-                      <Button size="sm" variant="outline" className="border-sky-500/30 text-sky-300 text-xs">
+                      <span className="text-[11px] font-mono text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-lg border border-purple-500/20">
+                        {ticket.slaDeadline}
+                      </span>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        onClick={() => handleOpenReplyModal(ticket)}
+                        className="border-sky-500/40 text-sky-300 hover:bg-sky-500/20 text-xs flex items-center gap-1.5 cursor-pointer shadow-sm shadow-sky-500/10 font-bold"
+                      >
+                        <MessageSquare className="w-3.5 h-3.5" />
                         <span>Reply &rarr;</span>
                       </Button>
                     </div>
@@ -1055,13 +1171,188 @@ export default function AdminDashboardPage() {
                   </div>
                 </div>
 
-                <div className="flex justify-end pt-4 border-t border-white/10">
+                <div className="flex items-center justify-between pt-4 border-t border-white/10 gap-3">
+                  {selectedRecord.ownerEmail ? (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        handleOpenReplyModal(selectedRecord);
+                      }}
+                      className="border-sky-500/40 text-sky-300 hover:bg-sky-500/20 text-xs flex items-center gap-1.5 cursor-pointer font-bold"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span>Dispatch Official Reply &rarr;</span>
+                    </Button>
+                  ) : <div />}
                   <Button
                     onClick={() => setSelectedRecord(null)}
-                    className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-5 py-2 rounded-xl"
+                    className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-5 py-2 rounded-xl cursor-pointer"
                   >
                     Close Audit Log
                   </Button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* Communications Center: Official Dispatch & Reply Modal */}
+        <AnimatePresence>
+          {replyModalTicket && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                className="w-full max-w-2xl bg-slate-900 border border-sky-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto"
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between border-b border-white/10 pb-4 gap-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-mono font-bold text-sky-300 bg-sky-500/10 border border-sky-500/30 px-2.5 py-0.5 rounded-md inline-block">
+                        {replyModalTicket.trackingId}
+                      </span>
+                      <span className="text-[11px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 rounded-md">
+                        {replyModalTicket.slaDeadline}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                      <MessageSquare className="w-5 h-5 text-sky-400" />
+                      <span>Communications Secretariat Dispatch Desk</span>
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Dispatched under Kashmir EcoWatch &lt;24h Service Level Agreement protocol.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setReplyModalTicket(null)}
+                    className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center shrink-0 cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Inquirer Summary Card */}
+                <div className="p-3.5 rounded-xl bg-slate-950 border border-white/5 space-y-1.5 text-xs">
+                  <div className="flex items-center justify-between text-slate-400 flex-wrap gap-2">
+                    <span>Inquirer: <strong className="text-white">{replyModalTicket.ownerName}</strong> ({replyModalTicket.ownerEmail})</span>
+                    {replyModalTicket.organization && <span className="font-mono text-slate-400">[{replyModalTicket.organization}]</span>}
+                  </div>
+                  <div className="text-slate-300">
+                    <span className="text-slate-500 font-mono text-[11px]">Original Inquiry: </span>
+                    <span>&ldquo;{replyModalTicket.details}&rdquo;</span>
+                  </div>
+                </div>
+
+                {/* Quick Templates Selector */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+                    Select Response Template:
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {[
+                      { key: 'ack', label: 'SLA Acknowledgment' },
+                      { key: 'science', label: 'Data & Methodology' },
+                      { key: 'referral', label: 'Statutory Referral' },
+                      { key: 'resolved', label: 'Inquiry Resolution' }
+                    ].map(tpl => (
+                      <button
+                        key={tpl.key}
+                        type="button"
+                        onClick={() => handleSelectTemplate(tpl.key)}
+                        className={`px-3 py-2 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border ${
+                          replyTemplate === tpl.key
+                            ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 shadow-sm'
+                            : 'bg-slate-950 text-slate-400 border-white/5 hover:bg-slate-800 hover:text-white'
+                        }`}
+                      >
+                        {tpl.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Form Fields */}
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-[11px] font-mono text-slate-400 block mb-1">
+                      Recipient Email:
+                    </label>
+                    <input
+                      type="text"
+                      readOnly
+                      value={replyModalTicket.ownerEmail}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-950/60 border border-white/10 text-xs font-mono text-slate-300 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-mono text-slate-400 block mb-1">
+                      Subject Line:
+                    </label>
+                    <input
+                      type="text"
+                      value={replySubject}
+                      onChange={e => setReplySubject(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white focus:outline-none focus:border-sky-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-mono text-slate-400 block mb-1">
+                      Official Response Message (Editable):
+                    </label>
+                    <textarea
+                      rows={7}
+                      value={replyBody}
+                      onChange={e => setReplyBody(e.target.value)}
+                      className="w-full p-3 rounded-xl bg-slate-950 border border-white/10 text-xs text-slate-200 font-mono leading-relaxed focus:outline-none focus:border-sky-500 resize-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Modal Actions */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/10">
+                  <a
+                    href={`mailto:${replyModalTicket.ownerEmail}?subject=${encodeURIComponent(replySubject)}&body=${encodeURIComponent(replyBody)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-slate-400 hover:text-sky-300 font-mono flex items-center gap-1.5 order-2 sm:order-1"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open in Desktop Mail Client</span>
+                  </a>
+
+                  <div className="flex items-center gap-2 w-full sm:w-auto order-1 sm:order-2 justify-end">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setReplyModalTicket(null)}
+                      className="border-white/10 text-slate-400 hover:text-white text-xs px-3 py-2 rounded-xl cursor-pointer"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      size="sm"
+                      disabled={isDispatching}
+                      onClick={() => handleSendReply('IN_PROGRESS')}
+                      className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>Send &amp; Keep Open</span>
+                    </Button>
+                    <Button
+                      size="sm"
+                      disabled={isDispatching}
+                      onClick={() => handleSendReply('RESOLVED')}
+                      className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>{isDispatching ? 'Dispatching...' : 'Send & Resolve'}</span>
+                    </Button>
+                  </div>
                 </div>
               </motion.div>
             </div>
