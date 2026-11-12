@@ -35,11 +35,11 @@ export function WebinarNav() {
     { label: 'Host a Conference', href: '/webinars/host-a-conference', icon: PlusCircle },
     { label: 'Institutional Network', href: '/webinars/institution/verification', icon: Building2 },
     { 
-      label: 'Virtual Hall (Test)', 
+      label: 'Virtual Hall', 
       href: '/webinars/room/kew-conf-2027-cryo', 
       icon: Video,
-      badge: 'Pre-Flight',
-      badgeColor: 'bg-teal-500/20 text-teal-300 border border-teal-500/40'
+      badge: 'Demo',
+      badgeColor: 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
     },
     { label: 'Proceedings', href: '/webinars/proceedings', icon: FileText },
     { label: 'Past Archives', href: '/webinars/past-events', icon: Award },
@@ -80,11 +80,16 @@ export function WebinarNav() {
 
           <div className="hidden lg:flex items-center gap-2 shrink-0">
             <Link
-              href="/webinars/room/kew-conf-2027-cryo"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-600 hover:bg-teal-500 text-white shadow-sm shadow-teal-500/20 transition-all"
+              href="/webinars/admin"
+              className={cn(
+                'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
+                pathname.startsWith('/webinars/admin')
+                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm shadow-amber-500/10'
+                  : 'bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border-white/10'
+              )}
             >
-              <Video className="w-3.5 h-3.5" />
-              <span>Virtual Hall (Pre-Flight)</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+              <span>Super Admin</span>
             </Link>
           </div>
         </div>

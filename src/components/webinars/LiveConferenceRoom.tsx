@@ -1305,10 +1305,14 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             </span>
           </Link>
           <span className="text-slate-700 shrink-0 select-none">|</span>
-          <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1">
-            <span className="shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40 mt-0.5 sm:mt-0">
+          <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1 flex-wrap">
+            <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 mt-0.5 sm:mt-0 shadow-sm shadow-amber-500/10 font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              DEMO / TEST ENVIRONMENT
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-500/15 text-rose-300 border border-rose-500/30 mt-0.5 sm:mt-0 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
-              LIVE
+              SIMULATED STAGE
             </span>
             <h1 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug break-words flex-1 min-w-0">
               {session.title}
@@ -1337,14 +1341,14 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 remotePeerCount > 0 ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
               )}
             />
-            <span>Peers: {remotePeerCount}</span>
+            <span>Simulated Peers: {remotePeerCount}</span>
           </span>
 
           {/* Recording Indicator */}
           {isRecording && (
-            <div className="flex items-center gap-1.5 text-rose-400 bg-rose-950/40 border border-rose-500/30 px-2 py-0.5 rounded text-[11px] font-mono shrink-0">
-              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-              <span>REC {formatTime(dwellSeconds)}</span>
+            <div className="flex items-center gap-1.5 text-amber-300 bg-amber-950/40 border border-amber-500/30 px-2 py-0.5 rounded text-[11px] font-mono shrink-0">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span>TEST REC (SIMULATED) {formatTime(dwellSeconds)}</span>
             </div>
           )}
 
@@ -1366,15 +1370,26 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         </div>
       </header>
 
-      {/* Statutory Consent Banner */}
-      <div className="bg-amber-950/40 border-b border-amber-500/20 px-4 py-1.5 text-[11px] text-amber-300 flex flex-wrap items-center justify-between gap-2 shrink-0">
+      {/* Demo / Sandbox Environment Notice Banner */}
+      <div className="bg-amber-950/60 border-b border-amber-500/30 px-4 py-2 text-[11px] text-amber-200 flex flex-wrap items-center justify-between gap-2 shrink-0">
         <div className="flex items-center gap-2 min-w-0 flex-1">
-          <ShieldAlert className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-          <span className="leading-snug break-words">
-            Scientific Session Notice: This virtual symposium is being recorded for the permanent Kashmir EcoWatch Research Archive.
+          <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0" />
+          <span className="px-1.5 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 font-mono font-bold text-amber-300 text-[10px] uppercase shrink-0">
+            DEMO / TEST ENVIRONMENT
+          </span>
+          <span className="leading-snug break-words text-slate-300">
+            You are exploring the Kashmir EcoWatch Virtual Hall pre-flight sandbox. Video feeds, participant questions, and chat streams are simulated demonstration data for WebRTC hardware testing. No live symposium is currently broadcasting.
           </span>
         </div>
-        <span className="text-[10px] text-amber-400/80 font-mono shrink-0">WebRTC 256-bit Encrypted Peer-to-Peer</span>
+        <div className="flex items-center gap-3 shrink-0">
+          <span className="text-[10px] text-amber-400/80 font-mono hidden md:inline">Hardware Diagnostics Ready</span>
+          <Link
+            href="/webinars/conferences"
+            className="text-[11px] font-bold text-teal-400 hover:text-teal-300 underline font-mono flex items-center gap-1"
+          >
+            <span>Conferences Directory &rarr;</span>
+          </Link>
+        </div>
       </div>
 
       {/* Microphone Error Banner */}
@@ -1830,8 +1845,8 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             {activeTab === 'qna' && (
               <div className="flex-1 flex flex-col overflow-hidden">
                 <div className="p-3 bg-slate-950/60 border-b border-white/5 text-[11px] text-slate-400 flex items-center justify-between">
-                  <span>Moderated Peer Q&amp;A</span>
-                  <span className="text-teal-400 font-mono">Upvote to prioritize</span>
+                  <span>Moderated Peer Q&amp;A (Demonstration Stream)</span>
+                  <span className="text-amber-400 font-mono text-[10px] bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">SIMULATED</span>
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-3 space-y-3">
@@ -1959,8 +1974,9 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             {/* Tab 3: Roster */}
             {activeTab === 'participants' && (
               <div className="flex-1 overflow-y-auto p-3 space-y-2 text-xs">
-                <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                  Session Faculty &amp; Delegates
+                <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                  <span>Session Faculty &amp; Delegates</span>
+                  <span className="text-amber-400 font-mono text-[10px] bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 font-normal">SIMULATED ROSTER</span>
                 </div>
                 {session.speakers.map(spk => (
                   <div
