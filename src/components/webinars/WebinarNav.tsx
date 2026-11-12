@@ -42,8 +42,7 @@ export function WebinarNav() {
       badgeColor: 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
     },
     { label: 'Proceedings', href: '/webinars/proceedings', icon: FileText },
-    { label: 'Past Archives', href: '/webinars/past-events', icon: Award },
-    { label: 'Super Admin', href: '/webinars/admin', icon: ShieldCheck }
+    { label: 'Past Archives', href: '/webinars/past-events', icon: Award }
   ];
 
   return (
@@ -78,7 +77,7 @@ export function WebinarNav() {
             })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/webinars/admin"
               className={cn(
