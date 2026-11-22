@@ -200,7 +200,7 @@ function EnvironmentalPilPortalContent() {
       c.filingYear,
       c.proceedingType,
       `"${c.jurisdiction}"`,
-      `"${c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region}"`,
+      `"${String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region}"`,
       `"${c.districts.join('; ')}"`,
       `"${c.sector}"`,
       `"${c.environmentalAsset.replace(/"/g, '""')}"`,
@@ -241,7 +241,7 @@ function EnvironmentalPilPortalContent() {
     const rows = COURT_YEAR_COMPLETENESS_MATRIX.map((c) => [
       '"' + c.courtCode + '"',
       '"' + c.courtName + '"',
-      '"' + (c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region) + '"',
+      '"' + (String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region) + '"',
       c.jurisdictionType,
       c.decades.era1986_1995.status,
       c.decades.era1986_1995.recoveredCases,
@@ -526,7 +526,7 @@ function EnvironmentalPilPortalContent() {
                             {c.caseNumber}
                           </span>
                           <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-slate-800/80 text-slate-300 border border-slate-700/80">
-                            {c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region}
+                            {String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region}
                           </span>
                           <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-slate-950 text-slate-400 border border-slate-800">
                             {c.filingYear}
@@ -765,7 +765,7 @@ function EnvironmentalPilPortalContent() {
                           </span>
                         )}
                         <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-300 border border-slate-700">
-                          {c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region}
+                          {String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region}
                         </span>
                         <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-purple-950/60 text-purple-300 border border-purple-800/40">
                           {c.sector}
@@ -856,7 +856,7 @@ function EnvironmentalPilPortalContent() {
                           {item.event.eventType.replace(/_/g, ' ')}
                         </span>
                         <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-slate-950 text-slate-400 border border-slate-800">
-                          {item.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : item.region}
+                          {String(item.region).includes('Azad Jammu') ? 'AJ&K' : item.region}
                         </span>
                       </div>
                       <span className="text-[10px] text-slate-500">{item.caseNumber}</span>
@@ -1017,7 +1017,7 @@ function EnvironmentalPilPortalContent() {
                       <div>
                         <span className="text-slate-500 text-[10px] uppercase">Active Regions</span>
                         <div className="font-semibold text-slate-300">
-                          {[...new Set(sectorCases.map((c) => c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region))].join(', ')}
+                          {[...new Set(sectorCases.map((c) => String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region))].join(', ')}
                         </div>
                       </div>
                     </div>
@@ -1087,7 +1087,7 @@ function EnvironmentalPilPortalContent() {
                           <span className="text-[10px] font-mono font-bold truncate">{c.lat.toFixed(2)}°N, {c.lng.toFixed(2)}°E</span>
                         </div>
                         <div className="text-xs font-semibold text-white truncate">{c.environmentalAsset.split('(')[0].trim()}</div>
-                        <div className="text-[10px] text-slate-400 truncate">{c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region} · {c.districts[0]}</div>
+                        <div className="text-[10px] text-slate-400 truncate">{String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region} · {c.districts[0]}</div>
                       </div>
                     ))}
                   </div>
@@ -1121,7 +1121,7 @@ function EnvironmentalPilPortalContent() {
                           {c.environmentalAsset}
                         </td>
                         <td className="py-2.5 px-3 text-slate-300">
-                          {c.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : c.region}
+                          {String(c.region).includes('Azad Jammu') ? 'AJ&K' : c.region}
                         </td>
                         <td className="py-2.5 px-3 text-slate-400">
                           {c.districts.join(', ')}
@@ -1633,7 +1633,7 @@ function EnvironmentalPilPortalContent() {
                     </span>
                   )}
                   <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-slate-800 text-slate-200">
-                    {selectedCase.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : selectedCase.region}
+                    {String(selectedCase.region).includes('Azad Jammu') ? 'AJ&K' : selectedCase.region}
                   </span>
                   <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-purple-950/60 text-purple-300 border border-purple-800/40">
                     {selectedCase.sector}

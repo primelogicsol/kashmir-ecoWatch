@@ -209,7 +209,7 @@ export default function HwcIncidentRegistryPage() {
                       {inc.id}
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
-                      {inc.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : inc.region}
+                      {String(inc.region).includes('Azad Jammu') ? 'AJ&K' : inc.region}
                     </span>
                   </div>
 
@@ -287,7 +287,7 @@ export default function HwcIncidentRegistryPage() {
                   >
                     <td className="p-3 font-mono font-bold text-slate-300">{inc.id}</td>
                     <td className="p-3 text-slate-400 whitespace-nowrap">{inc.occurrenceDate}</td>
-                    <td className="p-3 text-white font-medium">{inc.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : inc.region} · {inc.district}</td>
+                    <td className="p-3 text-white font-medium">{String(inc.region).includes('Azad Jammu') ? 'AJ&K' : inc.region} · {inc.district}</td>
                     <td className="p-3 text-emerald-300 font-semibold">{inc.species.commonName}</td>
                     <td className="p-3 text-amber-300">{inc.category}</td>
                     <td className="p-3 text-slate-400 text-[11px]">{inc.wildlifeOutcome}</td>

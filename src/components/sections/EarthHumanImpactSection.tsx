@@ -10,7 +10,6 @@ import {
   ArrowRight, 
   Activity, 
   TrendingDown, 
-  Pick, 
   ShieldAlert,
   ChevronRight,
   ExternalLink

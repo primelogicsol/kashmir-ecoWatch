@@ -1298,7 +1298,7 @@ export const REGION_TRANSPORT_SUMMARIES: Record<KEWRegion, RegionTransportSummar
     cumulativeRegisteredVehicles: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Kashmir Valley').reduce((acc, d) => acc + d.cumulativeRegisteredVehicles, 0), // 1,199,400
     activeOperatingFleetEst: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Kashmir Valley').reduce((acc, d) => acc + d.activeOperatingFleetEst, 0), // 921,800
     annualNewRegistrations2026: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Kashmir Valley').reduce((acc, d) => acc + d.annualNewRegistrations2026, 0), // 83,000
-    avgTwoWheelersPct: 56.0,
+    avgTwoWheelerPct: 56.0,
     avgCarSuvPct: 27.5,
     avgFreightTruckPct: 8.8,
     avgPublicBusPct: 4.0,
@@ -1315,7 +1315,7 @@ export const REGION_TRANSPORT_SUMMARIES: Record<KEWRegion, RegionTransportSummar
     cumulativeRegisteredVehicles: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Jammu').reduce((acc, d) => acc + d.cumulativeRegisteredVehicles, 0), // 1,510,900
     activeOperatingFleetEst: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Jammu').reduce((acc, d) => acc + d.activeOperatingFleetEst, 0), // 1,126,900
     annualNewRegistrations2026: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Jammu').reduce((acc, d) => acc + d.annualNewRegistrations2026, 0), // 99,600
-    avgTwoWheelersPct: 56.5,
+    avgTwoWheelerPct: 56.5,
     avgCarSuvPct: 25.5,
     avgFreightTruckPct: 11.5,
     avgPublicBusPct: 4.1,
@@ -1332,7 +1332,7 @@ export const REGION_TRANSPORT_SUMMARIES: Record<KEWRegion, RegionTransportSummar
     cumulativeRegisteredVehicles: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Ladakh').reduce((acc, d) => acc + d.cumulativeRegisteredVehicles, 0), // 59,900
     activeOperatingFleetEst: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Ladakh').reduce((acc, d) => acc + d.activeOperatingFleetEst, 0), // 46,000
     annualNewRegistrations2026: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Ladakh').reduce((acc, d) => acc + d.annualNewRegistrations2026, 0), // 4,300
-    avgTwoWheelersPct: 22.8,
+    avgTwoWheelerPct: 22.8,
     avgCarSuvPct: 41.3,
     avgFreightTruckPct: 25.3,
     avgPublicBusPct: 6.3,
@@ -1349,7 +1349,7 @@ export const REGION_TRANSPORT_SUMMARIES: Record<KEWRegion, RegionTransportSummar
     cumulativeRegisteredVehicles: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Azad Jammu & Kashmir').reduce((acc, d) => acc + d.cumulativeRegisteredVehicles, 0), // 384,100
     activeOperatingFleetEst: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Azad Jammu & Kashmir').reduce((acc, d) => acc + d.activeOperatingFleetEst, 0), // 291,900
     annualNewRegistrations2026: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Azad Jammu & Kashmir').reduce((acc, d) => acc + d.annualNewRegistrations2026, 0), // 23,830
-    avgTwoWheelersPct: 48.5,
+    avgTwoWheelerPct: 48.5,
     avgCarSuvPct: 34.8,
     avgFreightTruckPct: 11.2,
     avgPublicBusPct: 5.5,
@@ -1362,12 +1362,11 @@ export const REGION_TRANSPORT_SUMMARIES: Record<KEWRegion, RegionTransportSummar
   },
   'Gilgit-Baltistan': {
     region: 'Gilgit-Baltistan',
-    headquarters: 'Gilgit',
     districtsCount: 10,
     cumulativeRegisteredVehicles: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Gilgit-Baltistan').reduce((acc, d) => acc + d.cumulativeRegisteredVehicles, 0), // 164,700
     activeOperatingFleetEst: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Gilgit-Baltistan').reduce((acc, d) => acc + d.activeOperatingFleetEst, 0), // 124,150
     annualNewRegistrations2026: DISTRICT_TRANSPORT_DATA.filter(d => d.region === 'Gilgit-Baltistan').reduce((acc, d) => acc + d.annualNewRegistrations2026, 0), // 11,200
-    avgTwoWheelersPct: 35.5,
+    avgTwoWheelerPct: 35.5,
     avgCarSuvPct: 41.5,
     avgFreightTruckPct: 16.0,
     avgPublicBusPct: 6.2,

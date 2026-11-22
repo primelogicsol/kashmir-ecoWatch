@@ -14,7 +14,7 @@ interface Breadcrumb {
 interface HeadingProps {
   title: React.ReactNode;
   subtitle: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   label?: string;
   badge?: React.ReactNode;
   images?: string[];

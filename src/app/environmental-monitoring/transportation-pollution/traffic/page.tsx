@@ -170,11 +170,11 @@ export default function SpecializedTransportSubmodulePage() {
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">
                     {h.region}
                   </span>
-                  <span className="text-xs font-mono font-bold text-rose-400">{h.delayMultiplier}x Delay</span>
+                  <span className="text-xs font-mono font-bold text-rose-400">{h.delayIndex}x Delay</span>
                 </div>
                 <h4 className="font-bold text-white text-sm">{h.name}</h4>
-                <div className="text-[11px] text-slate-400">Peak Hours: {h.peakHours}</div>
-                <p className="text-xs text-slate-300 leading-relaxed pt-1 border-t border-white/5">{h.majorContributor}</p>
+                <div className="text-[11px] text-slate-400">Peak Flow: {h.peakHourPcu.toLocaleString()} PCU/hr · Avg {h.avgSpeedKmph} km/h</div>
+                <p className="text-xs text-slate-300 leading-relaxed pt-1 border-t border-white/5">{h.primaryPollutionSource}</p>
               </div>
             ))}
           </div>

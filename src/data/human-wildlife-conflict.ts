@@ -92,8 +92,8 @@ export interface SpeciesConflictProfile {
   commonName: string;
   scientificName: string;
   localNames: string[];
-  regionalDistribution: KewRegion[];
-  iucnStatus: 'Critically Endangered' | 'Endangered' | 'Vulnerable' | 'Near Threatened' | 'Least Concern';
+  regionalDistribution: (KewRegion | string)[];
+  iucnStatus: 'Critically Endangered' | 'Critically Endangered (Regional Subspecies)' | 'Endangered' | 'Vulnerable' | 'Near Threatened' | 'Least Concern';
   scheduleWpa: string;
   ecologicalRole: string;
   primaryConflictTypes: ConflictCategory[];

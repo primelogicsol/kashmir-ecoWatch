@@ -88,7 +88,7 @@ export interface ComplianceDirection {
   directionId: string;
   issuedDate: string;
   responsibleAgency: string;
-  agencyType: 'MUNICIPAL' | 'POLLUTION_CONTROL' | 'FOREST' | 'INFRASTRUCTURE' | 'REVENUE' | 'WATER_RESOURCES';
+  agencyType: 'MUNICIPAL' | 'POLLUTION_CONTROL' | 'FOREST' | 'INFRASTRUCTURE' | 'REVENUE' | 'WATER_RESOURCES' | 'GENERAL_ADMIN';
   directionText: string;
   statutoryDeadline: string;
   status: ComplianceStatus;

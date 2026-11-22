@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import {
   Hammer, CheckCircle, RefreshCw, Calendar, Droplet, Waves, MapPin,
   Clock, Sparkles, Activity, AlertTriangle, CheckCircle2, ChevronRight,
-  Eye, ShieldCheck, Layers, ArrowRight, FileText, Camera, Users, Shield
+  Eye, ShieldCheck, ShieldAlert, Layers, ArrowRight, FileText, Camera, Users, Shield
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

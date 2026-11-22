@@ -169,21 +169,21 @@ export default function SpecializedTransportSubmodulePage() {
                   </span>
                   <h4 className="text-base font-bold text-white mt-1">{h.name}</h4>
                 </div>
-                <span className="text-sm font-bold text-rose-400 font-mono">{h.delayMultiplier}x Delay</span>
+                <span className="text-sm font-bold text-rose-400 font-mono">{h.delayIndex}x Delay</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">{h.description}</p>
+              <p className="text-xs text-slate-300 leading-relaxed">{h.primaryPollutionSource}</p>
               <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-2 border-t border-white/5">
                 <div>
                   <span className="text-slate-500 text-[10px] block">PEAK PM₂.₅</span>
-                  <span className="text-rose-400 font-bold">{h.peakPm25UgM3} µg/m³</span>
+                  <span className="text-rose-400 font-bold">{h.roadsidePm25AvgUgM3} µg/m³</span>
                 </div>
                 <div>
                   <span className="text-slate-500 text-[10px] block">PEAK NOISE</span>
-                  <span className="text-amber-400 font-bold">{h.dayNoiseDbA} dB(A)</span>
+                  <span className="text-amber-400 font-bold">{h.roadsideDbA} dB(A)</span>
                 </div>
               </div>
               <div className="pt-2 border-t border-white/5 text-[11px] text-slate-400">
-                <span className="text-amber-400 font-semibold">Remediation:</span> {h.mitigationStatus}
+                <span className="text-amber-400 font-semibold">Remediation:</span> {h.recommendedIntervention}
               </div>
             </div>
           ))}

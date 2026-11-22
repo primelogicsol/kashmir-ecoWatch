@@ -251,7 +251,7 @@ export default function TransportationPollutionOverviewPage() {
                 <div className="space-y-1.5 text-xs text-slate-300">
                   <div className="flex justify-between text-[11px]">
                     <span className="text-slate-400">Fleet Mix:</span>
-                    <span>{reg.avgTwoWheelersPct}% 2W · {reg.avgCarSuvPct}% Cars · {reg.avgFreightTruckPct}% Trucks</span>
+                    <span>{reg.avgTwoWheelerPct}% 2W · {reg.avgCarSuvPct}% Cars · {reg.avgFreightTruckPct}% Trucks</span>
                   </div>
                   <div className="flex justify-between text-[11px]">
                     <span className="text-slate-400">Electric EV Share:</span>

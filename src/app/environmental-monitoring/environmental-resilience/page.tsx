@@ -660,12 +660,12 @@ export default function EnvironmentalResiliencePage() {
 
       const matchTypology = 
         activeTypology === 'all' ||
-        (activeTypology === 'critical' && (d.priorityLevel === 'Critical' || d.riskExposure === 'Extreme' || d.riskExposure === 'High')) ||
-        (activeTypology === 'flood' && (d.resilienceDomain === 'Flood Resilience' || d.resilienceDomain === 'Water System')) ||
-        (activeTypology === 'infrastructure' && (d.resilienceDomain === 'Critical Infrastructure' || d.resilienceDomain === 'Wastewater & Sanitation')) ||
-        (activeTypology === 'ecosystem' && (d.resilienceDomain === 'Ecosystem Recovery' || d.resilienceDomain === 'Restoration Readiness')) ||
-        (activeTypology === 'climate' && (d.resilienceDomain === 'Climate Extremes' || d.resilienceDomain === 'Landslide Resilience' || d.resilienceDomain === 'Forest Fire Resilience')) ||
-        (activeTypology === 'community' && (d.resilienceDomain === 'Community Preparedness' || d.resilienceDomain === 'Remote Area Access'));
+        (activeTypology === 'critical' && (r.priorityLevel === 'Critical' || r.riskExposure === 'Extreme' || r.riskExposure === 'High')) ||
+        (activeTypology === 'flood' && (r.resilienceDomain === 'Flood Resilience' || r.resilienceDomain === 'Water System')) ||
+        (activeTypology === 'infrastructure' && (r.resilienceDomain === 'Critical Infrastructure' || r.resilienceDomain === 'Wastewater & Sanitation')) ||
+        (activeTypology === 'ecosystem' && (r.resilienceDomain === 'Ecosystem Recovery' || r.resilienceDomain === 'Restoration Readiness')) ||
+        (activeTypology === 'climate' && (r.resilienceDomain === 'Climate Extremes' || r.resilienceDomain === 'Landslide Resilience' || r.resilienceDomain === 'Forest Fire Resilience')) ||
+        (activeTypology === 'community' && (r.resilienceDomain === 'Community Preparedness' || r.resilienceDomain === 'Remote Area Access'));
 
       return matchSearch && matchScope && matchDistrict && matchDomain && matchStatus && matchPriority && matchRisk && matchTypology;
     });

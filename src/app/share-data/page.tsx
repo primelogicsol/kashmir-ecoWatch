@@ -442,13 +442,14 @@ export default function ShareDataPage() {
     if (currentStep < 4) { setCurrentStep(currentStep + 1); return; }
     setIsSubmitting(true);
     
+    const locationSummary = habitatType || coordinates || 'Kashmir Basin';
     const res = await submitToOperations({
       sourcePage: '/share-data',
-      title: `${selectedDomain ? selectedDomain.toUpperCase() : 'Environmental'} Dataset (${locationText || 'Kashmir Basin'})`,
+      title: `${selectedDomain ? selectedDomain.toUpperCase() : 'Environmental'} Dataset (${locationSummary})`,
       category: selectedDomain || 'dataset',
       ownerName: isAnonymous ? 'Anonymous Scientist' : (contributorName || 'Research Contributor'),
       ownerEmail: contributorEmail || 'data-desk@kashmirecowatch.org',
-      district: locationText ? locationText.split(',')[0].trim() : 'Srinagar',
+      district: 'Srinagar',
       details: `${description} | Domain: ${selectedDomain} | Darwin Core: ${agreeToDarwinCore ? 'Yes' : 'No'} | Method: ${observationMethod || 'Standard'} | Equipment: ${equipmentUsed || 'Field sensors'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority: 'HIGH',
     });

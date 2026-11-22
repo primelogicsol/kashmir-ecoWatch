@@ -52,7 +52,7 @@ export default function VehicleTypesPage() {
     return DISTRICT_TRANSPORT_DATA.filter((d) => {
       if (regionFilter !== 'ALL') {
         if (regionFilter === 'AJ&K' || regionFilter === 'Azad Jammu & Kashmir') {
-          if (d.region !== 'Azad Jammu & Kashmir' && d.region !== 'AJ&K') return false;
+          if (d.region !== 'Azad Jammu & Kashmir') return false;
         } else if (d.region !== regionFilter) {
           return false;
         }

@@ -36,9 +36,12 @@ export default function NoiseDashboardsPage() {
   const filteredDistricts = useMemo(() => {
     return DISTRICT_NOISE_PROFILES.filter((d) => {
       const matchRegion = selectedRegion === 'ALL' || d.region === selectedRegion;
+      const q = searchQuery.toLowerCase();
       const matchSearch =
-        d.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        d.headquarters.toLowerCase().includes(searchQuery.toLowerCase());
+        !q ||
+        d.district.toLowerCase().includes(q) ||
+        d.region.toLowerCase().includes(q) ||
+        d.primaryNoiseSources.some((s) => s.toLowerCase().includes(q));
       return matchRegion && matchSearch;
     }).sort((a, b) => {
       if (sortField === 'score') {

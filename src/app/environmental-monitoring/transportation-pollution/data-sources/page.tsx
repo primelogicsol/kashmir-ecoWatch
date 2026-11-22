@@ -179,15 +179,15 @@ export default function SpecializedTransportSubmodulePage() {
                 {TRANSPORT_DATA_PROVIDERS.map((p, i) => (
                   <tr key={i} className="hover:bg-white/[0.02]">
                     <td className="py-2.5 px-3 font-semibold text-white font-sans">{p.name}</td>
-                    <td className="py-2.5 px-3 text-slate-400 font-sans">{p.agency}</td>
-                    <td className="py-2.5 px-3 text-amber-300 font-sans">{p.jurisdiction === 'Azad Jammu & Kashmir' ? 'AJ&K' : p.jurisdiction}</td>
+                    <td className="py-2.5 px-3 text-slate-400 font-sans">{p.institution}</td>
+                    <td className="py-2.5 px-3 text-amber-300 font-sans">{p.coverageScope}</td>
                     <td className="py-2.5 px-3 text-slate-300">{p.updateFrequency}</td>
                     <td className="py-2.5 px-3 text-center">
                       <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">
-                        {p.status}
+                        {p.accessStatus.replace(/_/g, ' ')}
                       </span>
                     </td>
-                    <td className="py-2.5 px-3 text-slate-400 text-[10px]">{p.license}</td>
+                    <td className="py-2.5 px-3 text-slate-400 text-[10px]">{p.recordsCount}</td>
                   </tr>
                 ))}
               </tbody>

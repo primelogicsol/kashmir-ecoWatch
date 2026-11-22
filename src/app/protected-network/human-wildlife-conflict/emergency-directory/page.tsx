@@ -404,7 +404,7 @@ export default function HwcEmergencyDirectoryPage() {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-                        {contact.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : contact.region} · {contact.district}
+                        {String(contact.region).includes('Azad Jammu') ? 'AJ&K' : contact.region} · {contact.district}
                       </span>
                       <h3 className="text-base font-bold text-white mt-0.5 leading-snug">
                         {contact.officeName}
@@ -536,7 +536,7 @@ export default function HwcEmergencyDirectoryPage() {
                 {filteredContacts.map((contact) => (
                   <tr key={contact.id} className="hover:bg-white/5 transition-colors">
                     <td className="p-3 font-mono font-medium text-slate-300">
-                      <div>{contact.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : contact.region}</div>
+                      <div>{String(contact.region).includes('Azad Jammu') ? 'AJ&K' : contact.region}</div>
                       <div className="text-[10px] text-slate-500">{contact.district}</div>
                     </td>
                     <td className="p-3">

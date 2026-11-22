@@ -349,7 +349,7 @@ export default function NoiseGisAtlasPage() {
                 <div className="flex items-start justify-between">
                   <div>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 uppercase font-bold">
-                      {r.type}
+                      {r.category.replace(/_/g, ' ')}
                     </span>
                     <h4 className="text-sm font-bold text-white mt-1.5">{r.name}</h4>
                   </div>
@@ -358,12 +358,12 @@ export default function NoiseGisAtlasPage() {
 
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono bg-slate-950/60 p-2.5 rounded-[6px] border border-white/5">
                   <div>
-                    <span className="text-[9px] text-slate-500 uppercase block">Distance to Highway</span>
-                    <span className="text-amber-400 font-bold">{r.distanceToArterialMeters}m</span>
+                    <span className="text-[9px] text-slate-500 uppercase block">Silence Buffer / Distance</span>
+                    <span className="text-amber-400 font-bold">{r.distanceToArterialMeters ?? r.statutoryBufferMeters}m</span>
                   </div>
                   <div>
                     <span className="text-[9px] text-slate-500 uppercase block">Day Leq Measured</span>
-                    <span className="text-rose-400 font-bold">{r.measuredDayLeq} dB(A)</span>
+                    <span className="text-rose-400 font-bold">{r.measuredDayLeq !== undefined ? `${r.measuredDayLeq} dB(A)` : 'Unmonitored'}</span>
                   </div>
                 </div>
 
@@ -371,10 +371,12 @@ export default function NoiseGisAtlasPage() {
                   <span className="text-slate-400">Statutory 50 dB Limit:</span>
                   <span
                     className={`font-mono font-bold ${
-                      r.statutoryViolation ? 'text-rose-400' : 'text-emerald-400'
+                      (r.statutoryViolation ?? ((r.measuredDayLeq ?? 0) > 50)) ? 'text-rose-400' : 'text-emerald-400'
                     }`}
                   >
-                    {r.statutoryViolation ? `+${(r.measuredDayLeq - 50).toFixed(1)} dB Exceedance` : 'Compliant'}
+                    {(r.statutoryViolation ?? ((r.measuredDayLeq ?? 0) > 50)) && r.measuredDayLeq !== undefined
+                      ? `+${(r.measuredDayLeq - 50).toFixed(1)} dB Exceedance`
+                      : 'Compliant / Baseline'}
                   </span>
                 </div>
               </Card>
