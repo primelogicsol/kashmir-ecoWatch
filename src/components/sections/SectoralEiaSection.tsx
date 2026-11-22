@@ -88,7 +88,7 @@ export function SectoralEiaSection() {
         >
           <div>
             <div className="flex items-center gap-2 mb-2 sm:mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
                 <Activity className="w-3 h-3 text-emerald-400" />
                 Sectoral EIA Engine (SEIAE)
               </span>

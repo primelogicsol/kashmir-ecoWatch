@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
-import { Map, Leaf, BarChart3, ArrowRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles } from 'lucide-react';
+import { Map, Leaf, BarChart3, ArrowRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles, Wind } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { searchAll } from '@/data';
 import { useRouter } from 'next/navigation';
@@ -234,7 +234,7 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-light border border-white/10 mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] glass-light border border-white/10 mb-6 sm:mb-8"
           >
             <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -277,6 +277,70 @@ export function ImmersiveHero() {
             A scientific, spatial, and real-time ecological intelligence system for biodiversity,
             water systems, hazard intelligence, environmental monitoring, seasonal phenology, and civil society impact across Kashmir & Ladakh.
           </motion.p>
+
+          {/* Mobile 2-Tap Direct Field Telemetry (Priority 1 Mobile Accessibility) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="grid grid-cols-2 gap-2 my-5 md:hidden"
+          >
+            <button
+              onClick={() => router.push('/environmental-monitoring/air-pollution')}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 text-left active:scale-95 transition-all shadow-md"
+              aria-label="Direct access to live AQI air pollution monitoring"
+            >
+              <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 flex-shrink-0">
+                <Wind className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Air Quality</span>
+                <span className="text-xs font-bold text-white truncate block">Live AQI Telemetry</span>
+              </div>
+            </button>
+
+            <button
+              onClick={() => router.push('/hazard-intelligence/earthquakes')}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-red-500/30 text-left active:scale-95 transition-all shadow-md"
+              aria-label="Direct access to seismic and earthquake intelligence"
+            >
+              <div className="p-1.5 rounded-lg bg-red-500/20 text-red-400 flex-shrink-0">
+                <Activity className="w-4 h-4 animate-pulse" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Seismic Belt</span>
+                <span className="text-xs font-bold text-white truncate block">EMSC Telemetry</span>
+              </div>
+            </button>
+
+            <button
+              onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-amber-500/30 text-left active:scale-95 transition-all shadow-md"
+              aria-label="Direct access to multi-hazard alerts and advisories"
+            >
+              <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 flex-shrink-0">
+                <AlertTriangle className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Hazard Alerts</span>
+                <span className="text-xs font-bold text-white truncate block">Active Advisories</span>
+              </div>
+            </button>
+
+            <button
+              onClick={() => router.push('/submit-observation')}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-left active:scale-95 transition-all shadow-md"
+              aria-label="Direct access to submit citizen science field observation"
+            >
+              <div className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 flex-shrink-0">
+                <Shield className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Field Action</span>
+                <span className="text-xs font-bold text-white truncate block">Deposit Observation</span>
+              </div>
+            </button>
+          </motion.div>
 
           {/* Primary actions */}
           <motion.div
@@ -418,7 +482,7 @@ export function ImmersiveHero() {
                                       <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
                                         {item.name}
                                       </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.scientificName}</div>
+                                      <div className="text-xs sm:text-sm text-slate-400 italic break-words">{item.scientificName}</div>
                                     </div>
                                     <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
                                   </button>
@@ -447,7 +511,7 @@ export function ImmersiveHero() {
                                       <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
                                         {item.name}
                                       </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district}</div>
+                                      <div className="text-xs sm:text-sm text-slate-400 break-words">{item.district}</div>
                                     </div>
                                     <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
                                   </button>
@@ -563,7 +627,7 @@ export function ImmersiveHero() {
                                       <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
                                         {item.title}
                                       </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.location}</div>
+                                      <div className="text-xs sm:text-sm text-slate-400 break-words">{item.location}</div>
                                     </div>
                                     <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
                                   </button>
@@ -620,7 +684,7 @@ export function ImmersiveHero() {
                                     setQuery('');
                                     router.push(chip.route);
                                   }}
-                                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-light border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-xs sm:text-sm text-slate-300 hover:text-white transition-all cursor-pointer group"
+                                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] glass-light border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-xs sm:text-sm text-slate-300 hover:text-white transition-all cursor-pointer group"
                                   title={`Explore ${chip.label}`}
                                 >
                                   <chip.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
@@ -659,7 +723,7 @@ export function ImmersiveHero() {
                                       <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors truncate">
                                         {example.label}
                                       </span>
-                                      <span className="text-[9px] sm:text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                                      <span className="text-[9px] sm:text-[10px] font-medium px-2 py-0.5 rounded-[4px] bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
                                         {example.type}
                                       </span>
                                     </div>
@@ -752,7 +816,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 1.4 }}
             className="mt-8 max-w-4xl"
           >
-            <div className="inline-flex items-center gap-3 px-2 md:px-4 py-2 rounded-full glass-light border border-white/10">
+            <div className="inline-flex items-center gap-3 px-2 md:px-4 py-2 rounded-[4px] glass-light border border-white/10">
               <Database className="w-4 h-4 text-blue-400" />
               <span className="text-[8px] md:text-xs text-slate-400">
                 Source-integrated metrics updated across 24 specialized intelligence modules — synthesizing reference inventories, Copernicus/ECMWF satellite feeds, municipal audits, and field sensors

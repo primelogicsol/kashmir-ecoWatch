@@ -38,7 +38,7 @@ export default function BirdingTrailsPage() {
               <motion.div key={trail.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
                 <Card className="glass-intense border-white/10 hover:border-sky-500/30 transition-all p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center"><Bird className="w-6 h-6 text-white" /></div>
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center"><Bird className="w-6 h-6 text-white" /></div>
                     <div><h3 className="text-lg font-bold text-white">{trail.name}</h3><div className="text-xs text-slate-500">{trail.district}</div></div>
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-sm text-slate-400 mb-3">

@@ -22,31 +22,31 @@ import Link from 'next/link';
 
 const PROTECTED_SHOWCASE_PRESETS: Record<string, { id: string; title: string; subtitle: string; location: string; tag: string; src: string }[]> = {
     national_park: [
-    { id: '1', title: 'Dachigam National Park', subtitle: 'Prime Hangul Sanctuary & Upper Forest', location: 'Srinagar · 141 km²', tag: 'National Park', src: '/images/protected-network.png' },
+    { id: '1', title: 'Dachigam National Park', subtitle: 'Prime Hangul Sanctuary & Upper Forest', location: 'Srinagar · 141 km²', tag: 'National Park', src: '/images/protected-network/protected-national-parks-dachigam.jpg' },
     { id: '2', title: 'Kazinag National Park', subtitle: 'Markhor & Musk Deer Range', location: 'Baramulla · 160 km²', tag: 'Western Caprinae', src: '/images/markhor.png' },
-    { id: '3', title: 'Hemis High Altitude NP', subtitle: 'Global Snow Leopard Density Capital', location: 'Leh, Ladakh · 4,400 km²', tag: 'Trans-Himalayan', src: '/images/protected-network.png' },
+    { id: '3', title: 'Hemis High Altitude NP', subtitle: 'Global Snow Leopard Density Capital', location: 'Leh, Ladakh · 4,400 km²', tag: 'Trans-Himalayan', src: '/images/protected-network/protected-area-atlas-gis.jpg' },
     { id: '4', title: 'Deosai National Park', subtitle: 'Himalayan Brown Bear Sanctuary', location: 'Skardu / Astore · 3,584 km²', tag: 'Alpine Tundra', src: '/images/bear.png' },
   ],
   wildlife_sanctuary: [
-    { id: '1', title: 'Overa-Aru Sanctuary', subtitle: 'Pahalgam Alpine & Hanging Valley', location: 'Anantnag · 511 km²', tag: 'Sanctuary', src: '/images/protected-network.png' },
+    { id: '1', title: 'Overa-Aru Sanctuary', subtitle: 'Pahalgam Alpine & Hanging Valley', location: 'Anantnag · 511 km²', tag: 'Sanctuary', src: '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg' },
     { id: '2', title: 'Gulmarg Wildlife Sanctuary', subtitle: 'Apharwat Altitudinal Transect', location: 'Baramulla · 180 km²', tag: 'Alpine Biome', src: '/images/bear.png' },
     { id: '3', title: 'Hirpora Wildlife Sanctuary', subtitle: 'Pir Panjal Markhor Highway', location: 'Shopian · 341 km²', tag: 'Corridor Node', src: '/images/markhor.png' },
     { id: '4', title: 'Limber Wildlife Sanctuary', subtitle: 'Langate-Kazinag Buffer Matrix', location: 'Baramulla · 26 km²', tag: 'Conifer Forest', src: '/images/tiger.png' },
   ],
   wetland_reserve: [
-    { id: '1', title: 'Hokersar Ramsar Wetland', subtitle: 'Central Asian Flyway Haven', location: 'Budgam / Srinagar · 13.75 km²', tag: 'Ramsar Wetland', src: '/images/protected-network.png' },
+    { id: '1', title: 'Hokersar Ramsar Wetland', subtitle: 'Central Asian Flyway Haven', location: 'Budgam / Srinagar · 13.75 km²', tag: 'Ramsar Wetland', src: '/images/protected-network/protected-wetland-reserves-hokersar.jpg' },
     { id: '2', title: 'Shallabugh Wetland Reserve', subtitle: 'Deltaic Marshes & Waterfowl Refuge', location: 'Ganderbal · 16 km²', tag: 'Ramsar Site', src: '/images/bear.png' },
     { id: '3', title: 'Hygam Wetland Reserve', subtitle: 'Flood Basin & Reed Beds', location: 'Baramulla · 7.25 km²', tag: 'Ramsar Basin', src: '/images/markhor.png' },
     { id: '4', title: 'Mirgund Wetland Reserve', subtitle: 'Seasonal Shallower Waterfowl Stop', location: 'Baramulla · 4.0 km²', tag: 'Flyway Rest', src: '/images/tiger.png' },
   ],
   conservation_reserve: [
-    { id: '1', title: 'Shikargah Tral Reserve', subtitle: 'Hangul Dispersal Corridor', location: 'Pulwama · 15.5 km²', tag: 'Conservation Reserve', src: '/images/protected-network.png' },
+    { id: '1', title: 'Shikargah Tral Reserve', subtitle: 'Hangul Dispersal Corridor', location: 'Pulwama · 15.5 km²', tag: 'Conservation Reserve', src: '/images/protected-network/protected-conservation-reserves-shikargah.jpg' },
     { id: '2', title: 'Khiram Conservation Reserve', subtitle: 'Overa Foothill Forest Matrix', location: 'Anantnag · 15.7 km²', tag: 'Oak & Pine', src: '/images/bear.png' },
     { id: '3', title: 'Wangath Conservation Reserve', subtitle: 'Sindh Valley Riparian Buffer', location: 'Ganderbal · 12 km²', tag: 'Valley Corridor', src: '/images/markhor.png' },
     { id: '4', title: 'Pani-Wah / Bren Reserve', subtitle: 'Dachigam Buffer Zone', location: 'Srinagar · 8.2 km²', tag: 'Community Edge', src: '/images/tiger.png' },
   ],
   bird_and_habitat_area: [
-    { id: '1', title: 'Wular Lake IBA', subtitle: 'Largest Freshwater Basin IBA', location: 'Bandipora · 189 km²', tag: 'Key Bird Area', src: '/images/protected-network.png' },
+    { id: '1', title: 'Wular Lake IBA', subtitle: 'Largest Freshwater Basin IBA', location: 'Bandipora · 189 km²', tag: 'Key Bird Area', src: '/images/protected-network/protected-bird-habitat-areas-iba.jpg' },
     { id: '2', title: 'Dachigam-Harwan IBA', subtitle: 'Endemic Flycatcher & Monal Zone', location: 'Srinagar · 141 km²', tag: 'Himalayan IBA', src: '/images/bear.png' },
     { id: '3', title: 'Overa-Aru IBA', subtitle: 'Subalpine & Alpine Birding Corridor', location: 'Anantnag · 511 km²', tag: 'High-Altitude IBA', src: '/images/markhor.png' },
     { id: '4', title: 'Hokersar Avian Sanctuary', subtitle: 'Half-Million Wintering Migrants', location: 'Srinagar · 13.75 km²', tag: 'Ramsar IBA', src: '/images/tiger.png' },
@@ -67,6 +67,7 @@ interface ProtectedArea {
 }
 
 interface ProtectedCategoryPageProps {
+  images?: string[];
   title: string | React.ReactNode;
   subtitle: string;
   icon: keyof typeof import('lucide-react');
@@ -81,6 +82,7 @@ interface ProtectedCategoryPageProps {
 }
 
 export function ProtectedCategoryPage({
+
   title,
   subtitle,
   icon: iconName,
@@ -88,6 +90,7 @@ export function ProtectedCategoryPage({
   areas,
   metrics,
   sourceData,
+  images,
 }: ProtectedCategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.MapPin;
   const router = useRouter();
@@ -203,7 +206,7 @@ export function ProtectedCategoryPage({
             Protected Area Sentinel
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           Active 2026
         </span>
       </div>
@@ -285,7 +288,7 @@ export function ProtectedCategoryPage({
         icon={<Icon className={`w-6 h-6 ${color.includes('emerald') ? 'text-emerald-400' : 'text-slate-400'}`} />}
         label="KEW Protected Network · Conservation Domain"
         gridOverlay
-        images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={images || ['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
         rightContent={heroShowcaseCard}
         actions={
           <div className="flex flex-wrap items-center gap-2">
@@ -315,7 +318,7 @@ export function ProtectedCategoryPage({
       {/* CORRIDOR TELEMETRY BANNER & J&K PROTECTED NETWORK SENTINEL    */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -354,7 +357,7 @@ export function ProtectedCategoryPage({
               return (
                 <div key={idx} className="py-2.5 px-2 rounded-xl text-center min-w-0 bg-white/5 border border-white/5 shadow-inner">
                   <KpiIcon className="w-4 h-4 text-emerald-400 mx-auto mb-1" />
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight break-words">
                     {typeof kpi.value === 'number' ? kpi.value.toLocaleString() : kpi.value}
                   </div>
                   <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wide mt-0.5 leading-tight break-words">
@@ -416,7 +419,7 @@ export function ProtectedCategoryPage({
                           {area.category.replace('_', ' ')}
                         </Badge>
                         {(area as any).scope && (
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-md border ${
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-[4px] backdrop-blur-md border ${
                             (area as any).scope === 'Kashmir Core' 
                               ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
                               : (area as any).scope === 'Trans-Divisional'
@@ -470,11 +473,11 @@ export function ProtectedCategoryPage({
                       </div>
                       <div>
                         <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">District</div>
-                        <div className="text-white font-bold truncate">{area.district}</div>
+                        <div className="text-white font-bold break-words">{area.district}</div>
                       </div>
                       <div>
                         <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Elevation</div>
-                        <div className="text-emerald-400 font-bold truncate">{(area as any).altitudeRange || `${(area as any).elevation_min_m || 1500}m+`}</div>
+                        <div className="text-emerald-400 font-bold break-words">{(area as any).altitudeRange || `${(area as any).elevation_min_m || 1500}m+`}</div>
                       </div>
                     </div>
 
@@ -511,7 +514,7 @@ export function ProtectedCategoryPage({
                     {(area as any).hydrological_system && (
                       <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mb-2 truncate">
                         <Icons.Droplet className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                        <span className="truncate">{(area as any).hydrological_system}</span>
+                        <span className="break-words">{(area as any).hydrological_system}</span>
                       </div>
                     )}
 

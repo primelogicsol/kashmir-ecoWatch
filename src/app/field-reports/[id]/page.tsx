@@ -86,7 +86,7 @@ export default function ReportDetailPage() {
             </button>
 
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl flex-shrink-0">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl flex-shrink-0">
                 <FileText className="w-5 h-5 md:w-8 md:h-8 text-white" />
               </div>
               <div className="flex-1">

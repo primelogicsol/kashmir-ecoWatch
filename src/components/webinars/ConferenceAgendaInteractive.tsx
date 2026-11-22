@@ -85,7 +85,7 @@ export function ConferenceAgendaInteractive({ conference, sessions = SESSIONS_DE
 
       {/* Daily Theme Banner */}
       {activeDailyTheme && (
-        <div className="bg-gradient-to-r from-teal-950/40 via-slate-900 to-slate-900 p-4 sm:p-5 rounded-2xl border border-teal-500/20">
+        <div className="bg-slate-900 p-4 sm:p-5 rounded-2xl border border-teal-500/20">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-teal-400 uppercase tracking-wider mb-1">
@@ -192,7 +192,7 @@ export function ConferenceAgendaInteractive({ conference, sessions = SESSIONS_DE
                   </div>
                   {session.status === 'live' && (
                     <div className="mt-2">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
                         Live in Hall
                       </span>

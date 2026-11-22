@@ -134,7 +134,7 @@ export default function ProjectProfilePage() {
               <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
                 <Leaf className="w-5 h-5 text-emerald-500" /> Ecological Outcome
               </h3>
-              <Card className="p-5 bg-gradient-to-br from-slate-900 to-emerald-950/20 border-emerald-900/30">
+              <Card className="p-5 bg-slate-900 border-emerald-900/30">
                 <p className="text-slate-300 leading-relaxed">
                   {proj.ecological_outcome}
                 </p>
@@ -145,7 +145,7 @@ export default function ProjectProfilePage() {
               <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
                 <Users className="w-5 h-5 text-sky-500" /> Community Outcome
               </h3>
-              <Card className="p-5 bg-gradient-to-br from-slate-900 to-sky-950/20 border-sky-900/30">
+              <Card className="p-5 bg-slate-900 border-sky-900/30">
                 <p className="text-slate-300 leading-relaxed">
                   {proj.community_outcome}
                 </p>

@@ -109,6 +109,11 @@ export default function BirdsPage() {
 
   return (
     <BiodiversityCategoryPage
+      images={[
+        '/images/biodiversity/biodiversity-birds-wetland.jpg',
+        '/images/biodiversity/biodiversity-command-center.jpg',
+        '/images/bear.png',
+      ]}
       title="Western Himalayan Avifauna & Ornithology"
       subtitle="A comprehensive ornithological intelligence layer tracking 601 resident, altitudinal, and trans-Himalayan migratory bird taxa across Kashmir, Jammu, Ladakh, and extended valleys. Monitoring 152 IUCN Red List threatened species, Central Asian Flyway waterfowl, and royal galliform pheasants across all 25 districts."
       icon="Bird"
@@ -129,7 +134,7 @@ export default function BirdsPage() {
               Select an ecological guild, migration profile, or conservation status to filter the 601 bird species.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-sky-400">{displayedSpecies.length}</strong> of {totalCount} species
           </span>
         </div>
@@ -327,7 +332,7 @@ export default function BirdsPage() {
                   className="p-3.5 rounded-xl bg-slate-950/70 border border-blue-500/20 hover:border-blue-500/40 transition-all"
                 >
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center gap-1">
                       <Wind className="w-2.5 h-2.5" />
                       Central Asian Migrant
                     </span>

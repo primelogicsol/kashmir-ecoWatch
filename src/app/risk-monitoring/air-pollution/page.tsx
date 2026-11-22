@@ -377,7 +377,7 @@ export default function AirPollutionPage() {
                   <p className="text-sm text-slate-400">District-wise AQI visualization and hotspot layers</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <Layers className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-4">Interactive AQI map with district boundaries and monitoring stations</p>

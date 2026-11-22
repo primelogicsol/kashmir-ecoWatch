@@ -334,7 +334,7 @@ export default function AlgalBloomMonitoringPage() {
       </section>
 
       {/* Watershed Upstream Intelligence Section */}
-      <section className="py-16 bg-gradient-to-b from-slate-900 to-slate-950 border-y border-white/5">
+      <section className="py-16 bg-slate-900 border-y border-white/5">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -500,7 +500,7 @@ export default function AlgalBloomMonitoringPage() {
                   <p className="text-sm text-slate-400">Waterbody bloom status, coverage, and risk layers</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-emerald-900/50 to-green-900/30 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <Layers className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-4">Interactive bloom monitoring map with satellite imagery overlay</p>
@@ -532,7 +532,7 @@ export default function AlgalBloomMonitoringPage() {
                 <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
                   {/* Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-2xl">
+                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                       <Flower2 className="w-5 h-5 md:w-8 md:h-8 text-white" />
                     </div>
                   </div>

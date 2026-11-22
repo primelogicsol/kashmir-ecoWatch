@@ -21,7 +21,7 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
 
   return (
     <div 
-      className="absolute right-0 top-full mt-2 w-80 max-w-[calc(100vw-1.5rem)] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
+      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-80 max-w-[320px] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
       onClick={e => e.stopPropagation()}
     >
       {/* Header Profile Badge */}
@@ -123,12 +123,12 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
         <Link
           href="/about/founder"
           onClick={onClose}
-          className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-colors"
+          className="flex items-center gap-2.5 p-2.5 rounded-md hover:bg-white/5 text-slate-300 hover:text-white transition-colors"
         >
           <Sparkles className="w-4 h-4 text-purple-400" />
           <div>
-            <p className="font-semibold leading-none">Founder Leadership</p>
-            <p className="text-[10px] text-slate-400 mt-1">Credentials & 25-year career record</p>
+            <p className="font-semibold leading-none">Institutional Leadership</p>
+            <p className="text-[10px] text-slate-400 mt-1">Governance, stewardship & research record</p>
           </div>
         </Link>
       </div>

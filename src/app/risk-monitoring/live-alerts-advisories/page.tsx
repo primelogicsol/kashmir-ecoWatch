@@ -98,7 +98,7 @@ export default function LiveAlertsAdvisoriesPage() {
             {lastUpdated && (
               <span>Last Synced: <span className="text-white font-mono">{new Date(lastUpdated).toLocaleTimeString()}</span></span>
             )}
-            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-medium">
+            <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-medium">
               {alerts.length} Active Feeds
             </span>
           </div>

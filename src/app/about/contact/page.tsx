@@ -89,7 +89,7 @@ export default function ContactPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#form"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Submit Portal Enquiry</span>
               <ArrowRight className="w-4 h-4" />
@@ -150,7 +150,7 @@ export default function ContactPage() {
                     <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
                       <Mail className="w-6 h-6 text-emerald-400" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
                       Official Mailbox
                     </span>
                   </div>
@@ -185,7 +185,7 @@ export default function ContactPage() {
                     <div className="w-12 h-12 rounded-2xl bg-sky-500/20 flex items-center justify-center">
                       <Phone className="w-6 h-6 text-sky-400" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-[4px] bg-sky-500/10 text-sky-300 border border-sky-500/30">
                       Voice & SMS
                     </span>
                   </div>
@@ -202,7 +202,7 @@ export default function ContactPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
                   <span className="font-medium">USA Eastern Time (EST)</span>
-                  <span className="px-2 py-0.5 rounded-full bg-white/10 text-slate-300 font-mono text-[11px]">Sat – Sun</span>
+                  <span className="px-2 py-0.5 rounded-[4px] bg-white/10 text-slate-300 font-mono text-[11px]">Sat – Sun</span>
                 </div>
               </div>
 
@@ -213,7 +213,7 @@ export default function ContactPage() {
                     <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center">
                       <MapPin className="w-6 h-6 text-purple-400" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-[4px] bg-purple-500/10 text-purple-300 border border-purple-500/30">
                       Headquarters
                     </span>
                   </div>
@@ -349,7 +349,7 @@ export default function ContactPage() {
 
                     <button 
                       type="submit" 
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 text-sm font-bold transition-all shadow-lg shadow-emerald-500/20 w-full justify-center"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 text-sm font-bold transition-all shadow-lg shadow-emerald-500/20 w-full justify-center"
                     >
                       <Send className="w-4 h-4" /> Send Structured Inquiry to contact@kashmir-ecowatch.com
                     </button>

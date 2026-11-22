@@ -112,7 +112,11 @@ export default function HabitatSignalsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Habitat Signals' }
         ]}
-        images={['/images/protected-network.png']}
+        images={[
+          '/images/biodiversity/biodiversity-botany-flora.jpg',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+          '/images/bear.png',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -152,7 +156,7 @@ export default function HabitatSignalsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-teal-950/70 to-slate-900/95 border border-teal-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-teal-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-teal-500/10 rounded-xl border border-teal-500/20 text-teal-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />

@@ -126,7 +126,7 @@ function MonitoringOverviewPage() {
               <div className="p-6 border-b border-white/5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                       <MapIcon className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
@@ -298,7 +298,7 @@ function MonitoringOverviewPage() {
                       <div className="p-5 md:p-6">
                         <div className="flex items-start gap-4">
                           {/* Icon */}
-                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                          <div className={`w-12 h-12 rounded-xl bg-slate-900 ${gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                             <Icon className="w-6 h-6 text-white" />
                           </div>
 
@@ -632,7 +632,7 @@ function MonitoringOverviewPage() {
           >
             <Card className="glass-intense border-white/10 p-6 md:p-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-500/20 to-slate-600/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                   <Shield className="w-6 h-6 text-slate-400" />
                 </div>
                 <div>

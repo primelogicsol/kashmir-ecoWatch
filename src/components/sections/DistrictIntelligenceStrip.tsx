@@ -254,7 +254,7 @@ export function DistrictIntelligenceStrip() {
                 Regional Intelligence
               </span>
             </div>
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700/50 text-[10px] sm:text-xs text-slate-300">
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-slate-800/80 border border-slate-700/50 text-[10px] sm:text-xs text-slate-300">
               <Database className="w-3 h-3 text-emerald-400" />
               <span>Verified Empirical Baseline · 10 Valley Districts</span>
             </div>

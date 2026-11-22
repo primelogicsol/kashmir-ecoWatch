@@ -103,6 +103,11 @@ export default function FishPage() {
 
   return (
     <BiodiversityCategoryPage
+      images={[
+        '/images/biodiversity/biodiversity-fish-aquatic.jpg',
+        '/images/biodiversity/biodiversity-command-center.jpg',
+        '/images/bear.png',
+      ]}
       title="Western Himalayan Aquatic Life & Freshwater Ecology"
       subtitle="An authoritative ichthyological and freshwater biodiversity matrix analyzing 66 indigenous and naturalized aquatic taxa across Kashmir's interconnected glacial, riverine, and lacustrine networks. Tracking 14 endemic Schizothoracine snow trouts, 13 IUCN Red List threatened taxa, coldwater salmonids, and torrent siluriformes across all 25 Western Himalayan districts."
       icon="Waves"
@@ -123,7 +128,7 @@ export default function FishPage() {
               Select an ecological Guild or conservation status to filter freshwater and aquatic records.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-cyan-400">{displayedSpecies.length}</strong> of {totalCount} species
           </span>
         </div>
@@ -311,7 +316,7 @@ export default function FishPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-rose-500/20 hover:border-rose-500/40 transition-all"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1">
                       <ShieldAlert className="w-2.5 h-2.5" />
                       {sp.conservationStatus === 'CR' ? 'CRITICALLY ENDANGERED' : sp.conservationStatus === 'EN' ? 'ENDANGERED' : 'VULNERABLE'}
                     </span>

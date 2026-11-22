@@ -207,7 +207,7 @@ export default function NwiaClassificationExplorerPage() {
       />
 
       {/* Metrics Bar */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
+      <div className="container mx-auto px-6 mt-6 sm:mt-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -442,7 +442,7 @@ function OverviewTab({
       </Card>
 
       {/* High Altitude Lakes Summary */}
-      <Card className="bg-gradient-to-r from-slate-600/20 to-slate-500/20 border border-slate-500/30 p-6">
+      <Card className="bg-slate-900 border border-slate-500/30 p-6">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-bold text-white flex items-center gap-2">
             <Mountain className="w-5 h-5 text-slate-400" />
@@ -531,7 +531,7 @@ function ClassificationTab({ selectedClass, setSelectedClass, getClassIcon, getC
             onClick={() => setSelectedClass(isExpanded ? null : wetlandClass.code)}
           >
             <div className="flex items-start gap-4">
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${getClassColor(wetlandClass.code)} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+              <div className={`w-14 h-14 rounded-xl bg-slate-900 ${getClassColor(wetlandClass.code)} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                 <Icon className="w-7 h-7 text-white" />
               </div>
               <div className="flex-1">
@@ -619,7 +619,7 @@ function DistrictsTab({ selectedDistrict, setSelectedDistrict, getDistrictColor 
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getDistrictColor(district.district)} flex items-center justify-center shadow-lg`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getDistrictColor(district.district)} flex items-center justify-center shadow-lg`}>
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -710,7 +710,7 @@ function LakesTab({ searchTerm, setSearchTerm, filteredLakes, getClassColor }: a
         {filteredLakes.map((lake: any) => (
           <Card key={lake.name} className="glass-intense border-white/10 p-6">
             <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getClassColor(lake.nwiaCode)} flex items-center justify-center shadow-lg`}>
+              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getClassColor(lake.nwiaCode)} flex items-center justify-center shadow-lg`}>
                 <Droplet className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
@@ -808,7 +808,7 @@ function RiversTab({ searchTerm, setSearchTerm, filteredRivers, getClassColor }:
         {filteredRivers.map((river: any) => (
           <Card key={river.name} className="glass-intense border-white/10 p-6">
             <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getClassColor(river.nwiaCode)} flex items-center justify-center shadow-lg`}>
+              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getClassColor(river.nwiaCode)} flex items-center justify-center shadow-lg`}>
                 <Waves className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">

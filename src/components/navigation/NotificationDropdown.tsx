@@ -73,7 +73,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
 
   return (
     <div 
-      className="absolute right-0 top-full mt-2 w-[420px] max-w-[calc(100vw-1.5rem)] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
+      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[420px] max-w-[420px] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
       onClick={e => e.stopPropagation()}
     >
       {/* Header */}
@@ -86,7 +86,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-white leading-tight">Live Alert Stream</h3>
               {isLive ? (
-                <span className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
                   LIVE API
                 </span>
@@ -189,7 +189,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300 shrink-0">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-slate-300 shrink-0">
                         {alert.district}
                       </span>
                       {alert.id.startsWith('live-') && (
@@ -198,7 +198,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                         </span>
                       )}
                     </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border shrink-0 ${getSeverityBadge(alert.severity)}`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-[4px] border shrink-0 ${getSeverityBadge(alert.severity)}`}>
                       {alert.severity}
                     </span>
                   </div>

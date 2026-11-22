@@ -11,6 +11,7 @@ import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/Modu
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { RelatedHazardIntelligence } from '@/components/hazard/RelatedHazardIntelligence';
 import { Flame, ChevronRight, AlertTriangle, Activity, Clock, MapPin, ExternalLink, TrendingUp, Shield, Zap, Eye, Mountain, Users, Calendar, RefreshCw, Thermometer, Droplets, Wind, Map, BarChart3 } from 'lucide-react';
 import {
   forestFireRegistry, forestFireKpis,
@@ -274,10 +275,10 @@ export default function ForestFiresPage() {
           </div>
         }
         images={[
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
+          '/images/hazard-intelligence/hazard-forest-fires-wildfire.jpg',
+          '/images/hazard-intelligence/hazard-command-center.jpg',
+          '/images/hazard-intelligence/hazard-landslides-monitoring.jpg',
+          '/images/hazard-intelligence/hazard-floods-riverine.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -304,7 +305,7 @@ export default function ForestFiresPage() {
       
       {/* ── Live Fire Weather & Thermal Telemetry Banner ──────────────────── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-orange-500/20 p-4 bg-gradient-to-r from-orange-950/30 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-orange-500/20 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center flex-shrink-0">
@@ -312,7 +313,7 @@ export default function ForestFiresPage() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">Open-Meteo Wildfire Atmospheric Intelligence</span>
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">KEW Wildfire Atmospheric Intelligence</span>
                   <Badge variant="success" size="sm" className="text-[9px]">Live ECMWF Active</Badge>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-0.5">
@@ -441,36 +442,10 @@ export default function ForestFiresPage() {
         </div>
       </section>
 
-      {/* ── Cross-links ──────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* ── RELATED HAZARD INTELLIGENCE (6 CONTEXTUAL MODULES) ─────────── */}
+      <section className="py-12 bg-slate-900 border-t border-white/5">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Related Hazard Modules</h2>
-            <p className="text-slate-400">Explore connected hazard intelligence domains</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'GLOFs',            href: '/hazard-intelligence/glofs',         desc: 'Glacial lake outburst flood risk', icon: ExternalLink, color: 'from-teal-500 to-emerald-600' },
-              { label: 'Floods',           href: '/hazard-intelligence/floods',        desc: 'Riverine & flash flood monitoring', icon: ExternalLink, color: 'from-blue-500 to-cyan-600' },
-              { label: 'Landslides',       href: '/hazard-intelligence/landslides',    desc: 'Slope stability & mass movement', icon: ExternalLink, color: 'from-amber-500 to-orange-600' },
-              { label: 'Dashboards',       href: '/hazard-intelligence/dashboards',    desc: 'Multi-hazard risk analytics', icon: ExternalLink, color: 'from-violet-500 to-purple-600' },
-            ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-slate-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <RelatedHazardIntelligence currentModule="forest-fires" />
         </div>
       </section>
     </main>

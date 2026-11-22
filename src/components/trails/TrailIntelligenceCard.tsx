@@ -73,7 +73,7 @@ export function TrailIntelligenceCard({ trail, onClick }: TrailIntelligenceCardP
         <div className="relative mb-4">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2">
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${difficultyColors[trail.difficulty]} flex items-center justify-center shadow-lg`}>
+              <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg">
                 <Mountain className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -186,7 +186,7 @@ export function TrailIntelligenceCard({ trail, onClick }: TrailIntelligenceCardP
         </div>
         
         {/* Observer Activity */}
-        <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 mb-4">
+        <div className="p-3 rounded-lg bg-slate-900 border border-emerald-500/20 mb-4">
           <div className="flex items-center gap-2 mb-2">
             <Eye className="w-4 h-4 text-emerald-400" />
             <span className="text-xs font-medium text-emerald-400">Observer Activity</span>

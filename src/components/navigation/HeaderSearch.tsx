@@ -89,7 +89,7 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
 
   return (
     <div 
-      className="absolute right-0 top-full mt-2 w-[480px] max-w-[calc(100vw-1.5rem)] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
+      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[480px] max-w-[480px] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
       onClick={e => e.stopPropagation()}
     >
       {/* Search Input Bar */}

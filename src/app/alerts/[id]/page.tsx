@@ -91,10 +91,10 @@ export default function AlertDetailPage() {
           >
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className={cn("px-3 py-1 rounded-full text-sm font-medium border", severityColor)}>
+              <span className={cn("px-3 py-1 rounded-[4px] text-sm font-medium border", severityColor)}>
                 {severityDisplayLabels[alert.severity]}
               </span>
-              <span className={cn("px-3 py-1 rounded-full text-sm font-medium border", statusColor)}>
+              <span className={cn("px-3 py-1 rounded-[4px] text-sm font-medium border", statusColor)}>
                 {statusDisplayLabels[alert.status]}
               </span>
               <Badge variant="outline" size="lg">

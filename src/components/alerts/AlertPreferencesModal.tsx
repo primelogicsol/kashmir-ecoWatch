@@ -184,10 +184,10 @@ export function AlertPreferencesModal({ isOpen, onClose, initialMode = 'subscrib
           onClick={e => e.stopPropagation()}
         >
           {/* Header Banner */}
-          <div className="relative bg-gradient-to-r from-amber-600/30 via-red-600/20 to-slate-900 p-5 sm:p-6 border-b border-white/10">
+          <div className="relative bg-slate-900 p-5 sm:p-6 border-b border-white/10">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center shadow-lg shadow-amber-500/20 text-white shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-950/60 border border-amber-500/40 flex items-center justify-center shadow-lg text-amber-300 shrink-0">
                   <Bell className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>

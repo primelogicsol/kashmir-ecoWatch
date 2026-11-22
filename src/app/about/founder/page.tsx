@@ -12,11 +12,14 @@ import {
   ExternalLink, Mail, Phone, MapPin, Sparkles, FileText,
   BadgeCheck, ChevronRight, Layers, Flame, Landmark, Building2,
   ShieldCheck, Calendar, Lock, Brain, BarChart3, Code, Cloud,
-  Feather, Palette
+  Feather, Palette, Search, ChevronDown, ChevronUp, Filter, Info, FolderArchive
 } from 'lucide-react';
 
 export default function FounderPage() {
   const [activeCertTab, setActiveCertTab] = useState<'fema' | 'un' | 'epa' | 'geospatial' | 'specialized'>('fema');
+  const [projectFilterCategory, setProjectFilterCategory] = useState<string>('All');
+  const [projectSearchQuery, setProjectSearchQuery] = useState<string>('');
+  const [projectDisplayMode, setProjectDisplayMode] = useState<'all' | 'featured'>('all');
 
   // Executive Stats
   const stats = [
@@ -139,7 +142,7 @@ export default function FounderPage() {
       org: '[Entity Masked — Emergency & Critical Infrastructure Sector]',
       location: '[Location Restricted — Maryland, USA]',
       period: '2022 – Present',
-      badge: 'Federal Resilience & Sensitive Infrastructure Security',
+      badge: 'US Resilience & Sensitive Infrastructure Security',
       badgeColor: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
       isMasked: true,
       points: [
@@ -450,87 +453,96 @@ export default function FounderPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200 pb-20">
-      {/* ─── Hero Surface ────────────────────────────────────────────────────────── */}
-      <Heading 
-        icon={<Award className="w-5 h-5 text-emerald-400" />}
-        label="Honorary Director & Founder Profile"
-        title="Western Himalayan Mr. Fayaz Ahmad Khan"
-        subtitle="Kashmiri-American environmental scientist, SaaS platform architect, and disaster resilience professional with 25+ years of progressive leadership."
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'About', href: '/about' },
-          { label: 'Founder Leadership' }
-        ]}
-        actions={
-          <div className="flex flex-wrap items-center gap-4">
+      {/* ─── Institutional Leadership Hero Surface ──────────────────────────────── */}
+      <section className="relative bg-slate-950 border-b border-white/10 overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16">
+        {/* Subtle institutional grid & ambient gradient (No deer or dramatic photo) */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
+          
+          {/* Breadcrumbs */}
+          <nav className="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 mb-4 sm:mb-6">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <span className="text-slate-600">/</span>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+            <span className="text-slate-600">/</span>
+            <span className="text-emerald-400 font-medium">Institutional Leadership</span>
+          </nav>
+
+          {/* Super-title Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
+            <Shield className="w-3.5 h-3.5" />
+            <span>ABOUT KASHMIR ECOWATCH / LEADERSHIP</span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] mb-4 break-words">
+            Institutional Leadership &amp; Scientific Stewardship
+          </h1>
+
+          {/* Subtitle / Tagline */}
+          <p className="text-sm sm:text-base md:text-lg font-semibold text-emerald-300/90 mb-4 tracking-wide">
+            Environmental Governance · Scientific Integrity · Ecological Responsibility
+          </p>
+
+          {/* Description */}
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-3xl leading-relaxed mb-8">
+            Advancing independent environmental research, geospatial intelligence, disaster resilience and scientific collaboration across the Western Himalaya through responsible institutional leadership and open environmental knowledge.
+          </p>
+
+          {/* Two Contextual Navigation Actions */}
+          <div className="flex flex-wrap items-center gap-3">
             <a
-              href="#career"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              href="#founder-governance"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200"
             >
-              <span>Work History</span>
+              <span>Explore Institutional Leadership</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#polymath"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 hover:text-white border border-purple-500/30 hover:border-purple-400 font-semibold text-sm transition-all duration-300"
+              href="#kashmir-connection"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white border border-white/10 hover:border-emerald-500/30 font-semibold text-xs sm:text-sm transition-all duration-200"
             >
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span>Polymath Dimensions</span>
+              <Map className="w-4 h-4 text-emerald-400" />
+              <span>Research &amp; Field Legacy</span>
             </a>
-            <a
-              href="#credentials"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-white border border-white/10 hover:border-emerald-500/40 font-semibold text-sm transition-all duration-300 backdrop-blur-md"
-            >
-              <span>50+ Certifications</span>
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            </a>
-            <Link
-              href="/about/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/5 hover:border-white/20 font-medium text-sm transition-all duration-300"
-            >
-              <Mail className="w-4 h-4 text-sky-400" />
-              <span>Contact Mr. Khan</span>
-            </Link>
           </div>
-        }
-      />
 
-      {/* ─── Macro Executive Stats Banner ───────────────────────────────────────── */}
-      <section className="relative z-20 -mt-6 sm:-mt-10 mb-16 container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {stats.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.08 }}
-              className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-xl"
-            >
-              <span className={`text-2xl sm:text-3xl font-black tracking-tight mb-2 ${item.color}`}>
-                {item.value}
-              </span>
-              <div>
-                <p className="text-xs sm:text-sm font-bold text-white leading-snug">{item.label}</p>
-                <p className="text-[11px] text-slate-400 leading-tight mt-1 line-clamp-2">{item.sub}</p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </section>
 
       {/* ─── Main Content Container ────────────────────────────────────────────── */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-24 mt-12 sm:mt-16">
 
         {/* ─── Section 1: Executive Profile & Professional Summary ──────────────── */}
-        <section className="relative">
+        <section id="founder-governance" className="relative scroll-mt-24">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Executive Summary</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Founder &amp; Scientific Directorate</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-8">
-              A Life Dedicated to Water Resilience & Science
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-6">
+              A Life Dedicated to Water Resilience &amp; Science
             </h2>
+
+            {/* Founder Milestone Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+              {stats.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-3.5 sm:p-4 rounded-lg border border-white/10 bg-slate-900/60 flex flex-col justify-between"
+                >
+                  <span className={`text-xl sm:text-2xl font-black tracking-tight mb-1 ${item.color}`}>
+                    {item.value}
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold text-white leading-snug">{item.label}</p>
+                    <p className="text-[10px] text-slate-400 leading-tight mt-0.5 line-clamp-2">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
             <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl relative overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -585,7 +597,7 @@ export default function FounderPage() {
 
                   <div className="pt-4 border-t border-white/10 flex flex-wrap gap-2">
                     {['FEMA APS Certified', 'UN OCHA / UNEP FEAT 2.0', 'US EPA EJScreen & VSATWeb', 'AWWA Resilience Specialist', 'NASA ARSET Remote Sensing', 'UC Davis CEQA Certified'].map((badge, i) => (
-                      <span key={i} className="text-xs px-3 py-1 rounded-full bg-slate-800 border border-white/10 text-slate-300 font-medium">
+                      <span key={i} className="text-xs px-3 py-1 rounded-[4px] bg-slate-800 border border-white/10 text-slate-300 font-medium">
                         {badge}
                       </span>
                     ))}
@@ -619,7 +631,7 @@ export default function FounderPage() {
                       <div className="p-3 rounded-2xl bg-slate-950/60 border border-white/10">
                         <edu.icon className={`w-6 h-6 ${edu.color}`} />
                       </div>
-                      <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                      <span className="text-[11px] font-mono px-3 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
                         {edu.period}
                       </span>
                     </div>
@@ -664,7 +676,7 @@ export default function FounderPage() {
 
                   <div className="glass-panel p-7 sm:p-8 rounded-3xl border border-white/10 bg-slate-900/50 hover:border-emerald-500/30 transition-all shadow-xl">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border w-fit ${item.badgeColor}`}>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-[4px] border w-fit ${item.badgeColor}`}>
                         {item.badge}
                       </span>
                       <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
@@ -722,7 +734,7 @@ export default function FounderPage() {
 
                   <div className="glass-panel p-7 sm:p-8 rounded-3xl border border-white/10 bg-slate-900/50 hover:border-purple-500/30 transition-all shadow-xl">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border w-fit ${item.badgeColor}`}>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-[4px] border w-fit ${item.badgeColor}`}>
                         {item.badge}
                       </span>
                       <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
@@ -833,7 +845,7 @@ export default function FounderPage() {
                 className={`glass-panel p-8 sm:p-10 rounded-3xl border ${certificationTabs[activeCertTab].bg} bg-slate-900/60 shadow-2xl`}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full border bg-slate-950/60 text-white`}>
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-[4px] border bg-slate-950/60 text-white`}>
                     {certificationTabs[activeCertTab].badge}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white">
@@ -855,69 +867,341 @@ export default function FounderPage() {
         </section>
 
         {/* ─── Section 5: Landmark Kashmir Fieldwork & Research Projects ─────────── */}
-        <section>
-          <div className="max-w-5xl mx-auto">
+        <section id="kashmir-connection" className="scroll-mt-24">
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Header */}
             <div className="flex items-center gap-2 mb-2">
               <Map className="w-4 h-4 text-emerald-400" />
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Kashmir Connection</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
-              Landmark Kashmir Research & Field Projects
-            </h2>
-            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mb-8">
-              Pioneering remote sensing assessments, limnological studies, and climate monitoring across the Kashmir Himalayas over two decades.
-            </p>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
+              <div>
+                <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                  Landmark Kashmir Research & Field Projects
+                </h2>
+                <p className="text-sm sm:text-base text-slate-400 max-w-3xl mt-1">
+                  Chronological registry of 17 foundational field investigations, environmental impact assessments, geospatial inventories, and climate studies executed in the Kashmir Himalayas (2001–2007).
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* View Mode Toggle: All 17 vs Curated Featured */}
+              <div className="flex items-center gap-1.5 p-1 rounded-md bg-slate-900 border border-white/10 shrink-0 self-start md:self-auto">
+                <button
+                  type="button"
+                  onClick={() => setProjectDisplayMode('all')}
+                  className={`px-3 py-1 rounded-sm text-xs font-semibold transition-all ${
+                    projectDisplayMode === 'all'
+                      ? 'bg-emerald-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  All 17 Chronological
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setProjectDisplayMode('featured')}
+                  className={`px-3 py-1 rounded-sm text-xs font-semibold transition-all ${
+                    projectDisplayMode === 'featured'
+                      ? 'bg-emerald-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Featured Landmark (6)
+                </button>
+              </div>
+            </div>
+
+
+            {/* Interactive Filter and Search Bar */}
+            <div className="p-3 sm:p-4 rounded-lg bg-slate-900/60 border border-white/10 mb-8 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+              
+              {/* Category Pills */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 hide-scrollbar">
+                {[
+                  { id: 'All', label: 'All Projects (17)' },
+                  { id: 'Water & Limnology', label: 'Water & Limnology (4)' },
+                  { id: 'EIA & Industry', label: 'EIA & Industry (4)' },
+                  { id: 'Geospatial & GIS', label: 'Geospatial & GIS (3)' },
+                  { id: 'Wildlife & Habitats', label: 'Wildlife (2)' },
+                  { id: 'Waste Management', label: 'Waste Streams (2)' },
+                  { id: 'Tourism Sustainability', label: 'Tourism & Ecology (2)' },
+                ].map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setProjectFilterCategory(cat.id)}
+                    className={`px-2.5 py-1 rounded-sm text-xs font-medium whitespace-nowrap transition-all ${
+                      projectFilterCategory === cat.id
+                        ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
+                        : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Search Box */}
+              <div className="relative min-w-[220px] md:w-64">
+                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Filter by keyword, topic, year..."
+                  value={projectSearchQuery}
+                  onChange={(e) => setProjectSearchQuery(e.target.value)}
+                  className="w-full pl-8 pr-3 py-1 text-xs bg-slate-950 border border-white/10 rounded-md text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+                />
+              </div>
+
+            </div>
+
+            {/* ─── 17 Projects Grid ─── */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
                 {
-                  year: '2005',
-                  title: 'Post-Disaster Remote Sensing Survey — Kashmir Earthquake 2005',
-                  org: '[Designated National Planning & Reconstruction Authority]',
-                  desc: 'Executed comprehensive satellite remote sensing damage assessments across affected mountain terrain following the catastrophic 7.6 magnitude Kashmir earthquake.',
-                  tag: 'Satellite GIS',
-                  color: 'text-rose-400'
-                },
-                {
-                  year: '2007',
-                  title: 'Monitoring Harmful Algal Blooms in Fresh Waters of Kashmir',
-                  org: '[State Directorate of Environment & Remote Sensing]',
-                  desc: 'Pioneered early limnological and satellite-assisted tracking of cyanobacteria and algal bloom outbreaks across Dal, Wular, and freshwater wetland systems.',
-                  tag: 'Limnology',
-                  color: 'text-emerald-400'
-                },
-                {
+                  id: 1,
                   year: '2001 – 2002',
+                  tag: 'Climate Science',
+                  category: 'Geospatial & GIS',
                   title: 'Baseline Monitoring of Climate Change in Kashmir',
                   org: '[Regional Ecological Research & Forest Consortium]',
                   desc: 'Established early empirical baselines tracking seasonal temperature shifts, snowfall anomalies, and phenological signals across the Kashmir Valley.',
-                  tag: 'Climate Science',
-                  color: 'text-sky-400'
+                  color: 'text-sky-400',
+                  featured: true
                 },
                 {
+                  id: 2,
                   year: '2003 – 2004 & 2007',
+                  tag: 'Hydro Impact',
+                  category: 'EIA & Industry',
                   title: 'Uri-II (240 MW) Hydroelectric Project EIA & EMP Monitoring',
                   org: '[National Hydroelectric Power Authority]',
                   desc: 'Executed Environmental Impact Assessment (EIA) and subsequent Environmental Management Plan (EMP) monitoring along the Jhelum River gorge drainage basin.',
-                  tag: 'Hydro Impact',
-                  color: 'text-amber-400'
+                  color: 'text-amber-400',
+                  featured: true
+                },
+                {
+                  id: 3,
+                  year: '2004',
+                  tag: 'Aquatic Ecology',
+                  category: 'Water & Limnology',
+                  title: 'Mechanical Deweeding and Its Ecological Impact on Dal Lake',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Assessed ecological impacts of mechanical deweeding on aquatic vegetation, sediment disturbance, nutrient cycling, and water quality across Dal Lake.',
+                  color: 'text-teal-400',
+                  featured: false
+                },
+                {
+                  id: 4,
+                  year: '2004 – 2005',
+                  tag: 'Environmental Assessment',
+                  category: 'Water & Limnology',
+                  title: 'Environmental Degradation of the Dal Lake Hinterland',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Investigated land-use changes, wastewater discharge, encroachment, and ecological degradation affecting Dal Lake\'s surrounding catchment and freshwater ecosystems.',
+                  color: 'text-emerald-400',
+                  featured: false
+                },
+                {
+                  id: 5,
+                  year: '2004 – 2006',
+                  tag: 'Geospatial Wetlands',
+                  category: 'Geospatial & GIS',
+                  title: 'Digital Inventory and GIS Mapping of Kashmir Wetlands',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Developed geospatial inventories of Kashmir\'s lakes and wetlands using satellite imagery, GIS classification, and ecological assessment of changing wetland boundaries.',
+                  color: 'text-sky-400',
+                  featured: true
+                },
+                {
+                  id: 6,
+                  year: '2005',
+                  tag: 'Satellite GIS',
+                  category: 'Geospatial & GIS',
+                  title: 'Post-Disaster Remote Sensing Survey — Kashmir Earthquake 2005',
+                  org: '[Designated National Planning & Reconstruction Authority]',
+                  desc: 'Executed comprehensive satellite remote sensing damage assessments across affected mountain terrain following the catastrophic 7.6 magnitude Kashmir earthquake.',
+                  color: 'text-rose-400',
+                  featured: true
+                },
+                {
+                  id: 7,
+                  year: '2005',
+                  tag: 'Tourism EIA',
+                  category: 'EIA & Industry',
+                  title: 'Environmental Impact Assessment of the Gulmarg Gondola',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Evaluated environmental impacts of gondola infrastructure, tourism development, vegetation disturbance, and landscape modification within the ecologically sensitive Gulmarg mountain ecosystem.',
+                  color: 'text-amber-400',
+                  featured: false
+                },
+                {
+                  id: 8,
+                  year: '2005',
+                  tag: 'Lake Sedimentation',
+                  category: 'Water & Limnology',
+                  title: 'Assessment of Dal Lake Settling Basins and Sediment Dynamics',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Examined sediment accumulation, catchment runoff, nutrient deposition, and settling basin performance influencing Dal Lake\'s water quality and ecological health.',
+                  color: 'text-teal-300',
+                  featured: false
+                },
+                {
+                  id: 9,
+                  year: '2005 – 2006',
+                  tag: 'Waste Management',
+                  category: 'Waste Management',
+                  title: 'Solid Waste Generation and Management in Kashmir Division',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Assessed municipal solid waste generation, collection systems, disposal practices, and associated environmental pressures across urban and rural Kashmir Division.',
+                  color: 'text-rose-400',
+                  featured: false
+                },
+                {
+                  id: 10,
+                  year: '2005 – 2006',
+                  tag: 'Wildlife Ecology',
+                  category: 'Wildlife & Habitats',
+                  title: 'Assessment of Human–Wildlife Conflict in Kashmir',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Investigated human–wildlife interactions, habitat encroachment, forest-edge settlements, and emerging conflict patterns affecting communities and wildlife conservation across Kashmir.',
+                  color: 'text-emerald-300',
+                  featured: false
+                },
+                {
+                  id: 11,
+                  year: '2006',
+                  tag: 'Biomedical Waste',
+                  category: 'Waste Management',
+                  title: 'Biomedical Waste Generation and Management in Kashmir Division',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Investigated healthcare waste generation, segregation, treatment, disposal infrastructure, and environmental health risks associated with medical facilities across Kashmir Division.',
+                  color: 'text-red-400',
+                  featured: false
+                },
+                {
+                  id: 12,
+                  year: '2006',
+                  tag: 'Industrial Ecology',
+                  category: 'EIA & Industry',
+                  title: 'Cement Industry Emissions and Their Impact on Kashmir Saffron',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Assessed cement-industry emissions, particulate deposition, soil contamination pathways, and potential impacts on saffron cultivation across Kashmir\'s traditional agricultural landscapes.',
+                  color: 'text-amber-300',
+                  featured: false
+                },
+                {
+                  id: 13,
+                  year: '2006 – 2007',
+                  tag: 'Cumulative EIA',
+                  category: 'EIA & Industry',
+                  title: 'Cumulative Environmental Impacts of Hydropower Dams in Kashmir',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Examined cumulative hydrological alteration, river fragmentation, sediment transport, and ecosystem impacts associated with hydropower development across Kashmir\'s river basins.',
+                  color: 'text-cyan-400',
+                  featured: false
+                },
+                {
+                  id: 14,
+                  year: '2006 – 2007',
+                  tag: 'Wildlife GIS',
+                  category: 'Wildlife & Habitats',
+                  title: 'Digital Mapping of Kashmir Wildlife Corridors',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Mapped wildlife movement corridors, habitat connectivity, forest fragmentation, and ecological passage networks using satellite remote sensing and GIS technologies.',
+                  color: 'text-green-400',
+                  featured: false
+                },
+                {
+                  id: 15,
+                  year: '2007',
+                  tag: 'Limnology',
+                  category: 'Water & Limnology',
+                  title: 'Monitoring Harmful Algal Blooms in Fresh Waters of Kashmir',
+                  org: '[State Directorate of Environment & Remote Sensing]',
+                  desc: 'Pioneered early limnological and satellite-assisted tracking of cyanobacteria and algal bloom outbreaks across Dal, Wular, and freshwater wetland systems.',
+                  color: 'text-emerald-400',
+                  featured: true
+                },
+                {
+                  id: 16,
+                  year: '2007',
+                  tag: 'Tourism Ecology',
+                  category: 'Tourism Sustainability',
+                  title: 'Environmental Impacts of Tourism and Allied Services in Kashmir',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Evaluated environmental pressures from tourism infrastructure, accommodation services, transportation, waste generation, and recreational activities across Kashmir\'s major destinations.',
+                  color: 'text-yellow-400',
+                  featured: false
+                },
+                {
+                  id: 17,
+                  year: '2007',
+                  tag: 'Tourism Sustainability',
+                  category: 'Tourism Sustainability',
+                  title: 'Assessment of Tourism Carrying Capacity in Kashmir',
+                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  desc: 'Assessed tourism carrying capacity, visitor pressure, ecological sensitivity, infrastructure limitations, and sustainable destination management across Kashmir\'s principal tourism landscapes.',
+                  color: 'text-orange-400',
+                  featured: true
                 }
-              ].map((proj, idx) => (
-                <div key={idx} className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/10 bg-slate-900/40 flex flex-col justify-between hover:border-emerald-500/30 transition-all">
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-base font-black ${proj.color}`}>{proj.year}</span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400 uppercase">
-                        {proj.tag}
-                      </span>
+              ]
+                .filter(p => {
+                  if (projectDisplayMode === 'featured' && !p.featured) return false;
+                  if (projectFilterCategory !== 'All' && p.category !== projectFilterCategory) return false;
+                  const q = projectSearchQuery.toLowerCase().trim();
+                  if (!q) return true;
+                  return (
+                    p.title.toLowerCase().includes(q) ||
+                    p.desc.toLowerCase().includes(q) ||
+                    p.tag.toLowerCase().includes(q) ||
+                    p.year.toLowerCase().includes(q) ||
+                    p.org.toLowerCase().includes(q)
+                  );
+                })
+                .map((proj) => (
+                  <div
+                    key={proj.id}
+                    className="glass-panel p-5 sm:p-6 rounded-lg border border-white/10 bg-slate-900/50 flex flex-col justify-between hover:border-emerald-500/30 transition-all group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2.5">
+                        <span className={`text-xs sm:text-sm font-black font-mono ${proj.color}`}>
+                          {proj.year}
+                        </span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-sm bg-white/5 border border-white/10 text-slate-300 uppercase tracking-wider">
+                          {proj.tag}
+                        </span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-white mb-1.5 leading-snug group-hover:text-emerald-300 transition-colors">
+                        {proj.title}
+                      </h3>
+                      <p className="text-[11px] font-semibold text-emerald-400/90 mb-2.5 font-mono">
+                        {proj.org}
+                      </p>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {proj.desc}
+                      </p>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 leading-snug">{proj.title}</h3>
-                    <p className="text-xs font-semibold text-slate-400 mb-3">{proj.org}</p>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{proj.desc}</p>
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                      <span>Ref #{String(proj.id).padStart(2, '0')} · {proj.category}</span>
+                      <span className="text-emerald-400/80">Archival Record</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
+
+            {/* Bottom Citation & Indexing Note */}
+            <div className="mt-8 p-4 rounded-lg bg-slate-950/60 border border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+              <div className="flex items-center gap-2">
+                <BadgeCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>17 Landmark Kashmir Research &amp; Field Studies Cataloged (2001–2007)</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Environmental Services &amp; Research Organization (ESRO) Historical Series
+              </span>
+            </div>
+
           </div>
         </section>
 
@@ -996,9 +1280,106 @@ export default function FounderPage() {
           </div>
         </section>
 
-        {/* ─── Section 8: Connect & Explore Further ──────────────────────────────── */}
+        {/* ─── Section 8: The Founder's Purpose & Diaspora Knowledge Return ─────── */}
+        <section id="founders-purpose" className="scroll-mt-24">
+          <div className="max-w-3xl mx-auto p-8 sm:p-12 md:p-16 rounded-lg bg-slate-900/60 border border-white/10 shadow-2xl relative">
+            
+            {/* Header */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 font-mono">
+                The Founder&apos;s Purpose
+              </span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-3">
+              Giving Back to the Land Where the Journey Began
+            </h2>
+
+            <p className="text-sm sm:text-base font-semibold text-emerald-300/90 mb-8 leading-snug">
+              A Diaspora Commitment to Environmental Knowledge, Scientific Responsibility and the Western Himalaya
+            </p>
+
+            {/* Editorial Essay Column */}
+            <div className="space-y-5 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              
+              <p>
+                The founder of Kashmir EcoWatch is no longer a citizen or state subject of the region that this platform serves. His professional life and responsibilities are now based in the United States. He holds no governmental position, exercises no public authority, and does not seek political representation or institutional influence in the Western Himalaya.
+              </p>
+
+              <p className="text-slate-200 font-medium">
+                Yet Kashmir remains the place where his relationship with environmental science first took shape.
+              </p>
+
+              <p>
+                Its mountains, forests, rivers, wetlands and changing seasons were not merely subjects of academic study. They were the landscapes through which he developed an enduring curiosity about the natural world and an appreciation for the delicate relationship between human communities and their environment.
+              </p>
+
+              <p>
+                Over subsequent decades, his professional journey carried him beyond Kashmir, into environmental research, water resilience, geospatial technologies, disaster preparedness and scientific systems development.
+              </p>
+
+              {/* Central Knowledge-Return Typographic Blockquote */}
+              <div className="my-8 pl-5 sm:pl-7 border-l-2 border-emerald-400 py-1 bg-emerald-500/[0.03] rounded-r-lg">
+                <p className="text-base sm:text-lg md:text-xl font-bold text-white leading-snug">
+                  Kashmir gave him the beginnings of his environmental knowledge. Kashmir EcoWatch represents his commitment to returning that knowledge.
+                </p>
+              </div>
+
+              <p>
+                The platform was conceived as an independent, non-commercial contribution from the diaspora, using accumulated scientific experience and digital capabilities to make environmental information, ecological research and hazard intelligence more accessible to the communities, researchers, students and institutions of the Western Himalaya.
+              </p>
+
+              <p>
+                It is not an attempt to reclaim citizenship, authority, professional standing or influence in a region where he no longer resides or works.
+              </p>
+
+              <p className="text-slate-200 font-medium">
+                It is an expression of gratitude.
+              </p>
+
+              <p>
+                A belief that knowledge acquired through one&apos;s birthplace should not become inaccessible to that birthplace simply because life has taken its people elsewhere.
+              </p>
+
+              <p>
+                Kashmir EcoWatch therefore stands on a principle of <strong className="text-white font-semibold">knowledge return rather than personal recognition</strong>, connecting scientific experience gained abroad with the environmental needs of the region where that intellectual journey began.
+              </p>
+
+              <p>
+                Its purpose is to serve the Western Himalaya through open environmental knowledge, independent scientific inquiry, collaborative research and public-interest ecological intelligence, without distinction of political boundaries, nationality or institutional affiliation.
+              </p>
+
+              <p>
+                The founder&apos;s contribution is not defined by where he lives today, what citizenship he holds, or whether he possesses any official standing in the region.
+              </p>
+
+              <p>
+                It is defined by a continuing responsibility toward the landscapes that first inspired his understanding of environmental science.
+              </p>
+
+              {/* Callout Statement */}
+              <div className="p-4 sm:p-5 rounded-md bg-slate-950/80 border border-white/10 my-6">
+                <p className="text-sm sm:text-base font-bold text-emerald-300 leading-snug text-center">
+                  He may no longer belong to Kashmir through citizenship or residence. But his commitment to its environment does not depend on either.
+                </p>
+              </div>
+
+            </div>
+
+            {/* Restrained Institutional Footer */}
+            <div className="mt-10 pt-6 border-t border-white/10 text-center">
+              <p className="text-xs sm:text-sm font-mono tracking-widest uppercase text-slate-400 font-semibold">
+                Knowledge Returned · Responsibility Continued · Recognition Unnecessary
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ─── Section 9: Connect & Explore Further ──────────────────────────────── */}
         <section className="pb-16">
-          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 relative overflow-hidden text-center shadow-2xl">
+          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-slate-900 relative overflow-hidden text-center shadow-2xl">
             <div className="absolute top-0 right-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -1014,7 +1395,7 @@ export default function FounderPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/about/contact"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
                 >
                   <Mail className="w-4 h-4" />
                   <span>Send Institutional Message</span>

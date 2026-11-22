@@ -12,7 +12,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "taxonomicGroup": "plants",
     "category": "Broadleaf Tree",
     "conservationStatus": "NT",
-    "description": "The supreme cultural symbol and royal heritage tree of Kashmir, known for dramatic palmate leaves that turn fiery scarlet-gold in autumn ('Harud'). Provides essential shade, microclimate buffering, and soil stabilization along riverbanks and historical Mughal gardens.",
+    "description": "The supreme cultural symbol and royal heritage tree of Kashmir, known for dramatic palmate leaves that turn fiery scarlet-gold in autumn ('Harud'). Monitored under the 2026 JKFRI Digital Tree Aadhaar Census across 10 valley districts (30,270 trees; 24,640 geotagged). Strictly protected under the J&K Preservation of Specified Trees Act 1969.",
     "ecologicalRole": "Canopy Climax Producer",
     "habitats": [
       "Broadleaf Forests",
@@ -32,7 +32,8 @@ export const plantsPhase1: BiodiversitySpecies[] = [
       "Pulwama",
       "Shopian",
       "Kulgam",
-      "Muzaffarabad"
+      "Bandipora",
+      "Kupwara"
     ],
     "protectedAreas": [
       "Dachigam National Park"

@@ -95,7 +95,7 @@ export const floraData: FloraIntelligence[] = [
     primaryHabitats: ['Riverine', 'Urban', 'Valley Floor'],
     altitudeRange: { min: 1500, max: 2200 },
     primaryScope: 'Kashmir Core',
-    districtsPresent: ['Srinagar', 'Anantnag', 'Pulwama', 'Ganderbal', 'Baramulla'],
+    districtsPresent: ['Srinagar', 'Anantnag', 'Budgam', 'Baramulla', 'Pulwama', 'Ganderbal', 'Kupwara', 'Kulgam', 'Bandipora', 'Shopian'],
     floweringSeason: 'April - May',
     fruitingSeason: 'September - October',
     primaryPollinators: ['Wind'],

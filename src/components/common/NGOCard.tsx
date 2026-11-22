@@ -16,7 +16,7 @@ export function NGOCard({ record }: { record: NGORecord }) {
       onClick={() => window.location.href = `/ngo-impact/${record.slug}`}
     >
       {/* Top Decorator Line */}
-      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${isVerified ? 'from-emerald-500 to-teal-600' : 'from-slate-600 to-slate-800'} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
+      <div className={`absolute top-0 left-0 right-0 h-1 ${isVerified ? 'bg-emerald-500' : 'bg-slate-600'} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
 
       <div className="p-5 flex-grow flex flex-col">
         {/* Top row: [Verification Badge] [Est. Year] */}

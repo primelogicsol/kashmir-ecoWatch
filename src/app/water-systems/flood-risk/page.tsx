@@ -97,7 +97,7 @@ export default function FloodRiskPage() {
               Filter the mapped hazard zones by risk tier, flash-flood velocity, or urban low-lying waterlogging.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-rose-400">{displayedZones.length}</strong> of {totalCount} zones
           </span>
         </div>
@@ -363,7 +363,7 @@ export default function FloodRiskPage() {
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl bg-gradient-to-r from-red-950/60 via-slate-900 to-rose-950/60 border border-rose-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-rose-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-rose-500/20 border border-rose-500/30 text-rose-400 shrink-0">
                     <Camera className="w-5 h-5" />

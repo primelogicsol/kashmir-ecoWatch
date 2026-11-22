@@ -3,21 +3,27 @@
 import React from 'react';
 import Link from 'next/link';
 import {
+  ExternalLink,
   Leaf, Mail, MapPin, Github, Twitter, Linkedin, Youtube, Facebook,
   Heart, Database, FileText, Users, Shield, Activity, Globe, MessageCircle
 } from 'lucide-react';
+
+export const KEW_OFFICIAL_WHATSAPP_GROUP = 'https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39';
 
 const footerLinks = {
   explore: [
     { label: 'About',         href: '/about' },
     { label: 'Mission',       href: '/about/mission' },
     { label: 'Governance',    href: '/about/governance' },
-    { label: 'Founder',       href: '/about/founder' },
+    { label: 'Institutional Leadership', href: '/about/founder' },
     { label: 'Contributors',  href: '/about/contributors' },
     { label: 'Webinars & Conferences', href: '/webinars' },
     { label: 'Support KEW',   href: '/about/support-sponsorship' },
     { label: 'CSR & Grants',  href: '/about/csr-collaborations' },
     { label: 'Contact',       href: '/about/contact' },
+    { label: 'KEW Q&A',       href: '/about/qna' },
+    { label: 'Kashmir Craft Lifecycle Assessment', href: 'https://www.craftlore.org/clee' },
+    { label: 'Plan Your Kashmir Trip', href: 'https://kashmirartstay.com/' },
   ],
   platform: [
     { label: 'Sectoral EIA Engine',               href: '/sectoral-eia' },
@@ -34,6 +40,8 @@ const footerLinks = {
     { label: 'Sectoral Impact Atlas',     href: '/sectoral-eia/impact-atlas' },
     { label: 'SEIAE Scientific Reports',  href: '/sectoral-eia/reports' },
     { label: 'Research Library',          href: '/research-library' },
+    { label: 'Environmental PIL Portal',  href: '/resources/environmental-pil' },
+    { label: 'KEW Green Heroes',          href: '/resources/kew-green-heroes' },
     { label: 'Ecological Atlas',          href: '/atlas' },
     { label: 'Regional Profiles',         href: '/districts' },
     { label: 'Environmental Indicators',  href: '/environmental-monitoring/sdg-monitoring' },
@@ -42,7 +50,6 @@ const footerLinks = {
     { label: 'Methodology',               href: '/about/methodology' },
   ],
   getInvolved: [
-    { label: 'Join Official WhatsApp Group', href: 'https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39' },
     { label: 'Submit Sectoral Assessment',href: '/sectoral-eia/assessment/new' },
     { label: 'Submit Observation',        href: '/submit-observation' },
     { label: 'Report Environmental Issue',href: '/report-issue' },
@@ -62,11 +69,20 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  );
+}
+
 const socialLinks = [
-  { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook },
-  { label: 'X (Twitter)', href: 'https://x.com/KashmirEcoWatch', icon: XIcon },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin },
-  { label: 'Official YouTube Playlist', href: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM', icon: Youtube },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook, tooltip: 'Facebook' },
+  { label: 'X (Twitter)', href: 'https://x.com/KashmirEcoWatch', icon: XIcon, tooltip: 'X (Twitter)' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin, tooltip: 'LinkedIn' },
+  { label: 'Official YouTube Playlist', href: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM', icon: Youtube, tooltip: 'YouTube' },
+  { label: 'Join Kashmir EcoWatch Official WhatsApp Group', href: KEW_OFFICIAL_WHATSAPP_GROUP, icon: WhatsAppIcon, tooltip: 'Join Our Official WhatsApp Group' },
 ];
 
 export function AdvancedFooter() {
@@ -112,7 +128,7 @@ export function AdvancedFooter() {
             {/* Contact info */}
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-2 sm:gap-3">
-                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest-400 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <a
                   href="mailto:contact@kashmir-ecowatch.com"
                   className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-all"
@@ -121,21 +137,20 @@ export function AdvancedFooter() {
                 </a>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <a
-                  href="https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39"
+                  href={KEW_OFFICIAL_WHATSAPP_GROUP}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-emerald-500 hover:underline"
-                  title="Connect with environmental scientists, researchers, NGOs and conservation professionals"
+                  className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words font-medium"
+                  title="Join Our Official WhatsApp Group"
+                  aria-label="Join Kashmir EcoWatch Official WhatsApp Group"
                 >
-                  <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
-                  <span className="text-xs sm:text-sm break-words font-medium">
-                    Join Our Official WhatsApp Group
-                  </span>
+                  Join Our Official WhatsApp Group
                 </a>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
-                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest-400 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span className="text-xs sm:text-sm text-slate-400 break-words">Loudoun County, Virginia, USA</span>
               </div>
             </div>
@@ -145,24 +160,25 @@ export function AdvancedFooter() {
               <div className="text-[11px] font-bold text-teal-400 uppercase tracking-wider">
                 Western Himalayan Scientific Coverage
               </div>
-              <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
-                Jammu &amp; Kashmir, India · Ladakh, India · Azad Kashmir, Pakistan · Gilgit-Baltistan, Pakistan
-              </p>
+              <div className="text-[11px] text-slate-400 leading-relaxed font-mono space-y-0.5">
+                <div>India: Kashmir Valley · Jammu · Ladakh</div>
+                <div>Pakistan: Azad Jammu &amp; Kashmir · Gilgit-Baltistan</div>
+              </div>
             </div>
 
             {/* Social links */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+            <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-lg glass-light border border-white/10 hover:border-forest-500/50 flex items-center justify-center transition-all group flex-shrink-0"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-[6px] bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-emerald-500/50 flex items-center justify-center transition-all group shrink-0 shadow-sm"
                   aria-label={social.label}
-                  title={social.label}
+                  title={social.tooltip}
                 >
-                  <social.icon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-white transition-colors" />
+                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-emerald-400 group-hover:scale-105 transition-all" />
                 </a>
               ))}
             </div>
@@ -179,9 +195,11 @@ export function AdvancedFooter() {
                   <a
                     href={link.href}
                     {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words"
-                  >
-                    {link.label}
+                    className="text-xs sm:text-sm text-slate-400 hover:text-emerald-400 transition-colors break-words inline-flex items-center gap-1 group">
+                    <span>{link.label}</span>
+                    {link.href.startsWith('http') && (
+                      <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-emerald-400 transition-colors shrink-0" />
+                    )}
                   </a>
                 </li>
               ))}
@@ -272,7 +290,7 @@ export function AdvancedFooter() {
               </div>
 
               {/* Policy & Governance Links */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 sm:gap-x-4 gap-y-1 text-xs text-slate-500 pt-1">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 sm:gap-x-4 gap-y-1.5 text-xs text-slate-500 pt-1">
                 <a href="/privacy" className="hover:text-emerald-400 transition-colors">
                   Privacy Policy
                 </a>
@@ -292,15 +310,14 @@ export function AdvancedFooter() {
                 <a href="/geographic-notice" className="hover:text-emerald-400 transition-colors">
                   Geographic Notice
                 </a>
+                <span className="text-slate-700">•</span>
+                <a href="/geographic-scope" className="hover:text-emerald-400 transition-colors">
+                  Geographic Scope
+                </a>
               </div>
 
-              <div className="flex items-center justify-center md:justify-start gap-3 pt-0.5 text-[11px] text-slate-500">
-                <span>© {new Date().getFullYear()} Kashmir EcoWatch. Independent • Non-Commercial • Open Data</span>
-                <span className="text-slate-700">•</span>
-                <a href="/geographic-scope" className="inline-flex items-center gap-1 text-emerald-500 hover:text-emerald-400 transition-colors">
-                  <Globe className="w-3 h-3" />
-                  <span>Geographic Scope</span>
-                </a>
+              <div className="pt-0.5 text-[11px] text-slate-500">
+                <span>© 2026 Kashmir EcoWatch · Independent · Non-Commercial · Open Data</span>
               </div>
             </div>
 

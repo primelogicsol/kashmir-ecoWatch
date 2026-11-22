@@ -131,7 +131,7 @@ export default function SpeciesIntelligencePage() {
             Species Biological Sentinel
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           IUCN Red List 2026
         </span>
       </div>
@@ -204,7 +204,23 @@ return (
         icon={<Activity className="w-6 h-6 text-emerald-400" />}
         label="Species Intelligence"
         breadcrumbs={[{ label: 'Species Intelligence' }]}
-        images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={[
+        '/images/protected-network/protected-species-intelligence-telemetry.jpg',
+        '/images/protected-network/protected-area-atlas-gis.jpg',
+        '/images/protected-network/protected-national-parks-dachigam.jpg',
+        '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg',
+        '/images/protected-network/protected-wetland-reserves-hokersar.jpg',
+        '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+        '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+        '/images/protected-network/protected-corridors-connectivity-passes.jpg',
+        '/images/protected-network/protected-monitoring-threats-surveillance.jpg',
+        '/images/protected-network/protected-hwc-rapid-response-rescue.jpg',
+        '/images/protected-network/protected-research-trails-sightings.jpg',
+        '/images/bear.png',
+        '/images/tiger.png',
+        '/images/markhor.png',
+        '/images/protected-network.png'
+      ]}
         rightContent={heroShowcaseCard}
         actions={
           <>
@@ -224,7 +240,7 @@ return (
       {/* CORRIDOR TELEMETRY BANNER & J&K CONNECTIVITY SENTINEL         */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/40 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />

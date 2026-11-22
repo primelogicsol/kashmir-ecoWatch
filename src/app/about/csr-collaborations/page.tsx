@@ -299,7 +299,7 @@ export default function CsrCollaborationsPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#flagship-programs"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-emerald-500 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40"
             >
               <Award className="w-4 h-4" />
               <span>Explore 4 Flagship Programs</span>
@@ -460,7 +460,7 @@ export default function CsrCollaborationsPage() {
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
               <div className="space-y-2 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
+                  <span className="px-2.5 py-0.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
                     {activeProgram.readinessState}
                   </span>
                   <span className="text-slate-500">•</span>
@@ -629,7 +629,7 @@ export default function CsrCollaborationsPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewConceptProgram(activeProgram)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500/20 to-emerald-500/20 hover:from-amber-500/30 hover:to-emerald-500/30 border border-amber-500/40 text-amber-300 font-bold text-xs transition-all cursor-pointer shadow-sm shadow-amber-950/20"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:from-amber-500/30 hover:to-emerald-500/30 border border-amber-500/40 text-amber-300 font-bold text-xs transition-all cursor-pointer shadow-sm shadow-amber-950/20"
                 >
                   <FileText className="w-4 h-4 text-amber-400" />
                   <span>View & Print PDF Concept Note</span>
@@ -680,7 +680,7 @@ export default function CsrCollaborationsPage() {
         </section>
 
         {/* ─── Scientific Neutrality & Editorial Independence Covenant ───────────── */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-emerald-500/20 space-y-4">
+        <section className="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-emerald-500/20 space-y-4">
           <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
             <ShieldCheck className="w-5 h-5" />
             <span>{SCIENTIFIC_INDEPENDENCE_COVENANT.title}</span>
@@ -705,7 +705,7 @@ export default function CsrCollaborationsPage() {
         <div id="inquiry-form" className="scroll-mt-24" />
         <section id="partnership-inquiry" className="rounded-3xl bg-slate-900/80 border border-white/10 p-6 sm:p-10 space-y-8 max-w-3xl mx-auto shadow-2xl scroll-mt-24">
           <div className="space-y-2 text-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-mono font-bold">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[4px] bg-amber-500/10 text-amber-400 text-xs font-mono font-bold">
               <Mail className="w-3.5 h-3.5" />
               <span>Partnership Due Diligence Intake</span>
             </div>
@@ -921,7 +921,7 @@ export default function CsrCollaborationsPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-emerald-500 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40 cursor-pointer"
                 >
                   Submit Official Partnership Inquiry
                 </button>

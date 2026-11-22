@@ -150,7 +150,7 @@ const regions = [
 
 function WhyContribute() {
   return (
-    <div className="rounded-2xl border border-teal-500/20 bg-gradient-to-br from-teal-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-teal-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Database className="w-4 h-4 text-teal-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-teal-400">Why Become a Data Contributor?</h3>
@@ -288,7 +288,7 @@ function RecognitionTiers() {
       </div>
       <div className="space-y-2">
         {contributorTiers.map(b => (
-          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-gradient-to-r ${b.color} p-2.5`}>
+          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-slate-900 ${b.color} p-2.5`}>
             <span className="text-lg">{b.icon}</span>
             <div>
               <div className="text-xs font-bold text-white">{b.name}</div>
@@ -398,7 +398,7 @@ export default function BecomeDataContributorPage() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Accreditation Tracking ID</span>
                     <span className="text-xl font-mono font-bold text-teal-400">{trackingId}</span>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/20 font-mono">STATUS: ACCREDITATION QUEUE</span>
+                  <span className="text-xs px-2.5 py-1 rounded-[4px] bg-teal-500/10 text-teal-300 border border-teal-500/20 font-mono">STATUS: ACCREDITATION QUEUE</span>
                 </div>
               )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
@@ -407,7 +407,7 @@ export default function BecomeDataContributorPage() {
                   {selectedTypes.map(id => {
                     const t = contributionTypes.find(c => c.id === id);
                     return t ? (
-                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-full ${t.bg} ${t.accent} border ${t.border}`}>
+                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-[4px] ${t.bg} ${t.accent} border ${t.border}`}>
                         {t.icon} {t.title}
                       </span>
                     ) : null;
@@ -489,7 +489,7 @@ export default function BecomeDataContributorPage() {
                           <p className="text-xs text-slate-300 mb-2 leading-relaxed">{t.description}</p>
                           <div className="flex flex-wrap gap-1 mb-2">
                             {t.examples.map(ex => (
-                              <span key={ex} className="text-[10px] text-slate-400 bg-white/5 rounded-full px-2 py-0.5">{ex}</span>
+                              <span key={ex} className="text-[10px] text-slate-400 bg-white/5 rounded-[4px] px-2 py-0.5">{ex}</span>
                             ))}
                           </div>
                           <div className="text-[10px] text-slate-500">

@@ -981,7 +981,7 @@ export default function ConservationIntelligencePage() {
           <div className="flex flex-wrap gap-3 mb-8">
             <Button
               size="lg"
-              className={`${activeTab === 'playground' ? 'bg-gradient-to-r from-emerald-600 to-teal-600' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
+              className={`${activeTab === 'playground' ? 'bg-slate-900' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
               onClick={() => setActiveTab('playground')}
               icon={<Sliders className="w-5 h-5" />}
             >
@@ -989,7 +989,7 @@ export default function ConservationIntelligencePage() {
             </Button>
             <Button
               size="lg"
-              className={`${activeTab === 'registry' ? 'bg-gradient-to-r from-emerald-600 to-teal-600' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
+              className={`${activeTab === 'registry' ? 'bg-slate-900' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
               onClick={() => setActiveTab('registry')}
               icon={<Database className="w-5 h-5" />}
             >
@@ -997,7 +997,7 @@ export default function ConservationIntelligencePage() {
             </Button>
             <Button
               size="lg"
-              className={`${activeTab === 'esro' ? 'bg-gradient-to-r from-emerald-600 to-teal-600' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
+              className={`${activeTab === 'esro' ? 'bg-slate-900' : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'}`}
               onClick={() => setActiveTab('esro')}
               icon={<BookOpen className="w-5 h-5" />}
             >
@@ -1200,7 +1200,7 @@ export default function ConservationIntelligencePage() {
                               </div>
                             </div>
 
-                            <div className={`px-4 py-1 rounded-full border text-xs font-bold ${getPahiRating(calculatePahi()).color}`}>
+                            <div className={`px-4 py-1 rounded-[4px] border text-xs font-bold ${getPahiRating(calculatePahi()).color}`}>
                               Rating: {getPahiRating(calculatePahi()).label}
                             </div>
 
@@ -1602,7 +1602,7 @@ export default function ConservationIntelligencePage() {
                             <div className="bg-black/40 rounded-xl p-4 border border-white/5 flex flex-col justify-center items-center relative overflow-hidden h-[250px]">
                               {compareYear === 2025 ? (
                                 <div className="text-center space-y-2">
-                                  <div className="w-32 h-32 rounded-full border-2 border-emerald-500/20 bg-gradient-to-br from-emerald-900/40 to-teal-900/40 flex items-center justify-center text-emerald-400 text-xs">
+                                  <div className="w-32 h-32 rounded-full border-2 border-emerald-500/20 bg-slate-900 flex items-center justify-center text-emerald-400 text-xs">
                                     Pristine Canopy
                                   </div>
                                   <div className="text-xs text-slate-400 font-semibold">2025 baseline mapping</div>
@@ -1963,7 +1963,7 @@ export default function ConservationIntelligencePage() {
           <div className="space-y-12">
             
             {/* Attributions */}
-            <div className="bg-gradient-to-r from-emerald-900/10 to-teal-900/10 border border-emerald-500/10 rounded-xl p-6">
+            <div className="bg-slate-900 border border-emerald-500/10 rounded-xl p-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                   <Users className="w-6 h-6 text-emerald-400" />
@@ -1991,7 +1991,7 @@ export default function ConservationIntelligencePage() {
                   <Card key={network.id} className="border border-white/5 bg-slate-900/50 p-5 h-full flex flex-col justify-between">
                     <div>
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${network.color} text-white flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${network.color} text-white flex items-center justify-center shadow-lg flex-shrink-0`}>
                           <Icon className="w-6 h-6" />
                         </div>
                         <div>
@@ -2079,7 +2079,7 @@ export default function ConservationIntelligencePage() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-6 shadow-lg">
             <Network className="w-6 h-6" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">

@@ -151,7 +151,7 @@ export function SightingAggregationPanel({ aggregation, onClick }: SightingAggre
         </div>
         
         {/* Seasonal Concentration */}
-        <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 mb-6">
+        <div className="p-3 rounded-lg bg-slate-900 border border-amber-500/20 mb-6">
           <div className="flex items-center gap-2 mb-3">
             <Calendar className="w-4 h-4 text-amber-400" />
             <span className="text-sm font-medium text-white">Seasonal Peak</span>

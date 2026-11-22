@@ -106,7 +106,7 @@ export function CollectionCard({
       
       <div className="relative">
         <div className="flex items-start justify-between mb-4">
-          <div className={cn("w-14 h-14 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform", colors.gradient)}>
+          <div className={cn("w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform", colors.gradient)}>
             <Icon className="w-7 h-7 text-white" />
           </div>
           <Badge variant="outline" size="sm" className={cn("border-white/20", colors.text)}>
@@ -176,7 +176,7 @@ export function CollectionDetail({ collection, evidence, onViewEvidence, onBack 
       {/* Collection Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
-          <div className={cn("w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-xl", colors.gradient)}>
+          <div className={cn("w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-xl", colors.gradient)}>
             <Icon className="w-5 h-5 md:w-8 md:h-8 text-white" />
           </div>
           <div>

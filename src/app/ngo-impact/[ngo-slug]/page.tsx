@@ -3,12 +3,11 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import { ngoRegistryData, NGORecord } from '@/data/ngo-impact';
-import { Heading } from '@/components/common/Heading';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { 
-  Building, MapPin, Globe, Mail, ShieldCheck, FileText, Target, Activity, CheckCircle, ExternalLink, Leaf
+  Building, MapPin, Globe, Mail, ShieldCheck, FileText, Target, Activity, CheckCircle, ExternalLink, Leaf, Users, Clock
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -123,11 +122,14 @@ export default function NGOProfilePage() {
 
         {/* RIGHT COLUMN: Projects & Ecological Links */}
         <div className="lg:col-span-2 space-y-6">
-          <Heading
-            label="Project Registry"
-            title={`${ngo.projects.length} Field Projects`}
-            align="left"
-          />
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-1">
+              Project Registry
+            </span>
+            <h3 className="text-2xl font-bold text-white">
+              {ngo.projects.length} Field Projects
+            </h3>
+          </div>
 
           <div className="space-y-4">
             {ngo.projects.map(proj => (

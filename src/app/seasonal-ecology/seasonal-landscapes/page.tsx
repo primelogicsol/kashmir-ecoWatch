@@ -48,7 +48,7 @@ export default function SeasonalLandscapesPage() {
             <Card className="glass-intense border-emerald-500/30 hover:border-emerald-500/50 transition-all cursor-pointer group overflow-hidden h-full">
               <div className="relative p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -72,7 +72,7 @@ export default function SeasonalLandscapesPage() {
             <Card className="glass-intense border-teal-500/30 hover:border-teal-500/50 transition-all cursor-pointer group overflow-hidden h-full">
               <div className="relative p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
                     <Trees className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">

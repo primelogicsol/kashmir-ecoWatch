@@ -96,7 +96,7 @@ function generateIncidentId(): string {
 
 function UrgencyNotice() {
   return (
-    <div className="rounded-2xl border border-red-500/30 bg-gradient-to-br from-red-950/60 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-red-500/30 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <AlertTriangle className="w-4 h-4 text-red-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-red-400">Before You Report</h3>
@@ -704,30 +704,30 @@ export default function ReportIssuePage() {
             </div>
 
             {/* ── RIGHT: Sticky sidebar (30%) ── */}
-            <div className="w-full lg:w-[32%]">
-              <div className="lg:sticky lg:top-24 space-y-4">
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
+            <div className="w-full lg:w-[32%] min-w-0">
+              <div className="lg:sticky lg:top-24 space-y-4 min-w-0">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                   <UrgencyNotice />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
                   <WhyItMatters />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                   <SeverityGuide />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.35 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
                   <ReportingTip />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                   <LiveStats />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.45 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
                   <ReviewWorkflow />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
                   <WhereReportsGo />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.55 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>
                   <PrivacyNotice />
                 </motion.div>
               </div>

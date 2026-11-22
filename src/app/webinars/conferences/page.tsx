@@ -104,7 +104,7 @@ export default function ConferencesIndexPage() {
             >
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border ${
+                  <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-[4px] border ${
                     conf.status === 'proposed'
                       ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
                       : conf.status === 'live'

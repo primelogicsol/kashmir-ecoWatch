@@ -369,7 +369,7 @@ export default function TechnologyPage() {
                 <Card className="glass-intense border-white/10 p-0 overflow-hidden cursor-pointer" onClick={() => setOpenMember(openMember === i ? null : i)}>
                   <div className="p-5 flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3 flex-1 min-w-0">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center shrink-0">
                         <GraduationCap className="w-5 h-5 text-white" />
                       </div>
                       <div className="min-w-0">

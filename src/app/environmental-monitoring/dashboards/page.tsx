@@ -212,12 +212,14 @@ export default function DashboardsPage() {
           </div>
         }
         images={[
-          '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/khrew-cement-industrial-air-pollution.jpg',
+          '/images/env-monitoring/kashmir-drinking-water-lab.jpg',
+          '/images/env-monitoring/kashmir-solid-waste-facility.jpg',
+          '/images/env-monitoring/kashmir-chinar-hero.jpg',
+          '/images/env-monitoring/kashmir-noise-hero.jpg',
+          '/images/env-monitoring/kashmir-plastic-hero.jpg',
+          '/images/env-monitoring/kashmir-transport-hero.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -235,7 +237,7 @@ export default function DashboardsPage() {
       
       {/* ── Live Environmental Intelligence Synthesis Banner ─────────────── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-emerald-500/20 p-4 bg-gradient-to-r from-emerald-950/30 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-emerald-500/20 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0">
@@ -411,7 +413,7 @@ export default function DashboardsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <Layers className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -437,7 +439,7 @@ export default function DashboardsPage() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
+                      <div className={`w-12 h-12 rounded-xl bg-slate-900 ${module.color} flex items-center justify-center shadow-lg`}>
                         <module.icon className="w-6 h-6 text-white" />
                       </div>
                       <Badge variant={module.statusVariant} size="sm">{module.status}</Badge>
@@ -462,7 +464,7 @@ export default function DashboardsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <TrendingUp className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -472,8 +474,9 @@ export default function DashboardsPage() {
             </div>
           </motion.div>
 
-          <Card className="glass-intense border-white/10 overflow-x-auto">
-            <table className="w-full text-sm">
+          <Card className="glass-intense border-white/10" padding="none">
+            <div className="overflow-x-auto w-full max-w-full">
+              <table className="w-full text-sm min-w-[640px]">
               <thead>
                 <tr className="border-b border-white/10">
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">District</th>
@@ -546,6 +549,7 @@ export default function DashboardsPage() {
                 ); })}
               </tbody>
             </table>
+            </div>
           </Card>
         </div>
       </section>
@@ -555,7 +559,7 @@ export default function DashboardsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <Activity className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -569,7 +573,7 @@ export default function DashboardsPage() {
             {[
               {
                 title: 'Real-Time Monitoring',
-                desc: 'Live data feeds from 247+ active monitoring stations across Kashmir with sub-hourly updates',
+                desc: 'Continuous surveillance across 44 regional modeled units and official ground CAAQMS stations with hourly updates',
                 icon: Activity,
                 color: 'from-cyan-500 to-teal-600',
               },
@@ -588,7 +592,7 @@ export default function DashboardsPage() {
             ].map((feature, i) => (
               <motion.div key={feature.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 h-full">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-lg mb-4`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${feature.color} flex items-center justify-center shadow-lg mb-4`}>
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
@@ -605,7 +609,7 @@ export default function DashboardsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <Clock className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -643,7 +647,7 @@ export default function DashboardsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <ExternalLink className="w-4 h-4 text-white" />
               </div>
               <div>

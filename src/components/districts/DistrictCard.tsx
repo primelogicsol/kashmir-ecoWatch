@@ -85,7 +85,7 @@ export function DistrictCard({ summary, index = 0, compact = false }: DistrictCa
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3 flex-1">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-emerald-950/50 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
               <MapPin className="w-6 h-6 text-emerald-400" />
             </div>
             <div className="flex-1 min-w-0">

@@ -89,7 +89,11 @@ export default function BirdingHotspotsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Birding Hotspots' }
         ]}
-        images={['/images/protected-network.png', '/images/bear.png']}
+        images={[
+          '/images/biodiversity/biodiversity-birds-wetland.jpg',
+          '/images/biodiversity/biodiversity-field-camera-trap.jpg',
+          '/images/bear.png',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -129,7 +133,7 @@ export default function BirdingHotspotsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-sky-950/70 to-slate-900/95 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-sky-500/10 rounded-xl border border-sky-500/20 text-sky-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />

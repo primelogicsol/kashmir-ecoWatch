@@ -175,7 +175,7 @@ const rotatingTips = [
 
 function WhyShareData() {
   return (
-    <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-violet-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Star className="w-4 h-4 text-violet-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-violet-400">Why Share Scientific Data?</h3>
@@ -371,7 +371,7 @@ function ContributorBadges() {
       </div>
       <div className="space-y-2">
         {tiers.map(b => (
-          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-gradient-to-r ${b.color} p-2.5`}>
+          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-slate-900 ${b.color} p-2.5`}>
             <span className="text-lg">{b.icon}</span>
             <div>
               <div className="text-xs font-bold text-white">{b.name}</div>

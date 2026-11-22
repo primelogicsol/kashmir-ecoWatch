@@ -126,7 +126,7 @@ export function AsymmetricModuleSurface() {
                   }`}
                 >
                   {/* Gradient accent */}
-                  <div className={`absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br ${colorMap[card.color]} opacity-5 rounded-bl-full transition-opacity duration-500 ${isHovered && 'opacity-15'}`} />
+                  <div className={`absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-slate-900 ${colorMap[card.color]} opacity-5 rounded-bl-full transition-opacity duration-500 ${isHovered && 'opacity-15'}`} />
 
                   {/* Content container */}
                   <div className="relative h-full p-4 sm:p-5 flex flex-col justify-between">{/* responsive-md-fix */}
@@ -134,11 +134,11 @@ export function AsymmetricModuleSurface() {
                     <div>
                       {/* Icon and header */}
                       <div className="flex items-start justify-between mb-2 sm:mb-3 md:mb-4">
-                        <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${colorMap[card.color]} text-white flex items-center justify-center shadow-lg ${index === 0 ? 'glow-forest' : ''}`}>
+                        <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-slate-900 ${colorMap[card.color]} text-white flex items-center justify-center shadow-lg ${index === 0 ? 'glow-forest' : ''}`}>
                           {Icon}
                         </div>
                         {index === 0 && (
-                          <div className="flex flex-wrap gap-2 text-xs rounded-full glass-light border border-white/10 px-1.5 py-0.5">{/* responsive-md-fix */}
+                          <div className="flex flex-wrap gap-2 text-xs rounded-[4px] glass-light border border-white/10 px-1.5 py-0.5">{/* responsive-md-fix */}
                             <Zap className="w-2.5 h-2.5 text-amber-400" />
                             <span className="text-xs text-amber-400 font-medium">Featured</span>
                           </div>
@@ -214,7 +214,7 @@ export function AsymmetricModuleSurface() {
           className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row items-start gap-3 sm:gap-4 justify-between glass-light rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 border border-white/10"
         >
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-forest-500 to-glacier-600 flex items-center justify-center">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-slate-900 flex items-center justify-center">
               <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" />
             </div>
             <div>

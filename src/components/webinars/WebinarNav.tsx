@@ -68,7 +68,7 @@ export function WebinarNav() {
                   <Icon className={cn('w-3.5 h-3.5', isActive ? 'text-teal-400' : 'text-slate-400')} />
                   <span>{link.label}</span>
                   {link.badge && (
-                    <span className={cn('text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full', link.badgeColor)}>
+                    <span className={cn('text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-[4px]', link.badgeColor)}>
                       {link.badge}
                     </span>
                   )}

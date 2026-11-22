@@ -63,41 +63,41 @@ export default function ScientificWebinarsHubPage() {
           { label: 'Home', href: '/' },
           { label: 'Webinars & Conferences' }
         ]}
-        icon={<Video className="w-6 h-6 text-teal-400" />}
+        icon={<Video className="w-6 h-6 text-emerald-400" />}
         title={
           <div className="overflow-visible pb-2">
             <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-teal-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                2027 PROGRAM
+              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
+                KEW
               </span>
-              <span className="text-white">Scientific Conferences &amp;</span>
+              <span className="text-white">Western Himalayan</span>
             </div>
             <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Webinars 2027
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+                Scientific Conferences &amp; Webinars
               </span>
             </div>
           </div>
         }
         subtitle="Western Himalayan Environmental Research, Dialogue & Scientific Collaboration. Comprehensive 2027–2028 inaugural program encompassing 8 flagship conferences, 48 specialist webinars, 24 applied workshops, and 24 environmental observances across 30 ecological domains."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/webinars/webinar-hero-1.jpg',
+          '/images/webinars/webinar-hero-2.jpg',
+          '/images/webinars/webinar-hero-3.jpg',
+          '/images/webinars/webinar-hero-4.jpg'
         ]}
         rightContent={
-          <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-teal-500/40 shadow-2xl space-y-4">
+          <div className="relative p-6 rounded-2xl bg-slate-950/40 backdrop-blur-md border border-white/15 shadow-2xl space-y-4 hover:border-emerald-500/30 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-black uppercase bg-teal-500/20 text-teal-300 border border-teal-500/40">
-                <span className="w-2 h-2 rounded-full bg-teal-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] text-[11px] font-black uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 2027–2028 Master Program
               </span>
               <span className="text-xs font-mono text-amber-300 font-bold">104 Activities</span>
             </div>
 
             <div>
-              <div className="text-[10px] font-bold text-teal-400 uppercase tracking-widest mb-1">
+              <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">
                 Flagship Proposed Summit
               </div>
               <h4 className="text-sm font-bold text-white leading-snug line-clamp-2">
@@ -107,24 +107,24 @@ export default function ScientificWebinarsHubPage() {
 
             <div className="space-y-1.5 text-xs text-slate-300">
               <div className="flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="font-mono text-slate-200">May 27–29, 2027 (Proposed)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Layers className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <Layers className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span>8 Flagship Summits &bull; 48 Webinars &bull; 24 Workshops</span>
               </div>
             </div>
 
             <div className="pt-2 flex items-center gap-2">
               <Link href="/webinars/calendar" className="flex-1">
-                <Button size="sm" className="w-full bg-teal-600 hover:bg-teal-500 font-bold text-white shadow-lg shadow-teal-600/30">
+                <Button size="sm" className="w-full bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-lg shadow-emerald-600/20">
                   <Calendar className="w-3.5 h-3.5 mr-1.5" />
                   View 104-Event Calendar
                 </Button>
               </Link>
               <Link href="/webinars/conferences">
-                <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5">
+                <Button size="sm" variant="outline" className="border-white/15 text-slate-200 hover:bg-white/10 bg-slate-900/30 backdrop-blur-sm">
                   Conferences
                 </Button>
               </Link>
@@ -134,13 +134,13 @@ export default function ScientificWebinarsHubPage() {
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Link href="/webinars/calendar">
-              <Button size="sm" className="bg-teal-600 hover:bg-teal-500 font-bold text-white shadow-md shadow-teal-600/20">
+              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-md shadow-emerald-600/20">
                 <Calendar className="w-4 h-4 mr-1.5" />
                 Master Calendar (104 Activities)
               </Button>
             </Link>
             <Link href="/webinars/host-a-conference">
-              <Button size="sm" variant="outline" className="border-teal-500/40 text-teal-300 hover:bg-teal-950/40 font-bold">
+              <Button size="sm" variant="outline" className="border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 font-bold">
                 <PlusCircle className="w-4 h-4 mr-1.5" />
                 Host a Conference
               </Button>
@@ -150,11 +150,11 @@ export default function ScientificWebinarsHubPage() {
       />
 
       {/* Prominent Two-Year Target Strip */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-6">
-        <div className="p-4 sm:p-6 rounded-3xl bg-slate-900/90 border border-teal-500/30 backdrop-blur-xl shadow-2xl space-y-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-6">
+        <div className="p-4 sm:p-6 rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-xl shadow-2xl space-y-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-white/5 text-center space-y-0.5">
-              <div className="text-2xl sm:text-3xl font-extrabold text-teal-400 font-mono">8</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">8</div>
               <div className="text-xs font-bold text-white">Flagship Summits</div>
               <div className="text-[10px] text-slate-400 font-mono">4 in 2027 · 4 in 2028</div>
             </div>
@@ -173,9 +173,9 @@ export default function ScientificWebinarsHubPage() {
               <div className="text-xs font-bold text-white">Observances</div>
               <div className="text-[10px] text-slate-400 font-mono">Outdoor Classroom</div>
             </div>
-            <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-teal-500/40 text-center space-y-0.5 col-span-2 sm:col-span-1">
+            <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-emerald-500/30 text-center space-y-0.5 col-span-2 sm:col-span-1">
               <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">104</div>
-              <div className="text-xs font-bold text-teal-300">Total Activities</div>
+              <div className="text-xs font-bold text-emerald-300">Total Activities</div>
               <div className="text-[10px] text-amber-300 font-mono font-bold uppercase">Proposed 2027–28</div>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function ScientificWebinarsHubPage() {
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 text-xs font-mono border border-teal-500/20 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-teal-500/10 text-teal-300 text-xs font-mono border border-teal-500/20 mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Proposed Academic Program</span>
               </div>
@@ -229,7 +229,7 @@ export default function ScientificWebinarsHubPage() {
             <div className="bg-slate-900/80 border border-teal-500/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-teal-500/60 transition-all shadow-xl">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
+                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-[4px] border border-teal-500/20">
                     May 27–29, 2027 · Proposed
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -280,7 +280,7 @@ export default function ScientificWebinarsHubPage() {
             <div className="bg-slate-900/80 border border-teal-500/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-teal-500/60 transition-all shadow-xl">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
+                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-[4px] border border-teal-500/20">
                     July 15–16, 2027 · Proposed
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -331,7 +331,7 @@ export default function ScientificWebinarsHubPage() {
             <div className="bg-slate-900/80 border border-teal-500/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-teal-500/60 transition-all shadow-xl">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
+                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-[4px] border border-teal-500/20">
                     September 23–24, 2027 · Proposed
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -382,7 +382,7 @@ export default function ScientificWebinarsHubPage() {
             <div className="bg-slate-900/80 border border-teal-500/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-teal-500/60 transition-all shadow-xl">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
+                  <span className="text-xs font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-[4px] border border-teal-500/20">
                     November 18–19, 2027 · Proposed
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -431,9 +431,9 @@ export default function ScientificWebinarsHubPage() {
           </div>
 
           {/* Master 104-Event Program Callout Banner */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-teal-950/60 border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2 max-w-2xl">
-              <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/40">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-[4px] bg-teal-500/20 text-teal-300 border border-teal-500/40">
                 24-Month Scientific Master Plan
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white">
@@ -453,17 +453,17 @@ export default function ScientificWebinarsHubPage() {
         </section>
 
         {/* Spotlight Banner: Multi-Day Scientific Summit */}
-        <section className="relative rounded-3xl bg-gradient-to-r from-teal-950/60 via-slate-900 to-slate-950 border border-teal-500/30 p-6 sm:p-10 overflow-hidden shadow-2xl">
+        <section className="relative rounded-3xl bg-slate-900 border border-teal-500/30 p-6 sm:p-10 overflow-hidden shadow-2xl">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2 space-y-4">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                <span className="px-3 py-1 rounded-[4px] text-xs font-black uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40">
                   Flagship Proposed Summit
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-mono bg-teal-500/10 text-teal-300 border border-teal-500/20">
+                <span className="px-3 py-1 rounded-[4px] text-xs font-mono bg-teal-500/10 text-teal-300 border border-teal-500/20">
                   3 Parallel Virtual Halls
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <span className="px-3 py-1 rounded-[4px] text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
                   Planning Phase (May 2027)
                 </span>
               </div>
@@ -673,7 +673,7 @@ export default function ScientificWebinarsHubPage() {
                 <button
                   key={d}
                   onClick={() => setSelectedDiscipline(d)}
-                  className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+                  className={`px-3 py-1 rounded-[4px] text-xs font-semibold whitespace-nowrap transition-colors ${
                     selectedDiscipline === d
                       ? 'bg-teal-500 text-slate-950 font-bold'
                       : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
@@ -698,7 +698,7 @@ export default function ScientificWebinarsHubPage() {
 
         {/* Scientific Integrity Standards Notice */}
         <section className="rounded-3xl bg-slate-900/60 border border-white/10 p-8 text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 text-xs font-mono border border-teal-500/20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-teal-500/10 text-teal-300 text-xs font-mono border border-teal-500/20">
             <ShieldCheck className="w-4 h-4 text-teal-400" />
             <span>Kashmir EcoWatch Scientific Governance Charter</span>
           </div>

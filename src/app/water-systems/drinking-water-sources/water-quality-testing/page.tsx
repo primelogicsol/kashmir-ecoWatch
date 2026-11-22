@@ -423,7 +423,7 @@ export default function WaterQualityTestingPage() {
                 <Card className="glass-intense border-white/10 p-5 h-full hover:border-white/20 transition-all">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                         <Database className="w-4 h-4 text-white" />
                       </div>
                       <Badge className={`${statusColors[station.status]} border text-[10px]`}>

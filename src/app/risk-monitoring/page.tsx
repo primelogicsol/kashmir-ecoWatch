@@ -270,7 +270,7 @@ export default function RiskMonitoringOverviewPage() {
                 <h2 className="text-sm font-bold text-red-400 uppercase tracking-wider">
                   Live Active Environmental Alerts ({priorityLiveAlerts.length})
                 </h2>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">
+                <span className="text-xs px-2 py-0.5 rounded-[4px] bg-red-500/20 text-red-300 border border-red-500/30">
                   REAL API STREAM
                 </span>
               </div>
@@ -298,23 +298,23 @@ export default function RiskMonitoringOverviewPage() {
                     <div>
                       <div className="flex items-start justify-between gap-2 mb-2">
                         {getLiveSeverityBadge(alert.severity)}
-                        <span className="text-xs text-slate-400 font-medium truncate">{alert.district}</span>
+                        <span className="text-xs text-slate-400 font-medium break-words text-right">{alert.district}</span>
                       </div>
 
-                      <h3 className="text-sm font-semibold text-white mb-1.5 line-clamp-1">{alert.title}</h3>
-                      <p className="text-xs text-slate-300 line-clamp-3 mb-3">{alert.summary || (alert as any).description}</p>
+                      <h3 className="text-sm font-semibold text-white mb-1.5 leading-snug break-words">{alert.title}</h3>
+                      <p className="text-xs text-slate-300 leading-relaxed mb-3 break-words">{alert.summary || (alert as any).description}</p>
                     </div>
 
                     <div>
                       {(alert.updates?.[0]?.note || (alert as any).liveMetric || alert.cause) && (
-                        <div className="mb-2.5 px-2 py-1.5 rounded bg-black/50 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 flex items-center gap-1.5 truncate">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
-                          <span className="truncate">{alert.updates?.[0]?.note || (alert as any).liveMetric || alert.cause}</span>
+                        <div className="mb-2.5 px-2 py-1.5 rounded bg-black/50 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 flex items-start gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0 mt-1"></span>
+                          <span className="break-words leading-tight">{alert.updates?.[0]?.note || (alert as any).liveMetric || alert.cause}</span>
                         </div>
                       )}
 
-                      <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-white/5">
-                        <span className="truncate max-w-[140px] text-slate-300 font-medium">{alert.issuedBy || alert.source}</span>
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 pt-2 border-t border-white/5">
+                        <span className="text-slate-300 font-medium break-words">{alert.issuedBy || alert.source}</span>
                         <div className="flex items-center gap-1 text-slate-400 flex-shrink-0">
                           <Clock className="w-3 h-3" />
                           <span>{formatAlertTime(alert.updated || alert.issued || (alert as any).timestamp)}</span>
@@ -378,7 +378,7 @@ export default function RiskMonitoringOverviewPage() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                         <AlertTriangle className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -473,7 +473,7 @@ export default function RiskMonitoringOverviewPage() {
             <div className="flex items-center gap-3">
               <FileText className="w-6 h-6 text-amber-400" />
               <h2 className="text-2xl font-bold text-white">Active Advisories</h2>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-medium">
+              <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-amber-500/20 text-amber-300 border border-amber-500/30 font-medium">
                 LIVE HAZARD GUIDANCE
               </span>
             </div>
@@ -526,9 +526,9 @@ export default function RiskMonitoringOverviewPage() {
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
-                    <span className="truncate max-w-[200px] text-slate-400">By: {adv.issuedBy}</span>
-                    <span>Valid: {formatAlertTime(adv.expires)}</span>
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 pt-2 border-t border-white/5">
+                    <span className="text-slate-300 font-medium break-words">By: {adv.issuedBy}</span>
+                    <span className="flex-shrink-0">Valid: {formatAlertTime(adv.expires)}</span>
                   </div>
                 </Card>
               </motion.div>
@@ -544,7 +544,7 @@ export default function RiskMonitoringOverviewPage() {
             <div className="flex items-center gap-3">
               <Activity className="w-6 h-6 text-red-400" />
               <h2 className="text-2xl font-bold text-white">Live Environmental Incidents & Telemetry</h2>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 font-medium">
+              <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-red-500/20 text-red-300 border border-red-500/30 font-medium">
                 REAL API DETECTIONS
               </span>
             </div>
@@ -661,7 +661,7 @@ export default function RiskMonitoringOverviewPage() {
                 className="max-w-3xl mx-auto"
               >
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                     <Phone className="w-5 h-5 md:w-8 md:h-8 text-white" />
                   </div>
                 </div>

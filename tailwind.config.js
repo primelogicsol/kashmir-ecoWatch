@@ -7,6 +7,20 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    borderRadius: {
+      'none': '0px',
+      'xs': '2px',
+      'sm': '4px',
+      DEFAULT: '4px',
+      'md': '6px',
+      'lg': '8px',
+      'xl': '8px',
+      '2xl': '8px',
+      '3xl': '8px',
+      '4xl': '8px',
+      'modal': '10px',
+      'full': '9999px',
+    },
     container: {
       center: true,
       padding: {

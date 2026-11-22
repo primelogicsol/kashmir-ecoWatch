@@ -339,7 +339,7 @@ export default function WildlifeMortalityKillRecordsPage() {
                   <p className="text-sm text-slate-400">Mortality hotspots, roadkill corridors, and protected area incidents</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-red-900/50 to-orange-900/30 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <Layers className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-4">Interactive mortality map with incident locations and cause layers</p>

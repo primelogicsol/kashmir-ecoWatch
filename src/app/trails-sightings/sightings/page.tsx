@@ -87,7 +87,7 @@ export default function SightingsPage() {
               >
                 <cat.icon className="w-4 h-4" />
                 <span className="text-sm font-medium">{cat.label}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                <span className={`text-xs px-2 py-0.5 rounded-[4px] ${
                   activeCategory === cat.id
                     ? 'bg-amber-500/30 text-amber-200'
                     : 'bg-slate-500/30 text-slate-300'

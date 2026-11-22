@@ -76,10 +76,10 @@ export function AnalyticalEntryGrid() {
             >
               <Card className="h-full card-hover group relative overflow-hidden" padding="lg">
                 {/* Gradient background accent */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${colorMap[card.color]} opacity-5 rounded-bl-full transition-opacity group-hover:opacity-10`} />
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-slate-900 ${colorMap[card.color]} opacity-5 rounded-bl-full transition-opacity group-hover:opacity-10`} />
                 
                 {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${colorMap[card.color]} text-white mb-4 shadow-lg`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-slate-900 ${colorMap[card.color]} text-white mb-4 shadow-lg`}>
                   {iconMap[card.icon]}
                 </div>
 

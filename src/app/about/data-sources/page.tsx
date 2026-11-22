@@ -128,7 +128,7 @@ export default function DataSourcesPage() {
             </Link>
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-2xl">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                 <Database className="w-5 h-5 md:w-8 md:h-8 text-white" />
               </div>
               <Badge variant="info" size="lg">Data Provenance</Badge>
@@ -161,7 +161,7 @@ export default function DataSourcesPage() {
               <motion.div key={cat.category} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} viewport={{ once: true }}>
                 <Card className="glass-intense border-white/10 p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                    <div className={`w-14 h-14 rounded-xl bg-slate-900 ${cat.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                       <cat.icon className="w-7 h-7 text-white" />
                     </div>
                     <div className="flex-1">

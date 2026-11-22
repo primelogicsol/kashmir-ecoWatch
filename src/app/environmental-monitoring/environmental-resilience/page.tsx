@@ -450,7 +450,7 @@ function ResilienceCard({ record, index }: { record: ResilienceRecord; index: nu
       <Card className="glass-intense border-white/10 p-5 h-full flex flex-col gap-3 transition-all relative overflow-hidden group hover:border-white/20">
 
         {/* Top glow */}
-        <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b opacity-10 pointer-events-none ${getCardTopGlow(record.priorityLevel)}`} />
+        <div className={`absolute top-0 left-0 right-0 h-24 bg-slate-900 opacity-10 pointer-events-none ${getCardTopGlow(record.priorityLevel)}`} />
 
         {/* Header */}
         <div className="flex items-start justify-between gap-2 relative z-10">
@@ -729,12 +729,10 @@ export default function EnvironmentalResiliencePage() {
           </div>
         }
         images={[
-          '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-chinar-hero.jpg',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/khrew-cement-industrial-air-pollution.jpg',
+          '/images/env-monitoring/kashmir-drinking-water-lab.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -1111,7 +1109,7 @@ export default function EnvironmentalResiliencePage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Card className="glass-intense border-teal-500/20 p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500/20 to-cyan-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <FlaskConical className="w-5 h-5 text-teal-400" />
                 </div>
                 <div className="flex-1">

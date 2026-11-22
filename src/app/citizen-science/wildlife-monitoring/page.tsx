@@ -47,7 +47,7 @@ export default function WildlifeMonitoringPage() {
               Back to Citizen Science
             </Link>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-xl">
+              <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-xl">
                 <Eye className="w-7 h-7 text-white" />
               </div>
               <Badge variant="success" size="md">Citizen Science Program</Badge>

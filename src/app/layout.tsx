@@ -4,6 +4,7 @@ import './globals.css';
 import { Providers } from '@/app/providers';
 import { SafeHeader } from '@/components/common/SafeHeader';
 import { SafeFooter } from '@/components/common/SafeFooter';
+import { MobileQuickTelemetryBar } from '@/components/navigation/MobileQuickTelemetryBar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -51,7 +52,10 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <Providers>
           <SafeHeader />
-          {children}
+          <div className="pb-16 md:pb-0 min-h-screen flex flex-col">
+            {children}
+          </div>
+          <MobileQuickTelemetryBar />
           <SafeFooter />
         </Providers>
       </body>

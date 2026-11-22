@@ -45,7 +45,7 @@ export default function ReportsReferencesPage() {
             <Card className="glass-intense border-slate-500/30 hover:border-slate-500/50 transition-all cursor-pointer group overflow-hidden h-full">
               <div className="relative p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-600 to-gray-700 flex items-center justify-center shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
                     <Database className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -69,7 +69,7 @@ export default function ReportsReferencesPage() {
             <Card className="glass-intense border-emerald-500/30 hover:border-emerald-500/50 transition-all cursor-pointer group overflow-hidden h-full">
               <div className="relative p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
                     <ShieldCheck className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">

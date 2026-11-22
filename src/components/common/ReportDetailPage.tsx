@@ -72,7 +72,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
@@ -97,7 +97,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
             <div className="flex items-start justify-between gap-6">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getTypeColor(report.type)} text-white flex items-center justify-center shadow-lg`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getTypeColor(report.type)} text-white flex items-center justify-center shadow-lg`}>
                     <TypeIcon className="w-6 h-6" />
                   </div>
                   <Badge variant="info" size="lg">
@@ -460,7 +460,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
           transition={{ delay: 0.5 }}
           className="mt-12"
         >
-          <Card className="bg-gradient-to-r from-amber-600 to-amber-500 border-0 p-8">
+          <Card className="bg-slate-900 border-0 p-8">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Explore More Reports</h3>

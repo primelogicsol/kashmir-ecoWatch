@@ -90,16 +90,16 @@ export function ModuleScopeRow({
   const activePill = filter.scope !== 'All' ? scopePillMap[filter.scope] : null;
 
   return (
-    <div className="container mx-auto px-6 mt-6">
+    <div className="container mx-auto px-3 sm:px-4 md:px-6 mt-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
 
         {/* ── Scope tabs ── */}
-        <div className="flex items-center gap-2 p-1 glass-intense border border-white/10 rounded-xl overflow-x-auto hide-scrollbar">
+        <div className="w-full sm:w-auto max-w-full min-w-0 flex items-center gap-1.5 sm:gap-2 p-1 glass-intense border border-white/10 rounded-lg overflow-x-auto hide-scrollbar">
           {scopes.map(scope => (
             <button
               key={scope}
               onClick={() => handleScope(scope)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                 filter.scope === scope
                   ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow'
                   : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -122,7 +122,7 @@ export function ModuleScopeRow({
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.88, x: 8 }}
                 transition={{ duration: 0.18, ease: 'easeOut' }}
-                className={`hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-xl border backdrop-blur-sm ${activePill.bg} ${activePill.border}`}
+                className={`hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-sm border backdrop-blur-sm ${activePill.bg} ${activePill.border}`}
               >
                 <Shield className={`w-3.5 h-3.5 flex-shrink-0 ${activePill.iconColor}`} />
                 <div className="leading-[1.2]">
@@ -148,7 +148,7 @@ export function ModuleScopeRow({
           <div className="flex items-center gap-1">
             <button
               onClick={() => onViewModeChange('grid')}
-              className={`p-1.5 rounded-lg transition-colors ${
+              className={`p-1.5 rounded-md transition-colors ${
                 viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -156,7 +156,7 @@ export function ModuleScopeRow({
             </button>
             <button
               onClick={() => onViewModeChange('list')}
-              className={`p-1.5 rounded-lg transition-colors ${
+              className={`p-1.5 rounded-md transition-colors ${
                 viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400 hover:text-white'
               }`}
             >

@@ -21,7 +21,7 @@ export const EHII_HERO_CONFIGS: Record<string, EhiiSubmoduleHeroConfig> = {
         metrics: '42.6 km² Leveled Scars',
         status: 'Critical Alert',
         statusColor: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
-        src: '/images/protected-network.png',
+        src: '/images/earth-human-impact/ehii-karewa-land-transformation.jpg',
         short: 'Karewas'
       },
       {
@@ -32,7 +32,7 @@ export const EHII_HERO_CONFIGS: Record<string, EhiiSubmoduleHeroConfig> = {
         metrics: '-16.2 m/yr Snout Retreat',
         status: 'Cryosphere Alert',
         statusColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
-        src: '/images/bear.png',
+        src: '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
         short: 'Glaciers'
       },
       {
@@ -43,7 +43,7 @@ export const EHII_HERO_CONFIGS: Record<string, EhiiSubmoduleHeroConfig> = {
         metrics: '12,400 ha Degraded',
         status: 'Severe Stress',
         statusColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-        src: '/images/tiger.png',
+        src: '/images/earth-human-impact/ehii-command-center-satellite.jpg',
         short: 'Canopy'
       },
       {
@@ -54,7 +54,7 @@ export const EHII_HERO_CONFIGS: Record<string, EhiiSubmoduleHeroConfig> = {
         metrics: '118 km Scoured Riverbed',
         status: 'NGT Benchmark',
         statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-        src: '/images/markhor.png',
+        src: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
         short: 'Riverbeds'
       }
     ],

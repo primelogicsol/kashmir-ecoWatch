@@ -345,7 +345,7 @@ export default function DashboardsPage() {
       />
 
       {/* ─── Top Summary Strip ────────────────────────────────────────────── */}
-      <section className="py-10 md:py-14 border-y border-white/5 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section className="py-10 md:py-14 border-y border-white/5 bg-slate-900">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {[
@@ -434,7 +434,7 @@ export default function DashboardsPage() {
                     >
                       {/* Header */}
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${dashboard.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <div className={`w-11 h-11 rounded-xl bg-slate-900 ${dashboard.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                           <dashboard.icon className="w-5 h-5 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -460,7 +460,7 @@ export default function DashboardsPage() {
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-xs text-slate-500">Status</span>
-                          <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${STATUS_COLORS[dashboard.status]}`}>
+                          <span className={`text-xs px-2 py-0.5 rounded-[4px] border font-medium ${STATUS_COLORS[dashboard.status]}`}>
                             {dashboard.status}
                           </span>
                         </div>
@@ -500,7 +500,7 @@ export default function DashboardsPage() {
             className="mb-8"
           >
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <TrendingUp className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -541,7 +541,7 @@ export default function DashboardsPage() {
             className="mb-8"
           >
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <Activity className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -575,7 +575,7 @@ export default function DashboardsPage() {
       {/* ─── Export & Share ──────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-slate-950">
         <div className="container mx-auto px-6">
-          <Card className="glass-intense border-white/10 bg-gradient-to-r from-red-900/20 to-amber-900/20" padding="lg">
+          <Card className="glass-intense border-white/10 bg-slate-900" padding="lg">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">Export & Share Analytics</h3>
@@ -601,7 +601,7 @@ export default function DashboardsPage() {
       <section className="py-16 md:py-20 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <MapPin className="w-4 h-4 text-white" />
             </div>
             <div>

@@ -18,8 +18,12 @@ const getTypeIcon = (type: string) => {
     protected_area: <Shield className="h-4 w-4" />,
     lake: <Droplet className="h-4 w-4" />,
     wetland: <Droplet className="h-4 w-4" />,
+    river: <Droplet className="h-4 w-4" />,
+    glacier: <Shield className="h-4 w-4" />,
+    watershed: <Shield className="h-4 w-4" />,
     trail: <Footprints className="h-4 w-4" />,
     district: <Building className="h-4 w-4" />,
+    hazard: <MapPin className="h-4 w-4" />,
   };
   return icons[type] || <MapPin className="h-4 w-4" />;
 };
@@ -30,8 +34,12 @@ const getTypeColor = (type: string) => {
     protected_area: 'text-emerald-400 bg-emerald-500/10',
     lake: 'text-blue-400 bg-blue-500/10',
     wetland: 'text-cyan-400 bg-cyan-500/10',
+    river: 'text-sky-400 bg-sky-500/10',
+    glacier: 'text-cyan-300 bg-cyan-400/10',
+    watershed: 'text-indigo-400 bg-indigo-500/10',
     trail: 'text-amber-400 bg-amber-500/10',
     district: 'text-slate-400 bg-slate-500/10',
+    hazard: 'text-red-400 bg-red-500/10',
   };
   return colors[type] || 'text-slate-400 bg-slate-500/10';
 };

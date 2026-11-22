@@ -91,6 +91,7 @@ type HandicraftsWorkspaceTab =
   | 'nine_systems'
   | 'provenance_materials'
   | 'craftlore_passport'
+  | 'khcrf_revival'
   | 'spatial_atlas'
   | 'pilots';
 
@@ -171,6 +172,12 @@ export default function HandicraftsEiaPage() {
           </span>
         }
         subtitle="Scientific assessment of traditional craft production, raw-material provenance, environmental footprints, artisan production landscapes, and sustainable manufacturing across Kashmir."
+        images={[
+          '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg',
+          '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
+          '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
+          '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg'
+        ]}
       />
 
       <SectoralEiaNav />
@@ -241,6 +248,7 @@ export default function HandicraftsEiaPage() {
               { id: 'nine_systems', label: '9 Environmental Systems', icon: Layers },
               { id: 'provenance_materials', label: 'Material Provenance', icon: TreePine },
               { id: 'craftlore_passport', label: 'Craftlore & Eco-Passport', icon: QrCode },
+              { id: 'khcrf_revival', label: 'KHCRF Craft Revival', icon: Landmark },
               { id: 'spatial_atlas', label: 'Spatial Atlas', icon: Compass },
               { id: 'pilots', label: 'Scientific Dossiers', icon: FileText }
             ].map((tab) => {
@@ -269,7 +277,7 @@ export default function HandicraftsEiaPage() {
         {/* ======================================================== */}
         {activeTab === 'overview' && (
           <div className="space-y-8">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-slate-950 border border-cyan-500/30 shadow-xl">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-cyan-500/30 shadow-xl">
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 <div className="space-y-3 max-w-4xl">
                   <div className="flex flex-wrap items-center gap-2">
@@ -883,7 +891,7 @@ export default function HandicraftsEiaPage() {
         {/* ======================================================== */}
         {activeTab === 'comparative_lca' && (
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 space-y-3">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-3">
               <div className="flex items-center gap-2">
                 <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs">
                   Comparative Industrial Ecology
@@ -1190,14 +1198,14 @@ export default function HandicraftsEiaPage() {
               <div>
                 <h2 className="text-xl font-bold text-white flex items-center gap-2">
                   <QrCode className="w-5 h-5 text-cyan-400" />
-                  <span>The Scientific Bridge: Kashmir EcoWatch &amp; Craftlore</span>
+                  <span>The Scientific Bridge: Kashmir EcoWatch &amp; Craftlore CLEE</span>
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">
                   Connecting independent environmental lifecycle evidence with consumer verification, responsible sourcing, and the Craft Environmental Passport.
                 </p>
               </div>
               <a
-                href="https://craftlore.org"
+                href="https://www.craftlore.org/clee"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shrink-0 transition-colors shadow-sm"
@@ -1233,7 +1241,7 @@ export default function HandicraftsEiaPage() {
                       <span>Craftlore (Artisan & Commerce Interface)</span>
                     </div>
                     <a
-                      href="https://craftlore.org"
+                      href="https://www.craftlore.org/clee"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-amber-400 hover:text-amber-300 inline-flex items-center gap-1 font-mono text-[10px] underline underline-offset-2"
@@ -1252,18 +1260,46 @@ export default function HandicraftsEiaPage() {
                   </ul>
                   <div className="pt-2">
                     <a
-                      href="https://craftlore.org"
+                      href="https://www.craftlore.org/clee"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
                     >
-                      <span>Open Craftlore Portal (craftlore.org)</span>
+                      <span>Explore Craft Lifecycle Assessment (craftlore.org/clee)</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
               </div>
             </Card>
+
+            
+            {/* CLEE (Craft Lifecycle Environmental Evaluation) Highlight */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-950 border border-amber-500/30 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-amber-500 text-slate-950 font-bold text-xs">
+                    Craftlore CLEE Framework
+                  </Badge>
+                  <h4 className="text-sm font-bold text-white">
+                    Kashmir Craft Lifecycle Assessment (clee)
+                  </h4>
+                </div>
+                <a
+                  href="https://www.craftlore.org/clee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shrink-0"
+                >
+                  <span>Launch CLEE Portal</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                The <strong>Craft Lifecycle Environmental Evaluation (CLEE)</strong> bridges Kashmir EcoWatch’s raw empirical laboratory findings (chemical oxygen demand of dye effluent, kinetic energy ratios, and carbon durability) into verifiable consumer eco-scores and digital passports. Learn how handmade pashmina, walnut wood carving, and kani weaving achieve superior carbon footprints over industrial polyester substitutes.
+              </p>
+            </div>
+
 
             {/* CRAFT PASSPORT ATTRIBUTES TABLE */}
             <Card className="p-6 bg-slate-900/90 border-white/10 space-y-4">
@@ -1297,6 +1333,171 @@ export default function HandicraftsEiaPage() {
                         </td>
                       </tr>
                     ))}
+                  </tbody>
+                </table>
+              </div>
+            </Card>
+          </div>
+        )}
+
+        {/* ======================================================== */}
+        {/* TAB: KHCRF INTERFACE & CRAFT REVIVAL FOUNDATION           */}
+        {/* ======================================================== */}
+        {activeTab === 'khcrf_revival' && (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-xs font-semibold">
+                    Living Heritage &amp; Craft Revival Partner
+                  </Badge>
+                  <span className="text-xs text-slate-400 font-mono">
+                    Archival Research • Artisan Welfare • Cultural Ecology
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                  <Landmark className="w-5 h-5 text-emerald-400" />
+                  <span>The Cultural &amp; Policy Bridge: Kashmir EcoWatch &amp; KHCRF</span>
+                </h2>
+                <p className="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
+                  Connecting independent empirical environmental monitoring with historical documentation, master artisan lineage preservation, and sustainable cultural revival policy through the Kashmir Hamadan Craft Revival Foundation.
+                </p>
+              </div>
+              <a
+                href="https://www.khcrf.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shrink-0 transition-colors shadow-sm"
+              >
+                <span>Visit khcrf.org</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* TWO-PLATFORM ARCHITECTURE DIAGRAM (ECOWATCH & KHCRF) */}
+            <Card className="p-6 bg-slate-900 border-emerald-500/30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                <div className="p-4 rounded-xl bg-slate-950 border border-cyan-500/30 space-y-2">
+                  <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>Kashmir EcoWatch (Scientific &amp; Environmental Baselines)</span>
+                  </div>
+                  <p className="text-slate-300 leading-relaxed text-[11px]">
+                    Provides raw chemical toxicity monitoring of dye effluents, timber extraction quotas for walnut and willow, carbon lifecycle footprints, and spatial GIS mapping of artisan production clusters.
+                  </p>
+                  <ul className="space-y-1 text-[10px] text-slate-400 pt-1 font-mono">
+                    <li>• Effluent COD/BOD &amp; Heavy Metal Toxicology</li>
+                    <li>• Sustainable Forest Harvest Quotas (Juglans regia)</li>
+                    <li>• Cradle-to-Grave Carbon &amp; Energy Metrics</li>
+                    <li>• Spatial Watershed &amp; Cluster Telemetry</li>
+                  </ul>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-950 border border-emerald-500/30 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                      <BookOpen className="w-4 h-4" />
+                      <span>KHCRF (Revival, Living Heritage &amp; Artisan Policy)</span>
+                    </div>
+                    <a
+                      href="https://www.khcrf.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-mono text-[10px] underline underline-offset-2"
+                    >
+                      khcrf.org <ExternalLink className="w-2.5 h-2.5" />
+                    </a>
+                  </div>
+                  <p className="text-slate-300 leading-relaxed text-[11px]">
+                    Preserves historical techniques, catalogs museum masterworks worldwide, advocates for fair artisan compensation, and formulates strategic policies to safeguard indigenous Kashmiri crafts from synthetic obsolescence.
+                  </p>
+                  <ul className="space-y-1 text-[10px] text-slate-400 pt-1 font-mono">
+                    <li>• Master Artisan Genealogies &amp; Apprenticeships</li>
+                    <li>• Global Federated Museum Collections &amp; Archives</li>
+                    <li>• Policy Frameworks for Traditional Maker Welfare</li>
+                    <li>• Organic Bio-Dye &amp; Natural Formula Revival</li>
+                  </ul>
+                  <div className="pt-2">
+                    <a
+                      href="https://www.khcrf.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
+                    >
+                      <span>Explore Foundation Initiatives (khcrf.org)</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* KHCRF FOUNDATION SPOTLIGHT / CIVILIZATIONAL HERITAGE */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs">
+                    Kashmir Hamadan Craft Revival Foundation
+                  </Badge>
+                  <h4 className="text-sm font-bold text-white">
+                    Civilizational Craft Wisdom Meets 21st-Century Sustainability
+                  </h4>
+                </div>
+                <a
+                  href="https://www.khcrf.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shrink-0"
+                >
+                  <span>Launch KHCRF Portal</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Rooted in the 700-year legacy initiated by Mir Sayyid Ali Hamadani (RA)—who brought 700 master artisans to the Kashmir Valley—the <strong>Kashmir Hamadan Craft Revival Foundation (KHCRF)</strong> works to document, safeguard, and revitalize vulnerable craft disciplines. By collaborating with Kashmir EcoWatch, KHCRF aligns traditional low-carbon manufacturing techniques (hand-spinning pashmina, organic vegetable dyeing, hand-carved sustainable walnut wood, and natural vegetal paper pulp) with rigorous environmental standards to ensure economic and ecological survival.
+              </p>
+            </div>
+
+            {/* KHCRF & ECOWATCH COOPERATIVE MATRIX TABLE */}
+            <Card className="p-6 bg-slate-900/90 border-white/10 space-y-4">
+              <h3 className="font-bold text-white text-sm">
+                Collaborative Framework: EcoWatch Environmental Science &amp; KHCRF Heritage Policy
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-slate-950 text-slate-400 text-[10px] uppercase font-mono">
+                    <tr>
+                      <th className="p-3">Pillar</th>
+                      <th className="p-3">EcoWatch Scientific Role</th>
+                      <th className="p-3">KHCRF Heritage &amp; Policy Role</th>
+                      <th className="p-3">Revival Outcome</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5 text-slate-300">
+                    <tr className="hover:bg-white/5">
+                      <td className="p-3 font-semibold text-white">Raw Material Provenance</td>
+                      <td className="p-3 text-[11px] text-cyan-300/90">Timber harvest sustainability auditing; Changthangi pashmina grazing impact analysis</td>
+                      <td className="p-3 text-[11px] text-emerald-300/90">Documenting ethical shepherd cooperatives &amp; historical fleece grading traditions</td>
+                      <td className="p-3 text-[10px] font-mono text-slate-400">Guaranteed non-extractive, deforestation-free raw supply</td>
+                    </tr>
+                    <tr className="hover:bg-white/5">
+                      <td className="p-3 font-semibold text-white">Bio-Dye Chemistry &amp; Effluent</td>
+                      <td className="p-3 text-[11px] text-cyan-300/90">Laboratory testing of COD, BOD, and heavy metals in synthetic vs natural dye baths</td>
+                      <td className="p-3 text-[11px] text-emerald-300/90">Archival recovery of historic natural botanical recipes (madder root, walnut hull, pomegranate)</td>
+                      <td className="p-3 text-[10px] font-mono text-slate-400">Zero-discharge natural dyeing protocols for artisan clusters</td>
+                    </tr>
+                    <tr className="hover:bg-white/5">
+                      <td className="p-3 font-semibold text-white">Artisan Health &amp; Ergonomics</td>
+                      <td className="p-3 text-[11px] text-cyan-300/90">Workplace particulate matter monitoring (wood dust, lacquer fumes, fiber inhalation)</td>
+                      <td className="p-3 text-[11px] text-emerald-300/90">Ergonomic loom design, social security advocacy &amp; fair wage baseline enforcement</td>
+                      <td className="p-3 text-[10px] font-mono text-slate-400">Protected artisan wellbeing and intergenerational craft transmission</td>
+                    </tr>
+                    <tr className="hover:bg-white/5">
+                      <td className="p-3 font-semibold text-white">Cultural Archiving &amp; Anti-Counterfeiting</td>
+                      <td className="p-3 text-[11px] text-cyan-300/90">Microscopic fiber analysis and elemental fingerprinting for authenticity validation</td>
+                      <td className="p-3 text-[11px] text-emerald-300/90">Global museum repository cataloging, design patenting &amp; GI defense</td>
+                      <td className="p-3 text-[10px] font-mono text-slate-400">Elimination of synthetic power-loom machine counterfeits</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

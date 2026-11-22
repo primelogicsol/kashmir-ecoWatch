@@ -12,22 +12,27 @@ import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterB
 import {
   Factory, Map, BarChart3, Eye, Search, Database,
   Trash2, Droplets, Wind, AlertTriangle, Waves,
-  Building2, Cloud, Shield, Activity, ShieldCheck, Globe
+  Building2, Cloud, Shield, Activity, ShieldCheck, Globe, Volume2,
+  Trees, Car
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
 const submodules = [
-  { name: 'Solid Waste',                href: '/environmental-monitoring/solid-waste',               icon: Trash2,       color: 'from-gray-500 to-slate-600',   status: '8 hotspots',    statusColor: 'warning' },
-  { name: 'Bio-Waste',                  href: '/environmental-monitoring/bio-waste',                 icon: Cloud,        color: 'from-emerald-500 to-green-600', status: '3 zones',       statusColor: 'info'    },
-  { name: 'Sewage & Wastewater',        href: '/environmental-monitoring/sewage-wastewater',         icon: Droplets,     color: 'from-blue-500 to-cyan-600',     status: '5 outfalls',    statusColor: 'danger'  },
-  { name: 'Drinking Water',             href: '/environmental-monitoring/drinking-water',             icon: Waves,        color: 'from-cyan-500 to-teal-600',     status: '2 advisories',  statusColor: 'warning' },
-  { name: 'Critical Infrastructure',    href: '/environmental-monitoring/critical-infrastructure',    icon: Building2,    color: 'from-indigo-500 to-blue-600',   status: '122 assets',    statusColor: 'info'    },
-  { name: 'Air Pollution',              href: '/environmental-monitoring/air-pollution',              icon: Wind,         color: 'from-slate-500 to-gray-600',    status: 'AQI: Moderate', statusColor: 'info'    },
-  { name: 'Ecological Health',          href: '/environmental-monitoring/environmental-health',       icon: Shield,       color: 'from-amber-500 to-orange-600',  status: '6 signals',     statusColor: 'warning' },
-  { name: 'Environmental Resilience',   href: '/environmental-monitoring/environmental-resilience',  icon: ShieldCheck,  color: 'from-teal-500 to-cyan-600',     status: '30 systems',    statusColor: 'info'    },
-  { name: 'SDG Monitoring',             href: '/environmental-monitoring/sdg-monitoring',             icon: Globe,        color: 'from-green-500 to-emerald-700',  status: '36 indicators', statusColor: 'info'    },
-  { name: 'Dashboards',                 href: '/environmental-monitoring/dashboards',                 icon: BarChart3,    color: 'from-violet-500 to-purple-600', status: 'Analytics',     statusColor: 'default' },
+  { name: 'Solid Waste',                href: '/environmental-monitoring/solid-waste',               icon: Trash2,       color: 'from-gray-500 to-slate-600',   status: '8 hotspots',    statusColor: 'warning', desc: 'Dumping, landfill stress, open waste' },
+  { name: 'Plastic Pollution',          href: '/environmental-monitoring/plastic-pollution',          icon: Trash2,       color: 'from-teal-500 to-emerald-600', status: 'Waste & Recycling', statusColor: 'warning', desc: 'Plastic waste, recycling & contamination' },
+  { name: 'Bio-Waste',                  href: '/environmental-monitoring/bio-waste',                 icon: Cloud,        color: 'from-emerald-500 to-green-600', status: '3 zones',       statusColor: 'info',    desc: 'Organic waste, decomposition zones' },
+  { name: 'Sewage & Wastewater',        href: '/environmental-monitoring/sewage-wastewater',         icon: Droplets,     color: 'from-blue-500 to-cyan-600',     status: '5 outfalls',    statusColor: 'danger',  desc: 'Overflow, outfalls, untreated discharge' },
+  { name: 'Drinking Water',             href: '/environmental-monitoring/drinking-water',             icon: Waves,        color: 'from-cyan-500 to-teal-600',     status: '2 advisories',  statusColor: 'warning', desc: 'Contamination alerts, supply issues' },
+  { name: 'Critical Infrastructure',    href: '/environmental-monitoring/critical-infrastructure',    icon: Building2,    color: 'from-indigo-500 to-blue-600',   status: '122 assets',    statusColor: 'info',    desc: 'Reservoirs, utilities, waste assets' },
+  { name: 'Air Pollution',              href: '/environmental-monitoring/air-pollution',              icon: Wind,         color: 'from-slate-500 to-gray-600',    status: 'AQI: Moderate', statusColor: 'info',    desc: 'AQI, particulate, smoke, burning' },
+  { name: 'Transportation Pollution',   href: '/environmental-monitoring/transportation-pollution',   icon: Car,          color: 'from-blue-500 to-indigo-600',   status: 'Emissions & Traffic', statusColor: 'warning', desc: 'Vehicle emissions, traffic & noise' },
+  { name: 'Noise Pollution',            href: '/environmental-monitoring/noise-pollution',            icon: Volume2,      color: 'from-amber-500 to-orange-600',  status: 'Acoustics & GIS', statusColor: 'warning', desc: 'Sound levels, hotspots & exposure' },
+  { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health',     icon: Shield,       color: 'from-amber-500 to-orange-600',  status: '6 signals',     statusColor: 'warning', desc: 'Odor, fish kill, stagnant water' },
+  { name: 'Environmental Resilience',   href: '/environmental-monitoring/environmental-resilience',  icon: ShieldCheck,  color: 'from-teal-500 to-cyan-600',     status: '30 systems',    statusColor: 'info',    desc: 'Resilience, recovery & stress capacity' },
+  { name: 'Chinar Monitoring',          href: '/environmental-monitoring/chinar-monitoring',          icon: Trees,        color: 'from-emerald-600 to-green-700', status: 'Heritage Trees', statusColor: 'success', desc: 'Tree health, GIS & conservation' },
+  { name: 'SDG Monitoring',             href: '/environmental-monitoring/sdg-monitoring',             icon: Globe,        color: 'from-green-500 to-emerald-700',  status: '36 indicators', statusColor: 'info',    desc: 'Environmental UN SDG performance tracking' },
+  { name: 'Dashboards',                 href: '/environmental-monitoring/dashboards',                 icon: BarChart3,    color: 'from-violet-500 to-purple-600', status: 'Analytics',     statusColor: 'default', desc: 'District comparison & stress heatmaps' },
 ];
 
 const districtStress = [
@@ -88,12 +93,14 @@ export default function EnvironmentalMonitoringOverview() {
           </div>
         }
         images={[
-          '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/khrew-cement-industrial-air-pollution.jpg',
+          '/images/env-monitoring/kashmir-drinking-water-lab.jpg',
+          '/images/env-monitoring/kashmir-solid-waste-facility.jpg',
+          '/images/env-monitoring/kashmir-chinar-hero.jpg',
+          '/images/env-monitoring/kashmir-noise-hero.jpg',
+          '/images/env-monitoring/kashmir-plastic-hero.jpg',
+          '/images/env-monitoring/kashmir-transport-hero.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -118,6 +125,9 @@ export default function EnvironmentalMonitoringOverview() {
               placeholder="All Domains"
               options={[
                 { value: 'solid-waste',              label: 'Solid Waste'              },
+                { value: 'plastic-pollution',        label: 'Plastic Pollution'        },
+                { value: 'transportation-pollution', label: 'Transportation Pollution' },
+                { value: 'chinar-monitoring',        label: 'Chinar Monitoring'        },
                 { value: 'bio-waste',                label: 'Bio-Waste'                },
                 { value: 'sewage-wastewater',        label: 'Sewage & Wastewater'      },
                 { value: 'drinking-water',           label: 'Drinking Water'           },
@@ -283,7 +293,7 @@ export default function EnvironmentalMonitoringOverview() {
                         <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{mod.name}</h3>
                         <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
                       </div>
-                      <p className="text-xs text-slate-400">Environmental intelligence module</p>
+                      <p className="text-xs text-slate-400">{mod.desc}</p>
                     </div>
                   </div>
                 </Card>
@@ -369,7 +379,7 @@ export default function EnvironmentalMonitoringOverview() {
                 Open Dashboard
               </Button>
             </div>
-            <div className="h-72 bg-gradient-to-br from-amber-900/30 to-slate-900/50 flex items-center justify-center border-t border-white/5">
+            <div className="h-72 bg-slate-900 flex items-center justify-center border-t border-white/5">
               <div className="text-center">
                 <Map className="w-12 h-12 text-slate-600 mx-auto mb-3" />
                 <p className="text-slate-400 text-sm mb-1">Interactive environmental asset map with waste, sewage, and air quality layers</p>

@@ -228,7 +228,7 @@ function AdditionalContent() {
           ].map(({ title, icon: Icon, data, description }) => (
             <Card key={title} className="glass-intense border-white/10 p-5">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-sm font-semibold text-white">{title}</h3>
@@ -407,7 +407,7 @@ export default function DrinkingWaterSourcesPage() {
               Filter public water sources by raw intake typology, operational functionality, or potability safety.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-cyan-400">{displayedEntities.length}</strong> of {entities.length} sources
           </span>
         </div>
@@ -640,7 +640,7 @@ export default function DrinkingWaterSourcesPage() {
 
           {activeInsight === 'observe' && (
             <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-emerald-950/60 border border-cyan-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-cyan-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 shrink-0">
                     <Camera className="w-5 h-5" />

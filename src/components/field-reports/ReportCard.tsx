@@ -55,8 +55,8 @@ export function ReportCard({ report, index = 0 }: ReportCardProps) {
         <div className="flex items-start gap-4 mb-4">
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
             isArchived 
-              ? 'bg-gradient-to-br from-slate-500/20 to-slate-600/20' 
-              : 'bg-gradient-to-br from-amber-500/20 to-orange-500/20'
+              ? 'bg-slate-800 border border-slate-700' 
+              : 'bg-amber-950/50 border border-amber-500/30'
           }`}>
             <FileText className={`w-6 h-6 ${isArchived ? 'text-slate-400' : 'text-amber-400'}`} />
           </div>

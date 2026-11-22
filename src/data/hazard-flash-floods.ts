@@ -16,9 +16,9 @@ export type TriggerType = 'Cloudburst' | 'Glacial Melt' | 'Dam Breach' | 'Rapid 
 
 export type RiskLevel = 'Critical' | 'High' | 'Moderate' | 'Low';
 
-export type VerificationStatus = 'Verified' | 'Satellite-Derived' | 'Community-Reported';
+export type VerificationStatus = 'Verified' | 'Satellite-Derived' | 'Community-Reported' | 'Model Monitored' | 'Basin Telemetry Corroborated' | 'NWP Model-Monitored Catchment' | string;
 
-export type FlashFloodStatus = 'Active Alert' | 'Watch' | 'Seasonal Risk' | 'Historical';
+export type FlashFloodStatus = 'Active Alert' | 'Watch' | 'Seasonal Risk' | 'Historical' | 'Normal';
 
 export interface FlashFloodRecord {
   id: string;
@@ -38,10 +38,23 @@ export interface FlashFloodRecord {
   longitude: number;
   latest_hourly_rainfall?: number;
   forecast_rainfall_24h?: number;
+  peak_hourly_intensity?: number;
   live_risk_level?: RiskLevel;
   live_trend?: 'Rising' | 'Stable' | 'Falling';
   dominant_trigger?: string;
   last_updated?: string;
+  provenance?: {
+    official_warning?: {
+      is_active: boolean;
+      title?: string;
+      pubDate?: string;
+      link?: string;
+      authority: string;
+    };
+    forecast_source?: string;
+    telemetry_classification?: string;
+    is_official_government_alert?: boolean;
+  };
 }
 
 export const flashFloodData: FlashFloodRecord[] = [

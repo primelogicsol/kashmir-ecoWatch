@@ -98,7 +98,7 @@ export default function RestorationPage() {
               Filter ecological rejuvenation projects by implementation status or ecosystem typology.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-lime-400">{displayedSites.length}</strong> of {totalCount} projects
           </span>
         </div>
@@ -250,7 +250,7 @@ export default function RestorationPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-lime-500/20 hover:border-lime-500/40 transition-all group block"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-lime-500/20 text-lime-300 border border-lime-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-lime-500/20 text-lime-300 border border-lime-500/30 flex items-center gap-1">
                       <Hammer className="w-2.5 h-2.5" />
                       {site.category}
                     </span>
@@ -379,7 +379,7 @@ export default function RestorationPage() {
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl bg-gradient-to-r from-lime-950/60 via-slate-900 to-emerald-950/60 border border-lime-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-lime-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-lime-500/20 border border-lime-500/30 text-lime-400 shrink-0">
                     <Camera className="w-5 h-5" />

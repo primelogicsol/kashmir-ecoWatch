@@ -433,12 +433,12 @@ export function WaterEntityListingPage({
                       {/* District + Scope */}
                       <div className="flex items-center gap-2 text-xs text-slate-500">
                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="truncate max-w-[120px]">{entity.district} District</span>
+                        <span className="break-words">{entity.district} District</span>
                         {getScopeForUnit(entity.district) && (
-                          <><span>·</span><span className="text-slate-600 truncate max-w-[120px]">{getScopeForUnit(entity.district)}</span></>
+                          <><span>·</span><span className="text-slate-600 break-words">{getScopeForUnit(entity.district)}</span></>
                         )}
                         {entity.watershed && (
-                          <><span>·</span><span className="text-blue-400/80 truncate max-w-[150px]" title={entity.watershed}>{entity.watershed}</span></>
+                          <><span>·</span><span className="text-blue-400/80 break-words" title={entity.watershed}>{entity.watershed}</span></>
                         )}
                       </div>
 
@@ -469,7 +469,7 @@ export function WaterEntityListingPage({
                         {entity.threats?.length ? (
                           <>
                             {entity.threats.slice(0, 3).map((t, ti) => (
-                              <span key={ti} className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-300 max-w-[120px] truncate">
+                              <span key={ti} className="text-[11px] px-2 py-1 rounded-md bg-slate-800 border border-white/5 text-slate-300 break-words">
                                 {t}
                               </span>
                             ))}

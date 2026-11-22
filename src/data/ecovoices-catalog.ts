@@ -79,9 +79,9 @@ export interface EcoVoiceRelease {
 }
 
 export const ECOVOICES_THEME_CATEGORIES = [
-  { id: 'all', label: 'All Environmental Releases', count: 5 },
+  { id: 'all', label: 'All Environmental Releases', count: 6 },
   { id: 'water_stewardship', label: 'Water Stewardship', count: 1 },
-  { id: 'sustainable_development', label: 'Sustainable Development & Forests', count: 1 },
+  { id: 'sustainable_development', label: 'Sustainable Development & Ethics', count: 2 },
   { id: 'river_conservation', label: 'River Conservation (Jhelum)', count: 1 },
   { id: 'lake_wetland_ecology', label: 'Lakes & Wetlands (Dal)', count: 1 },
   { id: 'forest_alpine', label: 'Alpine Slopes & Springs', count: 1 }
@@ -496,6 +496,87 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       originalTitle: 'Cry of the Kashmir Valley | Come Light the Mystic Lamp | SufiPulse USA',
       videoId: 'EtehDd3oUVc',
       thumbnailUrl: 'https://img.youtube.com/vi/EtehDd3oUVc/hqdefault.jpg'
+    }
+  },
+  {
+    id: 'kashmir-how-long-will-you-remain-silent',
+    slug: 'kashmir-how-long-will-you-remain-silent',
+    trackOrder: 6,
+    title: 'Kashmir, How Long Will You Remain Silent? | Kab Tak Khamosh?',
+    subtitle: 'Kashmir\'s Environmental Awakening: An Original Mystical Sufi Kalam on Meezan, Amaanat & Ecological Conscience',
+    catalogNumber: 'SP-USA-ENV-006',
+    catalogCode: 'SP-USA-ENV-006',
+    canonicalUrl: 'https://sufipulse.com/releases',
+    publisher: 'SufiPulse USA',
+    year: 2026,
+    durationFormatted: '14:53',
+    duration: '14:53',
+    videoEmbedId: 'wYFfuBS78ZI',
+    youtubeVideoId: 'wYFfuBS78ZI',
+    thumbnailUrl: 'https://img.youtube.com/vi/wYFfuBS78ZI/hqdefault.jpg',
+    coverArtworkUrl: 'https://img.youtube.com/vi/wYFfuBS78ZI/hqdefault.jpg',
+    coverImage: 'https://img.youtube.com/vi/wYFfuBS78ZI/hqdefault.jpg',
+    language: 'Urdu (with Nastaliq, Roman Urdu & English Gloss)',
+    primaryTheme: 'Meezan & Amaanat: Sacred Trust, Human Responsibility & Confronting Ecological Silence',
+    environmentalTheme: 'Meezan & Amaanat: Sacred Trust, Human Responsibility & Confronting Ecological Silence',
+    themeCategory: 'sustainable_development',
+    observances: [
+      'World Environment Day (June 5)',
+      'Himalayan Ecology Day (September 9)',
+      'World Water Day (March 22)'
+    ],
+    kalamPoetOrSource: 'Dr. Zarf-e-Noori (Original Mystical Sufi Kalam)',
+    musicalStyle: 'Contemporary Mystical Sufi • Spiritual Ecology • Three-Part Cinematic Master',
+    instrumentsUsed: ['Persian Ney', 'Afghan Rabab', 'Acoustic Cello', 'Meditative Ambient Strings', 'Traditional Percussion'],
+    poeticExcerptOriginal: 'تم کب تک خاموش رہو گے؟\nدریاؤں کا گریہ ہے، پہاڑوں کی پکار ہے،\nمیزان کا امانت ہے، تخلیق کا وقار ہے۔\nکیا ذکر کرو گے جب گلزار نہ ہوں گے؟\nکیا سجدہ کرو گے جب آبشار نہ ہوں گے؟',
+    poeticExcerptTranslation: 'How long will you remain silent?\nThe rivers weep, the mountains call out in grief;\nThe cosmic balance (Meezan) is a sacred trust (Amaanat), the dignity of all creation.\nWhat remembrance will you claim when the green gardens vanish?\nWhere will devotion stand when the living waterfalls are silenced?',
+    ecologicalDossier: '"Kab Tak Khamosh?" is a cinematic three-part ecological kalam by Dr. Zarf-e-Noori that bridges classical Rishi-Sufi environmental consciousness with empirical crisis response. Through a mystical dialogue between the poet and Rabb, it directly addresses human negligence, pollution across Dal Lake, Wular Lake, and the Jhelum River, deforestation in mountain catchments, and desiccation of perennial springs. Invoking the foundational traditions of Lall Arifa, Sheikh Noorani (Nund Rishi), Shah-e-Hamadan, Zain-ud-Din Wali, and Baba Payam-ud-Din, it rejects passive grief and demands that silence be replaced by scientific vigilance, watershed custodianship, and generational accountability.',
+    relatedScientificModules: [
+      {
+        title: 'Dal & Wular Lake Water Quality Telemetry',
+        category: 'Limnology',
+        href: '/water-systems/water-quality',
+        description: 'Trophic status, dissolved oxygen saturation, and nutrient loading indices across regional freshwater bodies.'
+      },
+      {
+        title: 'Jhelum River Basin & Riparian Conservation',
+        category: 'Fluvial Hydrology',
+        href: '/water-systems/rivers',
+        description: 'Riverine discharge telemetry, flood channel stability, and riparian buffer zone degradation.'
+      },
+      {
+        title: 'Forest Canopy & Deforestation Intelligence',
+        category: 'Forest Ecology',
+        href: '/biodiversity/forest-ecosystems',
+        description: 'High-altitude canopy cover loss, soil erosion vulnerability, and mountain watershed protection.'
+      }
+    ],
+    outdoorClassroomActivity: {
+      activityTitle: 'Kashmir Environmental Silence vs. Action: Watershed Audit & Ecological Charter',
+      recommendedTier: 'Senior Secondary & Youth Environmental Forums (15–20 Years)',
+      curriculumLink: '/environmental-calendar/outdoor-classroom/curriculum',
+      duration: '3.0 Hours Interactive Workshop & Field Audit',
+      fieldHypothesis: 'Community environmental awareness and direct custodial stewardship increase when empirical water testing is paired with ethical responsibility toward the sacred trust (Amaanat) of creation.',
+      materialsNeeded: [
+        'Kashmir EcoWatch Water Quality Field Testing Kit (pH, Turbidity, DO)',
+        'Riparian habitat degradation scorecards and GPS mapping devices',
+        'Digital playback setup for "Kab Tak Khamosh?" (SufiPulse USA)',
+        'Youth Amaanat Ecological Action Plan Worksheets'
+      ],
+      fieldworkMethod: '1. Conduct a physical and sensor-based audit of a local canal, riverbank, or wetland shoreline, documenting plastic accumulation and effluent points.\n2. Screen and listen to the three-part cinematic kalam "Kab Tak Khamosh?"\n3. Engage participants in structured reflection connecting empirical water quality with ethical responsibility.\n4. Formulate a local Youth Ecological Action Plan with measurable 90-day targets for riparian cleanup and community monitoring.',
+      measurableLearningOutcome: 'Students quantify localized water quality impairment and translate ethical awareness into concrete community watershed conservation protocols.'
+    },
+    verifiedSufiPulseRelease: true,
+    youtubeStats: {
+      trackNumber: 6,
+      duration: '14:53',
+      views: '1K+',
+      uploadedAge: '2026',
+      playlistUrl: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
+      channelName: 'SufiPulse USA',
+      originalTitle: 'Kashmir, How Long Will You Remain Silent? | SufiPulse USA',
+      videoId: 'wYFfuBS78ZI',
+      thumbnailUrl: 'https://img.youtube.com/vi/wYFfuBS78ZI/hqdefault.jpg'
     }
   }
 ];

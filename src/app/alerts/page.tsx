@@ -166,7 +166,7 @@ export default function AlertsPage() {
       <section className="bg-emerald-950/20 border-b border-emerald-500/20 py-3">
         <div className="container mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-slate-300">
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30 text-[11px]">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30 text-[11px]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
               LIVE TELEMETRY ACTIVE
             </span>
@@ -175,7 +175,7 @@ export default function AlertsPage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] self-end sm:self-auto">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] w-full sm:w-auto">
             <span className="text-slate-400 font-mono">
               {lastUpdated ? `Updated: ${new Date(lastUpdated).toLocaleTimeString()}` : 'Connected'}
             </span>
@@ -238,7 +238,7 @@ export default function AlertsPage() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Tabs */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full min-w-0 hide-scrollbar pb-1 sm:pb-0">
               {[
                 { key: 'all', label: 'All Alerts', count: stats.total },
                 { key: 'active', label: 'Active', count: stats.active },

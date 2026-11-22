@@ -331,7 +331,7 @@ export function AlertResponseSystem() {
                     ].map((category) => (
                       <button
                         key={category.label}
-                        className="text-xs px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-white/5 transition-colors flex items-center justify-between group"
+                        className="text-xs px-3 py-1.5 rounded-[4px] whitespace-nowrap hover:bg-white/5 transition-colors flex items-center justify-between group"
                       >{/* responsive-md-fix */}
                         <div className="flex items-center gap-2 sm:gap-3">
                           <category.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 group-hover:text-forest-400 transition-colors" />
@@ -372,7 +372,7 @@ export function AlertResponseSystem() {
                       {[1, 2, 3, 4, 5].map((i) => (
                         <div
                           key={i}
-                          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-forest-400 to-forest-600 border-2 border-slate-900"
+                          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-slate-900 border-2 border-slate-900"
                         />
                       ))}
                     </div>

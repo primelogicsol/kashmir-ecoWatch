@@ -24,16 +24,16 @@ export function Badge({ children, variant = 'default', size = 'md', className, o
   };
 
   const sizes = {
-    sm: 'text-[10px] xs:text-xs px-1.5 py-0.5 sm:px-2 sm:py-0.5 text-center whitespace-nowrap',
-    md: 'text-xs px-2 py-1 sm:px-2.5 sm:py-1 whitespace-nowrap',
-    lg: 'text-xs sm:text-sm px-2.5 py-1 sm:px-3 sm:py-1.5 whitespace-nowrap',
+    sm: 'text-[10px] xs:text-xs px-2 py-0.5 text-center leading-tight break-words',
+    md: 'text-xs px-2.5 py-1 leading-tight break-words',
+    lg: 'text-xs sm:text-sm px-3 py-1 sm:py-1.5 leading-snug break-words',
   };
 
   return (
     <span
       onClick={onClick}
       className={cn(
-        'inline-flex items-center font-medium rounded-[4px]',
+        'inline-flex items-center justify-center font-medium rounded-sm max-w-full',
         variants[variant],
         sizes[size],
         className,

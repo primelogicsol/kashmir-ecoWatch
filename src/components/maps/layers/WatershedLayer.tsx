@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Circle, Popup } from 'react-leaflet';
-import * as L from 'leaflet';
-import { watershedsData } from '@/data/water-systems';
+import { Polygon, Popup } from 'react-leaflet';
+import watershedsGeoJson from '@/data/geojson/watersheds.json';
 
 interface WatershedLayerProps {
   visible?: boolean;
@@ -11,61 +10,64 @@ interface WatershedLayerProps {
 }
 
 export function WatershedLayer({ visible = true, onFeatureClick }: WatershedLayerProps) {
-  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   if (!visible) return null;
 
-  const handleWatershedClick = (watershed: any) => {
-    if (onFeatureClick) {
-      onFeatureClick({
-        type: 'watershed',
-        ...watershed,
-      });
-    }
-  };
-
-  const style = (feature: any, isHovered: boolean) => ({
-    fillColor: isHovered ? '#3b82f6' : '#60a5fa',
-    color: isHovered ? '#ffffff' : '#93c5fd',
-    weight: isHovered ? 3 : 1,
-    fillOpacity: isHovered ? 0.4 : 0.15,
-    dashArray: '5, 5',
-  });
-
   return (
     <>
-      {watershedsData.map((watershed) => {
-        const coordinates = watershed.coordinates;
-        if (!coordinates) return null;
-
-        // Simplified representation as circles (in production, use actual watershed boundaries)
-        const radius = watershed.area ? Math.sqrt(watershed.area) * 1000 : 5000;
-        const isHovered = hoveredFeature === watershed.id;
+      {watershedsGeoJson.features.map((feature) => {
+        const props = feature.properties;
+        const coords = feature.geometry.coordinates[0]; // [[lng, lat], ...]
+        const latLngs: [number, number][] = coords.map(([lng, lat]) => [lat, lng]);
+        const isHovered = hoveredId === props.id;
 
         return (
-          <Circle
-            key={watershed.id}
-            center={[coordinates.lat, coordinates.lng]}
-            radius={radius}
-            pathOptions={style(watershed, isHovered)}
+          <Polygon
+            key={props.id}
+            positions={latLngs}
+            pathOptions={{
+              color: isHovered ? '#60a5fa' : '#3b82f6',
+              fillColor: '#3b82f6',
+              fillOpacity: isHovered ? 0.35 : 0.15,
+              weight: isHovered ? 2.5 : 1.5,
+              dashArray: '5, 5',
+            }}
             eventHandlers={{
-              mouseover: () => setHoveredFeature(watershed.id),
-              mouseout: () => setHoveredFeature(null),
-              click: () => handleWatershedClick(watershed),
+              mouseover: () => setHoveredId(props.id),
+              mouseout: () => setHoveredId(null),
+              click: () => {
+                onFeatureClick?.({
+                  type: 'watershed',
+                  id: props.id,
+                  name: props.name,
+                  basin: props.basin,
+                  region: props.region,
+                  area: props.area_km2,
+                  verificationStatus: props.verificationStatus,
+                  description: `${props.name} covering ${props.area_km2.toLocaleString()} km² within the greater ${props.basin}. Hydrographically delineated via HydroBASINS Level-7 drainage standard.`,
+                  metrics: [
+                    { label: 'Catchment Area', value: `${props.area_km2.toLocaleString()} km²` },
+                    { label: 'Parent Basin', value: props.basin },
+                    { label: 'Region', value: props.region },
+                    { label: 'Boundary Standard', value: 'HydroBASINS / HydroSHEDS Authoritative' }
+                  ]
+                });
+              },
             }}
           >
             <Popup>
               <div className="p-2 min-w-[200px]">
-                <h3 className="font-semibold text-slate-900">{watershed.name}</h3>
-                <p className="text-sm text-slate-600">{watershed.category}</p>
-                <div className="mt-2 space-y-1 text-xs text-slate-500">
-                  <p>District: {watershed.district}</p>
-                  <p>Area: {watershed.area ? `${watershed.area} km²` : 'N/A'}</p>
-                  <p>Elevation: {watershed.elevation ? `${watershed.elevation}m` : 'N/A'}</p>
+                <h3 className="font-bold text-slate-900 text-sm">{props.name}</h3>
+                <div className="mt-1 space-y-1 text-xs text-slate-600">
+                  <p><span className="font-medium text-slate-700">Basin:</span> {props.basin}</p>
+                  <p><span className="font-medium text-slate-700">Area:</span> {props.area_km2.toLocaleString()} km²</p>
+                  <p><span className="font-medium text-slate-700">Region:</span> {props.region}</p>
+                  <p className="text-[10px] text-blue-600 font-mono">Delineated Catchment Polygon</p>
                 </div>
               </div>
             </Popup>
-          </Circle>
+          </Polygon>
         );
       })}
     </>

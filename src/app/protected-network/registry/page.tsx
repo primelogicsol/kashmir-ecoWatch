@@ -170,7 +170,7 @@ export default function ProtectedAreasRegistryPage() {
         subtitle="Complete inventory of all protected areas across the global ecological scope. Filter by scope, category, and search by name. Integrated with the entire regional database."
         icon={
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
               <Shield className="w-7 h-7 text-white" />
             </div>
             <Badge variant="info" size="lg">
@@ -179,11 +179,27 @@ export default function ProtectedAreasRegistryPage() {
           </div>
         }
         breadcrumbs={[{ label: 'Protected Areas Registry' }]}
-        images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={[
+        '/images/protected-network/protected-area-atlas-gis.jpg',
+        '/images/protected-network/protected-national-parks-dachigam.jpg',
+        '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg',
+        '/images/protected-network/protected-wetland-reserves-hokersar.jpg',
+        '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+        '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+        '/images/protected-network/protected-species-intelligence-telemetry.jpg',
+        '/images/protected-network/protected-corridors-connectivity-passes.jpg',
+        '/images/protected-network/protected-monitoring-threats-surveillance.jpg',
+        '/images/protected-network/protected-hwc-rapid-response-rescue.jpg',
+        '/images/protected-network/protected-research-trails-sightings.jpg',
+        '/images/bear.png',
+        '/images/tiger.png',
+        '/images/markhor.png',
+        '/images/protected-network.png'
+      ]}
       />
 
       {/* Metrics Bar */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
+      <div className="container mx-auto px-6 mt-6 sm:mt-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -490,7 +506,7 @@ export default function ProtectedAreasRegistryPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Activity className="w-5 h-5 text-white" />
                 </div>
                 <div>

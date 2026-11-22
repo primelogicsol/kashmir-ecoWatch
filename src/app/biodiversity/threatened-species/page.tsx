@@ -75,6 +75,12 @@ export default function ThreatenedSpeciesPage() {
 
   return (
     <BiodiversityCategoryPage
+      images={[
+        '/images/biodiversity/biodiversity-wildlife-rescue.jpg',
+        '/images/biodiversity/biodiversity-hangul-stag.jpg',
+        '/images/tiger.png',
+        '/images/markhor.png',
+      ]}
       title="Western Himalayan Threatened Species"
       subtitle="A consolidated intelligence layer mapping all verified IUCN Red List threatened taxa across Kashmir Core, Jammu, Ladakh, Azad Kashmir, and Gilgit-Baltistan. Aggregates Critically Endangered (CR), Endangered (EN), Vulnerable (VU), and Near Threatened (NT) taxa across mammals, birds, fish, and alpine flora to prioritize anti-poaching enforcement and transboundary habitat corridors."
       icon="Shield"

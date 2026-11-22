@@ -151,7 +151,7 @@ export default function ProtectedAreasPage() {
         }
       />
 
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
+      <div className="container mx-auto px-6 mt-6 sm:mt-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ export default function ProtectedAreasPage() {
               ].map((metric, idx) => (
                 <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0 border-r border-white/5 last:border-0">
                   <metric.icon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                  <div className="text-xl lg:text-xl font-bold text-white tabular-nums leading-tight truncate">
+                  <div className="text-xl lg:text-xl font-bold text-white tabular-nums leading-tight break-words">
                     {metric.value}
                   </div>
                   <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-1 leading-tight break-words">
@@ -258,7 +258,7 @@ export default function ProtectedAreasPage() {
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === filter.id ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-[4px] text-sm font-medium transition-all ${activeFilter === filter.id ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10'}`}
             >
               <filter.icon className="w-4 h-4" />
               {filter.label}
@@ -286,7 +286,7 @@ export default function ProtectedAreasPage() {
                 {viewMode === 'grid' ? (
                   <div className="flex flex-col h-full justify-between">
                     <div>
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} inline-flex mb-4`}>
+                      <div className={`p-3 rounded-xl bg-slate-900 ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} inline-flex mb-4`}>
                         {pa.category === 'national_park' ? <Mountain className="w-6 h-6 text-white" /> :
                          pa.category === 'wildlife_sanctuary' ? <PawPrint className="w-6 h-6 text-white" /> :
                          pa.category === 'wetland_reserve' ? <Droplet className="w-6 h-6 text-white" /> :
@@ -294,7 +294,7 @@ export default function ProtectedAreasPage() {
                          <Bird className="w-6 h-6 text-white" />}
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-1">{pa.name}</h3>
-                      <span className={`inline-block text-xs px-2 py-0.5 rounded-full border ${categoryBadgeColors[pa.category] || ''} mb-3`}>
+                      <span className={`inline-block text-xs px-2 py-0.5 rounded-[4px] border ${categoryBadgeColors[pa.category] || ''} mb-3`}>
                         {categoryLabels[pa.category] || pa.category}
                       </span>
                       <p className="text-sm text-slate-400 mb-3 line-clamp-2">{pa.description}</p>
@@ -309,7 +309,7 @@ export default function ProtectedAreasPage() {
                   </div>
                 ) : (
                   <>
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} shrink-0`}>
+                    <div className={`p-3 rounded-xl bg-slate-900 ${categoryColors[pa.category] || 'from-slate-500 to-slate-700'} shrink-0`}>
                       {pa.category === 'national_park' ? <Mountain className="w-5 h-5 text-white" /> :
                        pa.category === 'wildlife_sanctuary' ? <PawPrint className="w-5 h-5 text-white" /> :
                        pa.category === 'wetland_reserve' ? <Droplet className="w-5 h-5 text-white" /> :
@@ -317,12 +317,12 @@ export default function ProtectedAreasPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-base font-semibold text-white truncate">{pa.name}</h3>
-                        <span className={`text-xs px-2 py-0.5 rounded-full border shrink-0 ${categoryBadgeColors[pa.category] || ''}`}>
+                        <h3 className="text-base font-semibold text-white break-words">{pa.name}</h3>
+                        <span className={`text-xs px-2 py-0.5 rounded-[4px] border shrink-0 ${categoryBadgeColors[pa.category] || ''}`}>
                           {categoryLabels[pa.category] || pa.category}
                         </span>
                       </div>
-                      <p className="text-sm text-slate-400 truncate">{pa.description}</p>
+                      <p className="text-sm text-slate-400 line-clamp-2">{pa.description}</p>
                     </div>
                     <div className="flex items-center gap-4 text-xs text-slate-500 shrink-0">
                       <span className="tabular-nums">{pa.area.toLocaleString()} km²</span>

@@ -71,7 +71,7 @@ export default function GeographicNoticePage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#statement"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Read Official Notice</span>
               <ArrowRight className="w-4 h-4" />
@@ -124,7 +124,7 @@ export default function GeographicNoticePage() {
         {/* ─── The Primary Definitive Geographic Notice Banner ───────────────────── */}
         <section id="statement" className="scroll-mt-24">
           <div className="max-w-5xl mx-auto">
-            <div className="glass-panel p-8 sm:p-14 rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/30 via-slate-900/90 to-slate-950 shadow-2xl relative overflow-hidden">
+            <div className="glass-panel p-8 sm:p-14 rounded-3xl border border-emerald-500/30 bg-slate-900 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -z-10" />
               
               <div className="flex items-center gap-3 mb-6">
@@ -255,7 +255,7 @@ export default function GeographicNoticePage() {
                       <div>
                         <div className="flex items-center justify-between mb-4">
                           <fw.icon className={`w-8 h-8 ${fw.color}`} />
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
                             {fw.badge}
                           </span>
                         </div>

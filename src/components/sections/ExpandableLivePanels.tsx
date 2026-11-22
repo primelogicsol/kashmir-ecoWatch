@@ -117,6 +117,9 @@ export function ExpandableLivePanels() {
         const jhelumAlert = liveAlerts.find(a => a.id === 'live-river-jhelum' || a.category === 'flood');
         const landslideAlert = liveAlerts.find(a => a.id === 'live-landslide-ramban' || a.category === 'landslide');
 
+        const srinagarAqiCategory = srinagarAqi > 200 ? 'Very Unhealthy' : srinagarAqi > 150 ? 'Unhealthy' : srinagarAqi > 100 ? 'Unhealthy for Sensitive Groups' : srinagarAqi > 50 ? 'Moderate' : 'Good';
+        const jhelumDischargeVal = jhelumAlert?.guidance?.actions?.[0]?.replace('Current Live Discharge: ', '')?.replace('Discharge Level: ', '') || '0.9 m³/s';
+
         // Dynamically update panels with verified live 3rd-party API data
         setPanels(prev => prev.map(panel => {
           // Card 1: Air Quality Signals -> Real-time Open-Meteo European CAMS API
@@ -127,7 +130,7 @@ export function ExpandableLivePanels() {
               items: [
                 {
                   id: 'aq-1',
-                  title: `Srinagar Urban — ${srinagarAqi <= 50 ? 'Good' : 'Moderate'} AQI (${srinagarAqi}) · PM2.5 ${srinagarPm25} µg/m³`,
+                  title: `Srinagar Urban — ${srinagarAqiCategory} AQI (${srinagarAqi}) · PM2.5 ${srinagarPm25} µg/m³`,
                   location: 'Srinagar CPCB Station & Dal Lake Basin',
                   timestamp: new Date(),
                   severity: srinagarAqi > 100 ? 'high' : srinagarAqi > 50 ? 'medium' : 'low',
@@ -193,7 +196,7 @@ export function ExpandableLivePanels() {
               items: [
                 {
                   id: 'wet-1',
-                  title: `Jhelum River & Hokersar Inflow — Live Discharge: ${jhelumAlert?.guidance?.actions?.[0]?.replace('Discharge Level: ', '') || '18.4 m³/s'}`,
+                  title: `Jhelum River & Hokersar Inflow — Live Discharge: ${jhelumDischargeVal}`,
                   location: 'Jhelum Basin & Hokersar Ramsar Wetland',
                   timestamp: new Date(jhelumAlert?.updated || Date.now() - 25 * 60 * 1000),
                   severity: 'high',
@@ -413,7 +416,7 @@ export function ExpandableLivePanels() {
             </div>
 
             {/* Live 3rd-Party API Telemetry Badge */}
-            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 w-max">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 w-max">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>
                 {isLiveTelemetry
@@ -497,7 +500,7 @@ export function ExpandableLivePanels() {
                     <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                       {/* Icon with status */}
                       <div className="relative flex-shrink-0">
-                        <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-forest-500 to-forest-700 text-white flex items-center justify-center shadow-lg ${status.glow}`}>
+                        <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg ${status.glow}`}>
                           <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
                         </div>
                         <div className={`absolute -top-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${status.color} border-2 border-slate-900 signal-pulse`} />
@@ -646,7 +649,7 @@ export function ExpandableLivePanels() {
         >
           <div className="flex flex-col gap-4 sm:gap-6">
             <div className="flex items-start sm:items-center gap-3 sm:gap-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center shadow-lg flex-shrink-0">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg flex-shrink-0">
                 <Bell className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <div>

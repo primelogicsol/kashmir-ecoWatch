@@ -183,7 +183,12 @@ export default function BiodiversityDashboardsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Analytics Dashboards' }
         ]}
-        images={['/images/protected-network.png']}
+        images={[
+          '/images/biodiversity/biodiversity-command-center.jpg',
+          '/images/bear.png',
+          '/images/markhor.png',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -226,7 +231,7 @@ export default function BiodiversityDashboardsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -343,7 +348,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Activity className="w-4 h-4 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-white">Overview Metrics</h2>
@@ -449,7 +454,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <BarChart3 className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -502,7 +507,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Shield className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -609,7 +614,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <TrendingUp className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -744,7 +749,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Building2 className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -804,7 +809,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Mountain className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -899,7 +904,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -957,7 +962,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <TrendingUp className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -1017,7 +1022,7 @@ export default function BiodiversityDashboardsPage() {
         {/* ================================================================ */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Leaf className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -1052,7 +1057,7 @@ export default function BiodiversityDashboardsPage() {
         {/* EXPORT / SHARE */}
         {/* ================================================================ */}
         <section>
-          <Card className="glass-intense border-white/10 bg-gradient-to-r from-emerald-900/20 to-sky-900/20" padding="lg">
+          <Card className="glass-intense border-white/10 bg-slate-900" padding="lg">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">Export & Share Analytics</h3>

@@ -481,7 +481,7 @@ export default function LibraryPage() {
                 transition={{ delay: i * 0.05 }}
               >
                 <Card className="glass-intense border-white/10 p-6 h-full hover:border-white/20 transition-all">
-                  <div className={cn("w-12 h-12 rounded-xl bg-gradient-to-br", pathway.color, "flex items-center justify-center mb-4")}>
+                  <div className={cn("w-12 h-12 rounded-xl bg-slate-900", pathway.color, "flex items-center justify-center mb-4")}>
                     <pathway.icon className={cn("w-6 h-6", pathway.textColor)} />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{pathway.title}</h3>
@@ -907,7 +907,7 @@ export default function LibraryPage() {
                 >
                   <Card className="glass-intense border-white/10 p-5 cursor-pointer hover:border-purple-500/30 transition-all group">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Layers className="w-5 h-5 text-purple-400" />
                       </div>
                       <Badge variant="secondary" size="sm">{evidence.length}</Badge>

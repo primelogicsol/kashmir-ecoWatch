@@ -303,7 +303,7 @@ export default function WaterTreatmentPage() {
             <motion.div key={plant.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
               <Card className="glass-intense border-white/10 p-5 hover:border-white/15 transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Beaker className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -326,7 +326,7 @@ export default function WaterTreatmentPage() {
                         <span className="text-xs text-slate-500 mb-1 block">Challenges:</span>
                         <div className="flex flex-wrap gap-1.5">
                           {plant.challenges.map((c, j) => (
-                            <span key={j} className="text-[10px] bg-red-500/10 text-red-400/80 px-2 py-0.5 rounded-full border border-red-500/10">{c}</span>
+                            <span key={j} className="text-[10px] bg-red-500/10 text-red-400/80 px-2 py-0.5 rounded-[4px] border border-red-500/10">{c}</span>
                           ))}
                         </div>
                       </div>

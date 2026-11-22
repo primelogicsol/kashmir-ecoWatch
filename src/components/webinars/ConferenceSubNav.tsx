@@ -68,7 +68,7 @@ export function ConferenceSubNav({ conference }: Props) {
           {conference.status === 'live' && (
             <Link
               href="/webinars/room/kew-conf-2027-cryo"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white shrink-0 shadow-sm"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-[4px] text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white shrink-0 shadow-sm"
             >
               <Radio className="w-3.5 h-3.5 animate-pulse" />
               <span>Enter Live Plenary</span>

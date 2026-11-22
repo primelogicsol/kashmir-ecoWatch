@@ -338,7 +338,7 @@ export default function ModuleDirectoryPage() {
               className="mb-12"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${group.gradient} flex items-center justify-center shadow-lg`}>
+                <div className={`w-12 h-12 rounded-xl bg-slate-900 ${group.gradient} flex items-center justify-center shadow-lg`}>
                   <group.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>

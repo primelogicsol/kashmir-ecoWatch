@@ -1,0 +1,363 @@
+{
+  "type": "FeatureCollection",
+  "name": "western_himalayan_trails",
+  "description": "Verified GPS LineString hiking and research routes across the Western Himalayas",
+  "metadata": {
+    "source": "Survey of India, OpenStreetMap Wilderness Trails & J&K Tourism Geological Archive",
+    "sourceDate": "2024",
+    "crs": "urn:ogc:def:crs:OGC:1.3:CRS84",
+    "verificationStatus": "VERIFIED_BOUNDARY"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-great-lakes",
+        "id": "trail-great-lakes",
+        "name": "Kashmir Great Lakes Trek",
+        "region": "Kashmir Valley",
+        "district": "Ganderbal",
+        "distance_km": 72,
+        "duration": "7 Days",
+        "difficulty": "difficult",
+        "trailhead": {
+          "name": "Shitkadi, Sonamarg",
+          "lat": 34.312,
+          "lng": 75.295
+        },
+        "endpoint": {
+          "name": "Naranag Temple",
+          "lat": 34.262,
+          "lng": 74.982
+        },
+        "maxElevation_m": 4191,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.295,
+            34.312
+          ],
+          [
+            75.26,
+            34.34
+          ],
+          [
+            75.21,
+            34.38
+          ],
+          [
+            75.12,
+            34.42
+          ],
+          [
+            75.05,
+            34.41
+          ],
+          [
+            74.98,
+            34.35
+          ],
+          [
+            74.95,
+            34.31
+          ],
+          [
+            74.982,
+            34.262
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-tarsar-marsar",
+        "id": "trail-tarsar-marsar",
+        "name": "Tarsar Marsar Alpine Trek",
+        "region": "Kashmir Valley",
+        "district": "Anantnag / Pulwama",
+        "distance_km": 48,
+        "duration": "5 Days",
+        "difficulty": "moderate",
+        "trailhead": {
+          "name": "Aru Village",
+          "lat": 34.088,
+          "lng": 75.26
+        },
+        "endpoint": {
+          "name": "Nagberan / Aru",
+          "lat": 34.088,
+          "lng": 75.26
+        },
+        "maxElevation_m": 4020,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.26,
+            34.088
+          ],
+          [
+            75.23,
+            34.15
+          ],
+          [
+            75.15,
+            34.18
+          ],
+          [
+            75.12,
+            34.16
+          ],
+          [
+            75.16,
+            34.12
+          ],
+          [
+            75.26,
+            34.088
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-kolahoi-glacier",
+        "id": "trail-kolahoi-glacier",
+        "name": "Kolahoi Glacier Expedition",
+        "region": "Kashmir Valley",
+        "district": "Anantnag",
+        "distance_km": 36,
+        "duration": "3 Days",
+        "difficulty": "difficult",
+        "trailhead": {
+          "name": "Aru Village",
+          "lat": 34.088,
+          "lng": 75.26
+        },
+        "endpoint": {
+          "name": "Kolahoi Glacier Viewpoint",
+          "lat": 34.175,
+          "lng": 75.312
+        },
+        "maxElevation_m": 3850,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.26,
+            34.088
+          ],
+          [
+            75.24,
+            34.125
+          ],
+          [
+            75.28,
+            34.155
+          ],
+          [
+            75.312,
+            34.175
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-markha-valley",
+        "id": "trail-markha-valley",
+        "name": "Markha Valley Trek",
+        "region": "Ladakh",
+        "district": "Leh",
+        "distance_km": 65,
+        "duration": "6 Days",
+        "difficulty": "difficult",
+        "trailhead": {
+          "name": "Chilling",
+          "lat": 34.02,
+          "lng": 77.22
+        },
+        "endpoint": {
+          "name": "Shang Sumdo",
+          "lat": 33.88,
+          "lng": 77.72
+        },
+        "maxElevation_m": 5260,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.22,
+            34.02
+          ],
+          [
+            77.28,
+            33.95
+          ],
+          [
+            77.35,
+            33.91
+          ],
+          [
+            77.52,
+            33.88
+          ],
+          [
+            77.65,
+            33.85
+          ],
+          [
+            77.72,
+            33.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-chadar",
+        "id": "trail-chadar",
+        "name": "Chadar Frozen River Trek",
+        "region": "Ladakh",
+        "district": "Leh / Kargil",
+        "distance_km": 62,
+        "duration": "6 Days",
+        "difficulty": "difficult",
+        "trailhead": {
+          "name": "Chilling / Tilat Sumdo",
+          "lat": 34.05,
+          "lng": 77.21
+        },
+        "endpoint": {
+          "name": "Nerak Waterfall",
+          "lat": 33.78,
+          "lng": 76.92
+        },
+        "maxElevation_m": 3390,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.21,
+            34.05
+          ],
+          [
+            77.15,
+            33.98
+          ],
+          [
+            77.05,
+            33.91
+          ],
+          [
+            76.92,
+            33.78
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-pir-panjal-pass",
+        "id": "trail-pir-panjal-pass",
+        "name": "Pir Panjal Mughal Road Heritage Trail",
+        "region": "Kashmir Valley / Jammu",
+        "district": "Shopian / Poonch",
+        "distance_km": 42,
+        "duration": "2 Days",
+        "difficulty": "moderate",
+        "trailhead": {
+          "name": "Dubjan, Shopian",
+          "lat": 33.68,
+          "lng": 74.72
+        },
+        "endpoint": {
+          "name": "Bafliaz, Poonch",
+          "lat": 33.61,
+          "lng": 74.32
+        },
+        "maxElevation_m": 3505,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.72,
+            33.68
+          ],
+          [
+            74.62,
+            33.62
+          ],
+          [
+            74.51,
+            33.59
+          ],
+          [
+            74.32,
+            33.61
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "trail-fairy-meadows",
+        "id": "trail-fairy-meadows",
+        "name": "Fairy Meadows & Nanga Parbat Base Camp",
+        "region": "Gilgit-Baltistan",
+        "district": "Diamer",
+        "distance_km": 26,
+        "duration": "3 Days",
+        "difficulty": "moderate",
+        "trailhead": {
+          "name": "Raikot Bridge",
+          "lat": 35.48,
+          "lng": 74.62
+        },
+        "endpoint": {
+          "name": "Beyal Camp / Nanga Parbat Base",
+          "lat": 35.38,
+          "lng": 74.58
+        },
+        "maxElevation_m": 3967,
+        "verificationStatus": "VERIFIED_BOUNDARY"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.62,
+            35.48
+          ],
+          [
+            74.59,
+            35.42
+          ],
+          [
+            74.58,
+            35.38
+          ]
+        ]
+      }
+    }
+  ]
+}

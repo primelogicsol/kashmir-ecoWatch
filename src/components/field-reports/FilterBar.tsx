@@ -143,7 +143,7 @@ export function FilterBar({ reports, years, districts, modules, sources, onFilte
             <Filter className="w-5 h-5 text-amber-400" />
             <h3 className="text-lg font-bold text-white">Filter Reports</h3>
             {activeFilterCount > 0 && (
-              <span className="px-2 py-1 text-xs font-bold bg-amber-500 text-slate-950 rounded-full">
+              <span className="px-2 py-1 text-xs font-bold bg-amber-500 text-slate-950 rounded-[4px]">
                 {activeFilterCount} active
               </span>
             )}

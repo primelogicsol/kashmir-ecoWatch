@@ -427,7 +427,7 @@ export default function LiveIncidentMapPage() {
           >
             <div className="glass-intense border-white/10 rounded-xl p-8 md:p-10 max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-500/30 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 border border-red-500/30 flex items-center justify-center">
                   <Info className="w-5 h-5 text-red-400" />
                 </div>
                 <h2 className="text-2xl font-bold text-white">How This Map Works</h2>

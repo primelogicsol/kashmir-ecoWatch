@@ -16,7 +16,18 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
         "ramsarSite": true,
-        "slug": "hokersar-wetland"
+        "slug": "hokersar-wetland",
+        "canonicalId": "wetland-hokersar-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024",
+        "componentWaterbodies": [
+          "lake-hokersar"
+        ],
+        "isParentComplex": true,
+        "ramsarSiteNumber": 1570,
+        "designationDate": "2005-11-08",
+        "relationshipNote": "Parent Ramsar wetland reserve (13.75 km²) containing the core open water basin and peripheral reedbeds."
       },
       "geometry": {
         "type": "Point",
@@ -39,7 +50,13 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
         "ramsarSite": true,
-        "slug": "shallabugh-wetland"
+        "slug": "shallabugh-wetland",
+        "canonicalId": "wetland-shallabugh-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024",
+        "ramsarSiteNumber": 2490,
+        "designationDate": "2022-06-08"
       },
       "geometry": {
         "type": "Point",
@@ -62,7 +79,13 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
         "ramsarSite": false,
-        "slug": "hygam-wetland"
+        "slug": "hygam-wetland",
+        "canonicalId": "wetland-hygam-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024",
+        "ramsarSiteNumber": 2489,
+        "designationDate": "2022-06-08"
       },
       "geometry": {
         "type": "Point",
@@ -85,7 +108,18 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
         "ramsarSite": true,
-        "slug": "wular-wetland-system"
+        "slug": "wular-wetland-system",
+        "canonicalId": "wetland-wular-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024",
+        "componentWaterbodies": [
+          "lake-wular"
+        ],
+        "isParentComplex": true,
+        "ramsarSiteNumber": 461,
+        "designationDate": "1990-03-23",
+        "relationshipNote": "Parent Ramsar wetland system (189 km²) containing Wular Lake, peripheral marshes, and inflow channels."
       },
       "geometry": {
         "type": "Point",
@@ -108,7 +142,11 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
         "ramsarSite": false,
-        "slug": "mirgund-wetland"
+        "slug": "mirgund-wetland",
+        "canonicalId": "wetland-mirgund-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -131,7 +169,11 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
         "ramsarSite": false,
-        "slug": "kalgochh-wetland"
+        "slug": "kalgochh-wetland",
+        "canonicalId": "wetland-kalgochh-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -154,7 +196,11 @@
         "watershed": "Sind Basin",
         "waterQualityStatus": "good",
         "ramsarSite": false,
-        "slug": "kheer-bhawani-wetland"
+        "slug": "kheer-bhawani-wetland",
+        "canonicalId": "wetland-kheer-bhawani",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -177,7 +223,11 @@
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
         "ramsarSite": false,
-        "slug": "malchibugh-wetland"
+        "slug": "malchibugh-wetland",
+        "canonicalId": "wetland-malchibugh-wetland",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",

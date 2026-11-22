@@ -207,7 +207,7 @@ export default function ForestsLandscapesSubmodulePage() {
         </section>
 
         {/* Inter-Module Navigation Linkage */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-emerald-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">Ecosystem Corridors</div>
             <h4 className="text-base font-bold text-white">Integrated with Protected Areas Network</h4>

@@ -81,6 +81,12 @@ export default function OutdoorClassroomOverviewPage() {
           </>
         }
         subtitle="A structured field-learning program connecting curriculum objectives, real Western Himalayan ecosystems, calibrated field science activities, and measurable student competencies across Kashmir's ten districts."
+        images={[
+          '/images/environmental-calendar/calendar-hero-outdoor-classroom.jpg',
+          '/images/environmental-calendar/calendar-hero-students-water.jpg',
+          '/images/environmental-calendar/calendar-hero-scientists-lab.jpg',
+          '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/environmental-calendar/outdoor-classroom/institutional-registration">
@@ -111,7 +117,7 @@ export default function OutdoorClassroomOverviewPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
         
         {/* Historical Attribution & Archival Notice Banner */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-950 border border-amber-500/30 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2">
+        <div className="p-5 sm:p-6 rounded-2xl bg-slate-900 border border-amber-500/30 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2">
           <div className="flex items-center gap-2 text-amber-400 font-bold uppercase tracking-wider text-xs">
             <Sparkles className="w-4 h-4" />
             <span>Historical Program Heritage • ESRO & eIEN Kashmir (2002–2006)</span>
@@ -299,7 +305,7 @@ export default function OutdoorClassroomOverviewPage() {
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${prog.gradient} flex items-center justify-center text-white shadow-md`}>
+                      <div className={`w-10 h-10 rounded-xl bg-slate-900 ${prog.gradient} flex items-center justify-center text-white shadow-md`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <Badge variant="outline" className="text-[10px] border-white/10 text-slate-400">

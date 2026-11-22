@@ -176,7 +176,7 @@ export default function ContributeGuidelinesPage() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <AlertTriangle className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -185,7 +185,7 @@ export default function ContributeGuidelinesPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Camera className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -194,7 +194,7 @@ export default function ContributeGuidelinesPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Database className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -203,7 +203,7 @@ export default function ContributeGuidelinesPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Users className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -363,7 +363,7 @@ export default function ContributeGuidelinesPage() {
                 {reviewSteps.map((step, index) => (
                   <div key={step.step} className="flex items-start gap-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                         <span className="text-sm font-bold text-white">{step.step}</span>
                       </div>
                       {index < reviewSteps.length - 1 && (

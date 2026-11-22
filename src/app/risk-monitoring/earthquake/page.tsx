@@ -405,7 +405,7 @@ export default function EarthquakeRiskMonitoringPage() {
             >
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${zone.color} flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-16 h-16 rounded-xl bg-slate-900 ${zone.color} flex items-center justify-center flex-shrink-0`}>
                     <span className="text-2xl font-black text-white">V</span>
                   </div>
                   <div className="flex-1">
@@ -734,7 +734,7 @@ export default function EarthquakeRiskMonitoringPage() {
                 className="max-w-3xl mx-auto"
               >
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center shadow-2xl">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                     <Siren className="w-5 h-5 md:w-8 md:h-8 text-white" />
                   </div>
                 </div>

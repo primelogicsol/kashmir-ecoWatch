@@ -31,43 +31,43 @@ interface SeasonalListingPageProps {
 
 const SHOWCASE_PRESETS: Record<string, Array<{ id: string; src: string; title: string; subtitle: string; tag: string; location: string; short: string }>> = {
   landscape: [
-    { id: '1', src: '/images/protected-network.png', title: 'Temperate Conifer Spine', subtitle: 'Pinus wallichiana & Abies pindrow', tag: 'Montane Forest', location: 'Dachigam & Overa-Aru', short: 'Conifer Belt' },
+    { id: '1', src: '/images/biodiversity/biodiversity-hangul-stag.jpg', title: 'Temperate Conifer Spine', subtitle: 'Pinus wallichiana & Abies pindrow', tag: 'Montane Forest', location: 'Dachigam & Overa-Aru', short: 'Conifer Belt' },
     { id: '2', src: '/images/markhor.png', title: 'High Alpine Margs', subtitle: 'Cryospheric Highland Belt', tag: 'Subalpine Marg', location: 'Gulmarg & Tosamaidan', short: 'Alpine Marg' },
     { id: '3', src: '/images/bear.png', title: 'Highland River Basins', subtitle: 'Jhelum & Indus Headwaters', tag: 'Riverine Axis', location: 'Sindh & Lidder Valleys', short: 'River Basin' },
     { id: '4', src: '/images/tiger.png', title: 'Trans-Himalayan Steppe', subtitle: 'Cold Arid High Plateau', tag: 'Transboundary', location: 'Changthang & Zanskar', short: 'Cold Steppe' },
   ],
   bloom: [
-    { id: '1', src: '/images/protected-network.png', title: 'Spring Almond & Tulip Bloom', subtitle: 'Early Spring Phenological Flush', tag: 'Valley Floor', location: 'Badamwari & Srinagar', short: 'Spring Bloom' },
+    { id: '1', src: '/images/biodiversity/biodiversity-pollinators-bloom.jpg', title: 'Spring Almond & Tulip Bloom', subtitle: 'Early Spring Phenological Flush', tag: 'Valley Floor', location: 'Badamwari & Srinagar', short: 'Spring Bloom' },
     { id: '2', src: '/images/markhor.png', title: 'Alpine Meadow Wildflowers', subtitle: 'Primula, Saussurea & Gentians', tag: 'Alpine Marg', location: 'Aphrawat & Thajiwas', short: 'Wildflowers' },
     { id: '3', src: '/images/bear.png', title: 'Montane Understory Flush', subtitle: 'Trillium & Podophyllum', tag: 'Conifer Forest', location: 'Kazinag & Overa', short: 'Understory' },
     { id: '4', src: '/images/tiger.png', title: 'Autumn Saffron & Lotus', subtitle: 'Crocus sativus & Nelumbo', tag: 'Karewa & Lake', location: 'Pampore & Dal Lake', short: 'Saffron/Lotus' },
   ],
   migration: [
-    { id: '1', src: '/images/protected-network.png', title: 'Central Asian Flyway Inflow', subtitle: 'Wintering Waterfowl & Geese', tag: 'Ramsar Wetland', location: 'Hokersar & Wular Lake', short: 'Flyway Inflow' },
+    { id: '1', src: '/images/biodiversity/biodiversity-birds-wetland.jpg', title: 'Central Asian Flyway Inflow', subtitle: 'Wintering Waterfowl & Geese', tag: 'Ramsar Wetland', location: 'Hokersar & Wular Lake', short: 'Flyway Inflow' },
     { id: '2', src: '/images/markhor.png', title: 'Altitudinal Ungulate Shifts', subtitle: 'Hangul & Monal Winter Descent', tag: 'Valley Corridor', location: 'Dachigam Lower Sanctuary', short: 'Altitudinal' },
     { id: '3', src: '/images/bear.png', title: 'Bar-headed Goose Passage', subtitle: 'High-Altitude Trans-Himalayan Crossings', tag: 'High Plateau', location: 'Tso Moriri & Pangong', short: 'Goose Passage' },
     { id: '4', src: '/images/tiger.png', title: 'Spring Northward Egress', subtitle: 'Pre-Breeding Siberian Departures', tag: 'Wetland Complex', location: 'Shallabugh & Hygam', short: 'Spring Egress' },
   ],
   pollinator: [
-    { id: '1', src: '/images/protected-network.png', title: 'High-Altitude Bumblebee Synchrony', subtitle: 'Bombus tunicatus & Alpine Pollination', tag: 'Subalpine Marg', location: 'Gulmarg & Sonamarg', short: 'Bumblebees' },
+    { id: '1', src: '/images/biodiversity/biodiversity-pollinators-bloom.jpg', title: 'High-Altitude Bumblebee Synchrony', subtitle: 'Bombus tunicatus & Alpine Pollination', tag: 'Subalpine Marg', location: 'Gulmarg & Sonamarg', short: 'Bumblebees' },
     { id: '2', src: '/images/markhor.png', title: 'Orchard Belt Honeybee Flush', subtitle: 'Apis cerana & Apple Blossom Peak', tag: 'Horticulture', location: 'Shopian & Sopore', short: 'Orchard Bees' },
     { id: '3', src: '/images/bear.png', title: 'Montane Butterfly Flights', subtitle: 'Parnassius & Lycaenid Peaks', tag: 'Alpine Scree', location: 'Kazinag & Pir Panjal', short: 'Butterflies' },
     { id: '4', src: '/images/tiger.png', title: 'Late Summer Syrphid Hoverflies', subtitle: 'High-Altitude Flower Visits', tag: 'Alpine Glades', location: 'Gurez & Zanskar', short: 'Hoverflies' },
   ],
   phenology: [
-    { id: '1', src: '/images/protected-network.png', title: 'Spring Bud Break & Leaf Flush', subtitle: 'Ascending Sap & Early Flowering', tag: 'Forest & Orchard', location: 'Valley-wide', short: 'Bud Break' },
+    { id: '1', src: '/images/biodiversity/biodiversity-botany-flora.jpg', title: 'Spring Bud Break & Leaf Flush', subtitle: 'Ascending Sap & Early Flowering', tag: 'Forest & Orchard', location: 'Valley-wide', short: 'Bud Break' },
     { id: '2', src: '/images/markhor.png', title: 'Summer Fruit Maturation', subtitle: 'Alpine Seed Set & Forest Mast', tag: 'All Elevations', location: 'Pir Panjal & Sindh', short: 'Fruit Mast' },
     { id: '3', src: '/images/bear.png', title: 'Autumn Deciduous Senescence', subtitle: 'Chinar, Maple & Oak Golden Shifts', tag: 'Deciduous Belt', location: 'Valley Floor & Glades', short: 'Senescence' },
     { id: '4', src: '/images/tiger.png', title: 'Winter Cryospheric Dormancy', subtitle: 'Sub-Zero Metabolic Repose', tag: 'Highland Refugium', location: 'Upper Kashmir Ranges', short: 'Dormancy' },
   ],
   habitat: [
-    { id: '1', src: '/images/protected-network.png', title: 'Temperate Conifer Biome', subtitle: 'Western Himalayan Ecological Spine', tag: 'Forest Ecosystem', location: 'Dachigam & Kishtwar', short: 'Conifer Spine' },
+    { id: '1', src: '/images/biodiversity/biodiversity-hangul-stag.jpg', title: 'Temperate Conifer Biome', subtitle: 'Western Himalayan Ecological Spine', tag: 'Forest Ecosystem', location: 'Dachigam & Kishtwar', short: 'Conifer Spine' },
     { id: '2', src: '/images/markhor.png', title: 'Alpine Meadow Ecosystems', subtitle: 'High-Altitude Pastoral Glades', tag: 'Cryospheric Marg', location: 'Gulmarg & Sonamarg', short: 'Alpine Marg' },
     { id: '3', src: '/images/bear.png', title: 'Palustrine Wetland Networks', subtitle: 'Jhelum Basin Flood Sink', tag: 'Ramsar Wetlands', location: 'Hokersar & Wular', short: 'Wetlands' },
     { id: '4', src: '/images/tiger.png', title: 'Cold Arid Highland Steppe', subtitle: 'Trans-Himalayan Tibetan Plateaus', tag: 'Cold Desert', location: 'Changthang & Nubra', short: 'Cold Steppe' },
   ],
   water: [
-    { id: '1', src: '/images/protected-network.png', title: 'Spring Snowmelt Discharge Peak', subtitle: 'Glacial Headwater Ascendance', tag: 'Hydrological', location: 'Sindh & Lidder Basins', short: 'Snowmelt Run' },
+    { id: '1', src: '/images/biodiversity/biodiversity-fish-aquatic.jpg', title: 'Spring Snowmelt Discharge Peak', subtitle: 'Glacial Headwater Ascendance', tag: 'Hydrological', location: 'Sindh & Lidder Basins', short: 'Snowmelt Run' },
     { id: '2', src: '/images/markhor.png', title: 'Summer Macrophyte Canopy', subtitle: 'Nelumbo & Trapa Peak Biomass', tag: 'Lacustrine', location: 'Dal & Wular Lakes', short: 'Lotus Canopy' },
     { id: '3', src: '/images/bear.png', title: 'Autumn Hydroperiod Drawdown', subtitle: 'Seasonal Silt Settling & Clear Streams', tag: 'Riverine', location: 'Jhelum Mainstem', short: 'Hydro Draw' },
     { id: '4', src: '/images/tiger.png', title: 'Winter Lake Rim Freezing', subtitle: 'Partial Ice Cover & Invertebrate Torpor', tag: 'Cryosphere', location: 'Dal, Nigeen & High Lakes', short: 'Freeze Phase' },
@@ -79,13 +79,13 @@ const SHOWCASE_PRESETS: Record<string, Array<{ id: string; src: string; title: s
     { id: '4', src: '/images/tiger.png', title: 'Snow Leopard Winter Tracking', subtitle: 'Prey Following along Valley Ridges', tag: 'Highland Felid', location: 'Hemis & Kishtwar', short: 'Snow Leopard' },
   ],
   climate: [
-    { id: '1', src: '/images/protected-network.png', title: 'Spring Thermal Front Ascendance', subtitle: 'Valley Thaw & Solar Elevation Shift', tag: 'Microclimate', location: 'Valley Floor', short: 'Spring Thaw' },
+    { id: '1', src: '/images/biodiversity/biodiversity-botany-flora.jpg', title: 'Spring Thermal Front Ascendance', subtitle: 'Valley Thaw & Solar Elevation Shift', tag: 'Microclimate', location: 'Valley Floor', short: 'Spring Thaw' },
     { id: '2', src: '/images/markhor.png', title: 'Summer Cloud Interception Window', subtitle: 'Pir Panjal Monsoon Barrier Effects', tag: 'Atmospheric', location: 'Southern Foothills', short: 'Monsoon Front' },
     { id: '3', src: '/images/bear.png', title: 'Autumn Crystal Visibility Windows', subtitle: 'Peak Atmospheric Transparency', tag: 'Highland Optics', location: 'Ridge Crests', short: 'High Clarity' },
     { id: '4', src: '/images/tiger.png', title: 'Chillai Kalan Cold Inundation', subtitle: '40-Day Deep Cryospheric Minimum', tag: 'Sub-Zero Peak', location: 'Regional Scale', short: 'Chillai Kalan' },
   ],
   report: [
-    { id: '1', src: '/images/protected-network.png', title: 'Seasonal Ecology Master Dossier', subtitle: 'Comprehensive Phenological Registers', tag: 'Research Archive', location: 'J&K Division', short: 'Master Dossier' },
+    { id: '1', src: '/images/biodiversity/biodiversity-botany-flora.jpg', title: 'Seasonal Ecology Master Dossier', subtitle: 'Comprehensive Phenological Registers', tag: 'Research Archive', location: 'J&K Division', short: 'Master Dossier' },
     { id: '2', src: '/images/markhor.png', title: 'Central Asian Flyway Censuses', subtitle: 'Annual Wetland Waterfowl Surveys', tag: 'Census Data', location: 'Ramsar Sites', short: 'Flyway Census' },
     { id: '3', src: '/images/bear.png', title: 'High-Altitude Bloom Atlases', subtitle: 'Alpine Floral Progression Mapping', tag: 'Botanical Record', location: 'Kashmir Herbarium', short: 'Bloom Atlas' },
     { id: '4', src: '/images/tiger.png', title: 'Phenology & Climate Vulnerability', subtitle: 'Long-term Timing Shifts Assessment', tag: 'Climate Evidence', location: 'Peer-Reviewed', short: 'Shift Studies' },
@@ -204,7 +204,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
             Himalayan Seasonal Sentinel
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           Cycle 2026
         </span>
       </div>
@@ -289,7 +289,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
           { label: 'Seasonal Ecology', href: '/seasonal-ecology' },
           { label: title },
         ]}
-        images={['/images/protected-network.png', '/images/bear.png', '/images/markhor.png', '/images/tiger.png']}
+        images={['/images/biodiversity/biodiversity-botany-flora.jpg', '/images/biodiversity/biodiversity-hangul-stag.jpg', '/images/bear.png', '/images/markhor.png', '/images/tiger.png']}
         rightContent={heroShowcaseCard}
         actions={
           <div className="flex flex-wrap items-center gap-2">
@@ -319,7 +319,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
       {/* CORRIDOR TELEMETRY BANNER & J&K SEASONAL SENTINEL STRIP       */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Icons.Compass className="w-6 h-6 animate-pulse" />

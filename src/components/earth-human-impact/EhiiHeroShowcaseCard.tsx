@@ -33,7 +33,7 @@ export function EhiiHeroShowcaseCard({
   const currentItem = items[activeIdx] || items[0];
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl shadow-emerald-950/60 bg-slate-900/80 backdrop-blur-md p-3 ${className}`}>
+    <div className={`relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-emerald-950/60 bg-slate-950/40 backdrop-blur-md p-3 hover:border-emerald-500/30 transition-colors ${className}`}>
       {/* Top Banner Tag */}
       <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
         <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ export function EhiiHeroShowcaseCard({
             {tag}
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           {badge}
         </span>
       </div>

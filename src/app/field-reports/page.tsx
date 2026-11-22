@@ -78,7 +78,7 @@ export default function FieldReportsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -92,7 +92,7 @@ export default function FieldReportsPage() {
               <a href="/field-reports/protected-areas" className="group">
                 <Card className="glass-intense border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <Shield className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -110,7 +110,7 @@ export default function FieldReportsPage() {
               <a href="/field-reports/biodiversity" className="group">
                 <Card className="glass-intense border-purple-500/10 p-6 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <PawPrint className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -128,7 +128,7 @@ export default function FieldReportsPage() {
               <a href="/field-reports/water-systems" className="group">
                 <Card className="glass-intense border-blue-500/10 p-6 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <Droplets className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -146,7 +146,7 @@ export default function FieldReportsPage() {
               <a href="/field-reports/environmental-monitoring" className="group">
                 <Card className="glass-intense border-cyan-500/10 p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <Activity className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -164,7 +164,7 @@ export default function FieldReportsPage() {
               <a href="/field-reports/hazard-intelligence" className="group">
                 <Card className="glass-intense border-red-500/10 p-6 hover:border-red-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <AlertTriangle className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -179,9 +179,9 @@ export default function FieldReportsPage() {
               </a>
 
               {/* All Reports */}
-              <Card className="glass-intense border-amber-500/20 p-6 bg-gradient-to-br from-amber-500/5 to-orange-500/5 h-full">
+              <Card className="glass-intense border-amber-500/20 p-6 bg-slate-900 h-full">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 ring-2 ring-amber-500/50">
+                  <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0 ring-2 ring-amber-500/50">
                     <FileText className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -248,7 +248,7 @@ export default function FieldReportsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Link2 className="w-6 h-6 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-white">How Field Reports Support the Platform</h2>
@@ -262,7 +262,7 @@ export default function FieldReportsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Database className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -277,7 +277,7 @@ export default function FieldReportsPage() {
 
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <BarChart3 className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -292,7 +292,7 @@ export default function FieldReportsPage() {
 
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <AlertTriangle className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -307,7 +307,7 @@ export default function FieldReportsPage() {
 
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -322,7 +322,7 @@ export default function FieldReportsPage() {
 
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -337,7 +337,7 @@ export default function FieldReportsPage() {
 
               <Card className="glass-intense border-white/10 p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <Shield className="w-5 h-5 text-white" />
                   </div>
                   <div>

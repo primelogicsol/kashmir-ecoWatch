@@ -114,6 +114,12 @@ export default function MammalsPage() {
 
   return (
     <BiodiversityCategoryPage
+      images={[
+        '/images/biodiversity/biodiversity-hangul-stag.jpg',
+        '/images/bear.png',
+        '/images/markhor.png',
+        '/images/tiger.png',
+      ]}
       title="Western Himalayan Mammalian Biodiversity"
       subtitle="An evidence-based mammalian intelligence database tracking 111 terrestrial and high-altitude mammal taxa across Jammu, Kashmir, Ladakh, and trans-Himalayan valleys. Mapping 14 IUCN Red List threatened species including the critically endangered Hangul stag, snow leopard, Himalayan brown bear, musk deer, and flare-horned markhor across 25 administrative districts."
       icon="Mountain"
@@ -134,7 +140,7 @@ export default function MammalsPage() {
               Select an ecological guild, trophic niche, or conservation tier to filter the 111 mammal species.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-emerald-400">{displayedSpecies.length}</strong> of {totalCount} species
           </span>
         </div>
@@ -323,7 +329,7 @@ export default function MammalsPage() {
                   className="p-3.5 rounded-xl bg-slate-950/70 border border-red-500/20 hover:border-red-500/40 transition-all"
                 >
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-red-500/20 text-red-300 border border-red-500/30 flex items-center gap-1">
                       <ShieldAlert className="w-2.5 h-2.5" />
                       {sp.conservationStatus === 'CR' ? 'CRITICALLY ENDANGERED' : sp.conservationStatus === 'EN' ? 'ENDANGERED' : sp.conservationStatus === 'VU' ? 'VULNERABLE' : 'PROTECTED'}
                     </span>

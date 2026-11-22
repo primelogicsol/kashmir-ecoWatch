@@ -1306,11 +1306,11 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           </Link>
           <span className="text-slate-700 shrink-0 select-none">|</span>
           <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1 flex-wrap">
-            <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 mt-0.5 sm:mt-0 shadow-sm shadow-amber-500/10 font-mono">
+            <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 mt-0.5 sm:mt-0 shadow-sm shadow-amber-500/10 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               DEMO / TEST ENVIRONMENT
             </span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-500/15 text-rose-300 border border-rose-500/30 mt-0.5 sm:mt-0 font-mono">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] text-[10px] font-bold uppercase tracking-wider bg-rose-500/15 text-rose-300 border border-rose-500/30 mt-0.5 sm:mt-0 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
               SIMULATED STAGE
             </span>
@@ -1644,7 +1644,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   <p className="text-xs text-teal-400 font-medium mb-3">
                     {spotlight.title} &bull; {spotlight.institution}
                   </p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-white/5 border border-white/10 text-xs text-slate-300">
                     <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                     <span>Speaking in Main Auditorium Track</span>
                   </div>

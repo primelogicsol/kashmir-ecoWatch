@@ -128,7 +128,7 @@ export function EcoVoicesParticipationGateway() {
       {/* ======================================================== */}
       {/* SECTION 1: PROMINENT INVITATION BANNER & QUICK ROLES */}
       {/* ======================================================== */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/40 shadow-2xl relative overflow-hidden space-y-8">
+      <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 border border-purple-500/40 shadow-2xl relative overflow-hidden space-y-8">
         <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 left-10 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -455,7 +455,7 @@ export function EcoVoicesParticipationGateway() {
       {/* SECTION 4: DEDICATED ENVIRONMENTAL SUBMISSION GATEWAY */}
       {/* ======================================================== */}
       <div id="participate-form" className="space-y-6 pt-4">
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-950 border border-blue-500/30 space-y-2">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-blue-500/30 space-y-2">
           <Badge className="bg-blue-600 text-white font-bold text-xs">
             Direct Environmental Submission Gateway
           </Badge>
@@ -758,7 +758,7 @@ export function EcoVoicesParticipationGateway() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-purple-600/20 text-sm"
+                className="w-full bg-slate-900 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-purple-600/20 text-sm"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -780,7 +780,7 @@ export function EcoVoicesParticipationGateway() {
       {/* ======================================================== */}
       {/* SECTION 5: YOUTH ECOVOICES (SCHOOLS & COLLEGES) */}
       {/* ======================================================== */}
-      <div id="youth-ecovoices" className="p-8 rounded-3xl bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 space-y-6">
+      <div id="youth-ecovoices" className="p-8 rounded-3xl bg-slate-900 border border-emerald-500/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs mb-1">

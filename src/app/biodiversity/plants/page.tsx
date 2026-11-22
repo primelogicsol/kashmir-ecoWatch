@@ -93,6 +93,11 @@ export default function PlantsPage() {
 
   return (
     <BiodiversityCategoryPage
+      images={[
+        '/images/biodiversity/biodiversity-botany-flora.jpg',
+        '/images/biodiversity/biodiversity-pollinators-bloom.jpg',
+        '/images/bear.png',
+      ]}
       title="Western Himalayan Flora & Plants"
       subtitle="Comprehensive botanical repository indexing 1,834 vascular plants across Kashmir's varied ecological gradients. Systematically tracking 145 threatened taxa (CR, EN, VU), 62 strict endemic species, high-value medicinal herbs, and canopy-building conifers across all 25 districts of the Western Himalayas."
       icon="Flower2"
@@ -113,7 +118,7 @@ export default function PlantsPage() {
               Select a conservation or ecological focus to instantly filter the 1,834 botanical records.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-emerald-400">{displayedSpecies.length.toLocaleString()}</strong> of {totalCount.toLocaleString()} species
           </span>
         </div>
@@ -302,7 +307,7 @@ export default function PlantsPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20 hover:border-teal-500/40 transition-all"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center gap-1">
                       <MapPin className="w-2.5 h-2.5" />
                       {sp.endemismStatus === 'kashmir-endemic' ? 'Kashmir Endemic' : 'NW Himalayan'}
                     </span>

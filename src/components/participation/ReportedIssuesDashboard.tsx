@@ -205,7 +205,7 @@ export function ReportedIssuesDashboard({
             >
               <Card className="glass-intense border-white/10 p-5 hover:border-white/20 transition-all">
                 <div className="flex items-start gap-4">
-                  <div className={cn("w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center flex-shrink-0", issueTypeColors[issue.type])}>
+                  <div className={cn("w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0", issueTypeColors[issue.type])}>
                     <TypeIcon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -281,7 +281,7 @@ export function ReportedIssuesDashboard({
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={cn("w-12 h-12 rounded-xl bg-gradient-to-br", issueTypeColors[selectedIssue.type])}>
+                    <div className={cn("w-12 h-12 rounded-xl bg-slate-900", issueTypeColors[selectedIssue.type])}>
                       <AlertTriangle className="w-6 h-6 text-white" />
                     </div>
                     <div>

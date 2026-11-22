@@ -54,7 +54,7 @@ export default function SectoralEiaOverviewPage() {
 
       <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
         {/* EXECUTIVE SUMMARY */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-slate-900 to-emerald-950/30 border border-white/10 shadow-lg">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-white/10 shadow-lg">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="outline" className="border-emerald-500/40 text-emerald-400 bg-emerald-500/10 text-xs">
               Scientific Concept
@@ -251,7 +251,7 @@ export default function SectoralEiaOverviewPage() {
         </div>
 
         {/* CRITICAL DESIGN QUESTION */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/50 via-slate-900 to-slate-900 border border-emerald-500/40 space-y-4">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/40 space-y-4">
           <div className="flex items-center gap-2">
             <HelpCircle className="w-5 h-5 text-emerald-400" />
             <h3 className="text-xl font-bold text-white">

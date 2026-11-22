@@ -101,7 +101,7 @@ export function FilterSelect({ value, onChange, placeholder, options }: FilterSe
         type="button"
         onClick={() => open ? setOpen(false) : openDropdown()}
         className={`
-          flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs border
+          flex items-center gap-1.5 px-3 py-1 rounded-md text-xs border
           transition-all duration-150 flex-shrink-0 whitespace-nowrap
           ${isActive
             ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
@@ -109,7 +109,7 @@ export function FilterSelect({ value, onChange, placeholder, options }: FilterSe
           }
         `}
       >
-        <span className="max-w-[140px] truncate">{isActive ? activeLabel : placeholder}</span>
+        <span className="break-words max-w-[200px]">{isActive ? activeLabel : placeholder}</span>
         <ChevronDown className={`w-3 h-3 transition-transform duration-150 ${open ? 'rotate-180' : ''}`} />
       </button>
 
@@ -131,14 +131,14 @@ export function FilterSelect({ value, onChange, placeholder, options }: FilterSe
               minWidth:  '220px',
               maxWidth:  '260px',
             }}
-            className="bg-slate-900 border border-white/10 rounded-xl shadow-2xl shadow-black/60 max-h-[320px] overflow-y-auto"
+            className="bg-slate-900 border border-white/10 rounded-lg shadow-2xl shadow-black/60 max-h-[320px] overflow-y-auto"
           >
             <div className="p-1">
               {/* "All" / placeholder option */}
               <button
                 type="button"
                 onClick={() => { onChange('all'); setOpen(false); }}
-                className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                className={`w-full text-left px-3 py-1.5 rounded-sm text-xs transition-colors ${
                   value === 'all'
                     ? 'bg-emerald-500/20 text-emerald-300'
                     : 'text-slate-300 hover:bg-white/5 hover:text-white'
@@ -153,7 +153,7 @@ export function FilterSelect({ value, onChange, placeholder, options }: FilterSe
                   key={o.value}
                   type="button"
                   onClick={() => { onChange(o.value); setOpen(false); }}
-                  className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  className={`w-full text-left px-3 py-1.5 rounded-sm text-xs transition-colors ${
                     value === o.value
                       ? 'bg-emerald-500/20 text-emerald-300'
                       : 'text-slate-300 hover:bg-white/5 hover:text-white'
@@ -258,7 +258,7 @@ export function GlobalFilterBar({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, delay: 0.1 }}
-      className="relative z-40 w-full border border-white/8 rounded-xl bg-slate-900/60 backdrop-blur-sm overflow-visible"
+      className="relative z-40 w-full border border-white/8 rounded-lg bg-slate-900/60 backdrop-blur-sm overflow-visible"
     >
       {/* ── Row 1: Globe · Scopes · District · Extra filters · Clear ── */}
       <div className="flex items-center gap-2 px-4 py-3 overflow-visible flex-wrap">
@@ -281,7 +281,7 @@ export function GlobalFilterBar({
                 key={scope}
                 onClick={() => setScope(scope as Scope | 'All')}
                 className={`
-                  px-3 py-1 rounded-lg text-xs font-medium border transition-all duration-150 whitespace-nowrap
+                  px-3 py-1 rounded-sm text-xs font-medium border transition-all duration-150 whitespace-nowrap
                   ${isActive ? meta.active : meta.color}
                 `}
               >
@@ -299,7 +299,7 @@ export function GlobalFilterBar({
           ref={triggerRef}
           onClick={() => districtOpen ? setDistrictOpen(false) : openDropdown()}
           className={`
-            flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs border transition-all duration-150 flex-shrink-0
+            flex items-center gap-1.5 px-3 py-1 rounded-md text-xs border transition-all duration-150 flex-shrink-0
             ${filter.district !== 'All'
               ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
               : 'text-slate-400 border-white/10 hover:text-white hover:border-white/20'
@@ -307,7 +307,7 @@ export function GlobalFilterBar({
           `}
         >
           <MapPin className="w-3 h-3" />
-          <span className="max-w-[120px] truncate">{selectedDistrictLabel}</span>
+          <span className="break-words max-w-[180px]">{selectedDistrictLabel}</span>
           <ChevronDown className={`w-3 h-3 transition-transform duration-150 ${districtOpen ? 'rotate-180' : ''}`} />
         </button>
 
@@ -332,7 +332,7 @@ export function GlobalFilterBar({
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setSearchFocused(false)}
                 placeholder="Search across modules…"
-                className="w-full pl-8 pr-3 py-1 text-xs bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+                className="w-full pl-8 pr-3 py-1 text-xs bg-white/5 border border-white/10 rounded-md text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
               />
               {filter.searchQuery && (
                 <button onClick={() => setSearchQuery('')} className="absolute right-2 text-slate-500 hover:text-white transition-colors">
@@ -351,7 +351,7 @@ export function GlobalFilterBar({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.85 }}
               onClick={() => { resetFilter(); onExtraFiltersClear?.(); }}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors ml-auto flex-shrink-0"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors ml-auto flex-shrink-0"
             >
               <X className="w-3 h-3" />
               Clear {totalActive}
@@ -373,7 +373,7 @@ export function GlobalFilterBar({
               onFocus={() => setSearchFocused(true)}
               onBlur={() => setSearchFocused(false)}
               placeholder="Search across modules…"
-              className="w-full sm:max-w-sm pl-8 pr-8 py-1.5 text-xs bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+              className="w-full sm:max-w-sm pl-8 pr-8 py-1.5 text-xs bg-white/5 border border-white/10 rounded-md text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
             />
             {filter.searchQuery && (
               <button
@@ -405,12 +405,12 @@ export function GlobalFilterBar({
               minWidth: '220px',
               maxWidth: '260px',
             }}
-            className="bg-slate-900 border border-white/10 rounded-xl shadow-2xl shadow-black/60 max-h-[320px] overflow-y-auto"
+            className="bg-slate-900 border border-white/10 rounded-lg shadow-2xl shadow-black/60 max-h-[320px] overflow-y-auto"
           >
             <div className="p-1">
               <button
                 onClick={() => { setDistrict('All'); setDistrictOpen(false); }}
-                className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                className={`w-full text-left px-3 py-1.5 rounded-sm text-xs transition-colors ${
                   filter.district === 'All'
                     ? 'bg-emerald-500/20 text-emerald-300'
                     : 'text-slate-300 hover:bg-white/5 hover:text-white'
@@ -425,7 +425,7 @@ export function GlobalFilterBar({
                     <button
                       key={d}
                       onClick={() => { setDistrict(d); setDistrictOpen(false); }}
-                      className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                      className={`w-full text-left px-3 py-1.5 rounded-sm text-xs transition-colors ${
                         filter.district === d ? 'bg-emerald-500/20 text-emerald-300' : 'text-slate-300 hover:bg-white/5 hover:text-white'
                       }`}
                     >
@@ -463,7 +463,7 @@ export function GlobalFilterBar({
                         <button
                           key={d}
                           onClick={() => { setDistrict(d); setDistrictOpen(false); }}
-                          className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                          className={`w-full text-left px-3 py-1.5 rounded-sm text-xs transition-colors ${
                             filter.district === d ? 'bg-emerald-500/20 text-emerald-300' : 'text-slate-300 hover:bg-white/5 hover:text-white'
                           }`}
                         >

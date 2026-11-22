@@ -192,7 +192,7 @@ export default function ContributeDataPage() {
                     onClick={() => setSelectedType(type.id)}
                   >
                     <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${type.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                      <div className={`w-12 h-12 rounded-xl bg-slate-900 ${type.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                         <type.icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">

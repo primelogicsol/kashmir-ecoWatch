@@ -200,7 +200,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     doi: '10.1234/hangul.2023.001',
     districts: ['srinagar'],
     relatedEntities: [
-      { id: 'species-hangul', type: 'species', name: 'Hangul (Cervus hanglu)', slug: '/biodiversity/mammals/hangul' },
+      { id: 'species-hangul', type: 'species', name: 'Hangul (Cervus hanglu)', slug: '/biodiversity/mammals' },
       { id: 'pa-dachigam', type: 'protected_area', name: 'Dachigam National Park', slug: '/protected-areas/dachigam' },
     ],
     usedInModules: [
@@ -367,7 +367,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     doi: '10.1016/j.foreco.2024.001',
     districts: ['all'],
     relatedEntities: [
-      { id: 'forest-kashmir', type: 'forest', name: 'Kashmir Forests', slug: '/forests-landscapes' },
+      { id: 'forest-kashmir', type: 'forest', name: 'Kashmir Forests', slug: '/earth-human-impact/forests-landscapes' },
     ],
     usedInModules: [
       { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring', usageContext: 'Forest cover trends' },

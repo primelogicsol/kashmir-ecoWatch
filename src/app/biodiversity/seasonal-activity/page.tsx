@@ -98,10 +98,10 @@ export default function SeasonalActivityPage() {
         label="Biodiversity Intelligence"
         breadcrumbs={[{ label: 'Biodiversity', href: '/biodiversity' }, { label: 'Seasonal Activity' }]}
         images={[
-          '/images/protected-network.png',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+          '/images/biodiversity/biodiversity-command-center.jpg',
           '/images/bear.png',
           '/images/markhor.png',
-          '/images/tiger.png'
         ]}
         actions={
           <div className="flex gap-3">

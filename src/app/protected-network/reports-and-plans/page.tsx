@@ -145,7 +145,7 @@ export default function ReportsPage() {
             Conservation Research Sentinel
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           Archive 2026
         </span>
       </div>
@@ -218,7 +218,23 @@ return (
         icon={<Book className="w-6 h-6 text-emerald-400" />}
         label="Evidence Intelligence"
         breadcrumbs={[{ label: 'Reports & Plans' }]}
-        images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={[
+        '/images/protected-network/protected-research-trails-sightings.jpg',
+        '/images/protected-network/protected-area-atlas-gis.jpg',
+        '/images/protected-network/protected-national-parks-dachigam.jpg',
+        '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg',
+        '/images/protected-network/protected-wetland-reserves-hokersar.jpg',
+        '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+        '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+        '/images/protected-network/protected-species-intelligence-telemetry.jpg',
+        '/images/protected-network/protected-corridors-connectivity-passes.jpg',
+        '/images/protected-network/protected-monitoring-threats-surveillance.jpg',
+        '/images/protected-network/protected-hwc-rapid-response-rescue.jpg',
+        '/images/bear.png',
+        '/images/tiger.png',
+        '/images/markhor.png',
+        '/images/protected-network.png'
+      ]}
         rightContent={heroShowcaseCard}
         actions={
           <>
@@ -244,7 +260,7 @@ return (
       {/* CORRIDOR TELEMETRY BANNER & J&K CONNECTIVITY SENTINEL         */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
-        <div className="bg-gradient-to-r from-slate-900/95 via-sky-950/40 to-slate-900/95 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-sky-500/10 rounded-xl border border-sky-500/20 text-sky-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -447,7 +463,7 @@ return (
                     <div className="flex flex-col h-full justify-between">
                       <div>
                         <div className="flex items-start gap-4 mb-4">
-                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
+                          <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
                             <FileText className="w-6 h-6 text-emerald-400" />
                           </div>
                           <div>
@@ -492,7 +508,7 @@ return (
                   ) : (
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
+                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
                           <FileText className="w-6 h-6 text-emerald-400" />
                         </div>
                         <div>

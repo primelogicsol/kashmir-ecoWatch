@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 function WhyJoinRegistry() {
   return (
-    <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-emerald-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Star className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Why Join the Registry?</h3>

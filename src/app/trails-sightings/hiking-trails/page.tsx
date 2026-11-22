@@ -237,7 +237,7 @@ export default function HikingTrailsPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="container mx-auto px-6">
-          <Card className="bg-gradient-to-r from-emerald-900/50 to-teal-900/50 border-white/10 overflow-hidden">
+          <Card className="bg-slate-900 border-white/10 overflow-hidden">
             <div className="relative p-12 text-center">
               
               <div className="relative z-10">

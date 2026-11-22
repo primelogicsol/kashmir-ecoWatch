@@ -312,7 +312,7 @@ export default function MethodologyPage() {
                     <div className="space-y-3 mt-3">
                       {steps.map(item => (
                         <div key={item.step} className="flex items-start gap-3 rounded-xl bg-white/5 border border-white/5 p-4">
-                          <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0`}>
+                          <div className={`w-9 h-9 rounded-xl bg-slate-900 ${item.color} flex items-center justify-center flex-shrink-0`}>
                             <item.icon className="w-4 h-4 text-white" />
                           </div>
                           <div>

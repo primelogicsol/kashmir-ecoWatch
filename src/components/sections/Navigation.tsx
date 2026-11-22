@@ -364,6 +364,7 @@ export function Navigation() {
                         { name: 'Species Intelligence Network', href: '/protected-network/species-intelligence', desc: 'Biological intelligence layer' },
                         { name: 'Corridors and Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
                         { name: 'Monitoring and Threat Intelligence', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
+                        { name: 'Human–Wildlife Conflict', href: '/protected-network/human-wildlife-conflict', desc: 'Community safety, conflict patterns & coexistence' },
                         { name: 'Research and Assessments', href: '/protected-network/reports-and-plans', desc: 'Scientific publications' },
                         { name: 'Trails & Sightings', href: '/protected-network/trails-and-sightings', desc: 'Field observations' },
                       ].map((subitem) => (
@@ -469,13 +470,17 @@ export function Navigation() {
                       {[
                         { name: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress heatmaps', color: 'text-violet-400' },
                         { name: 'Solid Waste', href: '/environmental-monitoring/solid-waste', desc: 'Dumping, landfill stress, open waste', color: 'text-gray-400' },
+                        { name: 'Plastic Pollution', href: '/environmental-monitoring/plastic-pollution', desc: 'Plastic waste, recycling & contamination', color: 'text-amber-400' },
                         { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', desc: 'Organic waste, decomposition zones', color: 'text-emerald-400' },
                         { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow, outfalls, untreated discharge', color: 'text-blue-400' },
                         { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Contamination alerts, supply issues', color: 'text-cyan-400' },
                         { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets', color: 'text-indigo-400' },
                         { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning', color: 'text-slate-400' },
+                        { name: 'Transportation Pollution', href: '/environmental-monitoring/transportation-pollution', desc: 'Vehicle emissions, traffic & noise', color: 'text-amber-400' },
+                        { name: 'Noise Pollution', href: '/environmental-monitoring/noise-pollution', desc: 'Sound levels, hotspots & exposure', color: 'text-amber-400' },
                         { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water', color: 'text-amber-400' },
                         { name: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity', color: 'text-teal-400' },
+                        { name: 'Chinar Monitoring', href: '/environmental-monitoring/chinar-monitoring', desc: 'Tree health, GIS & conservation', color: 'text-emerald-400' },
                         { name: 'SDG Monitoring', href: '/environmental-monitoring/sdg-monitoring', desc: 'Environmental UN SDG performance tracking', color: 'text-green-400' },
                       ].map((subitem, i) => (
                         <Link
@@ -616,7 +621,7 @@ export function Navigation() {
                       <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Trending Searches</h4>
                       <div className="flex flex-wrap gap-2">
                         {['Hangul', 'Dal Lake', 'Flood Risk', 'Srinagar', 'Snow Leopard'].map((q) => (
-                          <button key={q} onClick={() => setSearchQuery(q)} className="px-3 py-1.5 rounded-full bg-white/5 text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-colors">
+                          <button key={q} onClick={() => setSearchQuery(q)} className="px-3 py-1.5 rounded-[4px] bg-white/5 text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-colors">
                             {q}
                           </button>
                         ))}
@@ -1082,6 +1087,9 @@ export function Navigation() {
                                        </Link>
                                        <Link href="/protected-network/monitoring-and-threats" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                          Monitoring and Threat Intelligence
+                                       </Link>
+                                       <Link href="/protected-network/human-wildlife-conflict" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
+                                         Human–Wildlife Conflict
                                        </Link>
                                        <Link href="/protected-network/reports-and-plans" className="block px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/5 rounded transition-colors">
                                          Research and Assessments

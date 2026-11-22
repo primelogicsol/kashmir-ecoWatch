@@ -168,49 +168,49 @@ export default function EnvironmentalCalendarPage() {
   const heroObservances = [
     {
       id: 'wetlands',
-      src: '/images/protected-network.png',
+      src: '/images/environmental-calendar/calendar-hero-students-water.jpg',
       title: 'World Wetlands Day',
       date: 'February 2',
       status: 'Ramsar Observance',
       location: 'Hokersar & Wular Basins',
       short: 'Wetlands',
-      description: 'Migratory waterfowl census & wetland hydrological audits',
+      description: 'Migratory waterfowl census, student water telemetry & wetland audits',
     },
     {
       id: 'water-springs',
-      src: '/images/bear.png',
+      src: '/images/environmental-calendar/calendar-hero-scientists-lab.jpg',
       title: 'World Water Day & Springs',
       date: 'March 22',
       status: 'UN Water Pillar',
       location: 'Verinag, Upper Jhelum & Karewa Springs',
       short: 'Water & Springs',
-      description: 'Freshwater testing, spring discharge mapping & watershed health',
+      description: 'Freshwater testing, laboratory water quality analysis & spring mapping',
     },
     {
       id: 'vanmahotsava',
-      src: '/images/markhor.png',
+      src: '/images/environmental-calendar/calendar-hero-outdoor-classroom.jpg',
       title: 'Vanmahotsava Tree Planting',
       date: 'July 1 – 7',
       status: 'National Green Belt',
       location: 'Valley Eco-Clubs & Forest Fringes',
       short: 'Vanmahotsava',
-      description: 'Chinar, Deodar & Willow afforestation with survival monitoring',
+      description: 'Chinar, Deodar & pine afforestation with caliper tree survival monitoring',
     },
     {
-      id: 'wildlife-hangul',
-      src: '/images/tiger.png',
-      title: 'Wildlife Week & Hangul Rut',
-      date: 'October 2 – 8',
-      status: 'Wildlife Week J&K',
-      location: 'Dachigam National Park & Overa-Aru',
-      short: 'Wildlife Week',
-      description: 'Hangul roar listening, trail transects & human-wildlife co-existence',
+      id: 'ecovoices',
+      src: '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
+      title: 'EcoVoices & Youth Stewardship',
+      date: 'Year-Round',
+      status: 'Music & Culture',
+      location: 'Valley Eco-Clubs & Digital Studio',
+      short: 'EcoVoices',
+      description: 'Contemporary environmental music, digital storytelling & youth stewardship',
     },
   ];
   const currentHero = heroObservances[activeHeroIdx];
 
   const heroShowcaseCard = (
-    <div className="relative rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl shadow-emerald-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+    <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-emerald-950/60 bg-slate-950/40 backdrop-blur-md p-3 hover:border-emerald-500/30 transition-colors">
       {/* Top Banner Tag */}
       <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
         <div className="flex items-center gap-2">
@@ -222,7 +222,7 @@ export default function EnvironmentalCalendarPage() {
             Student Field Observance
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           {currentHero.date}
         </span>
       </div>
@@ -301,9 +301,9 @@ export default function EnvironmentalCalendarPage() {
                 </span>
                 <span className="text-white">Western Himalayan</span>
               </div>
-              <div className="leading-[1.15] overflow-visible pr-8">
-                <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
-                  Environmental Calendar &amp; Student Action Hub
+              <div className="leading-[1.15] overflow-visible">
+                <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent tracking-normal">
+                  <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Environmental</span> Calendar &amp; Student Action Hub
                 </span>
               </div>
             </div>
@@ -317,10 +317,10 @@ export default function EnvironmentalCalendarPage() {
             { label: 'Environmental Calendar' },
           ]}
           images={[
-            '/images/protected-network.png',
-            '/images/bear.png',
-            '/images/markhor.png',
-            '/images/tiger.png',
+            '/images/environmental-calendar/calendar-hero-students-water.jpg',
+            '/images/environmental-calendar/calendar-hero-scientists-lab.jpg',
+            '/images/environmental-calendar/calendar-hero-outdoor-classroom.jpg',
+            '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
           ]}
           rightContent={heroShowcaseCard}
           actions={
@@ -376,12 +376,12 @@ export default function EnvironmentalCalendarPage() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 backdrop-blur-xl relative overflow-hidden shadow-xl mb-6"
+              className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-emerald-500/30 backdrop-blur-xl relative overflow-hidden shadow-xl mb-6"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 p-0.5 shrink-0 shadow-lg shadow-emerald-950/50 flex flex-col items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-900 p-0.5 shrink-0 shadow-lg shadow-emerald-950/50 flex flex-col items-center justify-center text-white">
                     <span className="text-[10px] uppercase font-bold tracking-widest opacity-80">
                       {upcomingEvent.month.slice(0, 3)}
                     </span>
@@ -391,7 +391,7 @@ export default function EnvironmentalCalendarPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                         Next Upcoming Observance
                       </span>
                       <span className="text-xs text-slate-400 font-mono">
@@ -422,7 +422,7 @@ export default function EnvironmentalCalendarPage() {
           )}
 
           {/* ECOVOICES FEATURE SPOTLIGHT BANNER */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-purple-950/70 via-slate-900 to-slate-950 border border-purple-500/30 backdrop-blur-xl relative overflow-hidden shadow-2xl mb-8">
+          <div className="p-5 sm:p-6 rounded-2xl bg-slate-900 border border-purple-500/30 backdrop-blur-xl relative overflow-hidden shadow-2xl mb-8">
             <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
               <div className="space-y-2 max-w-3xl">
@@ -563,7 +563,7 @@ export default function EnvironmentalCalendarPage() {
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
+                    className={`px-3 py-1 rounded-[4px] text-xs font-medium whitespace-nowrap transition-all ${
                       isSelected
                         ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/30'
                         : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5 hover:border-white/15'
@@ -646,7 +646,7 @@ export default function EnvironmentalCalendarPage() {
                           <div className="flex items-start justify-between gap-4 mb-4">
                             <div className="flex items-center gap-3">
                               <div
-                                className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${event.accentGradient} p-0.5 shrink-0 shadow-lg flex flex-col items-center justify-center text-white`}
+                                className={`w-14 h-14 rounded-2xl bg-slate-900 ${event.accentGradient} p-0.5 shrink-0 shadow-lg flex flex-col items-center justify-center text-white`}
                               >
                                 <span className="text-[10px] uppercase font-bold tracking-wider opacity-90">
                                   {event.month.slice(0, 3)}
@@ -867,14 +867,14 @@ export default function EnvironmentalCalendarPage() {
         {/* Outdoor Classroom Deep Dive Section */}
         <section
           id="outdoor-classroom"
-          className="py-16 bg-gradient-to-b from-slate-900/60 to-slate-950 border-t border-white/10 relative overflow-hidden"
+          className="py-16 bg-slate-900 border-t border-white/10 relative overflow-hidden"
         >
           <div className="absolute top-1/2 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
               <div className="max-w-3xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
                   <GraduationCap className="w-3.5 h-3.5" />
                   <span>EXPANDED PEDAGOGICAL FRAMEWORK • ESRO / eIEN KASHMIR REVIVAL</span>
                 </div>
@@ -894,7 +894,7 @@ export default function EnvironmentalCalendarPage() {
               <div className="shrink-0">
                 <Link
                   href="/environmental-calendar/outdoor-classroom"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-950/40 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-950/40 transition-all"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Enter Outdoor Classroom Workspace</span>
@@ -1006,7 +1006,7 @@ export default function EnvironmentalCalendarPage() {
             </div>
 
             {/* School Partnership Banner */}
-            <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-slate-900 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">
                   Are You a School Principal, Teacher, or Student Eco-Club Leader?

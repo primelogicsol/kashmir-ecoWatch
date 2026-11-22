@@ -10,12 +10,11 @@ import {
   CheckCircle2, ArrowRight, Activity, Droplets, Mountain,
   Sparkles, Compass, Layers, Eye, Cpu, Award, GraduationCap,
   ExternalLink, Heart, AlertTriangle, FileText, ChevronRight,
-  Flame, Wind, HelpCircle, Binary, Landmark, Building2
+  Flame, Wind, HelpCircle, Binary, Landmark, Building2, Trees
 } from 'lucide-react';
 
 export default function AboutPage() {
   const [activeModuleTab, setActiveModuleTab] = useState<'biodiversity' | 'water' | 'hazards' | 'monitoring' | 'phenology' | 'stewardship'>('biodiversity');
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   // Core Vital Statistics
   const macroStats = [
@@ -235,30 +234,6 @@ export default function AboutPage() {
     }
   ];
 
-  // Frequently Asked Questions
-  const faqs = [
-    {
-      q: 'What is Kashmir EcoWatch and who maintains it?',
-      a: 'Kashmir EcoWatch (KEW) — formerly ESRO (Environment and Service Research Organization), established in 2004 — is an independent, non-commercial environmental intelligence platform and living observatory for the Kashmir Himalayas. It is spearheaded by Kashmiri-American environmental scientist Mr. Fayaz Ahmad Khan, operated and supported philanthropically by Dr. Kumar Foundation USA & Kumar Trust USA, and developed/maintained by Prime Logic Solutions under its Corporate Social Responsibility (CSR) initiative.'
-    },
-    {
-      q: 'Why is it termed a "Knowledge Return System"?',
-      a: 'For more than a century, field researchers, international expeditions, and academic institutions have gathered extensive ecological, botanical, and hydrological data about Kashmir. However, much of that knowledge has remained locked in foreign paywalled journals, closed university repositories, or disparate government archives. KEW synthesizes, harmonizes, and returns that intellectual wealth back to Kashmir—making it freely accessible to local researchers, youth, planners, and communities.'
-    },
-    {
-      q: 'How does the platform ensure scientific accuracy and neutrality?',
-      a: 'KEW operates strictly under evidence-based principles. All indicators are attributed to authoritative source datasets (such as Copernicus, USGS, NASA FIRMS, Open-Meteo, and peer-reviewed literature). Incoming community observations pass through an 8-stage verification pipeline, and the platform maintains scientific neutrality without taking political or territorial stances.'
-    },
-    {
-      q: 'How can researchers and institutions use and cite KEW data?',
-      a: 'All public datasets on KEW are provided under open science guidelines. Researchers, students, and journalists are encouraged to analyze, download, and cite the data. Standard academic citations should credit "Kashmir Environmental Watch (KEW) Observatory" alongside the primary provider attributed on the specific data page.'
-    },
-    {
-      q: 'How do you safeguard sensitive and endangered wildlife from poaching?',
-      a: 'In accordance with our Sensitivity Masking Protocol, precise geographic coordinates for critically endangered taxa (such as the Hangul deer, Snow Leopard, or threatened alpine herbs) are obfuscated or buffered to 10-25 km grid squares on public maps to prevent wildlife crime and unauthorized commercial foraging.'
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200">
       {/* ─── Hero Surface ────────────────────────────────────────────────────────── */}
@@ -275,7 +250,7 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/about/mission"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Our Strategic Mission</span>
               <ArrowRight className="w-4 h-4" />
@@ -299,7 +274,7 @@ export default function AboutPage() {
       />
 
       {/* ─── Macro Vitals Strip ─────────────────────────────────────────────────── */}
-      <section className="relative z-20 -mt-6 sm:-mt-10 mb-16 container mx-auto px-4 sm:px-6">
+      <section className="relative z-10 mt-6 sm:mt-8 mb-16 container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {macroStats.map((item, idx) => (
             <motion.div
@@ -336,7 +311,7 @@ export default function AboutPage() {
                 <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Our Core Thesis</span>
               </div>
               <span className="text-slate-600 hidden sm:inline">•</span>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-300">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-medium text-emerald-300">
                 <Landmark className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Formerly ESRO (Environment and Service Research Organization) · Established 2004</span>
               </div>
@@ -383,7 +358,7 @@ export default function AboutPage() {
               </div>
 
               {/* Civilizational Heritage Box */}
-              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/30 via-slate-900/60 to-slate-950 flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-slate-900 flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div>
@@ -447,10 +422,10 @@ export default function AboutPage() {
                   className={`glass-panel p-7 sm:p-8 rounded-3xl border ${pillar.borderColor} bg-slate-900/40 relative overflow-hidden flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl`}
                 >
                   <div className="flex items-start justify-between gap-4 mb-6">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.color} border border-white/10 flex items-center justify-center shrink-0`}>
+                    <div className={`w-14 h-14 rounded-2xl bg-slate-900 ${pillar.color} border border-white/10 flex items-center justify-center shrink-0`}>
                       <pillar.icon className={`w-7 h-7 ${pillar.textColor}`} />
                     </div>
-                    <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                    <span className="text-[11px] font-mono px-3 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
                       {pillar.tag}
                     </span>
                   </div>
@@ -515,7 +490,7 @@ export default function AboutPage() {
               >
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
                   <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3">
                       <Binary className="w-3.5 h-3.5" />
                       <span>{modulesData[activeModuleTab].badge}</span>
                     </div>
@@ -621,7 +596,7 @@ export default function AboutPage() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
                     <GraduationCap className="w-3.5 h-3.5" />
                     <span>Honorary Director & Founder</span>
                   </div>
@@ -702,7 +677,7 @@ export default function AboutPage() {
                       <div className="w-10 h-10 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center group-hover:border-emerald-500/40 transition-colors">
                         <item.icon className="w-5 h-5 text-emerald-400" />
                       </div>
-                      <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/5">
+                      <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-[4px] bg-white/5 text-slate-400 border border-white/5">
                         {item.tag}
                       </span>
                     </div>
@@ -775,73 +750,329 @@ export default function AboutPage() {
         </section>
 
         {/* ─── Section 8: Global Framework Alignments ───────────────────────────── */}
-        <section>
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Global Standards</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
-                Aligned with International Conventions
+        <section id="international-frameworks">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                Global Standards · International Reference Frameworks
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mt-1 mb-3">
+                Aligned with International Environmental Frameworks &amp; Standards
               </h2>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                International reference frameworks guiding Kashmir EcoWatch&apos;s approach to ecological monitoring, scientific assessment, conservation, disaster resilience, and environmental governance.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4.5">
               {[
-                { title: 'UN SDG 6 & 15', desc: 'Clean water systems, aquatic preservation, and terrestrial ecosystem conservation.', icon: Droplets, color: 'text-sky-400' },
-                { title: 'Sendai DRR', desc: 'Priority 1 disaster risk reduction through multi-hazard early warning telemetry.', icon: Activity, color: 'text-rose-400' },
-                { title: 'Kunming-Montreal GBF', desc: 'Target 3 spatial tracking of 30x30 protected network conservation corridors.', icon: Mountain, color: 'text-emerald-400' },
-                { title: 'Ramsar Convention', desc: 'Ecological character monitoring for Kashmir’s internationally recognized wetlands.', icon: Shield, color: 'text-teal-400' }
+                {
+                  num: '01',
+                  title: 'UN SDG 6 & 15',
+                  subtitle: 'Water & Ecosystems',
+                  desc: 'Clean water systems, freshwater ecosystem protection, sustainable forest management, biodiversity conservation, and mountain ecological resilience.',
+                  category: 'Global Development Goal',
+                  categoryColor: 'bg-sky-500/10 text-sky-300 border-sky-500/20',
+                  targets: 'SDG 6.6 & 15.1, 15.4',
+                  officialUrl: 'https://sdgs.un.org/goals',
+                  kewModule: 'Water & Forests',
+                  kewHref: '/water-systems',
+                  icon: Droplets,
+                  color: 'text-sky-400'
+                },
+                {
+                  num: '02',
+                  title: 'Sendai Framework for DRR',
+                  subtitle: 'Disaster Resilience',
+                  desc: 'Priority 1 risk understanding and Target G multi-hazard early warning accessibility, disaster intelligence, and community preparedness.',
+                  category: 'International Framework',
+                  categoryColor: 'bg-rose-500/10 text-rose-300 border-rose-500/20',
+                  targets: 'Priority 1 & Target G',
+                  officialUrl: 'https://www.undrr.org/implementing-sendai-framework/what-sendai-framework',
+                  kewModule: 'Hazard Intelligence',
+                  kewHref: '/hazard-intelligence',
+                  icon: AlertTriangle,
+                  color: 'text-rose-400'
+                },
+                {
+                  num: '03',
+                  title: 'Kunming–Montreal GBF',
+                  subtitle: '30-by-30 Conservation',
+                  desc: 'Target 3 protected-area conservation, ecological connectivity, and geospatial monitoring supporting the global 30-by-30 ambition.',
+                  category: 'International Framework',
+                  categoryColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+                  targets: 'GBF Target 3',
+                  officialUrl: 'https://www.cbd.int/gbf',
+                  kewModule: 'Protected Network',
+                  kewHref: '/protected-network',
+                  icon: Mountain,
+                  color: 'text-emerald-400'
+                },
+                {
+                  num: '04',
+                  title: 'Ramsar Convention',
+                  subtitle: 'Wetland Protection',
+                  desc: 'Wetland ecological character monitoring, aquatic ecosystem conservation, and sustainable management of internationally significant wetlands.',
+                  category: 'Legally-Binding Treaty',
+                  categoryColor: 'bg-teal-500/10 text-teal-300 border-teal-500/20',
+                  targets: 'Article 3.1 & Res. XIV.13',
+                  officialUrl: 'https://www.ramsar.org/',
+                  kewModule: 'Wetlands Observatory',
+                  kewHref: '/biodiversity/wetlands',
+                  icon: Shield,
+                  color: 'text-teal-400'
+                },
+                {
+                  num: '05',
+                  title: 'UNFCCC & Paris Agreement',
+                  subtitle: 'Climate Adaptation',
+                  desc: 'Climate adaptation, mountain ecosystem resilience, greenhouse gas monitoring, and climate vulnerability assessment under international climate objectives.',
+                  category: 'Legally-Binding Treaty',
+                  categoryColor: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+                  targets: 'Articles 7.1 & 8.4',
+                  officialUrl: 'https://unfccc.int/process-and-meetings/the-paris-agreement',
+                  kewModule: 'Sectoral EIA & Climate',
+                  kewHref: '/sectoral-eia',
+                  icon: Flame,
+                  color: 'text-amber-400'
+                },
+                {
+                  num: '06',
+                  title: 'UN SDG 13: Climate Action',
+                  subtitle: 'Cryosphere & Risk Intelligence',
+                  desc: 'Climate change monitoring, glacier recession analysis, disaster resilience, adaptation planning, and environmental risk intelligence.',
+                  category: 'Global Development Goal',
+                  categoryColor: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
+                  targets: 'Targets 13.1 & 13.3',
+                  officialUrl: 'https://sdgs.un.org/goals/goal13',
+                  kewModule: 'Glacier Telemetry',
+                  kewHref: '/water-systems/glaciers',
+                  icon: Activity,
+                  color: 'text-cyan-400'
+                },
+                {
+                  num: '07',
+                  title: 'UN SDG 11: Sustainable Communities',
+                  subtitle: 'Resilient Settlements',
+                  desc: 'Urban environmental quality, disaster-risk reduction, sustainable settlements, infrastructure resilience, and community environmental safety.',
+                  category: 'Global Development Goal',
+                  categoryColor: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
+                  targets: 'Targets 11.5 & 11.6',
+                  officialUrl: 'https://sdgs.un.org/goals/goal11',
+                  kewModule: 'Air & Solid Waste',
+                  kewHref: '/environmental-monitoring/air-pollution',
+                  icon: Building2,
+                  color: 'text-purple-400'
+                },
+                {
+                  num: '08',
+                  title: 'UN SDG 12: Responsible Consumption',
+                  subtitle: 'Pollution Prevention',
+                  desc: 'Industrial environmental impacts, solid waste management, pollution prevention, sustainable production, and resource efficiency.',
+                  category: 'Global Development Goal',
+                  categoryColor: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
+                  targets: 'Targets 12.4 & 12.5',
+                  officialUrl: 'https://sdgs.un.org/goals/goal12',
+                  kewModule: 'Solid Waste Tracking',
+                  kewHref: '/environmental-monitoring/solid-waste',
+                  icon: Layers,
+                  color: 'text-orange-400'
+                },
+                {
+                  num: '09',
+                  title: 'UNCCD: Land Degradation Neutrality',
+                  subtitle: 'Slope & Soil Health',
+                  desc: 'Soil degradation, land-cover change, landscape restoration, land productivity, and sustainable mountain ecosystem management.',
+                  category: 'Legally-Binding Treaty',
+                  categoryColor: 'bg-lime-500/10 text-lime-300 border-lime-500/20',
+                  targets: 'LDN Target 15.3',
+                  officialUrl: 'https://www.unccd.int/',
+                  kewModule: 'Forests & Landforms',
+                  kewHref: '/biodiversity/forest-ecosystems',
+                  icon: Compass,
+                  color: 'text-lime-400'
+                },
+                {
+                  num: '10',
+                  title: 'UNESCO Man & Biosphere',
+                  subtitle: 'Socio-Ecological Systems',
+                  desc: 'Biodiversity conservation, ecological research, community participation, and sustainable management of interconnected human and natural landscapes.',
+                  category: 'Intergovernmental Programme',
+                  categoryColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+                  targets: 'MAB Strategy 2015–2025',
+                  officialUrl: 'https://www.unesco.org/en/mab',
+                  kewModule: 'Protected Areas',
+                  kewHref: '/protected-areas',
+                  icon: Globe,
+                  color: 'text-emerald-400'
+                },
+                {
+                  num: '11',
+                  title: 'Convention on Biological Diversity',
+                  subtitle: 'Habitat Restoration',
+                  desc: 'Ecosystem conservation, habitat restoration, species protection, genetic diversity, and sustainable biodiversity management.',
+                  category: 'Legally-Binding Treaty',
+                  categoryColor: 'bg-teal-500/10 text-teal-300 border-teal-500/20',
+                  targets: 'Articles 7, 8 & 14',
+                  officialUrl: 'https://www.cbd.int/',
+                  kewModule: 'Flora & Fauna Engine',
+                  kewHref: '/biodiversity',
+                  icon: Trees,
+                  color: 'text-teal-400'
+                },
+                {
+                  num: '12',
+                  title: 'IUCN Red List Standards',
+                  subtitle: 'Taxa Threat Classification',
+                  desc: 'Species conservation-status assessment, extinction-risk classification, threatened wildlife monitoring, and biodiversity evidence management.',
+                  category: 'Scientific Standard',
+                  categoryColor: 'bg-rose-500/10 text-rose-300 border-rose-500/20',
+                  targets: 'Categories Criteria v3.1',
+                  officialUrl: 'https://www.iucnredlist.org/',
+                  kewModule: 'Species Intelligence',
+                  kewHref: '/protected-network/species-intelligence',
+                  icon: Award,
+                  color: 'text-rose-400'
+                },
+                {
+                  num: '13',
+                  title: 'IPCC Climate Assessment Frameworks',
+                  subtitle: 'Cryosphere Projections',
+                  desc: 'Evidence-informed climate-risk assessment, cryosphere research, climate projections, uncertainty reporting, and regional adaptation analysis.',
+                  category: 'Scientific Standard',
+                  categoryColor: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20',
+                  targets: 'SROCC & AR6 WGII',
+                  officialUrl: 'https://www.ipcc.ch/',
+                  kewModule: 'Resilience Indices',
+                  kewHref: '/environmental-monitoring/environmental-resilience',
+                  icon: Binary,
+                  color: 'text-indigo-400'
+                },
+                {
+                  num: '14',
+                  title: 'UN SDG 17: Global Partnerships',
+                  subtitle: 'Open Data Collaboration',
+                  desc: 'Scientific collaboration, institutional knowledge exchange, research partnerships, environmental data sharing, and international capacity development.',
+                  category: 'Global Development Goal',
+                  categoryColor: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
+                  targets: 'Targets 17.6 & 17.18',
+                  officialUrl: 'https://sdgs.un.org/goals/goal17',
+                  kewModule: 'Open Data Portal',
+                  kewHref: '/open-data',
+                  icon: Users,
+                  color: 'text-blue-400'
+                },
+                {
+                  num: '15',
+                  title: 'GBF Target 21: Biodiversity Knowledge',
+                  subtitle: 'Public Knowledge Access',
+                  desc: 'Public access to biodiversity information, scientific evidence, environmental education, participatory monitoring, and responsible knowledge sharing.',
+                  category: 'International Framework',
+                  categoryColor: 'bg-pink-500/10 text-pink-300 border-pink-500/20',
+                  targets: 'GBF Target 21',
+                  officialUrl: 'https://www.cbd.int/gbf/targets/21',
+                  kewModule: 'Citizen Science',
+                  kewHref: '/join-citizen-science',
+                  icon: BookOpen,
+                  color: 'text-pink-400'
+                },
+                {
+                  num: '16',
+                  title: 'GBF Target 14: Mainstreaming',
+                  subtitle: 'Sectoral Impact Integration',
+                  desc: 'Integration of biodiversity considerations into environmental impact assessments, sectoral planning, development decisions, and ecosystem governance.',
+                  category: 'International Framework',
+                  categoryColor: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+                  targets: 'GBF Target 14',
+                  officialUrl: 'https://www.cbd.int/gbf/targets/14',
+                  kewModule: 'Sectoral Impact Atlas',
+                  kewHref: '/sectoral-eia/impact-atlas',
+                  icon: FileText,
+                  color: 'text-amber-400'
+                }
               ].map((item, idx) => (
-                <div key={idx} className="glass-panel p-5 rounded-2xl border border-white/5 bg-slate-900/40 text-center flex flex-col items-center">
-                  <item.icon className={`w-8 h-8 ${item.color} mb-3`} />
-                  <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                <div
+                  key={idx}
+                  className="rounded-[8px] border border-white/10 bg-slate-900/60 hover:border-emerald-500/40 p-4 sm:p-5 flex flex-col justify-between transition-all group shadow-sm hover:bg-slate-900/80"
+                >
+                  <div>
+                    {/* Card Header: Number & Instrument Category Badge */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="text-[11px] font-mono font-bold text-slate-500">
+                        {item.num}
+                      </span>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded-[4px] border ${item.categoryColor} truncate`}>
+                        {item.category}
+                      </span>
+                    </div>
+
+                    {/* Icon + Title */}
+                    <div className="flex items-start gap-2.5 mb-2">
+                      <item.icon className={`w-5 h-5 ${item.color} shrink-0 mt-0.5`} />
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug break-words">
+                          {item.title}
+                        </h4>
+                        <span className="text-[11px] font-medium text-emerald-400/80 block mt-0.5 font-mono">
+                          {item.subtitle}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs text-slate-300 leading-relaxed mb-4 break-words">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Card Footer: Target & Links */}
+                  <div className="pt-3 border-t border-white/10 space-y-2">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <span className="text-slate-500">Target / Scope:</span>
+                      <span className="text-slate-300 font-semibold truncate max-w-[150px]">{item.targets}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 pt-1">
+                      <Link
+                        href={item.kewHref}
+                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                        title={`View ${item.kewModule} module`}
+                      >
+                        <span>{item.kewModule}</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+
+                      <a
+                        href={item.officialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[10px] font-mono text-slate-400 hover:text-slate-200 transition-colors"
+                        title={`Official ${item.title} documentation`}
+                      >
+                        <span>Official</span>
+                        <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ─── Section 9: Frequently Asked Questions ─────────────────────────────── */}
-        <section>
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-2 mb-2">
-              <HelpCircle className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Questions & Answers</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-8">
-              Frequently Asked Questions
-            </h2>
-
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => {
-                const isOpen = activeFaq === idx;
-                return (
-                  <div
-                    key={idx}
-                    className="glass-panel rounded-2xl border border-white/10 bg-slate-900/40 overflow-hidden transition-colors"
-                  >
-                    <button
-                      onClick={() => setActiveFaq(isOpen ? null : idx)}
-                      className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-white hover:text-emerald-300 transition-colors"
-                    >
-                      <span className="text-sm sm:text-base">{faq.q}</span>
-                      <ChevronRight className={`w-4 h-4 text-emerald-400 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`} />
-                    </button>
-                    {isOpen && (
-                      <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5">
-                        {faq.a}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            {/* Non-Endorsement & Institutional Alignment Notice */}
+            <div className="mt-8 p-4 sm:p-5 rounded-[8px] bg-slate-950 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-400">
+              <div className="flex items-start gap-2.5">
+                <Shield className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <p className="leading-relaxed">
+                  <strong className="text-white">Institutional Reference Notice:</strong> Kashmir EcoWatch references these multilateral conventions, voluntary frameworks, and scientific standards to structure its empirical taxonomy, observation pipelines, and indicator calculations. Reference to international instruments does not imply formal accreditation, institutional certification, regulatory audit status, or official endorsement by the United Nations, Ramsar Secretariat, IUCN, or other governing bodies.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ─── Section 10: Grand Call to Action Matrix ───────────────────────────── */}
+        {/* ─── Section 9: Grand Call to Action Matrix ───────────────────────────── */}
         <section className="pb-16">
-          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 relative overflow-hidden text-center shadow-2xl">
+          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-slate-900 relative overflow-hidden text-center shadow-2xl">
             <div className="absolute top-0 right-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -857,7 +1088,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/atlas"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
                 >
                   <Map className="w-4 h-4" />
                   <span>Launch Ecological Atlas</span>
@@ -868,6 +1099,13 @@ export default function AboutPage() {
                 >
                   <Eye className="w-4 h-4 text-emerald-400" />
                   <span>Submit Field Observation</span>
+                </Link>
+                <Link
+                  href="/about/qna"
+                  className="px-6 py-3.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 hover:text-white border border-purple-500/30 hover:border-purple-400 font-semibold text-sm transition-all flex items-center gap-2"
+                >
+                  <HelpCircle className="w-4 h-4 text-purple-400" />
+                  <span>KEW Q&amp;A Knowledge Base (50)</span>
                 </Link>
                 <Link
                   href="/about/contact"

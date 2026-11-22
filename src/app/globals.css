@@ -266,6 +266,21 @@
   margin: 0;
 }
 
+/* Mobile Touch & Tap Optimizations */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll issues on narrow viewports */
+  .container {
+    padding-left: clamp(12px, 4vw, 16px);
+    padding-right: clamp(12px, 4vw, 16px);
+    max-width: 100vw;
+  }
+}
+
 html {
   overflow-y: auto;
   overflow-x: clip;
@@ -785,3 +800,492 @@ span[class*="tag"] {
     min-height: 500px;
   }
 }
+
+/* ==========================================================================
+   KEW GLOBAL RESPONSIVE DESIGN SYSTEM & NON-TRUNCATION LIFE-SAFETY RULES
+   ========================================================================== */
+
+/* Universal horizontal scrollbar elimination across all mobile viewports */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Universal table responsiveness with visible touch-scrolling */
+.responsive-table-container,
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+.responsive-table-container table,
+.table-responsive-wrapper table {
+  min-width: 640px;
+  width: 100%;
+}
+
+/* Scientific values: Never truncate numerical measurements, units, or stations */
+.scientific-metric,
+.scientific-val {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status Badges: Allow multi-word environmental warnings to wrap on mobile */
+.badge-wrap-safe,
+.kew-status-badge {
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* Responsive Metric Card Containers */
+.kew-metric-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-break: break-word;
+}
+
+/* Minimum accessible touch targets for mobile interactive controls (WCAG 2.2 AA) */
+@media (max-width: 640px) {
+  button:not(.carousel-touch-target):not(.carousel-dot):not([role="tab"]),
+  a[role="button"]:not(.carousel-touch-target):not([role="tab"]),
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 36px;
+  }
+
+  /* Prevent text clipping on narrow mobile viewports (320px - 375px) */
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+  }
+}
+
+/* Universal text containment & overflow safeguards */
+.kew-card,
+.card-intelligence,
+.green-hero-card {
+  min-width: 0;
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive table container containment */
+.kew-table-container,
+.responsive-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   KEW SCIENTIFIC GEOMETRIC DESIGN SYSTEM & GLOBAL BORDER-RADIUS ENFORCEMENT
+   Mandatory standards for scientific-institutional environmental monitoring
+   ========================================================================== */
+
+:root {
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+}
+
+/* 1. Status Badges, Classification Labels, Filters, Tabs & Chips: Maximum 4px */
+.badge,
+[class*="badge"],
+[data-badge],
+.status-pill,
+.filter-chip,
+.filter-tab,
+.tag,
+.pill,
+[role="tab"],
+.nav-tab,
+.category-filter,
+.data-source-label,
+.verification-badge {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 2. Interactive Buttons, Input Fields & Dropdown Selectors: Maximum 6px */
+button:not(.rounded-full):not([class*="w-"]):not([class*="h-"]):not([class*="size-"]),
+.btn,
+[class*="btn-"],
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea,
+.dropdown-trigger,
+.icon-btn,
+.search-input {
+  border-radius: var(--radius-md) !important;
+}
+
+/* 3. Scientific Metric Cards, Environmental Monitoring Cards & Dashboard Panels: Maximum 8px */
+.card,
+[class*="card"],
+[class*="Card"],
+.panel,
+[class*="panel"],
+.dashboard-panel,
+.metric-card,
+.kew-metric-card,
+.chart-container,
+.gis-panel,
+.stat-box,
+.alert-panel {
+  border-radius: var(--radius-lg) !important;
+}
+
+/* 4. Modal Windows & Popovers: Maximum 10px */
+.modal,
+[role="dialog"],
+.dialog-content,
+.modal-window {
+  border-radius: var(--radius-xl) !important;
+}
+
+/* 5. Tooltips: Maximum 6px */
+.tooltip,
+[role="tooltip"] {
+  border-radius: var(--radius-md) !important;
+}
+
+/* 6. Universal Capsule Elimination:
+   Intercept rectangular elements with horizontal padding that use rounded-full */
+span.rounded-full[class*="px-"],
+div.rounded-full[class*="px-"],
+a.rounded-full[class*="px-"],
+button.rounded-full[class*="px-"],
+[class*="rounded-full"][class*="px-"] {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 7. Strict Tailwind overrides: Enforce 8px maximum on rounded-xl, 2xl, 3xl, 4xl */
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-4xl {
+  border-radius: var(--radius-lg) !important;
+}
+
+/* 8. Intentional Circular Visualizations Allowlist (Preserve Legitimate Circles) */
+.rounded-full.w-1, .rounded-full.h-1,
+.rounded-full.w-1\.5, .rounded-full.h-1\.5,
+.rounded-full.w-2, .rounded-full.h-2,
+.rounded-full.w-2\.5, .rounded-full.h-2\.5,
+.rounded-full.w-3, .rounded-full.h-3,
+.rounded-full.w-4, .rounded-full.h-4,
+.rounded-full.w-5, .rounded-full.h-5,
+.rounded-full.w-6, .rounded-full.h-6,
+.rounded-full.w-8, .rounded-full.h-8,
+.rounded-full.w-10, .rounded-full.h-10,
+.rounded-full.w-12, .rounded-full.h-12,
+.rounded-full.w-14, .rounded-full.h-14,
+.rounded-full.w-16, .rounded-full.h-16,
+.rounded-full.animate-spin,
+.avatar-circle,
+.status-dot,
+.circular-marker,
+.pulse-ring,
+input[type="radio"] {
+  border-radius: 9999px !important;
+}
+
+/* ==========================================================================
+   KEW SCIENTIFIC GEOMETRIC DESIGN SYSTEM & GLOBAL BORDER-RADIUS ENFORCEMENT
+   Mandatory standards for scientific-institutional environmental monitoring
+   ========================================================================== */
+
+:root {
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+}
+
+/* 1. Status Badges, Classification Labels, Filters, Tabs & Chips: Maximum 4px */
+.badge,
+[class*="badge"],
+[data-badge],
+.status-pill,
+.filter-chip,
+.filter-tab,
+.tag,
+.pill,
+[role="tab"],
+.nav-tab,
+.category-filter,
+.data-source-label,
+.verification-badge,
+span[class*="px-"],
+span[class*="text-"][class*="py-"],
+span[class*="bg-"][class*="py-"],
+div[class*="px-"][class*="tracking-wid"],
+button[role="tab"],
+button[class*="tab"],
+button[class*="filter"] {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 2. Interactive Buttons, Input Fields & Dropdown Selectors: Maximum 6px */
+button:not(.carousel-dot):not([class*="w-2"]):not([class*="w-1"]):not([class*="w-3"]):not([class*="h-2"]):not([class*="h-1"]),
+.btn,
+[class*="btn"],
+button.rounded-lg,
+button.rounded-xl,
+button.rounded-2xl,
+button.rounded-3xl,
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea,
+.dropdown-trigger,
+.icon-btn,
+.search-input {
+  border-radius: var(--radius-md) !important;
+}
+
+/* 3. Scientific Metric Cards, Environmental Monitoring Cards & Dashboard Panels: Maximum 8px */
+.card,
+[class*="card"],
+[class*="Card"],
+.panel,
+[class*="panel"],
+.dashboard-panel,
+.metric-card,
+.kew-metric-card,
+.chart-container,
+.gis-panel,
+.stat-box,
+.alert-panel,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-4xl {
+  border-radius: var(--radius-lg) !important;
+}
+
+/* 4. Progress Bars & Metric Gauges: Scientific 4px Corner Radius */
+div[role="progressbar"],
+div.rounded-full[class*="overflow-hidden"],
+div.rounded-full[class*="h-1"],
+div.rounded-full[class*="h-2"],
+div.rounded-full[class*="h-3"],
+div.rounded-full[class*="h-full"] {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 5. Tooltips, Popovers & Third-Party UI (Recharts, Leaflet): Maximum 6px */
+.tooltip,
+[role="tooltip"],
+.recharts-default-tooltip,
+.recharts-tooltip-wrapper,
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md) !important;
+}
+
+/* 6. Modal Windows & Dialogs: Maximum 10px */
+.modal,
+[role="dialog"],
+.dialog-content,
+.modal-window {
+  border-radius: var(--radius-xl) !important;
+}
+
+/* 7. Universal Capsule Elimination:
+   Intercept any rectangular elements with horizontal padding that use rounded-full */
+span.rounded-full[class*="px-"],
+div.rounded-full[class*="px-"],
+a.rounded-full[class*="px-"],
+button.rounded-full[class*="px-"],
+[class*="rounded-full"][class*="px-"] {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 8. Intentional Circular Visualizations Allowlist (Preserve Legitimate Circles) */
+.rounded-full.w-1, .rounded-full.h-1,
+.rounded-full[class*="w-1.5"], .rounded-full[class*="h-1.5"],
+.rounded-full.w-2, .rounded-full.h-2,
+.rounded-full[class*="w-2.5"], .rounded-full[class*="h-2.5"],
+.rounded-full.w-3, .rounded-full.h-3,
+.rounded-full.w-4, .rounded-full.h-4,
+.rounded-full.w-5, .rounded-full.h-5,
+.rounded-full.w-6, .rounded-full.h-6,
+.rounded-full.w-8, .rounded-full.h-8,
+.rounded-full.w-10, .rounded-full.h-10,
+.rounded-full.w-12, .rounded-full.h-12,
+.rounded-full.w-14, .rounded-full.h-14,
+.rounded-full.w-16, .rounded-full.h-16,
+.rounded-full.w-20, .rounded-full.h-20,
+.rounded-full.w-24, .rounded-full.h-24,
+.rounded-full.animate-spin,
+button[class*="w-2.5"][class*="h-2.5"],
+button[class*="w-2"][class*="h-2"],
+button[class*="w-3"][class*="h-3"],
+button[class*="h-2"][class*="rounded-full"],
+button[class*="h-2.5"][class*="rounded-full"],
+.avatar-circle,
+.status-dot,
+.circular-marker,
+.pulse-ring,
+.carousel-dot,
+input[type="radio"] {
+  border-radius: 9999px !important;
+}
+
+/* ───────────────────────────────────────────────────────────── */
+/* KEW Green Hero Card Non-Truncation Rules                     */
+/* ───────────────────────────────────────────────────────────── */
+.green-hero-card .designation,
+.green-hero-card .affiliation,
+.green-hero-card .verification,
+.green-hero-card .contribution {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  min-width: 0;
+  height: auto;
+  max-height: none;
+  -webkit-line-clamp: unset;
+}
+
+
+/* ==========================================================================
+   CAROUSEL ACCESSIBLE PAGINATION INDICATORS (STANDARDIZED MOBILE & DESKTOP)
+   ========================================================================== */
+
+/* 1. Accessible 44px × 44px Touch Target Container (WCAG 2.2 AA compliant) */
+.carousel-touch-target {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.carousel-touch-target:focus-visible {
+  outline: 2px solid #34d399 !important;
+  outline-offset: 2px !important;
+}
+
+/* 2. Strictly Controlled 12px × 12px Circular Indicator Dot */
+.carousel-dot {
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   KEW GLOBAL RESPONSIVE SPACING TOKENS & SYSTEM
+   Standardized visual rhythm across desktop, tablet, and mobile viewports
+   ========================================================================== */
+:root {
+  --kew-spacing-xs: clamp(0.25rem, 1vw, 0.5rem);     /* 4px - 8px */
+  --kew-spacing-sm: clamp(0.5rem, 1.5vw, 0.75rem);   /* 8px - 12px */
+  --kew-spacing-md: clamp(0.75rem, 2vw, 1.25rem);    /* 12px - 20px */
+  --kew-spacing-lg: clamp(1.25rem, 2.5vw, 1.75rem);  /* 20px - 28px */
+  --kew-spacing-xl: clamp(1.75rem, 3.5vw, 2.5rem);   /* 28px - 40px */
+  --kew-spacing-2xl: clamp(2.5rem, 5vw, 4rem);       /* 40px - 64px */
+  --kew-spacing-hero-bottom: clamp(3rem, 6vw, 5rem); /* 48px - 80px */
+}
+
+/* ==========================================================================
+   KEW STRICT WEBSITE-WIDE NO-GRADIENT SOLID-SURFACE CARD DESIGN SYSTEM
+   Enforces solid, uniform card backgrounds across light and dark modes.
+   ========================================================================== */
+:root {
+  --card-surface-light: #ffffff;
+  --card-border-light: #e2e8f0;
+  --card-surface-dark: #0f172a;
+  --card-border-dark: #334155;
+  --card-surface-dark-subtle: #1e293b;
+  --card-border-dark-subtle: rgba(255, 255, 255, 0.08);
+}
+
+.kew-card {
+  background: var(--card-surface-dark);
+  background-image: none !important;
+  border: 1px solid var(--card-border-dark-subtle);
+}
+
+.light .kew-card {
+  background: var(--card-surface-light);
+  background-image: none !important;
+  border: 1px solid var(--card-border-light);
+}
+
+.dark .kew-card {
+  background: var(--card-surface-dark);
+  background-image: none !important;
+  border-color: var(--card-border-dark);
+}
+
+/* Eliminate background-image gradients on all card and panel selectors */
+.card,
+[class*="Card"],
+[class*="card-intelligence"],
+.green-hero-card,
+.dashboard-panel,
+.alert-panel,
+.stat-box,
+.metric-card,
+.kew-metric-card,
+.report-card,
+.evidence-card {
+  background-image: none !important;
+}
+
+.dark .card,
+.dark [class*="Card"],
+.dark [class*="card-intelligence"],
+.dark .green-hero-card,
+.dark .dashboard-panel,
+.dark .alert-panel,
+.dark .stat-box,
+.dark .metric-card,
+.dark .kew-metric-card,
+.dark .report-card,
+.dark .evidence-card {
+  background-image: none !important;
+}
+

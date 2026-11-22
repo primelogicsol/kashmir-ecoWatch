@@ -80,19 +80,19 @@ export default function LandEarthSystemsSubmodulePage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Land Transformation, Karewas & Slope Dynamics
+            <div className="leading-[1.15] overflow-visible">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent tracking-normal">
+                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Land Transformation</span>, Karewas &amp; Slope Dynamics
               </span>
             </div>
           </div>
         }
         subtitle="Investigating the systematic excavation of ancient Pleistocene Karewa plateaus, fertile agricultural land loss, soil profile exhaustion, and catastrophic sedimentation dynamics across the Kashmir basin."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/earth-human-impact/ehii-karewa-land-transformation.jpg',
+          '/images/earth-human-impact/ehii-command-center-satellite.jpg',
+          '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+          '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg'
         ]}
         rightContent={
           <EhiiHeroShowcaseCard
@@ -209,7 +209,7 @@ export default function LandEarthSystemsSubmodulePage() {
         </section>
 
         {/* Sectoral EIA Linkage */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-950 border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">Sectoral Intersection</div>
             <h4 className="text-base font-bold text-white">Coupled with Agriculture EIA & Horticulture EIA</h4>

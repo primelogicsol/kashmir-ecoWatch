@@ -100,7 +100,7 @@ export default function WebinarProceedingsPage() {
               </div>
 
               <div className="space-y-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[4px] text-xs font-mono font-bold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/20">
                   0 Published Proceedings to Date • Open Access Repository
                 </span>
                 <h3 className="text-2xl font-bold text-white tracking-tight">

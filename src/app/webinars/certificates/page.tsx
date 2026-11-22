@@ -171,7 +171,7 @@ export default function WebinarCertificatesPage() {
                 </div>
 
                 <div className="pt-4">
-                  <span className="text-[11px] font-mono tracking-widest text-teal-400 uppercase font-black px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30">
+                  <span className="text-[11px] font-mono tracking-widest text-teal-400 uppercase font-black px-3 py-1 rounded-[4px] bg-teal-500/10 border border-teal-500/30">
                     Certificate of Scientific Participation
                   </span>
                 </div>

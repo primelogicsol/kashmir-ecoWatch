@@ -1,110 +1,110 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CircleMarker, Popup } from 'react-leaflet';
-import * as L from 'leaflet';
-import { alertsData } from '@/data';
+import { Polygon, CircleMarker, Popup } from 'react-leaflet';
+import hazardsGeoJson from '@/data/geojson/hazards.json';
 
 interface HazardLayerProps {
   visible?: boolean;
   onFeatureClick?: (feature: any) => void;
 }
 
-const hazardSeverityColors: Record<string, string> = {
-  high: '#ef4444',    // red-500
-  medium: '#f59e0b',  // amber-500
-  low: '#22c55e',     // green-500
+const severityColors: Record<string, string> = {
+  critical: '#dc2626', // red-600
+  high: '#ef4444',     // red-500
+  medium: '#f59e0b',   // amber-500
+  low: '#10b981',      // emerald-500
 };
 
-const hazardTypeIcons: Record<string, string> = {
-  wetland_encroachment: '🏗️',
-  air_quality: '💨',
-  trail_closure: '🚫',
-  water_anomaly: '💧',
-  avalanche: '🏔️',
-  landslide: '⛰️',
-  wildlife_conflict: '🐾',
+const hazardIcons: Record<string, string> = {
+  glof: '🌊 GLOF Threat',
+  avalanche: '🏔️ Avalanche Corridor',
+  landslide: '⛰️ Landslide Zone',
+  flood: '💧 Inundation Plain',
+  earthquake: '⚡ Seismic Faultline',
 };
 
 export function HazardLayer({ visible = true, onFeatureClick }: HazardLayerProps) {
-  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   if (!visible) return null;
 
-  const handleHazardClick = (alert: any) => {
-    if (onFeatureClick) {
-      onFeatureClick({
-        type: 'hazard',
-        ...alert,
-      });
-    }
-  };
-
-  // Get active alerts only
-  const activeAlerts = alertsData.filter(a => a.status === 'active');
-
   return (
     <>
-      {activeAlerts.map((alert) => {
-        // Use district center coordinates for now
-        const districtCoords: Record<string, [number, number]> = {
-          'Srinagar': [34.0837, 74.7973],
-          'Anantnag': [33.7311, 75.1511],
-          'Baramulla': [34.2092, 74.3419],
-          'Budgam': [34.0155, 74.5210],
-          'Bandipora': [34.4167, 74.6333],
-          'Kupwara': [34.5333, 74.2500],
-          'Pulwama': [33.8667, 74.8833],
-          'Shopian': [33.7167, 74.7833],
-          'Ganderbal': [34.2333, 74.9333],
-          'Kulgam': [33.6500, 75.0167],
-        };
-
-        const coords = districtCoords[alert.district] || [34.0837, 74.7973];
-        const color = hazardSeverityColors[alert.severity] || hazardSeverityColors.medium;
-        const isHovered = hoveredFeature === alert.id;
-        const icon = hazardTypeIcons[alert.type] || '⚠️';
+      {hazardsGeoJson.features.map((feature) => {
+        const props = feature.properties;
+        const coords = feature.geometry.coordinates[0]; // [[lng, lat], ...]
+        const latLngs: [number, number][] = coords.map(([lng, lat]) => [lat, lng]);
+        const color = severityColors[props.severity] || '#ef4444';
+        const isHovered = hoveredId === props.id;
+        const centerPos: [number, number] = [props.coordinates.lat, props.coordinates.lng];
 
         return (
-          <CircleMarker
-            key={alert.id}
-            center={coords}
-            radius={isHovered ? 14 : 12}
-            pathOptions={{
-              color: color,
-              fillColor: color,
-              fillOpacity: 0.6,
-              weight: 3,
-              dashArray: alert.severity === 'high' ? undefined : '5, 5',
-            }}
-            eventHandlers={{
-              mouseover: () => setHoveredFeature(alert.id),
-              mouseout: () => setHoveredFeature(null),
-              click: () => handleHazardClick(alert),
-            }}
-          >
-            <Popup>
-              <div className="p-2 min-w-[250px]">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xl">{icon}</span>
-                  <h3 className="font-semibold text-slate-900 flex-1">{alert.title}</h3>
-                </div>
-                <p className="text-sm text-slate-600 mb-2">{alert.description}</p>
-                <div className="mt-2 space-y-1 text-xs text-slate-500">
-                  <p>Location: {alert.location}</p>
-                  <p>District: {alert.district}</p>
-                  <p>Severity: <span className="font-medium" style={{ color }}>{alert.severity}</span></p>
-                  <p>Status: <span className="font-medium text-emerald-600">{alert.status}</span></p>
-                </div>
-                {alert.affectedEntity && (
-                  <div className="mt-2 pt-2 border-t border-slate-200">
-                    <p className="text-xs font-medium text-slate-700">Affected:</p>
-                    <p className="text-xs text-slate-500">{alert.affectedEntity.name}</p>
+          <React.Fragment key={props.id}>
+            {/* Modeled Hazard Threat Footprint Polygon */}
+            <Polygon
+              positions={latLngs}
+              pathOptions={{
+                color: isHovered ? '#ffffff' : color,
+                fillColor: color,
+                fillOpacity: isHovered ? 0.45 : 0.25,
+                weight: isHovered ? 3 : 1.5,
+                dashArray: props.severity === 'critical' ? '4, 4' : undefined,
+              }}
+              eventHandlers={{
+                mouseover: () => setHoveredId(props.id),
+                mouseout: () => setHoveredId(null),
+                click: () => {
+                  onFeatureClick?.({
+                    type: 'hazard',
+                    id: props.id,
+                    name: props.title,
+                    hazardType: props.type,
+                    region: props.region,
+                    district: props.district,
+                    severity: props.severity,
+                    status: props.status,
+                    issuedDate: props.issuedDate,
+                    verificationStatus: props.verificationStatus,
+                    description: props.description,
+                    metrics: [
+                      { label: 'Hazard Classification', value: hazardIcons[props.type] || props.type.toUpperCase() },
+                      { label: 'Severity Level', value: props.severity.toUpperCase() },
+                      { label: 'Location', value: `${props.district}, ${props.region}` },
+                      { label: 'Issuance Reference', value: props.issuedDate },
+                      { label: 'Provenance', value: 'Disaster Management & GSI Geohazard Registry' }
+                    ]
+                  });
+                },
+              }}
+            >
+              <Popup>
+                <div className="p-2 min-w-[220px]">
+                  <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-1" style={{ color }}>
+                    <span>{hazardIcons[props.type] || props.type}</span>
+                    <span>· {props.severity}</span>
                   </div>
-                )}
-              </div>
-            </Popup>
-          </CircleMarker>
+                  <h3 className="font-bold text-slate-900 text-sm">{props.title}</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">{props.description}</p>
+                  <div className="mt-2 text-[10px] text-slate-500">
+                    <span>Region: {props.region} ({props.district})</span>
+                  </div>
+                </div>
+              </Popup>
+            </Polygon>
+
+            {/* Focal Point Indicator */}
+            <CircleMarker
+              center={centerPos}
+              radius={isHovered ? 8 : 6}
+              pathOptions={{
+                fillColor: color,
+                color: '#ffffff',
+                weight: 2,
+                fillOpacity: 0.9,
+              }}
+            />
+          </React.Fragment>
         );
       })}
     </>

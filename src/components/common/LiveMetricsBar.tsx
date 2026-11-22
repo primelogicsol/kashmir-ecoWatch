@@ -30,8 +30,8 @@ export function LiveMetricsBar({ metrics }: { metrics: MetricItem[] }) {
 
   return (
     <div className="container mx-auto px-6 -mt-8 relative z-20">
-      <Card className="glass-intense border-white/10 p-4 lg:p-5" padding="none">
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
+      <Card className="glass-intense border-white/10 p-3 sm:p-4 lg:p-5" padding="none">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2">
           {finalMetrics.map((stat, idx) => {
             let IconComp: any = Icons.Activity;
             
@@ -47,12 +47,12 @@ export function LiveMetricsBar({ metrics }: { metrics: MetricItem[] }) {
             }
 
             return (
-              <div key={idx} className="py-2 px-1 lg:py-3 lg:px-2 rounded-xl text-center min-w-0">
-                <IconComp className="w-4 h-4 text-emerald-500 mx-auto mb-1" />
-                <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight truncate">
+              <div key={idx} className="py-2 px-1 sm:px-2 lg:py-3 rounded-xl text-center min-w-0 flex flex-col justify-center">
+                <IconComp className="w-4 h-4 text-emerald-500 mx-auto mb-1 flex-shrink-0" />
+                <div className="text-sm sm:text-base lg:text-base xl:text-lg font-bold text-white tabular-nums leading-tight break-words">
                   {typeof stat.value === 'number' ? stat.value.toLocaleString() : stat.value}
                 </div>
-                <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-500 uppercase tracking-wide mt-0.5 leading-tight break-words">
+                <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] text-slate-400 uppercase tracking-wide mt-1 leading-tight break-words">
                   {stat.label}
                 </div>
               </div>

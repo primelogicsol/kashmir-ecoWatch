@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
+              <div className="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <Badge variant="info" size="lg">Data Privacy</Badge>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
               <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
                 <Card className="glass-intense border-white/10 p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                       <p.icon className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>

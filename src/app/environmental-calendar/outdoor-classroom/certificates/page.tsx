@@ -256,7 +256,7 @@ export default function CertificatesPage() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm shadow-xl shadow-amber-950/40 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm shadow-xl shadow-amber-950/40 transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               <span>Print / Download Official PDF Diploma (A4 Landscape)</span>

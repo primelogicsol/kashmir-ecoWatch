@@ -54,7 +54,7 @@ export function AdminSubNav() {
                   <Icon className={cn('w-3.5 h-3.5', isActive ? 'text-amber-400' : 'text-slate-400')} />
                   <span>{tab.label}</span>
                   {tab.badge && (
-                    <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.2 rounded-full bg-amber-500/30 text-amber-200 border border-amber-500/40">
+                    <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.2 rounded-[4px] bg-amber-500/30 text-amber-200 border border-amber-500/40">
                       {tab.badge}
                     </span>
                   )}

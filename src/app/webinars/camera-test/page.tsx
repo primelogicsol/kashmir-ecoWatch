@@ -726,11 +726,11 @@ export default function CameraDiagnosticPage() {
                 Live Video & Audio Preview
               </h2>
               <div className="flex items-center gap-2 font-mono text-[11px]">
-                <span className={`px-2 py-0.5 rounded-full flex items-center gap-1 ${isCapturingVideo ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'}`}>
+                <span className={`px-2 py-0.5 rounded-[4px] flex items-center gap-1 ${isCapturingVideo ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'}`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${isCapturingVideo ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`} />
                   Video: {isCapturingVideo ? 'ACTIVE' : 'IDLE'}
                 </span>
-                <span className={`px-2 py-0.5 rounded-full flex items-center gap-1 ${isCapturingAudio ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' : 'bg-slate-800 text-slate-400'}`}>
+                <span className={`px-2 py-0.5 rounded-[4px] flex items-center gap-1 ${isCapturingAudio ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' : 'bg-slate-800 text-slate-400'}`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${isCapturingAudio ? 'bg-teal-400 animate-pulse' : 'bg-slate-500'}`} />
                   Audio: {isCapturingAudio ? `${audioLevel}%` : 'IDLE'}
                 </span>

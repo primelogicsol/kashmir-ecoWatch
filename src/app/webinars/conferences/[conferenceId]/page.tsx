@@ -51,7 +51,7 @@ export default async function ConferenceOverviewPage({ params }: Props) {
           conference.status === 'live' ? (
             <div className="p-5 rounded-2xl bg-slate-900/90 border border-teal-500/40 shadow-2xl space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse">
+                <span className="px-2.5 py-0.5 rounded-[4px] text-[10px] font-black uppercase bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse">
                   Plenary Hall Active
                 </span>
                 <span className="text-xs font-mono text-slate-400">WebRTC 1080p</span>

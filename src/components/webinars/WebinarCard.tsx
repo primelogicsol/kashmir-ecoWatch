@@ -32,8 +32,8 @@ export function WebinarCard({ session, onRegisterClick }: WebinarCardProps) {
     <div className={cn(
       'group relative flex flex-col justify-between rounded-2xl border transition-all duration-300 overflow-hidden',
       isLive 
-        ? 'bg-gradient-to-b from-rose-950/20 via-slate-900/60 to-slate-950 border-rose-500/40 shadow-xl shadow-rose-950/30'
-        : 'bg-slate-900/50 hover:bg-slate-900/80 border-white/10 hover:border-teal-500/40'
+        ? 'bg-slate-900 border-rose-500/40 shadow-xl shadow-rose-950/30'
+        : 'bg-slate-900 hover:bg-slate-850 border-white/10 hover:border-teal-500/40'
     )}>
       {/* Top Banner & Status Bar */}
       <div className="p-6">
@@ -54,22 +54,22 @@ export function WebinarCard({ session, onRegisterClick }: WebinarCardProps) {
 
           <div>
             {isLive ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">
                 <span className="w-2 h-2 rounded-full bg-rose-500" />
                 Active Session
               </span>
             ) : isConcluded ? (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-400 border border-white/5">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[4px] text-[11px] font-medium bg-slate-800 text-slate-400 border border-white/5">
                 <CheckCircle2 className="w-3 h-3 text-slate-500" />
                 Concluded
               </span>
             ) : session.status === 'proposed' ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/10 text-amber-300 border border-amber-500/30">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[11px] font-medium bg-amber-500/10 text-amber-300 border border-amber-500/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                 Proposed (2027)
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[11px] font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 Registration Open
               </span>

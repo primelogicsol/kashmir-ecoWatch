@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
@@ -140,7 +141,12 @@ export default function ForestEcosystemsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Forest Ecosystems' }
         ]}
-        images={['/images/protected-network.png']}
+        images={[
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+          '/images/biodiversity/biodiversity-field-camera-trap.jpg',
+          '/images/bear.png',
+          '/images/markhor.png',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -180,7 +186,7 @@ export default function ForestEcosystemsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -401,7 +407,7 @@ export default function ForestEcosystemsPage() {
               </h2>
               
                             {/* Quick Jump to 5-Pillar District Matrix */}
-              <div className="bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
                     <Sparkles className="w-4 h-4" /> 5-Pillar Comprehensive Telemetry Active
@@ -460,7 +466,7 @@ export default function ForestEcosystemsPage() {
             </div>
 
             <div className="space-y-6">
-              <Card className="glass-intense border-white/10 p-5 bg-gradient-to-br from-[#0f2027] to-[#203a43]">
+              <Card className="glass-intense border-white/10 p-5 bg-slate-900">
                 <h3 className="font-bold text-white mb-4 flex items-center gap-2">
                   <TrendingDown className="w-5 h-5 text-rose-400" />
                   Critical Deforestation Risk
@@ -816,6 +822,32 @@ export default function ForestEcosystemsPage() {
               </div>
             </div>
 
+            {/* Cross-Link Banner to Dedicated Chinar Monitoring Intelligence Hub */}
+            <div className="bg-slate-900 border border-amber-500/30 rounded-xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+              <div className="flex items-center gap-3.5">
+                <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 text-amber-400 shrink-0">
+                  <TreePine className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs uppercase tracking-widest font-black text-amber-400">Dedicated Chinar Monitoring Intelligence Hub</span>
+                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                    <span className="text-[10px] text-emerald-300 uppercase font-semibold">17 Standalone Submodules</span>
+                  </div>
+                  <p className="text-sm text-slate-300 mt-0.5">
+                    Explore the complete valley-wide GIS Atlas, individual Tree Aadhaar registry (8,800+ QR tags), satellite canopy stress, and 2026 JKFRI census telemetry.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/environmental-monitoring/chinar-monitoring"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold text-xs rounded-md shadow-md transition-all shrink-0"
+              >
+                <span>Launch Chinar Command Center</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
             {/* Chinar Census Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
@@ -841,7 +873,7 @@ export default function ForestEcosystemsPage() {
                 <div className="border-b border-white/10 pb-3">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
                     <Clock className="w-5 h-5 text-amber-400" />
-                    55-Year Population Decline Timeline (1970–2025)
+                    55-Year Population Decline Timeline (1970–2026)
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
                     Census records reflect rapid loss from road expansions, urbanization, and illegal ring-barking.
@@ -882,7 +914,7 @@ export default function ForestEcosystemsPage() {
                     District-by-District Chinar Census Registry
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Anantnag holds the valley's highest surviving population (39.4%).
+                    Srinagar holds the highest urban concentration (22.6% · 6,850 trees) and Anantnag leads south Kashmir (16.9% · 5,120 trees) across all 10 valley districts.
                   </p>
                 </div>
                 <div className="overflow-x-auto">
@@ -956,7 +988,7 @@ export default function ForestEcosystemsPage() {
             </div>
 
             {/* Ethnobotanical & Cultural Heritage Card */}
-            <Card className="glass-intense border-white/10 p-6 bg-gradient-to-br from-amber-950/20 to-slate-900">
+            <Card className="glass-intense border-white/10 p-6 bg-slate-900">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
                 <div className="lg:col-span-2 space-y-3">
                   <h3 className="text-xl font-bold text-white flex items-center gap-2">
@@ -1011,7 +1043,7 @@ export default function ForestEcosystemsPage() {
                 <Card key={item.id} className="glass-intense border-white/10 p-5 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+                      <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
                         {item.category}
                       </span>
                     </div>
@@ -1210,7 +1242,7 @@ export default function ForestEcosystemsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {forests.map((f, i) => (
-                <Card key={f.District_ID} className="glass-intense border-red-500/20 p-5 bg-gradient-to-br from-[#1a0f0f] to-[#2a1212]">
+                <Card key={f.District_ID} className="glass-intense border-red-500/20 p-5 bg-slate-900">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-lg font-bold text-white">{f.District_Name}</h3>
@@ -1305,7 +1337,7 @@ export default function ForestEcosystemsPage() {
                 { label: 'Open Forest', desc: '10% - 40% Canopy', color: 'from-teal-900 to-slate-800', border: 'border-slate-500/50' },
                 { label: 'Scrub / Cold Desert', desc: '< 10% Canopy', color: 'from-slate-900 to-[#1a1510]', border: 'border-amber-900/50' }
               ].map((cls, i) => (
-                <Card key={i} className={`glass-intense border p-4 bg-gradient-to-br ${cls.color} ${cls.border}`}>
+                <Card key={i} className={`glass-intense border p-4 bg-slate-900 ${cls.color} ${cls.border}`}>
                   <div className="text-sm font-bold text-white mb-1">{cls.label}</div>
                   <div className="text-xs text-white/70">{cls.desc}</div>
                 </Card>
@@ -1390,7 +1422,7 @@ export default function ForestEcosystemsPage() {
                       <div className="flex items-center gap-2">
                         <h3 className="text-lg font-bold text-white">{tree.commonName}</h3>
                         {(tree as any).localName && (
-                          <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+                          <span className="text-xs px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
                             {(tree as any).localName}
                           </span>
                         )}
@@ -1587,7 +1619,7 @@ export default function ForestEcosystemsPage() {
               <h3 className="text-lg font-bold text-white mb-4">Macro Ecological Corridors</h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {activeCorridors.map((c) => (
-                  <Card key={c.id} className={`glass-intense p-5 border-l-4 ${c.status === 'Functional' ? 'border-l-emerald-500 border-white/5' : c.status === 'Threatened' ? 'border-l-amber-500 border-white/5' : c.status === 'Severed' ? 'border-l-rose-500 border-rose-500/10 bg-gradient-to-br from-[#1a0f0f] to-[#2a1212]' : 'border-l-orange-500 border-white/5'}`}>
+                  <Card key={c.id} className={`glass-intense p-5 border-l-4 ${c.status === 'Functional' ? 'border-l-emerald-500 border-white/5' : c.status === 'Threatened' ? 'border-l-amber-500 border-white/5' : c.status === 'Severed' ? 'border-l-rose-500 border-rose-500/10 bg-slate-900' : 'border-l-orange-500 border-white/5'}`}>
                     <div className="flex justify-between items-start mb-3">
                       <div>
                         <h4 className="text-xl font-bold text-white">{c.name}</h4>
@@ -1700,7 +1732,7 @@ export default function ForestEcosystemsPage() {
                 const fuelLoad = f.Primary_Forest_Type.includes('Scrub') || f.Primary_Forest_Type.includes('Pine') ? 'Extreme (Volatile)' : f.Forest_Cover_Class.includes('Dense') ? 'High (Dense Canopy)' : 'Moderate';
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:border-${themeColor}/60 transition-all group`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all group`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -1866,7 +1898,7 @@ export default function ForestEcosystemsPage() {
                 const impactScore = f.Disturbance_Score ?? (isCritical ? 85 : isHigh ? 72 : isMed ? 52 : 25);
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -1968,7 +2000,7 @@ export default function ForestEcosystemsPage() {
                 const affectedArea = isCritical ? Math.floor(Math.random() * 20) + 20 : isHigh ? Math.floor(Math.random() * 15) + 10 : Math.floor(Math.random() * 5) + 1;
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:border-${themeColor}/60 transition-all`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2075,7 +2107,7 @@ export default function ForestEcosystemsPage() {
                 const nodes = isActive ? Math.floor(Math.random() * 50) + 20 : isLimited ? Math.floor(Math.random() * 15) + 5 : 0;
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:border-${themeColor}/60 transition-all`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
                     <div className="flex justify-between items-start mb-4 border-b border-white/5 pb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2175,7 +2207,7 @@ export default function ForestEcosystemsPage() {
                 const economicValue = isVeryHigh ? Math.floor(Math.random() * 50) + 150 : isHigh ? Math.floor(Math.random() * 50) + 70 : Math.floor(Math.random() * 40) + 10;
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2277,7 +2309,7 @@ export default function ForestEcosystemsPage() {
                 const targetArea = isCritical ? Math.floor(Math.random() * 5000) + 5000 : isHigh ? Math.floor(Math.random() * 3000) + 2000 : Math.floor(Math.random() * 1000) + 500;
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:border-${themeColor}/60 transition-all`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2377,7 +2409,7 @@ export default function ForestEcosystemsPage() {
                 const ntfpDependence = isActive ? 'High (Regulated)' : isDeveloping ? 'Moderate' : 'High (Unregulated)';
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2466,7 +2498,7 @@ export default function ForestEcosystemsPage() {
                 const pestResistance = isOptimal ? 'High' : isStable ? 'Moderate' : 'Compromised';
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2586,7 +2618,7 @@ export default function ForestEcosystemsPage() {
                 const shiftVal = shiftNum.toFixed(1);
                 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">{f.District_Name}</h4>
@@ -2669,7 +2701,7 @@ export default function ForestEcosystemsPage() {
                 const recruitment = f.Sapling_Recruitment_Rate ?? (isGood ? 52 : isMod ? 32 : 15);
 
                 return (
-                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-gradient-to-br ${bgGradient} hover:bg-white/[0.02] transition-colors relative overflow-hidden group`}>
+                  <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors relative overflow-hidden group`}>
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     
                     <div className="relative z-10">

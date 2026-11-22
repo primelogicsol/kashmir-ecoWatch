@@ -20,13 +20,75 @@
         ],
         "slug": "dachigam-national-park",
         "flagshipSpecies": "Hangul (Kashmir Stag)",
-        "altitudeRange": "1,600 to 4,267 m"
+        "altitudeRange": "1,600 to 4,267 m",
+        "canonicalId": "pa-dachigam",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.92,
+            34.08
+          ],
+          [
+            75.05,
+            34.12
+          ],
+          [
+            75.18,
+            34.18
+          ],
+          [
+            75.12,
+            34.25
+          ],
+          [
+            74.98,
+            34.22
+          ],
+          [
+            74.92,
+            34.14
+          ],
+          [
+            74.92,
+            34.08
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          75.0378,
-          34.1372
+          [
+            [
+              74.92,
+              34.08
+            ],
+            [
+              75.05,
+              34.12
+            ],
+            [
+              75.18,
+              34.18
+            ],
+            [
+              75.12,
+              34.25
+            ],
+            [
+              74.98,
+              34.22
+            ],
+            [
+              74.92,
+              34.14
+            ],
+            [
+              74.92,
+              34.08
+            ]
+          ]
         ]
       }
     },
@@ -47,13 +109,67 @@
         ],
         "slug": "hemis-national-park",
         "flagshipSpecies": "Snow Leopard (Density Capital)",
-        "altitudeRange": "3,000 to 6,000 m"
+        "altitudeRange": "3,000 to 6,000 m",
+        "canonicalId": "pa-hemis",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            77.15,
+            33.75
+          ],
+          [
+            77.65,
+            33.62
+          ],
+          [
+            77.95,
+            33.95
+          ],
+          [
+            77.75,
+            34.25
+          ],
+          [
+            77.25,
+            34.15
+          ],
+          [
+            77.15,
+            33.75
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          77.4333,
-          33.9833
+          [
+            [
+              77.15,
+              33.75
+            ],
+            [
+              77.65,
+              33.62
+            ],
+            [
+              77.95,
+              33.95
+            ],
+            [
+              77.75,
+              34.25
+            ],
+            [
+              77.25,
+              34.15
+            ],
+            [
+              77.15,
+              33.75
+            ]
+          ]
         ]
       }
     },
@@ -73,13 +189,59 @@
         ],
         "slug": "kishtwar-national-park",
         "flagshipSpecies": "Snow Leopard",
-        "altitudeRange": "1,700 to 4,800 m"
+        "altitudeRange": "1,700 to 4,800 m",
+        "canonicalId": "pa-kishtwar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            75.65,
+            33.55
+          ],
+          [
+            76.12,
+            33.62
+          ],
+          [
+            76.25,
+            33.95
+          ],
+          [
+            75.75,
+            33.88
+          ],
+          [
+            75.65,
+            33.55
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          75.99,
-          33.61
+          [
+            [
+              75.65,
+              33.55
+            ],
+            [
+              76.12,
+              33.62
+            ],
+            [
+              76.25,
+              33.95
+            ],
+            [
+              75.75,
+              33.88
+            ],
+            [
+              75.65,
+              33.55
+            ]
+          ]
         ]
       }
     },
@@ -98,13 +260,59 @@
           "western-tragopan"
         ],
         "slug": "overa-aru-wildlife-sanctuary",
-        "flagshipSpecies": "Hangul"
+        "flagshipSpecies": "Hangul",
+        "canonicalId": "pa-overa-aru",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            75.22,
+            34.05
+          ],
+          [
+            75.35,
+            34.08
+          ],
+          [
+            75.38,
+            34.22
+          ],
+          [
+            75.25,
+            34.2
+          ],
+          [
+            75.22,
+            34.05
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          75.15,
-          33.95
+          [
+            [
+              75.22,
+              34.05
+            ],
+            [
+              75.35,
+              34.08
+            ],
+            [
+              75.38,
+              34.22
+            ],
+            [
+              75.25,
+              34.2
+            ],
+            [
+              75.22,
+              34.05
+            ]
+          ]
         ]
       }
     },
@@ -123,7 +331,11 @@
           "leopard"
         ],
         "slug": "hirpora-wildlife-sanctuary",
-        "flagshipSpecies": "Markhor"
+        "flagshipSpecies": "Markhor",
+        "canonicalId": "pa-hirpora",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -148,13 +360,59 @@
           "brown-bear"
         ],
         "slug": "gulmarg-wildlife-sanctuary",
-        "flagshipSpecies": "Musk deer"
+        "flagshipSpecies": "Musk deer",
+        "canonicalId": "pa-gulmarg",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.32,
+            34.02
+          ],
+          [
+            74.42,
+            34.05
+          ],
+          [
+            74.45,
+            34.12
+          ],
+          [
+            74.35,
+            34.1
+          ],
+          [
+            74.32,
+            34.02
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          74.38,
-          34.05
+          [
+            [
+              74.32,
+              34.02
+            ],
+            [
+              74.42,
+              34.05
+            ],
+            [
+              74.45,
+              34.12
+            ],
+            [
+              74.35,
+              34.1
+            ],
+            [
+              74.32,
+              34.02
+            ]
+          ]
         ]
       }
     },
@@ -173,7 +431,11 @@
           "himlayan-monals"
         ],
         "slug": "limber-wildlife-sanctuary",
-        "flagshipSpecies": "Markhor"
+        "flagshipSpecies": "Markhor",
+        "canonicalId": "pa-limber",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -198,7 +460,11 @@
           "brown-bear"
         ],
         "slug": "lachipora-wildlife-sanctuary",
-        "flagshipSpecies": "Markhor"
+        "flagshipSpecies": "Markhor",
+        "canonicalId": "pa-lachipora",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -223,7 +489,11 @@
           "leopard"
         ],
         "slug": "rajparian-wildlife-sanctuary",
-        "flagshipSpecies": "Asiatic black bear"
+        "flagshipSpecies": "Asiatic black bear",
+        "canonicalId": "pa-rajparian",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -247,7 +517,11 @@
           "wetland-birds"
         ],
         "slug": "hokersar-wildlife-sanctuary",
-        "flagshipSpecies": "Migratory waterfowl"
+        "flagshipSpecies": "Migratory waterfowl",
+        "canonicalId": "pa-hokersar-wls",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -270,7 +544,11 @@
           "migratory-waterfowl",
           "wetland-birds"
         ],
-        "slug": "hokersar-wetland"
+        "slug": "hokersar-wetland",
+        "canonicalId": "pa-hokersar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -293,7 +571,11 @@
           "migratory-waterfowl",
           "wetland-birds"
         ],
-        "slug": "shallabugh-wetland"
+        "slug": "shallabugh-wetland",
+        "canonicalId": "pa-shallabugh",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -316,7 +598,11 @@
           "wetland-birds",
           "migratory-species"
         ],
-        "slug": "hygam-wetland"
+        "slug": "hygam-wetland",
+        "canonicalId": "pa-hygam",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -340,7 +626,11 @@
           "wetland-birds",
           "bar-headed-goose"
         ],
-        "slug": "wular-wetland-system"
+        "slug": "wular-wetland-system",
+        "canonicalId": "pa-wular",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -370,13 +660,59 @@
         "slug": "kazinag-national-park",
         "flagshipSpecies": "Flare-horned Markhor",
         "altitudeRange": "1,800 to 4,356 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-kazinag",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.05,
+            34.18
+          ],
+          [
+            74.25,
+            34.22
+          ],
+          [
+            74.28,
+            34.35
+          ],
+          [
+            74.12,
+            34.32
+          ],
+          [
+            74.05,
+            34.18
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          74.05,
-          34.15
+          [
+            [
+              74.05,
+              34.18
+            ],
+            [
+              74.25,
+              34.22
+            ],
+            [
+              74.28,
+              34.35
+            ],
+            [
+              74.12,
+              34.32
+            ],
+            [
+              74.05,
+              34.18
+            ]
+          ]
         ]
       }
     },
@@ -399,7 +735,11 @@
         "slug": "salim-ali-national-park",
         "flagshipSpecies": "Himalayan Avifauna",
         "altitudeRange": "1,585 to 1,620 m",
-        "iucnCategory": "IUCN Category II (Historic)"
+        "iucnCategory": "IUCN Category II (Historic)",
+        "canonicalId": "pa-salim-ali",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -429,7 +769,11 @@
         "slug": "great-himalayan-national-park",
         "flagshipSpecies": "Western Tragopan",
         "altitudeRange": "1,500 to 6,000 m",
-        "iucnCategory": "IUCN Category II / World Heritage"
+        "iucnCategory": "IUCN Category II / World Heritage",
+        "canonicalId": "pa-great-himalayan",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -459,7 +803,11 @@
         "slug": "pin-valley-national-park",
         "flagshipSpecies": "Siberian Ibex & Snow Leopard",
         "altitudeRange": "3,500 to 6,000 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-pin-valley",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -489,7 +837,11 @@
         "slug": "deosai-national-park",
         "flagshipSpecies": "Himalayan Brown Bear",
         "altitudeRange": "3,500 to 4,200 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-deosai",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -519,7 +871,11 @@
         "slug": "khunjerab-national-park",
         "flagshipSpecies": "Marco Polo Sheep",
         "altitudeRange": "3,200 to 6,000 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-khunjerab",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -549,7 +905,11 @@
         "slug": "central-karakoram-national-park",
         "flagshipSpecies": "Snow Leopard & Glacial Massifs",
         "altitudeRange": "2,000 to 8,611 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-cknp",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -579,7 +939,11 @@
         "slug": "machiara-national-park",
         "flagshipSpecies": "Western Tragopan",
         "altitudeRange": "2,000 to 4,700 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-machiara",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -609,7 +973,11 @@
         "slug": "ghamot-national-park",
         "flagshipSpecies": "Kashmir Musk Deer",
         "altitudeRange": "2,600 to 4,400 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-ghamot",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -638,7 +1006,11 @@
         "slug": "poonch-river-mahaseer-national-park",
         "flagshipSpecies": "Golden Mahseer (Tor putitora)",
         "altitudeRange": "450 to 900 m",
-        "iucnCategory": "IUCN Category II (Aquatic)"
+        "iucnCategory": "IUCN Category II (Aquatic)",
+        "canonicalId": "pa-poonch-river-mahaseer",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -667,7 +1039,11 @@
         "slug": "pir-lasura-national-park",
         "flagshipSpecies": "Cheer Pheasant & Goral",
         "altitudeRange": "1,200 to 2,000 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-pir-lasura",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -696,7 +1072,11 @@
         "slug": "tolipir-national-park",
         "flagshipSpecies": "Himalayan Monal",
         "altitudeRange": "2,600 to 3,200 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-tolipir",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -725,7 +1105,11 @@
         "slug": "pir-chanasi-national-park",
         "flagshipSpecies": "Koklass Pheasant & Raptors",
         "altitudeRange": "2,500 to 3,188 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-pir-chanasi",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -755,7 +1139,11 @@
         "slug": "shandur-hundrap-national-park",
         "flagshipSpecies": "Himalayan Ibex & Alpine Lakes",
         "altitudeRange": "2,900 to 4,100 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-shandur-hundrap",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -785,7 +1173,11 @@
         "slug": "qurumber-national-park",
         "flagshipSpecies": "Karambar Lake & Snow Leopard",
         "altitudeRange": "3,200 to 4,304 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-qurumber",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -815,7 +1207,11 @@
         "slug": "nanga-parbat-national-park",
         "flagshipSpecies": "Astore Markhor & Nanga Parbat Massif",
         "altitudeRange": "1,600 to 8,126 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-nanga-parbat",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -845,7 +1241,11 @@
         "slug": "himalaya-national-park",
         "flagshipSpecies": "Brown Bear & Alpine Wildlife Corridor",
         "altitudeRange": "3,005 to 5,500 m",
-        "iucnCategory": "IUCN Category II"
+        "iucnCategory": "IUCN Category II",
+        "canonicalId": "pa-himalaya",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -875,7 +1275,11 @@
         "slug": "tata-kutti-wildlife-sanctuary",
         "flagshipSpecies": "Pir Panjal Markhor & Snow Leopard",
         "altitudeRange": "2,200 to 4,725 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-tata-kutti",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -905,7 +1309,11 @@
         "slug": "naltar-wildlife-sanctuary",
         "flagshipSpecies": "Flare-horned Markhor & Naltar Lakes",
         "altitudeRange": "1,900 to 4,600 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-naltar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -934,7 +1342,11 @@
         "slug": "kargah-wildlife-sanctuary",
         "flagshipSpecies": "Astor Markhor",
         "altitudeRange": "1,600 to 4,400 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-kargah",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -963,7 +1375,11 @@
         "slug": "salkhala-wildlife-sanctuary",
         "flagshipSpecies": "Western Tragopan",
         "altitudeRange": "1,500 to 3,500 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-salkhala",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -992,7 +1408,11 @@
         "slug": "kilik-mintaka-wildlife-sanctuary",
         "flagshipSpecies": "Marco Polo Sheep & Kilik Pass",
         "altitudeRange": "3,400 to 5,500 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-kilik-mintaka",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1019,7 +1439,11 @@
           "Possible snow leopard movement"
         ],
         "slug": "thajwas-baltal-wildlife-sanctuary",
-        "flagshipSpecies": "Himalayan brown bear"
+        "flagshipSpecies": "Himalayan brown bear",
+        "canonicalId": "pa-thajwas-baltal",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1046,7 +1470,11 @@
           "Pheasants"
         ],
         "slug": "tral-wildlife-sanctuary",
-        "flagshipSpecies": "Hangul"
+        "flagshipSpecies": "Hangul",
+        "canonicalId": "pa-tral",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1073,7 +1501,11 @@
           "Small mammals"
         ],
         "slug": "jasrota-wildlife-sanctuary",
-        "flagshipSpecies": "Chital"
+        "flagshipSpecies": "Chital",
+        "canonicalId": "pa-jasrota",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1101,7 +1533,11 @@
           "Small mammals"
         ],
         "slug": "nandini-wildlife-sanctuary",
-        "flagshipSpecies": "Peafowl"
+        "flagshipSpecies": "Peafowl",
+        "canonicalId": "pa-nandini",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1128,7 +1564,11 @@
           "Leopard presence potential"
         ],
         "slug": "ramnagar-rakh-wildlife-sanctuary",
-        "flagshipSpecies": "Peafowl"
+        "flagshipSpecies": "Peafowl",
+        "canonicalId": "pa-ramnagar-rakh",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1155,7 +1595,11 @@
           "Fish and aquatic fauna"
         ],
         "slug": "surinsar-mansar-wildlife-sanctuary",
-        "flagshipSpecies": "Waterbirds"
+        "flagshipSpecies": "Waterbirds",
+        "canonicalId": "pa-surinsar-mansar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1182,7 +1626,11 @@
           "Resident birds"
         ],
         "slug": "trikuta-wildlife-sanctuary",
-        "flagshipSpecies": "Goral"
+        "flagshipSpecies": "Goral",
+        "canonicalId": "pa-trikuta",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1210,7 +1658,11 @@
           "Bar-headed goose"
         ],
         "slug": "changthang-cold-desert-wildlife-sanctuary",
-        "flagshipSpecies": "Black-necked crane"
+        "flagshipSpecies": "Black-necked crane",
+        "canonicalId": "pa-changthang",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1237,7 +1689,11 @@
           "Argali-linked fauna"
         ],
         "slug": "karakoram-nubra-shyok-wildlife-sanctuary",
-        "flagshipSpecies": "Snow leopard"
+        "flagshipSpecies": "Snow leopard",
+        "canonicalId": "pa-karakoram-nubra",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1264,7 +1720,11 @@
           "Mountain birds"
         ],
         "slug": "satpara-wildlife-sanctuary",
-        "flagshipSpecies": "Himalayan ibex"
+        "flagshipSpecies": "Himalayan ibex",
+        "canonicalId": "pa-satpara",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1291,7 +1751,11 @@
           "Alpine birds"
         ],
         "slug": "baltistan-wildlife-sanctuary",
-        "flagshipSpecies": "Himalayan ibex"
+        "flagshipSpecies": "Himalayan ibex",
+        "canonicalId": "pa-baltistan-wls",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1318,7 +1782,11 @@
           "Alpine birds"
         ],
         "slug": "astore-wildlife-sanctuary",
-        "flagshipSpecies": "Snow leopard"
+        "flagshipSpecies": "Snow leopard",
+        "canonicalId": "pa-astore-wls",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1347,7 +1815,11 @@
         "slug": "narkara-wetland-reserve",
         "flagshipSpecies": "Mallard & Eurasian Coot",
         "altitudeRange": "1,580 to 1,590 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-narkara",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1376,7 +1848,11 @@
         "slug": "anchar-lake-wetland-system",
         "flagshipSpecies": "Northern Pintail & Jacana",
         "altitudeRange": "1,580 to 1,585 m",
-        "iucnCategory": "IUCN Category IV"
+        "iucnCategory": "IUCN Category IV",
+        "canonicalId": "pa-anchar-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1402,7 +1878,11 @@
           "Marsh birds"
         ],
         "slug": "mirgund-wetland-reserve",
-        "flagshipSpecies": "Northern Pintail & Mallard"
+        "flagshipSpecies": "Northern Pintail & Mallard",
+        "canonicalId": "pa-mirgund",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1427,7 +1907,11 @@
           "Migratory wetland birds"
         ],
         "slug": "chatlam-wetland-reserve",
-        "flagshipSpecies": "Ferruginous Duck & Garganey"
+        "flagshipSpecies": "Ferruginous Duck & Garganey",
+        "canonicalId": "pa-chatlam",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1453,7 +1937,11 @@
           "Marsh birds"
         ],
         "slug": "freshkoori-wetland-reserve",
-        "flagshipSpecies": "Common Teal & Gadwall"
+        "flagshipSpecies": "Common Teal & Gadwall",
+        "canonicalId": "pa-freshkoori",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1478,7 +1966,11 @@
           "Resident wetland birds"
         ],
         "slug": "kranchoo-wetland-reserve",
-        "flagshipSpecies": "Eurasian Wigeon & Shoveler"
+        "flagshipSpecies": "Eurasian Wigeon & Shoveler",
+        "canonicalId": "pa-kranchoo",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1503,7 +1995,11 @@
           "Resident marsh birds"
         ],
         "slug": "malgam-wetland-reserve",
-        "flagshipSpecies": "Greylag Goose & Coots"
+        "flagshipSpecies": "Greylag Goose & Coots",
+        "canonicalId": "pa-malgam-wetland",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1529,7 +2025,11 @@
           "Resident wetland birds"
         ],
         "slug": "manibugh-wetland-reserve",
-        "flagshipSpecies": "Water Pipit & Common Snipe"
+        "flagshipSpecies": "Water Pipit & Common Snipe",
+        "canonicalId": "pa-manibugh",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1554,7 +2054,11 @@
           "Aquatic vegetation",
           "Wetland-edge birds"
         ],
-        "slug": "dal-lake-wetland"
+        "slug": "dal-lake-wetland",
+        "canonicalId": "pa-dal-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1581,7 +2085,11 @@
           "Cranes",
           "Resident birds"
         ],
-        "slug": "gharana-wetland-reserve"
+        "slug": "gharana-wetland-reserve",
+        "canonicalId": "pa-gharana",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1607,7 +2115,11 @@
           "Resident marsh birds"
         ],
         "slug": "kukarian-wetland-reserve",
-        "flagshipSpecies": "Bar-headed Goose"
+        "flagshipSpecies": "Bar-headed Goose",
+        "canonicalId": "pa-kukarian",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1633,7 +2145,11 @@
           "Resident birds"
         ],
         "slug": "pargwal-wetland-reserve",
-        "flagshipSpecies": "Eurasian Spoonbill & Storks"
+        "flagshipSpecies": "Eurasian Spoonbill & Storks",
+        "canonicalId": "pa-pargwal",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1659,7 +2175,11 @@
           "Resident marsh birds"
         ],
         "slug": "nanga-wetland-reserve",
-        "flagshipSpecies": "Woolly-necked Stork"
+        "flagshipSpecies": "Woolly-necked Stork",
+        "canonicalId": "pa-nanga",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1685,7 +2205,11 @@
           "Resident marsh birds"
         ],
         "slug": "sangral-asa-chak-wetland-reserve",
-        "flagshipSpecies": "Black Stork & Common Pochard"
+        "flagshipSpecies": "Black Stork & Common Pochard",
+        "canonicalId": "pa-sangral-asa-chak",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1710,7 +2234,11 @@
           "Freshwater turtles",
           "Fish and aquatic fauna"
         ],
-        "slug": "surinsar-mansar-wetland"
+        "slug": "surinsar-mansar-wetland",
+        "canonicalId": "pa-surinsar-mansar-wetland",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1736,7 +2264,11 @@
           "Waterfowl",
           "Kiang-linked wetland fauna"
         ],
-        "slug": "tso-moriri-wetland"
+        "slug": "tso-moriri-wetland",
+        "canonicalId": "pa-tso-moriri",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1762,7 +2294,11 @@
           "Gulls",
           "Waders"
         ],
-        "slug": "tso-kar-wetland"
+        "slug": "tso-kar-wetland",
+        "canonicalId": "pa-tso-kar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1787,7 +2323,11 @@
           "Ruddy shelduck",
           "Migratory waterbirds"
         ],
-        "slug": "pangong-tso-wetland"
+        "slug": "pangong-tso-wetland",
+        "canonicalId": "pa-pangong-tso",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1813,7 +2353,11 @@
           "Wetland passerines"
         ],
         "slug": "hanle-wetland",
-        "flagshipSpecies": "Black-necked Crane (Breeding Haven)"
+        "flagshipSpecies": "Black-necked Crane (Breeding Haven)",
+        "canonicalId": "pa-hanle-marshes",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1838,7 +2382,11 @@
           "Microbial communities"
         ],
         "slug": "puga-valley-wetlands",
-        "flagshipSpecies": "Ruddy Shelduck & Bar-headed Goose"
+        "flagshipSpecies": "Ruddy Shelduck & Bar-headed Goose",
+        "canonicalId": "pa-puga-wetlands",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1864,7 +2412,11 @@
           "Alpine waterbirds"
         ],
         "slug": "deosai-wetlands-complex",
-        "flagshipSpecies": "Sheyok Snow Trout & Migratory Waterfowl"
+        "flagshipSpecies": "Sheyok Snow Trout & Migratory Waterfowl",
+        "canonicalId": "pa-deosai-wetlands",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1889,7 +2441,11 @@
           "Alpine birds",
           "Wetland-edge fauna"
         ],
-        "slug": "satpara-lake-wetland"
+        "slug": "satpara-lake-wetland",
+        "canonicalId": "pa-satpara-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1913,7 +2469,11 @@
           "Fish",
           "Shoreline birds"
         ],
-        "slug": "attabad-lake-wetland"
+        "slug": "attabad-lake-wetland",
+        "canonicalId": "pa-attabad-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1937,7 +2497,11 @@
           "Alpine birds",
           "Small mammals"
         ],
-        "slug": "rama-lake-wetland"
+        "slug": "rama-lake-wetland",
+        "canonicalId": "pa-rama-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1962,7 +2526,11 @@
           "Small mammals",
           "Aquatic organisms"
         ],
-        "slug": "ratti-gali-lake-wetland"
+        "slug": "ratti-gali-lake-wetland",
+        "canonicalId": "pa-ratti-gali-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -1986,7 +2554,11 @@
           "Small mammals",
           "Aquatic species"
         ],
-        "slug": "chitta-katha-lake-wetland"
+        "slug": "chitta-katha-lake-wetland",
+        "canonicalId": "pa-chitta-katha-lake",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2011,7 +2583,11 @@
           "Amphibians",
           "Small mammals"
         ],
-        "slug": "banjosa-lake-wetland"
+        "slug": "banjosa-lake-wetland",
+        "canonicalId": "pa-banjosa-lake-wetland",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2036,7 +2612,11 @@
           "Waders",
           "Reservoir birds"
         ],
-        "slug": "mangla-reservoir-wetland"
+        "slug": "mangla-reservoir-wetland",
+        "canonicalId": "pa-mangla-reservoir",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2060,7 +2640,11 @@
           "Small mammals",
           "Spring microfauna"
         ],
-        "slug": "achhabal-conservation-reserve"
+        "slug": "achhabal-conservation-reserve",
+        "canonicalId": "pa-achhabal",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2084,7 +2668,11 @@
           "Common leopard",
           "Pheasants"
         ],
-        "slug": "khiram-conservation-reserve"
+        "slug": "khiram-conservation-reserve",
+        "canonicalId": "pa-khiram",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2108,7 +2696,11 @@
           "Common leopard",
           "Asiatic black bear"
         ],
-        "slug": "panyar-conservation-reserve"
+        "slug": "panyar-conservation-reserve",
+        "canonicalId": "pa-panyar",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2132,7 +2724,11 @@
           "Asiatic black bear",
           "Common leopard"
         ],
-        "slug": "khanagund-hajin-conservation-reserve"
+        "slug": "khanagund-hajin-conservation-reserve",
+        "canonicalId": "pa-khanagund",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2157,7 +2753,11 @@
           "Asiatic black bear",
           "Pheasants"
         ],
-        "slug": "shikargah-conservation-reserve"
+        "slug": "shikargah-conservation-reserve",
+        "canonicalId": "pa-shikargah",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2181,7 +2781,11 @@
           "Musk deer",
           "Pheasants"
         ],
-        "slug": "khrew-conservation-reserve"
+        "slug": "khrew-conservation-reserve",
+        "canonicalId": "pa-khrew",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2205,7 +2809,11 @@
           "Asiatic black bear",
           "Various passerines"
         ],
-        "slug": "khonmoh-conservation-reserve"
+        "slug": "khonmoh-conservation-reserve",
+        "canonicalId": "pa-khonmoh-cr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2229,7 +2837,11 @@
           "Common leopard",
           "Small mammals"
         ],
-        "slug": "brain-nishat-conservation-reserve"
+        "slug": "brain-nishat-conservation-reserve",
+        "canonicalId": "pa-brain-nishat",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2253,7 +2865,11 @@
           "Common leopard",
           "Pheasants"
         ],
-        "slug": "khimber-dara-sharazbal-conservation-reserve"
+        "slug": "khimber-dara-sharazbal-conservation-reserve",
+        "canonicalId": "pa-khimber-dara",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2277,7 +2893,11 @@
           "Common leopard",
           "Himalayan brown bear"
         ],
-        "slug": "wangat-conservation-reserve"
+        "slug": "wangat-conservation-reserve",
+        "canonicalId": "pa-wangat",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2301,7 +2921,11 @@
           "Waterfowl",
           "Small mammals"
         ],
-        "slug": "ajas-conservation-reserve"
+        "slug": "ajas-conservation-reserve",
+        "canonicalId": "pa-ajas-cr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2325,7 +2949,11 @@
           "Asiatic black bear",
           "Pheasants"
         ],
-        "slug": "naganari-conservation-reserve"
+        "slug": "naganari-conservation-reserve",
+        "canonicalId": "pa-naganari",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2349,7 +2977,11 @@
           "Asiatic black bear",
           "Pheasants"
         ],
-        "slug": "zaloora-harwan-conservation-reserve"
+        "slug": "zaloora-harwan-conservation-reserve",
+        "canonicalId": "pa-zaloora-harwan",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2373,7 +3005,11 @@
           "Barking deer",
           "Pheasants"
         ],
-        "slug": "sudhmahadev-conservation-reserve"
+        "slug": "sudhmahadev-conservation-reserve",
+        "canonicalId": "pa-sudhmahadev",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2397,7 +3033,11 @@
           "Common leopard",
           "Small mammals"
         ],
-        "slug": "jawahar-tunnel-conservation-reserve"
+        "slug": "jawahar-tunnel-conservation-reserve",
+        "canonicalId": "pa-jawahar-tunnel",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2420,7 +3060,11 @@
           "Small mammals",
           "Resident birds"
         ],
-        "slug": "thein-conservation-reserve"
+        "slug": "thein-conservation-reserve",
+        "canonicalId": "pa-thein",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2444,7 +3088,11 @@
           "Small mammals",
           "Peafowl"
         ],
-        "slug": "bahu-conservation-reserve"
+        "slug": "bahu-conservation-reserve",
+        "canonicalId": "pa-bahu-cr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2468,7 +3116,11 @@
           "Local vegetation",
           "Reptiles"
         ],
-        "slug": "sheshara-conservation-reserve"
+        "slug": "sheshara-conservation-reserve",
+        "canonicalId": "pa-sheshara",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2492,7 +3144,11 @@
           "Barking deer",
           "Pheasants"
         ],
-        "slug": "kheri-conservation-reserve"
+        "slug": "kheri-conservation-reserve",
+        "canonicalId": "pa-kheri",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2516,7 +3172,11 @@
           "Small mammals",
           "Peafowl"
         ],
-        "slug": "kulian-conservation-reserve"
+        "slug": "kulian-conservation-reserve",
+        "canonicalId": "pa-kulian",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2541,7 +3201,11 @@
           "Pheasants"
         ],
         "slug": "gambhir-mughlan-goral-conservation-reserve",
-        "flagshipSpecies": "Grey Goral"
+        "flagshipSpecies": "Grey Goral",
+        "canonicalId": "pa-gambhir-mughlan",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2565,7 +3229,11 @@
           "Kashmir gray langur",
           "Pheasants"
         ],
-        "slug": "salkhala-game-reserve"
+        "slug": "salkhala-game-reserve",
+        "canonicalId": "pa-salkhala-gr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2590,7 +3258,11 @@
           "Western tragopan"
         ],
         "slug": "neelum-valley-conservation-corridor",
-        "flagshipSpecies": "Kashmir Musk Deer"
+        "flagshipSpecies": "Kashmir Musk Deer",
+        "canonicalId": "pa-neelum-valley-cc",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2615,7 +3287,11 @@
           "Riverine birds"
         ],
         "slug": "jhelum-valley-conservation-corridor",
-        "flagshipSpecies": "Common Leopard"
+        "flagshipSpecies": "Common Leopard",
+        "canonicalId": "pa-jhelum-valley-cc",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2639,7 +3315,11 @@
           "Himalayan goral",
           "Common leopard"
         ],
-        "slug": "pir-lasura-conservation-landscape"
+        "slug": "pir-lasura-conservation-landscape",
+        "canonicalId": "pa-pir-lasura-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2664,7 +3344,11 @@
           "Koklass pheasant"
         ],
         "slug": "pir-chinasi-conservation-landscape",
-        "flagshipSpecies": "Koklass Pheasant"
+        "flagshipSpecies": "Koklass Pheasant",
+        "canonicalId": "pa-pir-chinasi-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2689,7 +3373,11 @@
           "Reptiles"
         ],
         "slug": "tolipir-conservation-landscape",
-        "flagshipSpecies": "Musk Deer & Monal"
+        "flagshipSpecies": "Musk Deer & Monal",
+        "canonicalId": "pa-tolipir-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2713,7 +3401,11 @@
           "Common leopard",
           "Small fauna"
         ],
-        "slug": "banjosa-nature-reserve-cr"
+        "slug": "banjosa-nature-reserve-cr",
+        "canonicalId": "pa-banjosa-cr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2738,7 +3430,11 @@
           "Passerine birds"
         ],
         "slug": "dhirkot-nature-reserve-cr",
-        "flagshipSpecies": "Cheer Pheasant"
+        "flagshipSpecies": "Cheer Pheasant",
+        "canonicalId": "pa-dhirkot-cr",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2763,7 +3459,11 @@
           "Softshell turtles"
         ],
         "slug": "poonch-river-conservation-landscape",
-        "flagshipSpecies": "Golden Mahseer"
+        "flagshipSpecies": "Golden Mahseer",
+        "canonicalId": "pa-poonch-river-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2788,7 +3488,11 @@
           "Forest passerines"
         ],
         "slug": "panjal-mastan-conservation-landscape",
-        "flagshipSpecies": "Himalayan Monal"
+        "flagshipSpecies": "Himalayan Monal",
+        "canonicalId": "pa-panjal-mastan-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2812,7 +3516,11 @@
           "Snow leopard",
           "Ibex"
         ],
-        "slug": "kilik-mintika-game-reserve"
+        "slug": "kilik-mintika-game-reserve",
+        "canonicalId": "pa-kilik-mintika",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2837,7 +3545,11 @@
           "Tibetan wolf",
           "Red fox"
         ],
-        "slug": "askore-nullah-game-reserve"
+        "slug": "askore-nullah-game-reserve",
+        "canonicalId": "pa-askore-nullah",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2861,7 +3573,11 @@
           "Snow leopard",
           "Golden eagle"
         ],
-        "slug": "pakora-ishkoman-reserve"
+        "slug": "pakora-ishkoman-reserve",
+        "canonicalId": "pa-pakora-ishkoman",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2886,7 +3602,11 @@
           "Snow leopard"
         ],
         "slug": "shimshal-community-conservation-area",
-        "flagshipSpecies": "Blue Sheep & Snow Leopard"
+        "flagshipSpecies": "Blue Sheep & Snow Leopard",
+        "canonicalId": "pa-shimshal-cca",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2911,7 +3631,11 @@
           "Golden eagle"
         ],
         "slug": "astore-markhor-conservation-landscape",
-        "flagshipSpecies": "Astore Markhor"
+        "flagshipSpecies": "Astore Markhor",
+        "canonicalId": "pa-astore-markhor-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2936,7 +3660,11 @@
           "Blue sheep"
         ],
         "slug": "central-karakoram-community-conservation-belt",
-        "flagshipSpecies": "Snow Leopard & Ibex"
+        "flagshipSpecies": "Snow Leopard & Ibex",
+        "canonicalId": "pa-ck-community-belt",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2961,7 +3689,11 @@
           "Migratory waterfowl"
         ],
         "slug": "deosai-buffer-conservation-landscape",
-        "flagshipSpecies": "Himalayan Brown Bear"
+        "flagshipSpecies": "Himalayan Brown Bear",
+        "canonicalId": "pa-deosai-buffer-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -2986,7 +3718,11 @@
           "Chakor pheasant"
         ],
         "slug": "shigar-valley-conservation-landscape",
-        "flagshipSpecies": "Himalayan Ibex"
+        "flagshipSpecies": "Himalayan Ibex",
+        "canonicalId": "pa-shigar-valley-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3011,7 +3747,11 @@
           "Himalayan snowcock"
         ],
         "slug": "ghanche-hushe-conservation-landscape",
-        "flagshipSpecies": "Snow Leopard & Ibex"
+        "flagshipSpecies": "Snow Leopard & Ibex",
+        "canonicalId": "pa-ghanche-hushe-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3036,7 +3776,11 @@
           "Tibetan wolf"
         ],
         "slug": "baltistan-conservation-landscape",
-        "flagshipSpecies": "Snow Leopard"
+        "flagshipSpecies": "Snow Leopard",
+        "canonicalId": "pa-baltistan-cl",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3066,7 +3810,11 @@
           "Cormorants",
           "Egrets"
         ],
-        "slug": "hokersar-bird-habitat-complex"
+        "slug": "hokersar-bird-habitat-complex",
+        "canonicalId": "pa-hokersar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3094,7 +3842,11 @@
           "Coot",
           "Waders"
         ],
-        "slug": "shallabugh-bird-habitat-complex"
+        "slug": "shallabugh-bird-habitat-complex",
+        "canonicalId": "pa-shallabugh-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3122,7 +3874,11 @@
           "Cormorants",
           "Bitterns"
         ],
-        "slug": "wular-lake-associated-marshes"
+        "slug": "wular-lake-associated-marshes",
+        "canonicalId": "pa-wular-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3148,7 +3904,11 @@
           "Marsh birds",
           "Resident wetland birds"
         ],
-        "slug": "hygam-haigam-bird-habitat-complex"
+        "slug": "hygam-haigam-bird-habitat-complex",
+        "canonicalId": "pa-hygam-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3172,7 +3932,11 @@
           "Waders",
           "Marsh birds"
         ],
-        "slug": "mirgund-bird-habitat-system"
+        "slug": "mirgund-bird-habitat-system",
+        "canonicalId": "pa-mirgund-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3196,7 +3960,11 @@
           "Waders",
           "Resident ducks"
         ],
-        "slug": "chatlam-bird-habitat-system"
+        "slug": "chatlam-bird-habitat-system",
+        "canonicalId": "pa-chatlam-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3220,7 +3988,11 @@
           "Waders",
           "Resident marsh birds"
         ],
-        "slug": "kranchoo-bird-habitat-system"
+        "slug": "kranchoo-bird-habitat-system",
+        "canonicalId": "pa-kranchoo-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3244,7 +4016,11 @@
           "Migratory ducks",
           "Passerines"
         ],
-        "slug": "freshkoori-bird-habitat-system"
+        "slug": "freshkoori-bird-habitat-system",
+        "canonicalId": "pa-freshkoori-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3268,7 +4044,11 @@
           "Waders",
           "Egrets"
         ],
-        "slug": "manibugh-bird-habitat-system"
+        "slug": "manibugh-bird-habitat-system",
+        "canonicalId": "pa-manibugh-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3292,7 +4072,11 @@
           "Resident marsh birds",
           "Waders"
         ],
-        "slug": "malgam-bird-habitat-system"
+        "slug": "malgam-bird-habitat-system",
+        "canonicalId": "pa-malgam-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3319,7 +4103,11 @@
           "Kingfishers",
           "Cormorants"
         ],
-        "slug": "dal-lake-urban-bird-habitat"
+        "slug": "dal-lake-urban-bird-habitat",
+        "canonicalId": "pa-dal-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3345,7 +4133,11 @@
           "Ducks",
           "Coots"
         ],
-        "slug": "nigeen-lake-bird-habitat"
+        "slug": "nigeen-lake-bird-habitat",
+        "canonicalId": "pa-nigeen-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3370,7 +4162,11 @@
           "Waders",
           "Herons"
         ],
-        "slug": "anchar-lake-bird-habitat"
+        "slug": "anchar-lake-bird-habitat",
+        "canonicalId": "pa-anchar-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3396,7 +4192,11 @@
           "Cormorants",
           "Kingfishers"
         ],
-        "slug": "manasbal-lake-bird-habitat"
+        "slug": "manasbal-lake-bird-habitat",
+        "canonicalId": "pa-manasbal-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3423,13 +4223,75 @@
           "Woodpeckers",
           "Warblers"
         ],
-        "slug": "dachigam-forest-bird-landscape"
+        "slug": "dachigam-forest-bird-landscape",
+        "canonicalId": "pa-dachigam-forest-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.92,
+            34.08
+          ],
+          [
+            75.05,
+            34.12
+          ],
+          [
+            75.18,
+            34.18
+          ],
+          [
+            75.12,
+            34.25
+          ],
+          [
+            74.98,
+            34.22
+          ],
+          [
+            74.92,
+            34.14
+          ],
+          [
+            74.92,
+            34.08
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          75.03,
-          34.13
+          [
+            [
+              74.92,
+              34.08
+            ],
+            [
+              75.05,
+              34.12
+            ],
+            [
+              75.18,
+              34.18
+            ],
+            [
+              75.12,
+              34.25
+            ],
+            [
+              74.98,
+              34.22
+            ],
+            [
+              74.92,
+              34.14
+            ],
+            [
+              74.92,
+              34.08
+            ]
+          ]
         ]
       }
     },
@@ -3449,7 +4311,11 @@
           "Thrushes",
           "Raptors"
         ],
-        "slug": "zabarwan-shankaracharya-bird-ridge"
+        "slug": "zabarwan-shankaracharya-bird-ridge",
+        "canonicalId": "pa-zabarwan-ridge-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3475,13 +4341,59 @@
           "Koklass pheasant",
           "Himalayan monal"
         ],
-        "slug": "overa-aru-bird-landscape"
+        "slug": "overa-aru-bird-landscape",
+        "canonicalId": "pa-overa-aru-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            75.22,
+            34.05
+          ],
+          [
+            75.35,
+            34.08
+          ],
+          [
+            75.38,
+            34.22
+          ],
+          [
+            75.25,
+            34.2
+          ],
+          [
+            75.22,
+            34.05
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          75.29,
-          34.02
+          [
+            [
+              75.22,
+              34.05
+            ],
+            [
+              75.35,
+              34.08
+            ],
+            [
+              75.38,
+              34.22
+            ],
+            [
+              75.25,
+              34.2
+            ],
+            [
+              75.22,
+              34.05
+            ]
+          ]
         ]
       }
     },
@@ -3501,7 +4413,11 @@
           "Thrushes",
           "Warblers"
         ],
-        "slug": "aru-valley-bird-breeding-landscape"
+        "slug": "aru-valley-bird-breeding-landscape",
+        "canonicalId": "pa-aru-valley-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3528,13 +4444,59 @@
           "Orange bullfinch",
           "Spectral finch"
         ],
-        "slug": "gulmarg-bird-landscape"
+        "slug": "gulmarg-bird-landscape",
+        "canonicalId": "pa-gulmarg-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.32,
+            34.02
+          ],
+          [
+            74.42,
+            34.05
+          ],
+          [
+            74.45,
+            34.12
+          ],
+          [
+            74.35,
+            34.1
+          ],
+          [
+            74.32,
+            34.02
+          ]
+        ],
+        "verificationStatus": "VERIFIED_BOUNDARY"
       },
       "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-          74.38,
-          34.05
+          [
+            [
+              74.32,
+              34.02
+            ],
+            [
+              74.42,
+              34.05
+            ],
+            [
+              74.45,
+              34.12
+            ],
+            [
+              74.35,
+              34.1
+            ],
+            [
+              74.32,
+              34.02
+            ]
+          ]
         ]
       }
     },
@@ -3553,7 +4515,11 @@
           "Koklass pheasant",
           "Chukar partridge"
         ],
-        "slug": "lachipora-bird-landscape"
+        "slug": "lachipora-bird-landscape",
+        "canonicalId": "pa-lachipora-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3578,7 +4544,11 @@
           "Cheer pheasant",
           "Raptors"
         ],
-        "slug": "limber-bird-landscape"
+        "slug": "limber-bird-landscape",
+        "canonicalId": "pa-limber-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3604,7 +4574,11 @@
           "Rufous-vented tit",
           "Accentors"
         ],
-        "slug": "hirpora-bird-landscape"
+        "slug": "hirpora-bird-landscape",
+        "canonicalId": "pa-hirpora-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3631,7 +4605,11 @@
           "Gadwall",
           "Waders"
         ],
-        "slug": "gharana-wetland-bird-habitat"
+        "slug": "gharana-wetland-bird-habitat",
+        "canonicalId": "pa-gharana-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3657,7 +4635,11 @@
           "Herons",
           "Raptors"
         ],
-        "slug": "surinsar-mansar-bird-habitat-complex"
+        "slug": "surinsar-mansar-bird-habitat-complex",
+        "canonicalId": "pa-surinsar-mansar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3683,7 +4665,11 @@
           "Kalij pheasant",
           "Foothill birds"
         ],
-        "slug": "nandini-bird-landscape"
+        "slug": "nandini-bird-landscape",
+        "canonicalId": "pa-nandini-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3709,7 +4695,11 @@
           "Raptors",
           "Woodland birds"
         ],
-        "slug": "ramnagar-rakh-bird-landscape"
+        "slug": "ramnagar-rakh-bird-landscape",
+        "canonicalId": "pa-ramnagar-rakh-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3734,7 +4724,11 @@
           "Woodland birds",
           "Dry-zone avifauna"
         ],
-        "slug": "jasrota-bird-landscape"
+        "slug": "jasrota-bird-landscape",
+        "canonicalId": "pa-jasrota-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3759,7 +4753,11 @@
           "Drongos",
           "Raptors"
         ],
-        "slug": "bahu-bird-landscape"
+        "slug": "bahu-bird-landscape",
+        "canonicalId": "pa-bahu-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3784,7 +4782,11 @@
           "Raptors",
           "Sandpipers"
         ],
-        "slug": "poonch-river-bird-corridor"
+        "slug": "poonch-river-bird-corridor",
+        "canonicalId": "pa-poonch-river-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3809,7 +4811,11 @@
           "Cliff nesters",
           "Wallcreeper"
         ],
-        "slug": "chenab-river-bird-corridor"
+        "slug": "chenab-river-bird-corridor",
+        "canonicalId": "pa-chenab-river-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3834,7 +4840,11 @@
           "Flycatchers",
           "Thrushes"
         ],
-        "slug": "sudhmahadev-bird-landscape"
+        "slug": "sudhmahadev-bird-landscape",
+        "canonicalId": "pa-sudhmahadev-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3859,7 +4869,11 @@
           "Migratory flycatchers",
           "Raptors"
         ],
-        "slug": "pir-panjal-pass-bird-corridor"
+        "slug": "pir-panjal-pass-bird-corridor",
+        "canonicalId": "pa-pir-panjal-pass-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3885,7 +4899,11 @@
           "Brown-headed gull",
           "Ruddy shelduck"
         ],
-        "slug": "tso-moriri-bird-habitat-complex"
+        "slug": "tso-moriri-bird-habitat-complex",
+        "canonicalId": "pa-tso-moriri-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3911,7 +4929,11 @@
           "Tibetan snowcock",
           "Larks"
         ],
-        "slug": "tso-kar-bird-habitat-complex"
+        "slug": "tso-kar-bird-habitat-complex",
+        "canonicalId": "pa-tso-kar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3937,7 +4959,11 @@
           "Common redshank",
           "Raptors"
         ],
-        "slug": "hanle-marsh-bird-habitat"
+        "slug": "hanle-marsh-bird-habitat",
+        "canonicalId": "pa-hanle-marsh-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3962,7 +4988,11 @@
           "Common redshank",
           "Black-necked crane"
         ],
-        "slug": "puga-wetland-bird-habitat"
+        "slug": "puga-wetland-bird-habitat",
+        "canonicalId": "pa-puga-wetland-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -3988,7 +5018,11 @@
           "Common tern",
           "Waders"
         ],
-        "slug": "pangong-tso-bird-habitat"
+        "slug": "pangong-tso-bird-habitat",
+        "canonicalId": "pa-pangong-tso-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4015,7 +5049,11 @@
           "Saker falcon",
           "Upland buzzard"
         ],
-        "slug": "changthang-bird-habitat-network"
+        "slug": "changthang-bird-habitat-network",
+        "canonicalId": "pa-changthang-plateau-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4041,7 +5079,11 @@
           "Tibetan lark",
           "Migratory passerines"
         ],
-        "slug": "nubra-shyok-bird-corridor"
+        "slug": "nubra-shyok-bird-corridor",
+        "canonicalId": "pa-nubra-shyok-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4068,7 +5110,11 @@
           "Alpine accentor",
           "Wallcreeper"
         ],
-        "slug": "zanskar-bird-landscape"
+        "slug": "zanskar-bird-landscape",
+        "canonicalId": "pa-zanskar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4094,7 +5140,11 @@
           "Western tragopan",
           "Flycatchers"
         ],
-        "slug": "salkhala-bird-habitat-area"
+        "slug": "salkhala-bird-habitat-area",
+        "canonicalId": "pa-salkhala-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4120,7 +5170,11 @@
           "Koklass pheasant",
           "Flycatchers"
         ],
-        "slug": "neelum-valley-bird-corridor"
+        "slug": "neelum-valley-bird-corridor",
+        "canonicalId": "pa-neelum-valley-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4146,7 +5200,11 @@
           "Woodpeckers",
           "Owls"
         ],
-        "slug": "leepa-valley-bird-habitat"
+        "slug": "leepa-valley-bird-habitat",
+        "canonicalId": "pa-leepa-valley-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4171,7 +5229,11 @@
           "Riverine birds",
           "Kingfishers"
         ],
-        "slug": "jhelum-valley-bird-corridor"
+        "slug": "jhelum-valley-bird-corridor",
+        "canonicalId": "pa-jhelum-valley-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4197,7 +5259,11 @@
           "Asiatic black bear",
           "Thrushes"
         ],
-        "slug": "pir-chinasi-bird-landscape"
+        "slug": "pir-chinasi-bird-landscape",
+        "canonicalId": "pa-pir-chinasi-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4223,7 +5289,11 @@
           "Spectral finch",
           "Woodpeckers"
         ],
-        "slug": "tolipir-bird-landscape"
+        "slug": "tolipir-bird-landscape",
+        "canonicalId": "pa-tolipir-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4249,7 +5319,11 @@
           "Flycatchers",
           "Woodpeckers"
         ],
-        "slug": "banjosa-bird-habitat"
+        "slug": "banjosa-bird-habitat",
+        "canonicalId": "pa-banjosa-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4275,7 +5349,11 @@
           "Flycatchers",
           "Raptors"
         ],
-        "slug": "dhirkot-bird-habitat"
+        "slug": "dhirkot-bird-habitat",
+        "canonicalId": "pa-dhirkot-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4301,7 +5379,11 @@
           "Chakor pheasant",
           "Raptors"
         ],
-        "slug": "pir-lasura-bird-landscape"
+        "slug": "pir-lasura-bird-landscape",
+        "canonicalId": "pa-pir-lasura-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4326,7 +5408,11 @@
           "Tibetan wolf",
           "Migratory passerines"
         ],
-        "slug": "shounter-chitta-katha-bird-landscape"
+        "slug": "shounter-chitta-katha-bird-landscape",
+        "canonicalId": "pa-shounter-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4353,7 +5439,11 @@
           "Larks",
           "Accentors"
         ],
-        "slug": "deosai-bird-habitat-complex"
+        "slug": "deosai-bird-habitat-complex",
+        "canonicalId": "pa-deosai-plateau-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4378,7 +5468,11 @@
           "Alpine chough",
           "Tibetan snowcock"
         ],
-        "slug": "satpara-bird-habitat"
+        "slug": "satpara-bird-habitat",
+        "canonicalId": "pa-satpara-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4404,7 +5498,11 @@
           "Lammergeier",
           "Saker falcon"
         ],
-        "slug": "khunjerab-bird-habitat"
+        "slug": "khunjerab-bird-habitat",
+        "canonicalId": "pa-khunjerab-pass-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4429,7 +5527,11 @@
           "Upland buzzard",
           "Siberian ibex"
         ],
-        "slug": "kilik-mintika-bird-habitat"
+        "slug": "kilik-mintika-bird-habitat",
+        "canonicalId": "pa-kilik-mintika-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4454,7 +5556,11 @@
           "Yellow-billed chough",
           "Tibetan rosefinch"
         ],
-        "slug": "shimshal-bird-habitat"
+        "slug": "shimshal-bird-habitat",
+        "canonicalId": "pa-shimshal-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4479,7 +5585,11 @@
           "Himalayan snowcock",
           "Brandt's mountain finch"
         ],
-        "slug": "central-karakoram-bird-landscape"
+        "slug": "central-karakoram-bird-landscape",
+        "canonicalId": "pa-central-karakoram-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4505,7 +5615,11 @@
           "Buntings",
           "Gryphon vulture"
         ],
-        "slug": "astore-bird-landscape"
+        "slug": "astore-bird-landscape",
+        "canonicalId": "pa-astore-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4531,7 +5645,11 @@
           "Ducks",
           "Gulls"
         ],
-        "slug": "rama-lake-bird-habitat"
+        "slug": "rama-lake-bird-habitat",
+        "canonicalId": "pa-rama-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4557,7 +5675,11 @@
           "Orange bullfinch",
           "Warblers"
         ],
-        "slug": "naltar-bird-habitat"
+        "slug": "naltar-bird-habitat",
+        "canonicalId": "pa-naltar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4583,7 +5705,11 @@
           "Larks",
           "Raptors"
         ],
-        "slug": "shigar-bird-landscape"
+        "slug": "shigar-bird-landscape",
+        "canonicalId": "pa-shigar-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4608,7 +5734,11 @@
           "Tibetan snowcock",
           "Red-billed chough"
         ],
-        "slug": "hushe-ghanche-bird-landscape"
+        "slug": "hushe-ghanche-bird-landscape",
+        "canonicalId": "pa-hushe-ghanche-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4634,7 +5764,11 @@
           "Raptors",
           "Passerines"
         ],
-        "slug": "skardu-valley-bird-habitat"
+        "slug": "skardu-valley-bird-habitat",
+        "canonicalId": "pa-skardu-valley-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4659,7 +5793,11 @@
           "Terns",
           "Raptors"
         ],
-        "slug": "attabad-lake-bird-habitat"
+        "slug": "attabad-lake-bird-habitat",
+        "canonicalId": "pa-attabad-lake-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4685,7 +5823,11 @@
           "Swifts",
           "Choughs"
         ],
-        "slug": "hunza-river-bird-corridor"
+        "slug": "hunza-river-bird-corridor",
+        "canonicalId": "pa-hunza-river-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4711,7 +5853,11 @@
           "Golden eagle",
           "Rosefinches"
         ],
-        "slug": "baltistan-alpine-bird-landscape"
+        "slug": "baltistan-alpine-bird-landscape",
+        "canonicalId": "pa-baltistan-alpine-bird",
+        "source": "WII National Wildlife Database & Department of Wildlife Protection",
+        "sourceDate": "2024",
+        "verificationStatus": "VERIFIED_POINT"
       },
       "geometry": {
         "type": "Point",
@@ -4721,5 +5867,12 @@
         ]
       }
     }
-  ]
+  ],
+  "metadata": {
+    "totalFeatures": 182,
+    "verifiedBoundariesCount": 9,
+    "verifiedPointsCount": 173,
+    "source": "Wildlife Institute of India (WII) & Department of Wildlife Protection J&K/Ladakh/AJ&K/GB",
+    "crs": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
 }

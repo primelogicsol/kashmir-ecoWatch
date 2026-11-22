@@ -69,7 +69,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
@@ -94,7 +94,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
             <div className="flex items-start justify-between gap-6">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getSeverityColor(threat.severity)} text-white flex items-center justify-center shadow-lg`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getSeverityColor(threat.severity)} text-white flex items-center justify-center shadow-lg`}>
                     <TypeIcon className="w-6 h-6" />
                   </div>
                   <Badge variant={threat.severity === 'critical' ? 'danger' : threat.severity === 'high' ? 'warning' : 'info'} size="lg">
@@ -426,17 +426,17 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
             <Card className="card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
               <h2 className="text-2xl font-bold text-white mb-6">Monitoring Dashboard Preview</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="p-6 rounded-xl bg-gradient-to-br from-red-500/10 to-slate-800/50 border border-red-500/30">
+                <div className="p-6 rounded-xl bg-slate-900 border border-red-500/30">
                   <AlertTriangle className="w-8 h-8 text-red-400 mb-3" />
                   <div className="text-3xl font-bold text-white mb-1">HIGH</div>
                   <div className="text-sm text-slate-400">Current Threat Level</div>
                 </div>
-                <div className="p-6 rounded-xl bg-gradient-to-br from-amber-500/10 to-slate-800/50 border border-amber-500/30">
+                <div className="p-6 rounded-xl bg-slate-900 border border-amber-500/30">
                   <TrendingUp className="w-8 h-8 text-amber-400 mb-3" />
                   <div className="text-3xl font-bold text-white mb-1">+12%</div>
                   <div className="text-sm text-slate-400">30-Day Trend</div>
                 </div>
-                <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-500/10 to-slate-800/50 border border-emerald-500/30">
+                <div className="p-6 rounded-xl bg-slate-900 border border-emerald-500/30">
                   <CheckCircle className="w-8 h-8 text-emerald-400 mb-3" />
                   <div className="text-3xl font-bold text-white mb-1">{threat.mitigationStrategies.length}</div>
                   <div className="text-sm text-slate-400">Active Interventions</div>
@@ -460,7 +460,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
           transition={{ delay: 0.5 }}
           className="mt-12"
         >
-          <Card className={`bg-gradient-to-r ${getSeverityColor(threat.severity)} border-0 p-8`}>
+          <Card className={`bg-slate-900 ${getSeverityColor(threat.severity)} border-0 p-8`}>
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Access Full Monitoring Dashboard</h3>

@@ -4304,7 +4304,9 @@ export const protectedNetworkMetrics = {
   get wetlandReserves() { return getProtectedAreas.all().filter(pa => pa.category === 'wetland_reserve').length; },
   get conservationReserves() { return getProtectedAreas.all().filter(pa => pa.category === 'conservation_reserve').length; },
   get importantBirdAreas() { return getProtectedAreas.all().filter(pa => pa.category === 'iba').length; },
-  get coveragePercentage() { return ((this.totalArea / 45679) * 100).toFixed(1); },
+  get totalConservationUnits() { return getProtectedAreas.all().length; },
+  get totalStatutoryArea() { return Math.round(getProtectedAreas.all().filter(pa => pa.category !== 'iba').reduce((sum, pa) => sum + (pa.area || 0), 0)); },
+  get coveragePercentage() { return ((this.totalStatutoryArea / 222236) * 100).toFixed(1); },
 };
 
 // ============================================================================

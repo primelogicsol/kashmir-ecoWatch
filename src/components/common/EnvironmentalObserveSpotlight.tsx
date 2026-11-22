@@ -163,7 +163,7 @@ export function EnvironmentalObserveSpotlight({
               {typologySubtitle}
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-emerald-400">{showingCount}</strong> of {totalCount} {entityLabel}
           </span>
         </div>
@@ -256,7 +256,7 @@ export function EnvironmentalObserveSpotlight({
               className="space-y-4"
             >
               {/* Observe Action Bar */}
-              <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-teal-950/60 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 shrink-0">
                     <Camera className="w-5 h-5" />

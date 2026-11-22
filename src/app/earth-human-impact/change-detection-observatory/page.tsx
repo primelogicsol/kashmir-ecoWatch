@@ -70,19 +70,19 @@ export default function ChangeDetectionObservatoryHubPage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Satellite Change Detection Observatory
+            <div className="leading-[1.15] overflow-visible">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent tracking-normal">
+                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Satellite Change</span> Detection Observatory
               </span>
             </div>
           </div>
         }
         subtitle="Operational spaceborne monitoring engine mapping anthropogenic land-cover alteration, Karewa excavation, wetland infilling, and forest loss across Jammu, Kashmir & Ladakh."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/earth-human-impact/ehii-command-center-satellite.jpg',
+          '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+          '/images/earth-human-impact/ehii-karewa-land-transformation.jpg',
+          '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg'
         ]}
         rightContent={
           <EhiiHeroShowcaseCard

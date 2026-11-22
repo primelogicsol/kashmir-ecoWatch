@@ -269,13 +269,13 @@ export function NextGenDashboardPreview() {
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-6">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white flex items-center justify-center shadow-lg flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg flex-shrink-0">
                     <Wind className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="text-base sm:text-lg font-bold text-white">Air Quality Intelligence</h3>
-                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-semibold text-emerald-400">
+                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-semibold text-emerald-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         {aqiTelemetry.isLive ? 'LIVE CAMS API' : 'SYNCHRONIZING'}
                       </span>
@@ -363,7 +363,7 @@ export function NextGenDashboardPreview() {
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-glacier-500 to-glacier-700 text-white flex items-center justify-center shadow-lg glow-glacier flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg glow-glacier flex-shrink-0">
                     <Droplets className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
@@ -428,7 +428,7 @@ export function NextGenDashboardPreview() {
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center shadow-lg flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg flex-shrink-0">
                     <Flower className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
@@ -486,7 +486,7 @@ export function NextGenDashboardPreview() {
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white flex items-center justify-center shadow-lg flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg flex-shrink-0">
                     <PawPrint className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
@@ -550,7 +550,7 @@ export function NextGenDashboardPreview() {
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-6">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-forest-500 to-forest-700 text-white flex items-center justify-center shadow-lg glow-forest flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-lg glow-forest flex-shrink-0">
                     <Target className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>

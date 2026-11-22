@@ -342,7 +342,7 @@ export const LEARNING_LIFECYCLE_STEPS: LearningLifecycleStep[] = [
     ],
     deliverable: 'Verified Public Field Record & Institutional EcoWatch Attribution',
     platformAction: 'Inspect Ecosystem Monitoring Feed',
-    platformRoute: '/environmental-calendar/outdoor-classroom/ecosystem-monitoring-dashboard'
+    platformRoute: '/environmental-calendar/outdoor-classroom'
   },
   {
     step: 8,
@@ -1100,7 +1100,7 @@ export const FIELD_LEARNING_PROGRAMS: FieldLearningProgram[] = [
       'Students earn the "Certified Himalayan Citizen Scientist" digital credential'
     ],
     linkedCalendarObservance: 'biological-diversity-day',
-    linkedEcoWatchRoute: '/participate/citizen-science',
+    linkedEcoWatchRoute: '/citizen-science',
     gisLayerId: 'layer-biodiversity-sightings'
   }
 ];

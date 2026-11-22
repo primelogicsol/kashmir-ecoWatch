@@ -117,7 +117,7 @@ function generateSightingId(): string {
 
 function WhyItMatters() {
   return (
-    <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/60 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-emerald-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Star className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Why Your Observation Matters</h3>
@@ -249,7 +249,7 @@ function FeaturedObservation() {
               <MapPin className="w-3 h-3" /> {obs.location}
             </div>
             <div className="flex items-center gap-2 mt-1">
-              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 rounded-full px-2 py-0.5">
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 rounded-[4px] px-2 py-0.5">
                 ✓ {obs.badge}
               </span>
               <span className="text-[10px] text-slate-500">{obs.daysAgo}d ago</span>
@@ -315,7 +315,7 @@ function CitizenBadges() {
       </div>
       <div className="space-y-2">
         {badges.map(b => (
-          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-gradient-to-r ${b.color} p-2.5`}>
+          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-slate-900 ${b.color} p-2.5`}>
             <span className="text-lg">{b.icon}</span>
             <div>
               <div className="text-xs font-bold text-white">{b.name}</div>

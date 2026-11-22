@@ -105,7 +105,7 @@ export function OnboardingStrip() {
                 <Card className="glass-light border-white/10 hover:border-white/20 transition-all p-4 sm:p-6 h-full group cursor-pointer">
                   {/* Header */}
                   <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-5">
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${pathway.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-900 ${pathway.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                       <pathway.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -204,7 +204,7 @@ export function OnboardingStrip() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6">
                       {quickStartTips.map((tip, index) => (
                         <div key={index} className="flex items-start gap-3 sm:gap-4">
-                          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center flex-shrink-0">
+                          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                             <tip.icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
                           </div>
                           <div className="flex-1 min-w-0">

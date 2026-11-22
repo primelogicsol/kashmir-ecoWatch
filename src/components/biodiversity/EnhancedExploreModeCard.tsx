@@ -44,7 +44,7 @@ export function EnhancedExploreModeCard({
         onClick={() => router.push(href)}
       >
         <div className="flex items-start gap-4 mb-4">
-          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+          <div className={`w-14 h-14 rounded-xl bg-slate-900 ${color} flex items-center justify-center shadow-lg flex-shrink-0`}>
             <Icon className="w-7 h-7 text-white" />
           </div>
           <div className="flex-1 min-w-0">

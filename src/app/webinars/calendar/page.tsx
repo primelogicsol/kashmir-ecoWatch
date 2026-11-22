@@ -225,10 +225,10 @@ export default function ScientificProgramCalendarPage() {
         }
         subtitle="Proposed inaugural two-year institutional program · 104 activities across 8 flagship summits, 48 specialist webinars, 24 applied workshops, and 24 environmental observances with automatic global time zone conversion and DST synchronization."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/webinars/webinar-hero-1.jpg',
+          '/images/webinars/webinar-hero-2.jpg',
+          '/images/webinars/webinar-hero-3.jpg',
+          '/images/webinars/webinar-hero-4.jpg'
         ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
@@ -253,7 +253,7 @@ export default function ScientificProgramCalendarPage() {
       />
 
       {/* Prominent 5-Metric Target Strip */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-teal-500/30 backdrop-blur-xl shadow-2xl">
           <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-white/5 text-center space-y-1">
             <div className="text-2xl sm:text-3xl font-extrabold text-teal-400 font-mono">
@@ -532,7 +532,7 @@ export default function ScientificProgramCalendarPage() {
                           <div className="space-y-3">
                             {/* Type & Date Badges */}
                             <div className="flex flex-wrap items-center justify-between gap-2">
-                              <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                              <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] ${
                                 isFlagship
                                   ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40'
                                   : isWorkshop
@@ -640,7 +640,7 @@ export default function ScientificProgramCalendarPage() {
         {activeView === 'flagships' && (
           <div className="space-y-8">
             <div className="p-6 rounded-3xl bg-slate-900/60 border border-purple-500/30 space-y-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40">
+              <span className="px-2.5 py-0.5 rounded-[4px] text-[10px] font-black uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40">
                 Flagship Academic Pillars
               </span>
               <h3 className="text-2xl font-bold text-white">
@@ -659,7 +659,7 @@ export default function ScientificProgramCalendarPage() {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono font-bold text-purple-300 bg-purple-500/20 px-3 py-1 rounded-full border border-purple-500/40">
+                      <span className="text-xs font-mono font-bold text-purple-300 bg-purple-500/20 px-3 py-1 rounded-[4px] border border-purple-500/40">
                         Flagship Summit #{index + 1} &bull; {conf.year}
                       </span>
                       <span className="text-xs font-mono text-teal-300 font-bold">
@@ -731,7 +731,7 @@ export default function ScientificProgramCalendarPage() {
             <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-teal-500/40 space-y-6 shadow-2xl">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
                 <div className="space-y-1 max-w-2xl">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-mono font-bold uppercase border border-teal-500/40">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-teal-500/20 text-teal-300 text-xs font-mono font-bold uppercase border border-teal-500/40">
                     <Globe2 className="w-3.5 h-3.5 text-teal-400" />
                     <span>INTERACTIVE TIME ZONE PREVIEW</span>
                   </div>
@@ -878,7 +878,7 @@ export default function ScientificProgramCalendarPage() {
                     <Sparkles className="w-4 h-4 text-teal-400" />
                     <span>International Scheduling Fairness Optimizer</span>
                   </span>
-                  <span className="font-mono font-bold text-emerald-300 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 w-fit">
+                  <span className="font-mono font-bold text-emerald-300 bg-emerald-500/10 px-2.5 py-1 rounded-[4px] border border-emerald-500/20 w-fit">
                     Fairness Score: {sandboxFairness.score}% ({sandboxFairness.rating})
                   </span>
                 </div>
@@ -899,7 +899,7 @@ export default function ScientificProgramCalendarPage() {
         {activeView === 'matrix' && (
           <div className="space-y-6">
             <div className="p-6 rounded-3xl bg-slate-900/60 border border-white/10 space-y-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-500/20 text-teal-300 border border-teal-500/40">
+              <span className="px-2.5 py-0.5 rounded-[4px] text-[10px] font-black uppercase tracking-wider bg-teal-500/20 text-teal-300 border border-teal-500/40">
                 Institutional Scope Audit
               </span>
               <h3 className="text-2xl font-bold text-white">
@@ -948,7 +948,7 @@ export default function ScientificProgramCalendarPage() {
           <div className="bg-slate-900 border border-teal-500/40 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
               <div className="space-y-1">
-                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/40">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-[4px] bg-teal-500/20 text-teal-300 border border-teal-500/40">
                   {selectedActivity.typeLabel} &bull; {selectedActivity.dateDisplay}
                 </span>
                 <h3 className="text-xl font-bold text-white leading-snug mt-1">

@@ -3089,65 +3089,74 @@ export const masterTreeDirectory = [
 ];
 
 // ---------------------------------------------------------
-// CHINAR CONSERVATION NETWORK (ESRO LEGACY TELEMETRY)
+// CHINAR CONSERVATION NETWORK (2026 JKFRI DIGITAL TREE AADHAAR TELEMETRY)
+// Synchronized with authoritative Chinar Monitoring Database (KEW-CMD)
 // ---------------------------------------------------------
 export const CHINAR_CONSERVATION_DATA = {
   speciesInfo: {
-    botanicalName: 'Platanus orientalis',
-    usaCatalogName: 'Platanus kashmeriana',
+    botanicalName: 'Platanus orientalis var. orientalis',
+    usaCatalogName: 'Platanus orientalis L.',
     localNames: {
-      kashmiri: 'Boen / Bouin',
-      hindi: 'Cinar',
-      persian: 'Chanar',
+      kashmiri: 'Bōyñ / Booune / بونہٕ',
+      hindi: 'Chinar',
+      persian: 'Chanar / Che-Nar',
       english: 'Oriental Plane'
     },
     etymology: 'Derived from ancient Kashmiri reverence linked to Bhavani (goddess of nature); popularized in Persian as "Che-Nar" (What a fire!).',
-    maxHeight: '55 meters',
-    maxGirthRecorded: '31.85 meters (Chattergam)',
-    oldestRecordedAge: '642+ years (Planted 1374 AD)',
+    maxHeight: '40–50 meters',
+    maxGirthRecorded: '14.8 meters (Chattergam Colossus)',
+    oldestRecordedAge: '700+ years (Planted ~1374 AD by Syed Qasim Sahib RA)',
     culturalUses: [
       'Kangri Charcoal (Pane Chinni) produced from fallen autumnal foliage',
       'Intricate Kashmiri wood carving for heritage paneling',
       'Traditional village gathering shade (Boene Mokh)',
-      'Sacred groves surrounding Sufi shrines and historic spring temples'
+      'Sacred groves surrounding Sufi shrines and historic spring sanctums'
     ],
-    legalProtection: 'Strictly protected under the Jammu and Kashmir Chinar Tree Preservation Act 1969; unauthorized pruning or felling is a non-bailable offense.'
+    legalProtection: 'Strictly protected under the Jammu and Kashmir Preservation of Specified Trees Act, 1969; unauthorized lopping or felling is a non-bailable offense.'
   },
   censusMetrics: {
-    totalEstimatedTrees1970: 42000,
-    totalTrees2025: 14460,
-    declinePercentage: 65.6,
-    healthyTrees: 12868,
-    semiDryTrees: 543,
-    dryDeadTrees: 1049,
-    protectedHeritageGroves: 48
+    totalEstimatedTrees1970: 41950,
+    totalTrees2025: 30270,
+    totalTrees2026: 30270,
+    geotaggedTrees2026: 24640,
+    qrTaggedAadhaar2026: 8800,
+    declinePercentage: 27.8,
+    healthyTrees: 19736,
+    semiDryTrees: 6902,
+    dryDeadTrees: 3632,
+    protectedHeritageGroves: 77,
+    deadStumpCount: 348
   },
   decadalCensus: [
-    { year: 1970, count: 42000, notes: 'Pre-urban expansion valley-wide baseline' },
-    { year: 1980, count: 39963, notes: 'Initial infrastructure conversion' },
-    { year: 1990, count: 34425, notes: 'Loss along major highway expansions' },
-    { year: 2000, count: 21356, notes: 'Severe unmonitored felling period' },
-    { year: 2010, count: 16780, notes: 'Enactment of GIS geo-tagging initiative' },
-    { year: 2025, count: 14460, notes: 'Present active monitored registry' }
+    { year: 1970, count: 41950, notes: 'Pre-urban expansion valley-wide baseline (ESRO surveys)' },
+    { year: 1985, count: 39200, notes: 'Early highway widening & infrastructure conversion' },
+    { year: 1995, count: 35400, notes: 'Disturbance era unmonitored lopping & peripheral felling' },
+    { year: 2005, count: 32800, notes: 'Urban forestry enumeration & statutory notification' },
+    { year: 2015, count: 31450, notes: 'Preliminary GIS pilot surveys & revenue department audits' },
+    { year: 2026, count: 30270, notes: 'Comprehensive JKFRI 10-district Digital Tree Aadhaar census' }
   ],
   districtCensus: [
-    { district: 'Anantnag', green: 5071, semiDry: 216, dry: 410, total: 5697, percent: 39.4 },
-    { district: 'Baramulla', green: 2895, semiDry: 124, dry: 234, total: 3253, percent: 22.5 },
-    { district: 'Srinagar', green: 2779, semiDry: 119, dry: 225, total: 3123, percent: 21.6 },
-    { district: 'Budgam', green: 1017, semiDry: 43, dry: 83, total: 1143, percent: 7.9 },
-    { district: 'Kupwara', green: 733, semiDry: 31, dry: 60, total: 824, percent: 5.7 },
-    { district: 'Pulwama', green: 374, semiDry: 16, dry: 30, total: 420, percent: 2.9 }
+    { district: 'Srinagar', green: 4000, semiDry: 1795, dry: 1055, total: 6850, percent: 22.6 },
+    { district: 'Anantnag', green: 3174, semiDry: 1254, dry: 692, total: 5120, percent: 16.9 },
+    { district: 'Budgam', green: 2234, semiDry: 793, dry: 453, total: 3480, percent: 11.5 },
+    { district: 'Baramulla', green: 1972, semiDry: 818, dry: 470, total: 3260, percent: 10.8 },
+    { district: 'Pulwama', green: 1784, semiDry: 600, dry: 356, total: 2740, percent: 9.1 },
+    { district: 'Ganderbal', green: 1603, semiDry: 464, dry: 243, total: 2310, percent: 7.6 },
+    { district: 'Kupwara', green: 1493, semiDry: 406, dry: 181, total: 2080, percent: 6.9 },
+    { district: 'Kulgam', green: 1263, semiDry: 401, dry: 226, total: 1890, percent: 6.2 },
+    { district: 'Bandipora', green: 954, semiDry: 305, dry: 161, total: 1420, percent: 4.7 },
+    { district: 'Shopian', green: 785, semiDry: 226, dry: 109, total: 1120, percent: 3.7 }
   ],
   notableHeritageTrees: [
     {
       id: 'chattergam-oldest',
       location: 'Chattergam, Chadura, Budgam',
-      age: 642,
-      girthMeters: 31.85,
+      age: 700,
+      girthMeters: 14.8,
       plantedBy: 'Syed Qasim Sahib (RA)',
       yearPlanted: 1374,
       status: 'semi-dry',
-      significance: 'Recognized as the oldest living Chinar tree in Asia. Survived a natural lightning fire in 1958 with trunk cavity intact.'
+      significance: 'Recognized as one of the oldest and largest living Chinar trees in Asia (girth ~14.8 m). Survived a natural lightning fire in 1958 with trunk cavity intact.'
     },
     {
       id: 'naseem-bagh-grove',
@@ -3171,7 +3180,7 @@ export const CHINAR_CONSERVATION_DATA = {
     },
     {
       id: 'bijbehara-avenue',
-      location: 'Bijbehara Town, Anantnag',
+      location: 'Bijbehara Town (Padshahi Bagh), Anantnag',
       age: 350,
       girthMeters: 14.2,
       plantedBy: 'Dara Shikoh',

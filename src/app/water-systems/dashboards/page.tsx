@@ -176,7 +176,7 @@ export default function WaterSystemsDashboardsPage() {
           transition={{ delay: 0.3 }}
         >
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <BarChart3 className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -197,7 +197,7 @@ export default function WaterSystemsDashboardsPage() {
                   padding="md"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${dash.color}`}>
+                    <div className={`p-3 rounded-xl bg-slate-900 ${dash.color}`}>
                       <dash.icon className="w-6 h-6 text-white" />
                     </div>
                     <Badge variant={dash.statusVariant} size="sm">
@@ -209,7 +209,7 @@ export default function WaterSystemsDashboardsPage() {
                   <div className="flex flex-wrap gap-2">
                     {dash.metrics.map((metric) => (
                       <span key={metric}
-                        className="text-xs px-2 py-1 rounded-full bg-white/5 text-slate-400 border border-white/10"
+                        className="text-xs px-2 py-1 rounded-[4px] bg-white/5 text-slate-400 border border-white/10"
                       >
                         {metric}
                       </span>
@@ -234,7 +234,7 @@ export default function WaterSystemsDashboardsPage() {
         >
           <Card className="glass border-white/10" padding="md">
             <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                 <Map className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -378,7 +378,7 @@ export default function WaterSystemsDashboardsPage() {
 
       {/* Export / Share */}
       <section className="container mx-auto px-6 pb-16">
-        <Card className="glass-intense border-white/10 bg-gradient-to-r from-cyan-900/20 to-blue-900/20" padding="lg">
+        <Card className="glass-intense border-white/10 bg-slate-900" padding="lg">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="text-lg font-bold text-white mb-1">Export & Share Analytics</h3>
@@ -405,7 +405,7 @@ export default function WaterSystemsDashboardsPage() {
       {/* Sub-page links */}
       <section className="container mx-auto px-6 pb-16">
         <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-slate-600 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
             <Database className="w-4 h-4 text-white" />
           </div>
           <div>

@@ -140,7 +140,7 @@ export default function EntityExplorerPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading icon={<span className="hidden"/>}
         badge={
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-blue-500/20 border border-blue-400/30 mb-6">
             <Search className="w-4 h-4 text-blue-400" />
             <span className="text-sm font-medium text-blue-300">Browse & Filter</span>
           </div>
@@ -233,7 +233,7 @@ export default function EntityExplorerPage() {
                           <Icon className="w-5 h-5" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-base font-semibold text-white truncate">
+                          <h3 className="text-base font-semibold text-white break-words">
                             {entity.name}
                           </h3>
                           <div className="flex flex-wrap gap-2 mt-2">
@@ -250,7 +250,7 @@ export default function EntityExplorerPage() {
                       {/* District */}
                       <div className="flex items-center gap-2 mb-3 text-sm text-slate-400">
                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="truncate">{entity.district}</span>
+                        <span className="break-words">{entity.district}</span>
                       </div>
 
                       {/* Description */}

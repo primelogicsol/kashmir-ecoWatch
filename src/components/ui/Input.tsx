@@ -29,7 +29,7 @@ export function Input({
           </div>
         )}
         <input
-          className={`w-full px-4 py-2.5 rounded-lg bg-slate-900/50 border ${
+          className={`w-full px-4 py-2.5 rounded-md bg-slate-900/50 border ${
             error ? 'border-red-500' : 'border-white/10'
           } text-white placeholder-slate-500 focus:outline-none focus:ring-2 ${
             error ? 'focus:ring-red-500' : 'focus:ring-blue-500'

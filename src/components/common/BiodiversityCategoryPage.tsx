@@ -24,6 +24,7 @@ import { Heading } from '@/components/common/Heading';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 
 interface CategoryPageProps {
+  images?: string[];
   title: string;
   subtitle: string;
   icon: string;
@@ -53,6 +54,7 @@ export function BiodiversityCategoryPage({
   hideHabitatFilter = false,
   hideAdministrativeUnitFilter = false,
   hideElevationFilter = false,
+  images,
 }: CategoryPageProps) {
   const Icon = (Icons as any)[iconName] || Icons.Leaf;
   const router = useRouter();
@@ -156,11 +158,11 @@ export function BiodiversityCategoryPage({
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: typeof title === 'string' && title.includes(' Across ') ? title.split(' Across ')[0] : title }
         ]}
-        images={[
+        images={images || [
           '/images/bear.png',
           '/images/markhor.png',
           '/images/tiger.png',
-          '/images/protected-network.png'
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
         ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
@@ -208,7 +210,7 @@ export function BiodiversityCategoryPage({
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />

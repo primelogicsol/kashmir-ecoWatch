@@ -84,14 +84,14 @@ export default function StudentObservationsPage() {
     switch (status) {
       case 'EcoWatch Verified':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-semibold">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-semibold">
             <CheckCircle2 className="w-3 h-3" />
             <span>EcoWatch Verified</span>
           </span>
         );
       case 'Teacher Approved':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[11px] font-semibold">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[4px] bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[11px] font-semibold">
             <ShieldCheck className="w-3 h-3" />
             <span>Teacher Approved</span>
           </span>
@@ -99,7 +99,7 @@ export default function StudentObservationsPage() {
       case 'Student Provisional':
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-[11px] font-semibold">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[4px] bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-[11px] font-semibold">
             <Clock className="w-3 h-3" />
             <span>Student Provisional</span>
           </span>
@@ -202,7 +202,7 @@ export default function StudentObservationsPage() {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-emerald-950/40 shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-emerald-950/40 shrink-0"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Submit Supervised Field Record</span>

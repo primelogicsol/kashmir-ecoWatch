@@ -108,7 +108,7 @@ export default function LakesPage() {
               Select an ecological typology, elevation tier, or water quality status to filter the 62 mapped lakes.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-cyan-400">{displayedLakes.length}</strong> of {totalCount} lakes
           </span>
         </div>
@@ -303,7 +303,7 @@ export default function LakesPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-blue-500/20 hover:border-blue-500/40 transition-all group block"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center gap-1">
                       <Waves className="w-2.5 h-2.5" />
                       {lake.category}
                     </span>
@@ -400,7 +400,7 @@ export default function LakesPage() {
               className="space-y-4"
             >
               {/* Field Observer Action Header */}
-              <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-cyan-950/60 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 shrink-0">
                     <Camera className="w-5 h-5" />

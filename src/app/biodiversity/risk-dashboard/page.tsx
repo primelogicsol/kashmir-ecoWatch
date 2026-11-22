@@ -62,7 +62,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Overall Risk Score */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -107,7 +107,7 @@ const RiskDashboardPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
               <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                   <BarChart3 className="w-4 h-4 text-white" />
                 </div>
                 <div>
@@ -148,7 +148,7 @@ const RiskDashboardPage: React.FC = () => {
 
             <div>
               <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
                   <Shield className="w-4 h-4 text-white" />
                 </div>
                 <div>
@@ -177,7 +177,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Top Threats */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -198,7 +198,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Risk by Habitat */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Mountain className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -221,7 +221,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Risk by District */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Building2 className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -247,7 +247,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Conservation Hotspots */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <MapPin className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -291,7 +291,7 @@ const RiskDashboardPage: React.FC = () => {
         {/* Monitoring Status */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Activity className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -388,7 +388,7 @@ const ThreatRow: React.FC<{
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${severityColors[threat.severity]}`}>
+        <span className={`px-3 py-1 rounded-[4px] text-xs font-medium text-white ${severityColors[threat.severity]}`}>
           {threat.severity.toUpperCase()}
         </span>
         <span className={`text-sm capitalize ${trendColors[threat.trend] || 'text-slate-400'}`}>{threat.trend}</span>

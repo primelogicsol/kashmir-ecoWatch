@@ -25,7 +25,7 @@ const ProtectedAtlasLeaflet = dynamic(
         <div className="w-12 h-12 border-3 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
         <div className="text-center">
           <p className="text-sm font-bold text-white tracking-wider">Initializing WGS84 GIS Vector Engine</p>
-          <p className="text-xs font-mono text-emerald-400 mt-1">Calibrating 168 Protected Area Coordinates &amp; Corridors...</p>
+          <p className="text-xs font-mono text-emerald-400 mt-1">Calibrating 182 Monitored Conservation Units &amp; 43 Connectivity Corridors...</p>
         </div>
       </div>
     ),
@@ -64,6 +64,19 @@ export default function ProtectedAreaAtlasPage() {
       ...getProtectedAreas.birdHabitatAreas(),
     ];
   }, []);
+
+  // Dynamic Category Counts Reconciled
+  const categoryCounts = useMemo(() => {
+    return {
+      nationalParks: allPAs.filter(p => p.category === 'national_park').length,
+      wildlifeSanctuaries: allPAs.filter(p => p.category === 'wildlife_sanctuary').length,
+      wetlandReserves: allPAs.filter(p => p.category === 'wetland_reserve').length,
+      conservationReserves: allPAs.filter(p => p.category === 'conservation_reserve').length,
+      birdAreas: allPAs.filter(p => p.category === 'iba').length,
+      statutoryTotal: allPAs.filter(p => p.category !== 'iba').length,
+      corridors: corridorsData.length,
+    };
+  }, [allPAs]);
 
   // Filtered Protected Areas based on active layer toggles and search / district filters
   const visiblePAs = useMemo(() => {
@@ -190,7 +203,7 @@ export default function ProtectedAreaAtlasPage() {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
-        <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-900/80 border border-emerald-500/40 text-[10px] font-semibold text-emerald-300">
+        <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-slate-900/80 border border-emerald-500/40 text-[10px] font-semibold text-emerald-300">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           Interactive 3D GIS
         </div>
@@ -250,10 +263,26 @@ export default function ProtectedAreaAtlasPage() {
             </div>
           </div>
         }
-        subtitle="Precision GIS cartography mapping Kashmir, Jammu, and Ladakh's 168 protected reserves, wetland complexes, and 43 wildlife migration corridors. Powered by high-resolution satellite imagery, topographic relief, and sub-decimeter WGS84 coordinates."
+        subtitle="Precision GIS cartography mapping the Western Himalayas' 182 monitored conservation units (117 legally notified reserves and 65 Important Bird Areas) and 43 wildlife connectivity corridors across all five regions. Powered by high-resolution satellite imagery, topographic relief, and documented WGS84 geometries."
         icon={<Map className="w-6 h-6 text-emerald-400" />}
         label="Spatial Intelligence"
-        images={['/images/protected-network.png', '/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={[
+        '/images/protected-network/protected-area-atlas-gis.jpg',
+        '/images/protected-network/protected-national-parks-dachigam.jpg',
+        '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg',
+        '/images/protected-network/protected-wetland-reserves-hokersar.jpg',
+        '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+        '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+        '/images/protected-network/protected-species-intelligence-telemetry.jpg',
+        '/images/protected-network/protected-corridors-connectivity-passes.jpg',
+        '/images/protected-network/protected-monitoring-threats-surveillance.jpg',
+        '/images/protected-network/protected-hwc-rapid-response-rescue.jpg',
+        '/images/protected-network/protected-research-trails-sightings.jpg',
+        '/images/bear.png',
+        '/images/tiger.png',
+        '/images/markhor.png',
+        '/images/protected-network.png'
+      ]}
         rightContent={heroShowcaseCard}
         actions={
           <div className="flex items-center gap-3">
@@ -268,7 +297,7 @@ export default function ProtectedAreaAtlasPage() {
             </Button>
             <Button 
               size="sm" 
-              className="bg-gradient-to-r from-emerald-600 to-emerald-500" 
+              className="bg-emerald-600 hover:bg-emerald-500 text-white" 
               icon={<Maximize2 className="w-4 h-4" />}
               onClick={() => {
                 setTargetFlyTo({ lat: 34.15, lng: 75.10, zoom: 8 });
@@ -285,7 +314,7 @@ export default function ProtectedAreaAtlasPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K ATLAS SENTINEL                */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 relative z-20 mt-4 mb-4">
-        <div className="bg-gradient-to-r from-slate-900/95 via-sky-950/70 to-slate-900/95 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-sky-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-sky-500/10 rounded-xl border border-sky-500/20 text-sky-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -297,7 +326,7 @@ export default function ProtectedAreaAtlasPage() {
                 <span className="text-[10px] text-emerald-300 uppercase font-semibold">Live GIS Engine 2026</span>
               </div>
               <p className="text-sm text-slate-300 mt-0.5">
-                Mapping <strong className="text-white">168 Verified Protected Reserves</strong> and <strong className="text-white">43 Wildlife Corridors</strong> with exact WGS84 GPS georeferencing across Kashmir Valley, Pir Panjal, and Ladakh.
+                Monitoring <strong className="text-white">182 Conservation Units</strong> (117 Statutory Protected Reserves &amp; 65 IBAs) and <strong className="text-white">43 Wildlife Corridors</strong> under standardized WGS84 geodetic datum across Kashmir Valley, Jammu, Ladakh, AJ&amp;K, and Gilgit-Baltistan.
               </p>
             </div>
           </div>
@@ -327,7 +356,7 @@ export default function ProtectedAreaAtlasPage() {
             <div className="text-2xl font-black text-emerald-300">
               {allPAs.length}
             </div>
-            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">100% Georeferenced</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">117 Statutory · 65 IBAs</div>
           </div>
 
           {/* Card 2: Spatial Area */}
@@ -339,7 +368,7 @@ export default function ProtectedAreaAtlasPage() {
             <div className="text-2xl font-black text-teal-300">
               {protectedNetworkMetrics.totalArea.toLocaleString()} <span className="text-xs font-normal text-teal-400">km²</span>
             </div>
-            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">{protectedNetworkMetrics.coveragePercentage}% of Territory</div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">{protectedNetworkMetrics.coveragePercentage}% Regional Coverage</div>
           </div>
 
           {/* Card 3: GIS Layers */}
@@ -349,9 +378,9 @@ export default function ProtectedAreaAtlasPage() {
               <Layers className="w-4 h-4 text-amber-400" />
             </div>
             <div className="text-2xl font-black text-amber-300">
-              6 Active
+              4 Modes
             </div>
-            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Multi-Taxon Thematic</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Satellite, Topo, Dark, Street</div>
           </div>
 
           {/* Card 4: Corridors */}
@@ -363,7 +392,7 @@ export default function ProtectedAreaAtlasPage() {
             <div className="text-2xl font-black text-purple-300">
               {corridorsData.length}
             </div>
-            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Geodesic Vectors</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Empirically Modeled</div>
           </div>
 
           {/* Card 5: Geo-Referencing */}
@@ -373,9 +402,9 @@ export default function ProtectedAreaAtlasPage() {
               <Crosshair className="w-4 h-4 text-blue-400" />
             </div>
             <div className="text-2xl font-black text-blue-300">
-              &plusmn; 5 m
+              EPSG:4326
             </div>
-            <div className="text-[11px] text-blue-400/90 font-mono mt-0.5">Survey of India / WGS84</div>
+            <div className="text-[11px] text-blue-400/90 font-mono mt-0.5">WGS84 Provenance Tracked</div>
           </div>
 
           {/* Card 6: Peak Altitude */}
@@ -443,7 +472,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-              <span>National Parks (5)</span>
+              <span>National Parks ({categoryCounts.nationalParks})</span>
             </button>
 
             <button
@@ -455,7 +484,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
-              <span>Sanctuaries (14)</span>
+              <span>Sanctuaries ({categoryCounts.wildlifeSanctuaries})</span>
             </button>
 
             <button
@@ -467,7 +496,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-sky-500" />
-              <span>Wetlands (10)</span>
+              <span>Wetlands ({categoryCounts.wetlandReserves})</span>
             </button>
 
             <button
@@ -479,7 +508,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-              <span>Conservation Reserves (18)</span>
+              <span>Conservation Reserves ({categoryCounts.conservationReserves})</span>
             </button>
 
             <button
@@ -491,7 +520,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-purple-500" />
-              <span>Bird Habitats (121)</span>
+              <span>Bird Habitats ({categoryCounts.birdAreas})</span>
             </button>
 
             <button
@@ -503,7 +532,7 @@ export default function ProtectedAreaAtlasPage() {
               }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-pink-500" />
-              <span>Corridors (43)</span>
+              <span>Corridors ({categoryCounts.corridors})</span>
             </button>
           </div>
         </div>
@@ -625,7 +654,7 @@ export default function ProtectedAreaAtlasPage() {
                     selectedSite.category === 'conservation_reserve' ? 'conservation-reserves' :
                     'bird-and-habitat-areas'
                   }/${selectedSite.slug}`}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-xs font-bold hover:brightness-110 transition-all shadow-md"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 text-white text-xs font-bold hover:brightness-110 transition-all shadow-md"
                 >
                   <span>Explore Intelligence Profile</span>
                   <ExternalLink className="w-3.5 h-3.5" />

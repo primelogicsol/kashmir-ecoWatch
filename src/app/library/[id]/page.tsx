@@ -137,10 +137,10 @@ export default function EvidenceDetailPage() {
               <Badge variant="outline" size="lg" className="text-sm">
                 {categoryLabels[evidence.category]}
               </Badge>
-              <span className={cn("px-3 py-1 rounded-full text-sm font-medium border", sourceTypeColors[evidence.sourceType])}>
+              <span className={cn("px-3 py-1 rounded-[4px] text-sm font-medium border", sourceTypeColors[evidence.sourceType])}>
                 {sourceTypeLabels[evidence.sourceType]}
               </span>
-              <span className={cn("px-3 py-1 rounded-full text-sm font-medium", confidenceColors[evidence.confidence])}>
+              <span className={cn("px-3 py-1 rounded-[4px] text-sm font-medium", confidenceColors[evidence.confidence])}>
                 {confidenceLabels[evidence.confidence]}
               </span>
             </div>

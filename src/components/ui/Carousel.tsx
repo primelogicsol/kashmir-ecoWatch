@@ -278,7 +278,7 @@ export function Carousel({
       </div>
 
       {/* Scroll indicators (dots) - optional, shown on mobile */}
-      <div className="flex justify-center gap-2 mt-4 sm:hidden">
+      <div className="flex justify-center items-center gap-1 mt-4 sm:hidden" role="tablist" aria-label="Carousel navigation">
         {(() => {
           const dotCount = Math.ceil(React.Children.count(children) / visibleItems);
           return Array.from({ length: dotCount }, (_, index) => {
@@ -290,13 +290,21 @@ export function Carousel({
                   left: index * itemWidth.mobile,
                   behavior: 'smooth'
                 })}
-                className={cn(
-                  'w-2 h-2 rounded-full transition-all duration-300',
-                  isActive ? 'bg-forest-500 w-4' : 'bg-slate-600'
-                )}
+                className="carousel-touch-target"
                 aria-label={`Go to slide ${index + 1}`}
+                aria-selected={isActive}
+                role="tab"
                 type="button"
-              />
+              >
+                <span
+                  className={cn(
+                    'carousel-dot transition-all duration-300',
+                    isActive
+                      ? 'bg-emerald-400 scale-125 shadow-[0_0_8px_rgba(52,211,153,0.7)]'
+                      : 'bg-slate-600 hover:bg-slate-500'
+                  )}
+                />
+              </button>
             );
           });
         })()}

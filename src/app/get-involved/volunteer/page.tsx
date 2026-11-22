@@ -203,7 +203,7 @@ const kewStats = [
 
 function WhyVolunteer() {
   return (
-    <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-emerald-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Heart className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Why Contribute to KEW?</h3>
@@ -371,7 +371,7 @@ function BadgesPanel() {
       </div>
       <div className="space-y-2">
         {badgeTiers.map(b => (
-          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-gradient-to-r ${b.color} p-2.5`}>
+          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-slate-900 ${b.color} p-2.5`}>
             <span className="text-lg">{b.icon}</span>
             <div>
               <div className="text-xs font-bold text-white">{b.name}</div>
@@ -485,7 +485,7 @@ export default function VolunteerPage() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Volunteer Assignment Tracking ID</span>
                     <span className="text-xl font-mono font-bold text-emerald-400">{trackingId}</span>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: VOLUNTEER DESK</span>
+                  <span className="text-xs px-2.5 py-1 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: VOLUNTEER DESK</span>
                 </div>
               )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
@@ -499,7 +499,7 @@ export default function VolunteerPage() {
                       <span className="text-slate-500 w-36 flex-shrink-0">Areas of Interest</span>
                       <div className="flex flex-wrap gap-1">
                         {interests.map(i => (
-                          <span key={i} className="text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2 py-0.5">{i}</span>
+                          <span key={i} className="text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-[4px] px-2 py-0.5">{i}</span>
                         ))}
                       </div>
                     </div>
@@ -608,9 +608,9 @@ export default function VolunteerPage() {
                           {!active && (
                             <div className="flex flex-wrap gap-1 mt-1">
                               {cat.contributions.slice(0, 3).map(c => (
-                                <span key={c} className="text-[9px] text-slate-500 bg-white/5 rounded-full px-2 py-0.5">{c}</span>
+                                <span key={c} className="text-[9px] text-slate-500 bg-white/5 rounded-[4px] px-2 py-0.5">{c}</span>
                               ))}
-                              <span className="text-[9px] text-slate-600 bg-white/5 rounded-full px-2 py-0.5">+{cat.contributions.length - 3} more</span>
+                              <span className="text-[9px] text-slate-600 bg-white/5 rounded-[4px] px-2 py-0.5">+{cat.contributions.length - 3} more</span>
                             </div>
                           )}
                         </button>

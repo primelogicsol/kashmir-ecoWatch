@@ -106,7 +106,7 @@ export function SeasonalWindowDisplay({ window, compact = false }: SeasonalWindo
           
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${statusColors[window.accessConditions.status]} flex items-center justify-center shadow-lg`}>
+              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${statusColors[window.accessConditions.status]} flex items-center justify-center shadow-lg`}>
                 <Calendar className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -165,7 +165,7 @@ export function SeasonalWindowDisplay({ window, compact = false }: SeasonalWindo
         
         {/* Access Conditions */}
         <div className="px-6 pb-4">
-          <div className="p-4 rounded-lg bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-white/5">
+          <div className="p-4 rounded-lg bg-slate-900 border border-white/5">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-4 h-4 text-sky-400" />
               <span className="text-sm font-medium text-white">Access Conditions</span>

@@ -19,6 +19,7 @@ import {
   DESTINATION_CARRYING_CAPACITY_REGISTRY
 } from '@/data/tourism-eia-inventory';
 import {
+  Sparkles,
   Compass,
   MapPin,
   Droplet,
@@ -59,7 +60,8 @@ type WorkspaceTab =
   | 'winter_adventure' 
   | 'transport' 
   | 'carrying_capacity' 
-  | 'dossiers';
+  | 'dossiers'
+  | 'artstay';
 
 export default function TourismEiaPage() {
   const [activeTab, setActiveTab] = useState<WorkspaceTab>('census');
@@ -94,6 +96,12 @@ export default function TourismEiaPage() {
           </span>
         }
         subtitle="Kashmir Division • Quantifying the scale, location, seasonality, and operating intensity of tourism activities before assessing their biophysical environmental pressures."
+        images={[
+          '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
+          '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
+          '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg',
+          '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg'
+        ]}
       />
 
       <SectoralEiaNav />
@@ -164,6 +172,7 @@ export default function TourismEiaPage() {
             { id: 'census', label: '12-Component Census', icon: Layers },
             { id: 'arrivals', label: 'Arrivals & Seasonality (2021-25)', icon: BarChart3 },
             { id: 'hospitality', label: 'Hotels & Homestays', icon: Hotel },
+            { id: 'artstay', label: 'Kashmir ArtStay (Ethical Tourism)', icon: Sparkles },
             { id: 'houseboats', label: 'Houseboats (849 GIS Units)', icon: Anchor },
             { id: 'trails', label: 'Trekking Trails Registry', icon: Footprints },
             { id: 'pilgrimage', label: 'Pilgrimage Subsystem', icon: Landmark },
@@ -437,7 +446,137 @@ export default function TourismEiaPage() {
                   </div>
                 </div>
               </Card>
+            
+            {/* Kashmir ArtStay Sustainable Hospitality Callout */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-mono">
+                    EcoWatch Sustainable Model
+                  </Badge>
+                  <span className="text-xs font-bold text-white">Ethical Alternative to Mass Hotel Overcrowding</span>
+                </div>
+                <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                  Looking to experience Kashmir with minimal environmental footprint? <strong>Kashmir ArtStay</strong> provides vetted homestays, artisan residencies, and decentralized heritage stays designed to respect local carrying capacity.
+                </p>
+              </div>
+              <a
+                href="https://kashmirartstay.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs whitespace-nowrap transition-all shadow-md flex items-center gap-1.5 shrink-0"
+              >
+                <span>Plan Your Trip (kashmirartstay.com)</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
+
+            </div>
+          </div>
+        )}
+
+        
+        {/* ======================================================== */}
+        {/* TAB: KASHMIR ARTSTAY & ETHICAL HERITAGE TOURISM          */}
+        {/* ======================================================== */}
+        {activeTab === 'artstay' && (
+          <div className="space-y-6">
+            <Card className="p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-slate-900/95 to-emerald-950/30 border-emerald-500/30 shadow-2xl space-y-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs uppercase tracking-wider">
+                      Sustainable Hospitality Partner
+                    </Badge>
+                    <span className="text-xs font-mono text-emerald-300">
+                      Decentralized Carrying-Capacity Model
+                    </span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    Kashmir ArtStay: Ethical Heritage Travel &amp; Low-Impact Living
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+                    Operationalizing Kashmir EcoWatch’s carrying-capacity science into sustainable, community-grounded tourism. ArtStay disperses visitor pressure away from fragile alpine ecosystems into living cultural homestays and master artisan residencies.
+                  </p>
+                </div>
+                <div className="shrink-0 flex flex-col items-start md:items-end gap-1">
+                  <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Official Travel Portal</span>
+                  <a
+                    href="https://kashmirartstay.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs transition-all shadow-lg shadow-emerald-950/50 group"
+                  >
+                    <span>Plan Your Kashmir Trip</span>
+                    <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+              {/* 3 Core Synergy Pillars */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-xl bg-slate-950/80 border border-emerald-500/20 space-y-2">
+                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>Carrying-Capacity Footprint</span>
+                  </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    Counteracts extreme congestion in Gulmarg and Pahalgam by channeling mindful travelers to decentralized, rural heritage hubs (Gurez, Yusmarg, Aru, and old-city craft quarters).
+                  </p>
+                  <div className="text-[10px] text-emerald-400/90 font-mono pt-1">
+                    • Diverts peak load from alpine zones
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-950/80 border border-teal-500/20 space-y-2">
+                  <div className="flex items-center gap-2 text-teal-400 font-bold text-sm">
+                    <Droplet className="w-4 h-4" />
+                    <span>Water &amp; Waste Integrity</span>
+                  </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    All partner homestays adhere to strict eco-audits: zero single-use plastics, decentralized biological composting, solar thermal water heating, and zero raw sewage discharge into lacustrine basins.
+                  </p>
+                  <div className="text-[10px] text-teal-400/90 font-mono pt-1">
+                    • 100% audited environmental guardrails
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-950/80 border border-amber-500/20 space-y-2">
+                  <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+                    <Landmark className="w-4 h-4" />
+                    <span>Direct Artisan Livelihoods</span>
+                  </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    Bypasses extractive mass-tourism intermediaries by providing immersive master artisan workshops, direct fair wages, and genuine cultural living in authentic Kashmiri architectural homes.
+                  </p>
+                  <div className="text-[10px] text-amber-400/90 font-mono pt-1">
+                    • Equitable community wealth retention
+                  </div>
+                </div>
+              </div>
+
+              {/* The Scientific Connection to EcoWatch */}
+              <div className="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-emerald-400" />
+                    How Kashmir EcoWatch &amp; Kashmir ArtStay Collaborate:
+                  </span>
+                  <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">
+                    EcoWatch provides the scientific spatial boundaries, environmental risk telemetry, and destination carrying-capacity data. ArtStay uses these metrics to design travel itineraries that respect seasonal ecological vulnerability and celebrate Kashmir’s civilizational wisdom.
+                  </p>
+                </div>
+                <a
+                  href="https://kashmirartstay.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-emerald-300 border border-emerald-500/30 text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 self-stretch sm:self-auto justify-center"
+                >
+                  <span>Explore ArtStay Experiences</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </Card>
           </div>
         )}
 

@@ -326,12 +326,10 @@ export default function SolidWastePage() {
           </div>
         }
         images={[
+          '/images/env-monitoring/kashmir-solid-waste-facility.jpg',
           '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/kashmir-plastic-hero.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />

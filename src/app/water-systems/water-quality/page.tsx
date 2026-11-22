@@ -114,7 +114,7 @@ export default function WaterQualityPage() {
               Filter the 65 monitoring stations by chemical status tier or dissolved oxygen saturation.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-teal-400">{displayedSites.length}</strong> of {totalCount} stations
           </span>
         </div>
@@ -266,7 +266,7 @@ export default function WaterQualityPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-teal-500/20 hover:border-teal-500/40 transition-all group block"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center gap-1">
                       <Thermometer className="w-2.5 h-2.5" />
                       {site.category}
                     </span>
@@ -421,7 +421,7 @@ export default function WaterQualityPage() {
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl bg-gradient-to-r from-teal-950/60 via-slate-900 to-cyan-950/60 border border-teal-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-teal-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-teal-500/20 border border-teal-500/30 text-teal-400 shrink-0">
                     <Beaker className="w-5 h-5" />

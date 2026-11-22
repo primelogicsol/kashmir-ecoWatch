@@ -24,6 +24,7 @@ const submodules = [
   { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', icon: CloudRain, color: 'from-indigo-500 to-blue-600', status: '5 watch zones', statusColor: 'warning', desc: 'Rapid-onset flash flood early warning corridors' },
   { name: 'Landslides', href: '/hazard-intelligence/landslides', icon: Mountain, color: 'from-amber-500 to-orange-600', status: '12 active sites', statusColor: 'danger', desc: 'Slope instability, debris flow and landslide registries' },
   { name: 'Avalanches', href: '/hazard-intelligence/avalanches', icon: Snowflake, color: 'from-cyan-500 to-sky-600', status: 'Season watch', statusColor: 'info', desc: 'Winter avalanche corridors and risk forecasting' },
+  { name: 'Algal Bloom Intelligence', href: '/hazard-intelligence/algal-bloom-intelligence', icon: Droplets, color: 'from-emerald-500 to-teal-600', status: 'Eutrophication watch', statusColor: 'warning', desc: 'Eutrophication, cyanobacteria and bloom risk monitoring' },
   { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', icon: Activity, color: 'from-red-500 to-orange-600', status: '2 recent events', statusColor: 'warning', desc: 'Seismic activity, fault lines and microseismicity tracking' },
   { name: 'GLOFs', href: '/hazard-intelligence/glofs', icon: Droplets, color: 'from-teal-500 to-emerald-600', status: '4 GLOF risks', statusColor: 'warning', desc: 'Glacial lake outburst flood risk assessment' },
   { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', icon: Flame, color: 'from-orange-500 to-red-600', status: '6 hotspots', statusColor: 'danger', desc: 'Active fire detection, burn severity and forest loss' },
@@ -94,12 +95,14 @@ export default function HazardIntelligenceOverview() {
           </div>
         }
         images={[
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/hazard-intelligence/June-18-Salt-Fire-9-Courtesy-of-Mescalero-Apache-Tribe.webp',
-          '/images/hazard-intelligence/25851504_af_aspera.jpg',
-          '/images/protected-network.png',
+          '/images/hazard-intelligence/hazard-command-center.jpg',
+          '/images/hazard-intelligence/hazard-floods-riverine.jpg',
+          '/images/hazard-intelligence/hazard-landslides-monitoring.jpg',
+          '/images/hazard-intelligence/hazard-avalanches-snow.jpg',
+          '/images/hazard-intelligence/hazard-earthquakes-seismic.jpg',
+          '/images/hazard-intelligence/hazard-glofs-glacial-lakes.jpg',
+          '/images/hazard-intelligence/hazard-forest-fires-wildfire.jpg',
+          '/images/hazard-intelligence/hazard-algal-bloom-lake.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -371,7 +374,7 @@ export default function HazardIntelligenceOverview() {
                 Open Dashboard
               </Button>
             </div>
-            <div className="h-72 bg-gradient-to-br from-red-900/30 to-slate-900/50 flex items-center justify-center border-t border-white/5">
+            <div className="h-72 bg-slate-900 flex items-center justify-center border-t border-white/5">
               <div className="text-center">
                 <Map className="w-12 h-12 text-slate-600 mx-auto mb-3" />
                 <p className="text-slate-400 text-sm mb-1">Interactive multi-hazard exposure map with flood, landslide, seismic, and fire layers</p>

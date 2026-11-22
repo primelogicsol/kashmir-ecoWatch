@@ -190,7 +190,7 @@ function SearchContent() {
 
         {/* Header Block */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             Ecological Knowledge Graph
           </div>
@@ -238,7 +238,7 @@ function SearchContent() {
               key={tag}
               type="button"
               onClick={() => handleSuggestionClick(tag)}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+              className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-all ${
                 query.toLowerCase() === tag.toLowerCase()
                   ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
                   : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10'
@@ -271,7 +271,7 @@ function SearchContent() {
                 >
                   <Icon className="w-4 h-4" />
                   <span>{meta.label}</span>
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-[4px] ${
                     isActive ? 'bg-white/25 text-white' : 'bg-white/10 text-slate-400'
                   }`}>
                     {count}

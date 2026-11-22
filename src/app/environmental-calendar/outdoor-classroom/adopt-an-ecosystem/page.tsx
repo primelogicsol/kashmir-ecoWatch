@@ -214,7 +214,7 @@ export default function AdoptAnEcosystemPage() {
             
             <button
               onClick={() => setShowPledgeModal(true)}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-emerald-950/40 shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-emerald-950/40 shrink-0"
             >
               <Sparkles className="w-4 h-4" />
               <span>Adopt an Ecosystem for Your School</span>

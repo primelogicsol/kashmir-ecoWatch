@@ -184,7 +184,7 @@ export function FeaturedVisualIntelligence() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-12"
         >
-          <Card padding="lg" className="bg-gradient-to-r from-forest-600 to-glacier-600 text-white">
+          <Card padding="lg" className="bg-slate-900 text-white">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="text-xl font-bold mb-2">

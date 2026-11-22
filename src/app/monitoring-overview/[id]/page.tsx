@@ -89,7 +89,7 @@ export default function MonitoringDetailPage() {
           >
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className={cn("px-3 py-1 rounded-full text-sm font-medium border", statusColor)}>
+              <span className={cn("px-3 py-1 rounded-[4px] text-sm font-medium border", statusColor)}>
                 {statusDisplayLabels[network.status]}
               </span>
               <Badge variant="outline" size="lg">

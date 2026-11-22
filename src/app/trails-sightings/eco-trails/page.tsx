@@ -73,7 +73,7 @@ export default function EcoTrailsPage() {
               <motion.div key={trail.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }}>
                 <Card className="glass-intense border-white/10 hover:border-green-500/30 transition-all p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                       <Leaf className="w-6 h-6 text-white" />
                     </div>
                     <div>

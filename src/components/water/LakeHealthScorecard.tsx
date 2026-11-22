@@ -58,7 +58,7 @@ const LakeHealthScorecardComponent: React.FC<LakeHealthScorecardProps> = ({
             {scorecard.lakeName}
           </h3>
           <span
-            className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase border ${getClassificationBadgeColor(
+            className={`px-2.5 py-0.5 rounded-[4px] text-[10px] font-bold tracking-wide uppercase border ${getClassificationBadgeColor(
               scorecard.classification
             )}`}
           >
@@ -87,7 +87,7 @@ const LakeHealthScorecardComponent: React.FC<LakeHealthScorecardProps> = ({
   return (
     <div className="glass-intense rounded-xl border border-white/10 overflow-hidden">
       {/* Header */}
-      <div className={`bg-gradient-to-r ${getClassificationColor(scorecard.classification)} p-6 text-white`}>
+      <div className={`bg-slate-900 ${getClassificationColor(scorecard.classification)} p-6 text-white`}>
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold">{scorecard.lakeName}</h2>

@@ -40,6 +40,23 @@ export default function WildlifeSanctuariesPage() {
 
   return (
     <ProtectedCategoryPage
+      images={[
+        '/images/protected-network/protected-wildlife-sanctuaries-overa.jpg',
+        '/images/protected-network/protected-area-atlas-gis.jpg',
+        '/images/protected-network/protected-national-parks-dachigam.jpg',
+        '/images/protected-network/protected-wetland-reserves-hokersar.jpg',
+        '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+        '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+        '/images/protected-network/protected-species-intelligence-telemetry.jpg',
+        '/images/protected-network/protected-corridors-connectivity-passes.jpg',
+        '/images/protected-network/protected-monitoring-threats-surveillance.jpg',
+        '/images/protected-network/protected-hwc-rapid-response-rescue.jpg',
+        '/images/protected-network/protected-research-trails-sightings.jpg',
+        '/images/bear.png',
+        '/images/tiger.png',
+        '/images/markhor.png',
+        '/images/protected-network.png'
+      ]}
       title={
         <div className="overflow-visible pb-2">
           <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">

@@ -15,7 +15,37 @@
         "district": "Srinagar",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
-        "slug": "dal-lake"
+        "slug": "dal-lake",
+        "canonicalId": "lake-dal-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.835,
+            34.085
+          ],
+          [
+            74.875,
+            34.075
+          ],
+          [
+            74.895,
+            34.115
+          ],
+          [
+            74.875,
+            34.145
+          ],
+          [
+            74.845,
+            34.135
+          ],
+          [
+            74.835,
+            34.085
+          ]
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -37,7 +67,39 @@
         "district": "Bandipora",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
-        "slug": "wular-lake"
+        "slug": "wular-lake",
+        "canonicalId": "lake-wular-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024",
+        "parentWetlandId": "wetland-wular-system",
+        "relationshipNote": "Component open water body within the greater Ramsar Wular Wetland System.",
+        "boundaryPolygon": [
+          [
+            74.52,
+            34.31
+          ],
+          [
+            74.62,
+            34.33
+          ],
+          [
+            74.65,
+            34.38
+          ],
+          [
+            74.58,
+            34.42
+          ],
+          [
+            74.48,
+            34.38
+          ],
+          [
+            74.52,
+            34.31
+          ]
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -59,7 +121,33 @@
         "district": "Srinagar",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
-        "slug": "nigeen-lake"
+        "slug": "nigeen-lake",
+        "canonicalId": "lake-nigeen-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.815,
+            34.115
+          ],
+          [
+            74.835,
+            34.118
+          ],
+          [
+            74.838,
+            34.128
+          ],
+          [
+            74.82,
+            34.125
+          ],
+          [
+            74.815,
+            34.115
+          ]
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -81,7 +169,33 @@
         "district": "Ganderbal",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
-        "slug": "manasbal-lake"
+        "slug": "manasbal-lake",
+        "canonicalId": "lake-manasbal-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024",
+        "boundaryPolygon": [
+          [
+            74.665,
+            34.245
+          ],
+          [
+            74.69,
+            34.248
+          ],
+          [
+            74.695,
+            34.262
+          ],
+          [
+            74.67,
+            34.26
+          ],
+          [
+            74.665,
+            34.245
+          ]
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -103,7 +217,11 @@
         "district": "Bandipora",
         "watershed": "Kishanganga Basin",
         "waterQualityStatus": "excellent",
-        "slug": "anu-char"
+        "slug": "anu-char",
+        "canonicalId": "lake-anu-char",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -125,7 +243,11 @@
         "district": "Anantnag",
         "watershed": "Lidder Basin",
         "waterQualityStatus": "excellent",
-        "slug": "tarsar-lake"
+        "slug": "tarsar-lake",
+        "canonicalId": "lake-tarsar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -147,7 +269,11 @@
         "district": "Anantnag",
         "watershed": "Lidder Basin",
         "waterQualityStatus": "excellent",
-        "slug": "marsar-lake"
+        "slug": "marsar-lake",
+        "canonicalId": "lake-marsar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -169,7 +295,11 @@
         "district": "Ganderbal",
         "watershed": "Sind Basin",
         "waterQualityStatus": "excellent",
-        "slug": "gangabal-lake"
+        "slug": "gangabal-lake",
+        "canonicalId": "lake-gangabal-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -191,7 +321,11 @@
         "district": "Ganderbal",
         "watershed": "Sind Basin",
         "waterQualityStatus": "excellent",
-        "slug": "krishansar-lake"
+        "slug": "krishansar-lake",
+        "canonicalId": "lake-krishansar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -213,7 +347,11 @@
         "district": "Ganderbal",
         "watershed": "Sind Basin",
         "waterQualityStatus": "excellent",
-        "slug": "vishansar-lake"
+        "slug": "vishansar-lake",
+        "canonicalId": "lake-vishansar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -235,7 +373,11 @@
         "district": "Bandipora",
         "watershed": "Kishanganga Basin",
         "waterQualityStatus": "excellent",
-        "slug": "sheer-kol"
+        "slug": "sheer-kol",
+        "canonicalId": "lake-sheer-kol",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -257,7 +399,11 @@
         "district": "Ganderbal",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
-        "slug": "pant-chowk-lake"
+        "slug": "pant-chowk-lake",
+        "canonicalId": "lake-pant-chowk-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024"
       },
       "geometry": {
         "type": "Point",
@@ -279,7 +425,13 @@
         "district": "Srinagar",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "good",
-        "slug": "hokersar-lake"
+        "slug": "hokersar-lake",
+        "canonicalId": "lake-hokersar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "J&K Lakes and Waterways Development Authority (LCMA) & NWIC",
+        "sourceDate": "2024",
+        "parentWetlandId": "hokersar-wetland",
+        "relationshipNote": "Core open water expanse within the Hokersar Wetland Conservation Reserve (Ramsar Site #1570)."
       },
       "geometry": {
         "type": "Point",

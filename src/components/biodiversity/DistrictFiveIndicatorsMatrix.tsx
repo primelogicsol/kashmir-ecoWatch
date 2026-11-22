@@ -136,11 +136,11 @@ export function DistrictFiveIndicatorsMatrix({ districts }: DistrictFiveIndicato
   return (
     <div className="space-y-8 mt-6">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/60 border border-emerald-500/20 p-6 lg:p-8">
+      <div className="relative overflow-hidden rounded-2xl bg-slate-900 border border-emerald-500/20 p-6 lg:p-8">
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               Pan-Himalayan Landscape Intelligence Layer
             </div>
@@ -437,11 +437,7 @@ export function DistrictFiveIndicatorsMatrix({ districts }: DistrictFiveIndicato
               ? 'border-orange-500/30 hover:border-orange-500/60' 
               : 'border-white/10 hover:border-emerald-500/50';
 
-            const cardBgGradient = isCriticalRisk
-              ? 'bg-gradient-to-br from-[#1a0f0f] via-slate-900 to-[#0f0a0a]'
-              : isSevereDisturbance
-              ? 'bg-gradient-to-br from-[#1f120a] via-slate-900 to-[#0f0a0a]'
-              : 'bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/20';
+            const cardBgGradient = 'bg-slate-900';
 
             return (
               <Card key={d.District_ID} className={`glass-intense p-5 ${cardBorderColor} ${cardBgGradient} transition-all duration-200 flex flex-col justify-between`}>

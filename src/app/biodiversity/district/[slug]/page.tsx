@@ -80,7 +80,7 @@ const DistrictDetailPage: React.FC = () => {
                 <Link
                   key={habitat}
                   href={`/biodiversity/habitat/${getHabitatSlug(habitat)}`}
-                  className="px-4 py-2 bg-green-100 text-green-800 rounded-full hover:bg-green-200 transition-colors"
+                  className="px-4 py-2 bg-green-100 text-green-800 rounded-[4px] hover:bg-green-200 transition-colors"
                 >
                   {formatHabitatName(habitat)}
                 </Link>
@@ -165,7 +165,7 @@ const DistrictDetailPage: React.FC = () => {
                 <Link
                   key={pa}
                   href={`/protected-areas/${pa}`}
-                  className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors"
+                  className="px-4 py-2 bg-blue-100 text-blue-800 rounded-[4px] hover:bg-blue-200 transition-colors"
                 >
                   {formatName(pa)}
                 </Link>
@@ -184,7 +184,7 @@ const DistrictDetailPage: React.FC = () => {
               {district.biodiversityHotspots.map((hotspot: string, index: number) => (
                 <div
                   key={index}
-                  className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200"
+                  className="p-4 bg-emerald-950/20 rounded-lg border border-green-200"
                 >
                   <div className="flex items-start gap-2">
                     <span className="text-2xl">🌿</span>
@@ -329,7 +329,7 @@ const DistrictDetailPage: React.FC = () => {
                 <Link
                   key={trail}
                   href={`/trails/${trail}`}
-                  className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 transition-colors"
+                  className="px-4 py-2 bg-purple-100 text-purple-800 rounded-[4px] hover:bg-purple-200 transition-colors"
                 >
                   {formatName(trail)}
                 </Link>

@@ -206,7 +206,7 @@ export default function UrbanEcologySubmodulePage() {
         </section>
 
         {/* Flood Risk Inter-Lock */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-slate-950 border border-purple-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-purple-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-1">Catastrophic Hydraulic Consequence</div>
             <h4 className="text-base font-bold text-white">Direct Correlation with 2014-Style Flood Vulnerability</h4>

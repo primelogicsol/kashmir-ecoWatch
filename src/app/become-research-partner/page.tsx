@@ -136,7 +136,7 @@ const kewStats = [
 
 function WhyPartner() {
   return (
-    <div className="rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-indigo-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Handshake className="w-4 h-4 text-indigo-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-400">Why Partner with KEW?</h3>
@@ -279,7 +279,7 @@ function FeaturedPartners() {
               <div className="text-xs font-semibold text-white">{name}</div>
               <div className="text-[10px] text-slate-400">{type}</div>
             </div>
-            <span className="text-[10px] text-slate-500 bg-white/5 rounded-full px-2 py-0.5">{region}</span>
+            <span className="text-[10px] text-slate-500 bg-white/5 rounded-[4px] px-2 py-0.5">{region}</span>
           </div>
         ))}
       </div>
@@ -381,7 +381,7 @@ export default function BecomeResearchPartnerPage() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Institutional Partnership Tracking ID</span>
                     <span className="text-xl font-mono font-bold text-indigo-400">{trackingId}</span>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-mono">STATUS: INSTITUTIONAL QUEUE</span>
+                  <span className="text-xs px-2.5 py-1 rounded-[4px] bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-mono">STATUS: INSTITUTIONAL QUEUE</span>
                 </div>
               )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
@@ -390,7 +390,7 @@ export default function BecomeResearchPartnerPage() {
                   {selectedTypes.map(id => {
                     const t = partnershipTypes.find(p => p.id === id);
                     return t ? (
-                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-full ${t.bg} ${t.accent} border ${t.border}`}>
+                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-[4px] ${t.bg} ${t.accent} border ${t.border}`}>
                         {t.icon} {t.title}
                       </span>
                     ) : null;
@@ -472,7 +472,7 @@ export default function BecomeResearchPartnerPage() {
                           <p className="text-xs text-slate-300 mb-3 leading-relaxed">{t.description}</p>
                           <div className="flex flex-wrap gap-1">
                             {t.examples.map(ex => (
-                              <span key={ex} className="text-[10px] text-slate-400 bg-white/5 rounded-full px-2 py-0.5">{ex}</span>
+                              <span key={ex} className="text-[10px] text-slate-400 bg-white/5 rounded-[4px] px-2 py-0.5">{ex}</span>
                             ))}
                           </div>
                         </button>

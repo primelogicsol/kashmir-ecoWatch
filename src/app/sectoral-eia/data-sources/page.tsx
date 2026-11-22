@@ -66,7 +66,7 @@ export default function SeiaeDataSourcesPage() {
 
       <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
         {/* EXECUTIVE MANDATE & 3 ACQUISITION TIERS */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 shadow-xl space-y-4">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/30 shadow-xl space-y-4">
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="border-emerald-400 text-emerald-300 bg-emerald-500/10 text-xs">
               Scientific Architecture

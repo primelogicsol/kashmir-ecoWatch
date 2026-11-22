@@ -356,7 +356,12 @@ export default function MedicinalPlantsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Medicinal Flora Pharmacopeia' }
         ]}
-        images={['/images/protected-network.png']}
+        images={[
+          '/images/biodiversity/biodiversity-botany-flora.jpg',
+          '/images/biodiversity/biodiversity-command-center.jpg',
+          '/images/markhor.png',
+          '/images/bear.png',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -404,7 +409,7 @@ export default function MedicinalPlantsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -556,7 +561,7 @@ export default function MedicinalPlantsPage() {
             >
               <Leaf className="w-4 h-4" />
               <span>Species Pharmacopeia Catalog</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+              <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                 activeMainTab === 'catalog' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-emerald-400'
               }`}>
                 127
@@ -573,7 +578,7 @@ export default function MedicinalPlantsPage() {
             >
               <BookOpen className="w-4 h-4" />
               <span>Classical Traditions (Unani · Ayurveda · Sowa-Rigpa)</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+              <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                 activeMainTab === 'traditions' ? 'bg-white/20 text-white font-black' : 'bg-slate-800 text-purple-300'
               }`}>
                 4 Systems
@@ -590,7 +595,7 @@ export default function MedicinalPlantsPage() {
             >
               <Pill className="w-4 h-4" />
               <span>Formulary &amp; Preparation Laboratory</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+              <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                 activeMainTab === 'formulary' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-amber-300'
               }`}>
                 6 Modes
@@ -607,7 +612,7 @@ export default function MedicinalPlantsPage() {
             >
               <FlaskConical className="w-4 h-4" />
               <span>Phytochemical Directory &amp; Mechanisms</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+              <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                 activeMainTab === 'phytochemistry' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-cyan-300'
               }`}>
                 12 Key Bioactives
@@ -642,7 +647,7 @@ export default function MedicinalPlantsPage() {
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-950' : 'text-emerald-400'}`} />
                   {preset.label}
-                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                  <span className={`px-1.5 py-0.2 rounded-[4px] text-[10px] font-mono ${
                     isActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-400'
                   }`}>
                     {preset.count}
@@ -897,10 +902,10 @@ export default function MedicinalPlantsPage() {
 
                       {/* Therapeutic Category Badge */}
                       <div className="flex flex-wrap items-center gap-1.5 mb-3">
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                        <span className="px-2 py-0.5 rounded-[4px] text-[10px] font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
                           {ethno?.therapeuticCategory || 'Holistic Remedy'}
                         </span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800 text-slate-300">
+                        <span className="px-2 py-0.5 rounded-[4px] text-[10px] font-medium bg-slate-800 text-slate-300">
                           Part: {ethno?.partUsed || 'Root/Herb'}
                         </span>
                       </div>
@@ -1004,7 +1009,7 @@ export default function MedicinalPlantsPage() {
                             {ethno?.partUsed.split(' / ')[0] || 'Herb'}
                           </td>
                           <td className="py-3 px-4 text-slate-300 whitespace-nowrap">
-                            <span className="px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-300 border border-emerald-800/50 text-[10.5px]">
+                            <span className="px-2 py-0.5 rounded-[4px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/50 text-[10.5px]">
                               {ethno?.therapeuticCategory || 'Medicinal'}
                             </span>
                           </td>
@@ -1436,7 +1441,7 @@ export default function MedicinalPlantsPage() {
       {/* ANTI-BIOPIRACY & LEGAL HARVESTING FRAMEWORK ADVISORY          */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 mt-12">
-        <div className="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-amber-950/30 border border-emerald-500/30 rounded-2xl p-6 sm:p-8">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 sm:p-8">
           <div className="flex flex-col lg:flex-row items-start gap-6">
             <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
               <ShieldAlert className="w-8 h-8" />
@@ -1486,7 +1491,7 @@ export default function MedicinalPlantsPage() {
               className="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto no-scrollbar"
             >
               {/* Modal Header */}
-              <div className="relative p-6 border-b border-slate-800 bg-gradient-to-r from-emerald-950/60 to-slate-900">
+              <div className="relative p-6 border-b border-slate-800 bg-slate-900">
                 <button
                   onClick={() => setSelectedSpecies(null)}
                   className="absolute right-5 top-5 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"

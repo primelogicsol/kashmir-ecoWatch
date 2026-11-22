@@ -277,7 +277,7 @@ export default function GeographicScopePage() {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#framework"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Explore 3-Tier Scope</span>
               <ArrowRight className="w-4 h-4" />
@@ -301,7 +301,7 @@ export default function GeographicScopePage() {
       />
 
       {/* ─── Strategic Targets / Key Scope Metrics Ribbon ────────────────────────── */}
-      <section className="relative z-20 -mt-6 sm:-mt-10 mb-16 container mx-auto px-4 sm:px-6">
+      <section className="relative z-10 mt-6 sm:mt-8 mb-16 container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {scopeMetrics.map((metric, idx) => (
             <motion.div
@@ -378,7 +378,7 @@ export default function GeographicScopePage() {
               </div>
 
               {/* The Bioregional Scale Manifesto */}
-              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/30 via-slate-900/60 to-slate-950 flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-slate-900 flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div>
@@ -469,7 +469,7 @@ export default function GeographicScopePage() {
               >
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                   <div>
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${scopeTiers[selectedTier].badgeColor} mb-2`}>
+                    <span className={`inline-block px-3 py-1 rounded-[4px] text-xs font-bold border ${scopeTiers[selectedTier].badgeColor} mb-2`}>
                       {scopeTiers[selectedTier].badge}
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-black text-white">
@@ -570,7 +570,7 @@ export default function GeographicScopePage() {
                         <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                           <IconComponent className={`w-6 h-6 ${system.color}`} />
                         </div>
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1 rounded-full bg-slate-950 border border-white/5">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1 rounded-[4px] bg-slate-950 border border-white/5">
                           {system.category}
                         </span>
                       </div>

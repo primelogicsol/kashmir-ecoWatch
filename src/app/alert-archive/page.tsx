@@ -282,7 +282,7 @@ export default function AlertArchivePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading icon={<span className="hidden"/>}
         badge={
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-indigo-500/10 border border-indigo-500/20 mb-6">
             <Archive className="w-4 h-4 text-indigo-400" />
             <span className="text-sm text-indigo-300">Historical Records</span>
           </div>

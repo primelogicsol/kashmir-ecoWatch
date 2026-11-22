@@ -234,6 +234,11 @@ export default function MigrationWindowsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Migration Windows' }
         ]}
+        images={[
+          '/images/biodiversity/biodiversity-birds-wetland.jpg',
+          '/images/biodiversity/biodiversity-command-center.jpg',
+          '/images/bear.png',
+        ]}
         actions={
           <div className="flex items-center gap-2">
             <Button size="sm" variant="outline" className="border-sky-500/30 text-sky-300 hover:bg-sky-500/10" onClick={() => handlePreset('all')}>
@@ -250,7 +255,7 @@ export default function MigrationWindowsPage() {
 
       {/* Central Asian Flyway Banner */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-sky-950/70 to-slate-900/95 border border-sky-500/20 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-sky-500/20 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-sky-500/10 rounded-xl border border-sky-500/20 text-sky-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -474,7 +479,7 @@ export default function MigrationWindowsPage() {
                         {migration.conservationStatus}
                       </Badge>
                       {migration.localName && (
-                        <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-medium">
+                        <span className="ml-auto text-[10px] px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-medium">
                           {migration.localName}
                         </span>
                       )}
@@ -671,7 +676,7 @@ export default function MigrationWindowsPage() {
                       IUCN: {selectedMigration.conservationStatus}
                     </Badge>
                     {selectedMigration.localName && (
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-semibold">
+                      <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-semibold">
                         Kashmiri: {selectedMigration.localName}
                       </span>
                     )}

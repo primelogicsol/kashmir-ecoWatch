@@ -824,18 +824,24 @@ export const searchAll = (query: string) => {
   );
 
   // 5. Trails
+  const matchDistrict = (d: any, q: string) => {
+    if (typeof d === 'string') return d.toLowerCase().includes(q);
+    if (Array.isArray(d)) return d.some(item => typeof item === 'string' && item.toLowerCase().includes(q));
+    return false;
+  };
+
   const matchedTrails = [
     ...trailsData.filter(t => 
       t.name.toLowerCase().includes(lowerQuery) ||
       t.slug.toLowerCase().includes(lowerQuery) ||
-      t.district.toLowerCase().includes(lowerQuery) ||
+      matchDistrict(t.district, lowerQuery) ||
       (isTrailCategory && lowerQuery.length <= 8)
     ),
     ...trailIntelligenceData
       .filter(t => 
         t.name.toLowerCase().includes(lowerQuery) ||
         t.slug.toLowerCase().includes(lowerQuery) ||
-        (t.district && t.district.toLowerCase().includes(lowerQuery)) ||
+        matchDistrict(t.district, lowerQuery) ||
         (isTrailCategory && lowerQuery.length <= 8)
       )
       .slice(0, 8)
@@ -850,7 +856,7 @@ export const searchAll = (query: string) => {
         duration: t.duration || '1 day',
         difficulty: (t.difficulty as any) || 'moderate',
         elevationGain: t.elevationGainM || 600,
-        district: t.district || 'Kashmir',
+        district: Array.isArray(t.district) ? t.district.join(', ') : (t.district || 'Kashmir'),
         habitats: [],
         bestSeason: [],
         permitRequired: t.permitRequired || false,

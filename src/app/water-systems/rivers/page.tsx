@@ -95,7 +95,7 @@ export default function RiversPage() {
               Filter the 127 mapped rivers and streams by arterial hierarchy, cold-water trout suitability, or mining stress.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-indigo-400">{displayedRivers.length}</strong> of {totalCount} systems
           </span>
         </div>
@@ -247,7 +247,7 @@ export default function RiversPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-indigo-500/20 hover:border-indigo-500/40 transition-all group block"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
                       <Wind className="w-2.5 h-2.5" />
                       {river.category}
                     </span>
@@ -375,7 +375,7 @@ export default function RiversPage() {
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/60 via-slate-900 to-cyan-950/60 border border-indigo-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-indigo-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 shrink-0">
                     <Camera className="w-5 h-5" />

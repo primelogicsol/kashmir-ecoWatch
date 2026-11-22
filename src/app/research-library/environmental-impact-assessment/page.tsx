@@ -362,7 +362,7 @@ const reportSections = [
                   <p className="text-sm font-semibold text-white">{w.name}</p>
                   <p className="text-xs text-slate-400 mt-1">{w.threat}</p>
                 </div>
-                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${w.statusBg} ${w.statusColor} border ${w.statusBorder}`}>
+                <span className={`text-xs font-semibold px-2 py-1 rounded-[4px] ${w.statusBg} ${w.statusColor} border ${w.statusBorder}`}>
                   {w.status}
                 </span>
               </div>
@@ -663,7 +663,7 @@ export default function EnvironmentalImpactAssessmentPage() {
                 <div className={`h-1 bg-gradient-to-r ${section.gradient}`} />
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${section.gradient} flex items-center justify-center text-white font-bold text-sm`}>
+                    <div className={`w-10 h-10 rounded-xl bg-slate-900 ${section.gradient} flex items-center justify-center text-white font-bold text-sm`}>
                       {section.number}
                     </div>
                     <div className="flex items-center gap-2">
@@ -805,7 +805,7 @@ export default function EnvironmentalImpactAssessmentPage() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-2xl border border-slate-800 bg-gradient-to-r from-blue-500/5 to-emerald-500/5 backdrop-blur-sm p-8 text-center"
+          className="rounded-2xl border border-slate-800 bg-slate-900 backdrop-blur-sm p-8 text-center"
         >
           <h3 className="text-xl font-bold text-white mb-2">Explore the Full Research Library</h3>
           <p className="text-sm text-slate-400 max-w-xl mx-auto mb-5">

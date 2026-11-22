@@ -8,10 +8,11 @@ import {
   Activity, ChevronRight, AlertTriangle, MapPin,
   Shield, CheckCircle, Eye,
   ChevronLeft, TrendingUp, BarChart3, Clock, Mountain,
-  Snowflake, Users, Building2, Triangle, Zap
+  Snowflake, Users, Building2, Triangle, Zap, RefreshCw, Radio, Wifi, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { RelatedHazardIntelligence } from '@/components/hazard/RelatedHazardIntelligence';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
@@ -243,7 +244,20 @@ export default function EarthquakesPage() {
   const router = useRouter();
   const { filter, setScope, setDistrict } = useGlobalFilter();
 
-  const { data: liveData, recentEvents, totalRegionalQuakes, loading, isStale, error } = useEarthquakeIntelligence();
+  const {
+    data: liveData,
+    recentEvents,
+    totalRegionalQuakes,
+    loading,
+    isStale,
+    error,
+    activeProviders,
+    isLiveStreaming,
+    liveAlert,
+    dismissAlert,
+    refresh,
+    lastUpdated,
+  } = useEarthquakeIntelligence();
 
   const [zoneFilter, setZoneFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
@@ -347,10 +361,10 @@ export default function EarthquakesPage() {
           </div>
         }
         images={[
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/hazard-intelligence/hazard-earthquakes-seismic.jpg',
+          '/images/hazard-intelligence/hazard-command-center.jpg',
+          '/images/hazard-intelligence/hazard-landslides-monitoring.jpg',
+          '/images/hazard-intelligence/hazard-floods-riverine.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -364,39 +378,94 @@ export default function EarthquakesPage() {
         </div>
       )}
 
-      {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
-      <ModuleKpiStrip kpis={metrics} iconColor="text-red-500" />
-
-      
-      {/* ── Live USGS Regional Telemetry Banner ──────────────────────────── */}
-      <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-red-500/20 p-4 bg-gradient-to-r from-red-950/30 via-slate-900 to-slate-950">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      {/* ── Urgent Real-Time Flash Alert (Sub-Second EMSC WebSocket) ── */}
+      {liveAlert && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="container mx-auto px-6 mt-4"
+        >
+          <div className="bg-red-500/20 border-2 border-red-500 text-white p-4 rounded-xl flex items-center justify-between shadow-lg shadow-red-950/50 backdrop-blur-md">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
-                <Activity className="w-5 h-5 text-red-400 animate-pulse" />
+              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center animate-bounce flex-shrink-0">
+                <Zap className="w-5 h-5 text-white" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">USGS Global Seismographic Network</span>
-                  <Badge variant="success" size="sm" className="text-[9px]">Live API Active</Badge>
+                  <span className="text-xs font-black uppercase tracking-wider text-red-300">⚡ Live Seismic Flash Alert</span>
+                  <Badge variant="critical" size="sm">Sub-Second Telemetry</Badge>
+                  <span className="text-[10px] text-red-200/80">via {liveAlert.source}</span>
+                </div>
+                <p className="text-sm font-bold text-white mt-0.5">
+                  M {liveAlert.mag.toFixed(1)} event detected near {liveAlert.place} · Depth: {liveAlert.depth_km} km
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={dismissAlert}
+              className="p-1.5 rounded-lg hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+              title="Dismiss alert"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        </motion.div>
+      )}
+
+      {/* ── KPI STRIP ────────────────────────────────────────────────────── */}
+      <ModuleKpiStrip kpis={metrics} iconColor="text-red-500" />
+
+      {/* ── High-Speed Dual-Telemetry (EMSC + USGS) Regional Banner ────────── */}
+      <section className="container mx-auto px-6 mt-4">
+        <Card className="glass-intense border-red-500/20 p-4 bg-slate-900">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center flex-shrink-0">
+                <Activity className="w-6 h-6 text-red-400 animate-pulse" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">Fastest Alert Telemetry Engine</span>
+                  <Badge variant="success" size="sm" className="text-[9px] bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                    {activeProviders}
+                  </Badge>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] text-[10px] font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                    <span className={`w-1.5 h-1.5 rounded-full ${isLiveStreaming ? 'bg-cyan-400 animate-ping' : 'bg-slate-500'}`} />
+                    <span>{isLiveStreaming ? 'EMSC WebSocket Active' : 'Polling Sync'}</span>
+                  </div>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-0.5">
-                  Real-time feed across Western Himalayan coordinates (32°N–37.5°N, 73°E–80.5°E) · 30-day continuous surveillance.
+                  Monitoring Western Himalayas & Kashmir (32°N–37.5°N, 73°E–80.5°E) · Capturing micro-tremors (M2.0+) and verified global events.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 flex-wrap text-xs">
+            <div className="flex items-center gap-2 flex-wrap text-xs self-stretch sm:self-auto justify-between sm:justify-end">
               <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">
                 Regional Tremors (30d): <strong className="text-white font-bold">{totalRegionalQuakes || 0}</strong>
               </div>
               {recentEvents && recentEvents.length > 0 && (
                 <div className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/25 text-red-300 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
-                  <span>Latest: <strong>M {recentEvents[0].mag.toFixed(1)}</strong> · {recentEvents[0].place} ({new Date(recentEvents[0].time).toLocaleDateString()})</span>
+                  <span>Latest: <strong>M {recentEvents[0].mag.toFixed(1)}</strong> · {recentEvents[0].place}</span>
+                  {recentEvents[0].source && (
+                    <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-red-500/20 text-red-200 border border-red-500/30 font-semibold">
+                      {recentEvents[0].source}
+                    </span>
+                  )}
                 </div>
               )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => refresh()}
+                disabled={loading}
+                className="border-white/20 text-xs text-white hover:bg-white/10 flex items-center gap-1.5"
+                title="Refresh live feeds"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-red-400' : 'text-slate-300'}`} />
+                <span>{loading ? 'Syncing...' : 'Refresh'}</span>
+              </Button>
             </div>
           </div>
         </Card>
@@ -503,30 +572,10 @@ export default function EarthquakesPage() {
         </div>
       </section>
 
-      {/* ── CROSS-LINKS ──────────────────────────────────────────────────── */}
-      <section className="py-8 border-t border-white/5">
-        <div className="container mx-auto px-6">
-          <h2 className="text-lg font-bold text-white mb-4">Explore Related Hazard Modules</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'Avalanche Zones', href: '/hazard-intelligence/avalanches', icon: Snowflake, color: 'text-cyan-400', border: 'border-cyan-500/20 hover:border-cyan-500/40' },
-              { label: 'Flood Zones', href: '/hazard-intelligence/floods', icon: TrendingUp, color: 'text-blue-400', border: 'border-blue-500/20 hover:border-blue-500/40' },
-              { label: 'Landslide Zones', href: '/hazard-intelligence/landslides', icon: Mountain, color: 'text-amber-400', border: 'border-amber-500/20 hover:border-amber-500/40' },
-              { label: 'Hazard Overview', href: '/hazard-intelligence', icon: Shield, color: 'text-emerald-400', border: 'border-emerald-500/20 hover:border-emerald-500/40' },
-            ].map(link => (
-              <button
-                key={link.href}
-                onClick={() => router.push(link.href)}
-                className={`flex items-center gap-3 p-4 rounded-xl border bg-white/[0.02] transition-all text-left group ${link.border}`}
-              >
-                <link.icon className={`w-5 h-5 ${link.color}`} />
-                <span className="text-sm text-slate-300 group-hover:text-white font-medium">{link.label}</span>
-                <ChevronRight className="w-4 h-4 text-slate-600 ml-auto group-hover:text-slate-400" />
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── RELATED HAZARD INTELLIGENCE (6 CONTEXTUAL MODULES) ─────────── */}
+      <div className="container mx-auto px-6 pb-12">
+        <RelatedHazardIntelligence currentModule="earthquakes" />
+      </div>
     </main>
   );
 }

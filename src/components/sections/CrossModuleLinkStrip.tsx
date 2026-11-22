@@ -140,7 +140,7 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
       >
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
               <Layers className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -166,7 +166,7 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
                   onClick={() => link.enabled && router.push(link.route)}
                 >
                   <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${link.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${link.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">

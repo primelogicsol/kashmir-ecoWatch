@@ -135,7 +135,7 @@ export default function SupportSponsorshipPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#partnerships"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Collaboration Tiers</span>
               <ArrowRight className="w-4 h-4" />
@@ -188,11 +188,11 @@ export default function SupportSponsorshipPage() {
         {/* ─── The Non-Commercial Knowledge Return Covenant ─────────────────────── */}
         <section>
           <div className="max-w-6xl mx-auto">
-            <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/20 via-slate-900/80 to-slate-950 shadow-2xl relative overflow-hidden">
+            <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/20 bg-slate-900 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -z-10" />
               
               <div className="max-w-3xl mb-8">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Permanent Non-Commercial Mandate</span>
                 </div>
@@ -283,7 +283,7 @@ export default function SupportSponsorshipPage() {
                           <div className={`p-4 rounded-2xl ${tier.bg} group-hover:scale-110 transition-transform`}>
                             <tier.icon className={`w-7 h-7 ${tier.color}`} />
                           </div>
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
                             {tier.badge}
                           </span>
                         </div>

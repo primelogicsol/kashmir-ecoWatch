@@ -13,8 +13,9 @@ export interface AvalancheRecord {
   road_or_pass: string;
   season: 'Nov-Mar' | 'Dec-Feb' | 'Year-round';
   historical_events_count: number;
-  verification_status: 'Verified' | 'Field-Assessed' | 'Remote-Sensed' | 'Modelled';
-  current_status: 'Active Warning' | 'Watch' | 'Seasonal' | 'Clear';
+  verification_status: 'Verified' | 'Field-Assessed' | 'Remote-Sensed' | 'Modelled' | string;
+  current_status: 'Seasonal' | 'Watch' | 'Seasonal' | 'Clear' | 'Normal';
+  provenance?: any;
   latitude: number;
   longitude: number;
   live_snowfall_24h?: number;
@@ -44,7 +45,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Nov-Mar',
     historical_events_count: 147,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -119,7 +120,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Nov-Mar',
     historical_events_count: 112,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -219,7 +220,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Dec-Feb',
     historical_events_count: 95,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -244,7 +245,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Nov-Mar',
     historical_events_count: 134,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -346,7 +347,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Nov-Mar',
     historical_events_count: 87,
     verification_status: 'Field-Assessed',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -421,7 +422,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Year-round',
     historical_events_count: 156,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -521,7 +522,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Year-round',
     historical_events_count: 203,
     verification_status: 'Verified',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -548,7 +549,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Year-round',
     historical_events_count: 178,
     verification_status: 'Remote-Sensed',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,
@@ -673,7 +674,7 @@ export const avalancheData: AvalancheRecord[] = [
     season: 'Nov-Mar',
     historical_events_count: 124,
     verification_status: 'Remote-Sensed',
-    current_status: 'Active Warning',
+    current_status: 'Seasonal',
     live_snowfall_24h: 0,
     live_snow_depth: 0.12,
     live_wind_speed: 14,

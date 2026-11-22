@@ -98,6 +98,12 @@ export default function AgricultureEiaPage() {
           </span>
         }
         subtitle="Scientific assessment of agricultural landscapes, crop production, irrigation systems, soil health, pollution pathways, land-use transformation, and climate resilience across Kashmir."
+        images={[
+          '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg',
+          '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
+          '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
+          '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg'
+        ]}
       />
 
       <SectoralEiaNav />
@@ -194,7 +200,7 @@ export default function AgricultureEiaPage() {
         {/* ======================================================== */}
         {activeTab === 'overview' && (
           <div className="space-y-8">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-lime-950/60 via-slate-900 to-slate-950 border border-lime-500/30 shadow-xl">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-lime-500/30 shadow-xl">
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 <div className="space-y-3 max-w-4xl">
                   <div className="flex flex-wrap items-center gap-2">

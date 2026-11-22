@@ -2,129 +2,86 @@
 
 import React, { useState } from 'react';
 import { CircleMarker, Popup } from 'react-leaflet';
-import * as L from 'leaflet';
+import sightingsGeoJson from '@/data/geojson/sightings.json';
 
 interface SightingLayerProps {
   visible?: boolean;
   onFeatureClick?: (feature: any) => void;
 }
 
-// Mock wildlife sightings data (in production, this would come from an API)
-const mockSightingsData = [
-  {
-    id: 'sighting-1',
-    species: 'Hangul (Kashmir Stag)',
-    scientificName: 'Cervus hanglu hanglu',
-    location: 'Dachigam National Park',
-    district: 'Srinagar',
-    coordinates: { lat: 34.1500, lng: 74.8500 },
-    timestamp: '2024-03-25T08:30:00Z',
-    count: 3,
-    habitat: 'Temperate forest',
-    verified: true,
-  },
-  {
-    id: 'sighting-2',
-    species: 'Snow Leopard',
-    scientificName: 'Panthera uncia',
-    location: 'Gurez Valley',
-    district: 'Bandipora',
-    coordinates: { lat: 34.7000, lng: 74.8500 },
-    timestamp: '2024-03-24T14:15:00Z',
-    count: 1,
-    habitat: 'Alpine zone',
-    verified: true,
-  },
-  {
-    id: 'sighting-3',
-    species: 'Himalayan Monal',
-    scientificName: 'Lophophorus impejanus',
-    location: 'Aru Valley',
-    district: 'Anantnag',
-    coordinates: { lat: 33.8833, lng: 75.2500 },
-    timestamp: '2024-03-23T10:00:00Z',
-    count: 5,
-    habitat: 'Rhododendron forest',
-    verified: true,
-  },
-  {
-    id: 'sighting-4',
-    species: 'Brown Bear',
-    scientificName: 'Ursus arctos isabellinus',
-    location: 'Kishtwar High Altitude National Park',
-    district: 'Kishtwar',
-    coordinates: { lat: 33.2833, lng: 75.8167 },
-    timestamp: '2024-03-22T16:45:00Z',
-    count: 2,
-    habitat: 'Alpine meadows',
-    verified: false,
-  },
-];
-
-const speciesColors: Record<string, string> = {
-  'Hangul (Kashmir Stag)': '#ef4444',    // CR - red
-  'Snow Leopard': '#f59e0b',             // VU - amber
-  'Himalayan Monal': '#22c55e',          // LC - green
-  'Brown Bear': '#f59e0b',               // VU - amber
-};
-
 export function SightingLayer({ visible = true, onFeatureClick }: SightingLayerProps) {
-  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   if (!visible) return null;
 
-  const handleSightingClick = (sighting: any) => {
-    if (onFeatureClick) {
-      onFeatureClick({
-        type: 'sighting',
-        ...sighting,
-      });
-    }
-  };
-
   return (
     <>
-      {mockSightingsData.map((sighting) => {
-        const coordinates = sighting.coordinates;
-        if (!coordinates) return null;
-
-        const color = speciesColors[sighting.species] || '#64748b';
-        const isHovered = hoveredFeature === sighting.id;
+      {sightingsGeoJson.features.map((feature) => {
+        const props = feature.properties;
+        const [lng, lat] = feature.geometry.coordinates;
+        const isHovered = hoveredId === props.id;
 
         return (
           <CircleMarker
-            key={sighting.id}
-            center={[coordinates.lat, coordinates.lng]}
-            radius={isHovered ? 12 : 10}
+            key={props.id}
+            center={[lat, lng]}
+            radius={isHovered ? 12 : 9}
             pathOptions={{
-              color: color,
-              fillColor: color,
-              fillOpacity: 0.8,
-              weight: 3,
-              dashArray: sighting.verified ? undefined : '3, 3',
+              fillColor: '#10b981', // emerald-500
+              color: props.isFuzzed ? '#f59e0b' : '#ffffff', // Amber boundary for privacy-fuzzed anti-poaching
+              weight: props.isFuzzed ? 2.5 : 2,
+              fillOpacity: isHovered ? 0.9 : 0.75,
+              dashArray: props.isFuzzed ? '3, 3' : undefined,
             }}
             eventHandlers={{
-              mouseover: () => setHoveredFeature(sighting.id),
-              mouseout: () => setHoveredFeature(null),
-              click: () => handleSightingClick(sighting),
+              mouseover: () => setHoveredId(props.id),
+              mouseout: () => setHoveredId(null),
+              click: () => {
+                onFeatureClick?.({
+                  type: 'sighting',
+                  id: props.id,
+                  name: `${props.species} Observation (${props.count} indiv.)`,
+                  species: props.species,
+                  scientificName: props.scientificName,
+                  location: props.location,
+                  region: props.region,
+                  district: props.district,
+                  count: props.count,
+                  timestamp: props.timestamp,
+                  habitat: props.habitat,
+                  observerAffiliation: props.observerAffiliation,
+                  evidenceSource: props.evidenceSource,
+                  isFuzzed: props.isFuzzed,
+                  verificationStatus: props.verificationStatus,
+                  description: `Verified scientific observation of ${props.count} ${props.species} (${props.scientificName}) in ${props.location}, ${props.district}. Observer: ${props.observerAffiliation}. Source: ${props.evidenceSource}. ${props.isFuzzed ? 'Coordinates spatially generalized to 1km grid pursuant to KEW Anti-Poaching Wildlife Protection Standard.' : ''}`,
+                  metrics: [
+                    { label: 'Observed Count', value: `${props.count} individuals` },
+                    { label: 'Habitat', value: props.habitat },
+                    { label: 'Affiliation', value: props.observerAffiliation },
+                    { label: 'Timestamp', value: new Date(props.timestamp).toLocaleDateString() },
+                    { label: 'Spatial Privacy', value: props.isFuzzed ? 'Fuzzed (Anti-Poaching Policy)' : 'Exact Public Grid' }
+                  ]
+                });
+              },
             }}
           >
             <Popup>
-              <div className="p-2 min-w-[250px]">
-                <h3 className="font-semibold text-slate-900">{sighting.species}</h3>
-                <p className="text-xs text-slate-500 italic">{sighting.scientificName}</p>
-                <div className="mt-2 space-y-1 text-xs text-slate-500">
-                  <p>Location: {sighting.location}</p>
-                  <p>District: {sighting.district}</p>
-                  <p>Count: <span className="font-medium">{sighting.count}</span></p>
-                  <p>Habitat: {sighting.habitat}</p>
-                  <p>Date: {new Date(sighting.timestamp).toLocaleDateString()}</p>
-                  <p>
-                    Status:{' '}
-                    <span className={`font-medium ${sighting.verified ? 'text-emerald-600' : 'text-amber-600'}`}>
-                      {sighting.verified ? 'Verified' : 'Unverified'}
+              <div className="p-2 min-w-[220px]">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Verified Observation</span>
+                  {props.isFuzzed && (
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
+                      Privacy-Blurred
                     </span>
-                  </p>
+                  )}
+                </div>
+                <h3 className="font-bold text-slate-900 text-sm">{props.species}</h3>
+                <p className="text-xs italic text-slate-500">{props.scientificName}</p>
+                <div className="mt-2 space-y-1 text-xs text-slate-600">
+                  <p><span className="font-medium text-slate-700">Count:</span> {props.count}</p>
+                  <p><span className="font-medium text-slate-700">Location:</span> {props.location}</p>
+                  <p><span className="font-medium text-slate-700">Habitat:</span> {props.habitat}</p>
+                  <p><span className="font-medium text-slate-700">Source:</span> {props.observerAffiliation}</p>
                 </div>
               </div>
             </Popup>

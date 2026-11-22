@@ -50,7 +50,7 @@ export function HabitatIntelligenceCard({ habitat, onClick }: HabitatIntelligenc
         <div className="mb-4">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
                 <Icon className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -149,7 +149,7 @@ export function HabitatIntelligenceCard({ habitat, onClick }: HabitatIntelligenc
         )}
         
         {/* Protected Area Overlap */}
-        <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 mb-4">
+        <div className="p-3 rounded-lg bg-slate-900 border border-amber-500/20 mb-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-amber-400" />

@@ -248,7 +248,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
           {/* Title Block */}
           <div className="flex items-start gap-4 mb-6">
-            <div className={`p-3 rounded-xl bg-gradient-to-br ${getGradientForVariant()} border border-white/10`}>
+            <div className={`p-3 rounded-xl bg-slate-900 ${getGradientForVariant()} border border-white/10`}>
               <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
             <div className="flex-1">
@@ -384,7 +384,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
       {/* CTA Strip */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <Card className={`glass-intense border-slate-700/50 bg-gradient-to-r ${theme.bgGradient}`}>
+        <Card className={`glass-intense border-slate-700/50 bg-slate-900 ${theme.bgGradient}`}>
           <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-semibold text-white mb-1">

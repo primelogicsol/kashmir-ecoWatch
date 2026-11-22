@@ -1,0 +1,2054 @@
+{
+  "type": "FeatureCollection",
+  "name": "KEW_Wildlife_Corridors_Western_Himalayas",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "dachigam-tral-shikargah",
+      "properties": {
+        "id": "dachigam-tral-shikargah",
+        "slug": "dachigam-tral-shikargah",
+        "name": "Dachigam–Tral–Shikargah Hangul Corridor",
+        "type": "Flagship Species Corridor",
+        "length": "28 km",
+        "scientific_classification": "observed_movement",
+        "methodology": "GPS/VHF Collared Hangul Movement Telemetry & Field Transects (WII & Wildlife Protection Dept)",
+        "spatial_uncertainty": "± 200 m (Terrain-following ridge/saddle movement)",
+        "source": "Wildlife Institute of India & J&K Wildlife Protection Department (2024)",
+        "priority": "Critical",
+        "threat_level": "Critical",
+        "status": "Threatened",
+        "keySpecies": [
+          "hangul",
+          "leopard",
+          "himalayan-black-bear",
+          "musk-deer"
+        ],
+        "districts": [
+          "Srinagar",
+          "Pulwama",
+          "Anantnag"
+        ],
+        "connectedAreas": [
+          "dachigam-national-park",
+          "overa-aru-wildlife-sanctuary",
+          "shikargah-conservation-reserve",
+          "khiram-conservation-reserve",
+          "khonmoh-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.9382,
+            34.1372
+          ],
+          [
+            74.985,
+            34.082
+          ],
+          [
+            75.05,
+            34.02
+          ],
+          [
+            75.11,
+            33.95
+          ],
+          [
+            75.15,
+            33.91
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dachigam-overa-aru-landscape",
+      "properties": {
+        "id": "dachigam-overa-aru-landscape",
+        "slug": "dachigam-overa-aru-landscape",
+        "name": "Dachigam–Overa-Aru Landscape Linkage",
+        "type": "Protected-Area Landscape Corridor",
+        "length": "45 km",
+        "scientific_classification": "modeled_connectivity",
+        "methodology": "Circuitscape Landscape Resistance Model & Least-Cost Path Analysis",
+        "spatial_uncertainty": "± 500 m (High-elevation alpine pass corridor)",
+        "source": "Western Himalayan Ecological Connectivity Consortium (2023)",
+        "priority": "Critical",
+        "threat_level": "High",
+        "status": "Active",
+        "keySpecies": [
+          "hangul",
+          "himalayan-black-bear",
+          "leopard",
+          "musk-deer",
+          "western-tragopan"
+        ],
+        "districts": [
+          "Srinagar",
+          "Anantnag",
+          "Ganderbal"
+        ],
+        "connectedAreas": [
+          "dachigam-national-park",
+          "overa-aru-wildlife-sanctuary",
+          "shikargah-conservation-reserve",
+          "khiram-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.9382,
+            34.1372
+          ],
+          [
+            75.08,
+            34.15
+          ],
+          [
+            75.18,
+            34.12
+          ],
+          [
+            75.25,
+            34.05
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dachigam-sindh-gurez",
+      "properties": {
+        "id": "dachigam-sindh-gurez",
+        "slug": "dachigam-sindh-gurez",
+        "name": "Dachigam–Sindh Valley–Gurez Historical Route",
+        "type": "Historical Species Movement Corridor",
+        "length": "65 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "Historical Game Warden Logs (1900s)",
+        "priority": "High",
+        "threat_level": "High",
+        "status": "Active",
+        "keySpecies": [
+          "hangul",
+          "himalayan-black-bear",
+          "leopard",
+          "musk-deer"
+        ],
+        "districts": [
+          "Srinagar",
+          "Ganderbal",
+          "Bandipora"
+        ],
+        "connectedAreas": [
+          "dachigam-national-park",
+          "limber-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.0378,
+            34.1372
+          ],
+          [
+            74.45,
+            34.15
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "khonmoh-khrew-dachigam",
+      "properties": {
+        "id": "khonmoh-khrew-dachigam",
+        "slug": "khonmoh-khrew-dachigam",
+        "name": "Khonmoh–Khrew–Dachigam Buffer Link",
+        "type": "Urban-Edge Buffer Corridor",
+        "length": "18 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Threatened",
+        "keySpecies": [
+          "leopard",
+          "himalayan-black-bear",
+          "musk-deer",
+          "forest-birds"
+        ],
+        "districts": [
+          "Srinagar",
+          "Pulwama"
+        ],
+        "connectedAreas": [
+          "dachigam-national-park",
+          "khonmoh-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.0378,
+            34.1372
+          ],
+          [
+            74.96,
+            34.04
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "shikargah-khiram-khangund",
+      "properties": {
+        "id": "shikargah-khiram-khangund",
+        "slug": "shikargah-khiram-khangund",
+        "name": "Shikargah–Khiram–Khangund Forest Corridor",
+        "type": "Hangul Recovery Corridor",
+        "length": "22 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "hangul",
+          "himalayan-black-bear",
+          "leopard",
+          "pheasants"
+        ],
+        "districts": [
+          "Anantnag",
+          "Pulwama"
+        ],
+        "connectedAreas": [
+          "overa-aru-wildlife-sanctuary",
+          "shikargah-conservation-reserve",
+          "khiram-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.15,
+            33.95
+          ],
+          [
+            75.11,
+            33.93
+          ],
+          [
+            75.18,
+            33.92
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "overa-aru-rajparian-daksum",
+      "properties": {
+        "id": "overa-aru-rajparian-daksum",
+        "slug": "overa-aru-rajparian-daksum",
+        "name": "Overa-Aru–Rajparian–Daksum Corridor",
+        "type": "Montane Forest Corridor",
+        "length": "32 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "himalayan-black-bear",
+          "leopard",
+          "musk-deer",
+          "pheasants",
+          "kashmir-flycatcher"
+        ],
+        "districts": [
+          "Anantnag"
+        ],
+        "connectedAreas": [
+          "overa-aru-wildlife-sanctuary",
+          "rajparian-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.15,
+            33.95
+          ],
+          [
+            75.25,
+            33.85
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rajparian-hirpora-pir-panjal",
+      "properties": {
+        "id": "rajparian-hirpora-pir-panjal",
+        "slug": "rajparian-hirpora-pir-panjal",
+        "name": "Rajparian–Hirpora–Pir Panjal Link",
+        "type": "Pir Panjal Upland Corridor",
+        "length": "55 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Threatened",
+        "keySpecies": [
+          "markhor",
+          "himalayan-black-bear",
+          "himalayan-brown-bear",
+          "leopard",
+          "musk-deer"
+        ],
+        "districts": [
+          "Anantnag",
+          "Shopian",
+          "Kulgam"
+        ],
+        "connectedAreas": [
+          "rajparian-wildlife-sanctuary",
+          "hirpora-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.25,
+            33.85
+          ],
+          [
+            75.05,
+            33.65
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kazinag-limber-lachipora",
+      "properties": {
+        "id": "kazinag-limber-lachipora",
+        "slug": "kazinag-limber-lachipora",
+        "name": "Kazinag–Limber–Lachipora Markhor Corridor",
+        "type": "North Kashmir Mountain Corridor",
+        "length": "15 km",
+        "scientific_classification": "observed_movement",
+        "methodology": "Markhor GPS Collar Monitoring & Wildlife Trust of India Direct Visual Transects",
+        "spatial_uncertainty": "± 150 m (Steep cliffside transit trails)",
+        "source": "Wildlife Trust of India & J&K Dept of Wildlife Protection (2022)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "markhor",
+          "musk-deer",
+          "himalayan-black-bear",
+          "leopard",
+          "western-tragopan"
+        ],
+        "districts": [
+          "Baramulla",
+          "Kupwara"
+        ],
+        "connectedAreas": [
+          "kazinag-national-park",
+          "limber-wildlife-sanctuary",
+          "lachipora-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.0333,
+            34.2333
+          ],
+          [
+            74.1,
+            34.2
+          ],
+          [
+            74.15,
+            34.18
+          ],
+          [
+            74.11,
+            34.14
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kazinag-lolab-kupwara",
+      "properties": {
+        "id": "kazinag-lolab-kupwara",
+        "slug": "kazinag-lolab-kupwara",
+        "name": "Kazinag–Lolab–Kupwara Forest Link",
+        "type": "Forest Connectivity Landscape",
+        "length": "35 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "himalayan-black-bear",
+          "leopard",
+          "musk-deer",
+          "pheasants",
+          "forest-birds"
+        ],
+        "districts": [
+          "Kupwara",
+          "Baramulla"
+        ],
+        "connectedAreas": [
+          "kazinag-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.05,
+            34.15
+          ],
+          [
+            74.13,
+            34.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wular-hygam-malgam",
+      "properties": {
+        "id": "wular-hygam-malgam",
+        "slug": "wular-hygam-malgam",
+        "name": "Wular–Hygam–Malgam Wetland Corridor",
+        "type": "Wetland Flyway Corridor",
+        "length": "22 km",
+        "scientific_classification": "habitat_linkage",
+        "methodology": "Hydrological Connectivity & Wetland Bird Flyway Telemetry",
+        "spatial_uncertainty": "± 200 m (Alluvial wetland drainage corridor)",
+        "source": "Wular Conservation & Management Authority (WUCMA 2024)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Degraded",
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds",
+          "bar-headed-goose",
+          "ducks",
+          "geese",
+          "waders"
+        ],
+        "districts": [
+          "Bandipora",
+          "Baramulla"
+        ],
+        "connectedAreas": [
+          "wular-lake-wetland-reserve",
+          "hygam-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.6,
+            34.3333
+          ],
+          [
+            74.55,
+            34.28
+          ],
+          [
+            74.51,
+            34.24
+          ],
+          [
+            74.48,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hokersar-shallabugh-mirgund",
+      "properties": {
+        "id": "hokersar-shallabugh-mirgund",
+        "slug": "hokersar-shallabugh-mirgund",
+        "name": "Hokersar–Shallabugh–Mirgund Wetland Link",
+        "type": "Migratory Waterbird Corridor",
+        "length": "16 km",
+        "scientific_classification": "habitat_linkage",
+        "methodology": "Central Asian Flyway Migratory Waterfowl Monitoring",
+        "spatial_uncertainty": "± 250 m (Fluvial floodplain flyway)",
+        "source": "J&K Wetland Management Division & BNHS (2023)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Degraded",
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds",
+          "northern-pintail",
+          "mallard",
+          "gadwall",
+          "wigeon"
+        ],
+        "districts": [
+          "Srinagar",
+          "Ganderbal",
+          "Budgam"
+        ],
+        "connectedAreas": [
+          "hokersar-wetland-reserve",
+          "shallabugh-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.704,
+            34.095
+          ],
+          [
+            74.68,
+            34.13
+          ],
+          [
+            74.71,
+            34.18
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pampore-wetland-chain",
+      "properties": {
+        "id": "pampore-wetland-chain",
+        "slug": "pampore-wetland-chain",
+        "name": "Pampore Wetland Chain Corridor",
+        "type": "Small Wetland Network Corridor",
+        "length": "12 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Threatened",
+        "keySpecies": [
+          "wetland-birds",
+          "migratory-waterfowl",
+          "waders"
+        ],
+        "districts": [
+          "Pulwama"
+        ],
+        "connectedAreas": [
+          "chatlam-wetland-reserve",
+          "freshkoori-wetland-reserve",
+          "manibugh-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.9667,
+            33.9883
+          ],
+          [
+            74.9817,
+            33.955
+          ],
+          [
+            74.9583,
+            33.9917
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dal-nigeen-anchar-wetland",
+      "properties": {
+        "id": "dal-nigeen-anchar-wetland",
+        "slug": "dal-nigeen-anchar-wetland",
+        "name": "Dal–Nigeen–Anchar Urban Wetland Link",
+        "type": "Urban Wetland Connectivity System",
+        "length": "15 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Degraded",
+        "keySpecies": [
+          "wetland-birds",
+          "marsh-birds",
+          "freshwater-fish"
+        ],
+        "districts": [
+          "Srinagar",
+          "Ganderbal"
+        ],
+        "connectedAreas": [
+          "shallabugh-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.8,
+            34.1
+          ],
+          [
+            74.9,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sindh-river-alpine",
+      "properties": {
+        "id": "sindh-river-alpine",
+        "slug": "sindh-river-alpine",
+        "name": "Sindh River Alpine Corridor",
+        "type": "River-Valley Connectivity Corridor",
+        "length": "48 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "himalayan-brown-bear",
+          "musk-deer",
+          "himalayan-marmot",
+          "alpine-birds"
+        ],
+        "districts": [
+          "Ganderbal"
+        ],
+        "connectedAreas": [
+          "thajwas-baltal-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.25,
+            34.28
+          ],
+          [
+            75.33,
+            34.36
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lidder-river-alpine",
+      "properties": {
+        "id": "lidder-river-alpine",
+        "slug": "lidder-river-alpine",
+        "name": "Lidder River Alpine Corridor",
+        "type": "River-Valley Connectivity Corridor",
+        "length": "52 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "himalayan-black-bear",
+          "musk-deer",
+          "leopard",
+          "alpine-birds",
+          "trout"
+        ],
+        "districts": [
+          "Anantnag"
+        ],
+        "connectedAreas": [
+          "overa-aru-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.15,
+            33.95
+          ],
+          [
+            75.23,
+            34.03
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wular-hokersar-flyway-link",
+      "properties": {
+        "id": "wular-hokersar-flyway-link",
+        "slug": "wular-hokersar-flyway-link",
+        "name": "Wular–Hokersar Flyway Link",
+        "type": "Wetland Connectivity Corridor",
+        "length": "30 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Threatened",
+        "keySpecies": [
+          "migratory-waterfowl",
+          "wetland-birds"
+        ],
+        "districts": [
+          "Bandipora",
+          "Srinagar",
+          "Baramulla"
+        ],
+        "connectedAreas": [
+          "wular-lake-wetland-reserve",
+          "hokersar-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.8,
+            34.1
+          ],
+          [
+            74.9,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kishtwar-dachigam-mountain-linkage",
+      "properties": {
+        "id": "kishtwar-dachigam-mountain-linkage",
+        "slug": "kishtwar-dachigam-mountain-linkage",
+        "name": "Kishtwar–Dachigam Mountain Linkage",
+        "type": "High Elevation Connectivity Corridor",
+        "length": "85 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "brown-bear",
+          "snow-leopard",
+          "musk-deer"
+        ],
+        "districts": [
+          "Kishtwar",
+          "Anantnag",
+          "Srinagar"
+        ],
+        "connectedAreas": [
+          "kishtwar-national-park",
+          "dachigam-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.99,
+            33.61
+          ],
+          [
+            75.0378,
+            34.1372
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pir-panjal-macro-corridor",
+      "properties": {
+        "id": "pir-panjal-macro-corridor",
+        "slug": "pir-panjal-macro-corridor",
+        "name": "Pir Panjal Macro-Corridor",
+        "type": "Mountain Landscape Corridor",
+        "length": "110 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "markhor",
+          "leopard",
+          "himalayan-black-bear",
+          "musk-deer",
+          "pheasants"
+        ],
+        "districts": [
+          "Shopian",
+          "Poonch",
+          "Rajouri",
+          "Kulgam"
+        ],
+        "connectedAreas": [
+          "hirpora-wildlife-sanctuary",
+          "rajparian-wildlife-sanctuary",
+          "kazinag-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.05,
+            33.65
+          ],
+          [
+            75.25,
+            33.85
+          ],
+          [
+            74.05,
+            34.15
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "chenab-kishtwar-high-mountain",
+      "properties": {
+        "id": "chenab-kishtwar-high-mountain",
+        "slug": "chenab-kishtwar-high-mountain",
+        "name": "Chenab–Kishtwar High Mountain Corridor",
+        "type": "High-Altitude Mammal Corridor",
+        "length": "40 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-brown-bear",
+          "musk-deer",
+          "himalayan-tahr",
+          "himalayan-ibex"
+        ],
+        "districts": [
+          "Kishtwar",
+          "Doda"
+        ],
+        "connectedAreas": [
+          "kishtwar-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.99,
+            33.61
+          ],
+          [
+            76.07,
+            33.69
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kishtwar-zanskar-trans-himalayan",
+      "properties": {
+        "id": "kishtwar-zanskar-trans-himalayan",
+        "slug": "kishtwar-zanskar-trans-himalayan",
+        "name": "Kishtwar–Zanskar Trans-Himalayan Link",
+        "type": "High Mountain Ecological Link",
+        "length": "90 km",
+        "scientific_classification": "modeled_connectivity",
+        "methodology": "Great Himalayan Range High-Altitude Fauna Genetic Linkage Model",
+        "spatial_uncertainty": "± 600 m (Glaciated mountain pass linkage)",
+        "source": "Wildlife Institute of India Trans-Himalayan Studies (2022)",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-brown-bear",
+          "himalayan-ibex",
+          "alpine-birds"
+        ],
+        "districts": [
+          "Kishtwar",
+          "Kargil",
+          "Leh"
+        ],
+        "connectedAreas": [
+          "kishtwar-national-park",
+          "hemis-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.95,
+            33.55
+          ],
+          [
+            76.2,
+            33.7
+          ],
+          [
+            76.45,
+            33.9
+          ],
+          [
+            76.8,
+            33.95
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sudhmahadev-bahu-jammu-hill",
+      "properties": {
+        "id": "sudhmahadev-bahu-jammu-hill",
+        "slug": "sudhmahadev-bahu-jammu-hill",
+        "name": "Sudhmahadev–Bahu–Jammu Hill Corridor",
+        "type": "Jammu Hill Forest Corridor",
+        "length": "28 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "leopard",
+          "goral",
+          "peafowl",
+          "small-mammals",
+          "raptors"
+        ],
+        "districts": [
+          "Udhampur",
+          "Jammu",
+          "Reasi"
+        ],
+        "connectedAreas": [
+          "sudhmahadev-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.38,
+            33.02
+          ],
+          [
+            75.46,
+            33.1
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surinsar-mansar-gharana-wetland",
+      "properties": {
+        "id": "surinsar-mansar-gharana-wetland",
+        "slug": "surinsar-mansar-gharana-wetland",
+        "name": "Surinsar–Mansar–Gharana Wetland Link",
+        "type": "Jammu Wetland Connectivity System",
+        "length": "34 km",
+        "scientific_classification": "habitat_linkage",
+        "methodology": "Shivalik Foothills Riparian Corridor Assessment",
+        "spatial_uncertainty": "± 350 m (Fluvial drainage basin)",
+        "source": "Jammu Wildlife Division & CPCB (2023)",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Degraded",
+        "keySpecies": [
+          "migratory-waterfowl",
+          "geese",
+          "waders",
+          "resident-wetland-birds"
+        ],
+        "districts": [
+          "Jammu",
+          "Samba",
+          "Ranbirsinghpura"
+        ],
+        "connectedAreas": [
+          "surinsar-mansar-wildlife-sanctuary",
+          "gharana-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.14,
+            32.7
+          ],
+          [
+            75.05,
+            32.65
+          ],
+          [
+            74.85,
+            32.6
+          ],
+          [
+            74.69,
+            32.55
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poonch-river-rajouri-hill",
+      "properties": {
+        "id": "poonch-river-rajouri-hill",
+        "slug": "poonch-river-rajouri-hill",
+        "name": "Poonch River–Rajouri Hill Corridor",
+        "type": "River-Forest Corridor",
+        "length": "42 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "leopard",
+          "goral",
+          "birds",
+          "small-mammals"
+        ],
+        "districts": [
+          "Poonch",
+          "Rajouri"
+        ],
+        "connectedAreas": [
+          "sudhmahadev-conservation-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.38,
+            33.02
+          ],
+          [
+            75.46,
+            33.1
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "changthang-wetland-crane",
+      "properties": {
+        "id": "changthang-wetland-crane",
+        "slug": "changthang-wetland-crane",
+        "name": "Changthang Wetland-Crane Corridor",
+        "type": "High-Altitude Wetland Corridor",
+        "length": "60 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "black-necked-crane",
+          "bar-headed-goose",
+          "kiang",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Leh"
+        ],
+        "connectedAreas": [
+          "changthang-cold-desert-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            78.4,
+            33.4
+          ],
+          [
+            78.48,
+            33.48
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pangong-changthang-wildlife",
+      "properties": {
+        "id": "pangong-changthang-wildlife",
+        "slug": "pangong-changthang-wildlife",
+        "name": "Pangong–Changthang Wildlife Link",
+        "type": "Cold Desert Connectivity Corridor",
+        "length": "95 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "kiang",
+          "tibetan-antelope",
+          "tibetan-wolf",
+          "black-necked-crane"
+        ],
+        "districts": [
+          "Leh"
+        ],
+        "connectedAreas": [
+          "changthang-cold-desert-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            78.4,
+            33.4
+          ],
+          [
+            78.48,
+            33.48
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nubra-shyok-karakoram",
+      "properties": {
+        "id": "nubra-shyok-karakoram",
+        "slug": "nubra-shyok-karakoram",
+        "name": "Nubra–Shyok–Karakoram Corridor",
+        "type": "River-Valley High Mountain Corridor",
+        "length": "75 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-ibex",
+          "blue-sheep",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Leh"
+        ],
+        "connectedAreas": [
+          "karakoram-nubra-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.8,
+            34.1
+          ],
+          [
+            74.9,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zanskar-changthang-linkage",
+      "properties": {
+        "id": "zanskar-changthang-linkage",
+        "slug": "zanskar-changthang-linkage",
+        "name": "Zanskar–Changthang Linkage",
+        "type": "Trans-Himalayan Mountain Corridor",
+        "length": "120 km",
+        "scientific_classification": "conceptual_linkage",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "blue-sheep",
+          "tibetan-wolf",
+          "alpine-birds"
+        ],
+        "districts": [
+          "Kargil",
+          "Leh"
+        ],
+        "connectedAreas": [
+          "hemis-national-park",
+          "changthang-cold-desert-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.4333,
+            33.9833
+          ],
+          [
+            78.4,
+            33.4
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "changthang-connectivity-network",
+      "properties": {
+        "id": "changthang-connectivity-network",
+        "slug": "changthang-connectivity-network",
+        "name": "Changthang Connectivity Network",
+        "type": "Cold Desert Connectivity Landscape",
+        "length": "150 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "black-necked-crane",
+          "kiang",
+          "tibetan-wolf",
+          "snow-leopard"
+        ],
+        "districts": [
+          "Leh"
+        ],
+        "connectedAreas": [
+          "changthang-cold-desert-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            78.4,
+            33.4
+          ],
+          [
+            78.48,
+            33.48
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "neelum-kishanganga-river",
+      "properties": {
+        "id": "neelum-kishanganga-river",
+        "slug": "neelum-kishanganga-river",
+        "name": "Neelum–Kishanganga River Corridor",
+        "type": "Transboundary River-Valley Corridor",
+        "length": "85 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Threatened",
+        "keySpecies": [
+          "musk-deer",
+          "himalayan-black-bear",
+          "leopard",
+          "pheasants",
+          "riverine-birds",
+          "trout",
+          "otter"
+        ],
+        "districts": [
+          "Kupwara",
+          "Bandipora",
+          "Muzaffarabad"
+        ],
+        "connectedAreas": [
+          "kazinag-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.05,
+            34.15
+          ],
+          [
+            74.13,
+            34.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kazinag-leepa-valley-forest",
+      "properties": {
+        "id": "kazinag-leepa-valley-forest",
+        "slug": "kazinag-leepa-valley-forest",
+        "name": "Kazinag–Leepa Valley Forest Corridor",
+        "type": "Transboundary Forest Corridor",
+        "length": "25 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "markhor",
+          "musk-deer",
+          "himalayan-black-bear",
+          "pheasants",
+          "leopard"
+        ],
+        "districts": [
+          "Kupwara",
+          "Baramulla",
+          "Jhelum Valley"
+        ],
+        "connectedAreas": [
+          "kazinag-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.05,
+            34.15
+          ],
+          [
+            74.13,
+            34.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poonch-rawalakot-pir-panjal",
+      "properties": {
+        "id": "poonch-rawalakot-pir-panjal",
+        "slug": "poonch-rawalakot-pir-panjal",
+        "name": "Poonch–Rawalakot Pir Panjal Corridor",
+        "type": "Cross-Border Mountain Corridor",
+        "length": "48 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "leopard",
+          "goral",
+          "himalayan-black-bear",
+          "pheasants",
+          "raptors",
+          "markhor"
+        ],
+        "districts": [
+          "Poonch",
+          "Rawalakot",
+          "Sudhnoti"
+        ],
+        "connectedAreas": [
+          "hirpora-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.05,
+            33.65
+          ],
+          [
+            75.13,
+            33.73
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jhelum-valley-cross-border",
+      "properties": {
+        "id": "jhelum-valley-cross-border",
+        "slug": "jhelum-valley-cross-border",
+        "name": "Jhelum Valley Cross-Border Corridor",
+        "type": "River-Forest Corridor",
+        "length": "38 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "river-birds",
+          "himalayan-black-bear",
+          "leopard",
+          "forest-birds"
+        ],
+        "districts": [
+          "Baramulla",
+          "Hattian Bala",
+          "Muzaffarabad"
+        ],
+        "connectedAreas": [
+          "limber-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.45,
+            34.15
+          ],
+          [
+            74.53,
+            34.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "neelum-shounter-astore-alpine",
+      "properties": {
+        "id": "neelum-shounter-astore-alpine",
+        "slug": "neelum-shounter-astore-alpine",
+        "name": "Neelum–Shounter–Astore Alpine Corridor",
+        "type": "Alpine Transboundary Corridor",
+        "length": "75 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-brown-bear",
+          "musk-deer",
+          "alpine-birds"
+        ],
+        "districts": [
+          "Neelum",
+          "Astore"
+        ],
+        "connectedAreas": [
+          "deosai-buffer-conservation-landscape"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.35,
+            35.15
+          ],
+          [
+            75.42999999999999,
+            35.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "deosai-astore-brown-bear",
+      "properties": {
+        "id": "deosai-astore-brown-bear",
+        "slug": "deosai-astore-brown-bear",
+        "name": "Deosai–Astore Brown Bear Corridor",
+        "type": "Alpine Plateau Connectivity Corridor",
+        "length": "65 km",
+        "scientific_classification": "observed_movement",
+        "methodology": "Himalayan Brown Bear Satellite Collar Tracking & IUCN Bear Specialist Group Surveys",
+        "spatial_uncertainty": "± 300 m (High-altitude plateau to forest transit)",
+        "source": "IUCN Bear Specialist Group & GB Wildlife Dept (2023)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "himalayan-brown-bear",
+          "himalayan-marmot",
+          "himalayan-ibex",
+          "raptors",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Kargil",
+          "Astore"
+        ],
+        "connectedAreas": [
+          "deosai-buffer-conservation-landscape"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.45,
+            35.05
+          ],
+          [
+            75.3,
+            35.15
+          ],
+          [
+            75.15,
+            35.25
+          ],
+          [
+            74.9,
+            35.35
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "deosai-skardu-plateau",
+      "properties": {
+        "id": "deosai-skardu-plateau",
+        "slug": "deosai-skardu-plateau",
+        "name": "Deosai–Skardu Plateau Link",
+        "type": "Plateau-Valley Link",
+        "length": "38 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "brown-bear",
+          "himalayan-ibex",
+          "snow-leopard",
+          "migratory-birds",
+          "tibetan-wolf",
+          "leopard"
+        ],
+        "districts": [
+          "Kargil",
+          "Skardu"
+        ],
+        "connectedAreas": [
+          "deosai-buffer-conservation-landscape"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.35,
+            35.15
+          ],
+          [
+            75.42999999999999,
+            35.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "khunjerab-kilik-mintika-sheep",
+      "properties": {
+        "id": "khunjerab-kilik-mintika-sheep",
+        "slug": "khunjerab-kilik-mintika-sheep",
+        "name": "Khunjerab–Kilik-Mintika Marco Polo Sheep Corridor",
+        "type": "High Karakoram Ungulate Corridor",
+        "length": "72 km",
+        "scientific_classification": "observed_movement",
+        "methodology": "Marco Polo Sheep Winter Migration GPS Telemetry",
+        "spatial_uncertainty": "± 250 m (High Karakoram pass routes)",
+        "source": "WWF-Pakistan Karakoram Wildlife Conservation Project (2024)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "marco-polo-sheep",
+          "snow-leopard",
+          "himalayan-ibex",
+          "blue-sheep",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Leh",
+          "Gilgit",
+          "Kashgar"
+        ],
+        "connectedAreas": [
+          "karakoram-nubra-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.4,
+            36.85
+          ],
+          [
+            75.15,
+            36.95
+          ],
+          [
+            74.85,
+            37.05
+          ],
+          [
+            74.7,
+            37.12
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "shimshal-khunjerab-snow-leopard",
+      "properties": {
+        "id": "shimshal-khunjerab-snow-leopard",
+        "slug": "shimshal-khunjerab-snow-leopard",
+        "name": "Shimshal–Khunjerab Snow Leopard Corridor",
+        "type": "Snow Leopard Landscape Corridor",
+        "length": "88 km",
+        "scientific_classification": "modeled_connectivity",
+        "methodology": "Snow Leopard Trust Ruggedness & Prey Density Least-Cost Connectivity Model",
+        "spatial_uncertainty": "± 450 m (Glacial moraine and ridgeline terrain)",
+        "source": "Snow Leopard Trust & WWF Karakoram Office (2023)",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "blue-sheep",
+          "himalayan-ibex",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Hunza",
+          "Gojal"
+        ],
+        "connectedAreas": [
+          "karakoram-nubra-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.3,
+            36.45
+          ],
+          [
+            75.42,
+            36.6
+          ],
+          [
+            75.48,
+            36.75
+          ],
+          [
+            75.4,
+            36.85
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "central-karakoram-glacier-valley",
+      "properties": {
+        "id": "central-karakoram-glacier-valley",
+        "slug": "central-karakoram-glacier-valley",
+        "name": "Central Karakoram Glacier-Valley Corridor",
+        "type": "High Mountain Corridor",
+        "length": "130 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Critical",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-ibex",
+          "blue-sheep",
+          "himalayan-brown-bear",
+          "raptors",
+          "kiang",
+          "tibetan-wolf"
+        ],
+        "districts": [
+          "Gilgit",
+          "Skardu",
+          "Ghanche"
+        ],
+        "connectedAreas": [
+          "karakoram-nubra-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.8,
+            34.1
+          ],
+          [
+            74.9,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "shigar-hushe-ghanche",
+      "properties": {
+        "id": "shigar-hushe-ghanche",
+        "slug": "shigar-hushe-ghanche",
+        "name": "Shigar–Hushe–Ghanche Corridor",
+        "type": "Karakoram Valley Corridor",
+        "length": "50 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-ibex",
+          "blue-sheep",
+          "tibetan-wolf",
+          "raptors"
+        ],
+        "districts": [
+          "Leh",
+          "Skardu",
+          "Ghanche"
+        ],
+        "connectedAreas": [
+          "karakoram-nubra-wildlife-sanctuary"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.8,
+            34.1
+          ],
+          [
+            74.9,
+            34.2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "astore-nanga-parbat-ecological",
+      "properties": {
+        "id": "astore-nanga-parbat-ecological",
+        "slug": "astore-nanga-parbat-ecological",
+        "name": "Astore–Nanga Parbat Ecological Link",
+        "type": "Dry Temperate to Alpine Corridor",
+        "length": "45 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "markhor",
+          "snow-leopard",
+          "himalayan-brown-bear",
+          "raptors"
+        ],
+        "districts": [
+          "Astore",
+          "Gilgit"
+        ],
+        "connectedAreas": [
+          "deosai-buffer-conservation-landscape"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.35,
+            35.15
+          ],
+          [
+            75.42999999999999,
+            35.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "baltistan-satpara-skardu",
+      "properties": {
+        "id": "baltistan-satpara-skardu",
+        "slug": "baltistan-satpara-skardu",
+        "name": "Baltistan–Satpara–Skardu Corridor",
+        "type": "Lake-Valley Mountain Corridor",
+        "length": "32 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "snow-leopard",
+          "himalayan-ibex",
+          "tibetan-wolf",
+          "alpine-birds"
+        ],
+        "districts": [
+          "Skardu"
+        ],
+        "connectedAreas": [
+          "deosai-buffer-conservation-landscape"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.35,
+            35.15
+          ],
+          [
+            75.42999999999999,
+            35.23
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jhelum-mangla-reservoir-bird",
+      "properties": {
+        "id": "jhelum-mangla-reservoir-bird",
+        "slug": "jhelum-mangla-reservoir-bird",
+        "name": "Jhelum–Mangla Reservoir Bird Corridor",
+        "type": "River-Reservoir Bird Corridor",
+        "length": "90 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "Medium",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "migratory-waterfowl",
+          "waders",
+          "raptors",
+          "fish-eating-birds"
+        ],
+        "districts": [
+          "Mirpur",
+          "Jhelum"
+        ],
+        "connectedAreas": [
+          "gharana-wetland-reserve"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.72,
+            32.53
+          ],
+          [
+            74.8,
+            32.61
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "leepa-neelum-forest-bird",
+      "properties": {
+        "id": "leepa-neelum-forest-bird",
+        "slug": "leepa-neelum-forest-bird",
+        "name": "Leepa–Neelum Forest Bird Corridor",
+        "type": "Forest Bird Movement Corridor",
+        "length": "45 km",
+        "scientific_classification": "unverified",
+        "methodology": "Diagrammatic Reserve Linkage / Topological Connectivity Network",
+        "spatial_uncertainty": "Diagrammatic / Conceptual (Not an empirical ground trajectory)",
+        "source": "KEW Western Himalayan Conservation Network Model",
+        "priority": "High",
+        "threat_level": "Moderate",
+        "status": "Active",
+        "keySpecies": [
+          "western-tragopan",
+          "pheasants",
+          "forest-birds",
+          "raptors"
+        ],
+        "districts": [
+          "Jhelum Valley",
+          "Neelum"
+        ],
+        "connectedAreas": [
+          "kazinag-national-park"
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.05,
+            34.15
+          ],
+          [
+            74.13,
+            34.23
+          ]
+        ]
+      }
+    }
+  ]
+}

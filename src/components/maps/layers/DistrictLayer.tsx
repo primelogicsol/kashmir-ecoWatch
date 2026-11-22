@@ -47,11 +47,20 @@ export function DistrictLayer({ visible = true, onFeatureClick }: DistrictLayerP
           type: 'district',
           name: feature.properties.name,
           district: feature.properties.name,
+          region: feature.properties.region,
           slug: feature.properties.id,
           area: feature.properties.area_km2,
           population: feature.properties.population,
           headquarters: feature.properties.headquarters,
-          description: `${feature.properties.name} district in Kashmir Valley.`,
+          verificationStatus: feature.properties.verificationStatus || 'VERIFIED_BOUNDARY',
+          description: `${feature.properties.name} district located in ${feature.properties.region}. Administrative headquarters: ${feature.properties.headquarters}.`,
+          metrics: [
+            { label: 'Region', value: feature.properties.region },
+            { label: 'Area', value: `${feature.properties.area_km2} km²` },
+            { label: 'Population', value: (feature.properties.population || 0).toLocaleString() },
+            { label: 'Headquarters', value: feature.properties.headquarters },
+            { label: 'Data Provenance', value: 'Official Western Himalayan Administrative Boundaries' }
+          ]
         });
       },
     });

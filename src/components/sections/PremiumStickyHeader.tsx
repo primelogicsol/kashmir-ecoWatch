@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/Button';
 import { Logo } from '@/components/common/Logo';
 import Link from 'next/link';
 import {
+  ExternalLink,
+  Sparkles,
   Leaf,
   Menu,
   X,
@@ -57,6 +59,7 @@ const navItems = [
   { label: 'Sectoral EIA',            href: '/sectoral-eia',             hasDropdown: true },
   { label: 'NGO Impact',              href: '/ngo-impact',               hasDropdown: false },
   { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: true },
+  { label: 'About',                   href: '/about',                    hasDropdown: true },
 ];
 
 interface DropdownItem {
@@ -180,6 +183,24 @@ export function PremiumStickyHeader() {
 
   const getDropdownItems = (label: string): DropdownItem[] => {
     switch (label) {
+      case 'About':
+        return [
+          { name: '🏛️ About KEW', href: '/about', desc: 'Platform overview & scientific charter' },
+          { name: '🎯 Mission', href: '/about/mission', desc: 'Ecological mandates & strategic vision' },
+          { name: '⚖️ Governance', href: '/about/governance', desc: 'Institutional oversight & ethics' },
+          { name: '👤 Institutional Leadership', href: '/about/founder', desc: 'Founder & executive director' },
+          { name: '👥 Contributors', href: '/about/contributors', desc: 'Scientists, researchers & advisors' },
+          { name: '🎥 Webinars & Conferences', href: '/webinars', desc: 'Academic symposiums & workshops' },
+          { name: '🤝 Support KEW', href: '/about/support-sponsorship', desc: 'Philanthropic support & sponsorship' },
+          { name: '🏢 CSR & Grants', href: '/about/csr-collaborations', desc: 'Corporate social responsibility' },
+          { name: '✉️ Contact', href: '/about/contact', desc: 'Inquiries & editorial communications' },
+          { name: '❓ KEW Q&A', href: '/about/qna', desc: '50 foundational knowledge answers' },
+          { name: '── Affiliated Initiatives ──', href: '#', desc: '', isHeader: true },
+          { name: 'Kashmir Craft Lifecycle Assessment', href: 'https://www.craftlore.org/clee', desc: 'Craftlore CLEE artisanal environmental index' },
+          { name: 'Plan Your Kashmir Trip', href: 'https://kashmirartstay.com/', desc: 'Kashmir ArtStay ethical heritage travel' },
+        ];
+
+
       case 'Protected Areas':
         return [
           { name: '🗺️ Network Overview', href: '/protected-network', desc: 'Complete protected area system' },
@@ -194,6 +215,7 @@ export function PremiumStickyHeader() {
           { name: 'Species Intelligence Network', href: '/protected-network/species-intelligence', desc: 'Biological intelligence layer' },
           { name: 'Corridors and Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
           { name: 'Monitoring and Threat Intelligence', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
+          { name: 'Human–Wildlife Conflict', href: '/protected-network/human-wildlife-conflict', desc: 'Community safety, conflict patterns & coexistence' },
           { name: 'Research and Assessments', href: '/protected-network/reports-and-plans', desc: 'Scientific publications' },
           { name: 'Trails & Sightings', href: '/protected-network/trails-and-sightings', desc: 'Field observations' },
         ];
@@ -253,13 +275,17 @@ export function PremiumStickyHeader() {
           { name: '🏗️ Overview', href: '/environmental-monitoring', desc: 'Environmental intelligence command center' },
           { name: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress heatmaps' },
           { name: 'Solid Waste', href: '/environmental-monitoring/solid-waste', desc: 'Dumping, landfill stress, open waste' },
+          { name: 'Plastic Pollution', href: '/environmental-monitoring/plastic-pollution', desc: 'Plastic waste, recycling & contamination' },
           { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', desc: 'Organic waste, decomposition zones' },
           { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow, outfalls, untreated discharge' },
           { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Contamination alerts, supply issues' },
           { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets' },
           { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning' },
+          { name: 'Transportation Pollution', href: '/environmental-monitoring/transportation-pollution', desc: 'Vehicle emissions, traffic & noise' },
+          { name: 'Noise Pollution', href: '/environmental-monitoring/noise-pollution', desc: 'Sound levels, hotspots & exposure' },
           { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water' },
           { name: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity' },
+          { name: 'Chinar Monitoring', href: '/environmental-monitoring/chinar-monitoring', desc: 'Tree health, GIS & conservation' },
           { name: 'SDG Monitoring', href: '/environmental-monitoring/sdg-monitoring', desc: 'Environmental UN SDG performance tracking' },
         ];
       case 'Hazard Intelligence':
@@ -346,6 +372,23 @@ export function PremiumStickyHeader() {
           <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
             <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
           </div>
+        ) : subitem.href.startsWith('http') ? (
+          <a
+            key={subitem.name}
+            href={subitem.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => { setActiveDropdown(null); setIsMobileMenuOpen(false); }}
+            className="block px-3 py-1 text-xs text-emerald-300 hover:text-emerald-200 hover:bg-white/5 transition-colors cursor-pointer group"
+          >
+            <div className="flex items-center justify-between">
+              <span className="font-medium">{subitem.name}</span>
+              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-emerald-400 shrink-0 ml-1" />
+            </div>
+            {subitem.desc && (
+              <span className="block text-[10px] text-slate-400 mt-0.5">{subitem.desc}</span>
+            )}
+          </a>
         ) : (
           <Link
             key={subitem.name}
@@ -380,7 +423,7 @@ export function PremiumStickyHeader() {
           className={cn(
             'flex items-center w-full gap-0 transition-all duration-300 ease-out',
             // Height transitions
-            !isCompact ? 'h-24 md:h-28' : 'h-16 md:h-18'
+            !isCompact ? 'h-16 sm:h-20 md:h-28' : 'h-14 sm:h-16 md:h-18'
           )}
         >
           {/* Logo - Premium with variants left-aligned */}
@@ -430,7 +473,7 @@ export function PremiumStickyHeader() {
                     )}
                   >
                     {/* Dropdown Header */}
-                    <div className="px-4 py-3 border-b border-white/5 bg-gradient-to-r from-slate-900/50 to-slate-800/50">
+                    <div className="px-4 py-3 border-b border-white/5 bg-slate-900">
                       <div className="flex items-center gap-2">
                         {item.label === 'Protected Areas' && <Shield className="w-4 h-4 text-emerald-400" />}
                         {item.label === 'Biodiversity' && <Leaf className="w-4 h-4 text-emerald-400" />}
@@ -443,6 +486,7 @@ export function PremiumStickyHeader() {
                         {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}
                         {item.label === 'Environmental Calendar' && <Calendar className="w-4 h-4 text-emerald-400" />}
+                        {item.label === 'About' && <Sparkles className="w-4 h-4 text-emerald-400" />}
                         <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           {item.label}
                         </span>
@@ -496,7 +540,7 @@ export function PremiumStickyHeader() {
             >
               <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center animate-pulse shadow-lg shadow-red-500/50">
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-500 text-white rounded-sm text-[10px] font-bold flex items-center justify-center animate-pulse shadow-lg shadow-red-500/50">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
@@ -552,7 +596,7 @@ export function PremiumStickyHeader() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="kew-menu-toggle flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all cursor-pointer"
-              aria-label={isMobileMenuOpen ? "Close Explore Navigation" : "Open Explore Navigation"}
+              aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu-drawer"
             >
@@ -625,7 +669,7 @@ export function PremiumStickyHeader() {
               </div>
 
               {/* Contributor Mobile Account Card */}
-              <div className="p-3 mx-3 mt-3 mb-2 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-emerald-500/20 shadow-lg shrink-0">
+              <div className="p-3 mx-3 mt-3 mb-2 rounded-2xl bg-slate-900 border border-emerald-500/20 shadow-lg shrink-0">
                 {isLoggedIn && user ? (
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between">
@@ -849,7 +893,7 @@ export function PremiumStickyHeader() {
                   <Link
                     href="/atlas"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-center text-sm shadow-lg shadow-emerald-950/40 transition-all"
+                    className="block w-full py-3 px-4 rounded-xl bg-slate-900 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-center text-sm shadow-lg shadow-emerald-950/40 transition-all"
                   >
                     Launch Interactive Atlas
                   </Link>

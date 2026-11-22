@@ -112,19 +112,22 @@ export default function EarthHumanImpactHubPage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Earth &amp; Human Impact Intelligence (EHII)
+            <div className="leading-[1.15] overflow-visible">
+              <span className="block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                Earth &amp; Human
+              </span>
+              <span className="block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-teal-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
+                Impact (EHI)
               </span>
             </div>
           </div>
         }
         subtitle="Consolidating seven foundational environmental disciplines to measure climate anomalies, canopy loss, Karewa destruction, linear infrastructure stress, riverbed incision, urban heat dynamics, and aquatic-cryospheric retreat across the Kashmir basin."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/earth-human-impact/ehii-command-center-satellite.jpg',
+          '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+          '/images/earth-human-impact/ehii-karewa-land-transformation.jpg',
+          '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg'
         ]}
         rightContent={
           <EhiiHeroShowcaseCard
@@ -342,7 +345,7 @@ export default function EarthHumanImpactHubPage() {
 
         {/* SECTION 3: SATELLITE CHANGE DETECTION OBSERVATORY */}
         <section id="satellite-observatory" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-gradient-to-br from-slate-900 to-slate-950 border border-teal-500/20 rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-2 bg-slate-900 border border-teal-500/20 rounded-2xl p-6 md:p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 text-teal-400 text-xs font-bold uppercase tracking-wider mb-2">
                 <Radar className="w-4 h-4 animate-pulse" />

@@ -107,9 +107,9 @@ export function EarthHumanImpactSection() {
         >
           <div>
             <div className="flex items-center gap-2 mb-2 sm:mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-teal-500/10 border border-teal-500/30 text-teal-300">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-teal-500/10 border border-teal-500/30 text-teal-300">
                 <Satellite className="w-3 h-3 text-teal-400" />
-                Earth & Human Impact Intelligence (EHII)
+                Earth & Human Impact (EHI)
               </span>
               <span className="text-[10px] sm:text-xs text-slate-500 font-mono hidden sm:inline">
                 • 13 Change-Detection Submodules

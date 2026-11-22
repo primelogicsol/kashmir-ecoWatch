@@ -158,7 +158,7 @@ export function NwiaClassificationPanel({ variant = 'detailed' }: NwiaClassifica
       </Card>
 
       {/* Valley Totals */}
-      <Card className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 p-6">
+      <Card className="bg-slate-900 border border-blue-500/30 p-6">
         <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
           <Layers className="w-5 h-5 text-blue-400" />
           Kashmir Valley Totals (NWIA 2010)

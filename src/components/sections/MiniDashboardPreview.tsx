@@ -91,7 +91,7 @@ export function MiniDashboardPreview() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-500 to-slate-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <Wind className="w-5 h-5" />
                     </div>
                     <div>
@@ -160,7 +160,7 @@ export function MiniDashboardPreview() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-glacier-500 to-glacier-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <Droplets className="w-5 h-5" />
                     </div>
                     <div>
@@ -222,7 +222,7 @@ export function MiniDashboardPreview() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <Flower className="w-5 h-5" />
                     </div>
                     <div>
@@ -282,7 +282,7 @@ export function MiniDashboardPreview() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <PawPrint className="w-5 h-5" />
                     </div>
                     <div>
@@ -350,7 +350,7 @@ export function MiniDashboardPreview() {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-forest-500 to-forest-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <TrendingUp className="w-5 h-5" />
                     </div>
                     <div>
@@ -405,11 +405,11 @@ export function MiniDashboardPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Card padding="lg" className="h-full bg-gradient-to-br from-red-50 to-amber-50 dark:from-red-950/20 dark:to-amber-950/20">
+            <Card padding="lg" className="h-full bg-slate-900 dark:from-red-950/20 dark:to-amber-950/20">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-700 text-white flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 text-white flex items-center justify-center">
                       <AlertTriangle className="w-5 h-5" />
                     </div>
                     <div>

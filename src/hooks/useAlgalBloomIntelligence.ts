@@ -1,130 +1,180 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { algalBloomLakes, AlgalBloomLake } from '@/data/algal-bloom-lakes';
+import {
+  MonitoredWaterbody,
+  SatelliteObservation,
+  SatelliteMonitoringStatus,
+  InstitutionalWaterQualityRecord,
+  LcmaStpEffluentRecord,
+  LaboratoryCyanotoxinRecord,
+  BloomEarlyWarningAlert,
+  PredictiveBloomForecast,
+  ForecastValidationStatus,
+  getInitialAlgalBloomSnapshot,
+} from '@/data/algal-bloom-intelligence-hub';
 
-const CACHE_KEY = 'algalBloomMeteoCache_v2';
-const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
+export type {
+  MonitoredWaterbody,
+  SatelliteObservation,
+  SatelliteMonitoringStatus,
+  InstitutionalWaterQualityRecord,
+  LcmaStpEffluentRecord,
+  LaboratoryCyanotoxinRecord,
+  BloomEarlyWarningAlert,
+  PredictiveBloomForecast,
+  ForecastValidationStatus,
+};
 
-export function useAlgalBloomIntelligence() {
+export interface AlgalBloomSummaryState {
+  totalMonitoredWaterbodies: number;
+  satelliteTrackedLakes: number;
+  institutionalStations: number;
+  activeOcemsStps: number;
+  laboratoryAssays: number;
+  activeBloomAlerts: number;
+  lastSyncTime: string;
+}
+
+export interface AlgalBloomIntelligenceResult {
+  waterbodies: MonitoredWaterbody[];
+  lakesWithLiveData: AlgalBloomLake[]; // Backwards compatibility for existing UI components
+  satelliteObservations: SatelliteObservation[];
+  institutionalRecords: InstitutionalWaterQualityRecord[];
+  lcmaStpRecords: LcmaStpEffluentRecord[];
+  laboratoryToxinRecords: LaboratoryCyanotoxinRecord[];
+  earlyWarningAlerts: BloomEarlyWarningAlert[];
+  forecastModels: PredictiveBloomForecast[];
+  summary: AlgalBloomSummaryState;
+  loading: boolean;
+  error: string | null;
+  isStale: boolean;
+  refresh: () => Promise<void>;
+}
+
+const CACHE_KEY = 'kew_algal_bloom_cache_v6';
+
+export function useAlgalBloomIntelligence(): AlgalBloomIntelligenceResult {
+  const initial = getInitialAlgalBloomSnapshot();
+
+  const [waterbodies, setWaterbodies] = useState<MonitoredWaterbody[]>(initial.waterbodies);
   const [lakesWithLiveData, setLakesWithLiveData] = useState<AlgalBloomLake[]>(algalBloomLakes);
-  const [loading, setLoading] = useState(true);
+  const [satelliteObservations, setSatelliteObservations] = useState<SatelliteObservation[]>(initial.satelliteObservations);
+  const [institutionalRecords, setInstitutionalRecords] = useState<InstitutionalWaterQualityRecord[]>(initial.institutionalRecords);
+  const [lcmaStpRecords, setLcmaStpRecords] = useState<LcmaStpEffluentRecord[]>(initial.lcmaStpRecords);
+  const [laboratoryToxinRecords, setLaboratoryToxinRecords] = useState<LaboratoryCyanotoxinRecord[]>(initial.laboratoryToxinRecords);
+  const [earlyWarningAlerts, setEarlyWarningAlerts] = useState<BloomEarlyWarningAlert[]>(initial.earlyWarningAlerts);
+  const [forecastModels, setForecastModels] = useState<PredictiveBloomForecast[]>(initial.forecastModels);
+  const [summary, setSummary] = useState<AlgalBloomSummaryState>(initial.summary);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [isStale, setIsStale] = useState(false);
+  const [isStale, setIsStale] = useState<boolean>(false);
 
-  useEffect(() => {
-    async function fetchMeteoData() {
-      try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const parsed = JSON.parse(cached);
-          if (Date.now() - parsed.timestamp < CACHE_DURATION) {
-            setLakesWithLiveData(parsed.data);
-            setLoading(false);
-            return;
-          } else {
-            setIsStale(true);
-          }
-        }
+  const fetchBloomData = useCallback(async () => {
+    try {
+      setError(null);
 
-        const lats = algalBloomLakes.map(l => l.latitude || 34.0837).join(',');
-        const lngs = algalBloomLakes.map(l => l.longitude || 74.7973).join(',');
+      const res = await fetch('/api/hazard-intelligence/algal-blooms', {
+        cache: 'no-store',
+      });
 
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&daily=temperature_2m_max,precipitation_sum,wind_speed_10m_max&past_days=7&forecast_days=1&timezone=auto`);
-        
-        if (!res.ok) {
-          throw new Error('Failed to fetch from Open-Meteo');
-        }
+      if (!res.ok) {
+        throw new Error(`Algal Bloom API returned HTTP ${res.status}`);
+      }
 
-        const data = await res.json();
-        
-        // Handle array of responses (since multiple coords were passed)
-        const meteoResults = Array.isArray(data) ? data : [data];
+      const json = await res.json();
+      if (json.success && json.waterbodies) {
+        setWaterbodies(json.waterbodies);
+        if (json.satelliteObservations) setSatelliteObservations(json.satelliteObservations);
+        if (json.institutionalRecords) setInstitutionalRecords(json.institutionalRecords);
+        if (json.lcmaStpRecords) setLcmaStpRecords(json.lcmaStpRecords);
+        if (json.laboratoryToxinRecords) setLaboratoryToxinRecords(json.laboratoryToxinRecords);
+        if (json.earlyWarningAlerts) setEarlyWarningAlerts(json.earlyWarningAlerts);
+        if (json.forecastModels) setForecastModels(json.forecastModels);
+        if (json.summary) setSummary(prev => ({ ...prev, ...json.summary }));
 
-        const updatedLakes = algalBloomLakes.map((lake, idx) => {
-          const lakeMeteo = meteoResults[idx];
-          if (!lakeMeteo || !lakeMeteo.daily) {
-            return lake;
-          }
-
-          const daily = lakeMeteo.daily;
-          const tempMax = daily.temperature_2m_max?.[daily.temperature_2m_max.length - 1] || 15;
-          const windSpeed = daily.wind_speed_10m_max?.[daily.wind_speed_10m_max.length - 1] || 5;
-          const precip7d = daily.precipitation_sum?.reduce((a: number, b: number) => a + (b || 0), 0) || 0;
-
-          let risk: 'Low' | 'Moderate' | 'High' | 'Critical' = 'Low';
-          let trigger = 'Stable conditions';
-
-          const isHypereutrophic = lake.trophicStatus === 'Hypereutrophic';
-
-          if (tempMax > 30 && windSpeed < 10 && isHypereutrophic) {
-            risk = 'Critical';
-            trigger = 'Extreme Heat & Stagnant Hypereutrophic Waters';
-          } else if (tempMax > 25 && precip7d > 25 && windSpeed < 10) {
-            risk = 'High';
-            trigger = 'Heat, Heavy Runoff & Stagnation';
-          } else if (tempMax > 20 || precip7d > 10) {
-            risk = 'Moderate';
-            trigger = tempMax > 20 ? (precip7d > 10 ? 'Warm Temps & Nutrient Runoff' : 'Warm Temperatures') : 'Nutrient Runoff';
-          } else if (tempMax < 15 && precip7d < 10) {
-            risk = 'Low';
-            trigger = 'Cool & Low Runoff';
-          }
-
-          // Dual-Stage Model: Stage 1 Hydro-Thermal Index + Stage 2 Sentinel-2 NDCI & Chlorophyll-a Proxy
-          // Eutrophic and hypereutrophic lakes exhibit elevated NDCI (Normalized Difference Chlorophyll Index: (B5-B4)/(B5+B4))
-          let sentinelNdci = 0.04;
-          let chlaUgL = 4.2;
-
-          if (lake.trophicStatus === 'Hypereutrophic' || lake.trophicStatus === 'Eutrophic') {
-            // Highly eutrophic systems (Dal, Nigeen, Brari Nambal, Wular)
-            sentinelNdci = parseFloat((0.22 + (tempMax > 20 ? 0.08 : 0.02) + (precip7d > 15 ? 0.05 : 0)).toFixed(3));
-            chlaUgL = parseFloat((24.5 + sentinelNdci * 45).toFixed(1));
-          } else if (lake.trophicStatus === 'Mesotrophic') {
-            sentinelNdci = parseFloat((0.11 + (tempMax > 20 ? 0.03 : 0.01)).toFixed(3));
-            chlaUgL = parseFloat((9.2 + sentinelNdci * 25).toFixed(1));
-          } else {
-            // Oligotrophic pristine alpine lakes (Sheshnag, Gangabal, Tarsar)
-            sentinelNdci = parseFloat((-0.02 + Math.min(0.04, tempMax * 0.002)).toFixed(3));
-            chlaUgL = parseFloat((1.8 + Math.max(0, sentinelNdci * 10)).toFixed(1));
-          }
+        // Map into legacy lakesWithLiveData for seamless backward compatibility
+        const enrichedLegacy: AlgalBloomLake[] = algalBloomLakes.map(lake => {
+          const match = json.waterbodies.find((w: MonitoredWaterbody) => w.id === lake.id || w.name === lake.name);
+          if (!match) return lake;
+          const liveRisk: 'Critical' | 'High' | 'Moderate' | 'Low' =
+            match.currentBloomClassification === 'Laboratory-Confirmed Harmful Bloom'
+              ? 'Critical'
+              : match.currentBloomClassification === 'Probable Bloom'
+              ? 'High'
+              : match.currentBloomClassification === 'Possible Bloom Detected'
+              ? 'Moderate'
+              : 'Low';
 
           return {
             ...lake,
-            live_temperature_max: tempMax,
-            live_precipitation_7d: parseFloat(precip7d.toFixed(1)),
-            live_wind_speed: windSpeed,
-            live_bloom_risk: risk,
-            live_dominant_trigger: trigger,
-            last_updated: new Date().toISOString(),
-            sentinel2_ndci: sentinelNdci,
-            chlorophyll_a_ug_l: chlaUgL,
-            satellite_pass_date: 'Sentinel-2 MSI (L2A)',
-            satellite_sensor: 'ESA Copernicus Sentinel-2 MSI'
+            live_temperature_max: match.liveMeteorology?.tempMaxC,
+            live_precipitation_7d: match.liveMeteorology?.precip7dMm,
+            live_wind_speed: match.liveMeteorology?.windSpeedKmH,
+            live_bloom_risk: liveRisk,
+            live_dominant_trigger: match.liveMeteorology?.stratificationState,
+            sentinel2_ndci: match.satelliteObservation?.ndciIndex ?? 0.04,
+            chlorophyll_a_ug_l: match.satelliteObservation?.chlorophyllAEstimateUgL ?? 4.2,
+            last_updated: json.summary?.lastSyncTime,
           };
         });
+        setLakesWithLiveData(enrichedLegacy);
 
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-          timestamp: Date.now(),
-          data: updatedLakes
-        }));
-
-        setLakesWithLiveData(updatedLakes);
         setIsStale(false);
-      } catch (err) {
-        console.error('Algal bloom intelligence fetch error:', err);
-        setError('Failed to load real-time intelligence.');
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const parsed = JSON.parse(cached);
-          setLakesWithLiveData(parsed.data);
-          setIsStale(true);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
 
-    fetchMeteoData();
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              timestamp: Date.now(),
+              waterbodies: json.waterbodies,
+              satelliteObservations: json.satelliteObservations,
+              institutionalRecords: json.institutionalRecords,
+              lcmaStpRecords: json.lcmaStpRecords,
+              laboratoryToxinRecords: json.laboratoryToxinRecords,
+              earlyWarningAlerts: json.earlyWarningAlerts,
+              forecastModels: json.forecastModels,
+              summary: json.summary,
+            })
+          );
+        } catch {}
+      }
+    } catch (err: any) {
+      console.warn('[Algal Bloom Hook] Live fetch failed, trying cached snapshot:', err);
+      try {
+        const cachedStr = localStorage.getItem(CACHE_KEY);
+        if (cachedStr) {
+          const cached = JSON.parse(cachedStr);
+          if (cached.waterbodies) setWaterbodies(cached.waterbodies);
+          if (cached.satelliteObservations) setSatelliteObservations(cached.satelliteObservations);
+          if (cached.institutionalRecords) setInstitutionalRecords(cached.institutionalRecords);
+          if (cached.lcmaStpRecords) setLcmaStpRecords(cached.lcmaStpRecords);
+          if (cached.laboratoryToxinRecords) setLaboratoryToxinRecords(cached.laboratoryToxinRecords);
+          if (cached.earlyWarningAlerts) setEarlyWarningAlerts(cached.earlyWarningAlerts);
+          if (cached.forecastModels) setForecastModels(cached.forecastModels);
+          if (cached.summary) setSummary(prev => ({ ...prev, ...cached.summary }));
+        }
+      } catch {}
+      setIsStale(true);
+    }
   }, []);
 
-  return { lakesWithLiveData, loading, error, isStale };
+  useEffect(() => {
+    fetchBloomData();
+  }, [fetchBloomData]);
+
+  return {
+    waterbodies,
+    lakesWithLiveData,
+    satelliteObservations,
+    institutionalRecords,
+    lcmaStpRecords,
+    laboratoryToxinRecords,
+    earlyWarningAlerts,
+    forecastModels,
+    summary,
+    loading,
+    error,
+    isStale,
+    refresh: fetchBloomData,
+  };
 }

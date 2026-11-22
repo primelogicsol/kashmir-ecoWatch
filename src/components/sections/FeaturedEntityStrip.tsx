@@ -392,7 +392,7 @@ export function FeaturedEntityStrip() {
                       isActive ? 'text-white' : ''
                     }`} />
                     <span>{tab.label}</span>
-                    <span className={`text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-full ${
+                    <span className={`text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-[4px] ${
                       isActive ? 'bg-white/20 text-white' : 'bg-white/5 text-slate-400'
                     }`}>
                       {tabCount}

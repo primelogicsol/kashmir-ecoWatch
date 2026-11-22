@@ -415,12 +415,10 @@ export default function SDGMonitoringPage() {
           </div>
         }
         images={[
-          '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/kashmir-chinar-hero.jpg',
+          '/images/env-monitoring/kashmir-drinking-water-lab.jpg',
+          '/images/env-monitoring/kashmir-solid-waste-facility.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -437,7 +435,7 @@ export default function SDGMonitoringPage() {
 
       {/* ── Live SDG Sustainability Intelligence Banner ─────────────── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-emerald-500/30 p-4 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-emerald-500/30 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
@@ -659,7 +657,7 @@ export default function SDGMonitoringPage() {
                 <motion.div key={g.number} initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ delay:i*0.06 }}>
                   <Card className="glass-intense border-white/10 p-4 hover:border-white/20 transition-all cursor-pointer group" onClick={() => setGoalFilter(String(g.number))}>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${g.color} flex items-center justify-center shadow flex-shrink-0`}>
+                      <div className={`w-10 h-10 rounded-xl bg-slate-900 ${g.color} flex items-center justify-center shadow flex-shrink-0`}>
                         <GoalIcon className="w-5 h-5 text-white" />
                       </div>
                       <div className="min-w-0">
@@ -880,7 +878,7 @@ export default function SDGMonitoringPage() {
           <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}>
             <Card className="glass-intense border-green-500/20 p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <FlaskConical className="w-5 h-5 text-green-400" />
                 </div>
                 <div className="flex-1">

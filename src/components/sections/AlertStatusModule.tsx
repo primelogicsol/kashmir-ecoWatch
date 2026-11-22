@@ -280,7 +280,7 @@ export function AlertStatusModule() {
                       {[1, 2, 3, 4].map((i) => (
                         <div
                           key={i}
-                          className="w-6 h-6 rounded-full bg-gradient-to-br from-forest-400 to-forest-600 border-2 border-white dark:border-slate-800"
+                          className="w-6 h-6 rounded-full bg-slate-900 border-2 border-white dark:border-slate-800"
                         />
                       ))}
                     </div>

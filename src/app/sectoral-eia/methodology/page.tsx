@@ -51,7 +51,7 @@ export default function SectoralEiaMethodologyPage() {
 
       <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
         {/* CRUCIAL DESIGN PRINCIPLE CALLOUT */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-950 border border-emerald-500/40 shadow-xl">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/40 shadow-xl">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="outline" className="border-emerald-400 text-emerald-300 bg-emerald-500/10 text-xs">
               Scientific Imperative
@@ -249,7 +249,7 @@ export default function SectoralEiaMethodologyPage() {
         </div>
 
         {/* CALL TO ACTION */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-slate-900 to-emerald-950/40 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="text-lg font-bold text-white">Ready to Execute an Assessment?</h3>
             <p className="text-xs text-slate-400 mt-1">

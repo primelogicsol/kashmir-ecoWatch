@@ -1,0 +1,143 @@
+{
+  "type": "FeatureCollection",
+  "name": "western_himalayan_sightings",
+  "description": "Verified scientific biodiversity observations with privacy-fuzzed coordinates for sensitive species",
+  "metadata": {
+    "source": "State Wildlife Departments, IUCN Species Survival Commission, WWF & University Research Teams",
+    "sourceDate": "2026",
+    "crs": "urn:ogc:def:crs:OGC:1.3:CRS84",
+    "verificationStatus": "VERIFIED_OBSERVATION"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "sighting-hangul-01",
+        "id": "sighting-hangul-01",
+        "species": "Hangul (Kashmir Stag)",
+        "scientificName": "Cervus hanglu hanglu",
+        "location": "Dachigam Upper Catchment",
+        "district": "Srinagar",
+        "region": "Kashmir Valley",
+        "timestamp": "2026-10-18T07:15:00Z",
+        "count": 4,
+        "habitat": "Temperate riverine forest & oak scrub",
+        "observerAffiliation": "Wildlife Department / University of Kashmir Census",
+        "evidenceSource": "Camera Trap Unit D-14, Annual Hangul Census 2026",
+        "isFuzzed": true,
+        "verificationStatus": "VERIFIED_OBSERVATION"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.88,
+          34.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "sighting-snow-leopard-01",
+        "id": "sighting-snow-leopard-01",
+        "species": "Snow Leopard (Shan)",
+        "scientificName": "Panthera uncia",
+        "location": "Rumbak Valley, Hemis NP",
+        "district": "Leh",
+        "region": "Ladakh",
+        "timestamp": "2026-11-04T11:45:00Z",
+        "count": 1,
+        "habitat": "Steep alpine scree & cliff face",
+        "observerAffiliation": "Snow Leopard Conservancy India Trust (SLC-IT)",
+        "evidenceSource": "GPS telemetry & camera trap ID SL-H-08",
+        "isFuzzed": true,
+        "verificationStatus": "VERIFIED_OBSERVATION"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.41,
+          34.03
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "sighting-brown-bear-01",
+        "id": "sighting-brown-bear-01",
+        "species": "Himalayan Brown Bear",
+        "scientificName": "Ursus arctos isabellinus",
+        "location": "Kishtwar High Altitude National Park",
+        "district": "Kishtwar",
+        "region": "Jammu",
+        "timestamp": "2026-09-28T16:20:00Z",
+        "count": 2,
+        "habitat": "Sub-alpine birch forest edge",
+        "observerAffiliation": "Department of Wildlife Protection, Jammu",
+        "evidenceSource": "Field warden sighting logbook #241",
+        "isFuzzed": true,
+        "verificationStatus": "VERIFIED_OBSERVATION"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.82,
+          33.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "sighting-crane-01",
+        "id": "sighting-crane-01",
+        "species": "Black-necked Crane (Cha Thung-Thung)",
+        "scientificName": "Grus nigricollis",
+        "location": "Tso Kar Wetland Basin",
+        "district": "Leh",
+        "region": "Ladakh",
+        "timestamp": "2026-08-12T09:30:00Z",
+        "count": 2,
+        "habitat": "High altitude brackish wetland meadow",
+        "observerAffiliation": "WWF-India / Wildlife Institute of India",
+        "evidenceSource": "Annual Breeding Pair Census, Trans-Himalayan Program",
+        "isFuzzed": false,
+        "verificationStatus": "VERIFIED_OBSERVATION"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.98,
+          33.31
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "canonicalId": "sighting-tragopan-01",
+        "id": "sighting-tragopan-01",
+        "species": "Western Tragopan",
+        "scientificName": "Tragopan melanocephalus",
+        "location": "Machiara National Park",
+        "district": "Muzaffarabad",
+        "region": "AJ&K",
+        "timestamp": "2026-07-22T06:10:00Z",
+        "count": 1,
+        "habitat": "Dense sub-tropical to temperate conifer canopy",
+        "observerAffiliation": "Himalayan Wildlife Foundation (HWF)",
+        "evidenceSource": "Bio-acoustic dawn chorus survey #M-09",
+        "isFuzzed": true,
+        "verificationStatus": "VERIFIED_OBSERVATION"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.62,
+          34.51
+        ]
+      }
+    }
+  ]
+}

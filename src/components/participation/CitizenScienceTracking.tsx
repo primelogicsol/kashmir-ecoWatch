@@ -83,7 +83,7 @@ export function CitizenScienceTracking({ compact = false, district }: CitizenSci
         <div className="space-y-3">
           {topContributors.slice(0, 3).map((member, index) => (
             <div key={member.id} className="flex items-center gap-3">
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-xs font-bold text-white">
+              <div className="w-6 h-6 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-xs font-bold text-white">
                 {index + 1}
               </div>
               <div className="flex-1">
@@ -147,7 +147,7 @@ export function CitizenScienceTracking({ compact = false, district }: CitizenSci
                 transition={{ delay: index * 0.05 }}
                 className="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors"
               >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
                   {index + 1}
                 </div>
                 <div className="flex-1">
@@ -196,7 +196,7 @@ export function CitizenScienceTracking({ compact = false, district }: CitizenSci
             >
               <Card className="glass-intense border-white/10 p-5">
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-lg font-bold text-white flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-lg font-bold text-white flex-shrink-0">
                     {member.name.charAt(0)}
                   </div>
                   <div className="flex-1">

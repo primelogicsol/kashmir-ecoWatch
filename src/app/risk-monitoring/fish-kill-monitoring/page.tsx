@@ -372,7 +372,7 @@ export default function FishKillMonitoringPage() {
                   <p className="text-sm text-slate-400">Waterbody fish mortality events and cause layers</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-blue-900/50 to-cyan-900/30 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <Layers className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-4">Interactive fish kill map with waterbody and cause overlays</p>

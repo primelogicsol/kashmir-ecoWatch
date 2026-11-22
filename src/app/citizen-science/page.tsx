@@ -235,7 +235,7 @@ export default function CitizenSciencePage() {
                 <Link href={program.route} className="block h-full">
                   <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 h-full group">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                      <div className={`w-14 h-14 rounded-xl bg-slate-900 ${program.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                         <program.icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">

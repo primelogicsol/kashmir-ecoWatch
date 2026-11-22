@@ -730,7 +730,7 @@ function EcologicalDetailModal({
 
         {/* Modal Header */}
         <div className="flex items-start gap-3 mb-6">
-          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getHealthGradient(record.healthGrade)} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+          <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getHealthGradient(record.healthGrade)} flex items-center justify-center flex-shrink-0 shadow-lg`}>
             <EcoIcon className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -756,7 +756,7 @@ function EcologicalDetailModal({
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Live Microclimate Telemetry ({t.status})
             </span>
-            <span className="text-[10px] text-slate-400 font-mono">Open-Meteo High-Res NWP</span>
+            <span className="text-[10px] text-slate-400 font-mono">Atmospheric NWP Telemetry</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
@@ -1057,12 +1057,10 @@ export default function EcologicalHealthPage() {
           </div>
         }
         images={[
-          '/images/env-monitoring/Thumb_Waste.jpg',
-          '/images/env-monitoring/env.webp',
-          '/images/env-monitoring/sewage-treatment-plant-stp.jpg',
-          '/images/env-monitoring/Biomedical_Waste_PTI.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/env-monitoring/kashmir-drinking-water-lab.jpg',
+          '/images/hazard-intelligence/hazard-algal-bloom-lake.jpg',
+          '/images/env-monitoring/khrew-cement-industrial-air-pollution.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -1079,7 +1077,7 @@ export default function EcologicalHealthPage() {
 
       {/* ── Live Scientific Ecological Telemetry Banner ────────────────────────── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-emerald-500/30 p-4 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-emerald-500/30 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
@@ -1094,7 +1092,7 @@ export default function EcologicalHealthPage() {
                     27 / 27 Units Synchronized
                   </Badge>
                   <span className="text-[10px] text-emerald-400/90 font-mono">
-                    Open-Meteo NWP + Copernicus Sentinel-2
+                    Atmospheric NWP + Earth Observation
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-0.5">
@@ -1309,7 +1307,7 @@ export default function EcologicalHealthPage() {
               <p className="text-slate-400 text-sm mt-1">
                 Composite Ecological Health Index — water, vegetation, biodiversity, soil & microclimate stress
                 <span className="ml-2 text-[10px] text-emerald-300 font-mono border border-emerald-500/30 px-2 py-0.5 rounded bg-emerald-500/10">
-                  Live Sensor Sync · Open-Meteo & Copernicus Sentinel-2
+                  Live Sensor Sync · Atmospheric & Earth Observation Telemetry
                 </span>
               </p>
             </div>
@@ -1405,7 +1403,7 @@ export default function EcologicalHealthPage() {
                         className="border-b border-white/5 last:border-0 hover:bg-white/5 cursor-pointer transition-colors"
                       >
                         <td className="py-3 px-4">
-                          <span className="text-white font-medium hover:text-emerald-400 transition-colors">{r.region}</span>
+                          <span className="text-white font-medium hover:text-emerald-400 transition-colors">{r.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : r.region}</span>
                           <div className="text-[10px] text-slate-500">{r.district} · {r.ecosystemType}</div>
                         </td>
                         <td className="py-3 px-4">
@@ -1468,7 +1466,7 @@ export default function EcologicalHealthPage() {
                           <EcoIcon className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-white group-hover:text-rose-300 transition-colors">{r.region}</h3>
+                          <h3 className="text-sm font-bold text-white group-hover:text-rose-300 transition-colors">{r.region === 'Azad Jammu & Kashmir' ? 'AJ&K' : r.region}</h3>
                           <p className="text-[10px] text-slate-500">{r.ecosystemType} · {r.scope}</p>
                         </div>
                       </div>
@@ -1505,7 +1503,7 @@ export default function EcologicalHealthPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Card className="glass-intense border-emerald-500/20 p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <FlaskConical className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div className="flex-1">
@@ -1522,7 +1520,7 @@ export default function EcologicalHealthPage() {
                           { label: 'Biodiversity Health & Cryosphere', weight: '20%', src: 'WWF-India, AKDN, Field Surveys' },
                           { label: 'Soil Health & Erosion', weight: '15%', src: 'Soil Health Card Scheme, ICAR' },
                           { label: 'Hazard & Geomorphological Risk', weight: '10%', src: 'KEW Hazard Intelligence Engine' },
-                          { label: 'Real-Time Climate Stress', weight: '10%', src: 'Open-Meteo High-Res NWP' },
+                          { label: 'Real-Time Climate Stress', weight: '10%', src: 'Atmospheric NWP Telemetry' },
                         ].map(row => (
                           <div key={row.label} className="flex items-start gap-2">
                             <span className="text-emerald-400 font-mono w-8 flex-shrink-0">{row.weight}</span>

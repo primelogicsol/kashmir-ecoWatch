@@ -81,7 +81,7 @@ const SourceVerificationBadge: React.FC<SourceVerificationBadgeProps> = ({
       <div className="flex items-center gap-2">
         {/* Source Type */}
         <span
-          className={`inline-flex items-center gap-1 px-2 py-1 rounded-full border ${getQualityColor(dataSource.qualityFlag)}`}
+          className={`inline-flex items-center gap-1 px-2 py-1 rounded-[4px] border ${getQualityColor(dataSource.qualityFlag)}`}
           title={showTooltip ? getSourceLabel(dataSource.type) : undefined}
         >
           <span>{getSourceIcon(dataSource.type)}</span>

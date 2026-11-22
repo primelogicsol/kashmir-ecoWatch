@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Search, Share2, Download, Maximize2, SlidersHorizontal, X } from 'lucide-react';
+import Link from 'next/link';
+import { Search, Share2, Download, Maximize2, SlidersHorizontal, X, Home, ChevronRight } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { searchAtlas, SearchResult, getTotalResults } from '@/lib/atlas-search';
@@ -51,17 +52,29 @@ export function TopCommandBar({ onSearch, onToggleLayers, layerCount, onFeatureS
     <div className="fixed top-0 left-0 right-0 z-[400] h-16 bg-slate-900/95 backdrop-blur-xl border-b border-white/10">
       <div className="h-full px-4 md:px-6 flex items-center justify-between gap-4">
         {/* Left: Title & Breadcrumb */}
-        <div className="flex items-center gap-3 min-w-fit">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-fit">
+          <Link
+            href="/"
+            className="flex items-center justify-center p-1.5 rounded-lg bg-white/5 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-400 border border-white/10 hover:border-emerald-500/30 transition-all group shrink-0"
+            title="Return to Home"
+            aria-label="Return to Home"
+          >
+            <Home className="w-4 h-4 group-hover:scale-110 transition-transform text-emerald-400" />
+          </Link>
+
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-                Kashmir EcoWatch
-              </span>
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest">
+              <Link
+                href="/"
+                className="text-slate-400 hover:text-emerald-400 transition-colors"
+              >
+                Home
+              </Link>
               <span className="text-slate-600">/</span>
-              <span className="text-xs font-semibold uppercase tracking-widest text-white">
+              <span className="text-emerald-400">
                 Atlas
               </span>
-            </div>
+            </nav>
             <div className="text-sm font-bold text-white mt-0.5">
               Ecological Atlas
             </div>

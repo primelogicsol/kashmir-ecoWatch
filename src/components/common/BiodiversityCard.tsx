@@ -43,7 +43,7 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
     return (
       <Card className="group border border-white/5 bg-slate-900/50 card-intelligence" padding="sm">
         <div className="flex items-center gap-3">
-          <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-purple-500/20 to-slate-800/50 flex items-center justify-center flex-shrink-0">
+          <div className="w-16 h-16 rounded-lg bg-slate-800 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
             <Activity className="w-8 h-8 text-purple-400" />
           </div>
           <div className="flex-1 min-w-0">
@@ -117,7 +117,7 @@ export function BiodiversityCard({ species, onQuickView, variant = 'default' }: 
             {species.commonName}
           </h3>
           {species.localName && (
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium shrink-0">
+            <span className="text-[11px] px-2 py-0.5 rounded-[4px] bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium shrink-0">
               {species.localName}
             </span>
           )}

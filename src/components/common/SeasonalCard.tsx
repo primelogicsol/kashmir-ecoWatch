@@ -207,11 +207,9 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
       onClick={onClick}
     >
       {/* Visual header with variant color accent */}
-      <div className={`relative h-40 bg-gradient-to-br ${variantColor} opacity-20 group-hover:opacity-30 transition-opacity overflow-hidden shrink-0`}>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
-        
+      <div className="relative h-32 bg-slate-800/80 border-b border-white/5 overflow-hidden shrink-0">
         {/* Icon watermark */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="absolute inset-0 flex items-center justify-center opacity-10">
           {getIconForType(variantIcon)}
         </div>
 

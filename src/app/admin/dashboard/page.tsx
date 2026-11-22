@@ -263,7 +263,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
             <div className="w-16 h-16 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950/50">
               <Lock className="w-8 h-8 text-purple-300" />
             </div>
-            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-full inline-block">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-[4px] inline-block">
               Restricted Area &bull; Level 4 Clearance
             </span>
             <h1 className="text-2xl font-black text-white pt-1">
@@ -383,10 +383,10 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
         )}
 
         {/* Admin Header Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-slate-900/95 via-purple-950/20 to-slate-900/90 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-2xl mb-8">
+        <div className="rounded-3xl bg-slate-900 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-2xl mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 border-2 border-purple-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-900 border-2 border-purple-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
                 <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-purple-200" />
               </div>
               <div>
@@ -394,7 +394,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
                   <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                     Admin Command &amp; Intelligence Center
                   </h1>
-                  <span className="px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-[4px] bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider">
                     Superuser Tier
                   </span>
                 </div>
@@ -456,7 +456,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
               <tab.icon className="w-3.5 h-3.5" />
               <span>{tab.label}</span>
               {tab.count !== undefined && (
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                   activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
                 }`}>
                   {tab.count}
@@ -616,7 +616,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
                           </span>
 
                           {/* Status Badge */}
-                          <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                          <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-[4px] ${
                             op.status === 'APPROVED' || op.status === 'RESOLVED'
                               ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
                               : op.status === 'REFERRED'
@@ -846,7 +846,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
                       <p className="text-[11px] font-mono text-slate-400">Budget: {p.budget} &bull; Legal Conduit: {p.conduit}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">
+                      <span className="text-xs px-2.5 py-1 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">
                         {p.status}
                       </span>
                     </div>
@@ -916,7 +916,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
                         <span className="text-xs font-bold text-white">&bull; {ticket.ownerName}</span>
                         <span className="text-xs text-slate-400">({ticket.ownerEmail})</span>
                         {ticket.organization && <span className="text-[11px] text-slate-500 font-mono">[{ticket.organization}]</span>}
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
+                        <span className={`text-[10px] px-2 py-0.5 rounded-[4px] font-mono font-bold ${
                           ticket.status === 'RESOLVED' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
                           ticket.status === 'IN_PROGRESS' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
                           'bg-amber-500/10 text-amber-400 border border-amber-500/20'
@@ -1086,6 +1086,33 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
                 </div>
               </div>
             </div>
+
+            {/* Prime Logic Solutions Error Monitoring Gateway */}
+            <div className="rounded-2xl bg-slate-900/80 border border-cyan-500/30 p-6 backdrop-blur-md space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-slate-950 border border-cyan-500/40">
+                    <ShieldAlert className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                      <span>Prime Logic Solutions — Technical Error Monitoring NOC</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-cyan-950 text-cyan-300 border border-cyan-500/40">LIVE SSE</span>
+                    </h2>
+                    <p className="text-xs text-slate-400">
+                      Real-time technical error tracking, exception deduplication, stack inspection, and multi-module resilience telemetry.
+                    </p>
+                  </div>
+                </div>
+
+                <Link href="/admin/system/errors">
+                  <Button className="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs rounded-[6px] flex items-center gap-2 shrink-0">
+                    <span>Launch Error Monitor</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         )}
 
@@ -1093,13 +1120,25 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
         {activeTab === 'audit' && (
           <div className="space-y-6">
             <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 backdrop-blur-md space-y-4">
-              <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                <FileText className="w-5 h-5 text-purple-400" />
-                <span>Platform Governance &amp; Immutable Audit Trail</span>
-              </h2>
-              <p className="text-xs text-slate-400">
-                Every consequential action—status change, scientific rejection, regulatory referral, and role elevation—is logged with actor identity, timestamp, and immutable SHA-256 state hash.
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-purple-400" />
+                    <span>Platform Governance &amp; Immutable Audit Trail</span>
+                  </h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Every consequential action—status change, scientific rejection, regulatory referral, and role elevation—is logged with actor identity, timestamp, and immutable SHA-256 state hash.
+                  </p>
+                </div>
+                <Link
+                  href="/admin/data-integrity"
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-md self-start sm:self-auto shrink-0"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Website Data Integrity Hub</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
               <div className="space-y-2 pt-2">
                 {operations.slice(0, 8).map(op => (
                   <div key={op.id} className="p-3 rounded-xl bg-slate-950 border border-white/5 flex items-center justify-between text-xs">

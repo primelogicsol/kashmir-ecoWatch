@@ -122,7 +122,7 @@ export default function DistrictPage() {
           >
             <Card className="glass-light border-white/5 p-6" padding="none">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -140,7 +140,7 @@ export default function DistrictPage() {
           >
             <Card className="glass-light border-white/5 p-6" padding="none">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Droplet className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -158,7 +158,7 @@ export default function DistrictPage() {
           >
             <Card className="glass-light border-white/5 p-6" padding="none">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-forest-500 to-green-600 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Leaf className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -176,7 +176,7 @@ export default function DistrictPage() {
           >
             <Card className="glass-light border-white/5 p-6" padding="none">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Activity className="w-6 h-6 text-white" />
                 </div>
                 <div>

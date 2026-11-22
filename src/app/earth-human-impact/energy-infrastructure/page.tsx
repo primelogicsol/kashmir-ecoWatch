@@ -212,7 +212,7 @@ export default function EnergyInfrastructureSubmodulePage() {
         </section>
 
         {/* Hazard Linkage */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-yellow-950/40 via-slate-900 to-slate-950 border border-yellow-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-yellow-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-1">Geotechnical Hazard Interlock</div>
             <h4 className="text-base font-bold text-white">Coupled with Hazard Intelligence (Landslides & Floods)</h4>

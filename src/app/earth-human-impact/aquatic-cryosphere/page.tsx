@@ -106,19 +106,19 @@ export default function AquaticCryosphereOverviewPage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-cyan-400 via-teal-300 to-sky-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Aquatic, Wetland &amp; Cryosphere Change Observatory
+            <div className="leading-[1.15] overflow-visible">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400 bg-clip-text text-transparent tracking-normal">
+                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Aquatic &amp; Cryosphere</span> Change Observatory
               </span>
             </div>
           </div>
         }
         subtitle="Satellite change-detection and hydrogeological intelligence for Kashmir's freshwater systems, Ramsar wetlands, valley glaciers, river corridors, and springshed aquifers."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+          '/images/earth-human-impact/ehii-command-center-satellite.jpg',
+          '/images/earth-human-impact/ehii-karewa-land-transformation.jpg',
+          '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg'
         ]}
         rightContent={
           <EhiiHeroShowcaseCard
@@ -255,7 +255,7 @@ export default function AquaticCryosphereOverviewPage() {
             ))}
 
             {/* Sixth Card: Permanent Loss & Recovery Ledger */}
-            <div className="p-5 rounded-xl bg-gradient-to-br from-cyan-950/40 via-slate-900/60 to-slate-900/90 border border-cyan-500/40 flex flex-col justify-between">
+            <div className="p-5 rounded-xl bg-slate-900 border border-cyan-500/40 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="font-mono text-teal-400 text-xs font-bold tracking-wider">HISTORICAL</span>
@@ -380,9 +380,9 @@ export default function AquaticCryosphereOverviewPage() {
         </section>
 
         {/* Section 3: Scientific Candidate Alert & Verification Pipeline */}
-        <section className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-900/50 to-slate-950 border border-white/10">
+        <section className="p-6 rounded-2xl bg-slate-900 border border-white/10">
           <div className="mb-6">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-300 px-2.5 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/30 mb-2">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-300 px-2.5 py-0.5 rounded-[4px] bg-teal-500/10 border border-teal-500/30 mb-2">
               <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
               <span>Scientific Rigor & Verification Protocol</span>
             </div>
@@ -500,9 +500,9 @@ export default function AquaticCryosphereOverviewPage() {
         </section>
 
         {/* Section 5: The Environmental Loss & Recovery Ledger CTA */}
-        <section className="p-6 rounded-2xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-slate-900 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <section className="p-6 rounded-2xl bg-slate-900 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-teal-300 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-500/40">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold text-teal-300 px-3 py-1 rounded-[4px] bg-teal-500/20 border border-teal-500/40">
               <BookOpen className="w-3.5 h-3.5" />
               <span>Permanent Historical Balance Sheet</span>
             </div>

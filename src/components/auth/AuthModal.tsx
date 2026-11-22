@@ -141,7 +141,7 @@ export function AuthModal() {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header Banner */}
-          <div className="relative bg-gradient-to-br from-emerald-600/30 via-slate-900 to-slate-950 p-6 border-b border-white/10">
+          <div className="relative bg-slate-900 p-6 border-b border-white/10">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1.5">

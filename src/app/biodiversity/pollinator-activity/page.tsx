@@ -135,7 +135,7 @@ export default function PollinatorActivityPage() {
             Bloom Synchrony Sentinel
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-500/30 text-[10px] font-mono">
+        <span className="px-2 py-0.5 rounded-[4px] bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-500/30 text-[10px] font-mono">
           Spring/Summer 2026
         </span>
       </div>
@@ -217,12 +217,10 @@ export default function PollinatorActivityPage() {
           { label: 'Pollinator Activity' }
         ]}
         images={[
-          '/images/protected-network.png',
-          '/images/markhor.png',
+          '/images/biodiversity/biodiversity-pollinators-bloom.jpg',
+          '/images/biodiversity/biodiversity-botany-flora.jpg',
           '/images/bear.png',
-          '/images/tiger.png'
         ]}
-        rightContent={pollinatorHeroShowcase}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -262,7 +260,7 @@ export default function PollinatorActivityPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-fuchsia-950/70 to-slate-900/95 border border-fuchsia-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-fuchsia-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-fuchsia-500/10 rounded-xl border border-fuchsia-500/20 text-fuchsia-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />

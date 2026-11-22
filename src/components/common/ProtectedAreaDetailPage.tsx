@@ -911,7 +911,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     <main className="min-h-screen bg-slate-950">
 
       {/* ── HERO ── */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
@@ -1959,7 +1959,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
 
                   {/* Conservation Significance */}
                   <div className="space-y-6">
-                    <Card className={`${CARD} p-5 bg-gradient-to-br from-emerald-950/20 to-slate-950 border-emerald-500/15`}>
+                    <Card className={`${CARD} p-5 bg-slate-900 border-emerald-500/15`}>
                       <h3 className="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2">
                         <Globe className="w-4 h-4" /> Global Relevance
                       </h3>

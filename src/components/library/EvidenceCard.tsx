@@ -82,7 +82,7 @@ export function EvidenceCard({
     return (
       <Card className="glass-intense border-white/10 hover:border-indigo-500/30 transition-all p-4 cursor-pointer group" onClick={onClick}>
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-indigo-950/50 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
             <CategoryIcon className="w-5 h-5 text-indigo-400" />
           </div>
           <div className="flex-1 min-w-0">
@@ -100,21 +100,19 @@ export function EvidenceCard({
   if (variant === 'featured') {
     return (
       <Card className="glass-intense border-white/10 hover:border-indigo-500/40 transition-all p-6 cursor-pointer group relative overflow-hidden" onClick={onClick}>
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-bl-full" />
-        
         <div className="relative">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 rounded-xl bg-indigo-900 border border-indigo-500/30 flex items-center justify-center shadow-lg">
                 <CategoryIcon className="w-6 h-6 text-white" />
               </div>
               <div>
                 <Badge variant="outline" size="sm" className="mb-1">{categoryLabels[evidence.category]}</Badge>
                 <div className="flex items-center gap-2">
-                  <span className={cn("px-2 py-0.5 rounded-full text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
+                  <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
                     {sourceTypeLabels[evidence.sourceType]}
                   </span>
-                  <span className={cn("px-2 py-0.5 rounded-full text-xs font-medium", confidenceColors[evidence.confidence])}>
+                  <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium", confidenceColors[evidence.confidence])}>
                     {confidenceLabels[evidence.confidence]}
                   </span>
                 </div>
@@ -151,7 +149,7 @@ export function EvidenceCard({
                       key={entity.id}
                       href={entity.slug || '#'}
                       className={cn(
-                        "inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
+                        "inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
                         entityColors[entity.type]
                       )}
                       onClick={(e) => e.stopPropagation()}
@@ -211,7 +209,7 @@ export function EvidenceCard({
   return (
     <Card className="glass-intense border-white/10 hover:border-indigo-500/30 transition-all p-5 cursor-pointer group" onClick={onClick}>
       <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0">
+        <div className="w-12 h-12 rounded-xl bg-indigo-950/50 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
           <CategoryIcon className="w-6 h-6 text-indigo-400" />
         </div>
         
@@ -222,10 +220,10 @@ export function EvidenceCard({
 
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             <Badge variant="outline" size="sm">{categoryLabels[evidence.category]}</Badge>
-            <span className={cn("px-2 py-0.5 rounded-full text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
+            <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
               {sourceTypeLabels[evidence.sourceType]}
             </span>
-            <span className={cn("px-2 py-0.5 rounded-full text-xs font-medium", confidenceColors[evidence.confidence])}>
+            <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium", confidenceColors[evidence.confidence])}>
               {confidenceLabels[evidence.confidence]}
             </span>
           </div>
@@ -333,7 +331,7 @@ export function RelatedEntityBadge({ entity }: RelatedEntityBadgeProps) {
     <a
       href={entity.slug || '#'}
       className={cn(
-        "inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
+        "inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
         entityColors[entity.type]
       )}
     >
@@ -365,10 +363,10 @@ export function SourceConfidenceBadge({ sourceType, confidence, compact = false 
 
   return (
     <div className="flex items-center gap-2">
-      <span className={cn("px-2 py-1 rounded-full text-xs font-medium border", sourceTypeColors[sourceType])}>
+      <span className={cn("px-2 py-1 rounded-[4px] text-xs font-medium border", sourceTypeColors[sourceType])}>
         {sourceTypeLabels[sourceType as keyof typeof sourceTypeLabels]}
       </span>
-      <span className={cn("px-2 py-1 rounded-full text-xs font-medium", confidenceColors[confidence])}>
+      <span className={cn("px-2 py-1 rounded-[4px] text-xs font-medium", confidenceColors[confidence])}>
         {confidenceLabels[confidence as keyof typeof confidenceLabels]}
       </span>
     </div>

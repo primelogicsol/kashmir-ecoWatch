@@ -123,7 +123,7 @@ export default function UserDashboardPage() {
         <div className="rounded-3xl bg-slate-900/80 border border-white/10 p-6 sm:p-8 backdrop-blur-xl shadow-2xl mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-700 border-2 border-emerald-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-900 border-2 border-emerald-400/30 flex items-center justify-center text-white text-2xl font-black shadow-lg">
                 {user?.name ? user.name.charAt(0).toUpperCase() : 'K'}
               </div>
               <div>
@@ -131,7 +131,7 @@ export default function UserDashboardPage() {
                   <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                     {user?.name ? `${user.name}'s Workspace` : 'Personal Scientific & Environmental Workspace'}
                   </h1>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                  <span className="px-2.5 py-0.5 rounded-[4px] bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
                     {user?.roleLabel || 'Verified Contributor'}
                   </span>
                 </div>
@@ -183,7 +183,7 @@ export default function UserDashboardPage() {
               <tab.icon className="w-3.5 h-3.5" />
               <span>{tab.label}</span>
               {tab.count !== undefined && (
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
                   activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
                 }`}>
                   {tab.count}
@@ -248,7 +248,7 @@ export default function UserDashboardPage() {
                         <span className="text-[10px] font-mono text-slate-400 uppercase bg-slate-900 px-2 py-0.5 rounded">
                           {lookupResult.managementCenterLabel}
                         </span>
-                        <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                        <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-[4px] ${
                           lookupResult.status === 'APPROVED' || lookupResult.status === 'RESOLVED'
                             ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                             : lookupResult.status === 'REFERRED'
@@ -353,7 +353,7 @@ export default function UserDashboardPage() {
                           {op.userDashboardSection}
                         </span>
                       </div>
-                      <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                      <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-[4px] ${
                         op.status === 'APPROVED' || op.status === 'RESOLVED'
                           ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
                           : op.status === 'REFERRED'
@@ -488,7 +488,7 @@ export default function UserDashboardPage() {
                       <span className="font-bold text-white block">{a.region}</span>
                       <span className="text-slate-400">{a.alert}</span>
                     </div>
-                    <span className={`px-2.5 py-1 rounded-full font-mono text-[10px] font-bold ${
+                    <span className={`px-2.5 py-1 rounded-[4px] font-mono text-[10px] font-bold ${
                       a.severity === 'Critical' ? 'bg-red-500/20 text-red-300 border border-red-500/40' :
                       a.severity === 'High' ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40' :
                       'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'

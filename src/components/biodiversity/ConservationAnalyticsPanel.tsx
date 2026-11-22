@@ -48,8 +48,8 @@ export function ConservationAnalyticsPanel({ analytics, onViewAll }: Conservatio
         {/* Threat Patterns by Taxon */}
         <div className="p-6 pb-4 border-b border-white/5">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
-              <AlertTriangle className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-red-950/60 border border-red-500/30 text-red-400 flex items-center justify-center">
+              <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-xl font-bold text-white">Threat Patterns by Taxon</h3>
@@ -59,7 +59,7 @@ export function ConservationAnalyticsPanel({ analytics, onViewAll }: Conservatio
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Mammals */}
-            <div className="p-4 rounded-lg bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20">
+            <div className="p-4 rounded-lg bg-slate-900 border border-emerald-500/20">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-medium text-white">Mammals</span>
                 <Badge variant="outline" size="sm" className="border-emerald-500/30 text-emerald-400">
@@ -83,7 +83,7 @@ export function ConservationAnalyticsPanel({ analytics, onViewAll }: Conservatio
             </div>
             
             {/* Birds */}
-            <div className="p-4 rounded-lg bg-gradient-to-br from-sky-500/10 to-blue-500/10 border border-sky-500/20">
+            <div className="p-4 rounded-lg bg-slate-900 border border-sky-500/20">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-medium text-white">Birds</span>
                 <Badge variant="outline" size="sm" className="border-sky-500/30 text-sky-400">
@@ -107,7 +107,7 @@ export function ConservationAnalyticsPanel({ analytics, onViewAll }: Conservatio
             </div>
             
             {/* Medicinal Plants */}
-            <div className="p-4 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
+            <div className="p-4 rounded-lg bg-slate-900 border border-amber-500/20">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-medium text-white">Medicinal Plants</span>
                 <Badge variant="outline" size="sm" className="border-amber-500/30 text-amber-400">
@@ -189,7 +189,7 @@ export function ConservationAnalyticsPanel({ analytics, onViewAll }: Conservatio
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {analytics.hotspots.map((hotspot) => (
-              <div key={hotspot.name} className="p-4 rounded-lg bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/20">
+              <div key={hotspot.name} className="p-4 rounded-lg bg-slate-900 border border-red-500/20">
                 <div className="text-sm font-bold text-white mb-2">{hotspot.name}</div>
                 <div className="text-xs text-slate-400 mb-2">{hotspot.district}</div>
                 <div className="flex items-center gap-2 mb-2">

@@ -67,7 +67,7 @@ export default function EcoVoicesPage() {
 
   const [activeHeroIdx, setActiveHeroIdx] = useState(0);
   const [heroPlayVideo, setHeroPlayVideo] = useState<boolean>(false);
-  const heroReleases = ECOVOICES_RELEASES.slice(0, 5);
+  const heroReleases = ECOVOICES_RELEASES;
   const currentHero = heroReleases[activeHeroIdx] || heroReleases[0];
 
   const heroShowcaseCard = currentHero ? (
@@ -83,7 +83,7 @@ export default function EcoVoicesPage() {
             <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            <span>Track #{activeHeroIdx + 1} of 5</span>
+            <span>Track #{activeHeroIdx + 1} of {heroReleases.length}</span>
           </span>
         </div>
         <span className="text-[10px] font-mono text-slate-300 bg-black/60 border border-white/10 px-2 py-0.5 rounded">
@@ -130,7 +130,7 @@ export default function EcoVoicesPage() {
               >
                 <Play className="w-6 h-6 ml-0.5 fill-white" />
               </button>
-              <span className="text-[10px] font-bold text-white bg-black/70 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-white/10 shadow">
+              <span className="text-[10px] font-bold text-white bg-black/70 backdrop-blur-sm px-2.5 py-0.5 rounded-[4px] border border-white/10 shadow">
                 Play YouTube Video
               </span>
             </div>
@@ -152,8 +152,8 @@ export default function EcoVoicesPage() {
         )}
       </div>
 
-      {/* Selector Tabs - All 5 Tracks with Thumbnails */}
-      <div className="grid grid-cols-5 gap-1.5 pt-1 border-t border-white/10">
+      {/* Selector Tabs - All Tracks with Thumbnails */}
+      <div className="grid grid-cols-6 gap-1.5 pt-1 border-t border-white/10">
         {heroReleases.map((item, idx) => (
           <button
             key={item.id}
@@ -210,19 +210,19 @@ export default function EcoVoicesPage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-purple-400 via-pink-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
-                Environmental Music &amp; Cultural Stewardship
+            <div className="leading-[1.15] overflow-visible">
+              <span className="inline-block bg-gradient-to-r from-purple-400 via-pink-300 to-amber-300 bg-clip-text text-transparent tracking-normal">
+                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Environmental</span> Music &amp; Cultural Stewardship
               </span>
             </div>
           </div>
         }
         subtitle="Where empirical telemetry meets poetry, spiritual kalam, and environmental consciousness. An open collaborative platform inviting writers, singers, instrumentalists, and composers to give voice to Kashmir's ecosystems in partnership with SufiPulse USA."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
+          '/images/environmental-calendar/calendar-hero-students-water.jpg',
+          '/images/environmental-calendar/calendar-hero-scientists-lab.jpg',
+          '/images/environmental-calendar/calendar-hero-outdoor-classroom.jpg'
         ]}
         rightContent={heroShowcaseCard}
         actions={
@@ -318,7 +318,7 @@ export default function EcoVoicesPage() {
           >
             <PenTool className="w-4 h-4 text-purple-300" />
             <span>Creative Participation Network</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-purple-900 text-purple-200 border border-purple-400/30">Open</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded-[4px] bg-purple-900 text-purple-200 border border-purple-400/30">Open</span>
           </button>
 
           <button
@@ -383,7 +383,7 @@ export default function EcoVoicesPage() {
         {activeTab === 'library' && (
           <div className="space-y-6">
             {/* OFFICIAL YOUTUBE PLAYLIST HERO BANNER */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-950/60 via-slate-900 to-purple-950/60 border border-red-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-red-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
               <div className="flex items-center gap-3.5">
                 <div className="w-12 h-12 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -392,16 +392,16 @@ export default function EcoVoicesPage() {
                 </div>
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 uppercase tracking-wider">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-[4px] bg-red-500/20 text-red-300 border border-red-500/40 uppercase tracking-wider">
                       Official YouTube Playlist
                     </span>
-                    <span className="text-xs text-slate-400 font-mono">Date published (newest) • 5 Curated Tracks</span>
+                    <span className="text-xs text-slate-400 font-mono">Date published (newest) • {ECOVOICES_RELEASES.length} Curated Tracks</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-white">
                     SufiPulse USA Western Himalayan EcoVoices Series
                   </h3>
                   <p className="text-xs text-slate-300">
-                    Listen to all 5 releases in sequential chronological release order, with live harmonic previews and scientific fieldwork dossiers.
+                    Listen to all {ECOVOICES_RELEASES.length} releases in sequential chronological release order, with live harmonic previews and scientific fieldwork dossiers.
                   </p>
                 </div>
               </div>
@@ -605,7 +605,7 @@ export default function EcoVoicesPage() {
         {/* ======================================================== */}
         {activeTab === 'classroom' && (
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 space-y-3">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-3">
               <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs">
                 Pedagogical Field Science Framework
               </Badge>
@@ -706,7 +706,7 @@ export default function EcoVoicesPage() {
         {/* ======================================================== */}
         {activeTab === 'poetry' && (
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/30 space-y-3">
+            <div className="p-6 rounded-2xl bg-slate-900 border border-cyan-500/30 space-y-3">
               <Badge className="bg-cyan-500 text-slate-950 font-bold text-xs">
                 Sacred Ecology &amp; Literary Heritage
               </Badge>
@@ -838,6 +838,164 @@ export default function EcoVoicesPage() {
             </Card>
           </div>
         )}
+
+        {/* ======================================================== */}
+        {/* BEYOND ECOVOICES: MUSIC, KNOWLEDGE & HUMAN UNDERSTANDING */}
+        {/* ======================================================== */}
+        <section className="pt-10 border-t border-white/10 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-400" />
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-300">
+                  Related Cultural, Intellectual &amp; Educational Initiatives
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Beyond EcoVoices: Music, Knowledge &amp; Human Understanding
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+                Explore connected initiatives advancing sacred music, reflective inquiry, professional ethics and interfaith understanding.
+              </p>
+            </div>
+            <div className="shrink-0 text-left md:text-right">
+              <span className="text-[10px] font-mono text-slate-400 block">
+                Independent Partner Initiatives
+              </span>
+              <span className="text-[10px] text-slate-500">
+                Non-commercial educational &amp; cultural outreach
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* CARD 1: SUFIPULSE USA */}
+            <div className="bg-slate-900/85 border border-white/10 hover:border-purple-500/40 rounded-[8px] p-5 flex flex-col justify-between transition-all group backdrop-blur-sm">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-[6px] bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                    <Music className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-purple-900/40 text-purple-300 border border-purple-500/30">
+                    Sacred Music &amp; Kalam
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                  SufiPulse USA
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Discover original Sufi music, mystical kalam, poetry and contemplative storytelling connecting spiritual heritage with contemporary creative expression.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-white/5">
+                <a
+                  href="https://www.sufipulse.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-[6px] bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>Explore SufiPulse</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* CARD 2: SUFIPULSE YOUTUBE */}
+            <div className="bg-slate-900/85 border border-white/10 hover:border-red-500/40 rounded-[8px] p-5 flex flex-col justify-between transition-all group backdrop-blur-sm">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-[6px] bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-400">
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-red-950/40 text-red-300 border border-red-500/30">
+                    Official Channel
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-red-300 transition-colors">
+                  Subscribe to SufiPulse on YouTube
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  New kalam and sacred music releases every week. Explore original compositions, spiritual poetry and environmental music from SufiPulse USA.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-white/5">
+                <a
+                  href="https://www.youtube.com/channel/UCraDr3i5A3k0j7typ6tOOsQ?sub_confirmation=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-[6px] bg-red-600 hover:bg-red-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>Subscribe on YouTube</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* CARD 3: NEXTGEN SUFI SEEKER */}
+            <div className="bg-slate-900/85 border border-white/10 hover:border-cyan-500/40 rounded-[8px] p-5 flex flex-col justify-between transition-all group backdrop-blur-sm">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-[6px] bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-cyan-950/40 text-cyan-300 border border-cyan-500/30">
+                    Ethics &amp; Science
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  NextGEN Sufi Seeker
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  A professional and intellectual platform connecting Sufi philosophy, ethical inquiry and consciousness studies with science, environmental stewardship, governance and other disciplines.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-white/5">
+                <a
+                  href="https://sufisciencecenter.info/nextgen-sufi-seeker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-[6px] bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>Explore NextGEN Sufi Seeker</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* CARD 4: INTERFAITH PEACE BRIDGE */}
+            <div className="bg-slate-900/85 border border-white/10 hover:border-emerald-500/40 rounded-[8px] p-5 flex flex-col justify-between transition-all group backdrop-blur-sm">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-[6px] bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-emerald-950/40 text-emerald-300 border border-emerald-500/30">
+                    Interfaith Harmony
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  Interfaith Peace Bridge
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  An initiative promoting understanding across faith traditions through dialogue, compassion, shared human values and the inclusive ethical teachings of Sufism.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-white/5">
+                <a
+                  href="https://ifpb.sufisciencecenter.info/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-[6px] bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>Explore Interfaith Peace Bridge</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </div>
     </main>

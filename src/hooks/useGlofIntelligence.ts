@@ -1,135 +1,114 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { GLOFRecord } from '@/data/hazard-glofs';
+
+export interface OfficialAlert {
+  title: string;
+  pubDate: string;
+  link: string;
+  district?: string;
+  severity?: string;
+}
 
 export interface GlofIntelligenceState {
   data: GLOFRecord[];
+  officialAlertsCount: number;
+  officialAlerts: OfficialAlert[];
+  sachetStatus: 'Connected' | 'Unreachable';
   loading: boolean;
   isStale: boolean;
+  refresh: () => void;
 }
 
 export function useGlofIntelligence(initialRecords: GLOFRecord[]): GlofIntelligenceState {
-  const [state, setState] = useState<GlofIntelligenceState>({
-    data: initialRecords,
-    loading: true,
-    isStale: false,
-  });
+  const [data, setData] = useState<GLOFRecord[]>(initialRecords);
+  const [officialAlertsCount, setOfficialAlertsCount] = useState<number>(0);
+  const [officialAlerts, setOfficialAlerts] = useState<OfficialAlert[]>([]);
+  const [sachetStatus, setSachetStatus] = useState<'Connected' | 'Unreachable'>('Connected');
+  const [loading, setLoading] = useState(true);
+  const [isStale, setIsStale] = useState(false);
 
-  useEffect(() => {
-    let mounted = true;
+  const CACHE_KEY = 'kew_glof_cache_v2';
+  const CACHE_DURATION = 3 * 60 * 1000; // 3 minutes
 
-    async function fetchMeteoData() {
-      try {
-        const CACHE_KEY = 'glof_meteo_cache_v1';
-        const CACHE_DURATION = 45 * 60 * 1000; // 45 minutes
+  const fetchGlofData = useCallback(async (force = false) => {
+    try {
+      setLoading(true);
+      setIsStale(false);
 
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const { timestamp, data } = JSON.parse(cached);
-          if (Date.now() - timestamp < CACHE_DURATION) {
-            if (mounted) {
-              setState({ data, loading: false, isStale: false });
+      if (!force && typeof window !== 'undefined') {
+        const cachedStr = localStorage.getItem(CACHE_KEY);
+        if (cachedStr) {
+          try {
+            const cached = JSON.parse(cachedStr);
+            if (Date.now() - cached.timestamp < CACHE_DURATION) {
+              setData(cached.data);
+              setOfficialAlertsCount(cached.officialAlertsCount || 0);
+              setOfficialAlerts(cached.officialAlerts || []);
+              setSachetStatus(cached.sachetStatus || 'Connected');
+              setLoading(false);
+              return;
             }
-            return;
-          }
-        }
-
-        const validRecords = initialRecords.filter(r => r.latitude !== undefined && r.longitude !== undefined);
-        if (validRecords.length === 0) {
-          if (mounted) setState({ data: initialRecords, loading: false, isStale: true });
-          return;
-        }
-
-        const lats = validRecords.map(r => r.latitude).join(',');
-        const lons = validRecords.map(r => r.longitude).join(',');
-
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum&timezone=auto`;
-
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Failed to fetch from Open Meteo');
-
-        const result = await response.json();
-        const locationsData = validRecords.length === 1 ? [result] : result;
-
-        const updatedRecords = initialRecords.map((record) => {
-          if (record.latitude === undefined || record.longitude === undefined) return record;
-
-          const idx = validRecords.findIndex(r => r.id === record.id);
-          const meteo = locationsData[idx];
-
-          if (!meteo || !meteo.daily) return record;
-
-          const maxTemps = meteo.daily.temperature_2m_max || [];
-          const minTemps = meteo.daily.temperature_2m_min || [];
-          const precip = meteo.daily.precipitation_sum || [];
-          
-          const live_temperature_max = Math.max(...maxTemps);
-          const live_precipitation_7d = precip.reduce((a: number, b: number) => a + b, 0);
-
-          let live_risk_level = 'Low';
-          let dominant_trigger = 'None';
-
-          const maxTemp = live_temperature_max;
-          const minTemp = Math.min(...minTemps);
-          const avgPrecip = live_precipitation_7d;
-
-          // Critical: Extreme sustained heat AND heavy rainfall directly over the glacial lake (high risk of dam failure).
-          if (maxTemp > 20 && avgPrecip > 50) {
-            live_risk_level = 'Critical';
-            dominant_trigger = 'Extreme Heat + Heavy Rain';
-          } 
-          // High: Severe heatwave at altitude (temps >15°C) OR heavy rain-on-snow event.
-          else if (maxTemp > 15 || (maxTemp > 5 && avgPrecip > 30)) {
-            live_risk_level = 'High';
-            dominant_trigger = maxTemp > 15 ? 'Severe Heatwave' : 'Rain-on-Snow';
-          }
-          // Moderate: Sustained temps >0°C for multiple days OR moderate rainfall.
-          else if (maxTemp > 0 || avgPrecip > 10) {
-            live_risk_level = 'Moderate';
-            dominant_trigger = maxTemp > 0 ? 'Sustained Positive Temps' : 'Moderate Rainfall';
-          }
-          // Low: Sub-zero temps at night, no heavy rain.
-          else {
-            live_risk_level = 'Low';
-            dominant_trigger = 'Stable / Sub-zero Temps';
-          }
-
-          return {
-            ...record,
-            live_temperature_max,
-            live_precipitation_7d,
-            live_risk_level,
-            dominant_trigger,
-            last_updated: new Date().toISOString(),
-          };
-        });
-
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-          timestamp: Date.now(),
-          data: updatedRecords,
-        }));
-
-        if (mounted) {
-          setState({ data: updatedRecords, loading: false, isStale: false });
-        }
-      } catch (error) {
-        console.error('GLOF API Error:', error);
-        // Load from cache if possible, but mark as stale
-        const CACHE_KEY = 'glof_meteo_cache_v1';
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached && mounted) {
-          setState({ data: JSON.parse(cached).data, loading: false, isStale: true });
-        } else if (mounted) {
-          setState({ data: initialRecords, loading: false, isStale: true });
+          } catch (e) {}
         }
       }
+
+      const res = await fetch('/api/hazard-intelligence/glofs', {
+        headers: { 'Cache-Control': 'no-cache' }
+      });
+
+      if (!res.ok) throw new Error('Failed to fetch from GLOF API');
+      const json = await res.json();
+
+      if (json.success && Array.isArray(json.data)) {
+        setData(json.data);
+        setOfficialAlertsCount(json.official_alerts_count || 0);
+        setOfficialAlerts(json.official_alerts || []);
+        setSachetStatus(json.sachet_feed_status || 'Connected');
+
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            data: json.data,
+            officialAlertsCount: json.official_alerts_count || 0,
+            officialAlerts: json.official_alerts || [],
+            sachetStatus: json.sachet_feed_status || 'Connected'
+          }));
+        }
+      } else {
+        throw new Error('Invalid GLOF API payload');
+      }
+
+    } catch (err) {
+      console.error('GLOF API Error:', err);
+      if (typeof window !== 'undefined') {
+        const cachedStr = localStorage.getItem(CACHE_KEY);
+        if (cachedStr) {
+          try {
+            const cached = JSON.parse(cachedStr);
+            setData(cached.data);
+            setOfficialAlertsCount(cached.officialAlertsCount || 0);
+            setOfficialAlerts(cached.officialAlerts || []);
+            setSachetStatus(cached.sachetStatus || 'Connected');
+            setIsStale(true);
+          } catch (e) {}
+        }
+      }
+    } finally {
+      setLoading(false);
     }
+  }, []);
 
-    fetchMeteoData();
+  useEffect(() => {
+    fetchGlofData();
+  }, [fetchGlofData]);
 
-    return () => {
-      mounted = false;
-    };
-  }, [initialRecords]);
-
-  return state;
+  return {
+    data,
+    officialAlertsCount,
+    officialAlerts,
+    sachetStatus,
+    loading,
+    isStale,
+    refresh: () => fetchGlofData(true)
+  };
 }

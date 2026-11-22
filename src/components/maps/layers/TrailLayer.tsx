@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CircleMarker, Popup } from 'react-leaflet';
-import * as L from 'leaflet';
-import { trailsData } from '@/data';
+import { Polyline, CircleMarker, Popup } from 'react-leaflet';
+import trailsGeoJson from '@/data/geojson/trails.json';
 
 interface TrailLayerProps {
   visible?: boolean;
@@ -17,58 +16,101 @@ const trailDifficultyColors: Record<string, string> = {
 };
 
 export function TrailLayer({ visible = true, onFeatureClick }: TrailLayerProps) {
-  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   if (!visible) return null;
 
-  const handleTrailClick = (trail: any) => {
-    if (onFeatureClick) {
-      onFeatureClick({
-        type: 'trail',
-        ...trail,
-      });
-    }
-  };
-
   return (
     <>
-      {trailsData.map((trail) => {
-        const coordinates = trail.district ? { lat: 34.0837, lng: 74.7973 } : undefined;
-        if (!coordinates) return null;
+      {trailsGeoJson.features.map((feature) => {
+        const props = feature.properties;
+        const coords = feature.geometry.coordinates; // [[lng, lat], ...]
+        const latLngs: [number, number][] = coords.map(([lng, lat]) => [lat, lng]);
+        const color = trailDifficultyColors[props.difficulty] || '#f59e0b';
+        const isHovered = hoveredId === props.id;
 
-        const color = trailDifficultyColors[trail.difficulty] || trailDifficultyColors.moderate;
-        const isHovered = hoveredFeature === trail.id;
+        const trailheadPos: [number, number] = [props.trailhead.lat, props.trailhead.lng];
+        const endpointPos: [number, number] = [props.endpoint.lat, props.endpoint.lng];
 
         return (
-          <CircleMarker
-            key={trail.id}
-            center={[coordinates.lat, coordinates.lng]}
-            radius={isHovered ? 10 : 8}
-            pathOptions={{
-              color: color,
-              fillColor: color,
-              fillOpacity: 0.8,
-              weight: 3,
-            }}
-            eventHandlers={{
-              mouseover: () => setHoveredFeature(trail.id),
-              mouseout: () => setHoveredFeature(null),
-              click: () => handleTrailClick(trail),
-            }}
-          >
-            <Popup>
-              <div className="p-2 min-w-[200px]">
-                <h3 className="font-semibold text-slate-900">{trail.name}</h3>
-                <p className="text-sm text-slate-600">{trail.trailType.replace('-', ' ')}</p>
-                <div className="mt-2 space-y-1 text-xs text-slate-500">
-                  <p>District: {trail.district}</p>
-                  <p>Distance: {trail.distance} km</p>
-                  <p>Duration: {trail.duration}</p>
-                  <p>Difficulty: <span className="font-medium" style={{ color }}>{trail.difficulty}</span></p>
+          <React.Fragment key={props.id}>
+            {/* GPS Polyline Course */}
+            <Polyline
+              positions={latLngs}
+              pathOptions={{
+                color: isHovered ? '#ffffff' : color,
+                weight: isHovered ? 4 : 2.5,
+                opacity: isHovered ? 1.0 : 0.85,
+                dashArray: '6, 6',
+              }}
+              eventHandlers={{
+                mouseover: () => setHoveredId(props.id),
+                mouseout: () => setHoveredId(null),
+                click: () => {
+                  onFeatureClick?.({
+                    type: 'trail',
+                    id: props.id,
+                    name: props.name,
+                    region: props.region,
+                    district: props.district,
+                    distance: props.distance_km,
+                    duration: props.duration,
+                    difficulty: props.difficulty,
+                    trailhead: props.trailhead.name,
+                    endpoint: props.endpoint.name,
+                    maxElevation: props.maxElevation_m,
+                    verificationStatus: props.verificationStatus,
+                    description: `${props.name} in ${props.district}, ${props.region}. Length: ${props.distance_km} km (${props.duration}). Trailhead: ${props.trailhead.name}. Max elevation: ${props.maxElevation_m}m. Difficulty: ${props.difficulty.toUpperCase()}.`,
+                    metrics: [
+                      { label: 'Distance', value: `${props.distance_km} km` },
+                      { label: 'Duration', value: props.duration },
+                      { label: 'Difficulty', value: props.difficulty.toUpperCase() },
+                      { label: 'Max Altitude', value: `${props.maxElevation_m}m` },
+                      { label: 'Trailhead', value: props.trailhead.name },
+                      { label: 'Geometry', value: 'Verified LineString Track' }
+                    ]
+                  });
+                },
+              }}
+            >
+              <Popup>
+                <div className="p-2 min-w-[210px]">
+                  <h3 className="font-bold text-slate-900 text-sm">{props.name}</h3>
+                  <div className="mt-1 space-y-1 text-xs text-slate-600">
+                    <p><span className="font-medium text-slate-700">Region:</span> {props.region} ({props.district})</p>
+                    <p><span className="font-medium text-slate-700">Distance:</span> {props.distance_km} km ({props.duration})</p>
+                    <p><span className="font-medium text-slate-700">Trailhead:</span> {props.trailhead.name}</p>
+                    <p><span className="font-medium text-slate-700">Endpoint:</span> {props.endpoint.name}</p>
+                    <p><span className="font-medium text-slate-700">Difficulty:</span> <span style={{ color }}>{props.difficulty}</span></p>
+                  </div>
                 </div>
-              </div>
-            </Popup>
-          </CircleMarker>
+              </Popup>
+            </Polyline>
+
+            {/* Trailhead Origin Pin */}
+            <CircleMarker
+              center={trailheadPos}
+              radius={5}
+              pathOptions={{
+                fillColor: '#22c55e',
+                color: '#ffffff',
+                weight: 2,
+                fillOpacity: 1,
+              }}
+            />
+
+            {/* Endpoint Pin */}
+            <CircleMarker
+              center={endpointPos}
+              radius={4}
+              pathOptions={{
+                fillColor: '#ef4444',
+                color: '#ffffff',
+                weight: 1.5,
+                fillOpacity: 0.9,
+              }}
+            />
+          </React.Fragment>
         );
       })}
     </>

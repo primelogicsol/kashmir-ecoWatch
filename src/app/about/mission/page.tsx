@@ -238,7 +238,7 @@ export default function MissionPage() {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#roadmap"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Explore 2026–2030 Roadmap</span>
               <ArrowRight className="w-4 h-4" />
@@ -262,7 +262,7 @@ export default function MissionPage() {
       />
 
       {/* ─── Strategic Targets Ribbon ───────────────────────────────────────────── */}
-      <section className="relative z-20 -mt-6 sm:-mt-10 mb-16 container mx-auto px-4 sm:px-6">
+      <section className="relative z-10 mt-6 sm:mt-8 mb-16 container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {strategicTargets.map((target, idx) => (
             <motion.div
@@ -339,7 +339,7 @@ export default function MissionPage() {
               </div>
 
               {/* The Knowledge Return Manifesto */}
-              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/30 via-slate-900/60 to-slate-950 flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-slate-900 flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div>
@@ -455,7 +455,7 @@ export default function MissionPage() {
                       <span className="text-3xl sm:text-4xl font-black text-emerald-400">
                         {roadmapPhases[selectedPhase].year}
                       </span>
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${roadmapPhases[selectedPhase].badgeColor}`}>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-[4px] border ${roadmapPhases[selectedPhase].badgeColor}`}>
                         {roadmapPhases[selectedPhase].badge}
                       </span>
                     </div>
@@ -516,7 +516,7 @@ export default function MissionPage() {
                       <div className="p-3 rounded-2xl bg-slate-900/80 border border-white/10">
                         <val.icon className={`w-6 h-6 ${val.color}`} />
                       </div>
-                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400 uppercase">
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-slate-400 uppercase">
                         {val.tag}
                       </span>
                     </div>
@@ -629,7 +629,7 @@ export default function MissionPage() {
 
         {/* ─── Section 8: Call to Action Surface ─────────────────────────────────── */}
         <section className="pb-16">
-          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 relative overflow-hidden text-center shadow-2xl">
+          <div className="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 bg-slate-900 relative overflow-hidden text-center shadow-2xl">
             <div className="absolute top-0 right-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -645,7 +645,7 @@ export default function MissionPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/submit-observation"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
                 >
                   <Eye className="w-4 h-4" />
                   <span>Submit Field Observation</span>

@@ -111,7 +111,7 @@ export default function FisheriesPage() {
               Filter the 96 mapped fisheries by salmonid trout beats, native snow trout refuges, or lake commercial grounds.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/5 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-[4px] bg-slate-800 text-slate-300 border border-white/5 shrink-0">
             Showing <strong className="text-violet-400">{displayedFisheries.length}</strong> of {totalCount} fisheries
           </span>
         </div>
@@ -263,7 +263,7 @@ export default function FisheriesPage() {
                   className="p-4 rounded-xl bg-slate-950/70 border border-violet-500/20 hover:border-violet-500/40 transition-all group block"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 flex items-center gap-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-violet-500/20 text-violet-300 border border-violet-500/30 flex items-center gap-1">
                       <Fish className="w-2.5 h-2.5" />
                       {item.category}
                     </span>
@@ -387,7 +387,7 @@ export default function FisheriesPage() {
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl bg-gradient-to-r from-violet-950/60 via-slate-900 to-indigo-950/60 border border-violet-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-4 rounded-xl bg-slate-900 border border-violet-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-violet-500/20 border border-violet-500/30 text-violet-400 shrink-0">
                     <Camera className="w-5 h-5" />

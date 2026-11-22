@@ -341,7 +341,7 @@ export default function SpeciesDetailPage() {
                   Open Full Atlas
                 </Button>
               </div>
-              <div className="relative h-96 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden">
+              <div className="relative h-96 bg-slate-900 rounded-xl overflow-hidden">
                 {/* Simulated map */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Map className="w-24 h-24 text-slate-600" />

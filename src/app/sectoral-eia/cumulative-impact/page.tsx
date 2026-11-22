@@ -47,7 +47,7 @@ export default function CumulativeImpactPage() {
 
       <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
         {/* CONCEPTUAL MANDATE */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-rose-950/40 via-slate-900 to-slate-950 border border-rose-500/30 shadow-xl">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-rose-500/30 shadow-xl">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="outline" className="border-rose-400 text-rose-300 bg-rose-500/10 text-xs">
               Process 06

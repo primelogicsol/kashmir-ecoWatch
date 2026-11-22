@@ -23,6 +23,36 @@ const nextConfig = {
         destination: '/submit-observation',
         permanent: true,
       },
+      {
+        source: '/plastic-pollution',
+        destination: '/environmental-monitoring/plastic-pollution',
+        permanent: false,
+      },
+      {
+        source: '/plastic-pollution/:path*',
+        destination: '/environmental-monitoring/plastic-pollution/:path*',
+        permanent: false,
+      },
+      {
+        source: '/chinar-monitoring',
+        destination: '/environmental-monitoring/chinar-monitoring',
+        permanent: false,
+      },
+      {
+        source: '/chinar-monitoring/:path*',
+        destination: '/environmental-monitoring/chinar-monitoring/:path*',
+        permanent: false,
+      },
+      {
+        source: '/transportation-pollution',
+        destination: '/environmental-monitoring/transportation-pollution',
+        permanent: false,
+      },
+      {
+        source: '/transportation-pollution/:path*',
+        destination: '/environmental-monitoring/transportation-pollution/:path*',
+        permanent: false,
+      },
     ];
   },
 

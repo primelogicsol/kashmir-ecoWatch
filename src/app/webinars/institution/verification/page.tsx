@@ -75,7 +75,7 @@ export default function InstitutionVerificationPage() {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                  <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] border ${
                     inst.status === 'verified'
                       ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
                       : 'bg-amber-500/20 text-amber-300 border-amber-500/30'

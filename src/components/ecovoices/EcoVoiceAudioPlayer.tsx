@@ -327,7 +327,7 @@ export function EcoVoiceAudioPlayer({
                 <Play className="w-7 h-7 sm:w-8 sm:h-8 ml-1 fill-white" />
               </button>
               <div className="space-y-0.5">
-                <span className="text-xs sm:text-sm font-bold text-white tracking-wide bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/15 shadow">
+                <span className="text-xs sm:text-sm font-bold text-white tracking-wide bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-[4px] border border-white/15 shadow">
                   Play Official YouTube Master
                 </span>
                 <p className="text-[10px] text-slate-300 font-mono drop-shadow hidden sm:block">

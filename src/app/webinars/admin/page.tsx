@@ -126,7 +126,7 @@ export default function WebinarAdminPage() {
             <div className="w-16 h-16 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950/50">
               <Lock className="w-8 h-8 text-purple-300" />
             </div>
-            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-full inline-block">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-[4px] inline-block">
               Restricted Area &bull; Level 4 Clearance
             </span>
             <h1 className="text-2xl font-black text-white pt-1">

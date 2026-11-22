@@ -139,7 +139,7 @@ export default function BiodiversityRisksPage() {
                   onClick={() => router.push(module.route)}
                 >
                   <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${module.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
                       <module.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">

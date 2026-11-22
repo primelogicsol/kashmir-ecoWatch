@@ -150,7 +150,7 @@ export default function FieldLearningProgramsPage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium">
+                <span className="px-2.5 py-0.5 rounded-[4px] bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium">
                   {activeProgram.category} Module
                 </span>
                 <span className="text-slate-500 text-xs">•</span>

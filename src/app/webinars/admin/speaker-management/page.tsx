@@ -4,9 +4,10 @@ import { Heading } from '@/components/common/Heading';
 import { WebinarNav } from '@/components/webinars/WebinarNav';
 import { AdminSubNav } from '@/components/webinars/AdminSubNav';
 import { CONFERENCES_DETAILED } from '@/data/conference-system';
+import { compareNamesAlphabetically } from '@/data/canonical-entity-registry';
 
 export default function AdminSpeakerManagementPage() {
-  const speakers = CONFERENCES_DETAILED[0].featuredSpeakers;
+  const speakers = [...CONFERENCES_DETAILED[0].featuredSpeakers].sort((a, b) => compareNamesAlphabetically(a, b));
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">

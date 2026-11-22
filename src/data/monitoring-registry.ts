@@ -127,7 +127,7 @@ export const monitoringRegistry: MonitoringNetwork[] = [
       { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring', contributionType: 'Basin-level trends' },
     ],
     feedsDashboards: [
-      { name: 'Water Quality Dashboard', path: '/dashboards/water-quality', description: 'Waterbody health indicators and parameter trends' },
+      { name: 'Water Quality Dashboard', path: '/water-systems/dashboards/water-intelligence', description: 'Waterbody health indicators and parameter trends' },
     ],
     generatesAlerts: [
       { type: 'Water Quality Alert', description: 'Triggered by sudden parameter shifts or contamination events', severity: 'high' },
@@ -160,7 +160,7 @@ export const monitoringRegistry: MonitoringNetwork[] = [
       { moduleId: 'districts', moduleName: 'District Profiles', modulePath: '/districts', contributionType: 'Seismic hazard mapping' },
     ],
     feedsDashboards: [
-      { name: 'Seismic Activity Dashboard', path: '/dashboards/seismic', description: 'Recent earthquakes and seismic hazard maps' },
+      { name: 'Seismic Activity Dashboard', path: '/hazard-intelligence/earthquakes', description: 'Recent earthquakes and seismic hazard maps' },
     ],
     generatesAlerts: [
       { type: 'Seismic Event Alert', description: 'Triggered by earthquakes above magnitude threshold', severity: 'critical' },
@@ -195,8 +195,8 @@ export const monitoringRegistry: MonitoringNetwork[] = [
       { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring', contributionType: 'Climate trend analysis' },
     ],
     feedsDashboards: [
-      { name: 'Weather Dashboard', path: '/dashboards/weather', description: 'Current conditions and forecasts' },
-      { name: 'Climate Trends', path: '/dashboards/climate', description: 'Long-term temperature and precipitation patterns' },
+      { name: 'Weather Dashboard', path: '/earth-human-impact/climate-atmosphere', description: 'Current conditions and forecasts' },
+      { name: 'Climate Trends', path: '/hazard-intelligence/dashboards', description: 'Long-term temperature and precipitation patterns' },
     ],
     generatesAlerts: [
       { type: 'Weather Advisory', description: 'Heatwave, cold wave, or extreme precipitation warnings', severity: 'moderate' },
@@ -230,7 +230,7 @@ export const monitoringRegistry: MonitoringNetwork[] = [
       { moduleId: 'protected-areas', moduleName: 'Protected Areas', modulePath: '/protected-network', contributionType: 'PA-level biodiversity tracking' },
     ],
     feedsDashboards: [
-      { name: 'Species Intelligence Dashboard', path: '/dashboards/species', description: 'Species detection trends and distribution maps' },
+      { name: 'Species Intelligence Dashboard', path: '/biodiversity/dashboards', description: 'Species detection trends and distribution maps' },
     ],
     generatesAlerts: [
       { type: 'Human-Wildlife Conflict Alert', description: 'Triggered by conflict event reports near settlements', severity: 'high' },
@@ -265,7 +265,7 @@ export const monitoringRegistry: MonitoringNetwork[] = [
       { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'GLOF risk assessment' },
     ],
     feedsDashboards: [
-      { name: 'Cryosphere Dashboard', path: '/dashboards/cryosphere', description: 'Glacier health and snow cover trends' },
+      { name: 'Cryosphere Dashboard', path: '/earth-human-impact/aquatic-cryosphere', description: 'Glacier health and snow cover trends' },
     ],
     generatesAlerts: [
       { type: 'GLOF Risk Alert', description: 'Glacial lake outburst flood risk from expanding proglacial lakes', severity: 'critical' },

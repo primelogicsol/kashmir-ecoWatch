@@ -3561,7 +3561,7 @@ export const lakesData: WaterEntity[] = [
   {
       "id": "brari-nambal",
       "slug": "brari-nambal",
-      "name": "Brari Nambal Lagoon (Bab Demb)",
+      "name": "Brari Nambal Lagoon",
       "type": "lake",
       "category": "Urban Lagoon Lake",
       "description": "An internal urban lagoon of Dal Lake, popularly known as Bab Demb, connected to Dal Lake via a conduit gate and historically discharging through the Mar Canal into the Jhelum. Having suffered heavy eutrophication, modern aerators, dredging, and a specialized sewage treatment plant have significantly reversed hypoxia in the water column.",

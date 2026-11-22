@@ -11,6 +11,7 @@ import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/Modu
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { RelatedHazardIntelligence } from '@/components/hazard/RelatedHazardIntelligence';
 import { Droplets, ChevronRight, AlertTriangle, Activity, Clock, MapPin, ExternalLink, TrendingUp, Shield, Zap, Eye, Mountain, Snowflake, BarChart3 } from 'lucide-react';
 import {
   glofRegistry, glofKpis,
@@ -299,11 +300,10 @@ export default function GLOFsPage() {
           </div>
         }
         images={[
-          '/images/water-module/water-glacier.jpg',
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/hazard-intelligence/AVA.webp',
-          '/images/water-module/rivers.png',
-          '/images/protected-network.png',
+          '/images/hazard-intelligence/hazard-glofs-glacial-lakes.jpg',
+          '/images/hazard-intelligence/hazard-avalanches-snow.jpg',
+          '/images/hazard-intelligence/hazard-command-center.jpg',
+          '/images/hazard-intelligence/hazard-floods-riverine.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -313,7 +313,7 @@ export default function GLOFsPage() {
       
       {/* ── Live Cryosphere & Meteorological Telemetry Banner ─────────────── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-teal-500/20 p-4 bg-gradient-to-r from-teal-950/30 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-teal-500/20 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center flex-shrink-0">
@@ -321,7 +321,7 @@ export default function GLOFsPage() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">Open-Meteo High-Altitude Cryosphere Telemetry</span>
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">KEW High-Altitude Cryosphere Telemetry</span>
                   <Badge variant="success" size="sm" className="text-[9px]">Live API Active</Badge>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-0.5">
@@ -405,7 +405,7 @@ export default function GLOFsPage() {
               <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
               <div>
                 <h4 className="text-sm font-bold text-amber-400">Live API Data Unavailable</h4>
-                <p className="text-xs text-amber-200/70 mt-0.5">Showing cached or static metrics. Network or Open-Meteo service may be down.</p>
+                <p className="text-xs text-amber-200/70 mt-0.5">Showing cached or static metrics. Atmospheric telemetry gateway synchronizing.</p>
               </div>
             </div>
           )}
@@ -462,36 +462,10 @@ export default function GLOFsPage() {
         </div>
       </section>
 
-      {/* ── Cross-links ──────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* ── RELATED HAZARD INTELLIGENCE (6 CONTEXTUAL MODULES) ─────────── */}
+      <section className="py-12 bg-slate-900 border-t border-white/5">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Related Hazard Modules</h2>
-            <p className="text-slate-400">Explore connected hazard intelligence domains</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: 'Forest Fires',    href: '/hazard-intelligence/forest-fires',  desc: 'Wildfire risk zones & detection', icon: ExternalLink, color: 'from-orange-500 to-red-600' },
-              { label: 'Floods',           href: '/hazard-intelligence/floods',        desc: 'Riverine & flash flood monitoring', icon: ExternalLink, color: 'from-blue-500 to-cyan-600' },
-              { label: 'Seismic Activity', href: '/hazard-intelligence/seismic',       desc: 'Earthquake risk & fault zones', icon: ExternalLink, color: 'from-amber-500 to-orange-600' },
-              { label: 'Dashboards',       href: '/hazard-intelligence/dashboards',    desc: 'Multi-hazard risk analytics', icon: ExternalLink, color: 'from-violet-500 to-purple-600' },
-            ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-slate-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <RelatedHazardIntelligence currentModule="glofs" />
         </div>
       </section>
     </main>

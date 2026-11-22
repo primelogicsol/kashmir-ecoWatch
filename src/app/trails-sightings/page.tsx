@@ -132,7 +132,7 @@ export default function TrailsAndSightingsPage() {
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                   <Mountain className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -175,7 +175,7 @@ export default function TrailsAndSightingsPage() {
             className="mb-12"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Eye className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -292,7 +292,7 @@ export default function TrailsAndSightingsPage() {
             className="mb-12"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Calendar className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -391,12 +391,12 @@ export default function TrailsAndSightingsPage() {
           ========================================================= */}
       <section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="container mx-auto px-6">
-          <Card className="bg-gradient-to-r from-emerald-900/50 to-teal-900/50 border-white/10 overflow-hidden">
+          <Card className="bg-slate-900 border-white/10 overflow-hidden">
             <div className="relative p-12 text-center">
               
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                     <Plus className="w-5 h-5 md:w-8 md:h-8 text-white" />
                   </div>
                 </div>
@@ -428,7 +428,7 @@ export default function TrailsAndSightingsPage() {
                     }
                   ].map((item) => (
                     <div key={item.step} className="p-6 rounded-xl bg-white/5 border border-white/5">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold mb-3 mx-auto">
+                      <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-white font-bold mb-3 mx-auto">
                         {item.step}
                       </div>
                       <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>

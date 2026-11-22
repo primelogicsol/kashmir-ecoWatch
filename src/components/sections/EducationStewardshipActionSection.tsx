@@ -141,7 +141,7 @@ export function EducationStewardshipActionSection() {
         >
           <div>
             <div className="flex items-center gap-2 mb-2 sm:mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 text-purple-300">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 text-purple-300">
                 <Sparkles className="w-3 h-3 text-purple-400" />
                 Community &amp; Institutional Stewardship
               </span>
@@ -233,7 +233,7 @@ export function EducationStewardshipActionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.07 }}
-                className={`p-6 rounded-2xl bg-slate-900/60 hover:bg-slate-900/90 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between relative overflow-hidden bg-gradient-to-br ${p.gradient}`}
+                className={`p-6 rounded-2xl bg-slate-900/60 hover:bg-slate-900/90 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between relative overflow-hidden bg-slate-900 ${p.gradient}`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">

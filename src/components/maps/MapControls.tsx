@@ -41,7 +41,7 @@ function MapControlButtons({ onFitToKashmir, onToggleLayers }: MapControlsProps)
 
   return (
     <div className="flex flex-col gap-1">
-      {/* Zoom Controls - Scale Buttons */}
+      {/* Zoom Controls */}
       <button
         onClick={handleZoomIn}
         className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/90 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-slate-700 hover:scale-105 active:scale-95 border border-white/10"
@@ -64,26 +64,26 @@ function MapControlButtons({ onFitToKashmir, onToggleLayers }: MapControlsProps)
       <button
         onClick={handleFitToKashmir}
         className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/90 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-slate-700 hover:scale-105 active:scale-95 border border-white/10"
-        title="Fit to Kashmir"
+        title="Fit to Western Himalayas"
       >
         <Maximize2 className="h-4 w-4" />
       </button>
       <button
         onClick={handleResetView}
         className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/90 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-slate-700 hover:scale-105 active:scale-95 border border-white/10"
-        title="Reset View"
+        title="Reset Center View"
       >
         <RefreshCw className="h-4 w-4" />
       </button>
       <button
         onClick={handleLocate}
         className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/90 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-slate-700 hover:scale-105 active:scale-95 border border-white/10"
-        title="Locate Me"
+        title="Locate Device"
       >
         <Crosshair className="h-4 w-4" />
       </button>
       
-      {/* Layers Toggle - Extra Button */}
+      {/* Layers Toggle on mobile */}
       {onToggleLayers && (
         <>
           <div className="h-px bg-white/10 my-1" />
@@ -108,67 +108,86 @@ export function MapControls({ onFitToKashmir, onToggleLayers }: MapControlsProps
   );
 }
 
-// Coordinate display component
+// Geodetically valid Coordinate display component
 export function CoordinateDisplay() {
   const map = useMap();
-  const [coords, setCoords] = React.useState<[number, number]>(KASHMIR_CENTER);
+  const [coords, setCoords] = React.useState<[number, number]>(() => {
+    const center = map.getCenter();
+    return [center.lat, center.lng];
+  });
+  const [mode, setMode] = React.useState<'cursor' | 'center'>('center');
 
   React.useEffect(() => {
     const handleMouseMove = (e: L.LeafletMouseEvent) => {
       setCoords([e.latlng.lat, e.latlng.lng]);
+      setMode('cursor');
+    };
+
+    const handleMove = () => {
+      const c = map.getCenter();
+      setCoords([c.lat, c.lng]);
+      setMode('center');
     };
 
     map.on('mousemove', handleMouseMove);
+    map.on('moveend', handleMove);
+
     return () => {
       map.off('mousemove', handleMouseMove);
+      map.off('moveend', handleMove);
     };
   }, [map]);
 
+  const lat = coords[0];
+  const lng = coords[1];
+
+  const latDir = lat >= 0 ? 'N' : 'S';
+  const lngDir = lng >= 0 ? 'E' : 'W';
+
   return (
     <div className="absolute bottom-4 left-4 right-20 md:right-auto z-[450]">
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/90 backdrop-blur-sm border border-white/10 shadow-lg">
-        <MapPin className="h-3 w-3 text-slate-400" />
-        <div className="text-xs font-mono text-white overflow-hidden">
-          <span className="text-slate-400">Lat: </span>
-          <span>{coords[0].toFixed(4)}</span>
-          <span className="text-slate-400 ml-2">Lng: </span>
-          <span>{coords[1].toFixed(4)}</span>
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/90 backdrop-blur-md border border-white/10 shadow-xl">
+        <MapPin className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+        <div className="text-[11px] font-mono text-white whitespace-nowrap">
+          <span className="text-slate-400 text-[10px] mr-1.5 uppercase font-sans font-bold">
+            {mode === 'cursor' ? 'Cursor' : 'Map Center'} (WGS84):
+          </span>
+          <span>{Math.abs(lat).toFixed(4)}° {latDir}</span>
+          <span className="text-slate-500 mx-1.5">|</span>
+          <span>{Math.abs(lng).toFixed(4)}° {lngDir}</span>
         </div>
       </div>
     </div>
   );
 }
 
-// Scale bar component with visual scale bar
+// Geodetically valid Scale Bar component using Great-Circle distance
 export function ScaleBar() {
   const map = useMap();
-  const [scale, setScale] = React.useState({ distance: 0, unit: 'km', pixels: 100 });
+  const [scale, setScale] = React.useState({ distance: 0, unit: 'km', pixelWidth: 100 });
 
   React.useEffect(() => {
     const updateScale = () => {
-      const center = map.getCenter();
-      const zoom = map.getZoom();
+      const size = map.getSize();
+      if (!size.x || !size.y) return;
 
-      // Calculate scale based on zoom level and latitude
-      const metersPerPixel = (156543.03392 * Math.cos(center.lat * Math.PI / 180)) / Math.pow(2, zoom);
-      const containerWidth = map.getSize().x;
-      const metersInView = metersPerPixel * containerWidth;
+      const p1 = map.containerPointToLatLng([0, size.y / 2]);
+      const p2 = map.containerPointToLatLng([100, size.y / 2]);
+      const distanceMeters = p1.distanceTo(p2); // Accurate WGS84 geodesic calculation
 
-      let distance: number;
+      let dist: number;
       let unit: string;
+      let barPixels = 100;
 
-      if (metersInView >= 1000) {
-        distance = Math.round(metersInView / 1000 * 10) / 10;
+      if (distanceMeters >= 1000) {
+        dist = Math.round(distanceMeters / 100) / 10;
         unit = 'km';
       } else {
-        distance = Math.round(metersInView);
+        dist = Math.round(distanceMeters);
         unit = 'm';
       }
 
-      // Calculate pixels for the scale bar (target ~100px)
-      const pixels = distance >= 1 ? 100 : (distance * 100);
-
-      setScale({ distance, unit, pixels: Math.min(pixels, 200) });
+      setScale({ distance: dist, unit, pixelWidth: barPixels });
     };
 
     map.on('moveend zoomend', updateScale);
@@ -180,20 +199,20 @@ export function ScaleBar() {
   }, [map]);
 
   return (
-    <div className="absolute bottom-4 left-4 z-[450] md:bottom-24 md:left-4">
-      <div className="px-3 py-2 rounded-lg bg-slate-800/90 backdrop-blur-sm border border-white/10 shadow-lg">
-        {/* Visual scale bar */}
+    <div className="absolute bottom-4 left-4 z-[450] md:bottom-16 md:left-4">
+      <div className="px-3 py-1.5 rounded-lg bg-slate-900/90 backdrop-blur-md border border-white/10 shadow-xl">
+        {/* Solid visual scale bar - NO GRADIENTS */}
         <div className="mb-1">
-          <div className="h-1 bg-gradient-to-r from-white to-transparent rounded opacity-60" style={{ width: `${scale.pixels}px` }} />
-          <div className="flex justify-between mt-0.5">
-            <div className="w-0.5 h-1.5 bg-white/60" />
-            <div className="w-0.5 h-1.5 bg-white/60" style={{ marginLeft: `${scale.pixels - 4}px` }} />
+          <div className="h-1 bg-white/75 rounded" style={{ width: `${scale.pixelWidth}px` }} />
+          <div className="flex justify-between mt-0.5" style={{ width: `${scale.pixelWidth}px` }}>
+            <div className="w-0.5 h-1.5 bg-white/80" />
+            <div className="w-0.5 h-1.5 bg-white/80" />
           </div>
         </div>
-        <div className="text-xs font-mono text-white">
-          <span className="text-slate-400">Scale: </span>
+        <div className="text-[11px] font-mono text-white">
+          <span className="text-slate-400 font-sans text-[10px]">Geodetic: </span>
           <span className="font-bold">{scale.distance}</span>
-          <span className="text-slate-500 ml-1">{scale.unit}</span>
+          <span className="text-slate-400 ml-1">{scale.unit}</span>
         </div>
       </div>
     </div>

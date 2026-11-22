@@ -143,7 +143,7 @@ function AuthPageContent() {
         {/* Card Container */}
         <div className="bg-slate-900/90 border border-white/15 rounded-3xl shadow-2xl backdrop-blur-xl overflow-hidden">
           {/* Header */}
-          <div className="p-6 sm:p-8 bg-gradient-to-br from-emerald-600/25 via-slate-900 to-slate-950 border-b border-white/10">
+          <div className="p-6 sm:p-8 bg-slate-900 border-b border-white/10">
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">

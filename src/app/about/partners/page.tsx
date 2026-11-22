@@ -194,7 +194,7 @@ export default function PartnersPage() {
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                 <Users className="w-5 h-5 md:w-8 md:h-8 text-white" />
               </div>
               <Badge variant="info" size="lg">Partnerships, Expert Network & Onboarding</Badge>
@@ -241,7 +241,7 @@ export default function PartnersPage() {
             {VALUE_CARDS.map((card, i) => (
               <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 p-5 h-full">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${card.color} flex items-center justify-center mb-3`}>
+                  <div className={`w-10 h-10 rounded-lg bg-slate-900 ${card.color} flex items-center justify-center mb-3`}>
                     <card.icon className={`w-5 h-5 text-white`} />
                   </div>
                   <h3 className="text-sm font-bold text-white mb-2">{card.title}</h3>
@@ -278,7 +278,7 @@ export default function PartnersPage() {
               <motion.div key={entity.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 p-5 h-full">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className={cn('text-xs px-2 py-0.5 rounded-full font-medium', badgeColor(entity.badge))}>{entity.badge}</span>
+                    <span className={cn('text-xs px-2 py-0.5 rounded-[4px] font-medium', badgeColor(entity.badge))}>{entity.badge}</span>
                   </div>
                   <h3 className="text-sm font-bold text-white mb-2 leading-tight">{entity.name}</h3>
                   <div className="space-y-1 text-xs text-slate-400">
@@ -310,7 +310,7 @@ export default function PartnersPage() {
               <motion.div key={path.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 p-6 cursor-pointer group h-full" onClick={() => document.getElementById(path.route.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' })}>
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${path.color} flex items-center justify-center shadow-lg shrink-0`}>
+                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${path.color} flex items-center justify-center shadow-lg shrink-0`}>
                       <path.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">

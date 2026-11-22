@@ -152,7 +152,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
   return (
     <main className="min-h-screen bg-slate-950">
       {/* Hero */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-10 sm:pb-12 md:pb-20 overflow-hidden">
+      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
@@ -177,7 +177,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getStatusColor(species.conservationStatus)} text-white flex items-center justify-center shadow-lg`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getStatusColor(species.conservationStatus)} text-white flex items-center justify-center shadow-lg`}>
                     <Bird className="w-6 h-6" />
                   </div>
                   <Badge variant={getStatusBadge(species.conservationStatus)} size="lg">
@@ -266,7 +266,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
               ].map((metric, idx) => (
                 <div key={idx} className="text-center p-4 border-r border-white/5 last:border-r-0 lg:even:border-r">
                   <metric.icon className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                  <div className="text-lg font-bold text-white truncate">
+                  <div className="text-lg font-bold text-white break-words">
                     {metric.value}
                   </div>
                   <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1 leading-none">
@@ -1018,7 +1018,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
           transition={{ delay: 0.5 }}
           className="mt-12"
         >
-          <Card className={`bg-gradient-to-r ${getStatusColor(species.conservationStatus)} border-0 p-8`}>
+          <Card className={`bg-slate-900 ${getStatusColor(species.conservationStatus)} border-0 p-8`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Explore Related Species Profiles</h3>

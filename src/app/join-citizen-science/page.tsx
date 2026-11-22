@@ -143,7 +143,7 @@ const kewStats = [
 
 function WhyJoin() {
   return (
-    <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/50 to-slate-900/80 p-5">
+    <div className="rounded-2xl border border-emerald-500/20 bg-slate-900 p-5">
       <div className="flex items-center gap-2 mb-3">
         <Heart className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Why Join KEW?</h3>
@@ -264,7 +264,7 @@ function BadgeTiers() {
       </div>
       <div className="space-y-2">
         {tiers.map(b => (
-          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-gradient-to-r ${b.color} p-2.5`}>
+          <div key={b.name} className={`flex items-center gap-3 rounded-xl bg-slate-900 ${b.color} p-2.5`}>
             <span className="text-lg">{b.icon}</span>
             <div>
               <div className="text-xs font-bold text-white">{b.name}</div>
@@ -362,7 +362,7 @@ export default function JoinCitizenSciencePage() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Enrollment Tracking Reference</span>
                     <span className="text-xl font-mono font-bold text-emerald-400">{trackingId}</span>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: PENDING REVIEW</span>
+                  <span className="text-xs px-2.5 py-1 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">STATUS: PENDING REVIEW</span>
                 </div>
               )}
               <Card className="glass-intense border-white/10 p-6 mb-8">
@@ -371,7 +371,7 @@ export default function JoinCitizenSciencePage() {
                   {selectedPrograms.map(id => {
                     const p = programs.find(pr => pr.id === id);
                     return p ? (
-                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-full ${p.bg} ${p.accent} border ${p.border}`}>
+                      <span key={id} className={`text-xs font-semibold px-3 py-1.5 rounded-[4px] ${p.bg} ${p.accent} border ${p.border}`}>
                         {p.icon} {p.title}
                       </span>
                     ) : null;

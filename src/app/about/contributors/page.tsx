@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
+import { compareNamesAlphabetically } from '@/data/canonical-entity-registry';
 import {
   Users, Microscope, Database, Satellite, 
   LeafyGreen, Globe, Shield, Activity, 
@@ -423,20 +424,24 @@ export default function ContributorsPage() {
     }
   ];
 
-  // Filtering logic
-  const filteredBoard = scientificBoard.filter(member => 
-    member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.domain.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.focus.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filtering & Strict Normalized A-Z Sorting logic
+  const filteredBoard = scientificBoard
+    .filter(member => 
+      member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      member.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      member.domain.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      member.focus.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => compareNamesAlphabetically(a, b));
 
-  const filteredModellers = modellingTeam.filter(m => 
-    m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.expertise.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.model.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredModellers = modellingTeam
+    .filter(m => 
+      m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.expertise.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.model.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => compareNamesAlphabetically(a, b));
 
   const filteredDivisions = internalDivisions.filter(d => 
     d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -461,7 +466,7 @@ export default function ContributorsPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#directorate"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Scientific Directorate</span>
               <ArrowRight className="w-4 h-4" />
@@ -515,11 +520,11 @@ export default function ContributorsPage() {
         {/* ─── Institutional Mandate & Four Geospatial Frameworks ───────────────── */}
         <section>
           <div className="max-w-6xl mx-auto">
-            <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/20 via-slate-900/80 to-slate-950 shadow-2xl relative overflow-hidden">
+            <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/20 bg-slate-900 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -z-10" />
               
               <div className="max-w-3xl mb-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>100% Attributed Open Science Platform</span>
                 </div>
@@ -625,7 +630,7 @@ export default function ContributorsPage() {
                           <div className="w-12 h-12 rounded-2xl bg-slate-950/70 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <member.icon className={`w-6 h-6 ${member.color}`} />
                           </div>
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300">
                             Scientific Core
                           </span>
                         </div>
@@ -678,7 +683,7 @@ export default function ContributorsPage() {
                           <div className="w-12 h-12 rounded-2xl bg-slate-950/70 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <modeller.icon className={`w-6 h-6 ${modeller.color}`} />
                           </div>
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-[4px] bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
                             Predictive AI
                           </span>
                         </div>
@@ -734,7 +739,7 @@ export default function ContributorsPage() {
                           <div className="w-12 h-12 rounded-2xl bg-slate-950/70 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <div.icon className={`w-6 h-6 ${div.color}`} />
                           </div>
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 font-bold">
+                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10 text-slate-300 font-bold">
                             {div.code}
                           </span>
                         </div>
@@ -788,7 +793,7 @@ export default function ContributorsPage() {
                             <div>
                               <div className="flex items-center justify-between mb-4">
                                 <api.icon className={`w-7 h-7 ${api.color}`} />
-                                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-slate-300">API Feed</span>
+                                <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white/5 text-slate-300">API Feed</span>
                               </div>
                               <h4 className="text-base font-bold text-white mb-2">{api.name}</h4>
                               <p className="text-xs text-slate-300 leading-relaxed">{api.role}</p>

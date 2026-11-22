@@ -370,7 +370,7 @@ export default function HumanWildlifeConflictPage() {
                   <p className="text-sm text-slate-400">Conflict hotspots, species distribution, and settlement-edge risk zones</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-amber-900/50 to-orange-900/30 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <Layers className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-4">Interactive conflict map with incident locations and risk zones</p>

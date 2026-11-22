@@ -115,7 +115,12 @@ export default function WildlifeSightingsPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Wildlife Sightings' }
         ]}
-        images={['/images/bear.png']}
+        images={[
+          '/images/biodiversity/biodiversity-field-camera-trap.jpg',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+          '/images/bear.png',
+          '/images/markhor.png',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -155,7 +160,7 @@ export default function WildlifeSightingsPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -467,7 +472,7 @@ export default function WildlifeSightingsPage() {
                         {sighting.commonName}
                       </h3>
                       {sighting.kashmiriName && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium">
+                        <span className="text-xs px-2 py-0.5 rounded-[4px] bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-medium">
                           {sighting.kashmiriName}
                         </span>
                       )}
@@ -622,7 +627,7 @@ export default function WildlifeSightingsPage() {
                   <div className="flex items-center gap-3 mb-1">
                     <h2 className="text-2xl font-bold text-white">{selectedSighting.commonName}</h2>
                     {selectedSighting.kashmiriName && (
-                      <span className="text-sm px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-medium">
+                      <span className="text-sm px-2.5 py-0.5 rounded-[4px] bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-medium">
                         {selectedSighting.kashmiriName}
                       </span>
                     )}

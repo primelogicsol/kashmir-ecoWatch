@@ -75,7 +75,7 @@ export default function AirQualityDashboard() {
         {/* Metric cards */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Activity className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -270,7 +270,7 @@ export default function AirQualityDashboard() {
         {/* Health advisories */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -313,7 +313,7 @@ export default function AirQualityDashboard() {
 
         {/* Export / Share */}
         <section>
-          <Card className="glass-intense border-white/10 bg-gradient-to-r from-amber-900/20 to-yellow-900/20" padding="lg">
+          <Card className="glass-intense border-white/10 bg-slate-900" padding="lg">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">Export & Share Analytics</h3>
@@ -340,7 +340,7 @@ export default function AirQualityDashboard() {
         {/* Sub-page links */}
         <section>
           <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
               <Wind className="w-4 h-4 text-white" />
             </div>
             <div>

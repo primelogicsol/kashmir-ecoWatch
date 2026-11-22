@@ -40,7 +40,7 @@ export function BrowseByCategory({ onCategoryClick }: { onCategoryClick?: (categ
               className="glass-intense border-white/10 p-5 text-center cursor-pointer hover:border-indigo-500/30 transition-all group"
               onClick={() => onCategoryClick?.(cat.id)}
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                 <Icon className="w-6 h-6 text-indigo-400" />
               </div>
               <div className="text-2xl font-bold text-white mb-1">{cat.count}</div>
@@ -97,7 +97,7 @@ export function BrowseByModule({ onModuleClick }: { onModuleClick?: (moduleId: s
             onClick={() => onModuleClick?.(module.id)}
           >
             <div className="flex items-start justify-between mb-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Layers className="w-5 h-5 text-purple-400" />
               </div>
               <Badge variant="secondary" size="sm">{module.count}</Badge>

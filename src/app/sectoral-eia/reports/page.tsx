@@ -50,7 +50,7 @@ export default function ScientificReportsPage() {
 
       <div className="container mx-auto px-4 mt-8 space-y-10 max-w-6xl">
         {/* SCIENTIFIC PUBLICATION INTEGRITY BANNER */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-teal-950/40 via-slate-900 to-slate-950 border border-teal-500/30 shadow-xl space-y-3">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-teal-500/30 shadow-xl space-y-3">
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="border-teal-400 text-teal-300 bg-teal-500/10 text-xs">
               Process 09

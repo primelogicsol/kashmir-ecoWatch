@@ -210,7 +210,7 @@ export default function MiningExtractionSubmodulePage() {
         </section>
 
         {/* Fisheries Inter-Lock */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-orange-950/40 via-slate-900 to-slate-950 border border-orange-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-orange-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-orange-400 mb-1">Cold-Water Fish Habitat Threat</div>
             <h4 className="text-base font-bold text-white">Impact on Native Snow Trout (Schizothorax spp.)</h4>

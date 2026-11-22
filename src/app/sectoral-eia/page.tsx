@@ -46,7 +46,7 @@ export default function SectoralEiaHomePage() {
   const heroSectors = [
     {
       id: 'tourism',
-      src: '/images/protected-network.png',
+      src: '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
       title: 'Tourism Carrying Capacity & Visitor Stress',
       metrics: '3.4M Footfall / Yr',
       status: 'High Peak Stress',
@@ -56,7 +56,7 @@ export default function SectoralEiaHomePage() {
     },
     {
       id: 'horticulture',
-      src: '/images/bear.png',
+      src: '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
       title: 'Horticulture & Agrochemical Leaching',
       metrics: '8,200 MT Fungicide / Yr',
       status: 'Groundwater Alert',
@@ -66,7 +66,7 @@ export default function SectoralEiaHomePage() {
     },
     {
       id: 'handicrafts',
-      src: '/images/tiger.png',
+      src: '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg',
       title: 'Handicrafts, Dye Wash & Chemical Exposure',
       metrics: 'Structured Sampling Active',
       status: 'Artisanal Stewardship',
@@ -76,7 +76,7 @@ export default function SectoralEiaHomePage() {
     },
     {
       id: 'agriculture',
-      src: '/images/markhor.png',
+      src: '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg',
       title: 'Agriculture, Nutrient Leaching & Soil Health',
       metrics: '142 kg/ha NPK Input',
       status: 'Eutrophication Risk',
@@ -88,7 +88,7 @@ export default function SectoralEiaHomePage() {
   const currentHero = heroSectors[activeHeroIdx];
 
   const heroShowcaseCard = (
-    <div className="relative rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl shadow-emerald-950/60 bg-slate-900/80 backdrop-blur-md p-3">
+    <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-emerald-950/60 bg-slate-950/40 backdrop-blur-md p-3 hover:border-emerald-500/30 transition-colors">
       {/* Top Banner Tag */}
       <div className="flex items-center justify-between px-1 py-1 mb-2 text-xs">
         <div className="flex items-center gap-2">
@@ -117,7 +117,7 @@ export default function SectoralEiaHomePage() {
         
         <div className="absolute bottom-2.5 left-3 right-3">
           <div className="flex items-center gap-1.5 mb-1">
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
               {currentHero.status}
             </span>
             <span className="text-[10px] text-slate-300 flex items-center gap-1">
@@ -185,19 +185,19 @@ export default function SectoralEiaHomePage() {
               </span>
               <span className="text-white">Western Himalayan</span>
             </div>
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Sectoral EIA &amp; Intelligence Engine (SEIAE)
+            <div className="leading-[1.15] overflow-visible">
+              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent tracking-normal">
+                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Sectoral EIA</span> &amp; Intelligence Engine (SEIAE)
               </span>
             </div>
           </div>
         }
         subtitle="Moving Kashmir EcoWatch from observing environmental change toward examining its causes, consequences, and solutions across regional landscapes, watersheds, and economic sectors."
         images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
+          '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
+          '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
+          '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg',
+          '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg'
         ]}
         rightContent={heroShowcaseCard}
         actions={
@@ -261,7 +261,7 @@ export default function SectoralEiaHomePage() {
         </div>
 
         {/* SECTION 1: PROPOSED ENGINE ARCHITECTURE */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-950 border border-white/10 shadow-xl relative overflow-hidden">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-white/10 shadow-xl relative overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
@@ -397,7 +397,7 @@ export default function SectoralEiaHomePage() {
         </div>
 
         {/* SECTION 4 CALLOUT: ESSENTIAL REGULATORY DISTINCTION */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-950/40 via-slate-900 to-indigo-950/40 border border-blue-500/30">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-blue-500/30">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -488,7 +488,7 @@ export default function SectoralEiaHomePage() {
               return (
                 <div
                   key={def.id}
-                  className={`p-5 rounded-2xl bg-gradient-to-b ${def.bgGradient} border border-white/10 hover:${def.borderHoverColor} transition-all duration-300 flex flex-col justify-between group shadow-lg`}
+                  className={`p-5 rounded-2xl bg-slate-900 ${def.bgGradient} border border-white/10 hover:${def.borderHoverColor} transition-all duration-300 flex flex-col justify-between group shadow-lg`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
@@ -731,7 +731,7 @@ export default function SectoralEiaHomePage() {
         </div>
 
         {/* CRITICAL DESIGN QUESTION: DUAL INGESTION MODEL CALLOUT */}
-        <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/30">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/30">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2">

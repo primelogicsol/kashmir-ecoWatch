@@ -342,7 +342,7 @@ function SeasonalEcologyHubContent() {
             {activeHabitatConfig ? activeHabitatConfig.tag : 'Kashmir Phenology Sentinel'}
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
           {currentSeason.toUpperCase()} 2026
         </span>
       </div>
@@ -443,12 +443,11 @@ function SeasonalEcologyHubContent() {
         icon={<Icons.Sun className="w-6 h-6 text-emerald-400" />}
         label={`Current Season: ${formatLabel(currentSeason)} · ${selectedHabitat === 'all' ? 'All Habitats' : formatLabel(selectedHabitat)}`}
         images={[
-          '/images/protected-network.png',
+          '/images/biodiversity/biodiversity-botany-flora.jpg',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
           '/images/bear.png',
           '/images/markhor.png',
-          '/images/tiger.png'
         ]}
-        rightContent={seasonalHeroShowcase}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <Link href="/seasonal-ecology/bloom-mapping">
@@ -476,7 +475,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {/* INTERACTIVE HABITAT FILTER BAR                                */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-8">
+      <div className="container mx-auto px-4 lg:px-6 mt-6 sm:mt-8 relative z-10 mb-8">
         <div className="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-3 sm:p-4 backdrop-blur-md shadow-2xl flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Icons.Filter className="w-4 h-4 text-emerald-400" />
@@ -520,7 +519,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {activeHabitatConfig && (
         <section className="container mx-auto px-4 lg:px-6 mb-12">
-          <Card className="glass-intense border-emerald-500/40 p-6 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-slate-900/90 to-slate-950">
+          <Card className="glass-intense border-emerald-500/40 p-6 rounded-2xl bg-slate-900">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
               <div className="flex items-start gap-4">
                 <div className="p-3.5 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400">
@@ -531,7 +530,7 @@ function SeasonalEcologyHubContent() {
                     <span className="text-xs uppercase tracking-widest font-black text-emerald-400">
                       {activeHabitatConfig.tag}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono">
+                    <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono">
                       Active Habitat Layer
                     </span>
                   </div>
@@ -749,7 +748,7 @@ function SeasonalEcologyHubContent() {
               <span className="text-xs uppercase tracking-widest font-black text-emerald-400">
                 {selectedHabitat === 'all' ? 'All Regional Ecosystems' : `${formatLabel(selectedHabitat)} Category`}
               </span>
-              <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs">
+              <span className="px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-300 text-xs">
                 {filteredLandscapes.length} Landscapes
               </span>
             </div>
@@ -836,7 +835,7 @@ function SeasonalEcologyHubContent() {
               <span className="text-xs uppercase tracking-widest font-black text-pink-400">
                 Phenological Transitions
               </span>
-              <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs">
+              <span className="px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-300 text-xs">
                 {filteredBlooms.length} Bloom Windows
               </span>
             </div>
@@ -919,7 +918,7 @@ function SeasonalEcologyHubContent() {
                 <Card className={`glass-intense border-slate-700/50 hover:border-emerald-500/40 transition-all h-full overflow-hidden ${card.featured ? 'ring-1 ring-emerald-500/30' : ''}`}>
                   <div className="p-5">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${card.color} border border-white/10`}>
+                      <div className={`p-3 rounded-xl bg-slate-900 ${card.color} border border-white/10`}>
                         <CardIcon className="w-6 h-6 text-white" />
                       </div>
                       {card.featured && (

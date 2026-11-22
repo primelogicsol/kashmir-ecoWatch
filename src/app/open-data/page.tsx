@@ -1,24 +1,32 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import {
   Database, Globe, Shield, CheckCircle, FileText,
   Layers, Users, Code, Download, AlertTriangle,
   ChevronRight, ArrowRight, Mail, RefreshCw, Clock,
   Heart, Lock, BarChart2, Leaf, Droplets, Zap,
-  MapPin, Info, ExternalLink, Plus
+  MapPin, Info, ExternalLink, Plus, Search, Filter,
+  SlidersHorizontal, Mountain, Activity, Building2,
+  Compass, Check, HelpCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import {
+  scientificDomains,
+  openDataCategories,
+  OpenDataCategory,
+  ScientificDomain
+} from '@/data/open-data-catalog';
 
 /* ─── Section index ────────────────────────────────────────────────────── */
 
 const sections = [
   { id: 'overview',        label: 'Overview' },
   { id: 'principles',      label: 'Open Data Principles' },
-  { id: 'categories',      label: 'Data Categories' },
+  { id: 'categories',      label: 'Data Catalog (50 Categories)' },
   { id: 'dataset-info',    label: 'Dataset Information' },
   { id: 'formats',         label: 'Supported Formats' },
   { id: 'sources',         label: 'Data Sources' },
@@ -31,7 +39,7 @@ const sections = [
   { id: 'commitment',      label: 'Our Commitment' },
 ];
 
-/* ─── Data ───────────────────────────────────────────────────────────── */
+/* ─── Core Data ────────────────────────────────────────────────────────── */
 
 const principles = [
   {
@@ -52,79 +60,62 @@ const principles = [
   {
     icon: Shield,   title: 'Responsible Use',
     accent: 'text-amber-400',   bg: 'bg-amber-500/10',
-    desc: 'Open data should be used responsibly and interpreted within its documented limitations.',
+    desc: 'Open data is interpreted within its documented methodology, uncertainty bounds, and spatial resolution.',
   },
 ];
 
-const categories = [
-  { icon: Leaf,     label: 'Biodiversity',              accent: 'text-green-400',   bg: 'bg-green-500/10'   },
-  { icon: Shield,   label: 'Protected Areas',            accent: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-  { icon: Droplets, label: 'Water Systems',              accent: 'text-blue-400',    bg: 'bg-blue-500/10'    },
-  { icon: Droplets, label: 'Rivers & Lakes',             accent: 'text-cyan-400',    bg: 'bg-cyan-500/10'    },
-  { icon: Globe,    label: 'Wetlands',                   accent: 'text-teal-400',    bg: 'bg-teal-500/10'    },
-  { icon: Leaf,     label: 'Forest Ecosystems',          accent: 'text-green-400',   bg: 'bg-green-500/10'   },
-  { icon: BarChart2,label: 'Environmental Monitoring',   accent: 'text-violet-400',  bg: 'bg-violet-500/10'  },
-  { icon: Globe,    label: 'Air Quality',                accent: 'text-sky-400',     bg: 'bg-sky-500/10'     },
-  { icon: Droplets, label: 'Water Quality',              accent: 'text-blue-400',    bg: 'bg-blue-500/10'    },
-  { icon: BarChart2,label: 'Climate Indicators',         accent: 'text-amber-400',   bg: 'bg-amber-500/10'   },
-  { icon: Zap,      label: 'Environmental Hazards',      accent: 'text-orange-400',  bg: 'bg-orange-500/10'  },
-  { icon: MapPin,   label: 'Ecological Regions',         accent: 'text-rose-400',    bg: 'bg-rose-500/10'    },
-  { icon: Leaf,     label: 'Species Distribution',       accent: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-  { icon: Droplets, label: 'Watersheds',                 accent: 'text-blue-400',    bg: 'bg-blue-500/10'    },
-  { icon: Layers,   label: 'Land Cover',                 accent: 'text-amber-400',   bg: 'bg-amber-500/10'   },
-  { icon: Globe,    label: 'Earth Observation Layers',   accent: 'text-indigo-400',  bg: 'bg-indigo-500/10'  },
-  { icon: BarChart2,label: 'Environmental Statistics',   accent: 'text-violet-400',  bg: 'bg-violet-500/10'  },
-  { icon: MapPin,   label: 'Regional Environmental Profiles', accent: 'text-teal-400', bg: 'bg-teal-500/10'  },
-];
-
 const formats = [
-  { ext: 'CSV',       desc: 'Comma-separated values — tabular data',      available: true  },
-  { ext: 'GeoJSON',   desc: 'Geographic features with JSON encoding',      available: true  },
-  { ext: 'JSON',      desc: 'Structured data interchange format',          available: true  },
-  { ext: 'Shapefile', desc: 'ESRI vector geospatial format',               available: true  },
-  { ext: 'GeoPackage',desc: 'OGC open geospatial container format',        available: true  },
-  { ext: 'KML',       desc: 'Keyhole Markup Language for geo data',        available: true  },
-  { ext: 'PDF',       desc: 'Environmental reports and publications',       available: true  },
-  { ext: 'Raster',    desc: 'Grid-based spatial datasets',                 available: true  },
-  { ext: 'API',       desc: 'Programmatic endpoints (future availability)', available: false },
+  { ext: 'CSV',       desc: 'Comma-separated values — tabular time-series',     available: true  },
+  { ext: 'GeoJSON',   desc: 'Geographic features with JSON encoding',          available: true  },
+  { ext: 'JSON',      desc: 'Structured data interchange format',              available: true  },
+  { ext: 'Shapefile', desc: 'ESRI vector geospatial geodatabase format',       available: true  },
+  { ext: 'GeoPackage',desc: 'OGC open geospatial container format',            available: true  },
+  { ext: 'KML',       desc: 'Keyhole Markup Language for geo data',            available: true  },
+  { ext: 'PDF',       desc: 'Environmental reports and monographs',            available: true  },
+  { ext: 'Raster',    desc: 'Grid-based satellite and DEM spatial layers',     available: true  },
+  { ext: 'API',       desc: 'REST endpoints for real-time telemetry',           available: true  },
 ];
 
 const datasetFields = [
-  'Dataset title', 'Description', 'Geographic coverage', 'Collection methodology',
-  'Source organisation', 'Date published', 'Last updated', 'Data format',
-  'Metadata', 'Licence information', 'Version history',
+  'Dataset title & UID', 'Scientific domain', 'Data category', 'Geographic coverage',
+  'Collection methodology', 'Source provenance', 'Date published', 'Last updated',
+  'Format & spatial resolution', 'Quality assurance status', 'Licence & access terms', 'Version history',
 ];
 
 const sources = [
-  { icon: '🏛️', label: 'Government agencies' },
-  { icon: '🌿', label: 'Environmental departments' },
-  { icon: '🔬', label: 'Scientific institutions' },
-  { icon: '🎓', label: 'Universities' },
-  { icon: '🌐', label: 'International organisations' },
-  { icon: '🦅', label: 'Conservation agencies' },
-  { icon: '📂', label: 'Open environmental databases' },
-  { icon: '🛰️', label: 'Remote sensing platforms' },
-  { icon: '🗺️', label: 'Field observations' },
-  { icon: '👁️', label: 'Citizen science contributions' },
+  { icon: '🏛️', label: 'Government agencies & boards' },
+  { icon: '🌿', label: 'Forest & wildlife departments' },
+  { icon: '🔬', label: 'Scientific research laboratories' },
+  { icon: '🎓', label: 'Regional & diaspora universities' },
+  { icon: '🌐', label: 'International mountain bodies (ICIMOD)' },
+  { icon: '🦅', label: 'Conservation & wetland trusts' },
+  { icon: '📂', label: 'Open environmental databases (GBIF)' },
+  { icon: '🛰️', label: 'Copernicus & USGS remote sensing' },
+  { icon: '🗺️', label: 'In-situ hydrometric & meteorological stations' },
+  { icon: '👁️', label: 'Verified citizen science contributions' },
 ];
 
 const qualitySteps = [
-  'Metadata verification', 'Geographic validation', 'Duplicate detection',
-  'Coordinate consistency checks', 'Scientific review where applicable', 'Source verification',
+  'Source provenance audit', 'Geographic coordinate validation', 'Sensor calibration verification',
+  'Duplicate & anomaly detection', 'Scientific peer review where applicable', 'Obfuscation of sensitive wildlife coordinates',
 ];
 
 const apiFuture = [
-  'Dataset discovery', 'Spatial queries', 'Environmental indicators',
-  'Biodiversity records', 'Water system information', 'Environmental monitoring',
-  'Hazard intelligence', 'Regional statistics',
+  'Air quality CAAQMS feeds', 'Hydrometric river telemetry', 'Algal bloom predictions',
+  'Earthquake event feeds', 'Landslide susceptibility', 'Protected area vectors',
+  'Weather radar alerts', 'Regional environmental indicators',
 ];
 
 const limitations = [
-  'Incomplete geographic coverage', 'Historical records', 'Periodic update delays',
-  'Scientific uncertainty', 'Temporal variations', 'Resolution limitations',
+  'Incomplete geographic coverage in remote high-altitude zones',
+  'Temporal intervals between satellite orbital revisits',
+  'Historical measurement inconsistencies in legacy paper archives',
+  'Spatial resolution constraints on regional optical products (10m–30m)',
+  'Controlled masking on endangered species coordinates to prevent poaching',
+  'Exclusion of military and defense compound coordinates under security policy',
 ];
 
-/* ─── Eye import workaround ──────────────────────────────────────────── */
+/* ─── Eye Icon ───────────────────────────────────────────────────────── */
 
 function Eye({ className }: { className?: string }) {
   return (
@@ -165,7 +156,7 @@ function Section({ id, icon: Icon, title, accent = 'text-emerald-400', bg = 'bg-
   return (
     <div id={id} className="scroll-mt-28">
       <div className="flex items-center gap-3 mb-4">
-        <div className={`w-8 h-8 rounded-xl ${bg} flex items-center justify-center flex-shrink-0`}>
+        <div className={`w-8 h-8 rounded-[6px] ${bg} flex items-center justify-center flex-shrink-0 border border-white/5`}>
           <Icon className={`w-4 h-4 ${accent}`} />
         </div>
         <h2 className="text-base font-bold text-white">{title}</h2>
@@ -177,25 +168,12 @@ function Section({ id, icon: Icon, title, accent = 'text-emerald-400', bg = 'bg-
   );
 }
 
-function Bullets({ items, accent = 'bg-emerald-400' }: { items: string[]; accent?: string }) {
-  return (
-    <ul className="space-y-1.5 mt-1">
-      {items.map(item => (
-        <li key={item} className="flex items-start gap-2.5 text-sm text-slate-300">
-          <span className={`w-1.5 h-1.5 rounded-full ${accent} flex-shrink-0 mt-[7px]`} />
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 /* ─── Sidebar panels ─────────────────────────────────────────────────── */
 
 function TableOfContents({ active }: { active: string }) {
   const [open, setOpen] = useState(true);
   return (
-    <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-5">
+    <div className="rounded-[8px] border border-white/10 bg-slate-900/60 p-5 shadow-sm">
       <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between gap-2 mb-1">
         <div className="flex items-center gap-2">
           <FileText className="w-4 h-4 text-emerald-400" />
@@ -207,7 +185,7 @@ function TableOfContents({ active }: { active: string }) {
         <nav className="space-y-0.5 mt-3">
           {sections.map(s => (
             <a key={s.id} href={`#${s.id}`}
-              className={`flex items-center gap-2 text-[11px] px-2 py-1.5 rounded-lg transition-all ${
+              className={`flex items-center gap-2 text-[11px] px-2 py-1.5 rounded-[4px] transition-all ${
                 active === s.id ? 'bg-emerald-500/15 text-emerald-400 font-semibold' : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -223,7 +201,7 @@ function TableOfContents({ active }: { active: string }) {
 
 function QuickActions() {
   return (
-    <div className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-5">
+    <div className="rounded-[8px] border border-emerald-500/20 bg-emerald-950/20 p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <Download className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Quick Access</h3>
@@ -233,8 +211,8 @@ function QuickActions() {
           { label: 'Submit Observation',   href: '/submit-observation',   icon: Plus      },
           { label: 'Share Data',           href: '/share-data',           icon: Database  },
           { label: 'Research Library',     href: '/research-library',     icon: FileText  },
-          { label: 'Methodology',          href: '/about/methodology',    icon: CheckCircle },
-          { label: 'Contact KEW',          href: '/about/contact',        icon: Mail      },
+          { label: 'KEW Q&A Knowledge Base',href: '/about/qna',          icon: HelpCircle },
+          { label: 'Contact Secretariat',  href: '/about/contact',        icon: Mail      },
         ].map(({ label, href, icon: Icon }) => (
           <Link key={label} href={href}
             className="flex items-center gap-2.5 text-xs text-slate-300 hover:text-white transition-colors group"
@@ -251,16 +229,16 @@ function QuickActions() {
 
 function PrinciplesSidebar() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-5">
+    <div className="rounded-[8px] border border-white/10 bg-slate-900/60 p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <Shield className="w-4 h-4 text-emerald-400" />
-        <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Our Principles</h3>
+        <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">FAIR Principles</h3>
       </div>
       <div className="space-y-2">
         {principles.map(p => (
-          <div key={p.title} className={`flex items-center gap-2 rounded-lg ${p.bg} border border-white/5 px-3 py-2`}>
+          <div key={p.title} className={`flex items-center gap-2 rounded-[6px] ${p.bg} border border-white/5 px-3 py-2`}>
             <p.icon className={`w-3.5 h-3.5 ${p.accent} flex-shrink-0`} />
-            <span className="text-xs text-slate-300">{p.title}</span>
+            <span className="text-xs text-slate-300 font-medium">{p.title}</span>
           </div>
         ))}
       </div>
@@ -270,18 +248,18 @@ function PrinciplesSidebar() {
 
 function RelatedLinks() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-5">
+    <div className="rounded-[8px] border border-white/10 bg-slate-900/60 p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <ArrowRight className="w-4 h-4 text-slate-400" />
-        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Related</h3>
+        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Governance &amp; Scope</h3>
       </div>
       <ul className="space-y-2">
         {[
-          { label: 'About KEW',        href: '/about' },
-          { label: 'Methodology',      href: '/about/methodology' },
-          { label: 'Privacy Policy',   href: '/privacy' },
-          { label: 'Legal Notice',     href: '/legal-notice' },
-          { label: 'Terms of Use',     href: '/terms' },
+          { label: 'About KEW Platform',     href: '/about' },
+          { label: 'Geographic Scope Notice', href: '/geographic-scope' },
+          { label: 'Governance & Ethos',     href: '/about/governance' },
+          { label: 'Founder Leadership',     href: '/about/founder' },
+          { label: 'KEW FAQ (50 Q&As)',      href: '/about/faq' },
         ].map(({ label, href }) => (
           <li key={label}>
             <Link href={href} className="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 group">
@@ -295,47 +273,117 @@ function RelatedLinks() {
   );
 }
 
-/* ─── Page ───────────────────────────────────────────────────────────── */
+/* ─── Page Component ──────────────────────────────────────────────────── */
 
 export default function OpenDataPortalPage() {
   const active = useActiveSection();
 
+  // Catalog State Filters
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDomainId, setSelectedDomainId] = useState<number | 'all'>('all');
+  const [selectedStatus, setSelectedStatus] = useState<string>('all');
+  const [selectedRegion, setSelectedRegion] = useState<string>('all');
+
+  // Filter Categories
+  const filteredCategories = useMemo(() => {
+    return openDataCategories.filter(cat => {
+      const matchesDomain = selectedDomainId === 'all' || cat.domainId === selectedDomainId;
+      const matchesStatus = selectedStatus === 'all' || cat.status === selectedStatus;
+      const matchesRegion = selectedRegion === 'all' || cat.geographicCoverage.includes(selectedRegion);
+      
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q ||
+        cat.title.toLowerCase().includes(q) ||
+        cat.shortName.toLowerCase().includes(q) ||
+        cat.domainName.toLowerCase().includes(q) ||
+        cat.description.toLowerCase().includes(q) ||
+        cat.provenance.toLowerCase().includes(q) ||
+        (cat.subcategories && cat.subcategories.some(sub => sub.toLowerCase().includes(q))) ||
+        (cat.featuredIndicator && cat.featuredIndicator.toLowerCase().includes(q));
+
+      return matchesDomain && matchesStatus && matchesRegion && matchesSearch;
+    });
+  }, [searchQuery, selectedDomainId, selectedStatus, selectedRegion]);
+
+  const domainIcons: Record<string, React.ElementType> = {
+    Leaf, Droplets, Mountain, Activity, Zap, Layers, Building2, BarChart2, Compass, Users
+  };
+
+  const getStatusBadge = (status: OpenDataCategory['status']) => {
+    switch (status) {
+      case 'Available':
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            Available
+          </span>
+        );
+      case 'Limited Coverage':
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-sky-500/10 text-sky-400 border border-sky-500/30 text-[10px] font-mono font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+            Limited Coverage
+          </span>
+        );
+      case 'Restricted':
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-mono font-semibold">
+            <Lock className="w-2.5 h-2.5 text-amber-400" />
+            Restricted / Masked
+          </span>
+        );
+      case 'In Development':
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-400 border border-slate-700 text-[10px] font-mono font-semibold">
+            <Clock className="w-2.5 h-2.5 text-slate-500" />
+            In Development
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-500 border border-white/5 text-[10px] font-mono">
+            No Dataset
+          </span>
+        );
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-slate-950 text-slate-100">
       <Heading
-        breadcrumbs={[{ label: 'Platform', href: '/monitoring-overview' }, { label: 'Open Data Portal' }]}
+        breadcrumbs={[{ label: 'Platform', href: '/' }, { label: 'Open Data Portal' }]}
         title={<>
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Open Data</span>
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Portal</span>
         </>}
-        subtitle="Open Environmental Intelligence for Research, Conservation, and Public Benefit."
+        subtitle="Open Environmental Intelligence for Research, Conservation, and Public Benefit across the Western Himalaya."
         icon={<Database className="w-6 h-6 text-emerald-400" />}
-        label="Open Data"
+        label="FAIR Open Science · 10 Domains · 50 Categories"
       />
 
       <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-8 items-start">
 
             {/* ── LEFT: Body (70%) ── */}
             <div className="w-full lg:w-[68%]">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                <Card className="glass-intense border-white/10 p-7 sm:p-10 space-y-10">
+                <Card className="glass-intense border-white/10 p-5 sm:p-8 space-y-10 rounded-[8px]">
 
                   {/* Overview */}
                   <div id="overview" className="scroll-mt-28">
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-[6px] bg-emerald-500/10 flex items-center justify-center border border-white/5">
                         <Database className="w-4 h-4 text-emerald-400" />
                       </div>
                       <h2 className="text-base font-bold text-white">Overview</h2>
                     </div>
                     <div className="pl-11 space-y-3 text-sm text-slate-300 leading-relaxed">
                       <p className="border-l-2 border-emerald-500/40 pl-4">
-                        Kashmir EcoWatch (KEW) is committed to improving access to environmental knowledge through responsible open data practices. The Open Data Portal provides publicly accessible environmental information that supports scientific research, education, conservation planning, innovation, and informed public participation.
+                        Kashmir EcoWatch (KEW) is committed to improving access to regional environmental knowledge through responsible open data practices. The Open Data Portal compiles verified environmental observations, satellite time-series, hazard models, and biodiversity inventories supporting scientific research, conservation planning, and informed public participation.
                       </p>
                       <p>
-                        Our objective is to encourage collaboration while promoting transparency, reproducibility, and evidence-based environmental stewardship.
+                        Our objective is to encourage transparent scientific collaboration while upholding reproducibility, data provenance, and intergenerational ecological stewardship across the Western Himalaya.
                       </p>
                     </div>
                   </div>
@@ -346,7 +394,7 @@ export default function OpenDataPortalPage() {
                   <Section id="principles" icon={Shield} title="Open Data Principles">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
                       {principles.map(p => (
-                        <div key={p.title} className={`rounded-xl ${p.bg} border border-white/5 p-4`}>
+                        <div key={p.title} className={`rounded-[6px] ${p.bg} border border-white/5 p-4`}>
                           <div className="flex items-center gap-2 mb-2">
                             <p.icon className={`w-4 h-4 ${p.accent}`} />
                             <div className={`text-xs font-bold ${p.accent}`}>{p.title}</div>
@@ -359,28 +407,213 @@ export default function OpenDataPortalPage() {
 
                   <div className="border-t border-white/5" />
 
-                  {/* Data Categories */}
-                  <Section id="categories" icon={Layers} title="Available Data Categories" accent="text-blue-400" bg="bg-blue-500/10">
-                    <p>The Open Data Portal includes datasets covering multiple environmental domains, including:</p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
-                      {categories.map(({ icon: Icon, label, accent, bg }) => (
-                        <div key={label} className={`flex items-center gap-2 rounded-xl ${bg} border border-white/5 px-3 py-2.5`}>
-                          <Icon className={`w-3.5 h-3.5 ${accent} flex-shrink-0`} />
-                          <span className="text-[10px] text-slate-300 leading-tight">{label}</span>
+                  {/* ─── DATA CATEGORIES (10 Domains & 50 Categories) ───────── */}
+                  <div id="categories" className="scroll-mt-28 space-y-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-[6px] bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-white/5">
+                        <Layers className="w-4 h-4 text-blue-400" />
+                      </div>
+                      <div>
+                        <h2 className="text-base font-bold text-white">Scientific Data Catalog</h2>
+                        <p className="text-xs text-slate-400">10 Scientific Domains · 50 Authoritative Data Categories</p>
+                      </div>
+                    </div>
+
+                    <div className="pl-11 space-y-6">
+                      <p className="text-sm text-slate-300 leading-relaxed">
+                        The Open Data Catalog organizes Western Himalayan environmental intelligence into a hierarchical scientific taxonomy. Each category documents actual dataset availability, observation methodologies, provenance, and direct gateway links into corresponding live analytical modules:
+                      </p>
+
+                      {/* Domain Filter Bar */}
+                      <div className="space-y-3 p-4 rounded-[6px] bg-slate-900/80 border border-white/10">
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                          <div className="relative flex-1">
+                            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                            <input
+                              type="text"
+                              placeholder="Search 50 categories (e.g. InSAR, springs, PM2.5, saffron, wetlands, Hangul)..."
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                              className="w-full bg-slate-950 border border-white/10 rounded-[4px] pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50"
+                            />
+                            {searchQuery && (
+                              <button
+                                type="button"
+                                onClick={() => setSearchQuery('')}
+                                className="absolute right-3 top-2 text-xs text-slate-400 hover:text-white"
+                              >
+                                ✕
+                              </button>
+                            )}
+                          </div>
+
+                          {/* Quick Region Selector */}
+                          <div className="flex items-center gap-2">
+                            <span className="text-[11px] text-slate-400 shrink-0 font-mono">Region:</span>
+                            <select
+                              value={selectedRegion}
+                              onChange={(e) => setSelectedRegion(e.target.value)}
+                              className="bg-slate-950 border border-white/10 text-xs text-slate-300 rounded-[4px] px-2.5 py-1.5 focus:outline-none"
+                            >
+                              <option value="all">All 5 Regions</option>
+                              <option value="Kashmir Valley">Kashmir Valley</option>
+                              <option value="Jammu">Jammu</option>
+                              <option value="Ladakh">Ladakh</option>
+                              <option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>
+                              <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
+                            </select>
+                          </div>
                         </div>
-                      ))}
+
+                        {/* Domain Tabs Strip */}
+                        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-white/5">
+                          <button
+                            type="button"
+                            onClick={() => setSelectedDomainId('all')}
+                            className={`px-2.5 py-1 rounded-[4px] text-xs font-medium transition-all ${
+                              selectedDomainId === 'all'
+                                ? 'bg-emerald-600 text-white font-bold shadow-sm'
+                                : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                            }`}
+                          >
+                            All Domains (50)
+                          </button>
+                          {scientificDomains.map(d => (
+                            <button
+                              key={d.id}
+                              type="button"
+                              onClick={() => setSelectedDomainId(d.id)}
+                              className={`px-2.5 py-1 rounded-[4px] text-xs font-medium transition-all ${
+                                selectedDomainId === d.id
+                                  ? 'bg-emerald-600 text-white font-bold shadow-sm'
+                                  : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
+                              }`}
+                            >
+                              <span>{d.shortTitle}</span>
+                              <span className="ml-1 text-[10px] opacity-75">({d.count})</span>
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* Status Filter Badges */}
+                        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/5 text-[11px]">
+                          <span className="text-slate-500 font-mono">Availability Filter:</span>
+                          {['all', 'Available', 'Limited Coverage', 'Restricted', 'In Development'].map(status => (
+                            <button
+                              key={status}
+                              type="button"
+                              onClick={() => setSelectedStatus(status)}
+                              className={`px-2 py-0.5 rounded-[4px] transition-colors ${
+                                selectedStatus === status
+                                  ? 'bg-slate-200 text-slate-950 font-bold'
+                                  : 'bg-white/5 text-slate-400 hover:text-slate-200 border border-white/5'
+                              }`}
+                            >
+                              {status === 'all' ? 'All Statuses' : status}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Filter Results Counter */}
+                      <div className="flex items-center justify-between text-xs text-slate-400 px-1 font-mono">
+                        <span>Showing {filteredCategories.length} of 50 Categories</span>
+                        <span>FAIR Standard Compliant</span>
+                      </div>
+
+                      {/* Categories Cards Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                        {filteredCategories.map(cat => {
+                          const IconComponent = domainIcons[scientificDomains.find(d => d.id === cat.domainId)?.iconName || 'Layers'] || Layers;
+                          return (
+                            <div
+                              key={cat.id}
+                              className="rounded-[6px] border border-white/10 bg-slate-900/60 p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all space-y-3"
+                            >
+                              <div className="space-y-2">
+                                <div className="flex items-start justify-between gap-2">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-6 h-6 rounded-[4px] bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                      <IconComponent className="w-3.5 h-3.5 text-emerald-400" />
+                                    </div>
+                                    <span className="text-[10px] font-mono font-semibold text-emerald-400 uppercase tracking-wider">
+                                      {cat.domainName}
+                                    </span>
+                                  </div>
+                                  {getStatusBadge(cat.status)}
+                                </div>
+
+                                <h3 className="text-sm font-bold text-white leading-snug">
+                                  {cat.title}
+                                </h3>
+
+                                <p className="text-xs text-slate-300 leading-relaxed">
+                                  {cat.description}
+                                </p>
+
+                                {/* Subcategories / Key Features */}
+                                {cat.subcategories && cat.subcategories.length > 0 && (
+                                  <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                                    {cat.subcategories.map(sub => (
+                                      <span
+                                        key={sub}
+                                        className="text-[9px] font-mono px-1.5 py-0.5 rounded-[3px] bg-white/5 text-slate-400 border border-white/5"
+                                      >
+                                        {sub}
+                                      </span>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className="pt-3 border-t border-white/5 space-y-2">
+                                <div className="flex flex-wrap items-center justify-between text-[10px] text-slate-400 font-mono gap-1">
+                                  <span>Type: {cat.observationType}</span>
+                                  <span>Cadence: {cat.updateFrequency}</span>
+                                </div>
+
+                                {cat.featuredIndicator && (
+                                  <div className="text-[10px] text-emerald-400/90 font-mono">
+                                    Baseline: {cat.featuredIndicator}
+                                  </div>
+                                )}
+
+                                <div className="flex items-center justify-between pt-1">
+                                  <div className="flex items-center gap-1 text-[9px] font-mono text-slate-500">
+                                    {cat.formats.map(fmt => (
+                                      <span key={fmt} className="px-1 py-0.2 rounded bg-white/5 border border-white/5">
+                                        {fmt}
+                                      </span>
+                                    ))}
+                                  </div>
+
+                                  <Link
+                                    href={cat.targetModule}
+                                    className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                                  >
+                                    <span>Explore Module</span>
+                                    <ArrowRight className="w-3 h-3" />
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Corrected Closing Statement */}
+                      <div className="p-4 rounded-[6px] bg-emerald-950/20 border border-emerald-500/20 text-xs text-slate-300 leading-relaxed">
+                        <strong className="text-white block mb-1">Kashmir EcoWatch Data Access Covenant:</strong>
+                        The Kashmir EcoWatch Open Data Catalog brings together available environmental datasets, research records and geospatial information. Coverage, update frequency and access conditions are identified for each dataset.
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/5 px-3 py-2.5 mt-2">
-                      <Plus className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-                      <span className="text-[10px] text-slate-500 italic">New datasets are continuously added as they become available.</span>
-                    </div>
-                  </Section>
+                  </div>
 
                   <div className="border-t border-white/5" />
 
                   {/* Dataset Information */}
                   <Section id="dataset-info" icon={FileText} title="Dataset Information" accent="text-violet-400" bg="bg-violet-500/10">
-                    <p>Each published dataset may include:</p>
+                    <p>Each published dataset record in our central catalog includes documented scientific parameters:</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                       {datasetFields.map(field => (
                         <div key={field} className="flex items-center gap-2 text-xs text-slate-300">
@@ -395,10 +628,10 @@ export default function OpenDataPortalPage() {
 
                   {/* Formats */}
                   <Section id="formats" icon={Download} title="Supported Formats" accent="text-teal-400" bg="bg-teal-500/10">
-                    <p>Where available, datasets may be provided in widely accepted open formats:</p>
+                    <p>Datasets are published in widely adopted open formats to guarantee cross-platform interoperability:</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
                       {formats.map(({ ext, desc, available }) => (
-                        <div key={ext} className={`rounded-xl border p-3 ${available ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-slate-800/40 border-white/5'}`}>
+                        <div key={ext} className={`rounded-[6px] border p-3 ${available ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-slate-800/40 border-white/5'}`}>
                           <div className="flex items-center gap-2 mb-1">
                             <span className={`w-2 h-2 rounded-full flex-shrink-0 ${available ? 'bg-emerald-400' : 'bg-slate-600'}`} />
                             <span className={`text-xs font-bold font-mono ${available ? 'text-emerald-400' : 'text-slate-500'}`}>{ext}</span>
@@ -407,44 +640,44 @@ export default function OpenDataPortalPage() {
                         </div>
                       ))}
                     </div>
-                    <p className="text-xs text-slate-500 mt-2">Availability varies depending on the originating data source.</p>
+                    <p className="text-xs text-slate-500 mt-2">Format availability is documented in individual catalog records.</p>
                   </Section>
 
                   <div className="border-t border-white/5" />
 
                   {/* Sources */}
-                  <Section id="sources" icon={Globe} title="Data Sources" accent="text-indigo-400" bg="bg-indigo-500/10">
-                    <p>KEW compiles environmental information from a variety of publicly available and authorised sources, including:</p>
+                  <Section id="sources" icon={Globe} title="Data Sources &amp; Provenance" accent="text-indigo-400" bg="bg-indigo-500/10">
+                    <p>KEW compiles environmental information from authorized institutional and scientific providers:</p>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
                       {sources.map(({ icon, label }) => (
-                        <div key={label} className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/5 px-3 py-2.5">
+                        <div key={label} className="flex items-center gap-2 rounded-[6px] bg-white/5 border border-white/5 px-3 py-2.5">
                           <span className="text-sm flex-shrink-0">{icon}</span>
                           <span className="text-[10px] text-slate-300">{label}</span>
                         </div>
                       ))}
                     </div>
-                    <p className="text-xs text-slate-400 mt-3">Each dataset retains attribution to its original source whenever applicable.</p>
+                    <p className="text-xs text-slate-400 mt-3">Every dataset retains attribution to its original source organization and primary sensor network.</p>
                   </Section>
 
                   <div className="border-t border-white/5" />
 
                   {/* Licensing */}
-                  <Section id="licensing" icon={Lock} title="Licensing" accent="text-amber-400" bg="bg-amber-500/10">
-                    <p>Unless otherwise stated, datasets published through the Open Data Portal are intended for:</p>
+                  <Section id="licensing" icon={Lock} title="Licensing &amp; Access Terms" accent="text-amber-400" bg="bg-amber-500/10">
+                    <p>Datasets published through the Open Data Portal are authorized for legitimate public-benefit applications:</p>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
                       {[
-                        'Research', 'Education', 'Conservation',
-                        'Non-commercial analysis', 'Public awareness', 'Scientific collaboration',
+                        'Academic Research', 'Educational Use', 'Ecological Conservation',
+                        'Non-commercial Analysis', 'Disaster Preparedness', 'Scientific Collaboration',
                       ].map(use => (
-                        <div key={use} className="flex items-center gap-2 text-xs text-slate-300 rounded-lg bg-emerald-500/5 border border-emerald-500/10 px-3 py-2">
+                        <div key={use} className="flex items-center gap-2 text-xs text-slate-300 rounded-[4px] bg-emerald-500/5 border border-emerald-500/10 px-3 py-2">
                           <CheckCircle className="w-3 h-3 text-emerald-400 flex-shrink-0" />
                           {use}
                         </div>
                       ))}
                     </div>
-                    <div className="rounded-xl bg-amber-950/20 border border-amber-500/20 p-4 mt-3">
+                    <div className="rounded-[6px] bg-amber-950/20 border border-amber-500/20 p-4 mt-3">
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        Certain datasets may remain subject to the licensing terms of their original providers. Users are responsible for complying with all applicable licence requirements.
+                        Third-party datasets remain subject to the licensing covenants of their originating agencies. Users must comply with applicable licence terms.
                       </p>
                     </div>
                   </Section>
@@ -452,8 +685,8 @@ export default function OpenDataPortalPage() {
                   <div className="border-t border-white/5" />
 
                   {/* Quality */}
-                  <Section id="quality" icon={CheckCircle} title="Data Quality" accent="text-emerald-400" bg="bg-emerald-500/10">
-                    <p>Before publication, datasets undergo quality assurance procedures that may include:</p>
+                  <Section id="quality" icon={CheckCircle} title="Data Quality &amp; Verification" accent="text-emerald-400" bg="bg-emerald-500/10">
+                    <p>Before cataloging, records undergo structured quality assurance procedures:</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                       {qualitySteps.map(step => (
                         <div key={step} className="flex items-center gap-2 text-xs text-slate-300">
@@ -462,61 +695,50 @@ export default function OpenDataPortalPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="rounded-xl bg-white/5 border border-white/5 p-4 mt-3">
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        Despite these efforts, users should independently validate data before making operational or regulatory decisions.
-                      </p>
-                    </div>
                   </Section>
 
                   <div className="border-t border-white/5" />
 
                   {/* API */}
-                  <Section id="api" icon={Code} title="API Access" accent="text-cyan-400" bg="bg-cyan-500/10">
+                  <Section id="api" icon={Code} title="Programmatic API Access" accent="text-cyan-400" bg="bg-cyan-500/10">
                     <p>
-                      KEW is progressively developing APIs that will enable developers, researchers, and institutions to access environmental datasets programmatically. Future API capabilities may include:
+                      KEW provides REST API endpoints enabling developers, researchers, and academic institutions to query telemetry and hazard indicators programmatically:
                     </p>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3">
                       {apiFuture.map(item => (
-                        <div key={item} className="flex items-center gap-2 rounded-xl bg-cyan-950/20 border border-cyan-500/10 px-3 py-2">
+                        <div key={item} className="flex items-center gap-2 rounded-[6px] bg-cyan-950/20 border border-cyan-500/10 px-3 py-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
                           <span className="text-[9px] text-slate-400 leading-tight">{item}</span>
                         </div>
                       ))}
-                    </div>
-                    <div className="rounded-xl bg-cyan-950/20 border border-cyan-500/20 p-4 mt-3">
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        API availability will expand as platform capabilities mature.
-                      </p>
                     </div>
                   </Section>
 
                   <div className="border-t border-white/5" />
 
                   {/* Attribution */}
-                  <Section id="attribution" icon={ExternalLink} title="Attribution" accent="text-slate-400" bg="bg-slate-500/10">
+                  <Section id="attribution" icon={ExternalLink} title="Attribution &amp; Citation" accent="text-slate-400" bg="bg-slate-500/10">
                     <p>
-                      When using data obtained from the Kashmir EcoWatch Open Data Portal, users are encouraged to acknowledge the platform where appropriate.
+                      Platform data usage requires formal citation of Kashmir EcoWatch and primary observation providers in accordance with our Citation and Open Data Covenant.
                     </p>
                     <p>
-                      Where datasets originate from third-party providers, attribution to the original source should also be maintained in accordance with applicable licensing requirements.
+                      Where datasets originate from third-party monitoring agencies, attribution to the original producer is maintained in all derivative research.
                     </p>
                   </Section>
 
                   <div className="border-t border-white/5" />
 
                   {/* Limitations */}
-                  <Section id="limitations" icon={Info} title="Limitations" accent="text-orange-400" bg="bg-orange-500/10">
-                    <p>Open environmental datasets may contain:</p>
+                  <Section id="limitations" icon={Info} title="Scientific Limitations &amp; Security Boundary" accent="text-orange-400" bg="bg-orange-500/10">
+                    <p>Open environmental datasets operate under documented technical and regulatory limitations:</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                       {limitations.map(item => (
-                        <div key={item} className="flex items-center gap-2 text-xs text-slate-300 rounded-lg bg-orange-950/10 border border-orange-500/10 px-3 py-2">
+                        <div key={item} className="flex items-center gap-2 text-xs text-slate-300 rounded-[4px] bg-orange-950/10 border border-orange-500/10 px-3 py-2">
                           <Info className="w-3 h-3 text-orange-400 flex-shrink-0" />
                           {item}
                         </div>
                       ))}
                     </div>
-                    <p className="text-xs text-slate-400 mt-3">Users should consider these factors when interpreting environmental information.</p>
                   </Section>
 
                   <div className="border-t border-white/5" />
@@ -524,27 +746,26 @@ export default function OpenDataPortalPage() {
                   {/* Community Contributions */}
                   <Section id="contributions" icon={Users} title="Community Contributions" accent="text-violet-400" bg="bg-violet-500/10">
                     <p>
-                      Researchers, institutions, environmental organisations, and citizen scientists are encouraged to contribute datasets, corrections, metadata improvements, and new environmental observations.
+                      Researchers, institutions, conservation trusts, and citizen observers can propose datasets, corrections, and new observations through our established intake desks:
                     </p>
-                    <p>All submissions undergo review before publication.</p>
-                    <div className="rounded-xl bg-white/5 border border-white/5 p-5 mt-3">
+                    <div className="rounded-[6px] bg-white/5 border border-white/5 p-5 mt-3">
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Link href="/share-data" className="flex items-center gap-3 group flex-1">
-                          <div className="w-9 h-9 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                          <div className="w-9 h-9 rounded-[6px] bg-violet-500/10 flex items-center justify-center flex-shrink-0">
                             <Database className="w-4 h-4 text-violet-400" />
                           </div>
                           <div>
                             <div className="text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">Share Environmental Data</div>
-                            <div className="text-xs text-slate-400">Submit datasets for review</div>
+                            <div className="text-xs text-slate-400">Submit datasets for intake review</div>
                           </div>
                         </Link>
                         <Link href="/submit-observation" className="flex items-center gap-3 group flex-1">
-                          <div className="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                          <div className="w-9 h-9 rounded-[6px] bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                             <Plus className="w-4 h-4 text-emerald-400" />
                           </div>
                           <div>
                             <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">Submit Observation</div>
-                            <div className="text-xs text-slate-400">Record a field observation</div>
+                            <div className="text-xs text-slate-400">Record an in-situ field observation</div>
                           </div>
                         </Link>
                       </div>
@@ -555,7 +776,7 @@ export default function OpenDataPortalPage() {
 
                   {/* Commitment */}
                   <Section id="commitment" icon={Heart} title="Our Commitment" accent="text-emerald-400" bg="bg-emerald-500/10">
-                    <div className="rounded-xl bg-emerald-950/20 border border-emerald-500/20 p-5">
+                    <div className="rounded-[6px] bg-emerald-950/20 border border-emerald-500/20 p-5">
                       <p className="text-sm text-slate-300 leading-relaxed">
                         Kashmir EcoWatch believes that open environmental knowledge strengthens scientific research, promotes informed decision-making, supports conservation efforts, and encourages collaborative stewardship of natural ecosystems for present and future generations.
                       </p>

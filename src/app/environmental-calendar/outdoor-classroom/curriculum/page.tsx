@@ -422,7 +422,7 @@ export default function CurriculumLibraryPage() {
         {/* ─────────────────────────────────────────────────────────────────
             INTERGENERATIONAL STEWARDSHIP SECTION
             ───────────────────────────────────────────────────────────────── */}
-        <section className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-950/30 via-slate-900 to-slate-950 border border-amber-500/20 space-y-4">
+        <section className="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-amber-500/20 space-y-4">
           <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
             <Sparkles className="w-4 h-4" />
             <span>Intergenerational Stewardship Protocol</span>

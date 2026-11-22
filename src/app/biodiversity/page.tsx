@@ -244,13 +244,13 @@ export default function BiodiversityPage() {
       short: 'Snow Leopard',
     },
     {
-      id: 'protected',
-      src: '/images/protected-network.png',
-      title: 'Kashmir Protected Corridors',
-      scientific: 'Protected Network & Wetlands',
-      status: '16 Key Corridors Monitored',
-      location: 'Valley Floor & Mountain Passes',
-      short: 'PA Network',
+      id: 'hangul',
+      src: '/images/biodiversity/biodiversity-hangul-stag.jpg',
+      title: 'Kashmir Stag (Hangul)',
+      scientific: 'Cervus hanglu hanglu',
+      status: 'Critically Endangered · Schedule I',
+      location: 'Dachigam National Park & Tral',
+      short: 'Hangul',
     },
   ];
   const currentHero = heroWildlife[activeHeroIdx];
@@ -268,7 +268,7 @@ export default function BiodiversityPage() {
             Himalayan Sentinel Wildlife
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono">
+        <span className="px-2 py-0.5 rounded-[4px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono">
           Taxa 2026
         </span>
       </div>
@@ -353,7 +353,7 @@ export default function BiodiversityPage() {
           '/images/bear.png',
           '/images/markhor.png',
           '/images/tiger.png',
-          '/images/protected-network.png'
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
         ]}
         rightContent={heroShowcaseCard}
         actions={
@@ -384,7 +384,7 @@ export default function BiodiversityPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -533,7 +533,7 @@ export default function BiodiversityPage() {
                   padding="lg"
                 >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${category.color} text-white flex items-center justify-center shadow-lg`}>
+                  <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl bg-slate-900 ${category.color} text-white flex items-center justify-center shadow-lg`}>
                     <category.icon className="w-5 h-5 md:w-7 md:h-7" />
                   </div>
                   <div className="flex-1">
@@ -579,7 +579,7 @@ export default function BiodiversityPage() {
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Layers className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -621,7 +621,7 @@ export default function BiodiversityPage() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
               <Filter className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -685,7 +685,7 @@ export default function BiodiversityPage() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.03 }}
               onClick={() => router.push(item.href)}
-              className="bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-amber-950/20 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 hover:bg-amber-950/20 transition-all text-left group relative overflow-hidden flex flex-col justify-between"
+              className="bg-slate-900 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 hover:bg-amber-950/20 transition-all text-left group relative overflow-hidden flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2.5">
@@ -767,7 +767,7 @@ export default function BiodiversityPage() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
               <Shield className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -795,7 +795,7 @@ export default function BiodiversityPage() {
         >
           <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -843,7 +843,7 @@ export default function BiodiversityPage() {
         >
           <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Leaf className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -866,7 +866,7 @@ export default function BiodiversityPage() {
           {getEndemicSpecies().slice(0, 4).map((species) => (
             <div
               key={species.id}
-              className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 rounded-lg p-4"
+              className="bg-slate-900 border border-emerald-500/20 rounded-lg p-4"
             >
               <div className="flex items-center gap-2 mb-2">
                 <Badge className="bg-emerald-500/20 text-emerald-300 text-xs">
@@ -899,7 +899,7 @@ export default function BiodiversityPage() {
         >
           <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Calendar className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -950,7 +950,7 @@ export default function BiodiversityPage() {
         >
           <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <TrendingUp className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -969,7 +969,7 @@ export default function BiodiversityPage() {
           </div>
         </motion.div>
 
-        <div className="bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-500/20 rounded-xl p-6">
+        <div className="bg-slate-900 border border-red-500/20 rounded-xl p-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {(() => {
               const risk = getBiodiversityRiskDashboard();

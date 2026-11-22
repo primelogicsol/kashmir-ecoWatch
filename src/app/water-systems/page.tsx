@@ -219,7 +219,7 @@ export default function WaterSystemsPage() {
 
       {/* ── Live Hydrological Telemetry & Basin Monitoring Banner ── */}
       <section className="container mx-auto px-6 mt-4">
-        <Card className="glass-intense border-emerald-500/30 p-4 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950">
+        <Card className="glass-intense border-emerald-500/30 p-4 bg-slate-900">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
@@ -271,7 +271,7 @@ export default function WaterSystemsPage() {
               { label: 'Poor', value: metrics.poorQuality, color: 'from-orange-500 to-red-600' },
               { label: 'Critical', value: metrics.criticalQuality, color: 'from-red-500 to-rose-600' },
             ].map((item, idx) => (
-              <Card key={idx} className={`bg-gradient-to-br ${item.color} border-0 p-6`}>
+              <Card key={idx} className={`bg-slate-900 ${item.color} border-0 p-6`}>
                 <div className="text-center">
                   <Thermometer className="w-6 h-6 text-white/80 mx-auto mb-2" />
                   <div className="text-3xl font-bold text-white mb-1">{item.value}</div>
@@ -350,7 +350,7 @@ export default function WaterSystemsPage() {
             {/* ── Observe Here: Hydrological Intelligence & Field Observation ── */}
       <section className="container mx-auto px-6 py-6">
         <div className="rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-md p-6">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs uppercase tracking-widest font-black text-emerald-400">Citizen Limnology &amp; Basin Telemetry</span>
@@ -366,7 +366,7 @@ export default function WaterSystemsPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex flex-wrap items-center gap-2">
               <Button
                 onClick={() => router.push('/submit-observation?category=water')}
                 className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-950/50 text-xs py-2 px-3.5"
@@ -596,7 +596,7 @@ export default function WaterSystemsPage() {
           className="mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
               <Droplet className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -623,7 +623,7 @@ export default function WaterSystemsPage() {
                     </div>
                   </div>
                   <div
-                    className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    className={`px-3 py-1 rounded-[4px] text-xs font-bold ${
                       vuln.classification === 'critical'
                         ? 'bg-red-500/20 text-red-400'
                         : vuln.classification === 'vulnerable'
@@ -654,7 +654,7 @@ export default function WaterSystemsPage() {
                     </div>
                   </div>
                   <div
-                    className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    className={`px-3 py-1 rounded-[4px] text-xs font-bold ${
                       cond.conditionClass === 'critical'
                         ? 'bg-red-500/20 text-red-400'
                         : cond.conditionClass === 'poor'
@@ -682,7 +682,7 @@ export default function WaterSystemsPage() {
           className="mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
               <Waves className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -754,23 +754,23 @@ export default function WaterSystemsPage() {
             
             {/* NWIA Stats Bar */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-center">
+              <div className="p-4 rounded-xl bg-slate-900 border border-blue-500/30 text-center">
                 <div className="text-3xl font-bold text-white">{KASHMIR_VALLEY_TOTALS.totalWetlandAreaHa.toLocaleString()}</div>
                 <div className="text-xs text-slate-400 mt-1">Total Wetland (ha)</div>
               </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-sky-500/20 to-blue-500/20 border border-sky-500/30 text-center">
+              <div className="p-4 rounded-xl bg-slate-900 border border-sky-500/30 text-center">
                 <div className="text-3xl font-bold text-white">{KASHMIR_VALLEY_TOTALS.totalWetlandAreaKm2.toFixed(2)}</div>
                 <div className="text-xs text-slate-400 mt-1">Total Wetland (km²)</div>
               </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-center">
+              <div className="p-4 rounded-xl bg-slate-900 border border-indigo-500/30 text-center">
                 <div className="text-3xl font-bold text-white">{(KASHMIR_VALLEY_TOTALS.lakesPondsAreaHa / 1000).toFixed(1)}k</div>
                 <div className="text-xs text-slate-400 mt-1">Lakes/Ponds (ha)</div>
               </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 border border-emerald-500/30 text-center">
+              <div className="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 text-center">
                 <div className="text-3xl font-bold text-white">{(KASHMIR_VALLEY_TOTALS.riverStreamAreaHa / 1000).toFixed(1)}k</div>
                 <div className="text-xs text-slate-400 mt-1">Rivers/Streams (ha)</div>
               </div>
-              <div className="p-4 rounded-xl bg-gradient-to-br from-slate-500/20 to-slate-600/20 border border-slate-500/30 text-center">
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-500/30 text-center">
                 <div className="text-3xl font-bold text-white">{KASHMIR_VALLEY_TOTALS.totalHighAltitudeLakes.toLocaleString()}</div>
                 <div className="text-xs text-slate-400 mt-1">High Altitude Lakes</div>
               </div>
@@ -798,7 +798,7 @@ export default function WaterSystemsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <Card className="bg-gradient-to-r from-blue-600 to-cyan-600 border-0 p-8">
+          <Card className="bg-slate-900 border-0 p-8">
             <div className="flex items-center justify-between flex-wrap gap-6">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">

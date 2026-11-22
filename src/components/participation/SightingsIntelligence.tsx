@@ -62,7 +62,7 @@ export function SightingsIntelligence({ compact = false, filterStatus, onVerifyS
               className="flex items-start gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors cursor-pointer"
               onClick={() => setSelectedSighting(sighting)}
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
                 <Camera className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="flex-1 min-w-0">
@@ -118,7 +118,7 @@ export function SightingsIntelligence({ compact = false, filterStatus, onVerifyS
           >
             <Card className="glass-intense border-white/10 p-5 hover:border-emerald-500/30 transition-all cursor-pointer" onClick={() => setSelectedSighting(sighting)}>
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
                   <Camera className="w-8 h-8 text-emerald-400" />
                 </div>
                 <div className="flex-1">
@@ -176,7 +176,7 @@ export function SightingsIntelligence({ compact = false, filterStatus, onVerifyS
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center">
                       <Camera className="w-6 h-6 text-white" />
                     </div>
                     <div>

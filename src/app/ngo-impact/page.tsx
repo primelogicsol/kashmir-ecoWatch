@@ -120,8 +120,7 @@ export default function NGOImpactLandingPage() {
           '/images/ngo-module/community.jpg',
           '/images/ngo-module/field_work.jpg',
           '/images/ngo-module/lake_clean.jpg',
-          '/images/protected-network.png',
-          '/images/bear.png',
+          '/images/ngo-module/tree_plantation.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -406,7 +405,7 @@ export default function NGOImpactLandingPage() {
         </section>
 
         {/* ─── 10. CALL TO ACTION ───────────────────────────────────────────────── */}
-        <section className="bg-gradient-to-br from-emerald-900/40 to-teal-900/40 border border-emerald-500/20 rounded-3xl p-8 md:p-12 text-center mb-12">
+        <section className="bg-slate-900 border border-emerald-500/20 rounded-3xl p-8 md:p-12 text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Ready to make a verified impact?</h2>
           <p className="text-emerald-100/80 max-w-2xl mx-auto mb-8 text-lg">
             Join the Kashmir Eco Watch network. Whether you are an established NGO looking for accreditation, or a volunteer ready to deploy, the ecosystem needs you.

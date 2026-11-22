@@ -210,7 +210,7 @@ export default function ClimateAtmosphereSubmodulePage() {
         </section>
 
         {/* Cross-Module Linkages CTA */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-sky-950/40 via-slate-900 to-slate-950 border border-sky-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-slate-900 border border-sky-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-sky-400 mb-1">Systemic Feedback Linkage</div>
             <h4 className="text-base font-bold text-white">How Atmospheric Changes Impact Kashmir Sectoral Systems</h4>

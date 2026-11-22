@@ -453,7 +453,7 @@ export default function SoilPollutionPage() {
       />
 
       {/* ── Key Stats Ribbon ──────────────────────────────────────────────── */}
-      <section className="py-12 border-y border-white/5 bg-gradient-to-b from-slate-950 to-slate-900/50">
+      <section className="py-12 border-y border-white/5 bg-slate-900">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {degradationStats.map((stat, index) => (
@@ -525,7 +525,7 @@ export default function SoilPollutionPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                       <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center`}>
+                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${item.color} flex items-center justify-center`}>
                           <item.icon className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -972,7 +972,7 @@ export default function SoilPollutionPage() {
                   <p className="text-sm text-slate-400">Degradation zones, fertility survey locations, and contamination hotspot layers</p>
                 </div>
               </div>
-              <div className="relative h-80 bg-gradient-to-br from-amber-900/40 to-yellow-900/20 rounded-xl flex items-center justify-center border border-white/10">
+              <div className="relative h-80 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">
                 <div className="text-center">
                   <BarChart3 className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                   <p className="text-slate-400 mb-2">Interactive soil degradation map with erosion zones, fertility survey points,</p>

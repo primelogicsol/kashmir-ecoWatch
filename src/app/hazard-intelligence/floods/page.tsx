@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { RelatedHazardIntelligence } from '@/components/hazard/RelatedHazardIntelligence';
 import {
   floodZoneRegistry,
   FloodZoneRecord,
@@ -613,12 +614,10 @@ export default function FloodsPage() {
           </div>
         }
         images={[
-          '/images/hazard-intelligence/FLOODS.jpg',
-          '/images/water-module/rivers.png',
-          '/images/water-module/water-river.jpg',
-          '/images/water-module/water1.png',
-          '/images/hazard-intelligence/LANDSLIDE.jpg',
-          '/images/protected-network.png',
+          '/images/hazard-intelligence/hazard-floods-riverine.jpg',
+          '/images/hazard-intelligence/hazard-command-center.jpg',
+          '/images/hazard-intelligence/hazard-landslides-monitoring.jpg',
+          '/images/hazard-intelligence/hazard-avalanches-snow.jpg',
         ]}
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
@@ -782,7 +781,7 @@ export default function FloodsPage() {
                 Fetching live flood intelligence...
               </div>
               <div className="text-sm text-slate-400">
-                Connecting to Open-Meteo Flood &amp; Forecast APIs
+                Connecting to River Hydrometry &amp; Atmospheric Forecast Telemetry...
               </div>
             </div>
           ) : filteredData.length === 0 ? (
@@ -839,82 +838,10 @@ export default function FloodsPage() {
         </div>
       </section>
 
-      {/* ── Cross-links ──────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* ── RELATED HAZARD INTELLIGENCE (6 CONTEXTUAL MODULES) ─────────── */}
+      <section className="py-12 bg-slate-900 border-t border-white/5">
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
-            <h2 className="text-2xl font-bold text-white mb-2">
-              Related Hazard Domains
-            </h2>
-            <p className="text-slate-400">
-              Explore connected hazard intelligence modules
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                label: "Flash Floods",
-                href: "/hazard-intelligence/flash-floods",
-                desc: "Rapid-onset flash flood early warning",
-                icon: CloudRain,
-                color: "from-indigo-500 to-blue-600",
-              },
-              {
-                label: "Landslides",
-                href: "/hazard-intelligence/landslides",
-                desc: "Slope instability and debris flow sites",
-                icon: Mountain,
-                color: "from-amber-500 to-orange-600",
-              },
-              {
-                label: "GLOFs",
-                href: "/hazard-intelligence/glofs",
-                desc: "Glacial lake outburst flood risk",
-                icon: Droplets,
-                color: "from-teal-500 to-emerald-600",
-              },
-              {
-                label: "Dashboards",
-                href: "/hazard-intelligence/dashboards",
-                desc: "Multi-hazard analytics & comparison",
-                icon: BarChart3,
-                color: "from-violet-500 to-purple-600",
-              },
-            ].map((link, i) => (
-              <motion.div
-                key={link.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-              >
-                <Card
-                  className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group"
-                  onClick={() => router.push(link.href)}
-                >
-                  <div className="flex items-start gap-3">
-                    <div
-                      className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}
-                    >
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-slate-300 transition-colors">
-                        {link.label}
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {link.desc}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <RelatedHazardIntelligence currentModule="floods" />
         </div>
       </section>
     </main>

@@ -52,7 +52,7 @@ export default function HostAConferencePage() {
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
         {/* Policy Alert: Free for Verified Environmental Entities */}
-        <div className="bg-gradient-to-r from-teal-950/60 via-slate-900 to-slate-900 border border-teal-500/30 rounded-2xl p-6 sm:p-8 space-y-3">
+        <div className="bg-slate-900 border border-teal-500/30 rounded-2xl p-6 sm:p-8 space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-teal-400">
             <ShieldCheck className="w-4 h-4" />
             <span>Institutional Hosting Policy • 100% Free Platform Infrastructure</span>

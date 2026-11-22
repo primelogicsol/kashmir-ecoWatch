@@ -111,7 +111,19 @@ export default function BiodiversityOverviewPage() {
           { label: 'Biodiversity', href: '/biodiversity/overview' },
           { label: 'Overview & Command' }
         ]}
-        images={['/images/bear.png', '/images/tiger.png', '/images/markhor.png']}
+        images={[
+          '/images/bear.png',
+          '/images/tiger.png',
+          '/images/markhor.png',
+          '/images/biodiversity/biodiversity-hangul-stag.jpg',
+          '/images/biodiversity/biodiversity-command-center.jpg',
+          '/images/biodiversity/biodiversity-birds-wetland.jpg',
+          '/images/biodiversity/biodiversity-fish-aquatic.jpg',
+          '/images/biodiversity/biodiversity-wildlife-rescue.jpg',
+          '/images/biodiversity/biodiversity-field-camera-trap.jpg',
+          '/images/biodiversity/biodiversity-botany-flora.jpg',
+          '/images/biodiversity/biodiversity-pollinators-bloom.jpg',
+        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <a href="/biodiversity">
@@ -140,7 +152,7 @@ export default function BiodiversityOverviewPage() {
       {/* CORRIDOR TELEMETRY BANNER & J&K BIODIVERSITY MONITORING STRIP */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 -mt-6 relative z-20 mb-6">
-        <div className="bg-gradient-to-r from-slate-900/95 via-emerald-950/70 to-slate-900/95 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="bg-slate-900 border border-emerald-500/30 rounded-2xl p-4 lg:p-5 backdrop-blur-md shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400 shrink-0">
               <Compass className="w-6 h-6 animate-pulse" />
@@ -366,7 +378,7 @@ export default function BiodiversityOverviewPage() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.04 }}
               onClick={() => router.push(item.href)}
-              className="bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-amber-950/20 border border-white/10 hover:border-amber-500/40 rounded-xl p-5 hover:bg-amber-950/20 transition-all text-left group relative overflow-hidden"
+              className="bg-slate-900 border border-white/10 hover:border-amber-500/40 rounded-xl p-5 hover:bg-amber-950/20 transition-all text-left group relative overflow-hidden"
             >
               <div className="flex items-start justify-between gap-2 mb-3">
                 <item.icon className="w-6 h-6 text-amber-400 group-hover:scale-110 group-hover:text-amber-300 transition-all" />
@@ -433,7 +445,7 @@ export default function BiodiversityOverviewPage() {
         >
           <div className="flex flex-col items-center gap-3 mb-3">
             <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Clock className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -486,7 +498,7 @@ export default function BiodiversityOverviewPage() {
         >
           <div className="flex flex-col items-center gap-3 mb-3">
             <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Flower2 className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -541,7 +553,7 @@ export default function BiodiversityOverviewPage() {
         >
           <div className="flex flex-col items-center gap-3 mb-3">
             <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <AlertTriangle className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -589,7 +601,7 @@ export default function BiodiversityOverviewPage() {
         >
           <div className="flex flex-col items-center gap-3 mb-3">
             <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-white" />
               </div>
               <div>

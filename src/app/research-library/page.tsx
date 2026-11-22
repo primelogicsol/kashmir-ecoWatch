@@ -122,7 +122,7 @@ export default function ResearchLibraryPage() {
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Link
               href="/open-data"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-sm font-semibold hover:from-emerald-500 hover:to-emerald-400 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:from-emerald-500 hover:to-emerald-400 transition-all"
             >
               <Database className="w-4 h-4" />
               Open Data Portal
@@ -139,7 +139,7 @@ export default function ResearchLibraryPage() {
       />
 
       {/* ── Stats bar ── */}
-      <div className="container mx-auto px-6 -mt-8 relative z-20">
+      <div className="container mx-auto px-6 mt-6 sm:mt-8 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
           <Card className="glass-intense border-white/10" padding="none">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
@@ -182,7 +182,7 @@ export default function ResearchLibraryPage() {
                       : 'opacity-60 cursor-default'
                   }`}>
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${section.color}`}>
+                      <div className={`p-3 rounded-xl bg-slate-900 ${section.color}`}>
                         <section.icon className="w-6 h-6 text-white" />
                       </div>
                       <Badge

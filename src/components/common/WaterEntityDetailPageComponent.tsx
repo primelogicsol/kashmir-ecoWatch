@@ -93,7 +93,7 @@ export function WaterEntityDetailPageComponent({
             <div className="flex items-start justify-between gap-6">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} text-white flex items-center justify-center shadow-lg`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${color} text-white flex items-center justify-center shadow-lg`}>
                     <Icon className="w-6 h-6" />
                   </div>
                   <Badge variant="info" size="lg">
@@ -242,7 +242,7 @@ export function WaterEntityDetailPageComponent({
           transition={{ delay: 0.5 }}
           className="mt-12"
         >
-          <Card className={`bg-gradient-to-r ${color} border-0 p-8`}>
+          <Card className={`bg-slate-900 ${color} border-0 p-8`}>
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Explore More Water Systems</h3>
@@ -302,7 +302,7 @@ function OverviewTab({ entity }: { entity: WaterEntity }) {
 
           <Card className="card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
             <h2 className="text-2xl font-bold text-white mb-4">Location</h2>
-            <div className="relative h-64 rounded-xl bg-gradient-to-br from-blue-500/10 to-slate-800/50 border border-white/10 flex items-center justify-center">
+            <div className="relative h-64 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="w-12 h-12 text-blue-500 mx-auto mb-3" />
                 <p className="text-slate-400 text-sm">Interactive map view</p>
