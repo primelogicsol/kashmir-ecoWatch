@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
+export type { ErrorCategory } from '@/lib/error-logger';
 export type ErrorSeverity = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
 export type IncidentStatus = 'NEW' | 'INVESTIGATING' | 'RESOLVED' | 'REOPENED';
 export type EnvironmentTier = 'development' | 'staging' | 'production';
@@ -240,6 +241,12 @@ class TelemetryStore {
         dispatchedAt: now,
         recipient: 'noc-alert@primelogicsol.com',
       };
+    }
+
+    // Enforce bounded ring capacity (max 200 unique fingerprints) to protect production disk & memory
+    if (this.incidents.size >= 200) {
+      const oldestKey = this.incidents.keys().next().value;
+      if (oldestKey) this.incidents.delete(oldestKey);
     }
 
     this.incidents.set(id, newIncident);
@@ -492,9 +499,7 @@ class TelemetryStore {
   }
 }
 
-// Global Singleton for Telemetry Engine
+// Global Singleton for Telemetry Engine (shared across route bundles in all environments)
 const globalForTelemetry = global as unknown as { __kewTelemetryStore?: TelemetryStore };
 export const telemetryStore = globalForTelemetry.__kewTelemetryStore || new TelemetryStore();
-if (process.env.NODE_ENV !== 'production') {
-  globalForTelemetry.__kewTelemetryStore = telemetryStore;
-}
+globalForTelemetry.__kewTelemetryStore = telemetryStore;

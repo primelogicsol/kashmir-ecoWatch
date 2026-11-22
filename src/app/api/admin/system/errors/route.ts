@@ -5,6 +5,14 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   try {
+    const adminKey = request.headers.get('x-admin-key');
+    if (adminKey !== 'KEW-Admin-2026!') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const moduleFilter = searchParams.get('module') || 'ALL';
     const severity = searchParams.get('severity') || 'ALL';
@@ -99,6 +107,14 @@ export async function GET(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
+    const adminKey = request.headers.get('x-admin-key');
+    if (adminKey !== 'KEW-Admin-2026!') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
     const { id, status, resolutionNotes, resolvedBy } = body;
 

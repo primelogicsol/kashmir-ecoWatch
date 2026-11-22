@@ -70,6 +70,14 @@ const SIMULATION_PRESETS: Record<SimulationType, SimulationPreset> = {
  */
 export async function POST(request: Request) {
   try {
+    const adminKey = request.headers.get('x-admin-key');
+    if (adminKey !== 'KEW-Admin-2026!') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { status: 401 }
+      );
+    }
+
     // Safety check: restricted in production
     if (process.env.NODE_ENV === 'production' && !process.env.ALLOW_STAGING_TEST_ERRORS) {
       return NextResponse.json(

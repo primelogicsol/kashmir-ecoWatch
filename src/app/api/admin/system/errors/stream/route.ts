@@ -9,6 +9,15 @@ export const runtime = 'nodejs';
  * Includes automatic periodic heartbeat keep-alives every 15 seconds.
  */
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const adminKey = request.headers.get('x-admin-key') || searchParams.get('key');
+  if (adminKey !== 'KEW-Admin-2026!') {
+    return new Response(
+      JSON.stringify({ success: false, error: 'Unauthorized: Administrator authentication key required.' }),
+      { status: 401, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({

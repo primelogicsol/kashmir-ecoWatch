@@ -7,6 +7,9 @@ export type ErrorCategory =
   | 'ENVIRONMENTAL_DATA_UNAVAILABLE'
   | 'MONITORING_INTERRUPTED'
   | 'GIS_UNAVAILABLE'
+  | 'GIS_FAILURE'
+  | 'DATABASE_ERROR'
+  | 'RATE_LIMITED'
   | 'ANALYSIS_UNAVAILABLE'
   | 'AUTH_REQUIRED'
   | 'ACCESS_RESTRICTED'
@@ -40,6 +43,24 @@ export const ERROR_PRESETS: Record<ErrorCategory, ErrorPreset> = {
     description: 'The geographic visualization could not be loaded. Try refreshing the map or accessing another information view.',
     retryable: true,
     httpStatus: 500,
+  },
+  GIS_FAILURE: {
+    title: 'Spatial tile layer unavailable',
+    description: 'A vector or raster geospatial layer encountered a rendering error. Base cartography and tabular registries remain accessible.',
+    retryable: true,
+    httpStatus: 422,
+  },
+  DATABASE_ERROR: {
+    title: 'Spatial database connection interrupted',
+    description: 'The spatial database cluster timed out while servicing this request. Cached scientific registries remain preserved without data loss.',
+    retryable: true,
+    httpStatus: 500,
+  },
+  RATE_LIMITED: {
+    title: 'Request rate limit reached',
+    description: 'Excessive automated traffic was detected from this network. Please wait a moment and try your query again.',
+    retryable: true,
+    httpStatus: 429,
   },
   ANALYSIS_UNAVAILABLE: {
     title: 'Scientific analysis unavailable',

@@ -1,16 +1,87 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { PrimeLogicErrorView } from '@/components/common/PrimeLogicErrorView';
-import { ErrorCategory, ERROR_PRESETS } from '@/lib/error-logger';
-import { ShieldAlert, Zap, Radio, ExternalLink, RefreshCw, AlertTriangle, ArrowRight } from 'lucide-react';
+import { ErrorCategory } from '@/lib/error-logger';
+import { Zap, Radio, AlertTriangle, ArrowRight, Lock, Key } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { useAuth } from '@/context/AuthContext';
 
 export default function ErrorPreviewPage() {
+  const { user, isLoggedIn } = useAuth();
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
+  const [passcode, setPasscode] = useState('');
+  const [passError, setPassError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<ErrorCategory>('UNEXPECTED');
   const [shouldCrash, setShouldCrash] = useState(false);
   const [retryNotification, setRetryNotification] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (sessionStorage.getItem('kew_admin_authenticated') === 'true') {
+        setIsUnlocked(true);
+      }
+    }
+  }, []);
+
+  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isUnlocked;
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode.trim() === 'KEW-Admin-2026!') {
+      setIsUnlocked(true);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('kew_admin_authenticated', 'true');
+      }
+      setPassError(null);
+    } else {
+      setPassError('Invalid Administrator Passcode. Access restricted to authorized KEW personnel.');
+    }
+  };
+
+  if (!isAuthorized) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-900 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-5">
+          <div className="text-center space-y-2">
+            <div className="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-300 flex items-center justify-center mx-auto">
+              <Lock className="w-6 h-6" />
+            </div>
+            <h1 className="text-lg font-bold text-white">NOC Error Boundary Sandbox</h1>
+            <p className="text-xs text-slate-400">
+              Restricted administrative diagnostic preview. Enter the administrator passcode to access boundary simulation controls.
+            </p>
+          </div>
+          <form onSubmit={handleUnlock} className="space-y-3">
+            <input
+              type="password"
+              placeholder="Enter administrator passcode..."
+              value={passcode}
+              onChange={(e) => {
+                setPasscode(e.target.value);
+                if (passError) setPassError(null);
+              }}
+              className="w-full bg-slate-950 border border-white/15 rounded-lg px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
+            />
+            {passError && (
+              <p className="text-xs text-rose-400 flex items-center gap-1">
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>{passError}</span>
+              </p>
+            )}
+            <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs py-2 rounded-lg">
+              <Key className="w-3.5 h-3.5 mr-1.5" />
+              <span>Unlock Boundary Sandbox</span>
+            </Button>
+          </form>
+          <Link href="/" className="block text-center text-xs text-slate-400 hover:text-white">
+            Return to Public Website
+          </Link>
+        </div>
+      </main>
+    );
+  }
 
   // If user clicks the crash button, throw an actual uncaught React error to test src/app/error.tsx boundary
   if (shouldCrash) {
