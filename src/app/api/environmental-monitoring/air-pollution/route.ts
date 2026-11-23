@@ -4,21 +4,31 @@ import {
   groundStationsRegistry,
   AirQualityLiveRecord,
   GroundStationLiveRecord,
+  SensorNodeReading,
   ValidationDelta,
   calculateIndianNAQI,
   calculateUsAqi,
+  getAqiCategory,
+  getAqiVariant,
   getInitialAirQualitySnapshot,
 } from '@/data/air-quality-registry';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0; // Disable caching to deliver real-time live telemetry on every request
+
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5-minute server cache aligned with ground sensor sync & Open-Meteo rate limits
+const RATE_LIMIT_COOLDOWN_MS = 5 * 60 * 1000; // 5-minute cooldown after HTTP 429
+
+let cachedPayload: Record<string, unknown> | null = null;
+let cachedAt = 0;
+let rateLimitedUntil = 0;
+let inFlightJob: Promise<Record<string, unknown>> | null = null;
 
 export interface AirHazardAlert {
   id: string;
   stationName: string;
   district: string;
   scope: string;
-  type: 'Ground CAAQMS' | 'Regional Model Grid';
+  type: 'Ground Sensor / CAAQMS' | 'Regional Model Grid';
   naqi: number;
   naqiCategory: string;
   aqi_us: number;
@@ -29,334 +39,526 @@ export interface AirHazardAlert {
   recommendation: string;
 }
 
-export async function GET() {
-  const now = new Date();
-  const timeLabel = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-  const apiTime = now.toISOString();
+// District -> BreatheOSS / AirGradient regional zone_id mapping
+const DISTRICT_TO_BREATHE_ZONE: Record<string, string> = {
+  Srinagar: 'srinagar',
+  Jammu: 'jammu_city',
+  Anantnag: 'anantnag_city',
+  Bandipora: 'bandipora_town',
+  Baramulla: 'baramulla_town',
+  Doda: 'doda_town',
+  Ganderbal: 'ganderbal_town',
+  Kargil: 'kargil_town',
+  Kathua: 'kathua_town',
+  Kishtwar: 'kishtwar_town',
+  Kulgam: 'kulgam_town',
+  Kupwara: 'kupwara_town',
+  Leh: 'leh',
+  Poonch: 'poonch_town',
+  Pulwama: 'pulwama_town',
+  Rajouri: 'rajouri_town',
+  Ramban: 'ramban_town',
+  Reasi: 'reasi_town',
+  Samba: 'samba_town',
+  Shopian: 'shopian_town',
+  Udhampur: 'udhampur_city',
+};
 
-  // Combine coordinates for all 44 regional units
-  const lats = airQualityRegistry.map(s => s.lat).join(',');
-  const lngs = airQualityRegistry.map(s => s.lng).join(',');
+interface BreatheNodeRaw {
+  pm2_5?: number | null;
+  pm10?: number | null;
+  aqi?: number | null;
+  us_aqi?: number | null;
+  status?: string;
+}
 
-  const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lats}&longitude=${lngs}&hourly=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,us_aqi,european_aqi&timezone=auto&forecast_days=1&past_days=1`;
+interface BreatheZoneRaw {
+  zone_id: string;
+  zone_name: string;
+  source?: string;
+  timestamp_unix?: number;
+  aqi?: number | null;
+  us_aqi?: number | null;
+  main_pollutant?: string;
+  concentrations_us_units?: {
+    pm2_5?: number | null;
+    pm10?: number | null;
+    no2?: number | null;
+    so2?: number | null;
+    co?: number | null; // ppm in BreatheOSS
+  };
+  history?: Array<{
+    ts: number;
+    aqi?: number;
+    us_aqi?: number;
+    pm2_5?: number;
+    pm10?: number;
+  }>;
+  nodes?: Record<string, BreatheNodeRaw>;
+}
+
+function formatRelativeAge(timestampMs: number, nowMs: number): { label: string; isStale: boolean } {
+  const diffMs = Math.max(0, nowMs - timestampMs);
+  const diffMins = Math.floor(diffMs / 60000);
+  const isStale = diffMs > 2 * 60 * 60 * 1000;
+  if (diffMins <= 1) return { label: 'Live (Just now)', isStale };
+  if (diffMins < 60) return { label: `Live (${diffMins}m ago)`, isStale };
+  return { label: `${Math.floor(diffMins / 60)}h ${diffMins % 60}m ago`, isStale };
+}
+
+function parseGmtHourString(timeStr: string): Date {
+  // With timezone=GMT, Open-Meteo returns ISO strings without 'Z' (e.g. "2026-11-23T04:00")
+  if (!timeStr) return new Date(0);
+  return new Date(timeStr.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(timeStr) ? timeStr : `${timeStr}Z`);
+}
+
+function naqiCategoryAndVariant(naqi: number): {
+  category: string;
+  variant: 'success' | 'warning' | 'danger' | 'critical';
+} {
+  if (naqi <= 50) return { category: 'Good', variant: 'success' };
+  if (naqi <= 100) return { category: 'Satisfactory', variant: 'success' };
+  if (naqi <= 200) return { category: 'Moderate', variant: 'warning' };
+  if (naqi <= 300) return { category: 'Poor', variant: 'danger' };
+  if (naqi <= 400) return { category: 'Very Poor', variant: 'critical' };
+  return { category: 'Severe', variant: 'critical' };
+}
+
+async function fetchBreatheGroundZones(): Promise<Map<string, BreatheZoneRaw>> {
+  const map = new Map<string, BreatheZoneRaw>();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5500);
+  try {
+    const res = await fetch('https://api.breatheoss.app/aqi/zones', {
+      signal: controller.signal,
+      cache: 'no-store',
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) return map;
+    const json = await res.json();
+    if (Array.isArray(json?.zones)) {
+      for (const z of json.zones as BreatheZoneRaw[]) {
+        if (z?.zone_id) {
+          map.set(z.zone_id, z);
+        }
+      }
+    }
+  } catch {
+    // Non-fatal: ground sensor layer degrades gracefully to Open-Meteo current feed
+  } finally {
+    clearTimeout(timeout);
+  }
+  return map;
+}
+
+async function fetchOpenMeteoGrid(): Promise<{ results: any[]; rateLimited: boolean }> {
+  const lats = airQualityRegistry.map((s) => s.lat).join(',');
+  const lngs = airQualityRegistry.map((s) => s.lng).join(',');
+
+  // Use timezone=GMT + current=... so UTC server timestamps match 1:1 with zero IST/UTC offset skew
+  const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lats}&longitude=${lngs}&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,us_aqi,european_aqi&hourly=pm2_5,us_aqi&timezone=GMT&forecast_days=1&past_days=1`;
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 6500);
-
   try {
     const res = await fetch(url, {
       signal: controller.signal,
-      next: { revalidate: 60 },
+      cache: 'no-store',
     });
-    clearTimeout(timeout);
-
+    if (res.status === 429) {
+      return { results: [], rateLimited: true };
+    }
     if (!res.ok) {
       throw new Error(`Open-Meteo returned status ${res.status}`);
     }
-
     const raw = await res.json();
-    const results = Array.isArray(raw) ? raw : [raw];
+    return {
+      results: Array.isArray(raw) ? raw : [raw],
+      rateLimited: false,
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
-    // ── 1. Process 44 Regional Modeled Units ──────────────────────────────────
-    const regionalUnits: AirQualityLiveRecord[] = airQualityRegistry.map((unit, i) => {
-      const data = results[i];
-      if (!data?.hourly) {
-        // Fallback to baseline calculation
-        const fallbackCalc = calculateIndianNAQI({ pm25: 28.5, pm10: 45.0, no2: 12.0, so2: 4.0, co: 350, o3: 30.0 });
-        const fallbackUs = calculateUsAqi(28.5, 45.0);
-        return {
-          ...unit,
-          pm25: 28.5,
-          pm10: 45.0,
-          no2: 12.0,
-          so2: 4.0,
-          co: 350,
-          o3: 30.0,
-          naqi: fallbackCalc.aqi,
-          naqiCategory: fallbackCalc.category,
-          naqiVariant: fallbackCalc.variant,
-          aqi_us: fallbackUs.aqi,
-          aqi_usCategory: fallbackUs.category,
-          aqi_usVariant: fallbackUs.variant,
-          displayAqi: fallbackCalc.aqi,
-          displayCategory: fallbackCalc.category,
-          displayVariant: fallbackCalc.variant,
-          dominantPollutant: fallbackCalc.dominantPollutant,
-          trend: 'Stable',
-          lastUpdated: 'Hourly CAMS Model Run',
-          apiTimestamp: now.toISOString(),
-          isStale: false,
-          modelRunTime: '00:00 / 12:00 UTC Synoptic Cycle',
-        };
-      }
+function extractActiveSensorNodes(zone?: BreatheZoneRaw): SensorNodeReading[] {
+  if (!zone?.nodes) return [];
+  const list: SensorNodeReading[] = [];
+  for (const [name, node] of Object.entries(zone.nodes)) {
+    if (node && node.status === 'active' && typeof node.pm2_5 === 'number') {
+      const pm25 = Number(node.pm2_5.toFixed(1));
+      const pm10 = Number((node.pm10 ?? pm25 * 1.3).toFixed(1));
+      const usCalc = calculateUsAqi(pm25, pm10);
+      const naqiCalc = calculateIndianNAQI({ pm25, pm10 });
+      list.push({
+        name,
+        pm25,
+        pm10,
+        naqi: typeof node.aqi === 'number' ? Math.round(node.aqi) : naqiCalc.aqi,
+        aqi_us: typeof node.us_aqi === 'number' ? Math.round(node.us_aqi) : usCalc.aqi,
+        status: 'active',
+      });
+    }
+  }
+  return list;
+}
 
-      const hourly = data.hourly;
-      const times: string[] = hourly.time || [];
+export async function GET(request: Request) {
+  const now = new Date();
+  const nowMs = now.getTime();
+  const { searchParams } = new URL(request.url);
+  const forceRefresh = searchParams.get('refresh') === '1';
 
-      // Find latest time with valid data
-      let latestIdx = -1;
-      let prevIdx = -1;
-      for (let j = times.length - 1; j >= 0; j--) {
-        const t = new Date(times[j]);
-        if (t <= now && (hourly.pm2_5?.[j] != null || hourly.us_aqi?.[j] != null)) {
-          if (latestIdx === -1) {
-            latestIdx = j;
-          } else if (prevIdx === -1) {
-            prevIdx = j;
-            break;
+  if (!forceRefresh && cachedPayload && nowMs - cachedAt < CACHE_TTL_MS) {
+    return NextResponse.json(cachedPayload);
+  }
+
+  if (nowMs < rateLimitedUntil && !forceRefresh) {
+    if (cachedPayload) {
+      return NextResponse.json({ ...cachedPayload, rateLimitedCached: true });
+    }
+  }
+
+  try {
+    if (!inFlightJob) {
+      inFlightJob = (async () => {
+        const [openMeteoOutcome, breatheMap] = await Promise.all([
+          fetchOpenMeteoGrid().catch(() => ({ results: [] as any[], rateLimited: false })),
+          fetchBreatheGroundZones(),
+        ]);
+
+        if (openMeteoOutcome.rateLimited) {
+          rateLimitedUntil = Date.now() + RATE_LIMIT_COOLDOWN_MS;
+          if (cachedPayload && breatheMap.size === 0) {
+            return { ...cachedPayload, rateLimitedCached: true };
           }
         }
-      }
 
-      if (latestIdx === -1) {
-        latestIdx = times.length > 0 ? times.length - 1 : 0;
-      }
+        const omResults = openMeteoOutcome.results;
+        if (omResults.length === 0 && breatheMap.size === 0) {
+          throw new Error('Both Open-Meteo and Ground Sensor feeds unavailable');
+        }
 
-      const pm25 = Number((hourly.pm2_5?.[latestIdx] ?? 25.0).toFixed(1));
-      const pm10 = Number((hourly.pm10?.[latestIdx] ?? 42.0).toFixed(1));
-      const no2 = Number((hourly.nitrogen_dioxide?.[latestIdx] ?? 14.0).toFixed(1));
-      const so2 = Number((hourly.sulphur_dioxide?.[latestIdx] ?? 5.0).toFixed(1));
-      const co = Number((hourly.carbon_monoxide?.[latestIdx] ?? 320).toFixed(0));
-      const o3 = Number((hourly.ozone?.[latestIdx] ?? 35.0).toFixed(1));
+        const currentNow = new Date();
+        const currentNowMs = currentNow.getTime();
 
-      // Calculate both Indian NAQI and US EPA AQI
-      const naqiCalc = calculateIndianNAQI({ pm25, pm10, no2, so2, co, o3 });
-      const usAqiCalc = calculateUsAqi(pm25, pm10);
+        // Keep pure CAMS/Open-Meteo model readings per district for empirical ground-vs-model validation
+        const modelOnlyByDistrict = new Map<string, { pm25: number; pm10: number; naqi: number; aqi_us: number }>();
 
-      // Trend calculation
-      let trend: 'Stable' | 'Rising' | 'Falling' = 'Stable';
-      if (prevIdx !== -1) {
-        const prevPm25 = hourly.pm2_5?.[prevIdx] ?? pm25;
-        const diff = pm25 - prevPm25;
-        if (diff > 3) trend = 'Rising';
-        else if (diff < -3) trend = 'Falling';
-      }
+        // ── 1. Process 44 Regional Units (Physical Ground Sensors where active, Open-Meteo Current GMT elsewhere)
+        const regionalUnits: AirQualityLiveRecord[] = airQualityRegistry.map((unit, i) => {
+          const omData = omResults[i];
+          const cur = omData?.current;
+          const hourly = omData?.hourly;
+          const times: string[] = hourly?.time || [];
 
-      const timeLabel = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          // Determine latest UTC index & previous UTC index in hourly series
+          let latestIdx = -1;
+          let prevIdx = -1;
+          for (let j = times.length - 1; j >= 0; j--) {
+            const t = parseGmtHourString(times[j]);
+            if (t.getTime() <= currentNowMs && (hourly?.pm2_5?.[j] != null || hourly?.us_aqi?.[j] != null)) {
+              if (latestIdx === -1) {
+                latestIdx = j;
+              } else if (prevIdx === -1) {
+                prevIdx = j;
+                break;
+              }
+            }
+          }
 
-      return {
-        ...unit,
-        pm25,
-        pm10,
-        no2,
-        so2,
-        co,
-        o3,
-        naqi: naqiCalc.aqi,
-        naqiCategory: naqiCalc.category,
-        naqiVariant: naqiCalc.variant,
-        aqi_us: usAqiCalc.aqi,
-        aqi_usCategory: usAqiCalc.category,
-        aqi_usVariant: usAqiCalc.variant,
-        displayAqi: naqiCalc.aqi,
-        displayCategory: naqiCalc.category,
-        displayVariant: naqiCalc.variant,
-        dominantPollutant: naqiCalc.dominantPollutant,
-        trend,
-        lastUpdated: `Live Sync (${timeLabel})`,
-        apiTimestamp: apiTime,
-        isStale: false,
-        modelRunTime: 'ECMWF / Copernicus CAMS Cycle',
-      };
-    });
+          const omPm25 = Number((cur?.pm2_5 ?? (latestIdx !== -1 ? hourly?.pm2_5?.[latestIdx] : null) ?? 25.0).toFixed(1));
+          const omPm10 = Number((cur?.pm10 ?? 42.0).toFixed(1));
+          const omNo2 = Number((cur?.nitrogen_dioxide ?? 14.0).toFixed(1));
+          const omSo2 = Number((cur?.sulphur_dioxide ?? 5.0).toFixed(1));
+          const omCo = Number((cur?.carbon_monoxide ?? 320).toFixed(0));
+          const omO3 = Number((cur?.ozone ?? 35.0).toFixed(1));
+          const omUsAqiRaw = cur?.us_aqi ?? (latestIdx !== -1 ? hourly?.us_aqi?.[latestIdx] : null);
 
-    // ── 2. Process Physical Ground Monitoring Stations ────────────────────────
-    // For ground stations co-located with CPCB CAAQMS (Srinagar, Jammu) and Regional EPAs,
-    // we incorporate the empirical ground instruments calibration layer.
-    // In Srinagar basin, ground instruments detect winter Chillai Kalan inversion trapping
-    // where local biomass smoke and wood heating produce ground concentrations higher than 11km models.
-    const groundStations: GroundStationLiveRecord[] = groundStationsRegistry.map(station => {
-      // Find corresponding regional model unit
-      const matchingModel = regionalUnits.find(u => u.district === station.district) || regionalUnits[0];
+          const omNaqiCalc = calculateIndianNAQI({
+            pm25: omPm25,
+            pm10: omPm10,
+            no2: omNo2,
+            so2: omSo2,
+            co: omCo,
+            o3: omO3,
+          });
+          const omUsCalc =
+            typeof omUsAqiRaw === 'number'
+              ? {
+                  aqi: Math.round(omUsAqiRaw),
+                  category: getAqiCategory(Math.round(omUsAqiRaw)),
+                  variant: getAqiVariant(Math.round(omUsAqiRaw)),
+                }
+              : calculateUsAqi(omPm25, omPm10);
 
-      let pm25 = matchingModel.pm25;
-      let pm10 = matchingModel.pm10;
-      let no2 = matchingModel.no2;
-      let so2 = matchingModel.so2;
-      let co = matchingModel.co;
-      let o3 = matchingModel.o3;
+          modelOnlyByDistrict.set(unit.district, {
+            pm25: omPm25,
+            pm10: omPm10,
+            naqi: omNaqiCalc.aqi,
+            aqi_us: omUsCalc.aqi,
+          });
 
-      if (station.district === 'Srinagar') {
-        // Srinagar valley floor inversion factor: physical BAM-1020 monitors detect ground stagnation
-        // Winter/autumn heating and brick kiln plume accumulation
-        const inversionBoost = Math.max(18.0, matchingModel.pm25 * 0.45);
-        pm25 = Number((matchingModel.pm25 + inversionBoost).toFixed(1));
-        pm10 = Number((matchingModel.pm10 + inversionBoost * 1.5).toFixed(1));
-        no2 = Number((matchingModel.no2 + 6.5).toFixed(1));
-        co = Number((matchingModel.co + 280).toFixed(0));
-      } else if (station.district === 'Jammu') {
-        // Jammu plains: vehicular traffic corridor along NH-44 and industrial clusters
-        const trafficBoost = Math.max(10.0, matchingModel.pm25 * 0.25);
-        pm25 = Number((matchingModel.pm25 + trafficBoost).toFixed(1));
-        pm10 = Number((matchingModel.pm10 + trafficBoost * 1.7).toFixed(1));
-        no2 = Number((matchingModel.no2 + 11.2).toFixed(1));
-      } else if (station.district === 'Leh') {
-        // High altitude pristine baseline: minimal local anthropogenic sources
-        pm25 = Number((Math.min(matchingModel.pm25, 14.5)).toFixed(1));
-        pm10 = Number((Math.min(matchingModel.pm10, 24.0)).toFixed(1));
-      }
+          // Check if district has active physical ground sensors (AirGradient via BreatheOSS — same sensors feeding IQAir)
+          const breatheZoneId = DISTRICT_TO_BREATHE_ZONE[unit.district];
+          const breatheZone = breatheZoneId ? breatheMap.get(breatheZoneId) : undefined;
+          const hasPhysicalSensor =
+            Boolean(breatheZone?.source?.toLowerCase().includes('airgradient')) &&
+            typeof breatheZone?.concentrations_us_units?.pm2_5 === 'number';
 
-      const naqiCalc = calculateIndianNAQI({ pm25, pm10, no2, so2, co, o3 });
-      const usAqiCalc = calculateUsAqi(pm25, pm10);
+          if (hasPhysicalSensor && breatheZone) {
+            const sensorNodes = extractActiveSensorNodes(breatheZone);
+            const pm25 = Number((breatheZone.concentrations_us_units?.pm2_5 ?? omPm25).toFixed(1));
+            const pm10 = Number((breatheZone.concentrations_us_units?.pm10 ?? omPm10).toFixed(1));
+            const no2 = Number((breatheZone.concentrations_us_units?.no2 ?? omNo2).toFixed(1));
+            const so2 = Number((breatheZone.concentrations_us_units?.so2 ?? omSo2).toFixed(1));
+            // BreatheOSS CO is reported in ppm; convert to µg/m³ (1 ppm CO ≈ 1145 µg/m³ at STP) or fallback to Open-Meteo
+            const coRaw = breatheZone.concentrations_us_units?.co;
+            const co = typeof coRaw === 'number' ? Math.round(coRaw < 25 ? coRaw * 1145 : coRaw) : omCo;
+            const o3 = omO3;
 
-      return {
-        ...station,
-        pm25,
-        pm10,
-        no2,
-        so2,
-        co,
-        o3,
-        naqi: naqiCalc.aqi,
-        naqiCategory: naqiCalc.category,
-        naqiVariant: naqiCalc.variant,
-        aqi_us: usAqiCalc.aqi,
-        aqi_usCategory: usAqiCalc.category,
-        aqi_usVariant: usAqiCalc.variant,
-        displayAqi: naqiCalc.aqi,
-        displayCategory: naqiCalc.category,
-        displayVariant: naqiCalc.variant,
-        dominantPollutant: naqiCalc.dominantPollutant,
-        trend: matchingModel.trend,
-        observationTimestamp: now.toISOString(),
-        lastUpdated: `Live Telemetry (${timeLabel})`,
-        apiTimestamp: now.toISOString(),
-        isStale: false,
-        status: 'ONLINE',
-      };
-    });
+            const calcNaqi = calculateIndianNAQI({ pm25, pm10, no2, so2, co, o3 });
+            const naqi = typeof breatheZone.aqi === 'number' ? Math.round(breatheZone.aqi) : calcNaqi.aqi;
+            const naqiMeta = naqiCategoryAndVariant(naqi);
 
-    // ── 3. Empirical Ground vs Model Validation Deltas ────────────────────────
-    const sgrGround = groundStations.find(g => g.id === 'GND-SGR-01');
-    const sgrModel = regionalUnits.find(r => r.id === 'KC-SGR');
-    const jmuGround = groundStations.find(g => g.id === 'GND-JMU-01');
-    const jmuModel = regionalUnits.find(r => r.id === 'TD-JMU');
+            const calcUs = calculateUsAqi(pm25, pm10);
+            const aqiUs = typeof breatheZone.us_aqi === 'number' ? Math.round(breatheZone.us_aqi) : calcUs.aqi;
 
-    const validationDeltas: ValidationDelta[] = [];
+            // Compute trend from BreatheOSS sensor history
+            let trend: 'Stable' | 'Rising' | 'Falling' = 'Stable';
+            const hist = breatheZone.history || [];
+            if (hist.length >= 2) {
+              const latestH = hist[hist.length - 1];
+              const prevH = hist[hist.length - 2];
+              const diff = (latestH?.pm2_5 ?? pm25) - (prevH?.pm2_5 ?? pm25);
+              if (diff > 3) trend = 'Rising';
+              else if (diff < -3) trend = 'Falling';
+            }
 
-    if (sgrGround && sgrModel) {
-      const delta = Number((sgrGround.pm25 - sgrModel.pm25).toFixed(1));
-      const bias = Number((((sgrModel.pm25 - sgrGround.pm25) / sgrGround.pm25) * 100).toFixed(1));
-      validationDeltas.push({
-        stationId: sgrGround.id,
-        stationName: sgrGround.name,
-        district: sgrGround.district,
-        groundPm25: sgrGround.pm25,
-        modelPm25: sgrModel.pm25,
-        deltaPm25: delta,
-        biasPercent: bias,
-        groundAqi: sgrGround.naqi,
-        modelAqi: sgrModel.naqi,
-        inversionFactor: delta > 15 ? 'Severe Trapping' : 'Moderate Stagnation',
-        scientificNote: `CAMS 11km model underestimates valley-floor PM2.5 by ${Math.abs(bias)}% due to thermal inversion lid (200-400m altitude) trapping local Kangri/biomass smoke.`,
+            const sensorTsMs = breatheZone.timestamp_unix ? breatheZone.timestamp_unix * 1000 : currentNowMs;
+            const age = formatRelativeAge(sensorTsMs, currentNowMs);
+
+            const dominantMap: Record<string, string> = {
+              pm2_5: 'PM2.5',
+              pm10: 'PM10',
+              no2: 'NO₂',
+              so2: 'SO₂',
+              co: 'CO',
+              o3: 'O₃',
+            };
+            const dominant =
+              (breatheZone.main_pollutant && dominantMap[breatheZone.main_pollutant]) || calcNaqi.dominantPollutant;
+
+            return {
+              ...unit,
+              verification_status: 'Calibrated Ground Sensor',
+              data_source:
+                sensorNodes.length > 0
+                  ? `AirGradient / BreatheOSS (${sensorNodes.length} Live Sensor${sensorNodes.length > 1 ? 's' : ''})`
+                  : 'AirGradient / BreatheOSS + Open-Meteo',
+              pm25,
+              pm10,
+              no2,
+              so2,
+              co,
+              o3,
+              naqi,
+              naqiCategory: naqiMeta.category,
+              naqiVariant: naqiMeta.variant,
+              aqi_us: aqiUs,
+              aqi_usCategory: getAqiCategory(aqiUs),
+              aqi_usVariant: getAqiVariant(aqiUs),
+              displayAqi: aqiUs,
+              displayCategory: getAqiCategory(aqiUs),
+              displayVariant: getAqiVariant(aqiUs),
+              dominantPollutant: dominant,
+              trend,
+              lastUpdated: age.label,
+              apiTimestamp: new Date(sensorTsMs).toISOString(),
+              isStale: age.isStale,
+              modelRunTime: '5-Min Optical Ground Telemetry + CAMS Gas Layer',
+              activeSensorCount: sensorNodes.length || 1,
+              sensorNodes,
+            };
+          }
+
+          // Pure Open-Meteo / Copernicus CAMS current telemetry (UTC-accurate)
+          let trend: 'Stable' | 'Rising' | 'Falling' = 'Stable';
+          if (latestIdx !== -1 && prevIdx !== -1) {
+            const prevPm25 = hourly?.pm2_5?.[prevIdx] ?? omPm25;
+            const diff = omPm25 - prevPm25;
+            if (diff > 3) trend = 'Rising';
+            else if (diff < -3) trend = 'Falling';
+          }
+
+          const omTimeDate = cur?.time
+            ? parseGmtHourString(cur.time)
+            : latestIdx !== -1
+              ? parseGmtHourString(times[latestIdx])
+              : currentNow;
+          const age = formatRelativeAge(omTimeDate.getTime(), currentNowMs);
+
+          return {
+            ...unit,
+            pm25: omPm25,
+            pm10: omPm10,
+            no2: omNo2,
+            so2: omSo2,
+            co: omCo,
+            o3: omO3,
+            naqi: omNaqiCalc.aqi,
+            naqiCategory: omNaqiCalc.category,
+            naqiVariant: omNaqiCalc.variant,
+            aqi_us: omUsCalc.aqi,
+            aqi_usCategory: omUsCalc.category,
+            aqi_usVariant: omUsCalc.variant,
+            displayAqi: omUsCalc.aqi,
+            displayCategory: omUsCalc.category,
+            displayVariant: omUsCalc.variant,
+            dominantPollutant: omNaqiCalc.dominantPollutant,
+            trend,
+            lastUpdated: age.label,
+            apiTimestamp: omTimeDate.toISOString(),
+            isStale: age.isStale,
+            modelRunTime: 'ECMWF / Copernicus CAMS Current UTC Cycle',
+          };
+        });
+
+        // ── 2. Process Physical Ground Monitoring Stations (Real Telemetry First, No Artificial Boosts)
+        const groundStations: GroundStationLiveRecord[] = groundStationsRegistry.map((station) => {
+          const matchingUnit = regionalUnits.find((u) => u.district === station.district) || regionalUnits[0];
+
+          return {
+            ...station,
+            pm25: matchingUnit.pm25,
+            pm10: matchingUnit.pm10,
+            no2: matchingUnit.no2,
+            so2: matchingUnit.so2,
+            co: matchingUnit.co,
+            o3: matchingUnit.o3,
+            naqi: matchingUnit.naqi,
+            naqiCategory: matchingUnit.naqiCategory,
+            naqiVariant: matchingUnit.naqiVariant,
+            aqi_us: matchingUnit.aqi_us,
+            aqi_usCategory: matchingUnit.aqi_usCategory,
+            aqi_usVariant: matchingUnit.aqi_usVariant,
+            displayAqi: matchingUnit.aqi_us,
+            displayCategory: matchingUnit.aqi_usCategory,
+            displayVariant: matchingUnit.aqi_usVariant,
+            dominantPollutant: matchingUnit.dominantPollutant,
+            trend: matchingUnit.trend,
+            observationTimestamp: matchingUnit.apiTimestamp,
+            lastUpdated: matchingUnit.lastUpdated,
+            apiTimestamp: matchingUnit.apiTimestamp,
+            isStale: matchingUnit.isStale,
+            status: matchingUnit.isStale ? 'MAINTENANCE' : 'ONLINE',
+            activeSensorCount: matchingUnit.activeSensorCount,
+            sensorNodes: matchingUnit.sensorNodes,
+          };
+        });
+
+        // ── 3. Empirical Ground Sensor vs. 11km Satellite Model Validation Deltas
+        const validationDeltas: ValidationDelta[] = [];
+        for (const districtName of ['Srinagar', 'Jammu'] as const) {
+          const gnd = groundStations.find((g) => g.district === districtName);
+          const mdl = modelOnlyByDistrict.get(districtName);
+          if (gnd && mdl && gnd.pm25 > 0) {
+            const delta = Number((gnd.pm25 - mdl.pm25).toFixed(1));
+            const bias = Number((((mdl.pm25 - gnd.pm25) / gnd.pm25) * 100).toFixed(1));
+            validationDeltas.push({
+              stationId: gnd.id,
+              stationName: gnd.name,
+              district: gnd.district,
+              groundPm25: gnd.pm25,
+              modelPm25: mdl.pm25,
+              deltaPm25: delta,
+              biasPercent: bias,
+              groundAqi: gnd.aqi_us,
+              modelAqi: mdl.aqi_us,
+              inversionFactor:
+                delta > 35 ? 'Severe Trapping' : delta > 10 ? 'Moderate Stagnation' : 'Normal Dispersion',
+              scientificNote:
+                delta > 10
+                  ? `CAMS 11km grid (${mdl.pm25} µg/m³, US AQI ${mdl.aqi_us}) underestimates street-level ground sensors (${gnd.pm25} µg/m³, US AQI ${gnd.aqi_us}) by ${Math.abs(bias)}% due to localized urban emissions and boundary-layer trapping.`
+                  : `CAMS 11km grid (${mdl.pm25} µg/m³) closely aligns with ground sensors (${gnd.pm25} µg/m³) under well-mixed atmospheric dispersion.`,
+            });
+          }
+        }
+
+        // ── 4. Detect Active Air Hazard Alerts
+        const alerts: AirHazardAlert[] = [];
+        regionalUnits.forEach((r) => {
+          const isGround = r.verification_status === 'Calibrated Ground Sensor';
+          if (r.aqi_us > 150 || r.naqi > 150 || r.pm25 > 60) {
+            const severity: 'moderate' | 'high' | 'critical' =
+              r.aqi_us > 200 || r.naqi > 250 ? 'critical' : r.aqi_us > 150 || r.naqi > 150 ? 'high' : 'moderate';
+            alerts.push({
+              id: `alert-${isGround ? 'ground' : 'model'}-${r.id}`,
+              stationName: r.name,
+              district: r.district,
+              scope: r.scope,
+              type: isGround ? 'Ground Sensor / CAAQMS' : 'Regional Model Grid',
+              naqi: r.naqi,
+              naqiCategory: r.naqiCategory,
+              aqi_us: r.aqi_us,
+              pm25: r.pm25,
+              dominantPollutant: r.dominantPollutant,
+              severity,
+              headline: `${isGround ? 'Live Ground Sensor Alert' : 'Regional Model Advisory'}: US AQI ${r.aqi_us} (NAQI ${r.naqi}) in ${r.district}`,
+              recommendation:
+                r.aqi_us > 200
+                  ? 'Avoid prolonged outdoor exertion. Sensitive groups and children should wear N95 filtration masks.'
+                  : 'Elevated particulate pollution detected. Sensitive individuals should limit prolonged outdoor physical activity.',
+            });
+          }
+        });
+
+        alerts.sort((a, b) => b.aqi_us - a.aqi_us);
+
+        const avgNaqi = Math.round(regionalUnits.reduce((acc, curr) => acc + curr.naqi, 0) / regionalUnits.length);
+        const avgUsAqi = Math.round(regionalUnits.reduce((acc, curr) => acc + curr.aqi_us, 0) / regionalUnits.length);
+        const unhealthyCount = regionalUnits.filter((d) => d.aqi_us > 100).length;
+        const groundSensorDistricts = regionalUnits.filter(
+          (d) => d.verification_status === 'Calibrated Ground Sensor'
+        ).length;
+
+        const payload: Record<string, unknown> = {
+          success: true,
+          groundStations,
+          regionalUnits,
+          validationDeltas,
+          alerts,
+          meta: {
+            totalGroundStations: groundStations.length,
+            groundSensorDistricts,
+            totalRegionalUnits: regionalUnits.length,
+            avgNaqi,
+            avgUsAqi,
+            unhealthyCount,
+            provider: 'AirGradient / BreatheOSS Physical Ground Sensors + Open-Meteo / Copernicus CAMS (UTC Real-Time)',
+            modelResolution: 'Street-level optical ground sensors + 0.1° (~11 km) CAMS current telemetry',
+            updatedAt: currentNow.toISOString(),
+          },
+        };
+
+        cachedPayload = payload;
+        cachedAt = Date.now();
+        return payload;
+      })().finally(() => {
+        inFlightJob = null;
       });
     }
 
-    if (jmuGround && jmuModel) {
-      const delta = Number((jmuGround.pm25 - jmuModel.pm25).toFixed(1));
-      const bias = Number((((jmuModel.pm25 - jmuGround.pm25) / jmuGround.pm25) * 100).toFixed(1));
-      validationDeltas.push({
-        stationId: jmuGround.id,
-        stationName: jmuGround.name,
-        district: jmuGround.district,
-        groundPm25: jmuGround.pm25,
-        modelPm25: jmuModel.pm25,
-        deltaPm25: delta,
-        biasPercent: bias,
-        groundAqi: jmuGround.naqi,
-        modelAqi: jmuModel.naqi,
-        inversionFactor: 'Moderate Stagnation',
-        scientificNote: `Model tracks ground observations within ±${Math.abs(bias)}% in Jammu plains; minor variance from local vehicular corridor dust along NH-44.`,
-      });
+    const result = await inFlightJob;
+    return NextResponse.json(result);
+  } catch {
+    if (cachedPayload) {
+      return NextResponse.json({ ...cachedPayload, staleFallback: true });
     }
-
-    // ── 4. Detect Active Air Hazard Alerts ────────────────────────────────────
-    const alerts: AirHazardAlert[] = [];
-
-    // Check ground stations first (P0 ground-truth alerts)
-    groundStations.forEach(g => {
-      if (g.naqi > 100 || g.pm25 > 60) {
-        const severity: 'moderate' | 'high' | 'critical' = g.naqi > 250 ? 'critical' : g.naqi > 150 ? 'high' : 'moderate';
-        alerts.push({
-          id: `alert-ground-${g.id}`,
-          stationName: g.name,
-          district: g.district,
-          scope: g.scope,
-          type: 'Ground CAAQMS',
-          naqi: g.naqi,
-          naqiCategory: g.naqiCategory,
-          aqi_us: g.aqi_us,
-          pm25: g.pm25,
-          dominantPollutant: g.dominantPollutant,
-          severity,
-          headline: `Ground Instrument Alert: NAQI ${g.naqi} (${g.naqiCategory}) at ${g.district}`,
-          recommendation:
-            g.naqi > 200
-              ? 'Avoid prolonged outdoor exertion. Sensitive groups and children should wear N95 filtration masks.'
-              : 'Moderate air pollution detected. Sensitive individuals should limit prolonged outdoor physical activity.',
-        });
-      }
-    });
-
-    // Check regional modeled units
-    regionalUnits.forEach(r => {
-      if (r.naqi > 150 || r.pm25 > 80) {
-        alerts.push({
-          id: `alert-model-${r.id}`,
-          stationName: r.name,
-          district: r.district,
-          scope: r.scope,
-          type: 'Regional Model Grid',
-          naqi: r.naqi,
-          naqiCategory: r.naqiCategory,
-          aqi_us: r.aqi_us,
-          pm25: r.pm25,
-          dominantPollutant: r.dominantPollutant,
-          severity: r.naqi > 250 ? 'critical' : 'high',
-          headline: `Regional Model Advisory: NAQI ${r.naqi} in ${r.district}`,
-          recommendation: 'Model forecast predicts stagnant particulate accumulation over the district basin.',
-        });
-      }
-    });
-
-    alerts.sort((a, b) => b.naqi - a.naqi);
-
-    const avgNaqi = Math.round(regionalUnits.reduce((acc, curr) => acc + curr.naqi, 0) / regionalUnits.length);
-    const avgUsAqi = Math.round(regionalUnits.reduce((acc, curr) => acc + curr.aqi_us, 0) / regionalUnits.length);
-    const unhealthyCount = regionalUnits.filter(d => d.naqi > 100).length;
-
-    return NextResponse.json(
-      {
-        success: true,
-        groundStations,
-        regionalUnits,
-        validationDeltas,
-        alerts,
-        meta: {
-          totalGroundStations: groundStations.length,
-          totalRegionalUnits: regionalUnits.length,
-          avgNaqi,
-          avgUsAqi,
-          unhealthyCount,
-          provider: 'Copernicus CAMS & Open-Meteo Gridded Reanalysis + Official Ground CAAQMS',
-          modelResolution: '0.1° (~11 km) gridded reanalysis + hourly forecast',
-          updatedAt: now.toISOString(),
-        },
-      },
-      {
-        headers: {
-          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-        },
-      }
-    );
-  } catch (err: any) {
-    clearTimeout(timeout);
-    // On any API timeout or error, return the robust baseline snapshot
     const snapshot = getInitialAirQualitySnapshot();
     return NextResponse.json({
       success: true,
+      rateLimitedFallback: true,
       groundStations: snapshot.groundStations,
       regionalUnits: snapshot.regionalUnits,
       validationDeltas: snapshot.validationDeltas,
@@ -367,7 +569,7 @@ export async function GET() {
         avgNaqi: snapshot.avgNaqi,
         avgUsAqi: snapshot.avgUsAqi,
         unhealthyCount: snapshot.unhealthyCount,
-        provider: 'Kashmir EcoWatch Baseline Telemetry & Inversion Engine (API Fallback)',
+        provider: 'Kashmir EcoWatch Baseline Telemetry (Offline Fallback)',
         modelResolution: '0.1° (~11 km)',
         updatedAt: now.toISOString(),
       },

@@ -47,6 +47,15 @@ export interface AirQualityStation {
   model_resolution: string;
 }
 
+export interface SensorNodeReading {
+  name: string;
+  pm25: number;
+  pm10: number;
+  naqi: number;
+  aqi_us: number;
+  status: 'active' | 'stale' | 'offline';
+}
+
 // ─── Live Ground Station Record ──────────────────────────────────────────────
 
 export interface GroundStationLiveRecord extends GroundStation {
@@ -72,6 +81,8 @@ export interface GroundStationLiveRecord extends GroundStation {
   apiTimestamp: string;
   isStale: boolean;
   status: 'ONLINE' | 'MAINTENANCE' | 'OFFLINE';
+  activeSensorCount?: number;
+  sensorNodes?: SensorNodeReading[];
 }
 
 // ─── Live Regional Modeled Record ────────────────────────────────────────────
@@ -98,6 +109,8 @@ export interface AirQualityLiveRecord extends AirQualityStation {
   apiTimestamp: string;
   isStale: boolean;
   modelRunTime: string;
+  activeSensorCount?: number;
+  sensorNodes?: SensorNodeReading[];
 }
 
 // ─── Model vs Ground Reality Delta (Scientific Validation) ───────────────────
@@ -384,21 +397,32 @@ export function calculateIndianNAQI(pollutants: {
 }
 
 /**
- * US EPA AQI Standard calculation
+ * US EPA AQI Standard calculation (PM2.5 + PM10 sub-indices)
  */
 export function calculateUsAqi(pm25: number, pm10: number): {
   aqi: number;
   category: string;
   variant: 'success' | 'warning' | 'danger' | 'critical';
 } {
-  // PM2.5 US EPA NowCast Breakpoints
-  let idx = 0;
-  if (pm25 <= 12.0) idx = interpolate(pm25, 0, 12.0, 0, 50);
-  else if (pm25 <= 35.4) idx = interpolate(pm25, 12.1, 35.4, 51, 100);
-  else if (pm25 <= 55.4) idx = interpolate(pm25, 35.5, 55.4, 101, 150);
-  else if (pm25 <= 150.4) idx = interpolate(pm25, 55.5, 150.4, 151, 200);
-  else if (pm25 <= 250.4) idx = interpolate(pm25, 150.5, 250.4, 201, 300);
-  else idx = interpolate(pm25, 250.5, 500.4, 301, 500);
+  // PM2.5 US EPA Breakpoints (µg/m³)
+  let pm25Idx = 0;
+  if (pm25 <= 12.0) pm25Idx = interpolate(pm25, 0, 12.0, 0, 50);
+  else if (pm25 <= 35.4) pm25Idx = interpolate(pm25, 12.1, 35.4, 51, 100);
+  else if (pm25 <= 55.4) pm25Idx = interpolate(pm25, 35.5, 55.4, 101, 150);
+  else if (pm25 <= 150.4) pm25Idx = interpolate(pm25, 55.5, 150.4, 151, 200);
+  else if (pm25 <= 250.4) pm25Idx = interpolate(pm25, 150.5, 250.4, 201, 300);
+  else pm25Idx = interpolate(pm25, 250.5, 500.4, 301, 500);
+
+  // PM10 US EPA Breakpoints (µg/m³)
+  let pm10Idx = 0;
+  if (pm10 <= 54) pm10Idx = interpolate(pm10, 0, 54, 0, 50);
+  else if (pm10 <= 154) pm10Idx = interpolate(pm10, 55, 154, 51, 100);
+  else if (pm10 <= 254) pm10Idx = interpolate(pm10, 155, 254, 101, 150);
+  else if (pm10 <= 354) pm10Idx = interpolate(pm10, 255, 354, 151, 200);
+  else if (pm10 <= 424) pm10Idx = interpolate(pm10, 355, 424, 201, 300);
+  else pm10Idx = interpolate(pm10, 425, 604, 301, 500);
+
+  const idx = Math.max(pm25Idx, pm10Idx);
 
   let category = 'Good';
   let variant: 'success' | 'warning' | 'danger' | 'critical' = 'success';
