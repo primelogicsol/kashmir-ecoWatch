@@ -18,10 +18,83 @@ export interface EarthquakeRecord {
   latitude: number;
   longitude: number;
   live_recent_quakes_30d?: number;
+  live_local_quakes_50km?: number;
   live_latest_magnitude?: number;
   live_latest_date?: string;
+  live_latest_place?: string;
+  live_latest_time_ist?: string;
+  live_latest_source?: string;
   live_risk_level?: 'Critical' | 'High' | 'Moderate' | 'Low';
   last_updated?: string;
+}
+
+export function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function compassBearing(lat1: number, lon1: number, lat2: number, lon2: number): string {
+  const phi1 = (lat1 * Math.PI) / 180;
+  const phi2 = (lat2 * Math.PI) / 180;
+  const dLambda = ((lon2 - lon1) * Math.PI) / 180;
+  const y = Math.sin(dLambda) * Math.cos(phi2);
+  const x = Math.cos(phi1) * Math.sin(phi2) - Math.sin(phi1) * Math.cos(phi2) * Math.cos(dLambda);
+  const deg = ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+  const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+  return dirs[Math.round(deg / 45) % 8];
+}
+
+export function localizeSeismicEpicenter(lat: number, lon: number): {
+  preciseLabel: string;
+  nearestDistrict: string;
+  nearestScope: Scope;
+  distanceKm: number;
+  nearestFault: string;
+  zoneClassification: 'Zone V' | 'Zone IV' | 'Zone III';
+} {
+  let closest = earthquakeData[0];
+  let minDist = Infinity;
+
+  for (const z of earthquakeData) {
+    const d = haversineKm(lat, lon, z.latitude, z.longitude);
+    if (d < minDist) {
+      minDist = d;
+      closest = z;
+    }
+  }
+
+  const distRounded = Math.round(minDist);
+  const dir = compassBearing(closest.latitude, closest.longitude, lat, lon);
+  const regionSuffix =
+    closest.scope === 'Kashmir Core'
+      ? 'J&K'
+      : closest.district === 'Leh' || closest.district === 'Kargil'
+        ? 'Ladakh'
+        : closest.scope === 'Trans-Divisional'
+          ? 'Jammu & Kashmir'
+          : closest.district === 'Gilgit' || closest.district === 'Skardu' || closest.district === 'Hunza'
+            ? 'Gilgit-Baltistan'
+            : 'AJK';
+
+  const preciseLabel =
+    distRounded <= 8
+      ? `Near ${closest.district}, ${regionSuffix}`
+      : `${distRounded} km ${dir} of ${closest.district}, ${regionSuffix}`;
+
+  return {
+    preciseLabel,
+    nearestDistrict: closest.district,
+    nearestScope: closest.scope,
+    distanceKm: distRounded,
+    nearestFault: closest.fault_system,
+    zoneClassification: closest.zone_classification,
+  };
 }
 
 export const earthquakeData: EarthquakeRecord[] = [

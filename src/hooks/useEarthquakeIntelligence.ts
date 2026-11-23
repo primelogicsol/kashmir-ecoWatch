@@ -1,21 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { earthquakeData, EarthquakeRecord } from '@/data/hazard-earthquakes';
+import {
+  earthquakeData,
+  EarthquakeRecord,
+  localizeSeismicEpicenter,
+} from '@/data/hazard-earthquakes';
 
-// Distance in km using Haversine formula
-function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
-  const R = 6371; // Radius of the earth in km
-  const dLat = (lat2 - lat1) * (Math.PI / 180);
-  const dLon = (lon2 - lon1) * (Math.PI / 180);
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-}
-
-const CACHE_KEY = 'earthquake_intelligence_cache_v3';
-const CACHE_DURATION = 2 * 60 * 1000; // 2 minutes (fast freshness)
+const CACHE_KEY = 'earthquake_intelligence_cache_v4';
+const CACHE_DURATION = 60 * 1000; // 60 seconds freshness
 
 export interface USGSEvent {
   id: string;
@@ -23,10 +14,18 @@ export interface USGSEvent {
   mag: number;
   time: number;
   time_iso?: string;
+  time_ist?: string;
   depth_km: number;
   place: string;
+  rawRegion?: string;
+  nearestDistrict?: string;
+  distanceKm?: number;
+  nearestFault?: string;
+  zoneClassification?: string;
   coordinates: [number, number]; // [lon, lat]
-  source?: 'EMSC' | 'USGS' | 'EMSC+USGS' | 'EMSC Live WebSocket';
+  source?: string;
+  reviewStatus?: 'Reviewed' | 'Automatic';
+  externalUrl?: string;
 }
 
 interface CacheData {
@@ -36,20 +35,38 @@ interface CacheData {
   activeProviders?: string;
 }
 
+function formatClientIst(epochMs: number): string {
+  try {
+    return (
+      new Date(epochMs).toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      }) + ' IST'
+    );
+  } catch {
+    return new Date(epochMs).toISOString();
+  }
+}
+
 export function useEarthquakeIntelligence() {
   const [data, setData] = useState<EarthquakeRecord[]>(earthquakeData);
   const [recentEvents, setRecentEvents] = useState<USGSEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [isStale, setIsStale] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeProviders, setActiveProviders] = useState<string>('EMSC + USGS Dual Telemetry');
+  const [activeProviders, setActiveProviders] = useState<string>('NCS India + EMSC + USGS Telemetry');
   const [isLiveStreaming, setIsLiveStreaming] = useState(false);
   const [liveAlert, setLiveAlert] = useState<USGSEvent | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const wsRef = useRef<WebSocket | null>(null);
 
-  // Core fetch function
   const fetchData = useCallback(async (bypassCache = false) => {
     setLoading(true);
     try {
@@ -57,10 +74,10 @@ export function useEarthquakeIntelligence() {
         const cached = localStorage.getItem(CACHE_KEY);
         if (cached) {
           const parsed: CacheData = JSON.parse(cached);
-          if (Date.now() - parsed.timestamp < CACHE_DURATION) {
+          if (Date.now() - parsed.timestamp < CACHE_DURATION && Array.isArray(parsed.events)) {
             setData(parsed.data);
-            setRecentEvents(parsed.events || []);
-            setActiveProviders(parsed.activeProviders || 'EMSC + USGS Dual Telemetry');
+            setRecentEvents(parsed.events);
+            setActiveProviders(parsed.activeProviders || 'NCS India + EMSC + USGS Telemetry');
             setLastUpdated(new Date(parsed.timestamp));
             setLoading(false);
             return;
@@ -68,8 +85,10 @@ export function useEarthquakeIntelligence() {
         }
       }
 
-      // Fetch from internal high-speed unified API route
-      const response = await fetch('/api/hazard-intelligence/earthquakes', { cache: 'no-store' });
+      const url = bypassCache
+        ? '/api/hazard-intelligence/earthquakes?refresh=1'
+        : '/api/hazard-intelligence/earthquakes';
+      const response = await fetch(url, { cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`API returned ${response.status}`);
       }
@@ -78,37 +97,58 @@ export function useEarthquakeIntelligence() {
       if (json.success && Array.isArray(json.data)) {
         setData(json.data);
         setRecentEvents(json.events || []);
-        setActiveProviders(json.meta?.activeProviders || 'EMSC + USGS Dual Telemetry');
+        setActiveProviders(json.meta?.activeProviders || 'NCS India + EMSC + USGS Telemetry');
         setLastUpdated(new Date());
         setIsStale(false);
         setError(null);
 
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-          timestamp: Date.now(),
-          data: json.data,
-          events: json.events,
-          activeProviders: json.meta?.activeProviders,
-        }));
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              timestamp: Date.now(),
+              data: json.data,
+              events: json.events || [],
+              activeProviders: json.meta?.activeProviders,
+            })
+          );
+        } catch {}
       }
-    } catch (err: any) {
+    } catch (err) {
       console.warn('[EarthquakeIntelligence] API route fallback:', err);
-      // Fallback: direct USGS fetch if local API failed
       try {
         const starttime = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        const usgsUrl = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=32.0&maxlatitude=37.5&minlongitude=73.0&maxlongitude=80.5&starttime=${starttime}`;
+        const usgsUrl = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=31.8&maxlatitude=37.6&minlongitude=71.0&maxlongitude=80.5&starttime=${starttime}`;
         const uRes = await fetch(usgsUrl);
         if (uRes.ok) {
           const uJson = await uRes.json();
-          const parsedEvents: USGSEvent[] = (uJson.features || []).map((f: any) => ({
-            id: f.id,
-            title: f.properties.title || `M ${f.properties.mag} Earthquake`,
-            mag: f.properties.mag,
-            time: f.properties.time,
-            depth_km: Math.round(f.geometry.coordinates[2] || 10),
-            place: f.properties.place || 'NW Himalayan Arc',
-            coordinates: [f.geometry.coordinates[0], f.geometry.coordinates[1]],
-            source: 'USGS' as const,
-          })).sort((a: USGSEvent, b: USGSEvent) => b.time - a.time);
+          const parsedEvents: USGSEvent[] = (uJson.features || [])
+            .map((f: any) => {
+              const lon = Number(f.geometry.coordinates[0]);
+              const lat = Number(f.geometry.coordinates[1]);
+              const timeMs = Number(f.properties.time);
+              const loc = localizeSeismicEpicenter(lat, lon);
+              const place = f.properties.place || loc.preciseLabel;
+              return {
+                id: f.id,
+                title: f.properties.title || `M ${f.properties.mag} - ${place}`,
+                mag: Number(f.properties.mag),
+                time: timeMs,
+                time_iso: new Date(timeMs).toISOString(),
+                time_ist: formatClientIst(timeMs),
+                depth_km: Math.round(Math.abs(f.geometry.coordinates[2] || 10)),
+                place,
+                nearestDistrict: loc.nearestDistrict,
+                distanceKm: loc.distanceKm,
+                nearestFault: loc.nearestFault,
+                zoneClassification: loc.zoneClassification,
+                coordinates: [lon, lat] as [number, number],
+                source: 'USGS',
+                reviewStatus: 'Reviewed' as const,
+                externalUrl: f.properties.url,
+              };
+            })
+            .sort((a: USGSEvent, b: USGSEvent) => b.time - a.time);
 
           setData(earthquakeData);
           setRecentEvents(parsedEvents);
@@ -118,26 +158,25 @@ export function useEarthquakeIntelligence() {
         } else {
           throw new Error('USGS direct failed');
         }
-      } catch (fallbackErr) {
+      } catch {
         setIsStale(true);
-        setError('Unable to fetch live seismic data from EMSC or USGS');
+        setError('Unable to fetch live seismic data from NCS, EMSC, or USGS');
       }
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // Initialize data fetch
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  // Real-time EMSC WebSocket connection for sub-second earthquake alert telemetry
+  // Sub-second EMSC WebSocket telemetry with instant district localization
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     let socket: WebSocket | null = null;
-    let reconnectTimeout: any = null;
+    let reconnectTimeout: ReturnType<typeof setTimeout> | null = null;
 
     function connectWebSocket() {
       try {
@@ -157,29 +196,33 @@ export function useEarthquakeIntelligence() {
             if (props && geom && geom.coordinates) {
               const [lon, lat, depth] = geom.coordinates;
               const mag = Number(props.mag);
-
-              // Check if event is in Kashmir / Western Himalayan region (Lat 32 to 37.5, Lon 73 to 80.5)
-              const isInRegion = lat >= 32.0 && lat <= 37.5 && lon >= 73.0 && lon <= 80.5;
+              const isInRegion = lat >= 31.8 && lat <= 37.6 && lon >= 71.0 && lon <= 80.5;
 
               if (isInRegion) {
+                const timeMs = new Date(props.time).getTime() || Date.now();
+                const loc = localizeSeismicEpicenter(Number(lat), Number(lon));
                 const liveEvent: USGSEvent = {
                   id: parsed.data.id || `live-emsc-${Date.now()}`,
-                  title: `${props.flynn_region || 'Kashmir Region'} M ${mag.toFixed(1)}`,
-                  mag: mag,
-                  time: new Date(props.time).getTime(),
+                  title: `M ${mag.toFixed(1)} - ${loc.preciseLabel}`,
+                  mag,
+                  time: timeMs,
                   time_iso: props.time,
-                  depth_km: Math.round(depth || 10),
-                  place: props.flynn_region || 'Western Himalayas / Kashmir',
-                  coordinates: [lon, lat],
+                  time_ist: formatClientIst(timeMs),
+                  depth_km: Math.round(Math.abs(depth || 10)),
+                  place: loc.preciseLabel,
+                  rawRegion: props.flynn_region,
+                  nearestDistrict: loc.nearestDistrict,
+                  distanceKm: loc.distanceKm,
+                  nearestFault: loc.nearestFault,
+                  zoneClassification: loc.zoneClassification,
+                  coordinates: [Number(lon), Number(lat)],
                   source: 'EMSC Live WebSocket',
+                  reviewStatus: 'Automatic',
                 };
 
-                // Flash alert for events
                 setLiveAlert(liveEvent);
-
-                // Prepend to recent events if not already there
-                setRecentEvents(prev => {
-                  if (prev.some(e => e.id === liveEvent.id)) return prev;
+                setRecentEvents((prev) => {
+                  if (prev.some((e) => e.id === liveEvent.id)) return prev;
                   return [liveEvent, ...prev];
                 });
               }
@@ -191,14 +234,13 @@ export function useEarthquakeIntelligence() {
 
         socket.onclose = () => {
           setIsLiveStreaming(false);
-          // Try reconnecting in 15 seconds
           reconnectTimeout = setTimeout(connectWebSocket, 15000);
         };
 
         socket.onerror = () => {
           setIsLiveStreaming(false);
         };
-      } catch (err) {
+      } catch {
         setIsLiveStreaming(false);
       }
     }
@@ -206,12 +248,8 @@ export function useEarthquakeIntelligence() {
     connectWebSocket();
 
     return () => {
-      if (socket) {
-        socket.close();
-      }
-      if (reconnectTimeout) {
-        clearTimeout(reconnectTimeout);
-      }
+      if (socket) socket.close();
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
     };
   }, []);
 
