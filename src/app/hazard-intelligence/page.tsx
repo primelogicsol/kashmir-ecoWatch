@@ -127,6 +127,8 @@ export default function HazardIntelligenceOverview() {
               placeholder="All Hazard Types"
               options={[
                 { value: 'western-disturbances', label: 'Western Disturbances (Atmospheric)' },
+                { value: 'monsoon-dynamics', label: 'Monsoon Dynamics (Atmospheric)' },
+                { value: 'jet-stream-circulation', label: 'Jet Stream & Circulation (Atmospheric)' },
                 { value: 'floods',        label: 'Floods'         },
                 { value: 'flash-floods',  label: 'Flash Floods'   },
                 { value: 'landslides',    label: 'Landslides'     },
@@ -266,32 +268,62 @@ export default function HazardIntelligenceOverview() {
       {/* Atmospheric Systems (Dedicated Upstream Driver Layer) */}
       <section className="pt-14 pb-4">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-5">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-sky-400 font-mono block mb-1">
-              Atmospheric Systems
-            </span>
-            <h2 className="text-2xl font-bold text-white mb-1">Synoptic Atmospheric Drivers</h2>
-            <p className="text-slate-400 text-sm">
-              Extratropical atmospheric systems capable of triggering riverine floods, flash floods, landslides, and avalanches simultaneously
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-sky-400 font-mono block mb-1">
+                Hazard Intelligence · Atmospheric Systems
+              </span>
+              <h2 className="text-2xl font-bold text-white mb-1">Synoptic Atmospheric Drivers</h2>
+              <p className="text-slate-400 text-sm">
+                Upstream extratropical, monsoonal, and upper-tropospheric systems governing multi-hazard initiation across all 6 sub-regions
+              </p>
+            </div>
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-sky-500/30 text-sky-300 hover:text-white text-xs font-semibold self-start sm:self-end"
+              onClick={() => router.push('/hazard-intelligence/atmospheric-systems')}
+            >
+              Atmospheric Systems Hub <ChevronRight className="w-3.5 h-3.5 ml-1" />
+            </Button>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card
               className="glass-intense border-sky-500/25 hover:border-sky-400/50 transition-all p-5 cursor-pointer group"
-              onClick={() => router.push('/hazard-intelligence/western-disturbances')}
+              onClick={() => router.push('/hazard-intelligence/atmospheric-systems/western-disturbances')}
             >
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center shadow flex-shrink-0">
                   <Wind className="w-5 h-5 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center justify-between gap-2 mb-1">
                     <h3 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">Western Disturbances</h3>
-                    <Badge variant="info" size="sm" className="text-xs">Live Tracking &amp; Forecasts</Badge>
+                    <Badge variant="info" size="sm" className="text-[10px]">Live + 8-Tab</Badge>
                   </div>
                   <p className="text-xs text-slate-400">
-                    31-corridor live observation &amp; 7-day NWP forecast registry across Jammu, Kashmir, Ladakh, Azad Kashmir, Gilgit &amp; Baltistan.
+                    WD tracking, atmospheric movement, approaching systems, snowfall &amp; rainfall forecasts, and regional impacts.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <Card
+              className="glass-intense border-teal-500/25 hover:border-teal-400/50 transition-all p-5 cursor-pointer group"
+              onClick={() => router.push('/hazard-intelligence/atmospheric-systems/monsoon-dynamics')}
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow flex-shrink-0">
+                  <CloudRain className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h3 className="text-sm font-bold text-white group-hover:text-teal-300 transition-colors">Monsoon Dynamics</h3>
+                    <Badge variant="success" size="sm" className="text-[10px]">850 hPa Flux</Badge>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    Monsoon progression, moisture transport, orographic precipitation, rainfall anomalies, and regional influence.
                   </p>
                 </div>
               </div>
@@ -299,19 +331,19 @@ export default function HazardIntelligenceOverview() {
 
             <Card
               className="glass-intense border-indigo-500/25 hover:border-indigo-400/50 transition-all p-5 cursor-pointer group"
-              onClick={() => router.push('/hazard-intelligence/western-disturbances/dashboard')}
+              onClick={() => router.push('/hazard-intelligence/atmospheric-systems/jet-stream-circulation')}
             >
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow flex-shrink-0">
                   <BarChart3 className="w-5 h-5 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">WD Monitoring Dashboard</h3>
-                    <Badge variant="success" size="sm" className="text-xs">8 Analytical Tabs</Badge>
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">Jet Stream &amp; Circulation</h3>
+                    <Badge variant="warning" size="sm" className="text-[10px]">250/500 hPa</Badge>
                   </div>
                   <p className="text-xs text-slate-400">
-                    500/300 hPa Westerly Jet tracker, RainViewer live radar, snowline forecasts, IMD/PMD advisories &amp; multi-hazard coupling.
+                    Subtropical westerly jet, upper-level troughs and ridges, wind patterns, and atmospheric circulation shifts.
                   </p>
                 </div>
               </div>

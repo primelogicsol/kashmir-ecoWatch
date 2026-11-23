@@ -33,7 +33,7 @@ export interface HazardDashboardMeta {
 const dashboardCards: HazardDashboardMeta[] = [
   {
     title: 'Western Disturbances Synoptic & Impact Dashboard',
-    route: '/hazard-intelligence/western-disturbances/dashboard',
+    route: '/hazard-intelligence/atmospheric-systems/western-disturbances/dashboard',
     description: '8-tab atmospheric monitoring suite tracking 500/300 hPa westerly troughs, 7-day rain/snowline forecasts, RainViewer radar, and compound flood, landslide, and avalanche triggers.',
     icon: Wind,
     gradient: 'from-sky-500 to-indigo-600',
@@ -43,6 +43,32 @@ const dashboardCards: HazardDashboardMeta[] = [
     updateFrequency: 'Hourly synoptic & 10-min radar',
     coverage: 'Jammu, Kashmir, Ladakh, AJK, Gilgit & Baltistan',
     metrics: ['500 hPa Trough (gpm)', '300 hPa Jet (km/h)', '0°C Snowline (m)', 'Multi-Hazard Coupling'],
+  },
+  {
+    title: 'Monsoon Dynamics & Moisture Anomaly Observatory',
+    route: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics',
+    description: '850 hPa Arabian Sea & Bay of Bengal moisture flux vectors, observed 7-day rainfall anomalies against seasonal normals, CAPE cloudburst instability, and Pir Panjal spillover.',
+    icon: Waves,
+    gradient: 'from-teal-500 to-emerald-600',
+    status: 'Active Telemetry',
+    statusType: 'success',
+    sourceAttribution: 'Open-Meteo 850 hPa Moisture & Precipitation Anomaly Engine',
+    updateFrequency: 'Hourly UTC moisture assimilation',
+    coverage: '24 Corridors across 6 Sub-Regions',
+    metrics: ['850 hPa RH (%)', '7d Rain Anomaly (%)', 'CAPE (J/kg)', 'GLOF / Flood Coupling'],
+  },
+  {
+    title: 'Jet Stream & 500 hPa Circulation Monitor',
+    route: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation',
+    description: '26°N–38°N meridional Subtropical Westerly Jet cross-section, 250/300 hPa jet streaks, 500 hPa cyclonic troughs vs. blocking ridges, and mountain-wave shear.',
+    icon: Satellite,
+    gradient: 'from-indigo-500 to-violet-600',
+    status: 'Live Monitoring',
+    statusType: 'success',
+    sourceAttribution: 'Open-Meteo 250 / 300 / 500 hPa Pressure-Level Diagnostics',
+    updateFrequency: 'Hourly upper-air cycle',
+    coverage: '24 Upper-Air Sectors + 75°E Transect',
+    metrics: ['250 hPa Jet (km/h)', '500 hPa Height (gpm)', '24h ΔZ500', 'Vertical Wind Shear'],
   },
   {
     title: 'Multi-Hazard Risk Map',
@@ -183,7 +209,7 @@ export default function HazardDashboardsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-semibold text-white">All 7 Analytical Dashboards Fully Operational</span>
+              <span className="font-semibold text-white">All 9 Analytical Dashboards Fully Operational</span>
               <span className="text-slate-400">&bull; Live API feeds and spatial GIS layers connected</span>
             </div>
             <div className="flex items-center gap-4 text-slate-400 font-mono text-[11px]">

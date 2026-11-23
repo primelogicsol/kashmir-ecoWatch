@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import {
   WDCorridorLiveRecord,
   UpstreamLiveCheckpoint,
+  DetectedWDSystem,
 } from '@/data/hazard-western-disturbances';
 import { Layers, Moon, Mountain, Satellite, Radio } from 'lucide-react';
 
@@ -45,6 +46,7 @@ type BasemapMode = 'dark' | 'terrain' | 'satellite';
 interface WesternDisturbanceMapProps {
   corridors: WDCorridorLiveRecord[];
   upstreamTrack: UpstreamLiveCheckpoint[];
+  detectedSystems?: DetectedWDSystem[];
   radarTileUrl?: string | null;
   defaultScope?: 'regional' | 'synoptic';
   defaultParameter?: WDMapParameter;
@@ -80,16 +82,17 @@ function getCorridorMarkerStyle(c: WDCorridorLiveRecord, param: WDMapParameter) 
     return { color: '#10b981', fill: '#059669', radius: 7.5 };
   }
 
-  // Default: WD Phase
-  if (c.wdPhase === 'Active Passage') return { color: '#ef4444', fill: '#dc2626', radius: 11 };
-  if (c.wdPhase === 'Approaching Wave (48–96h)') return { color: '#f59e0b', fill: '#d97706', radius: 9.5 };
-  if (c.wdPhase === 'Post-Frontal Clearing') return { color: '#38bdf8', fill: '#0284c7', radius: 8 };
+  if (c.wdPhase === 'Active Synoptic Trough Passage') return { color: '#ef4444', fill: '#dc2626', radius: 11 };
+  if (c.wdPhase === 'Approaching Baroclinic Wave (48–168h)') return { color: '#f59e0b', fill: '#d97706', radius: 9.5 };
+  if (c.wdPhase === 'Post-Trough Cold Advection') return { color: '#38bdf8', fill: '#0284c7', radius: 8 };
+  if (c.wdPhase === 'Zonal Westerly Flow') return { color: '#22d3ee', fill: '#0891b2', radius: 7.5 };
   return { color: '#10b981', fill: '#059669', radius: 7 };
 }
 
 export function WesternDisturbanceMap({
   corridors,
   upstreamTrack,
+  detectedSystems = [],
   radarTileUrl,
   defaultScope = 'regional',
   defaultParameter = 'phase',
@@ -137,7 +140,7 @@ export function WesternDisturbanceMap({
             attribution: '&copy; Esri &copy; OpenStreetMap | KEW Atmospheric GIS',
           };
 
-  const center: [number, number] = mapScope === 'synoptic' ? [34.8, 57.5] : [34.35, 75.15];
+  const center: [number, number] = mapScope === 'synoptic' ? [34.8, 55.0] : [34.35, 75.15];
   const zoom = mapScope === 'synoptic' ? 4 : 6;
 
   const jetPathCoords: [number, number][] = upstreamTrack.map((u) => [u.latitude, u.longitude]);
@@ -157,7 +160,7 @@ export function WesternDisturbanceMap({
                 : 'bg-white/5 text-slate-400 border border-white/10'
             }`}
           >
-            6-Region Impact Grid (31)
+            6-Region Grid (31)
           </button>
           <button
             type="button"
@@ -168,7 +171,7 @@ export function WesternDisturbanceMap({
                 : 'bg-white/5 text-slate-400 border border-white/10'
             }`}
           >
-            Mediterranean–Himalaya Jet Track
+            30°E–75°E Synoptic Waveguide ({detectedSystems.length} Tracked)
           </button>
 
           {radarTileUrl && (
@@ -181,7 +184,7 @@ export function WesternDisturbanceMap({
                   : 'bg-white/5 text-slate-400 border border-white/10'
               }`}
             >
-              <Radio className="w-3 h-3" /> Live Radar
+              <Radio className="w-3 h-3" /> Observed Radar
             </button>
           )}
         </div>
@@ -193,11 +196,11 @@ export function WesternDisturbanceMap({
             aria-label="Select atmospheric map layer"
             className="bg-slate-900 text-slate-200 border border-white/15 rounded-lg px-2 py-1 text-[11px] outline-none"
           >
-            <option value="phase">Layer: Synoptic WD Phase</option>
+            <option value="phase">Layer: Synoptic Regime</option>
             <option value="precip7d">Layer: 7d Forecast Precip (mm)</option>
             <option value="snow7d">Layer: 7d Forecast Snowfall (cm)</option>
-            <option value="freezingLevel">Layer: Live Freezing Level (m)</option>
-            <option value="jet300">Layer: Live 300 hPa Jet Speed (km/h)</option>
+            <option value="freezingLevel">Layer: 0h 0°C Freezing-Level Altitude (m)</option>
+            <option value="jet300">Layer: 0h 300 hPa Jet Speed (km/h)</option>
           </select>
 
           <div className="flex items-center gap-1 bg-white/5 p-0.5 rounded-lg border border-white/10">
@@ -241,27 +244,65 @@ export function WesternDisturbanceMap({
       >
         <TileLayer key={basemap} url={tileConfig.url} attribution={tileConfig.attribution} />
 
-        {/* Optional Live RainViewer Composite Radar Overlay (LIVE OBSERVATION) */}
+        {/* Live RainViewer Composite Radar Overlay (ACTUAL REMOTE-SENSING OBSERVATION) */}
         {showRadar && radarTileUrl && (
           <TileLayer
             url={radarTileUrl}
             opacity={0.55}
-            attribution="RainViewer Live Radar"
+            attribution="RainViewer Observed Radar"
           />
         )}
 
-        {/* Subtropical Westerly Jet Axis Polyline */}
+        {/* Subtropical Westerly Waveguide Reference Axis */}
         {jetPathCoords.length > 1 && (
           <Polyline
             positions={jetPathCoords}
             pathOptions={{
               color: '#38bdf8',
-              weight: 2.5,
+              weight: 2,
               dashArray: '6 6',
-              opacity: 0.75,
+              opacity: 0.65,
             }}
           />
         )}
+
+        {/* Detected WD Vorticity Trajectories */}
+        {detectedSystems.map((sys) => {
+          const coords: [number, number][] = sys.trackPoints.map((pt) => [pt.latitude, pt.longitude]);
+          return (
+            <React.Fragment key={sys.systemId}>
+              {coords.length > 1 && (
+                <Polyline
+                  positions={coords}
+                  pathOptions={{
+                    color: '#f43f5e',
+                    weight: 3.5,
+                    opacity: 0.9,
+                  }}
+                />
+              )}
+              {sys.trackPoints.map((pt, k) => (
+                <CircleMarker
+                  key={`${sys.systemId}-${k}`}
+                  center={[pt.latitude, pt.longitude]}
+                  radius={k === 0 ? 8 : 6}
+                  pathOptions={{
+                    color: '#fb7185',
+                    fillColor: pt.state === 'NWP_FORECAST' ? '#e11d48' : '#10b981',
+                    fillOpacity: 0.9,
+                    weight: 2,
+                  }}
+                >
+                  <Tooltip direction="top" offset={[0, -6]}>
+                    <div className="text-xs font-bold">
+                      {sys.systemId} ({pt.stepHoursFromNow >= 0 ? `+${pt.stepHoursFromNow}h` : `${pt.stepHoursFromNow}h`}) · ζ₃₀₀ +{pt.vorticity300_1e5s}
+                    </div>
+                  </Tooltip>
+                </CircleMarker>
+              ))}
+            </React.Fragment>
+          );
+        })}
 
         {/* Upstream Synoptic Checkpoints */}
         {upstreamTrack.map((u) => {
@@ -280,18 +321,19 @@ export function WesternDisturbanceMap({
             >
               <Tooltip direction="top" offset={[0, -6]}>
                 <div className="text-xs font-bold">
-                  {u.name} · {u.troughSignal} (500hPa: {u.z500_gpm} gpm)
+                  {u.name} · {u.troughSignal} (Z500: {u.z500_gpm} gpm, ζ300: {u.vorticity300_1e5s})
                 </div>
               </Tooltip>
               <Popup>
-                <div className="min-w-[220px] text-slate-900 text-xs space-y-1">
+                <div className="min-w-[230px] text-slate-900 text-xs space-y-1">
                   <div className="font-bold text-slate-900 border-b border-slate-200 pb-1">{u.name}</div>
-                  <div className="text-[10px] font-semibold uppercase text-emerald-700">Live Synoptic Observation</div>
+                  <div className="text-[10px] font-semibold uppercase text-sky-700">0h NWP Synoptic Analysis</div>
                   <div><strong>Signal:</strong> {u.troughSignal}</div>
-                  <div><strong>500 hPa Height:</strong> {u.z500_gpm} gpm</div>
+                  <div><strong>500 hPa Height (Curv):</strong> {u.z500_gpm} gpm ({u.z500_curvature_gpm >= 0 ? '+' : ''}{u.z500_curvature_gpm} gpm)</div>
+                  <div><strong>300 hPa Vorticity (ζ₃₀₀):</strong> {u.vorticity300_1e5s} × 10⁻⁵ s⁻¹</div>
                   <div><strong>300 hPa Jet Wind:</strong> {u.jet300_kmh} km/h ({u.jet300_dir_deg}°)</div>
                   <div><strong>MSL Pressure:</strong> {u.pressure_msl_hpa} hPa ({u.pressure_24h_delta_hpa >= 0 ? '+' : ''}{u.pressure_24h_delta_hpa} hPa/24h)</div>
-                  <div><strong>72h Forecast Precip:</strong> {u.next72h_precip_mm} mm</div>
+                  <div><strong>72h NWP Precip:</strong> {u.next72h_precip_mm} mm</div>
                 </div>
               </Popup>
             </CircleMarker>
@@ -322,20 +364,22 @@ export function WesternDisturbanceMap({
                 </div>
               </Tooltip>
               <Popup>
-                <div className="min-w-[230px] text-slate-900 text-xs space-y-1.5">
+                <div className="min-w-[240px] text-slate-900 text-xs space-y-1.5">
                   <div className="font-bold text-slate-900 border-b border-slate-200 pb-1">
                     {c.name}
                   </div>
-                  <div className="text-[11px] text-slate-600">{c.subRegion} · Elev {c.elevation_m} m</div>
+                  <div className="text-[11px] text-slate-600">
+                    {c.subRegion} · Station {c.elevation_m} m (Model DEM {c.provenance.modelGridElevationM} m)
+                  </div>
                   <div className="p-1.5 rounded bg-emerald-50 border border-emerald-200 text-[11px]">
-                    <div className="font-bold text-emerald-800 uppercase text-[9px]">Live Observation</div>
+                    <div className="font-bold text-emerald-800 uppercase text-[9px]">0h NWP Model Analysis</div>
                     <div>Temp {c.liveObservation.temp_c}°C · Cloud {c.liveObservation.cloud_cover_pct}% · {c.liveObservation.pressure_msl_hpa} hPa</div>
-                    <div>Freezing Level: {c.liveObservation.freezing_level_m} m · 300hPa Jet: {c.liveObservation.jet300_kmh} km/h</div>
+                    <div>0°C Freezing Level: {c.liveObservation.freezing_level_m} m · 300hPa Jet: {c.liveObservation.jet300_kmh} km/h</div>
                   </div>
                   <div className="p-1.5 rounded bg-sky-50 border border-sky-200 text-[11px]">
-                    <div className="font-bold text-sky-800 uppercase text-[9px]">7-Day NWP Forecast</div>
+                    <div className="font-bold text-sky-800 uppercase text-[9px]">7-Day NWP Forecast ({c.forecastCompleteness.validHourlySteps}/168h)</div>
                     <div>Precip: <strong>{c.forecast7d.total_precip_mm} mm</strong> · Snow: <strong>{c.forecast7d.total_snow_cm} cm</strong></div>
-                    <div>Max Gust: {c.forecast7d.max_wind_gust_kmh} km/h · Compound Risk: <strong>{c.compoundTriggers.overallRisk}</strong></div>
+                    <div>7d Phase: {c.forecast7d.forecast_precip_phase} · Trigger: <strong>{c.compoundTriggers.overallRisk}</strong></div>
                   </div>
                 </div>
               </Popup>
@@ -344,20 +388,19 @@ export function WesternDisturbanceMap({
         })}
       </MapContainer>
 
-      {/* Bottom Provenance & Legend Bar */}
       <div className="absolute bottom-3 left-3 right-3 z-[1000] flex flex-wrap items-center justify-between gap-2 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] text-slate-300">
         <div className="flex items-center gap-3 flex-wrap">
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block" /> Active Passage / High Load
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Tracked WD Trough / Active
           </span>
           <span className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" /> Approaching Wave
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block" /> Post-Frontal / Sub-Zero
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 inline-block" /> Zonal Westerly Flow
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Quiescent Ridge
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> 500 hPa Ridge
           </span>
         </div>
         <span className="text-slate-400 font-mono">

@@ -9,18 +9,31 @@ export type WDSubRegion =
   | 'Baltistan';
 
 export type DataProvenanceTier =
-  | 'LIVE_OBSERVATION'
+  | 'MODEL_NOWCAST_ANALYSIS'
   | 'NUMERICAL_FORECAST'
-  | 'OFFICIAL_ADVISORY'
+  | 'LIVE_RADAR_OBSERVATION'
+  | 'EXTERNAL_AGENCY_PORTAL'
   | 'HISTORICAL_RECORD';
 
 export type WDPhase =
-  | 'Active Passage'
-  | 'Approaching Wave (48–96h)'
-  | 'Post-Frontal Clearing'
-  | 'Quiescent Ridge';
+  | 'Active Synoptic Trough Passage'
+  | 'Approaching Baroclinic Wave (48–168h)'
+  | 'Post-Trough Cold Advection'
+  | 'Zonal Westerly Flow'
+  | 'Subtropical 500 hPa Ridge';
 
-export type CompoundRiskLevel = 'Low' | 'Moderate' | 'High' | 'Critical';
+export type ForecastPrecipPhase =
+  | 'Dry (0 mm / 7d)'
+  | 'Snow-Dominant (≥75% Snow Equiv)'
+  | 'Rain–Snow Transition Mix'
+  | 'Liquid Rain-Dominant';
+
+export type CompoundRiskLevel =
+  | 'No Active WD Trigger'
+  | 'Low'
+  | 'Moderate'
+  | 'High'
+  | 'Critical';
 
 export interface WDCorridorStation {
   id: string;
@@ -32,7 +45,12 @@ export interface WDCorridorStation {
   longitude: number;
   elevation_m: number;
   orographic_zone: string;
-  typical_precip_regime: 'Snow-Dominant' | 'Rain-Snow Transition' | 'Rain-Dominant' | 'Arid Cryosphere';
+  /** Static winter climatological terrain zone (never conflated with current/7d weather phase) */
+  winter_terrain_climatology:
+    | 'Alpine Snowpack Zone'
+    | 'Valley Rain–Snow Transition'
+    | 'Foothill Frontal Rain Belt'
+    | 'Trans-Himalayan Arid Cryosphere';
   primary_coupled_hazards: Array<'floods' | 'flash-floods' | 'landslides' | 'avalanches'>;
   key_infrastructure_exposed: string;
 }
@@ -47,13 +65,78 @@ export interface UpstreamSynopticNode {
   distanceToKashmirKm: number;
 }
 
+export interface SynopticWaveguideGridNode {
+  lon: number;
+  sectorLabel: string;
+  z500_gpm: number;
+  z500_curvature_gpm: number;
+  vorticity300_1e5s: number;
+  vorticity500_1e5s: number;
+  jet300_kmh: number;
+  jet300_dir_deg: number;
+  featureState: 'Cyclonic WD Trough' | 'Weak Shortwave' | 'Zonal Waveguide' | 'Anticyclonic Ridge';
+}
+
+export interface DetectedWDTrackPoint {
+  stepHoursFromNow: number;
+  timeUtc: string;
+  state: 'ANALYZED_PAST' | 'ANALYZED_0H' | 'NWP_FORECAST';
+  latitude: number;
+  longitude: number;
+  sectorName: string;
+  vorticity300_1e5s: number;
+  z500_gpm: number;
+  z500_curvature_gpm: number;
+  steeringSpeedKmh: number;
+  steeringDirDeg: number;
+}
+
+export interface DetectedWDSystem {
+  systemId: string;
+  classification:
+    | 'Active Regional WD (70°E–78°E)'
+    | 'Approaching Upstream WD (<70°E)'
+    | 'Forecast Synoptic Trough (NWP)';
+  detectionMethod: string;
+  currentOrGenesisLat: number;
+  currentOrGenesisLon: number;
+  currentSector: string;
+  distanceWestOfKashmirKm: number;
+  propagationDirectionDeg: number;
+  propagationDirectionLabel: string;
+  propagationSpeedKmh: number;
+  peakVorticity300_1e5s: number;
+  minZ500Gpm: number;
+  maxTroughCurvatureGpm: number;
+  expectedApproachWindow: {
+    westernEntryUtc: string | null;
+    corePeakUtc: string | null;
+    easternClearanceUtc: string | null;
+    windowSummary: string;
+  };
+  forecastConfidence: 'High' | 'Moderate' | 'Low';
+  confidenceScorePct: number;
+  confidenceRationale: string;
+  trackPoints: DetectedWDTrackPoint[];
+}
+
 export interface WDCorridorLiveRecord extends WDCorridorStation {
   provenance: {
-    observationTier: 'LIVE_OBSERVATION';
+    analysisTier: 'MODEL_NOWCAST_ANALYSIS';
     forecastTier: 'NUMERICAL_FORECAST';
     provider: string;
-    observedAtUtc: string;
+    modelRunInitUtc: string;
+    analyzedAtUtc: string;
+    modelGridElevationM: number;
+    elevationOffsetM: number;
   };
+  forecastCompleteness: {
+    validHourlySteps: number;
+    expectedHourlySteps: number;
+    completenessPct: number;
+    status: 'COMPLETE' | 'PARTIAL';
+  };
+  /** 0-hour NWP Model Analysis / Assimilated Nowcast (NOT a physical ground station gauge) */
   liveObservation: {
     temp_c: number;
     humidity_pct: number;
@@ -67,6 +150,7 @@ export interface WDCorridorLiveRecord extends WDCorridorStation {
     wind_gusts_kmh: number;
     wind_dir_deg: number;
     z500_gpm: number;
+    z500_anomaly_gpm: number;
     jet300_kmh: number;
     freezing_level_m: number;
     past48h_precip_mm: number;
@@ -74,6 +158,7 @@ export interface WDCorridorLiveRecord extends WDCorridorStation {
   };
   forecast7d: {
     total_precip_mm: number;
+    hourly_sum_precip_mm: number;
     total_rain_mm: number;
     total_snow_cm: number;
     peak_daily_precip_mm: number;
@@ -81,6 +166,7 @@ export interface WDCorridorLiveRecord extends WDCorridorStation {
     max_precip_prob_pct: number;
     max_wind_gust_kmh: number;
     min_freezing_level_m: number;
+    forecast_precip_phase: ForecastPrecipPhase;
     daily: Array<{
       date: string;
       precip_mm: number;
@@ -93,21 +179,26 @@ export interface WDCorridorLiveRecord extends WDCorridorStation {
     }>;
   };
   wdPhase: WDPhase;
-  intensityLabel: 'None / Fair' | 'Weak Wave' | 'Moderate WD' | 'Intense / Active WD';
+  synopticEvidence: string;
+  intensityLabel: 'Dry / Synoptic Ridge' | 'Weak Shortwave' | 'Moderate WD' | 'Intense / Active WD';
   compoundTriggers: {
+    hasActiveWDForcing: boolean;
     floods: CompoundRiskLevel;
     flashFloods: CompoundRiskLevel;
     landslides: CompoundRiskLevel;
     avalanches: CompoundRiskLevel;
     overallRisk: CompoundRiskLevel;
+    thresholdSummary: string;
   };
 }
 
 export interface UpstreamLiveCheckpoint extends UpstreamSynopticNode {
-  provenanceTier: 'LIVE_OBSERVATION';
+  provenanceTier: 'MODEL_NOWCAST_ANALYSIS';
   pressure_msl_hpa: number;
   pressure_24h_delta_hpa: number;
   z500_gpm: number;
+  z500_curvature_gpm: number;
+  vorticity300_1e5s: number;
   jet300_kmh: number;
   jet300_dir_deg: number;
   cloud_cover_pct: number;
@@ -124,7 +215,11 @@ export interface OfficialAgencySource {
   subRegionsCovered: WDSubRegion[];
   bulletinType: string;
   portalUrl: string;
-  provenanceTier: 'OFFICIAL_ADVISORY';
+  provenanceTier: 'EXTERNAL_AGENCY_PORTAL';
+  ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)';
+  livePortalReachable?: boolean;
+  httpStatus?: number | null;
+  checkedAtUtc?: string | null;
   cadence: string;
   notes: string;
 }
@@ -145,13 +240,26 @@ export interface HistoricalWDRecord {
   provenanceTier: 'HISTORICAL_RECORD';
 }
 
-// ─── 1. Upstream Mediterranean → Caspian → Hindu Kush → Himalaya Corridor ────
+// ─── 0. Synoptic Waveguide Longitude Labels (30°E to 75°E at 5° spacing) ─────
+export const WAVEGUIDE_LONGITUDE_SECTORS: Array<{ lon: number; label: string }> = [
+  { lon: 30, label: 'Eastern Mediterranean (30°E)' },
+  { lon: 35, label: 'Cyprus / Levant Basin (35°E)' },
+  { lon: 40, label: 'Upper Mesopotamia (40°E)' },
+  { lon: 45, label: 'Caucasus / Zagros West (45°E)' },
+  { lon: 50, label: 'South Caspian / Alborz (50°E)' },
+  { lon: 55, label: 'Central Iranian Plateau (55°E)' },
+  { lon: 60, label: 'Sistan / Khorasan Gate (60°E)' },
+  { lon: 65, label: 'Helmand / Central Afghan (65°E)' },
+  { lon: 70, label: 'Hindu Kush / Chitral Entry (70°E)' },
+  { lon: 75, label: 'Western Himalaya / Kashmir Core (75°E)' },
+];
 
+// ─── 1. Upstream Mediterranean → Caspian → Hindu Kush → Himalaya Checkpoints ─
 export const UPSTREAM_SYNOPTIC_CORRIDOR: UpstreamSynopticNode[] = [
   {
     id: 'up-med',
     name: 'Eastern Mediterranean Genesis Sector',
-    sector: 'Cyclogenesis Origin (33°E)',
+    sector: 'Cyclogenesis Origin (33.4°E)',
     country: 'Cyprus / Levant Basin',
     latitude: 35.12,
     longitude: 33.42,
@@ -160,7 +268,7 @@ export const UPSTREAM_SYNOPTIC_CORRIDOR: UpstreamSynopticNode[] = [
   {
     id: 'up-cas',
     name: 'South Caspian & Alborz Wave Guide',
-    sector: 'Moisture Recharge Sector (51°E)',
+    sector: 'Moisture Recharge Sector (51.4°E)',
     country: 'Iran Plateau',
     latitude: 35.69,
     longitude: 51.39,
@@ -169,7 +277,7 @@ export const UPSTREAM_SYNOPTIC_CORRIDOR: UpstreamSynopticNode[] = [
   {
     id: 'up-hrt',
     name: 'Herat – Khorasan Synoptic Gate',
-    sector: 'Mid-Latitude Trough Transit (62°E)',
+    sector: 'Mid-Latitude Trough Transit (62.2°E)',
     country: 'Western Afghanistan',
     latitude: 34.35,
     longitude: 62.20,
@@ -178,7 +286,7 @@ export const UPSTREAM_SYNOPTIC_CORRIDOR: UpstreamSynopticNode[] = [
   {
     id: 'up-kbl',
     name: 'Kabul – Hindu Kush Orographic Barrier',
-    sector: 'Pre-Himalayan Uplift (69°E)',
+    sector: 'Pre-Himalayan Uplift (69.2°E)',
     country: 'Afghanistan',
     latitude: 34.55,
     longitude: 69.21,
@@ -204,13 +312,13 @@ export const UPSTREAM_SYNOPTIC_CORRIDOR: UpstreamSynopticNode[] = [
   },
 ];
 
-// ─── 2. 31 Regional Monitoring Corridors Across All 6 Sub-Regions ────────────
-
+// ─── 2. Verified 31 Regional Corridors Across All 6 Sub-Regions ──────────────
+// Coordinates and station elevations audited against IMD / PMD stations & Copernicus 90m DEM.
 export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
   // KASHMIR (10 Corridors — Kashmir Core)
   {
     id: 'wd-kas-01',
-    name: 'Srinagar Valley Floor Synoptic Observatory',
+    name: 'Srinagar Valley Floor Observatory',
     district: 'Srinagar',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
@@ -218,13 +326,13 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.7973,
     elevation_m: 1585,
     orographic_zone: 'Jhelum Alluvial Basin',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['floods', 'flash-floods'],
     key_infrastructure_exposed: 'Ram Munshi Bagh flood gauge, urban storm drainage & NH-44 bypass',
   },
   {
     id: 'wd-kas-02',
-    name: 'Gulmarg – Apharwat Pir Panjal Crest',
+    name: 'Gulmarg Bowl – Pir Panjal Observatory',
     district: 'Baramulla',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
@@ -232,27 +340,27 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.3805,
     elevation_m: 2650,
     orographic_zone: 'Pir Panjal Windward Escarpment',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides'],
     key_infrastructure_exposed: 'Gulmarg Gondola Bowl, Tangmarg mountain road & alpine ski basins',
   },
   {
     id: 'wd-kas-03',
-    name: 'Sonamarg – Zoji La Cryospheric Saddle',
+    name: 'Zoji La Pass – Sonamarg Cryospheric Saddle',
     district: 'Ganderbal',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
-    latitude: 34.3030,
-    longitude: 75.2930,
-    elevation_m: 2800,
+    latitude: 34.2787,
+    longitude: 75.4719,
+    elevation_m: 3528,
     orographic_zone: 'Great Himalayan Range Crest',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides', 'flash-floods'],
     key_infrastructure_exposed: 'NH-1 Srinagar–Leh Highway, Zoji La Tunnel portals & Sindh headwaters',
   },
   {
     id: 'wd-kas-04',
-    name: 'Pahalgam – Lidder Glacial Headwaters',
+    name: 'Pahalgam – Lidder Valley Observatory',
     district: 'Anantnag',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
@@ -260,69 +368,69 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 75.3150,
     elevation_m: 2150,
     orographic_zone: 'Kolahoi–Lidder Orographic Funnel',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['flash-floods', 'avalanches', 'floods'],
     key_infrastructure_exposed: 'Lidder River bridges, Aru–Chandanwari road & Sangam inflow',
   },
   {
     id: 'wd-kas-05',
-    name: 'Kupwara – Sadhna Pass & Lolab Frontier',
+    name: 'Sadhna Pass – Kupwara Shamshabari Crest',
     district: 'Kupwara',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
-    latitude: 34.5262,
-    longitude: 74.2546,
-    elevation_m: 1620,
+    latitude: 34.4072,
+    longitude: 73.9497,
+    elevation_m: 3100,
     orographic_zone: 'Shamshabari Westerly Entry Barrier',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides', 'floods'],
-    key_infrastructure_exposed: 'Karnah–Sadhna Pass, Machil transit links & Pohru River basin',
+    key_infrastructure_exposed: 'Karnah–Sadhna Pass road, Tangdhar link & Pohru headwaters',
   },
   {
     id: 'wd-kas-06',
-    name: 'Bandipora – Razdan Pass & Gurez Corridor',
+    name: 'Gurez (Dawar) – Kishanganga High Valley',
     district: 'Bandipora',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
     latitude: 34.6330,
     longitude: 74.8330,
     elevation_m: 2450,
-    orographic_zone: 'Kishanganga–Tragbal Ridge',
-    typical_precip_regime: 'Snow-Dominant',
+    orographic_zone: 'Kishanganga–Razdan Corridor',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides'],
     key_infrastructure_exposed: 'Gurez–Bandipora road, Kishanganga HEP & Wular lake inflow',
   },
   {
     id: 'wd-kas-07',
-    name: 'Qazigund – Jawahar/Navyug Tunnel Windward Gate',
+    name: 'Qazigund – Navyug Tunnel North Portal',
     district: 'Kulgam',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
     latitude: 33.5900,
     longitude: 75.1600,
-    elevation_m: 1670,
+    elevation_m: 1690,
     orographic_zone: 'Southern Pir Panjal Spillover',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['floods', 'flash-floods', 'avalanches'],
     key_infrastructure_exposed: 'NH-44 Navyug Tunnel North Portal, Vishaw & Jhelum headwaters',
   },
   {
     id: 'wd-kas-08',
-    name: 'Shopian – Peer Ki Gali Mughal Road Crest',
+    name: 'Peer Ki Gali – Shopian Mughal Road Crest',
     district: 'Shopian',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
     latitude: 33.6350,
     longitude: 74.5200,
-    elevation_m: 3480,
+    elevation_m: 3485,
     orographic_zone: 'High Pir Panjal Divide',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'flash-floods'],
     key_infrastructure_exposed: 'Mughal Road alpine corridor & Rambiara torrential watershed',
   },
   {
     id: 'wd-kas-09',
-    name: 'Pulwama – Tral & Sangam Floodplain Sector',
+    name: 'Pulwama – Sangam Floodplain Sector',
     district: 'Pulwama',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
@@ -330,13 +438,13 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.8946,
     elevation_m: 1630,
     orographic_zone: 'Central Jhelum Retention Plain',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['floods', 'flash-floods'],
     key_infrastructure_exposed: 'Kakapora–Sangam Jhelum embankments & horticultural karewas',
   },
   {
     id: 'wd-kas-10',
-    name: 'Budgam – Doodhpathri & Sukhnag Catchment',
+    name: 'Budgam – Khansahib Sukhnag Piedmont',
     district: 'Budgam',
     subRegion: 'Kashmir',
     scope: 'Kashmir Core',
@@ -344,7 +452,7 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.6400,
     elevation_m: 1980,
     orographic_zone: 'Eastern Pir Panjal Piedmont',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['flash-floods', 'floods'],
     key_infrastructure_exposed: 'Doodhpathri/Sukhnag streams, Srinagar Airport & Hokersar inflow',
   },
@@ -352,17 +460,17 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
   // JAMMU (7 Corridors — Trans-Divisional)
   {
     id: 'wd-jmu-01',
-    name: 'Ramban – Banihal NH-44 Cut-Slope Gorge',
+    name: 'Banihal – Ramban NH-44 Cut-Slope Corridor',
     district: 'Ramban',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
-    latitude: 33.2428,
-    longitude: 75.2357,
-    elevation_m: 1150,
-    orographic_zone: 'Chenab Gorge / Southern Pir Panjal',
-    typical_precip_regime: 'Rain-Dominant',
+    latitude: 33.4350,
+    longitude: 75.1970,
+    elevation_m: 1660,
+    orographic_zone: 'Southern Pir Panjal / Bichleri Gorge',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['landslides', 'flash-floods'],
-    key_infrastructure_exposed: 'NH-44 Panthyal–Mehar–Cafeteria Morh landslide belt & railway viaducts',
+    key_infrastructure_exposed: 'NH-44 Banihal–Ramban landslide belt & USBRL railway viaducts',
   },
   {
     id: 'wd-jmu-02',
@@ -374,55 +482,55 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.8570,
     elevation_m: 327,
     orographic_zone: 'Shivalik Frontal Convective Belt',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['floods', 'flash-floods'],
     key_infrastructure_exposed: 'Tawi River bridges, urban low-lying wards & NH-44 transit',
   },
   {
     id: 'wd-jmu-03',
-    name: 'Kishtwar – Marwah & Upper Chenab Basin',
+    name: 'Kishtwar – Upper Chenab Basin Observatory',
     district: 'Kishtwar',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
     latitude: 33.3136,
     longitude: 75.7673,
-    elevation_m: 1640,
+    elevation_m: 1638,
     orographic_zone: 'Chenab–Zanskar Transition',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['landslides', 'avalanches', 'flash-floods'],
     key_infrastructure_exposed: 'Dul Hasti / Pakal Dul / Ratle HEP cascades & Sinthan Top road',
   },
   {
     id: 'wd-jmu-04',
-    name: 'Doda – Bhaderwah & Padri Pass Sector',
+    name: 'Bhaderwah – Doda Neeru Valley Observatory',
     district: 'Doda',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
-    latitude: 33.1457,
-    longitude: 75.5480,
-    elevation_m: 1550,
-    orographic_zone: 'Middle Chenab Steep Slopes',
-    typical_precip_regime: 'Rain-Snow Transition',
+    latitude: 32.9800,
+    longitude: 75.7100,
+    elevation_m: 1613,
+    orographic_zone: 'Middle Chenab / Kailash Slopes',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['landslides', 'flash-floods'],
-    key_infrastructure_exposed: 'NH-244 Batote–Kishtwar highway & Neeru tributary corridor',
+    key_infrastructure_exposed: 'NH-244 Batote–Kishtwar highway, Padri Pass & Neeru corridor',
   },
   {
     id: 'wd-jmu-05',
-    name: 'Poonch – Loran & Sawjian Western Flank',
+    name: 'Poonch – Southwestern Pir Panjal Flank',
     district: 'Poonch',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
     latitude: 33.7670,
     longitude: 74.0921,
-    elevation_m: 1020,
+    elevation_m: 1010,
     orographic_zone: 'Southwestern Pir Panjal Uplift',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['flash-floods', 'landslides', 'avalanches'],
     key_infrastructure_exposed: 'Surankote–Bufliaz Mughal Road approach & Poonch River',
   },
   {
     id: 'wd-jmu-06',
-    name: 'Rajouri – Darhal & Kotranka Catchment',
+    name: 'Rajouri – Munawar Tawi Foothill Catchment',
     district: 'Rajouri',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
@@ -430,21 +538,21 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.3152,
     elevation_m: 915,
     orographic_zone: 'Pir Panjal Southern Foothills',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['flash-floods', 'landslides'],
     key_infrastructure_exposed: 'Munawar Tawi tributaries & Rajouri–Thanamandi hill roads',
   },
   {
     id: 'wd-jmu-07',
-    name: 'Reasi – Katra Trikuta Orographic Escarpment',
+    name: 'Katra – Reasi Trikuta Orographic Escarpment',
     district: 'Reasi',
     subRegion: 'Jammu',
     scope: 'Trans-Divisional',
-    latitude: 33.0804,
-    longitude: 74.8361,
+    latitude: 32.9915,
+    longitude: 74.9318,
     elevation_m: 875,
     orographic_zone: 'Trikuta–Salal Chenab Funnel',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['landslides', 'flash-floods'],
     key_infrastructure_exposed: 'Vaishno Devi pilgrimage tracks, Chenab Rail Bridge & Salal Reservoir',
   },
@@ -452,21 +560,21 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
   // LADAKH (4 Corridors — Trans-Divisional)
   {
     id: 'wd-ldk-01',
-    name: 'Kargil – Drass Winter Cold-Pole Corridor',
+    name: 'Drass – Kargil Winter Cold-Pole Corridor',
     district: 'Kargil',
     subRegion: 'Ladakh',
     scope: 'Trans-Divisional',
     latitude: 34.4275,
     longitude: 75.7510,
-    elevation_m: 3120,
+    elevation_m: 3230,
     orographic_zone: 'Drass–Suru Spillover Trough',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides'],
     key_infrastructure_exposed: 'NH-1 Drass–Kargil sector & Suru Valley winter connectivity',
   },
   {
     id: 'wd-ldk-02',
-    name: 'Leh – Khardung La & Upper Indus Observatory',
+    name: 'Leh – Upper Indus Basin Observatory',
     district: 'Leh',
     subRegion: 'Ladakh',
     scope: 'Trans-Divisional',
@@ -474,37 +582,37 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 77.5771,
     elevation_m: 3520,
     orographic_zone: 'Trans-Himalayan Leeward Basin',
-    typical_precip_regime: 'Arid Cryosphere',
+    winter_terrain_climatology: 'Trans-Himalayan Arid Cryosphere',
     primary_coupled_hazards: ['avalanches', 'flash-floods'],
-    key_infrastructure_exposed: 'Khardung La / Chang La high passes & Leh alluvial fan channels',
+    key_infrastructure_exposed: 'Khardung La / Chang La approaches & Leh alluvial fan channels',
   },
   {
     id: 'wd-ldk-03',
-    name: 'Zanskar – Pensi La Glacial Divide',
+    name: 'Pensi La – Zanskar Glacial Divide',
     district: 'Kargil',
     subRegion: 'Ladakh',
     scope: 'Trans-Divisional',
     latitude: 33.8540,
     longitude: 76.3650,
-    elevation_m: 4100,
+    elevation_m: 4400,
     orographic_zone: 'Zanskar Range Accumulation Zone',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches'],
     key_infrastructure_exposed: 'Padum–Pensi La–Shinku La winter roads & Drang-Drung glacier mass balance',
   },
   {
     id: 'wd-ldk-04',
-    name: 'Nubra – Siachen Karakoram Westerly Sector',
+    name: 'Diskit – Nubra Shyok Karakoram Sector',
     district: 'Leh',
     subRegion: 'Ladakh',
     scope: 'Trans-Divisional',
-    latitude: 34.7860,
-    longitude: 77.5490,
-    elevation_m: 3250,
-    orographic_zone: 'Eastern Karakoram Westerly Accumulator',
-    typical_precip_regime: 'Arid Cryosphere',
+    latitude: 34.5539,
+    longitude: 77.5494,
+    elevation_m: 3150,
+    orographic_zone: 'Eastern Karakoram Westerly Valley',
+    winter_terrain_climatology: 'Trans-Himalayan Arid Cryosphere',
     primary_coupled_hazards: ['avalanches'],
-    key_infrastructure_exposed: 'Shyok–Nubra transit axis & high-altitude Karakoram snowpack',
+    key_infrastructure_exposed: 'Shyok–Nubra transit axis & Karakoram approach roads',
   },
 
   // AZAD KASHMIR (4 Corridors — Transboundary / Extended)
@@ -518,37 +626,37 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 73.4711,
     elevation_m: 737,
     orographic_zone: 'Hazara–Kashmir Syntaxis Funnel',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['landslides', 'flash-floods', 'floods'],
     key_infrastructure_exposed: 'Kohala–Muzaffarabad highway, urban slopes & Neelum confluence',
   },
   {
     id: 'wd-ajk-02',
-    name: 'Neelum Valley – Sharda & Kel Alpine Gorge',
+    name: 'Sharda – Upper Neelum Alpine Gorge',
     district: 'Neelum',
     subRegion: 'Azad Kashmir',
     scope: 'Transboundary / Extended',
     latitude: 34.7930,
     longitude: 74.1890,
-    elevation_m: 1980,
+    elevation_m: 1981,
     orographic_zone: 'Upper Neelum Steep Avalanche Chutes',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides', 'flash-floods'],
-    key_infrastructure_exposed: 'Neelum Valley Road (Athmuqam–Kel–Taobut) & alpine settlements',
+    key_infrastructure_exposed: 'Neelum Valley Road (Athmuqam–Sharda–Kel) & alpine settlements',
   },
   {
     id: 'wd-ajk-03',
-    name: 'Bagh – Rawalakot & Lasdana Highlands',
-    district: 'Bagh',
+    name: 'Rawalakot – Poonch Uplands Observatory',
+    district: 'Poonch (AJK)',
     subRegion: 'Azad Kashmir',
     scope: 'Transboundary / Extended',
-    latitude: 33.9811,
-    longitude: 73.7761,
-    elevation_m: 1676,
+    latitude: 33.8578,
+    longitude: 73.7604,
+    elevation_m: 1638,
     orographic_zone: 'Western Pir Panjal Uplands',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['landslides', 'flash-floods'],
-    key_infrastructure_exposed: 'Sudhan Gali–Lasdana roads & Mahal River steep catchments',
+    key_infrastructure_exposed: 'Rawalakot–Bagh mountain roads & Mahal River steep catchments',
   },
   {
     id: 'wd-ajk-04',
@@ -560,7 +668,7 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 73.7519,
     elevation_m: 459,
     orographic_zone: 'Lower Jhelum Piedmont',
-    typical_precip_regime: 'Rain-Dominant',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['floods', 'flash-floods'],
     key_infrastructure_exposed: 'Mangla Dam spillway inflows & Poonch–Jhelum delta',
   },
@@ -568,21 +676,21 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
   // GILGIT (3 Corridors — Transboundary / Extended)
   {
     id: 'wd-glt-01',
-    name: 'Gilgit – Hunza & Naltar Westerly Corridor',
+    name: 'Gilgit Basin – Hunza Confluence Observatory',
     district: 'Gilgit',
     subRegion: 'Gilgit',
     scope: 'Transboundary / Extended',
     latitude: 35.9208,
     longitude: 74.3144,
-    elevation_m: 1500,
+    elevation_m: 1460,
     orographic_zone: 'Central Karakoram–Hindu Raj Junction',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Valley Rain–Snow Transition',
     primary_coupled_hazards: ['landslides', 'avalanches', 'flash-floods'],
-    key_infrastructure_exposed: 'Karakoram Highway (KKH), Gilgit–Hunza bridges & Naltar ski slopes',
+    key_infrastructure_exposed: 'Karakoram Highway (KKH), Gilgit–Hunza bridges & Naltar approach',
   },
   {
     id: 'wd-glt-02',
-    name: 'Diamer – Babusar Top & Chilas Indus Gorge',
+    name: 'Chilas – Diamer Indus Gorge Observatory',
     district: 'Diamer',
     subRegion: 'Gilgit',
     scope: 'Transboundary / Extended',
@@ -590,21 +698,21 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 74.0969,
     elevation_m: 1265,
     orographic_zone: 'Nanga Parbat Massif & Indus Gorge',
-    typical_precip_regime: 'Rain-Snow Transition',
+    winter_terrain_climatology: 'Foothill Frontal Rain Belt',
     primary_coupled_hazards: ['landslides', 'flash-floods', 'avalanches'],
-    key_infrastructure_exposed: 'KKH Kohistan–Chilas rockfall zone, Babusar Pass & Diamer-Bhasha site',
+    key_infrastructure_exposed: 'KKH Kohistan–Chilas rockfall zone, Babusar approach & Diamer-Bhasha site',
   },
   {
     id: 'wd-glt-03',
-    name: 'Ghizer – Gupis & Shandur Westerly Gate',
+    name: 'Gupis – Ghizer Shandur Westerly Gate',
     district: 'Ghizer',
     subRegion: 'Gilgit',
     scope: 'Transboundary / Extended',
     latitude: 36.1736,
-    longitude: 73.7636,
-    elevation_m: 2150,
+    longitude: 73.4414,
+    elevation_m: 2156,
     orographic_zone: 'Hindu Raj First-Contact Barrier',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'flash-floods'],
     key_infrastructure_exposed: 'Gilgit–Chitral Shandur road & Gilgit River upper tributaries',
   },
@@ -612,7 +720,7 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
   // BALTISTAN (3 Corridors — Transboundary / Extended)
   {
     id: 'wd-blt-01',
-    name: 'Skardu – Deosai Edge & Upper Indus Basin',
+    name: 'Skardu – Upper Indus Basin Observatory',
     district: 'Skardu',
     subRegion: 'Baltistan',
     scope: 'Transboundary / Extended',
@@ -620,27 +728,27 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 75.6333,
     elevation_m: 2228,
     orographic_zone: 'Skardu–Deosai High Basin',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides'],
-    key_infrastructure_exposed: 'Jaglot–Skardu Highway (S-1), Deosai plateau & Indus–Shigar junction',
+    key_infrastructure_exposed: 'Jaglot–Skardu Highway (S-1), Deosai approach & Indus–Shigar junction',
   },
   {
     id: 'wd-blt-02',
-    name: 'Shigar – Central Karakoram Glacial Accumulator',
+    name: 'Shigar – Central Karakoram Valley',
     district: 'Shigar',
     subRegion: 'Baltistan',
     scope: 'Transboundary / Extended',
-    latitude: 35.4306,
+    latitude: 35.4256,
     longitude: 75.7364,
-    elevation_m: 2450,
-    orographic_zone: 'Baltoro–Biafo–Hispar Accumulation Belt',
-    typical_precip_regime: 'Snow-Dominant',
+    elevation_m: 2280,
+    orographic_zone: 'Baltoro–Biafo–Hispar Gateway',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'flash-floods'],
     key_infrastructure_exposed: 'Shigar–Askole valley corridor & winter Karakoram glacier nourishment',
   },
   {
     id: 'wd-blt-03',
-    name: 'Ghanche – Khaplu & Hushe Shyok Corridor',
+    name: 'Khaplu – Ghanche Shyok Valley',
     district: 'Ghanche',
     subRegion: 'Baltistan',
     scope: 'Transboundary / Extended',
@@ -648,14 +756,13 @@ export const WD_CORRIDOR_STATIONS: WDCorridorStation[] = [
     longitude: 76.3333,
     elevation_m: 2600,
     orographic_zone: 'Mashabrum–Shyok Cryosphere',
-    typical_precip_regime: 'Snow-Dominant',
+    winter_terrain_climatology: 'Alpine Snowpack Zone',
     primary_coupled_hazards: ['avalanches', 'landslides'],
     key_infrastructure_exposed: 'Khaplu–Machulo–Hushe bridges & Shyok valley terraces',
   },
 ];
 
-// ─── 3. Verified Official Agency Bulletin Portals (Provenance: OFFICIAL_ADVISORY) ─
-
+// ─── 3. External Statutory Agency Bulletin Portals (No False Automated-Link Claim) ─
 export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
   {
     id: 'adv-imd-sgr',
@@ -665,9 +772,10 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Kashmir', 'Jammu', 'Ladakh'],
     bulletinType: 'District-wise Heavy Rain / Snowfall Color Warnings & Extended WD Outlook',
     portalUrl: 'https://mausam.imd.gov.in/srinagar/',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: 'Twice daily (08:30 & 17:30 IST) + Nowcast updates',
-    notes: 'Primary statutory forecasting authority for WD passage, snowline elevation, and NH-44/Zoji La travel advisories in J&K and Ladakh.',
+    notes: 'Statutory forecasting authority for WD passage and NH-44/Zoji La advisories. Portal publishes PDFs/HTML without a public machine-readable CAP JSON endpoint.',
   },
   {
     id: 'adv-imd-hq',
@@ -677,7 +785,8 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Kashmir', 'Jammu', 'Ladakh'],
     bulletinType: 'All-India Weather Summary & Western Disturbance Trough Axis Bulletins',
     portalUrl: 'https://mausam.imd.gov.in/',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: '4 times daily synoptic bulletins',
     notes: 'Tracks upper-air cyclonic circulations and 500/300 hPa trough longitudes across Iran, Afghanistan, Pakistan, and NW India.',
   },
@@ -689,7 +798,8 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Azad Kashmir', 'Gilgit', 'Baltistan'],
     bulletinType: 'Westerly Wave Advisory, Mountain Snowfall & Flash Flood Bulletins',
     portalUrl: 'https://www.pmd.gov.pk/en/',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: 'Daily synoptic outlooks + event-driven westerly wave advisories',
     notes: 'Official hydrometeorological authority for Westerly Wave tracks entering Chitral, Gilgit, Baltistan, and Azad Kashmir.',
   },
@@ -701,7 +811,8 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Kashmir', 'Jammu', 'Ladakh'],
     bulletinType: '5-Level Avalanche Danger Bulletins Triggered by Active WDs',
     portalUrl: 'https://www.drdo.gov.in/drdo/labs-and-establishments/defence-geoinformatics-research-establishment-dgre',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: 'Daily 17:00 IST during winter snowpack season',
     notes: 'Issues Danger Level 1–5 avalanche warnings across Kupwara, Bandipora (Gurez), Ganderbal (Zoji La), Baramulla (Gulmarg), and Kargil.',
   },
@@ -713,7 +824,8 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Kashmir', 'Jammu'],
     bulletinType: 'Multi-Hazard Public Advisories, River Gauge Alerts & Highway Closures',
     portalUrl: 'https://jksdma.jk.gov.in/',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: 'Event-triggered emergency dispatches',
     notes: 'Coordinates district disaster response when intense WDs trigger Jhelum/Chenab rises or NH-44 Ramban landslide blockades.',
   },
@@ -725,14 +837,14 @@ export const OFFICIAL_WD_AGENCY_SOURCES: OfficialAgencySource[] = [
     subRegionsCovered: ['Azad Kashmir', 'Gilgit', 'Baltistan'],
     bulletinType: 'Westerly System Impact Projections, KKH Landslide & Avalanche Advisories',
     portalUrl: 'https://www.ndma.gov.pk/',
-    provenanceTier: 'OFFICIAL_ADVISORY',
+    provenanceTier: 'EXTERNAL_AGENCY_PORTAL',
+    ingestionStatus: 'External Statutory Portal (Manual Check — No Live CAP/API Feed)',
     cadence: 'Pre-event impact advisories & daily situation reports',
     notes: 'Publishes corridor-level advisories for Neelum Valley, Muzaffarabad, Karakoram Highway (KKH), Babusar, and Skardu.',
   },
 ];
 
 // ─── 4. Verified Historical Western Disturbance Benchmark Archive ─────────────
-
 export const HISTORICAL_WD_RECORDS: HistoricalWDRecord[] = [
   {
     id: 'hist-wd-2014-09',
@@ -790,7 +902,7 @@ export const HISTORICAL_WD_RECORDS: HistoricalWDRecord[] = [
     peakPrecipOrSnow: '60–110 cm heavy wet snow in Shopian, Pahalgam, Zoji La & Drass',
     subRegionsAffected: ['Kashmir', 'Jammu', 'Ladakh', 'Baltistan'],
     triggeredHazards: ['Avalanches', 'Landslides', 'Flash Floods'],
-    documentedImpact: 'Rapid freezing-level plunge to 1,900 m deposited heavy wet snow on unharvested Shopian/Kulgam apple orchards and stranded vehicles on Zoji La and Mughal Road.',
+    documentedImpact: 'Rapid 0°C freezing-level plunge to 1,900 m deposited heavy wet snow on unharvested Shopian/Kulgam apple orchards and stranded vehicles on Zoji La and Mughal Road.',
     primarySource: 'IMD Srinagar Special Agromet Report (2021)',
     provenanceTier: 'HISTORICAL_RECORD',
   },
@@ -842,51 +954,41 @@ export const HISTORICAL_WD_RECORDS: HistoricalWDRecord[] = [
 ];
 
 // ─── 5. Provenance & Verified Data Sources Registry ──────────────────────────
-
 export const WD_VERIFIED_DATA_SOURCES = [
   {
-    name: 'Open-Meteo Synoptic & Pressure-Level API (ECMWF IFS / NOAA GFS / DWD ICON)',
-    tier: 'LIVE_OBSERVATION & NUMERICAL_FORECAST',
+    name: 'KEW 2D Upper-Tropospheric Vorticity & Trough Feature-Detection Engine (Open-Meteo Pressure Levels)',
+    tier: 'MODEL_NOWCAST_ANALYSIS & NUMERICAL_FORECAST',
     endpoint: 'https://api.open-meteo.com/v1/forecast',
-    parameters: '500 hPa Geopotential Height, 300 hPa Jet Winds, MSL Pressure, Freezing Level, Rain, Snowfall, Gusts',
-    resolution: '0.1°–0.25° (~9–25 km) gridded synoptic assimilation + 7-day NWP forecast',
-    cadence: 'Hourly assimilation & 6-hourly NWP cycles (UTC)',
-    coverage: 'Upstream Mediterranean–Hindu Kush corridor + all 6 Western Himalayan sub-regions',
+    parameters: 'Centered-difference 300/500 hPa Relative Vorticity (ζ), 500 hPa Geopotential Curvature (∇²Z₅₀₀), 0°C Freezing-Level Altitude, 168h Hourly Rain/Snow',
+    resolution: '30-node synoptic waveguide (30°N–38°N, 30°E–75°E) + 31 DEM-verified corridors (0.1°–0.25° ECMWF IFS / GFS / ICON)',
+    cadence: '6-hourly synoptic trajectory linking & hourly corridor NWP series (UTC)',
+    coverage: 'Eastern Mediterranean → Caspian → Hindu Kush → all 6 Western Himalayan sub-regions',
   },
   {
     name: 'RainViewer Global Composite Weather Radar API',
-    tier: 'LIVE_OBSERVATION',
+    tier: 'LIVE_RADAR_OBSERVATION',
     endpoint: 'https://api.rainviewer.com/public/weather-maps.json',
-    parameters: 'Composite precipitation radar reflectivity & infrared satellite cloud-top tiles',
-    resolution: '1–2 km radar mosaic / 4 km IR satellite composite',
+    parameters: 'Observed composite precipitation radar reflectivity mosaic tiles (actual remote-sensing observation)',
+    resolution: '1–2 km radar mosaic',
     cadence: 'Every 10 minutes (real-time observation)',
     coverage: 'South & Central Asia / Western Himalayan approach corridor',
   },
   {
-    name: 'India Meteorological Department (IMD Srinagar & NWFC New Delhi)',
-    tier: 'OFFICIAL_ADVISORY',
-    endpoint: 'https://mausam.imd.gov.in/srinagar/',
-    parameters: 'Statutory district color warnings, WD trough tracking, Doppler radar (Srinagar/Jammu/Banihal)',
-    resolution: 'District & station level',
-    cadence: 'Twice daily + nowcasts',
-    coverage: 'Jammu, Kashmir Valley & Ladakh',
+    name: 'Hunt, Turner & Shaffrey (2018) Synoptic WD Vorticity Methodology Reference',
+    tier: 'HISTORICAL_RECORD & METHODOLOGY',
+    endpoint: 'https://doi.org/10.1002/qj.3200',
+    parameters: 'Upper-tropospheric relative vorticity feature identification (300–400 hPa ζ maxima) & eastward Rossby wave trajectory linking',
+    resolution: 'Synoptic scale (500–2,000 km wavelength)',
+    cadence: '6-hourly synoptic steps',
+    coverage: 'Mediterranean to Western Himalaya storm-track waveguide',
   },
   {
-    name: 'Pakistan Meteorological Department (PMD NWFC & FFD)',
-    tier: 'OFFICIAL_ADVISORY',
-    endpoint: 'https://www.pmd.gov.pk/en/',
-    parameters: 'Westerly wave advisories, mountain snowfall warnings & Indus/Jhelum flood bulletins',
-    resolution: 'Regional & basin level',
-    cadence: 'Daily + special westerly wave advisories',
-    coverage: 'Azad Kashmir, Gilgit & Baltistan',
-  },
-  {
-    name: 'DGRE (DRDO) & CWC / SDMA Coupled Hazard Thresholds',
-    tier: 'OFFICIAL_ADVISORY & HISTORICAL_RECORD',
-    endpoint: 'https://jksdma.jk.gov.in/',
-    parameters: 'Avalanche danger levels (1–5), river flood stages & NH-44 slope rainfall thresholds',
-    resolution: 'Corridor & river-gauge specific',
-    cadence: 'Daily / event-driven',
-    coverage: 'Coupled Flood, Flash Flood, Landslide & Avalanche corridors',
+    name: 'IMD (Srinagar / NWFC) & PMD (NWFC / FFD) Statutory Portals',
+    tier: 'EXTERNAL_AGENCY_PORTAL',
+    endpoint: 'https://mausam.imd.gov.in/srinagar/ · https://www.pmd.gov.pk/en/',
+    parameters: 'Statutory district color warnings & westerly wave bulletins (referenced via live portal link; no public automated CAP JSON ingested)',
+    resolution: 'District & basin level',
+    cadence: 'Twice daily + special advisories',
+    coverage: 'Jammu, Kashmir, Ladakh, Azad Kashmir, Gilgit & Baltistan',
   },
 ];

@@ -33,13 +33,40 @@ export interface HazardDestination {
 }
 
 export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
+  'atmospheric-systems': {
+    id: 'atmospheric-systems',
+    title: 'Atmospheric Systems Hub',
+    description: 'Upstream synoptic command integrating Western Disturbances, Monsoon Dynamics, and Subtropical Jet circulation.',
+    href: '/hazard-intelligence/atmospheric-systems',
+    icon: Layers,
+    color: 'text-sky-400',
+    badge: 'Atmospheric Hub'
+  },
   'western-disturbances': {
     id: 'western-disturbances',
     title: 'Western Disturbances',
     description: 'Synoptic westerly wave tracking, 0°C snowline forecasts, and compound multi-hazard triggers across 6 regions.',
-    href: '/hazard-intelligence/western-disturbances',
+    href: '/hazard-intelligence/atmospheric-systems/western-disturbances',
     icon: Wind,
     color: 'text-sky-400',
+    badge: 'Atmospheric System'
+  },
+  'monsoon-dynamics': {
+    id: 'monsoon-dynamics',
+    title: 'Monsoon Dynamics',
+    description: '850 hPa moisture transport, orographic precipitation gradients, observed rainfall anomalies, and spillover tracking.',
+    href: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics',
+    icon: CloudRain,
+    color: 'text-teal-400',
+    badge: 'Atmospheric System'
+  },
+  'jet-stream-circulation': {
+    id: 'jet-stream-circulation',
+    title: 'Jet Stream & Circulation',
+    description: '250/300 hPa Subtropical Westerly Jet core, 500 hPa troughs and blocking ridges, and mountain-wave wind shear.',
+    href: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation',
+    icon: Compass,
+    color: 'text-indigo-400',
     badge: 'Atmospheric System'
   },
   'floods': {
@@ -163,11 +190,35 @@ export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
 
 // Contextual prioritization matrix: maps current page key to 6 most relevant destinations
 const CONTEXTUAL_PRIORITY: Record<string, string[]> = {
+  'atmospheric-systems': [
+    'western-disturbances',
+    'monsoon-dynamics',
+    'jet-stream-circulation',
+    'floods',
+    'flash-floods',
+    'avalanches'
+  ],
   'western-disturbances': [
+    'jet-stream-circulation',
+    'monsoon-dynamics',
     'floods',
     'flash-floods',
     'landslides',
+    'avalanches'
+  ],
+  'monsoon-dynamics': [
+    'western-disturbances',
+    'jet-stream-circulation',
+    'floods',
+    'flash-floods',
+    'landslides',
+    'glofs'
+  ],
+  'jet-stream-circulation': [
+    'western-disturbances',
+    'monsoon-dynamics',
     'avalanches',
+    'air-pollution',
     'glofs',
     'hazard-dashboards'
   ],

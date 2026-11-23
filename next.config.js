@@ -53,6 +53,16 @@ const nextConfig = {
         destination: '/environmental-monitoring/transportation-pollution/:path*',
         permanent: false,
       },
+      {
+        source: '/hazard-intelligence/western-disturbances',
+        destination: '/hazard-intelligence/atmospheric-systems/western-disturbances',
+        permanent: true,
+      },
+      {
+        source: '/hazard-intelligence/western-disturbances/:path*',
+        destination: '/hazard-intelligence/atmospheric-systems/western-disturbances/:path*',
+        permanent: true,
+      },
     ];
   },
 
