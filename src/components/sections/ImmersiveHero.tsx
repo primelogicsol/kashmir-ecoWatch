@@ -2,24 +2,28 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
-import { Map, Leaf, BarChart3, ArrowRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles, Wind } from 'lucide-react';
+import { Map, Leaf, BarChart3, ArrowRight, ArrowUpRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles, Wind, Scale, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { searchAll } from '@/data';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { isScientificQuestionLike } from '@/lib/search/scientific-qa-types';
 
-interface SearchResult {
-  species?: any[];
-  protectedAreas?: any[];
-  waterBodies?: any[];
-  trails?: any[];
-  districts?: any[];
-  alerts?: any[];
-  reports?: any[];
+interface SuggestGroup {
+  groupKey: string;
+  groupLabel: string;
+  items: Array<{
+    id: string;
+    title: string;
+    subtitle?: string;
+    canonicalUrl: string;
+    trustBadge: string;
+  }>;
 }
 
 export function ImmersiveHero() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult | null>(null);
+  const [suggestGroups, setSuggestGroups] = useState<SuggestGroup[]>([]);
+  const [totalHits, setTotalHits] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -48,120 +52,90 @@ export function ImmersiveHero() {
 
   useEffect(() => {
     if (query.trim().length >= 2) {
+      const ctrl = new AbortController();
       setIsLoading(true);
       const timer = setTimeout(() => {
-        const searchResults = searchAll(query.trim());
-        setResults(searchResults);
-        setIsLoading(false);
-      }, 150);
-      return () => clearTimeout(timer);
+        fetch(`/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=4`, {
+          signal: ctrl.signal,
+        })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => {
+            if (data) {
+              setSuggestGroups(data.groups || []);
+              setTotalHits(data.totalHits || 0);
+            }
+          })
+          .catch(() => {})
+          .finally(() => setIsLoading(false));
+      }, 110);
+      return () => {
+        clearTimeout(timer);
+        ctrl.abort();
+      };
     } else {
-      setResults(null);
+      setSuggestGroups([]);
+      setTotalHits(0);
       setIsLoading(false);
     }
   }, [query]);
 
-  const getResultCount = (results: SearchResult | null) => {
-    if (!results) return 0;
-    return (
-      (results.species?.length || 0) +
-      (results.protectedAreas?.length || 0) +
-      (results.waterBodies?.length || 0) +
-      (results.trails?.length || 0) +
-      (results.districts?.length || 0) +
-      (results.alerts?.length || 0) +
-      (results.reports?.length || 0)
-    );
-  };
-
-  const getRouteForType = (type: string, slug: string, item?: any) => {
-    switch (type) {
-      case 'species':
-        return `/biodiversity/species/${slug}`;
-      case 'protectedAreas':
-        return `/protected-areas/${slug}`;
-      case 'waterBodies':
-        if (item?.type === 'wetland' || item?.category?.toLowerCase().includes('wetland') || slug.includes('wetland')) {
-          return `/water-systems/wetlands/${slug}`;
-        }
-        if (item?.type === 'river' || slug.includes('river')) {
-          return `/water-systems/rivers/${slug}`;
-        }
-        if (item?.type === 'spring' || slug.includes('spring')) {
-          return `/water-systems/springs/${slug}`;
-        }
-        if (item?.type === 'glacier' || slug.includes('glacier')) {
-          return `/water-systems/glaciers/${slug}`;
-        }
-        return `/water-systems/lakes/${slug}`;
-      case 'districts':
-        return `/districts/${slug}`;
-      case 'trails':
-        return `/trails-sightings/hiking-trails`;
-      case 'alerts':
-        return `/risk-monitoring/live-alerts-advisories`;
-      case 'reports':
-        return `/library`;
-      default:
-        return `/search?q=${encodeURIComponent(slug)}`;
-    }
-  };
-
-  const handleSelect = (type: string, slug: string, item?: any) => {
+  const handleSelectUrl = (url: string) => {
     setIsSearchOpen(false);
     setQuery('');
-    router.push(getRouteForType(type, slug, item));
+    router.push(url);
   };
 
   const executeSearch = (targetQuery?: string) => {
     const q = (targetQuery !== undefined ? targetQuery : query).trim();
     setIsSearchOpen(false);
     if (q) {
-      router.push(`/search?q=${encodeURIComponent(q)}`);
+      const modeParam = isScientificQuestionLike(q) ? '&mode=ask' : '';
+      router.push(`/search?q=${encodeURIComponent(q)}${modeParam}`);
     } else {
       router.push('/search');
     }
   };
 
-  const hasResults = results && getResultCount(results) > 0;
+  const hasResults = suggestGroups.length > 0;
 
   const suggestionChips = [
-    { label: 'Protected Areas', icon: Shield, route: '/protected-areas' },
-    { label: 'Species', icon: Activity, route: '/biodiversity' },
-    { label: 'Water Bodies', icon: Droplet, route: '/water-systems' },
-    { label: 'Districts', icon: Map, route: '/districts' },
-    { label: 'Trails', icon: Footprints, route: '/trails-sightings/hiking-trails' },
-    { label: 'Alerts', icon: AlertTriangle, route: '/risk-monitoring/live-alerts-advisories' },
+    { label: 'Hazard Intelligence', icon: AlertTriangle, route: '/hazard-intelligence' },
+    { label: 'Biodiversity', icon: Activity, route: '/biodiversity' },
+    { label: 'Water & Cryosphere', icon: Droplet, route: '/water-systems' },
+    { label: 'Earth Systems', icon: Satellite, route: '/earth-human-impact' },
+    { label: 'Sectoral EIA', icon: Book, route: '/sectoral-eia' },
+    { label: 'Environmental PIL', icon: Scale, route: '/resources/environmental-pil' },
+    { label: 'Green Heroes', icon: Users, route: '/resources/kew-green-heroes' },
   ];
 
   const exampleSearches = [
-    { 
-      label: 'Dachigam', 
-      type: 'National Park', 
-      route: '/protected-areas/dachigam-national-park',
-      badge: 'Protected Area',
-      detail: 'Last viable habitat of Hangul deer'
+    {
+      label: 'Wular Lake',
+      type: 'Water & Cryosphere',
+      route: '/water-systems/lakes/wular-lake',
+      badge: 'Ramsar Site',
+      detail: 'Floodplain hydrology, NWIA & encroachment',
     },
-    { 
-      label: 'Dal Lake', 
-      type: 'Water Body', 
-      route: '/water-systems/lakes/dal-lake',
-      badge: 'Urban Lake',
-      detail: 'Floating gardens & hydrological monitoring'
+    {
+      label: 'Western Disturbances',
+      type: 'Atmospheric System',
+      route: '/hazard-intelligence/atmospheric-systems/western-disturbances',
+      badge: 'Synoptic NWP',
+      detail: '500 hPa trough tracking & rain/snow phase',
     },
-    { 
-      label: 'Hangul', 
-      type: 'Species', 
+    {
+      label: 'Hangul',
+      type: 'Flagship Species',
       route: '/biodiversity/species/hangul-kashmir-stag',
-      badge: 'Critically Endangered',
-      detail: 'Kashmir Stag (Cervus hanglu hanglu)'
+      badge: 'IUCN CR',
+      detail: 'Kashmir Stag (Cervus hanglu hanglu)',
     },
-    { 
-      label: 'Srinagar', 
-      type: 'District', 
-      route: '/districts/srinagar',
-      badge: 'District Profile',
-      detail: 'Jhelum Basin ecological baseline'
+    {
+      label: 'Environmental PIL',
+      type: 'Judicial Tracker',
+      route: '/resources/environmental-pil',
+      badge: 'Accountability',
+      detail: '40-year High Court & NGT compliance audit',
     },
   ];
 
@@ -241,9 +215,19 @@ export function ImmersiveHero() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-500"></span>
             </span>
             <span className="text-[0.40rem] xs:text-[0.45rem] sm:text-xs md:text-[0.65rem] lg:text-xs font-medium text-slate-300 tracking-wide uppercase">
-              Live Environmental Intelligence System Active
+              Western Himalayan Environmental Command Center
             </span>
             <Radar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+          </motion.div>
+
+          {/* Universal Brand Identity Lockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-3 sm:mb-4"
+          >
+            <KewBrandIdentity variant="eyebrow" />
           </motion.div>
 
           {/* Main title - Unified Branding */}
@@ -408,7 +392,7 @@ export function ImmersiveHero() {
                       setIsSearchOpen(false);
                     }
                   }}
-                  placeholder="Search districts, species, lakes, wetlands, trails, alerts..."
+                  placeholder="Search modules, species, water, glaciers, hazards, PILs, EIAs, Green Heroes..."
                   className="flex-1 bg-transparent border-none outline-none text-white text-sm sm:text-base md:text-lg placeholder-slate-500 min-w-0"
                 />
                 {query && (
@@ -461,209 +445,37 @@ export function ImmersiveHero() {
                       )}
 
                       {!isLoading && hasResults && (
-                        <div className="p-4 space-y-6">
-                          {/* Species */}
-                          {results?.species && results.species.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Activity className="w-4 h-4 text-purple-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Species ({results.species.length})
-                                </span>
+                        <div className="p-4 space-y-4">
+                          {suggestGroups.map((grp) => (
+                            <div key={grp.groupKey}>
+                              <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2 mb-1.5">
+                                {grp.groupLabel}
                               </div>
-                              <div className="space-y-2">
-                                {results.species.map((item) => (
+                              <div className="space-y-1">
+                                {grp.items.map((item) => (
                                   <button
                                     key={item.id}
-                                    onClick={() => handleSelect('species', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                                    type="button"
+                                    onClick={() => handleSelectUrl(item.canonicalUrl)}
+                                    className="w-full flex items-center justify-between gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-colors text-left group cursor-pointer"
                                   >
                                     <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-400 italic break-words">{item.scientificName}</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Protected Areas */}
-                          {results?.protectedAreas && results.protectedAreas.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Shield className="w-4 h-4 text-emerald-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Protected Areas ({results.protectedAreas.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.protectedAreas.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('protectedAreas', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-400 break-words">{item.district}</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Water Bodies */}
-                          {results?.waterBodies && results.waterBodies.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Droplet className="w-4 h-4 text-blue-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Water Bodies & Wetlands ({results.waterBodies.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.waterBodies.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('waterBodies', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district} &bull; {item.type}</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Districts */}
-                          {results?.districts && results.districts.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Map className="w-4 h-4 text-slate-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Districts ({results.districts.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.districts.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('districts', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">District</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Trails */}
-                          {results?.trails && results.trails.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Footprints className="w-4 h-4 text-cyan-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Trails & Routes ({results.trails.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.trails.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('trails', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.district} &bull; {item.difficulty || 'Trail'}</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Alerts */}
-                          {results?.alerts && results.alerts.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <AlertTriangle className="w-4 h-4 text-red-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Alerts ({results.alerts.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.alerts.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('alerts', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
+                                      <div className="font-semibold text-white text-sm sm:text-base group-hover:text-emerald-300 transition-colors truncate">
                                         {item.title}
                                       </div>
-                                      <div className="text-xs sm:text-sm text-slate-400 break-words">{item.location}</div>
+                                      {item.subtitle && (
+                                        <div className="text-xs text-slate-400 truncate">{item.subtitle}</div>
+                                      )}
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
+                                    <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300 shrink-0">
+                                      {item.trustBadge}
+                                    </span>
+                                    <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors shrink-0" />
                                   </button>
                                 ))}
                               </div>
                             </div>
-                          )}
-
-                          {/* Reports */}
-                          {results?.reports && results.reports.length > 0 && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-3 px-2">
-                                <Book className="w-4 h-4 text-amber-400" />
-                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                  Reports ({results.reports.length})
-                                </span>
-                              </div>
-                              <div className="space-y-2">
-                                {results.reports.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleSelect('reports', item.slug, item)}
-                                    className="w-full flex items-center justify-between p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                                  >
-                                    <div className="min-w-0 flex-1">
-                                      <div className="font-medium text-white text-sm sm:text-base group-hover:text-forest-300 transition-colors truncate">
-                                        {item.title}
-                                      </div>
-                                      <div className="text-xs sm:text-sm text-slate-500 truncate">{item.year}</div>
-                                    </div>
-                                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors flex-shrink-0 ml-2" />
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
+                          ))}
                         </div>
                       )}
 
@@ -740,8 +552,17 @@ export function ImmersiveHero() {
                           </div>
 
                           {/* Footer hint */}
-                          <div className="mt-4 sm:mt-5 pt-3 sm:pt-3.5 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500">
-                            <span>Search 2,800+ species, wetlands, GIS atlas & real-time alerts</span>
+                          <div className="mt-4 sm:mt-5 pt-3 sm:pt-3.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setIsSearchOpen(false);
+                                router.push('/search?mode=ask');
+                              }}
+                              className="text-sky-400 hover:text-sky-300 font-semibold hover:underline cursor-pointer"
+                            >
+                              Ask Scientific Question (Cited Brief) &rarr;
+                            </button>
                             <button
                               onClick={() => executeSearch()}
                               className="text-emerald-400 hover:text-emerald-300 font-medium hover:underline cursor-pointer"
@@ -757,7 +578,7 @@ export function ImmersiveHero() {
                     {!isLoading && hasResults && (
                       <div className="p-3 sm:p-4 border-t border-white/10 bg-white/[0.03] flex items-center justify-between gap-3">
                         <p className="text-xs text-slate-400">
-                          <strong className="text-white">{getResultCount(results)}</strong> record{getResultCount(results) !== 1 ? 's' : ''} found
+                          <strong className="text-white">{totalHits.toLocaleString()}</strong> record{totalHits !== 1 ? 's' : ''} matched across KEW
                         </p>
                         <button
                           type="button"

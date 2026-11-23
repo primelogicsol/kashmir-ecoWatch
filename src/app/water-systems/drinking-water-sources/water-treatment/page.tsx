@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const treatmentPlants = [
   {
@@ -203,7 +204,7 @@ export default function WaterTreatmentPage() {
       <Heading
         icon={<Beaker className="w-6 h-6 text-emerald-400" />}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Treatment</span>
           </>}
         subtitle="Comprehensive inventory of drinking water treatment infrastructure across Kashmir — from conventional rapid sand filtration to modern membrane bioreactor systems."
@@ -301,39 +302,35 @@ export default function WaterTreatmentPage() {
         <div className="space-y-4">
           {filtered.map((plant, i) => (
             <motion.div key={plant.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
-              <Card className="glass-intense border-white/10 p-5 hover:border-white/15 transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Beaker className="w-5 h-5 text-white" />
+              <Card className="kew-card-shell p-5">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-slate-800 border border-white/10">
+                    <Beaker className="w-5 h-5 text-cyan-400" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <h3 className="text-sm font-semibold text-white">{plant.name}</h3>
-                      <Badge className={`${statusColors[plant.status]} border text-[10px]`}>{plant.status.replace(/-/g, ' ')}</Badge>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 mb-2">
-                      <span className="flex items-center gap-1"><Map className="w-3 h-3" /> {plant.district}</span>
-                      <span className="flex items-center gap-1"><Activity className="w-3 h-3" /> {plant.capacity}</span>
-                      <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {plant.populationServed.toLocaleString()} people</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> Since {plant.yearCommissioned}</span>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs mb-3">
-                      <div><span className="text-slate-500">Technology: </span><span className="text-slate-300">{plant.technology}</span></div>
-                      <div><span className="text-slate-500">Source: </span><span className="text-slate-300">{plant.source}</span></div>
-                    </div>
-                    {plant.challenges.length > 0 && (
-                      <div className="mb-2">
-                        <span className="text-xs text-slate-500 mb-1 block">Challenges:</span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {plant.challenges.map((c, j) => (
-                            <span key={j} className="text-[10px] bg-red-500/10 text-red-400/80 px-2 py-0.5 rounded-[4px] border border-red-500/10">{c}</span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    <div className="text-[10px] text-cyan-400/50 italic border-l-2 border-cyan-500/10 pl-2">{plant.esroNote}</div>
-                  </div>
+                  <Badge className={`${statusColors[plant.status]} border text-[10px]`}>{plant.status.replace(/-/g, ' ')}</Badge>
                 </div>
+                <h3 className="kew-card-title text-base mb-2">{plant.name}</h3>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 mb-3">
+                  <span className="flex items-center gap-1"><Map className="w-3 h-3" /> {plant.district}</span>
+                  <span className="flex items-center gap-1 font-semibold text-white"><Activity className="w-3 h-3 text-cyan-400" /> {plant.capacity}</span>
+                  <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {plant.populationServed.toLocaleString()} people</span>
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> Since {plant.yearCommissioned}</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs mb-3">
+                  <div><span className="text-slate-500">Technology: </span><span className="text-slate-300">{plant.technology}</span></div>
+                  <div><span className="text-slate-500">Source: </span><span className="text-slate-300">{plant.source}</span></div>
+                </div>
+                {plant.challenges.length > 0 && (
+                  <div className="mb-2">
+                    <span className="text-xs text-slate-500 mb-1 block">Challenges:</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {plant.challenges.map((c, j) => (
+                        <span key={j} className="text-[10px] bg-red-500/10 text-red-400/80 px-2 py-0.5 rounded-[4px] border border-red-500/10">{c}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="text-[10px] text-cyan-400/70 italic border-l-2 border-cyan-500/20 pl-2 mt-auto">{plant.esroNote}</div>
               </Card>
             </motion.div>
           ))}

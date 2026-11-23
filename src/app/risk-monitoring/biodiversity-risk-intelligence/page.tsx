@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const biodiversityRisks = [
   { risk: 'Habitat Fragmentation', severity: 'Critical', description: 'Road corridors and development dividing wildlife habitats', affectedSpecies: 45 },
@@ -45,7 +46,7 @@ export default function BiodiversityRiskIntelligencePage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Biodiversity Risk Intelligence' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Biodiversity Risk Intelligence</span>
           </>}
         subtitle="Comprehensive biodiversity risk assessment, habitat vulnerability analysis, threatened species monitoring, and ecological pressure tracking across Kashmir's protected areas and landscapes"

@@ -8,6 +8,7 @@ import { Flower2, MapPin, Calendar, ArrowRight, Camera, Leaf } from 'lucide-reac
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const plantSightings = [
   { id: 'ps-1', species: 'Blue Poppy', scientificName: 'Meconopsis aculeata', type: 'Alpine Flower', location: 'Kolahoi Base', district: 'Anantnag', date: '2024-03-20', observer: 'Botanist', verified: true },
@@ -21,7 +22,7 @@ export default function PlantPhenologySightingsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Plant & Phenology Sightings</span>
           </>}
         subtitle="Flowering records, leaf-out observations, and seasonal plant lifecycle documentation"

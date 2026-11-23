@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion';
 import { getReportById } from '@/data/field-reports-registry';
 import { FieldReport, ReportStatus, ConfidenceLevel } from '@/types';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const statusConfig: Record<ReportStatus, { label: string; color: string; bgColor: string; icon: React.ElementType }> = {
   'reviewed': { label: 'Reviewed', color: 'text-blue-400', bgColor: 'bg-blue-500/10 border-blue-500/30', icon: FileCheck },
@@ -101,6 +102,7 @@ export default function ReportDetailPage() {
                     <Badge variant="danger" size="lg">Restricted</Badge>
                   )}
                 </div>
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="max-w-xl text-3xl md:text-4xl font-bold text-white mb-3">
                   {report.title}
                 </h1>

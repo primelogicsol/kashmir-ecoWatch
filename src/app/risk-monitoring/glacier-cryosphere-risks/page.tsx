@@ -7,6 +7,7 @@ import { Waves, ArrowRight, Thermometer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const glacierRisks = [
   { id: 'gr-1', name: 'Kolahoi Glacial Lake', district: 'Anantnag', riskLevel: 'moderate' as const, elevation: '4200m', type: 'GLOF Potential' },
@@ -20,7 +21,7 @@ export default function GlacierCryosphereRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere Risks</span>
           </>}
         subtitle="Glacial lake monitoring, GLOF risk, and cryosphere changes"

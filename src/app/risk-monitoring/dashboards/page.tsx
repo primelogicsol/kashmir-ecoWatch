@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { riskDashboardStats, liveAlerts } from '@/data/risk-monitoring';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -328,7 +329,7 @@ export default function DashboardsPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Risk Analytics' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk Dashboards</span>
           </>}
         subtitle="Integrated dashboards for multi-hazard visibility, district risk interpretation, incident response, and evolving environmental risk across Kashmir."
@@ -419,7 +420,7 @@ export default function DashboardsPage() {
                 </div>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
                 {groupDashboards.map((dashboard, i) => (
                   <motion.div
                     key={dashboard.id}
@@ -427,61 +428,51 @@ export default function DashboardsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
+                    className="h-full min-w-0"
                   >
-                    <Card
-                      className="glass-intense border-white/10 hover:border-white/20 p-6 cursor-pointer transition-all group flex flex-col h-full"
+                    <div
+                      role="button"
+                      tabIndex={0}
                       onClick={() => router.push(dashboard.route)}
+                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(dashboard.route)}
+                      className="kew-card-shell kew-card-shell--interactive group h-full"
                     >
-                      {/* Header */}
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-11 h-11 rounded-xl bg-slate-900 ${dashboard.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                          <dashboard.icon className="w-5 h-5 text-white" />
+                      <div className="kew-card-top-row">
+                        <div className="kew-card-icon-box bg-red-500/15 border-red-500/30 text-red-400">
+                          <dashboard.icon className="w-5 h-5" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap mb-1">
-                            <h3 className="text-sm font-bold text-white group-hover:text-red-400 transition-colors leading-tight">
-                              {dashboard.name}
-                            </h3>
-                          </div>
-                          <span className="text-xs text-slate-500 font-medium">{dashboard.type}</span>
+                        <span className={`text-xs px-2 py-0.5 rounded-[4px] border font-medium ${STATUS_COLORS[dashboard.status]}`}>
+                          {dashboard.status}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="kew-card-title">{dashboard.name}</h3>
+                        <span className="text-xs text-slate-400 font-medium block mt-0.5">{dashboard.type}</span>
+                      </div>
+
+                      <div className="text-sm font-bold font-mono text-white tabular-nums">
+                        {dashboard.metrics}
+                      </div>
+
+                      <p className="kew-card-desc text-xs sm:text-sm">{dashboard.description}</p>
+
+                      <div className="pt-2 border-t border-white/10">
+                        <span className="text-[11px] text-slate-400 block mb-1.5">Feeds</span>
+                        <div className="flex flex-wrap gap-1">
+                          {dashboard.feeds.map((feed) => (
+                            <span key={feed} className="text-xs px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/5 text-slate-300">
+                              {feed}
+                            </span>
+                          ))}
                         </div>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-xs text-slate-400 leading-relaxed mb-4 flex-grow">
-                        {dashboard.description}
-                      </p>
-
-                      {/* Meta */}
-                      <div className="space-y-3 pt-3 border-t border-white/5">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-slate-500">Metrics</span>
-                          <span className="text-xs text-white font-mono">{dashboard.metrics}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-slate-500">Status</span>
-                          <span className={`text-xs px-2 py-0.5 rounded-[4px] border font-medium ${STATUS_COLORS[dashboard.status]}`}>
-                            {dashboard.status}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-xs text-slate-500 block mb-1">Feeds</span>
-                          <div className="flex flex-wrap gap-1">
-                            {dashboard.feeds.map((feed) => (
-                              <span key={feed} className="text-xs px-1.5 py-0.5 rounded bg-white/5 text-slate-400">
-                                {feed}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* CTA */}
-                      <div className="flex items-center text-xs font-medium text-red-400 group-hover:text-red-300 transition-colors mt-4 pt-3 border-t border-white/5">
+                      <div className="kew-card-cta">
                         <span>Open Dashboard</span>
-                        <ExternalLink className="w-3 h-3 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
+                        <ExternalLink className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                       </div>
-                    </Card>
+                    </div>
                   </motion.div>
                 ))}
               </div>

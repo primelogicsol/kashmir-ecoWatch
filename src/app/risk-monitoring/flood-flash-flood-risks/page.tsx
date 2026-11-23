@@ -7,6 +7,7 @@ import { Heading } from '@/components/common/Heading';
 import { Droplets, ArrowRight, Map, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const floodZones = [
   { id: 'ff-1', name: 'Jhelum Floodplain', district: 'Srinagar', riskLevel: 'high' as const, area: '45 km²', population: '12,000' },
@@ -21,7 +22,7 @@ export default function FloodFlashFloodRisksPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood Risks' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risks</span>
           </>}
         subtitle="River flooding, flash flood corridors, and GLOF risk monitoring"

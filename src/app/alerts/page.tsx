@@ -23,6 +23,7 @@ import {
 } from '@/data/alert-registry';
 import { cn } from '@/lib/utils';
 import { useLiveAlerts } from '@/hooks/useLiveAlerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const categoryIcons: Record<AlertCategory, React.ElementType> = {
   flood: Droplets,
@@ -127,7 +128,7 @@ export default function AlertsPage() {
     });
 
     return result;
-  }, [activeTab, searchQuery, filters]);
+  }, [alerts, activeTab, searchQuery, filters]);
 
   const toggleFilter = <K extends keyof typeof filters>(key: K, value: typeof filters[K][number]) => {
     setFilters(prev => {
@@ -154,7 +155,7 @@ export default function AlertsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Alerts & Advisories</span>
           </>}
         subtitle="Public-facing live alert stream for Kashmir EcoWatch — real-time hazard alerts, weather advisories, and emergency notifications for public safety and disaster preparedness."
@@ -560,7 +561,7 @@ function AlertCard({ alert, index, onClick }: { alert: AlertItem; index: number;
 
               {/* Timing */}
               <div className="flex items-center gap-6 text-xs text-slate-500">
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1" suppressHydrationWarning>
                   <Clock className="w-3.5 h-3.5" />
                   Issued: {new Date(alert.issued).toLocaleDateString('en-US', { 
                     month: 'short', 
@@ -569,7 +570,7 @@ function AlertCard({ alert, index, onClick }: { alert: AlertItem; index: number;
                     minute: '2-digit'
                   })}
                 </span>
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1" suppressHydrationWarning>
                   <Calendar className="w-3.5 h-3.5" />
                   Expires: {new Date(alert.expires).toLocaleDateString('en-US', { 
                     month: 'short', 

@@ -1,15 +1,45 @@
 'use client';
 
 import React from 'react';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import * as Icons from 'lucide-react';
 import Link from 'next/link';
-import { SeasonalLandscape, BloomZone, MigrationWindow, PollinatorWindow, PhenologyRecord, HabitatSignal, WaterTransition, SpeciesActivity, ClimateWindow, SeasonalReport } from '@/types/seasonal-ecology';
+import {
+  SeasonalLandscape,
+  BloomZone,
+  MigrationWindow,
+  PollinatorWindow,
+  PhenologyRecord,
+  HabitatSignal,
+  WaterTransition,
+  SpeciesActivity,
+  ClimateWindow,
+  SeasonalReport,
+} from '@/types/seasonal-ecology';
 
 interface SeasonalCardProps {
-  entity: SeasonalLandscape | BloomZone | MigrationWindow | PollinatorWindow | PhenologyRecord | HabitatSignal | WaterTransition | SpeciesActivity | ClimateWindow | SeasonalReport;
-  variant?: 'landscape' | 'bloom' | 'migration' | 'pollinator' | 'phenology' | 'habitat' | 'water' | 'species' | 'climate' | 'report';
+  entity:
+    | SeasonalLandscape
+    | BloomZone
+    | MigrationWindow
+    | PollinatorWindow
+    | PhenologyRecord
+    | HabitatSignal
+    | WaterTransition
+    | SpeciesActivity
+    | ClimateWindow
+    | SeasonalReport;
+  variant?:
+    | 'landscape'
+    | 'bloom'
+    | 'migration'
+    | 'pollinator'
+    | 'phenology'
+    | 'habitat'
+    | 'water'
+    | 'species'
+    | 'climate'
+    | 'report';
   onClick?: () => void;
   detailHref?: string;
 }
@@ -19,8 +49,10 @@ const getIconForType = (iconName: string) => {
   return <IconComponent className="w-5 h-5" />;
 };
 
-const getSeasonBadgeVariant = (season: string): 'default' | 'success' | 'warning' | 'danger' | 'info' => {
-  const variants: { [key: string]: any } = {
+const getSeasonBadgeVariant = (
+  season: string
+): 'default' | 'success' | 'warning' | 'danger' | 'info' => {
+  const variants: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
     spring: 'success',
     summer: 'default',
     monsoon: 'info',
@@ -31,91 +63,73 @@ const getSeasonBadgeVariant = (season: string): 'default' | 'success' | 'warning
   return variants[season] || 'default';
 };
 
-export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'landscape', onClick, detailHref }) => {
-  const getColorForVariant = () => {
-    const colors: { [key: string]: string } = {
-      landscape: 'from-emerald-500 to-teal-600',
-      bloom: 'from-pink-500 to-rose-600',
-      migration: 'from-sky-500 to-blue-600',
-      pollinator: 'from-amber-500 to-orange-600',
-      phenology: 'from-violet-500 to-purple-600',
-      habitat: 'from-green-500 to-emerald-600',
-      water: 'from-cyan-500 to-blue-600',
-      species: 'from-rose-500 to-red-600',
-      climate: 'from-yellow-500 to-amber-600',
-      report: 'from-slate-500 to-gray-600',
-    };
-    return colors[variant] || colors.landscape;
+export const SeasonalCard: React.FC<SeasonalCardProps> = ({
+  entity,
+  variant = 'landscape',
+  onClick,
+  detailHref,
+}) => {
+  const iconMap: Record<string, string> = {
+    landscape: 'Mountain',
+    bloom: 'Flower2',
+    migration: 'Bird',
+    pollinator: 'Bug',
+    phenology: 'Calendar',
+    habitat: 'Radar',
+    water: 'Droplets',
+    species: 'PawPrint',
+    climate: 'Sun',
+    report: 'FileText',
   };
 
-  const getIconForVariant = () => {
-    const iconMap: { [key: string]: string } = {
-      landscape: 'Mountain',
-      bloom: 'Flower2',
-      migration: 'Bird',
-      pollinator: 'Bug',
-      phenology: 'Calendar',
-      habitat: 'Radar',
-      water: 'Droplets',
-      species: 'PawPrint',
-      climate: 'Sun',
-      report: 'FileText',
-    };
-    return iconMap[variant] || 'Mountain';
-  };
-
-  const getTextColorForVariant = () => {
-    const colors: { [key: string]: string } = {
-      landscape: 'text-emerald-400 group-hover:text-emerald-300',
-      bloom: 'text-rose-400 group-hover:text-rose-300',
-      migration: 'text-sky-400 group-hover:text-sky-300',
-      pollinator: 'text-amber-400 group-hover:text-amber-300',
-      phenology: 'text-violet-400 group-hover:text-violet-300',
-      habitat: 'text-emerald-400 group-hover:text-emerald-300',
-      water: 'text-cyan-400 group-hover:text-cyan-300',
-      species: 'text-rose-400 group-hover:text-rose-300',
-      climate: 'text-amber-400 group-hover:text-amber-300',
-      report: 'text-slate-400 group-hover:text-slate-300',
-    };
-    return colors[variant] || colors.landscape;
+  const iconToneMap: Record<string, string> = {
+    landscape: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400',
+    bloom: 'bg-pink-500/15 border-pink-500/30 text-pink-400',
+    migration: 'bg-sky-500/15 border-sky-500/30 text-sky-400',
+    pollinator: 'bg-amber-500/15 border-amber-500/30 text-amber-400',
+    phenology: 'bg-violet-500/15 border-violet-500/30 text-violet-400',
+    habitat: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400',
+    water: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-400',
+    species: 'bg-rose-500/15 border-rose-500/30 text-rose-400',
+    climate: 'bg-amber-500/15 border-amber-500/30 text-amber-400',
+    report: 'bg-slate-800 border-white/15 text-slate-300',
   };
 
   const getName = () => {
     if ('name' in entity && (entity as any).name) return (entity as any).name;
     if ('title' in entity && (entity as any).title) return (entity as any).title;
-    if ('speciesCommonName' in entity && (entity as any).speciesCommonName) return (entity as any).speciesCommonName || (entity as any).speciesName;
+    if ('speciesCommonName' in entity && (entity as any).speciesCommonName)
+      return (entity as any).speciesCommonName || (entity as any).speciesName;
     if ('commonName' in entity && (entity as any).commonName) return (entity as any).commonName;
     return 'Unknown';
   };
 
   const getDescription = () => {
     if ('description' in entity && (entity as any).description) return (entity as any).description;
-    if ('shortDescription' in entity && (entity as any).shortDescription) return (entity as any).shortDescription;
+    if ('shortDescription' in entity && (entity as any).shortDescription)
+      return (entity as any).shortDescription;
     return '';
   };
 
-  const getDistricts = () => {
+  const getDistricts = (): string[] => {
     if ('districts' in entity && (entity as any).districts) return (entity as any).districts;
     if ('district' in entity && (entity as any).district) return [(entity as any).district];
-    if ('linkedDistricts' in entity && (entity as any).linkedDistricts) return (entity as any).linkedDistricts;
-    if ('regionsPresent' in entity && (entity as any).regionsPresent) return (entity as any).regionsPresent;
+    if ('linkedDistricts' in entity && (entity as any).linkedDistricts)
+      return (entity as any).linkedDistricts;
+    if ('regionsPresent' in entity && (entity as any).regionsPresent)
+      return (entity as any).regionsPresent;
     return [];
   };
 
-  const getSeasons = () => {
+  const getSeasons = (): string[] => {
     if ('primarySeasons' in entity) return entity.primarySeasons;
     if ('seasonalFocus' in entity) return entity.seasonalFocus;
     return [];
   };
 
-  const getElevationZone = () => {
-    if ('elevationZone' in entity) return entity.elevationZone;
-    return null;
-  };
-
   const getElevationRange = () => {
     if ('elevationRange' in entity && entity.elevationRange) {
-      return `${entity.elevationRange.min}m - ${entity.elevationRange.max}m`;
+      return `${entity.elevationRange.min}m – ${entity.elevationRange.max}m`;
     }
     return null;
   };
@@ -126,65 +140,60 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
     if ('observedTiming' in entity) return entity.observedTiming.description;
     if ('seasonalTiming' in entity) return entity.seasonalTiming.description;
     if ('timingWindow' in entity) return entity.timingWindow.description;
-    if ('arrivalWindow' in entity) return `Arrival: ${(entity as MigrationWindow).arrivalWindow?.description}`;
+    if ('arrivalWindow' in entity)
+      return `Arrival: ${(entity as MigrationWindow).arrivalWindow?.description}`;
     return null;
   };
 
   const getAdditionalMetrics = () => {
     const metrics: { label: string; value: string }[] = [];
-
-    if ('area' in entity && entity.area) {
-      metrics.push({ label: 'Area', value: `${entity.area} km²` });
-    }
-    if ('populationEstimate' in entity && entity.populationEstimate) {
+    if ('area' in entity && entity.area) metrics.push({ label: 'Area', value: `${entity.area} km²` });
+    if ('populationEstimate' in entity && entity.populationEstimate)
       metrics.push({ label: 'Population', value: entity.populationEstimate });
-    }
-    if ('peakBloomPeriod' in entity && entity.peakBloomPeriod) {
+    if ('peakBloomPeriod' in entity && entity.peakBloomPeriod)
       metrics.push({ label: 'Peak Bloom', value: entity.peakBloomPeriod });
-    }
-    if ('verificationStatus' in entity && entity.verificationStatus) {
+    if ('verificationStatus' in entity && entity.verificationStatus)
       metrics.push({ label: 'Status', value: entity.verificationStatus });
-    }
-    if ('windowType' in entity && entity.windowType) {
-      metrics.push({ label: 'Window Type', value: entity.windowType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('signalType' in entity && entity.signalType) {
-      metrics.push({ label: 'Signal Type', value: entity.signalType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('transitionType' in entity && entity.transitionType) {
-      metrics.push({ label: 'Transition', value: entity.transitionType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('activityType' in entity && entity.activityType) {
-      metrics.push({ label: 'Activity', value: entity.activityType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('reportType' in entity && entity.reportType) {
-      metrics.push({ label: 'Report Type', value: entity.reportType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('bloomType' in entity && entity.bloomType) {
-      metrics.push({ label: 'Bloom Type', value: entity.bloomType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('wetlandType' in entity && entity.wetlandType) {
-      metrics.push({ label: 'Wetland Type', value: entity.wetlandType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('migrationType' in entity && entity.migrationType) {
-      metrics.push({ label: 'Migration Type', value: entity.migrationType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('pollinatorGroup' in entity && entity.pollinatorGroup) {
-      metrics.push({ label: 'Pollinator Group', value: entity.pollinatorGroup.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('recordType' in entity && entity.recordType) {
-      metrics.push({ label: 'Record Type', value: entity.recordType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('waterbodyType' in entity && entity.waterbodyType) {
-      metrics.push({ label: 'Waterbody Type', value: entity.waterbodyType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('category' in entity && entity.category) {
-      metrics.push({ label: 'Category', value: entity.category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-    if ('taxonomicGroup' in entity && entity.taxonomicGroup) {
-      metrics.push({ label: 'Taxonomic Group', value: entity.taxonomicGroup.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) });
-    }
-
+    if ('windowType' in entity && entity.windowType)
+      metrics.push({
+        label: 'Window Type',
+        value: entity.windowType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('signalType' in entity && entity.signalType)
+      metrics.push({
+        label: 'Signal Type',
+        value: entity.signalType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('transitionType' in entity && entity.transitionType)
+      metrics.push({
+        label: 'Transition',
+        value: entity.transitionType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('activityType' in entity && entity.activityType)
+      metrics.push({
+        label: 'Activity',
+        value: entity.activityType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('reportType' in entity && entity.reportType)
+      metrics.push({
+        label: 'Report Type',
+        value: entity.reportType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('bloomType' in entity && entity.bloomType)
+      metrics.push({
+        label: 'Bloom Type',
+        value: entity.bloomType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('migrationType' in entity && entity.migrationType)
+      metrics.push({
+        label: 'Migration Type',
+        value: entity.migrationType.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
+    if ('pollinatorGroup' in entity && entity.pollinatorGroup)
+      metrics.push({
+        label: 'Pollinator Group',
+        value: entity.pollinatorGroup.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+      });
     return metrics.slice(0, 2);
   };
 
@@ -195,112 +204,92 @@ export const SeasonalCard: React.FC<SeasonalCardProps> = ({ entity, variant = 'l
   const elevationRange = getElevationRange();
   const timingInfo = getTimingInfo();
   const additionalMetrics = getAdditionalMetrics();
-  const variantColor = getColorForVariant();
-  const variantIcon = getIconForVariant();
-  const textColorClasses = getTextColorForVariant();
-  const hoverTextClass = textColorClasses.split(' ')[1]; // Extract the group-hover class
-  const baseTextClass = textColorClasses.split(' ')[0]; // Extract the base text class
+  const variantIcon = iconMap[variant] || 'Mountain';
 
   const cardElement = (
-    <Card
-      className="group relative overflow-hidden glass-intense border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer h-full flex flex-col justify-between"
-      onClick={onClick}
+    <div
+      role={!detailHref && onClick ? 'button' : undefined}
+      tabIndex={!detailHref && onClick ? 0 : undefined}
+      onClick={!detailHref ? onClick : undefined}
+      onKeyDown={(e) => {
+        if (!detailHref && onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      className="kew-card-shell kew-card-shell--interactive group h-full"
     >
-      {/* Visual header with variant color accent */}
-      <div className="relative h-32 bg-slate-800/80 border-b border-white/5 overflow-hidden shrink-0">
-        {/* Icon watermark */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+      {/* 1. ICON (top-left) + Variant Badge (top-right) */}
+      <div className="kew-card-top-row">
+        <div className={`kew-card-icon-box ${iconToneMap[variant] || iconToneMap.landscape}`}>
           {getIconForType(variantIcon)}
         </div>
-
-        {/* Type badge */}
-        <div className="absolute top-3 left-3">
-          <Badge variant="info" size="sm" className="capitalize">
-            {variant}
-          </Badge>
-        </div>
-
-        {/* Title overlay */}
-        <div className="absolute bottom-3 left-4 right-4">
-          <h3 className={`text-lg font-bold text-white ${hoverTextClass} transition-colors line-clamp-1`}>
-            {name}
-          </h3>
-          {elevationRange && (
-            <p className="text-xs text-slate-400 mt-0.5">{elevationRange}</p>
-          )}
-        </div>
+        <Badge variant="info" size="sm" className="capitalize">
+          {variant}
+        </Badge>
       </div>
 
-      {/* Content */}
-      <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-        <div>
-          {/* Description */}
-          <p className="text-sm text-slate-400 line-clamp-2">
-            {description}
-          </p>
-
-          {/* Districts */}
-          {districts.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {districts.slice(0, 3).map((district, idx) => (
-                <Badge key={idx} variant="info" size="sm">
-                  {district.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                </Badge>
-              ))}
-              {districts.length > 3 && (
-                <Badge variant="info" size="sm">+{districts.length - 3}</Badge>
-              )}
-            </div>
-          )}
-
-          {/* Seasons */}
-          {seasons.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {seasons.slice(0, 4).map((season, idx) => (
-                <Badge key={idx} variant={getSeasonBadgeVariant(season)} size="sm">
-                  {season.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                </Badge>
-              ))}
-            </div>
-          )}
-
-          {/* Metrics */}
-          {additionalMetrics.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {additionalMetrics.map((metric, idx) => (
-                <div key={idx} className="px-2 py-1 rounded-md bg-slate-800/50 border border-white/5">
-                  <span className="text-xs text-slate-500">{metric.label}: </span>
-                  <span className="text-xs text-white font-medium">{metric.value}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div>
-          {/* Timing Info */}
-          {timingInfo && (
-            <div className="pt-3 border-t border-white/5">
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <Icons.Calendar className="w-3.5 h-3.5" />
-                <span className="line-clamp-1">{timingInfo}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Hover CTA */}
-          <div className={`flex items-center gap-2 ${baseTextClass} text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pt-3 border-t border-white/5 mt-2`}>
-            <span>View Details</span>
-            <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </div>
-        </div>
+      {/* 2. TITLE — full horizontal width */}
+      <div>
+        <h3 className="kew-card-title">{name}</h3>
+        {elevationRange && <p className="text-xs text-slate-400 mt-0.5 tabular-nums">{elevationRange}</p>}
       </div>
-    </Card>
+
+      {/* 3. KPI / Additional Metrics */}
+      {additionalMetrics.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {additionalMetrics.map((metric, idx) => (
+            <div key={idx} className="px-2.5 py-1 rounded-md bg-slate-800/60 border border-white/5">
+              <span className="text-[11px] text-slate-400">{metric.label}: </span>
+              <span className="text-xs text-white font-semibold">{metric.value}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 4. DESCRIPTION */}
+      {description && <p className="kew-card-desc">{description}</p>}
+
+      {/* Districts & Seasons */}
+      {districts.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {districts.slice(0, 3).map((district, idx) => (
+            <Badge key={idx} variant="info" size="sm">
+              {district.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+            </Badge>
+          ))}
+          {districts.length > 3 && <Badge variant="info" size="sm">+{districts.length - 3}</Badge>}
+        </div>
+      )}
+
+      {seasons.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {seasons.slice(0, 4).map((season, idx) => (
+            <Badge key={idx} variant={getSeasonBadgeVariant(season)} size="sm">
+              {season.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+            </Badge>
+          ))}
+        </div>
+      )}
+
+      {timingInfo && (
+        <div className="flex items-start gap-2 text-xs text-slate-300 pt-1">
+          <Icons.Calendar className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+          <span className="break-words">{timingInfo}</span>
+        </div>
+      )}
+
+      {/* 5. CTA — consistently visible and anchored near bottom */}
+      <div className="kew-card-cta">
+        <span>View Details</span>
+        <Icons.ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+      </div>
+    </div>
   );
 
   if (detailHref) {
     return (
-      <Link href={detailHref} className="block h-full no-underline">
+      <Link href={detailHref} onClick={onClick} className="block h-full min-w-0 no-underline">
         {cardElement}
       </Link>
     );

@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const submissionTypes = [
   {
@@ -107,7 +108,7 @@ export default function ContributeDataPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
   title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute Data</span>
           </>}
   subtitle="Share structured datasets, research findings, water quality readings, and monitoring data to strengthen Kashmir's environmental intelligence and evidence archive"
@@ -176,65 +177,61 @@ export default function ContributeDataPage() {
             <p className="text-slate-400">Choose the type of data you want to contribute — each card opens a dedicated submission workflow</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {submissionTypes.map((type, index) => (
               <motion.div
                 key={type.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Link href={type.route} className="block h-full">
-                  <Card
-                    className={`glass-intense border transition-all p-6 h-full hover:border-white/30 cursor-pointer ${
-                      selectedType === type.id ? 'border-blue-500 bg-blue-500/5' : 'border-white/10 hover:border-white/20'
+                <Link href={type.route} className="block h-full no-underline" onClick={() => setSelectedType(type.id)}>
+                  <div
+                    data-selected={selectedType === type.id ? 'true' : undefined}
+                    className={`kew-card-shell kew-card-shell--interactive group h-full ${
+                      selectedType === type.id ? 'kew-card-shell--selected' : ''
                     }`}
-                    onClick={() => setSelectedType(type.id)}
                   >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-slate-900 ${type.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                        <type.icon className="w-6 h-6 text-white" />
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-blue-500/15 border-blue-500/30 text-blue-400">
+                        <type.icon className="w-5 h-5" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-bold text-white mb-1">{type.title}</h3>
-                        <p className="text-sm text-slate-400">{type.description}</p>
-                      </div>
+                      <Badge variant="outline" className="text-xs border-white/10 text-slate-300">
+                        {type.routesTo}
+                      </Badge>
                     </div>
 
-                    <div className="mb-3">
-                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Required Fields</span>
+                    <h3 className="kew-card-title">{type.title}</h3>
+                    <p className="kew-card-desc">{type.description}</p>
+
+                    <div>
+                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Required Fields</span>
                       <div className="flex flex-wrap gap-1.5 mt-2">
                         {type.fields.slice(0, 4).map((field, i) => (
-                          <span key={i} className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs text-slate-300">
+                          <span key={i} className="px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-xs text-slate-300">
                             {field}
                           </span>
                         ))}
                         {type.fields.length > 4 && (
-                          <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs text-slate-400">
+                          <span className="px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-xs text-slate-400">
                             +{type.fields.length - 4} more
                           </span>
                         )}
                       </div>
                     </div>
 
-                    <div className="mb-4">
-                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Routes To</span>
-                      <div className="mt-2">
-                        <Badge variant="outline" className="text-xs border-white/10 text-slate-300">
-                          {type.routesTo}
-                        </Badge>
-                      </div>
+                    <div className="mt-auto pt-2">
+                      <Button
+                        size="sm"
+                        className={`w-full bg-gradient-to-r ${type.color} hover:opacity-90 text-white text-sm`}
+                      >
+                        <Upload className="w-4 h-4 mr-2" />
+                        Submit {type.title}
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
                     </div>
-
-                    <Button
-                      size="sm"
-                      className={`w-full bg-gradient-to-r ${type.color} hover:opacity-90 text-white text-sm`}
-                    >
-                      <Upload className="w-4 h-4 mr-2" />
-                      Submit {type.title}
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </Button>
-                  </Card>
+                  </div>
                 </Link>
               </motion.div>
             ))}

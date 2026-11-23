@@ -11,6 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const mortalityRecords = [
   { id: 'wm-1', species: 'Leopard', district: 'Pulwama', cause: 'Roadkill', location: 'NH-44 Corridor', date: '2025-03-15', severity: 'High' },
@@ -45,7 +46,7 @@ export default function WildlifeMortalityKillRecordsPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wildlife Mortality / Kill Records</span>
           </>}
         subtitle="Roadkill, poaching, electrocution, habitat-linked mortality, conflict-linked deaths, and protected area/corridor-linked incident monitoring across Kashmir landscapes"

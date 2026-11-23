@@ -67,6 +67,11 @@ export function ExpandableLivePanels() {
   const [panels, setPanels] = useState<InsightPanel[]>(insightPanels);
   const [isLiveTelemetry, setIsLiveTelemetry] = useState(false);
   const [lastSynced, setLastSynced] = useState<string>('');
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   // 2. All cards opened by default per user specification
   const [expandedPanels, setExpandedPanels] = useState<Record<string, boolean>>(() => {
@@ -373,8 +378,9 @@ export function ExpandableLivePanels() {
   };
 
   const formatRelativeTime = (date: Date | string) => {
+    if (!hasMounted) return 'Recently';
     const d = typeof date === 'string' ? new Date(date) : date;
-    const diffMs = Date.now() - d.getTime();
+    const diffMs = Math.max(0, Date.now() - d.getTime());
     const diffMins = Math.floor(diffMs / 60000);
     if (diffMins < 2) return 'Just now';
     if (diffMins < 60) return `${diffMins}m ago`;

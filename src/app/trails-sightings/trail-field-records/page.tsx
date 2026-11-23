@@ -8,6 +8,7 @@ import { MapPin, Calendar, ArrowRight, FileText, ClipboardList } from 'lucide-re
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const fieldRecords = [
   { id: 'fr-1', title: 'Trail Condition Update - Tarsar Marsar', type: 'Trail Report', location: 'Tarsar Marsar Trek', district: 'Anantnag', date: '2024-03-25', author: 'Trek Leader', summary: 'Trail cleared up to 3km, snow line at 3200m' },
@@ -21,7 +22,7 @@ export default function TrailFieldRecordsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trail Field Records</span>
           </>}
         subtitle="General field observations, trail conditions, and ecological notes from the field"

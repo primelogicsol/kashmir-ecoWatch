@@ -32,6 +32,7 @@ import {
   RECENT_AQUATIC_CANDIDATE_ALERTS,
   HIMALAYAN_LOSS_RECOVERY_LEDGER 
 } from '@/data/aquatic-cryosphere-observatory';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export const metadata: Metadata = {
   title: 'Aquatic, Wetland & Cryosphere Change Observatory | Earth & Human Impact | Kashmir EcoWatch',
@@ -100,12 +101,7 @@ export default function AquaticCryosphereOverviewPage() {
         icon={<Droplets className="w-6 h-6 text-cyan-400" />}
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-cyan-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                EHII-HYDRO
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400 bg-clip-text text-transparent tracking-normal">
                 <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Aquatic &amp; Cryosphere</span> Change Observatory

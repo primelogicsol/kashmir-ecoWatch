@@ -42,21 +42,27 @@ export function Carousel({
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
   const getScrollAmount = useCallback(() => {
-    if (!containerRef.current) return 300;
+    if (!containerRef.current) return itemWidth.mobile;
+    const firstChild = containerRef.current.firstElementChild as HTMLElement | null;
+    if (firstChild) {
+      const gapPx = parseFloat(window.getComputedStyle(containerRef.current).columnGap || '16') || 16;
+      return firstChild.getBoundingClientRect().width + gapPx;
+    }
     const containerWidth = containerRef.current.clientWidth;
-    // Scroll by approximately one item width based on breakpoint
     if (containerWidth >= 1024) return itemWidth.desktop || itemWidth.tablet || itemWidth.mobile;
     if (containerWidth >= 768) return itemWidth.tablet || itemWidth.mobile;
-    return itemWidth.mobile;
+    return Math.min(itemWidth.mobile, containerWidth);
   }, [itemWidth]);
 
-  // Calculate visible items on client-side only
   useEffect(() => {
     const calculateVisibleItems = () => {
-      const itemWidthTotal = itemWidth.mobile + (parseInt(gap.split(' ')[0]?.replace('gap-', '') || '12') * 4);
-      if (typeof window !== 'undefined') {
-        setVisibleItems(Math.floor(window.innerWidth / itemWidthTotal));
-      }
+      if (typeof window === 'undefined') return;
+      const availableWidth = containerRef.current?.clientWidth || window.innerWidth;
+      const gapToken = parseInt(gap.split(' ')[0]?.replace('gap-', '') || '3', 10);
+      const gapPx = Number.isFinite(gapToken) ? gapToken * 4 : 12;
+      const baseWidth = Math.max(180, Math.min(itemWidth.mobile, availableWidth));
+      const itemWidthTotal = Math.max(1, baseWidth + gapPx);
+      setVisibleItems(Math.max(1, Math.floor(availableWidth / itemWidthTotal)));
     };
 
     calculateVisibleItems();
@@ -66,38 +72,33 @@ export function Carousel({
 
   const checkScrollPosition = useCallback(() => {
     if (!containerRef.current) return;
-    
-    const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-    setScrollPosition(scrollLeft);
-    setIsAtStart(scrollLeft < 10);
-    setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 10);
+    const { scrollLeft: sl, scrollWidth, clientWidth } = containerRef.current;
+    setScrollPosition(sl);
+    setIsAtStart(sl <= 8);
+    setIsAtEnd(sl + clientWidth >= scrollWidth - 8);
   }, []);
 
   useEffect(() => {
     checkScrollPosition();
     const container = containerRef.current;
     if (container) {
-      container.addEventListener('scroll', checkScrollPosition);
+      container.addEventListener('scroll', checkScrollPosition, { passive: true });
       window.addEventListener('resize', checkScrollPosition);
       return () => {
         container.removeEventListener('scroll', checkScrollPosition);
         window.removeEventListener('resize', checkScrollPosition);
       };
     }
-  }, [checkScrollPosition]);
+  }, [checkScrollPosition, children]);
 
-  // Auto-play functionality
   useEffect(() => {
     if (autoPlay && !isDragging) {
       autoPlayRef.current = setInterval(() => {
         if (!containerRef.current) return;
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-        
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          // At end, scroll to start
+        const { scrollLeft: sl, scrollWidth, clientWidth } = containerRef.current;
+        if (sl + clientWidth >= scrollWidth - 10) {
           containerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          // Scroll next
           containerRef.current.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         }
       }, autoPlayInterval);
@@ -108,44 +109,30 @@ export function Carousel({
     }
   }, [autoPlay, autoPlayInterval, isDragging, getScrollAmount]);
 
-  const scrollLeft_fn = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-    }
+  const scrollPrev = useCallback(() => {
+    containerRef.current?.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
   }, [getScrollAmount]);
 
-  const scrollRight = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-    }
+  const scrollNext = useCallback(() => {
+    containerRef.current?.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
   }, [getScrollAmount]);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!containerRef.current || document.activeElement !== containerRef.current) return;
-      
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        scrollLeft_fn();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        scrollRight();
-      }
-    };
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollPrev();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollNext();
+    }
+  };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [scrollLeft_fn, scrollRight]);
-
-  // Touch handlers for swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsDragging(true);
     setStartX(e.touches[0].clientX);
     if (containerRef.current) {
       setScrollLeft(containerRef.current.scrollLeft);
     }
-    // Pause autoplay while dragging
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
       autoPlayRef.current = null;
@@ -155,7 +142,7 @@ export function Carousel({
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging || !containerRef.current) return;
     const x = e.touches[0].clientX;
-    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+    const walk = (x - startX) * 1.25;
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -163,15 +150,17 @@ export function Carousel({
     setIsDragging(false);
   };
 
-  // Mouse drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
+    // Do not hijack clicks on interactive buttons or links inside cards
+    const target = e.target as HTMLElement | null;
+    if (target?.closest('a, button, input, select, textarea')) return;
+
     setIsDragging(true);
     setStartX(e.clientX);
     if (containerRef.current) {
       setScrollLeft(containerRef.current.scrollLeft);
+      containerRef.current.style.setProperty('cursor', 'grabbing');
     }
-    containerRef.current?.style.setProperty('cursor', 'grabbing');
-    // Pause autoplay while dragging
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
       autoPlayRef.current = null;
@@ -182,7 +171,7 @@ export function Carousel({
     if (!isDragging || !containerRef.current) return;
     e.preventDefault();
     const x = e.clientX;
-    const walk = (x - startX) * 1.5;
+    const walk = (x - startX) * 1.25;
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -192,70 +181,59 @@ export function Carousel({
   };
 
   const handleMouseLeave = () => {
-    if (isDragging) {
-      handleMouseUp();
-    }
+    if (isDragging) handleMouseUp();
   };
 
+  const totalCount = React.Children.count(children);
+  const safeVisible = Math.max(1, visibleItems);
+  const dotCount = Math.max(1, Math.ceil(totalCount / safeVisible));
+
   return (
-    <div className={cn('relative group w-full max-w-full overflow-hidden', className)}>
-      {/* Navigation Arrows */}
-      {showArrows && (
-        <>
+    <div className={cn('relative group/carousel w-full max-w-full', className)}>
+      {/* Accessible Non-Overlapping Control Bar (visible on tablet/desktop & keyboard focus) */}
+      {showArrows && totalCount > 1 && (
+        <div className="hidden sm:flex items-center justify-end gap-2 mb-3">
           <button
-            onClick={scrollLeft_fn}
+            onClick={scrollPrev}
             disabled={isAtStart}
             className={cn(
-              'absolute left-0 top-1/2 -translate-y-1/2 z-20',
-              'w-10 h-10 sm:w-12 sm:h-12 rounded-full',
-              'bg-slate-900/90 backdrop-blur-sm border border-white/20',
-              'flex items-center justify-center',
-              'transition-all duration-300 ease-out',
-              'hover:bg-forest-600 hover:border-forest-500 hover:scale-110',
-              'focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 focus:ring-offset-slate-900',
-              'shadow-lg',
-              isAtStart && 'opacity-0 cursor-not-allowed pointer-events-none',
-              'group-hover:opacity-100 opacity-0'
+              'w-9 h-9 rounded-md bg-slate-900 border border-white/15 flex items-center justify-center text-white transition-all',
+              'hover:bg-emerald-600 hover:border-emerald-400',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
+              isAtStart && 'opacity-40 cursor-not-allowed hover:bg-slate-900 hover:border-white/15'
             )}
-            aria-label="Previous items"
+            aria-label="Previous slide"
             type="button"
           >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <ChevronLeft className="w-4 h-4" />
           </button>
-
           <button
-            onClick={scrollRight}
+            onClick={scrollNext}
             disabled={isAtEnd}
             className={cn(
-              'absolute right-0 top-1/2 -translate-y-1/2 z-20',
-              'w-10 h-10 sm:w-12 sm:h-12 rounded-full',
-              'bg-slate-900/90 backdrop-blur-sm border border-white/20',
-              'flex items-center justify-center',
-              'transition-all duration-300 ease-out',
-              'hover:bg-forest-600 hover:border-forest-500 hover:scale-110',
-              'focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 focus:ring-offset-slate-900',
-              'shadow-lg',
-              isAtEnd && 'opacity-50 cursor-not-allowed',
-              'group-hover:opacity-100 opacity-0'
+              'w-9 h-9 rounded-md bg-slate-900 border border-white/15 flex items-center justify-center text-white transition-all',
+              'hover:bg-emerald-600 hover:border-emerald-400',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
+              isAtEnd && 'opacity-40 cursor-not-allowed hover:bg-slate-900 hover:border-white/15'
             )}
-            aria-label="Next items"
+            aria-label="Next slide"
             type="button"
           >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <ChevronRight className="w-4 h-4" />
           </button>
-        </>
+        </div>
       )}
 
-      {/* Carousel Container */}
+      {/* Carousel Track — equal-height stretch, zero edge clipping */}
       <div
         ref={containerRef}
         className={cn(
-          'flex overflow-x-auto scrollbar-hide',
+          'flex items-stretch overflow-x-auto scrollbar-hide px-0.5 py-1',
           gap,
-          'pb-4 -mb-4', // Allow shadow overflow
           snapAlign === 'center' && 'snap-center',
           snapAlign === 'end' && 'snap-end',
-          snapAlign === 'start' && 'snap-start'
+          snapAlign === 'start' && 'snap-start',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-lg'
         )}
         style={{
           scrollSnapType: 'x mandatory',
@@ -266,6 +244,7 @@ export function Carousel({
         aria-label={ariaLabel}
         aria-roledescription="carousel"
         tabIndex={0}
+        onKeyDown={handleContainerKeyDown}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -277,19 +256,26 @@ export function Carousel({
         {children}
       </div>
 
-      {/* Scroll indicators (dots) - optional, shown on mobile */}
-      <div className="flex justify-center items-center gap-1 mt-4 sm:hidden" role="tablist" aria-label="Carousel navigation">
-        {(() => {
-          const dotCount = Math.ceil(React.Children.count(children) / visibleItems);
-          return Array.from({ length: dotCount }, (_, index) => {
-            const isActive = scrollPosition < (index + 1) * itemWidth.mobile;
+      {/* Accessible Mobile Pagination Dots (44x44 touch targets) */}
+      {dotCount > 1 && (
+        <div
+          className="flex flex-wrap justify-center items-center gap-1 mt-3 sm:hidden"
+          role="tablist"
+          aria-label="Carousel slide indicators"
+        >
+          {Array.from({ length: dotCount }, (_, index) => {
+            const stepPx = Math.max(200, itemWidth.mobile);
+            const activeIdx = Math.min(dotCount - 1, Math.max(0, Math.round(scrollPosition / stepPx)));
+            const isActive = activeIdx === index;
             return (
               <button
                 key={index}
-                onClick={() => containerRef.current?.scrollTo({
-                  left: index * itemWidth.mobile,
-                  behavior: 'smooth'
-                })}
+                onClick={() =>
+                  containerRef.current?.scrollTo({
+                    left: index * getScrollAmount(),
+                    behavior: 'smooth',
+                  })
+                }
                 className="carousel-touch-target"
                 aria-label={`Go to slide ${index + 1}`}
                 aria-selected={isActive}
@@ -306,9 +292,9 @@ export function Carousel({
                 />
               </button>
             );
-          });
-        })()}
-      </div>
+          })}
+        </div>
+      )}
     </div>
   );
 }

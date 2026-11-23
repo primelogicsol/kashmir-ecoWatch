@@ -8,6 +8,7 @@ import { Book, FileText, ArrowRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const reports = [
   { id: 'rr-1', title: 'Trails of Kashmir: A Comprehensive Guide', type: 'Field Guide', year: 2023, author: 'Dr. Kumar Foundation', pages: 248, downloads: 1247 },
@@ -22,7 +23,7 @@ export default function ReportsReferencesPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Reports & References</span>
           </>}
         subtitle="Scientific reports, field guides, research papers, and reference materials for trails and wildlife"
@@ -36,22 +37,25 @@ export default function ReportsReferencesPage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {reports.map((report, i) => (
-              <motion.div key={report.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-slate-500/30 transition-all p-5">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <FileText className="w-6 h-6 text-white" />
+              <motion.div key={report.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="h-full">
+                <Card className="kew-card-shell h-full p-5">
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-900">
+                      <FileText className="w-5 h-5 text-emerald-400" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-1">{report.title}</h3>
-                      <div className="text-sm text-slate-400 mb-2">{report.author} • {report.year}</div>
-                      <div className="flex items-center gap-4 text-xs text-slate-500 mb-3">
-                        <span>{report.pages} pages</span>
-                        <span>{report.downloads} downloads</span>
-                        <Badge variant="outline" size="sm">{report.type}</Badge>
-                      </div>
-                      <Button size="sm" variant="outline" className="border-white/20 text-white h-9" icon={<Download className="w-4 h-4" />}>Download PDF</Button>
-                    </div>
+                    <Badge variant="outline" size="sm">{report.type}</Badge>
+                  </div>
+                  <h3 className="kew-card-title mb-1.5">{report.title}</h3>
+                  <div className="kew-card-kpi text-xs text-slate-400 mb-2">
+                    <span className="font-semibold text-white">{report.pages}</span>
+                    <span className="kew-card-kpi-unit">pages</span>
+                    <span className="text-slate-600">•</span>
+                    <span className="font-semibold text-emerald-400">{report.downloads}</span>
+                    <span className="kew-card-kpi-unit">downloads</span>
+                  </div>
+                  <p className="kew-card-desc text-sm mb-4">{report.author} • {report.year}</p>
+                  <div className="mt-auto pt-3 border-t border-white/10">
+                    <Button size="sm" variant="outline" className="border-white/20 text-white h-9" icon={<Download className="w-4 h-4" />}>Download PDF</Button>
                   </div>
                 </Card>
               </motion.div>

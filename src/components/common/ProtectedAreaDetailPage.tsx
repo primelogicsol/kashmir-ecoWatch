@@ -19,6 +19,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ProtectedArea } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface ProtectedAreaDetailPageProps {
   area: ProtectedArea;
@@ -953,6 +954,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                 )}
               </div>
 
+              <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
               <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-black text-white mb-4 sm:mb-6 leading-[1.15] tracking-tight overflow-visible pb-1">
                 {splitTitle(area.name)}
               </h1>

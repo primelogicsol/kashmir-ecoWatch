@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function ArchivesPage() {
   const router = useRouter();
@@ -86,10 +87,7 @@ export default function ArchivesPage() {
         ]}
         icon={<Archive className="w-6 h-6 text-amber-400" />}
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Impact Archives</span>
         </>}
         subtitle="Explore completed projects, past verification reports, retired campaigns, and historical field evidence recorded across Kashmir."

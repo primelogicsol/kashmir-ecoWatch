@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
 import { submitToOperations } from '@/lib/operationsClient';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 
@@ -505,7 +506,7 @@ export default function ShareDataPage() {
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Share Environmental Data' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-blue-300 bg-clip-text text-transparent">Share Environmental Data</span>
         </>}
         subtitle="Submit structured, content-aware scientific intelligence to the unified environmental network. Open to researchers, institutions, citizen scientists, and partner organisations."

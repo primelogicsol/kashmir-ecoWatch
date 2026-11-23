@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const rainfallData = [
   { station: 'Srinagar', annualMm: 655, wettestMonth: 'March', driestMonth: 'October', snowDays: 12 },
@@ -96,7 +97,7 @@ export default function RainwaterHarvestingPage() {
       <Heading
         icon={<CloudRain className="w-6 h-6 text-emerald-400" />}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Rainwater Harvesting</span>
           </>}
         subtitle="Harnessing Kashmir's rainfall (600-1450mm annually) for drinking water augmentation and groundwater recharge. The ESRO EIA Report identifies that rainwater is lost as run off without recharging groundwater."

@@ -16,6 +16,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface ModuleItem {
   name: string;
@@ -278,7 +279,7 @@ export default function ModuleDirectoryPage() {
       <Heading
         label="Platform Modules"
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Module Directory</span>
           </>}
         subtitle="Complete system index of all Kashmir EcoWatch modules, intelligence layers, and operational pathways."
@@ -351,7 +352,7 @@ export default function ModuleDirectoryPage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
               {group.modules.map((mod, modIndex) => {
                 const Icon = mod.icon || Compass;
                 return (
@@ -361,29 +362,30 @@ export default function ModuleDirectoryPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: modIndex * 0.03 }}
+                    className="h-full min-w-0"
                   >
-                    <Card
-                      className="glass-intense border-white/10 hover:border-white/20 p-5 cursor-pointer transition-all group h-full"
+                    <div
+                      role="button"
+                      tabIndex={0}
                       onClick={() => router.push(mod.route)}
+                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(mod.route)}
+                      className="kew-card-shell kew-card-shell--interactive group h-full"
                     >
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${group.gradient} flex items-center justify-center flex-shrink-0`}>
-                          <Icon className="w-5 h-5 text-white" />
+                      <div className="kew-card-top-row">
+                        <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-emerald-400">
+                          <Icon className="w-5 h-5" />
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold text-white group-hover:text-violet-300 transition-colors mb-1">
-                            {mod.name}
-                          </h3>
-                          <p className="text-sm text-slate-400 leading-relaxed">
-                            {mod.description}
-                          </p>
-                        </div>
+                        <Badge variant="outline" size="sm" className="text-[10px] border-white/10 text-slate-300">
+                          {group.badge}
+                        </Badge>
                       </div>
-                      <div className="flex items-center gap-2 text-sm font-medium text-violet-400 group-hover:text-violet-300 transition-colors mt-auto">
+                      <h3 className="kew-card-title">{mod.name}</h3>
+                      <p className="kew-card-desc">{mod.description}</p>
+                      <div className="kew-card-cta">
                         <span>Open Module</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                       </div>
-                    </Card>
+                    </div>
                   </motion.div>
                 );
               })}

@@ -13,6 +13,7 @@ import {
   Calendar, Bird, Mountain, Fish, Flower2, Activity, Clock, Sprout, Search, Filter, ChevronLeft, ChevronRight, X, Bug, PawPrint, Info, MapPin, Shield
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const taxonIcons: Record<string, React.ElementType> = {
   mammals: PawPrint,
@@ -87,10 +88,7 @@ export default function SeasonalActivityPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Seasonal Species Activity</span>
         </>}
         subtitle="Breeding periods, activity windows, appearance/disappearance timing, altitudinal movement cues, and seasonal behavior notes."
@@ -260,50 +258,43 @@ export default function SeasonalActivityPage() {
             {filteredActivities.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((a, idx) => {
               const IconComponent = taxonIcons[a.taxonomicGroup] || Activity;
               return (
-                <motion.div key={a.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                  <Card className="h-full flex flex-col overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
-                    <div className="p-5 border-b border-white/5 bg-white/5 relative">
-                      <div className="flex flex-wrap gap-1.5 mb-3">
+                <motion.div key={a.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="h-full">
+                  <Card className="kew-card-shell h-full p-5 group" padding="none">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-violet-500/15 border-violet-500/25">
+                        <IconComponent className="w-5 h-5 text-violet-400" />
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 justify-end">
                         <Badge variant="outline" className={activityTypeColors[a.activityType] || 'bg-slate-700/50 text-slate-300'}>
                           {a.activityType.replace(/-/g, ' ')}
                         </Badge>
                         <Badge variant="outline" className="border-white/20 capitalize">{a.taxonomicGroup}</Badge>
                       </div>
-                      
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center shrink-0 mt-1">
-                          <IconComponent className="w-5 h-5 text-violet-400" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-white group-hover:text-violet-300 transition-colors mb-0.5">
-                            {a.speciesCommonName}
-                          </h3>
-                          <p className="text-sm italic text-slate-400">{a.speciesName}</p>
-                        </div>
+                    </div>
+
+                    <h3 className="kew-card-title text-lg group-hover:text-violet-300 transition-colors mb-0.5">
+                      {a.speciesCommonName}
+                    </h3>
+                    <p className="text-xs italic text-slate-400 mb-3">{a.speciesName}</p>
+                    <p className="kew-card-desc text-sm mb-4">
+                      {a.description}
+                    </p>
+
+                    <div className="space-y-2.5 mb-4">
+                      <div className="text-xs text-slate-300 flex items-center gap-2 bg-black/20 p-2 rounded border border-white/5">
+                        <Clock className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                        <span className="text-slate-500">Activity Window:</span> Month {a.activityWindow.startMonth}–{a.activityWindow.endMonth}
+                      </div>
+                      <div className="text-xs text-slate-300 flex items-center gap-2 bg-black/20 p-2 rounded border border-white/5">
+                        <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                        <span className="text-slate-500">Peak:</span> {a.peakMonths.map(m => monthNames[m-1]).join(', ')}
                       </div>
                     </div>
-                    
-                    <div className="p-5 flex flex-col flex-1">
-                      <p className="text-sm text-slate-300 mb-4 line-clamp-2">
-                        {a.description}
-                      </p>
 
-                      <div className="space-y-3 mb-4 flex-1">
-                        <div className="text-xs text-slate-300 flex items-center gap-2 bg-black/20 p-2 rounded border border-white/5">
-                          <Clock className="w-3.5 h-3.5 text-sky-400" />
-                          <span className="text-slate-500">Activity Window:</span> Month {a.activityWindow.startMonth}–{a.activityWindow.endMonth}
-                        </div>
-                        <div className="text-xs text-slate-300 flex items-center gap-2 bg-black/20 p-2 rounded border border-white/5">
-                          <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                          <span className="text-slate-500">Peak:</span> {a.peakMonths.map(m => monthNames[m-1]).join(', ')}
-                        </div>
-                      </div>
-
-                      <div className="mt-auto pt-4 flex justify-end">
-                        <Button variant="outline" size="sm" onClick={() => setSelectedSpecies(a)} className="w-full border-violet-500/30 text-violet-400 hover:bg-violet-500 hover:text-white transition-colors">
-                          View Seasonal Profile
-                        </Button>
-                      </div>
+                    <div className="mt-auto pt-3 border-t border-white/5">
+                      <Button variant="outline" size="sm" onClick={() => setSelectedSpecies(a)} className="w-full border-violet-500/30 text-violet-400 hover:bg-violet-500 hover:text-white transition-colors">
+                        View Seasonal Profile
+                      </Button>
                     </div>
                   </Card>
                 </motion.div>

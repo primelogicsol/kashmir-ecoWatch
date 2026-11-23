@@ -59,17 +59,13 @@ export interface AlertItem {
   tags: string[];
 }
 
-// Current date helper
-const now = new Date();
+// Deterministic UTC baseline anchor so SSR and client bundles produce identical initial timestamps
+const BASELINE_ANCHOR_MS = Date.UTC(2026, 10, 22, 12, 0, 0);
 const daysAgo = (days: number) => {
-  const d = new Date(now);
-  d.setDate(d.getDate() - days);
-  return d.toISOString();
+  return new Date(BASELINE_ANCHOR_MS - days * 86_400_000).toISOString();
 };
 const daysFromNow = (days: number) => {
-  const d = new Date(now);
-  d.setDate(d.getDate() + days);
-  return d.toISOString();
+  return new Date(BASELINE_ANCHOR_MS + days * 86_400_000).toISOString();
 };
 const formatRelative = (dateStr: string) => {
   const date = new Date(dateStr);

@@ -13,6 +13,7 @@ import { Heading } from '@/components/common/Heading';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const contributionPathways = [
   {
@@ -91,7 +92,7 @@ export default function ContributeHubPage() {
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contribute' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute to Kashmir Intelligence</span>
           </>}
         subtitle="Whether reporting an urgent hazard, documenting wildlife, sharing research data, or joining as a recurring contributor — your participation strengthens Kashmir&#39;s environmental monitoring and conservation decision-making"
@@ -112,53 +113,55 @@ export default function ContributeHubPage() {
             <p className="text-slate-400">Select the pathway that matches your observation or data type</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-stretch">
             {contributionPathways.map((pathway, index) => (
               <motion.div
                 key={pathway.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 h-full group cursor-pointer" onClick={() => router.push(pathway.route)}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-14 h-14 rounded-xl bg-slate-900 ${pathway.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <pathway.icon className="w-7 h-7 text-white" />
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(pathway.route)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(pathway.route)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <pathway.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
-                          {pathway.title}
-                        </h3>
-                        <Badge variant={pathway.badgeColor as any} size="sm">{pathway.badge}</Badge>
-                      </div>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        {pathway.description}
-                      </p>
-                    </div>
+                    <Badge variant={pathway.badgeColor as any} size="sm">{pathway.badge}</Badge>
                   </div>
 
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Examples</span>
+                  <h3 className="kew-card-title">{pathway.title}</h3>
+                  <p className="kew-card-desc">{pathway.description}</p>
+
+                  <div>
+                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Examples</span>
                     <ul className="mt-2 space-y-1">
                       {pathway.examples.map((example, i) => (
                         <li key={i} className="text-sm text-slate-300 flex items-start gap-2">
-                          <span className="text-emerald-400 mt-1">•</span>
-                          {example}
+                          <span className="text-emerald-400 mt-0.5">•</span>
+                          <span>{example}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <Button
-                    size="sm"
-                    className={`w-full bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white text-sm`}
-                    onClick={() => router.push(pathway.route)}
-                  >
-                    <span>{pathway.cta}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Card>
+                  <div className="mt-auto pt-2">
+                    <Button
+                      size="sm"
+                      className={`w-full bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white text-sm`}
+                      onClick={() => router.push(pathway.route)}
+                    >
+                      <span>{pathway.cta}</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

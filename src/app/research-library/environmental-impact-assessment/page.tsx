@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Animation variants ────────────────────────────────────────────────
 const fadeInUp: any = {
@@ -546,6 +547,7 @@ export default function EnvironmentalImpactAssessmentPage() {
             </Badge>
           </motion.div>
 
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <motion.h1
             variants={fadeInUp}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
@@ -622,13 +624,11 @@ export default function EnvironmentalImpactAssessmentPage() {
                 className={`rounded-2xl border ${kf.borderColor} bg-slate-900/80 backdrop-blur-sm overflow-hidden group hover:border-opacity-40 transition-all duration-300`}
               >
                 <div className={`h-1 bg-gradient-to-r ${kf.color}`} />
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-9 h-9 rounded-lg ${kf.bgGlow} flex items-center justify-center`}>
-                      <kf.icon className={`w-5 h-5 bg-gradient-to-r ${kf.color} bg-clip-text`} style={{ color: 'currentColor' }} />
-                    </div>
-                    <h3 className="text-sm font-semibold text-white">{kf.title}</h3>
+                <div className="p-5 flex flex-col flex-1">
+                  <div className={`kew-card-icon-box ${kf.bgGlow} mb-3`}>
+                    <kf.icon className={`w-5 h-5 bg-gradient-to-r ${kf.color} bg-clip-text`} style={{ color: 'currentColor' }} />
                   </div>
+                  <h3 className="kew-card-title text-sm mb-2">{kf.title}</h3>
                   <p className="text-sm text-slate-200 font-medium mb-3">{kf.finding}</p>
                   <ul className="space-y-1.5">
                     {kf.details.map((d) => (
@@ -662,15 +662,13 @@ export default function EnvironmentalImpactAssessmentPage() {
                 {/* Section Header */}
                 <div className={`h-1 bg-gradient-to-r ${section.gradient}`} />
                 <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-xl bg-slate-900 ${section.gradient} flex items-center justify-center text-white font-bold text-sm`}>
-                      {section.number}
-                    </div>
-                    <div className="flex items-center gap-2">
+                  <div className="kew-card-top-row mb-3">
+                    <div className="kew-card-icon-box bg-slate-800 border border-slate-700">
                       <section.icon className={`w-5 h-5 bg-gradient-to-r ${section.gradient} bg-clip-text`} style={{ color: 'currentColor' }} />
-                      <h3 className="text-lg font-bold text-white">{section.title}</h3>
                     </div>
+                    <span className="text-xs font-mono font-bold text-slate-400 px-2.5 py-1 rounded bg-slate-800/80 border border-white/10">Section {section.number}</span>
                   </div>
+                  <h3 className="kew-card-title text-lg mb-4">{section.title}</h3>
 
                   {section.content}
                 </div>
@@ -694,15 +692,13 @@ export default function EnvironmentalImpactAssessmentPage() {
                 transition={{ delay: i * 0.05, duration: 0.35 }}
                 className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-sm p-5 hover:border-slate-700 transition-colors"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
-                    <dp.icon className="w-4 h-4 text-blue-400" />
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-slate-800 border border-slate-700">
+                    <dp.icon className="w-5 h-5 text-blue-400" />
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">{dp.district}</p>
-                    <p className="text-xs text-slate-500">{dp.region} Region</p>
-                  </div>
+                  <span className="text-xs text-slate-400 font-medium">{dp.region} Region</span>
                 </div>
+                <h3 className="kew-card-title text-base mb-3">{dp.district}</h3>
 
                 <div className="rounded-lg bg-slate-800/50 border border-slate-700/50 px-3 py-2 mb-3">
                   <p className="text-xs text-slate-400">Annual Rainfall</p>
@@ -738,12 +734,9 @@ export default function EnvironmentalImpactAssessmentPage() {
                 transition={{ delay: i * 0.05, duration: 0.35 }}
                 className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-sm p-5"
               >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
-                      <rec.icon className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <h3 className="text-sm font-semibold text-white">{rec.title}</h3>
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-slate-800 border border-slate-700">
+                    <rec.icon className="w-5 h-5 text-blue-400" />
                   </div>
                   <Badge
                     variant="outline"
@@ -758,7 +751,8 @@ export default function EnvironmentalImpactAssessmentPage() {
                     {rec.priority}
                   </Badge>
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">{rec.desc}</p>
+                <h3 className="kew-card-title text-sm mb-2">{rec.title}</h3>
+                <p className="kew-card-desc text-xs">{rec.desc}</p>
               </motion.div>
             ))}
           </div>

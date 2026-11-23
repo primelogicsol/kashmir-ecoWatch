@@ -8,6 +8,7 @@ import { BarChart3, ArrowLeft, Upload, FileText, CheckCircle, Loader2, ExternalL
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const CONTRIBUTOR_TYPES = ['Individual', 'Academic/Research', 'Institution', 'NGO', 'Field Team', 'Monitoring Network'] as const;
 const ACCEPTED_FORMATS = ['CSV', 'JSON', 'GeoJSON', 'Shapefile (ZIP)', 'KML', 'XLSX', 'PDF'];
@@ -66,7 +67,7 @@ export default function DistrictDatasetsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Datasets</span>
           </>}
         subtitle="Submit district-level environmental datasets, regional assessments, and area-specific data. Approved records route into District Profiles and related modules."

@@ -16,6 +16,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Trail } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface TrailDetailPageProps {
   trail: Trail;
@@ -107,6 +108,7 @@ export function TrailDetailPage({ trail, relatedTrails = [] }: TrailDetailPagePr
                     {trail.type}
                   </Badge>
                 </div>
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
                   {trail.name}
                 </h1>

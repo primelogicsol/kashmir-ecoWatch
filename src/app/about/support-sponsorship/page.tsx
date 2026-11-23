@@ -325,25 +325,23 @@ export default function SupportSponsorshipPage() {
             {activeTab === 'foundations' && (
               <div className="space-y-6">
                 <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-purple-500/20 bg-slate-900/40 space-y-6">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-                        <Landmark className="w-7 h-7 text-purple-400" />
+                  <div className="border-b border-white/10 pb-6">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-purple-500/10 border-purple-500/20">
+                        <Landmark className="w-5 h-5 text-purple-400" />
                       </div>
-                      <div>
-                        <h3 className="text-2xl font-black text-white">Dr. Kumar Foundation USA</h3>
-                        <p className="text-xs sm:text-sm text-purple-300">Primary Supporting & Sponsoring Philanthropic Institution</p>
-                      </div>
+                      <a
+                        href="https://dkf.sufisciencecenter.info/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold transition-colors w-fit"
+                      >
+                        <span>Visit Foundation Portal</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
-                    <a
-                      href="https://dkf.sufisciencecenter.info/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold transition-colors w-fit"
-                    >
-                      <span>Visit Foundation Portal</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    <h3 className="kew-card-title text-2xl font-black mb-1">Dr. Kumar Foundation USA</h3>
+                    <p className="text-xs sm:text-sm text-purple-300">Primary Supporting & Sponsoring Philanthropic Institution</p>
                   </div>
 
                   <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -377,25 +375,23 @@ export default function SupportSponsorshipPage() {
             {activeTab === 'csr' && (
               <div className="space-y-6">
                 <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-sky-500/20 bg-slate-900/40 space-y-6">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
-                        <Cpu className="w-7 h-7 text-sky-400" />
+                  <div className="border-b border-white/10 pb-6">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-sky-500/10 border-sky-500/20">
+                        <Cpu className="w-5 h-5 text-sky-400" />
                       </div>
-                      <div>
-                        <h3 className="text-2xl font-black text-white">Prime Logic Solutions USA</h3>
-                        <p className="text-xs sm:text-sm text-sky-300">Corporate Social Responsibility (CSR) Technology Partner</p>
-                      </div>
+                      <a
+                        href="https://primelogicsol.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold transition-colors w-fit"
+                      >
+                        <span>Visit Prime Logic Solutions</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
-                    <a
-                      href="https://primelogicsol.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold transition-colors w-fit"
-                    >
-                      <span>Visit Prime Logic Solutions</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    <h3 className="kew-card-title text-2xl font-black mb-1">Prime Logic Solutions USA</h3>
+                    <p className="text-xs sm:text-sm text-sky-300">Corporate Social Responsibility (CSR) Technology Partner</p>
                   </div>
 
                   <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">

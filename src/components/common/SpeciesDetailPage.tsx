@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { SpeciesProfile, getProtectedAreas } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface SpeciesDetailPageProps {
   species: SpeciesProfile;
@@ -189,6 +190,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                     </Badge>
                   )}
                 </div>
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                   {species.name}
                 </h1>
@@ -600,23 +602,18 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                         <motion.a
                           key={idx}
                           href={pa.href}
-                          className="block p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-emerald-500/30 hover:bg-slate-900 transition-all duration-300 group"
+                          className="kew-card-shell kew-card-shell--interactive p-4 group"
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-950/30 flex items-center justify-center shrink-0 border border-white/5">
+                          <div className="kew-card-top-row">
+                            <div className="kew-card-icon-box bg-emerald-950/30 border-white/5">
                               <MapPin className="w-5 h-5 text-emerald-400" />
                             </div>
-                            <div>
-                              <h4 className="text-white font-bold group-hover:text-emerald-300 transition-colors text-sm">
-                                {pa.name}
-                              </h4>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-slate-500 uppercase tracking-wider">{pa.categoryLabel}</span>
-                                <span className="text-slate-600">•</span>
-                                <span className="text-[10px] text-slate-400">{pa.scope}</span>
-                              </div>
-                            </div>
+                            <span className="text-[10px] text-slate-400">{pa.scope}</span>
                           </div>
+                          <h4 className="kew-card-title text-sm group-hover:text-emerald-300 transition-colors mb-1">
+                            {pa.name}
+                          </h4>
+                          <span className="text-[10px] text-slate-500 uppercase tracking-wider mt-auto pt-2">{pa.categoryLabel}</span>
                         </motion.a>
                       ))}
                     </div>
@@ -631,23 +628,18 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                         <motion.a
                           key={idx}
                           href={pa.href}
-                          className="block p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-emerald-500/30 hover:bg-slate-900 transition-all duration-300 group"
+                          className="kew-card-shell kew-card-shell--interactive p-4 group"
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-950/30 flex items-center justify-center shrink-0 border border-white/5">
+                          <div className="kew-card-top-row">
+                            <div className="kew-card-icon-box bg-emerald-950/30 border-white/5">
                               <MapPin className="w-5 h-5 text-emerald-400" />
                             </div>
-                            <div>
-                              <h4 className="text-white font-bold group-hover:text-emerald-300 transition-colors text-sm">
-                                {pa.name}
-                              </h4>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-slate-500 uppercase tracking-wider">{pa.categoryLabel}</span>
-                                <span className="text-slate-600">•</span>
-                                <span className="text-[10px] text-slate-400">{pa.scope}</span>
-                              </div>
-                            </div>
+                            <span className="text-[10px] text-slate-400">{pa.scope}</span>
                           </div>
+                          <h4 className="kew-card-title text-sm group-hover:text-emerald-300 transition-colors mb-1">
+                            {pa.name}
+                          </h4>
+                          <span className="text-[10px] text-slate-500 uppercase tracking-wider mt-auto pt-2">{pa.categoryLabel}</span>
                         </motion.a>
                       ))}
                     </div>
@@ -662,23 +654,18 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                         <motion.a
                           key={idx}
                           href={pa.href}
-                          className="block p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-emerald-500/30 hover:bg-slate-900 transition-all duration-300 group"
+                          className="kew-card-shell kew-card-shell--interactive p-4 group"
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-950/30 flex items-center justify-center shrink-0 border border-white/5">
+                          <div className="kew-card-top-row">
+                            <div className="kew-card-icon-box bg-emerald-950/30 border-white/5">
                               <MapPin className="w-5 h-5 text-emerald-400" />
                             </div>
-                            <div>
-                              <h4 className="text-white font-bold group-hover:text-emerald-300 transition-colors text-sm">
-                                {pa.name}
-                              </h4>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-slate-500 uppercase tracking-wider">{pa.categoryLabel}</span>
-                                <span className="text-slate-600">•</span>
-                                <span className="text-[10px] text-slate-400">{pa.scope}</span>
-                              </div>
-                            </div>
+                            <span className="text-[10px] text-slate-400">{pa.scope}</span>
                           </div>
+                          <h4 className="kew-card-title text-sm group-hover:text-emerald-300 transition-colors mb-1">
+                            {pa.name}
+                          </h4>
+                          <span className="text-[10px] text-slate-500 uppercase tracking-wider mt-auto pt-2">{pa.categoryLabel}</span>
                         </motion.a>
                       ))}
                     </div>
@@ -693,23 +680,18 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                         <motion.a
                           key={idx}
                           href={pa.href}
-                          className="block p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-emerald-500/30 hover:bg-slate-900 transition-all duration-300 group"
+                          className="kew-card-shell kew-card-shell--interactive p-4 group"
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-950/30 flex items-center justify-center shrink-0 border border-white/5">
+                          <div className="kew-card-top-row">
+                            <div className="kew-card-icon-box bg-emerald-950/30 border-white/5">
                               <MapPin className="w-5 h-5 text-emerald-400" />
                             </div>
-                            <div>
-                              <h4 className="text-white font-bold group-hover:text-emerald-300 transition-colors text-sm">
-                                {pa.name}
-                              </h4>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-slate-500 uppercase tracking-wider">{pa.categoryLabel}</span>
-                                <span className="text-slate-600">•</span>
-                                <span className="text-[10px] text-slate-400">{pa.scope}</span>
-                              </div>
-                            </div>
+                            <span className="text-[10px] text-slate-400">{pa.scope}</span>
                           </div>
+                          <h4 className="kew-card-title text-sm group-hover:text-emerald-300 transition-colors mb-1">
+                            {pa.name}
+                          </h4>
+                          <span className="text-[10px] text-slate-500 uppercase tracking-wider mt-auto pt-2">{pa.categoryLabel}</span>
                         </motion.a>
                       ))}
                     </div>
@@ -879,22 +861,20 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                     { name: 'Occurrence Point Coordinates Dataset', file: `${species.slug}_occurrences.geojson`, size: '340 KB', type: 'Vector / Point' },
                     { name: 'Habitat Suitability Raster Index', file: `${species.slug}_suitability_model.tif`, size: '8.2 MB', type: 'Raster / TIFF' }
                   ].map((layer, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-slate-900 border border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 hover:bg-slate-900/90 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-950/20 flex items-center justify-center shrink-0 border border-white/5">
+                    <div key={idx} className="kew-card-shell p-4">
+                      <div className="kew-card-top-row">
+                        <div className="kew-card-icon-box bg-emerald-950/20 border-white/5">
                           <Layers className="w-5 h-5 text-emerald-400" />
                         </div>
-                        <div>
-                          <h4 className="font-bold text-white text-sm">{layer.name}</h4>
-                          <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-                            <span>{layer.file}</span>
-                            <span>•</span>
-                            <span>{layer.type}</span>
-                          </div>
-                        </div>
+                        <span className="text-xs text-slate-400 font-mono">{layer.size}</span>
                       </div>
-                      <div className="flex items-center gap-2 self-end sm:self-auto">
-                        <span className="text-xs text-slate-500 mr-2">{layer.size}</span>
+                      <h4 className="kew-card-title text-sm mb-1">{layer.name}</h4>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-3">
+                        <span>{layer.file}</span>
+                        <span>•</span>
+                        <span>{layer.type}</span>
+                      </div>
+                      <div className="mt-auto pt-2 border-t border-white/5 flex justify-end">
                         <Button 
                           variant="outline" 
                           size="sm" 

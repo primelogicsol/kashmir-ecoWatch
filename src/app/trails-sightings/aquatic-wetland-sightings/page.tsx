@@ -8,6 +8,7 @@ import { Droplets, MapPin, Calendar, ArrowRight, Camera, Fish } from 'lucide-rea
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const aquaticSightings = [
   { id: 'as-1', species: 'Brown Trout', scientificName: 'Salmo trutta', type: 'Fish', location: 'Lidder River', district: 'Anantnag', date: '2024-03-22', observer: 'Angler', verified: true },
@@ -21,7 +22,7 @@ export default function AquaticWetlandSightingsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Aquatic & Wetland Sightings</span>
           </>}
         subtitle="Fish, amphibians, aquatic plants, and wetland-dependent species observations"

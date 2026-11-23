@@ -9,6 +9,7 @@ import { MapPreviewSection } from '@/components/sections/MapPreviewSection';
 import { 
   MapPin, Navigation, Building, Target
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function NGOImpactMapPage() {
   const router = useRouter();
@@ -24,10 +25,7 @@ export default function NGOImpactMapPage() {
         ]}
         icon={<MapPin className="w-6 h-6 text-emerald-400" />}
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Geospatial Impact Map</span>
         </>}
         subtitle="Visualize the geographic footprint and operational catchments of verified civil society interventions across Kashmir."

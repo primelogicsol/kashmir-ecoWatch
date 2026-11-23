@@ -139,18 +139,17 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
         transition={{ duration: 0.5 }}
       >
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
-              <Layers className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-white">Related Intelligence</h2>
-              <p className="text-slate-400">Explore connected ecological data across modules</p>
-            </div>
+          <div className="flex items-center gap-2 mb-2">
+            <Layers className="w-4 h-4 text-emerald-400" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Cross-Module Network
+            </span>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Related Intelligence</h2>
+          <p className="text-slate-400 text-sm sm:text-base mt-1">Explore connected ecological data across modules</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {contextualLinks.map((link, index) => {
             const Icon = link.icon;
             
@@ -160,44 +159,60 @@ export function CrossModuleLinkStrip({ context }: CrossModuleLinkStripProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card
-                  className="glass-light border-white/10 hover:border-white/20 transition-all p-5 h-full cursor-pointer group"
+                <div
+                  role={link.enabled ? 'button' : undefined}
+                  tabIndex={link.enabled ? 0 : undefined}
                   onClick={() => link.enabled && router.push(link.route)}
+                  onKeyDown={(e) => {
+                    if (link.enabled && (e.key === 'Enter' || e.key === ' ')) {
+                      e.preventDefault();
+                      router.push(link.route);
+                    }
+                  }}
+                  className="kew-card-shell kew-card-shell--interactive group h-full relative"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${link.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <Icon className="w-6 h-6 text-white" />
+                  {/* 1. ICON (top-left) */}
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-emerald-400">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-bold text-white group-hover:text-violet-400 transition-colors break-words">
-                        {link.label}
-                      </h3>
-                      {link.count !== undefined && (
-                        <Badge variant="outline" size="sm" className="mt-1 border-white/10 text-xs">
-                          {link.count.toLocaleString()} entities
-                        </Badge>
-                      )}
-                    </div>
+                    <Badge variant="outline" size="sm" className="border-white/10 text-[10px] text-slate-300">
+                      {link.module}
+                    </Badge>
                   </div>
-                  
-                  <p className="text-sm text-slate-400 mb-4 leading-relaxed break-words">
-                    {link.description}
-                  </p>
-                  
-                  <div className="flex items-center text-xs font-medium text-violet-400 group-hover:text-violet-300 transition-colors">
+
+                  {/* 2. TITLE — full horizontal width */}
+                  <h3 className="kew-card-title">{link.label}</h3>
+
+                  {/* 3. KPI — below title */}
+                  {link.count !== undefined && (
+                    <div className="kew-card-kpi">
+                      <span className="text-xl font-extrabold text-white tabular-nums">
+                        {link.count.toLocaleString()}
+                      </span>
+                      <span className="kew-card-kpi-unit">entities</span>
+                    </div>
+                  )}
+
+                  {/* 4. DESCRIPTION */}
+                  <p className="kew-card-desc">{link.description}</p>
+
+                  {/* 5. CTA — anchored near bottom */}
+                  <div className="kew-card-cta">
                     <span>Explore Module</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
-                  
+
                   {!link.enabled && (
-                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center">
+                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
                       <Badge variant="outline" size="sm" className="border-slate-600 text-slate-400">
                         Coming Soon
                       </Badge>
                     </div>
                   )}
-                </Card>
+                </div>
               </motion.div>
             );
           })}

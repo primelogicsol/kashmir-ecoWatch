@@ -104,27 +104,23 @@ export function SeasonalWindowDisplay({ window, compact = false }: SeasonalWindo
         <div className="relative p-6 pb-4">
           <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${statusColors[window.accessConditions.status]}`} />
           
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${statusColors[window.accessConditions.status]} flex items-center justify-center shadow-lg`}>
-                <Calendar className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">{window.name}</h3>
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  {isCurrentMonth && (
-                    <Badge size="sm" className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                      <CheckCircle className="w-3 h-3 mr-1" />
-                      Active Now
-                    </Badge>
-                  )}
-                  <Badge size="sm" className={statusBadgeColors[window.accessConditions.status]}>
-                    {window.accessConditions.status.toUpperCase()}
-                  </Badge>
-                </div>
-              </div>
+          <div className="kew-card-top-row">
+            <div className={`kew-card-icon-box bg-slate-900 ${statusColors[window.accessConditions.status]} shadow-lg`}>
+              <Calendar className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+              {isCurrentMonth && (
+                <Badge size="sm" className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Active Now
+                </Badge>
+              )}
+              <Badge size="sm" className={statusBadgeColors[window.accessConditions.status]}>
+                {window.accessConditions.status.toUpperCase()}
+              </Badge>
             </div>
           </div>
+          <h3 className="kew-card-title text-xl mb-2">{window.name}</h3>
           
           <p className="text-sm text-slate-400 leading-relaxed">
             {window.description}

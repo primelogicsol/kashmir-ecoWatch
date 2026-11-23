@@ -1,122 +1,70 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, ArrowRight, FileText, MapPin, Activity, Shield, Droplet, Footprints, AlertTriangle, Book } from 'lucide-react';
+import Link from 'next/link';
+import { Search, X, ArrowUpRight, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { searchAll } from '@/data';
 import { useRouter } from 'next/navigation';
-
-interface SearchResult {
-  species?: any[];
-  protectedAreas?: any[];
-  waterBodies?: any[];
-  trails?: any[];
-  districts?: any[];
-  alerts?: any[];
-  reports?: any[];
-}
+import { isScientificQuestionLike } from '@/lib/search/scientific-qa-types';
 
 export function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult | null>(null);
+  const [groups, setGroups] = useState<any[]>([]);
+  const [totalHits, setTotalHits] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        setIsOpen(true);
+        setIsOpen((prev) => !prev);
       }
       if (e.key === 'Escape') {
         setIsOpen(false);
       }
     };
-
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   useEffect(() => {
-    if (query.length >= 2) {
-      setIsLoading(true);
-      // Simulate API delay
-      setTimeout(() => {
-        const searchResults = searchAll(query);
-        setResults(searchResults);
-        setIsLoading(false);
-      }, 300);
-    } else {
-      setResults(null);
+    if (!isOpen || query.trim().length < 2) {
+      setGroups([]);
+      setTotalHits(0);
+      return;
     }
-  }, [query]);
+    const ctrl = new AbortController();
+    setIsLoading(true);
+    const t = setTimeout(() => {
+      fetch(`/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=4`, {
+        signal: ctrl.signal,
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d) {
+            setGroups(d.groups || []);
+            setTotalHits(d.totalHits || 0);
+          }
+        })
+        .catch(() => {})
+        .finally(() => setIsLoading(false));
+    }, 100);
 
-  const getResultCount = (results: SearchResult | null) => {
-    if (!results) return 0;
-    return (
-      (results.species?.length || 0) +
-      (results.protectedAreas?.length || 0) +
-      (results.waterBodies?.length || 0) +
-      (results.trails?.length || 0) +
-      (results.districts?.length || 0) +
-      (results.alerts?.length || 0) +
-      (results.reports?.length || 0)
-    );
-  };
-
-  const getIconForType = (type: string) => {
-    const icons: Record<string, React.ReactNode> = {
-      species: <Activity className="w-4 h-4" />,
-      protectedAreas: <Shield className="w-4 h-4" />,
-      waterBodies: <Droplet className="w-4 h-4" />,
-      trails: <Footprints className="w-4 h-4" />,
-      districts: <MapPin className="w-4 h-4" />,
-      alerts: <AlertTriangle className="w-4 h-4" />,
-      reports: <Book className="w-4 h-4" />,
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
     };
-    return icons[type] || <MapPin className="w-4 h-4" />;
-  };
-
-  const getRouteForType = (type: string, slug: string, item?: any) => {
-    switch (type) {
-      case 'species':
-        return `/biodiversity/species/${slug}`;
-      case 'protectedAreas':
-        return `/protected-areas/${slug}`;
-      case 'waterBodies':
-        if (item?.type === 'wetland' || item?.category?.toLowerCase().includes('wetland') || slug.includes('wetland')) {
-          return `/water-systems/wetlands/${slug}`;
-        }
-        return `/water-systems/lakes/${slug}`;
-      case 'districts':
-        return `/districts/${slug}`;
-      case 'trails':
-        return `/trails-sightings/hiking-trails`;
-      case 'alerts':
-        return `/risk-monitoring/live-alerts-advisories`;
-      case 'reports':
-        return `/library`;
-      default:
-        return `/search?q=${encodeURIComponent(slug)}`;
-    }
-  };
-
-  const handleSelect = (type: string, slug: string, item?: any) => {
-    setIsOpen(false);
-    setQuery('');
-    router.push(getRouteForType(type, slug, item));
-  };
-
-  const hasResults = results && getResultCount(results) > 0;
+  }, [query, isOpen]);
 
   return (
     <>
-      {/* Search trigger in navigation */}
       <button
+        type="button"
         onClick={() => setIsOpen(true)}
-        className="relative group flex items-center gap-2 px-4 py-2 rounded-lg glass-light border border-white/10 text-sm text-slate-400 hover:text-white hover:border-forest-500/50 transition-all"
+        className="relative group flex items-center gap-2 px-4 py-2 rounded-lg glass-light border border-white/10 text-sm text-slate-400 hover:text-white hover:border-emerald-500/50 transition-all"
       >
         <Search className="w-4 h-4" />
         <span>Search...</span>
@@ -125,273 +73,114 @@ export function GlobalSearch() {
         </kbd>
       </button>
 
-      {/* Search overlay */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/65 backdrop-blur-sm z-50"
             />
-
-            {/* Search modal */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              initial={{ opacity: 0, scale: 0.96, y: -16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl glass-intense border border-white/10 rounded-2xl shadow-2xl z-50 overflow-hidden"
+              exit={{ opacity: 0, scale: 0.96, y: -16 }}
+              className="fixed top-20 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-2xl bg-slate-900 border border-white/15 rounded-xl shadow-2xl z-50 overflow-hidden"
             >
-              {/* Search input */}
-              <div className="flex items-center gap-4 p-4 border-b border-white/5">
-                <Search className="w-5 h-5 text-slate-400 flex-shrink-0" />
+              <div className="flex items-center gap-3 p-4 border-b border-white/10 bg-slate-950/80">
+                <Search className="w-5 h-5 text-emerald-400 shrink-0" />
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === 'Enter' && query.trim()) {
                       e.preventDefault();
-                      if (query.trim()) {
-                        setIsOpen(false);
-                        router.push(`/search?q=${encodeURIComponent(query.trim())}`);
-                      }
+                      setIsOpen(false);
+                      const modeParam = isScientificQuestionLike(query.trim()) ? '&mode=ask' : '';
+                      router.push(`/search?q=${encodeURIComponent(query.trim())}${modeParam}`);
                     }
                   }}
-                  placeholder="Search species, protected areas, lakes, trails, districts, reports..."
-                  className="flex-1 bg-transparent border-none outline-none text-white text-lg placeholder-slate-500"
+                  placeholder="Search all Western Himalayan modules, records, entities & hazards..."
+                  className="flex-1 bg-transparent border-none outline-none text-white text-base placeholder:text-slate-500"
                   autoFocus
                 />
                 {query && (
                   <button
+                    type="button"
                     onClick={() => {
                       setQuery('');
                       inputRef.current?.focus();
                     }}
-                    className="p-2 rounded-lg hover:bg-white/5 transition-colors"
+                    className="p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"
                   >
-                    <X className="w-5 h-5 text-slate-400" />
+                    <X className="w-4 h-4" />
                   </button>
                 )}
               </div>
 
-              {/* Results */}
-              <div className="max-h-[60vh] overflow-y-auto">
-                {isLoading && (
-                  <div className="p-12 text-center">
-                    <div className="w-8 h-8 border-2 border-forest-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                    <p className="text-slate-400">Searching...</p>
-                  </div>
-                )}
-
-                {!isLoading && !hasResults && query.length >= 2 && (
-                  <div className="p-12 text-center">
-                    <Search className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                    <p className="text-slate-400">No results found for "{query}"</p>
-                    <p className="text-sm text-slate-500 mt-2">Try different keywords or check spelling</p>
-                  </div>
-                )}
-
-                {!isLoading && hasResults && (
-                  <div className="p-4 space-y-6">
-                    {/* Species */}
-                    {results?.species && results.species.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Activity className="w-4 h-4 text-purple-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Species ({results.species.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.species.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('species', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.name}
-                                </div>
-                                <div className="text-sm text-slate-500">{item.scientificName}</div>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
+              <div className="max-h-[60vh] overflow-y-auto p-3 space-y-4">
+                {isLoading && groups.length === 0 ? (
+                  <div className="py-8 text-center text-sm text-slate-400">Searching canonical index...</div>
+                ) : groups.length > 0 ? (
+                  groups.map((g) => (
+                    <div key={g.groupKey}>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2 mb-1">
+                        {g.groupLabel}
                       </div>
-                    )}
-
-                    {/* Protected Areas */}
-                    {results?.protectedAreas && results.protectedAreas.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Shield className="w-4 h-4 text-emerald-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Protected Areas ({results.protectedAreas.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.protectedAreas.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('protectedAreas', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.name}
-                                </div>
-                                <div className="text-sm text-slate-500">{item.district}</div>
+                      <div className="space-y-1">
+                        {g.items.map((it: any) => (
+                          <Link
+                            key={it.id}
+                            href={it.canonicalUrl}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-between gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-colors group"
+                          >
+                            <div className="min-w-0 flex-1">
+                              <div className="text-sm font-semibold text-white group-hover:text-emerald-300 truncate">
+                                {it.title}
                               </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
+                              {it.subtitle && (
+                                <div className="text-xs text-slate-400 truncate">{it.subtitle}</div>
+                              )}
+                            </div>
+                            <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 shrink-0" />
+                          </Link>
+                        ))}
                       </div>
-                    )}
-
-                    {/* Water Bodies */}
-                    {results?.waterBodies && results.waterBodies.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Droplet className="w-4 h-4 text-blue-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Water Bodies ({results.waterBodies.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.waterBodies.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('waterBodies', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.name}
-                                </div>
-                                <div className="text-sm text-slate-500">{item.district} &bull; {item.type}</div>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Districts */}
-                    {results?.districts && results.districts.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <MapPin className="w-4 h-4 text-slate-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Districts ({results.districts.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.districts.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('districts', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.name}
-                                </div>
-                                <div className="text-sm text-slate-500">District</div>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Alerts */}
-                    {results?.alerts && results.alerts.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <AlertTriangle className="w-4 h-4 text-red-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Alerts ({results.alerts.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.alerts.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('alerts', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.title}
-                                </div>
-                                <div className="text-sm text-slate-500">{item.location}</div>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Reports */}
-                    {results?.reports && results.reports.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Book className="w-4 h-4 text-amber-400" />
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                            Reports ({results.reports.length})
-                          </span>
-                        </div>
-                        <div className="space-y-2">
-                          {results.reports.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleSelect('reports', item.slug, item)}
-                              className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors text-left group"
-                            >
-                              <div>
-                                <div className="font-medium text-white group-hover:text-forest-300 transition-colors">
-                                  {item.title}
-                                </div>
-                                <div className="text-sm text-slate-500">{item.year}</div>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-forest-400 transition-colors" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    </div>
+                  ))
+                ) : (
+                  <div className="py-6 text-center text-xs text-slate-400">
+                    Type at least 2 characters to search modules, scientific records, PILs, EIAs, and geographic entities.
                   </div>
                 )}
               </div>
 
-              {/* Footer */}
-              {!isLoading && !query && (
-                <div className="p-4 border-t border-white/5">
-                  <p className="text-xs text-slate-500 text-center">
-                    Search across species, protected areas, water bodies, trails, districts, alerts, and reports
-                  </p>
-                </div>
-              )}
-
-              {/* Results count */}
-              {!isLoading && hasResults && (
-                <div className="p-4 border-t border-white/5 bg-white/[0.02]">
-                  <p className="text-xs text-slate-500 text-center">
-                    {getResultCount(results)} result{getResultCount(results) !== 1 ? 's' : ''} found
-                  </p>
-                </div>
-              )}
+              <div className="px-4 py-3 border-t border-white/10 bg-slate-950/90 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+                <Link
+                  href={
+                    query.trim()
+                      ? `/search?mode=ask&q=${encodeURIComponent(query.trim())}`
+                      : '/search?mode=ask'
+                  }
+                  onClick={() => setIsOpen(false)}
+                  className="text-sky-300 hover:underline font-semibold inline-flex items-center gap-1"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Ask Scientific Question (Cited Brief) →</span>
+                </Link>
+                <Link
+                  href={query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search'}
+                  onClick={() => setIsOpen(false)}
+                  className="text-emerald-400 hover:underline font-semibold"
+                >
+                  Open Full Search{totalHits > 0 ? ` (${totalHits.toLocaleString()})` : ''} →
+                </Link>
+              </div>
             </motion.div>
           </>
         )}

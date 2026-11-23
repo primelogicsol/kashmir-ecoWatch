@@ -17,6 +17,7 @@ import {
   TrendingUp,
   Download
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function WasteGenerationPage() {
   const [selectedRegion, setSelectedRegion] = useState<PlasticPollutionRegion | 'ALL'>('ALL');
@@ -48,12 +49,7 @@ export default function WasteGenerationPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-3 flex-wrap leading-[1.12] pb-1">
-              <span className="inline-flex items-center self-center bg-rose-700 text-white font-black uppercase tracking-widest rounded-[4px] px-2.5 py-0.5 text-[10px] sm:text-xs">
-                PLASTIC INTELLIGENCE
-              </span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block break-words leading-[1.12] bg-gradient-to-r from-rose-400 via-amber-300 to-emerald-300 bg-clip-text text-transparent">
               Municipal & Rural Plastic Generation Quantities
             </span>

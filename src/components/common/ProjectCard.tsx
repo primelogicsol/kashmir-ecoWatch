@@ -1,22 +1,42 @@
 import React from 'react';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { NGOProject } from '@/data/ngo-impact';
 import { Building, MapPin, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export function ProjectCard({ project, ngoName, ngoSlug }: { project: NGOProject, ngoName: string, ngoSlug?: string }) {
+export function ProjectCard({
+  project,
+  ngoName,
+  ngoSlug,
+}: {
+  project: NGOProject;
+  ngoName: string;
+  ngoSlug?: string;
+}) {
   const isOngoing = project.end_date === 'Ongoing';
-  const isVerified = project.verification_status.includes('verified') || project.verification_status.includes('reviewed');
+  const isVerified =
+    project.verification_status.includes('verified') ||
+    project.verification_status.includes('reviewed');
 
   return (
-    <Card className="flex flex-col h-full bg-slate-900 border-slate-800 overflow-hidden group hover:border-slate-700 hover:shadow-2xl hover:shadow-sky-900/10 transition-all duration-300 relative cursor-pointer" onClick={() => window.location.href = `/ngo-impact/project/${project.slug}`}>
-      {/* Top Decorator Line */}
-      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${isOngoing ? 'from-sky-500 to-indigo-600' : 'from-slate-600 to-slate-800'} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
-
-      <div className="p-5 flex-grow flex flex-col">
-        <div className="flex justify-between items-start mb-3">
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => (window.location.href = `/ngo-impact/project/${project.slug}`)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          window.location.href = `/ngo-impact/project/${project.slug}`;
+        }
+      }}
+      className="kew-card-shell kew-card-shell--interactive group h-full"
+    >
+      {/* 1. ICON (top-left) + Category & Verification badges (top-right) */}
+      <div className="kew-card-top-row">
+        <div className="kew-card-icon-box bg-sky-500/15 border-sky-500/30 text-sky-400">
+          <Building className="w-5 h-5" />
+        </div>
+        <div className="flex flex-wrap items-center justify-end gap-1.5">
           <Badge variant="outline" className="text-sky-300 border-sky-800 bg-sky-950/30 text-[10px] uppercase font-semibold">
             {project.environmental_category}
           </Badge>
@@ -24,54 +44,65 @@ export function ProjectCard({ project, ngoName, ngoSlug }: { project: NGOProject
             {project.verification_status}
           </Badge>
         </div>
-        
-        <h3 className="text-lg font-bold text-slate-100 leading-tight mb-2 group-hover:text-sky-400 transition-colors break-words">
-          {project.title}
-        </h3>
-        
+      </div>
+
+      {/* 2. TITLE — full horizontal width */}
+      <div>
+        <h3 className="kew-card-title">{project.title}</h3>
         {ngoSlug ? (
-          <div onClick={(e) => e.stopPropagation()} className="mb-4">
-            <Link href={`/ngo-impact/${ngoSlug}`} className="text-sm text-slate-400 hover:text-sky-400 transition-colors inline-block font-medium break-words">
+          <div onClick={(e) => e.stopPropagation()} className="mt-1">
+            <Link
+              href={`/ngo-impact/${ngoSlug}`}
+              className="text-xs sm:text-sm text-slate-400 hover:text-sky-400 transition-colors inline-block font-medium break-words"
+            >
               By {ngoName}
             </Link>
           </div>
         ) : (
-          <p className="text-sm text-slate-400 mb-4 flex items-center gap-1.5 font-medium break-words">
-            <Building className="w-3.5 h-3.5 text-slate-500 shrink-0" /> {ngoName}
+          <p className="text-xs sm:text-sm text-slate-400 mt-1 font-medium break-words">
+            By {ngoName}
           </p>
         )}
-        
-        <div className="grid grid-cols-2 gap-2 mb-4 text-xs">
-          <div>
-            <span className="text-slate-500 block mb-1 font-semibold uppercase text-[10px] tracking-wider">Location</span>
-            <span className="text-slate-300 flex items-center gap-1 font-medium">
-              <MapPin className="w-3 h-3 text-slate-500 shrink-0"/> <span className="break-words">{project.location_district}</span>
-            </span>
-          </div>
-          <div>
-            <span className="text-slate-500 block mb-1 font-semibold uppercase text-[10px] tracking-wider">Status</span>
-            <span className={`flex items-center gap-1 font-medium ${isOngoing ? 'text-sky-400' : 'text-slate-300'}`}>
-              <Clock className="w-3 h-3 text-slate-500 shrink-0"/> {isOngoing ? 'Active / Ongoing' : 'Completed'}
-            </span>
-          </div>
-        </div>
+      </div>
 
-        <div className="bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-sm mt-auto">
-          <span className="text-emerald-500 font-semibold block mb-1.5 text-[10px] uppercase tracking-wider">Impact Summary</span>
-          <p className="text-slate-300 leading-relaxed break-words">
-            {project.measurable_outputs || project.ecological_outcome}
-          </p>
+      {/* 3. KPI / Location & Status */}
+      <div className="grid grid-cols-2 gap-2 py-2.5 border-y border-white/10 text-xs">
+        <div className="min-w-0">
+          <span className="text-slate-500 block mb-0.5 font-semibold uppercase text-[10px] tracking-wider">
+            Location
+          </span>
+          <span className="text-slate-200 flex items-center gap-1 font-medium">
+            <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
+            <span className="break-words">{project.location_district}</span>
+          </span>
+        </div>
+        <div className="min-w-0">
+          <span className="text-slate-500 block mb-0.5 font-semibold uppercase text-[10px] tracking-wider">
+            Status
+          </span>
+          <span className={`flex items-center gap-1 font-medium ${isOngoing ? 'text-sky-400' : 'text-slate-300'}`}>
+            <Clock className="w-3 h-3 text-slate-400 shrink-0" />
+            <span>{isOngoing ? 'Active / Ongoing' : 'Completed'}</span>
+          </span>
         </div>
       </div>
-      
-      <div className="px-4 py-3 bg-slate-950/40 border-t border-slate-800 flex justify-between items-center text-xs">
-        <span className="text-slate-500 font-medium">
-          {project.evidence_quality} Evidence
+
+      {/* 4. DESCRIPTION */}
+      <div>
+        <span className="text-emerald-400 font-semibold block mb-1 text-[10px] uppercase tracking-wider">
+          Impact Summary
         </span>
-        <span className="text-sky-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-          View Details <ArrowRight className="w-3.5 h-3.5" />
+        <p className="kew-card-desc">{project.measurable_outputs || project.ecological_outcome}</p>
+      </div>
+
+      {/* 5. CTA — anchored near bottom */}
+      <div className="kew-card-cta">
+        <span className="text-xs text-slate-400 font-normal">{project.evidence_quality} Evidence</span>
+        <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
+          View Details
+          <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
         </span>
       </div>
-    </Card>
+    </div>
   );
 }

@@ -44,6 +44,7 @@ import {
   trailsReportsData
 } from '@/data/trails-observations';
 import { getReports, getProtectedAreas } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const MAIN_TABS = [
   { key: 'overview', label: 'Overview' },
@@ -426,12 +427,7 @@ return (
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Trails, Routes &amp; Wildlife Sightings
@@ -1668,68 +1664,35 @@ return (
                         className={`${viewMode === 'grid' ? 'h-full' : ''} block group cursor-pointer`}
                         onClick={(e) => handleReportDownload(e, report.slug)}
                       >
-                        <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-slate-900/50 hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
-                          {viewMode === 'grid' ? (
-                            <div className="flex flex-col h-full justify-between">
-                              <div>
-                                <div className="flex items-start gap-4 mb-4">
-                                  <div className="w-12 h-12 rounded-xl bg-slate-900 bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                                    <FileText className="w-6 h-6 text-emerald-400" />
-                                  </div>
-                                  <div>
-                                    <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-2">{report.title}</h3>
-                                    <div className="flex flex-wrap gap-1.5 mt-2">
-                                      <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
-                                      <Badge variant="default" size="sm">{report.year}</Badge>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className="text-xs text-slate-400 mb-3 line-clamp-3">{report.description}</p>
-                                <div className="text-xs text-slate-500 mb-3">
-                                  <span>Authors: <strong className="text-slate-300">{report.authors.slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
-                                </div>
+                        <Card className="kew-card-shell kew-card-shell--interactive h-full p-5" padding="none">
+                          <div className="flex flex-col h-full">
+                            <div className="kew-card-top-row">
+                              <div className="kew-card-icon-box bg-emerald-500/10 border-emerald-500/20">
+                                <FileText className="w-5 h-5 text-emerald-400" />
                               </div>
-                              <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors"
-                                  icon={<Download className="w-4 h-4" />}
-                                  onClick={(e) => handleReportDownload(e, report.slug)}
-                                >
-                                  Download
-                                </Button>
+                              <div className="flex flex-wrap items-center gap-1.5">
+                                <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
+                                <Badge variant="default" size="sm">{report.year}</Badge>
                               </div>
                             </div>
-                          ) : (
-                            <div className="flex items-start justify-between">
-                              <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-slate-900 bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                                  <FileText className="w-6 h-6 text-emerald-400" />
-                                </div>
-                                <div>
-                                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                                    <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">{report.title}</h3>
-                                    <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
-                                    <Badge variant="default" size="sm">{report.year}</Badge>
-                                  </div>
-                                  <p className="text-sm text-slate-400 mb-3">{report.description}</p>
-                                  <div className="flex items-center gap-4 text-xs text-slate-500">
-                                    <span>Authors: <strong className="text-slate-300">{report.authors.slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
-                                  </div>
-                                </div>
-                              </div>
+                            <h3 className="kew-card-title group-hover:text-emerald-300 transition-colors mb-2">{report.title}</h3>
+                            <p className="kew-card-desc text-xs mb-3">{report.description}</p>
+                            <div className="text-xs text-slate-500 mb-4">
+                              <span>Authors: <strong className="text-slate-300">{report.authors.slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
+                            </div>
+                            <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between">
+                              <span className="text-xs font-medium text-emerald-400">Field Documentation</span>
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors flex-shrink-0 ml-4"
+                                className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors"
                                 icon={<Download className="w-4 h-4" />}
                                 onClick={(e) => handleReportDownload(e, report.slug)}
                               >
                                 Download
                               </Button>
                             </div>
-                          )}
+                          </div>
                         </Card>
                       </motion.div>
                     ))}

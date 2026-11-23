@@ -283,15 +283,15 @@ export function DistrictIntelligenceStrip() {
           </div>
         </motion.div>
 
-        {/* Superlatives Strip - scrollable on mobile */}
+        {/* Superlatives Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-6 sm:mb-8 md:mb-10 overflow-x-auto"
+          className="mb-6 sm:mb-8 md:mb-10"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">{/* responsive-md-fix */}
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 items-stretch">
             {superlatives.map((item, index) => (
               <motion.div
                 key={item.label}
@@ -299,26 +299,32 @@ export function DistrictIntelligenceStrip() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card className="glass-light border-white/10 p-3 sm:p-4 rounded-xl text-center h-full hover:border-white/20 transition-all">{/* responsive-md-fix */}
-                  <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.color} mx-auto mb-2 sm:mb-3`} />
-                  <div className="text-[10px] sm:text-xs text-slate-400 mb-1 sm:mb-2 leading-tight break-words">{item.label}</div>
-                  <div className="text-base sm:text-lg font-bold text-white mb-1 break-words">{item.district}</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 font-medium break-words">
-                    {'score' in item && `${item.score} score`}
-                    {'count' in item && `${item.count} species`}
-                    {'trend' in item && 'Improving'}
+                <div className="kew-card-shell p-4 gap-2 h-full">
+                  <div className="kew-card-icon-box bg-slate-800/80 border-white/10">
+                    <item.icon className={`w-5 h-5 ${item.color}`} />
+                  </div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 break-words">
+                    {item.label}
+                  </h3>
+                  <div className="text-lg sm:text-xl font-extrabold text-white break-words">
+                    {item.district}
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium break-words mt-auto">
+                    {'score' in item && `${item.score} ecological score`}
+                    {'count' in item && `${item.count} documented species`}
+                    {'trend' in item && 'Improving trajectory'}
                     {'risk' in item && item.risk}
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
         {/* District Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {/* responsive-md-fix */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch">
           {visibleDistricts.map((district, index) => (
             <motion.div
               key={district.name}
@@ -326,98 +332,110 @@ export function DistrictIntelligenceStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (index % 6) * 0.05 }}
+              className="h-full min-w-0"
             >
-              <Card className="glass-intense border-white/10 hover:border-blue-500/30 transition-all p-4 sm:p-5 rounded-xl group cursor-pointer h-full flex flex-col justify-between">{/* responsive-md-fix */}
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => router.push(district.route)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    router.push(district.route);
+                  }
+                }}
+                className="kew-card-shell kew-card-shell--interactive group h-full"
+              >
+                {/* 1. ICON (top-left) + Score Badge (top-right) */}
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <Map className="w-5 h-5" />
+                  </div>
+                  <Badge
+                    variant={
+                      district.ecologicalScore >= 80 ? 'success' :
+                      district.ecologicalScore >= 70 ? 'warning' : 'danger'
+                    }
+                    size="sm"
+                    className="text-xs sm:text-sm font-bold tabular-nums"
+                  >
+                    Score: {district.ecologicalScore}
+                  </Badge>
+                </div>
+
+                {/* 2. TITLE — full horizontal width */}
                 <div>
-                  <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <div>
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                        {district.name}
-                      </h3>
-                      <div className="text-xs text-slate-500">Kashmir Core District</div>
-                    </div>
-                    <Badge
-                      variant={
-                        district.ecologicalScore >= 80 ? 'success' :
-                        district.ecologicalScore >= 70 ? 'warning' : 'danger'
-                      }
-                      size="sm"
-                      className="text-xl sm:text-2xl font-bold"
-                    >
-                      Score: {district.ecologicalScore}
-                    </Badge>
-                  </div>
+                  <h3 className="kew-card-title">{district.name}</h3>
+                  <div className="text-xs text-slate-400 mt-0.5">Kashmir Core District</div>
+                </div>
 
-                  {/* Metrics grid */}
-                  <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm mb-3 sm:mb-4 py-2 px-3 rounded-lg bg-white/[0.02] border border-white/5">{/* responsive-md-fix */}
-                    <div className="flex flex-col items-center text-center">
-                      <Droplet className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 mx-auto mb-1" />
-                      <div className="text-base sm:text-lg font-bold text-white">{district.wetlands}</div>
-                      <div className="text-[10px] sm:text-xs text-slate-500">Wetlands</div>
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 mx-auto mb-1" />
-                      <div className="text-base sm:text-lg font-bold text-white">{district.protectedAreas}</div>
-                      <div className="text-[10px] sm:text-xs text-slate-500">Protected</div>
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 mx-auto mb-1" />
-                      <div className="text-base sm:text-lg font-bold text-white">{district.speciesCount}</div>
-                      <div className="text-[10px] sm:text-xs text-slate-500">Species</div>
-                    </div>
+                {/* 3. KPI Metrics grid */}
+                <div className="grid grid-cols-3 gap-2 text-xs py-2.5 px-3 rounded-lg bg-slate-800/50 border border-white/5">
+                  <div className="flex flex-col items-center text-center">
+                    <Droplet className="w-3.5 h-3.5 text-blue-400 mb-1" />
+                    <div className="text-base font-bold text-white tabular-nums">{district.wetlands}</div>
+                    <div className="text-[10px] text-slate-400">Wetlands</div>
                   </div>
-
-                  {/* Trend & Risk */}
-                  <div className="flex flex-wrap gap-2 items-center text-xs mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-white/5">{/* responsive-md-fix */}
-                    <TrendingUp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                      district.trend === 'improving' ? 'text-emerald-400' :
-                      district.trend === 'declining' ? 'text-red-400' : 'text-slate-400'
-                    }`} />
-                    <span className={`text-[10px] sm:text-xs font-medium ${
-                      district.trend === 'improving' ? 'text-emerald-400' :
-                      district.trend === 'declining' ? 'text-red-400' : 'text-slate-300'
-                    }`}>
-                      {district.trend === 'improving' ? 'Improving' :
-                       district.trend === 'declining' ? 'Declining' : 'Stable'}
-                    </span>
-                    <span className="text-xs text-slate-600">•</span>
-                    <span className="text-xs text-slate-400">{district.riskLevel} Risk</span>
-                    {district.forestCoverPct && (
-                      <>
-                        <span className="text-xs text-slate-600">•</span>
-                        <span className="text-xs text-emerald-400/90">{district.forestCoverPct}% Forest</span>
-                      </>
-                    )}
+                  <div className="flex flex-col items-center text-center">
+                    <Shield className="w-3.5 h-3.5 text-emerald-400 mb-1" />
+                    <div className="text-base font-bold text-white tabular-nums">{district.protectedAreas}</div>
+                    <div className="text-[10px] text-slate-400">Protected</div>
                   </div>
-
-                  {/* Strength & Challenge */}
-                  <div className="space-y-1.5 text-xs mb-3 sm:mb-4">{/* responsive-md-fix */}
-                    <div className="flex items-center gap-2">
-                      <Leaf className="w-3 h-3 text-emerald-400 shrink-0" />
-                      <span className="text-[10px] sm:text-xs text-slate-400 shrink-0">Strength:</span>
-                      <span className="text-[10px] sm:text-xs text-white break-words" title={district.strength}>
-                        {district.strength}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <AlertTriangle className="w-3 h-3 text-amber-400 shrink-0" />
-                      <span className="text-[10px] sm:text-xs text-slate-400 shrink-0">Challenge:</span>
-                      <span className="text-[10px] sm:text-xs text-white break-words" title={district.challenge}>
-                        {district.challenge}
-                      </span>
-                    </div>
+                  <div className="flex flex-col items-center text-center">
+                    <Activity className="w-3.5 h-3.5 text-purple-400 mb-1" />
+                    <div className="text-base font-bold text-white tabular-nums">{district.speciesCount}</div>
+                    <div className="text-[10px] text-slate-400">Species</div>
                   </div>
                 </div>
 
-                <Button
-                  variant="outline"
-                  className="w-full text-sm py-2 mt-2 rounded-lg border-white/20 text-white hover:border-blue-400 group-hover:bg-blue-500/10"
-                  onClick={() => router.push(district.route)}
-                >{/* responsive-md-fix */}
-                  <span>View Profile</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Card>
+                {/* 4. Trend, Risk & Summary */}
+                <div className="flex flex-wrap gap-2 items-center text-xs pb-2.5 border-b border-white/5">
+                  <TrendingUp className={`w-3.5 h-3.5 ${
+                    district.trend === 'improving' ? 'text-emerald-400' :
+                    district.trend === 'declining' ? 'text-red-400' : 'text-slate-400'
+                  }`} />
+                  <span className={`text-xs font-medium ${
+                    district.trend === 'improving' ? 'text-emerald-400' :
+                    district.trend === 'declining' ? 'text-red-400' : 'text-slate-300'
+                  }`}>
+                    {district.trend === 'improving' ? 'Improving' :
+                     district.trend === 'declining' ? 'Declining' : 'Stable'}
+                  </span>
+                  <span className="text-xs text-slate-600">•</span>
+                  <span className="text-xs text-slate-300">{district.riskLevel} Risk</span>
+                  {district.forestCoverPct && (
+                    <>
+                      <span className="text-xs text-slate-600">•</span>
+                      <span className="text-xs text-emerald-400/90">{district.forestCoverPct}% Forest</span>
+                    </>
+                  )}
+                </div>
+
+                <div className="space-y-1.5 text-xs">
+                  <div className="flex items-start gap-2">
+                    <Leaf className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-400 shrink-0">Strength:</span>
+                    <span className="text-slate-200 break-words">{district.strength}</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-400 shrink-0">Challenge:</span>
+                    <span className="text-slate-200 break-words">{district.challenge}</span>
+                  </div>
+                </div>
+
+                {/* 5. CTA — anchored near bottom */}
+                <div className="mt-auto pt-2">
+                  <Button
+                    variant="outline"
+                    className="w-full text-sm py-2 rounded-lg border-white/20 text-white hover:border-emerald-400 group-hover:bg-emerald-500/10"
+                    onClick={() => router.push(district.route)}
+                  >
+                    <span>View Profile</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

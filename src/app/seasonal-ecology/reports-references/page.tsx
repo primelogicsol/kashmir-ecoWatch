@@ -42,51 +42,41 @@ export default function ReportsReferencesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/open-data">
-            <Card className="glass-intense border-slate-500/30 hover:border-slate-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Database className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-slate-500/50 text-slate-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Database className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-slate-500/50 text-slate-400">
                       Open Data Access
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-slate-300 transition-colors truncate">
-                      Kashmir EcoWatch Open Data Portal
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Download raw observation datasets in GeoJSON, CSV, and JSON formats for academic and conservation research.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Kashmir EcoWatch Open Data Portal</h4>
+              <p className="kew-card-desc">Download raw observation datasets in GeoJSON, CSV, and JSON formats for academic and conservation research.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
 
           <Link href="/about/methodology">
-            <Card className="glass-intense border-emerald-500/30 hover:border-emerald-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <ShieldCheck className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-emerald-500/50 text-emerald-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-emerald-500/50 text-emerald-400">
                       Scientific Rigor
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors truncate">
-                      Data Validation & Methodology
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Multi-tier expert review protocols, satellite validation thresholds, and species taxonomic integrity standards.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Data Validation & Methodology</h4>
+              <p className="kew-card-desc">Multi-tier expert review protocols, satellite validation thresholds, and species taxonomic integrity standards.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { liveAlerts, advisories } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const floodAlerts = liveAlerts.filter(a => 
   a.hazardCategory === 'Flood & Flash Flood' || 
@@ -60,7 +61,7 @@ export default function FloodFlashFloodPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risk</span>
           </>}
         subtitle="River overflow monitoring, flash flood corridors, inundation risk assessment, and drainage stress intelligence across Kashmir's hydrological systems."

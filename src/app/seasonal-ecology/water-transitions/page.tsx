@@ -44,51 +44,41 @@ export default function WaterTransitionsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/water-systems">
-            <Card className="glass-intense border-cyan-500/30 hover:border-cyan-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Droplets className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-cyan-500/50 text-cyan-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Droplets className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-cyan-500/50 text-cyan-400">
                       Hydrology Core
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors truncate">
-                      Kashmir Water Systems Hub
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      River discharge gauges, lake surface areas, catchment health metrics, and water quality telemetry across Jhelum basin.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-cyan-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Kashmir Water Systems Hub</h4>
+              <p className="kew-card-desc">River discharge gauges, lake surface areas, catchment health metrics, and water quality telemetry across Jhelum basin.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
 
           <Link href="/water-systems/fisheries">
-            <Card className="glass-intense border-teal-500/30 hover:border-teal-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Fish className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-teal-500/50 text-teal-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Fish className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-teal-500/50 text-teal-400">
                       Ichthyological Telemetry
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-teal-400 transition-colors truncate">
-                      Kashmir Fisheries & Spawning Windows
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Schizothorax snow trout seasonal migrations, cold-water trout hatcheries, and aquatic spawning stream protection.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-teal-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Kashmir Fisheries & Spawning Windows</h4>
+              <p className="kew-card-desc">Schizothorax snow trout seasonal migrations, cold-water trout hatcheries, and aquatic spawning stream protection.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
         </div>
       </div>

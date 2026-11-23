@@ -14,6 +14,7 @@ import { getBiodiversityData } from '@/data/biodiversity';
 import { speciesData } from '@/data';
 import { IntelligenceWidget } from '@/components/intelligence/IntelligenceWidget';
 import { useParams, useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -136,6 +137,7 @@ export default function SpeciesDetailPage() {
                   ) : null}
                 </div>
 
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                   {species.commonName}
                 </h1>

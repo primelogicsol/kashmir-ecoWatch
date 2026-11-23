@@ -305,12 +305,7 @@ export default function LandslidesPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-4 whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1 text-xs">
-                KEW
-              </span>
-              <span>Decoupled Slope Intelligence</span>
-            </span>
+            <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Decoupled Slope Intelligence</span>
             <span className="block whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200 bg-clip-text text-transparent">
               Road Corridors, Nowcast & Susceptibility
             </span>

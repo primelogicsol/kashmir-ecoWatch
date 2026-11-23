@@ -152,7 +152,7 @@ export function PublicParticipationIntelligence() {
               View All <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">{/* responsive-md-fix */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
             {contributionPathways.map((pathway, index) => (
               <motion.div
                 key={pathway.id}
@@ -160,36 +160,43 @@ export function PublicParticipationIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card className="glass-light border-white/10 hover:border-white/20 transition-all p-4 sm:p-6 h-full group">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 ${pathway.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <pathway.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="kew-card-shell group h-full">
+                  {/* 1. ICON (top-left) + Trend badge (top-right) */}
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-emerald-400">
+                      <pathway.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
-                      <div className="text-xl sm:text-2xl font-bold text-white mb-1">
-                        {pathway.count.toLocaleString()}
-                      </div>
-                      <div className="text-xs text-emerald-400 flex items-center gap-1">
-                        <TrendingUp className="w-3 h-3" />
-                        {pathway.newCount} {pathway.newLabel}
-                      </div>
-                    </div>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/25 text-[11px] font-medium text-emerald-300">
+                      <TrendingUp className="w-3 h-3" />
+                      +{pathway.newCount} {pathway.newLabel}
+                    </span>
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
-                    {pathway.title}
-                  </h4>
-                  <p className="text-sm text-slate-400 mb-4 leading-relaxed">
-                    {pathway.purpose}
-                  </p>
-                  <Button
-                    className={`mt-auto w-full py-2 text-sm rounded-lg bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white`}
-                    onClick={() => router.push(pathway.route)}
-                  >{/* responsive-md-fix */}
-                    <span>Get Involved</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Card>
+
+                  {/* 2. TITLE — full horizontal width */}
+                  <h4 className="kew-card-title">{pathway.title}</h4>
+
+                  {/* 3. KPI — below title */}
+                  <div className="kew-card-kpi">
+                    <span className="kew-card-kpi-value">{pathway.count.toLocaleString()}</span>
+                    <span className="kew-card-kpi-unit">records</span>
+                  </div>
+
+                  {/* 4. DESCRIPTION */}
+                  <p className="kew-card-desc">{pathway.purpose}</p>
+
+                  {/* 5. CTA — consistently anchored near bottom */}
+                  <div className="mt-auto pt-2">
+                    <Button
+                      className={`w-full py-2 text-sm rounded-lg bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white`}
+                      onClick={() => router.push(pathway.route)}
+                    >
+                      <span>Get Involved</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

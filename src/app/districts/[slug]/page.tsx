@@ -10,11 +10,39 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getData } from '@/data';
+import districtsGeoJson from '@/data/geojson/districts.json';
 import { useParams } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function DistrictPage() {
   const params = useParams();
-  const district = getData.districts.bySlug(params.slug as string);
+  const rawSlug = (params.slug as string) || '';
+  const baseDistrict = getData.districts.bySlug(rawSlug);
+  const geoFeature = !baseDistrict
+    ? (districtsGeoJson.features as any[]).find(
+        (f) =>
+          f.properties?.id === rawSlug ||
+          f.properties?.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') === rawSlug.toLowerCase()
+      )
+    : null;
+  const district = baseDistrict || (geoFeature
+    ? {
+        id: geoFeature.properties.id,
+        slug: rawSlug,
+        name: geoFeature.properties.name,
+        area: geoFeature.properties.area_km2 || 0,
+        population: geoFeature.properties.population || 0,
+        headquarters: geoFeature.properties.headquarters || geoFeature.properties.name,
+        ecologicalSummary: {
+          protectedAreas: geoFeature.properties.protectedAreas || 2,
+          waterBodies: geoFeature.properties.waterBodies || 18,
+          forestCover: geoFeature.properties.forestCover || 24,
+          speciesCount: geoFeature.properties.speciesCount || 195,
+        },
+        environmentalScore: geoFeature.properties.environmentalScore || 78,
+        hazards: geoFeature.properties.hazards || ['Hydrological variability', 'Slope instability'],
+      }
+    : undefined);
 
   if (!district) {
     return (
@@ -43,6 +71,7 @@ export default function DistrictPage() {
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                   {district.name}
                 </h1>

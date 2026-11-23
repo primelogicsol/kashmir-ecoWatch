@@ -8,6 +8,7 @@ import { Shield, MapPin, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const protectedAreaTrails = [
   { id: 'pat-1', name: 'Dachigam NP Trail', district: 'Srinagar', distance: 12, type: 'National Park', highlights: ['Hangul Habitat', 'Forest Walks', 'Wildlife Viewing'] },
@@ -21,7 +22,7 @@ export default function ProtectedAreaTrailsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Area Trails</span>
           </>}
         subtitle="Trails within national parks, wildlife sanctuaries, and conservation reserves"
@@ -37,9 +38,14 @@ export default function ProtectedAreaTrailsPage() {
             {protectedAreaTrails.map((trail, i) => (
               <motion.div key={trail.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
                 <Card className="glass-intense border-white/10 hover:border-amber-500/30 transition-all p-5">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center"><Shield className="w-6 h-6 text-white" /></div>
-                    <div><h3 className="text-lg font-bold text-white">{trail.name}</h3><div className="text-xs text-slate-500">{trail.district} • {trail.type}</div></div>
+                  <div className="mb-3 space-y-2.5">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <Shield className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="kew-card-title">{trail.name}</h3>
+                      <div className="text-xs text-slate-500 mt-0.5">{trail.district} • {trail.type}</div>
+                    </div>
                   </div>
                   <div className="text-sm text-slate-400 mb-3">{trail.distance} km</div>
                   <div className="flex flex-wrap gap-1">{trail.highlights.map((h, j) => <Badge key={j} variant="outline" size="sm" className="text-xs border-white/10">{h}</Badge>)}</div>

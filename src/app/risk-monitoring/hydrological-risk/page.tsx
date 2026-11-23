@@ -10,6 +10,7 @@ import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import { liveAlerts } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const hydroAlerts = liveAlerts.filter(a => a.hazardCategory === 'Hydrological Risk' || a.type.includes('River') || a.type.includes('Overflow'));
 
@@ -27,7 +28,7 @@ export default function HydrologicalRiskPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hydrological Risk</span>
           </>}
         subtitle="Water system instability monitoring, river and wetland-linked risk assessment, overflow pressure tracking, sudden hydrological anomaly detection, and catchment stress intelligence."

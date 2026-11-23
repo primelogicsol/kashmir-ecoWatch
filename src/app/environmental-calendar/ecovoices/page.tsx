@@ -45,6 +45,7 @@ import {
 } from '@/data/ecovoices-catalog';
 import { EcoVoiceAudioPlayer } from '@/components/ecovoices/EcoVoiceAudioPlayer';
 import { EcoVoicesParticipationGateway } from '@/components/ecovoices/EcoVoicesParticipationGateway';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function EcoVoicesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -204,12 +205,7 @@ export default function EcoVoicesPage() {
         icon={<Music className="w-6 h-6 text-purple-400" />}
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-purple-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                ECOVOICES
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
               <span className="inline-block bg-gradient-to-r from-purple-400 via-pink-300 to-amber-300 bg-clip-text text-transparent tracking-normal">
                 <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Environmental</span> Music &amp; Cultural Stewardship

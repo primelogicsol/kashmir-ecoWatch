@@ -10,6 +10,7 @@ import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import { liveAlerts } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const fireAlerts = liveAlerts.filter(a => a.hazardCategory === 'Forest Fire' || a.type.includes('Fire'));
 
@@ -27,7 +28,7 @@ export default function ForestFirePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Forest Fire Risk</span>
           </>}
         subtitle="Active fire event monitoring, fire-prone zone mapping, smoke visibility tracking, forest pressure intelligence, and district fire status across Kashmir."

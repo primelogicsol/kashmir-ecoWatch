@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const submodules = [
   { name: 'Solid Waste',                href: '/environmental-monitoring/solid-waste',               icon: Trash2,       color: 'from-gray-500 to-slate-600',   status: '8 hotspots',    statusColor: 'warning', desc: 'Dumping, landfill stress, open waste' },
@@ -65,10 +66,7 @@ export default function EnvironmentalMonitoringOverview() {
           { label: 'Environmental Monitoring' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
           </>}
         subtitle="Monitoring waste systems, sewage, drinking water, air pollution, environmental stress, and ecological service resilience across Kashmir"
@@ -280,23 +278,29 @@ export default function EnvironmentalMonitoringOverview() {
             <p className="text-slate-400">Access all environmental intelligence submodules</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
             {submodules.map((mod, i) => (
-              <motion.div key={mod.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.03 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(mod.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${mod.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <mod.icon className="w-5 h-5 text-white" />
+              <motion.div key={mod.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.03 }} className="h-full min-w-0">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(mod.href)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(mod.href)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-emerald-400">
+                      <mod.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{mod.name}</h3>
-                        <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
-                      </div>
-                      <p className="text-xs text-slate-400">{mod.desc}</p>
-                    </div>
+                    <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">{mod.name}</h3>
+                  <p className="kew-card-desc">{mod.desc}</p>
+                  <div className="kew-card-cta">
+                    <span>Open Domain</span>
+                    <BarChart3 className="w-4 h-4 shrink-0" />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

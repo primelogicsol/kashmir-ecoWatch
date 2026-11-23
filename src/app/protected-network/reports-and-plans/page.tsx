@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { getReports, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
 import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function ReportsPage() {
   const reports = getReports.all();
@@ -201,12 +202,7 @@ return (
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Scientific Reports &amp; Management Plans
@@ -458,97 +454,51 @@ return (
                 transition={{ delay: index * 0.05 }}
                 className={`${viewMode === 'grid' ? 'h-full' : ''} block group`}
               >
-                <Card className={`${viewMode === 'grid' ? 'h-full flex flex-col justify-between' : ''} card-intelligence border border-white/5 bg-slate-900/50 hover:border-emerald-500/20 transition-all duration-300`} padding="lg">
-                  {viewMode === 'grid' ? (
-                    <div className="flex flex-col h-full justify-between">
-                      <div>
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
-                            <FileText className="w-6 h-6 text-emerald-400" />
-                          </div>
-                          <div>
-                            <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-2">{report.title}</h3>
-                            <div className="flex flex-wrap gap-1.5 mt-2">
-                              <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
-                              <Badge variant="default" size="sm">{report.year}</Badge>
-                            </div>
-                          </div>
-                        </div>
-                        <p className="text-sm text-slate-400 mb-3 line-clamp-3">{report.description}</p>
-                        <div className="text-xs text-slate-500 mb-3">
-                          <span>Authors: <strong className="text-slate-300">{(report.authors || []).slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
-                        </div>
-                        {report.linkedAreas && report.linkedAreas.length > 0 && (
-                          <div className="flex flex-wrap gap-2">
-                            {report.linkedAreas.slice(0, 2).map((area, idx) => (
-                              <Badge key={idx} variant="default" size="sm">
-                                {area.replace(/-/g, ' ')}
-                              </Badge>
-                            ))}
-                            {report.linkedAreas.length > 2 && (
-                              <Badge variant="default" size="sm">
-                                +{report.linkedAreas.length - 2}
-                              </Badge>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors"
-                          icon={<Download className="w-4 h-4" />}
-                          onClick={(e) => handleDownload(e, report.slug)}
-                        >
-                          Download
-                        </Button>
-                      </div>
+                <div className="kew-card-shell kew-card-shell--interactive h-full">
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <FileText className="w-5 h-5" />
                     </div>
-                  ) : (
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getTypeColor(report.type)} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
-                          <FileText className="w-6 h-6 text-emerald-400" />
-                        </div>
-                        <div>
-                          <div className="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">{report.title}</h3>
-                            <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
-                            <Badge variant="default" size="sm">{report.year}</Badge>
-                          </div>
-                          <p className="text-sm text-slate-400 mb-3">{report.description}</p>
-                          <div className="flex items-center gap-4 text-xs text-slate-500">
-                            <span>Authors: <strong className="text-slate-300">{(report.authors || []).slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
-                          </div>
-                          {report.linkedAreas && report.linkedAreas.length > 0 && (
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {report.linkedAreas.slice(0, 3).map((area, idx) => (
-                                <Badge key={idx} variant="default" size="sm">
-                                  {area.replace(/-/g, ' ')}
-                                </Badge>
-                              ))}
-                              {report.linkedAreas.length > 3 && (
-                                <Badge variant="default" size="sm">
-                                  +{report.linkedAreas.length - 3}
-                                </Badge>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors flex-shrink-0 ml-4"
-                        icon={<Download className="w-4 h-4" />}
-                        onClick={(e) => handleDownload(e, report.slug)}
-                      >
-                        Download
-                      </Button>
+                    <div className="flex flex-wrap gap-1.5">
+                      <Badge variant="info" size="sm" className="capitalize">{report.type}</Badge>
+                      <Badge variant="default" size="sm">{report.year}</Badge>
+                    </div>
+                  </div>
+
+                  <h3 className="kew-card-title">{report.title}</h3>
+                  <p className="kew-card-desc">{report.description}</p>
+
+                  <div className="text-xs text-slate-400">
+                    <span>Authors: <strong className="text-slate-200">{(report.authors || []).slice(0, 2).join(', ')}{report.authors.length > 2 ? ' + more' : ''}</strong></span>
+                  </div>
+
+                  {report.linkedAreas && report.linkedAreas.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {report.linkedAreas.slice(0, 3).map((area, idx) => (
+                        <Badge key={idx} variant="default" size="sm">
+                          {area.replace(/-/g, ' ')}
+                        </Badge>
+                      ))}
+                      {report.linkedAreas.length > 3 && (
+                        <Badge variant="default" size="sm">
+                          +{report.linkedAreas.length - 3}
+                        </Badge>
+                      )}
                     </div>
                   )}
-                </Card>
+
+                  <div className="mt-auto pt-3 border-t border-white/10 flex justify-end">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-white/20 text-white group-hover:border-emerald-500/50 transition-colors"
+                      icon={<Download className="w-4 h-4" />}
+                      onClick={(e) => handleDownload(e, report.slug)}
+                    >
+                      Download
+                    </Button>
+                  </div>
+                </div>
               </motion.a>
             ))}
 

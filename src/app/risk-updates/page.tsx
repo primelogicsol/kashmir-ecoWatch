@@ -32,6 +32,7 @@ import {
 } from '@/data/risk-updates-intelligence';
 import { RiskUpdateCard, RiskUpdateStats } from '@/components/risk-updates/RiskUpdateCard';
 import { cn } from '@/lib/utils';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface FilterState {
   hazardTypes: HazardType[];
@@ -164,7 +165,7 @@ export default function RiskUpdatesPage() {
     <main className="min-h-screen bg-slate-950">
 <Heading
   title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk Monitoring</span>
           </>}
   subtitle="Active environmental risks, early warnings, and hazard monitoring across the Kashmir Valley. Live tracking of flood zones, AQI hotspots, seismic activity, glacial lake conditions, and forest fire alerts — prioritising data-driven disaster preparedness."

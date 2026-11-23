@@ -25,6 +25,7 @@ import { EvidenceCard } from '@/components/library/EvidenceCard';
 import { CollectionCard, CollectionsGrid } from '@/components/library/CollectionsSection';
 import { BrowseByCategory, BrowseByDistrict, BrowseByModule } from '@/components/library/BrowseSections';
 import { cn } from '@/lib/utils';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // Evidence type taxonomy
 const evidenceTypes = [
@@ -185,7 +186,7 @@ export default function LibraryPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
   title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Evidence Intelligence Library</span>
           </>}
   subtitle="A structured evidence and reference system linking environmental studies, monitoring records, datasets, district profiles, GIS resources, and reviewed knowledge inputs across Kashmir EcoWatch."

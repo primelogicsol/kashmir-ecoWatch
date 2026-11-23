@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const biodiversityModules = [
   {
@@ -95,7 +96,7 @@ export default function BiodiversityRisksPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Biodiversity Risks</span>
           </>}
         subtitle="Species vulnerability tracking, habitat risk assessment, mortality monitoring, and ecological intelligence for Kashmir's biodiversity conservation"
@@ -126,43 +127,39 @@ export default function BiodiversityRisksPage() {
       {/* Biodiversity Modules Grid */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {biodiversityModules.map((module, index) => (
               <motion.div
                 key={module.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card
-                  className="glass-intense border-white/10 hover:border-emerald-500/30 transition-all p-5 h-full cursor-pointer group"
+                <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => router.push(module.route)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(module.route)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${module.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <module.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-2">
-                        {module.title}
-                      </h3>
-                    </div>
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <module.icon className="w-5 h-5" />
                   </div>
-                  <p className="text-xs text-slate-400 mb-3 line-clamp-2 leading-relaxed">
-                    {module.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1 mb-3">
+                  <h3 className="kew-card-title">{module.title}</h3>
+                  <p className="kew-card-desc">{module.description}</p>
+                  <div className="flex flex-wrap gap-1">
                     {module.features.slice(0, 2).map((feature, fIdx) => (
                       <Badge key={fIdx} variant="outline" size="sm" className="text-xs border-white/10">
                         {feature}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex items-center text-xs font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                  <div className="kew-card-cta">
                     <span>Access Module</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>

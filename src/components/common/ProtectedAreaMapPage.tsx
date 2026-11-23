@@ -11,6 +11,7 @@ import {
   Shield, Calendar, Eye, ChevronRight, Info
 } from 'lucide-react';
 import { ProtectedArea } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ── Dynamic Leaflet imports (no SSR) ─────────────────────────────────────────
 const MapContainer = dynamic(() => import('react-leaflet').then(m => m.MapContainer), { ssr: false });
@@ -121,6 +122,7 @@ export function ProtectedAreaMapPage({ area, backHref, categoryLabel, categoryHr
               >
                 <ArrowLeft className="w-4 h-4" /> Back to park profile
               </button>
+              <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
               <h1 className="text-2xl sm:text-3xl font-black text-white mb-1">{area.name}</h1>
               <p className="text-sm text-slate-400">Spatial boundary, elevation, and connectivity view</p>
             </div>

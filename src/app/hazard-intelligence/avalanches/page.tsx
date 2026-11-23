@@ -20,6 +20,7 @@ import { avalancheData, AvalancheRecord } from '@/data/hazard-avalanches';
 import { useAvalancheIntelligence } from '@/hooks/useAvalancheIntelligence';
 import { RelatedHazardIntelligence } from '@/components/hazard/RelatedHazardIntelligence';
 import { ScientificMonitoringStatus } from '@/components/common/ScientificMonitoringStatus';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Status & Verification helpers ─────────────────────────────────────────────
 
@@ -379,10 +380,7 @@ export default function AvalanchesPage() {
           { label: 'Avalanches' },
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Avalanche Risk Intelligence</span>
           </>}
         subtitle="Forensically verified mountain pass & cryosphere monitoring across 30 Western Himalayan corridors, combining official hazard advisories and Gulmarg Avalanche Center observations with high-resolution snowpack models."

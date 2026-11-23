@@ -11,6 +11,7 @@ import {
   ArrowLeft, User, Mail, Building, FileQuestion, Send, Globe
 } from 'lucide-react';
 import { getReports, getThreats } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 function RequestFormContent() {
   const searchParams = useSearchParams();
@@ -110,10 +111,7 @@ function RequestFormContent() {
       <div>
         <Heading
           title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Academic Request Verification</span>
           </>}
           subtitle="Kashmir Protected Area Network scientific library contains protected intelligence records. Unregistered academic and research downloads require security credentials registration."
@@ -145,8 +143,8 @@ function RequestFormContent() {
                 
                 {report ? (
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                    <div className="space-y-2.5">
+                      <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30">
                         <FileText className="w-5 h-5 text-emerald-400" />
                       </div>
                       <div>
@@ -171,8 +169,8 @@ function RequestFormContent() {
                   </div>
                 ) : threat ? (
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                    <div className="space-y-2.5">
+                      <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30">
                         <FileText className="w-5 h-5 text-emerald-400" />
                       </div>
                       <div>

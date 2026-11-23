@@ -10,6 +10,7 @@ import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import { liveAlerts } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const glacierAlerts = liveAlerts.filter(a => a.hazardCategory === 'Glacier & Cryosphere' || a.type.includes('Glacier'));
 
@@ -27,7 +28,7 @@ export default function GlacierCryospherePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere</span>
           </>}
         subtitle="Glacier-linked environmental risk monitoring, cryosphere sensitivity assessment, glacial lake formation tracking, and snow/melt stress indicators across Kashmir's cryosphere."

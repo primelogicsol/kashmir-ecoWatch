@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Droplets, AlertTriangle } from 'lucide-react';
 import type { DistrictWaterIntelligence } from '@/data/hydrological-intelligence';
 
 interface DistrictWaterCardProps {
@@ -16,19 +17,22 @@ const DistrictWaterCard: React.FC<DistrictWaterCardProps> = ({ intelligence }) =
   };
 
   return (
-    <div className="glass-intense rounded-xl p-5 border border-white/10 hover:border-emerald-500/30 transition-all flex flex-col h-full group">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
-          {intelligence.district}
-        </h3>
-        <div className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold border ${getHealthColor(intelligence.averageHealthScore)}`}>
+    <div className="kew-card-shell group h-full">
+      {/* 1. ICON (top-left) + Health Score badge (top-right) */}
+      <div className="kew-card-top-row">
+        <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+          <Droplets className="w-5 h-5" />
+        </div>
+        <div className={`px-2.5 py-1 rounded-[4px] text-xs font-mono font-bold border ${getHealthColor(intelligence.averageHealthScore)}`}>
           EHI {intelligence.averageHealthScore}
         </div>
       </div>
 
-      {/* Water Body Counts */}
-      <div className="grid grid-cols-5 gap-1.5 mb-4">
+      {/* 2. TITLE — full horizontal width */}
+      <h3 className="kew-card-title">{intelligence.district}</h3>
+
+      {/* 3. KPI Water Body Counts */}
+      <div className="grid grid-cols-5 gap-1.5">
         <WaterBodyCount label="Lakes" count={intelligence.waterBodies.lakes} color="bg-blue-500/20 text-blue-300 border border-blue-500/30" />
         <WaterBodyCount label="Wetlands" count={intelligence.waterBodies.wetlands} color="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" />
         <WaterBodyCount label="Rivers" count={intelligence.waterBodies.rivers} color="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30" />
@@ -36,9 +40,11 @@ const DistrictWaterCard: React.FC<DistrictWaterCardProps> = ({ intelligence }) =
         <WaterBodyCount label="Total" count={intelligence.waterBodies.total} color="bg-white/10 text-white border border-white/10" />
       </div>
 
-      {/* Water Quality Status */}
-      <div className="mb-4">
-        <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Water Quality Distribution</h4>
+      {/* 4. Water Quality Distribution */}
+      <div>
+        <h4 className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-2">
+          Water Quality Distribution
+        </h4>
         <div className="flex h-2 rounded-full overflow-hidden bg-white/10">
           {renderQualityBar(intelligence.waterQualityStatus)}
         </div>
@@ -53,19 +59,20 @@ const DistrictWaterCard: React.FC<DistrictWaterCardProps> = ({ intelligence }) =
 
       {/* Critical Water Bodies */}
       {intelligence.criticalWaterBodies.length > 0 && (
-        <div className="mb-4 p-3 bg-rose-500/10 rounded-xl border border-rose-500/20">
+        <div className="p-3 bg-rose-500/10 rounded-lg border border-rose-500/20">
           <div className="text-xs font-semibold text-rose-300 mb-1 flex items-center gap-1.5">
-            <span>⚠️</span> Critical Water Bodies
+            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+            <span>Critical Water Bodies</span>
           </div>
-          <div className="text-[11px] text-slate-300 leading-relaxed">
+          <div className="text-[11px] text-slate-300 leading-relaxed break-words">
             {intelligence.criticalWaterBodies.join(', ')}
           </div>
         </div>
       )}
 
-      {/* Restoration */}
+      {/* 5. Restoration Footer — anchored near bottom */}
       {intelligence.restorationProjects > 0 && (
-        <div className="mt-auto p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-between">
+        <div className="mt-auto p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20 flex items-center justify-between">
           <div>
             <div className="text-xs font-semibold text-emerald-300">Restoration Projects</div>
             {intelligence.restorationInvestments > 0 && (
@@ -74,7 +81,7 @@ const DistrictWaterCard: React.FC<DistrictWaterCardProps> = ({ intelligence }) =
               </div>
             )}
           </div>
-          <div className="text-lg font-bold font-mono text-emerald-400">
+          <div className="text-lg font-bold font-mono text-emerald-400 tabular-nums">
             {intelligence.restorationProjects}
           </div>
         </div>
@@ -83,18 +90,16 @@ const DistrictWaterCard: React.FC<DistrictWaterCardProps> = ({ intelligence }) =
   );
 };
 
-// Helper Components
-
 const WaterBodyCount: React.FC<{
   label: string;
   count: number;
   color: string;
 }> = ({ label, count, color }) => (
-  <div className="text-center">
+  <div className="text-center min-w-0">
     <div className={`${color} rounded-lg py-1.5 mb-1`}>
-      <div className="text-sm font-bold font-mono">{count}</div>
+      <div className="text-sm font-bold font-mono tabular-nums">{count}</div>
     </div>
-    <div className="text-[9px] text-slate-400 uppercase tracking-wider">{label}</div>
+    <div className="text-[9px] text-slate-400 uppercase tracking-wider break-words">{label}</div>
   </div>
 );
 
@@ -131,7 +136,7 @@ const QualityLegend: React.FC<{
   };
 
   return (
-    <span className={`px-2 py-0.5 rounded text-[10px] font-medium ${colors[status]}`}>
+    <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-medium ${colors[status]}`}>
       {status.charAt(0).toUpperCase() + status.slice(1)}: {count}
     </span>
   );

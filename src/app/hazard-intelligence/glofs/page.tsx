@@ -18,6 +18,7 @@ import {
   GLOFRecord,
 } from '@/data/hazard-glofs';
 import { useGlofIntelligence } from '@/hooks/useGlofIntelligence';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Risk badge helpers ──────────────────────────────────────────────────────
 
@@ -272,10 +273,7 @@ export default function GLOFsPage() {
           { label: 'GLOFs' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-emerald-300 bg-clip-text text-transparent">GLOF Risk Intelligence</span>
           </>}
         subtitle="Glacial Lake Outburst Flood risk monitoring across 27 high-altitude glacial zones spanning Kashmir Core, Trans-Divisional, and Transboundary ecological scopes. Integrates moraine dam assessments, ice-dam surveillance, and downstream exposure intelligence."

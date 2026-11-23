@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
+import { KewBrandIdentity, hasEmbeddedKewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface Breadcrumb {
   label: string;
@@ -27,6 +28,9 @@ interface HeadingProps {
   rightContent?: React.ReactNode;
   featuredImage?: string;
   featuredImageAlt?: string;
+  showBrandIdentity?: boolean;
+  brandBadgeText?: string;
+  brandIdentityLabel?: string;
 }
 
 export function Heading({
@@ -45,8 +49,13 @@ export function Heading({
   rightContent,
   featuredImage,
   featuredImageAlt,
+  showBrandIdentity = true,
+  brandBadgeText,
+  brandIdentityLabel,
 }: HeadingProps) {
   const router = useRouter();
+  const isStringTitle = typeof title === 'string';
+  const embedsBrand = !isStringTitle && hasEmbeddedKewBrandIdentity(title);
 
   return (
     <div className={cn('relative bg-slate-900/40 w-full max-w-full overflow-hidden sm:overflow-visible', className)}>
@@ -61,7 +70,7 @@ export function Heading({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={cn('w-full max-w-4xl min-w-0', (rightContent || featuredImage) && 'max-w-3xl flex-1')}
+            className={cn('kew-heading-scope w-full max-w-4xl min-w-0', (rightContent || featuredImage) && 'max-w-3xl flex-1')}
           >
             {breadcrumbs && breadcrumbs.length > 0 && (
               <nav className="flex flex-wrap items-center gap-1.5 text-xs md:text-sm text-slate-400 mb-3 sm:mb-6 min-w-0">
@@ -92,13 +101,29 @@ export function Heading({
               ) : null}
             </div>
 
+            {showBrandIdentity && !isStringTitle && !embedsBrand && (
+              <div className="kew-heading-brand-eyebrow mb-2.5 sm:mb-3">
+                <KewBrandIdentity
+                  badgeText={brandBadgeText}
+                  identityLabel={brandIdentityLabel}
+                  variant="eyebrow"
+                />
+              </div>
+            )}
+
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-3 sm:mb-6 leading-[1.12] tracking-tight overflow-visible pb-1 sm:pb-2 break-words min-w-0 max-sm:[&_.whitespace-nowrap]:!whitespace-normal [&_.whitespace-nowrap]:break-words sm:[&_.whitespace-nowrap]:whitespace-normal md:[&_.whitespace-nowrap]:whitespace-nowrap [&_.word-keep]:!whitespace-nowrap [&_.word-keep]:![word-break:keep-all] [&_.word-keep]:![overflow-wrap:normal]">
-              {typeof title === 'string' ? (
+              {isStringTitle ? (
                 (() => {
-                  const moduleName = title.replace(/^Western Himalayan\s*/i, '').trim();
+                  const moduleName = (title as string).replace(/^Western Himalayan\s*/i, '').trim();
                   return (
                     <>
-                      <span className="block leading-[1.12] overflow-visible break-words pb-1 sm:pb-2">Western Himalayan</span>
+                      {showBrandIdentity && (
+                        <KewBrandIdentity
+                          badgeText={brandBadgeText}
+                          identityLabel={brandIdentityLabel}
+                          variant="hero"
+                        />
+                      )}
                       <span className="block leading-[1.12] pb-1 sm:pb-2 overflow-visible break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
                         {moduleName}
                       </span>

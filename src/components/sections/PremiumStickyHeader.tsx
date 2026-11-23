@@ -69,6 +69,8 @@ interface DropdownItem {
   icon?: React.ComponentType<{ className?: string }>;
   color?: string;
   isHeader?: boolean;
+  groupId?: string;
+  parentGroup?: string;
 }
 
 export function PremiumStickyHeader() {
@@ -77,9 +79,41 @@ export function PremiumStickyHeader() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSubmenus, setExpandedMobileSubmenus] = useState<Set<string>>(new Set());
+  const [expandedHazardGroups, setExpandedHazardGroups] = useState<Set<string>>(
+    () => new Set(['atmospheric', 'hazard-systems'])
+  );
+  const toggleHazardGroup = (gid: string) => {
+    setExpandedHazardGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(gid)) next.delete(gid);
+      else next.add(gid);
+      return next;
+    });
+  };
   const [activeHeaderModal, setActiveHeaderModal] = useState<'search' | 'notifications' | 'settings' | 'profile' | null>(null);
   const [unreadCount, setUnreadCount] = useState<number>(alertRegistry.length);
   const [mobileSearchQuery, setMobileSearchQuery] = useState('');
+  const [mobileSuggestions, setMobileSuggestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen || mobileSearchQuery.trim().length < 2) {
+      setMobileSuggestions([]);
+      return;
+    }
+    const ctrl = new AbortController();
+    const t = setTimeout(() => {
+      fetch(`/api/search/suggest?q=${encodeURIComponent(mobileSearchQuery.trim())}&limit=3`, { signal: ctrl.signal })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d?.groups) setMobileSuggestions(d.groups.flatMap((g: any) => g.items || []).slice(0, 6));
+        })
+        .catch(() => {});
+    }, 110);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
+  }, [mobileSearchQuery, isMobileMenuOpen]);
   const headerActionsRef = useRef<HTMLDivElement>(null);
 
   // Sync unread alerts with live telemetry stream
@@ -292,19 +326,33 @@ export function PremiumStickyHeader() {
         return [
           { name: '⚠️ Overview', href: '/hazard-intelligence', desc: 'Multi-hazard intelligence command center' },
           { name: '📊 Dashboards', href: '/hazard-intelligence/dashboards', desc: 'Risk dashboards, heatmaps & trends' },
-          { name: '── Atmospheric Systems ──', href: '#', desc: '', isHeader: true },
-          { name: 'Western Disturbances', href: '/hazard-intelligence/atmospheric-systems/western-disturbances', desc: 'WD tracking, rain/snow forecasts & regional impacts' },
-          { name: 'Monsoon Dynamics', href: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics', desc: 'Moisture transport, orographic rain & anomalies' },
-          { name: 'Jet Stream & Circulation', href: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation', desc: 'Subtropical westerly jet, troughs & blocking ridges' },
-          { name: '── Hazard Systems ──', href: '#', desc: '', isHeader: true },
-          { name: 'Floods', href: '/hazard-intelligence/floods', desc: 'Riverine, urban & floodplain flooding' },
-          { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards' },
-          { name: 'Landslides', href: '/hazard-intelligence/landslides', desc: 'Slope instability & mass movement' },
-          { name: 'Avalanches', href: '/hazard-intelligence/avalanches', desc: 'Snow-slide monitoring & exposure' },
-          { name: 'Algal Bloom Intelligence', href: '/hazard-intelligence/algal-bloom-intelligence', desc: 'Eutrophication & bloom risk monitoring' },
-          { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', desc: 'Seismic activity & fault systems' },
-          { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence' },
-          { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring' },
+          { name: '── Atmospheric Systems ──', href: '#', desc: '', isHeader: true, groupId: 'atmospheric' },
+          { name: 'Western Disturbances', href: '/hazard-intelligence/atmospheric-systems/western-disturbances', desc: 'WD tracking, rain/snow forecasts & regional impacts', parentGroup: 'atmospheric' },
+          { name: 'Monsoon Dynamics', href: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics', desc: 'Terrain-masked moisture, ERA5 rain & anomalies', parentGroup: 'atmospheric' },
+          { name: 'Jet Stream & Circulation', href: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation', desc: '2D SWJ axis, 500 hPa troughs & blocking ridges', parentGroup: 'atmospheric' },
+          { name: '── Extreme Weather Systems ──', href: '#', desc: '', isHeader: true, groupId: 'extreme-weather' },
+          { name: 'Extreme Weather Hub', href: '/hazard-intelligence/extreme-weather', desc: '12-module phased extreme meteorology architecture', parentGroup: 'extreme-weather' },
+          { name: 'Extreme Rainfall & Cloudbursts', href: '/hazard-intelligence/extreme-weather/extreme-rainfall-cloudbursts', desc: 'Operational: 1h/24h rain, 31-member ensemble & ERA5', parentGroup: 'extreme-weather' },
+          { name: 'Heavy Snowfall & Blizzards', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Snowfall, SWE & gusts', parentGroup: 'extreme-weather' },
+          { name: 'Thunderstorms & Lightning', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · CAPE & convective watch', parentGroup: 'extreme-weather' },
+          { name: 'Heatwaves', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Elevation-adjusted Tmax', parentGroup: 'extreme-weather' },
+          { name: 'Cold Waves & Frost', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Sub-zero & orchard frost', parentGroup: 'extreme-weather' },
+          { name: 'Hailstorms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Hail instability & alerts', parentGroup: 'extreme-weather' },
+          { name: 'Extreme Winds & Storms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Peak gusts & pass rotors', parentGroup: 'extreme-weather' },
+          { name: 'Fog & Visibility', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Valley fog & METAR visibility', parentGroup: 'extreme-weather' },
+          { name: 'Drought & Dry Spells', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · SPI/SPEI & rainfall deficits', parentGroup: 'extreme-weather' },
+          { name: 'Dust Storms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · CAMS dust, PM10 & AOD', parentGroup: 'extreme-weather' },
+          { name: 'Freezing Rain & Ice', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · Thermal inversions & icing', parentGroup: 'extreme-weather' },
+          { name: 'Rain-on-Snow & Snowmelt', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · Warm rain over snowpack', parentGroup: 'extreme-weather' },
+          { name: '── Hazard Systems ──', href: '#', desc: '', isHeader: true, groupId: 'hazard-systems' },
+          { name: 'Floods', href: '/hazard-intelligence/floods', desc: 'Riverine, urban & floodplain flooding', parentGroup: 'hazard-systems' },
+          { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards', parentGroup: 'hazard-systems' },
+          { name: 'Landslides', href: '/hazard-intelligence/landslides', desc: 'Slope instability & mass movement', parentGroup: 'hazard-systems' },
+          { name: 'Avalanches', href: '/hazard-intelligence/avalanches', desc: 'Snow-slide monitoring & exposure', parentGroup: 'hazard-systems' },
+          { name: 'Algal Bloom Intelligence', href: '/hazard-intelligence/algal-bloom-intelligence', desc: 'Eutrophication & bloom risk monitoring', parentGroup: 'hazard-systems' },
+          { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', desc: 'Seismic activity & fault systems', parentGroup: 'hazard-systems' },
+          { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence', parentGroup: 'hazard-systems' },
+          { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring', parentGroup: 'hazard-systems' },
         ];
 
       case 'Earth & Human Impact':
@@ -371,11 +419,25 @@ export function PremiumStickyHeader() {
 
   const renderDropdownItems = (items: DropdownItem[]) => (
     <>
-      {items.map((subitem) => (
+      {items
+        .filter((subitem) => !subitem.parentGroup || expandedHazardGroups.has(subitem.parentGroup))
+        .map((subitem) => (
         subitem.isHeader ? (
-          <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
-            <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
-          </div>
+          subitem.groupId ? (
+            <button
+              key={subitem.name}
+              type="button"
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleHazardGroup(subitem.groupId!); }}
+              className="w-full px-4 py-1.5 bg-slate-800/45 hover:bg-slate-800/75 flex items-center justify-between text-left transition-colors cursor-pointer"
+            >
+              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-300">{subitem.name.replace(/──/g, '').trim()}</span>
+              <ChevronDown className={cn('w-3.5 h-3.5 text-slate-400 transition-transform', expandedHazardGroups.has(subitem.groupId) && 'rotate-180')} />
+            </button>
+          ) : (
+            <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
+              <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
+            </div>
+          )
         ) : subitem.href.startsWith('http') ? (
           <a
             key={subitem.name}
@@ -839,7 +901,7 @@ export function PremiumStickyHeader() {
                       type="text"
                       value={mobileSearchQuery}
                       onChange={(e) => setMobileSearchQuery(e.target.value)}
-                      placeholder="Search species, water, hazards..."
+                      placeholder="Search modules, species, water, PIL, hazards..."
                       className="w-full px-4 py-3 pl-11 rounded-xl bg-white/5 border border-white/10 outline-none text-sm text-white placeholder:text-slate-500 focus:border-emerald-500/40 focus:bg-white/10 transition-colors"
                     />
                     <button
@@ -850,6 +912,26 @@ export function PremiumStickyHeader() {
                       <Search className="w-5 h-5" />
                     </button>
                   </form>
+                  {mobileSuggestions.length > 0 && (
+                    <div className="rounded-xl bg-slate-950/90 border border-white/10 divide-y divide-white/5 overflow-hidden">
+                      {mobileSuggestions.map((it) => (
+                        <Link
+                          key={it.id}
+                          href={it.canonicalUrl}
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            setMobileSearchQuery('');
+                          }}
+                          className="block px-3 py-2 hover:bg-white/5 transition-colors"
+                        >
+                          <div className="text-xs font-semibold text-white truncate">{it.title}</div>
+                          {it.subtitle && (
+                            <div className="text-[10px] text-slate-400 truncate">{it.subtitle}</div>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Mobile Quick Action Tiles */}
                   <div className="grid grid-cols-3 gap-2">

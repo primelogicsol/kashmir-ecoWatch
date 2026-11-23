@@ -140,75 +140,94 @@ export function EarthHumanImpactSection() {
         </motion.div>
 
         {/* Live Change Telemetry Metrics Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
-          {telemetryMetrics.map((m, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/70 border border-white/10 flex flex-col justify-between"
-            >
-              <div className="flex items-center justify-between gap-1 mb-2">
-                <span className="text-[10px] sm:text-xs text-slate-400 uppercase font-semibold line-clamp-1">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 items-stretch">
+          {telemetryMetrics.map((m, idx) => {
+            const StatIcons = [Layers, Mountain, Droplets, Activity];
+            const StatIcon = StatIcons[idx % StatIcons.length];
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="kew-card-shell p-4 gap-2 h-full"
+              >
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-teal-500/15 border-teal-500/30 text-teal-400">
+                    <StatIcon className="w-5 h-5" />
+                  </div>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${m.statusColor}`}>
+                    {m.status}
+                  </span>
+                </div>
+                <h3 className="text-xs sm:text-sm text-slate-300 font-bold break-words">
                   {m.label}
-                </span>
-                <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border shrink-0 ${m.statusColor}`}>
-                  {m.status}
-                </span>
-              </div>
-              <div className="text-lg sm:text-2xl font-bold font-mono text-white mb-1">
-                {m.value}
-              </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 font-mono">
-                {m.trend}
-              </div>
-            </motion.div>
-          ))}
+                </h3>
+                <div className="text-xl sm:text-2xl font-extrabold font-mono text-white tabular-nums">
+                  {m.value}
+                </div>
+                <div className="text-xs text-slate-400 font-mono mt-auto break-words">
+                  {m.trend}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Featured Change-Detection Subsystems Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {changeSystems.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-            >
-              <Link
-                href={item.href}
-                className="group p-5 rounded-2xl bg-slate-900/60 hover:bg-slate-900/90 border border-white/10 hover:border-teal-500/40 transition-all flex flex-col justify-between h-full space-y-4 shadow-sm"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+          {changeSystems.map((item, idx) => {
+            const SysIcons = [Layers, Mountain, Droplets, ShieldAlert];
+            const SysIcon = SysIcons[idx % SysIcons.length];
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="h-full min-w-0"
               >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">
+                <Link
+                  href={item.href}
+                  className="kew-card-shell kew-card-shell--interactive group h-full no-underline"
+                >
+                  {/* 1. ICON (top-left) + System badge (top-right) */}
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-teal-500/15 border-teal-500/30 text-teal-400">
+                      <SysIcon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">
                       {item.badge}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400">
-                      {item.stat}
-                    </span>
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-teal-300 transition-colors leading-snug">
-                    {item.title}
-                  </h3>
-                  <div className="text-[11px] text-teal-400/80 font-medium mt-0.5">
-                    {item.category}
-                  </div>
-                  <p className="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
 
-                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-teal-300 transition-colors font-medium">
-                  <span>View Satellite Analysis</span>
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                  {/* 2. TITLE — full horizontal width */}
+                  <div>
+                    <h3 className="kew-card-title">{item.title}</h3>
+                    <div className="text-xs text-teal-400/90 font-medium mt-0.5 break-words">
+                      {item.category}
+                    </div>
+                  </div>
+
+                  {/* 3. KPI */}
+                  <div className="text-sm font-bold font-mono text-white tabular-nums">
+                    {item.stat}
+                  </div>
+
+                  {/* 4. DESCRIPTION — naturally wrapping */}
+                  <p className="kew-card-desc">{item.desc}</p>
+
+                  {/* 5. CTA — anchored near bottom */}
+                  <div className="kew-card-cta">
+                    <span>View Satellite Analysis</span>
+                    <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

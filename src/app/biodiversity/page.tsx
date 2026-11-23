@@ -34,6 +34,7 @@ import {
   biodiversityIntelligenceMetrics
 } from '@/data/biodiversity-intelligence';
 import { getEndemicSpecies, getMigratorySpecies, getBiodiversityRiskDashboard } from '@/data/biodiversity-access';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const categoryCards = [
   {
@@ -329,12 +330,7 @@ export default function BiodiversityPage() {
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Species Directory &amp; Taxonomic Master Inventory
@@ -415,82 +411,80 @@ export default function BiodiversityPage() {
         {/* ───────────────────────────────────────────────────────────── */}
         {/* TELEMETRY METRIC KPI STRIP (6 CARDS)                          */}
         {/* ───────────────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mt-4 items-stretch">
           {/* Card 1: Total Species */}
-          <div
-            className="p-3.5 rounded-xl border transition-all bg-emerald-500/20 border-emerald-500/60 shadow-lg shadow-emerald-950/50"
-          >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Taxa</span>
-              <Leaf className="w-4 h-4 text-emerald-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5 border-emerald-500/50 bg-emerald-950/30">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-emerald-500/20 border-emerald-500/40 text-emerald-300">
+              <Leaf className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-white">{biodiversityMetrics.totalSpecies}</div>
-            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">ALL Cataloged Taxa</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Taxa</h3>
+            <div className="text-2xl font-black text-white tabular-nums">{biodiversityMetrics.totalSpecies}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-auto">ALL Cataloged Taxa</div>
           </div>
 
           {/* Card 2: Mammals */}
           <div
             onClick={() => router.push('/biodiversity/mammals')}
-            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-amber-500/50 hover:bg-amber-950/20"
+            className="kew-card-shell kew-card-shell--interactive p-3.5 gap-1.5"
           >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Mammals</span>
-              <Mountain className="w-4 h-4 text-amber-400" />
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-amber-500/15 border-amber-500/30 text-amber-400">
+              <Mountain className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-amber-300">{biodiversityMetrics.mammals}</div>
-            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Alpine &amp; Forest Fauna</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400">Mammals</h3>
+            <div className="text-2xl font-black text-amber-300 tabular-nums">{biodiversityMetrics.mammals}</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-auto">Alpine &amp; Forest Fauna</div>
           </div>
 
           {/* Card 3: Birds */}
           <div
             onClick={() => router.push('/biodiversity/birds')}
-            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-sky-500/50 hover:bg-sky-950/20"
+            className="kew-card-shell kew-card-shell--interactive p-3.5 gap-1.5"
           >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Avian Fauna</span>
-              <Activity className="w-4 h-4 text-sky-400" />
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-sky-500/15 border-sky-500/30 text-sky-400">
+              <Activity className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-sky-300">{biodiversityMetrics.birds}</div>
-            <div className="text-[11px] text-sky-400/90 font-mono mt-0.5">Flyway &amp; Resident</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-sky-400">Avian Fauna</h3>
+            <div className="text-2xl font-black text-sky-300 tabular-nums">{biodiversityMetrics.birds}</div>
+            <div className="text-[11px] text-sky-400/90 font-mono mt-auto">Flyway &amp; Resident</div>
           </div>
 
           {/* Card 4: Fish & Aquatic */}
           <div
             onClick={() => router.push('/biodiversity/fish')}
-            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-cyan-500/50 hover:bg-cyan-950/20"
+            className="kew-card-shell kew-card-shell--interactive p-3.5 gap-1.5"
           >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Freshwater Fish</span>
-              <Droplet className="w-4 h-4 text-cyan-400" />
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+              <Droplet className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-cyan-300">{biodiversityMetrics.fish}</div>
-            <div className="text-[11px] text-cyan-400/90 font-mono mt-0.5">Jhelum &amp; Lacustrine</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-400">Freshwater Fish</h3>
+            <div className="text-2xl font-black text-cyan-300 tabular-nums">{biodiversityMetrics.fish}</div>
+            <div className="text-[11px] text-cyan-400/90 font-mono mt-auto">Jhelum &amp; Lacustrine</div>
           </div>
 
           {/* Card 5: Plants & Flora */}
           <div
             onClick={() => router.push('/biodiversity/plants')}
-            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-green-500/50 hover:bg-green-950/20"
+            className="kew-card-shell kew-card-shell--interactive p-3.5 gap-1.5"
           >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-green-400">Plants &amp; Flora</span>
-              <Flower2 className="w-4 h-4 text-green-400" />
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-green-500/15 border-green-500/30 text-green-400">
+              <Flower2 className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-green-300">{biodiversityMetrics.plants}</div>
-            <div className="text-[11px] text-green-400/90 font-mono mt-0.5">Vascular &amp; Endemics</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-green-400">Plants &amp; Flora</h3>
+            <div className="text-2xl font-black text-green-300 tabular-nums">{biodiversityMetrics.plants}</div>
+            <div className="text-[11px] text-green-400/90 font-mono mt-auto">Vascular &amp; Endemics</div>
           </div>
 
           {/* Card 6: Threatened Species */}
           <div
             onClick={() => router.push('/biodiversity/threatened-species')}
-            className="p-3.5 rounded-xl border transition-all cursor-pointer bg-slate-900/80 border-slate-800 hover:border-rose-500/50 hover:bg-rose-950/20"
+            className="kew-card-shell kew-card-shell--interactive p-3.5 gap-1.5"
           >
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Threatened</span>
-              <Shield className="w-4 h-4 text-rose-400" />
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-rose-500/15 border-rose-500/30 text-rose-400">
+              <Shield className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-rose-300">{biodiversityMetrics.threatened}</div>
-            <div className="text-[11px] text-rose-400/90 font-mono mt-0.5">CR · EN · VU Conservation</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-rose-400">Threatened</h3>
+            <div className="text-2xl font-black text-rose-300 tabular-nums">{biodiversityMetrics.threatened}</div>
+            <div className="text-[11px] text-rose-400/90 font-mono mt-auto">CR · EN · VU Conservation</div>
           </div>
         </div>
       </div>
@@ -518,7 +512,7 @@ export default function BiodiversityPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {categoryCards.map((category, index) => (
             <motion.div
               key={category.id}
@@ -526,41 +520,38 @@ export default function BiodiversityPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
+              className="h-full min-w-0"
             >
-              <a href={category.href} className="block group h-full">
-                <Card
-                  className="group h-full card-intelligence cursor-pointer border border-white/5 bg-slate-900/50"
-                  padding="lg"
-                >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl bg-slate-900 ${category.color} text-white flex items-center justify-center shadow-lg`}>
-                    <category.icon className="w-5 h-5 md:w-7 md:h-7" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-forest-300 transition-colors">
-                      {category.title}
-                    </h3>
-                    <div className="text-2xl md:text-3xl font-bold text-white">
-                      {category.count.toLocaleString()} <span className="text-sm text-slate-500 font-normal">/ {category.count.toLocaleString()}</span>
+              <a href={category.href} className="block group h-full no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full">
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <category.icon className="w-5 h-5" />
                     </div>
-                    <div className="text-xs text-slate-500 uppercase">validated records</div>
+                  </div>
+
+                  <h3 className="kew-card-title">{category.title}</h3>
+
+                  <div className="kew-card-kpi">
+                    <span className="kew-card-kpi-value">{category.count.toLocaleString()}</span>
+                    <span className="kew-card-kpi-unit">validated records</span>
+                  </div>
+
+                  <p className="kew-card-desc">{category.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {category.habitats.map((habitat, idx) => (
+                      <Badge key={idx} variant="default" size="sm">
+                        {habitat}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="kew-card-cta">
+                    <span>Explore {category.title}</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
-                  {category.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {category.habitats.map((habitat, idx) => (
-                    <Badge key={idx} variant="default" size="sm">
-                      {habitat}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium text-forest-400 group-hover:text-forest-300 transition-colors">
-                  <span>Explore {category.title}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Card>
               </a>
             </motion.div>
           ))}

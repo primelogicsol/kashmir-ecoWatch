@@ -12,6 +12,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const programs = [
   {
@@ -112,7 +113,7 @@ export default function CitizenSciencePage() {
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Citizen Science' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Citizen Science</span>
           </>}
         subtitle="Join a growing community of 845+ citizen scientists across 6 structured programs contributing to Kashmir's environmental monitoring, data verification, and conservation efforts"
@@ -224,46 +225,46 @@ export default function CitizenSciencePage() {
             <p className="text-slate-400">Choose a program matching your interests and expertise</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Link href={program.route} className="block h-full">
-                  <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 h-full group">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-14 h-14 rounded-xl bg-slate-900 ${program.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                        <program.icon className="w-7 h-7 text-white" />
+                <Link href={program.route} className="block h-full no-underline">
+                  <div className="kew-card-shell kew-card-shell--interactive group h-full">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                        <program.icon className="w-5 h-5" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between mb-1">
-                          <h3 className="text-lg font-bold text-white">{program.title}</h3>
-                          <Badge variant="outline" size="sm" className="text-xs">{program.volunteers} volunteers</Badge>
-                        </div>
-                        <p className="text-sm text-slate-400">{program.description}</p>
-                      </div>
+                      <Badge variant="outline" size="sm" className="text-xs">{program.volunteers} volunteers</Badge>
                     </div>
 
-                    <ul className="space-y-1.5 mb-4">
+                    <h3 className="kew-card-title">{program.title}</h3>
+                    <p className="kew-card-desc">{program.description}</p>
+
+                    <ul className="space-y-1.5">
                       {program.activities.map((activity, i) => (
                         <li key={i} className="text-sm text-slate-300 flex items-start gap-2">
-                          <span className="text-emerald-400 mt-1">•</span>
-                          {activity}
+                          <span className="text-emerald-400 mt-0.5">•</span>
+                          <span>{activity}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <Button
-                      size="sm"
-                      className={`w-full bg-gradient-to-r ${program.color} hover:opacity-90 text-white text-sm`}
-                    >
-                      <span>{program.cta}</span>
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Card>
+                    <div className="mt-auto pt-2">
+                      <Button
+                        size="sm"
+                        className={`w-full bg-gradient-to-r ${program.color} hover:opacity-90 text-white text-sm`}
+                      >
+                        <span>{program.cta}</span>
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </div>
                 </Link>
               </motion.div>
             ))}

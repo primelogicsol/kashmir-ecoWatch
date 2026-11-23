@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import { useLiveAlerts } from '@/hooks/useLiveAlerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const getSeverityBadge = (severity: string) => {
   switch (severity) {
@@ -47,7 +48,7 @@ export default function LiveAlertsAdvisoriesPage() {
       <Heading
         title={
           <>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
               Live Alerts & Advisories
             </span>

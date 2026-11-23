@@ -16,6 +16,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ProjectCard } from '@/components/common/ProjectCard';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // Flatmap all projects and inject the NGO name
 interface ProjectWithNGO extends NGOProject {
@@ -77,10 +78,7 @@ export default function NGOProjectsPage() {
         ]}
         icon={<Target className="w-6 h-6 text-sky-400" />}
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-blue-300 bg-clip-text text-transparent">Civil Society Projects</span>
         </>}
         subtitle="Explore specific environmental interventions, ecological outcomes, and verified field restoration projects executed across Jammu & Kashmir."

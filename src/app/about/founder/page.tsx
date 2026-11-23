@@ -14,6 +14,7 @@ import {
   ShieldCheck, Calendar, Lock, Brain, BarChart3, Code, Cloud,
   Feather, Palette, Search, ChevronDown, ChevronUp, Filter, Info, FolderArchive
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function FounderPage() {
   const [activeCertTab, setActiveCertTab] = useState<'fema' | 'un' | 'epa' | 'geospatial' | 'specialized'>('fema');
@@ -477,6 +478,7 @@ export default function FounderPage() {
           </div>
 
           {/* Main Heading */}
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] mb-4 break-words">
             Institutional Leadership &amp; Scientific Stewardship
           </h1>

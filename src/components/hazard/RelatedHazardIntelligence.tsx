@@ -33,6 +33,15 @@ export interface HazardDestination {
 }
 
 export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
+  'extreme-rainfall-cloudbursts': {
+    id: 'extreme-rainfall-cloudbursts',
+    title: 'Extreme Rainfall & Cloudbursts',
+    description: '1h/3h/24h mountain rainfall intensity, 31-member GFS ensemble probabilities, and ERA5 watershed anomalies.',
+    href: '/hazard-intelligence/extreme-weather/extreme-rainfall-cloudbursts',
+    icon: CloudRain,
+    color: 'text-cyan-400',
+    badge: 'Extreme Weather'
+  },
   'atmospheric-systems': {
     id: 'atmospheric-systems',
     title: 'Atmospheric Systems Hub',
@@ -190,6 +199,14 @@ export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
 
 // Contextual prioritization matrix: maps current page key to 6 most relevant destinations
 const CONTEXTUAL_PRIORITY: Record<string, string[]> = {
+  'extreme-rainfall-cloudbursts': [
+    'flash-floods',
+    'floods',
+    'landslides',
+    'monsoon-dynamics',
+    'western-disturbances',
+    'glofs'
+  ],
   'atmospheric-systems': [
     'western-disturbances',
     'monsoon-dynamics',
@@ -397,35 +414,24 @@ export function RelatedHazardIntelligence({
                 href={dest.href}
                 className="group flex flex-col h-full rounded-lg transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-emerald-500/50"
               >
-                <Card
-                  className="glass-intense border-white/10 p-4 sm:p-5 flex flex-col justify-between h-full hover:border-emerald-500/40 hover:bg-slate-900/80 transition-all rounded-lg shadow-sm"
-                  padding="none"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="w-8 h-8 rounded-md bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-950/20 transition-colors">
-                        <Icon className={`w-4 h-4 ${dest.color} transition-transform group-hover:scale-110`} />
-                      </div>
-                      <span className="text-[9px] font-mono uppercase tracking-wider text-slate-400 px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/5">
-                        {dest.badge}
-                      </span>
+                <div className="kew-card-shell kew-card-shell--interactive h-full">
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/10">
+                      <Icon className={`w-5 h-5 ${dest.color}`} />
                     </div>
-
-                    <div>
-                      <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
-                        {dest.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-1.5 leading-relaxed line-clamp-2">
-                        {dest.description}
-                      </p>
-                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-300 px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10">
+                      {dest.badge}
+                    </span>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-medium text-slate-400 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="kew-card-title">{dest.title}</h3>
+                  <p className="kew-card-desc">{dest.description}</p>
+
+                  <div className="kew-card-cta">
                     <span>Explore Intelligence</span>
-                    <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 shrink-0 transform group-hover:translate-x-0.5 transition-transform" />
                   </div>
-                </Card>
+                </div>
               </Link>
             );
           })}

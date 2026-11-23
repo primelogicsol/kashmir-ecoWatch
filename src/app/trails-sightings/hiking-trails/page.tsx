@@ -10,6 +10,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const hikingTrails = [
   {
@@ -94,7 +95,7 @@ export default function HikingTrailsPage() {
       
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hiking Trails</span>
           </>}
         subtitle="Multi-day treks and day hikes across Kashmir's mountains, valleys, and alpine meadows. From challenging high-altitude routes to scenic valley walks."

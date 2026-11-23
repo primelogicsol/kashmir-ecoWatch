@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
@@ -244,21 +245,12 @@ export function WaterEntityListingPage({
         label="Water Systems"
         icon={<LucideIcon className="w-6 h-6 text-emerald-400" />}
         title={(() => {
-          // Rule: Line 1 = "Western Himalayan", Line 2 = page subject
+          // Rule: Line 1 = "KEW | Western Himalayan", Line 2 = page subject
           const WH = 'Western Himalayan';
-          const line1 = WH;
           const line2 = title.startsWith(WH + ' ') ? title.slice(WH.length + 1) : title;
           return (
             <>
-              <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-                <span
-                  className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
-                  style={{ fontSize: '0.58em' }}
-                >
-                  KEW
-                </span>
-                <span>{line1}</span>
-              </span>
+              <KewBrandIdentity />
               <span className={`block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {line2}
               </span>

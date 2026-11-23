@@ -31,6 +31,7 @@ import {
 import { ProtectedAreaRegistryTable } from '@/components/protected-areas/ProtectedAreaRegistryTable';
 import { getProtectedAreaRegistry, protectedAreaRegistryMetrics } from '@/data/protected-area-registry';
 import { getProtectedAreas } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 type ScopeFilter = 'All' | 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended';
 type CategoryFilter = 'All' | 'NP' | 'WLS' | 'WR' | 'GR' | 'WLR';
@@ -161,10 +162,7 @@ export default function ProtectedAreasRegistryPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Areas Registry</span>
           </>}
         subtitle="Complete inventory of all protected areas across the global ecological scope. Filter by scope, category, and search by name. Integrated with the entire regional database."

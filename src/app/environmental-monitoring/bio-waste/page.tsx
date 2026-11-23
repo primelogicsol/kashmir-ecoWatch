@@ -17,6 +17,7 @@ import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterB
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { bioWasteData, BioWasteWardRecord, Scope } from '@/data/bio-waste';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Colour maps ──────────────────────────────────────────────────────────────
 
@@ -296,10 +297,7 @@ export default function BioWastePage() {
           { label: 'Bio-Waste' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bio-Waste Management</span>
           </>}
         subtitle="Monitoring organic waste accumulation via verified city anchors and highly granular ward-level intelligence across Kashmir's ecological and residential interfaces."

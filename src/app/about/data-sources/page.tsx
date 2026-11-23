@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const sourceCategories = [
   {
@@ -134,6 +135,7 @@ export default function DataSourcesPage() {
               <Badge variant="info" size="lg">Data Provenance</Badge>
             </div>
 
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Data <span className="text-emerald-400">Sources</span>
             </h1>
@@ -159,25 +161,21 @@ export default function DataSourcesPage() {
           <div className="space-y-6">
             {sourceCategories.map((cat, i) => (
               <motion.div key={cat.category} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} viewport={{ once: true }}>
-                <Card className="glass-intense border-white/10 p-6">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-14 h-14 rounded-xl bg-slate-900 ${cat.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                      <cat.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-1">{cat.category}</h3>
-                      <p className="text-sm text-slate-400">{cat.description}</p>
-                    </div>
+                <div className="kew-card-shell">
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <cat.icon className="w-5 h-5" />
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 ml-16">
+                  <h3 className="kew-card-title text-lg">{cat.category}</h3>
+                  <p className="kew-card-desc">{cat.description}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-2 border-t border-white/10">
                     {cat.sources.map((source) => (
                       <div key={source} className="flex items-center gap-2 text-sm text-slate-300 py-1">
                         <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${cat.color} flex-shrink-0`} />
-                        {source}
+                        <span className="break-words">{source}</span>
                       </div>
                     ))}
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>

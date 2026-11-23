@@ -17,6 +17,7 @@ import { Building2, Activity, FlaskConical, MapPin, AlertTriangle, Shield, Check
 import { motion } from 'framer-motion';
 
 import { infrastructureData, InfrastructureRecord } from '@/data/critical-infrastructure';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Infrastructure Card ──────────────────────────────────────────────────
 
@@ -264,10 +265,7 @@ export default function CriticalInfrastructurePage() {
           { label: 'Critical Infrastructure' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent">Critical Infrastructure</span>
           </>}
         subtitle="Monitoring the capacity, operational load, and environmental risk of major dams, STPs, WTPs, landfills, and outfalls forming the ecological backbone."

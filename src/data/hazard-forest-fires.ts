@@ -847,6 +847,201 @@ export const forestFireRegistry: ForestFireRecord[] = [
 
 // ─── KPI helpers ─────────────────────────────────────────────────────────────
 
+export interface HistoricalForestFireEvent {
+  id: string;
+  title: string;
+  period: string;
+  year: number;
+  subregion: 'Kashmir' | 'Jammu' | 'Ladakh' | 'Azad Kashmir' | 'Gilgit' | 'Baltistan' | 'Multi-Regional';
+  scope: 'Kashmir Core' | 'Trans-Divisional' | 'Transboundary / Extended';
+  districts: string[];
+  forestDivisions: string[];
+  forestType: ForestType;
+  dominantSpecies: string;
+  fireRegime: 'Subtropical Chir Pine Pre-Monsoon' | 'Temperate Autumn WD-Deficit' | 'Pre-Monsoon Heatwave Crown/Surface' | 'Alpine Scrub / Pasture Interface';
+  estimatedAffectedAreaHa: number;
+  uncertaintyNote: string;
+  meteorologicalDriver: string;
+  ignitionPathway: string;
+  ecologicalImpact: string;
+  detectionSensors: string;
+  verificationStatus: 'FSI & Forest Dept Verified' | 'Satellite Burn-Scar Audited (ΔNBR)';
+  sourceCitation: string;
+}
+
+export interface BimodalFireRegimeSummary {
+  id: string;
+  regimeName: string;
+  peakWindow: string;
+  altitudinalBelt: string;
+  primarySubregions: string;
+  fuelComplex: string;
+  synopticTrigger: string;
+  historicalSharePct: number;
+}
+
+export const BIMODAL_FIRE_REGIMES: BimodalFireRegimeSummary[] = [
+  {
+    id: 'regime-subtropical-spring',
+    regimeName: 'Pre-Monsoon Subtropical Chir Pine Regime',
+    peakWindow: 'March – June (Peak: May)',
+    altitudinalBelt: '600 m – 1,800 m ASL',
+    primarySubregions: 'Jammu (Rajouri, Reasi, Udhampur, Kathua, Poonch) & Lower AJ&K (Mirpur, Kotli, Muzaffarabad)',
+    fuelComplex: 'Resinous Pinus roxburghii (Chir pine) needle cast, dry Dodonaea/Carissa scrub, and desiccated grass.',
+    synopticTrigger: 'Pre-monsoon Tmax > 36°C, RH < 25%, foehn valley winds, and accumulated resin-rich spring needle litter.',
+    historicalSharePct: 58,
+  },
+  {
+    id: 'regime-temperate-autumn',
+    regimeName: 'Autumn–Early Winter WD-Deficit Temperate Regime',
+    peakWindow: 'October – December (extending to Feb in snowless winters)',
+    altitudinalBelt: '1,650 m – 2,900 m ASL',
+    primarySubregions: 'Kashmir Valley (Zabarwan, Dachigam, Tral, Shopian, Bandipora, Kupwara, Anantnag) & Upper Chenab/Neelum',
+    fuelComplex: 'Blue pine (Pinus wallichiana), Himalayan cedar (Cedrus deodara), broadleaf oak/parrotia leaf litter, and dry grass.',
+    synopticTrigger: 'Delayed or absent autumn/winter Western Disturbances (SPI < -1.5), prolonged rainless/snowless spells, and human understory ignition.',
+    historicalSharePct: 34,
+  },
+  {
+    id: 'regime-subalpine-summer',
+    regimeName: 'High-Altitude Dry-Summer & Lightning Interface',
+    peakWindow: 'June – August',
+    altitudinalBelt: '2,800 m – 3,700 m ASL',
+    primarySubregions: 'Kishtwar, Gilgit (Naltar, Diamer, Ghizer), Baltistan, and Ladakh riparian/juniper pockets',
+    fuelComplex: 'Dry juniper woodlands (Juniperus excelsa/macropoda), Artemisia steppe scrub, and alpine pasture margins.',
+    synopticTrigger: 'Dry convective lightning storms, anomalous summer heatwaves, and backcountry pastoral/trekking campfires.',
+    historicalSharePct: 8,
+  },
+];
+
+export const HISTORICAL_FOREST_FIRE_ARCHIVE: HistoricalForestFireEvent[] = [
+  {
+    id: 'HIST-FF-2016-TRIKUTA-RAJOURI',
+    title: '2016 Pre-Monsoon Trikuta Hills, Rajouri & Udhampur Chir Pine Wildfire Outbreak',
+    period: 'May 2016',
+    year: 2016,
+    subregion: 'Jammu',
+    scope: 'Trans-Divisional',
+    districts: ['Reasi', 'Rajouri', 'Udhampur', 'Samba'],
+    forestDivisions: ['Reasi Forest Division (Trikuta Hills)', 'Rajouri & Nowshera Divisions', 'Udhampur Division'],
+    forestType: 'Coniferous',
+    dominantSpecies: 'Pinus roxburghii (Chir Pine) & subtropical deciduous scrub',
+    fireRegime: 'Subtropical Chir Pine Pre-Monsoon',
+    estimatedAffectedAreaHa: 3420,
+    uncertaintyNote: '±210 ha (Landsat-8 OLI ΔNBR perimeter composite across multi-cluster foothill burns)',
+    meteorologicalDriver: 'Severe pre-monsoon heatwave across Northwest India (Tmax 39–42°C in Shivalik foothills) following a moisture-deficient winter.',
+    ignitionPathway: 'Anthropogenic surface litter ignitions amplified by steep-slope upslope winds and heavy dry pine-needle fuel loads.',
+    ecologicalImpact: 'Extensive understory and sapling mortality across Shivalik-Pir Panjal foothill corridors; temporary suspension of pilgrimage track sectors on Trikuta slopes.',
+    detectionSensors: 'NASA FIRMS MODIS (Terra/Aqua) + SNPP-VIIRS 375m Thermal Anomalies + FSI Alert System',
+    verificationStatus: 'FSI & Forest Dept Verified',
+    sourceCitation: 'Forest Survey of India (ISFR 2017 Forest Fire Monitoring Chapter) & J&K Forest Department Fire Audit',
+  },
+  {
+    id: 'HIST-FF-2018-ZABARWAN-DACHIGAM',
+    title: '2018 Late-Autumn Zabarwan & Dachigam Buffer Dry-Spell Surface Fires',
+    period: 'November – December 2018',
+    year: 2018,
+    subregion: 'Kashmir',
+    scope: 'Kashmir Core',
+    districts: ['Srinagar', 'Pulwama'],
+    forestDivisions: ['Zabarwan Range', 'Dachigam Wildlife Buffer', 'Tral Forest Division'],
+    forestType: 'Mixed',
+    dominantSpecies: 'Parrotia jacquemontiana (Hatab), Pinus wallichiana & dry hillside grass',
+    fireRegime: 'Temperate Autumn WD-Deficit',
+    estimatedAffectedAreaHa: 485,
+    uncertaintyNote: '±35 ha (Sentinel-2 MSI 10m post-burn scar delineation)',
+    meteorologicalDriver: 'Prolonged November–December precipitation deficit post-early November snowfall, leaving south-facing Zabarwan grass/shrub slopes desiccated.',
+    ignitionPathway: 'Human activity along peri-urban foothill fringes and charcoal/grazing clearings.',
+    ecologicalImpact: 'Burned winter browse shrubland along the Zabarwan-Dachigam wildlife buffer, prompting emergency fire-line trenching to protect core Hangul wintering habitat.',
+    detectionSensors: 'SNPP-VIIRS 375m Nighttime Thermal Detections + Sentinel-2 L2A NBR',
+    verificationStatus: 'FSI & Forest Dept Verified',
+    sourceCitation: 'Department of Wildlife Protection J&K & FSI SNPP-VIIRS Fire Archive (2018–19)',
+  },
+  {
+    id: 'HIST-FF-2020-KAMRAJ-BANDIPORA',
+    title: '2020 Dry-Winter Kamraj, Kehmil & Bandipora Conifer Belt Fires',
+    period: 'November – December 2020',
+    year: 2020,
+    subregion: 'Kashmir',
+    scope: 'Kashmir Core',
+    districts: ['Kupwara', 'Bandipora', 'Ganderbal'],
+    forestDivisions: ['Kamraj Forest Division', 'Kehmil Forest Division', 'Bandipora Range'],
+    forestType: 'Coniferous',
+    dominantSpecies: 'Pinus wallichiana (Kail / Blue Pine) & Cedrus deodara (Deodar)',
+    fireRegime: 'Temperate Autumn WD-Deficit',
+    estimatedAffectedAreaHa: 760,
+    uncertaintyNote: '±55 ha (Multi-compartment ground beat logs & Sentinel-2 SWIR burn index)',
+    meteorologicalDriver: 'Acute autumn drought prior to late-December snowfall; low litter moisture content (<12%) on steep southern aspects.',
+    ignitionPathway: 'Anthropogenic forest-margin ignitions and unattended warming fires in high-slope compartments.',
+    ecologicalImpact: 'Damaged regenerating Kail and Deodar cohorts across steep North Kashmir compartments; increased spring snowmelt rill erosion.',
+    detectionSensors: 'NOAA-20 / SNPP VIIRS 375m + J&K Forest Protection Force Beat Verification',
+    verificationStatus: 'FSI & Forest Dept Verified',
+    sourceCitation: 'J&K Forest Department Annual Administration Report & FSI Fire Alert Portal (2020–21)',
+  },
+  {
+    id: 'HIST-FF-2022-PIRPANJAL-CHENAB',
+    title: '2022 Spring Heatwave Pir Panjal, Bhaderwah & Kishtwar Multi-Division Fires',
+    period: 'April – May 2022',
+    year: 2022,
+    subregion: 'Jammu',
+    scope: 'Trans-Divisional',
+    districts: ['Doda', 'Kishtwar', 'Ramban', 'Rajouri', 'Poonch'],
+    forestDivisions: ['Bhaderwah Forest Division', 'Doda & Ramban Divisions', 'Poonch-Mendhar & Rajouri Ranges'],
+    forestType: 'Mixed',
+    dominantSpecies: 'Pinus roxburghii, Pinus wallichiana & Quercus baloot (Holly Oak)',
+    fireRegime: 'Pre-Monsoon Heatwave Crown/Surface',
+    estimatedAffectedAreaHa: 2890,
+    uncertaintyNote: '±180 ha (Sentinel-2 ΔNBR & NASA FIRMS VIIRS cluster aggregation)',
+    meteorologicalDriver: 'Record-breaking March–April 2022 Western Himalayan heatwave (+4.5°C to +6.0°C Tmax anomaly; >70% spring rainfall deficit).',
+    ignitionPathway: 'Multiple simultaneous surface ignitions rapidly escalating along steep Chenab gorge and Pir Panjal southern scarps.',
+    ecologicalImpact: 'Severe canopy scorch in Chir-to-Blue-pine transition belts; elevated black-carbon aerosol plume transport toward Pir Panjal & Kishtwar glaciers.',
+    detectionSensors: 'NASA FIRMS (MODIS + VIIRS 375m) + Copernicus Sentinel-2 MSI ΔNBR + CAMS Smoke AOD',
+    verificationStatus: 'FSI & Forest Dept Verified',
+    sourceCitation: 'IMD 2022 Heatwave Monograph, FSI Forest Fire Alert Archive & J&K Forest Dept Situation Bulletins',
+  },
+  {
+    id: 'HIST-FF-2024-SOUTH-KASHMIR-AUTUMN',
+    title: '2024 Prolonged Autumn-Winter Drought Fires Across Tral, Shopian, Daksum & Budgam',
+    period: 'October – December 2024',
+    year: 2024,
+    subregion: 'Kashmir',
+    scope: 'Kashmir Core',
+    districts: ['Pulwama', 'Anantnag', 'Shopian', 'Kulgam', 'Budgam'],
+    forestDivisions: ['Awantipora-Tral Range', 'Anantnag-Kokernag-Daksum Division', 'Shopian & Pir Panjal Divisions'],
+    forestType: 'Coniferous',
+    dominantSpecies: 'Pinus wallichiana, Cedrus deodara & temperate deciduous understory',
+    fireRegime: 'Temperate Autumn WD-Deficit',
+    estimatedAffectedAreaHa: 1140,
+    uncertaintyNote: '±85 ha (Aggregated across >70 discrete compartment fire incidents)',
+    meteorologicalDriver: 'Severe October–November 2024 rainfall deficit (>75% below normal across Kashmir Division) with desiccated forest duff layers prior to winter snow.',
+    ignitionPathway: 'Anthropogenic orchard-margin burning, charcoal collection, and dry footpath ignitions.',
+    ecologicalImpact: 'Widespread ground-litter and sapling burn scars in Tral wildlife corridor and Lidder/Bringi headwater forests; localized smoke haze inversions in Kashmir Valley.',
+    detectionSensors: 'SNPP/NOAA-20 VIIRS 375m + FSI Real-Time SMS Alerts + Territorial Forest Control Rooms',
+    verificationStatus: 'FSI & Forest Dept Verified',
+    sourceCitation: 'J&K Forest Department Control Room Fire Log (Autumn 2024) & NASA FIRMS Archive',
+  },
+  {
+    id: 'HIST-FF-2025-MUZAFFARABAD-NEELUM-CHILAS',
+    title: '2025 Pre-Monsoon Jhelum-Neelum Foothills & Diamer Dry Conifer Incidents',
+    period: 'April – June 2025',
+    year: 2025,
+    subregion: 'Azad Kashmir',
+    scope: 'Transboundary / Extended',
+    districts: ['Muzaffarabad', 'Bagh', 'Kotli', 'Diamer'],
+    forestDivisions: ['Muzaffarabad Jhelum Valley', 'Bagh Pir Chinasi', 'Kotli Scrub-Pine Belt', 'Diamer Chilas Dry Conifer'],
+    forestType: 'Coniferous',
+    dominantSpecies: 'Pinus roxburghii (lower slopes) & Pinus gerardiana / Cedrus deodara (Diamer)',
+    fireRegime: 'Subtropical Chir Pine Pre-Monsoon',
+    estimatedAffectedAreaHa: 1620,
+    uncertaintyNote: '±140 ha (VIIRS 375m active fire radiative power & Sentinel-2 burn scar audit)',
+    meteorologicalDriver: 'Dry April–May pre-monsoon spell with high valley-breeze speeds along steep Jhelum and Indus gorge slopes.',
+    ignitionPathway: 'Pasture clearance burning escaping into resinous pine slopes and timber/fuelwood extraction sites.',
+    ecologicalImpact: 'Slope-stabilizing ground cover loss along steep landslide-prone Jhelum Valley corridors; localized damage to Chilgoza pine stands in Diamer.',
+    detectionSensors: 'NASA FIRMS VIIRS (SNPP/NOAA-20/NOAA-21) + Sentinel-2 MSI L2A',
+    verificationStatus: 'Satellite Burn-Scar Audited (ΔNBR)',
+    sourceCitation: 'AJ&K Forest Department Bulletins, GB Disaster Management Authority & NASA FIRMS 2025 Archive',
+  },
+];
+
 export const forestFireKpis = [
   { label: 'Fire Zones',       value: forestFireRegistry.length,                                icon: 'Flame'          },
   { label: 'Critical Risk',    value: forestFireRegistry.filter(f => f.risk_level === 'Critical').length,  icon: 'AlertTriangle', color: 'text-red-400'    },

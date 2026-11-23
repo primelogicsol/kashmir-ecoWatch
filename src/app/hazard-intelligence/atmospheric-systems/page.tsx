@@ -15,6 +15,7 @@ import {
   Wind, CloudRain, Compass, BarChart3, Waves, Mountain,
   Snowflake, Droplets, ArrowRight, CheckCircle2, Layers
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const ATMOSPHERIC_MODULES = [
   {
@@ -40,6 +41,7 @@ const ATMOSPHERIC_MODULES = [
     number: '02',
     title: 'Monsoon Dynamics',
     href: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics',
+    dashboardHref: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics/dashboard',
     icon: CloudRain,
     gradient: 'from-teal-500 to-emerald-600',
     accentBorder: 'border-teal-500/30 hover:border-teal-400/60',
@@ -58,6 +60,7 @@ const ATMOSPHERIC_MODULES = [
     number: '03',
     title: 'Jet Stream & Atmospheric Circulation',
     href: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation',
+    dashboardHref: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation/dashboard',
     icon: Compass,
     gradient: 'from-indigo-500 to-violet-600',
     accentBorder: 'border-indigo-500/30 hover:border-indigo-400/60',
@@ -89,15 +92,7 @@ export default function AtmosphericSystemsHubPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span
-                className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
-                style={{ fontSize: '0.58em' }}
-              >
-                KEW
-              </span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-300 bg-clip-text text-transparent">
               Atmospheric Systems
             </span>

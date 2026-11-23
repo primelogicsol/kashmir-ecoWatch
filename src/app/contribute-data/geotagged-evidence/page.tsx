@@ -8,6 +8,7 @@ import { Camera, ArrowLeft, Upload, MapPin, FileText, CheckCircle, Loader2, Exte
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const CONTRIBUTOR_TYPES = ['Individual', 'Academic/Research', 'Institution', 'NGO', 'Field Team', 'Monitoring Network'] as const;
 const EVIDENCE_TYPES = ['Habitat Change', 'Pollution Evidence', 'Species Evidence', 'Infrastructure Impact', 'Climate Evidence', 'Land Use Change', 'Other'] as const;
@@ -67,7 +68,7 @@ export default function GeotaggedEvidencePage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Geotagged Evidence Collections</span>
           </>}
         subtitle="Submit location-tagged photos, drone imagery, and field documentation with GPS metadata. Approved records route into relevant modules by theme."

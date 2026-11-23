@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { fieldReportsRegistry } from '@/data/field-reports-registry';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function BiodiversityReportsPage() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function BiodiversityReportsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-purple-500 to-violet-600 bg-clip-text text-transparent">Biodiversity Field Reports</span>
           </>}
         subtitle="Species population censuses, avian migration tracking, phenology records, and flora conservation surveys."

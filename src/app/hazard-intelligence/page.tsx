@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Submodules ──────────────────────────────────────────────────────────────
 
@@ -67,10 +68,7 @@ export default function HazardIntelligenceOverview() {
           { label: 'Hazard Intelligence' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Hazard Intelligence</span>
           </>}
         subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Western Himalayan ecological region"
@@ -129,6 +127,7 @@ export default function HazardIntelligenceOverview() {
                 { value: 'western-disturbances', label: 'Western Disturbances (Atmospheric)' },
                 { value: 'monsoon-dynamics', label: 'Monsoon Dynamics (Atmospheric)' },
                 { value: 'jet-stream-circulation', label: 'Jet Stream & Circulation (Atmospheric)' },
+                { value: 'extreme-rainfall-cloudbursts', label: 'Extreme Rainfall & Cloudbursts' },
                 { value: 'floods',        label: 'Floods'         },
                 { value: 'flash-floods',  label: 'Flash Floods'   },
                 { value: 'landslides',    label: 'Landslides'     },
@@ -288,66 +287,147 @@ export default function HazardIntelligenceOverview() {
             </Button>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card
-              className="glass-intense border-sky-500/25 hover:border-sky-400/50 transition-all p-5 cursor-pointer group"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => router.push('/hazard-intelligence/atmospheric-systems/western-disturbances')}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push('/hazard-intelligence/atmospheric-systems/western-disturbances')}
+              className="kew-card-shell kew-card-shell--interactive group h-full border-sky-500/25 hover:border-sky-400/50"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center shadow flex-shrink-0">
-                  <Wind className="w-5 h-5 text-white" />
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-sky-500/15 border-sky-500/30 text-sky-400">
+                  <Wind className="w-5 h-5" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <h3 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">Western Disturbances</h3>
-                    <Badge variant="info" size="sm" className="text-[10px]">Live + 8-Tab</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400">
-                    WD tracking, atmospheric movement, approaching systems, snowfall &amp; rainfall forecasts, and regional impacts.
-                  </p>
-                </div>
+                <Badge variant="info" size="sm" className="text-[10px]">Live + 8-Tab</Badge>
               </div>
-            </Card>
+              <h3 className="kew-card-title">Western Disturbances</h3>
+              <p className="kew-card-desc">
+                WD tracking, atmospheric movement, approaching systems, snowfall &amp; rainfall forecasts, and regional impacts.
+              </p>
+              <div className="kew-card-cta">
+                <span>Open System</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
 
-            <Card
-              className="glass-intense border-teal-500/25 hover:border-teal-400/50 transition-all p-5 cursor-pointer group"
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => router.push('/hazard-intelligence/atmospheric-systems/monsoon-dynamics')}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push('/hazard-intelligence/atmospheric-systems/monsoon-dynamics')}
+              className="kew-card-shell kew-card-shell--interactive group h-full border-teal-500/25 hover:border-teal-400/50"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow flex-shrink-0">
-                  <CloudRain className="w-5 h-5 text-white" />
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-teal-500/15 border-teal-500/30 text-teal-400">
+                  <CloudRain className="w-5 h-5" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <h3 className="text-sm font-bold text-white group-hover:text-teal-300 transition-colors">Monsoon Dynamics</h3>
-                    <Badge variant="success" size="sm" className="text-[10px]">850 hPa Flux</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400">
-                    Monsoon progression, moisture transport, orographic precipitation, rainfall anomalies, and regional influence.
-                  </p>
-                </div>
+                <Badge variant="success" size="sm" className="text-[10px]">850 hPa Flux</Badge>
               </div>
-            </Card>
+              <h3 className="kew-card-title">Monsoon Dynamics</h3>
+              <p className="kew-card-desc">
+                Monsoon progression, moisture transport, orographic precipitation, rainfall anomalies, and regional influence.
+              </p>
+              <div className="kew-card-cta">
+                <span>Open System</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
 
-            <Card
-              className="glass-intense border-indigo-500/25 hover:border-indigo-400/50 transition-all p-5 cursor-pointer group"
+            <div
+              role="button"
+              tabIndex={0}
               onClick={() => router.push('/hazard-intelligence/atmospheric-systems/jet-stream-circulation')}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push('/hazard-intelligence/atmospheric-systems/jet-stream-circulation')}
+              className="kew-card-shell kew-card-shell--interactive group h-full border-indigo-500/25 hover:border-indigo-400/50"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow flex-shrink-0">
-                  <BarChart3 className="w-5 h-5 text-white" />
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-indigo-500/15 border-indigo-500/30 text-indigo-400">
+                  <BarChart3 className="w-5 h-5" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">Jet Stream &amp; Circulation</h3>
-                    <Badge variant="warning" size="sm" className="text-[10px]">250/500 hPa</Badge>
-                  </div>
-                  <p className="text-xs text-slate-400">
-                    Subtropical westerly jet, upper-level troughs and ridges, wind patterns, and atmospheric circulation shifts.
-                  </p>
-                </div>
+                <Badge variant="warning" size="sm" className="text-[10px]">250/500 hPa</Badge>
               </div>
-            </Card>
+              <h3 className="kew-card-title">Jet Stream &amp; Circulation</h3>
+              <p className="kew-card-desc">
+                Subtropical westerly jet, upper-level troughs and ridges, wind patterns, and atmospheric circulation shifts.
+              </p>
+              <div className="kew-card-cta">
+                <span>Open System</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Submodules Grid */}
+      <section className="pt-8 pb-4">
+        <div className="container mx-auto px-6">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400 font-mono block mb-1">
+                Hazard Intelligence · Extreme Weather Systems (12-Module Suite)
+              </span>
+              <h2 className="text-2xl font-bold text-white mb-1">Extreme Weather Intelligence</h2>
+              <p className="text-slate-400 text-sm">
+                High-intensity precipitation, ensemble exceedance probabilities, and severe mountain weather monitoring
+              </p>
+            </div>
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-cyan-500/30 text-cyan-300 hover:text-white text-xs font-semibold self-start sm:self-end"
+              onClick={() => router.push('/hazard-intelligence/extreme-weather')}
+            >
+              All 12 Extreme Weather Modules <ChevronRight className="w-3.5 h-3.5 ml-1" />
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => router.push('/hazard-intelligence/extreme-weather/extreme-rainfall-cloudbursts')}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push('/hazard-intelligence/extreme-weather/extreme-rainfall-cloudbursts')}
+              className="kew-card-shell kew-card-shell--interactive group h-full border-cyan-500/30 hover:border-cyan-400/60"
+            >
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+                  <CloudRain className="w-5 h-5" />
+                </div>
+                <Badge variant="success" size="sm" className="text-[10px]">Operational + 31-Ens</Badge>
+              </div>
+              <h3 className="kew-card-title">Extreme Rainfall &amp; Cloudbursts</h3>
+              <p className="kew-card-desc">
+                1h/3h/24h mountain rainfall intensity, 31-member GFS ensemble probabilities, ERA5 7d anomalies &amp; 8-tab dashboard.
+              </p>
+              <div className="kew-card-cta">
+                <span>Open Module</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => router.push('/hazard-intelligence/extreme-weather')}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push('/hazard-intelligence/extreme-weather')}
+              className="kew-card-shell kew-card-shell--interactive group h-full"
+            >
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-slate-800 border-white/15 text-cyan-300">
+                  <BarChart3 className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" size="sm" className="text-[10px]">Phased Rollout</Badge>
+              </div>
+              <h3 className="kew-card-title">Extreme Weather Hub (Modules 02–12)</h3>
+              <p className="kew-card-desc">
+                Blizzards, Thunderstorms, Heatwaves, Cold Waves, Hailstorms, Gales, Fog, Drought, Dust, Freezing Rain &amp; Rain-on-Snow.
+              </p>
+              <div className="kew-card-cta">
+                <span>Explore Suite</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -360,23 +440,29 @@ export default function HazardIntelligenceOverview() {
             <p className="text-slate-400">Access all hazard intelligence submodules across the Western Himalayan ecology</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
             {submodules.map((mod, i) => (
-              <motion.div key={mod.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.03 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(mod.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${mod.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <mod.icon className="w-5 h-5 text-white" />
+              <motion.div key={mod.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.03 }} className="h-full min-w-0">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(mod.href)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(mod.href)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-amber-400">
+                      <mod.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{mod.name}</h3>
-                        <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
-                      </div>
-                      <p className="text-xs text-slate-400">{mod.desc}</p>
-                    </div>
+                    <Badge variant={mod.statusColor as any} size="sm" className="text-xs">{mod.status}</Badge>
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">{mod.name}</h3>
+                  <p className="kew-card-desc">{mod.desc}</p>
+                  <div className="kew-card-cta">
+                    <span>Open Domain</span>
+                    <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

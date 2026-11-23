@@ -10,6 +10,7 @@ import {
   Building, MapPin, Globe, Mail, ShieldCheck, FileText, Target, Activity, CheckCircle, ExternalLink, Leaf, Users, Clock
 } from 'lucide-react';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function NGOProfilePage() {
   const params = useParams();
@@ -50,6 +51,7 @@ export default function NGOProfilePage() {
                   {ngo.registration_status}
                 </Badge>
               </div>
+              <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
               <h1 className="text-4xl font-bold text-slate-100 mb-2">{ngo.name}</h1>
               <div className="flex gap-4 text-sm text-slate-400">
                 <span className="flex items-center gap-1"><MapPin className="w-4 h-4"/> {ngo.headquarters}</span>

@@ -26,6 +26,7 @@ import {
 } from '@/data/air-quality-registry';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 type AirQualityPageRecord = AirQualityLiveRecord & {
   aqi: number;
@@ -636,10 +637,7 @@ export default function AirPollutionPage() {
           { label: 'Air Pollution' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Monitoring</span>
           </>}
         subtitle="Real-time hybrid air quality surveillance combining physical AirGradient / BreatheOSS street-level optical ground sensors with UTC-synced Open-Meteo & Copernicus CAMS telemetry across all 44 regional units."
@@ -1009,17 +1007,19 @@ export default function AirPollutionPage() {
               { label: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress maps', icon: ExternalLink, color: 'from-violet-500 to-purple-600' },
             ].map((link, i) => (
               <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-slate-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(link.href)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(link.href)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-icon-box bg-slate-800 border-white/15 text-emerald-400">
+                    <link.icon className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title text-sm sm:text-base">{link.label}</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">{link.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

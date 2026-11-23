@@ -7,6 +7,7 @@ import { Heading } from '@/components/common/Heading';
 import { AlertTriangle, ArrowRight, Map, Shield, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const risks = [
   { id: 'dr-1', type: 'Multi-Hazard', location: 'Kashmir Valley', riskLevel: 'moderate' as const, areas: 12, description: 'Composite risk assessment across all hazards' },
@@ -20,7 +21,7 @@ export default function DisasterRisksPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Disaster Risks' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Disaster Risks</span>
           </>}
         subtitle="Multi-hazard risk assessment and monitoring across Kashmir"

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import { getDistrictBySlug, getDistrictSpeciesList } from '@/data/biodiversity-access';
 import SourceVerificationBadge from '@/components/biodiversity/intelligence/SourceVerificationBadge';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const DistrictDetailPage: React.FC = () => {
   const params = useParams();
@@ -50,6 +51,7 @@ const DistrictDetailPage: React.FC = () => {
             <span className="text-blue-100">{displayName}</span>
           </div>
 
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="max-w-xl text-4xl font-bold mb-4">{displayName} District</h1>
           <p className="text-xl text-blue-100 max-w-3xl">
             District-level biodiversity intelligence including species richness, 

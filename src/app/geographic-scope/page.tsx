@@ -617,22 +617,18 @@ export default function GeographicScopePage() {
                 return (
                   <div
                     key={idx}
-                    className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 bg-slate-900/50 hover:border-emerald-500/30 transition-all flex flex-col justify-between"
+                    className="kew-card-shell p-6 sm:p-7 h-full"
                   >
-                    <div>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 rounded-xl bg-slate-950 border border-white/10 flex items-center justify-center">
-                          <IconComp className={`w-5 h-5 ${item.color}`} />
-                        </div>
-                        <div>
-                          <h3 className="text-base font-bold text-white">{item.title}</h3>
-                          <span className="text-[11px] font-mono text-emerald-400">{item.provider}</span>
-                        </div>
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-slate-950 border border-white/10">
+                        <IconComp className={`w-5 h-5 ${item.color}`} />
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        {item.desc}
-                      </p>
+                      <span className="text-[11px] font-mono text-emerald-400">{item.provider}</span>
                     </div>
+                    <h3 className="kew-card-title text-base mb-2">{item.title}</h3>
+                    <p className="kew-card-desc text-xs sm:text-sm">
+                      {item.desc}
+                    </p>
                   </div>
                 );
               })}

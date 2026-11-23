@@ -8,6 +8,7 @@ import { Database, ArrowLeft, Upload, FileText, CheckCircle, Loader2, ExternalLi
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const CONTRIBUTOR_TYPES = ['Individual', 'Academic/Research', 'Institution', 'NGO', 'Field Team', 'Monitoring Network'] as const;
 const PARAMETER_TYPES = ['Air Quality', 'Water Quality', 'Soil Quality', 'Noise Level', 'Weather', 'Radiation', 'Other'] as const;
@@ -68,7 +69,7 @@ export default function MonitoringStationExportsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Station Exports</span>
           </>}
         subtitle="Submit raw or processed data from automated monitoring stations and sensor networks. Approved records route into dashboards and relevant monitoring modules."

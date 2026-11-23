@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const CONTRIBUTOR_TYPES = ['Individual', 'Academic/Research', 'Institution', 'NGO', 'Field Team', 'Monitoring Network'] as const;
 const ACCEPTED_FORMATS = ['CSV', 'JSON', 'GeoJSON', 'KML', 'JPG', 'PNG', 'WEBP', 'PDF'];
@@ -111,7 +112,7 @@ export default function WaterQualityReadingsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Quality Readings</span>
           </>}
         subtitle="Submit pH, dissolved oxygen, turbidity, temperature, and other water quality parameters from Kashmir's waterbodies. Approved records are routed into Water Systems and Water Quality modules."

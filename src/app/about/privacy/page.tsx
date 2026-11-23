@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Shield, Lock, Eye, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const privacyPrinciples = [
   { icon: Lock, title: 'Data Protection', description: 'Personal information is encrypted and stored securely with access controls' },
@@ -30,6 +31,7 @@ export default function PrivacyPage() {
               <Badge variant="info" size="lg">Data Privacy</Badge>
             </div>
 
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Sensitivity & <span className="text-emerald-400">Privacy</span>
             </h1>
@@ -46,17 +48,13 @@ export default function PrivacyPage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {privacyPrinciples.map((p, i) => (
-              <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
-                <Card className="glass-intense border-white/10 p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <p.icon className="w-5 h-5 text-emerald-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-bold text-white mb-2">{p.title}</h3>
-                      <p className="text-sm text-slate-400">{p.description}</p>
-                    </div>
+              <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="h-full">
+                <Card className="kew-card-shell p-6 h-full">
+                  <div className="kew-card-icon-box bg-slate-900 mb-3">
+                    <p.icon className="w-5 h-5 text-emerald-400" />
                   </div>
+                  <h3 className="kew-card-title text-base mb-2">{p.title}</h3>
+                  <p className="kew-card-desc text-sm">{p.description}</p>
                 </Card>
               </motion.div>
             ))}

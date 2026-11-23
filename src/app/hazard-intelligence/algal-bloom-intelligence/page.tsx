@@ -34,6 +34,7 @@ import {
   PredictiveBloomForecast,
   ForecastValidationStatus,
 } from '@/hooks/useAlgalBloomIntelligence';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Active Layer Tabs ────────────────────────────────────────────────────────
 
@@ -288,12 +289,7 @@ export default function AlgalBloomIntelligencePage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-4 whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1 text-xs">
-                KEW
-              </span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
               Algal Bloom Intelligence & Laboratory Verification
             </span>

@@ -7,6 +7,7 @@ import { Map, ArrowRight, FileText, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const incidents = [
   { id: 'ir-1', type: 'Landslide', location: 'Z-Morh, Ganderbal', date: '2024-03-27', severity: 'moderate' as const, casualties: 0, status: 'cleared' as const },
@@ -20,7 +21,7 @@ export default function IncidentReportsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Incident Reports</span>
           </>}
         subtitle="Documented hazard incidents, damage assessments, and response records"

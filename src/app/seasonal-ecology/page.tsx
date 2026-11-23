@@ -15,6 +15,7 @@ import {
   kashmirDistrictSeasons
 } from '@/data/seasonal-ecology';
 import { motion, AnimatePresence } from 'framer-motion';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 function formatLabel(value: string) {
   if (!value) return '';
@@ -422,12 +423,7 @@ function SeasonalEcologyHubContent() {
         ]}
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Seasonal Ecology &amp; Phenology Hub
@@ -771,55 +767,43 @@ function SeasonalEcologyHubContent() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredLandscapes.slice(0, 6).map((landscape) => (
             <Link
               key={landscape.id}
               href={`/seasonal-ecology/seasonal-landscapes/${landscape.slug}`}
-              className="group"
+              className="group block h-full min-w-0 no-underline"
             >
-              <Card className="glass-intense border-slate-700/50 hover:border-emerald-500/40 transition-all h-full overflow-hidden flex flex-col justify-between">
-                <div>
-                  <div className="relative h-44 bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 overflow-hidden">
-                    <img
-                      src={
-                        landscape.name.toLowerCase().includes('forest') || landscape.slug.includes('forest')
-                          ? '/images/bear.png'
-                          : '/images/protected-network.png'
-                      }
-                      alt={landscape.name}
-                      className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                    <div className="absolute top-3 right-3">
-                      <Badge variant="default" size="sm" className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                        {formatLabel(landscape.category)}
-                      </Badge>
-                    </div>
+              <div className="kew-card-shell kew-card-shell--interactive h-full">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <Icons.Mountain className="w-5 h-5" />
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2 line-clamp-1">
-                      {landscape.name}
-                    </h3>
-                    <p className="text-xs text-slate-300 mb-4 line-clamp-2 leading-relaxed">
-                      {landscape.description}
-                    </p>
-                  </div>
+                  <Badge variant="default" size="sm" className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    {formatLabel(landscape.category)}
+                  </Badge>
                 </div>
 
-                <div className="px-5 pb-5">
-                  <div className="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-white/5">
-                    <div className="flex items-center gap-1.5 truncate">
-                      <Icons.MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="truncate">{landscape.districts.slice(0, 3).map(formatLabel).join(', ')}</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-slate-400 font-mono text-[11px] flex-shrink-0">
-                      <Icons.Mountain className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{landscape.elevationRange ? `${landscape.elevationRange.min}-${landscape.elevationRange.max}m` : formatLabel(landscape.elevationZone)}</span>
-                    </div>
-                  </div>
+                <h3 className="kew-card-title">{landscape.name}</h3>
+
+                <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
+                  <span className="inline-flex items-center gap-1">
+                    <Icons.MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>{landscape.districts.slice(0, 3).map(formatLabel).join(', ')}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 font-mono text-[11px] text-slate-400">
+                    <Icons.Mountain className="w-3.5 h-3.5 shrink-0" />
+                    <span>{landscape.elevationRange ? `${landscape.elevationRange.min}-${landscape.elevationRange.max}m` : formatLabel(landscape.elevationZone)}</span>
+                  </span>
                 </div>
-              </Card>
+
+                <p className="kew-card-desc">{landscape.description}</p>
+
+                <div className="kew-card-cta">
+                  <span>View Landscape</span>
+                  <Icons.ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </Link>
           ))}
         </div>
@@ -856,42 +840,37 @@ function SeasonalEcologyHubContent() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {filteredBlooms.slice(0, 4).map((bloom) => (
             <Link
               key={bloom.id}
               href={`/seasonal-ecology/bloom-mapping/${bloom.slug}`}
-              className="group"
+              className="group block h-full min-w-0 no-underline"
             >
-              <Card className="glass-intense border-slate-700/50 hover:border-pink-500/40 transition-all h-full flex flex-col justify-between">
-                <div className="p-4">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-pink-500/20 border border-pink-500/30 flex-shrink-0">
-                      <Icons.Flower2 className="w-5 h-5 text-pink-400" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-pink-400 transition-colors line-clamp-1">
-                        {bloom.name}
-                      </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2 mt-1">
-                        {bloom.description}
-                      </p>
-                    </div>
+              <div className="kew-card-shell kew-card-shell--interactive h-full">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-pink-500/15 border-pink-500/30 text-pink-400">
+                    <Icons.Flower2 className="w-5 h-5" />
                   </div>
+                  <span className="text-[11px] px-2 py-0.5 rounded-[4px] bg-slate-800 border border-white/10 text-slate-300">
+                    {bloom.districts && bloom.districts.length > 0 ? formatLabel(bloom.districts[0]) : 'Kashmir'}
+                  </span>
                 </div>
 
-                <div className="px-4 pb-4">
-                  <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
-                    <div className="flex items-center gap-1.5">
-                      <Icons.Calendar className="w-3.5 h-3.5 text-pink-400" />
-                      <span className="truncate">{bloom.peakBloomPeriod}</span>
-                    </div>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                      {bloom.districts && bloom.districts.length > 0 ? formatLabel(bloom.districts[0]) : 'Kashmir'}
-                    </span>
-                  </div>
+                <h3 className="kew-card-title">{bloom.name}</h3>
+
+                <div className="flex items-center gap-1.5 text-xs text-pink-300 font-medium">
+                  <Icons.Calendar className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                  <span className="break-words">{bloom.peakBloomPeriod}</span>
                 </div>
-              </Card>
+
+                <p className="kew-card-desc">{bloom.description}</p>
+
+                <div className="kew-card-cta">
+                  <span>View Bloom Window</span>
+                  <Icons.ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </Link>
           ))}
         </div>
@@ -910,41 +889,35 @@ function SeasonalEcologyHubContent() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {seasonalEcologyNavigationCards.map((card) => {
             const CardIcon = (Icons as any)[card.icon] || Icons.Mountain;
             return (
-              <Link key={card.id} href={card.link} className="group">
-                <Card className={`glass-intense border-slate-700/50 hover:border-emerald-500/40 transition-all h-full overflow-hidden ${card.featured ? 'ring-1 ring-emerald-500/30' : ''}`}>
-                  <div className="p-5">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className={`p-3 rounded-xl bg-slate-900 ${card.color} border border-white/10`}>
-                        <CardIcon className="w-6 h-6 text-white" />
-                      </div>
-                      {card.featured && (
-                        <Badge variant="success" size="sm">Featured Module</Badge>
-                      )}
+              <Link key={card.id} href={card.link} className="group block h-full min-w-0 no-underline">
+                <div className={`kew-card-shell kew-card-shell--interactive h-full ${card.featured ? 'border-emerald-500/40' : ''}`}>
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <CardIcon className="w-5 h-5" />
                     </div>
-
-                    <h3 className="text-lg font-semibold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="text-sm text-slate-400 mb-4">
-                      {card.description}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <Icons.Database className="w-3.5 h-3.5" />
-                        <span>{card.count} {card.countLabel || 'entities'}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-emerald-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span>Explore</span>
-                        <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
+                    {card.featured && (
+                      <Badge variant="success" size="sm">Featured Module</Badge>
+                    )}
                   </div>
-                </Card>
+
+                  <h3 className="kew-card-title">{card.title}</h3>
+
+                  <div className="kew-card-kpi">
+                    <span className="text-xl font-extrabold text-white tabular-nums">{card.count}</span>
+                    <span className="kew-card-kpi-unit">{card.countLabel || 'entities'}</span>
+                  </div>
+
+                  <p className="kew-card-desc">{card.description}</p>
+
+                  <div className="kew-card-cta">
+                    <span>Explore</span>
+                    <Icons.ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </Link>
             );
           })}
@@ -964,42 +937,38 @@ function SeasonalEcologyHubContent() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {kashmirDistrictSeasons.slice(0, 8).map((districtSeason) => (
-            <Card key={districtSeason.district} className="glass-intense border-slate-700/50 p-4">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50">
-                  <Icons.MapPin className="w-5 h-5 text-emerald-400" />
+            <div key={districtSeason.district} className="kew-card-shell p-4 gap-2.5 h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Icons.MapPin className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white">
-                    {formatLabel(districtSeason.district)}
-                  </h3>
-                  <p className="text-[11px] text-slate-400">
-                    {districtSeason.primarySeasons.length} Distinct Seasons
-                  </p>
-                </div>
+                <span className="text-[11px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-[4px] border border-white/10">
+                  {districtSeason.primarySeasons.length} Seasons
+                </span>
               </div>
+              <h3 className="kew-card-title text-base">{formatLabel(districtSeason.district)}</h3>
               <div className="space-y-1.5 text-xs text-slate-300">
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Key Habitats:</span>
-                  <span className="font-medium text-white">{districtSeason.keyLandscapes}</span>
+                  <span className="font-semibold text-white tabular-nums">{districtSeason.keyLandscapes}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Bloom Zones:</span>
-                  <span className="font-medium text-white">{districtSeason.bloomZones}</span>
+                  <span className="font-semibold text-white tabular-nums">{districtSeason.bloomZones}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-slate-400">Migration Windows:</span>
-                  <span className="font-medium text-white">{districtSeason.migrationWindows}</span>
+                  <span className="font-semibold text-white tabular-nums">{districtSeason.migrationWindows}</span>
                 </div>
               </div>
               {districtSeason.highlights && districtSeason.highlights.length > 0 && (
-                <div className="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-emerald-400 line-clamp-2">
+                <div className="mt-auto pt-2.5 border-t border-white/10 text-xs text-emerald-300 break-words">
                   {districtSeason.highlights.join(' · ')}
                 </div>
               )}
-            </Card>
+            </div>
           ))}
         </div>
       </div>

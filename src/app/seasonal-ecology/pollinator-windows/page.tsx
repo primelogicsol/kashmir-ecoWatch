@@ -42,51 +42,41 @@ export default function PollinatorWindowsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/biodiversity/pollinator-activity">
-            <Card className="glass-intense border-amber-500/30 hover:border-amber-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Bug className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-amber-500/50 text-amber-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Bug className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-amber-500/50 text-amber-400">
                       Entomological Core
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors truncate">
-                      Kashmir Pollinator Activity Hub
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Thermodynamic flight thresholds, buzz-pollination mechanics, and floral visitor inventories across all districts.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-amber-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Kashmir Pollinator Activity Hub</h4>
+              <p className="kew-card-desc">Thermodynamic flight thresholds, buzz-pollination mechanics, and floral visitor inventories across all districts.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
 
           <Link href="/seasonal-ecology/bloom-mapping">
-            <Card className="glass-intense border-pink-500/30 hover:border-pink-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Flower2 className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-pink-500/50 text-pink-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Flower2 className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-pink-500/50 text-pink-400">
                       Floral Waves
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-pink-400 transition-colors truncate">
-                      Bloom Mapping & Floral Landscapes
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Correlate insect foraging windows with almond, apple, saffron, and alpine wildflower bloom waves.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-pink-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Bloom Mapping & Floral Landscapes</h4>
+              <p className="kew-card-desc">Correlate insect foraging windows with almond, apple, saffron, and alpine wildflower bloom waves.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
         </div>
       </div>

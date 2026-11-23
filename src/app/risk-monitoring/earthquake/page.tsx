@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ============================================================================
 // Seismic Zoning Data
@@ -318,7 +319,7 @@ export default function EarthquakeRiskMonitoringPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Earthquake & Seismic Risk' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake &amp; Seismic Risk</span>
           </>}
         subtitle="The Kashmir Himalayas sit in Seismic Zone V — India&apos;s highest hazard classification. The Indian plate continues thrusting beneath Eurasia at ~2 cm/year, accumulating strain that releases as devastating earthquakes. Monitoring, preparedness, and structural resilience are critical for the Valley&apos; 20 million+ residents."

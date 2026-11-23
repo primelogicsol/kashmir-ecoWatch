@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ============================================================
 // DATA: ESRO Conservation Networks (Legacy Preservation)
@@ -964,6 +965,7 @@ export default function ConservationIntelligencePage() {
             </span>
           </div>
 
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
             Kashmir Monitoring
             <span className="block bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 bg-clip-text text-transparent">
@@ -1963,68 +1965,63 @@ export default function ConservationIntelligencePage() {
           <div className="space-y-12">
             
             {/* Attributions */}
-            <div className="bg-slate-900 border border-emerald-500/10 rounded-xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-6 h-6 text-emerald-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-1">Environmental Development & Research Organisation (ESRO) Legacy</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
-                    EcoWatch integrates and digitalizes archives of ESRO, which operated four interconnected 
-                    conservation networks in Kashmir. Led by a specialist board of 45 members covering wildlife, 
-                    livestock, agriculture, forestry, taxonomy, fisheries, and biotechnology, their archives provide 
-                    the core scientific baselines for our active model structures.
-                  </p>
-                  <p className="text-slate-500 text-xs mt-2">
-                    Source: eIEN Kashmir monitoring archive files (bcn_eienkashmir.htm, cank_eienkashmir.htm, thcnp_eienkashmir.htm, cpep_eienkashmir.htm)
-                  </p>
-                </div>
+            <div className="kew-card-shell border-emerald-500/20">
+              <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                <Users className="w-5 h-5" />
               </div>
+              <h3 className="kew-card-title text-lg">Environmental Development &amp; Research Organisation (ESRO) Legacy</h3>
+              <p className="kew-card-desc max-w-4xl">
+                EcoWatch integrates and digitalizes archives of ESRO, which operated four interconnected 
+                conservation networks in Kashmir. Led by a specialist board of 45 members covering wildlife, 
+                livestock, agriculture, forestry, taxonomy, fisheries, and biotechnology, their archives provide 
+                the core scientific baselines for our active model structures.
+              </p>
+              <p className="text-slate-500 text-xs">
+                Source: eIEN Kashmir monitoring archive files (bcn_eienkashmir.htm, cank_eienkashmir.htm, thcnp_eienkashmir.htm, cpep_eienkashmir.htm)
+              </p>
             </div>
 
             {/* ESRO Networks Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
               {conservationNetworks.map((network) => {
                 const Icon = network.icon;
                 return (
-                  <Card key={network.id} className="border border-white/5 bg-slate-900/50 p-5 h-full flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${network.color} text-white flex items-center justify-center shadow-lg flex-shrink-0`}>
-                          <Icon className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            <Badge variant="info" size="sm">{network.acronym}</Badge>
-                            <Badge variant="outline" size="sm" className="border-white/10 text-slate-500">ESRO ARCHIVE</Badge>
-                          </div>
-                          <h3 className="text-lg font-bold text-white">{network.name}</h3>
-                          <p className="text-[10px] text-slate-500 font-mono">Source File: {network.esroFile}</p>
-                        </div>
+                  <Card key={network.id} className="kew-card-shell h-full">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                        <Icon className="w-5 h-5" />
                       </div>
-
-                      <p className="text-slate-400 text-xs leading-relaxed mb-4">{network.description}</p>
-
-                      {/* Sub-programs */}
-                      {network.subPrograms.length > 0 && (
-                        <div className="mb-4">
-                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-2">Network Sub-programs</span>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {network.subPrograms.map((prog, pIdx) => (
-                              <div key={pIdx} className="bg-black/20 p-2.5 rounded border border-white/5 text-xs">
-                                <div className="font-semibold text-emerald-400">{prog.acronym}</div>
-                                <div className="text-[10px] text-slate-500 mb-1 leading-tight">{prog.name}</div>
-                                <p className="text-[10px] text-slate-400 leading-normal">{prog.description}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <Badge variant="info" size="sm">{network.acronym}</Badge>
+                        <Badge variant="outline" size="sm" className="border-white/10 text-slate-400">ESRO ARCHIVE</Badge>
+                      </div>
                     </div>
 
-                    <div className="pt-3 border-t border-white/5">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-2">EcoWatch Module Intersections</span>
+                    <div>
+                      <h3 className="kew-card-title">{network.name}</h3>
+                      <p className="text-[11px] text-slate-500 font-mono mt-0.5">Source File: {network.esroFile}</p>
+                    </div>
+
+                    <p className="kew-card-desc text-xs sm:text-sm">{network.description}</p>
+
+                    {/* Sub-programs */}
+                    {network.subPrograms.length > 0 && (
+                      <div>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">Network Sub-programs</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {network.subPrograms.map((prog, pIdx) => (
+                            <div key={pIdx} className="bg-slate-800/50 p-2.5 rounded-md border border-white/5 text-xs">
+                              <div className="font-semibold text-emerald-400">{prog.acronym}</div>
+                              <div className="text-[11px] text-slate-300 mb-1 leading-tight">{prog.name}</div>
+                              <p className="text-[11px] text-slate-400 leading-normal">{prog.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-3 border-t border-white/10">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">EcoWatch Module Intersections</span>
                       <div className="flex flex-wrap gap-2">
                         {network.ecoWatchMapping.map((mapItem, mIdx) => (
                           <Link 

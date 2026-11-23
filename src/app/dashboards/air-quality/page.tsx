@@ -12,6 +12,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const airQualityData = [
   { label: 'Jan', value: 142 },
@@ -60,6 +61,7 @@ export default function AirQualityDashboard() {
                 Air Quality Intelligence
               </span>
             </div>
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Air Quality Intelligence
             </h1>

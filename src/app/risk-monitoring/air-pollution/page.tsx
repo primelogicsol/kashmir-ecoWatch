@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const airQualityData = [
   { id: 'aq-1', location: 'Srinagar City', district: 'Srinagar', aqi: 178, status: 'unhealthy' as const, pm25: 92, pm10: 145, primaryPollutant: 'PM2.5' },
@@ -53,7 +54,7 @@ export default function AirPollutionPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Air Pollution' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Risk & Monitoring</span>
           </>}
         subtitle="District-wise AQI intelligence, seasonal inversion patterns, transport corridor pollution, and public health overlap monitoring across Kashmir valley"

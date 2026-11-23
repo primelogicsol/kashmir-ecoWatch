@@ -7,6 +7,7 @@ import { Flame, ArrowRight, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const fireZones = [
   { id: 'ff-1', name: 'Gulmarg Forest Range', district: 'Baramulla', riskLevel: 'high' as const, area: '245 km²', lastIncident: '2024-02-15' },
@@ -20,7 +21,7 @@ export default function ForestFireRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Forest Fire Risks</span>
           </>}
         subtitle="Wildfire risk assessment, hotspot detection, and burn scar monitoring"

@@ -51,6 +51,7 @@ import {
   TrendingDown,
   TrendingUp,
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function PlasticPollutionOverviewPage() {
   const [selectedRegion, setSelectedRegion] = useState<string>('ALL');
@@ -172,12 +173,7 @@ export default function PlasticPollutionOverviewPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-3 flex-wrap leading-[1.12] pb-1">
-              <span className="inline-flex items-center self-center bg-rose-700 text-white font-black uppercase tracking-widest rounded-[4px] px-2.5 py-0.5 text-[10px] sm:text-xs">
-                PLASTIC MONITORING
-              </span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block break-words leading-[1.12] bg-gradient-to-r from-rose-400 via-amber-300 to-emerald-300 bg-clip-text text-transparent">
               Plastic Pollution &amp; Polymer Surveillance
             </span>

@@ -21,6 +21,7 @@ import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { EarthquakeRecord, haversineKm } from '@/data/hazard-earthquakes';
 import { useEarthquakeIntelligence, USGSEvent } from '@/hooks/useEarthquakeIntelligence';
 import { SeismicEpicenterMap } from '@/components/maps/SeismicEpicenterMap';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Colour maps ──────────────────────────────────────────────────────────────
 
@@ -373,10 +374,7 @@ export default function EarthquakesPage() {
           { label: 'Earthquakes' },
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Seismic Risk Intelligence</span>
           </>}
         subtitle="Real-time triple-agency earthquake surveillance (NCS India + EMSC + USGS) fused with district-level fault geometry, Zone V exposure, and structural vulnerability across the Western Himalayas."

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Eye, ArrowLeft, Users, Shield, MapPin, Camera, CheckCircle, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const evidenceStandards = [
   'Clear photo or observable evidence of the species',
@@ -52,6 +53,7 @@ export default function WildlifeMonitoringPage() {
               </div>
               <Badge variant="success" size="md">Citizen Science Program</Badge>
             </div>
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Wildlife <span className="text-emerald-400">Monitoring</span>
             </h1>

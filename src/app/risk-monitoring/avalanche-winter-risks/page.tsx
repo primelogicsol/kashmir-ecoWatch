@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
 import { AlertTriangle, ArrowRight, Snowflake } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const avalancheZones = [
   { id: 'av-1', name: 'Gulmarg Ski Area', district: 'Baramulla', riskLevel: 'moderate' as const, elevation: '2650m', status: 'monitoring' as const },
@@ -19,7 +20,7 @@ export default function AvalancheWinterRisksPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Avalanche & Winter Risks' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Avalanche & Winter Risks</span>
           </>}
         subtitle="Snow avalanche forecasting, winter hazard monitoring, and road closure tracking"

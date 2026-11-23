@@ -93,7 +93,7 @@ export function OnboardingStrip() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch">
             {intelligencePaths.map((pathway, index) => (
               <motion.div
                 key={pathway.id}
@@ -101,61 +101,73 @@ export function OnboardingStrip() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card className="glass-light border-white/10 hover:border-white/20 transition-all p-4 sm:p-6 h-full group cursor-pointer">
-                  {/* Header */}
-                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-5">
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-900 ${pathway.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <pathway.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-300 transition-colors mb-1 break-words">
-                        {pathway.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                        {pathway.description}
-                      </p>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(pathway.route)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      router.push(pathway.route);
+                    }
+                  }}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  {/* 1. ICON (top-left) */}
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-slate-800/90 border-white/15 text-emerald-400">
+                      <pathway.icon className="w-5 h-5" />
                     </div>
                   </div>
 
-                  {/* Intelligence metadata */}
-                  <div className="space-y-3 mb-4 sm:mb-5">
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider flex-shrink-0">
+                  {/* 2. TITLE — full horizontal width */}
+                  <h3 className="kew-card-title">{pathway.title}</h3>
+
+                  {/* 3. DESCRIPTION */}
+                  <p className="kew-card-desc">{pathway.description}</p>
+
+                  {/* 4. Intelligence metadata */}
+                  <div className="space-y-2.5 pt-2 border-t border-white/10">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
                         Best for
                       </span>
-                      <span className="text-xs sm:text-sm text-slate-300">
+                      <span className="text-xs sm:text-sm text-slate-300 break-words">
                         {pathway.bestFor}
                       </span>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider flex-shrink-0">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
                         Data type
                       </span>
-                      <span className="text-xs sm:text-sm text-slate-300">
+                      <span className="text-xs sm:text-sm text-slate-300 break-words">
                         {pathway.dataType}
                       </span>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider flex-shrink-0">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
                         Result type
                       </span>
-                      <span className="text-xs sm:text-sm text-slate-300">
+                      <span className="text-xs sm:text-sm text-slate-300 break-words">
                         {pathway.resultType}
                       </span>
                     </div>
                   </div>
 
-                  {/* CTA Button */}
-                  <Button
-                    size="sm"
-                    className={`w-full bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white text-xs sm:text-sm`}
-                    onClick={() => router.push(pathway.route)}
-                  >
-                    <span>{pathway.cta}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Card>
+                  {/* 5. CTA Button — anchored near bottom */}
+                  <div className="mt-auto pt-2">
+                    <Button
+                      size="sm"
+                      className={`w-full bg-gradient-to-r ${pathway.color} hover:opacity-90 text-white text-xs sm:text-sm`}
+                      onClick={() => router.push(pathway.route)}
+                    >
+                      <span>{pathway.cta}</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -168,10 +180,11 @@ export function OnboardingStrip() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="glass-intense border-white/10">
+          <Card className="glass-intense border-white/10" padding="none">
             <button
               onClick={() => setShowTips(!showTips)}
-              className="w-full p-4 sm:p-6 md:p-8 flex items-center justify-between hover:bg-white/5 transition-colors"
+              className="w-full p-4 sm:p-6 flex items-center justify-between hover:bg-white/5 transition-colors"
+              type="button"
             >
               <div className="flex items-center gap-3">
                 <Info className="w-5 h-5 text-emerald-400" />
@@ -200,21 +213,15 @@ export function OnboardingStrip() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 pt-0 border-t border-white/10">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6">
+                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-white/10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
                       {quickStartTips.map((tip, index) => (
-                        <div key={index} className="flex items-start gap-3 sm:gap-4">
-                          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                            <tip.icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
+                        <div key={index} className="kew-card-shell p-4 gap-2.5">
+                          <div className="kew-card-icon-box bg-slate-800 border-white/10 text-emerald-400">
+                            <tip.icon className="w-5 h-5" />
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-bold text-white mb-1 break-words">
-                              {tip.title}
-                            </h4>
-                            <p className="text-xs text-slate-400 leading-relaxed">
-                              {tip.description}
-                            </p>
-                          </div>
+                          <h4 className="kew-card-title text-sm sm:text-base">{tip.title}</h4>
+                          <p className="kew-card-desc text-xs sm:text-sm">{tip.description}</p>
                         </div>
                       ))}
                     </div>

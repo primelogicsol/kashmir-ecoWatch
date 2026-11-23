@@ -11,6 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 /* ─── Document metadata ───────────────────────────────────────────────────
    Update STATEMENT_LAST_UPDATED whenever this document is revised.
@@ -257,15 +258,7 @@ export default function AccessibilityPage() {
       <Heading
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Accessibility Statement' }]}
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span
-              className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
-              style={{ fontSize: '0.58em' }}
-            >
-              KEW
-            </span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Accessibility Statement</span>
         </>}
         subtitle="Kashmir EcoWatch is committed to providing an inclusive, accessible, and user-friendly experience for everyone — across all abilities, devices, and assistive technologies."

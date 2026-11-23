@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { getProtectedAreas, protectedNetworkMetrics } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const categoryFilters = [
   { id: 'all', label: 'All Areas', icon: Shield },
@@ -120,10 +121,7 @@ export default function ProtectedAreasPage() {
       <Heading
         label="Conservation Areas"
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Protected Areas</span>
           </>}
         subtitle="A structured inventory of Kashmir's national parks, wildlife sanctuaries, wetland reserves, and conservation areas. Each record includes ecological profile, boundary data, and conservation status."

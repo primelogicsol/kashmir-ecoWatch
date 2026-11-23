@@ -109,49 +109,59 @@ export function SightingsIntelligence({ compact = false, filterStatus, onVerifyS
       </div>
 
       {/* Sightings Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
         {sightings.map(sighting => (
           <motion.div
             key={sighting.id}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            className="h-full min-w-0"
           >
-            <Card className="glass-intense border-white/10 p-5 hover:border-emerald-500/30 transition-all cursor-pointer" onClick={() => setSelectedSighting(sighting)}>
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                  <Camera className="w-8 h-8 text-emerald-400" />
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedSighting(sighting)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedSighting(sighting);
+                }
+              }}
+              className="kew-card-shell kew-card-shell--interactive group h-full"
+            >
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Camera className="w-5 h-5" />
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h4 className="text-base font-bold text-white mb-1">{sighting.speciesName}</h4>
-                      {sighting.scientificName && (
-                        <p className="text-xs text-slate-500 italic">{sighting.scientificName}</p>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {sighting.status === 'featured' && <Star className="w-4 h-4 text-purple-400 fill-purple-400" />}
-                      <Badge className={cn("border", statusColors[sighting.status])}>
-                        {sighting.status}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
-                    <span className={cn("px-1.5 py-0.5 rounded", categoryColors[sighting.speciesCategory])}>
-                      {sighting.speciesCategory}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {sighting.location.area}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {new Date(sighting.observedDate).toLocaleDateString()}
-                    </span>
-                  </div>
+                <div className="flex items-center gap-1.5">
+                  {sighting.status === 'featured' && <Star className="w-4 h-4 text-purple-400 fill-purple-400" />}
+                  <Badge className={cn("border", statusColors[sighting.status])}>
+                    {sighting.status}
+                  </Badge>
                 </div>
               </div>
-            </Card>
+
+              <div>
+                <h4 className="kew-card-title">{sighting.speciesName}</h4>
+                {sighting.scientificName && (
+                  <p className="text-xs text-slate-400 italic mt-0.5 break-words">{sighting.scientificName}</p>
+                )}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 mt-auto pt-2 border-t border-white/10">
+                <span className={cn("px-1.5 py-0.5 rounded-[4px]", categoryColors[sighting.speciesCategory])}>
+                  {sighting.speciesCategory}
+                </span>
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3" />
+                  {sighting.location.area}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-3 h-3" />
+                  {new Date(sighting.observedDate).toLocaleDateString()}
+                </span>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>

@@ -7,6 +7,7 @@ import { Heading } from '@/components/common/Heading';
 import { Activity, ArrowRight, Thermometer, Droplets, Wind } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const monitoringData = [
   { id: 'em-1', type: 'Air Quality', location: 'Srinagar', value: 'AQI 142', status: 'moderate' as const, parameter: 'PM2.5' },
@@ -21,7 +22,7 @@ export default function EnvironmentalMonitoringPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Environmental Monitoring' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
           </>}
         subtitle="Air quality, water quality, and ecosystem health monitoring"

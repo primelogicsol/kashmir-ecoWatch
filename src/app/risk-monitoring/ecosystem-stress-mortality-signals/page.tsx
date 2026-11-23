@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const ecosystemStressSignals = [
   { signal: 'Wetland Shrinkage Acceleration', severity: 'Critical', description: '15% area loss in past 20 years, accelerating', linkedSystems: ['Water', 'Biodiversity', 'Climate'] },
@@ -47,7 +48,7 @@ export default function EcosystemStressMortalitySignalsPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Ecosystem Stress & Mortality Signals' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Ecosystem Stress & Mortality Signals</span>
           </>}
         subtitle="Cross-system ecological stress monitoring, mortality signal detection, ecosystem health assessment, and integrated environmental risk analysis across Kashmir's interconnected ecological systems"

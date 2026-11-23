@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { liveAlerts, emergencyRoutes } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const avalancheAlerts = liveAlerts.filter(a => a.hazardCategory === 'Avalanche & Winter' || a.type.includes('Avalanche'));
 const winterClosures = emergencyRoutes.filter(r => r.status === 'closed' || r.type === 'closure');
@@ -29,7 +30,7 @@ export default function AvalancheWinterPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Avalanche & Winter' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Avalanche & Winter Risk</span>
           </>}
         subtitle="Avalanche exposure monitoring, winter access interruption, route safety intelligence, and season-linked emergency tracking across Kashmir's high-altitude zones."

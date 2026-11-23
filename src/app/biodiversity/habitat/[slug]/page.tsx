@@ -11,6 +11,7 @@ import PressureIndexGauge from '@/components/biodiversity/intelligence/PressureI
 import VulnerabilityTrendChart from '@/components/biodiversity/intelligence/VulnerabilityTrendChart';
 import SourceVerificationBadge from '@/components/biodiversity/intelligence/SourceVerificationBadge';
 import { BiodiversityCard } from '@/components/common/BiodiversityCard';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const HabitatDetailPage: React.FC = () => {
   const params = useParams();
@@ -53,6 +54,7 @@ const HabitatDetailPage: React.FC = () => {
             <span className="text-green-100">{habitat.name}</span>
           </div>
 
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="max-w-xl text-4xl font-bold mb-4">{habitat.name}</h1>
           <p className="text-xl text-green-100 max-w-3xl">{habitat.description}</p>
         </div>

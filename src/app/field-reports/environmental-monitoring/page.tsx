@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { fieldReportsRegistry } from '@/data/field-reports-registry';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function EnvironmentalMonitoringReportsPage() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function EnvironmentalMonitoringReportsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Environmental Monitoring Field Reports</span>
           </>}
         subtitle="Air pollution indices, solid and bio-waste tracking, and sewage outfall field measurements."

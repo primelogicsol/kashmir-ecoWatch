@@ -2,11 +2,21 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { EvidenceItem, ModuleReference, RelatedEntity, sourceTypeLabels, confidenceLabels, categoryLabels } from '@/data/evidence-intelligence';
-import { FileText, Download, MapPin, Link as LinkIcon, ExternalLink, BookOpen, Database, FlaskConical, Map, Scroll, Star, Users, Building2, Calendar, TrendingUp, Compass } from 'lucide-react';
+import {
+  EvidenceItem,
+  ModuleReference,
+  RelatedEntity,
+  sourceTypeLabels,
+  confidenceLabels,
+  categoryLabels,
+} from '@/data/evidence-intelligence';
+import {
+  FileText, Download, MapPin, Link as LinkIcon, ExternalLink,
+  BookOpen, Database, FlaskConical, Map, Scroll, Star,
+  Building2, Calendar, TrendingUp, Compass, ArrowRight
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface EvidenceCardProps {
@@ -68,7 +78,7 @@ export function EvidenceCard({
   variant = 'default',
   showModuleLinks = true,
   showRelatedEntities = true,
-  onClick
+  onClick,
 }: EvidenceCardProps) {
   const router = useRouter();
   const CategoryIcon = categoryIcons[evidence.category] || FileText;
@@ -80,227 +90,172 @@ export function EvidenceCard({
 
   if (variant === 'compact') {
     return (
-      <Card className="glass-intense border-white/10 hover:border-indigo-500/30 transition-all p-4 cursor-pointer group" onClick={onClick}>
-        <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-lg bg-indigo-950/50 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
-            <CategoryIcon className="w-5 h-5 text-indigo-400" />
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={onClick || (() => router.push(`/library/${evidence.id}`))}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            (onClick || (() => router.push(`/library/${evidence.id}`)))();
+          }
+        }}
+        className="kew-card-shell kew-card-shell--interactive group p-4 gap-2.5 h-full"
+      >
+        <div className="kew-card-top-row">
+          <div className="kew-card-icon-box bg-indigo-950/60 border-indigo-500/30 text-indigo-400">
+            <CategoryIcon className="w-5 h-5" />
           </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors line-clamp-2">{evidence.title}</h3>
-            <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-              <Badge variant="outline" size="sm">{categoryLabels[evidence.category]}</Badge>
-              <span className="text-xs text-slate-500">{evidence.publishedDate.split('-')[0]}</span>
-            </div>
-          </div>
+          <Badge variant="outline" size="sm">
+            {categoryLabels[evidence.category]}
+          </Badge>
         </div>
-      </Card>
-    );
-  }
 
-  if (variant === 'featured') {
-    return (
-      <Card className="glass-intense border-white/10 hover:border-indigo-500/40 transition-all p-6 cursor-pointer group relative overflow-hidden" onClick={onClick}>
-        <div className="relative">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-indigo-900 border border-indigo-500/30 flex items-center justify-center shadow-lg">
-                <CategoryIcon className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <Badge variant="outline" size="sm" className="mb-1">{categoryLabels[evidence.category]}</Badge>
-                <div className="flex items-center gap-2">
-                  <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
-                    {sourceTypeLabels[evidence.sourceType]}
-                  </span>
-                  <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium", confidenceColors[evidence.confidence])}>
-                    {confidenceLabels[evidence.confidence]}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-1 text-amber-400">
-              <Star className="w-4 h-4 fill-current" />
-              <span className="text-sm font-medium">Featured</span>
-            </div>
-          </div>
+        <h3 className="kew-card-title text-sm sm:text-base">{evidence.title}</h3>
 
-          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-2">{evidence.title}</h3>
-          <p className="text-sm text-slate-400 mb-4 line-clamp-3">{evidence.abstract}</p>
-
-          <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
-            <span className="flex items-center gap-1">
-              <Building2 className="w-3.5 h-3.5" />
-              {evidence.organization}
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5" />
-              {new Date(evidence.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-            </span>
-          </div>
-
-          {showRelatedEntities && evidence.relatedEntities.length > 0 && (
-            <div className="mb-4">
-              <div className="text-xs text-slate-500 mb-2">Related Entities</div>
-              <div className="flex flex-wrap gap-2">
-                {evidence.relatedEntities.slice(0, 4).map(entity => {
-                  const EntityIcon = entityIcons[entity.type] || MapPin;
-                  return (
-                    <a
-                      key={entity.id}
-                      href={entity.slug || '#'}
-                      className={cn(
-                        "inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
-                        entityColors[entity.type]
-                      )}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <EntityIcon className="w-3 h-3" />
-                      {entity.name}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {showModuleLinks && evidence.usedInModules.length > 0 && (
-            <div className="mb-4">
-              <div className="text-xs text-slate-500 mb-2 flex items-center gap-1">
-                <LinkIcon className="w-3 h-3" />
-                Used in {evidence.usedInModules.length} Module{evidence.usedInModules.length > 1 ? 's' : ''}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {evidence.usedInModules.slice(0, 3).map(module => (
-                  <a
-                    key={module.moduleId}
-                    href={module.modulePath}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 border border-indigo-500/20 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    {module.moduleName}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between pt-4 border-t border-white/10">
-            <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1">
-                <Download className="w-3.5 h-3.5" />
-                {evidence.downloadCount}
-              </span>
-              <span className="flex items-center gap-1">
-                <TrendingUp className="w-3.5 h-3.5" />
-                {evidence.citationCount} citations
-              </span>
-            </div>
-            <Button size="sm" variant="outline" className="border-white/20 text-white h-9" onClick={handleViewDetails}>
-              View Details
-            </Button>
-          </div>
-        </div>
-      </Card>
-    );
-  }
-
-  // Default variant
-  return (
-    <Card className="glass-intense border-white/10 hover:border-indigo-500/30 transition-all p-5 cursor-pointer group" onClick={onClick}>
-      <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-xl bg-indigo-950/50 border border-indigo-500/30 flex items-center justify-center flex-shrink-0">
-          <CategoryIcon className="w-6 h-6 text-indigo-400" />
-        </div>
-        
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-3 mb-2">
-            <h3 className="text-base font-bold text-white group-hover:text-indigo-400 transition-colors line-clamp-2">{evidence.title}</h3>
-          </div>
-
-          <div className="flex items-center gap-2 mb-3 flex-wrap">
-            <Badge variant="outline" size="sm">{categoryLabels[evidence.category]}</Badge>
-            <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium border", sourceTypeColors[evidence.sourceType])}>
-              {sourceTypeLabels[evidence.sourceType]}
-            </span>
-            <span className={cn("px-2 py-0.5 rounded-[4px] text-xs font-medium", confidenceColors[evidence.confidence])}>
-              {confidenceLabels[evidence.confidence]}
-            </span>
-          </div>
-
-          <p className="text-sm text-slate-400 mb-3 line-clamp-2">{evidence.abstract}</p>
-
-          <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
-            <span className="flex items-center gap-1">
-              <Building2 className="w-3.5 h-3.5" />
-              {evidence.organization}
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5" />
-              {new Date(evidence.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-            </span>
-          </div>
-
-          {showRelatedEntities && evidence.relatedEntities.length > 0 && (
-            <div className="mb-3">
-              <div className="flex flex-wrap gap-1.5">
-                {evidence.relatedEntities.slice(0, 3).map(entity => {
-                  const EntityIcon = entityIcons[entity.type] || MapPin;
-                  return (
-                    <a
-                      key={entity.id}
-                      href={entity.slug || '#'}
-                      className={cn(
-                        "inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
-                        entityColors[entity.type]
-                      )}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <EntityIcon className="w-3 h-3" />
-                      {entity.name}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {showModuleLinks && evidence.usedInModules.length > 0 && (
-            <div className="mb-3">
-              <div className="flex flex-wrap gap-1.5">
-                {evidence.usedInModules.slice(0, 2).map(module => (
-                  <a
-                    key={module.moduleId}
-                    href={module.modulePath}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 border border-indigo-500/20 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <LinkIcon className="w-3 h-3" />
-                    {module.moduleName}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between pt-3 border-t border-white/5">
-            <div className="flex items-center gap-3 text-xs text-slate-500">
-              <span className="flex items-center gap-1">
-                <Download className="w-3.5 h-3.5" />
-                {evidence.downloadCount}
-              </span>
-              <span className="flex items-center gap-1">
-                <TrendingUp className="w-3.5 h-3.5" />
-                {evidence.citationCount}
-              </span>
-            </div>
-            <Button size="sm" variant="outline" className="border-white/20 text-white h-8" onClick={handleViewDetails}>
-              View Details
-            </Button>
-          </div>
+        <div className="text-xs text-slate-400 mt-auto">
+          {evidence.organization} · {evidence.publishedDate.split('-')[0]}
         </div>
       </div>
-    </Card>
+    );
+  }
+
+  return (
+    <div
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      className={cn(
+        'kew-card-shell kew-card-shell--interactive group h-full',
+        variant === 'featured' && 'border-indigo-500/30'
+      )}
+    >
+      {/* 1. ICON (top-left) + Category/Confidence badges (top-right) */}
+      <div className="kew-card-top-row">
+        <div className="kew-card-icon-box bg-indigo-950/60 border-indigo-500/30 text-indigo-400">
+          <CategoryIcon className="w-5 h-5" />
+        </div>
+        <div className="flex flex-wrap items-center justify-end gap-1.5">
+          {variant === 'featured' && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-amber-500/15 border border-amber-500/30 text-xs font-semibold text-amber-300">
+              <Star className="w-3.5 h-3.5 fill-current" />
+              Featured
+            </span>
+          )}
+          <Badge variant="outline" size="sm">
+            {categoryLabels[evidence.category]}
+          </Badge>
+          <span
+            className={cn(
+              'px-2 py-0.5 rounded-[4px] text-xs font-medium border',
+              sourceTypeColors[evidence.sourceType]
+            )}
+          >
+            {sourceTypeLabels[evidence.sourceType]}
+          </span>
+          <span
+            className={cn(
+              'px-2 py-0.5 rounded-[4px] text-xs font-medium',
+              confidenceColors[evidence.confidence]
+            )}
+          >
+            {confidenceLabels[evidence.confidence]}
+          </span>
+        </div>
+      </div>
+
+      {/* 2. TITLE — full horizontal width */}
+      <h3 className={cn('kew-card-title', variant === 'featured' && 'text-lg sm:text-xl')}>
+        {evidence.title}
+      </h3>
+
+      {/* 3. KPI / Provenance Meta */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
+        <span className="inline-flex items-center gap-1">
+          <Building2 className="w-3.5 h-3.5 shrink-0" />
+          <span className="break-words">{evidence.organization}</span>
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <Calendar className="w-3.5 h-3.5 shrink-0" />
+          {new Date(evidence.publishedDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+          })}
+        </span>
+      </div>
+
+      {/* 4. DESCRIPTION */}
+      <p className="kew-card-desc">{evidence.abstract}</p>
+
+      {/* Related Entities */}
+      {showRelatedEntities && evidence.relatedEntities.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {evidence.relatedEntities.slice(0, 4).map((entity) => {
+            const EntityIcon = entityIcons[entity.type] || MapPin;
+            return (
+              <a
+                key={entity.id}
+                href={entity.slug || '#'}
+                className={cn(
+                  'inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] text-xs font-medium bg-slate-800/60 hover:bg-slate-700/60 transition-colors',
+                  entityColors[entity.type]
+                )}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <EntityIcon className="w-3 h-3" />
+                {entity.name}
+              </a>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Module Links */}
+      {showModuleLinks && evidence.usedInModules.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {evidence.usedInModules.slice(0, 3).map((module) => (
+            <a
+              key={module.moduleId}
+              href={module.modulePath}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/20 transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <LinkIcon className="w-3 h-3" />
+              {module.moduleName}
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* 5. CTA — anchored near bottom */}
+      <div className="mt-auto pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3 text-xs text-slate-400 tabular-nums">
+          <span className="inline-flex items-center gap-1">
+            <Download className="w-3.5 h-3.5" />
+            {evidence.downloadCount}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <TrendingUp className="w-3.5 h-3.5" />
+            {evidence.citationCount} citations
+          </span>
+        </div>
+        <Button
+          size="sm"
+          variant="outline"
+          className="border-white/20 text-white h-8"
+          onClick={handleViewDetails}
+        >
+          View Details
+          <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+        </Button>
+      </div>
+    </div>
   );
 }
 
@@ -326,12 +281,12 @@ interface RelatedEntityBadgeProps {
 
 export function RelatedEntityBadge({ entity }: RelatedEntityBadgeProps) {
   const EntityIcon = entityIcons[entity.type] || MapPin;
-  
+
   return (
     <a
       href={entity.slug || '#'}
       className={cn(
-        "inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors",
+        'inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] text-xs font-medium bg-slate-800/50 hover:bg-slate-700/50 transition-colors',
         entityColors[entity.type]
       )}
     >
@@ -351,10 +306,10 @@ export function SourceConfidenceBadge({ sourceType, confidence, compact = false 
   if (compact) {
     return (
       <div className="flex items-center gap-1.5">
-        <span className={cn("px-1.5 py-0.5 rounded text-xs font-medium border", sourceTypeColors[sourceType])}>
+        <span className={cn('px-1.5 py-0.5 rounded text-xs font-medium border', sourceTypeColors[sourceType])}>
           {sourceTypeLabels[sourceType as keyof typeof sourceTypeLabels]}
         </span>
-        <span className={cn("px-1.5 py-0.5 rounded text-xs font-medium", confidenceColors[confidence])}>
+        <span className={cn('px-1.5 py-0.5 rounded text-xs font-medium', confidenceColors[confidence])}>
           {confidenceLabels[confidence as keyof typeof confidenceLabels]}
         </span>
       </div>
@@ -363,10 +318,10 @@ export function SourceConfidenceBadge({ sourceType, confidence, compact = false 
 
   return (
     <div className="flex items-center gap-2">
-      <span className={cn("px-2 py-1 rounded-[4px] text-xs font-medium border", sourceTypeColors[sourceType])}>
+      <span className={cn('px-2 py-1 rounded-[4px] text-xs font-medium border', sourceTypeColors[sourceType])}>
         {sourceTypeLabels[sourceType as keyof typeof sourceTypeLabels]}
       </span>
-      <span className={cn("px-2 py-1 rounded-[4px] text-xs font-medium", confidenceColors[confidence])}>
+      <span className={cn('px-2 py-1 rounded-[4px] text-xs font-medium', confidenceColors[confidence])}>
         {confidenceLabels[confidence as keyof typeof confidenceLabels]}
       </span>
     </div>

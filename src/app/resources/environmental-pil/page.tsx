@@ -346,58 +346,78 @@ function EnvironmentalPilPortalContent() {
           <div className="space-y-8">
             {/* 4-Card Executive KPI Strip */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card className="p-4 bg-slate-900/80 border-slate-800 rounded-lg">
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs uppercase font-semibold tracking-wider">Master Litigations</span>
-                  <Scale className="w-4 h-4 text-emerald-400" />
+              <Card className="kew-card-shell p-5">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-emerald-500/10 border-emerald-500/20">
+                    <Scale className="w-5 h-5 text-emerald-400" />
+                  </div>
                 </div>
-                <div className="text-2xl font-bold text-white tracking-tight">{ENVIRONMENTAL_CASES_DATA.length} Tracked Matters</div>
-                <p className="text-[11px] text-slate-400 mt-1">
+                <h3 className="kew-card-title text-xs uppercase tracking-wider text-slate-400 mb-1">Master Litigations</h3>
+                <div className="kew-card-kpi mb-1.5">
+                  <span className="kew-card-kpi-value">{ENVIRONMENTAL_CASES_DATA.length}</span>
+                  <span className="kew-card-kpi-unit">Tracked Matters</span>
+                </div>
+                <p className="kew-card-desc text-xs mb-3">
                   {authenticatedCasesCount} Authenticated Dockets · {corroboratingCasesCount} Archival Precedents
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-[4px] border border-emerald-800/40 w-fit">
-                  <span>14 Verified Court Orders · 12 Under Corroboration</span>
+                <div className="mt-auto flex items-center gap-2 text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-[4px] border border-emerald-800/40 w-fit">
+                  <span>14 Verified Court Orders · 12 Corroborating</span>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800 rounded-lg">
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs uppercase font-semibold tracking-wider">Judicial Directives</span>
-                  <FileCheck2 className="w-4 h-4 text-blue-400" />
+              <Card className="kew-card-shell p-5">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-blue-500/10 border-blue-500/20">
+                    <FileCheck2 className="w-5 h-5 text-blue-400" />
+                  </div>
                 </div>
-                <div className="text-2xl font-bold text-white tracking-tight">{totalDirectivesCount} Directives</div>
-                <p className="text-[11px] text-slate-400 mt-1">
+                <h3 className="kew-card-title text-xs uppercase tracking-wider text-slate-400 mb-1">Judicial Directives</h3>
+                <div className="kew-card-kpi mb-1.5">
+                  <span className="kew-card-kpi-value">{totalDirectivesCount}</span>
+                  <span className="kew-card-kpi-unit">Directives</span>
+                </div>
+                <p className="kew-card-desc text-xs mb-3">
                   {compliedDirectivesCount} verified complied · {totalDirectivesCount - compliedDirectivesCount} in-progress/overdue
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-[10px] text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-[4px] border border-blue-800/40 w-fit">
+                <div className="mt-auto flex items-center gap-2 text-[10px] text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-[4px] border border-blue-800/40 w-fit">
                   <span>Overall Compliance: {overallComplianceRate}%</span>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800 rounded-lg">
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs uppercase font-semibold tracking-wider">Environmental Penalties</span>
-                  <TrendingUp className="w-4 h-4 text-amber-400" />
+              <Card className="kew-card-shell p-5">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-amber-500/10 border-amber-500/20">
+                    <TrendingUp className="w-5 h-5 text-amber-400" />
+                  </div>
                 </div>
-                <div className="text-2xl font-bold text-amber-300 tracking-tight">₹68.7 Crore</div>
-                <p className="text-[11px] text-slate-400 mt-1">
+                <h3 className="kew-card-title text-xs uppercase tracking-wider text-slate-400 mb-1">Environmental Penalties</h3>
+                <div className="kew-card-kpi mb-1.5">
+                  <span className="kew-card-kpi-value text-amber-300">₹68.7</span>
+                  <span className="kew-card-kpi-unit">Crore</span>
+                </div>
+                <p className="kew-card-desc text-xs mb-3">
                   Fines &amp; environmental compensation ordered by NGT &amp; High Courts
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-[10px] text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded-[4px] border border-amber-800/40 w-fit">
+                <div className="mt-auto flex items-center gap-2 text-[10px] text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded-[4px] border border-amber-800/40 w-fit">
                   <span>Polluter Pays Principle Enforced</span>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800 rounded-lg">
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs uppercase font-semibold tracking-wider">Accountability Register</span>
-                  <ShieldAlert className="w-4 h-4 text-rose-400" />
+              <Card className="kew-card-shell p-5">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-rose-500/10 border-rose-500/20">
+                    <ShieldAlert className="w-5 h-5 text-rose-400" />
+                  </div>
                 </div>
-                <div className="text-2xl font-bold text-white tracking-tight">10 Agencies</div>
-                <p className="text-[11px] text-slate-400 mt-1">
+                <h3 className="kew-card-title text-xs uppercase tracking-wider text-slate-400 mb-1">Accountability Register</h3>
+                <div className="kew-card-kpi mb-1.5">
+                  <span className="kew-card-kpi-value">10</span>
+                  <span className="kew-card-kpi-unit">Agencies</span>
+                </div>
+                <p className="kew-card-desc text-xs mb-3">
                   Continuous performance audit of municipal &amp; engineering bodies
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-[10px] text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-[4px] border border-rose-800/40 w-fit">
+                <div className="mt-auto flex items-center gap-2 text-[10px] text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-[4px] border border-rose-800/40 w-fit">
                   <span>6 Default / Contempt Matters Tracked</span>
                 </div>
               </Card>

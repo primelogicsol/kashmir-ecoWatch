@@ -10,6 +10,7 @@ import {
   HistoricalWDRecord,
   CompoundRiskLevel,
   WDSubRegion,
+  WDSourceEnvelopes,
   OFFICIAL_WD_AGENCY_SOURCES,
   HISTORICAL_WD_RECORDS,
   WD_VERIFIED_DATA_SOURCES,
@@ -17,13 +18,15 @@ import {
 
 export interface RegionalWDSummary {
   subRegion: WDSubRegion;
+  administrativeUnit: string;
   corridorCount: number;
-  activeOrApproachingCount: number;
-  liveAvgTempC: number;
-  liveAvgCloudPct: number;
-  liveMeanFreezingLevelM: number;
-  forecastMax7dPrecipMm: number;
-  forecastMax7dSnowCm: number;
+  reportingCount: number;
+  activeOrApproachingCount: number | null;
+  liveAvgTempC: number | null;
+  liveAvgCloudPct: number | null;
+  liveMeanFreezingLevelM: number | null;
+  forecastMax7dPrecipMm: number | null;
+  forecastMax7dSnowCm: number | null;
   floodRisk: CompoundRiskLevel;
   flashFloodRisk: CompoundRiskLevel;
   landslideRisk: CompoundRiskLevel;
@@ -32,21 +35,26 @@ export interface RegionalWDSummary {
 }
 
 export interface WDSynopticSummary {
+  detectionStatus: 'OPERATIONAL' | 'UNAVAILABLE';
   headline: string;
-  detectedSystemCount: number;
-  activeRegionalSystemCount: number;
-  activePassageCount: number;
-  approachingWaveCount: number;
-  upstreamActiveTroughs: number;
-  maxJetCoreKmh: number;
-  maxJetCoreLocation: string;
-  meanRegionalJet300Kmh: number;
-  meanFreezingLevelM: number;
-  peak7dPrecipMm: number;
-  peak7dSnowCm: number;
+  configuredCorridors: number;
+  reportingCorridors: number;
+  detectedSystemCount: number | null;
+  activeRegionalSystemCount: number | null;
+  activePassageCount: number | null;
+  approachingWaveCount: number | null;
+  upstreamActiveTroughs: number | null;
+  maxJetCoreKmh: number | null;
+  maxJetCoreValidTimeUtc: string | null;
+  maxJetCoreSpatialExtent: string;
+  maxJetCoreLocation: string | null;
+  meanRegionalJet300Kmh: number | null;
+  meanFreezingLevelM: number | null;
+  peak7dPrecipMm: number | null;
+  peak7dSnowCm: number | null;
   elevatedHazardCorridors: number;
-  kashmir75E_z500Gpm: number;
-  kashmir75E_vort300: number;
+  kashmir75E_z500Gpm: number | null;
+  kashmir75E_vort300: number | null;
   compoundCoupling: {
     floods: CompoundRiskLevel;
     flashFloods: CompoundRiskLevel;
@@ -56,18 +64,26 @@ export interface WDSynopticSummary {
 }
 
 export interface WDMetaInfo {
+  configuredCorridors: number;
+  reportingCorridors: number;
   totalCorridors: number;
   synopticWaveguideNodes: number;
   provider: string;
+  model: string;
+  freshnessStatus: string;
+  freshnessMinutes: number;
   provenanceDisclosure: string;
   modelRunInitUtc: string | null;
+  validTimeUtc: string | null;
   updatedAt: string | null;
   dataIntegrity: {
     corridorsValidated: number;
+    corridorsReporting: number;
     corridorsWithComplete168h: number;
     totalHourlyValuesChecked: number;
     expectedHourlyValues: number;
     completenessPct: number;
+    unitValidationPassed: boolean;
   } | null;
 }
 
@@ -86,11 +102,12 @@ export interface WesternDisturbancePayload {
   officialAdvisories: OfficialAgencySource[];
   historicalRecords: HistoricalWDRecord[];
   dataSources: typeof WD_VERIFIED_DATA_SOURCES;
+  sourceEnvelopes: WDSourceEnvelopes | null;
   meta: WDMetaInfo | null;
   updatedAt: string | null;
 }
 
-const CACHE_KEY = 'kew_western_disturbances_cache_v2';
+const CACHE_KEY = 'kew_western_disturbances_cache_v3';
 const CACHE_TTL_MS = 5 * 60 * 1000;
 
 export function useWesternDisturbanceIntelligence() {
@@ -105,6 +122,7 @@ export function useWesternDisturbanceIntelligence() {
     officialAdvisories: OFFICIAL_WD_AGENCY_SOURCES,
     historicalRecords: HISTORICAL_WD_RECORDS,
     dataSources: WD_VERIFIED_DATA_SOURCES,
+    sourceEnvelopes: null,
     meta: null,
     updatedAt: null,
   });
@@ -125,7 +143,7 @@ export function useWesternDisturbanceIntelligence() {
             parsed?.timestamp &&
             Date.now() - parsed.timestamp < CACHE_TTL_MS &&
             Array.isArray(parsed.payload?.corridors) &&
-            Array.isArray(parsed.payload?.waveguideDiagnostics)
+            parsed.payload?.synopticSummary?.detectionStatus
           ) {
             setState(parsed.payload);
             setError(null);
@@ -156,6 +174,7 @@ export function useWesternDisturbanceIntelligence() {
         officialAdvisories: json.officialAdvisories || OFFICIAL_WD_AGENCY_SOURCES,
         historicalRecords: json.historicalRecords || HISTORICAL_WD_RECORDS,
         dataSources: json.dataSources || WD_VERIFIED_DATA_SOURCES,
+        sourceEnvelopes: json.sourceEnvelopes || null,
         meta: json.meta || null,
         updatedAt: json.meta?.updatedAt || new Date().toISOString(),
       };
@@ -164,10 +183,7 @@ export function useWesternDisturbanceIntelligence() {
       setError(null);
 
       try {
-        localStorage.setItem(
-          CACHE_KEY,
-          JSON.stringify({ timestamp: Date.now(), payload: nextPayload })
-        );
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), payload: nextPayload }));
       } catch {}
     } catch (err: any) {
       setError(err?.message || 'Unable to fetch Western Disturbance synoptic telemetry');

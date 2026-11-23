@@ -26,6 +26,7 @@ import {
   type MonitoringCategory,
   type MonitoringNetwork,
 } from '@/data/monitoring-registry';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const categoryIcons: Record<MonitoringCategory, React.ComponentType<{ className?: string }>> = {
   'air-quality': Wind,
@@ -73,7 +74,7 @@ function MonitoringOverviewPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
   title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Intelligence Overview</span>
           </>}
   subtitle="Environmental monitoring systems tracking atmospheric, hydrological, seismic, meteorological, wildlife, and cryosphere-linked conditions across Kashmir. These networks form the platform's operational sensing layer — feeding alerts, dashboards, district profiles, and module-specific intelligence with continuous and periodic environmental data."
@@ -294,70 +295,66 @@ function MonitoringOverviewPage() {
                     layout
                   >
                     <Card className="glass-intense border-white/10 p-0 overflow-hidden">
-                      {/* Card Header */}
-                      <div className="p-5 md:p-6">
-                        <div className="flex items-start gap-4">
-                          {/* Icon */}
-                          <div className={`w-12 h-12 rounded-xl bg-slate-900 ${gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                            <Icon className="w-6 h-6 text-white" />
+                      {/* Card Header — Vertical Hierarchy */}
+                      <div className="p-5 md:p-6 space-y-3">
+                        <div className="kew-card-top-row">
+                          <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                            <Icon className="w-5 h-5" />
                           </div>
+                          <Badge className={`${statusColor} border`} size="sm">{statusLabel}</Badge>
+                        </div>
 
-                          {/* Main Info */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex flex-wrap items-center gap-2 mb-2">
-                              <h3 className="text-lg md:text-xl font-bold text-white">{network.name}</h3>
-                              <Badge className={`${statusColor} border`} size="sm">{statusLabel}</Badge>
-                            </div>
+                        <h3 className="kew-card-title text-lg md:text-xl">{network.name}</h3>
 
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-400 mb-3">
-                              <span className="flex items-center gap-1.5">
-                                <MapPin className="w-3.5 h-3.5" />
-                                {network.stationCount} stations
-                              </span>
-                              <span className="flex items-center gap-1.5">
-                                <Globe className="w-3.5 h-3.5" />
-                                {network.coverage}
-                              </span>
-                              <span className="flex items-center gap-1.5">
-                                <Clock className="w-3.5 h-3.5" />
-                                {cadenceLabel}
-                              </span>
-                              <span className="flex items-center gap-1.5">
-                                <Shield className="w-3.5 h-3.5" />
-                                {sourceLabel}
-                              </span>
-                            </div>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-300">
+                          <span className="flex items-center gap-1.5 tabular-nums font-semibold">
+                            <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                            {network.stationCount} stations
+                          </span>
+                          <span className="flex items-center gap-1.5 text-slate-400">
+                            <Globe className="w-3.5 h-3.5" />
+                            {network.coverage}
+                          </span>
+                          <span className="flex items-center gap-1.5 text-slate-400">
+                            <Clock className="w-3.5 h-3.5" />
+                            {cadenceLabel}
+                          </span>
+                          <span className="flex items-center gap-1.5 text-slate-400">
+                            <Shield className="w-3.5 h-3.5" />
+                            {sourceLabel}
+                          </span>
+                        </div>
 
-                            <p className="text-sm text-slate-400 leading-relaxed">{network.description}</p>
+                        <p className="kew-card-desc">{network.description}</p>
 
-                            {/* Quick Actions */}
-                            <div className="flex flex-wrap items-center gap-2 mt-4">
-                              <button
-                                onClick={() => toggleExpand(network.id)}
-                                className="flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-                              >
-                                {isExpanded ? (
-                                  <>
-                                    <ChevronUp className="w-3.5 h-3.5" />
-                                    Hide Details
-                                  </>
-                                ) : (
-                                  <>
-                                    <ChevronDown className="w-3.5 h-3.5" />
-                                    View Details
-                                  </>
-                                )}
-                              </button>
-                              <span className="text-slate-600">|</span>
-                              <button
-                                onClick={() => router.push(`/monitoring-overview/${network.id}`)}
-                                className="flex items-center gap-1.5 text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors"
-                              >
-                                Full Network Page
-                                <ArrowRight className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
-                          </div>
+                        {/* Quick Actions */}
+                        <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-white/10">
+                          <button
+                            onClick={() => toggleExpand(network.id)}
+                            className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                            type="button"
+                          >
+                            {isExpanded ? (
+                              <>
+                                <ChevronUp className="w-3.5 h-3.5" />
+                                Hide Details
+                              </>
+                            ) : (
+                              <>
+                                <ChevronDown className="w-3.5 h-3.5" />
+                                View Details
+                              </>
+                            )}
+                          </button>
+                          <span className="text-slate-600">|</span>
+                          <button
+                            onClick={() => router.push(`/monitoring-overview/${network.id}`)}
+                            className="flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+                            type="button"
+                          >
+                            Full Network Page
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
                         </div>
                       </div>
 

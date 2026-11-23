@@ -79,63 +79,68 @@ export function CollectionCard({
 
   if (compact) {
     return (
-      <Card 
-        className="glass-intense border-white/10 p-4 cursor-pointer hover:border-white/20 transition-all group"
+      <div
+        role="button"
+        tabIndex={0}
         onClick={() => onViewCollection?.(collection.id)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onViewCollection?.(collection.id)}
+        className="kew-card-shell kew-card-shell--interactive group p-4 gap-2.5 h-full"
       >
-        <div className="flex items-center gap-3">
-          <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center", colors.bg)}>
+        <div className="kew-card-top-row">
+          <div className={cn("kew-card-icon-box", colors.bg, colors.border)}>
             <Icon className={cn("w-5 h-5", colors.text)} />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-sm font-semibold text-white group-hover:text-slate-200 transition-colors">{collection.name}</h3>
-            <div className="text-xs text-slate-500">{collection.evidenceCount} items</div>
-          </div>
-          <ArrowRight className={cn("w-4 h-4", colors.text, "group-hover:translate-x-1 transition-transform")} />
-        </div>
-      </Card>
-    );
-  }
-
-  return (
-    <Card 
-      className="glass-intense border-white/10 p-6 cursor-pointer hover:border-white/20 transition-all group relative overflow-hidden"
-      onClick={() => onViewCollection?.(collection.id)}
-    >
-      <div className={cn("absolute top-0 right-0 w-24 h-24 bg-gradient-to-br rounded-bl-full opacity-20", colors.gradient)} />
-      
-      <div className="relative">
-        <div className="flex items-start justify-between mb-4">
-          <div className={cn("w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform", colors.gradient)}>
-            <Icon className="w-7 h-7 text-white" />
           </div>
           <Badge variant="outline" size="sm" className={cn("border-white/20", colors.text)}>
             {collection.evidenceCount} items
           </Badge>
         </div>
-
-        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-slate-200 transition-colors">{collection.name}</h3>
-        <p className="text-sm text-slate-400 mb-4 line-clamp-3">{collection.description}</p>
-
-        {collection.featuredEvidenceIds.length > 0 && (
-          <div className="mb-4">
-            <div className="text-xs text-slate-500 mb-2">Featured Evidence</div>
-            <div className="flex flex-wrap gap-2">
-              {collection.featuredEvidenceIds.slice(0, 2).map(evidenceId => (
-                <Badge key={evidenceId} variant="secondary" size="sm" className="text-xs">
-                  {evidenceId.replace('ev-', '')}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className="flex items-center justify-between pt-4 border-t border-white/10">
-          <span className={cn("text-sm font-medium", colors.text)}>Explore Collection</span>
-          <ArrowRight className={cn("w-4 h-4", colors.text, "group-hover:translate-x-1 transition-transform")} />
+        <h3 className="kew-card-title text-sm sm:text-base">{collection.name}</h3>
+        <div className="kew-card-cta text-xs pt-2">
+          <span>Open Collection</span>
+          <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
         </div>
       </div>
-    </Card>
+    );
+  }
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onViewCollection?.(collection.id)}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onViewCollection?.(collection.id)}
+      className="kew-card-shell kew-card-shell--interactive group h-full"
+    >
+      <div className="kew-card-top-row">
+        <div className={cn("kew-card-icon-box", colors.bg, colors.border)}>
+          <Icon className={cn("w-5 h-5", colors.text)} />
+        </div>
+        <Badge variant="outline" size="sm" className={cn("border-white/20", colors.text)}>
+          {collection.evidenceCount} items
+        </Badge>
+      </div>
+
+      <h3 className="kew-card-title">{collection.name}</h3>
+      <p className="kew-card-desc">{collection.description}</p>
+
+      {collection.featuredEvidenceIds.length > 0 && (
+        <div>
+          <div className="text-xs text-slate-400 mb-1.5">Featured Evidence</div>
+          <div className="flex flex-wrap gap-1.5">
+            {collection.featuredEvidenceIds.slice(0, 2).map(evidenceId => (
+              <Badge key={evidenceId} variant="secondary" size="sm" className="text-xs">
+                {evidenceId.replace('ev-', '')}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="kew-card-cta">
+        <span>Explore Collection</span>
+        <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+      </div>
+    </div>
   );
 }
 

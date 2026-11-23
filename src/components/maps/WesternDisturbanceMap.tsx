@@ -56,27 +56,27 @@ interface WesternDisturbanceMapProps {
 
 function getCorridorMarkerStyle(c: WDCorridorLiveRecord, param: WDMapParameter) {
   if (param === 'precip7d') {
-    const p = c.forecast7d.total_precip_mm;
+    const p = c.forecast7d.total_precip_mm ?? 0;
     if (p >= 50) return { color: '#ef4444', fill: '#ef4444', radius: 11 };
     if (p >= 20) return { color: '#38bdf8', fill: '#0284c7', radius: 9.5 };
     if (p >= 5) return { color: '#22d3ee', fill: '#06b6d4', radius: 8 };
     return { color: '#64748b', fill: '#475569', radius: 6.5 };
   }
   if (param === 'snow7d') {
-    const s = c.forecast7d.total_snow_cm;
+    const s = c.forecast7d.total_snow_cm ?? 0;
     if (s >= 35) return { color: '#f43f5e', fill: '#e11d48', radius: 11 };
     if (s >= 12) return { color: '#a855f7', fill: '#9333ea', radius: 9.5 };
     if (s >= 2) return { color: '#38bdf8', fill: '#0ea5e9', radius: 8 };
     return { color: '#64748b', fill: '#475569', radius: 6.5 };
   }
   if (param === 'freezingLevel') {
-    const f = c.liveObservation.freezing_level_m;
+    const f = c.liveObservation.freezing_level_m ?? 9999;
     if (f <= 2200) return { color: '#38bdf8', fill: '#0284c7', radius: 9 };
     if (f <= 3200) return { color: '#22d3ee', fill: '#0891b2', radius: 8.5 };
     return { color: '#f59e0b', fill: '#d97706', radius: 8 };
   }
   if (param === 'jet300') {
-    const j = c.liveObservation.jet300_kmh;
+    const j = c.liveObservation.jet300_kmh ?? 0;
     if (j >= 140) return { color: '#f43f5e', fill: '#e11d48', radius: 10.5 };
     if (j >= 100) return { color: '#f59e0b', fill: '#d97706', radius: 9 };
     return { color: '#10b981', fill: '#059669', radius: 7.5 };
@@ -329,10 +329,10 @@ export function WesternDisturbanceMap({
                   <div className="font-bold text-slate-900 border-b border-slate-200 pb-1">{u.name}</div>
                   <div className="text-[10px] font-semibold uppercase text-sky-700">0h NWP Synoptic Analysis</div>
                   <div><strong>Signal:</strong> {u.troughSignal}</div>
-                  <div><strong>500 hPa Height (Curv):</strong> {u.z500_gpm} gpm ({u.z500_curvature_gpm >= 0 ? '+' : ''}{u.z500_curvature_gpm} gpm)</div>
-                  <div><strong>300 hPa Vorticity (ζ₃₀₀):</strong> {u.vorticity300_1e5s} × 10⁻⁵ s⁻¹</div>
-                  <div><strong>300 hPa Jet Wind:</strong> {u.jet300_kmh} km/h ({u.jet300_dir_deg}°)</div>
-                  <div><strong>MSL Pressure:</strong> {u.pressure_msl_hpa} hPa ({u.pressure_24h_delta_hpa >= 0 ? '+' : ''}{u.pressure_24h_delta_hpa} hPa/24h)</div>
+                  <div><strong>500 hPa Height (Curv):</strong> {u.z500_gpm ?? '—'} gpm ({(u.z500_curvature_gpm ?? 0) >= 0 ? '+' : ''}{u.z500_curvature_gpm ?? '—'} gpm)</div>
+                  <div><strong>300 hPa Vorticity (ζ₃₀₀):</strong> {u.vorticity300_1e5s ?? '—'} × 10⁻⁵ s⁻¹</div>
+                  <div><strong>300 hPa Jet Wind:</strong> {u.jet300_kmh ?? '—'} km/h ({u.jet300_dir_deg ?? '—'}°)</div>
+                  <div><strong>MSL Pressure:</strong> {u.pressure_msl_hpa ?? '—'} hPa ({(u.pressure_24h_delta_hpa ?? 0) >= 0 ? '+' : ''}{u.pressure_24h_delta_hpa ?? '—'} hPa/24h)</div>
                   <div><strong>72h NWP Precip:</strong> {u.next72h_precip_mm} mm</div>
                 </div>
               </Popup>

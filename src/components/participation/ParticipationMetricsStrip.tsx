@@ -210,48 +210,56 @@ export function ParticipationMetricsStrip({ variant = 'default' }: Participation
     );
   }
 
-  // Default variant
+  // Default variant — vertical ICON -> TITLE -> KPI -> Trend hierarchy
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <Card className="glass-intense border-white/10 p-6 text-center">
-        <AlertTriangle className="w-6 h-6 text-red-400 mx-auto mb-3" />
-        <div className="text-4xl font-bold text-white mb-2">{participationMetrics.totalIssues.toLocaleString()}</div>
-        <div className="text-sm text-slate-400 mb-2">Reported Issues</div>
-        <div className="flex items-center justify-center gap-1 text-xs text-emerald-400">
+    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+      <div className="kew-card-shell p-5 gap-2">
+        <div className="kew-card-icon-box bg-red-500/15 border-red-500/30 text-red-400">
+          <AlertTriangle className="w-5 h-5" />
+        </div>
+        <h4 className="text-xs sm:text-sm font-bold text-slate-300">Reported Issues</h4>
+        <div className="kew-card-kpi-value">{participationMetrics.totalIssues.toLocaleString()}</div>
+        <div className="flex items-center gap-1 text-xs text-emerald-400 mt-auto">
           <TrendingUp className="w-3 h-3" />
           {participationMetrics.newThisWeek} this week
         </div>
-      </Card>
+      </div>
 
-      <Card className="glass-intense border-white/10 p-6 text-center">
-        <Eye className="w-6 h-6 text-emerald-400 mx-auto mb-3" />
-        <div className="text-4xl font-bold text-white mb-2">{participationMetrics.totalSightings.toLocaleString()}</div>
-        <div className="text-sm text-slate-400 mb-2">Submitted Sightings</div>
-        <div className="flex items-center justify-center gap-1 text-xs text-emerald-400">
+      <div className="kew-card-shell p-5 gap-2">
+        <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+          <Eye className="w-5 h-5" />
+        </div>
+        <h4 className="text-xs sm:text-sm font-bold text-slate-300">Submitted Sightings</h4>
+        <div className="kew-card-kpi-value">{participationMetrics.totalSightings.toLocaleString()}</div>
+        <div className="flex items-center gap-1 text-xs text-emerald-400 mt-auto">
           <TrendingUp className="w-3 h-3" />
           {participationMetrics.newThisMonth} this month
         </div>
-      </Card>
+      </div>
 
-      <Card className="glass-intense border-white/10 p-6 text-center">
-        <Database className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-        <div className="text-4xl font-bold text-white mb-2">{participationMetrics.totalDatasets.toLocaleString()}</div>
-        <div className="text-sm text-slate-400 mb-2">Contributed Datasets</div>
-        <div className="flex items-center justify-center gap-1 text-xs text-slate-400">
+      <div className="kew-card-shell p-5 gap-2">
+        <div className="kew-card-icon-box bg-blue-500/15 border-blue-500/30 text-blue-400">
+          <Database className="w-5 h-5" />
+        </div>
+        <h4 className="text-xs sm:text-sm font-bold text-slate-300">Contributed Datasets</h4>
+        <div className="kew-card-kpi-value">{participationMetrics.totalDatasets.toLocaleString()}</div>
+        <div className="flex items-center gap-1 text-xs text-slate-400 mt-auto">
           <CheckCircle2 className="w-3 h-3" />
           {participationMetrics.verifiedIssues} verified
         </div>
-      </Card>
+      </div>
 
-      <Card className="glass-intense border-white/10 p-6 text-center">
-        <Users className="w-6 h-6 text-purple-400 mx-auto mb-3" />
-        <div className="text-4xl font-bold text-white mb-2">{participationMetrics.totalMembers.toLocaleString()}</div>
-        <div className="text-sm text-slate-400 mb-2">Citizen Science Members</div>
-        <div className="flex items-center justify-center gap-1 text-xs text-emerald-400">
+      <div className="kew-card-shell p-5 gap-2">
+        <div className="kew-card-icon-box bg-purple-500/15 border-purple-500/30 text-purple-400">
+          <Users className="w-5 h-5" />
+        </div>
+        <h4 className="text-xs sm:text-sm font-bold text-slate-300">Citizen Science Members</h4>
+        <div className="kew-card-kpi-value">{participationMetrics.totalMembers.toLocaleString()}</div>
+        <div className="flex items-center gap-1 text-xs text-emerald-400 mt-auto">
           <MapPin className="w-3 h-3" />
           {participationMetrics.activeDistricts} districts
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

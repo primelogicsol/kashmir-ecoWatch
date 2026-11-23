@@ -161,7 +161,7 @@ function Section({ id, icon: Icon, title, accent = 'text-emerald-400', bg = 'bg-
         </div>
         <h2 className="text-base font-bold text-white">{title}</h2>
       </div>
-      <div className="pl-11 space-y-3 text-sm text-slate-300 leading-relaxed">
+      <div className="pl-0 sm:pl-11 space-y-3 text-sm text-slate-300 leading-relaxed">
         {children}
       </div>
     </div>
@@ -378,7 +378,7 @@ export default function OpenDataPortalPage() {
                       </div>
                       <h2 className="text-base font-bold text-white">Overview</h2>
                     </div>
-                    <div className="pl-11 space-y-3 text-sm text-slate-300 leading-relaxed">
+                    <div className="pl-0 sm:pl-11 space-y-3 text-sm text-slate-300 leading-relaxed">
                       <p className="border-l-2 border-emerald-500/40 pl-4">
                         Kashmir EcoWatch (KEW) is committed to improving access to regional environmental knowledge through responsible open data practices. The Open Data Portal compiles verified environmental observations, satellite time-series, hazard models, and biodiversity inventories supporting scientific research, conservation planning, and informed public participation.
                       </p>
@@ -394,12 +394,12 @@ export default function OpenDataPortalPage() {
                   <Section id="principles" icon={Shield} title="Open Data Principles">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
                       {principles.map(p => (
-                        <div key={p.title} className={`rounded-[6px] ${p.bg} border border-white/5 p-4`}>
-                          <div className="flex items-center gap-2 mb-2">
+                        <div key={p.title} className="kew-card-shell p-4">
+                          <div className={`kew-card-icon-box ${p.bg} border-white/10 mb-2.5`}>
                             <p.icon className={`w-4 h-4 ${p.accent}`} />
-                            <div className={`text-xs font-bold ${p.accent}`}>{p.title}</div>
                           </div>
-                          <p className="text-xs text-slate-400 leading-relaxed">{p.desc}</p>
+                          <h3 className={`kew-card-title text-sm ${p.accent} mb-1.5`}>{p.title}</h3>
+                          <p className="kew-card-desc text-xs">{p.desc}</p>
                         </div>
                       ))}
                     </div>
@@ -419,7 +419,7 @@ export default function OpenDataPortalPage() {
                       </div>
                     </div>
 
-                    <div className="pl-11 space-y-6">
+                    <div className="pl-0 sm:pl-11 space-y-6">
                       <p className="text-sm text-slate-300 leading-relaxed">
                         The Open Data Catalog organizes Western Himalayan environmental intelligence into a hierarchical scientific taxonomy. Each category documents actual dataset availability, observation methodologies, provenance, and direct gateway links into corresponding live analytical modules:
                       </p>

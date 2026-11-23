@@ -8,6 +8,7 @@ import { Bird, MapPin, Calendar, ArrowRight, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const birdSightings = [
   { id: 'bs-1', species: 'Himalayan Monal', scientificName: 'Lophophorus impejanus', status: 'LC', location: 'Gulmarg', district: 'Baramulla', date: '2024-03-26', observer: 'Birdwatcher', verified: true },
@@ -22,7 +23,7 @@ export default function BirdSightingsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Sightings</span>
           </>}
         subtitle="Resident and migratory bird observations from across Kashmir's diverse avian habitats"

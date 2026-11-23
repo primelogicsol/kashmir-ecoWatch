@@ -11,6 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const warmingImpacts = [
   { impact: 'Glacier Mass Loss', severity: 'Critical', description: 'Kolahoi, Machoi glaciers losing 15-20m ice thickness per decade' },
@@ -44,7 +45,7 @@ export default function GlobalWarmingImpactsPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Global Warming Impacts on Kashmir</span>
           </>}
         subtitle="Comprehensive analysis of warming-linked impacts on Kashmir glaciers, springs, wetlands, species, seasons, hydrology, and biodiversity across all ecological systems"

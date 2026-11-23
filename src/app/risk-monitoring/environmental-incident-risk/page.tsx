@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { liveAlerts, advisories } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const environmentalIncidents = liveAlerts.filter(a => 
   a.hazardCategory === 'Environmental Incident Risk' || 
@@ -35,7 +36,7 @@ export default function EnvironmentalIncidentRiskPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Environmental Incident Risk' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Incident Risk</span>
           </>}
         subtitle="Escalated environmental cases from monitoring systems: severe sewage overflows, toxic discharge, severe AQI episodes, landfill fires, unsafe water emergencies, and pollution emergencies."

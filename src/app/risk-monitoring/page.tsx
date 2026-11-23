@@ -22,6 +22,7 @@ import {
   criticalInfrastructure
 } from '@/data/risk-monitoring';
 import { AlertSeverity } from '@/types/alerts';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const submodules = [
   { id: 'live-alerts', name: 'Live Alerts', icon: Bell, color: 'from-red-500 to-rose-600', route: '/risk-monitoring/live-alerts-advisories', desc: 'Critical alerts & warnings' },
@@ -178,7 +179,7 @@ export default function RiskMonitoringOverviewPage() {
       <Heading
         title={
           <>
-            <span className="block whitespace-nowrap">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk & Monitoring</span>
           </>
         }
@@ -614,32 +615,34 @@ export default function RiskMonitoringOverviewPage() {
             <Shield className="w-6 h-6 text-violet-400" />
             <h2 className="text-2xl font-bold text-white">Risk Intelligence Submodules</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
             {submodules.map((mod, idx) => (
               <motion.div
                 key={mod.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
+                className="h-full min-w-0"
               >
-                <Card
-                  className="glass-intense border-white/10 hover:border-white/20 p-5 cursor-pointer transition-all group"
+                <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => router.push(mod.route)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(mod.route)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${mod.color} flex items-center justify-center flex-shrink-0`}>
-                      <mod.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-sm font-bold text-white group-hover:text-red-400 transition-colors">{mod.name}</h3>
-                      <p className="text-xs text-slate-400">{mod.desc}</p>
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-red-500/15 border-red-500/30 text-red-400">
+                      <mod.icon className="w-5 h-5" />
                     </div>
                   </div>
-                  <div className="flex items-center text-xs font-medium text-red-400 group-hover:text-red-300 transition-colors">
+                  <h3 className="kew-card-title">{mod.name}</h3>
+                  <p className="kew-card-desc">{mod.desc}</p>
+                  <div className="kew-card-cta">
                     <span>Access Module</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>

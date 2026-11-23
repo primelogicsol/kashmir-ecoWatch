@@ -142,15 +142,7 @@ export default function WesternDisturbancesDashboardPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span
-                className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1"
-                style={{ fontSize: '0.58em' }}
-              >
-                KEW
-              </span>
-              <span>Western Disturbances</span>
-            </span>
+            <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Western Disturbances</span>
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-indigo-300 bg-clip-text text-transparent">
               Monitoring Dashboard
             </span>
@@ -189,12 +181,12 @@ export default function WesternDisturbancesDashboardPage() {
 
       <ModuleKpiStrip
         kpis={[
-          { label: 'Detected WD Systems', value: loading ? '...' : synopticSummary?.detectedSystemCount ?? 0, icon: 'Compass', color: 'text-rose-400' },
-          { label: 'Active Regional WDs', value: loading ? '...' : synopticSummary?.activeRegionalSystemCount ?? 0, icon: 'Wind', color: 'text-red-400' },
-          { label: '7d Watch Corridors', value: loading ? '...' : synopticSummary?.approachingWaveCount ?? 0, icon: 'Eye', color: 'text-amber-400' },
-          { label: 'Spatial Max 300hPa Jet', value: loading ? '...' : `${synopticSummary?.maxJetCoreKmh ?? 95} km/h`, icon: 'Zap', color: 'text-indigo-400' },
-          { label: 'Mean 0°C Freezing Lvl', value: loading ? '...' : `${synopticSummary?.meanFreezingLevelM ?? 3400} m`, icon: 'Snowflake', color: 'text-cyan-300' },
-          { label: 'Peak 7d NWP Precip', value: loading ? '...' : `${synopticSummary?.peak7dPrecipMm ?? 0} mm`, icon: 'CloudRain', color: 'text-sky-400' },
+          { label: 'Reporting / Configured', value: loading ? '...' : `${synopticSummary?.reportingCorridors ?? '—'}/${synopticSummary?.configuredCorridors ?? 31}`, icon: 'MapPin', color: 'text-sky-400' },
+          { label: 'Detected WD Systems', value: loading ? '...' : synopticSummary?.detectionStatus === 'UNAVAILABLE' || synopticSummary?.detectedSystemCount === null ? 'Detection Unavailable' : synopticSummary?.detectedSystemCount ?? '—', icon: 'Compass', color: 'text-rose-400' },
+          { label: 'Active WD Passages', value: loading ? '...' : synopticSummary?.detectionStatus === 'UNAVAILABLE' || synopticSummary?.activePassageCount === null ? 'Detection Unavailable' : synopticSummary?.activePassageCount ?? '—', icon: 'Wind', color: 'text-red-400' },
+          { label: '300hPa Jet Core (Max)', value: loading ? '...' : synopticSummary?.maxJetCoreKmh !== null && synopticSummary?.maxJetCoreKmh !== undefined ? `${synopticSummary.maxJetCoreKmh} km/h` : 'Unavailable', icon: 'Zap', color: 'text-indigo-400' },
+          { label: 'Mean Freezing-Level Alt', value: loading ? '...' : synopticSummary?.meanFreezingLevelM !== null && synopticSummary?.meanFreezingLevelM !== undefined ? `${synopticSummary.meanFreezingLevelM} m` : 'Unavailable', icon: 'Snowflake', color: 'text-cyan-300' },
+          { label: 'Peak 7d NWP Precip', value: loading ? '...' : synopticSummary?.peak7dPrecipMm !== null && synopticSummary?.peak7dPrecipMm !== undefined ? `${synopticSummary.peak7dPrecipMm} mm` : 'Unavailable', icon: 'CloudRain', color: 'text-sky-400' },
           { label: 'NWP Init Cycle', value: loading ? '...' : modelCycleShort, icon: 'Database', color: 'text-purple-300' },
           { label: 'Synced (UTC)', value: loading ? '...' : syncShortUtc, icon: 'Clock', color: 'text-emerald-400' },
         ]}

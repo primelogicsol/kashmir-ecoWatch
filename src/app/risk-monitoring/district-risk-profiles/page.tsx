@@ -9,6 +9,7 @@ import { MapPin, ArrowRight, TrendingUp, AlertTriangle, Bell, Shield } from 'luc
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { districtRiskProfiles, liveAlerts } from '@/data/risk-monitoring';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const getRiskBadge = (level: string) => {
   switch (level) {
@@ -28,7 +29,7 @@ export default function DistrictRiskProfilesPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'District Risk Profiles' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Risk Profiles</span>
           </>}
         subtitle="Operational risk intelligence at district level: current risk levels, dominant hazard categories, live alerts, infrastructure concerns, response notes, advisory status, and trend direction."

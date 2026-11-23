@@ -122,7 +122,7 @@ export function SectoralEiaSection() {
         </motion.div>
 
         {/* 4 Sectors Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {sectors.map((s, idx) => {
             const Icon = s.icon;
             return (
@@ -132,40 +132,41 @@ export function SectoralEiaSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="h-full min-w-0"
               >
                 <Link
                   href={s.href}
-                  className={`group p-5 rounded-2xl bg-slate-900/70 hover:bg-slate-900/95 border border-white/10 ${s.borderColor} transition-all flex flex-col justify-between h-full space-y-4 shadow-sm`}
+                  className={`kew-card-shell kew-card-shell--interactive group h-full no-underline ${s.borderColor}`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className={`p-2 rounded-xl bg-white/5 ${s.color}`}>
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${s.badgeColor}`}>
-                        {s.metric}
-                      </span>
+                  {/* 1. ICON (top-left) + Metric badge (top-right) */}
+                  <div className="kew-card-top-row">
+                    <div className={`kew-card-icon-box bg-slate-800/90 border-white/10 ${s.color}`}>
+                      <Icon className="w-5 h-5" />
                     </div>
-
-                    <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
-                      {s.title}
-                    </h3>
-                    <div className="text-[11px] font-mono text-slate-400 mt-1">
-                      {s.footprint}
-                    </div>
-
-                    <p className="text-xs text-slate-400 mt-3 line-clamp-3 leading-relaxed">
-                      {s.desc}
-                    </p>
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${s.badgeColor}`}>
+                      {s.metric}
+                    </span>
                   </div>
 
-                  <div className="pt-3 border-t border-white/5 space-y-2">
-                    <div className="text-[10px] text-slate-500 font-mono line-clamp-1">
+                  {/* 2. TITLE — full horizontal width */}
+                  <h3 className="kew-card-title">{s.title}</h3>
+
+                  {/* 3. KPI */}
+                  <div className="text-sm font-bold font-mono text-white tabular-nums">
+                    {s.footprint}
+                  </div>
+
+                  {/* 4. DESCRIPTION — naturally wrapping */}
+                  <p className="kew-card-desc">{s.desc}</p>
+
+                  {/* 5. Locations + Bottom CTA */}
+                  <div className="mt-auto pt-3 border-t border-white/10 space-y-2">
+                    <div className="text-[11px] text-slate-400 font-mono break-words">
                       Focus: {s.locations}
                     </div>
-                    <div className="flex items-center justify-between text-xs text-slate-300 group-hover:text-emerald-300 transition-colors font-medium">
+                    <div className="flex items-center justify-between text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition-colors">
                       <span>View Sector Dossier</span>
-                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
                 </Link>

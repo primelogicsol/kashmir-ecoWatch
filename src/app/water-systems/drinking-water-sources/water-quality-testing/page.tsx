@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Data ───────────────────────────────────────────────────────────────
 
@@ -184,7 +185,7 @@ export default function WaterQualityTestingPage() {
       <Heading
         icon={<Beaker className="w-6 h-6 text-emerald-400" />}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Quality Testing</span>
           </>}
         subtitle="Comprehensive testing protocols, parameter monitoring, and contamination surveillance for Kashmir's drinking water sources. Tracking physical, chemical, and biological parameters across testing stations to safeguard public health."
@@ -298,22 +299,19 @@ export default function WaterQualityTestingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
               >
-                <Card className={`glass-intense border-white/10 p-5 hover:border-white/20 transition-all h-full`}>
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${catColor} flex items-center justify-center flex-shrink-0`}>
+                <Card className="kew-card-shell p-5 h-full">
+                  <div className="kew-card-top-row">
+                    <div className={`kew-card-icon-box bg-gradient-to-br ${catColor}`}>
                       <param.icon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-sm font-semibold text-white">{param.name}</h3>
-                      <Badge variant="outline" className={`border text-[10px] mt-1 ${catBorder} ${catBg.replace('/10', '/20')}`}>
-                        {param.category}
-                      </Badge>
-                    </div>
+                    <Badge variant="outline" className={`border text-[10px] ${catBorder} ${catBg.replace('/10', '/20')}`}>
+                      {param.category}
+                    </Badge>
                   </div>
+                  <h3 className="kew-card-title text-sm mb-2">{param.name}</h3>
+                  <p className="kew-card-desc text-xs mb-4">{param.description}</p>
 
-                  <p className="text-xs text-slate-400 leading-relaxed mb-3">{param.description}</p>
-
-                  <div className="space-y-2">
+                  <div className="mt-auto pt-3 border-t border-white/5 space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-slate-500">Unit</span>
                       <span className="text-slate-300 font-mono">{param.unit}</span>

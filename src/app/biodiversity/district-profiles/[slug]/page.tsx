@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import { ArrowLeft, MapPin, Mountain, Bird, Fish, Sprout, Shield, Leaf, TreePine, Droplet, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getAllDistrictProfiles } from '@/data/biodiversity-district-aggregator';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function DistrictProfileDetail() {
   const params = useParams();
@@ -53,6 +54,7 @@ export default function DistrictProfileDetail() {
                 </Badge>
               )}
             </div>
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
               {profile.district}
             </h1>

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Users, ArrowLeft, CheckCircle, School, Megaphone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const outreachRoles = [
   { title: 'Community Workshop Facilitator', desc: 'Organize and lead environmental awareness workshops in local communities' },
@@ -43,6 +44,7 @@ export default function CommunityOutreachPage() {
               <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-xl"><Users className="w-7 h-7 text-white" /></div>
               <Badge variant="warning" size="lg">Outreach Program</Badge>
             </div>
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Community <span className="text-emerald-400">Outreach</span></h1>
             <p className="text-lg text-slate-400 max-w-2xl">Engage local communities in conservation awareness, environmental monitoring training, and citizen science programs. Build bridges between science and society.</p>
           </motion.div>

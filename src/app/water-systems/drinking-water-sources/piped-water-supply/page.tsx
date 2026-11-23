@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const districtSupply = [
   {
@@ -163,7 +164,7 @@ export default function PipedWaterSupplyPage() {
       <Heading
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Piped Water Supply</span>
           </>}
         subtitle="Comprehensive assessment of Kashmir's piped drinking water supply network managed by the Public Health Engineering Department (PHED). Tracking coverage, supply reliability, service levels, and infrastructure gaps across all districts."

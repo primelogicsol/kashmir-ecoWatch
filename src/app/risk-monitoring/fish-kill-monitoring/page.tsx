@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const fishKillEvents = [
   { id: 'fk-1', waterbody: 'Dal Lake', district: 'Srinagar', date: '2025-03-18', severity: 'High', estimatedLoss: '2,500 kg', cause: 'Oxygen Depletion' },
@@ -51,7 +52,7 @@ export default function FishKillMonitoringPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Fish Kill Monitoring' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Fish Kill Monitoring</span>
           </>}
         subtitle="Lake and river fish mortality events, oxygen depletion monitoring, pollution-linked kills, algal bloom linkage, seasonal mortality patterns, and aquaculture impact tracking across Kashmir waters"

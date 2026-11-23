@@ -36,6 +36,7 @@ import {
   EMERGENCY_CONTACTS,
   KewRegion
 } from '@/data/human-wildlife-conflict';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function HumanWildlifeConflictOverviewPage() {
   const [selectedRegion, setSelectedRegion] = useState<KewRegion | 'All'>('All');
@@ -91,12 +92,7 @@ export default function HumanWildlifeConflictOverviewPage() {
         ]}
         title={
           <>
-            <span className="flex items-center gap-3 flex-wrap leading-[1.12] pb-1 sm:pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-700 text-white font-black uppercase tracking-widest rounded-[4px] px-2.5 py-0.5 text-[10px] sm:text-xs">
-                KEW-HWC
-              </span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block break-words leading-[1.12] pb-1 sm:pb-2 bg-gradient-to-r from-amber-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">
               Human–Wildlife Conflict & Coexistence
             </span>

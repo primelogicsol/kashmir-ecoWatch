@@ -16,6 +16,7 @@ import { Heading } from '@/components/common/Heading';
 
 import { GlobalFilterBar } from '@/components/common/GlobalFilterBar';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const KASHMIR_CORE = ['Srinagar', 'Ganderbal', 'Budgam', 'Anantnag', 'Kulgam', 'Pulwama', 'Shopian', 'Bandipora', 'Baramulla'];
 const TRANS_DIV = ['Ramban', 'Reasi', 'Poonch', 'Rajouri', 'Doda', 'Kishtwar', 'Udhampur', 'Jammu', 'Kathua', 'Samba'];
@@ -62,7 +63,7 @@ export default function FieldReportsPage() {
       <Heading
         title={
           <>
-            <span className="block whitespace-nowrap">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Field Intelligence Reports</span>
           </>
         }
@@ -87,111 +88,102 @@ export default function FieldReportsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {/* Protected Areas */}
-              <a href="/field-reports/protected-areas" className="group">
-                <Card className="glass-intense border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Protected Areas</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Field intelligence from National Parks, Wildlife Sanctuaries, and Conservation Reserves. Anti-poaching patrols, habitat assessments, and corridor tracking.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+              <a href="/field-reports/protected-areas" className="group block h-full min-w-0 no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full border-emerald-500/15 hover:border-emerald-500/40">
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <Shield className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">Protected Areas</h3>
+                  <p className="kew-card-desc">
+                    Field intelligence from National Parks, Wildlife Sanctuaries, and Conservation Reserves. Anti-poaching patrols, habitat assessments, and corridor tracking.
+                  </p>
+                  <div className="kew-card-cta">
+                    <span>Browse Reports</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </a>
 
               {/* Biodiversity */}
-              <a href="/field-reports/biodiversity" className="group">
-                <Card className="glass-intense border-purple-500/10 p-6 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <PawPrint className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Biodiversity</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Species population censuses, avian migration tracking, phenology records, and flora conservation surveys.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all" />
+              <a href="/field-reports/biodiversity" className="group block h-full min-w-0 no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full border-purple-500/15 hover:border-purple-500/40">
+                  <div className="kew-card-icon-box bg-purple-500/15 border-purple-500/30 text-purple-400">
+                    <PawPrint className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">Biodiversity</h3>
+                  <p className="kew-card-desc">
+                    Species population censuses, avian migration tracking, phenology records, and flora conservation surveys.
+                  </p>
+                  <div className="kew-card-cta">
+                    <span>Browse Reports</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </a>
 
               {/* Water Systems */}
-              <a href="/field-reports/water-systems" className="group">
-                <Card className="glass-intense border-blue-500/10 p-6 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <Droplets className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Water Systems</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Water quality testing, lake trophic status monitoring, river discharge data, and groundwater recharge field studies.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+              <a href="/field-reports/water-systems" className="group block h-full min-w-0 no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full border-blue-500/15 hover:border-blue-500/40">
+                  <div className="kew-card-icon-box bg-blue-500/15 border-blue-500/30 text-blue-400">
+                    <Droplets className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">Water Systems</h3>
+                  <p className="kew-card-desc">
+                    Water quality testing, lake trophic status monitoring, river discharge data, and groundwater recharge field studies.
+                  </p>
+                  <div className="kew-card-cta">
+                    <span>Browse Reports</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </a>
 
               {/* Environmental Monitoring */}
-              <a href="/field-reports/environmental-monitoring" className="group">
-                <Card className="glass-intense border-cyan-500/10 p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <Activity className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Environmental Monitoring</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Air pollution indices, solid and bio-waste tracking, and sewage outfall field measurements.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+              <a href="/field-reports/environmental-monitoring" className="group block h-full min-w-0 no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full border-cyan-500/15 hover:border-cyan-500/40">
+                  <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+                    <Activity className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">Environmental Monitoring</h3>
+                  <p className="kew-card-desc">
+                    Air pollution indices, solid and bio-waste tracking, and sewage outfall field measurements.
+                  </p>
+                  <div className="kew-card-cta">
+                    <span>Browse Reports</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </a>
 
               {/* Hazard Intelligence */}
-              <a href="/field-reports/hazard-intelligence" className="group">
-                <Card className="glass-intense border-red-500/10 p-6 hover:border-red-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                      <AlertTriangle className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors">Hazard Intelligence</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        Avalanche exposure logs, landslide geotechnical assessments, GLOF monitoring, and flood vulnerability reports.
-                      </p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-red-400 group-hover:translate-x-1 transition-all" />
+              <a href="/field-reports/hazard-intelligence" className="group block h-full min-w-0 no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive h-full border-red-500/15 hover:border-red-500/40">
+                  <div className="kew-card-icon-box bg-red-500/15 border-red-500/30 text-red-400">
+                    <AlertTriangle className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">Hazard Intelligence</h3>
+                  <p className="kew-card-desc">
+                    Avalanche exposure logs, landslide geotechnical assessments, GLOF monitoring, and flood vulnerability reports.
+                  </p>
+                  <div className="kew-card-cta">
+                    <span>Browse Reports</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </a>
 
               {/* All Reports */}
-              <Card className="glass-intense border-amber-500/20 p-6 bg-slate-900 h-full">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0 ring-2 ring-amber-500/50">
-                    <FileText className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-white mb-2">All Reports (Current View)</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      Comprehensive view of all field intelligence reports with filtering by module, district, year, and source below.
-                    </p>
-                  </div>
+              <div className="kew-card-shell kew-card-shell--selected h-full">
+                <div className="kew-card-icon-box bg-amber-500/15 border-amber-500/30 text-amber-400">
+                  <FileText className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">All Reports (Current View)</h3>
+                <p className="kew-card-desc">
+                  Comprehensive view of all field intelligence reports with filtering by module, district, year, and source below.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -259,96 +251,66 @@ export default function FieldReportsPage() {
               module intelligence, alerts, risk interpretation, and library collections depending on type, relevance, and review status.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Database className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Library Collections</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      Monthly bulletins, annual summaries, and technical reports are catalogued in the Library with tagging, 
-                      cross-references, and searchability for researchers and analysts.
-                    </p>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-emerald-400">
+                  <Database className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">Library Collections</h3>
+                <p className="kew-card-desc">
+                  Monthly bulletins, annual summaries, and technical reports are catalogued in the Library with tagging, cross-references, and searchability for researchers and analysts.
+                </p>
+              </div>
 
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <BarChart3 className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Monitoring Overview</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      Field reports feed the Monitoring Overview with verified observations, trend data, and longitudinal 
-                      assessments across air quality, water systems, and biodiversity indicators.
-                    </p>
-                  </div>
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-sky-400">
+                  <BarChart3 className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">Monitoring Overview</h3>
+                <p className="kew-card-desc">
+                  Field reports feed the Monitoring Overview with verified observations, trend data, and longitudinal assessments across air quality, water systems, and biodiversity indicators.
+                </p>
+              </div>
 
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <AlertTriangle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Risk Updates & Alerts</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      Risk assessments and fire season reports directly inform the Alerts & Advisories system, 
-                      triggering early warnings and mitigation recommendations for vulnerable districts.
-                    </p>
-                  </div>
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-amber-400">
+                  <AlertTriangle className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">Risk Updates &amp; Alerts</h3>
+                <p className="kew-card-desc">
+                  Risk assessments and fire season reports directly inform the Alerts &amp; Advisories system, triggering early warnings and mitigation recommendations for vulnerable districts.
+                </p>
+              </div>
 
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">District Profiles</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      District-specific reports build localized environmental intelligence profiles, enabling 
-                      targeted conservation efforts and resource management at the district level.
-                    </p>
-                  </div>
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-emerald-400">
+                  <MapPin className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">District Profiles</h3>
+                <p className="kew-card-desc">
+                  District-specific reports build localized environmental intelligence profiles, enabling targeted conservation efforts and resource management at the district level.
+                </p>
+              </div>
 
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Module Intelligence</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      Wildlife surveys feed Biodiversity modules, wetland assessments feed Water Systems, 
-                      and fire risk reports feed Risk & Monitoring—creating interconnected intelligence layers.
-                    </p>
-                  </div>
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-purple-400">
+                  <BookOpen className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">Module Intelligence</h3>
+                <p className="kew-card-desc">
+                  Wildlife surveys feed Biodiversity modules, wetland assessments feed Water Systems, and fire risk reports feed Risk &amp; Monitoring—creating interconnected intelligence layers.
+                </p>
+              </div>
 
-              <Card className="glass-intense border-white/10 p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">Evidence & Verification</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">
-                      All reports undergo review and verification processes. Status labels indicate confidence levels, 
-                      supporting transparent and traceable environmental intelligence.
-                    </p>
-                  </div>
+              <div className="kew-card-shell h-full">
+                <div className="kew-card-icon-box bg-slate-800 border-white/10 text-teal-400">
+                  <Shield className="w-5 h-5" />
                 </div>
-              </Card>
+                <h3 className="kew-card-title">Evidence &amp; Verification</h3>
+                <p className="kew-card-desc">
+                  All reports undergo review and verification processes. Status labels indicate confidence levels, supporting transparent and traceable environmental intelligence.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -7,6 +7,7 @@ import { Droplets, ArrowRight, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const hydroRisks = [
   { id: 'hr-1', type: 'Drought Watch', region: 'Leh-Kargil', severity: 'high' as const, status: 'active', description: 'Below-average winter precipitation' },
@@ -20,7 +21,7 @@ export default function HydrologicalRisksPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hydrological Risks</span>
           </>}
         subtitle="Water-related hazards, drought monitoring, and water security"

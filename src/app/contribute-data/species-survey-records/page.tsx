@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const CONTRIBUTOR_TYPES = ['Individual', 'Academic/Research', 'Institution', 'NGO', 'Field Team', 'Monitoring Network'] as const;
 const HABITAT_TYPES = ['Wetland', 'Forest', 'Grassland', 'Alpine', 'Agricultural', 'Urban', 'Riparian', 'Lake/Pond', 'River/Stream'] as const;
@@ -111,7 +112,7 @@ export default function SpeciesSurveyRecordsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Species Survey Records</span>
           </>}
         subtitle="Submit structured species count data, population surveys, and distribution records. Approved records are routed into the Biodiversity module for long-term tracking and analysis."

@@ -40,6 +40,7 @@ import {
 } from '@/data/nwia-references';
 import { wetlandsData, lakesData, riversData } from '@/data/water-systems';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function NwiaClassificationExplorerPage() {
   const router = useRouter();
@@ -152,10 +153,7 @@ export default function NwiaClassificationExplorerPage() {
       <Heading
         icon={<Book className="w-6 h-6 text-emerald-400" />}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">NWIA Classification</span>
           </>}
         subtitle="Comprehensive wetland inventory and classification system for Kashmir Valley based on the National Wetland Inventory and Assessment (NWIA) Atlas by SAC/ISRO and University of Kashmir (2010)."
@@ -380,28 +378,28 @@ function OverviewTab({
           {NWIA_WETLAND_CLASSES.map((wetlandClass) => {
             const Icon = getClassIcon(wetlandClass.code);
             return (
-              <Card
+              <div
                 key={wetlandClass.code}
-                className={`glass-intense border-white/10 p-4 cursor-pointer transition-all hover:border-white/30 ${
-                  selectedClass === wetlandClass.code ? 'border-white/30 bg-white/10' : ''
-                }`}
+                role="button"
+                tabIndex={0}
+                data-selected={selectedClass === wetlandClass.code ? 'true' : undefined}
                 onClick={() => setSelectedClass(selectedClass === wetlandClass.code ? null : wetlandClass.code)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSelectedClass(selectedClass === wetlandClass.code ? null : wetlandClass.code)}
+                className={`kew-card-shell kew-card-shell--interactive p-4 gap-2 ${
+                  selectedClass === wetlandClass.code ? 'kew-card-shell--selected' : ''
+                }`}
               >
-                <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getClassColor(wetlandClass.code)} flex items-center justify-center flex-shrink-0`}>
-                    <Icon className="w-5 h-5 text-white" />
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
-                        {wetlandClass.code}
-                      </Badge>
-                      <h4 className="text-sm font-bold text-white">{wetlandClass.name}</h4>
-                    </div>
-                    <p className="text-xs text-slate-400">{wetlandClass.description}</p>
-                  </div>
+                  <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
+                    {wetlandClass.code}
+                  </Badge>
                 </div>
-              </Card>
+                <h4 className="kew-card-title text-sm sm:text-base">{wetlandClass.name}</h4>
+                <p className="kew-card-desc text-xs">{wetlandClass.description}</p>
+              </div>
             );
           })}
         </div>
@@ -617,22 +615,20 @@ function DistrictsTab({ selectedDistrict, setSelectedDistrict, getDistrictColor 
               }`}
               onClick={() => setSelectedDistrict(isExpanded ? null : district.district)}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getDistrictColor(district.district)} flex items-center justify-center shadow-lg`}>
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{district.district}</h3>
-                    <Badge variant="info" size="sm">{district.majorTypePercentage}% {district.majorWetlandType}</Badge>
-                  </div>
+              <div className="kew-card-top-row">
+                <div className={`kew-card-icon-box bg-slate-900 ${getDistrictColor(district.district)} shadow-lg`}>
+                  <MapPin className="w-5 h-5 text-white" />
                 </div>
-                {isExpanded ? (
-                  <ChevronUp className="w-5 h-5 text-slate-400" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400" />
-                )}
+                <div className="flex items-center gap-2">
+                  <Badge variant="info" size="sm">{district.majorTypePercentage}% {district.majorWetlandType}</Badge>
+                  {isExpanded ? (
+                    <ChevronUp className="w-5 h-5 text-slate-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
+                  )}
+                </div>
               </div>
+              <h3 className="kew-card-title text-xl mb-4">{district.district}</h3>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
                 <div className="p-3 rounded-lg bg-slate-800/50 text-center">
@@ -709,22 +705,18 @@ function LakesTab({ searchTerm, setSearchTerm, filteredLakes, getClassColor }: a
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredLakes.map((lake: any) => (
           <Card key={lake.name} className="glass-intense border-white/10 p-6">
-            <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getClassColor(lake.nwiaCode)} flex items-center justify-center shadow-lg`}>
-                <Droplet className="w-6 h-6 text-white" />
+            <div className="kew-card-top-row">
+              <div className={`kew-card-icon-box bg-slate-900 ${getClassColor(lake.nwiaCode)} shadow-lg`}>
+                <Droplet className="w-5 h-5 text-white" />
               </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white">{lake.name}</h3>
-                  <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
-                    {lake.nwiaCode}
-                  </Badge>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <MapPin className="w-4 h-4" />
-                  <span>{lake.district}</span>
-                </div>
-              </div>
+              <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
+                {lake.nwiaCode}
+              </Badge>
+            </div>
+            <h3 className="kew-card-title text-xl mb-1">{lake.name}</h3>
+            <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+              <MapPin className="w-4 h-4 shrink-0" />
+              <span>{lake.district}</span>
             </div>
 
             {lake.area && (
@@ -807,22 +799,18 @@ function RiversTab({ searchTerm, setSearchTerm, filteredRivers, getClassColor }:
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredRivers.map((river: any) => (
           <Card key={river.name} className="glass-intense border-white/10 p-6">
-            <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getClassColor(river.nwiaCode)} flex items-center justify-center shadow-lg`}>
-                <Waves className="w-6 h-6 text-white" />
+            <div className="kew-card-top-row">
+              <div className={`kew-card-icon-box bg-slate-900 ${getClassColor(river.nwiaCode)} shadow-lg`}>
+                <Waves className="w-5 h-5 text-white" />
               </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-white">{river.name}</h3>
-                  <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
-                    {river.nwiaCode}
-                  </Badge>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-400 flex-wrap">
-                  <MapPin className="w-4 h-4" />
-                  <span>{river.districts.join(', ')}</span>
-                </div>
-              </div>
+              <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
+                {river.nwiaCode}
+              </Badge>
+            </div>
+            <h3 className="kew-card-title text-xl mb-1">{river.name}</h3>
+            <div className="flex items-center gap-2 text-sm text-slate-400 flex-wrap mb-4">
+              <MapPin className="w-4 h-4 shrink-0" />
+              <span>{river.districts.join(', ')}</span>
             </div>
 
             {river.lengthKm && (

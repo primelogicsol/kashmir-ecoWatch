@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import * as Icons from 'lucide-react';
 import { SeasonalLandscape, BloomZone, MigrationWindow, PollinatorWindow, PhenologyRecord, HabitatSignal, WaterTransition, SpeciesActivity, ClimateWindow, SeasonalReport } from '@/types/seasonal-ecology';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface SeasonalDetailPageProps {
   entity: SeasonalLandscape | BloomZone | MigrationWindow | PollinatorWindow | PhenologyRecord | HabitatSignal | WaterTransition | SpeciesActivity | ClimateWindow | SeasonalReport;
@@ -252,6 +253,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
               <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
             <div className="flex-1">
+              <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
               <h1 className="text-3xl font-bold text-white mb-2 max-w-xl">{name}</h1>
               <p className="text-slate-300">{description}</p>
             </div>

@@ -73,38 +73,34 @@ export function NwiaClassificationPanel({ variant = 'detailed' }: NwiaClassifica
           return (
             <Card 
               key={wetlandClass.code}
-              className={`glass-intense border-white/10 p-4 cursor-pointer transition-all hover:border-white/20 ${
-                isExpanded ? 'border-white/30 bg-white/10' : ''
+              className={`kew-card-shell kew-card-shell--interactive p-5 h-full ${
+                isExpanded ? 'kew-card-shell--selected' : ''
               }`}
               onClick={() => setExpandedClass(isExpanded ? null : wetlandClass.code)}
             >
-              <div className="flex items-start gap-3">
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getClassColor(wetlandClass.code)} flex items-center justify-center flex-shrink-0`}>
+              <div className="kew-card-top-row">
+                <div className={`kew-card-icon-box bg-gradient-to-br ${getClassColor(wetlandClass.code)}`}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
-                      {wetlandClass.code}
-                    </Badge>
-                    <h4 className="text-sm font-bold text-white truncate">{wetlandClass.name}</h4>
-                  </div>
-                  <p className="text-xs text-slate-400 line-clamp-2">{wetlandClass.description}</p>
-                  
-                  {isExpanded && (
-                    <div className="mt-3 pt-3 border-t border-white/10">
-                      <div className="text-xs text-slate-500 uppercase mb-2">Kashmir Examples</div>
-                      <div className="flex flex-wrap gap-1">
-                        {wetlandClass.kashmirExamples.map((example, idx) => (
-                          <Badge key={idx} variant="info" size="sm" className="text-xs">
-                            {example}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <Badge variant="outline" size="sm" className="border-white/20 text-white text-xs">
+                  {wetlandClass.code}
+                </Badge>
               </div>
+              <h4 className="kew-card-title text-sm mb-1.5">{wetlandClass.name}</h4>
+              <p className="kew-card-desc text-xs">{wetlandClass.description}</p>
+              
+              {isExpanded && (
+                <div className="mt-3 pt-3 border-t border-white/10">
+                  <div className="text-xs text-slate-500 uppercase mb-2">Kashmir Examples</div>
+                  <div className="flex flex-wrap gap-1">
+                    {wetlandClass.kashmirExamples.map((example, idx) => (
+                      <Badge key={idx} variant="info" size="sm" className="text-xs">
+                        {example}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
             </Card>
           );
         })}

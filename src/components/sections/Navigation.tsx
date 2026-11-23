@@ -73,6 +73,31 @@ export function Navigation() {
   // Utility cluster state
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [liveNavResults, setLiveNavResults] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!searchOpen || searchQuery.trim().length < 2) {
+      setLiveNavResults([]);
+      return;
+    }
+    const ctrl = new AbortController();
+    const t = setTimeout(() => {
+      fetch(`/api/search/suggest?q=${encodeURIComponent(searchQuery.trim())}&limit=3`, {
+        signal: ctrl.signal,
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d?.groups) {
+            setLiveNavResults(d.groups.flatMap((g: any) => g.items || []));
+          }
+        })
+        .catch(() => {});
+    }, 110);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
+  }, [searchQuery, searchOpen]);
   const [alertsOpen, setAlertsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
@@ -648,24 +673,29 @@ export function Navigation() {
                   </div>
                 ) : (
                   <div className="space-y-1">
-                    {[
-                      { label: 'Biodiversity — Species Directory', href: '/biodiversity', type: 'Module', icon: Leaf },
-                      { label: 'District — Srinagar', href: '/districts#srinagar', type: 'District', icon: MapPin },
-                      { label: 'Alert — Sewage Overflow Hazratbal', href: '/risk-monitoring/live-alerts', type: 'Alert', icon: Bell },
-                      { label: 'Water System — Dal Lake', href: '/water-systems/lakes#dal', type: 'Water Body', icon: Droplet },
-                      { label: 'Species — Hangul (Kashmir Stag)', href: '/biodiversity/threatened-species#hangul', type: 'Species', icon: Leaf },
-                    ].filter(r => r.label.toLowerCase().includes(searchQuery.toLowerCase())).map((result, i) => (
-                      <Link key={i} href={result.href} className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors group">
-                        <result.icon className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors shrink-0" />
-                        <span className="text-sm text-slate-300 group-hover:text-white transition-colors flex-1 truncate">{result.label}</span>
-                        <span className="text-xs text-slate-600">{result.type}</span>
+                    {liveNavResults.map((result) => (
+                      <Link
+                        key={result.id}
+                        href={result.canonicalUrl}
+                        onClick={() => {
+                          setSearchOpen(false);
+                          setActivePanel(null);
+                        }}
+                        className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <span className="block text-sm text-slate-200 group-hover:text-white transition-colors truncate">
+                            {result.title}
+                          </span>
+                          {result.subtitle && (
+                            <span className="block text-xs text-slate-500 truncate">{result.subtitle}</span>
+                          )}
+                        </div>
+                        <span className="text-[10px] text-emerald-400 shrink-0">{result.trustBadge}</span>
                       </Link>
                     ))}
-                    {searchQuery && ![
-                      { label: 'Biodiversity — Species Directory', href: '/biodiversity' },
-                      { label: 'District — Srinagar', href: '/districts#srinagar' },
-                    ].some(r => r.label.toLowerCase().includes(searchQuery.toLowerCase())) && (
-                      <p className="text-sm text-slate-500 py-4 text-center">No results for "{searchQuery}"</p>
+                    {searchQuery.trim().length >= 2 && liveNavResults.length === 0 && (
+                      <p className="text-sm text-slate-500 py-4 text-center">No instant results for &ldquo;{searchQuery}&rdquo; — press Enter for full search</p>
                     )}
                   </div>
                 )}

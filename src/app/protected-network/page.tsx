@@ -13,6 +13,7 @@ import { protectedNetworkMetrics, getProtectedAreas } from '@/data/protected-net
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const categoryCards = [
   {
@@ -218,12 +219,7 @@ export default function ProtectedNetworkPage() {
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Protected Area Network &amp; Reserves
@@ -309,88 +305,88 @@ export default function ProtectedNetworkPage() {
       {/* 6-CARD INTERACTIVE KPI STRIP                                  */}
       {/* ───────────────────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 lg:px-6 mb-8 relative z-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 items-stretch">
           {/* Card 1: Total PAs */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total PAs</span>
-              <Shield className="w-4 h-4 text-emerald-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+              <Shield className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-emerald-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total PAs</h3>
+            <div className="text-2xl font-black text-emerald-300 tabular-nums">
               {protectedNetworkMetrics.totalProtectedAreas}
             </div>
-            <div className="text-[11px] text-emerald-400/90 font-mono mt-0.5">Conservation Units</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-auto">Conservation Units</div>
           </div>
 
           {/* Card 2: Total Area */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Total Area</span>
-              <Map className="w-4 h-4 text-teal-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-teal-500/15 border-teal-500/30 text-teal-400">
+              <Map className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-teal-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-teal-400">Total Area</h3>
+            <div className="text-2xl font-black text-teal-300 tabular-nums">
               {protectedNetworkMetrics.totalArea.toLocaleString()} <span className="text-sm font-normal text-teal-400">km²</span>
             </div>
-            <div className="text-[11px] text-teal-400/90 font-mono mt-0.5">{protectedNetworkMetrics.coveragePercentage}% of Geography</div>
+            <div className="text-[11px] text-teal-400/90 font-mono mt-auto">{protectedNetworkMetrics.coveragePercentage}% of Geography</div>
           </div>
 
           {/* Card 3: National Parks */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">National Parks</span>
-              <Mountain className="w-4 h-4 text-amber-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-amber-500/15 border-amber-500/30 text-amber-400">
+              <Mountain className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-amber-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400">National Parks</h3>
+            <div className="text-2xl font-black text-amber-300 tabular-nums">
               {protectedNetworkMetrics.nationalParks}
             </div>
-            <div className="text-[11px] text-amber-400/90 font-mono mt-0.5">Highest Legal Protection</div>
+            <div className="text-[11px] text-amber-400/90 font-mono mt-auto">Highest Legal Protection</div>
           </div>
 
           {/* Card 4: Wildlife Sanctuaries */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Sanctuaries</span>
-              <Activity className="w-4 h-4 text-purple-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-purple-500/15 border-purple-500/30 text-purple-400">
+              <Activity className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-purple-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-purple-400">Sanctuaries</h3>
+            <div className="text-2xl font-black text-purple-300 tabular-nums">
               {protectedNetworkMetrics.wildlifeSanctuaries}
             </div>
-            <div className="text-[11px] text-purple-400/90 font-mono mt-0.5">Faunal Reserves</div>
+            <div className="text-[11px] text-purple-400/90 font-mono mt-auto">Faunal Reserves</div>
           </div>
 
           {/* Card 5: Wetland Reserves */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">Wetlands</span>
-              <Droplet className="w-4 h-4 text-blue-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-blue-500/15 border-blue-500/30 text-blue-400">
+              <Droplet className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-blue-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-blue-400">Wetlands</h3>
+            <div className="text-2xl font-black text-blue-300 tabular-nums">
               {protectedNetworkMetrics.wetlandReserves}
             </div>
-            <div className="text-[11px] text-blue-400/90 font-mono mt-0.5">Ramsar &amp; Bird Basins</div>
+            <div className="text-[11px] text-blue-400/90 font-mono mt-auto">Ramsar &amp; Bird Basins</div>
           </div>
 
           {/* Card 6: Conservation Reserves & IBAs */}
-          <div className="p-3.5 rounded-xl border transition-all bg-slate-900/80 border-slate-800 hover:border-slate-700">
-            <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Reserves &amp; IBAs</span>
-              <Leaf className="w-4 h-4 text-cyan-400" />
+          <div className="kew-card-shell p-3.5 gap-1.5">
+            <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+              <Leaf className="w-4 h-4" />
             </div>
-            <div className="text-2xl font-black text-cyan-300">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-400">Reserves &amp; IBAs</h3>
+            <div className="text-2xl font-black text-cyan-300 tabular-nums">
               {protectedNetworkMetrics.conservationReserves + protectedNetworkMetrics.importantBirdAreas}
             </div>
-            <div className="text-[11px] text-cyan-400/90 font-mono mt-0.5">Community &amp; Avian Havens</div>
+            <div className="text-[11px] text-cyan-400/90 font-mono mt-auto">Community &amp; Avian Havens</div>
           </div>
         </div>
       </div>
 
       {/* Category Cards */}
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-4 sm:px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-10"
         >
           <div className="flex items-center gap-2 mb-3">
             <div className="w-2 h-2 bg-emerald-500 rounded-full" />
@@ -403,7 +399,7 @@ export default function ProtectedNetworkPage() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
           {categoryCards.map((category, index) => (
             <motion.a
               key={category.id}
@@ -412,43 +408,46 @@ export default function ProtectedNetworkPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="block group"
+              className="block group h-full min-w-0 no-underline"
             >
-              <Card className="p-4 sm:p-5 flex flex-col gap-2 h-full card-intelligence border border-white/5 bg-slate-900/50" padding="none">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-14 h-14 rounded-xl bg-slate-900 ${category.color} text-white flex items-center justify-center shadow-lg`}>
-                    <category.icon className="w-7 h-7" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm sm:text-base font-semibold text-white mb-1 group-hover:text-emerald-300 transition-colors">
-                      {category.title}
-                    </h3>
-                    <div className="text-2xl sm:text-3xl font-bold text-white">
-                      {category.count.toLocaleString()}
-                    </div>
-                    <div className="text-xs text-slate-500 uppercase">areas</div>
+              <div className="kew-card-shell kew-card-shell--interactive h-full">
+                {/* 1. ICON (top-left) */}
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <category.icon className="w-5 h-5" />
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-400 mb-4 leading-relaxed break-words">
-                  {category.description}
-                </p>
-                <div className="mt-auto w-full py-2 text-xs sm:text-sm rounded-lg flex items-center justify-center gap-2 font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors">
+
+                {/* 2. TITLE — full horizontal width (natural word-boundary wrapping) */}
+                <h3 className="kew-card-title">{category.title}</h3>
+
+                {/* 3. KPI — below title */}
+                <div className="kew-card-kpi">
+                  <span className="kew-card-kpi-value">{category.count.toLocaleString()}</span>
+                  <span className="kew-card-kpi-unit">areas</span>
+                </div>
+
+                {/* 4. DESCRIPTION */}
+                <p className="kew-card-desc">{category.description}</p>
+
+                {/* 5. CTA — anchored near bottom */}
+                <div className="kew-card-cta">
                   <span>Explore</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </Card>
+              </div>
             </motion.a>
           ))}
         </div>
       </div>
 
-      {/* Ecological Intelligence */}
-      <div className="container mx-auto px-6 py-16 bg-[#110820]/30 rounded-3xl border border-white/5">
+      {/* Ecological Intelligence (Reference Cards) */}
+      <div className="container mx-auto px-4 sm:px-6 py-16 bg-[#110820]/30 rounded-lg border border-white/5">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-10"
         >
           <div className="flex items-center gap-2 mb-3">
             <div className="w-2 h-2 bg-purple-500 rounded-full" />
@@ -461,7 +460,7 @@ export default function ProtectedNetworkPage() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
           {intelligenceCards.map((card, index) => (
             <motion.a
               key={card.title}
@@ -470,37 +469,46 @@ export default function ProtectedNetworkPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="block group"
+              className="block group h-full min-w-0 no-underline"
             >
-              <Card className="h-full card-intelligence border border-white/5 bg-slate-900/50" padding="lg">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
-                    <card.icon className="w-6 h-6 text-slate-400 group-hover:text-purple-400 transition-colors" />
+              <div className="kew-card-shell kew-card-shell--interactive h-full">
+                {/* 1. ICON (top-left) */}
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-purple-500/15 border-purple-500/30 text-purple-400">
+                    <card.icon className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-slate-400 mb-4">
-                  {card.description}
-                </p>
-                <div className="p-3 rounded-lg glass-light border border-white/5">
-                  <div className="text-2xl font-bold text-white">{card.metrics.value}</div>
-                  <div className="text-xs text-slate-500 uppercase">{card.metrics.label}</div>
+
+                {/* 2. TITLE — full horizontal width */}
+                <h3 className="kew-card-title">{card.title}</h3>
+
+                {/* 3. KPI */}
+                <div className="kew-card-kpi">
+                  <span className="kew-card-kpi-value">{card.metrics.value}</span>
+                  <span className="kew-card-kpi-unit">{card.metrics.label}</span>
                 </div>
-              </Card>
+
+                {/* 4. DESCRIPTION */}
+                <p className="kew-card-desc">{card.description}</p>
+
+                {/* 5. CTA */}
+                <div className="kew-card-cta">
+                  <span>Explore Layer</span>
+                  <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </motion.a>
           ))}
         </div>
       </div>
 
       {/* Featured Protected Areas */}
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-4 sm:px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10"
         >
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -524,7 +532,7 @@ export default function ProtectedNetworkPage() {
           </a>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {featuredPAs.map((pa: any, index) => (
             pa && (
               <motion.a
@@ -534,45 +542,42 @@ export default function ProtectedNetworkPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="block group"
+                className="block group h-full min-w-0 no-underline"
               >
-                <Card className="p-5 sm:p-6 flex flex-col gap-3 h-full overflow-hidden card-intelligence border border-white/5 bg-slate-900/50" padding="none">
-                  <div className="relative h-48 bg-gradient-to-br from-emerald-500/20 to-slate-800/50">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/protected-network.png)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#160C27]/80 via-[#160C27]/60 to-[#160C27]/80" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <Badge variant="info" size="sm" className="mb-2 capitalize text-xs px-2 py-0.5 whitespace-nowrap">
-                        {pa.category.replace('_', ' ')}
-                      </Badge>
-                      <h3 className="text-base sm:text-lg font-semibold text-white">{pa.name}</h3>
+                <div className="kew-card-shell kew-card-shell--interactive h-full">
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                      <Shield className="w-5 h-5" />
+                    </div>
+                    <Badge variant="info" size="sm" className="capitalize text-xs px-2 py-0.5">
+                      {pa.category.replace('_', ' ')}
+                    </Badge>
+                  </div>
+
+                  <h3 className="kew-card-title">{pa.name}</h3>
+
+                  <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-white/10 text-center">
+                    <div className="min-w-0">
+                      <div className="text-[10px] text-slate-400 uppercase">Area</div>
+                      <div className="text-sm font-bold text-white tabular-nums">{pa.area} km²</div>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] text-slate-400 uppercase">District</div>
+                      <div className="text-sm font-bold text-white break-words">{pa.district}</div>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] text-slate-400 uppercase">Established</div>
+                      <div className="text-sm font-bold text-white tabular-nums">{pa.established}</div>
                     </div>
                   </div>
-                  <div className="p-5">
-                    <p className="text-sm text-slate-400 leading-relaxed break-words">
-                      {pa.description}
-                    </p>
-                    <div className="grid grid-cols-3 gap-3 text-center mt-2">
-                      <div>
-                        <div className="text-xs text-slate-500 uppercase">Area</div>
-                        <div className="text-sm font-bold text-white">{pa.area} km²</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500 uppercase">District</div>
-                        <div className="text-sm font-bold text-white">{pa.district}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-500 uppercase">Established</div>
-                        <div className="text-sm font-bold text-white">{pa.established}</div>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex justify-end">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 transition-colors text-sm font-medium text-white">
-                        View Details
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </div>
+
+                  <p className="kew-card-desc">{pa.description}</p>
+
+                  <div className="kew-card-cta">
+                    <span>View Details</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </Card>
+                </div>
               </motion.a>
             )
           ))}

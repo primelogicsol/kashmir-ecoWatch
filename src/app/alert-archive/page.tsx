@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface ArchivedAlert {
   id: string;
@@ -288,7 +289,7 @@ export default function AlertArchivePage() {
           </div>
         }
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Alert Archive</span>
           </>}
         subtitle="Searchable historical record of all alerts, advisories, and hazard warnings issued through Kashmir EcoWatch monitoring systems."

@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Shield,
@@ -146,7 +147,7 @@ export default function EntityExplorerPage() {
           </div>
         }
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Entity Explorer</span>
           </>}
         subtitle="Browse and filter all ecological entities across Kashmir EcoWatch — protected areas, water bodies, species, districts, trails, and monitoring zones."
@@ -212,7 +213,7 @@ export default function EntityExplorerPage() {
               <p className="text-slate-500">Try adjusting your filters or search terms.</p>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
               {filteredEntities.map((entity, index) => {
                 const Icon = iconMap[entity.icon] || Layers;
                 return (
@@ -222,51 +223,43 @@ export default function EntityExplorerPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="h-full min-w-0"
                   >
-                    <Card
-                      className="glass-intense border-white/10 h-full flex flex-col"
+                    <div
+                      role="button"
+                      tabIndex={0}
                       onClick={() => router.push(entity.route)}
+                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(entity.route)}
+                      className="kew-card-shell kew-card-shell--interactive group h-full"
                     >
-                      {/* Card Header */}
-                      <div className="flex items-start gap-3 mb-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center text-blue-400">
+                      <div className="kew-card-top-row">
+                        <div className="kew-card-icon-box bg-blue-500/15 border-blue-400/30 text-blue-400">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-base font-semibold text-white break-words">
-                            {entity.name}
-                          </h3>
-                          <div className="flex flex-wrap gap-2 mt-2">
-                            <Badge variant={getCategoryBadgeVariant(entity.category)} size="sm">
-                              {entity.category}
-                            </Badge>
-                            <Badge variant={getTypeBadgeVariant(entity.type)} size="sm">
-                              {entity.type}
-                            </Badge>
-                          </div>
+                        <div className="flex flex-wrap items-center justify-end gap-1.5">
+                          <Badge variant={getCategoryBadgeVariant(entity.category)} size="sm">
+                            {entity.category}
+                          </Badge>
+                          <Badge variant={getTypeBadgeVariant(entity.type)} size="sm">
+                            {entity.type}
+                          </Badge>
                         </div>
                       </div>
 
-                      {/* District */}
-                      <div className="flex items-center gap-2 mb-3 text-sm text-slate-400">
-                        <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                      <h3 className="kew-card-title">{entity.name}</h3>
+
+                      <div className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-400">
+                        <MapPin className="w-3.5 h-3.5 flex-shrink-0 text-emerald-400" />
                         <span className="break-words">{entity.district}</span>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-sm text-slate-300 leading-relaxed mb-4 flex-1">
-                        {entity.description}
-                      </p>
+                      <p className="kew-card-desc">{entity.description}</p>
 
-                      {/* Action */}
-                      <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                        <span className="text-xs text-slate-500">Entity</span>
-                        <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
-                          View Entity
-                          <ChevronRight className="w-4 h-4 ml-1" />
-                        </Button>
+                      <div className="kew-card-cta">
+                        <span>View Entity</span>
+                        <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                       </div>
-                    </Card>
+                    </div>
                   </motion.div>
                 );
               })}

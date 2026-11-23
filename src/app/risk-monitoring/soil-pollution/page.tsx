@@ -11,6 +11,7 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── ESRO Soil Degradation Statistics ────────────────────────────────────────
 // Source: erc_eia_report_eienkashmir.htm — Environmental Impact Assessment Report J&K
@@ -406,7 +407,7 @@ export default function SoilPollutionPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Soil Pollution & Degradation</span>
           </>}
         subtitle="Comprehensive soil health intelligence covering erosion, nutrient depletion, chemical contamination, and land degradation across Jammu & Kashmir — sourced from the ESRO Environmental Impact Assessment and Council for Plant Protection archives."
@@ -524,17 +525,15 @@ export default function SoilPollutionPage() {
                 <Card className={`glass-intense ${item.borderColor} p-8`}>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-12 h-12 rounded-xl bg-slate-900 ${item.color} flex items-center justify-center`}>
-                          <item.icon className="w-6 h-6 text-white" />
+                      <div className="kew-card-top-row">
+                        <div className={`kew-card-icon-box bg-slate-900 ${item.color}`}>
+                          <item.icon className="w-5 h-5 text-white" />
                         </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-white">{item.type}</h3>
-                          <Badge variant={item.severity === 'High' ? 'danger' : item.severity === 'Medium-High' ? 'warning' : 'info'} size="sm">
-                            {item.severity} Severity
-                          </Badge>
-                        </div>
+                        <Badge variant={item.severity === 'High' ? 'danger' : item.severity === 'Medium-High' ? 'warning' : 'info'} size="sm">
+                          {item.severity} Severity
+                        </Badge>
                       </div>
+                      <h3 className="kew-card-title text-xl mb-3">{item.type}</h3>
                       <p className="text-slate-300 mb-4 leading-relaxed">{item.description}</p>
                       <div className="text-sm text-slate-400 mb-2">
                         <span className="text-white font-semibold">Area Affected:</span> {item.area}
@@ -699,13 +698,13 @@ export default function SoilPollutionPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="glass-intense border-white/10 p-5">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-lg ${fertility.bgColor} flex items-center justify-center`}>
+                <Card className="kew-card-shell p-5 h-full">
+                  <div className="kew-card-top-row">
+                    <div className={`kew-card-icon-box ${fertility.bgColor}`}>
                       <fertility.icon className={`w-5 h-5 ${fertility.color}`} />
                     </div>
-                    <h3 className="text-sm font-bold text-white">{fertility.category}</h3>
                   </div>
+                  <h3 className="kew-card-title text-sm mb-4">{fertility.category}</h3>
                   <div className="space-y-3">
                     {fertility.items.map((item, i) => (
                       <div key={i} className="flex justify-between items-center">

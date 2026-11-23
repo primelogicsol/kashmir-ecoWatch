@@ -18,6 +18,7 @@ import {
   Zap, RefreshCw, Building2, CloudRain
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -697,10 +698,7 @@ export default function EnvironmentalResiliencePage() {
       <Heading
         label="Environmental Monitoring"
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">Environmental Resilience</span>
           </>}
         subtitle="Monitoring community, infrastructure, ecosystem, and hazard-response resilience across the Kashmir environmental region — absorption, response, and recovery capacity."
@@ -1088,12 +1086,12 @@ export default function EnvironmentalResiliencePage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Card className="glass-intense border-teal-500/20 p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div>
+                <div className="kew-card-icon-box bg-slate-800 border border-white/10 mb-3">
                   <FlaskConical className="w-5 h-5 text-teal-400" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">Environmental Resilience Index — Methodology</h3>
+                <div>
+                  <h3 className="kew-card-title text-lg mb-1">Environmental Resilience Index — Methodology</h3>
                   <p className="text-xs text-slate-500 mb-4">Transparent weighted indicator framework · KEW Environmental Resilience Intelligence v1.0</p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
@@ -1169,17 +1167,18 @@ export default function EnvironmentalResiliencePage() {
               { label: 'Water Systems',             href: '/water-systems',                                   desc: 'Lakes, rivers, wetlands & water health',   icon: Droplets,      color: 'from-cyan-500 to-teal-600'      },
               { label: 'Ecological Health',         href: '/environmental-monitoring/environmental-health',   desc: 'Ecosystem condition & habitat integrity',  icon: TreePine,      color: 'from-emerald-500 to-green-600'  },
             ].map((link, i) => (
-              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
+              <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }} className="h-full">
+                <Card className="kew-card-shell kew-card-shell--interactive h-full p-5 group" onClick={() => router.push(link.href)}>
+                  <div className="kew-card-top-row">
+                    <div className={`kew-card-icon-box bg-gradient-to-br ${link.color} shadow`}>
                       <link.icon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-teal-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-slate-400 transition-colors flex-shrink-0 mt-0.5" />
+                  </div>
+                  <h3 className="kew-card-title text-sm group-hover:text-teal-300 transition-colors mb-1.5">{link.label}</h3>
+                  <p className="kew-card-desc text-xs mb-4">{link.desc}</p>
+                  <div className="kew-card-cta">
+                    <span>Open Module</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </div>
                 </Card>
               </motion.div>

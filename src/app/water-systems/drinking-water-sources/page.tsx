@@ -112,29 +112,27 @@ function AdditionalContent() {
           <Database className="w-5 h-5 text-blue-400" />
           Drinking Water Sub-Modules
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {SUB_PAGES.map((page, i) => (
             <motion.div
               key={page.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
+              className="h-full min-w-0"
             >
-              <Link href={page.route} className="block h-full">
-                <Card className="glass-intense border-white/10 p-5 h-full hover:border-white/20 transition-all group cursor-pointer">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${page.color} flex items-center justify-center flex-shrink-0`}>
-                      <page.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">{page.title}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{page.description}</p>
-                    </div>
+              <Link href={page.route} className="block h-full no-underline">
+                <div className="kew-card-shell kew-card-shell--interactive group h-full">
+                  <div className="kew-card-icon-box bg-blue-500/15 border-blue-500/30 text-blue-400">
+                    <page.icon className="w-5 h-5" />
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 transition-colors">
-                    Explore <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  <h3 className="kew-card-title">{page.title}</h3>
+                  <p className="kew-card-desc">{page.description}</p>
+                  <div className="kew-card-cta">
+                    <span>Explore</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </Card>
+                </div>
               </Link>
             </motion.div>
           ))}
@@ -226,23 +224,21 @@ function AdditionalContent() {
               ],
             },
           ].map(({ title, icon: Icon, data, description }) => (
-            <Card key={title} className="glass-intense border-white/10 p-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-sm font-semibold text-white">{title}</h3>
+            <div key={title} className="kew-card-shell h-full">
+              <div className="kew-card-icon-box bg-slate-800 border-white/10 text-cyan-400">
+                <Icon className="w-5 h-5" />
               </div>
-              <div className="space-y-3 mb-4">
+              <h3 className="kew-card-title">{title}</h3>
+              <div className="space-y-2 py-2 border-y border-white/10">
                 {data.map((item, i) => (
                   <div key={i} className="flex items-center justify-between">
                     <span className="text-xs text-slate-400">{item.label}</span>
-                    <span className={`text-sm font-bold ${item.color || 'text-white'}`}>{item.value}</span>
+                    <span className={`text-sm font-bold tabular-nums ${item.color || 'text-white'}`}>{item.value}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{description}</p>
-            </Card>
+              <p className="kew-card-desc text-xs sm:text-sm">{description}</p>
+            </div>
           ))}
         </div>
       </section>

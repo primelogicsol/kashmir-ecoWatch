@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
 import { emergencyRoutes } from '@/data/risk-monitoring';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const getStatusBadge = (status: string) => {
   switch (status) {
@@ -35,7 +36,7 @@ export default function SheltersClosuresEmergencyRoutesPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Shelters, Closures & Emergency Routes</span>
           </>}
         subtitle="Closure tracking, emergency shelter status, restricted access monitoring, safe route intelligence, and operational mobility support across Kashmir's transportation network."

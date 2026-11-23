@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Heading } from '@/components/common/Heading';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export const metadata = {
   title: 'Environmental Resources & Statutory Archives | Kashmir EcoWatch',
@@ -137,6 +138,7 @@ export default function ResourcesIndexPage() {
             <BookOpen className="w-4 h-4" />
             <span>Kashmir EcoWatch · Central Environmental Intelligence Portal</span>
           </div>
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Environmental Resources &amp; Statutory Archives
           </h1>
@@ -170,37 +172,35 @@ export default function ResourcesIndexPage() {
             return (
               <Card 
                 key={mod.id} 
-                className="p-6 bg-slate-900/80 border-slate-800 hover:border-emerald-600/60 rounded-lg flex flex-col justify-between space-y-4 transition-all duration-200 group"
+                className="kew-card-shell p-6 group"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="p-2 rounded-[6px] bg-slate-950 border border-slate-800 text-emerald-400 group-hover:text-emerald-300 transition-colors">
-                      <Icon className="w-5 h-5" />
-                    </span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-[4px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/40">
-                      {mod.badge}
-                    </span>
-                  </div>
-
-                  <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                      {mod.category}
-                    </span>
-                    <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors mt-0.5">
-                      {mod.title}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {mod.description}
-                  </p>
+                <div className="kew-card-top-row">
+                  <span className="kew-card-icon-box bg-slate-950 border-slate-800 text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-[4px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/40">
+                    {mod.badge}
+                  </span>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                  <div>
-                    <div className="font-mono font-bold text-white text-sm">{mod.stats}</div>
-                    <div className="text-[10px] text-slate-400">{mod.statLabel}</div>
-                  </div>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                  {mod.category}
+                </span>
+                <h3 className="kew-card-title text-base group-hover:text-emerald-400 transition-colors mb-2">
+                  {mod.title}
+                </h3>
+
+                <div className="kew-card-kpi mb-3">
+                  <span className="kew-card-kpi-value text-lg">{mod.stats}</span>
+                  <span className="kew-card-kpi-unit">{mod.statLabel}</span>
+                </div>
+
+                <p className="kew-card-desc text-xs mb-5">
+                  {mod.description}
+                </p>
+
+                <div className="mt-auto pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                  <span className="text-[11px] font-medium text-slate-400">Statutory Archive</span>
                   <Link
                     href={mod.href}
                     className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[6px] bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors shadow-sm"

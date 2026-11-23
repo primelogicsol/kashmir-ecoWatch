@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const evidenceStandards = [
   {
@@ -152,7 +153,7 @@ export default function ContributeGuidelinesPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
   title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribution Guidelines</span>
           </>}
   subtitle="Evidence standards, submission rules, review logic, and sensitivity guidance for all Kashmir EcoWatch contribution pathways."
@@ -174,42 +175,34 @@ export default function ContributeGuidelinesPage() {
               <p className="text-slate-400 mb-6 leading-relaxed">
                 The Kashmir EcoWatch platform supports four contribution pathways, each designed for different types of environmental intelligence:
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <AlertTriangle className="w-5 h-5 text-white" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 items-stretch">
+                <div className="kew-card-shell p-4 gap-2">
+                  <div className="kew-card-icon-box bg-slate-800 border-white/10 text-red-400">
+                    <AlertTriangle className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-white mb-1">Report an Issue</h3>
-                    <p className="text-xs text-slate-400">Field incident and environmental concern submissions</p>
-                  </div>
+                  <h3 className="kew-card-title text-sm sm:text-base">Report an Issue</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">Field incident and environmental concern submissions</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Camera className="w-5 h-5 text-white" />
+                <div className="kew-card-shell p-4 gap-2">
+                  <div className="kew-card-icon-box bg-slate-800 border-white/10 text-emerald-400">
+                    <Camera className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-white mb-1">Submit a Sighting</h3>
-                    <p className="text-xs text-slate-400">Wildlife and species observation logging</p>
-                  </div>
+                  <h3 className="kew-card-title text-sm sm:text-base">Submit a Sighting</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">Wildlife and species observation logging</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Database className="w-5 h-5 text-white" />
+                <div className="kew-card-shell p-4 gap-2">
+                  <div className="kew-card-icon-box bg-slate-800 border-white/10 text-blue-400">
+                    <Database className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-white mb-1">Contribute Data</h3>
-                    <p className="text-xs text-slate-400">Dataset, research, and technical material submission</p>
-                  </div>
+                  <h3 className="kew-card-title text-sm sm:text-base">Contribute Data</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">Dataset, research, and technical material submission</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-5 h-5 text-white" />
+                <div className="kew-card-shell p-4 gap-2">
+                  <div className="kew-card-icon-box bg-slate-800 border-white/10 text-purple-400">
+                    <Users className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-white mb-1">Citizen Science</h3>
-                    <p className="text-xs text-slate-400">Public participation and community science programs</p>
-                  </div>
+                  <h3 className="kew-card-title text-sm sm:text-base">Citizen Science</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">Public participation and community science programs</p>
                 </div>
               </div>
               <p className="text-sm text-slate-500">
@@ -279,15 +272,13 @@ export default function ContributeGuidelinesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="glass-intense border-white/10 p-6 h-full">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-teal-500/10 flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-teal-400" />
-                    </div>
-                    <h3 className="text-base font-bold text-white">{item.title}</h3>
+                <div className="kew-card-shell h-full">
+                  <div className="kew-card-icon-box bg-teal-500/15 border-teal-500/30 text-teal-400">
+                    <item.icon className="w-5 h-5" />
                   </div>
-                  <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
-                </Card>
+                  <h3 className="kew-card-title">{item.title}</h3>
+                  <p className="kew-card-desc">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -317,13 +308,11 @@ export default function ContributeGuidelinesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="glass-intense border-white/10 p-6 h-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${pathway.color} flex items-center justify-center`}>
-                      <pathway.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="text-base font-bold text-white">{pathway.title}</h3>
+                <div className="kew-card-shell h-full">
+                  <div className="kew-card-icon-box bg-slate-800 border-white/15 text-emerald-400">
+                    <pathway.icon className="w-5 h-5" />
                   </div>
+                  <h3 className="kew-card-title">{pathway.title}</h3>
                   <ul className="space-y-2">
                     {pathway.rules.map((rule, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
@@ -332,7 +321,7 @@ export default function ContributeGuidelinesPage() {
                       </li>
                     ))}
                   </ul>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -414,15 +403,13 @@ export default function ContributeGuidelinesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="glass-intense border-white/10 p-6 h-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                      <rule.icon className="w-5 h-5 text-amber-400" />
-                    </div>
-                    <h3 className="text-base font-bold text-white">{rule.title}</h3>
+                <div className="kew-card-shell h-full">
+                  <div className="kew-card-icon-box bg-amber-500/15 border-amber-500/30 text-amber-400">
+                    <rule.icon className="w-5 h-5" />
                   </div>
-                  <p className="text-sm text-slate-400 leading-relaxed">{rule.description}</p>
-                </Card>
+                  <h3 className="kew-card-title">{rule.title}</h3>
+                  <p className="kew-card-desc">{rule.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>

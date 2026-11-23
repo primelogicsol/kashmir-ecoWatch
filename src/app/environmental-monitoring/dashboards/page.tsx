@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const dashboardModules = [
   {
@@ -181,10 +182,7 @@ export default function DashboardsPage() {
           { label: 'Dashboards' }
         ]}
         title={<>
-            <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-              <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-              <span>Western Himalayan</span>
-            </span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Dashboards</span>
           </>}
         subtitle="Comprehensive analytics dashboards with district comparison, stress heatmaps, trend analysis, and real-time environmental intelligence across all monitoring domains"
@@ -425,9 +423,10 @@ export default function DashboardsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {dashboardModules.map((module, i) => (
-              <motion.div key={module.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card
-                  className="glass-intense border-white/10 hover:border-white/20 transition-all p-6 cursor-pointer group h-full"
+              <motion.div key={module.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }} className="h-full min-w-0">
+                <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => {
                     if (module.href.startsWith('#')) {
                       const el = document.getElementById(module.href.replace('#', ''));
@@ -436,23 +435,33 @@ export default function DashboardsPage() {
                       router.push(module.href);
                     }
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      if (module.href.startsWith('#')) {
+                        const el = document.getElementById(module.href.replace('#', ''));
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        router.push(module.href);
+                      }
+                    }
+                  }}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 rounded-xl bg-slate-900 ${module.color} flex items-center justify-center shadow-lg`}>
-                        <module.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <Badge variant={module.statusVariant} size="sm">{module.status}</Badge>
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-violet-500/15 border-violet-500/30 text-violet-400">
+                      <module.icon className="w-5 h-5" />
                     </div>
+                    <Badge variant={module.statusVariant} size="sm">{module.status}</Badge>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">{module.title}</h3>
-                  <p className="text-sm text-slate-400 mb-4 leading-relaxed">{module.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <h3 className="kew-card-title">{module.title}</h3>
+                  <p className="kew-card-desc">{module.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
                     {module.metrics.map((metric) => (
                       <Badge key={metric} variant="info" size="sm" className="text-xs">{metric}</Badge>
                     ))}
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -665,17 +674,19 @@ export default function DashboardsPage() {
               { label: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity', icon: ExternalLink, color: 'from-teal-500 to-cyan-600' },
             ].map((link, i) => (
               <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 hover:border-white/20 transition-all p-5 cursor-pointer group" onClick={() => router.push(link.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center shadow flex-shrink-0`}>
-                      <link.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white group-hover:text-violet-300 transition-colors">{link.label}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{link.desc}</p>
-                    </div>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => router.push(link.href)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(link.href)}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-icon-box bg-slate-800 border-white/15 text-emerald-400">
+                    <link.icon className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title text-sm sm:text-base">{link.label}</h3>
+                  <p className="kew-card-desc text-xs sm:text-sm">{link.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

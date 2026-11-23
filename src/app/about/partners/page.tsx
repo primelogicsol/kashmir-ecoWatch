@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // --- Data --------------------------------------------------------------------
 
@@ -200,6 +201,7 @@ export default function PartnersPage() {
               <Badge variant="info" size="lg">Partnerships, Expert Network & Onboarding</Badge>
             </div>
 
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-4xl sm:text-3xl xs:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Partner With <span className="text-emerald-400">Kashmir EcoWatch</span>
             </h1>
@@ -305,21 +307,26 @@ export default function PartnersPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl items-stretch">
             {ONBOARDING_PATHS.map((path, i) => (
-              <motion.div key={path.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 p-6 cursor-pointer group h-full" onClick={() => document.getElementById(path.route.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-slate-900 ${path.color} flex items-center justify-center shadow-lg shrink-0`}>
-                      <path.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors leading-tight">{path.title}</h3>
-                      <p className="text-xs text-slate-400 leading-relaxed">{path.desc}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+              <motion.div key={path.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="h-full min-w-0">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => document.getElementById(path.route.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' })}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && document.getElementById(path.route.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' })}
+                  className="kew-card-shell kew-card-shell--interactive group h-full"
+                >
+                  <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                    <path.icon className="w-5 h-5" />
                   </div>
-                </Card>
+                  <h3 className="kew-card-title">{path.title}</h3>
+                  <p className="kew-card-desc">{path.desc}</p>
+                  <div className="kew-card-cta">
+                    <span>Select Pathway</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -841,16 +848,17 @@ export default function PartnersPage() {
                 { icon: Leaf, label: 'Join Citizen Science', href: '/citizen-science', desc: 'Participate in community science programs' },
                 { icon: FileText, label: 'Contribute Field Records', href: '/contribute-data', desc: 'Share field documentation and evidence' },
               ].map(action => (
-                <Card key={action.label} className="glass-intense border-white/10 p-5 cursor-pointer group" onClick={() => router.push(action.href)}>
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
+                <Card key={action.label} className="kew-card-shell kew-card-shell--interactive p-5 h-full group" onClick={() => router.push(action.href)}>
+                  <div className="kew-card-top-row">
+                    <div className="kew-card-icon-box bg-emerald-500/10 border-emerald-500/20">
                       <action.icon className="w-5 h-5 text-emerald-400" />
                     </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">{action.label}</h3>
-                      <p className="text-xs text-slate-400">{action.desc}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                  </div>
+                  <h3 className="kew-card-title text-sm mb-1.5 group-hover:text-emerald-400 transition-colors">{action.label}</h3>
+                  <p className="kew-card-desc text-xs mb-4">{action.desc}</p>
+                  <div className="kew-card-cta">
+                    <span>Explore</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </Card>
               ))}

@@ -25,6 +25,7 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { SATELLITE_OBSERVATORY_STREAMS } from '@/data/earth-human-impact';
 import { cn } from '@/lib/utils';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function SpatialIntelligenceAtlasPage() {
   const [selectedStream, setSelectedStream] = useState<string>('stream-deforestation');
@@ -53,12 +54,7 @@ export default function SpatialIntelligenceAtlasPage() {
         icon={<Map className="w-6 h-6 text-teal-400" />}
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-teal-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                EHII-ATLAS
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
                 Spatial Intelligence & Land Use Change Atlas

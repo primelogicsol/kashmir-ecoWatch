@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const climateSignals = [
   { signal: 'Rising Average Temperatures', trend: 'Increasing', impact: 'High', description: '0.8°C rise over past 30 years' },
@@ -54,7 +55,7 @@ export default function ClimateChangePage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Climate Change' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Climate Change Signals</span>
           </>}
         subtitle="Glacier retreat, snowline shifts, spring discharge changes, wetland shrinkage, altered migration timing, phenology shifts, and seasonal instability across Kashmir"

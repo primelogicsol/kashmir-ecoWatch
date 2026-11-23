@@ -8,6 +8,7 @@ import { Eye, MapPin, Calendar, ArrowRight, Camera, Filter, Search } from 'lucid
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const wildlifeSightings = [
   { id: 'ws-1', species: 'Hangul (Kashmir Stag)', scientificName: 'Cervus hanglu', status: 'CR', location: 'Dachigam National Park', district: 'Srinagar', date: '2024-03-26', observer: 'Dr. A. Rashid', verified: true },
@@ -25,7 +26,7 @@ export default function WildlifeSightingsPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wildlife Sightings</span>
           </>}
         subtitle="Mammal observations including Hangul, Snow Leopard, Markhor, and other iconic species from across Kashmir"

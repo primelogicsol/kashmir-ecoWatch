@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/Card';
 import { getBiodiversityRiskDashboard, getThreatSeverityAnalysis } from '@/data/biodiversity-access';
 import PressureIndexGauge from '@/components/biodiversity/intelligence/PressureIndexGauge';
 import VulnerabilityTrendChart from '@/components/biodiversity/intelligence/VulnerabilityTrendChart';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const RiskDashboardPage: React.FC = () => {
   const dashboard = getBiodiversityRiskDashboard();
@@ -48,6 +49,7 @@ const RiskDashboardPage: React.FC = () => {
               <span>/</span>
               <span className="text-white font-medium">Risk Dashboard</span>
             </div>
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Biodiversity Risk Dashboard
             </h1>

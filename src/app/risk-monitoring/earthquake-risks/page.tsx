@@ -7,6 +7,7 @@ import { Heading } from '@/components/common/Heading';
 import { Zap, ArrowRight, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const seismicZones = [
   { id: 'eq-1', name: 'Srinagar Urban Area', district: 'Srinagar', zone: 'Zone IV', riskLevel: 'high' as const, population: '1.2M' },
@@ -21,7 +22,7 @@ export default function EarthquakeRisksPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Earthquake Risks' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake Risks</span>
           </>}
         subtitle="Seismic hazard assessment, fault line mapping, and building vulnerability"

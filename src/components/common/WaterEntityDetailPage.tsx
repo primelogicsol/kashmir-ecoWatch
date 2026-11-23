@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { WaterEntity, WaterQualityData, HydrologicalData } from '@/data/water-systems';
 import { NwiaClassificationBadge } from '@/components/water/NwiaClassificationPanel';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface WaterEntityDetailPageProps {
   entity: WaterEntity;
@@ -114,6 +115,7 @@ export function WaterEntityDetailPage({ entity, relatedEntities = [] }: WaterEnt
                     </Badge>
                   )}
                 </div>
+                <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
                 <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                   {entity.name}
                 </h1>
@@ -401,12 +403,12 @@ export function WaterEntityDetailPage({ entity, relatedEntities = [] }: WaterEnt
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {relatedEntities.slice(0, 4).map((related, idx) => (
                   <div key={idx} className="p-4 rounded-xl bg-slate-800/50 border border-white/5">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getTypeColor(related.type)} flex items-center justify-center`}>
-                        <Droplet className="w-5 h-5 text-white" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-white">{related.name}</h3>
-                    </div>
+                    <div className="space-y-2 mb-2">
+                  <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+                    <Droplet className="w-5 h-5 " />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">{related.name}</h3>
+                </div>
                     <div className="flex items-center gap-4 text-sm text-slate-400">
                       <span>{related.district}</span>
                       <span>{related.elevation}m</span>

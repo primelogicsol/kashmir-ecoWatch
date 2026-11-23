@@ -86,7 +86,7 @@ export function ContributedDatasets({ compact = false, filterStatus }: Contribut
       </div>
 
       {/* Datasets Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
         {datasets.map(dataset => {
           const TypeIcon = typeIcons[dataset.type] || Database;
           return (
@@ -94,47 +94,44 @@ export function ContributedDatasets({ compact = false, filterStatus }: Contribut
               key={dataset.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              className="h-full min-w-0"
             >
-              <Card className="glass-intense border-white/10 p-5 hover:border-blue-500/30 transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0">
-                    <TypeIcon className="w-6 h-6 text-blue-400" />
+              <div className="kew-card-shell group h-full">
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-blue-500/15 border-blue-500/30 text-blue-400">
+                    <TypeIcon className="w-5 h-5" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h4 className="text-base font-bold text-white mb-1">{dataset.title}</h4>
-                        <p className="text-sm text-slate-400 break-words">{dataset.description}</p>
-                      </div>
-                      <Badge className={cn("border", statusColors[dataset.status])}>
-                        {dataset.status}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3 text-xs text-slate-400">
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {dataset.district}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(dataset.submittedDate).toLocaleDateString()}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Download className="w-3 h-3" />
-                          {dataset.downloadCount}
-                        </span>
-                      </div>
-                      {dataset.url && (
-                        <Button size="sm" variant="ghost" className="text-xs text-blue-400">
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          View
-                        </Button>
-                      )}
-                    </div>
-                  </div>
+                  <Badge className={cn("border", statusColors[dataset.status])}>
+                    {dataset.status}
+                  </Badge>
                 </div>
-              </Card>
+
+                <h4 className="kew-card-title">{dataset.title}</h4>
+                <p className="kew-card-desc">{dataset.description}</p>
+
+                <div className="mt-auto pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />
+                      {dataset.district}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {new Date(dataset.submittedDate).toLocaleDateString()}
+                    </span>
+                    <span className="flex items-center gap-1 tabular-nums">
+                      <Download className="w-3 h-3" />
+                      {dataset.downloadCount}
+                    </span>
+                  </div>
+                  {dataset.url && (
+                    <Button size="sm" variant="ghost" className="text-xs text-blue-400">
+                      <ExternalLink className="w-3 h-3 mr-1" />
+                      View
+                    </Button>
+                  )}
+                </div>
+              </div>
             </motion.div>
           );
         })}

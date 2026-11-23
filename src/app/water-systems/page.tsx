@@ -32,6 +32,7 @@ import {
 } from '@/data/hydrological-intelligence';
 import LakeHealthScorecardComponent from '@/components/water/LakeHealthScorecard';
 import DistrictWaterCard from '@/components/water/DistrictWaterCard';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const submodules = [
   {
@@ -166,10 +167,7 @@ export default function WaterSystemsPage() {
       <Heading
         icon={<Droplet className="w-6 h-6 text-emerald-400" />}
         title={<>
-          <span className="flex items-center gap-6 whitespace-nowrap leading-[1.12] overflow-visible pb-2">
-            <span className="inline-flex items-center self-center bg-blue-700 text-white font-black uppercase tracking-widest rounded-md px-3 py-1" style={{ fontSize: '0.58em' }}>KEW</span>
-            <span>Western Himalayan</span>
-          </span>
+          <KewBrandIdentity />
           <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Systems</span>
         </>}
         subtitle="Water Systems is a complete hydrological, ecological, aquatic, water-quality, watershed, cryosphere, flood-risk, and restoration intelligence system for all mapped water-related landscapes and processes across Kashmir."
@@ -300,41 +298,55 @@ export default function WaterSystemsPage() {
             </p>
           )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {filteredSubmodules.map((module, idx) => (
             <motion.div
               key={module.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + idx * 0.05 }}
+              className="h-full min-w-0"
             >
-              <Card className="glass-intense border-white/10 p-4 sm:p-5 md:p-6 rounded-xl flex flex-col gap-3 h-full hover:border-white/20 transition-all cursor-pointer group">
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-base sm:text-lg font-semibold text-white flex-1">
-                    {module.title}
-                  </h3>
-                  <Badge variant="info" size="sm" className="text-xs px-2 py-0.5 whitespace-nowrap flex-shrink-0">{module.count} entities</Badge>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => router.push(module.route)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && router.push(module.route)}
+                className="kew-card-shell kew-card-shell--interactive group h-full"
+              >
+                <div className="kew-card-top-row">
+                  <div className="kew-card-icon-box bg-cyan-500/15 border-cyan-500/30 text-cyan-400">
+                    <Droplet className="w-5 h-5" />
+                  </div>
+                  <Badge variant="info" size="sm" className="text-xs px-2 py-0.5 flex-shrink-0">
+                    {module.count} entities
+                  </Badge>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  {module.description}
-                </p>
+
+                <h3 className="kew-card-title">{module.title}</h3>
+
+                <p className="kew-card-desc">{module.description}</p>
+
                 <div className="flex flex-wrap gap-1.5 text-xs">
                   {module.features.map((feature, fIdx) => (
-                    <Badge key={fIdx} variant="outline" size="sm" className="px-2 py-0.5 whitespace-nowrap text-xs border-white/10 text-slate-400">
+                    <Badge key={fIdx} variant="outline" size="sm" className="px-2 py-0.5 text-xs border-white/10 text-slate-300">
                       {feature}
                     </Badge>
                   ))}
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="mt-auto w-full py-2 text-sm rounded-lg border-white/20 text-white group-hover:bg-white/10 transition-all"
-                  icon={<ArrowRight className="w-4 h-4" />}
-                  onClick={() => router.push(module.route)}
-                >
-                  Explore {module.title}
-                </Button>
-              </Card>
+
+                <div className="mt-auto pt-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full py-2 text-sm rounded-lg border-white/20 text-white group-hover:bg-white/10 transition-all"
+                    icon={<ArrowRight className="w-4 h-4" />}
+                    onClick={() => router.push(module.route)}
+                  >
+                    Explore {module.title}
+                  </Button>
+                </div>
+              </div>
             </motion.div>
           ))}
           {filteredSubmodules.length === 0 && (

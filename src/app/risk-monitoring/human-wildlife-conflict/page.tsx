@@ -11,6 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const conflictRecords = [
   { id: 'hwc-1', species: 'Leopard', district: 'Srinagar', location: 'Forest-Settlement Edge', incidents: 12, severity: 'High', type: 'Livestock Depredation' },
@@ -50,7 +51,7 @@ export default function HumanWildlifeConflictPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Human-Wildlife Conflict</span>
           </>}
         subtitle="Leopard and black bear conflict monitoring, livestock depredation tracking, crop raiding incidents, settlement-edge conflict zones, Hangul pressure landscapes, and district conflict profiles across Kashmir"

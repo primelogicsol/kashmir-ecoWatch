@@ -11,6 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const waterQualityData = [
   { id: 'wq-1', waterbody: 'Dal Lake', type: 'Lake', district: 'Srinagar', wqi: 62, status: 'fair' as const, trophicState: 'Eutrophic', primaryConcern: 'Nutrient Loading' },
@@ -52,7 +53,7 @@ export default function WaterPollutionPage() {
   return (
     <main className="min-h-screen bg-slate-950"><Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Pollution Risk & Monitoring</span>
           </>}
         subtitle="Lake eutrophication, sewage and runoff indicators, river and stream contamination, spring contamination signals, and wetland degradation monitoring across Kashmir"

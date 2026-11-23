@@ -45,51 +45,41 @@ export default function SeasonalLandscapesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/protected-network">
-            <Card className="glass-intense border-emerald-500/30 hover:border-emerald-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-emerald-500/50 text-emerald-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Shield className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-emerald-500/50 text-emerald-400">
                       Conservation Core
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors truncate">
-                      Protected Area Corridors
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      National parks, wildlife sanctuaries, and conservation reserves safeguarding critical Himalayan wildlife corridors.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Protected Area Corridors</h4>
+              <p className="kew-card-desc">National parks, wildlife sanctuaries, and conservation reserves safeguarding critical Himalayan wildlife corridors.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
 
           <Link href="/seasonal-ecology?habitat=temperate-forest">
-            <Card className="glass-intense border-teal-500/30 hover:border-teal-500/50 transition-all cursor-pointer group overflow-hidden h-full">
-              <div className="relative p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0 shadow-lg">
-                    <Trees className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="border-teal-500/50 text-teal-400 mb-1">
+            <div className="kew-card-shell kew-card-shell--interactive group h-full">
+              <div className="kew-card-top-row">
+                <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
+                  <Trees className="w-5 h-5" />
+                </div>
+                <Badge variant="outline" className="border-teal-500/50 text-teal-400">
                       Habitat Telemetry
                     </Badge>
-                    <h4 className="text-lg font-bold text-white group-hover:text-teal-400 transition-colors truncate">
-                      Temperate Forest Sentinel Dynamics
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                      Explore four-season phenological rhythms, canopy flora, and altitudinal ungulate movements across temperate forests.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-teal-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                </div>
               </div>
-            </Card>
+              <h4 className="kew-card-title">Temperate Forest Sentinel Dynamics</h4>
+              <p className="kew-card-desc">Explore four-season phenological rhythms, canopy flora, and altitudinal ungulate movements across temperate forests.</p>
+              <div className="kew-card-cta">
+                <span>Explore Module</span>
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
           </Link>
         </div>
       </div>

@@ -2,8 +2,9 @@
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, ChevronDown, Globe, MapPin } from 'lucide-react';
+import { Search, X, ChevronDown, Globe, MapPin, ArrowUpRight } from 'lucide-react';
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { GEOGRAPHY, Scope } from '@/data/geography';
 
@@ -340,6 +341,15 @@ export function GlobalFilterBar({
                 </button>
               )}
             </div>
+            {filter.searchQuery.trim().length >= 2 && (
+              <Link
+                href={`/search?q=${encodeURIComponent(filter.searchQuery.trim())}`}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-[11px] font-semibold text-emerald-300 whitespace-nowrap transition-colors"
+              >
+                <span>Search All KEW</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+            )}
           </>
         )}
 
@@ -364,24 +374,35 @@ export function GlobalFilterBar({
       {/* ── Row 2: Search — visible only on filter-heavy pages (extraFilters injected) ── */}
       {extraFilters && (
         <div className="px-4 pb-3 pt-0 border-t border-white/[0.06]">
-          <div className="relative flex items-center mt-2.5">
-            <Search className="absolute left-2.5 w-3.5 h-3.5 text-slate-500 pointer-events-none" />
-            <input
-              type="text"
-              value={filter.searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-              placeholder="Search across modules…"
-              className="w-full sm:max-w-sm pl-8 pr-8 py-1.5 text-xs bg-white/5 border border-white/10 rounded-md text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
-            />
-            {filter.searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 text-slate-500 hover:text-white transition-colors"
+          <div className="flex flex-wrap items-center gap-2 mt-2.5">
+            <div className="relative flex items-center flex-1 sm:max-w-sm">
+              <Search className="absolute left-2.5 w-3.5 h-3.5 text-slate-500 pointer-events-none" />
+              <input
+                type="text"
+                value={filter.searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setSearchFocused(false)}
+                placeholder="Filter here or search across KEW…"
+                className="w-full pl-8 pr-8 py-1.5 text-xs bg-white/5 border border-white/10 rounded-md text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+              />
+              {filter.searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 text-slate-500 hover:text-white transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+            </div>
+            {filter.searchQuery.trim().length >= 2 && (
+              <Link
+                href={`/search?q=${encodeURIComponent(filter.searchQuery.trim())}`}
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-xs font-semibold text-emerald-300 whitespace-nowrap transition-colors"
               >
-                <X className="w-3 h-3" />
-              </button>
+                <span>Search All KEW</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
             )}
           </div>
         </div>

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const birdMortalityRecords = [
   { id: 'bm-1', wetland: 'Hokersar', district: 'Srinagar', species: 'Common Teal', count: 45, cause: 'Poisoning', date: '2025-03-12', severity: 'Critical' },
@@ -45,7 +46,7 @@ export default function BirdMortalityKillMonitoringPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Bird Mortality / Kill Monitoring' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Mortality / Kill Monitoring</span>
           </>}
         subtitle="Wetland bird mortality tracking, collision and habitat pressure deaths, poisoning/contamination events, disease clusters, and seasonal bird kill anomaly detection"

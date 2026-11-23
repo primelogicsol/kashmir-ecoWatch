@@ -1,5 +1,7 @@
 import { Metric, IntelligenceCard, InsightPanel, FeaturedEntity, Alert, ChartData } from '@/types';
 
+const STATIC_ANCHOR_MS = Date.UTC(2026, 10, 22, 12, 0, 0);
+
 export const liveMetrics: Metric[] = [
   { label: 'Protected Areas', value: 39, trend: 'stable', trendValue: 0 },
   { label: 'Species Indexed', value: 73, trend: 'up', trendValue: 0 },
@@ -148,19 +150,19 @@ export const insightPanels: InsightPanel[] = [
         id: '1',
         title: 'Dal Lake - Moderate Bloom',
         location: 'Srinagar',
-        timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000), // 1 hour ago
+        timestamp: new Date(STATIC_ANCHOR_MS - 1 * 60 * 60 * 1000), // 1 hour ago
       },
       {
         id: '2',
         title: 'Anchar Lake - High Bloom Activity',
         location: 'Srinagar',
-        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000), // 3 hours ago
+        timestamp: new Date(STATIC_ANCHOR_MS - 3 * 60 * 60 * 1000), // 3 hours ago
       },
       {
         id: '3',
         title: 'Manasbal Lake - Developing Bloom',
         location: 'Ganderbal',
-        timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000), // 6 hours ago
+        timestamp: new Date(STATIC_ANCHOR_MS - 6 * 60 * 60 * 1000), // 6 hours ago
       },
     ],
   },
@@ -726,7 +728,7 @@ export const alerts: Alert[] = [
     description: 'Illegal construction detected near protected wetland boundary',
     severity: 'high',
     location: 'Hokersar Wetland, Srinagar',
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+    timestamp: new Date(STATIC_ANCHOR_MS - 2 * 60 * 60 * 1000), // 2 hours ago
   },
   {
     id: '2',
@@ -735,7 +737,7 @@ export const alerts: Alert[] = [
     description: 'Moderate AQI levels expected due to temperature inversion',
     severity: 'medium',
     location: 'Srinagar Urban Area',
-    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
+    timestamp: new Date(STATIC_ANCHOR_MS - 5 * 60 * 60 * 1000), // 5 hours ago
   },
   {
     id: '3',
@@ -744,7 +746,7 @@ export const alerts: Alert[] = [
     description: 'Temporary closure due to unstable terrain after rainfall',
     severity: 'high',
     location: 'Kolahoi Base Camp Trail',
-    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
+    timestamp: new Date(STATIC_ANCHOR_MS - 24 * 60 * 60 * 1000), // 1 day ago
   },
   {
     id: '4',
@@ -753,7 +755,7 @@ export const alerts: Alert[] = [
     description: 'Elevated turbidity levels detected at monitoring station',
     severity: 'medium',
     location: 'Jhelum River, Sangam',
-    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+    timestamp: new Date(STATIC_ANCHOR_MS - 2 * 24 * 60 * 60 * 1000), // 2 days ago
   },
   {
     id: '5',
@@ -762,7 +764,7 @@ export const alerts: Alert[] = [
     description: 'High avalanche risk in higher altitude zones',
     severity: 'high',
     location: 'Gulmarg High Range',
-    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+    timestamp: new Date(STATIC_ANCHOR_MS - 3 * 24 * 60 * 60 * 1000), // 3 days ago
   },
 ];
 

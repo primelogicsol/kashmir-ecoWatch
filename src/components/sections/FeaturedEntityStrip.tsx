@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Carousel } from '@/components/ui/Carousel';
@@ -15,78 +14,61 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ============================================================================
-// Type Configuration
-// ============================================================================
-
 const typeConfig: Record<string, {
   icon: React.ReactNode;
-  color: string;
-  bgColor: string;
+  iconBoxClass: string;
+  badgeClass: string;
   label: string;
-  gradient: string;
 }> = {
   protected_area: {
-    icon: <Mountain className="w-4 h-4" />,
-    color: 'text-emerald-400',
-    bgColor: 'bg-emerald-500',
+    icon: <Mountain className="w-5 h-5" />,
+    iconBoxClass: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400',
+    badgeClass: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30',
     label: 'Protected Area',
-    gradient: 'bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800',
   },
   lake: {
-    icon: <Droplet className="w-4 h-4" />,
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500',
+    icon: <Droplet className="w-5 h-5" />,
+    iconBoxClass: 'bg-blue-500/15 border-blue-500/30 text-blue-400',
+    badgeClass: 'bg-blue-500/15 text-blue-300 border border-blue-500/30',
     label: 'Water Body',
-    gradient: 'bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-800',
   },
   species: {
-    icon: <Heart className="w-4 h-4" />,
-    color: 'text-purple-400',
-    bgColor: 'bg-purple-500',
+    icon: <Heart className="w-5 h-5" />,
+    iconBoxClass: 'bg-purple-500/15 border-purple-500/30 text-purple-400',
+    badgeClass: 'bg-purple-500/15 text-purple-300 border border-purple-500/30',
     label: 'Species',
-    gradient: 'bg-gradient-to-br from-purple-600 via-purple-700 to-pink-800',
   },
   bloom: {
-    icon: <Flower2 className="w-4 h-4" />,
-    color: 'text-pink-400',
-    bgColor: 'bg-pink-500',
+    icon: <Flower2 className="w-5 h-5" />,
+    iconBoxClass: 'bg-pink-500/15 border-pink-500/30 text-pink-400',
+    badgeClass: 'bg-pink-500/15 text-pink-300 border border-pink-500/30',
     label: 'Bloom Zone',
-    gradient: 'bg-gradient-to-br from-pink-600 via-pink-700 to-rose-800',
   },
   trail: {
-    icon: <Footprints className="w-4 h-4" />,
-    color: 'text-amber-400',
-    bgColor: 'bg-amber-500',
+    icon: <Footprints className="w-5 h-5" />,
+    iconBoxClass: 'bg-amber-500/15 border-amber-500/30 text-amber-400',
+    badgeClass: 'bg-amber-500/15 text-amber-300 border border-amber-500/30',
     label: 'Trail',
-    gradient: 'bg-gradient-to-br from-amber-600 via-amber-700 to-orange-800',
   },
   district: {
-    icon: <Building2 className="w-4 h-4" />,
-    color: 'text-slate-400',
-    bgColor: 'bg-slate-500',
+    icon: <Building2 className="w-5 h-5" />,
+    iconBoxClass: 'bg-slate-700/40 border-white/15 text-slate-300',
+    badgeClass: 'bg-slate-700/50 text-slate-300 border border-white/15',
     label: 'District',
-    gradient: 'bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800',
   },
   wetland: {
-    icon: <Waves className="w-4 h-4" />,
-    color: 'text-cyan-400',
-    bgColor: 'bg-cyan-500',
+    icon: <Waves className="w-5 h-5" />,
+    iconBoxClass: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-400',
+    badgeClass: 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30',
     label: 'Wetland Reserve',
-    gradient: 'bg-gradient-to-br from-cyan-600 via-teal-700 to-blue-800',
   },
   hazard: {
-    icon: <AlertTriangle className="w-4 h-4" />,
-    color: 'text-rose-400',
-    bgColor: 'bg-rose-500',
+    icon: <AlertTriangle className="w-5 h-5" />,
+    iconBoxClass: 'bg-rose-500/15 border-rose-500/30 text-rose-400',
+    badgeClass: 'bg-rose-500/15 text-rose-300 border border-rose-500/30',
     label: 'Hazard & Springs',
-    gradient: 'bg-gradient-to-br from-rose-600 via-red-700 to-amber-800',
   },
 };
-
-// ============================================================================
-// Tab Definitions
-// ============================================================================
 
 const tabs = [
   { id: 'all', label: 'All', icon: MapPin },
@@ -100,136 +82,95 @@ const tabs = [
   { id: 'hazards', label: 'Hazard Systems', icon: AlertTriangle },
 ];
 
-// ============================================================================
-// Entity Card Component
-// ============================================================================
-
 interface EntityCardProps {
   entity: typeof featuredEntities[0];
   onNavigate: (link: string) => void;
 }
 
 function EntityCard({ entity, onNavigate }: EntityCardProps) {
-  const config = typeConfig[entity.type];
+  const config = typeConfig[entity.type] || typeConfig.protected_area;
 
   return (
-    <Card
-      className="group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/80 backdrop-blur-xl hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-forest-500/10"
-      padding="none"
-    >{/* responsive-md-fix */}
-      {/* Card wrapper for consistent sizing */}
-      <div className="flex flex-col h-full">
-        {/* Visual Header */}
-        <div className={`relative h-40 sm:h-44 ${config.gradient} flex-shrink-0`}>
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-10">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id={`grid-${entity.id}`} width="16" height="16" patternUnits="userSpaceOnUse">
-                  <path d="M0 16h16V0H0z" fill="none" stroke="white" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill={`url(#grid-${entity.id})`} />
-            </svg>
-          </div>
-
-          {/* Radial gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-
-          {/* Type Badge */}
-          <div className="absolute top-3 left-3 z-10">
-            <Badge className={`${config.bgColor} text-xs px-2 py-0.5 whitespace-nowrap text-white border-0 backdrop-blur-md shadow-lg`}>{/* responsive-md-fix */}
-              {config.icon}
-              <span className="ml-1.5 text-xs font-semibold">{config.label}</span>
-            </Badge>
-          </div>
-
-          {/* Quick Actions (hover only) */}
-          <div className="absolute top-3 right-3 z-10 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button
-              className="p-2 rounded-lg bg-white/15 backdrop-blur-md hover:bg-white/25 transition-colors group/btn"
-              aria-label="Save to favorites"
-              type="button"
-            >
-              <Heart className="w-4 h-4 text-white group-hover/btn:scale-110 transition-transform" />
-            </button>
-            <button
-              className="p-2 rounded-lg bg-white/15 backdrop-blur-md hover:bg-white/25 transition-colors group/btn"
-              aria-label="Share entity"
-              type="button"
-            >
-              <Share2 className="w-4 h-4 text-white group-hover/btn:scale-110 transition-transform" />
-            </button>
-          </div>
-
-          {/* Entity Name */}
-          <div className="absolute bottom-3 left-3 right-3 z-10">
-            <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg break-words leading-tight">
-              {entity.name}
-            </h3>
-          </div>
+    <div className="kew-card-shell kew-card-shell--interactive group h-full">
+      {/* 1. ICON (top-left) + Category badge & actions (top-right) */}
+      <div className="kew-card-top-row">
+        <div className={`kew-card-icon-box ${config.iconBoxClass}`}>
+          {config.icon}
         </div>
-
-        {/* Content Section */}
-        <div className="flex-1 p-4 sm:p-5 flex flex-col">
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-slate-400 mb-4 break-words leading-relaxed flex-shrink-0">
-            {entity.description}
-          </p>
-
-          {/* Metrics Grid */}
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm mb-4 flex-shrink-0">{/* responsive-md-fix */}
-            {entity.metrics.map((metric, idx) => (
-              <div key={idx} className="text-center p-2 rounded-lg bg-slate-800/50 border border-white/5">
-                <div className="flex items-center justify-center gap-1 mb-1">
-                  {metric.unit === 'km²' || metric.unit === 'km' ? (
-                    <Ruler className="w-3 h-3 text-forest-400" />
-                  ) : metric.unit === '%' ? (
-                    <TrendingUp className="w-3 h-3 text-blue-400" />
-                  ) : (
-                    <Activity className="w-3 h-3 text-purple-400" />
-                  )}
-                </div>
-                <div className="text-base sm:text-lg font-bold text-white tabular-nums">
-                  {typeof metric.value === "number" ? metric.value.toLocaleString() : metric.value}
-                </div>
-                <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider mt-0.5">
-                  {metric.unit || metric.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Action Bar */}
-          <div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-2">
-            <Button
-              variant="outline"
-              className="w-full text-sm py-2 mt-3 rounded-lg border-white/20 text-white hover:border-forest-400 hover:bg-forest-500/10 font-medium transition-all"
-              onClick={() => onNavigate(entity.link)}
-            >{/* responsive-md-fix */}
-              View Details
-              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Button>
-            <button
-              className="p-2 rounded-lg bg-slate-800/50 border border-white/10 hover:border-forest-500/50 hover:bg-forest-500/10 transition-all group/btn"
-              aria-label={`More info about ${entity.name}`}
-              type="button"
-            >
-              <Info className="w-4 h-4 text-slate-400 group-hover/btn:text-forest-400 transition-colors" />
-            </button>
-          </div>
+        <div className="flex flex-wrap items-center justify-end gap-1.5">
+          <Badge className={`${config.badgeClass} text-[11px] px-2 py-0.5 font-semibold`}>
+            {config.label}
+          </Badge>
+          <button
+            className="p-1.5 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            aria-label={`Save ${entity.name} to favorites`}
+            type="button"
+          >
+            <Heart className="w-3.5 h-3.5" />
+          </button>
+          <button
+            className="p-1.5 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            aria-label={`Share ${entity.name}`}
+            type="button"
+          >
+            <Share2 className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
 
-      {/* Hover Glow Effect */}
-      <div className="absolute inset-0 rounded-2xl border-2 border-forest-500/0 group-hover:border-forest-500/30 transition-colors duration-300 pointer-events-none" />
-    </Card>
+      {/* 2. TITLE — full horizontal width */}
+      <h3 className="kew-card-title">{entity.name}</h3>
+
+      {/* 3. KPI / METRICS — below title */}
+      {entity.metrics && entity.metrics.length > 0 && (
+        <div className="grid grid-cols-2 gap-2">
+          {entity.metrics.map((metric, idx) => (
+            <div key={idx} className="p-2.5 rounded-lg bg-slate-800/60 border border-white/5 min-w-0">
+              <div className="flex items-center gap-1.5 text-base font-extrabold text-white tabular-nums">
+                {metric.unit === 'km²' || metric.unit === 'km' ? (
+                  <Ruler className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                ) : metric.unit === '%' ? (
+                  <TrendingUp className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                ) : (
+                  <Activity className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                )}
+                <span className="break-words">
+                  {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
+                </span>
+              </div>
+              <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 break-words">
+                {metric.unit || metric.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 4. DESCRIPTION — naturally wrapping */}
+      <p className="kew-card-desc">{entity.description}</p>
+
+      {/* 5. CTA — consistently anchored near bottom */}
+      <div className="mt-auto pt-3 border-t border-white/10 flex items-center gap-2">
+        <Button
+          variant="outline"
+          className="flex-1 text-xs sm:text-sm py-2 rounded-lg border-white/20 text-white hover:border-forest-400 hover:bg-forest-500/10 font-semibold transition-all"
+          onClick={() => onNavigate(entity.link)}
+        >
+          View Details
+          <ArrowUpRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </Button>
+        <button
+          onClick={() => onNavigate(entity.link)}
+          className="p-2 rounded-lg bg-slate-800/60 border border-white/10 hover:border-forest-500/50 hover:bg-forest-500/10 transition-all"
+          aria-label={`More info about ${entity.name}`}
+          type="button"
+        >
+          <Info className="w-4 h-4 text-slate-400 hover:text-forest-400 transition-colors" />
+        </button>
+      </div>
+    </div>
   );
 }
-
-// ============================================================================
-// Category Summary Card Component
-// ============================================================================
 
 interface CategorySummaryProps {
   tab: typeof tabs[0];
@@ -240,40 +181,38 @@ interface CategorySummaryProps {
 
 function CategorySummary({ tab, isActive, count, onClick }: CategorySummaryProps) {
   return (
-    <motion.button
+    <button
       onClick={onClick}
-      className={`p-3 sm:p-4 rounded-xl border transition-all duration-300 text-center w-full ${
-        isActive
-          ? 'border-forest-500/50 bg-forest-500/10 shadow-lg shadow-forest-500/10'
-          : 'border-white/5 bg-slate-900/50 hover:border-white/20 hover:bg-slate-800/50'
+      data-selected={isActive ? 'true' : undefined}
+      className={`kew-card-shell kew-card-shell--interactive text-left p-3 sm:p-3.5 gap-2 ${
+        isActive ? 'kew-card-shell--selected bg-emerald-950/30' : ''
       }`}
-      whileHover={{ scale: 1.02, y: -2 }}
-      whileTap={{ scale: 0.98 }}
       type="button"
     >
-      <tab.icon className={`w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2 transition-colors ${
-        isActive ? 'text-forest-400' : 'text-slate-500'
-      }`} />
-      <div className="text-xl sm:text-2xl font-bold text-white tabular-nums">{count}</div>
-      <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider mt-1">
+      <div
+        className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
+          isActive
+            ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-300'
+            : 'bg-slate-800/80 border-white/10 text-slate-400'
+        }`}
+      >
+        <tab.icon className="w-4 h-4" />
+      </div>
+      <div className="text-xs font-bold text-slate-200 leading-snug break-words w-full">
         {tab.label}
       </div>
-    </motion.button>
+      <div className="text-xl font-extrabold text-white tabular-nums mt-auto">{count}</div>
+    </button>
   );
 }
-
-// ============================================================================
-// Main Component
-// ============================================================================
 
 export function FeaturedEntityStrip() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('all');
 
-  // Filter entities based on active tab
   const filteredEntities = useMemo(() => {
     if (activeTab === 'all') return featuredEntities;
-    
+
     const typeMap: Record<string, string> = {
       protected_areas: 'protected_area',
       water_bodies: 'lake',
@@ -284,30 +223,27 @@ export function FeaturedEntityStrip() {
       bloom_zones: 'bloom',
       hazards: 'hazard',
     };
-    
+
     const targetType = typeMap[activeTab];
-    return featuredEntities.filter(e => e.type === targetType);
+    return featuredEntities.filter((e) => e.type === targetType);
   }, [activeTab]);
 
-  // Calculate counts for each category
   const counts = useMemo(() => {
-    const baseCounts = {
+    return {
       all: featuredEntities.length,
-      protected_areas: featuredEntities.filter(e => e.type === 'protected_area').length,
-      water_bodies: featuredEntities.filter(e => e.type === 'lake').length,
-      species: featuredEntities.filter(e => e.type === 'species').length,
-      districts: featuredEntities.filter(e => e.type === 'district').length,
-      trails: featuredEntities.filter(e => e.type === 'trail').length,
-      wetlands: featuredEntities.filter(e => e.type === 'wetland').length,
-      bloom_zones: featuredEntities.filter(e => e.type === 'bloom').length,
-      hazards: featuredEntities.filter(e => e.type === 'hazard').length,
+      protected_areas: featuredEntities.filter((e) => e.type === 'protected_area').length,
+      water_bodies: featuredEntities.filter((e) => e.type === 'lake').length,
+      species: featuredEntities.filter((e) => e.type === 'species').length,
+      districts: featuredEntities.filter((e) => e.type === 'district').length,
+      trails: featuredEntities.filter((e) => e.type === 'trail').length,
+      wetlands: featuredEntities.filter((e) => e.type === 'wetland').length,
+      bloom_zones: featuredEntities.filter((e) => e.type === 'bloom').length,
+      hazards: featuredEntities.filter((e) => e.type === 'hazard').length,
     };
-    return baseCounts;
   }, []);
 
   return (
     <section className="pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 bg-slate-950 relative overflow-hidden">
-      {/* Background Elements */}
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="absolute bottom-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-forest-500/5 rounded-full blur-3xl" />
       <div className="absolute top-1/2 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-blue-500/5 rounded-full blur-3xl" />
@@ -319,19 +255,17 @@ export function FeaturedEntityStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0, 0, 0.2, 1] }}
-          className="mb-8 sm:mb-12"
+          className="mb-8 sm:mb-10"
         >
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="flex-1">
-              {/* Signal indicator */}
               <div className="flex items-center gap-2.5 mb-3">
                 <div className="w-2 h-2 bg-forest-500 rounded-full signal-pulse shadow-lg shadow-forest-500/50" />
                 <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
                   Featured Intelligence
                 </span>
               </div>
-              
-              {/* Title and Description */}
+
               <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight leading-tight">
                 Featured Ecological Entities
               </h2>
@@ -341,7 +275,6 @@ export function FeaturedEntityStrip() {
               </p>
             </div>
 
-            {/* CTA Button */}
             <div className="flex-shrink-0">
               <Button
                 size="lg"
@@ -364,47 +297,44 @@ export function FeaturedEntityStrip() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6 sm:mb-8"
         >
-          {/* Scrollable Tab List */}
-          <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div
-              className="flex flex-wrap gap-2 text-xs sm:text-sm p-1.5 sm:p-2 glass-light rounded-xl sm:rounded-2xl border border-white/10"
-              role="tablist"
-              aria-label="Entity categories"
-            >{/* responsive-md-fix */}
-              {tabs.map((tab) => {
-                const isActive = activeTab === tab.id;
-                const tabCount = counts[tab.id as keyof typeof counts];
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`panel-${tab.id}`}
-                    className={`px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 focus:ring-offset-slate-900 ${
-                      isActive
-                        ? 'bg-forest-500 text-white shadow-lg shadow-forest-500/30 border border-forest-400'
-                        : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
-                    }`}
-                    type="button"
-                  >
-                    <tab.icon className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${
-                      isActive ? 'text-white' : ''
-                    }`} />
-                    <span>{tab.label}</span>
-                    <span className={`text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-[4px] ${
+          <div
+            className="flex flex-wrap gap-2 text-xs sm:text-sm p-1.5 sm:p-2 glass-light rounded-xl border border-white/10"
+            role="tablist"
+            aria-label="Entity categories"
+          >
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              const tabCount = counts[tab.id as keyof typeof counts];
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${tab.id}`}
+                  className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-forest-500 ${
+                    isActive
+                      ? 'bg-forest-500 text-white shadow-lg shadow-forest-500/30 border border-forest-400'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+                  }`}
+                  type="button"
+                >
+                  <tab.icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : ''}`} />
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-[4px] ${
                       isActive ? 'bg-white/20 text-white' : 'bg-white/5 text-slate-400'
-                    }`}>
-                      {tabCount}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                    }`}
+                  >
+                    {tabCount}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </motion.div>
 
-        {/* Carousel with Entity Cards */}
+        {/* Standardized Carousel with Entity Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -418,10 +348,10 @@ export function FeaturedEntityStrip() {
               id={`panel-${activeTab}`}
               role="tabpanel"
               aria-labelledby={activeTab}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.25 }}
             >
               {filteredEntities.length === 0 ? (
                 <div className="py-16 text-center">
@@ -434,16 +364,15 @@ export function FeaturedEntityStrip() {
                 </div>
               ) : (
                 <Carousel
-                  itemWidth={{ mobile: 280, tablet: 300, desktop: 340 }}
-                  gap="gap-3 sm:gap-4 md:gap-6"
+                  itemWidth={{ mobile: 272, tablet: 300, desktop: 340 }}
+                  gap="gap-3 sm:gap-4 md:gap-5"
                   showArrows={true}
                   ariaLabel="Featured entities carousel"
-                  className="px-1"
                 >
                   {filteredEntities.map((entity) => (
                     <div
                       key={entity.id}
-                      className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[340px] snap-start"
+                      className="flex-shrink-0 w-[calc(100vw-2.5rem)] max-w-[280px] sm:w-[300px] sm:max-w-none md:w-[340px] snap-start h-auto flex"
                     >
                       <EntityCard entity={entity} onNavigate={router.push} />
                     </div>
@@ -467,9 +396,9 @@ export function FeaturedEntityStrip() {
               Category Overview
             </span>
           </div>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
-            {tabs.filter(t => t.id !== 'all').map((tab) => (
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 items-stretch">
+            {tabs.filter((t) => t.id !== 'all').map((tab) => (
               <CategorySummary
                 key={tab.id}
                 tab={tab}

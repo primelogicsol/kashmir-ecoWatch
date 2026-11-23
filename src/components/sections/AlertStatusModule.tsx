@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -18,6 +18,12 @@ import {
 import { motion } from 'framer-motion';
 
 export function AlertStatusModule() {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const getSeverityStyles = (severity: string) => {
     switch (severity) {
       case 'high':
@@ -32,8 +38,9 @@ export function AlertStatusModule() {
   };
 
   const getTimeAgo = (date: Date) => {
+    if (!hasMounted) return 'Recently';
     const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
+    const diffMs = Math.max(0, now.getTime() - date.getTime());
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMins / 60);
     const diffDays = Math.floor(diffHours / 24);

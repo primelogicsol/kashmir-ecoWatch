@@ -12,6 +12,7 @@ import {
   Calendar, BarChart3, Leaf, Users, Clock
 } from 'lucide-react';
 import { ProtectedArea } from '@/data/protected-network';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 interface Props {
   area: ProtectedArea;
@@ -134,6 +135,7 @@ export function ProtectedAreaManagementPlanPage({ area, backHref, categoryLabel,
             <ArrowLeft className="w-4 h-4" /> Back to park profile
           </button>
 
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="text-2xl sm:text-3xl font-black text-white mb-1">{area.name}</h1>
           <p className="text-sm text-slate-400 mb-5">Conservation management framework, objectives, and action plan</p>
 

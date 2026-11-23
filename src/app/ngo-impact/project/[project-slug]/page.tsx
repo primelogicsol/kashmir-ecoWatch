@@ -11,6 +11,7 @@ import {
   Building, MapPin, CheckCircle, ShieldCheck, Leaf, ArrowLeft, Users, FileBarChart, Target
 } from 'lucide-react';
 import Link from 'next/link';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function ProjectProfilePage() {
   const params = useParams();
@@ -64,6 +65,7 @@ export default function ProjectProfilePage() {
             </Badge>
           </div>
           
+          <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
           <h1 className="text-4xl md:text-5xl font-bold text-slate-100 leading-tight mb-6">
             {proj.title}
           </h1>

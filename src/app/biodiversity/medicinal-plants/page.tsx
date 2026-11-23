@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
 import { medicinalPhase1, medicinalEthnoDetails, type MedicinalEthnoDetail } from '@/data/species/medicinal';
 import { type BiodiversitySpecies } from '@/types/biodiversity';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function MedicinalPlantsPage() {
   // Master Dataset (127 species)
@@ -336,12 +337,7 @@ export default function MedicinalPlantsPage() {
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Medicinal Flora &amp; Pharmacopeia
@@ -1095,9 +1091,9 @@ export default function MedicinalPlantsPage() {
             {/* System 1: Unani Tibb */}
             <div className="bg-slate-900/90 border border-purple-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-purple-500/20 text-purple-300 rounded-xl border border-purple-500/30">
-                  <HeartPulse className="w-6 h-6" />
+              <div className="mb-4 space-y-2.5">
+                <div className="kew-card-icon-box bg-purple-500/20 text-purple-300 rounded-xl border border-purple-500/30">
+                  <HeartPulse className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Unani Tibb (Greco-Arabian in Kashmir)</h3>
@@ -1128,9 +1124,9 @@ export default function MedicinalPlantsPage() {
             {/* System 2: Ayurveda */}
             <div className="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-emerald-500/20 text-emerald-300 rounded-xl border border-emerald-500/30">
-                  <Leaf className="w-6 h-6" />
+              <div className="mb-4 space-y-2.5">
+                <div className="kew-card-icon-box bg-emerald-500/20 text-emerald-300 rounded-xl border border-emerald-500/30">
+                  <Leaf className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Ayurveda (Classical Vedic Pharmacopeia)</h3>
@@ -1161,9 +1157,9 @@ export default function MedicinalPlantsPage() {
             {/* System 3: Sowa-Rigpa */}
             <div className="bg-slate-900/90 border border-blue-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-500/20 text-blue-300 rounded-xl border border-blue-500/30">
-                  <Mountain className="w-6 h-6" />
+              <div className="mb-4 space-y-2.5">
+                <div className="kew-card-icon-box bg-blue-500/20 text-blue-300 rounded-xl border border-blue-500/30">
+                  <Mountain className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Amchi / Sowa-Rigpa (High Himalayan &amp; Tibetan)</h3>
@@ -1194,9 +1190,9 @@ export default function MedicinalPlantsPage() {
             {/* System 4: Kashmiri Folk Ethnobotany */}
             <div className="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-amber-500/20 text-amber-300 rounded-xl border border-amber-500/30">
-                  <Sparkles className="w-6 h-6" />
+              <div className="mb-4 space-y-2.5">
+                <div className="kew-card-icon-box bg-amber-500/20 text-amber-300 rounded-xl border border-amber-500/30">
+                  <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Kashmiri Folk Ethnobotany &amp; Household Lore</h3>
@@ -1245,8 +1241,8 @@ export default function MedicinalPlantsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {/* Form 1: Joshanda */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-amber-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                   <Flame className="w-5 h-5" />
                 </div>
                 <div>
@@ -1265,8 +1261,8 @@ export default function MedicinalPlantsPage() {
 
             {/* Form 2: Arq */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-blue-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
                   <Droplets className="w-5 h-5" />
                 </div>
                 <div>
@@ -1285,8 +1281,8 @@ export default function MedicinalPlantsPage() {
 
             {/* Form 3: Safuf / Churna */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-emerald-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   <Beaker className="w-5 h-5" />
                 </div>
                 <div>
@@ -1305,8 +1301,8 @@ export default function MedicinalPlantsPage() {
 
             {/* Form 4: Lepa / Compresses */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-teal-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
                   <Shield className="w-5 h-5" />
                 </div>
                 <div>
@@ -1325,8 +1321,8 @@ export default function MedicinalPlantsPage() {
 
             {/* Form 5: Roghan */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-rose-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
                   <HeartPulse className="w-5 h-5" />
                 </div>
                 <div>
@@ -1345,8 +1341,8 @@ export default function MedicinalPlantsPage() {
 
             {/* Form 6: Shodhana */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 hover:border-red-500/40 transition-all">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2.5 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20">
+              <div className="mb-3 space-y-2.5">
+                <div className="kew-card-icon-box rounded-xl bg-red-500/10 text-red-400 border border-red-500/20">
                   <ShieldAlert className="w-5 h-5" />
                 </div>
                 <div>

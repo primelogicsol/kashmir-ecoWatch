@@ -203,59 +203,55 @@ export function ReportedIssuesDashboard({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <Card className="glass-intense border-white/10 p-5 hover:border-white/20 transition-all">
-                <div className="flex items-start gap-4">
-                  <div className={cn("w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center flex-shrink-0", issueTypeColors[issue.type])}>
-                    <TypeIcon className="w-6 h-6 text-white" />
+              <div className="kew-card-shell group">
+                <div className="kew-card-top-row">
+                  <div className={cn("kew-card-icon-box", issueTypeColors[issue.type])}>
+                    <TypeIcon className="w-5 h-5 text-white" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h4 className="text-base font-bold text-white mb-1">{issue.title}</h4>
-                        <p className="text-sm text-slate-400 break-words">{issue.description}</p>
-                      </div>
-                      <Badge className={cn("border", statusColors[issue.status])}>
-                        <StatusIcon className="w-3 h-3 mr-1" />
-                        {issue.status.replace('-', ' ')}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4 text-sm text-slate-400">
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {issue.location.area}, {issue.location.district}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(issue.reportedDate).toLocaleDateString()}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <ThumbsUp className="w-3 h-3" />
-                          {issue.upvotes}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MessageSquare className="w-3 h-3" />
-                          {issue.comments}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Button size="sm" variant="ghost" className="text-xs text-slate-400">
-                          View Details
-                        </Button>
-                        {onUpdateStatus && issue.status === 'pending' && (
-                          <Button
-                            size="sm"
-                            className="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                            onClick={() => onUpdateStatus(issue.id, 'verified')}
-                          >
-                            Verify
-                          </Button>
-                        )}
-                      </div>
-                    </div>
+                  <Badge className={cn("border", statusColors[issue.status])}>
+                    <StatusIcon className="w-3 h-3 mr-1" />
+                    {issue.status.replace('-', ' ')}
+                  </Badge>
+                </div>
+
+                <h4 className="kew-card-title">{issue.title}</h4>
+                <p className="kew-card-desc">{issue.description}</p>
+
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-white/10">
+                  <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {issue.location.area}, {issue.location.district}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {new Date(issue.reportedDate).toLocaleDateString()}
+                    </span>
+                    <span className="flex items-center gap-1 tabular-nums">
+                      <ThumbsUp className="w-3.5 h-3.5" />
+                      {issue.upvotes}
+                    </span>
+                    <span className="flex items-center gap-1 tabular-nums">
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      {issue.comments}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button size="sm" variant="ghost" className="text-xs text-slate-300" onClick={() => setSelectedIssue(issue)}>
+                      View Details
+                    </Button>
+                    {onUpdateStatus && issue.status === 'pending' && (
+                      <Button
+                        size="sm"
+                        className="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                        onClick={() => onUpdateStatus(issue.id, 'verified')}
+                      >
+                        Verify
+                      </Button>
+                    )}
                   </div>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           );
         })}

@@ -12,6 +12,7 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import { useState } from 'react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 // ─── Team Data ──────────────────────────────────────────────────────────────
 
@@ -250,7 +251,7 @@ export default function TechnologyPage() {
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Made with Love for Kashmir</span>
           </>}
         subtitle="Kashmir EcoWatch is designed, engineered, and technologically integrated by Prime Logic Solutions USA as a high-performance environmental intelligence platform built for scientific visibility, geospatial interpretation, modular knowledge systems, monitoring workflows, district-level environmental understanding, and structured public contribution."
@@ -304,16 +305,12 @@ export default function TechnologyPage() {
           <div className="max-w-5xl space-y-4">
             {TECH_SECTIONS.map((section, i) => (
               <motion.div key={section.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                <Card className="glass-intense border-white/10 p-5 sm:p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0">
-                      <section.icon className="w-5 h-5 text-emerald-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-white mb-2">{section.title}</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">{section.description}</p>
-                    </div>
+                <Card className="kew-card-shell p-5 sm:p-6">
+                  <div className="kew-card-icon-box bg-emerald-500/10 border-emerald-500/20 mb-3">
+                    <section.icon className="w-5 h-5 text-emerald-400" />
                   </div>
+                  <h3 className="kew-card-title text-base mb-2">{section.title}</h3>
+                  <p className="kew-card-desc text-sm">{section.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -366,21 +363,19 @@ export default function TechnologyPage() {
           <div className="max-w-4xl space-y-3">
             {TEAM_MEMBERS.map((member, i) => (
               <motion.div key={member.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
-                <Card className="glass-intense border-white/10 p-0 overflow-hidden cursor-pointer" onClick={() => setOpenMember(openMember === i ? null : i)}>
-                  <div className="p-5 flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-3 flex-1 min-w-0">
-                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center shrink-0">
-                        <GraduationCap className="w-5 h-5 text-white" />
+                <Card className="kew-card-shell kew-card-shell--interactive p-0 overflow-hidden" onClick={() => setOpenMember(openMember === i ? null : i)}>
+                  <div className="p-5">
+                    <div className="kew-card-top-row">
+                      <div className="kew-card-icon-box bg-slate-800 border border-white/10">
+                        <GraduationCap className="w-5 h-5 text-emerald-400" />
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="text-sm font-bold text-white leading-tight">{member.name}</h3>
-                        <p className="text-xs text-emerald-400 font-medium">{member.role}</p>
-                        <p className="text-xs text-slate-500 mt-0.5">{member.degree}</p>
-                      </div>
+                      <span className="text-slate-400 shrink-0">
+                        {openMember === i ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                      </span>
                     </div>
-                    <span className="text-slate-400 shrink-0 mt-1">
-                      {openMember === i ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                    </span>
+                    <h3 className="kew-card-title text-base mb-1">{member.name}</h3>
+                    <p className="text-xs text-emerald-400 font-medium">{member.role}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{member.degree}</p>
                   </div>
                   {openMember === i && (
                     <div className="px-5 pb-5 border-t border-white/10 pt-3">

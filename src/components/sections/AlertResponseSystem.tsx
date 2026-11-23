@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -17,6 +17,11 @@ export function AlertResponseSystem() {
   const router = useRouter();
   const { alerts, isLoading, isLive, lastUpdated, refetch } = useLiveAlerts();
   const [activeFilter, setActiveFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const filteredAlerts = alerts.filter(alert => {
     if (activeFilter === 'all') return true;
@@ -60,11 +65,11 @@ export function AlertResponseSystem() {
   };
 
   const getTimeAgo = (dateInput: string | Date | undefined) => {
-    if (!dateInput) return 'Recently';
+    if (!hasMounted || !dateInput) return 'Recently';
     const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput;
     if (isNaN(date.getTime())) return 'Recently';
     const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
+    const diffMs = Math.max(0, now.getTime() - date.getTime());
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMins / 60);
     const diffDays = Math.floor(diffHours / 24);
@@ -220,7 +225,7 @@ export function AlertResponseSystem() {
                             )}
                             <div className="flex items-center gap-1 flex-shrink-0">
                               <Clock className="w-3 h-3 flex-shrink-0" />
-                              <span className="whitespace-nowrap">{getTimeAgo(displayTime)}</span>
+                              <span className="whitespace-nowrap" suppressHydrationWarning>{getTimeAgo(displayTime)}</span>
                             </div>
                             {(alert as any).source && (
                               <div className="flex items-center gap-1 flex-shrink-0 text-slate-400 text-[11px]">

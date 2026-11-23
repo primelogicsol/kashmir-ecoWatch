@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { VerificationStatusBadge } from '@/components/sightings/VerificationStatusBadge';
 import { Heading } from '@/components/common/Heading';
 import { getSightingsData, kashmirValidation } from '@/data/trails-sightings';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function SightingsPage() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export default function SightingsPage() {
       
       <Heading
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Wildlife Sightings</span>
           </>}
         subtitle="Comprehensive database of verified wildlife observations, bird sightings, and ecological field records from across Kashmir"

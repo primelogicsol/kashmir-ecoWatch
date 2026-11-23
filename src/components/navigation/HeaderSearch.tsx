@@ -1,111 +1,139 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { 
-  Search, X, ArrowRight, MapPin, 
-  Droplet, Mountain, Shield, Activity, 
-  FileText, Footprints, AlertTriangle
-} from 'lucide-react';
-import { searchAll } from '@/data';
+import { Search, X, ArrowUpRight, Sparkles, FileText } from 'lucide-react';
+import { isScientificQuestionLike } from '@/lib/search/scientific-qa-types';
 
 interface HeaderSearchProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const QUICK_CHIPS = [
+  'Hangul',
+  'Wular Lake',
+  'Western Disturbances',
+  'Environmental PIL',
+  'Glacier Recession',
+  'Green Heroes',
+  'Gilgit-Baltistan',
+];
+
 export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any | null>(null);
+  const [groups, setGroups] = useState<any[]>([]);
+  const [totalHits, setTotalHits] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      setTimeout(() => inputRef.current?.focus(), 40);
     } else {
       setQuery('');
-      setResults(null);
+      setGroups([]);
+      setTotalHits(0);
+      setActiveIndex(-1);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    if (query.trim().length >= 2) {
-      const searchRes = searchAll(query.trim());
-      setResults(searchRes);
-    } else {
-      setResults(null);
+    if (!isOpen || query.trim().length < 2) {
+      setGroups([]);
+      setTotalHits(0);
+      setActiveIndex(-1);
+      return;
     }
-  }, [query]);
+
+    const ctrl = new AbortController();
+    setLoading(true);
+    const timer = setTimeout(() => {
+      fetch(`/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=3`, {
+        signal: ctrl.signal,
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data) {
+            setGroups(data.groups || []);
+            setTotalHits(data.totalHits || 0);
+            setActiveIndex(-1);
+          }
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      ctrl.abort();
+    };
+  }, [query, isOpen]);
+
+  const flatItems = useMemo(() => {
+    const out: any[] = [];
+    for (const g of groups) {
+      for (const it of g.items || []) out.push(it);
+    }
+    return out;
+  }, [groups]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
       onClose();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (flatItems.length > 0) {
+        setActiveIndex((prev) => (prev + 1) % flatItems.length);
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (flatItems.length > 0) {
+        setActiveIndex((prev) => (prev <= 0 ? flatItems.length - 1 : prev - 1));
+      }
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      // If there are results, route to top result
-      if (results) {
-        if (results.species?.length) {
-          router.push(`/biodiversity/species/${results.species[0].slug}`);
-          onClose();
-        } else if (results.protectedAreas?.length) {
-          router.push(`/protected-areas/${results.protectedAreas[0].slug}`);
-          onClose();
-        } else if (results.waterBodies?.length) {
-          const wb = results.waterBodies[0];
-          const path = (wb.type === 'wetland' || wb.category?.toLowerCase().includes('wetland') || wb.slug?.includes('wetland'))
-            ? `/water-systems/wetlands/${wb.slug}`
-            : `/water-systems/lakes/${wb.slug}`;
-          router.push(path);
-          onClose();
-        } else if (results.districts?.length) {
-          router.push(`/districts/${results.districts[0].slug}`);
-          onClose();
-        } else {
-          router.push(`/search?q=${encodeURIComponent(query)}`);
-          onClose();
-        }
+      if (activeIndex >= 0 && flatItems[activeIndex]) {
+        router.push(flatItems[activeIndex].canonicalUrl);
+        onClose();
+      } else if (query.trim()) {
+        const modeParam = isScientificQuestionLike(query.trim()) ? '&mode=ask' : '';
+        router.push(`/search?q=${encodeURIComponent(query.trim())}${modeParam}`);
+        onClose();
       } else {
-        router.push(`/search?q=${encodeURIComponent(query)}`);
+        router.push('/search');
         onClose();
       }
     }
   };
 
-  const getResultCount = () => {
-    if (!results) return 0;
-    return (
-      (results.species?.length || 0) +
-      (results.protectedAreas?.length || 0) +
-      (results.waterBodies?.length || 0) +
-      (results.districts?.length || 0) +
-      (results.alerts?.length || 0) +
-      (results.reports?.length || 0)
-    );
-  };
-
   if (!isOpen) return null;
 
+  let runningIdx = -1;
+
   return (
-    <div 
-      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[480px] max-w-[480px] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
-      onClick={e => e.stopPropagation()}
+    <div
+      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[520px] max-w-[520px] rounded-xl bg-slate-900/98 border border-white/15 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200"
+      onClick={(e) => e.stopPropagation()}
     >
-      {/* Search Input Bar */}
-      <div className="p-3 border-b border-white/10 flex items-center gap-3 bg-slate-950/60">
+      {/* Input Header */}
+      <div className="p-3 border-b border-white/10 flex items-center gap-2.5 bg-slate-950/80">
         <Search className="w-4 h-4 text-emerald-400 shrink-0 ml-1" />
         <input
           ref={inputRef}
           type="text"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Search species, water bodies, protected areas, hazards..."
-          className="flex-1 bg-transparent border-none outline-none text-white text-sm placeholder:text-slate-500"
+          placeholder="Search all KEW modules, species, water, hazards, PIL, EIA..."
+          className="flex-1 bg-transparent border-none outline-none text-white text-sm placeholder:text-slate-500 min-w-0"
         />
         {query && (
           <button
+            type="button"
             onClick={() => setQuery('')}
             className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
             title="Clear search"
@@ -114,190 +142,113 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
           </button>
         )}
         <button
+          type="button"
           onClick={onClose}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono"
+          className="px-2 py-1 rounded bg-white/5 text-slate-400 hover:text-white text-[10px] font-mono border border-white/10"
         >
           ESC
         </button>
       </div>
 
-      {/* Results Dropdown */}
-      <div className="max-h-[380px] overflow-y-auto divide-y divide-white/5 p-2">
+      {/* Results Body */}
+      <div className="max-h-[400px] overflow-y-auto divide-y divide-white/5 p-2">
         {query.trim().length < 2 ? (
-          <div className="p-6 text-center text-slate-400 space-y-2">
-            <Search className="w-6 h-6 mx-auto text-slate-500" />
-            <p className="text-xs">Type at least 2 characters to search the live registry</p>
-            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
-              {['Hangul', 'Dal Lake', 'Dachigam', 'Kolhai Glacier', 'Wular', 'Srinagar'].map(tag => (
+          <div className="p-5 text-center space-y-3">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Western Himalayan Knowledge &amp; Intelligence Index</span>
+            </div>
+            <p className="text-xs text-slate-400">
+              Search modules, scientific records, 6 subregions, 44 districts, PIL dockets, EIAs &amp; live hazards
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+              {QUICK_CHIPS.map((tag) => (
                 <button
                   key={tag}
+                  type="button"
                   onClick={() => setQuery(tag)}
-                  className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 transition-colors"
+                  className="px-2.5 py-1 rounded-md bg-white/5 hover:bg-emerald-500/15 text-xs text-slate-300 hover:text-emerald-300 border border-white/10 transition-colors cursor-pointer"
                 >
                   {tag}
                 </button>
               ))}
             </div>
           </div>
-        ) : getResultCount() === 0 ? (
-          <div className="p-6 text-center text-slate-400 space-y-1">
-            <p className="text-sm font-semibold text-white">No results found</p>
-            <p className="text-xs">No records matched "{query}"</p>
+        ) : loading && groups.length === 0 ? (
+          <div className="p-6 text-center text-xs text-slate-400">Searching canonical index...</div>
+        ) : groups.length === 0 ? (
+          <div className="p-6 text-center space-y-2">
+            <p className="text-sm font-semibold text-white">No instant matches for &ldquo;{query}&rdquo;</p>
+            <Link
+              href={`/search?q=${encodeURIComponent(query.trim())}`}
+              onClick={onClose}
+              className="inline-flex items-center gap-1 text-xs text-emerald-400 hover:underline font-medium"
+            >
+              <span>Open Full Search Workbench</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         ) : (
           <div className="space-y-3 py-1">
-            {/* Species */}
-            {results.species && results.species.length > 0 && (
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-3 py-1 block">
-                  Species ({results.species.length})
+            {groups.map((grp) => (
+              <div key={grp.groupKey}>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2.5 py-1 block">
+                  {grp.groupLabel}
                 </span>
                 <div className="space-y-0.5">
-                  {results.species.slice(0, 3).map((item: any) => (
-                    <Link
-                      key={item.id}
-                      href={`/biodiversity/species/${item.slug}`}
-                      onClick={onClose}
-                      className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
-                          {item.name}
-                        </p>
-                        <p className="text-[11px] text-slate-400 italic">
-                          {item.scientificName} • {item.taxonomicGroup}
-                        </p>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 transition-colors" />
-                    </Link>
-                  ))}
+                  {grp.items.map((item: any) => {
+                    runningIdx++;
+                    const isFocused = runningIdx === activeIndex;
+                    return (
+                      <Link
+                        key={item.id}
+                        href={item.canonicalUrl}
+                        onClick={onClose}
+                        className={`flex items-center justify-between gap-2 p-2.5 rounded-lg transition-colors group ${
+                          isFocused ? 'bg-emerald-500/20 text-white' : 'hover:bg-white/5'
+                        }`}
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs font-bold text-white group-hover:text-emerald-300 truncate">
+                            {item.title}
+                          </p>
+                          {item.subtitle && (
+                            <p className="text-[11px] text-slate-400 truncate">{item.subtitle}</p>
+                          )}
+                        </div>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 shrink-0" />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
-            )}
-
-            {/* Protected Areas */}
-            {results.protectedAreas && results.protectedAreas.length > 0 && (
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400 px-3 py-1 block">
-                  Protected Areas ({results.protectedAreas.length})
-                </span>
-                <div className="space-y-0.5">
-                  {results.protectedAreas.slice(0, 3).map((item: any) => (
-                    <Link
-                      key={item.id}
-                      href={`/protected-areas/${item.slug}`}
-                      onClick={onClose}
-                      className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-300 transition-colors">
-                          {item.name}
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          {item.district} • {item.area} km²
-                        </p>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-sky-400 transition-colors" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Water Systems */}
-            {results.waterBodies && results.waterBodies.length > 0 && (
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 px-3 py-1 block">
-                  Water Systems ({results.waterBodies.length})
-                </span>
-                <div className="space-y-0.5">
-                  {results.waterBodies.slice(0, 3).map((item: any) => (
-                    <Link
-                      key={item.id}
-                      href={(item.type === 'wetland' || item.category?.toLowerCase().includes('wetland') || item.slug?.includes('wetland')) ? `/water-systems/wetlands/${item.slug}` : `/water-systems/lakes/${item.slug}`}
-                      onClick={onClose}
-                      className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">
-                          {item.name}
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          {item.district} • {item.type}
-                        </p>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Districts */}
-            {results.districts && results.districts.length > 0 && (
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 px-3 py-1 block">
-                  Districts ({results.districts.length})
-                </span>
-                <div className="space-y-0.5">
-                  {results.districts.slice(0, 3).map((item: any) => (
-                    <Link
-                      key={item.id}
-                      href={`/districts/${item.slug}`}
-                      onClick={onClose}
-                      className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">
-                          {item.name} District
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          {item.division} Division
-                        </p>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 transition-colors" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Alerts */}
-            {results.alerts && results.alerts.length > 0 && (
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-400 px-3 py-1 block">
-                  Live Hazards & Alerts ({results.alerts.length})
-                </span>
-                <div className="space-y-0.5">
-                  {results.alerts.slice(0, 2).map((item: any) => (
-                    <Link
-                      key={item.id}
-                      href="/risk-monitoring/live-alerts-advisories"
-                      onClick={onClose}
-                      className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-white group-hover:text-rose-300 transition-colors">
-                          {item.title}
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          Severity: {item.severity} • {item.district}
-                        </p>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-rose-400 transition-colors" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
+            ))}
           </div>
         )}
       </div>
 
-      {/* Footer Instructions */}
-      <div className="p-2.5 bg-slate-950/80 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-500">
-        <span>Press <strong className="text-slate-400 font-mono">ENTER</strong> to open top result</span>
-        <span><strong className="text-slate-400 font-mono">ESC</strong> to close</span>
+      {/* Footer */}
+      <div className="px-3 py-2.5 bg-slate-950/90 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400">
+        <Link
+          href={
+            query.trim()
+              ? `/search?mode=ask&q=${encodeURIComponent(query.trim())}`
+              : '/search?mode=ask'
+          }
+          onClick={onClose}
+          className="text-sky-300 hover:text-sky-200 font-semibold inline-flex items-center gap-1"
+        >
+          <FileText className="w-3 h-3" />
+          <span>{isScientificQuestionLike(query) ? 'Synthesize Cited Brief' : 'Scientific Q&A'}</span>
+        </Link>
+        <Link
+          href={query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search'}
+          onClick={onClose}
+          className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+        >
+          <span>Full Search{totalHits > 0 ? ` (${totalHits.toLocaleString()})` : ''}</span>
+          <ArrowUpRight className="w-3 h-3" />
+        </Link>
       </div>
     </div>
   );

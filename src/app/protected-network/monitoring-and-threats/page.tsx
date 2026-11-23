@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { getThreats, getProtectedAreas } from '@/data/protected-network';
 import { Heading } from '@/components/common/Heading';
 import { GEOGRAPHY, getUnitsForScope, getScopeForUnit, Scope } from '@/data/geography';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function MonitoringPage() {
   const threats = getThreats.all();
@@ -188,12 +189,7 @@ return (
       <Heading
         title={
           <div className="overflow-visible pb-2">
-            <div className="flex items-center gap-3 sm:gap-4 leading-[1.15] pb-2">
-              <span className="inline-flex items-center self-center bg-emerald-600 text-white font-black uppercase tracking-widest rounded-md px-2.5 py-1 text-xs sm:text-sm shadow-sm">
-                KEW
-              </span>
-              <span className="text-white">Western Himalayan</span>
-            </div>
+            <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
                 Threat Intelligence &amp; Monitoring Sentinel

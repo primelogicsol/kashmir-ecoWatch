@@ -223,7 +223,7 @@ export function EducationStewardshipActionSection() {
         </motion.div>
 
         {/* Pillars Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
           {filteredPillars.map((p, idx) => {
             const Icon = p.icon;
             return (
@@ -233,59 +233,58 @@ export function EducationStewardshipActionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.07 }}
-                className={`p-6 rounded-2xl bg-slate-900/60 hover:bg-slate-900/90 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between relative overflow-hidden bg-slate-900 ${p.gradient}`}
+                className="kew-card-shell group h-full"
               >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${p.badgeColor}`}>
-                      {p.badge}
-                    </span>
-                    <div className={`p-2 rounded-xl bg-white/5 ${p.iconColor}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
+                {/* 1. ICON (top-left) + Category badge (top-right) */}
+                <div className="kew-card-top-row">
+                  <div className={`kew-card-icon-box bg-slate-800/90 border-white/10 ${p.iconColor}`}>
+                    <Icon className="w-5 h-5" />
                   </div>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${p.badgeColor}`}>
+                    {p.badge}
+                  </span>
+                </div>
 
-                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wide">
+                {/* 2. TITLE — full horizontal width */}
+                <div className="space-y-1">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wide break-words">
                     {p.tag}
                   </div>
-                  <h3 className="text-lg font-bold text-white mt-1 leading-snug">
-                    {p.title}
-                  </h3>
-                  <div className="text-xs text-slate-300 font-medium mt-1">
+                  <h3 className="kew-card-title">{p.title}</h3>
+                  <div className="text-xs text-slate-300 font-medium break-words">
                     {p.subtitle}
-                  </div>
-
-                  <p className="text-xs text-slate-400 mt-3 leading-relaxed">
-                    {p.desc}
-                  </p>
-
-                  {/* Micro stats */}
-                  <div className="grid grid-cols-3 gap-2 my-4 pt-3 border-t border-white/5 text-center">
-                    {p.stats.map((s, sIdx) => (
-                      <div key={sIdx} className="p-2 rounded-lg bg-black/20 border border-white/5">
-                        <div className="text-[11px] font-bold text-white font-mono truncate">
-                          {s.value}
-                        </div>
-                        <div className="text-[9px] text-slate-400 uppercase mt-0.5 truncate">
-                          {s.label}
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </div>
 
-                {/* Actions */}
-                <div className="pt-3 border-t border-white/5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                {/* 3. KPI Micro stats */}
+                <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-white/10 text-center">
+                  {p.stats.map((s, sIdx) => (
+                    <div key={sIdx} className="p-2 rounded-lg bg-slate-800/50 border border-white/5 min-w-0">
+                      <div className="text-[11px] font-bold text-white font-mono break-words leading-tight">
+                        {s.value}
+                      </div>
+                      <div className="text-[9px] text-slate-400 uppercase mt-0.5 break-words leading-tight">
+                        {s.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 4. DESCRIPTION — naturally wrapping */}
+                <p className="kew-card-desc">{p.desc}</p>
+
+                {/* 5. CTA Actions — anchored near bottom */}
+                <div className="mt-auto pt-3 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                   <Link
                     href={p.primaryLink.href}
-                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs transition-all border border-white/10"
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white font-bold text-xs transition-all border border-white/10"
                   >
                     <span>{p.primaryLink.label}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
                     href={p.secondaryLink.href}
-                    className="inline-flex items-center justify-center text-xs text-slate-400 hover:text-white transition-colors py-1 sm:py-0 px-2 font-medium"
+                    className="inline-flex items-center justify-center text-xs text-slate-300 hover:text-white transition-colors py-1 sm:py-0 px-2 font-medium"
                   >
                     <span>{p.secondaryLink.label}</span>
                   </Link>

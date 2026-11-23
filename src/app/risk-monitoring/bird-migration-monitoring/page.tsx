@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const migrationData = [
   { id: 'bm-1', wetland: 'Hokersar', district: 'Srinagar', species: 'Common Teal', count: '12,000+', status: 'Peak Arrival', period: 'Oct-Mar' },
@@ -54,7 +55,7 @@ export default function BirdMigrationMonitoringPage() {
       <Heading
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Bird Migration Monitoring' }]}
         title={<>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Western Himalayan</span>
+            <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Migration Monitoring</span>
           </>}
         subtitle="Hokersar, Hygam, Shallabugh, Wular wetland monitoring, seasonal migration windows, arrival/departure intelligence, migratory species tracking, and route/wetland sensitivity analysis"

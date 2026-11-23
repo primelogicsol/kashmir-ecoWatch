@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function AlertDetailPage() {
   const params = useParams();
@@ -103,6 +104,7 @@ export default function AlertDetailPage() {
             </div>
 
             {/* Title */}
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               {alert.title}
             </h1>

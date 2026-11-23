@@ -8,6 +8,7 @@ import {
   Droplets, Feather, Flame, Scale, Compass, Sparkles, Map,
   Award, Info, FileText, Check, ShieldCheck, Heart, Landmark, Building2
 } from 'lucide-react';
+import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 export default function GovernancePage() {
   // Identifiable historical and institutional reference points (replacing invented scores)
@@ -210,6 +211,7 @@ export default function GovernancePage() {
             </div>
 
             {/* Main Heading: Preserving Institutional Title */}
+            <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] mb-3 break-words">
               Governance &amp; Alamdar Ethos
             </h1>
