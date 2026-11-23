@@ -12,7 +12,7 @@ import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterB
 import {
   AlertTriangle, Waves, CloudRain, Mountain, Snowflake,
   Activity, Droplets, Flame, BarChart3, ChevronRight,
-  Map, Eye, Shield, MapPin
+  Map, Eye, Shield, MapPin, Wind
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -126,6 +126,7 @@ export default function HazardIntelligenceOverview() {
               onChange={setHazardFilter}
               placeholder="All Hazard Types"
               options={[
+                { value: 'western-disturbances', label: 'Western Disturbances (Atmospheric)' },
                 { value: 'floods',        label: 'Floods'         },
                 { value: 'flash-floods',  label: 'Flash Floods'   },
                 { value: 'landslides',    label: 'Landslides'     },
@@ -261,6 +262,63 @@ export default function HazardIntelligenceOverview() {
         />
       </div>
 
+
+      {/* Atmospheric Systems (Dedicated Upstream Driver Layer) */}
+      <section className="pt-14 pb-4">
+        <div className="container mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-5">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-sky-400 font-mono block mb-1">
+              Atmospheric Systems
+            </span>
+            <h2 className="text-2xl font-bold text-white mb-1">Synoptic Atmospheric Drivers</h2>
+            <p className="text-slate-400 text-sm">
+              Extratropical atmospheric systems capable of triggering riverine floods, flash floods, landslides, and avalanches simultaneously
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <Card
+              className="glass-intense border-sky-500/25 hover:border-sky-400/50 transition-all p-5 cursor-pointer group"
+              onClick={() => router.push('/hazard-intelligence/western-disturbances')}
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center shadow flex-shrink-0">
+                  <Wind className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">Western Disturbances</h3>
+                    <Badge variant="info" size="sm" className="text-xs">Live Tracking &amp; Forecasts</Badge>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    31-corridor live observation &amp; 7-day NWP forecast registry across Jammu, Kashmir, Ladakh, Azad Kashmir, Gilgit &amp; Baltistan.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <Card
+              className="glass-intense border-indigo-500/25 hover:border-indigo-400/50 transition-all p-5 cursor-pointer group"
+              onClick={() => router.push('/hazard-intelligence/western-disturbances/dashboard')}
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow flex-shrink-0">
+                  <BarChart3 className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">WD Monitoring Dashboard</h3>
+                    <Badge variant="success" size="sm" className="text-xs">8 Analytical Tabs</Badge>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    500/300 hPa Westerly Jet tracker, RainViewer live radar, snowline forecasts, IMD/PMD advisories &amp; multi-hazard coupling.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* Submodules Grid */}
       <section className="py-16">

@@ -292,6 +292,8 @@ export function PremiumStickyHeader() {
         return [
           { name: '⚠️ Overview', href: '/hazard-intelligence', desc: 'Multi-hazard intelligence command center' },
           { name: '📊 Dashboards', href: '/hazard-intelligence/dashboards', desc: 'Risk dashboards, heatmaps & trends' },
+          { name: '── Atmospheric Systems ──', href: '#', desc: '', isHeader: true },
+          { name: 'Western Disturbances', href: '/hazard-intelligence/western-disturbances', desc: 'Live tracking, forecasts & regional impacts' },
           { name: '── Hazard Systems ──', href: '#', desc: '', isHeader: true },
           { name: 'Floods', href: '/hazard-intelligence/floods', desc: 'Riverine, urban & floodplain flooding' },
           { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards' },

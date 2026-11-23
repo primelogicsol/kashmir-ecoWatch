@@ -33,6 +33,15 @@ export interface HazardDestination {
 }
 
 export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
+  'western-disturbances': {
+    id: 'western-disturbances',
+    title: 'Western Disturbances',
+    description: 'Synoptic westerly wave tracking, 0°C snowline forecasts, and compound multi-hazard triggers across 6 regions.',
+    href: '/hazard-intelligence/western-disturbances',
+    icon: Wind,
+    color: 'text-sky-400',
+    badge: 'Atmospheric System'
+  },
   'floods': {
     id: 'floods',
     title: 'River Flood Intelligence',
@@ -154,29 +163,37 @@ export const ALL_HAZARD_DESTINATIONS: Record<string, HazardDestination> = {
 
 // Contextual prioritization matrix: maps current page key to 6 most relevant destinations
 const CONTEXTUAL_PRIORITY: Record<string, string[]> = {
+  'western-disturbances': [
+    'floods',
+    'flash-floods',
+    'landslides',
+    'avalanches',
+    'glofs',
+    'hazard-dashboards'
+  ],
   'flash-floods': [
+    'western-disturbances',
     'floods',
     'landslides',
     'glofs',
     'water-systems',
-    'avalanches',
-    'hazard-overview'
+    'avalanches'
   ],
   'avalanches': [
+    'western-disturbances',
     'glofs',
     'landslides',
     'flash-floods',
     'earthquakes',
-    'forest-fires',
     'hazard-overview'
   ],
   'landslides': [
+    'western-disturbances',
     'earthquakes',
     'flash-floods',
     'avalanches',
     'floods',
-    'earth-human-impact',
-    'hazard-overview'
+    'earth-human-impact'
   ],
   'earthquakes': [
     'landslides',
@@ -187,12 +204,12 @@ const CONTEXTUAL_PRIORITY: Record<string, string[]> = {
     'hazard-overview'
   ],
   'floods': [
+    'western-disturbances',
     'flash-floods',
     'water-systems',
     'landslides',
     'glofs',
-    'algal-bloom',
-    'hazard-overview'
+    'algal-bloom'
   ],
   'algal-bloom': [
     'water-systems',
@@ -227,20 +244,20 @@ const CONTEXTUAL_PRIORITY: Record<string, string[]> = {
     'hazard-overview'
   ],
   'hazard-overview': [
+    'western-disturbances',
     'floods',
+    'flash-floods',
+    'landslides',
+    'avalanches',
+    'earthquakes'
+  ],
+  'dashboards': [
+    'western-disturbances',
     'flash-floods',
     'landslides',
     'avalanches',
     'earthquakes',
     'glofs'
-  ],
-  'dashboards': [
-    'flash-floods',
-    'landslides',
-    'avalanches',
-    'earthquakes',
-    'glofs',
-    'hazard-overview'
   ]
 };
 

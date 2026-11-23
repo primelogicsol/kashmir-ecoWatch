@@ -13,7 +13,7 @@ import {
   BarChart3, Map, TrendingUp, AlertTriangle,
   Activity, Droplets, Flame, Waves, Zap,
   Eye, Mountain, ExternalLink, ChevronRight, CheckCircle2,
-  Clock, Satellite, Radio, ShieldCheck
+  Clock, Satellite, Radio, ShieldCheck, Wind
 } from 'lucide-react';
 
 export interface HazardDashboardMeta {
@@ -31,6 +31,19 @@ export interface HazardDashboardMeta {
 }
 
 const dashboardCards: HazardDashboardMeta[] = [
+  {
+    title: 'Western Disturbances Synoptic & Impact Dashboard',
+    route: '/hazard-intelligence/western-disturbances/dashboard',
+    description: '8-tab atmospheric monitoring suite tracking 500/300 hPa westerly troughs, 7-day rain/snowline forecasts, RainViewer radar, and compound flood, landslide, and avalanche triggers.',
+    icon: Wind,
+    gradient: 'from-sky-500 to-indigo-600',
+    status: 'Active Telemetry',
+    statusType: 'success',
+    sourceAttribution: 'Open-Meteo Upper-Air (ECMWF/GFS) + RainViewer Radar + IMD/PMD',
+    updateFrequency: 'Hourly synoptic & 10-min radar',
+    coverage: 'Jammu, Kashmir, Ladakh, AJK, Gilgit & Baltistan',
+    metrics: ['500 hPa Trough (gpm)', '300 hPa Jet (km/h)', '0°C Snowline (m)', 'Multi-Hazard Coupling'],
+  },
   {
     title: 'Multi-Hazard Risk Map',
     route: '/live-incident-map',
@@ -170,11 +183,11 @@ export default function HazardDashboardsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-semibold text-white">All 6 Analytical Dashboards Fully Operational</span>
-              <span className="text-slate-400">&bull; Live API feeds and PostGIS layers connected</span>
+              <span className="font-semibold text-white">All 7 Analytical Dashboards Fully Operational</span>
+              <span className="text-slate-400">&bull; Live API feeds and spatial GIS layers connected</span>
             </div>
             <div className="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
-              <span>Coverage: 20 J&amp;K Districts</span>
+              <span>Coverage: Jammu, Kashmir, Ladakh, AJK, Gilgit &amp; Baltistan</span>
               <span>&bull;</span>
               <span>Updated: Nov 2026 Telemetry Cycle</span>
             </div>
