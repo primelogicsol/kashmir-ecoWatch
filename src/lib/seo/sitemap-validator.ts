@@ -37,9 +37,11 @@ import { evidenceRegistry } from '@/data/evidence-intelligence';
 import { fieldReportsRegistry } from '@/data/field-reports-registry';
 import { ngoRegistryData } from '@/data/ngo-impact';
 import { SHARED_ASSESSMENT_DATABASE } from '@/data/sectoral-eia';
+import { getMergedResearchDossiers } from '@/lib/sectoral-research-store';
+import { CANONICAL_INVESTIGATIONS } from '@/data/environmental-investigations';
 import { CONFERENCES_DETAILED, SESSIONS_DETAILED } from '@/data/conference-system';
 import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
-import { CANONICAL_SITE_URL } from './entity-identity';
+import { CANONICAL_HOMEPAGE_URL, CANONICAL_SITE_URL } from './entity-identity';
 import {
   DUPLICATE_ROUTE_CANONICAL_OVERRIDES,
   isNonPublicRoute,
@@ -217,6 +219,16 @@ const FIELD_REPORT_BY_ID = new Map<string, any>(
 const EIA_ASSESSMENT_IDS = new Set<string>(
   SHARED_ASSESSMENT_DATABASE.map((a: any) => a.id)
 );
+function getPublishedResearchDossierCodes(): Set<string> {
+  return new Set<string>(
+    getMergedResearchDossiers()
+      .filter((d) => d.status === 'Published' || d.status === 'Updated')
+      .map((d) => d.code.toLowerCase())
+  );
+}
+const PUBLISHED_INVESTIGATION_SLUGS = new Set<string>(
+  CANONICAL_INVESTIGATIONS.filter((inv) => inv.status === 'published').map((inv) => inv.slug)
+);
 const CONFERENCE_IDS = new Set<string>(CONFERENCES_DETAILED.map((c) => c.id));
 const SESSION_IDS = new Set<string>(SESSIONS_DETAILED.map((s) => s.id));
 const WEBINAR_IDS = new Set<string>(SCIENTIFIC_WEBINARS.map((w) => w.id));
@@ -285,6 +297,9 @@ export function shouldNoIndexDynamicEntity(pathname: string): boolean {
   if (parts[0] === 'field-reports' && parts.length === 2 && !['biodiversity', 'environmental-monitoring', 'hazard-intelligence', 'protected-areas', 'water-systems'].includes(parts[1])) {
     const fr = FIELD_REPORT_BY_ID.get(parts[1]);
     return !fr || fr.visibility === 'restricted' || fr.status === 'restricted';
+  }
+  if (parts[0] === 'sectoral-eia' && parts[1] === 'reports' && parts[2]) {
+    return !getPublishedResearchDossierCodes().has(parts[2].toLowerCase());
   }
   return false;
 }
@@ -405,6 +420,7 @@ export function buildValidatedSitemapInventory(): {
       isNonPublicRoute(pathname) ||
       (pathname.startsWith('/webinars/sessions/') && pathname.endsWith('/live')) ||
       pathname === '/ngo-impact/submit' ||
+      pathname === '/environmental-investigations/submit' ||
       pathname === '/sectoral-eia/assessment/new'
     ) {
       audit.nonIndexableUrls++;
@@ -540,11 +556,25 @@ export function buildValidatedSitemapInventory(): {
       }
     }
 
-    // 4f. Sectoral EIA Assessments (/sectoral-eia/assessment/[id])
+    // 4f. Sectoral EIA Assessments & 40-Dossier Research Series (only index Published/Updated, never Proposed)
     if (parts[0] === 'sectoral-eia' && parts[1] === 'assessment' && parts[2]) {
       if (!EIA_ASSESSMENT_IDS.has(parts[2])) {
         audit.invalidOrSoft404Urls++;
         note('soft404_missing_eia_assessment');
+        continue;
+      }
+    }
+    if (parts[0] === 'sectoral-eia' && parts[1] === 'reports' && parts[2]) {
+      if (!getPublishedResearchDossierCodes().has(parts[2].toLowerCase())) {
+        audit.nonIndexableUrls++;
+        note('proposed_research_series_excluded_until_published');
+        continue;
+      }
+    }
+    if (parts[0] === 'environmental-investigations' && parts[1] === 'reports' && parts[2]) {
+      if (!PUBLISHED_INVESTIGATION_SLUGS.has(parts[2])) {
+        audit.nonIndexableUrls++;
+        note('proposed_or_scoping_investigation_excluded_until_published');
         continue;
       }
     }

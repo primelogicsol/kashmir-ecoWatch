@@ -53,7 +53,7 @@ export function Logo({ variant = 'expanded', className }: LogoProps) {
       {/* Logo Mark */}
       <img
         src="/kew_LOGO.png"
-        alt="Kashmir EcoWatch"
+        alt="Kashmir EcoWatch (KEW Western Himalayan)"
         className={cn(
           config.imgClass,
           'transform group-hover:scale-105 transition-transform duration-300'
@@ -67,7 +67,7 @@ export function Logo({ variant = 'expanded', className }: LogoProps) {
             Kashmir EcoWatch
           </span>
           <span className="text-[10px] 2xl:text-xs text-emerald-400 font-semibold tracking-wider uppercase whitespace-nowrap">
-            Environmental Intelligence
+            KEW Western Himalayan
           </span>
         </div>
       )}

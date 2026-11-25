@@ -631,7 +631,7 @@ export default function SectoralEiaHomePage() {
               href="/sectoral-eia/reports"
               className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
             >
-              <span>View all scientific reports</span>
+              <span>Explore 2026 Research Series (40 Dossiers)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

@@ -58,8 +58,13 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // Canonical Domain Consolidation: Permanent 308 redirects for obsolete public Vercel addresses
-      // (Next.js automatically preserves :path* and query parameters on host redirects)
+      // Canonical Domain Consolidation: Permanent 308 redirects for WWW, legacy domains & obsolete public Vercel addresses
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.kashmir-ecowatch.com' }],
+        destination: 'https://kashmir-ecowatch.com/:path*',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'kew-nu.vercel.app' }],
@@ -70,6 +75,26 @@ const nextConfig = {
         source: '/:path*',
         has: [{ type: 'host', value: 'kashmir-eco-watch.vercel.app' }],
         destination: 'https://kashmir-ecowatch.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index.php',
+        destination: '/',
         permanent: true,
       },
       {

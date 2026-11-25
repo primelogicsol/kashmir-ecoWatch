@@ -4,7 +4,95 @@ export type ImpactSignificance = 'Negligible' | 'Low' | 'Moderate' | 'High' | 'S
 
 export type ConfidenceLevel = 'Preliminary' | 'Medium' | 'High' | 'Very High';
 
-export type PublicationStatus = 'Draft' | 'Under Scientific Review' | 'Pilot Verification' | 'Published';
+export type PublicationStatus = 'Draft' | 'Under Scientific Review' | 'Pilot Verification' | 'Published' | 'Calibration Stage';
+
+export type ResearchDossierStatus =
+  | 'Proposed'
+  | 'Data Acquisition'
+  | 'Under Investigation'
+  | 'Draft Assessment'
+  | 'Scientific Review'
+  | 'Published'
+  | 'Updated'
+  | 'Archived';
+
+export type ResearchSeriesSectorTag =
+  | 'tourism'
+  | 'horticulture'
+  | 'handicrafts'
+  | 'agriculture'
+  | 'water-resources'
+  | 'mining-extraction'
+  | 'urbanization'
+  | 'infrastructure'
+  | 'energy-hydropower'
+  | 'energy'
+  | 'renewable-energy'
+  | 'transportation'
+  | 'waste-management'
+  | 'sanitation'
+  | 'forestry-biodiversity'
+  | 'cross-sectoral';
+
+export type ResearchDivisionId =
+  | 'sector-01-tourism'
+  | 'sector-02-horticulture'
+  | 'sector-03-handicrafts'
+  | 'sector-04-agriculture'
+  | 'sector-05-water-resources'
+  | 'sector-06-mining-extraction'
+  | 'sector-07-urbanization-infrastructure'
+  | 'sector-08-energy-hydropower'
+  | 'sector-09-transportation-air'
+  | 'sector-10-waste-sanitation'
+  | 'sector-11-forestry-biodiversity'
+  | 'sector-12-cumulative-impacts';
+
+export interface ResearchSeriesDossier {
+  id: string;
+  code: string; // KEW-SR-2026-01 .. KEW-SR-2026-40
+  sequenceNumber: number; // 1 .. 40
+  divisionId: ResearchDivisionId;
+  divisionRoman: string; // 'I' .. 'XII'
+  divisionTitle: string;
+  sectorTag: ResearchSeriesSectorTag;
+  /** Preserves legacy 4-sector link where applicable */
+  sector?: SectorType;
+  subdisciplineBanner: string;
+  title: string;
+  abstract: string;
+  status: ResearchDossierStatus;
+  /** 'March 2026' for published 01–04, 'Proposed' for 05–40 until validated */
+  date: string;
+  /** Confirmed page count ONLY for published/completed dossiers */
+  pages?: number;
+  /** Target page scope for proposed dossiers */
+  targetPages?: number;
+  /** Lead Investigator / Working Group (confirmed for 01–04, Proposed Working Group for 05–40) */
+  author: string;
+  isProposedWorkingGroup: boolean;
+  badge: string;
+
+  // Connected KEW Operational Module & Asset Readiness Flags (8 Functional Actions)
+  telemetryRoute: string;
+  gisMapRoute: string;
+  historicalComparisonRoute: string;
+  indicatorsRoute: string;
+  referencesRoute: string;
+  linkedAssessmentId?: string;
+  linkedInvestigationSlug?: string;
+  recommendedDataSources: string[];
+  assetReadiness: {
+    reportPdfAvailable: boolean;
+    telemetryAvailable: boolean;
+    gisMapAvailable: boolean;
+    datasetAvailable: boolean;
+    historicalComparisonAvailable: boolean;
+    referencesAvailable: boolean;
+    indicatorsAvailable: boolean;
+    updatesAvailable: boolean;
+  };
+}
 
 export type SubmissionType = 'independent_scientific' | 'stakeholder_submitted';
 
@@ -45,7 +133,7 @@ export interface CumulativePressure {
 
 export interface ScenarioProjection {
   name: string;
-  horizon: '2027' | '2030' | '2035' | '2040';
+  horizon: '2027' | '2028' | '2030' | '2035' | '2040';
   description: string;
   assumptions: string[];
   projectedStressIndex: number; // 0 - 100
@@ -69,7 +157,7 @@ export interface SourceReference {
   title: string;
   authorOrBody: string;
   year: number;
-  type: 'Satellite Telemetry' | 'Field Sensor Network' | 'Peer-Reviewed Paper' | 'Government Sensor / Data' | 'Ecological Census';
+  type: 'Satellite Telemetry' | 'Field Sensor Network' | 'Peer-Reviewed Paper' | 'Government Sensor / Data' | 'Ecological Census' | 'Field Census';
   urlOrCitation: string;
 }
 
@@ -102,7 +190,7 @@ export interface AssessmentRecord {
   submissionType: SubmissionType;
   submittingEntity?: {
     name: string;
-    type: 'Enterprise' | 'Government Department' | 'Tourism Authority' | 'Artisan Guild' | 'Agricultural Board' | 'Independent Research Panel';
+    type: 'Enterprise' | 'Hotel/Resort' | 'Government Department' | 'Tourism Authority' | 'Artisan Guild' | 'Agricultural Board' | 'Independent Research Panel';
     contactEmail: string;
   };
   geographicBoundary: GeographicBoundary;

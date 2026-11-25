@@ -82,12 +82,13 @@ export default function AssessmentDetailPage({ params }: AssessmentPageProps) {
                 <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Engine
               </Button>
             </Link>
-            <Button
-              onClick={() => alert(`Exporting Scientific Dossier for ${assessment.code}... PDF generation triggered.`)}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs"
+            <a
+              href={`/api/sectoral-eia/assessments/${assessment.id}/pdf`}
+              download
+              className="inline-flex items-center rounded-md bg-emerald-600 hover:bg-emerald-500 px-3.5 py-2 text-white font-bold text-xs transition-colors"
             >
               <Download className="w-3.5 h-3.5 mr-1.5" /> Download Scientific Dossier (PDF)
-            </Button>
+            </a>
           </div>
         }
       />

@@ -21,7 +21,8 @@ export type PublicSourcePage =
   | '/join-citizen-science'
   | '/become-data-contributor'
   | '/become-research-partner'
-  | '/get-involved/volunteer';
+  | '/get-involved/volunteer'
+  | '/environmental-investigations/submit';
 
 export type SubmissionPriority = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
 
@@ -149,6 +150,13 @@ export const SOURCE_PAGE_MAP: Record<PublicSourcePage, {
     managementCenterLabel: 'Volunteer Coordination',
     label: 'Volunteer & Contribute',
     userDashboardSection: 'My Assignments',
+  },
+  '/environmental-investigations/submit': {
+    prefix: 'KEW-INV',
+    managementCenter: 'SCIENTIFIC_INTAKE',
+    managementCenterLabel: 'Environmental Investigations Desk',
+    label: 'Submit Environmental Investigation',
+    userDashboardSection: 'My Investigation Proposals',
   },
 };
 

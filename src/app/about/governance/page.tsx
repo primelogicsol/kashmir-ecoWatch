@@ -880,6 +880,23 @@ export default function GovernancePage() {
                 <Award className="w-3.5 h-3.5 text-amber-400" />
                 <span>Founder Leadership &amp; Purpose</span>
               </Link>
+              <Link
+                href="/about#institutional-disambiguation"
+                className="px-4 py-2 rounded-md bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition-colors flex items-center gap-1.5"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Institutional Identity &amp; Disambiguation</span>
+              </Link>
+            </div>
+
+            <div className="pt-4 mt-2 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
+              <strong className="text-slate-200">Canonical Institutional Disambiguation:</strong>{' '}
+              Kashmir EcoWatch (<strong className="text-white">Kashmir EcoWatch Western Himalayan</strong> /{' '}
+              <strong className="text-white">KEW Western Himalayan</strong>,{' '}
+              <Link href="/" className="text-emerald-400 hover:underline font-mono">
+                https://kashmir-ecowatch.com/
+              </Link>
+              ), established in 2004 as the Environment and Service Research Organization (ESRO) and headquartered in Loudoun County, Virginia, USA, operates independently and is unaffiliated with <em>Jammu &amp; Kashmir Eco-Watch (J&amp;K Eco-Watch)</em>, <em>EcoWatch (ecowatch.com)</em>, or the <em>Royal Botanic Gardens, Kew</em>.
             </div>
           </div>
         </section>

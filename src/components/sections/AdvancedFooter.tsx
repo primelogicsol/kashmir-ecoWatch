@@ -26,6 +26,8 @@ const footerLinks = {
     { label: 'Plan Your Kashmir Trip', href: 'https://kashmirartstay.com/' },
   ],
   platform: [
+    { label: 'Env. Investigations (KEW-EIAI)',    href: '/environmental-investigations' },
+    { label: 'Investigation Dashboard',           href: '/environmental-investigations/dashboard' },
     { label: 'Sectoral EIA Engine',               href: '/sectoral-eia' },
     { label: 'Cumulative Impact Modeling',        href: '/sectoral-eia/cumulative-impact' },
     { label: 'Global Dashboard',                  href: '/monitoring-overview' },
@@ -37,6 +39,8 @@ const footerLinks = {
     { label: 'SDG Dashboard',                     href: '/environmental-monitoring/sdg-monitoring' },
   ],
   resources: [
+    { label: 'Investigation Reports',     href: '/environmental-investigations/reports' },
+    { label: 'Accountability Matrix',     href: '/environmental-investigations/accountability' },
     { label: 'Sectoral Impact Atlas',     href: '/sectoral-eia/impact-atlas' },
     { label: 'SEIAE Scientific Reports',  href: '/sectoral-eia/reports' },
     { label: 'Research Library',          href: '/research-library' },
@@ -50,6 +54,7 @@ const footerLinks = {
     { label: 'Methodology',               href: '/about/methodology' },
   ],
   getInvolved: [
+    { label: 'Submit Investigation',      href: '/environmental-investigations/submit' },
     { label: 'Submit Sectoral Assessment',href: '/sectoral-eia/assessment/new' },
     { label: 'Submit Observation',        href: '/submit-observation' },
     { label: 'Report Environmental Issue',href: '/report-issue' },
@@ -78,7 +83,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const socialLinks = [
-  { label: 'Facebook', href: 'https://www.facebook.com/share/1cENbzgQs3/', icon: Facebook, tooltip: 'Facebook' },
+  { label: 'Facebook', href: 'https://www.facebook.com/Kashmirecowatch/', icon: Facebook, tooltip: 'Facebook' },
   { label: 'X (Twitter)', href: 'https://x.com/KashmirEcoWatch', icon: XIcon, tooltip: 'X (Twitter)' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kashmir-ecowatch/', icon: Linkedin, tooltip: 'LinkedIn' },
   { label: 'Official YouTube Playlist', href: 'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM', icon: Youtube, tooltip: 'YouTube' },
@@ -93,11 +98,11 @@ export function AdvancedFooter() {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
           {/* Brand column - spans 2 columns */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
-            <a href="/" className="relative flex items-center group">
+            <Link href="/" className="relative flex items-center group">
             <div className="flex items-center gap-4 sm:gap-3 mb-4">
                 <img
                   src="/kew_LOGO.png"
-                  alt="Kashmir EcoWatch Logo"
+                  alt="Kashmir EcoWatch (KEW Western Himalayan) Logo"
                   className="w-[3rem] h-[3rem] md:w-[4rem] md:h-[4rem] object-contain"
                 />
                 
@@ -105,9 +110,10 @@ export function AdvancedFooter() {
                   <h3 className="text-base font-bold text-white tracking-wide">
                     Kashmir EcoWatch
                   </h3>
+                  <span className="text-[11px] font-semibold text-emerald-400 tracking-wider uppercase block">KEW Western Himalayan</span>
                 </div>
             </div>
-            </a>
+            </Link>
             <p className="text-xs sm:text-sm text-slate-400 mb-3 leading-relaxed">
               A Kashmir Diaspora-Supported Initiative for Environmental Intelligence, Scientific Stewardship, and Ecological Resilience.
             </p>

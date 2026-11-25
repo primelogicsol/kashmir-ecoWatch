@@ -25,9 +25,13 @@ import {
 import { SCIENTIFIC_PROGRAM_TARGETS } from '@/data/scientific-program-2027-2028';
 import { CITIZEN_SCIENCE_PROGRAMS, CITIZEN_SCIENCE_METRICS } from '@/data/citizen-science-programs';
 import { GlobalDiscoveryCommandCenter } from '@/components/admin/GlobalDiscoveryCommandCenter';
+import { EnvironmentalInvestigationsAdminPanel } from '@/components/admin/EnvironmentalInvestigationsAdminPanel';
+import { SectoralResearchAdminPanel } from '@/components/admin/SectoralResearchAdminPanel';
 
 type AdminTab = 
   | 'queue' 
+  | 'sectoral-research'
+  | 'investigations'
   | 'discovery' 
   | 'events' 
   | 'partnerships' 
@@ -69,6 +73,12 @@ export default function AdminDashboardPage() {
   const [passcodeError, setPasscodeError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlTab = new URLSearchParams(window.location.search).get('tab');
+      if (urlTab === 'sectoral-research' || urlTab === 'investigations' || urlTab === 'discovery') {
+        setActiveTab(urlTab);
+      }
+    }
     fetch('/api/admin/session', { credentials: 'include' })
       .then((r) => r.json())
       .then((s) => {
@@ -176,10 +186,10 @@ export default function AdminDashboardPage() {
         setActionNotice(`Successfully marked ${trackingId} as ${newStatus}.`);
         setTimeout(() => setActionNotice(null), 4000);
       } else {
-        alert(json.error || 'Action failed');
+        setActionNotice(json.error || 'Action failed');
       }
     } catch (e: any) {
-      alert('Error updating operation: ' + e.message);
+      setActionNotice('Error updating operation: ' + e.message);
     }
   };
 
@@ -197,7 +207,7 @@ Please feel free to reply directly to this thread if you require additional spat
 
 Warm regards,
 Scientific Review Board
-Kashmir EcoWatch (kashmir-ecowatch.com)`;
+Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
 
       case 'referral':
         return `Dear ${ticket.ownerName},
@@ -211,7 +221,7 @@ https://kashmir-ecowatch.com/dashboard
 
 Warm regards,
 Environmental Incident Directorate
-Kashmir EcoWatch (kashmir-ecowatch.com)`;
+Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
 
       case 'resolved':
         return `Dear ${ticket.ownerName},
@@ -224,7 +234,7 @@ Should you have any subsequent inquiries or supplementary data to contribute, pl
 
 Warm regards,
 Operations Desk
-Kashmir EcoWatch (kashmir-ecowatch.com)`;
+Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
 
       case 'ack':
       default:
@@ -239,7 +249,7 @@ https://kashmir-ecowatch.com/dashboard
 
 Warm regards,
 Communications Secretariat
-Kashmir EcoWatch (kashmir-ecowatch.com)`;
+Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
     }
   };
 
@@ -473,6 +483,8 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
         <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto">
           {[
             { id: 'queue', label: 'Unified Operations Queue', icon: Activity, count: operations.length },
+            { id: 'sectoral-research', label: 'Sectoral Research Series', icon: Layers, badge: '40 Dossiers' },
+            { id: 'investigations', label: 'Environmental Investigations', icon: ShieldCheck, badge: 'KEW-EIAI' },
             { id: 'discovery', label: 'Global Discovery & Authority', icon: Globe, badge: 'Live SEO & AI' },
             { id: 'events', label: 'Events & Conferences', icon: Calendar, badge: '104 Programs' },
             { id: 'partnerships', label: 'Support, CSR & Grants', icon: DollarSign, badge: 'Compliance' },
@@ -510,6 +522,16 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
             </button>
           ))}
         </div>
+
+        {/* Sectoral Environmental Research Series (40 Dossiers & 19-Stage Workflow) */}
+        {activeTab === 'sectoral-research' && (
+          <SectoralResearchAdminPanel adminName={user?.name || 'KEW Administrator'} />
+        )}
+
+        {/* Environmental Investigations & Accountability (KEW-EIAI) Admin Workspace */}
+        {activeTab === 'investigations' && (
+          <EnvironmentalInvestigationsAdminPanel adminName={user?.name || 'KEW Administrator'} />
+        )}
 
         {/* Global Discovery, Brand Entity & Authority Intelligence */}
         {activeTab === 'discovery' && (

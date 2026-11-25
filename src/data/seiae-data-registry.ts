@@ -12,7 +12,18 @@ export interface ExternalDataSource {
   method: string;
   url: string;
   priority: IngestionPriority;
-  updateCadence: 'Daily' | 'Monthly' | 'Seasonal' | 'Annual' | 'Release-Based';
+  updateCadence:
+    | 'Daily'
+    | 'Monthly'
+    | 'Seasonal'
+    | 'Annual'
+    | 'Release-Based'
+    | 'Daily / Release-Based'
+    | 'Release-Based (5-day revisit)'
+    | 'Continuous Composite'
+    | 'Monthly Release'
+    | 'Continuous'
+    | 'Versioned Releases';
   coverage: string;
   technicalNotice?: string;
 }

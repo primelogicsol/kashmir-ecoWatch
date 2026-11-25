@@ -1329,7 +1329,7 @@ export default function HandicraftsEiaPage() {
                           {spec.craftloreRole}
                         </td>
                         <td className="p-3 text-[10px] font-mono text-slate-400">
-                          {spec.verificationMethod}
+                          {spec.dataProtocol}
                         </td>
                       </tr>
                     ))}
@@ -1523,7 +1523,7 @@ export default function HandicraftsEiaPage() {
             </div>
 
             <Card className="p-6 bg-slate-900/90 border-cyan-500/30 space-y-4">
-              <SectoralImpactMap sector="handicrafts" />
+              <SectoralImpactMap selectedSector="handicrafts" />
             </Card>
           </div>
         )}
@@ -1552,10 +1552,10 @@ export default function HandicraftsEiaPage() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
                       <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 text-xs">
-                        {pilot.location}
+                        {pilot.geographicBoundary.name}
                       </Badge>
                       <Badge variant="outline" className="border-white/10 text-slate-400 text-xs font-mono">
-                        {pilot.eiaStage}
+                        {pilot.publicationStatus}
                       </Badge>
                     </div>
 
@@ -1571,11 +1571,11 @@ export default function HandicraftsEiaPage() {
                     <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
                       <div>
                         <span className="text-[10px] text-slate-400 block font-mono">Lead Author / Reviewer</span>
-                        <span className="text-white font-medium">{pilot.leadReviewer}</span>
+                        <span className="text-white font-medium">{pilot.submittingEntity?.name || 'KEW Craft Ecology Unit'}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] text-slate-400 block font-mono">Confidence Level</span>
-                        <span className="text-cyan-400 font-bold">{pilot.confidenceScore}%</span>
+                        <span className="text-[10px] text-slate-400 block font-mono">Integrity Score</span>
+                        <span className="text-cyan-400 font-bold">{pilot.overallScore}/100</span>
                       </div>
                     </div>
                   </div>

@@ -235,11 +235,21 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-2 sm:mb-3 leading-tight tracking-tight"
           >
             Kashmir{' '}
             <span className="gradient-text text-glow">EcoWatch</span>
           </motion.h1>
+
+          {/* Institutional Subtitle — Mandatory Canonical Short Institutional Name */}
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-wide text-emerald-400 mb-3 sm:mb-4"
+          >
+            KEW Western Himalayan
+          </motion.p>
 
           {/* Positioning statement - Full institutional line */}
           <motion.p
@@ -248,7 +258,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
-            <span className="text-emerald-400 font-semibold">Formerly ESRO (Est. 2004)</span> · Operated & Supported by Dr. Kumar Foundation USA & Kumar Trust USA — Western Himalayan Ecological Intelligence Platform
+            <span className="text-emerald-400 font-semibold">Kashmir EcoWatch Western Himalayan</span> · Formerly Environment and Service Research Organization (ESRO, Est. 2004) · Operated &amp; Supported by Dr. Kumar Foundation USA &amp; Kumar Trust USA
           </motion.p>
 
           {/* Product descriptor */}
@@ -258,8 +268,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
           >
-            A scientific, spatial, and real-time ecological intelligence system for biodiversity,
-            water systems, hazard intelligence, environmental monitoring, seasonal phenology, and civil society impact across Kashmir & Ladakh.
+            Environmental intelligence, satellite monitoring, GIS, biodiversity research, climate science, hydrological monitoring, and ecological assessments across the Western Himalaya.
           </motion.p>
 
           {/* Mobile 2-Tap Direct Field Telemetry (Priority 1 Mobile Accessibility) */}

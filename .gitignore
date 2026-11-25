@@ -77,6 +77,10 @@ all-routes.json
 artifacts/
 data/error-telemetry-store.json
 data/discovery-intelligence-store.json
+data/environmental-investigations-store.json
+data/sectoral-research-series-store.json
+data/sectoral-report-analytics.json
+data/generated-pdfs/
 data/backups/
 *.dump
 public/audit-screenshots/

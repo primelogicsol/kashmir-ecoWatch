@@ -12,6 +12,7 @@ import { DistrictIntelligenceStrip } from '@/components/sections/DistrictIntelli
 import { OnboardingStrip } from '@/components/sections/OnboardingStrip';
 import { EarthHumanImpactSection } from '@/components/sections/EarthHumanImpactSection';
 import { SectoralEiaSection } from '@/components/sections/SectoralEiaSection';
+import { EnvironmentalInvestigationsSection } from '@/components/sections/EnvironmentalInvestigationsSection';
 import { EducationStewardshipActionSection } from '@/components/sections/EducationStewardshipActionSection';
 import dynamic from 'next/dynamic';
 
@@ -49,6 +50,11 @@ export function HomePageClient() {
       {/* Band 2.2: Sectoral EIA Engine (SEIAE) */}
       <ErrorBoundary sectionName="Sectoral EIA">
         <SectoralEiaSection />
+      </ErrorBoundary>
+
+      {/* Band 2.3: Environmental Investigations & Accountability (KEW-EIAI) */}
+      <ErrorBoundary sectionName="Environmental Investigations">
+        <EnvironmentalInvestigationsSection />
       </ErrorBoundary>
 
       {/* Band 3: Atlas + Live Monitoring */}

@@ -1,23 +1,33 @@
-# Kashmir EcoWatch Western Himalayan (KEW)
+# Kashmir EcoWatch (KEW) | Western Himalayan
 
-> Independent, non-commercial, non-political scientific environmental intelligence platform documenting hydrological systems, alpine lakes, Ramsar wetlands, glaciers, biodiversity, pollution telemetry, natural hazards, and environmental governance across Kashmir and the Western Himalaya.
+> Kashmir EcoWatch (KEW Western Himalayan) provides environmental intelligence, satellite monitoring, GIS, biodiversity research, climate science and ecological assessments across the Western Himalaya.
 
-- **Official Name:** Kashmir EcoWatch
-- **Extended Institutional Identity:** Kashmir EcoWatch Western Himalayan (KEW)
+- **Primary Name:** Kashmir EcoWatch
+- **Full Institutional Name:** Kashmir EcoWatch Western Himalayan
+- **Short Institutional Name:** KEW Western Himalayan
+- **Acronym:** KEW
 - **Historical Lineage:** Established 2004 as Environment and Service Research Organization (ESRO)
-- **Canonical Website:** https://kashmir-ecowatch.com
-- **Canonical Entity ID:** https://kashmir-ecowatch.com/#organization
-- **Institutional Support:** Dr. Kumar Foundation USA & Kumar Trust USA
+- **Canonical Website:** https://kashmir-ecowatch.com/
+- **Organization Entity ID:** https://kashmir-ecowatch.com/#organization
+- **Website Entity ID:** https://kashmir-ecowatch.com/#website
+- **Institutional Support:** Dr. Kumar Foundation USA & Kumar Trust USA (Loudoun County, Virginia, USA)
 - **Geographical Scope:** Western Himalaya (Kashmir Valley, Jammu, Ladakh, Azad Jammu & Kashmir, Gilgit-Baltistan)
 - **Open Data License:** Creative Commons Attribution 4.0 International (CC BY 4.0) unless otherwise noted
 - **Scientific Contact:** contact@kashmir-ecowatch.com
+- **Official Social Profiles:** https://www.facebook.com/Kashmirecowatch/ · https://x.com/KashmirEcoWatch · https://www.linkedin.com/company/kashmir-ecowatch/
+
+## Institutional Disambiguation
+
+Kashmir EcoWatch Western Himalayan (`https://kashmir-ecowatch.com/`) is an independent U.S.-supported scientific environmental intelligence and geospatial research platform (formerly ESRO, est. 2004). It is institutionally distinct from and unaffiliated with *Jammu & Kashmir Eco-Watch (J&K Eco-Watch)* (a Kashmir-based grassroots citizens' movement under Youth Parliament of J&K), *EcoWatch (ecowatch.com)*, and *Royal Botanic Gardens, Kew (kew.org)*.
 
 ## Primary Scientific Modules & Canonical Directories
 
-- [Homepage & Environmental Command Surface](https://kashmir-ecowatch.com/)
-- [About Kashmir EcoWatch & Institutional History](https://kashmir-ecowatch.com/about)
+- [Homepage — Kashmir EcoWatch (KEW) | Western Himalayan](https://kashmir-ecowatch.com/)
+- [About Kashmir EcoWatch & Institutional Disambiguation](https://kashmir-ecowatch.com/about#institutional-disambiguation)
 - [Scientific Methodology & 8-Stage Validation Pipeline](https://kashmir-ecowatch.com/about/methodology)
 - [Ecological Governance & Alamdar Ethos](https://kashmir-ecowatch.com/about/governance)
+- [Environmental Investigations & Accountability (KEW-EIAI)](https://kashmir-ecowatch.com/environmental-investigations)
+- [Sectoral Environmental Impact Assessment (SEIAE) & Research Series](https://kashmir-ecowatch.com/sectoral-eia/reports)
 - [Water Systems & Cryosphere Hub](https://kashmir-ecowatch.com/water-systems)
 - [Biodiversity & Species Intelligence](https://kashmir-ecowatch.com/biodiversity)
 - [Protected Areas Network (182 Reserves & Parks)](https://kashmir-ecowatch.com/protected-network)
@@ -25,7 +35,6 @@
 - [Environmental & Pollution Monitoring](https://kashmir-ecowatch.com/environmental-monitoring)
 - [Natural Hazard & Early Warning Intelligence](https://kashmir-ecowatch.com/hazard-intelligence)
 - [Earth & Human Impact Satellite Observatory](https://kashmir-ecowatch.com/earth-human-impact)
-- [Sectoral Environmental Impact Assessment (SEIAE)](https://kashmir-ecowatch.com/sectoral-eia)
 - [Scientific Research Library](https://kashmir-ecowatch.com/research-library)
 - [Verified Evidence & Publications Archive](https://kashmir-ecowatch.com/library)
 - [Field Intelligence Reports](https://kashmir-ecowatch.com/field-reports)
@@ -34,6 +43,8 @@
 
 ## Flagship Scientific Assessments & Ecological Dossiers
 
+- [Dal Lake Mechanical Dredging & Ecological Defences (KEW-INV-0001)](https://kashmir-ecowatch.com/environmental-investigations/reports/dal-lake-mechanical-dredging-ecological-defences)
+- [Sheshnag Pilgrimage Infrastructure & Alpine Ecology (KEW-INV-0002)](https://kashmir-ecowatch.com/environmental-investigations/reports/sheshnag-pilgrimage-infrastructure-alpine-ecology)
 - [Sheshnag Lake: Glacial Origin, Alpine Ecology & Environmental Sensitivity](https://kashmir-ecowatch.com/library/ev-lake-sheshnag-2026)
 - [Sheshnag Lake Hydrological & Limnological Profile](https://kashmir-ecowatch.com/water-systems/lakes/sheshnag-lake)
 - [Dal Lake Limnological & Eutrophication Profile](https://kashmir-ecowatch.com/water-systems/lakes/dal-lake)
@@ -43,5 +54,3 @@
 - [Kolahoi Glacier Recession & Cryosphere Baseline](https://kashmir-ecowatch.com/water-systems/glaciers/kolahoi-glacier)
 - [Jhelum River Hydrology & Flood Intelligence](https://kashmir-ecowatch.com/water-systems/rivers/jhelum-river)
 - [Hangul (Cervus hanglu hanglu) Conservation Profile](https://kashmir-ecowatch.com/biodiversity/species/hangul-kashmir-stag)
-- [Jammu & Kashmir Comprehensive Environmental Impact Assessment](https://kashmir-ecowatch.com/research-library/environmental-impact-assessment)
-- [NWIA Wetland Inventory & High-Altitude Lakes Classification](https://kashmir-ecowatch.com/water-systems/nwia-classification)

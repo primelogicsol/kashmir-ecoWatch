@@ -6,6 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import {
+  CANONICAL_HOMEPAGE_URL,
   CANONICAL_SITE_URL,
   KEW_IDENTITY,
   ORGANIZATION_ENTITY_ID,
@@ -13,15 +14,17 @@ import {
 } from './entity-identity';
 
 export function toAbsoluteCanonicalUrl(pathOrUrl: string): string {
-  if (!pathOrUrl) return CANONICAL_SITE_URL;
+  if (!pathOrUrl || pathOrUrl === '/') return CANONICAL_HOMEPAGE_URL;
   if (/^https?:\/\//i.test(pathOrUrl)) {
-    return pathOrUrl
+    const normalized = pathOrUrl
       .replace(/^https?:\/\/(www\.)?kashmirecowatch\.org/i, CANONICAL_SITE_URL)
       .replace(/^https?:\/\/(www\.)?kashmir-ecowatch\.org/i, CANONICAL_SITE_URL);
+    if (normalized === CANONICAL_SITE_URL) return CANONICAL_HOMEPAGE_URL;
+    return normalized;
   }
   const cleanPath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`;
   const withoutTrailing = cleanPath.length > 1 ? cleanPath.replace(/\/+$/, '') : '/';
-  return withoutTrailing === '/' ? CANONICAL_SITE_URL : `${CANONICAL_SITE_URL}${withoutTrailing}`;
+  return withoutTrailing === '/' ? CANONICAL_HOMEPAGE_URL : `${CANONICAL_SITE_URL}${withoutTrailing}`;
 }
 
 /**
@@ -33,17 +36,12 @@ export function buildRootEntityGraph() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['Organization', 'ResearchOrganization'],
+        '@type': 'Organization',
         '@id': ORGANIZATION_ENTITY_ID,
         name: KEW_IDENTITY.officialName,
         legalName: KEW_IDENTITY.extendedName,
-        alternateName: [
-          KEW_IDENTITY.extendedName,
-          KEW_IDENTITY.shortName,
-          KEW_IDENTITY.alternativeName,
-          KEW_IDENTITY.historicalPredecessor,
-        ],
-        url: CANONICAL_SITE_URL,
+        alternateName: [...KEW_IDENTITY.organizationAlternateNames],
+        url: CANONICAL_HOMEPAGE_URL,
         logo: {
           '@type': 'ImageObject',
           '@id': `${CANONICAL_SITE_URL}/#logo`,
@@ -52,9 +50,9 @@ export function buildRootEntityGraph() {
           caption: `${KEW_IDENTITY.extendedName} Official Emblem`,
         },
         image: KEW_IDENTITY.logoUrl,
-        description:
-          'Kashmir EcoWatch Western Himalayan (KEW), continuing the institutional environmental research lineage established in 2004 as Environment and Service Research Organization (ESRO), is an independent, non-commercial, non-political scientific environmental intelligence platform supported by Dr. Kumar Foundation USA and Kumar Trust USA.',
+        description: KEW_IDENTITY.organizationDescription,
         foundingDate: KEW_IDENTITY.foundingYear,
+        slogan: `${KEW_IDENTITY.shortInstitutionalName} — Continuing the research lineage of ${KEW_IDENTITY.historicalPredecessor} (Est. 2004)`,
         email: KEW_IDENTITY.contactEmail,
         address: {
           '@type': 'PostalAddress',
@@ -99,18 +97,14 @@ export function buildRootEntityGraph() {
       {
         '@type': 'WebSite',
         '@id': WEBSITE_ENTITY_ID,
-        url: CANONICAL_SITE_URL,
+        url: CANONICAL_HOMEPAGE_URL,
         name: KEW_IDENTITY.officialName,
-        alternateName: [
-          KEW_IDENTITY.extendedName,
-          `${KEW_IDENTITY.officialName} — ${KEW_IDENTITY.platformDescriptor}`,
-        ],
-        description:
-          'Authoritative environmental science, hydrological monitoring, biodiversity conservation, satellite GIS, and natural hazard intelligence across Kashmir and the Western Himalaya.',
-        inLanguage: 'en',
+        alternateName: [...KEW_IDENTITY.websiteAlternateNames],
+        description: KEW_IDENTITY.homepageDescription,
         publisher: {
           '@id': ORGANIZATION_ENTITY_ID,
         },
+        inLanguage: 'en',
         potentialAction: {
           '@type': 'SearchAction',
           target: {

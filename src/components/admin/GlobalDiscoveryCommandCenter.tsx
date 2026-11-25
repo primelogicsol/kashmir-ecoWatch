@@ -119,6 +119,50 @@ interface DiscoveryDashboardPayload {
     indexNow: { status: string; keyConfigured: boolean };
     zenodoDeposit: { status: string; tokenConfigured: boolean };
   };
+  p0BrandSearchIntelligence?: {
+    priorityLevel: string;
+    priorityKeywordsCount: number;
+    canonicalDomainsCount: number;
+    canonicalHomepageUrl: string;
+    targetPosition: string;
+    verifiedKeywordsCount: number;
+    keywords: Array<{
+      id: string;
+      keyword: string;
+      targetPosition: string;
+      preferredDestination: string;
+      isStandaloneAcronym: boolean;
+      variations: string[];
+      competitorContext: string;
+      googleSearchUrl: string;
+      bingSearchUrl: string;
+      actualGooglePosition: number | null;
+      actualBingPosition: number | null;
+      actualPositionDisplay: string;
+      bingPositionDisplay: string;
+      rankingUrl: string | null;
+      impressions: number | null;
+      clicks: number | null;
+      ctr: number | null;
+      competingResults: string[];
+      aiOverviewAttribution: string;
+      knowledgePanelAttribution: string;
+      geographicMarket: string;
+      deviceType: string;
+      observedAt: string | null;
+      positionDeltaGoogle: number | null;
+      positionDeltaBing: number | null;
+    }>;
+    alerts: Array<{
+      id: string;
+      severity: 'P0_CRITICAL' | 'HIGH' | 'MEDIUM';
+      triggerType: string;
+      title: string;
+      observedEvidence: string;
+      remediationAction: string;
+      status: string;
+    }>;
+  };
   brandPlatformStatuses: Array<{
     platform: string;
     status: string;
@@ -178,11 +222,27 @@ export function GlobalDiscoveryCommandCenter({
   const [loading, setLoading] = useState(true);
   const [runningAction, setRunningAction] = useState<string | null>(null);
   const [subView, setSubView] = useState<
-    'overview' | 'brand' | 'distribution' | 'targets' | 'topics' | 'audit'
-  >('overview');
+    'p0-brand' | 'overview' | 'brand' | 'distribution' | 'targets' | 'topics' | 'audit'
+  >('p0-brand');
   const [authError, setAuthError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  // P0 Six-Keyword SERP Observation Form State
+  const [p0Keyword, setP0Keyword] = useState('Kashmir Eco Watch');
+  const [p0GooglePos, setP0GooglePos] = useState('');
+  const [p0BingPos, setP0BingPos] = useState('');
+  const [p0RankingUrl, setP0RankingUrl] = useState('https://kashmir-ecowatch.com/');
+  const [p0Impressions, setP0Impressions] = useState('');
+  const [p0Clicks, setP0Clicks] = useState('');
+  const [p0Ctr, setP0Ctr] = useState('');
+  const [p0Competing, setP0Competing] = useState('');
+  const [p0AiOverview, setP0AiOverview] = useState('Unverified');
+  const [p0KnowledgePanel, setP0KnowledgePanel] = useState('Unverified');
+  const [p0Market, setP0Market] = useState('United States');
+  const [p0Device, setP0Device] = useState<'Desktop' | 'Mobile'>('Desktop');
+  const [p0Source, setP0Source] = useState<'authorized_serp_observation' | 'gsc_telemetry'>('authorized_serp_observation');
+  const [p0Notes, setP0Notes] = useState('');
 
   // Brand Check Form State
   const [brandPlatform, setBrandPlatform] = useState('Google Search');
@@ -277,6 +337,42 @@ export function GlobalDiscoveryCommandCenter({
       if (res.ok) {
         setBrandSummary('');
         setNotice(`Recorded verified Brand Identity check for ${brandPlatform}.`);
+        await fetchDiscovery('brand-check');
+      }
+    } finally {
+      setRunningAction(null);
+    }
+  };
+
+  const handleRecordP0KeywordObservation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRunningAction('record-p0-kw');
+    try {
+      const res = await fetch('/api/admin/discovery', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'record-p0-keyword-observation',
+          keyword: p0Keyword,
+          googlePosition: p0GooglePos.trim() ? Number(p0GooglePos) : null,
+          bingPosition: p0BingPos.trim() ? Number(p0BingPos) : null,
+          rankingUrl: p0RankingUrl.trim() || null,
+          impressions: p0Impressions.trim() ? Number(p0Impressions) : null,
+          clicks: p0Clicks.trim() ? Number(p0Clicks) : null,
+          ctr: p0Ctr.trim() ? Number(p0Ctr) : null,
+          competingResults: p0Competing,
+          aiOverviewAttribution: p0AiOverview,
+          knowledgePanelAttribution: p0KnowledgePanel,
+          geographicMarket: p0Market,
+          deviceType: p0Device,
+          verificationSource: p0Source,
+          notes: p0Notes,
+        }),
+      });
+      if (res.ok) {
+        setNotice(`Recorded verified P0 SERP observation for "${p0Keyword}" in PostgreSQL.`);
+        setP0Notes('');
         await fetchDiscovery('brand-check');
       }
     } finally {
@@ -482,6 +578,7 @@ export function GlobalDiscoveryCommandCenter({
         {/* Sub-navigation across the 8 integrated capabilities */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
           {[
+            { id: 'p0-brand', label: 'P0 Critical · 6 Brand Keywords & Alerts' },
             { id: 'overview', label: 'KPIs & Technical SEO Health' },
             { id: 'brand', label: 'Brand Entity Protection & Monitoring' },
             { id: 'distribution', label: '8-Stage Automated Distribution (Human Gate)' },
@@ -602,6 +699,362 @@ export function GlobalDiscoveryCommandCenter({
           </div>
         ))}
       </div>
+
+      {/* SUBVIEW 0 (P0 CRITICAL): KEW BRAND SEARCH INTELLIGENCE & 6-KEYWORD RECOVERY */}
+      {subView === 'p0-brand' && data.p0BrandSearchIntelligence && (
+        <div className="space-y-6">
+          {/* Header & 3 Headline P0 Cards (Exact Section 6 Layout) */}
+          <div className="rounded-2xl bg-slate-900/90 border border-rose-500/35 p-6 space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                    {data.p0BrandSearchIntelligence.priorityLevel}
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-400">
+                    Canonical Destination: {data.p0BrandSearchIntelligence.canonicalHomepageUrl}
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white">
+                  KEW Brand Search Intelligence — Canonical Institutional Identity Monitoring
+                </h3>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  All six priority brand variations map to one institutional entity (<code className="text-emerald-300">https://kashmir-ecowatch.com/#organization</code>) and one canonical homepage. Actual ranking positions reflect verified external observations only — never simulated estimates.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                <span className="text-xs text-slate-400 font-semibold block">Priority keywords</span>
+                <span className="text-3xl font-black font-mono text-emerald-400">
+                  {data.p0BrandSearchIntelligence.priorityKeywordsCount}
+                </span>
+                <span className="text-[11px] text-slate-500 block mt-0.5">
+                  P0 institutional brand variations
+                </span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                <span className="text-xs text-slate-400 font-semibold block">Canonical domains</span>
+                <span className="text-3xl font-black font-mono text-sky-400">
+                  {data.p0BrandSearchIntelligence.canonicalDomainsCount}
+                </span>
+                <span className="text-[11px] text-slate-500 block mt-0.5 font-mono">
+                  https://kashmir-ecowatch.com/
+                </span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
+                <span className="text-xs text-slate-400 font-semibold block">Target position</span>
+                <span className="text-3xl font-black font-mono text-amber-400">
+                  {data.p0BrandSearchIntelligence.targetPosition}
+                </span>
+                <span className="text-[11px] text-slate-500 block mt-0.5">
+                  5 full-name #1 targets · 1 acronym aspiration
+                </span>
+              </div>
+            </div>
+
+            {/* Six-Keyword Priority Monitoring Table + Live Search Verification Buttons */}
+            <div className="overflow-x-auto rounded-xl border border-white/10">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-slate-950 text-slate-400 font-mono uppercase text-[10px] border-b border-white/10">
+                  <tr>
+                    <th className="py-3 px-4">Brand keyword</th>
+                    <th className="py-3 px-3">Actual position (Google)</th>
+                    <th className="py-3 px-3">Bing</th>
+                    <th className="py-3 px-3">Target</th>
+                    <th className="py-3 px-3">Ranking URL / Telemetry</th>
+                    <th className="py-3 px-3">AI &amp; Competing Context</th>
+                    <th className="py-3 px-4 text-right">Live search verification</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 bg-slate-950/60">
+                  {data.p0BrandSearchIntelligence.keywords.map((kw) => (
+                    <tr key={kw.id} className="hover:bg-white/[0.02]">
+                      <td className="py-3.5 px-4">
+                        <div className="font-bold text-white text-sm">{kw.keyword}</div>
+                        <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                          Variants: {kw.variations.join(' · ')}
+                        </div>
+                      </td>
+                      <td className="py-3.5 px-3 font-mono">
+                        <span
+                          className={`px-2 py-0.5 rounded font-bold ${
+                            kw.actualGooglePosition === 1
+                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                              : kw.actualGooglePosition !== null
+                              ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                              : 'bg-slate-800 text-slate-300 border border-white/10'
+                          }`}
+                        >
+                          {kw.actualPositionDisplay}
+                        </span>
+                        {kw.positionDeltaGoogle !== null && kw.positionDeltaGoogle !== 0 && (
+                          <span
+                            className={`ml-1.5 text-[10px] ${
+                              kw.positionDeltaGoogle > 0 ? 'text-emerald-400' : 'text-rose-400'
+                            }`}
+                          >
+                            {kw.positionDeltaGoogle > 0 ? `+${kw.positionDeltaGoogle}` : kw.positionDeltaGoogle}
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-3.5 px-3 font-mono text-slate-300">
+                        {kw.bingPositionDisplay}
+                      </td>
+                      <td className="py-3.5 px-3 font-mono font-bold text-emerald-400">
+                        {kw.targetPosition}
+                      </td>
+                      <td className="py-3.5 px-3 text-[11px] text-slate-300">
+                        {kw.rankingUrl ? (
+                          <div className="font-mono text-sky-300 truncate max-w-[180px]">{kw.rankingUrl}</div>
+                        ) : (
+                          <span className="text-slate-500">Preferred: {kw.preferredDestination}</span>
+                        )}
+                        {kw.impressions !== null && (
+                          <div className="text-[10px] text-slate-400 font-mono">
+                            Imp: {kw.impressions} · Clicks: {kw.clicks ?? 0} · CTR: {kw.ctr ?? 0}%
+                          </div>
+                        )}
+                      </td>
+                      <td className="py-3.5 px-3 text-[11px] text-slate-400 max-w-xs">
+                        <div>AI Overview: <span className="text-slate-200">{kw.aiOverviewAttribution}</span></div>
+                        <div className="text-[10px] text-slate-500 line-clamp-2 mt-0.5">{kw.competitorContext}</div>
+                      </td>
+                      <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                        <div className="inline-flex items-center gap-1.5">
+                          <a
+                            href={kw.googleSearchUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2.5 py-1 rounded bg-emerald-600/20 hover:bg-emerald-600/35 text-emerald-300 border border-emerald-500/30 font-mono text-[11px] inline-flex items-center gap-1"
+                          >
+                            <span>Search</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                          <a
+                            href={kw.bingSearchUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 border border-white/10 font-mono text-[10px] inline-flex items-center gap-1"
+                          >
+                            <span>Bing</span>
+                            <ExternalLink className="w-2.5 h-2.5" />
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Brand Search Alerts & Actionable Remediation Queue + SERP Observation Logger */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-7 rounded-2xl bg-slate-900/85 border border-white/10 p-6 space-y-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-rose-400" />
+                <span>P0 Brand Search Alerts &amp; Actionable Remediation Queue</span>
+              </h3>
+              <div className="space-y-3">
+                {data.p0BrandSearchIntelligence.alerts.map((al) => (
+                  <div
+                    key={al.id}
+                    className="p-4 rounded-xl bg-slate-950 border border-rose-500/25 space-y-1.5 text-xs"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                        {al.severity.replace('_', ' ')} · {al.triggerType}
+                      </span>
+                      <span className="text-[10px] font-mono text-amber-300">{al.status}</span>
+                    </div>
+                    <div className="font-bold text-white text-sm">{al.title}</div>
+                    <p className="text-slate-400 leading-relaxed">{al.observedEvidence}</p>
+                    <div className="pt-1.5 border-t border-white/5 text-emerald-300">
+                      <strong className="text-white">Action Required:</strong> {al.remediationAction}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 rounded-2xl bg-slate-900/85 border border-white/10 p-6 space-y-4">
+              <h3 className="text-base font-bold text-white">
+                Record Verified SERP / Search Console Observation
+              </h3>
+              <form onSubmit={handleRecordP0KeywordObservation} className="space-y-2.5 text-xs">
+                <div>
+                  <label className="block text-slate-400 font-mono mb-1">P0 Brand Keyword</label>
+                  <select
+                    value={p0Keyword}
+                    onChange={(e) => setP0Keyword(e.target.value)}
+                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-2 text-white"
+                  >
+                    {data.p0BrandSearchIntelligence.keywords.map((k) => (
+                      <option key={k.id} value={k.keyword}>
+                        {k.keyword}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">Google Position (blank = Unverified)</label>
+                    <input
+                      type="number"
+                      min={1}
+                      placeholder="Unverified"
+                      value={p0GooglePos}
+                      onChange={(e) => setP0GooglePos(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-1.5 text-white font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">Bing Position</label>
+                    <input
+                      type="number"
+                      min={1}
+                      placeholder="Unverified"
+                      value={p0BingPos}
+                      onChange={(e) => setP0BingPos(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-1.5 text-white font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">GSC Impressions</label>
+                    <input
+                      type="number"
+                      min={0}
+                      placeholder="—"
+                      value={p0Impressions}
+                      onChange={(e) => setP0Impressions(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1.5 text-white font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">GSC Clicks</label>
+                    <input
+                      type="number"
+                      min={0}
+                      placeholder="—"
+                      value={p0Clicks}
+                      onChange={(e) => setP0Clicks(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1.5 text-white font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">CTR (%)</label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      min={0}
+                      placeholder="—"
+                      value={p0Ctr}
+                      onChange={(e) => setP0Ctr(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1.5 text-white font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 font-mono mb-1">Observed Ranking URL</label>
+                  <input
+                    type="text"
+                    value={p0RankingUrl}
+                    onChange={(e) => setP0RankingUrl(e.target.value)}
+                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-1.5 text-white font-mono"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">AI Overview Attribution</label>
+                    <select
+                      value={p0AiOverview}
+                      onChange={(e) => setP0AiOverview(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1.5 text-white"
+                    >
+                      <option value="Unverified">Unverified</option>
+                      <option value="Accurate KEW Attribution">Accurate KEW Attribution</option>
+                      <option value="Competing / Mixed Attribution">Competing / Mixed Attribution</option>
+                      <option value="KEW Absent">KEW Absent</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">Knowledge Panel</label>
+                    <select
+                      value={p0KnowledgePanel}
+                      onChange={(e) => setP0KnowledgePanel(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1.5 text-white"
+                    >
+                      <option value="Unverified">Unverified</option>
+                      <option value="KEW Western Himalayan">KEW Western Himalayan</option>
+                      <option value="Other Entity (e.g. Kew Gardens)">Other Entity (e.g. Kew Gardens)</option>
+                      <option value="None">None</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">Geographic Market</label>
+                    <input
+                      type="text"
+                      value={p0Market}
+                      onChange={(e) => setP0Market(e.target.value)}
+                      className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-1.5 text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-400 font-mono mb-1">Device &amp; Source</label>
+                    <div className="grid grid-cols-2 gap-1">
+                      <select
+                        value={p0Device}
+                        onChange={(e) => setP0Device(e.target.value as 'Desktop' | 'Mobile')}
+                        className="bg-slate-950 border border-white/10 rounded-lg px-1.5 py-1.5 text-white"
+                      >
+                        <option value="Desktop">Desktop</option>
+                        <option value="Mobile">Mobile</option>
+                      </select>
+                      <select
+                        value={p0Source}
+                        onChange={(e) => setP0Source(e.target.value as any)}
+                        className="bg-slate-950 border border-white/10 rounded-lg px-1.5 py-1.5 text-white"
+                      >
+                        <option value="authorized_serp_observation">SERP</option>
+                        <option value="gsc_telemetry">GSC</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 font-mono mb-1">Competing Results Observed (comma-separated)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. jkecowatch.wordpress.com, kew.org"
+                    value={p0Competing}
+                    onChange={(e) => setP0Competing(e.target.value)}
+                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-2.5 py-1.5 text-white font-mono"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl cursor-pointer"
+                >
+                  Save Verified P0 SERP Observation to PostgreSQL
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* SUBVIEW 1: TECHNICAL SEO HEALTH & WEBMASTER CONNECTIONS */}
       {subView === 'overview' && (

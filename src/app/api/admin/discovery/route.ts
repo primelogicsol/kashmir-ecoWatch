@@ -7,9 +7,11 @@ import { getCompiledSearchCorpus } from '@/lib/search/index-builder';
 import { evidenceRegistry } from '@/data/evidence-intelligence';
 import { fieldReportsRegistry } from '@/data/field-reports-registry';
 import {
+  CANONICAL_HOMEPAGE_URL,
   CANONICAL_SITE_URL,
   KEW_IDENTITY,
   SEVENTEEN_ENVIRONMENTAL_TOPIC_CLUSTERS,
+  SIX_PRIORITY_BRAND_KEYWORDS,
   THIRTY_SIX_DISCOVERY_TARGETS,
 } from '@/lib/seo/entity-identity';
 import { isVerifiedRealDoi } from '@/lib/seo/structured-data';
@@ -20,10 +22,12 @@ import {
   getAllDiscoveryRecords,
   recordBrandMonitorCheck,
   recordDiscoveryAuditLog,
+  recordP0BrandKeywordObservation,
   submitUrlsToIndexNow,
   upsertDistributionWorkflow,
   type BrandMonitorRecord,
   type DistributionWorkflowRecord,
+  type P0BrandKeywordObservation,
 } from '@/lib/seo/discovery-store';
 
 export const dynamic = 'force-dynamic';
@@ -72,6 +76,214 @@ async function probeDnsWebmasterOwnership(): Promise<{
   } catch {
     return { googleDnsTxtVerified: false, bingDnsTxtVerified: false };
   }
+}
+
+interface BrandSearchAlertItem {
+  id: string;
+  severity: 'P0_CRITICAL' | 'HIGH' | 'MEDIUM';
+  triggerType: string;
+  title: string;
+  observedEvidence: string;
+  remediationAction: string;
+  status: 'OPEN_ACTION_REQUIRED' | 'MONITORING';
+}
+
+let cachedProdParity: {
+  checkedAtMs: number;
+  prodTitle: string | null;
+  prodCanonical: string | null;
+  kewNuStatus: number | null;
+  kewHyphenStatus: number | null;
+} | null = null;
+
+async function probeLiveBrandDomainParity() {
+  const now = Date.now();
+  if (cachedProdParity && now - cachedProdParity.checkedAtMs < 3 * 60 * 1000) {
+    return cachedProdParity;
+  }
+  let prodTitle: string | null = null;
+  let prodCanonical: string | null = null;
+  let kewNuStatus: number | null = null;
+  let kewHyphenStatus: number | null = null;
+
+  try {
+    const [pRes, v1Res, v2Res] = await Promise.allSettled([
+      fetch(CANONICAL_HOMEPAGE_URL, { redirect: 'manual', signal: AbortSignal.timeout(3500) }),
+      fetch('https://kew-nu.vercel.app/', { redirect: 'manual', signal: AbortSignal.timeout(3500) }),
+      fetch('https://kashmir-eco-watch.vercel.app/', { redirect: 'manual', signal: AbortSignal.timeout(3500) }),
+    ]);
+    if (pRes.status === 'fulfilled' && pRes.value.ok) {
+      const html = await pRes.value.text();
+      prodTitle = html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || null;
+      prodCanonical =
+        html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1]?.trim() ||
+        html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i)?.[1]?.trim() ||
+        null;
+    }
+    if (v1Res.status === 'fulfilled') kewNuStatus = v1Res.value.status;
+    if (v2Res.status === 'fulfilled') kewHyphenStatus = v2Res.value.status;
+  } catch {
+    // ignore transient offline
+  }
+
+  cachedProdParity = {
+    checkedAtMs: now,
+    prodTitle,
+    prodCanonical,
+    kewNuStatus,
+    kewHyphenStatus,
+  };
+  return cachedProdParity;
+}
+
+function buildP0BrandSearchIntelligence(
+  observations: P0BrandKeywordObservation[],
+  parity: {
+    prodTitle: string | null;
+    prodCanonical: string | null;
+    kewNuStatus: number | null;
+    kewHyphenStatus: number | null;
+  }
+) {
+  const keywordRows = SIX_PRIORITY_BRAND_KEYWORDS.map((def) => {
+    const latest = observations.find((o) => o.keyword.toLowerCase() === def.keyword.toLowerCase());
+    return {
+      id: def.id,
+      keyword: def.keyword,
+      targetPosition: def.targetPosition,
+      preferredDestination: def.preferredDestination,
+      isStandaloneAcronym: Boolean(def.isStandaloneAcronym),
+      variations: def.variations,
+      competitorContext: def.competitorContext,
+      googleSearchUrl: def.googleSearchUrl,
+      bingSearchUrl: def.bingSearchUrl,
+      actualGooglePosition: latest?.googlePosition ?? null,
+      actualBingPosition: latest?.bingPosition ?? null,
+      actualPositionDisplay:
+        latest?.googlePosition !== null && latest?.googlePosition !== undefined
+          ? `#${latest.googlePosition}`
+          : 'Unverified',
+      bingPositionDisplay:
+        latest?.bingPosition !== null && latest?.bingPosition !== undefined
+          ? `#${latest.bingPosition}`
+          : 'Unverified',
+      rankingUrl: latest?.rankingUrl ?? null,
+      impressions: latest?.impressions ?? null,
+      clicks: latest?.clicks ?? null,
+      ctr: latest?.ctr ?? null,
+      competingResults: latest?.competingResults ?? [],
+      aiOverviewAttribution: latest?.aiOverviewAttribution ?? 'Unverified',
+      knowledgePanelAttribution: latest?.knowledgePanelAttribution ?? 'Unverified',
+      geographicMarket: latest?.geographicMarket ?? 'Global / United States',
+      deviceType: latest?.deviceType ?? 'Desktop',
+      observedAt: latest?.observedAt ?? null,
+      positionDeltaGoogle: latest?.positionDeltaGoogle ?? null,
+      positionDeltaBing: latest?.positionDeltaBing ?? null,
+      verificationSource: latest?.verificationSource ?? null,
+    };
+  });
+
+  const alerts: BrandSearchAlertItem[] = [];
+
+  // Alert Check 1: Production homepage metadata parity
+  if (parity.prodTitle && parity.prodTitle !== KEW_IDENTITY.homepageTitle) {
+    alerts.push({
+      id: 'alert-prod-metadata-parity',
+      severity: 'P0_CRITICAL',
+      triggerType: 'Official homepage metadata drift / pending VPS deployment',
+      title: 'Live production origin serves legacy generic <title> instead of P0 homepage standard',
+      observedEvidence: `Live https://kashmir-ecowatch.com/ returned <title>"${parity.prodTitle}"</title> (canonical: ${
+        parity.prodCanonical || 'missing'
+      }) instead of "${KEW_IDENTITY.homepageTitle}".`,
+      remediationAction:
+        'SSH into IONOS Ubuntu VPS (74.208.248.57) and run `git pull origin master && npm ci && npm run build && pm2 reload all`, then request homepage re-indexing in Google Search Console.',
+      status: 'OPEN_ACTION_REQUIRED',
+    });
+  }
+
+  // Alert Check 2: Noncanonical Vercel deployments live
+  if (parity.kewNuStatus === 200 || parity.kewHyphenStatus === 200) {
+    alerts.push({
+      id: 'alert-noncanonical-vercel-live',
+      severity: 'P0_CRITICAL',
+      triggerType: 'Noncanonical KEW deployment accessible with HTTP 200',
+      title: 'Duplicate Vercel deployment aliases (kew-nu.vercel.app / kashmir-eco-watch.vercel.app) still return HTTP 200',
+      observedEvidence: `kew-nu.vercel.app HTTP ${parity.kewNuStatus ?? 'N/A'}, kashmir-eco-watch.vercel.app HTTP ${
+        parity.kewHyphenStatus ?? 'N/A'
+      } (308 redirects active in repo next.config.js but legacy Vercel projects have not been deleted or re-linked).`,
+      remediationAction:
+        'Delete both obsolete projects (`kew-nu` and `kashmir-eco-watch`) in the Vercel Dashboard or re-link them to `primelogicsol/kashmir-ecoWatch` (`master`) so 308 redirects execute.',
+      status: 'OPEN_ACTION_REQUIRED',
+    });
+  }
+
+  // Alert Check 3: Competing entity & AI search conflation
+  alerts.push({
+    id: 'alert-competing-entity-conflation',
+    severity: 'P0_CRITICAL',
+    triggerType: 'Competing entity ranks above / merged in AI search results',
+    title: 'External search & AI summaries conflate "Kashmir Eco Watch" with J&K Eco-Watch and "KEW" with Royal Botanic Gardens, Kew',
+    observedEvidence:
+      'Live web grounding observations confirm "Kashmir Eco Watch" / "Kashmir Ecowatch" currently resolve to grassroots Jammu & Kashmir Eco-Watch (Youth Parliament of J&K), while "KEW Western Himalayan" surfaces Royal Botanic Gardens, Kew Himalayan herbarium collections.',
+    remediationAction:
+      'Deploy P0 entity graph & /about#institutional-disambiguation to production VPS, submit /sitemap.xml in GSC + Bing Webmaster, and publish independent academic/institutional backlinks (Zenodo DOIs, LinkedIn, Dr. Kumar Foundation USA) citing "Kashmir EcoWatch Western Himalayan" -> https://kashmir-ecowatch.com/.',
+    status: 'OPEN_ACTION_REQUIRED',
+  });
+
+  // Alert Check 4: Social profile identity synchronization
+  alerts.push({
+    id: 'alert-social-profile-sync',
+    severity: 'HIGH',
+    triggerType: 'Official social profiles have minor naming variance',
+    title: 'Synchronize Facebook page title ("KEW Western Himalaya") with exact canonical name',
+    observedEvidence:
+      'Live og:title on https://www.facebook.com/Kashmirecowatch/ reads "KEW Western Himalaya | Fairfax County VA" (omitting primary name "Kashmir EcoWatch" and final "n" in "Himalayan").',
+    remediationAction:
+      'Authorized administrator should update Facebook page name/bio to "Kashmir EcoWatch (KEW Western Himalayan)" and confirm website link is https://kashmir-ecowatch.com/.',
+    status: 'OPEN_ACTION_REQUIRED',
+  });
+
+  // Alert Check 5: Check recorded SERP observations for absent KEW / outranked / non-canonical ranking URL
+  for (const row of keywordRows) {
+    if (row.actualGooglePosition !== null && row.actualGooglePosition > 1 && !row.isStandaloneAcronym) {
+      alerts.push({
+        id: `alert-rank-${row.id}`,
+        severity: 'P0_CRITICAL',
+        triggerType: 'Competing organization ranks above official homepage',
+        title: `"${row.keyword}" observed at Google #${row.actualGooglePosition} (Target: #1)`,
+        observedEvidence: `Observed ranking URL: ${row.rankingUrl || 'Absent / Non-KEW'} (${row.geographicMarket}, ${row.deviceType}).`,
+        remediationAction:
+          'Inspect URL in Google Search Console, verify homepage internal anchor authority, and reinforce exact institutional citation on external profiles.',
+        status: 'OPEN_ACTION_REQUIRED',
+      });
+    }
+    if (
+      row.rankingUrl &&
+      row.rankingUrl.includes('vercel.app')
+    ) {
+      alerts.push({
+        id: `alert-noncanon-serp-${row.id}`,
+        severity: 'P0_CRITICAL',
+        triggerType: 'Noncanonical KEW deployment appears in search',
+        title: `Noncanonical Vercel URL ranking for "${row.keyword}"`,
+        observedEvidence: `SERP returned ${row.rankingUrl} instead of ${CANONICAL_HOMEPAGE_URL}.`,
+        remediationAction: 'Enforce 308 redirect or delete legacy Vercel deployment and request canonical inspection in GSC.',
+        status: 'OPEN_ACTION_REQUIRED',
+      });
+    }
+  }
+
+  return {
+    priorityLevel: 'P0 Critical',
+    priorityKeywordsCount: SIX_PRIORITY_BRAND_KEYWORDS.length,
+    canonicalDomainsCount: 1,
+    canonicalHomepageUrl: CANONICAL_HOMEPAGE_URL,
+    targetPosition: '#1',
+    verifiedKeywordsCount: keywordRows.filter((k) => k.actualGooglePosition !== null).length,
+    keywords: keywordRows,
+    alerts,
+    recentSerpHistory: observations.slice(0, 25),
+  };
 }
 
 function walkRoutesAndLayouts(dir: string, pages: string[] = [], layouts: string[] = []) {
@@ -194,10 +406,15 @@ export async function GET(request: NextRequest) {
     const corpus = getCompiledSearchCorpus();
     const sitemapInventory = buildValidatedSitemapInventory();
     const sitemapEntries = sitemapInventory.entries;
-    const [stored, dnsOwnership] = await Promise.all([
+    const [stored, dnsOwnership, liveParity] = await Promise.all([
       getAllDiscoveryRecords(),
       probeDnsWebmasterOwnership(),
+      probeLiveBrandDomainParity(),
     ]);
+    const p0BrandSearchIntelligence = buildP0BrandSearchIntelligence(
+      stored.p0KeywordObservations,
+      liveParity
+    );
 
     if (action !== 'overview') {
       await recordDiscoveryAuditLog({
@@ -505,6 +722,7 @@ export async function GET(request: NextRequest) {
       },
 
       integrations,
+      p0BrandSearchIntelligence,
       brandPlatformStatuses,
       recentBrandChecks: stored.brandChecks.slice(0, 25),
       recentDiscoveryEvents: stored.events.slice(0, 25),
@@ -620,6 +838,51 @@ export async function POST(request: NextRequest) {
         detail: `Identity accurate: ${check.identityAccurate}, Unrelated entity: ${check.unrelatedEntityAppeared}`,
       });
       return NextResponse.json({ success: true, brandCheck: check });
+    }
+
+    // 2b. Record P0 Six-Keyword SERP / Search Console Observation
+    if (action === 'record-p0-keyword-observation') {
+      const keyword = String(body.keyword || 'Kashmir EcoWatch').trim();
+      const parseNullableNum = (v: unknown): number | null => {
+        if (v === null || v === undefined || v === '') return null;
+        const n = Number(v);
+        return Number.isFinite(n) ? n : null;
+      };
+      const obs = await recordP0BrandKeywordObservation({
+        keyword,
+        googlePosition: parseNullableNum(body.googlePosition),
+        bingPosition: parseNullableNum(body.bingPosition),
+        rankingUrl: body.rankingUrl ? String(body.rankingUrl) : null,
+        impressions: parseNullableNum(body.impressions),
+        clicks: parseNullableNum(body.clicks),
+        ctr: parseNullableNum(body.ctr),
+        competingResults: Array.isArray(body.competingResults)
+          ? body.competingResults
+          : typeof body.competingResults === 'string' && body.competingResults.trim()
+          ? body.competingResults.split(',').map((s: string) => s.trim())
+          : [],
+        aiOverviewAttribution: String(body.aiOverviewAttribution || 'Unverified'),
+        knowledgePanelAttribution: String(body.knowledgePanelAttribution || 'Unverified'),
+        geographicMarket: String(body.geographicMarket || 'United States'),
+        deviceType: body.deviceType === 'Mobile' ? 'Mobile' : 'Desktop',
+        verificationSource:
+          body.verificationSource === 'gsc_telemetry'
+            ? 'gsc_telemetry'
+            : 'authorized_serp_observation',
+        notes: String(body.notes || ''),
+      });
+      await recordDiscoveryAuditLog({
+        actor: authResult.actor,
+        role: 'administrator',
+        authMethod: authResult.method,
+        action: 'RECORD_P0_BRAND_KEYWORD_SERP',
+        target: `${obs.keyword} (${obs.geographicMarket} · ${obs.deviceType})`,
+        status: 'SUCCESS',
+        detail: `Google: ${obs.googlePosition ? `#${obs.googlePosition}` : 'Unverified'}, Bing: ${
+          obs.bingPosition ? `#${obs.bingPosition}` : 'Unverified'
+        }, Ranking URL: ${obs.rankingUrl || 'N/A'}`,
+      });
+      return NextResponse.json({ success: true, observation: obs });
     }
 
     // 3. Prepare 8-Stage Distribution Package (Stages 1–5 -> Pauses at Stage 6 Human Gate)

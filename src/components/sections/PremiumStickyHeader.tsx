@@ -57,6 +57,7 @@ const navItems = [
   { label: 'Hazard Intelligence',     href: '/hazard-intelligence',      hasDropdown: true },
   { label: 'Earth & Human Impact',    href: '/earth-human-impact',       hasDropdown: true },
   { label: 'Sectoral EIA',            href: '/sectoral-eia',             hasDropdown: true },
+  { label: 'Investigations',          href: '/environmental-investigations', hasDropdown: true },
   { label: 'NGO Impact',              href: '/ngo-impact',               hasDropdown: false },
   { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: true },
   { label: 'About',                   href: '/about',                    hasDropdown: true },
@@ -397,6 +398,26 @@ export function PremiumStickyHeader() {
           { name: 'Scientific Reports', href: '/sectoral-eia/reports', desc: 'Peer-reviewed dossiers & monographs' },
         ];
 
+      case 'Investigations':
+        return [
+          { name: '⚖️ Investigations Hub (KEW-EIAI)', href: '/environmental-investigations', desc: 'Scientific evidence & institutional accountability' },
+          { name: '📊 Investigation Dashboard', href: '/environmental-investigations/dashboard', desc: '12-tab intelligence & evidence cockpit' },
+          { name: '📑 Investigation Reports', href: '/environmental-investigations/reports', desc: '24-section dossiers & scoping portfolio' },
+          { name: '── Flagship Published Reports ──', href: '#', desc: '', isHeader: true },
+          { name: 'KEW-INV-0001: Dal Lake Dredging', href: '/environmental-investigations/reports/dal-lake-mechanical-dredging-ecological-defences', desc: '1990–2026 sediment, wetland & audit synthesis' },
+          { name: 'KEW-INV-0002: Sheshnag Ecology', href: '/environmental-investigations/reports/sheshnag-pilgrimage-infrastructure-alpine-ecology', desc: '2012–2026 alpine tarn & corridor risks' },
+          { name: '── Architecture & Verification ──', href: '#', desc: '', isHeader: true },
+          { name: '18 Investigation Domains', href: '/environmental-investigations/domains', desc: 'Lakes, cryosphere, Karewas, dams & governance' },
+          { name: '36 Scientific Disciplines', href: '/environmental-investigations/disciplines', desc: 'Governing equations & analytical methods' },
+          { name: 'Scientific Evidence Registry', href: '/environmental-investigations/evidence', desc: 'Documented vs unverified claim matrix' },
+          { name: 'Spatial Investigation Atlas', href: '/environmental-investigations/atlas', desc: 'Interactive GIS investigation footprints' },
+          { name: 'Institutional Accountability', href: '/environmental-investigations/accountability', desc: '11-component statutory responsibility matrix' },
+          { name: 'Asian & Global Case Studies', href: '/environmental-investigations/precedents', desc: 'Lake Biwa, Taihu, Imja Tsho & Rhine benchmarks' },
+          { name: 'Recommendations Tracker', href: '/environmental-investigations/recommendations', desc: 'Phased corrective actions & indicators' },
+          { name: 'Investigation Methodology', href: '/environmental-investigations/methodology', desc: '24-section standard & 12-stage workflow' },
+          { name: '➕ Submit Investigation', href: '/environmental-investigations/submit', desc: 'Propose scoped study or official response' },
+        ];
+
       case 'Environmental Calendar':
         return [
           { name: '📅 Annual Calendar', href: '/environmental-calendar', desc: '17 UN & Western Himalayan observances' },
@@ -548,6 +569,7 @@ export function PremiumStickyHeader() {
                         {item.label === 'Hazard Intelligence' && <AlertTriangle className="w-4 h-4 text-red-400" />}
                         {item.label === 'Earth & Human Impact' && <Globe className="w-4 h-4 text-emerald-400" />}
                         {item.label === 'Sectoral EIA' && <Layers className="w-4 h-4 text-emerald-400" />}
+                        {item.label === 'Investigations' && <FileText className="w-4 h-4 text-emerald-400" />}
                         {item.label === 'Field Intelligence' && <FileText className="w-4 h-4 text-orange-400" />}
                         {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
                         {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}

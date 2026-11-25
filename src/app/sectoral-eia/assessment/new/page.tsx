@@ -34,6 +34,9 @@ import { SectorType } from '@/types/sectoral-eia';
 export default function NewAssessmentPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [registeredCode, setRegisteredCode] = useState<string>('');
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form State
   const [submissionType, setSubmissionType] = useState<'independent_scientific' | 'stakeholder_submitted'>('stakeholder_submitted');
@@ -50,9 +53,54 @@ export default function NewAssessmentPage() {
   const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 9));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/sectoral-eia/assessments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          submissionType,
+          sector,
+          title: title || `${sector.toUpperCase()} Sectoral Environmental Assessment (${district})`,
+          district,
+          watershed,
+          baselineYear,
+          submittingEntity: submittingEntity || 'KEW Contributor',
+          contactEmail,
+          keyActivity,
+          mitigationAction,
+        }),
+      });
+      const json = await res.json();
+      if (!res.ok || !json?.success) {
+        throw new Error(json?.error || 'Failed to register assessment');
+      }
+
+      // Mirror into Unified Operations Intake Queue for Admin Triage
+      await fetch('/api/operations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sourcePage: '/share-data',
+          title: `SEIAE Intake [${json.record.trackingCode}]: ${json.record.title}`,
+          ownerName: submittingEntity || 'KEW Contributor',
+          ownerEmail: contactEmail || 'editorial@kashmir-ecowatch.com',
+          organization: submittingEntity || 'Independent Contributor',
+          district,
+          summary: `Sector: ${sector} | Watershed: ${watershed} | Baseline: ${baselineYear}. ${keyActivity}`,
+        }),
+      }).catch(() => {});
+
+      setRegisteredCode(json.record.trackingCode);
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err?.message || 'Unable to persist assessment submission.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -85,8 +133,8 @@ export default function NewAssessmentPage() {
             <p className="text-sm text-slate-300 max-w-lg mx-auto leading-relaxed">
               Your assessment record for <span className="text-emerald-400 font-semibold">{title || 'Selected Landscape'}</span> has been successfully provisioned in the Kashmir EcoWatch SEIAE Shared Assessment Database under temporary code:
             </p>
-            <div className="inline-block p-3 rounded-xl bg-slate-950 border border-emerald-500/30 text-emerald-300 font-mono text-base font-bold">
-              KEW-SEIA-2026-REG-{Math.floor(1000 + Math.random() * 9000)}
+            <div className="inline-block p-3 rounded-lg bg-slate-950 border border-emerald-500/30 text-emerald-300 font-mono text-base font-bold">
+              {registeredCode}
             </div>
             <p className="text-xs text-slate-400 max-w-md mx-auto">
               Our multidisciplinary scientific review panel will audit your spatial boundaries, baseline references, and indicator telemetry within 5 working days.
@@ -568,6 +616,11 @@ export default function NewAssessmentPage() {
                   <p className="text-[11px] text-slate-400 leading-relaxed">
                     By submitting, you certify that all input values reflect documented field sensors or lab spectrometry, and you agree to EcoWatch open data publication upon scientific verification.
                   </p>
+                  {submitError && (
+                    <div className="rounded-md border border-red-500/40 bg-red-950/30 p-3 text-xs text-red-300">
+                      {submitError}
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -595,10 +648,11 @@ export default function NewAssessmentPage() {
                 ) : (
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs shadow-lg justify-center"
+                    disabled={isSubmitting}
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg justify-center"
                   >
                     <CheckCircle2 className="w-4 h-4 mr-1.5" />
-                    Submit to Scientific Review Panel
+                    {isSubmitting ? 'Registering Assessment…' : 'Submit to Scientific Review Panel'}
                   </Button>
                 )}
               </div>

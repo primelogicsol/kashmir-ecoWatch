@@ -37,6 +37,28 @@ interface ModuleGroup {
 
 const moduleGroups: ModuleGroup[] = [
   {
+    id: 'environmental-investigations',
+    title: 'Environmental Investigations & Accountability (KEW-EIAI)',
+    description: 'Multidisciplinary 24-section scientific investigations examining ecological impacts, hydrological and geological evidence, and institutional responsibility across the Western Himalayas.',
+    badge: 'KEW-EIAI',
+    icon: Scale,
+    gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
+    modules: [
+      { name: 'Module Home', route: '/environmental-investigations', description: 'Portfolio overview, live metrics & featured reports', icon: Scale },
+      { name: 'Investigation Dashboard', route: '/environmental-investigations/dashboard', description: '12-tab analytical & verification cockpit', icon: TrendingUp },
+      { name: 'Investigation Reports', route: '/environmental-investigations/reports', description: 'Published & proposed canonical dossiers', icon: FileText },
+      { name: '18 Investigation Domains', route: '/environmental-investigations/domains', description: 'Lakes, cryosphere, Karewas, dams & governance', icon: Layers },
+      { name: '36 Scientific Disciplines', route: '/environmental-investigations/disciplines', description: 'Equations, methods & Himalayan literature', icon: BookOpen },
+      { name: 'Evidence Registry', route: '/environmental-investigations/evidence', description: 'Claim-by-claim scientific verification matrix', icon: Database },
+      { name: 'Investigation Atlas', route: '/environmental-investigations/atlas', description: 'Interactive GIS footprints & watersheds', icon: Map },
+      { name: 'Institutional Accountability', route: '/environmental-investigations/accountability', description: '11-component statutory responsibility matrix', icon: Landmark },
+      { name: 'Asian & Global Case Studies', route: '/environmental-investigations/precedents', description: 'Comparative international restoration benchmarks', icon: Compass },
+      { name: 'Recommendations Tracker', route: '/environmental-investigations/recommendations', description: 'Immediate, medium & long-term corrective actions', icon: ShieldCheck },
+      { name: 'Investigation Methodology', route: '/environmental-investigations/methodology', description: '24-section standard & 12-stage AI-verified workflow', icon: Info },
+      { name: 'Submit Investigation', route: '/environmental-investigations/submit', description: 'Propose scoped study or official response', icon: Upload },
+    ],
+  },
+  {
     id: 'sectoral-eia',
     title: 'Sectoral EIA Engine (SEIAE)',
     description: 'Cross-sector ecological intelligence evaluating how economic sectors transform Western Himalayan landscapes, watersheds, and ecosystems.',

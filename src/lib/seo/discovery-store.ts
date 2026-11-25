@@ -128,9 +128,31 @@ export interface DiscoveryAuditLogRecord {
   detail: string;
 }
 
+export interface P0BrandKeywordObservation {
+  id: string;
+  keyword: string;
+  googlePosition: number | null;
+  bingPosition: number | null;
+  rankingUrl: string | null;
+  impressions: number | null;
+  clicks: number | null;
+  ctr: number | null;
+  competingResults: string[];
+  aiOverviewAttribution: string;
+  knowledgePanelAttribution: string;
+  geographicMarket: string;
+  deviceType: 'Desktop' | 'Mobile';
+  observedAt: string;
+  positionDeltaGoogle: number | null;
+  positionDeltaBing: number | null;
+  verificationSource: 'gsc_telemetry' | 'authorized_serp_observation';
+  notes: string;
+}
+
 interface FallbackStoreShape {
   events: DiscoveryEventRecord[];
   brandChecks: BrandMonitorRecord[];
+  p0KeywordObservations: P0BrandKeywordObservation[];
   workflows: DistributionWorkflowRecord[];
   indexNowLogs: IndexNowLogRecord[];
   indexNowLedger: Record<string, IndexNowUrlLedgerRecord>;
@@ -150,6 +172,9 @@ function readFallbackStore(): FallbackStoreShape {
       return {
         events: Array.isArray(raw.events) ? raw.events : [],
         brandChecks: Array.isArray(raw.brandChecks) ? raw.brandChecks : [],
+        p0KeywordObservations: Array.isArray(raw.p0KeywordObservations)
+          ? raw.p0KeywordObservations
+          : [],
         workflows: Array.isArray(raw.workflows) ? raw.workflows : [],
         indexNowLogs: Array.isArray(raw.indexNowLogs) ? raw.indexNowLogs : [],
         indexNowLedger:
@@ -163,6 +188,7 @@ function readFallbackStore(): FallbackStoreShape {
   return {
     events: [],
     brandChecks: [],
+    p0KeywordObservations: [],
     workflows: [],
     indexNowLogs: [],
     indexNowLedger: {},
@@ -252,6 +278,26 @@ export async function ensurePgTables(): Promise<boolean> {
         target TEXT NOT NULL,
         status TEXT NOT NULL,
         detail TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS kew_p0_brand_keyword_checks (
+        id TEXT PRIMARY KEY,
+        keyword TEXT NOT NULL,
+        google_position INTEGER,
+        bing_position INTEGER,
+        ranking_url TEXT,
+        impressions INTEGER,
+        clicks INTEGER,
+        ctr DOUBLE PRECISION,
+        competing_results JSONB NOT NULL DEFAULT '[]'::jsonb,
+        ai_overview_attribution TEXT NOT NULL DEFAULT 'Unverified',
+        knowledge_panel_attribution TEXT NOT NULL DEFAULT 'Unverified',
+        geographic_market TEXT NOT NULL DEFAULT 'United States',
+        device_type TEXT NOT NULL DEFAULT 'Desktop',
+        observed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        position_delta_google INTEGER,
+        position_delta_bing INTEGER,
+        verification_source TEXT NOT NULL DEFAULT 'authorized_serp_observation',
+        notes TEXT NOT NULL DEFAULT ''
       );
     `);
     pgSchemaReady = true;
@@ -845,10 +891,139 @@ async function persistIndexNowLog(log: IndexNowLogRecord, pgReady: boolean): Pro
   writeFallbackStore(fb);
 }
 
+export async function recordP0BrandKeywordObservation(input: {
+  keyword: string;
+  googlePosition?: number | null;
+  bingPosition?: number | null;
+  rankingUrl?: string | null;
+  impressions?: number | null;
+  clicks?: number | null;
+  ctr?: number | null;
+  competingResults?: string[];
+  aiOverviewAttribution?: string;
+  knowledgePanelAttribution?: string;
+  geographicMarket?: string;
+  deviceType?: 'Desktop' | 'Mobile';
+  verificationSource?: 'gsc_telemetry' | 'authorized_serp_observation';
+  notes?: string;
+}): Promise<P0BrandKeywordObservation> {
+  const pgReady = await ensurePgTables();
+  const market = input.geographicMarket || 'United States';
+  const device = input.deviceType === 'Mobile' ? 'Mobile' : 'Desktop';
+  const gPos =
+    typeof input.googlePosition === 'number' && Number.isFinite(input.googlePosition) && input.googlePosition > 0
+      ? Math.round(input.googlePosition)
+      : null;
+  const bPos =
+    typeof input.bingPosition === 'number' && Number.isFinite(input.bingPosition) && input.bingPosition > 0
+      ? Math.round(input.bingPosition)
+      : null;
+
+  let prevG: number | null = null;
+  let prevB: number | null = null;
+
+  if (pgReady) {
+    try {
+      const prevRes = await pool.query(
+        `SELECT google_position, bing_position FROM kew_p0_brand_keyword_checks
+         WHERE keyword = $1 AND geographic_market = $2 AND device_type = $3
+         ORDER BY observed_at DESC LIMIT 1`,
+        [input.keyword, market, device]
+      );
+      if (prevRes.rows[0]) {
+        prevG = prevRes.rows[0].google_position;
+        prevB = prevRes.rows[0].bing_position;
+      }
+    } catch {
+      // ignore
+    }
+  } else {
+    const fb = readFallbackStore();
+    const prev = fb.p0KeywordObservations.find(
+      (o) => o.keyword === input.keyword && o.geographicMarket === market && o.deviceType === device
+    );
+    if (prev) {
+      prevG = prev.googlePosition;
+      prevB = prev.bingPosition;
+    }
+  }
+
+  // Positive delta = rank improved (e.g., from #5 to #1 -> +4)
+  const deltaGoogle = prevG !== null && gPos !== null ? prevG - gPos : null;
+  const deltaBing = prevB !== null && bPos !== null ? prevB - bPos : null;
+
+  const record: P0BrandKeywordObservation = {
+    id: crypto.randomUUID(),
+    keyword: input.keyword,
+    googlePosition: gPos,
+    bingPosition: bPos,
+    rankingUrl: input.rankingUrl ? input.rankingUrl.trim() : null,
+    impressions:
+      typeof input.impressions === 'number' && Number.isFinite(input.impressions)
+        ? Math.round(input.impressions)
+        : null,
+    clicks:
+      typeof input.clicks === 'number' && Number.isFinite(input.clicks)
+        ? Math.round(input.clicks)
+        : null,
+    ctr: typeof input.ctr === 'number' && Number.isFinite(input.ctr) ? input.ctr : null,
+    competingResults: Array.isArray(input.competingResults) ? input.competingResults : [],
+    aiOverviewAttribution: input.aiOverviewAttribution || 'Unverified',
+    knowledgePanelAttribution: input.knowledgePanelAttribution || 'Unverified',
+    geographicMarket: market,
+    deviceType: device,
+    observedAt: new Date().toISOString(),
+    positionDeltaGoogle: deltaGoogle,
+    positionDeltaBing: deltaBing,
+    verificationSource: input.verificationSource || 'authorized_serp_observation',
+    notes: input.notes || '',
+  };
+
+  if (pgReady) {
+    try {
+      await pool.query(
+        `INSERT INTO kew_p0_brand_keyword_checks
+         (id, keyword, google_position, bing_position, ranking_url, impressions, clicks, ctr, competing_results, ai_overview_attribution, knowledge_panel_attribution, geographic_market, device_type, observed_at, position_delta_google, position_delta_bing, verification_source, notes)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10,$11,$12,$13,$14,$15,$16,$17,$18)`,
+        [
+          record.id,
+          record.keyword,
+          record.googlePosition,
+          record.bingPosition,
+          record.rankingUrl,
+          record.impressions,
+          record.clicks,
+          record.ctr,
+          JSON.stringify(record.competingResults),
+          record.aiOverviewAttribution,
+          record.knowledgePanelAttribution,
+          record.geographicMarket,
+          record.deviceType,
+          record.observedAt,
+          record.positionDeltaGoogle,
+          record.positionDeltaBing,
+          record.verificationSource,
+          record.notes,
+        ]
+      );
+      return record;
+    } catch {
+      // fall through
+    }
+  }
+
+  const fb = readFallbackStore();
+  fb.p0KeywordObservations.unshift(record);
+  fb.p0KeywordObservations = fb.p0KeywordObservations.slice(0, 300);
+  writeFallbackStore(fb);
+  return record;
+}
+
 export async function getAllDiscoveryRecords(): Promise<{
   storageBackend: 'postgresql' | 'local_json_fallback';
   events: DiscoveryEventRecord[];
   brandChecks: BrandMonitorRecord[];
+  p0KeywordObservations: P0BrandKeywordObservation[];
   workflows: DistributionWorkflowRecord[];
   indexNowLogs: IndexNowLogRecord[];
   indexNowLedgerCount: number;
@@ -856,9 +1031,10 @@ export async function getAllDiscoveryRecords(): Promise<{
 }> {
   if (await ensurePgTables()) {
     try {
-      const [evRes, bmRes, wfRes, inRes, ledgerCountRes, auditRes] = await Promise.all([
+      const [evRes, bmRes, p0Res, wfRes, inRes, ledgerCountRes, auditRes] = await Promise.all([
         pool.query(`SELECT * FROM kew_discovery_events ORDER BY occurred_at DESC LIMIT 500`),
         pool.query(`SELECT * FROM kew_brand_monitors ORDER BY checked_at DESC LIMIT 200`),
+        pool.query(`SELECT * FROM kew_p0_brand_keyword_checks ORDER BY observed_at DESC LIMIT 200`),
         pool.query(`SELECT * FROM kew_distribution_workflows ORDER BY updated_at DESC LIMIT 100`),
         pool.query(`SELECT * FROM kew_indexnow_logs ORDER BY submitted_at DESC LIMIT 50`),
         pool.query(`SELECT COUNT(*)::int AS cnt FROM kew_indexnow_url_ledger`),
@@ -893,6 +1069,26 @@ export async function getAllDiscoveryRecords(): Promise<{
           observedSummary: r.observed_summary,
           verificationMethod: r.verification_method,
           correctiveRecommendation: r.corrective_recommendation,
+        })),
+        p0KeywordObservations: p0Res.rows.map((r) => ({
+          id: r.id,
+          keyword: r.keyword,
+          googlePosition: r.google_position,
+          bingPosition: r.bing_position,
+          rankingUrl: r.ranking_url,
+          impressions: r.impressions,
+          clicks: r.clicks,
+          ctr: r.ctr,
+          competingResults: Array.isArray(r.competing_results) ? r.competing_results : [],
+          aiOverviewAttribution: r.ai_overview_attribution,
+          knowledgePanelAttribution: r.knowledge_panel_attribution,
+          geographicMarket: r.geographic_market,
+          deviceType: r.device_type,
+          observedAt: new Date(r.observed_at).toISOString(),
+          positionDeltaGoogle: r.position_delta_google,
+          positionDeltaBing: r.position_delta_bing,
+          verificationSource: r.verification_source,
+          notes: r.notes,
         })),
         workflows: wfRes.rows.map((r) => ({
           id: r.id,
@@ -939,6 +1135,7 @@ export async function getAllDiscoveryRecords(): Promise<{
     storageBackend: 'local_json_fallback',
     events: fb.events,
     brandChecks: fb.brandChecks,
+    p0KeywordObservations: fb.p0KeywordObservations,
     workflows: fb.workflows,
     indexNowLogs: fb.indexNowLogs,
     indexNowLedgerCount: Object.keys(fb.indexNowLedger || {}).length,

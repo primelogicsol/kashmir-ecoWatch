@@ -38,6 +38,7 @@ import { openDataCategories } from '@/data/open-data-catalog';
 import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
 import { CONFERENCES_DETAILED } from '@/data/conference-system';
 import { SCIENTIFIC_PROGRAM_ACTIVITIES } from '@/data/scientific-program-2027-2028';
+import { CANONICAL_INVESTIGATIONS, getDomainById } from '@/data/environmental-investigations';
 
 export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
   const documents: SearchDocument[] = [];
@@ -292,27 +293,36 @@ export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
   for (const sr of (SCIENTIFIC_REPORTS as any[]) || []) {
     const title = sr.title || sr.name;
     if (!title) continue;
+    const isPublishedDossier = sr.status === 'Published' || sr.status === 'Updated' || !sr.status;
+    const sectorLabel = sr.sectorTag || sr.sector || 'SEIAE';
+    const pageDescriptor = isPublishedDossier && sr.pages
+      ? `${sr.pages} Pages`
+      : sr.targetPages
+      ? `${sr.targetPages}-page target`
+      : '';
     documents.push({
       id: `seiae-rep:${sr.id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       documentType: 'scientific_report',
       resultClass: 'report_dataset',
       domain: 'scientific_research',
-      title,
-      subtitle: `SEIAE Monograph · ${sr.year || ''} ${sr.sector ? `(${sr.sector})` : ''}`,
-      description: sr.abstract || sr.summary || sr.description || 'Peer-reviewed sectoral environmental assessment report.',
-      canonicalUrl: '/sectoral-eia/reports',
-      parentModule: 'Sectoral EIA · Scientific Reports',
+      title: sr.code ? `${sr.code} — ${title}` : title,
+      subtitle: `${isPublishedDossier ? 'SEIAE Published Dossier' : 'SEIAE Proposed Research Dossier'} · ${sr.date || sr.year || '2026'} (${sectorLabel}${pageDescriptor ? ` · ${pageDescriptor}` : ''})`,
+      description: sr.abstract || sr.summary || sr.description || 'Sectoral environmental research dossier.',
+      canonicalUrl: sr.code ? `/sectoral-eia/reports/${sr.code.toLowerCase()}` : '/sectoral-eia/reports',
+      parentModule: 'Sectoral EIA · 2026 Research Series (40 Dossiers)',
       subregion: resolveSubregion(sr.district, sr.region),
-      tags: ['SEIAE Report', 'EIA Reports', 'Scientific Monograph', sr.sector].filter(Boolean),
+      tags: ['SEIAE Report', 'EIA Reports', 'Research Series 2026', sectorLabel, sr.code].filter(Boolean),
       synonyms: [sr.code || ''].filter(Boolean),
-      source: sr.authors ? (Array.isArray(sr.authors) ? sr.authors.join(', ') : sr.authors) : 'KEW SEIAE Research Archive',
-      trustBadge: 'Peer-Reviewed / Institutional',
+      source: sr.author || (sr.authors ? (Array.isArray(sr.authors) ? sr.authors.join(', ') : sr.authors) : 'KEW SEIAE Research Series'),
+      trustBadge: isPublishedDossier ? 'Peer-Reviewed / Institutional' : 'KEW Scientific Assessment',
       temporalNature: 'reference',
-      observationTimestamp: sr.year ? `${sr.year}-01-01` : undefined,
-      verificationStatus: 'Published Scientific Monograph',
+      observationTimestamp: isPublishedDossier ? '2026-03-01' : undefined,
+      verificationStatus: isPublishedDossier
+        ? `Published Scientific Monograph (${sr.date})`
+        : `${sr.status || 'Proposed'} Research Dossier (${pageDescriptor || 'Scope Established'})`,
       dataFreshness: 'periodic_baseline',
       accessClassification: 'public',
-      ctaLabel: 'Open Scientific Report',
+      ctaLabel: isPublishedDossier ? 'Open Published Dossier' : 'Inspect Research Charter',
       adapterId: 'research-accountability',
     });
   }
@@ -758,6 +768,58 @@ export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
       dataFreshness: 'static_module',
       accessClassification: 'public',
       ctaLabel: 'View Program Milestone',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  // 10. Environmental Investigations & Accountability (KEW-EIAI) Canonical Dossiers & Evidence Matrix
+  for (const inv of CANONICAL_INVESTIGATIONS || []) {
+    const dom = getDomainById(inv.primaryDomainId);
+    const subregion = resolveSubregion(inv.districts.join(', '), inv.subregion);
+    const lex = enrichWithMultilingualLexicon(`${inv.title} ${inv.subtitle} ${inv.watershedOrBasin} ${inv.code}`);
+    documents.push({
+      id: `eiai-inv:${inv.code.toLowerCase()}`,
+      documentType: 'scientific_report',
+      resultClass: 'report_dataset',
+      domain: 'environmental_accountability',
+      title: `${inv.code} — ${inv.title}`,
+      subtitle: `${inv.statusLabel} (${inv.temporalScope}) · ${dom?.name || 'KEW-EIAI'}`,
+      description: `${inv.subtitle}. ${inv.executiveKeyFindings[0] || ''}`,
+      canonicalUrl: `/environmental-investigations/reports/${inv.slug}`,
+      parentModule: 'Environmental Investigations & Accountability (KEW-EIAI)',
+      subregion,
+      district: inv.districts[0],
+      districts: inv.districts,
+      watershed: inv.watershedOrBasin,
+      coordinates: {
+        lat: inv.coordinates[0],
+        lng: inv.coordinates[1],
+        precision: 'centroid',
+      },
+      tags: Array.from(
+        new Set([
+          'Environmental Investigation',
+          'KEW-EIAI',
+          inv.code,
+          dom?.name || '',
+          ...inv.districts,
+        ].filter(Boolean))
+      ),
+      synonyms: [inv.code, ...lex.synonyms],
+      multilingualTerms: lex.multilingual,
+      source: 'Kashmir EcoWatch Environmental Investigations & Accountability (KEW-EIAI)',
+      trustBadge: inv.status === 'published' ? 'Peer-Reviewed / Institutional' : 'KEW Scientific Assessment',
+      temporalNature: 'periodic_monitoring',
+      observationTimestamp: inv.initiatedDate,
+      lastUpdated: inv.lastUpdated,
+      verificationStatus: `${inv.statusLabel} (${inv.evidenceMatrix.length} Claims Graded)`,
+      dataFreshness: 'periodic_baseline',
+      accessClassification: 'public',
+      metrics: [
+        { label: 'Scope', value: inv.temporalScope },
+        { label: 'Disciplines', value: String(inv.disciplineIds.length) },
+      ],
+      ctaLabel: inv.status === 'published' ? 'Open 24-Section Investigation' : 'Open Scoping Dossier',
       adapterId: 'research-accountability',
     });
   }

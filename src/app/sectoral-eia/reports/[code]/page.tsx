@@ -1,0 +1,131 @@
+import React from 'react';
+import { notFound } from 'next/navigation';
+import { JsonLd } from '@/components/seo/JsonLd';
+import {
+  buildBreadcrumbJsonLd,
+  buildScholarlyArticleJsonLd,
+} from '@/lib/seo/structured-data';
+import {
+  getMergedMasterRecord,
+  getMergedResearchDossiers,
+  getOrGenerateDossierPdf,
+  PUBLICATION_WORKFLOW_19_STAGES,
+  readDossierOverrides,
+} from '@/lib/sectoral-research-store';
+import { ScientificReportPublicationView } from '@/components/sectoral-eia/ScientificReportPublicationView';
+
+export const dynamic = 'force-dynamic';
+
+export default async function ResearchDossierDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ code: string }>;
+  searchParams: Promise<{ tab?: string; mode?: string }>;
+}) {
+  const { code } = await params;
+  const resolvedSearch = await searchParams;
+
+  const master = getMergedMasterRecord(code, true);
+  if (!master) {
+    notFound();
+  }
+
+  const { dossier } = master;
+  const isPublished = dossier.status === 'Published' || dossier.status === 'Updated';
+  const pdfArtifact = isPublished ? getOrGenerateDossierPdf(dossier.code) : undefined;
+
+  const overrides = readDossierOverrides();
+  const ov = overrides[dossier.code.toUpperCase()];
+  const defaultStageIdx = isPublished
+    ? 17
+    : dossier.status === 'Scientific Review'
+    ? 8
+    : dossier.status === 'Draft Assessment'
+    ? 7
+    : dossier.status === 'Under Investigation'
+    ? 5
+    : dossier.status === 'Data Acquisition'
+    ? 2
+    : 1;
+  const workflowStageIndex =
+    typeof ov?.workflowStageIndex === 'number' ? ov.workflowStageIndex : defaultStageIdx;
+
+  const allDossiers = getMergedResearchDossiers();
+  const relatedReportsSummary = master.relatedReportCodes
+    .map((relCode) => allDossiers.find((d) => d.code === relCode))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d))
+    .map((d) => ({
+      code: d.code,
+      title: d.title,
+      status: d.status,
+      divisionTitle: d.divisionTitle,
+    }));
+
+  const canonicalPath = `/sectoral-eia/reports/${dossier.code.toLowerCase()}`;
+
+  const breadcrumbSchema = buildBreadcrumbJsonLd(
+    [
+      { label: 'Home', href: '/' },
+      { label: 'Sectoral EIA Engine', href: '/sectoral-eia' },
+      { label: 'Research Series 2026', href: '/sectoral-eia/reports' },
+      { label: dossier.code, href: canonicalPath },
+    ],
+    canonicalPath
+  );
+
+  const scholarlySchema = isPublished
+    ? buildScholarlyArticleJsonLd({
+        id: dossier.code,
+        title: `${dossier.code}: ${dossier.title}`,
+        description: dossier.abstract,
+        canonicalPath,
+        authors: [dossier.author],
+        sourceOrganization: master.attribution.institutionalAffiliation,
+        reviewedBy: master.attribution.reviewPanel,
+        datePublished: '2026-03-01',
+        dateModified: master.lastRevised,
+        keywords: [
+          dossier.code,
+          dossier.divisionTitle,
+          master.studyArea.watershed,
+          ...master.studyArea.districts,
+        ],
+        districts: master.studyArea.districts,
+        coordinates: {
+          lat: master.studyArea.coordinates[0],
+          lng: master.studyArea.coordinates[1],
+        },
+        datasetDownloadPath: `/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/dataset?format=csv`,
+      })
+    : null;
+
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} id={`breadcrumb-${dossier.code.toLowerCase()}`} />
+      {scholarlySchema && (
+        <JsonLd data={scholarlySchema} id={`scholarly-${dossier.code.toLowerCase()}`} />
+      )}
+      <ScientificReportPublicationView
+        master={master}
+        pdfMetadata={
+          pdfArtifact
+            ? {
+                filename: pdfArtifact.filename,
+                pageCount: pdfArtifact.pageCount,
+                byteLength: pdfArtifact.byteLength,
+                sha256: pdfArtifact.sha256,
+                downloadUrl: `/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/pdf`,
+                inlineViewerUrl: `/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/pdf?disposition=inline`,
+              }
+            : null
+        }
+        workflowStages={PUBLICATION_WORKFLOW_19_STAGES}
+        workflowStageIndex={workflowStageIndex}
+        initialTab={resolvedSearch?.tab}
+        initialMode={resolvedSearch?.mode}
+        relatedReportsSummary={relatedReportsSummary}
+      />
+    </>
+  );
+}

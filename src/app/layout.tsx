@@ -7,7 +7,7 @@ import { SafeFooter } from '@/components/common/SafeFooter';
 import { MobileQuickTelemetryBar } from '@/components/navigation/MobileQuickTelemetryBar';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { DiscoveryReferralBeacon } from '@/components/seo/DiscoveryReferralBeacon';
-import { CANONICAL_SITE_URL, KEW_IDENTITY } from '@/lib/seo/entity-identity';
+import { CANONICAL_HOMEPAGE_URL, CANONICAL_SITE_URL, KEW_IDENTITY } from '@/lib/seo/entity-identity';
 import { buildRootEntityGraph } from '@/lib/seo/structured-data';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -36,18 +36,21 @@ if (process.env.BAIDU_SITE_VERIFICATION) {
 
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_SITE_URL),
-  applicationName: KEW_IDENTITY.officialName,
+  applicationName: KEW_IDENTITY.applicationName,
   title: {
-    default: `${KEW_IDENTITY.officialName} — ${KEW_IDENTITY.platformDescriptor} (${KEW_IDENTITY.shortName})`,
+    default: KEW_IDENTITY.homepageTitle,
     template: `%s | ${KEW_IDENTITY.officialName}`,
   },
-  description:
-    'Kashmir EcoWatch Western Himalayan (KEW) is an independent scientific environmental intelligence platform for Kashmir lakes, wetlands, glaciers, rivers, biodiversity, air quality, satellite GIS, and natural hazards.',
+  description: KEW_IDENTITY.homepageDescription,
   keywords: [
     'Kashmir EcoWatch',
-    'Kashmir EcoWatch Western Himalayan',
+    'Kashmir Eco Watch',
+    'Kashmir Ecowatch',
     'KEW',
     'KEW Western Himalayan',
+    'Kashmir EcoWatch Western Himalayan',
+    'Kashmir Eco Watch Western Himalayan',
+    'Kashmir Ecowatch Western Himalayan',
     'Kashmir environment',
     'Western Himalayan ecology',
     'Dal Lake pollution',
@@ -59,7 +62,7 @@ export const metadata: Metadata = {
     'Kashmir biodiversity',
     'Kashmir GIS',
   ],
-  authors: [{ name: KEW_IDENTITY.extendedName, url: CANONICAL_SITE_URL }],
+  authors: [{ name: KEW_IDENTITY.extendedName, url: CANONICAL_HOMEPAGE_URL }],
   creator: KEW_IDENTITY.extendedName,
   publisher: KEW_IDENTITY.extendedName,
   manifest: '/manifest.webmanifest',
@@ -68,13 +71,12 @@ export const metadata: Metadata = {
     apple: [KEW_IDENTITY.logoPath],
   },
   alternates: {
-    canonical: CANONICAL_SITE_URL,
+    canonical: CANONICAL_HOMEPAGE_URL,
   },
   openGraph: {
-    title: `${KEW_IDENTITY.officialName} — ${KEW_IDENTITY.platformDescriptor}`,
-    description:
-      'Independent scientific environmental intelligence platform documenting water systems, biodiversity, glaciers, natural hazards, and ecological governance across Kashmir and the Western Himalaya.',
-    url: CANONICAL_SITE_URL,
+    title: KEW_IDENTITY.homepageTitle,
+    description: KEW_IDENTITY.homepageDescription,
+    url: CANONICAL_HOMEPAGE_URL,
     siteName: KEW_IDENTITY.officialName,
     locale: 'en_US',
     type: 'website',
@@ -89,9 +91,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: KEW_IDENTITY.twitterHandle,
     creator: KEW_IDENTITY.twitterHandle,
-    title: `${KEW_IDENTITY.officialName} — ${KEW_IDENTITY.platformDescriptor}`,
-    description:
-      'Scientific environmental intelligence across Kashmir and the Western Himalaya: lakes, wetlands, glaciers, biodiversity, air quality, GIS, and natural hazards.',
+    title: KEW_IDENTITY.homepageTitle,
+    description: KEW_IDENTITY.homepageDescription,
     images: [KEW_IDENTITY.logoPath],
   },
   verification: {

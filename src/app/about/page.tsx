@@ -1067,6 +1067,36 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
+
+            {/* Institutional Identity & Entity Disambiguation Clarification */}
+            <div
+              id="institutional-disambiguation"
+              className="mt-4 p-4 sm:p-5 rounded-[8px] bg-slate-950 border border-emerald-500/25 space-y-2 text-xs text-slate-300 scroll-mt-28"
+            >
+              <div className="flex items-center gap-2 text-emerald-400 font-bold uppercase tracking-wider font-mono text-[11px]">
+                <Landmark className="w-4 h-4 shrink-0" />
+                <span>Institutional Identity &amp; Entity Disambiguation Notice</span>
+              </div>
+              <p className="leading-relaxed">
+                <strong className="text-white">Kashmir EcoWatch</strong> (full institutional name:{' '}
+                <strong className="text-white">Kashmir EcoWatch Western Himalayan</strong>; short institutional name:{' '}
+                <strong className="text-white">KEW Western Himalayan</strong>; acronym:{' '}
+                <strong className="text-white">KEW</strong>; official website:{' '}
+                <Link href="/" className="text-emerald-400 hover:underline font-mono">
+                  https://kashmir-ecowatch.com/
+                </Link>
+                ) is an independent, non-commercial scientific environmental intelligence, GIS, satellite-monitoring, and ecological research platform headquartered in Loudoun County, Virginia, USA. It continues the environmental research lineage established in 2004 as the{' '}
+                <strong className="text-white">Environment and Service Research Organization (ESRO)</strong> and is operated and supported by{' '}
+                <strong className="text-white">Dr. Kumar Foundation USA</strong> and{' '}
+                <strong className="text-white">Kumar Trust USA</strong>.
+              </p>
+              <p className="leading-relaxed text-slate-400">
+                <strong className="text-slate-200">Clarification on Distinct Organizations:</strong> Kashmir EcoWatch Western Himalayan is an independent research institution and is organizationally separate from and unaffiliated with{' '}
+                <em>Jammu &amp; Kashmir Eco-Watch (J&amp;K Eco-Watch)</em>, a Kashmir-based grassroots citizens&rsquo; environmental movement operating under the Youth Parliament of J&amp;K; the U.S. environmental news publication{' '}
+                <em>EcoWatch (ecowatch.com)</em>; and the{' '}
+                <em>Royal Botanic Gardens, Kew (kew.org)</em> in London, United Kingdom.
+              </p>
+            </div>
           </div>
         </section>
 

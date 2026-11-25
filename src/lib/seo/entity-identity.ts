@@ -8,21 +8,115 @@ export const CANONICAL_SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || 'https://kashmir-ecowatch.com'
 ).replace(/\/+$/, '');
 
+export const CANONICAL_HOMEPAGE_URL = `${CANONICAL_SITE_URL}/`;
 export const ORGANIZATION_ENTITY_ID = `${CANONICAL_SITE_URL}/#organization`;
 export const WEBSITE_ENTITY_ID = `${CANONICAL_SITE_URL}/#website`;
+
+export interface P0BrandKeywordDefinition {
+  id: string;
+  keyword: string;
+  targetPosition: '#1' | '#1 aspiration';
+  preferredDestination: string;
+  isStandaloneAcronym?: boolean;
+  variations: string[];
+  competitorContext: string;
+  googleSearchUrl: string;
+  bingSearchUrl: string;
+}
+
+export const SIX_PRIORITY_BRAND_KEYWORDS: readonly P0BrandKeywordDefinition[] = [
+  {
+    id: 'kw-1-spaced',
+    keyword: 'Kashmir Eco Watch',
+    targetPosition: '#1',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    variations: ['kashmir eco watch', 'KASHMIR ECO WATCH', 'Kashmir Eco-Watch', 'kashmir-eco-watch'],
+    competitorContext: 'Currently overlaps in organic/AI results with Jammu & Kashmir Eco-Watch (J&K Eco-Watch grassroots movement) and EcoWatch.com.',
+    googleSearchUrl: 'https://www.google.com/search?q=Kashmir+Eco+Watch',
+    bingSearchUrl: 'https://www.bing.com/search?q=Kashmir+Eco+Watch',
+  },
+  {
+    id: 'kw-2-camel',
+    keyword: 'Kashmir Ecowatch',
+    targetPosition: '#1',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    variations: ['Kashmir EcoWatch', 'kashmir ecowatch', 'kashmirecowatch', 'KASHMIR ECOWATCH'],
+    competitorContext: 'Primary exact-brand compound name; currently conflated with J&K Eco-Watch prior to VPS deployment and GSC recrawl.',
+    googleSearchUrl: 'https://www.google.com/search?q=Kashmir+Ecowatch',
+    bingSearchUrl: 'https://www.bing.com/search?q=Kashmir+Ecowatch',
+  },
+  {
+    id: 'kw-3-acronym',
+    keyword: 'KEW',
+    targetPosition: '#1 aspiration',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    isStandaloneAcronym: true,
+    variations: ['kew', 'K.E.W.'],
+    competitorContext: 'Globally shared acronym dominated by Royal Botanic Gardens, Kew (kew.org) and Kew, London; aspirational target via regional & environmental context.',
+    googleSearchUrl: 'https://www.google.com/search?q=KEW',
+    bingSearchUrl: 'https://www.bing.com/search?q=KEW',
+  },
+  {
+    id: 'kw-4-spaced-wh',
+    keyword: 'Kashmir Eco Watch Western Himalayan',
+    targetPosition: '#1',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    variations: [
+      'kashmir eco watch western himalayan',
+      'Kashmir Eco-Watch Western Himalayan',
+      'Kashmir Eco Watch Western Himalaya',
+    ],
+    competitorContext: 'High-specificity institutional query; realistic P0 candidate for undisputed #1 ownership.',
+    googleSearchUrl: 'https://www.google.com/search?q=Kashmir+Eco+Watch+Western+Himalayan',
+    bingSearchUrl: 'https://www.bing.com/search?q=Kashmir+Eco+Watch+Western+Himalayan',
+  },
+  {
+    id: 'kw-5-camel-wh',
+    keyword: 'Kashmir Ecowatch Western Himalayan',
+    targetPosition: '#1',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    variations: [
+      'Kashmir EcoWatch Western Himalayan',
+      'kashmir ecowatch western himalayan',
+      'Kashmir EcoWatch Western Himalaya',
+    ],
+    competitorContext: 'Full canonical institutional name; primary disambiguator separating KEW from grassroots J&K Eco-Watch.',
+    googleSearchUrl: 'https://www.google.com/search?q=Kashmir+Ecowatch+Western+Himalayan',
+    bingSearchUrl: 'https://www.bing.com/search?q=Kashmir+Ecowatch+Western+Himalayan',
+  },
+  {
+    id: 'kw-6-short-wh',
+    keyword: 'KEW Western Himalayan',
+    targetPosition: '#1',
+    preferredDestination: CANONICAL_HOMEPAGE_URL,
+    variations: ['kew western himalayan', 'KEW - Western Himalayan', 'KEW Western Himalaya'],
+    competitorContext: 'Short institutional name; currently surfaces Royal Botanic Gardens Kew Himalayan herbarium collections until KEW pages are recrawled.',
+    googleSearchUrl: 'https://www.google.com/search?q=KEW+Western+Himalayan',
+    bingSearchUrl: 'https://www.bing.com/search?q=KEW+Western+Himalayan',
+  },
+] as const;
 
 export const KEW_IDENTITY = {
   officialName: 'Kashmir EcoWatch',
   extendedName: 'Kashmir EcoWatch Western Himalayan',
+  shortInstitutionalName: 'KEW Western Himalayan',
   shortName: 'KEW',
   alternativeName: 'KEW Western Himalayan',
+  applicationName: 'KEW Western Himalayan',
+  homepageTitle: 'Kashmir EcoWatch (KEW) | Western Himalayan',
+  homepageH1: 'Kashmir EcoWatch',
+  homepageSubtitle: 'KEW Western Himalayan',
+  homepageDescription:
+    'Kashmir EcoWatch (KEW Western Himalayan) provides environmental intelligence, satellite monitoring, GIS, biodiversity research, climate science and ecological assessments across the Western Himalaya.',
+  organizationDescription:
+    'Western Himalayan environmental intelligence, scientific research, GIS, satellite monitoring and ecological assessment platform.',
   platformDescriptor: 'Western Himalayan Environmental Intelligence Platform',
   historicalPredecessor: 'Environment and Service Research Organization (ESRO)',
   foundingYear: '2004',
   entityId: ORGANIZATION_ENTITY_ID,
   websiteId: WEBSITE_ENTITY_ID,
   domain: 'kashmir-ecowatch.com',
-  canonicalUrl: CANONICAL_SITE_URL,
+  canonicalUrl: CANONICAL_HOMEPAGE_URL,
   logoPath: '/kew_LOGO.png',
   logoUrl: `${CANONICAL_SITE_URL}/kew_LOGO.png`,
   contactEmail: 'contact@kashmir-ecowatch.com',
@@ -43,6 +137,20 @@ export const KEW_IDENTITY = {
   defaultLicenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
   defaultLicenseLabel: 'CC BY 4.0 (Creative Commons Attribution 4.0 International)',
   twitterHandle: '@KashmirEcoWatch',
+  organizationAlternateNames: [
+    'Kashmir EcoWatch Western Himalayan',
+    'KEW Western Himalayan',
+    'Kashmir Eco Watch Western Himalayan',
+    'Kashmir Eco Watch',
+    'Kashmir Ecowatch',
+    'KEW',
+  ],
+  websiteAlternateNames: [
+    'KEW Western Himalayan',
+    'Kashmir EcoWatch Western Himalayan',
+    'KEW',
+    'kashmir-ecowatch.com',
+  ],
   institutionalBacking: [
     {
       name: 'Dr. Kumar Foundation USA',
@@ -55,11 +163,11 @@ export const KEW_IDENTITY = {
     },
   ],
   officialSocialProfiles: [
+    'https://www.facebook.com/Kashmirecowatch/',
     'https://x.com/KashmirEcoWatch',
     'https://www.linkedin.com/company/kashmir-ecowatch/',
     'https://www.youtube.com/channel/UCraDr3i5A3k0j7typ6tOOsQ',
     'https://www.youtube.com/playlist?list=PLhu9NyNCTr7jRfvo6ktcYSayRtURCDVnM',
-    'https://www.facebook.com/share/1cENbzgQs3/',
   ],
   knowsAbout: [
     'Western Himalayan Environmental Science',

@@ -1346,49 +1346,17 @@ export const MITIGATION_TRACKER_ITEMS: MitigationPlanItem[] = [
   }
 ];
 
-export const SCIENTIFIC_REPORTS = [
-  {
-    id: 'rep-seiae-2026-01',
-    code: 'KEW-SR-2026-01',
-    title: 'The Dal Lake Tourism Carrying Capacity & Limnological Resilience Dossier',
-    date: 'March 2026',
-    author: 'Kashmir EcoWatch Limnological Intelligence Unit',
-    pages: 64,
-    sector: 'tourism' as SectorType,
-    badge: 'Peer-Reviewed Assessment',
-    abstract: 'An exhaustive 24-month multi-sensor investigation detailing peak visitor density, houseboat blackwater mass balances, sediment nutrient loading, and actionable vacuum sanitation mitigation plans for the Dal Lake basin.'
-  },
-  {
-    id: 'rep-seiae-2026-02',
-    code: 'KEW-SR-2026-02',
-    title: 'High-Density Horticulture & Groundwater Depletion in the Karewas of South Kashmir',
-    date: 'February 2026',
-    author: 'Kashmir EcoWatch Agro-Ecology & Pesticide Impact Working Group',
-    pages: 52,
-    sector: 'horticulture' as SectorType,
-    badge: 'Peer-Reviewed Assessment',
-    abstract: 'Quantifies pesticide active ingredient runoff, shallow water table drawdown, and severe wild pollinator depression resulting from the rapid transition from traditional agroforestry to high-density apple monocultures.'
-  },
-  {
-    id: 'rep-seiae-2026-03',
-    code: 'KEW-SR-2026-03',
-    title: 'Artisanal Dye Effluents & Toxic Heavy Metal Footprint in Urban Srinagar Waterways',
-    date: 'January 2026',
-    author: 'EcoWatch Industrial Ecology & Craft Guild Audit Unit',
-    pages: 44,
-    sector: 'handicrafts' as SectorType,
-    badge: 'Technical Monograph',
-    abstract: 'A lifecycle assessment of Pashmina and silk textile dyeing in Shehr-e-Khas, detailing chemical oxygen demand surges, trace chromium and copper sediment deposits, and the blueprint for modular urban CETPs.'
-  },
-  {
-    id: 'rep-seiae-2026-04',
-    code: 'KEW-SR-2026-04',
-    title: 'Nitrogen Surges and Wetland Eutrophication in the Lower Jhelum & Wular Basin',
-    date: 'February 2026',
-    author: 'EcoWatch Agro-Hydrology & Soil Sciences Working Group',
-    pages: 48,
-    sector: 'agriculture' as SectorType,
-    badge: 'Technical Monograph',
-    abstract: 'Field investigation of urea over-broadcasting, seasonal nitrate leaching through floodplain drainage canals, and strategic deployment of constructed wetland bio-swales to protect the Wular Ramsar sanctuary.'
-  }
-];
+import { SECTORAL_RESEARCH_SERIES_2026 } from '@/data/sectoral-research-series-2026';
+
+export {
+  SECTORAL_RESEARCH_SERIES_2026,
+  RESEARCH_SERIES_DIVISIONS,
+  STANDARD_DOSSIER_CHAPTERS,
+  SCIENTIFIC_INFRASTRUCTURE_PILLARS,
+  RECOMMENDED_SERIES_DATA_SOURCES,
+  RESEARCH_PUBLICATION_STATUS_DEFINITIONS,
+  getResearchDossierByCodeOrId,
+  computeResearchSeriesPortfolioStats,
+} from '@/data/sectoral-research-series-2026';
+
+export const SCIENTIFIC_REPORTS = SECTORAL_RESEARCH_SERIES_2026;

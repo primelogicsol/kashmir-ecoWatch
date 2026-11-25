@@ -83,7 +83,7 @@ export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
 
   const fullTitle =
     opts.canonicalPath === '/'
-      ? `${KEW_IDENTITY.officialName} — ${KEW_IDENTITY.platformDescriptor} (${KEW_IDENTITY.shortName})`
+      ? KEW_IDENTITY.homepageTitle
       : cleanBaseTitle.toLowerCase().includes('kashmir ecowatch')
       ? cleanBaseTitle
       : `${cleanBaseTitle} | ${KEW_IDENTITY.officialName}`;
@@ -109,6 +109,9 @@ export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
     otherMeta['citation_public_url'] = canonicalUrl;
     if (sc.pdfOrDataUrl) {
       otherMeta['citation_fulltext_html_url'] = canonicalUrl;
+      if (/\/pdf(\?|$)|\.pdf(\?|$)/i.test(sc.pdfOrDataUrl)) {
+        otherMeta['citation_pdf_url'] = toAbsoluteCanonicalUrl(sc.pdfOrDataUrl);
+      }
     }
     if (sc.doi && isVerifiedRealDoi(sc.doi)) {
       otherMeta['citation_doi'] = sc.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').trim();
@@ -119,6 +122,7 @@ export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
   }
 
   return {
+    applicationName: KEW_IDENTITY.applicationName,
     title: {
       absolute: fullTitle,
     },
@@ -210,20 +214,19 @@ const CURATED_STATIC_ROUTES: Record<
   { title: string; description: string; imagePath?: string; keywords?: string[] }
 > = {
   '/': {
-    title: 'Kashmir EcoWatch — Western Himalayan Environmental Intelligence Platform (KEW)',
+    title: 'Kashmir EcoWatch (KEW) | Western Himalayan',
     description:
-      'Kashmir EcoWatch Western Himalayan (KEW) is an independent scientific environmental intelligence platform for Kashmir lakes, wetlands, glaciers, rivers, biodiversity, air quality, satellite GIS, and natural hazards.',
+      'Kashmir EcoWatch (KEW Western Himalayan) provides environmental intelligence, satellite monitoring, GIS, biodiversity research, climate science and ecological assessments across the Western Himalaya.',
     imagePath: '/images/protected-network.png',
     keywords: [
       'Kashmir EcoWatch',
-      'Kashmir EcoWatch Western Himalayan',
+      'Kashmir Eco Watch',
+      'Kashmir Ecowatch',
       'KEW',
-      'Kashmir environment',
-      'Dal Lake pollution',
-      'Sheshnag Lake ecology',
-      'Wular Lake',
-      'Kolahoi Glacier',
-      'Hangul conservation',
+      'KEW Western Himalayan',
+      'Kashmir EcoWatch Western Himalayan',
+      'Kashmir Eco Watch Western Himalayan',
+      'Kashmir Ecowatch Western Himalayan',
       'Western Himalayan ecology',
     ],
   },
