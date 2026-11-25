@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Database: RESTORATION
+// Kashmir EcoWatch — Hydrology Database: RESTORATION
 // Migration Status: Legacy Imported → Pending Verification
 // Generated: 2026-06-16T01:16:26.296Z
 // DO NOT use Dashboard_Locked records in live KPI calculations.

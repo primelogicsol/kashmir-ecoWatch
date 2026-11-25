@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { ScientificPublicationStandard } from '@/components/seo/ScientificPublicationStandard';
 
 const sourceTypeColors: Record<string, string> = {
   official: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
@@ -517,6 +518,56 @@ export default function EvidenceDetailPage() {
               </motion.div>
             </div>
           </div>
+
+          <ScientificPublicationStandard
+            archivalId={evidence.id.toUpperCase()}
+            title={evidence.title}
+            disciplines={[
+              categoryLabels[evidence.category] || 'Scientific Evidence',
+              ...evidence.tags.slice(0, 3).map((t) => t.replace(/-/g, ' ')),
+            ]}
+            executiveSummary={evidence.abstract || evidence.description}
+            keyFindings={[
+              evidence.description,
+              ...(evidence.methods || []).map((m) => `${m.methodName}: ${m.description}`),
+            ]}
+            coordinates={
+              evidence.locations && evidence.locations[0]?.lat && evidence.locations[0]?.lng
+                ? { lat: evidence.locations[0].lat, lng: evidence.locations[0].lng }
+                : undefined
+            }
+            geographicScope={
+              evidence.districts.includes('all')
+                ? 'Kashmir & Western Himalaya (Multi-District)'
+                : `${evidence.districts.map((d) => d.charAt(0).toUpperCase() + d.slice(1)).join(', ')} · Western Himalaya`
+            }
+            methodology={
+              evidence.methods && evidence.methods.length > 0
+                ? evidence.methods.map((m) => `${m.methodName} — ${m.description}`).join(' | ')
+                : 'Peer-validated empirical synthesis and multi-source environmental baseline verification.'
+            }
+            dataSources={[
+              evidence.organization || 'Kashmir EcoWatch Western Himalayan',
+              ...evidence.usedInModules.map((m) => `${m.moduleName} (${m.usageContext})`),
+            ]}
+            limitations={
+              evidence.limitations && evidence.limitations.length > 0
+                ? evidence.limitations
+                : [
+                    'Spatial and temporal coverage is bounded by the documented survey period and monitoring stations.',
+                    'Sensitive wildlife habitats enforce coordinate generalization under KEW anti-poaching policy.',
+                  ]
+            }
+            references={evidence.references}
+            evidenceClassification={evidence.evidenceClassification}
+            canonicalPath={`/library/${evidence.id}`}
+            datasetApiBasePath={`/api/datasets/evidence/${evidence.id}`}
+            publishedDate={evidence.publishedDate}
+            revisedDate={evidence.lastUpdated}
+            authors={evidence.authors}
+            doi={evidence.doi}
+            atlasHref="/atlas"
+          />
         </div>
       </section>
     </main>

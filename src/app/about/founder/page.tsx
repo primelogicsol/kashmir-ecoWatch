@@ -988,7 +988,7 @@ export default function FounderPage() {
                   tag: 'Aquatic Ecology',
                   category: 'Water & Limnology',
                   title: 'Mechanical Deweeding and Its Ecological Impact on Dal Lake',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Assessed ecological impacts of mechanical deweeding on aquatic vegetation, sediment disturbance, nutrient cycling, and water quality across Dal Lake.',
                   color: 'text-teal-400',
                   featured: false
@@ -999,7 +999,7 @@ export default function FounderPage() {
                   tag: 'Environmental Assessment',
                   category: 'Water & Limnology',
                   title: 'Environmental Degradation of the Dal Lake Hinterland',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Investigated land-use changes, wastewater discharge, encroachment, and ecological degradation affecting Dal Lake\'s surrounding catchment and freshwater ecosystems.',
                   color: 'text-emerald-400',
                   featured: false
@@ -1010,7 +1010,7 @@ export default function FounderPage() {
                   tag: 'Geospatial Wetlands',
                   category: 'Geospatial & GIS',
                   title: 'Digital Inventory and GIS Mapping of Kashmir Wetlands',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Developed geospatial inventories of Kashmir\'s lakes and wetlands using satellite imagery, GIS classification, and ecological assessment of changing wetland boundaries.',
                   color: 'text-sky-400',
                   featured: true
@@ -1032,7 +1032,7 @@ export default function FounderPage() {
                   tag: 'Tourism EIA',
                   category: 'EIA & Industry',
                   title: 'Environmental Impact Assessment of the Gulmarg Gondola',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Evaluated environmental impacts of gondola infrastructure, tourism development, vegetation disturbance, and landscape modification within the ecologically sensitive Gulmarg mountain ecosystem.',
                   color: 'text-amber-400',
                   featured: false
@@ -1043,7 +1043,7 @@ export default function FounderPage() {
                   tag: 'Lake Sedimentation',
                   category: 'Water & Limnology',
                   title: 'Assessment of Dal Lake Settling Basins and Sediment Dynamics',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Examined sediment accumulation, catchment runoff, nutrient deposition, and settling basin performance influencing Dal Lake\'s water quality and ecological health.',
                   color: 'text-teal-300',
                   featured: false
@@ -1054,7 +1054,7 @@ export default function FounderPage() {
                   tag: 'Waste Management',
                   category: 'Waste Management',
                   title: 'Solid Waste Generation and Management in Kashmir Division',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Assessed municipal solid waste generation, collection systems, disposal practices, and associated environmental pressures across urban and rural Kashmir Division.',
                   color: 'text-rose-400',
                   featured: false
@@ -1065,7 +1065,7 @@ export default function FounderPage() {
                   tag: 'Wildlife Ecology',
                   category: 'Wildlife & Habitats',
                   title: 'Assessment of Human–Wildlife Conflict in Kashmir',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Investigated human–wildlife interactions, habitat encroachment, forest-edge settlements, and emerging conflict patterns affecting communities and wildlife conservation across Kashmir.',
                   color: 'text-emerald-300',
                   featured: false
@@ -1076,7 +1076,7 @@ export default function FounderPage() {
                   tag: 'Biomedical Waste',
                   category: 'Waste Management',
                   title: 'Biomedical Waste Generation and Management in Kashmir Division',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Investigated healthcare waste generation, segregation, treatment, disposal infrastructure, and environmental health risks associated with medical facilities across Kashmir Division.',
                   color: 'text-red-400',
                   featured: false
@@ -1087,7 +1087,7 @@ export default function FounderPage() {
                   tag: 'Industrial Ecology',
                   category: 'EIA & Industry',
                   title: 'Cement Industry Emissions and Their Impact on Kashmir Saffron',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Assessed cement-industry emissions, particulate deposition, soil contamination pathways, and potential impacts on saffron cultivation across Kashmir\'s traditional agricultural landscapes.',
                   color: 'text-amber-300',
                   featured: false
@@ -1098,7 +1098,7 @@ export default function FounderPage() {
                   tag: 'Cumulative EIA',
                   category: 'EIA & Industry',
                   title: 'Cumulative Environmental Impacts of Hydropower Dams in Kashmir',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Examined cumulative hydrological alteration, river fragmentation, sediment transport, and ecosystem impacts associated with hydropower development across Kashmir\'s river basins.',
                   color: 'text-cyan-400',
                   featured: false
@@ -1109,7 +1109,7 @@ export default function FounderPage() {
                   tag: 'Wildlife GIS',
                   category: 'Wildlife & Habitats',
                   title: 'Digital Mapping of Kashmir Wildlife Corridors',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Mapped wildlife movement corridors, habitat connectivity, forest fragmentation, and ecological passage networks using satellite remote sensing and GIS technologies.',
                   color: 'text-green-400',
                   featured: false
@@ -1131,7 +1131,7 @@ export default function FounderPage() {
                   tag: 'Tourism Ecology',
                   category: 'Tourism Sustainability',
                   title: 'Environmental Impacts of Tourism and Allied Services in Kashmir',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Evaluated environmental pressures from tourism infrastructure, accommodation services, transportation, waste generation, and recreational activities across Kashmir\'s major destinations.',
                   color: 'text-yellow-400',
                   featured: false
@@ -1142,7 +1142,7 @@ export default function FounderPage() {
                   tag: 'Tourism Sustainability',
                   category: 'Tourism Sustainability',
                   title: 'Assessment of Tourism Carrying Capacity in Kashmir',
-                  org: '[Environmental Services and Research Organization (ESRO)]',
+                  org: '[Environment and Service Research Organization (ESRO)]',
                   desc: 'Assessed tourism carrying capacity, visitor pressure, ecological sensitivity, infrastructure limitations, and sustainable destination management across Kashmir\'s principal tourism landscapes.',
                   color: 'text-orange-400',
                   featured: true
@@ -1200,7 +1200,7 @@ export default function FounderPage() {
                 <span>17 Landmark Kashmir Research &amp; Field Studies Cataloged (2001–2007)</span>
               </div>
               <span className="text-[11px] font-mono text-slate-500">
-                Environmental Services &amp; Research Organization (ESRO) Historical Series
+                Environment and Service Research Organization (ESRO) Historical Series
               </span>
             </div>
 

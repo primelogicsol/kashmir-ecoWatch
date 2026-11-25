@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -19,10 +20,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Springs & Groundwater Discharge Change Observatory | Kashmir EcoWatch',
-  description: 'Hydrogeological springshed inventory, recharge zone satellite classification, and participatory field discharge monitoring across Kashmir.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Springs & Groundwater Discharge Change Observatory | Kashmir EcoWatch",
+  description: "Hydrogeological springshed inventory, recharge zone satellite classification, and participatory field discharge monitoring across Kashmir.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/springs-groundwater",
+});
 
 export default function SpringsGroundwaterPage() {
   const springClusters = [

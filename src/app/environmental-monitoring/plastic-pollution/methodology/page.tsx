@@ -154,7 +154,7 @@ export default function MethodologyPage() {
             When citing data in scientific publications, use:
           </p>
           <div className="p-3 bg-slate-950 border border-white/5 rounded-[4px] font-mono text-slate-400 text-[11px]">
-            Kashmir EcoWatch (2026). &ldquo;Western Himalayan Plastic Pollution Monitoring Intelligence Database (KEW-PPM)&rdquo;. https://kashmirecowatch.org/environmental-monitoring/plastic-pollution.
+            Kashmir EcoWatch (2026). &ldquo;Western Himalayan Plastic Pollution Monitoring Intelligence Database (KEW-PPM)&rdquo;. https://kashmir-ecowatch.com/environmental-monitoring/plastic-pollution.
           </div>
         </div>
       </div>

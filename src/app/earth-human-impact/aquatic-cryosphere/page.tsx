@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -34,10 +35,11 @@ import {
 } from '@/data/aquatic-cryosphere-observatory';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Aquatic, Wetland & Cryosphere Change Observatory | Earth & Human Impact | Kashmir EcoWatch',
-  description: 'Scientific change-detection intelligence for Kashmir lakes, Ramsar wetlands, glaciers, river corridors, and springshed aquifers.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Aquatic, Wetland & Cryosphere Change Observatory | Earth & Human Impact | Kashmir EcoWatch",
+  description: "Scientific change-detection intelligence for Kashmir lakes, Ramsar wetlands, glaciers, river corridors, and springshed aquifers.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere",
+});
 
 export default function AquaticCryosphereOverviewPage() {
   const systems = [

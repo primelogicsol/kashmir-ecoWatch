@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -20,10 +21,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'River Corridor & Channel Transformation Observatory | Kashmir EcoWatch',
-  description: 'Satellite detection of riverbed mining disturbance, floodplain constriction, riparian buffer erosion, and channel migration.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "River Corridor & Channel Transformation Observatory | Kashmir EcoWatch",
+  description: "Satellite detection of riverbed mining disturbance, floodplain constriction, riparian buffer erosion, and channel migration.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/river-corridor-change",
+});
 
 export default function RiverCorridorChangePage() {
   const riverReaches = [

@@ -962,7 +962,7 @@ export const RESEARCH_ARCHIVE: HwcResearchCitation[] = [
   {
     id: 'res-esro-2014',
     title: 'Assessment of Human–Wildlife Conflict in Kashmir Valley: Patterns, Drivers and Mitigation',
-    authors: 'Ecological Science and Research Organization (ESRO)',
+    authors: 'Environment and Service Research Organization (ESRO)',
     year: 2014,
     publication: 'ESRO Technical Monograph Series on Western Himalayan Wildlife, Vol. 4',
     regionFocus: 'Kashmir Valley',
@@ -997,7 +997,7 @@ export const RESEARCH_ARCHIVE: HwcResearchCitation[] = [
     year: 2023,
     publication: 'IUCN Species Survival Commission Guidance Documents, Gland, Switzerland',
     regionFocus: 'Global & Mountain Ecosystems',
-    doiOrUrl: 'https://doi.org/10.2305/IUCN.CH.2023.01.en',
+    doiOrUrl: 'https://portals.iucn.org/library/node/50756',
     archivalStatus: 'Verified Full-Text Archived',
     abstractSummary: 'Global reference framework establishing that human-wildlife conflict is as much about social, cultural, and political relationships between people as it is about interactions between people and wildlife.',
     keyFindings: [

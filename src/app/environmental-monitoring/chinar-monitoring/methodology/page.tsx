@@ -151,7 +151,7 @@ export default function ChinarMethodologyPage() {
             Data is released under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Official census figures remain under the statutory copyright of J&amp;K Forest Research Institute (JKFRI).
           </p>
           <div className="p-3 bg-slate-950 border border-white/5 rounded-[4px] font-mono text-slate-400 text-[11px]">
-            Kashmir EcoWatch (2026). &ldquo;Kashmir Valley Chinar Monitoring Intelligence Database (KEW-CMD)&rdquo;. https://kashmirecowatch.org/environmental-monitoring/chinar-monitoring.
+            Kashmir EcoWatch (2026). &ldquo;Kashmir Valley Chinar Monitoring Intelligence Database (KEW-CMD)&rdquo;. https://kashmir-ecowatch.com/environmental-monitoring/chinar-monitoring.
           </div>
         </div>
       </div>

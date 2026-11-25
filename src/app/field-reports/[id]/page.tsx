@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { getReportById } from '@/data/field-reports-registry';
 import { FieldReport, ReportStatus, ConfidenceLevel } from '@/types';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { ScientificPublicationStandard } from '@/components/seo/ScientificPublicationStandard';
 
 const statusConfig: Record<ReportStatus, { label: string; color: string; bgColor: string; icon: React.ElementType }> = {
   'reviewed': { label: 'Reviewed', color: 'text-blue-400', bgColor: 'bg-blue-500/10 border-blue-500/30', icon: FileCheck },
@@ -330,29 +331,61 @@ export default function ReportDetailPage() {
 
                 {/* Download Actions */}
                 <div className="space-y-3">
-                  {report.downloadUrl && (
+                  <a
+                    href={`/api/datasets/field-report/${report.id}?format=csv`}
+                    download
+                    className="block"
+                  >
                     <Button
                       size="lg"
                       className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:from-amber-600 hover:to-orange-700"
                       icon={<Download className="w-5 h-5" />}
                     >
-                      Download PDF ({report.fileSize || 'File'})
+                      Download Field Dataset (CSV)
                     </Button>
-                  )}
-                  {report.previewAvailable && (
+                  </a>
+                  <a href="#scientific-publication-standard" className="block">
                     <Button
                       size="lg"
                       variant="outline"
                       className="w-full border-white/20 text-white hover:border-amber-500/50"
-                      icon={<ExternalLink className="w-5 h-5" />}
+                      icon={<BookOpen className="w-5 h-5" />}
                     >
-                      Preview Online
+                      Citation &amp; Provenance
                     </Button>
-                  )}
+                  </a>
                 </div>
               </Card>
             </div>
           </div>
+
+          <ScientificPublicationStandard
+            archivalId={report.id.toUpperCase()}
+            title={report.title}
+            disciplines={[typeLabels[report.reportType], ...report.modules.slice(0, 2)]}
+            executiveSummary={report.summary}
+            keyFindings={[
+              `Field verification status: ${status.label} (${confidence.label}).`,
+              `District coverage: ${report.districts.join(', ')}.`,
+              ...(report.entities.length > 0
+                ? [`Monitored ecological entities: ${report.entities.join(', ')}.`]
+                : []),
+            ]}
+            geographicScope={`${report.districts.join(', ')} · Western Himalaya`}
+            methodology={report.methodology}
+            dataSources={[report.source, 'Kashmir EcoWatch Field Verification Pipeline']}
+            limitations={[
+              'Field reconnaissance reflects conditions observed on the documented survey date.',
+              'Restricted sensitive species coordinates are masked to district/watershed resolution.',
+            ]}
+            canonicalPath={`/field-reports/${report.id}`}
+            datasetApiBasePath={`/api/datasets/field-report/${report.id}`}
+            publishedDate={report.date}
+            revisedDate={report.lastUpdated}
+            authors={[report.source]}
+            reviewer={report.reviewedBy || 'KEW Field Verification Desk'}
+            atlasHref="/atlas"
+          />
         </div>
       </section>
 

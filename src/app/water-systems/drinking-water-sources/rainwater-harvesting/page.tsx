@@ -280,7 +280,7 @@ export default function RainwaterHarvestingPage() {
       <div className="border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-sm text-slate-500">Rainwater Harvesting — Kashmir Environmental Intelligence Platform</div>
+            <div className="text-sm text-slate-500">Rainwater Harvesting — Kashmir EcoWatch Western Himalayan</div>
             <div className="flex items-center gap-4 text-xs text-slate-500">
               <Link href="/water-systems/drinking-water-sources" className="hover:text-white transition-colors">Drinking Water Sources</Link>
               <Link href="/water-systems/drinking-water-sources/groundwater" className="hover:text-white transition-colors">Groundwater</Link>

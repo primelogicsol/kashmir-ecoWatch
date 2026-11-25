@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -19,10 +20,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Glacier Recession & Cryosphere Change Observatory | Kashmir EcoWatch',
-  description: 'Geodetic mass balance differencing, terminus retreat tracking, and supraglacial debris dynamics across Western Himalayan glaciers.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Glacier Recession & Cryosphere Change Observatory | Kashmir EcoWatch",
+  description: "Geodetic mass balance differencing, terminus retreat tracking, and supraglacial debris dynamics across Western Himalayan glaciers.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/glacier-recession",
+});
 
 export default function GlacierRecessionPage() {
   const glaciers = [

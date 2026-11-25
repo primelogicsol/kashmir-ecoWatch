@@ -102,7 +102,7 @@
         "habitat": "High altitude brackish wetland meadow",
         "observerAffiliation": "WWF-India / Wildlife Institute of India",
         "evidenceSource": "Annual Breeding Pair Census, Trans-Himalayan Program",
-        "isFuzzed": false,
+        "isFuzzed": true,
         "verificationStatus": "VERIFIED_OBSERVATION"
       },
       "geometry": {

@@ -70,7 +70,7 @@ DESCRIPTION:${session.abstract}
 DTSTART:${session.startDate.replace(/[-:]/g, '').split('.')[0]}Z
 DTEND:${session.endDate.replace(/[-:]/g, '').split('.')[0]}Z
 LOCATION:Kashmir EcoWatch Virtual Hall (${session.roomCode})
-URL:http://localhost:3000/webinars/room/${session.id}
+URL:https://kashmir-ecowatch.com/webinars/room/${session.id}
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;

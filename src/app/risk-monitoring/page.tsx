@@ -26,7 +26,7 @@ import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const submodules = [
   { id: 'live-alerts', name: 'Live Alerts', icon: Bell, color: 'from-red-500 to-rose-600', route: '/risk-monitoring/live-alerts-advisories', desc: 'Critical alerts & warnings' },
-  { id: 'hazard-risks', name: 'Hazard Risks', icon: AlertTriangle, color: 'from-orange-500 to-red-600', route: '/risk-monitoring/hazard-risks', desc: 'Umbrella hazard classification' },
+  { id: 'hazard-risks', name: 'Hazard Risks', icon: AlertTriangle, color: 'from-orange-500 to-red-600', route: '/risk-monitoring/disaster-risks', desc: 'Umbrella hazard classification' },
   { id: 'flood-flash-flood', name: 'Flood & Flash Flood', icon: Droplets, color: 'from-blue-500 to-cyan-600', route: '/risk-monitoring/flood-flash-flood', desc: 'River overflow & inundation watch' },
   { id: 'landslide-slope', name: 'Landslide & Slope', icon: Mountain, color: 'from-amber-500 to-orange-600', route: '/risk-monitoring/landslide-slope', desc: 'Slope instability & road risk' },
   { id: 'avalanche-winter', name: 'Avalanche & Winter', icon: Eye, color: 'from-slate-400 to-blue-600', route: '/risk-monitoring/avalanche-winter', desc: 'Avalanche exposure & winter access' },

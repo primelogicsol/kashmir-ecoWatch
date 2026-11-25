@@ -50,7 +50,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -102,7 +102,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -157,7 +157,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -207,7 +207,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -263,7 +263,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -317,7 +317,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -368,7 +368,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -423,7 +423,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -475,7 +475,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -526,7 +526,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -576,7 +576,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -630,7 +630,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -680,7 +680,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -733,7 +733,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -783,7 +783,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -836,7 +836,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -883,7 +883,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -934,7 +934,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -984,7 +984,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1035,7 +1035,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1087,7 +1087,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1136,7 +1136,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1182,7 +1182,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1228,7 +1228,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1277,7 +1277,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1327,7 +1327,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1378,7 +1378,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1425,7 +1425,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "BSI & Kashmir Eco Watch Master Flora Database",
+      "reference": "BSI & Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 96
@@ -1474,7 +1474,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1516,7 +1516,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1561,7 +1561,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1607,7 +1607,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1653,7 +1653,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1700,7 +1700,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1745,7 +1745,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1788,7 +1788,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1834,7 +1834,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1881,7 +1881,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1928,7 +1928,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -1971,7 +1971,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2017,7 +2017,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2061,7 +2061,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2108,7 +2108,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2156,7 +2156,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2199,7 +2199,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2243,7 +2243,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2290,7 +2290,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2335,7 +2335,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2383,7 +2383,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2427,7 +2427,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2471,7 +2471,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2516,7 +2516,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2564,7 +2564,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2610,7 +2610,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2654,7 +2654,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2699,7 +2699,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2744,7 +2744,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2790,7 +2790,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2839,7 +2839,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2881,7 +2881,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2926,7 +2926,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -2972,7 +2972,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3018,7 +3018,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3065,7 +3065,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3110,7 +3110,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3153,7 +3153,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3199,7 +3199,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3246,7 +3246,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3293,7 +3293,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3336,7 +3336,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3382,7 +3382,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3426,7 +3426,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3473,7 +3473,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3521,7 +3521,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3564,7 +3564,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3608,7 +3608,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3655,7 +3655,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3700,7 +3700,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3748,7 +3748,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3792,7 +3792,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3836,7 +3836,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3881,7 +3881,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3929,7 +3929,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -3975,7 +3975,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4019,7 +4019,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4064,7 +4064,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4109,7 +4109,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4155,7 +4155,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4204,7 +4204,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4246,7 +4246,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4291,7 +4291,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4337,7 +4337,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4383,7 +4383,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4430,7 +4430,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4475,7 +4475,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4518,7 +4518,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4564,7 +4564,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4611,7 +4611,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4658,7 +4658,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4701,7 +4701,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4747,7 +4747,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4791,7 +4791,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4838,7 +4838,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4886,7 +4886,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4929,7 +4929,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -4973,7 +4973,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5020,7 +5020,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5065,7 +5065,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5113,7 +5113,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5157,7 +5157,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5201,7 +5201,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5246,7 +5246,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5294,7 +5294,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5340,7 +5340,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5384,7 +5384,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5429,7 +5429,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5474,7 +5474,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5520,7 +5520,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5569,7 +5569,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5611,7 +5611,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5656,7 +5656,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5702,7 +5702,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5748,7 +5748,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5795,7 +5795,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5840,7 +5840,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5883,7 +5883,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5929,7 +5929,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -5976,7 +5976,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6023,7 +6023,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6066,7 +6066,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6112,7 +6112,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6156,7 +6156,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6203,7 +6203,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6251,7 +6251,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6294,7 +6294,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6338,7 +6338,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6385,7 +6385,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6430,7 +6430,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6478,7 +6478,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6522,7 +6522,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6566,7 +6566,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6611,7 +6611,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6659,7 +6659,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6705,7 +6705,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6749,7 +6749,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6794,7 +6794,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6839,7 +6839,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6885,7 +6885,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6934,7 +6934,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -6976,7 +6976,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7021,7 +7021,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7067,7 +7067,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7113,7 +7113,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7160,7 +7160,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7205,7 +7205,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7248,7 +7248,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7294,7 +7294,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7341,7 +7341,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7388,7 +7388,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7431,7 +7431,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7477,7 +7477,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7521,7 +7521,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7568,7 +7568,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7616,7 +7616,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7659,7 +7659,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7703,7 +7703,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7750,7 +7750,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7795,7 +7795,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7843,7 +7843,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7887,7 +7887,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7931,7 +7931,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -7976,7 +7976,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8024,7 +8024,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8070,7 +8070,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8114,7 +8114,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8159,7 +8159,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8204,7 +8204,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8250,7 +8250,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8299,7 +8299,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8341,7 +8341,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8386,7 +8386,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8432,7 +8432,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8478,7 +8478,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8525,7 +8525,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8570,7 +8570,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8613,7 +8613,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8659,7 +8659,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8706,7 +8706,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8753,7 +8753,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8796,7 +8796,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8842,7 +8842,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8886,7 +8886,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8933,7 +8933,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -8981,7 +8981,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9024,7 +9024,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9068,7 +9068,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9115,7 +9115,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9160,7 +9160,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9208,7 +9208,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9252,7 +9252,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9296,7 +9296,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9341,7 +9341,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9389,7 +9389,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9435,7 +9435,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9479,7 +9479,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9524,7 +9524,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9569,7 +9569,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9615,7 +9615,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9664,7 +9664,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9706,7 +9706,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9751,7 +9751,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9797,7 +9797,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9843,7 +9843,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9890,7 +9890,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9935,7 +9935,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -9978,7 +9978,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10024,7 +10024,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10071,7 +10071,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10118,7 +10118,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10161,7 +10161,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10207,7 +10207,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10251,7 +10251,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10298,7 +10298,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10346,7 +10346,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10389,7 +10389,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10433,7 +10433,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10480,7 +10480,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10525,7 +10525,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10573,7 +10573,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10617,7 +10617,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10661,7 +10661,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10706,7 +10706,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10754,7 +10754,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10800,7 +10800,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10844,7 +10844,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10889,7 +10889,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10934,7 +10934,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -10980,7 +10980,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11029,7 +11029,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11071,7 +11071,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11116,7 +11116,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11162,7 +11162,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11208,7 +11208,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11255,7 +11255,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11300,7 +11300,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11343,7 +11343,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11389,7 +11389,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11436,7 +11436,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11483,7 +11483,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11526,7 +11526,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11572,7 +11572,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11616,7 +11616,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11663,7 +11663,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11711,7 +11711,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11754,7 +11754,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11798,7 +11798,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11845,7 +11845,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11890,7 +11890,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11938,7 +11938,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -11982,7 +11982,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12026,7 +12026,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12071,7 +12071,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12119,7 +12119,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12165,7 +12165,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12209,7 +12209,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12254,7 +12254,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12299,7 +12299,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12345,7 +12345,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12394,7 +12394,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12436,7 +12436,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12481,7 +12481,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12527,7 +12527,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12573,7 +12573,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12620,7 +12620,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12665,7 +12665,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12708,7 +12708,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12754,7 +12754,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12801,7 +12801,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12848,7 +12848,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12891,7 +12891,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12937,7 +12937,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -12981,7 +12981,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13028,7 +13028,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13076,7 +13076,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13119,7 +13119,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13163,7 +13163,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13210,7 +13210,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13255,7 +13255,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13303,7 +13303,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13347,7 +13347,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13391,7 +13391,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13436,7 +13436,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13484,7 +13484,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13530,7 +13530,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13574,7 +13574,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13619,7 +13619,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13664,7 +13664,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13710,7 +13710,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13759,7 +13759,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13801,7 +13801,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13846,7 +13846,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13892,7 +13892,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13938,7 +13938,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -13985,7 +13985,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14030,7 +14030,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14073,7 +14073,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14119,7 +14119,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14166,7 +14166,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14213,7 +14213,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14256,7 +14256,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14302,7 +14302,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14346,7 +14346,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14393,7 +14393,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14441,7 +14441,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14484,7 +14484,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14528,7 +14528,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14575,7 +14575,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14620,7 +14620,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14668,7 +14668,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14712,7 +14712,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14756,7 +14756,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14801,7 +14801,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14849,7 +14849,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14895,7 +14895,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14939,7 +14939,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -14984,7 +14984,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15029,7 +15029,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15075,7 +15075,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15124,7 +15124,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15166,7 +15166,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15211,7 +15211,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15257,7 +15257,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15303,7 +15303,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15350,7 +15350,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15395,7 +15395,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15438,7 +15438,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15484,7 +15484,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15531,7 +15531,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15578,7 +15578,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15621,7 +15621,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15667,7 +15667,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15711,7 +15711,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15758,7 +15758,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15806,7 +15806,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15849,7 +15849,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15893,7 +15893,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15940,7 +15940,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -15985,7 +15985,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16033,7 +16033,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16077,7 +16077,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16121,7 +16121,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16166,7 +16166,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16214,7 +16214,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16260,7 +16260,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16304,7 +16304,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16349,7 +16349,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16394,7 +16394,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16440,7 +16440,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16489,7 +16489,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16531,7 +16531,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16576,7 +16576,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16622,7 +16622,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16668,7 +16668,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16715,7 +16715,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16760,7 +16760,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16803,7 +16803,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16849,7 +16849,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16896,7 +16896,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16943,7 +16943,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -16986,7 +16986,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17032,7 +17032,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17076,7 +17076,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17123,7 +17123,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17171,7 +17171,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17214,7 +17214,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17258,7 +17258,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17305,7 +17305,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17350,7 +17350,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17398,7 +17398,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17442,7 +17442,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17486,7 +17486,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17531,7 +17531,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17579,7 +17579,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17625,7 +17625,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17669,7 +17669,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17714,7 +17714,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17759,7 +17759,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17805,7 +17805,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17854,7 +17854,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17896,7 +17896,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17941,7 +17941,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -17987,7 +17987,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18033,7 +18033,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18080,7 +18080,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18125,7 +18125,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18168,7 +18168,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18214,7 +18214,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18261,7 +18261,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18308,7 +18308,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18351,7 +18351,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18397,7 +18397,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18441,7 +18441,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18488,7 +18488,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18536,7 +18536,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18579,7 +18579,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18623,7 +18623,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18670,7 +18670,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18715,7 +18715,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18763,7 +18763,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18807,7 +18807,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18851,7 +18851,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18896,7 +18896,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18944,7 +18944,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -18990,7 +18990,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19034,7 +19034,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19079,7 +19079,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19124,7 +19124,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19170,7 +19170,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19219,7 +19219,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19261,7 +19261,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19306,7 +19306,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19352,7 +19352,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19398,7 +19398,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19445,7 +19445,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19490,7 +19490,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19533,7 +19533,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19579,7 +19579,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19626,7 +19626,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19673,7 +19673,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19716,7 +19716,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19762,7 +19762,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19806,7 +19806,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19853,7 +19853,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19901,7 +19901,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19944,7 +19944,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -19988,7 +19988,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20035,7 +20035,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20080,7 +20080,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20128,7 +20128,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20172,7 +20172,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20216,7 +20216,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20261,7 +20261,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20309,7 +20309,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20355,7 +20355,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20399,7 +20399,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20444,7 +20444,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20489,7 +20489,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20535,7 +20535,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20584,7 +20584,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20626,7 +20626,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20671,7 +20671,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20717,7 +20717,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20763,7 +20763,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20810,7 +20810,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20855,7 +20855,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20898,7 +20898,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20944,7 +20944,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -20991,7 +20991,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21038,7 +21038,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21081,7 +21081,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21127,7 +21127,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21171,7 +21171,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21218,7 +21218,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21266,7 +21266,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21309,7 +21309,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21353,7 +21353,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21400,7 +21400,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21445,7 +21445,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21493,7 +21493,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21537,7 +21537,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21581,7 +21581,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21626,7 +21626,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21674,7 +21674,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21720,7 +21720,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21764,7 +21764,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21809,7 +21809,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21854,7 +21854,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21900,7 +21900,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21949,7 +21949,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -21991,7 +21991,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22036,7 +22036,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22082,7 +22082,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22128,7 +22128,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22175,7 +22175,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22220,7 +22220,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22263,7 +22263,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22309,7 +22309,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22356,7 +22356,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22403,7 +22403,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22446,7 +22446,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22492,7 +22492,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22536,7 +22536,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22583,7 +22583,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22631,7 +22631,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22674,7 +22674,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22718,7 +22718,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22765,7 +22765,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22810,7 +22810,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22858,7 +22858,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22902,7 +22902,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22946,7 +22946,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -22991,7 +22991,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23039,7 +23039,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23085,7 +23085,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23129,7 +23129,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23174,7 +23174,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23219,7 +23219,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23265,7 +23265,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23314,7 +23314,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23356,7 +23356,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23401,7 +23401,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23447,7 +23447,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23493,7 +23493,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23540,7 +23540,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23585,7 +23585,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23628,7 +23628,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23674,7 +23674,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23721,7 +23721,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23768,7 +23768,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23811,7 +23811,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23857,7 +23857,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23901,7 +23901,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23948,7 +23948,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -23996,7 +23996,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24039,7 +24039,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24083,7 +24083,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24130,7 +24130,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24175,7 +24175,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24223,7 +24223,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24267,7 +24267,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24311,7 +24311,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24356,7 +24356,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24404,7 +24404,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24450,7 +24450,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24494,7 +24494,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24539,7 +24539,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24584,7 +24584,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24630,7 +24630,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24679,7 +24679,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24721,7 +24721,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24766,7 +24766,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24812,7 +24812,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24858,7 +24858,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24905,7 +24905,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24950,7 +24950,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -24993,7 +24993,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25039,7 +25039,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25086,7 +25086,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25133,7 +25133,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25176,7 +25176,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25222,7 +25222,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25266,7 +25266,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25313,7 +25313,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25361,7 +25361,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25404,7 +25404,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25448,7 +25448,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25495,7 +25495,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25540,7 +25540,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25588,7 +25588,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25632,7 +25632,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25676,7 +25676,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25721,7 +25721,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25769,7 +25769,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25815,7 +25815,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25859,7 +25859,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25904,7 +25904,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25949,7 +25949,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -25995,7 +25995,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26044,7 +26044,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26086,7 +26086,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26131,7 +26131,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26177,7 +26177,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26223,7 +26223,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26270,7 +26270,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26315,7 +26315,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26358,7 +26358,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26404,7 +26404,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26451,7 +26451,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26498,7 +26498,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26541,7 +26541,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26587,7 +26587,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26631,7 +26631,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26678,7 +26678,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26726,7 +26726,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26769,7 +26769,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26813,7 +26813,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26860,7 +26860,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26905,7 +26905,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26953,7 +26953,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -26997,7 +26997,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27041,7 +27041,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27086,7 +27086,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27134,7 +27134,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27180,7 +27180,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27224,7 +27224,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27269,7 +27269,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27314,7 +27314,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27360,7 +27360,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27409,7 +27409,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27451,7 +27451,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27496,7 +27496,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27542,7 +27542,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27588,7 +27588,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27635,7 +27635,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27680,7 +27680,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27723,7 +27723,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27769,7 +27769,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27816,7 +27816,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27863,7 +27863,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27906,7 +27906,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27952,7 +27952,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -27996,7 +27996,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28043,7 +28043,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28091,7 +28091,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28134,7 +28134,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28178,7 +28178,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28225,7 +28225,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28270,7 +28270,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28318,7 +28318,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28362,7 +28362,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28406,7 +28406,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28451,7 +28451,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28499,7 +28499,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28545,7 +28545,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28589,7 +28589,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28634,7 +28634,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28679,7 +28679,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28725,7 +28725,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28774,7 +28774,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28816,7 +28816,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28861,7 +28861,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28907,7 +28907,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -28953,7 +28953,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29000,7 +29000,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29045,7 +29045,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29088,7 +29088,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29134,7 +29134,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29181,7 +29181,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29228,7 +29228,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29271,7 +29271,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29317,7 +29317,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29361,7 +29361,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29408,7 +29408,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29456,7 +29456,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29499,7 +29499,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29543,7 +29543,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29590,7 +29590,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29635,7 +29635,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29683,7 +29683,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29727,7 +29727,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29771,7 +29771,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29816,7 +29816,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29864,7 +29864,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29910,7 +29910,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29954,7 +29954,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -29999,7 +29999,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30044,7 +30044,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30090,7 +30090,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30139,7 +30139,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30181,7 +30181,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30226,7 +30226,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30272,7 +30272,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30318,7 +30318,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30365,7 +30365,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30410,7 +30410,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30453,7 +30453,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30499,7 +30499,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30546,7 +30546,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30593,7 +30593,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30636,7 +30636,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30682,7 +30682,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30726,7 +30726,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30773,7 +30773,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30821,7 +30821,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30864,7 +30864,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30908,7 +30908,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -30955,7 +30955,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31000,7 +31000,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31048,7 +31048,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31092,7 +31092,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31136,7 +31136,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31181,7 +31181,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31229,7 +31229,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31275,7 +31275,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31319,7 +31319,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31364,7 +31364,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31409,7 +31409,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31455,7 +31455,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31504,7 +31504,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31546,7 +31546,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31591,7 +31591,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31637,7 +31637,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31683,7 +31683,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31730,7 +31730,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31775,7 +31775,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31818,7 +31818,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31864,7 +31864,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31911,7 +31911,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -31958,7 +31958,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32001,7 +32001,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32047,7 +32047,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32091,7 +32091,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32138,7 +32138,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32186,7 +32186,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32229,7 +32229,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32273,7 +32273,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32320,7 +32320,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32365,7 +32365,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32413,7 +32413,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32457,7 +32457,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32501,7 +32501,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32546,7 +32546,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32594,7 +32594,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32640,7 +32640,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32684,7 +32684,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32729,7 +32729,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32774,7 +32774,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32820,7 +32820,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32869,7 +32869,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32911,7 +32911,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -32956,7 +32956,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33002,7 +33002,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33048,7 +33048,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33095,7 +33095,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33140,7 +33140,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33183,7 +33183,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33229,7 +33229,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33276,7 +33276,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33323,7 +33323,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33366,7 +33366,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33412,7 +33412,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33456,7 +33456,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33503,7 +33503,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33551,7 +33551,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33594,7 +33594,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33638,7 +33638,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33685,7 +33685,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33730,7 +33730,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33778,7 +33778,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33822,7 +33822,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33866,7 +33866,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33911,7 +33911,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -33959,7 +33959,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34005,7 +34005,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34049,7 +34049,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34094,7 +34094,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34139,7 +34139,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34185,7 +34185,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34234,7 +34234,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34276,7 +34276,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34321,7 +34321,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34367,7 +34367,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34413,7 +34413,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34460,7 +34460,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34505,7 +34505,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34548,7 +34548,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34594,7 +34594,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34641,7 +34641,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34688,7 +34688,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34731,7 +34731,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34777,7 +34777,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34821,7 +34821,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34868,7 +34868,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34916,7 +34916,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -34959,7 +34959,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35003,7 +35003,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35050,7 +35050,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35095,7 +35095,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35143,7 +35143,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35187,7 +35187,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35231,7 +35231,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35276,7 +35276,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35324,7 +35324,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35370,7 +35370,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35414,7 +35414,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35459,7 +35459,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35504,7 +35504,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35550,7 +35550,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35599,7 +35599,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35641,7 +35641,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35686,7 +35686,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35732,7 +35732,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35778,7 +35778,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35825,7 +35825,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35870,7 +35870,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35913,7 +35913,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -35959,7 +35959,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36006,7 +36006,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36053,7 +36053,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36096,7 +36096,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36142,7 +36142,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36186,7 +36186,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36233,7 +36233,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36281,7 +36281,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36324,7 +36324,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36368,7 +36368,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36415,7 +36415,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36460,7 +36460,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36508,7 +36508,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36552,7 +36552,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36596,7 +36596,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36641,7 +36641,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36689,7 +36689,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36735,7 +36735,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36779,7 +36779,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36824,7 +36824,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36869,7 +36869,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36915,7 +36915,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -36964,7 +36964,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37006,7 +37006,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37051,7 +37051,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37097,7 +37097,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37143,7 +37143,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37190,7 +37190,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37235,7 +37235,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37278,7 +37278,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37324,7 +37324,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37371,7 +37371,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37418,7 +37418,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37461,7 +37461,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37507,7 +37507,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37551,7 +37551,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37598,7 +37598,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37646,7 +37646,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37689,7 +37689,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37733,7 +37733,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37780,7 +37780,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37825,7 +37825,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37873,7 +37873,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37917,7 +37917,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -37961,7 +37961,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38006,7 +38006,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38054,7 +38054,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38100,7 +38100,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38144,7 +38144,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38189,7 +38189,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38234,7 +38234,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38280,7 +38280,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38329,7 +38329,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38371,7 +38371,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38416,7 +38416,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38462,7 +38462,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38508,7 +38508,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38555,7 +38555,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38600,7 +38600,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38643,7 +38643,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38689,7 +38689,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38736,7 +38736,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38783,7 +38783,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38826,7 +38826,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38872,7 +38872,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38916,7 +38916,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -38963,7 +38963,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39011,7 +39011,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39054,7 +39054,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39098,7 +39098,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39145,7 +39145,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39190,7 +39190,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39238,7 +39238,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39282,7 +39282,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39326,7 +39326,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39371,7 +39371,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39419,7 +39419,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39465,7 +39465,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39509,7 +39509,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39554,7 +39554,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39599,7 +39599,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39645,7 +39645,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39694,7 +39694,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39736,7 +39736,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39781,7 +39781,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39827,7 +39827,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39873,7 +39873,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39920,7 +39920,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -39965,7 +39965,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40008,7 +40008,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40054,7 +40054,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40101,7 +40101,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40148,7 +40148,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40191,7 +40191,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40237,7 +40237,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40281,7 +40281,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40328,7 +40328,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40376,7 +40376,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40419,7 +40419,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40463,7 +40463,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40510,7 +40510,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40555,7 +40555,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40603,7 +40603,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40647,7 +40647,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40691,7 +40691,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40736,7 +40736,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40784,7 +40784,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40830,7 +40830,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40874,7 +40874,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40919,7 +40919,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -40964,7 +40964,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41010,7 +41010,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41059,7 +41059,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41101,7 +41101,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41146,7 +41146,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41192,7 +41192,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41238,7 +41238,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41285,7 +41285,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41330,7 +41330,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41373,7 +41373,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41419,7 +41419,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41466,7 +41466,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41513,7 +41513,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41556,7 +41556,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41602,7 +41602,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41646,7 +41646,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41693,7 +41693,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41741,7 +41741,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41784,7 +41784,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41828,7 +41828,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41875,7 +41875,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41920,7 +41920,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -41968,7 +41968,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42012,7 +42012,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42056,7 +42056,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42101,7 +42101,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42149,7 +42149,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42195,7 +42195,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42239,7 +42239,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42284,7 +42284,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42329,7 +42329,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42375,7 +42375,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42424,7 +42424,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42466,7 +42466,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42511,7 +42511,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42557,7 +42557,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42603,7 +42603,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42650,7 +42650,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42695,7 +42695,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42738,7 +42738,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42784,7 +42784,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42831,7 +42831,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42878,7 +42878,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42921,7 +42921,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -42967,7 +42967,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43011,7 +43011,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43058,7 +43058,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43106,7 +43106,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43149,7 +43149,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43193,7 +43193,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43240,7 +43240,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43285,7 +43285,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43333,7 +43333,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43377,7 +43377,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43421,7 +43421,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43466,7 +43466,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43514,7 +43514,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43560,7 +43560,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43604,7 +43604,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43649,7 +43649,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43694,7 +43694,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43740,7 +43740,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43789,7 +43789,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43831,7 +43831,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43876,7 +43876,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43922,7 +43922,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -43968,7 +43968,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44015,7 +44015,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44060,7 +44060,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44103,7 +44103,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44149,7 +44149,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44196,7 +44196,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44243,7 +44243,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44286,7 +44286,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44332,7 +44332,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44376,7 +44376,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44423,7 +44423,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44471,7 +44471,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44514,7 +44514,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44558,7 +44558,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44605,7 +44605,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44650,7 +44650,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44698,7 +44698,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44742,7 +44742,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44786,7 +44786,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44831,7 +44831,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44879,7 +44879,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44925,7 +44925,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -44969,7 +44969,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45014,7 +45014,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45059,7 +45059,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45105,7 +45105,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45154,7 +45154,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45196,7 +45196,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45241,7 +45241,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45287,7 +45287,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45333,7 +45333,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45380,7 +45380,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45425,7 +45425,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45468,7 +45468,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45514,7 +45514,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45561,7 +45561,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45608,7 +45608,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45651,7 +45651,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45697,7 +45697,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45741,7 +45741,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45788,7 +45788,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45836,7 +45836,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45879,7 +45879,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45923,7 +45923,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -45970,7 +45970,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46015,7 +46015,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46063,7 +46063,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46107,7 +46107,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46151,7 +46151,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46196,7 +46196,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46244,7 +46244,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46290,7 +46290,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46334,7 +46334,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46379,7 +46379,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46424,7 +46424,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46470,7 +46470,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46519,7 +46519,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46561,7 +46561,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46606,7 +46606,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46652,7 +46652,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46698,7 +46698,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46745,7 +46745,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46790,7 +46790,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46833,7 +46833,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46879,7 +46879,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46926,7 +46926,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -46973,7 +46973,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47016,7 +47016,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47062,7 +47062,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47106,7 +47106,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47153,7 +47153,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47201,7 +47201,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47244,7 +47244,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47288,7 +47288,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47335,7 +47335,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47380,7 +47380,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47428,7 +47428,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47472,7 +47472,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47516,7 +47516,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47561,7 +47561,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47609,7 +47609,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47655,7 +47655,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47699,7 +47699,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47744,7 +47744,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47789,7 +47789,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47835,7 +47835,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47884,7 +47884,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47926,7 +47926,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -47971,7 +47971,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48017,7 +48017,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48063,7 +48063,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48110,7 +48110,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48155,7 +48155,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48198,7 +48198,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48244,7 +48244,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48291,7 +48291,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48338,7 +48338,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48381,7 +48381,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48427,7 +48427,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48471,7 +48471,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48518,7 +48518,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48566,7 +48566,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48609,7 +48609,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48653,7 +48653,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48700,7 +48700,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48745,7 +48745,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48793,7 +48793,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48837,7 +48837,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48881,7 +48881,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48926,7 +48926,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -48974,7 +48974,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49020,7 +49020,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49064,7 +49064,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49109,7 +49109,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49154,7 +49154,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49200,7 +49200,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49249,7 +49249,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49291,7 +49291,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49336,7 +49336,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49382,7 +49382,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49428,7 +49428,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49475,7 +49475,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49520,7 +49520,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49563,7 +49563,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49609,7 +49609,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49656,7 +49656,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49703,7 +49703,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49746,7 +49746,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49792,7 +49792,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49836,7 +49836,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49883,7 +49883,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49931,7 +49931,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -49974,7 +49974,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50018,7 +50018,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50065,7 +50065,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50110,7 +50110,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50158,7 +50158,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50202,7 +50202,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50246,7 +50246,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50291,7 +50291,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50339,7 +50339,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50385,7 +50385,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50429,7 +50429,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50474,7 +50474,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50519,7 +50519,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50565,7 +50565,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50614,7 +50614,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50656,7 +50656,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50701,7 +50701,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50747,7 +50747,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50793,7 +50793,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50840,7 +50840,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50885,7 +50885,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50928,7 +50928,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -50974,7 +50974,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51021,7 +51021,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51068,7 +51068,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51111,7 +51111,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51157,7 +51157,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51201,7 +51201,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51248,7 +51248,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51296,7 +51296,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51339,7 +51339,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51383,7 +51383,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51430,7 +51430,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51475,7 +51475,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51523,7 +51523,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51567,7 +51567,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51611,7 +51611,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51656,7 +51656,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51704,7 +51704,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51750,7 +51750,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51794,7 +51794,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51839,7 +51839,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51884,7 +51884,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51930,7 +51930,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -51979,7 +51979,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52021,7 +52021,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52066,7 +52066,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52112,7 +52112,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52158,7 +52158,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52205,7 +52205,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52250,7 +52250,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52293,7 +52293,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52339,7 +52339,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52386,7 +52386,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52433,7 +52433,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52476,7 +52476,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52522,7 +52522,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52566,7 +52566,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52613,7 +52613,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52661,7 +52661,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52704,7 +52704,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52748,7 +52748,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52795,7 +52795,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52840,7 +52840,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52888,7 +52888,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52932,7 +52932,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -52976,7 +52976,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53021,7 +53021,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53069,7 +53069,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53115,7 +53115,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53159,7 +53159,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53204,7 +53204,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53249,7 +53249,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53295,7 +53295,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53344,7 +53344,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53386,7 +53386,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53431,7 +53431,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53477,7 +53477,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53523,7 +53523,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53570,7 +53570,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53615,7 +53615,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53658,7 +53658,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53704,7 +53704,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53751,7 +53751,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53798,7 +53798,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53841,7 +53841,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53887,7 +53887,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53931,7 +53931,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -53978,7 +53978,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54026,7 +54026,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54069,7 +54069,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54113,7 +54113,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54160,7 +54160,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54205,7 +54205,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54253,7 +54253,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54297,7 +54297,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54341,7 +54341,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54386,7 +54386,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54434,7 +54434,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54480,7 +54480,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54524,7 +54524,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54569,7 +54569,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54614,7 +54614,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54660,7 +54660,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54709,7 +54709,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54751,7 +54751,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54796,7 +54796,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54842,7 +54842,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54888,7 +54888,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54935,7 +54935,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -54980,7 +54980,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55023,7 +55023,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55069,7 +55069,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55116,7 +55116,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55163,7 +55163,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55206,7 +55206,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55252,7 +55252,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55296,7 +55296,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55343,7 +55343,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55391,7 +55391,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55434,7 +55434,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55478,7 +55478,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55525,7 +55525,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55570,7 +55570,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55618,7 +55618,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55662,7 +55662,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55706,7 +55706,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55751,7 +55751,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55799,7 +55799,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55845,7 +55845,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55889,7 +55889,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55934,7 +55934,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -55979,7 +55979,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56025,7 +56025,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56074,7 +56074,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56116,7 +56116,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56161,7 +56161,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56207,7 +56207,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56253,7 +56253,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56300,7 +56300,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56345,7 +56345,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56388,7 +56388,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56434,7 +56434,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56481,7 +56481,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56528,7 +56528,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56571,7 +56571,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56617,7 +56617,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56661,7 +56661,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56708,7 +56708,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56756,7 +56756,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56799,7 +56799,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56843,7 +56843,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56890,7 +56890,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56935,7 +56935,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -56983,7 +56983,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57027,7 +57027,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57071,7 +57071,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57116,7 +57116,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57164,7 +57164,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57210,7 +57210,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57254,7 +57254,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57299,7 +57299,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57344,7 +57344,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57390,7 +57390,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57439,7 +57439,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57481,7 +57481,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57526,7 +57526,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57572,7 +57572,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57618,7 +57618,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57665,7 +57665,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57710,7 +57710,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57753,7 +57753,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57799,7 +57799,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57846,7 +57846,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57893,7 +57893,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57936,7 +57936,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -57982,7 +57982,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58026,7 +58026,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58073,7 +58073,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58121,7 +58121,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58164,7 +58164,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58208,7 +58208,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58255,7 +58255,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58300,7 +58300,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58348,7 +58348,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58392,7 +58392,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58436,7 +58436,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58481,7 +58481,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58529,7 +58529,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58575,7 +58575,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58619,7 +58619,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58664,7 +58664,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58709,7 +58709,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58755,7 +58755,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58804,7 +58804,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58846,7 +58846,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58891,7 +58891,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58937,7 +58937,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -58983,7 +58983,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59030,7 +59030,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59075,7 +59075,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59118,7 +59118,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59164,7 +59164,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59211,7 +59211,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59258,7 +59258,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59301,7 +59301,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59347,7 +59347,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59391,7 +59391,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59438,7 +59438,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59486,7 +59486,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59529,7 +59529,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59573,7 +59573,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59620,7 +59620,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59665,7 +59665,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59713,7 +59713,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59757,7 +59757,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59801,7 +59801,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59846,7 +59846,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59894,7 +59894,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59940,7 +59940,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -59984,7 +59984,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60029,7 +60029,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60074,7 +60074,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60120,7 +60120,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60169,7 +60169,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60211,7 +60211,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60256,7 +60256,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60302,7 +60302,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60348,7 +60348,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60395,7 +60395,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60440,7 +60440,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60483,7 +60483,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60529,7 +60529,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60576,7 +60576,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60623,7 +60623,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60666,7 +60666,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60712,7 +60712,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60756,7 +60756,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60803,7 +60803,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60851,7 +60851,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60894,7 +60894,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60938,7 +60938,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -60985,7 +60985,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61030,7 +61030,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61078,7 +61078,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61122,7 +61122,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61166,7 +61166,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61211,7 +61211,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61259,7 +61259,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61305,7 +61305,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61349,7 +61349,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61394,7 +61394,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61439,7 +61439,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61485,7 +61485,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61534,7 +61534,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61576,7 +61576,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61621,7 +61621,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61667,7 +61667,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61713,7 +61713,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61760,7 +61760,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61805,7 +61805,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61848,7 +61848,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61894,7 +61894,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61941,7 +61941,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -61988,7 +61988,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62031,7 +62031,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62077,7 +62077,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62121,7 +62121,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62168,7 +62168,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62216,7 +62216,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62259,7 +62259,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62303,7 +62303,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62350,7 +62350,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62395,7 +62395,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62443,7 +62443,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62487,7 +62487,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62531,7 +62531,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62576,7 +62576,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62624,7 +62624,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62670,7 +62670,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62714,7 +62714,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62759,7 +62759,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62804,7 +62804,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62850,7 +62850,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62899,7 +62899,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62941,7 +62941,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -62986,7 +62986,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63032,7 +63032,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63078,7 +63078,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63125,7 +63125,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63170,7 +63170,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63213,7 +63213,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63259,7 +63259,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63306,7 +63306,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63353,7 +63353,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63396,7 +63396,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63442,7 +63442,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63486,7 +63486,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63533,7 +63533,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63581,7 +63581,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63624,7 +63624,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63668,7 +63668,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63715,7 +63715,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63760,7 +63760,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63808,7 +63808,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63852,7 +63852,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63896,7 +63896,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63941,7 +63941,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -63989,7 +63989,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64035,7 +64035,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64079,7 +64079,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64124,7 +64124,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64169,7 +64169,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64215,7 +64215,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64264,7 +64264,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64306,7 +64306,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64351,7 +64351,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64397,7 +64397,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64443,7 +64443,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64490,7 +64490,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64535,7 +64535,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64578,7 +64578,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64624,7 +64624,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64671,7 +64671,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64718,7 +64718,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64761,7 +64761,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64807,7 +64807,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64851,7 +64851,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64898,7 +64898,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64946,7 +64946,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -64989,7 +64989,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65033,7 +65033,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65080,7 +65080,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65125,7 +65125,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65173,7 +65173,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65217,7 +65217,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65261,7 +65261,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65306,7 +65306,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65354,7 +65354,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65400,7 +65400,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65444,7 +65444,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65489,7 +65489,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65534,7 +65534,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65580,7 +65580,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65629,7 +65629,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65671,7 +65671,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65716,7 +65716,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65762,7 +65762,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65808,7 +65808,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65855,7 +65855,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65900,7 +65900,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65943,7 +65943,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -65989,7 +65989,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66036,7 +66036,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66083,7 +66083,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66126,7 +66126,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66172,7 +66172,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66216,7 +66216,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66263,7 +66263,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66311,7 +66311,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66354,7 +66354,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66398,7 +66398,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66445,7 +66445,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66490,7 +66490,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66538,7 +66538,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66582,7 +66582,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66626,7 +66626,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66671,7 +66671,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66719,7 +66719,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66765,7 +66765,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66809,7 +66809,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66854,7 +66854,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66899,7 +66899,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66945,7 +66945,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -66994,7 +66994,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67036,7 +67036,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67081,7 +67081,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67127,7 +67127,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67173,7 +67173,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67220,7 +67220,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67265,7 +67265,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67308,7 +67308,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67354,7 +67354,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67401,7 +67401,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67448,7 +67448,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67491,7 +67491,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67537,7 +67537,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67581,7 +67581,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67628,7 +67628,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67676,7 +67676,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67719,7 +67719,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67763,7 +67763,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67810,7 +67810,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67855,7 +67855,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67903,7 +67903,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67947,7 +67947,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -67991,7 +67991,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68036,7 +68036,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68084,7 +68084,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68130,7 +68130,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68174,7 +68174,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68219,7 +68219,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68264,7 +68264,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68310,7 +68310,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68359,7 +68359,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68401,7 +68401,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68446,7 +68446,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68492,7 +68492,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68538,7 +68538,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68585,7 +68585,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68630,7 +68630,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68673,7 +68673,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68719,7 +68719,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68766,7 +68766,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68813,7 +68813,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68856,7 +68856,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68902,7 +68902,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68946,7 +68946,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -68993,7 +68993,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69041,7 +69041,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69084,7 +69084,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69128,7 +69128,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69175,7 +69175,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69220,7 +69220,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69268,7 +69268,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69312,7 +69312,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69356,7 +69356,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69401,7 +69401,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69449,7 +69449,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69495,7 +69495,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69539,7 +69539,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69584,7 +69584,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69629,7 +69629,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69675,7 +69675,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69724,7 +69724,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69766,7 +69766,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69811,7 +69811,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69857,7 +69857,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69903,7 +69903,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69950,7 +69950,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -69995,7 +69995,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70038,7 +70038,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70084,7 +70084,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70131,7 +70131,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70178,7 +70178,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70221,7 +70221,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70267,7 +70267,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70311,7 +70311,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70358,7 +70358,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70406,7 +70406,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70449,7 +70449,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70493,7 +70493,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70540,7 +70540,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70585,7 +70585,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70633,7 +70633,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70677,7 +70677,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70721,7 +70721,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70766,7 +70766,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70814,7 +70814,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70860,7 +70860,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70904,7 +70904,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70949,7 +70949,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -70994,7 +70994,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71040,7 +71040,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71089,7 +71089,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71131,7 +71131,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71176,7 +71176,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71222,7 +71222,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71268,7 +71268,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71315,7 +71315,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71360,7 +71360,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71403,7 +71403,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71449,7 +71449,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71496,7 +71496,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71543,7 +71543,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71586,7 +71586,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71632,7 +71632,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71676,7 +71676,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71723,7 +71723,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71771,7 +71771,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71814,7 +71814,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71858,7 +71858,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71905,7 +71905,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71950,7 +71950,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -71998,7 +71998,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72042,7 +72042,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72086,7 +72086,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72131,7 +72131,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72179,7 +72179,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72225,7 +72225,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72269,7 +72269,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72314,7 +72314,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72359,7 +72359,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72405,7 +72405,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72454,7 +72454,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72496,7 +72496,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72541,7 +72541,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72587,7 +72587,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72633,7 +72633,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72680,7 +72680,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72725,7 +72725,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72768,7 +72768,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72814,7 +72814,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72861,7 +72861,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72908,7 +72908,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72951,7 +72951,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -72997,7 +72997,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73041,7 +73041,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73088,7 +73088,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73136,7 +73136,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73179,7 +73179,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73223,7 +73223,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73270,7 +73270,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73315,7 +73315,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73363,7 +73363,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73407,7 +73407,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73451,7 +73451,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73496,7 +73496,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73544,7 +73544,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73590,7 +73590,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73634,7 +73634,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73679,7 +73679,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73724,7 +73724,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73770,7 +73770,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73819,7 +73819,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73861,7 +73861,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73906,7 +73906,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73952,7 +73952,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -73998,7 +73998,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74045,7 +74045,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74090,7 +74090,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74133,7 +74133,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74179,7 +74179,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74226,7 +74226,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74273,7 +74273,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74316,7 +74316,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74362,7 +74362,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74406,7 +74406,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74453,7 +74453,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74501,7 +74501,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74544,7 +74544,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74588,7 +74588,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74635,7 +74635,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74680,7 +74680,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74728,7 +74728,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74772,7 +74772,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74816,7 +74816,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74861,7 +74861,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74909,7 +74909,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74955,7 +74955,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -74999,7 +74999,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75044,7 +75044,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75089,7 +75089,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75135,7 +75135,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75184,7 +75184,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75226,7 +75226,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75271,7 +75271,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75317,7 +75317,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75363,7 +75363,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75410,7 +75410,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75455,7 +75455,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75498,7 +75498,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75544,7 +75544,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75591,7 +75591,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75638,7 +75638,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75681,7 +75681,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75727,7 +75727,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75771,7 +75771,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75818,7 +75818,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75866,7 +75866,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75909,7 +75909,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -75953,7 +75953,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76000,7 +76000,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76045,7 +76045,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76093,7 +76093,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76137,7 +76137,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76181,7 +76181,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76226,7 +76226,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76274,7 +76274,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76320,7 +76320,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76364,7 +76364,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76409,7 +76409,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76454,7 +76454,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76500,7 +76500,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76549,7 +76549,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76591,7 +76591,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76636,7 +76636,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76682,7 +76682,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76728,7 +76728,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76775,7 +76775,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76820,7 +76820,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76863,7 +76863,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76909,7 +76909,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -76956,7 +76956,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77003,7 +77003,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77046,7 +77046,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77092,7 +77092,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77136,7 +77136,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77183,7 +77183,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77231,7 +77231,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77274,7 +77274,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77318,7 +77318,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77365,7 +77365,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77410,7 +77410,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77458,7 +77458,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77502,7 +77502,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77546,7 +77546,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77591,7 +77591,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77639,7 +77639,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77685,7 +77685,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77729,7 +77729,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77774,7 +77774,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77819,7 +77819,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77865,7 +77865,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77914,7 +77914,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -77956,7 +77956,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78001,7 +78001,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78047,7 +78047,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78093,7 +78093,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78140,7 +78140,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78185,7 +78185,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78228,7 +78228,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78274,7 +78274,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78321,7 +78321,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78368,7 +78368,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78411,7 +78411,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78457,7 +78457,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78501,7 +78501,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78548,7 +78548,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78596,7 +78596,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78639,7 +78639,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78683,7 +78683,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78730,7 +78730,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78775,7 +78775,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78823,7 +78823,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78867,7 +78867,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78911,7 +78911,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -78956,7 +78956,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79004,7 +79004,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79050,7 +79050,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79094,7 +79094,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79139,7 +79139,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79184,7 +79184,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79230,7 +79230,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79279,7 +79279,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79321,7 +79321,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79366,7 +79366,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79412,7 +79412,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79458,7 +79458,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79505,7 +79505,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79550,7 +79550,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79593,7 +79593,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79639,7 +79639,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79686,7 +79686,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79733,7 +79733,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79776,7 +79776,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79822,7 +79822,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79866,7 +79866,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79913,7 +79913,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -79961,7 +79961,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80004,7 +80004,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80048,7 +80048,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80095,7 +80095,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80140,7 +80140,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80188,7 +80188,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80232,7 +80232,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80276,7 +80276,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80321,7 +80321,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80369,7 +80369,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80415,7 +80415,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80459,7 +80459,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80504,7 +80504,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80549,7 +80549,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80595,7 +80595,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80644,7 +80644,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80686,7 +80686,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80731,7 +80731,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80777,7 +80777,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80823,7 +80823,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80870,7 +80870,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80915,7 +80915,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -80958,7 +80958,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81004,7 +81004,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81051,7 +81051,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81098,7 +81098,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81141,7 +81141,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81187,7 +81187,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81231,7 +81231,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81278,7 +81278,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81326,7 +81326,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81369,7 +81369,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81413,7 +81413,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81460,7 +81460,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81505,7 +81505,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81553,7 +81553,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81597,7 +81597,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81641,7 +81641,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81686,7 +81686,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81734,7 +81734,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81780,7 +81780,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81824,7 +81824,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81869,7 +81869,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81914,7 +81914,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -81960,7 +81960,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82009,7 +82009,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82051,7 +82051,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82096,7 +82096,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82142,7 +82142,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82188,7 +82188,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82235,7 +82235,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82280,7 +82280,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82323,7 +82323,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82369,7 +82369,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82416,7 +82416,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82463,7 +82463,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82506,7 +82506,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82552,7 +82552,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82596,7 +82596,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82643,7 +82643,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82691,7 +82691,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82734,7 +82734,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82778,7 +82778,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82825,7 +82825,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82870,7 +82870,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82918,7 +82918,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -82962,7 +82962,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83006,7 +83006,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83051,7 +83051,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83099,7 +83099,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83145,7 +83145,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83189,7 +83189,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83234,7 +83234,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83279,7 +83279,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83325,7 +83325,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83374,7 +83374,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83416,7 +83416,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83461,7 +83461,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83507,7 +83507,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83553,7 +83553,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95
@@ -83600,7 +83600,7 @@ export const plantsPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Master Flora Database",
+      "reference": "Kashmir EcoWatch Master Flora Database",
       "year": 2026,
       "verifiedBy": "Botanical Survey of India / Kew POWO",
       "confidence": 95

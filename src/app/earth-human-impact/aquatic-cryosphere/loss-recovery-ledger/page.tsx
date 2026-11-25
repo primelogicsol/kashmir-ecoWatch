@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -20,10 +21,11 @@ import { Button } from '@/components/ui/Button';
 import { HIMALAYAN_LOSS_RECOVERY_LEDGER } from '@/data/aquatic-cryosphere-observatory';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Himalayan Environmental Loss & Recovery Ledger (1985–2026) | Kashmir EcoWatch',
-  description: 'Permanent multi-decadal historical balance sheet tracking gross loss, active restoration, and net ecosystem balance across Kashmir ecosystems.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Himalayan Environmental Loss & Recovery Ledger (1985–2026) | Kashmir EcoWatch",
+  description: "Permanent multi-decadal historical balance sheet tracking gross loss, active restoration, and net ecosystem balance across Kashmir ecosystems.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/loss-recovery-ledger",
+});
 
 export default function LossRecoveryLedgerPage() {
   const totalHistoricalHa = HIMALAYAN_LOSS_RECOVERY_LEDGER.reduce((acc, curr) => acc + curr.historicalExtentHa, 0);

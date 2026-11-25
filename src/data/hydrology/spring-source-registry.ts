@@ -68,7 +68,7 @@ export const springSourceRegistry: SpringSource[] = [
   },
   {
     sourceId: 'SRC-LOCAL-NGO',
-    sourceName: 'Kashmir Eco Watch Field Surveys & Community Reports',
+    sourceName: 'Kashmir EcoWatch Field Surveys & Community Reports',
     sourceType: 'Local-Knowledge',
     reliability: 'Medium',
     coverage: 'Community-dependent and remote mountain springs',
@@ -77,7 +77,7 @@ export const springSourceRegistry: SpringSource[] = [
   },
   {
     sourceId: 'SRC-LEGACY-001',
-    sourceName: 'Kashmir Eco Watch Legacy Database',
+    sourceName: 'Kashmir EcoWatch Legacy Database',
     sourceType: 'Historical-Survey',
     reliability: 'Medium',
     coverage: 'Initial seed records of major springs (2026 Migration)',

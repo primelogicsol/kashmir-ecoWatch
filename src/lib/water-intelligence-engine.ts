@@ -1,5 +1,5 @@
 /**
- * Kashmir Eco Watch — Hydrological Intelligence Engine
+ * Kashmir EcoWatch — Hydrological Intelligence Engine
  * =====================================================
  * Phase 4A: Model Integration — runs the 10 calculation models
  *           against every waterbody record and stores computed outputs.

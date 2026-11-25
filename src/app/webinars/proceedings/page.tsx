@@ -115,7 +115,7 @@ export default function WebinarProceedingsPage() {
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-400 font-mono block">DOI Identifier Policy</span>
-                  <span className="text-xs font-bold text-cyan-300">10.5281/zenodo.kew.*</span>
+                  <span className="text-xs font-bold text-cyan-300">Zenodo / Crossref Eligible</span>
                   <span className="text-[10px] text-slate-400 block">Verified Pre-Publication</span>
                 </div>
                 <div>

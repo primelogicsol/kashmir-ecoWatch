@@ -20,6 +20,8 @@ import {
   OpenDataCategory,
   ScientificDomain
 } from '@/data/open-data-catalog';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { CANONICAL_SITE_URL, KEW_IDENTITY, ORGANIZATION_ENTITY_ID } from '@/lib/seo/entity-identity';
 
 /* ─── Section index ────────────────────────────────────────────────────── */
 
@@ -206,6 +208,25 @@ function QuickActions() {
         <Download className="w-4 h-4 text-emerald-400" />
         <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Quick Access</h3>
       </div>
+      <div className="space-y-2 mb-3 pb-3 border-b border-white/10">
+        <a
+          href="/api/datasets/open-data/all?format=csv"
+          download
+          className="flex items-center justify-between text-xs font-bold text-emerald-300 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 rounded-lg px-3 py-2 transition-colors"
+        >
+          <span className="flex items-center gap-2"><Download className="w-3.5 h-3.5" /> Download Catalog (CSV)</span>
+          <ArrowRight className="w-3 h-3" />
+        </a>
+        <a
+          href="/api/datasets/open-data/all?format=json"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between text-xs font-semibold text-sky-300 bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-lg px-3 py-2 transition-colors"
+        >
+          <span className="flex items-center gap-2"><Code className="w-3.5 h-3.5" /> Machine Metadata (JSON)</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      </div>
       <div className="space-y-2">
         {[
           { label: 'Submit Observation',   href: '/submit-observation',   icon: Plus      },
@@ -348,8 +369,42 @@ export default function OpenDataPortalPage() {
     }
   };
 
+  const openDataCatalogJsonLd = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'DataCatalog',
+    '@id': `${CANONICAL_SITE_URL}/open-data#catalog`,
+    name: 'Kashmir EcoWatch Western Himalayan Open Environmental Data Catalog',
+    description: 'FAIR-compliant open environmental datasets covering hydrology, alpine lakes, Ramsar wetlands, glaciers, Red Data Book species, pollution monitoring, and GIS vectors across the Western Himalaya.',
+    url: `${CANONICAL_SITE_URL}/open-data`,
+    license: KEW_IDENTITY.defaultLicenseUrl,
+    publisher: { '@id': ORGANIZATION_ENTITY_ID },
+    dataset: openDataCategories.slice(0, 20).map((cat) => ({
+      '@type': 'Dataset',
+      name: cat.title,
+      description: cat.description,
+      url: `${CANONICAL_SITE_URL}${cat.targetModule}`,
+      identifier: cat.id,
+      license: KEW_IDENTITY.defaultLicenseUrl,
+      isAccessibleForFree: cat.status !== 'Restricted',
+      creator: { '@id': ORGANIZATION_ENTITY_ID },
+      distribution: [
+        {
+          '@type': 'DataDownload',
+          encodingFormat: 'text/csv',
+          contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=csv`,
+        },
+        {
+          '@type': 'DataDownload',
+          encodingFormat: 'application/json',
+          contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=json`,
+        },
+      ],
+    })),
+  }), []);
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
+      <JsonLd id="kew-open-data-catalog" data={openDataCatalogJsonLd} />
       <Heading
         breadcrumbs={[{ label: 'Platform', href: '/' }, { label: 'Open Data Portal' }]}
         title={<>

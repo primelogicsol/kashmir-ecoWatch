@@ -881,7 +881,7 @@ export default function EnvironmentalCalendarPage() {
                   </span>
                 </h2>
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                  Pioneered by the Environment Services & Research Organization (ESRO) and eIEN Kashmir (2002–2006) and revived 
+                  Pioneered by the Environment and Service Research Organization (ESRO) and eIEN Kashmir (2002–2006) and revived 
                   in 2026 as a complete 8-stage experiential learning lifecycle. Connecting school and college science curricula 
                   with empirical wetland audits, forest biodiversity transects, and digital competency certification.
                 </p>

@@ -440,6 +440,72 @@
           34.095
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sheshnag-lake",
+        "name": "Sheshnag Lake",
+        "type": "lake",
+        "category": "High Altitude Alpine Lake",
+        "area_km2": 0.59,
+        "elevation_m": 3590,
+        "district": "Anantnag",
+        "watershed": "Lidder Watershed",
+        "waterQualityStatus": "excellent",
+        "slug": "sheshnag-lake",
+        "canonicalId": "lake-sheshnag-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "SAC/ISRO National Wetland Atlas J&K (NWIA Class 1103) & Sentinel-2 MSI",
+        "sourceDate": "2026",
+        "boundaryPolygon": [
+          [75.4905, 34.0895],
+          [75.5025, 34.0895],
+          [75.5025, 34.0978],
+          [75.4905, 34.0978],
+          [75.4905, 34.0895]
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.4967,
+          34.0936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "anchar-lake",
+        "name": "Anchar Lake",
+        "type": "lake",
+        "category": "Urban Shallow Lake",
+        "area_km2": 6.8,
+        "elevation_m": 1584,
+        "district": "Srinagar",
+        "watershed": "Sindh-Jhelum Basin",
+        "waterQualityStatus": "critical",
+        "slug": "anchar-lake",
+        "canonicalId": "lake-anchar-lake",
+        "verificationStatus": "VERIFIED_BOUNDARY",
+        "source": "SAC/ISRO NWIA J&K Atlas & KEW Wetland Observatory",
+        "sourceDate": "2026",
+        "boundaryPolygon": [
+          [74.775, 34.135],
+          [74.796, 34.135],
+          [74.796, 34.156],
+          [74.775, 34.156],
+          [74.775, 34.135]
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.785,
+          34.145
+        ]
+      }
     }
   ]
 }

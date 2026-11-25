@@ -112,6 +112,55 @@ export function compareNamesAlphabetically<T extends { name?: string; honorific?
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const CANONICAL_ENTITIES: CanonicalEntity[] = [
+  // ─── ORGANIZATION: KASHMIR ECOWATCH WESTERN HIMALAYAN (CANONICAL ROOT) ──────
+  {
+    canonicalId: 'org-kashmir-ecowatch',
+    entityType: 'ORGANIZATION',
+    canonicalName: 'Kashmir EcoWatch',
+    aliases: [
+      'Kashmir EcoWatch Western Himalayan',
+      'KEW',
+      'KEW Western Himalayan',
+      'Environment and Service Research Organization (ESRO)',
+    ],
+    primaryAffiliationOrInstitution: 'Operated & Supported by Dr. Kumar Foundation USA & Kumar Trust USA',
+    region: 'Multi-Region',
+    verificationStatus: 'PUBLISHED',
+    evidenceTiers: ['CERTIFIED_DOCUMENT', 'PEER_REVIEWED'],
+    primarySourceCitation: 'https://kashmir-ecowatch.com/#organization (Est. 2004 as ESRO)',
+    connectedEntities: ['org-dkf-usa', 'org-kumar-trust-usa', 'person-sheikh-noor-ud-din'],
+    sourceModuleLinks: [
+      { moduleName: 'About KEW', route: '/about', localRecordId: 'kew-org-root', relationship: 'Canonical Institutional Profile' },
+      { moduleName: 'Governance Charter', route: '/about/governance', localRecordId: 'kew-governance', relationship: 'Institutional Governance & Alamdar Ethos' },
+      { moduleName: 'Scientific Methodology', route: '/about/methodology', localRecordId: 'kew-methodology', relationship: '8-Stage Scientific Verification Protocol' },
+    ],
+    biographyOrDescription:
+      'Independent, non-commercial, non-political scientific environmental intelligence platform covering hydrological systems, biodiversity, cryosphere, natural hazards, pollution monitoring, and ecological governance across the Western Himalaya. Originally established in 2004 as Environment and Service Research Organization (ESRO).',
+    historicalPeriodOrLifespan: 'Est. 2004 – Present',
+    isHistorical: false,
+    lastAuditedDate: '2026-11-25',
+  },
+  {
+    canonicalId: 'org-dkf-usa',
+    entityType: 'INSTITUTION',
+    canonicalName: 'Dr. Kumar Foundation USA',
+    aliases: ['DKF USA'],
+    primaryAffiliationOrInstitution: 'Philanthropic & Institutional Sponsor of Kashmir EcoWatch',
+    region: 'Multi-Region',
+    verificationStatus: 'PUBLISHED',
+    evidenceTiers: ['CERTIFIED_DOCUMENT'],
+    primarySourceCitation: 'https://dkf.sufisciencecenter.info/',
+    connectedEntities: ['org-kashmir-ecowatch', 'org-kumar-trust-usa'],
+    sourceModuleLinks: [
+      { moduleName: 'Support & Sponsorship', route: '/about/support-sponsorship', localRecordId: 'dkf-sponsor', relationship: 'Primary Philanthropic Sponsor' },
+    ],
+    biographyOrDescription:
+      'US-based philanthropic foundation supporting Kashmir EcoWatch as part of its Western Himalayan Ecological Stewardship Initiative.',
+    historicalPeriodOrLifespan: 'Active',
+    isHistorical: false,
+    lastAuditedDate: '2026-11-25',
+  },
+
   // ─── PERSON: SHEIKH NOOR-UD-DIN WALI ───────────────────────────────────────
   {
     canonicalId: 'person-sheikh-noor-ud-din',

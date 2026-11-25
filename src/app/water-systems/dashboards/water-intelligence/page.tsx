@@ -134,7 +134,7 @@ export default function WaterIntelligenceDashboard() {
             <KewBrandIdentity />
             <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Intelligence</span>
           </>}
-        subtitle="Hydrological intelligence engine for Kashmir Eco Watch. All computations run on source-verified records only. Locked records are excluded from KPIs until source verification is complete."
+        subtitle="Hydrological intelligence engine for Kashmir EcoWatch. All computations run on source-verified records only. Locked records are excluded from KPIs until source verification is complete."
         breadcrumbs={[
           { label: 'Water Systems', href: '/water-systems' },
           { label: 'Dashboards', href: '/water-systems/dashboards' },

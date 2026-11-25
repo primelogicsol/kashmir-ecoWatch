@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Database: RIVERS
+// Kashmir EcoWatch — Hydrology Database: RIVERS
 // Migration Status: Legacy Imported → Pending Verification
 // Generated: 2026-06-16T16:28:50.345Z
 // DO NOT use Dashboard_Locked records in live KPI calculations.

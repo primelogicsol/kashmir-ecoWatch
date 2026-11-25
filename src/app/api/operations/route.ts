@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 import pool from '@/lib/db';
 import { 
   OperationRecord, 
@@ -187,9 +188,11 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
   try {
     const adminKey = req.headers.get('x-admin-key');
-    if (adminKey !== 'KEW-Admin-2026!') {
+    const sessionAuth = await verifyAdminRequest(req);
+    const expectedKey = process.env.ADMIN_API_KEY || 'KEW-Admin-2026!';
+    if (!sessionAuth.authorized && adminKey !== expectedKey) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized: Admin authentication key required.' },
+        { success: false, error: 'Unauthorized: Admin authentication session required.' },
         { status: 401 }
       );
     }

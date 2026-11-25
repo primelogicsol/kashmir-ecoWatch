@@ -1882,7 +1882,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -1935,7 +1935,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -1988,7 +1988,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2038,7 +2038,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2091,7 +2091,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2144,7 +2144,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2194,7 +2194,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2247,7 +2247,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2300,7 +2300,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2351,7 +2351,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2403,7 +2403,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2454,7 +2454,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2507,7 +2507,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2560,7 +2560,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2614,7 +2614,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2667,7 +2667,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2718,7 +2718,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2770,7 +2770,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2822,7 +2822,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2874,7 +2874,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2928,7 +2928,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -2979,7 +2979,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3031,7 +3031,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3084,7 +3084,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3138,7 +3138,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3191,7 +3191,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3242,7 +3242,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3295,7 +3295,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3348,7 +3348,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3402,7 +3402,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3452,7 +3452,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3506,7 +3506,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3557,7 +3557,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3610,7 +3610,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3661,7 +3661,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3712,7 +3712,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3766,7 +3766,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3819,7 +3819,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3870,7 +3870,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3924,7 +3924,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -3977,7 +3977,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4031,7 +4031,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4084,7 +4084,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4135,7 +4135,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4186,7 +4186,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4238,7 +4238,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4291,7 +4291,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4344,7 +4344,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4397,7 +4397,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4450,7 +4450,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4503,7 +4503,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4555,7 +4555,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4608,7 +4608,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4661,7 +4661,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4714,7 +4714,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4767,7 +4767,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4820,7 +4820,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4873,7 +4873,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4926,7 +4926,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -4980,7 +4980,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5033,7 +5033,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5086,7 +5086,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5140,7 +5140,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5190,7 +5190,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5243,7 +5243,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5297,7 +5297,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5350,7 +5350,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5403,7 +5403,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5457,7 +5457,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5508,7 +5508,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5561,7 +5561,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5613,7 +5613,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5665,7 +5665,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5715,7 +5715,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5769,7 +5769,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5822,7 +5822,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5875,7 +5875,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5928,7 +5928,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -5979,7 +5979,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6032,7 +6032,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6085,7 +6085,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6139,7 +6139,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6192,7 +6192,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6245,7 +6245,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6299,7 +6299,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6350,7 +6350,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6403,7 +6403,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6456,7 +6456,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6509,7 +6509,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6562,7 +6562,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6616,7 +6616,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6669,7 +6669,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6723,7 +6723,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6774,7 +6774,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6824,7 +6824,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6876,7 +6876,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6929,7 +6929,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -6982,7 +6982,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7035,7 +7035,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7086,7 +7086,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7138,7 +7138,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7189,7 +7189,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7243,7 +7243,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7294,7 +7294,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7347,7 +7347,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7400,7 +7400,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7453,7 +7453,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7506,7 +7506,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7559,7 +7559,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7613,7 +7613,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7666,7 +7666,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7719,7 +7719,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7769,7 +7769,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7819,7 +7819,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7869,7 +7869,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7923,7 +7923,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -7976,7 +7976,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8027,7 +8027,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8081,7 +8081,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8135,7 +8135,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8187,7 +8187,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8238,7 +8238,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8291,7 +8291,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8342,7 +8342,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8393,7 +8393,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8447,7 +8447,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95
@@ -8501,7 +8501,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Medicinal Flora Database",
+      "reference": "Kashmir EcoWatch Medicinal Flora Database",
       "year": 2026,
       "verifiedBy": "BSI / NMPB",
       "confidence": 95

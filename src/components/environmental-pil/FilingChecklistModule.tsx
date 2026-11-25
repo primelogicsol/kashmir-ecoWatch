@@ -75,7 +75,7 @@ export function FilingChecklistModule() {
         const isDone = !!checkedItems[item.id];
         return `[${isDone ? 'X' : ' '}] ${idx + 1}. ${item.title} (${item.category})\n    Statute: ${item.statutoryBasis}\n    Notes: ${item.regionalNotes}\n    Mandatory Docs: ${item.mandatoryDocuments.join(', ')}\n`;
       }),
-      'Generated from Kashmir EcoWatch (http://localhost:3004/resources/environmental-pil)'
+      'Generated from Kashmir EcoWatch (https://kashmir-ecowatch.com/resources/environmental-pil)'
     ].join('\n');
 
     navigator.clipboard.writeText(textLines).then(() => {

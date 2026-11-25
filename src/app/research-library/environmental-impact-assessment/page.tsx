@@ -580,8 +580,7 @@ export default function EnvironmentalImpactAssessmentPage() {
             <div>
               <p className="text-sm font-semibold text-emerald-300">ESRO Attribution — ESRO/eIEN Kashmir Archive</p>
               <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                This Environmental Impact Assessment is sourced from the <strong className="text-slate-200">Environmental
-                Data Resource Observatory (ESRO)</strong> legacy archive, originally hosted on the eIEN Kashmir
+                This Environmental Impact Assessment is sourced from the <strong className="text-slate-200">Environment and Service Research Organization (ESRO)</strong> legacy archive, originally hosted on the eIEN Kashmir
                 platform. The data represents baseline environmental conditions documented through field surveys,
                 satellite analysis, and government records. All findings have been preserved from the original
                 ESRO report and attributed to their source.

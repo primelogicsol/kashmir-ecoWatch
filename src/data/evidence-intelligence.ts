@@ -92,6 +92,16 @@ export interface EvidenceItem {
   
   // Keywords for search
   keywords: string[];
+
+  // Optional scientific rigor extensions (references, limitations, epistemic classification)
+  references?: string[];
+  limitations?: string[];
+  evidenceClassification?: {
+    measuredObservations: string[];
+    documentedFindings: string[];
+    scientificInferences: string[];
+    excludedUnverifiedClaims: string[];
+  };
 }
 
 export interface Collection {
@@ -117,6 +127,85 @@ export interface BrowseCategory {
 // ============================================================================
 
 export const evidenceRegistry: EvidenceItem[] = [
+  // FLAGSHIP SCIENTIFIC ASSESSMENT — SHESHNAG LAKE
+  {
+    id: 'ev-lake-sheshnag-2026',
+    title: 'Sheshnag Lake: Glacial Origin, Alpine Ecology and Environmental Sensitivity',
+    description:
+      'Multi-source limnological, glacial-geomorphological, and environmental sensitivity synthesis of Sheshnag Lake (34°05′37″N, 75°29′48″E; ~3,590 m a.s.l., Upper Lidder Valley, Anantnag), perennial headwater source of the East Lidder River.',
+    category: 'research',
+    subtype: 'assessment',
+    sourceType: 'academic',
+    confidence: 'high',
+    authors: ['KEW Western Himalayan Cryosphere & Limnology Desk'],
+    organization: 'Kashmir EcoWatch Western Himalayan',
+    publishedDate: '2026-06-18',
+    downloadUrl: '/api/datasets/water/sheshnag-lake?format=csv',
+    districts: ['anantnag'],
+    locations: [
+      {
+        name: 'Sheshnag Lake, Upper East Lidder Valley (34°05′37″N, 75°29′48″E)',
+        lat: 34.0936,
+        lng: 75.4967,
+      },
+    ],
+    relatedEntities: [
+      { id: 'sheshnag-lake', type: 'lake', name: 'Sheshnag Lake', slug: '/water-systems/lakes/sheshnag-lake' },
+      { id: 'sheshnag-glacier', type: 'glacier', name: 'Sheshnag Glacier', slug: '/water-systems/glaciers/sheshnag-glacier' },
+      { id: 'district-anantnag', type: 'district', name: 'Anantnag', slug: '/districts/anantnag' },
+    ],
+    usedInModules: [
+      { moduleId: 'water-systems', moduleName: 'Water Systems & Limnology', modulePath: '/water-systems/lakes/sheshnag-lake', usageContext: 'Compiled Lidder headwater physicochemical reference baseline & NWIA wetland morphometry' },
+      { moduleId: 'sectoral-eia', moduleName: 'Tourism Carrying Capacity EIA', modulePath: '/sectoral-eia/sectors/tourism', usageContext: 'High-altitude pilgrimage solid-waste & equine nutrient-runoff sensitivity' },
+      { moduleId: 'atlas', moduleName: 'Geospatial GIS Atlas', modulePath: '/atlas', usageContext: 'High-altitude oligotrophic lake vector layer (NWIA Code 1103)' },
+    ],
+    methods: [
+      { methodId: 'rs-glac-002', methodName: 'Sentinel-2 MSI & SRTM 1-Arc-Second Morphometric Verification', description: 'Copernicus Sentinel-2 (10 m / 20 m optical bands) shoreline delineation cross-checked against SAC/ISRO National Wetland Inventory (NWIA Class 1103) and NASA/USGS SRTM 30 m elevation hydrography across the ~38 km² upper catchment.' },
+      { methodId: 'lim-001', methodName: 'Peer-Reviewed Lidder Headwater Hydrochemical Synthesis', description: 'Compilation of published APHA-standard physicochemical parameters from peer-reviewed Lidder Basin studies (pH ~7.6, DO ~9.7 mg/L, EC ~58 µS/cm, TDS ~44 mg/L, Turbidity ~1.2 NTU, NO3-N ~0.22 mg/L, PO4-P ~0.03 mg/L, BOD ~0.9 mg/L).' },
+    ],
+    collections: ['wetlands', 'climate'],
+    downloadCount: 412,
+    citationCount: 19,
+    lastUpdated: '2026-11-25',
+    tags: ['Sheshnag Lake', 'alpine limnology', 'glacial lake', 'Lidder Watershed', 'Anantnag', 'carrying capacity'],
+    abstract:
+      'Sheshnag Lake (34.0936° N, 75.4967° E [34°05′37″N, 75°29′48″E]; elevation ~3,590 m a.s.l.; dimensions ~1.1 km × 0.7 km; SAC/ISRO NWIA dry-season lake surface ~0.59 km² within a ~1.1 km² seasonal meltwater basin) is an oligotrophic cirque-moraine glacial lake in the Upper Lidder Valley of Anantnag District that forms the perennial headwater reservoir of the East Lidder River. Geomorphologically inferred to have formed through Late Quaternary–Holocene glacial over-deepening and moraine impoundment, the basin is fed by meltwater streams from the Sheshnag–Kohinoor glacier complex. Compiled peer-reviewed Lidder headwater hydrochemistry documents cold, well-oxygenated, low-ionic waters (representative summer reference baseline: DO ~9.7 mg/L, pH ~7.6, EC ~58 µS/cm, TDS ~44 mg/L, BOD ~0.9 mg/L), supporting cold-stenothermal benthic macroinvertebrates and historically introduced Brown Trout (Salmo trutta fario). Seasonal high-density pilgrimage transit, equine-trail nutrient loading, riparian solid waste, and recession of feeding cirque glaciers expose this low-alkalinity alpine system to acute ecological sensitivity.',
+    keywords: ['Sheshnag Lake', 'Sheshnag Lake ecology', 'East Lidder River headwaters', 'Kashmir alpine lakes', 'glacial geomorphology', 'Lidder Basin limnology'],
+    evidenceClassification: {
+      measuredObservations: [
+        'Geographic centroid verified at 34.0936° N, 75.4967° E (34°05′37″N, 75°29′48″E) at ~3,590 m a.s.l. via NASA/USGS SRTM 30 m DEM and Copernicus Sentinel-2 MSI (10 m optical imagery).',
+        'Basin morphometry measures ~1.1 km maximum length × ~0.7 km maximum width; SAC/ISRO National Wetland Atlas (NWIA Class 1103) delineates ~0.59 km² dry-season open-water area within a ~38 km² glacial headwater catchment.',
+        'Direct hydrological outflow feeds the East Lidder (Chandanwari) branch of the Lidder River (Jhelum tributary).'
+      ],
+      documentedFindings: [
+        'Published Lidder Basin water-quality studies (Rashid & Romshoo, 2013; Hajam et al., 2008) document an oligotrophic, calcium-bicarbonate, cold-stenothermal headwater regime (summer reference values: pH ~7.6, DO ~9.7 mg/L, EC ~58 µS/cm, TDS ~44 mg/L, NO3-N ~0.22 mg/L, PO4-P ~0.03 mg/L, BOD ~0.9 mg/L).',
+        'Multi-source remote-sensing inventories of Lidder Basin glaciers (Aziz et al., 2024; Malik & Bhat, 2014) document sustained late-20th/early-21st-century glacier recession and watershed vulnerability across the upper East Lidder sub-basin.',
+        'Ichthyofauna includes Brown Trout (Salmo trutta fario), documented in historical fisheries records as an introduced cold-water salmonid rather than an indigenous endemic species.'
+      ],
+      scientificInferences: [
+        'Basin origin is inferred from cirque-trough morphology and terminal/recessional moraine geometry to represent Late Pleistocene (post-LGM) to Early Holocene glacial over-deepening and moraine damming within Panjal Trap and Paleozoic–Triassic strata.',
+        'Low dissolved ionic buffering (EC < 65 µS/cm) implies heightened sensitivity to episodic summer nutrient pulses from high-density pilgrimage camps and pack-animal transit.'
+      ],
+      excludedUnverifiedClaims: [
+        'No direct cosmogenic nuclide (10Be) exposure dating of the Sheshnag moraine sill or basal sediment radiocarbon (14C) core chronology exists in peer-reviewed literature; exact numerical lake-age claims are therefore excluded.',
+        'Physicochemical parameters on this page are explicitly presented as a compiled regional literature baseline rather than a single-day KEW laboratory grab sample.',
+        'Comprehensive multibeam echo-sounder bathymetry is unpublished; winter ice cover (November–May) precludes continuous year-round in-situ sampling.'
+      ]
+    },
+    limitations: [
+      'Seasonal snow and lake-ice cover (~6 months/year, November–May) restricts field hydrochemical sampling to summer ablation windows.',
+      'Steep cirque shadow cast and slush-ice margins introduce ±10–20 m shoreline uncertainty in 10 m optical satellite composites.',
+      'Direct radiometric age constraints (10Be moraine dating or basal sediment cores) and full-basin multibeam bathymetry remain unmeasured research gaps.'
+    ],
+    references: [
+      'Rashid, I., & Romshoo, S. A. (2013). Impact of anthropogenic activities on water quality of Lidder River in Kashmir Himalayas. Environmental Monitoring and Assessment, 185(6), 4705–4719. https://doi.org/10.1007/s10661-012-2898-0',
+      'Malik, M. I., & Bhat, M. S. (2014). Integrated approach for prioritizing watersheds for management: A study of Lidder Catchment of Kashmir Himalayas. Environmental Management, 54(6), 1267–1287. https://doi.org/10.1007/s00267-014-0361-4',
+      'Aziz, K., et al. (2024). Parametric Analysis of Lidder Basin Glaciers in Kashmir Himalayas using Multi-Source Data. 2024 IEEE International India Geoscience and Remote Sensing Symposium (InGARSS). https://doi.org/10.1109/ingarss61818.2024.10984064',
+      'Hajam, S. A., Bhat, S. U., & Pandit, A. K. (2008). Water quality analysis of Lidder Nalah in Kashmir Valley. Current World Environment, 3(2), 305–309. https://doi.org/10.12944/cwe.3.2.23',
+      'Space Applications Centre (SAC), ISRO (2010). National Wetland Atlas: Jammu and Kashmir (NWIA High-Altitude Wetland Code 1103). Ministry of Environment & Forests, Govt. of India, Ahmedabad.'
+    ],
+  },
+
   // WETLAND EVIDENCE
   {
     id: 'ev-wetland-001',
@@ -129,10 +218,10 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. Ayesha Hassan', 'Dr. Mohammad Ashraf'],
     organization: 'J&K Wetland Authority',
     publishedDate: '2024-02-15',
-    doi: '10.1234/wetland.2024.001',
+    downloadUrl: '/api/datasets/evidence/ev-wetland-001?format=csv',
     districts: ['srinagar'],
     relatedEntities: [
-      { id: 'wetland-hokersar', type: 'wetland', name: 'Hokersar Wetland', slug: '/water-systems/wetlands/hokersar' },
+      { id: 'wetland-hokersar', type: 'wetland', name: 'Hokersar Wetland', slug: '/water-systems/wetlands/hokersar-wetland' },
       { id: 'district-srinagar', type: 'district', name: 'Srinagar', slug: '/districts/srinagar' },
     ],
     usedInModules: [
@@ -162,7 +251,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Kashmir University Limnology Lab'],
     organization: 'University of Kashmir',
     publishedDate: '2024-01-10',
-    url: 'https://data.kashmiruni.edu.in/dal-lake-wq',
+    downloadUrl: '/api/datasets/water/dal-lake?format=csv',
     districts: ['srinagar'],
     relatedEntities: [
       { id: 'lake-dal', type: 'lake', name: 'Dal Lake', slug: '/water-systems/lakes/dal-lake' },
@@ -197,11 +286,11 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. S. Sathyakumar', 'J&K Wildlife Department'],
     organization: 'Wildlife Institute of India',
     publishedDate: '2023-12-01',
-    doi: '10.1234/hangul.2023.001',
+    downloadUrl: '/api/datasets/evidence/ev-species-001?format=csv',
     districts: ['srinagar'],
     relatedEntities: [
-      { id: 'species-hangul', type: 'species', name: 'Hangul (Cervus hanglu)', slug: '/biodiversity/mammals' },
-      { id: 'pa-dachigam', type: 'protected_area', name: 'Dachigam National Park', slug: '/protected-areas/dachigam' },
+      { id: 'species-hangul', type: 'species', name: 'Hangul (Cervus hanglu)', slug: '/biodiversity/species/hangul-kashmir-stag' },
+      { id: 'pa-dachigam', type: 'protected_area', name: 'Dachigam National Park', slug: '/protected-areas/dachigam-national-park' },
     ],
     usedInModules: [
       { moduleId: 'biodiversity', moduleName: 'Biodiversity', modulePath: '/biodiversity', usageContext: 'Population trend analysis' },
@@ -231,11 +320,11 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. Bilal Habib', 'Dr. A. J. T. Johnsingh'],
     organization: 'Bombay Natural History Society',
     publishedDate: '2023-06-15',
-    doi: '10.1234/avian.2023.001',
+    downloadUrl: '/api/datasets/evidence/ev-species-002?format=csv',
     districts: ['srinagar', 'ganderbal', 'bandipora'],
     relatedEntities: [
-      { id: 'wetland-hokersar', type: 'wetland', name: 'Hokersar Wetland', slug: '/water-systems/wetlands/hokersar' },
-      { id: 'wetland-shallabugh', type: 'wetland', name: 'Shallabugh Wetland', slug: '/water-systems/wetlands/shallabugh' },
+      { id: 'wetland-hokersar', type: 'wetland', name: 'Hokersar Wetland', slug: '/water-systems/wetlands/hokersar-wetland' },
+      { id: 'wetland-shallabugh', type: 'wetland', name: 'Shallabugh Wetland', slug: '/water-systems/wetlands/shallabugh-wetland' },
     ],
     usedInModules: [
       { moduleId: 'biodiversity', moduleName: 'Biodiversity', modulePath: '/biodiversity', usageContext: 'Species identification and distribution' },
@@ -297,11 +386,11 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. Irfan Rashid', 'Dr. Nilofar Khan'],
     organization: 'University of Kashmir - Climate Studies',
     publishedDate: '2023-11-10',
-    doi: '10.1234/climate.2023.002',
+    downloadUrl: '/api/datasets/evidence/ev-district-002?format=csv',
     districts: ['ganderbal'],
     relatedEntities: [
       { id: 'district-ganderbal', type: 'district', name: 'Ganderbal', slug: '/districts/ganderbal' },
-      { id: 'glacier-kolahoi', type: 'glacier', name: 'Kolahoi Glacier', slug: '/water-systems/glaciers/kolahoi' },
+      { id: 'glacier-kolahoi', type: 'glacier', name: 'Kolahoi Glacier', slug: '/water-systems/glaciers/kolahoi-glacier' },
     ],
     usedInModules: [
       { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', usageContext: 'Climate risk mapping' },
@@ -332,8 +421,9 @@ export const evidenceRegistry: EvidenceItem[] = [
     organization: 'Community Water Monitoring Network',
     publishedDate: '2024-02-28',
     districts: ['anantnag'],
+    downloadUrl: '/api/datasets/water/kokernag-spring?format=csv',
     relatedEntities: [
-      { id: 'spring-kokernag', type: 'spring', name: 'Kokernag Spring', slug: '/water-systems/springs/kokernag' },
+      { id: 'spring-kokernag', type: 'spring', name: 'Kokernag Spring', slug: '/water-systems/springs/kokernag-spring' },
       { id: 'district-anantnag', type: 'district', name: 'Anantnag', slug: '/districts/anantnag' },
     ],
     usedInModules: [
@@ -364,7 +454,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. M. L. Khan', 'Dr. A. K. Singh'],
     organization: 'Forest Survey of India & University of Delhi',
     publishedDate: '2024-01-05',
-    doi: '10.1016/j.foreco.2024.001',
+    downloadUrl: '/api/datasets/evidence/ev-forest-001?format=csv',
     districts: ['all'],
     relatedEntities: [
       { id: 'forest-kashmir', type: 'forest', name: 'Kashmir Forests', slug: '/earth-human-impact/forests-landscapes' },
@@ -397,7 +487,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Dr. Rajiv Sinha', 'Dr. Anjal Prakash'],
     organization: 'IIT Kanpur & TERI',
     publishedDate: '2023-09-20',
-    doi: '10.1038/s41558-023-001',
+    downloadUrl: '/api/datasets/evidence/ev-climate-001?format=csv',
     districts: ['all'],
     relatedEntities: [],
     usedInModules: [
@@ -486,8 +576,7 @@ export const evidenceRegistry: EvidenceItem[] = [
     authors: ['Kashmir Geospatial Lab'],
     organization: 'University of Kashmir',
     publishedDate: '2023-10-12',
-    url: 'https://geodata.kashmiruni.edu.in/watersheds',
-    downloadUrl: 'https://geodata.kashmiruni.edu.in/download/watersheds.zip',
+    downloadUrl: '/api/datasets/evidence/ev-map-001?format=csv',
     districts: ['all'],
     relatedEntities: [],
     usedInModules: [

@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -18,10 +19,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Wetland Encroachment & Habitat Loss Observatory | Kashmir EcoWatch',
-  description: 'Monitoring Ramsar wetland boundary violations, siltation conversions, reedbed destruction, and flood buffering capacity across Kashmir.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Wetland Encroachment & Habitat Loss Observatory | Kashmir EcoWatch",
+  description: "Monitoring Ramsar wetland boundary violations, siltation conversions, reedbed destruction, and flood buffering capacity across Kashmir.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/wetland-encroachment",
+});
 
 export default function WetlandEncroachmentPage() {
   const wetlands = [

@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — GPS Validation Queue
+// Kashmir EcoWatch — GPS Validation Queue
 // Step 3 Validation: 14 records with missing or unverified coordinates
 // Each record must be validated against its Preferred_Source before coordinates are accepted.
 // Generated: 2026-06-16T01:22:20.052Z

@@ -540,7 +540,7 @@ function MonitoringOverviewPage() {
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
               Monitoring networks form the foundational data layer that powers every intelligence module
-              across the Kashmir Environmental Intelligence Platform.
+              across Kashmir EcoWatch Western Himalayan.
             </p>
           </motion.div>
 

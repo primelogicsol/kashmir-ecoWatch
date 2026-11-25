@@ -78,7 +78,7 @@ export default function BirdingHotspotsPage() {
             </div>
           </div>
         }
-        subtitle="A scientifically validated directory of the region's most important habitats for birding, conservation monitoring, and citizen science across the Kashmir Eco Watch geography."
+        subtitle="A scientifically validated directory of the region's most important habitats for birding, conservation monitoring, and citizen science across the Kashmir EcoWatch geography."
         icon={<Wind className="w-6 h-6 text-sky-400" />}
         label="Biodiversity Intelligence · Avian Hotspots"
         breadcrumbs={[

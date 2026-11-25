@@ -139,15 +139,17 @@ export default function ResearchPage() {
                   </div>
                 </div>
 
-                <a
-                  href={`https://doi.org/${paper.doi}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-[6px] bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 shrink-0 self-start transition-colors"
-                >
-                  <span>DOI Access</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                {paper.doi && (
+                  <a
+                    href={`https://doi.org/${paper.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 rounded-[6px] bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 shrink-0 self-start transition-colors"
+                  >
+                    <span>DOI Access</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
 
               <p className="text-xs text-slate-300 leading-relaxed pt-2 border-t border-white/5">

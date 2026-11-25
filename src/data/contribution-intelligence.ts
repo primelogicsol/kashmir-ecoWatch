@@ -295,9 +295,7 @@ export const contributedDatasets: ContributedDataset[] = [
     publishedDate: '2024-01-15',
     downloadCount: 567,
     citationCount: 45,
-    tags: ['water-quality', 'dal-lake', 'monitoring', 'time-series'],
-    doi: '10.1234/dal-wq-2024',
-  },
+    tags: ['water-quality', 'dal-lake', 'monitoring', 'time-series'],  },
   {
     id: 'dataset-002',
     title: 'Bird Migration Patterns - Kashmir Wetlands 2023',

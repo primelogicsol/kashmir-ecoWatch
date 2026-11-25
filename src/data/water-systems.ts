@@ -1360,15 +1360,15 @@ export const lakesData: WaterEntity[] = [
       "name": "Sheshnag Lake",
       "type": "lake",
       "category": "High Altitude Alpine Lake",
-      "description": "A legendary oligotrophic alpine lake nestled in the Lidder Valley on the pilgrimage trail to Amarnath. Fed by snowmelt and mountain streams issuing from surrounding glacier snouts, it is famous for its greenish-blue water and gives rise to the East Lidder River.",
+      "description": "An oligotrophic cirque-moraine glacial lake (34°05′37″N, 75°29′48″E; ~3,590 m a.s.l.; ~1.1 km × 0.7 km; NWIA dry-season lake surface ~0.59 km² within a ~1.1 km² meltwater basin) in the Upper Lidder Valley of Anantnag District. Impounded by Late Quaternary glacial moraines and fed by meltwater streams from the Sheshnag–Kohinoor cirque glacier complex, it forms the perennial headwater source of the East Lidder River.",
       "district": "Anantnag",
       "region": "Kashmir Core",
       "watershed": "Lidder Watershed",
-      "area": 1.2,
+      "area": 0.59,
       "elevation": 3590,
       "coordinates": {
-          "lat": 34.0931,
-          "lng": 75.4981
+          "lat": 34.0936,
+          "lng": 75.4967
       },
       "waterQuality": {
           "pH": 7.6,
@@ -1380,28 +1380,28 @@ export const lakesData: WaterEntity[] = [
           "phosphates": 0.03,
           "biologicalOxygenDemand": 0.9,
           "totalDissolvedSolids": 44,
-          "lastTested": "2026-05-19",
+          "lastTested": "Compiled Literature Reference Baseline (Lidder Headwaters)",
           "status": "excellent",
           "trends": {
               "pH": "stable",
               "dissolvedOxygen": "stable",
-              "turbidity": "improving"
+              "turbidity": "stable"
           }
       },
       "biodiversity": [
-          "Brown Trout",
-          "Oligotrophic micro-crustaceans",
-          "Alpine sedges",
-          "Himalayan Griffon vulture"
+          "Brown Trout (Salmo trutta fario — historically introduced cold-water salmonid)",
+          "Cold-stenothermal oligotrophic benthic macroinvertebrates (Ephemeroptera, Plecoptera, Trichoptera)",
+          "Alpine Carex-Kobresia sedge turf",
+          "Himalayan Griffon (Gyps himalayensis)"
       ],
       "threats": [
-          "pilgrimage-solid-waste",
-          "seasonal-sanitation-pressures",
-          "moraine-erosion"
+          "seasonal-pilgrimage-solid-waste",
+          "equine-and-camp-nutrient-runoff",
+          "feeding-cirque-glacier-retreat",
+          "moraine-slope-instability"
       ],
-      "conservationStatus": "Protected Alpine Pilgrimage Zone",
+      "conservationStatus": "NWIA High-Altitude Wetland (Code 1103) · Regulated Alpine Catchment",
       "hydrologicalData": {
-          "waterLevel": 32,
           "seasonalVariation": "perennial",
           "source": "glacial",
           "drainageArea": 38,
@@ -1409,17 +1409,17 @@ export const lakesData: WaterEntity[] = [
       },
       "fisheryData": {
           "fishSpecies": [
-              "Brown Trout (Salmo trutta fario)"
+              "Brown Trout (Salmo trutta fario — introduced)"
           ],
           "fisheryType": "wild",
-          "productivity": "moderate",
+          "productivity": "low",
           "permits": true
       },
       "nwiaCode": "1103",
-      "nwiaSignificance": "Lidder Valley alpine glacial tarn that regulates downstream irrigation and drinking supplies for southern Kashmir.",
+      "nwiaSignificance": "SAC/ISRO National Wetland Atlas high-altitude glacial lake regulating East Lidder discharge, irrigation, and potable water supply across Anantnag District.",
       "verificationStatus": "verified",
       "createdAt": "2026-06-18T00:00:00Z",
-      "updatedAt": "2026-06-18T00:00:00Z"
+      "updatedAt": "2026-11-25T00:00:00Z"
   },
   {
       "id": "nilnag-lake",
@@ -36469,26 +36469,25 @@ export const waterQualitySites: WaterEntity[] = [
     "name": "Sheshnag Lake — High Alpine Glacial Station",
     "type": "water-quality",
     "category": "Alpine Cryosphere Baseline Station",
-    "description": "Glacier-fed alpine oligotrophic lake at 3,590m along the Amarnath Yatra trekking trail. Monitors seasonal pilgrimage impact and cryospheric melt chemistry.",
+    "description": "Glacier-fed alpine oligotrophic lake (34.0936° N, 75.4967° E; 3,590 m a.s.l.) in the Upper Lidder Valley. Synthesizes published Lidder headwater hydrochemistry and seasonal pilgrimage impact baselines.",
     "district": "Anantnag",
     "watershed": "Lidder Basin",
     "elevation": 3590,
     "coordinates": {
-      "lat": 34.1167,
-      "lng": 75.5167
+      "lat": 34.0936,
+      "lng": 75.4967
     },
     "waterQuality": {
       "pH": 7.6,
-      "dissolvedOxygen": 10.2,
+      "dissolvedOxygen": 9.7,
       "turbidity": 1.2,
-      "conductivity": 55,
-      "temperature": 7,
-      "nitrates": 0.2,
-      "phosphates": 0.01,
-      "biologicalOxygenDemand": 0.8,
-      "totalDissolvedSolids": 42,
-      "fecalColiform": 10,
-      "lastTested": "2026-06-16",
+      "conductivity": 58,
+      "temperature": 6.2,
+      "nitrates": 0.22,
+      "phosphates": 0.03,
+      "biologicalOxygenDemand": 0.9,
+      "totalDissolvedSolids": 44,
+      "lastTested": "Compiled Literature Reference Baseline (Lidder Headwaters)",
       "status": "excellent",
       "trends": {
         "pH": "stable",

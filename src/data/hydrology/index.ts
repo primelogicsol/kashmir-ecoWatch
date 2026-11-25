@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Data Index
+// Kashmir EcoWatch — Hydrology Data Index
 // Updated: 2026-06-16
 
 export * from './lakes';

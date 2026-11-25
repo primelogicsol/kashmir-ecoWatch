@@ -56,6 +56,7 @@ export const getBiodiversityData = {
         ...fishData,
         ...plantsData,
         ...medicinalPlantsData,
+        ...threatenedSpeciesData,
       ];
       const direct = allSpecies.find(s => s.slug === cleanSlug || s.id === cleanSlug);
       if (direct) return direct;

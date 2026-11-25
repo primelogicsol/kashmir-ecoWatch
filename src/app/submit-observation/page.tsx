@@ -410,7 +410,7 @@ export default function SubmitSightingPage() {
       title: `${speciesName} Observation (${locationText})`,
       category: selectedCategory,
       ownerName: contributorName || 'Field Observer',
-      ownerEmail: contributorEmail || 'observer@kashmirecowatch.org',
+      ownerEmail: contributorEmail || 'observer@kashmir-ecowatch.com',
       district: locationText.split(',')[0].trim(),
       details: `${description} | Observed: ${dateObserved} | Habitat: ${habitatType || 'Unspecified'} | Confidence: ${confidence} | Count: ${countObserved || '1'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority: 'MEDIUM',

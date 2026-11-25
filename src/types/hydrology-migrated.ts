@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Migrated Water Record Type
+// Kashmir EcoWatch — Migrated Water Record Type
 // Generated: 2026-06-16T01:16:26.296Z
 
 export type ConfidenceLevel = 'High' | 'Medium' | 'Low' | 'Pending';

@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Database: WETLANDS
+// Kashmir EcoWatch — Hydrology Database: WETLANDS
 // Migration Status: Legacy Imported → Pending Verification
 // Generated: 2026-06-16T16:28:50.551Z
 // DO NOT use Dashboard_Locked records in live KPI calculations.

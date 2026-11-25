@@ -1001,8 +1001,7 @@ export default function SoilPollutionPage() {
                 <h3 className="text-sm font-bold text-white mb-2">ESRO Legacy Data Sources</h3>
                 <p className="text-sm text-slate-400 mb-3">
                   All soil degradation and fertility data on this page is sourced from the eIEN Kashmir
-                  Centre for Environment Studies archive (ESRO), preserved and modernized by the
-                  Kashmir Environmental Intelligence Platform.
+                  Centre for Environment Studies archive (ESRO), preserved and modernized by Kashmir EcoWatch Western Himalayan.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   <div className="text-slate-500">

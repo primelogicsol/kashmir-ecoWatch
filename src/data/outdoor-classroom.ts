@@ -2,7 +2,7 @@
  * Kashmir EcoWatch: Outdoor Classroom (OD) Framework
  * Western Himalayan Outdoor Environmental Education & Field Science Program
  * 
- * Historical Attribution: Environment Services & Research Organization (ESRO) & eIEN Kashmir (2002–2006).
+ * Historical Attribution: Environment and Service Research Organization (ESRO) & eIEN Kashmir (2002–2006).
  * Architectural Principle: Every outdoor classroom connects a curriculum objective,
  * a real ecosystem, a scientific field activity, and a measurable learning outcome.
  */
@@ -1467,7 +1467,7 @@ export const RECENT_STUDENT_OBSERVATIONS: StudentObservationRecord[] = [
     fieldNotes: 'Large early arrival of winter waterfowl observed in northern marsh zone. Secchi depth improved slightly following autumn settling. High reed encroachment observed near village boundary.',
     supervisingTeacher: 'Dr. Shabir Ahmad Mir',
     verifiedByScientist: 'Dr. Tariq Ahmad (EcoWatch Limnologist)',
-    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #001 (DOI: 10.5281/zenodo.kew.od.001)'
+    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #001 (Archival ID: KEW-OD-001 · Zenodo Deposit Eligible)'
   },
   {
     id: 'obs-2026-10-045',
@@ -1493,7 +1493,7 @@ export const RECENT_STUDENT_OBSERVATIONS: StudentObservationRecord[] = [
     fieldNotes: 'Late autumn macrophyte senescence visible. LCMA de-weeding machines active in navigation channel. Dissolved oxygen adequate in open water but drops to 3.4 mg/L in floating garden channels.',
     supervisingTeacher: 'Prof. Farooq Ahmad Lone',
     verifiedByScientist: 'K. M. Qureshi (EcoWatch Hydro-Chemistry Unit)',
-    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #045 (DOI: 10.5281/zenodo.kew.od.045)'
+    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #045 (Archival ID: KEW-OD-045 · Zenodo Deposit Eligible)'
   },
   {
     id: 'obs-2026-10-032',
@@ -1519,7 +1519,7 @@ export const RECENT_STUDENT_OBSERVATIONS: StudentObservationRecord[] = [
     fieldNotes: 'Stable thermal signature typical of deep karst aquifer. Discharge measured via downstream rectangular weir. Elder interview confirmed that historical discharge remained constant during severe 1999 drought.',
     supervisingTeacher: 'Dr. Fayaz Ahmad Bhat',
     verifiedByScientist: 'Er. N. A. Khan (EcoWatch Groundwater Unit)',
-    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #032 (DOI: 10.5281/zenodo.kew.od.032)'
+    openDataCitation: 'Kashmir EcoWatch Outdoor Classroom Observation #032 (Archival ID: KEW-OD-032 · Zenodo Deposit Eligible)'
   }
 ];
 
@@ -1528,10 +1528,10 @@ export const RECENT_STUDENT_OBSERVATIONS: StudentObservationRecord[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const OUTDOOR_CLASSROOM_ARCHIVAL_NOTE = {
-  organization: 'Environment Services & Research Organization (ESRO) & eIEN Kashmir',
+  organization: 'Environment and Service Research Organization (ESRO) & eIEN Kashmir',
   historicalOriginPeriod: '2002–2006',
   leadInitiators: 'Kashmiri environmental scientists, educators, and naturalists',
-  institutionalCharterSummary: `The Outdoor Classroom (OD) concept was originally framed in Kashmir between 2002 and 2006 by the Environment Services & Research Organization (ESRO) and the electronic Environmental Information Network (eIEN Kashmir). 
+  institutionalCharterSummary: `The Outdoor Classroom (OD) concept was originally framed in Kashmir between 2002 and 2006 by the Environment and Service Research Organization (ESRO) and the electronic Environmental Information Network (eIEN Kashmir). 
 Its pioneering premise was to liberate environmental science education from passive textbook memorization and transform Kashmir's lakes, wetlands, forests, and alpine meadows into living educational observatories.
 Under this model, schools across Srinagar, Budgam, and Anantnag conducted the first organized student waterbird censuses at Hokersar, established tree girth measurement networks for heritage Chinars, and logged stream water temperatures along the Lidder and Sind rivers.
 

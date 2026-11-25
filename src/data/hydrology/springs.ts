@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Database: SPRINGS
+// Kashmir EcoWatch — Hydrology Database: SPRINGS
 // Migration Status: Legacy Imported → Pending Verification
 // Generated: 2026-06-16T16:28:50.427Z
 // DO NOT use Dashboard_Locked records in live KPI calculations.

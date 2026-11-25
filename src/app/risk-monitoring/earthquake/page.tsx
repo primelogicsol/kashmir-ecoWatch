@@ -796,7 +796,7 @@ export default function EarthquakeRiskMonitoringPage() {
               Building vulnerability estimates are indicative and require professional assessment.
             </p>
             <p className="text-slate-600">
-              Kashmir Environmental Intelligence Platform — Seismic Risk Intelligence Module
+              Kashmir EcoWatch Western Himalayan — Seismic Risk Intelligence Module
             </p>
           </div>
         </div>

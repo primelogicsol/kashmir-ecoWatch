@@ -7,7 +7,15 @@ import { wetlandsData } from '@/data/water-systems';
 
 export default function WetlandDetailPage() {
   const params = useParams();
-  const slug = params.slug as string;
+  const rawSlug = params.slug as string;
+  const slugAliasMap: Record<string, string> = {
+    'haigam-wetland': 'hygam-wetland',
+    haigam: 'hygam-wetland',
+    hygam: 'hygam-wetland',
+    hokersar: 'hokersar-wetland',
+    shallabugh: 'shallabugh-wetland',
+  };
+  const slug = slugAliasMap[rawSlug] || rawSlug;
   const wetland = wetlandsData.find(w => w.slug === slug);
 
   if (!wetland) {

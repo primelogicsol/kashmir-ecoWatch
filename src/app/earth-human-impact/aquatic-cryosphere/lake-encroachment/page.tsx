@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -20,10 +21,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Lake Encroachment & Shoreline Change Observatory | Kashmir EcoWatch',
-  description: 'Multi-decadal satellite detection of open-water loss, shoreline hardening, floating garden consolidation, and sedimentation across Kashmir lakes.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Lake Encroachment & Shoreline Change Observatory | Kashmir EcoWatch",
+  description: "Multi-decadal satellite detection of open-water loss, shoreline hardening, floating garden consolidation, and sedimentation across Kashmir lakes.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/lake-encroachment",
+});
 
 export default function LakeEncroachmentPage() {
   const lakeData = [

@@ -76,5 +76,8 @@ scripts/audit/
 all-routes.json
 artifacts/
 data/error-telemetry-store.json
+data/discovery-intelligence-store.json
+data/backups/
+*.dump
 public/audit-screenshots/
 

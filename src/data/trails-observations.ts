@@ -1751,7 +1751,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'High-resolution spatial tracking and density mapping of Hangul populations along lower altitude wintering zones and riverine corridors.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['dachigam-national-park'],
     linkedSpecies: ['Hangul'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1763,7 +1763,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Comprehensive winter migration logs detailing waterfowl arrival sequences, species composition, and wetland ecological health index.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['hokersar-wetland'],
     linkedSpecies: ['Northern Pintail', 'Common Teal'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1775,7 +1775,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2025,
     description: 'Field-verified trail logs tracking Markhor breeding groups across steep limestone cliffs and fragile border-zone wildlife corridors.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['kazinag-national-park'],
     linkedSpecies: ['Markhor'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1787,7 +1787,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'Academic breeding survey mapping Kashmir Flycatcher nesting cavities, territory sizes, and mixed deciduous canopy preferences.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['overa-aru-wildlife-sanctuary'],
     linkedSpecies: ['Kashmir Flycatcher'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1799,7 +1799,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2024,
     description: 'Quantitative study of anthropogenic noise and foot traffic impacts on Himalayan pheasant nesting along the outer circular trail.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['gulmarg-wildlife-sanctuary'],
     linkedSpecies: ['Himalayan Monal', 'Koklass Pheasant'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1811,7 +1811,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2025,
     description: 'Spatial connectivity assessment analyzing seasonal crossing points and migration barriers of brown bears across the Mughal Road corridor.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['hirpora-wildlife-sanctuary'],
     linkedSpecies: ['Himalayan Brown Bear'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1823,7 +1823,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'A spatial mapping of mudflat mud-spits and birding trails showing migratory goose feeding distribution and marsh status.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['shallabugh-wetland'],
     linkedSpecies: ['Bar-headed Goose'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1835,7 +1835,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2024,
     description: 'Community-submitted avifauna checklists mapping wintering pochards, grebes, and egrets along restored lake shorelines.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['wular-wetland-system'],
     linkedSpecies: ['Eurasian Wigeon'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1847,7 +1847,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'High-altitude observations of snowfinch and alpine accentor seasonal distributions around Thajwas Glacial moraines.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['thajwas-baltal-wildlife-sanctuary'],
     linkedSpecies: ['Alpine Birds'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1859,7 +1859,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2024,
     description: 'Assessment of remnant forest patches as staging refuges for migratory passeres crossing urban Srinagar environments.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['salim-ali-national-park'],
     linkedSpecies: ['Kashmir Flycatcher'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1871,7 +1871,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Camera trap array diagnostics logging nocturnal presence of Kashmir musk deer in subalpine birch patches.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['tral-wildlife-sanctuary'],
     linkedSpecies: ['Musk deer'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1883,7 +1883,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2024,
     description: 'Systematic capture-recapture log mapping warbler arrivals and departure dates across north Kashmir reedbeds.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['hygam-wetland'],
     linkedSpecies: ['Marsh Birds'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1895,7 +1895,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'Citizen science birding routes auditing shorebird usage along sewage outfalls and floating garden fringes.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['dal-lake-wetland'],
     linkedSpecies: ['Waders'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1907,7 +1907,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Audio detection logs mapping tragopan call locations, breeding territories, and seasonal calling frequencies.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['kazinag-national-park'],
     linkedSpecies: ['Western Tragopan'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1919,7 +1919,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2025,
     description: 'GIS-tracked oak forest trails auditing black bear foraging patterns and orchard overlap in autumn season.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['dachigam-national-park'],
     linkedSpecies: ['Himalayan Black Bear'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1931,7 +1931,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Field transect logs assessing musk deer habitat utilization indices based on winter pellet group counts.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['overa-aru-wildlife-sanctuary'],
     linkedSpecies: ['Musk deer'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1943,7 +1943,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Seasonal dawn vocalization audits tracking Monal, Koklass, and Cheer pheasant abundance indices.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['gulmarg-wildlife-sanctuary'],
     linkedSpecies: ['Himalayan Monal'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1955,7 +1955,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Direct observation logs tracking Markhor group compositions and visit frequencies to natural mineral licks.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['hirpora-wildlife-sanctuary'],
     linkedSpecies: ['Markhor'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1967,7 +1967,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Nesting and nocturnal roosting site observations mapping geese congregations and water level fluctuations.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['shallabugh-wetland'],
     linkedSpecies: ['Bar-headed Goose'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1979,7 +1979,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2024,
     description: 'Ecological impact study charting bird species richness transitions in areas cleared of monoculture willow trees.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['wular-wetland-system'],
     linkedSpecies: ['Waterbirds'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -1993,7 +1993,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Long-term camera trap database logging snow leopard occupancy, prey density, and range expansion patterns.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['kishtwar-national-park'],
     linkedSpecies: ['Snow leopard'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2005,7 +2005,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Line transect audits recording red junglefowl and kalij pheasant encounter rates in deciduous woodlands.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['nandini-wildlife-sanctuary'],
     linkedSpecies: ['Pheasants'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2017,7 +2017,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Seasonal shoreline monitoring mapping turtle nesting sites, clutch sizes, and predator disturbance rates.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['surinsar-mansar-wildlife-sanctuary'],
     linkedSpecies: ['Softshell Turtle'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2029,7 +2029,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Satellite-telemetry and visual tracking of Tibetan Wild Ass herds across seasonal grazing corridors and borders.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['changthang-cold-desert-wildlife-sanctuary'],
     linkedSpecies: ['Kiang'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2041,7 +2041,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Technical diagnostics mapping camera triggers, capture frequencies, and individual identification matches.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['hemis-national-park'],
     linkedSpecies: ['Snow leopard'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2053,7 +2053,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2024,
     description: 'Visual observation logs mapping seasonal movement vectors of spotted deer between riverbeds and bamboo forest.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['jasrota-wildlife-sanctuary'],
     linkedSpecies: ['Chital'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2067,7 +2067,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2025,
     description: 'Summer foraging observation logs mapping brown bear distribution, activity patterns, and camp waste encroachment indices.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['deosai-national-park'],
     linkedSpecies: ['Himalayan Brown Bear'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2079,7 +2079,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'High-altitude observations tracking Marco Polo sheep groups migrating across Karakoram border ridges.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['khunjerab-national-park'],
     linkedSpecies: ['Marco Polo sheep'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2091,7 +2091,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2025,
     description: 'Double-observer count logs estimating Asiatic ibex and blue sheep densities along high-altitude glacier margins.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['central-karakoram-national-park'],
     linkedSpecies: ['Snow leopard', 'Asiatic ibex'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2103,7 +2103,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Seasonal ridge transect reports logging goral group sizes, age structures, and alpine pasture degradation rates.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['tolipir-national-park'],
     linkedSpecies: ['Goral'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2115,7 +2115,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'Winter track and pellet group surveys mapping musk deer occurrence across steep subalpine birch slopes.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['astore-wildlife-sanctuary'],
     linkedSpecies: ['Musk deer'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2127,7 +2127,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2024,
     description: 'Spring call count census mapping vocalizing male tragopans in dense temperate oak and conifer forests.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['machiara-national-park'],
     linkedSpecies: ['Western Tragopan'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2139,7 +2139,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'Visual census logs recording autumn migration stopover durations for pintails and pochards at Satpara Lake.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['satpara-wildlife-sanctuary'],
     linkedSpecies: ['Waterbirds'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2151,7 +2151,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2024,
     description: 'Population demographics reports tracking ibex age-class ratios and community conservation compliance logs.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['baltistan-wildlife-sanctuary'],
     linkedSpecies: ['Asiatic ibex'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2163,7 +2163,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2025,
     description: 'Camera trap and footprint transect analysis tracking leopard movements between border forest compartments.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['satpara-wildlife-sanctuary'],
     linkedSpecies: ['Leopard'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2175,7 +2175,7 @@ export const trailsReportsData: Report[] = [
     type: 'Monitoring Data',
     year: 2024,
     description: 'Community ledger logs mapping seasonal descents of ibex herds to riverbeds during heavy winter snowfall.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['karakoram-nubra-shyok-wildlife-sanctuary'],
     linkedSpecies: ['Asiatic ibex'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2187,7 +2187,7 @@ export const trailsReportsData: Report[] = [
     type: 'Assessment',
     year: 2025,
     description: 'Field transect logs assessing the impact of new road construction on Markhor movement corridors in Astore.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['astore-wildlife-sanctuary'],
     linkedSpecies: ['Markhor'],
     themes: ['Trails & Sightings', 'Field Observations']
@@ -2199,7 +2199,7 @@ export const trailsReportsData: Report[] = [
     type: 'Scientific Report',
     year: 2024,
     description: 'Nesting surveys mapping altitude-specific egg clutch sizes and vegetation cover preferences for Monal pheasants.',
-    authors: ['Kashmir Eco Watch Publication Division'],
+    authors: ['Kashmir EcoWatch Publication Division'],
     linkedAreas: ['machiara-national-park'],
     linkedSpecies: ['Himalayan Monal'],
     themes: ['Trails & Sightings', 'Field Observations']

@@ -876,7 +876,6 @@ export const CHINAR_RESEARCH_LIBRARY: ChinarResearchPaper[] = [
     authors: 'Bhat, Z. A., Lone, F. A., & Wani, M. S.',
     journal: 'Dendrochronologia',
     year: 2024,
-    doi: '10.1016/j.dendro.2024.126180',
     topicCategory: 'Dendrochronology & Age',
     abstractSummary: 'Tree-ring width chronologies established from 42 heritage Chinars across Naseem Bagh and Chattergam. Demonstrates that winter precipitation and spring temperatures are the primary limiting factors for radial expansion.',
     evidenceTier: 'VERIFIED_FIELD_RECORD'
@@ -887,7 +886,6 @@ export const CHINAR_RESEARCH_LIBRARY: ChinarResearchPaper[] = [
     authors: 'Dar, G. H., Qasba, P. K., & Khan, S. A.',
     journal: 'Forest Pathology',
     year: 2024,
-    doi: '10.1111/efp.12845',
     topicCategory: 'Fungal Pathology & Decay',
     abstractSummary: 'Field pathology survey of 850 urban trees identified Gnomonia veneta (anthracnose) in 32% of street trees and Inonotus hispidus heart rot in 18% of trees with basal trunk injuries.',
     evidenceTier: 'VERIFIED_FIELD_RECORD'
@@ -898,7 +896,6 @@ export const CHINAR_RESEARCH_LIBRARY: ChinarResearchPaper[] = [
     authors: 'Mir, A. R., Wani, A. A., & Shah, M. A.',
     journal: 'Urban Forestry & Urban Greening',
     year: 2025,
-    doi: '10.1016/j.ufug.2025.128712',
     topicCategory: 'Urban Stress & Concreting',
     abstractSummary: 'Evaluates 220 roadside Chinars encased by asphalt and interlocking pavers. Trees with <1m unpaved radial collars showed a 48% reduction in root zone oxygenation and 3.2-fold higher crown dieback.',
     evidenceTier: 'VERIFIED_FIELD_RECORD'
@@ -909,7 +906,6 @@ export const CHINAR_RESEARCH_LIBRARY: ChinarResearchPaper[] = [
     authors: 'Sufi, H. M., & Kaul, V.',
     journal: 'Journal of Heritage and Environmental Law',
     year: 2024,
-    doi: '10.1093/jhel/hlad029',
     topicCategory: 'History & Cultural Ecology',
     abstractSummary: 'Examines the evolution of legal protections from Mughal imperial decrees (Farman-e-Shahi) to the J&K Preservation of Specific Trees Act 1969 and evaluates enforcement bottlenecks in contemporary urbanization.',
     evidenceTier: 'HERITAGE_ARCHIVE'

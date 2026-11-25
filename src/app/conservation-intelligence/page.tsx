@@ -1969,7 +1969,7 @@ export default function ConservationIntelligencePage() {
               <div className="kew-card-icon-box bg-emerald-500/15 border-emerald-500/30 text-emerald-400">
                 <Users className="w-5 h-5" />
               </div>
-              <h3 className="kew-card-title text-lg">Environmental Development &amp; Research Organisation (ESRO) Legacy</h3>
+              <h3 className="kew-card-title text-lg">Environment and Service Research Organization (ESRO) Legacy</h3>
               <p className="kew-card-desc max-w-4xl">
                 EcoWatch integrates and digitalizes archives of ESRO, which operated four interconnected 
                 conservation networks in Kashmir. Led by a specialist board of 45 members covering wildlife, 

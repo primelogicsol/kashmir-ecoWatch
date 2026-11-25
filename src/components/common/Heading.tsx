@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 import { KewBrandIdentity, hasEmbeddedKewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildBreadcrumbJsonLd } from '@/lib/seo/structured-data';
 
 interface Breadcrumb {
   label: string;
@@ -53,12 +55,14 @@ export function Heading({
   brandBadgeText,
   brandIdentityLabel,
 }: HeadingProps) {
-  const router = useRouter();
   const isStringTitle = typeof title === 'string';
   const embedsBrand = !isStringTitle && hasEmbeddedKewBrandIdentity(title);
 
   return (
     <div className={cn('relative bg-slate-900/40 w-full max-w-full overflow-hidden sm:overflow-visible', className)}>
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <JsonLd data={buildBreadcrumbJsonLd(breadcrumbs)} />
+      )}
       <BackgroundCarousel images={images} overlayClassName={overlayClassName} />
 
       {gridOverlay && (
@@ -73,19 +77,19 @@ export function Heading({
             className={cn('kew-heading-scope w-full max-w-4xl min-w-0', (rightContent || featuredImage) && 'max-w-3xl flex-1')}
           >
             {breadcrumbs && breadcrumbs.length > 0 && (
-              <nav className="flex flex-wrap items-center gap-1.5 text-xs md:text-sm text-slate-400 mb-3 sm:mb-6 min-w-0">
+              <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs md:text-sm text-slate-400 mb-3 sm:mb-6 min-w-0">
                 {breadcrumbs.map((crumb, idx) => (
                   <React.Fragment key={idx}>
-                    {idx > 0 && <span className="text-slate-600">/</span>}
+                    {idx > 0 && <span className="text-slate-600" aria-hidden="true">/</span>}
                     {crumb.href ? (
-                      <button
-                        onClick={() => router.push(crumb.href)}
+                      <Link
+                        href={crumb.href}
                         className="hover:text-white transition-colors break-words text-left"
                       >
                         {crumb.label}
-                      </button>
+                      </Link>
                     ) : (
-                      <span className="text-white font-medium break-words">{crumb.label}</span>
+                      <span className="text-white font-medium break-words" aria-current="page">{crumb.label}</span>
                     )}
                   </React.Fragment>
                 ))}
@@ -118,11 +122,14 @@ export function Heading({
                   return (
                     <>
                       {showBrandIdentity && (
-                        <KewBrandIdentity
-                          badgeText={brandBadgeText}
-                          identityLabel={brandIdentityLabel}
-                          variant="hero"
-                        />
+                        <>
+                          <KewBrandIdentity
+                            badgeText={brandBadgeText}
+                            identityLabel={brandIdentityLabel}
+                            variant="hero"
+                          />
+                          <span className="sr-only">{' '}</span>
+                        </>
                       )}
                       <span className="block leading-[1.12] pb-1 sm:pb-2 overflow-visible break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
                         {moduleName}

@@ -123,7 +123,7 @@ export default function OutdoorClassroomOverviewPage() {
             <span>Historical Program Heritage • ESRO & eIEN Kashmir (2002–2006)</span>
           </div>
           <p className="break-words">
-            The Outdoor Classroom (OD) was originally pioneered in the Kashmir Valley between 2002 and 2006 by the <strong>Environment Services & Research Organization (ESRO)</strong> and the <strong>electronic Environmental Information Network (eIEN Kashmir)</strong>. Its foundational premise was to liberate environmental education from passive textbook memorization and transform Kashmir's lakes, wetlands, forests, and springs into living outdoor laboratories.
+            The Outdoor Classroom (OD) was originally pioneered in the Kashmir Valley between 2002 and 2006 by the <strong>Environment and Service Research Organization (ESRO)</strong> and the <strong>electronic Environmental Information Network (eIEN Kashmir)</strong>. Its foundational premise was to liberate environmental education from passive textbook memorization and transform Kashmir's lakes, wetlands, forests, and springs into living outdoor laboratories.
           </p>
           <div className="text-[11px] text-slate-400 italic pt-1 border-t border-white/5 break-words">
             Archival Verification Standard: Historical claims regarding pioneering activities and school rosters are preserved from original ESRO field bulletins (2002–2006) and eIEN Kashmir records, maintained for open historical study.

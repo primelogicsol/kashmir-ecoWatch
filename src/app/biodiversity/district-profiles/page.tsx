@@ -48,7 +48,7 @@ export default function DistrictProfilesPage() {
               <span className="block bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
             </h1>
             <p className="text-lg text-slate-400 mb-6">
-              Real-time regional biodiversity intelligence aggregated directly from Kashmir Eco Watch databases — species richness, key habitats, verified sightings, and ecological intelligence.
+              Real-time regional biodiversity intelligence aggregated directly from Kashmir EcoWatch databases — species richness, key habitats, verified sightings, and ecological intelligence.
             </p>
             <Button size="lg" className="bg-gradient-to-r from-violet-600 to-violet-500" icon={<BarChart3 className="w-5 h-5" />} onClick={() => router.push('/biodiversity/dashboards')}>
               View Analytics Dashboard

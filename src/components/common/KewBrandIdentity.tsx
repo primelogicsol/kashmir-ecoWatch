@@ -43,6 +43,7 @@ export function KewBrandIdentity({
       )}
     >
       <span className="kew-brand-badge">{badgeText}</span>
+      <span className="sr-only">{' '}</span>
       <span className="kew-brand-region">{identityLabel}</span>
     </span>
   );

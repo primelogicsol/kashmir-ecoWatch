@@ -655,7 +655,7 @@ export const FUNDING_SCHEMES_REGISTRY: FundingScheme[] = [
     ineligibleExpenses: ['Lawyer courtroom fees', 'Court stamp duty', 'Political lobbying'],
     maxGrantLimit: '₹50,000 – ₹2,50,000 (Research Support Only)',
     complianceWarning: 'FCRA COMPLIANCE STRICTLY MANDATORY in India. Foreign funds cannot be used to sponsor court litigation. KEW data is open-source research.',
-    url: 'https://kashmirecowatch.org/research',
+    url: 'https://kashmir-ecowatch.com/research-library',
     lastVerified: '2026-02-10'
   },
   {

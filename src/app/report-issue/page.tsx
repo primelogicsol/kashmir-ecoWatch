@@ -344,7 +344,7 @@ export default function ReportIssuePage() {
       title: `${selectedType} Incident (${locationText})`,
       category: selectedType,
       ownerName: anonymous ? 'Anonymous Informant' : (reporterName || 'Concerned Citizen'),
-      ownerEmail: reporterEmail || 'incident-desk@kashmirecowatch.org',
+      ownerEmail: reporterEmail || 'incident-desk@kashmir-ecowatch.com',
       district: locationText.split(',')[0].trim(),
       details: `${description} | Date: ${incidentDate || 'Today'} ${incidentTime || ''} | Severity: ${selectedSeverity}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority,

@@ -117,7 +117,13 @@ export function SensitivityMask({
                 <span>Coordinates</span>
               </div>
               <div className="text-white">
-                {coordinates.lat.toFixed(6)}, {coordinates.lng.toFixed(6)}
+                {sensitivity === 'critical'
+                  ? 'Protected habitat — district-level resolution enforced'
+                  : sensitivity === 'high'
+                  ? `${coordinates.lat.toFixed(1)}° N, ${coordinates.lng.toFixed(1)}° E (±10 km fuzzed)`
+                  : sensitivity === 'medium'
+                  ? `${coordinates.lat.toFixed(2)}° N, ${coordinates.lng.toFixed(2)}° E (±1 km generalized)`
+                  : `${coordinates.lat.toFixed(4)}° N, ${coordinates.lng.toFixed(4)}° E`}
               </div>
             </motion.div>
           ) : (

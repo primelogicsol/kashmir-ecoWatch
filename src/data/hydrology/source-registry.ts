@@ -1,12 +1,12 @@
-// Kashmir Eco Watch — Expanded Source Registry
+// Kashmir EcoWatch — Expanded Source Registry
 // Step 3 Validation: Government + Satellite + Research Sources
 // Generated: 2026-06-16T01:22:20.052Z
 
 export const sourceRegistry = [
   {
     "Source_ID": "SRC-LEGACY-001",
-    "Source_Name": "Kashmir Eco Watch Legacy Data Import",
-    "Agency_Institution": "Kashmir Eco Watch Internal",
+    "Source_Name": "Kashmir EcoWatch Legacy Data Import",
+    "Agency_Institution": "Kashmir EcoWatch Internal",
     "Source_Type": "Report",
     "URL": null,
     "Publication_Year": 2026,

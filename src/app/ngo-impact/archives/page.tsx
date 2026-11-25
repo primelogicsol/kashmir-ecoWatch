@@ -32,7 +32,7 @@ export default function ArchivesPage() {
 
   // Generate some mock historical reports to fill out the archive
   const historicalReports = [
-    { id: 'rep-1', title: 'Annual Conservation Report 2025', type: 'Annual Report', year: '2025', entity: 'Kashmir Eco Watch' },
+    { id: 'rep-1', title: 'Annual Conservation Report 2025', type: 'Annual Report', year: '2025', entity: 'Kashmir EcoWatch' },
     { id: 'rep-2', title: 'Dal Lake Cleanup Verification', type: 'Verification Note', year: '2025', entity: 'SADA' },
     { id: 'rep-3', title: 'Bear Rescue Field Evidence', type: 'Field Photos', year: '2024', entity: 'Wildlife SOS' },
     { id: 'rep-4', title: 'Spring Restoration Impact', type: 'Project Report', year: '2024', entity: 'Earth Saviours' },

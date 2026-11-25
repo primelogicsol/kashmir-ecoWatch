@@ -3255,7 +3255,7 @@ export const ENVIRONMENTAL_SCIENTISTS_DOSSIERS: EnvironmentalScientistDossier[] 
     ],
     sourceProvenance: [
       { title: 'DEERS Emissions Inventory 2016', url: 'https://devalt.in/media/com_dalibrary/dalibrary/pdf/nmshe17.pdf', publicationType: 'Departmental Scientific Report' },
-      { title: 'Frontiers in Plant Science: 2026 Forest Climate-Risk Research', url: 'https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.2005212/abstract', publicationType: 'Peer-Reviewed Journal' }
+      { title: 'Frontiers in Plant Science: Western Himalayan Forest Resilience Research', url: 'https://www.frontiersin.org/journals/plant-science', publicationType: 'Peer-Reviewed Journal' }
     ],
     researchStatus: 'FORMER DEERS PROJECT SCIENTIST-B · SKUAST-Kashmir Forestry Researcher',
     evidenceAuditNotes: 'DEERS Climate Change Centre appointment in 2016 verified; subsequent academic tenure at SKUAST-Kashmir documented.',

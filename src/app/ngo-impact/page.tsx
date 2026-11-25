@@ -406,7 +406,7 @@ export default function NGOImpactLandingPage() {
         <section className="bg-slate-900 border border-emerald-500/20 rounded-3xl p-8 md:p-12 text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Ready to make a verified impact?</h2>
           <p className="text-emerald-100/80 max-w-2xl mx-auto mb-8 text-lg">
-            Join the Kashmir Eco Watch network. Whether you are an established NGO looking for accreditation, or a volunteer ready to deploy, the ecosystem needs you.
+            Join the Kashmir EcoWatch network. Whether you are an established NGO looking for accreditation, or a volunteer ready to deploy, the ecosystem needs you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button onClick={() => router.push('/ngo-impact/submit')} size="lg" className="bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400">Register Your NGO</Button>

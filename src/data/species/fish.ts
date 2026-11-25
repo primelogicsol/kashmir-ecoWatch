@@ -58,7 +58,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -117,7 +117,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -175,7 +175,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -235,7 +235,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -291,7 +291,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -347,7 +347,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -403,7 +403,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -456,7 +456,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -507,7 +507,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -563,7 +563,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -616,7 +616,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -669,7 +669,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -721,7 +721,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -774,7 +774,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -837,7 +837,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -899,7 +899,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -953,7 +953,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1010,7 +1010,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1066,7 +1066,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1118,7 +1118,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1174,7 +1174,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1228,7 +1228,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1280,7 +1280,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1330,7 +1330,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1386,7 +1386,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1440,7 +1440,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "trans-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1496,7 +1496,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1547,7 +1547,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1598,7 +1598,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1652,7 +1652,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1711,7 +1711,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1761,7 +1761,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1818,7 +1818,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1872,7 +1872,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1926,7 +1926,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -1976,7 +1976,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2027,7 +2027,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2077,7 +2077,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2133,7 +2133,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2189,7 +2189,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2242,7 +2242,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2294,7 +2294,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2345,7 +2345,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2401,7 +2401,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2456,7 +2456,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2508,7 +2508,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2557,7 +2557,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2609,7 +2609,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2663,7 +2663,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2716,7 +2716,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2770,7 +2770,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2820,7 +2820,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2872,7 +2872,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2921,7 +2921,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -2982,7 +2982,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3041,7 +3041,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3097,7 +3097,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "himalayan-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3154,7 +3154,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3210,7 +3210,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3267,7 +3267,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "northwest-himalayan",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3324,7 +3324,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3377,7 +3377,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3430,7 +3430,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3484,7 +3484,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3541,7 +3541,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96
@@ -3593,7 +3593,7 @@ export const fishPhase1: BiodiversitySpecies[] = [
     "endemismStatus": "widely-distributed",
     "dataSource": {
       "type": "inventory",
-      "reference": "Kashmir Eco Watch Freshwater Fish & Aquatic Biodiversity Database",
+      "reference": "Kashmir EcoWatch Freshwater Fish & Aquatic Biodiversity Database",
       "year": 2026,
       "verifiedBy": "ICAR-Directorate of Coldwater Fisheries Research (DCFR) / J&K Fisheries Department",
       "confidence": 96

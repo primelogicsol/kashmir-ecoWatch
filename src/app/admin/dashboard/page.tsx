@@ -24,9 +24,11 @@ import {
 } from '@/lib/operations';
 import { SCIENTIFIC_PROGRAM_TARGETS } from '@/data/scientific-program-2027-2028';
 import { CITIZEN_SCIENCE_PROGRAMS, CITIZEN_SCIENCE_METRICS } from '@/data/citizen-science-programs';
+import { GlobalDiscoveryCommandCenter } from '@/components/admin/GlobalDiscoveryCommandCenter';
 
 type AdminTab = 
   | 'queue' 
+  | 'discovery' 
   | 'events' 
   | 'partnerships' 
   | 'communications' 
@@ -42,6 +44,8 @@ export default function AdminDashboardPage() {
   
   // Operations & Queues State
   const [operations, setOperations] = useState<OperationRecord[]>(INITIAL_OPERATIONS_RECORDS);
+  const [liveDbHealth, setLiveDbHealth] = useState<{ apiDb: string; latencyMs: number } | null>(null);
+  const [liveSearchHealth, setLiveSearchHealth] = useState<{ totalIndexedDocuments: number; postgresConnected: boolean } | null>(null);
   const [loadingOps, setLoadingOps] = useState(false);
   const [filterCenter, setFilterCenter] = useState<string>('ALL');
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
@@ -65,34 +69,54 @@ export default function AdminDashboardPage() {
   const [passcodeError, setPasscodeError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const stored = sessionStorage.getItem('kew_admin_authenticated');
-      if (stored === 'true') {
-        setIsMasterUnlocked(true);
-      }
-    }
+    fetch('/api/admin/session', { credentials: 'include' })
+      .then((r) => r.json())
+      .then((s) => {
+        if (s?.authenticated) {
+          setIsMasterUnlocked(true);
+        }
+      })
+      .catch(() => null);
   }, []);
 
   const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isMasterUnlocked;
 
-  const handleUnlockWithPasscode = (e: React.FormEvent) => {
+  const handleUnlockWithPasscode = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === 'KEW-Admin-2026!') {
-      setIsMasterUnlocked(true);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('kew_admin_authenticated', 'true');
+    try {
+      const res = await fetch('/api/admin/session', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          passcode: passcode.trim(),
+          actor: user?.name || user?.email || 'KEW Administrator',
+        }),
+      });
+      if (res.ok) {
+        setIsMasterUnlocked(true);
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('kew_admin_authenticated', 'true');
+        }
+        setPasscode('');
+        setPasscodeError(null);
+      } else {
+        setPasscodeError('Invalid Administrator Passcode. Access denied.');
       }
-      setPasscodeError(null);
-    } else {
-      setPasscodeError('Invalid Administrator Passcode. Access denied.');
+    } catch {
+      setPasscodeError('Unable to verify administrator session with server.');
     }
   };
 
-  const handleLockDashboard = () => {
+  const handleLockDashboard = async () => {
     setIsMasterUnlocked(false);
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('kew_admin_authenticated');
     }
+    await fetch('/api/admin/session', {
+      method: 'DELETE',
+      credentials: 'include',
+    }).catch(() => null);
   };
 
   // Fetch real operations from unified API
@@ -113,6 +137,19 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     fetchOperations();
+    fetch('/api/health/db')
+      .then((r) => r.json())
+      .then((d) => setLiveDbHealth({ apiDb: d.apiDb || 'disconnected', latencyMs: d.latencyMs || 0 }))
+      .catch(() => setLiveDbHealth({ apiDb: 'disconnected', latencyMs: 0 }));
+    fetch('/api/search/health')
+      .then((r) => r.json())
+      .then((s) =>
+        setLiveSearchHealth({
+          totalIndexedDocuments: s.totalIndexedDocuments || 0,
+          postgresConnected: Boolean(s.postgresSearchIndex?.connected),
+        })
+      )
+      .catch(() => null);
   }, []);
 
   // Update operation status
@@ -120,9 +157,9 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch('/api/operations', {
         method: 'PATCH',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-key': 'KEW-Admin-2026!'
         },
         body: JSON.stringify({
           trackingId,
@@ -436,6 +473,7 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
         <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto">
           {[
             { id: 'queue', label: 'Unified Operations Queue', icon: Activity, count: operations.length },
+            { id: 'discovery', label: 'Global Discovery & Authority', icon: Globe, badge: 'Live SEO & AI' },
             { id: 'events', label: 'Events & Conferences', icon: Calendar, badge: '104 Programs' },
             { id: 'partnerships', label: 'Support, CSR & Grants', icon: DollarSign, badge: 'Compliance' },
             { id: 'communications', label: 'Communications Center', icon: MessageSquare, badge: '<24h SLA' },
@@ -472,6 +510,11 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
             </button>
           ))}
         </div>
+
+        {/* Global Discovery, Brand Entity & Authority Intelligence */}
+        {activeTab === 'discovery' && (
+          <GlobalDiscoveryCommandCenter adminName={user?.name || 'KEW Administrator'} />
+        )}
 
         {/* Tab 1: Unified Operations Queue */}
         {activeTab === 'queue' && (
@@ -1070,19 +1113,27 @@ Kashmir EcoWatch (kashmir-ecowatch.com)`;
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
-                  <span className="text-xs text-slate-400 block">Spatial Entities</span>
-                  <span className="text-2xl font-bold text-white font-mono">263</span>
-                  <span className="text-[10px] text-slate-500 block mt-1">Districts, Basins, Watersheds</span>
+                  <span className="text-xs text-slate-400 block">Indexed Search Corpus</span>
+                  <span className="text-2xl font-bold text-white font-mono">
+                    {liveSearchHealth ? liveSearchHealth.totalIndexedDocuments.toLocaleString() : '—'}
+                  </span>
+                  <span className="text-[10px] text-slate-500 block mt-1">Measured Live Corpus Entities</span>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
-                  <span className="text-xs text-slate-400 block">Telemetry Nodes</span>
-                  <span className="text-2xl font-bold text-emerald-400 font-mono">247</span>
-                  <span className="text-[10px] text-slate-500 block mt-1">Active IoT Gauges &amp; Sensors</span>
+                  <span className="text-xs text-slate-400 block">PostgreSQL API Latency</span>
+                  <span className="text-2xl font-bold text-emerald-400 font-mono">
+                    {liveDbHealth ? `${liveDbHealth.latencyMs} ms` : '—'}
+                  </span>
+                  <span className="text-[10px] text-slate-500 block mt-1">Measured via /api/health/db</span>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-950 border border-white/10">
-                  <span className="text-xs text-slate-400 block">Ingestion Health</span>
-                  <span className="text-2xl font-bold text-purple-400 font-mono">ONLINE</span>
-                  <span className="text-[10px] text-slate-500 block mt-1">Copernicus Sentinel + Open-Meteo</span>
+                  <span className="text-xs text-slate-400 block">PostgreSQL Cluster Status</span>
+                  <span className={`text-2xl font-bold font-mono ${liveDbHealth?.apiDb === 'connected' ? 'text-emerald-400' : 'text-amber-400'}`}>
+                    {liveDbHealth ? liveDbHealth.apiDb.toUpperCase() : 'CHECKING'}
+                  </span>
+                  <span className="text-[10px] text-slate-500 block mt-1">
+                    {liveSearchHealth?.postgresConnected ? 'pg_trgm + FTS Synced' : 'Live DB Connection Probe'}
+                  </span>
                 </div>
               </div>
             </div>

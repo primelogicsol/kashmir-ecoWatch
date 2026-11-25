@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import { 
@@ -9,10 +10,11 @@ import { Card } from '@/components/ui/Card';
 import { Heading } from '@/components/common/Heading';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata = {
-  title: 'Environmental Resources & Statutory Archives | Kashmir EcoWatch',
-  description: 'Authoritative environmental registries, judicial compliance archives, SEIAE scientific reports, and geospatial intelligence across Jammu, Kashmir, Ladakh, AJ&K, and Gilgit-Baltistan.'
-};
+export const metadata = buildPageMetadata({
+  title: 'Environmental Resources & Statutory Archives',
+  description: 'Authoritative environmental registries, judicial compliance archives, SEIAE scientific reports, and geospatial intelligence across Jammu, Kashmir, Ladakh, AJ&K, and Gilgit-Baltistan.',
+  canonicalPath: '/resources',
+});
 
 interface ResourceModule {
   id: string;

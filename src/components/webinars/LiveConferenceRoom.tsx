@@ -701,7 +701,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
       let msg = 'Unable to access microphone.';
       if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-        msg = 'Microphone permission blocked. Click the lock/site controls icon beside localhost:3000 in your address bar, set Microphone to Allow, and retry.';
+        msg = 'Microphone permission blocked. Click the lock/site controls icon in your address bar, set Microphone to Allow, and retry.';
         setMicPermissionStatus('denied');
       } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
         msg = 'No microphone device found. Please connect a headset or integrated microphone.';
@@ -999,7 +999,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
       let message = 'Unable to access your webcam.';
       if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-        message = 'Camera permission blocked. Click the lock/site controls icon beside localhost:3000 in your browser, set Camera to Allow, and retry.';
+        message = 'Camera permission blocked. Click the lock/site controls icon in your browser, set Camera to Allow, and retry.';
       } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
         message = 'No webcam hardware detected on this device. Please plug in a USB camera or integrated webcam.';
       } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {

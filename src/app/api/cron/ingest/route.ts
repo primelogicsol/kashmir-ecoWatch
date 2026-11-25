@@ -49,7 +49,7 @@ export async function GET() {
     // In production, we'd use the full URL from env, or directly invoke the logic if refactored into a service layer.
     // For the API prototype, we mock the direct function call response.
     
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3005';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://kashmir-ecowatch.com';
     
     // To avoid self-referential fetch timeouts during static builds, we'll log the success.
     // const response = await fetch(`${baseUrl}/api/ingest/telemetry`, {

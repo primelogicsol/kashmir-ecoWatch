@@ -79,7 +79,7 @@ export default function ChinarCensusPage() {
             <h2 className="text-base font-bold text-white">The 2026 Census Reality: ~30,270 Trees Recorded vs ~41,950 Historical Baseline</h2>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed max-w-4xl">
-            In the 1970s and 1980s, the Environment and Sericulture Research Organization (ESRO) and J&amp;K Forest Department estimated over 42,000 mature Chinars across the Kashmir Valley. The 2025-2026 JKFRI Digital Tree Aadhaar enumeration reveals a net decadal contraction of <strong>-27.8%</strong>, driven by road widening (NH-44 and rural arteries), civil excavation, urban commercial paving, and natural senescence.
+            In the 1970s and 1980s, J&amp;K Forest Department surveys — later compiled in Environment and Service Research Organization (ESRO) archival baselines — estimated over 42,000 mature Chinars across the Kashmir Valley. The 2025-2026 JKFRI Digital Tree Aadhaar enumeration reveals a net decadal contraction of <strong>-27.8%</strong>, driven by road widening (NH-44 and rural arteries), civil excavation, urban commercial paving, and natural senescence.
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono">
             <span className="px-2.5 py-1 rounded-[4px] bg-slate-950 border border-white/10 text-emerald-300">

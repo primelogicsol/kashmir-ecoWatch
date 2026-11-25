@@ -520,7 +520,7 @@ export default function UserDashboardPage() {
               </div>
               <div className="p-4 rounded-xl bg-slate-950 border border-white/10 flex justify-between items-center">
                 <span className="text-slate-400">Institutional Email:</span>
-                <span className="font-mono text-purple-300">{user?.email || 'observer@kashmirecowatch.org'}</span>
+                <span className="font-mono text-purple-300">{user?.email || 'observer@kashmir-ecowatch.com'}</span>
               </div>
             </div>
           </div>

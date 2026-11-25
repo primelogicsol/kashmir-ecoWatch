@@ -449,7 +449,7 @@ export default function ShareDataPage() {
       title: `${selectedDomain ? selectedDomain.toUpperCase() : 'Environmental'} Dataset (${locationSummary})`,
       category: selectedDomain || 'dataset',
       ownerName: isAnonymous ? 'Anonymous Scientist' : (contributorName || 'Research Contributor'),
-      ownerEmail: contributorEmail || 'data-desk@kashmirecowatch.org',
+      ownerEmail: contributorEmail || 'data-desk@kashmir-ecowatch.com',
       district: 'Srinagar',
       details: `${description} | Domain: ${selectedDomain} | Darwin Core: ${agreeToDarwinCore ? 'Yes' : 'No'} | Method: ${observationMethod || 'Standard'} | Equipment: ${equipmentUsed || 'Field sensors'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority: 'HIGH',

@@ -27,7 +27,7 @@ export function AdminSubNav() {
     { label: 'Abstract Review', href: '/webinars/admin/abstracts-and-review', icon: FileCheck2 },
     { label: 'Tracks & Halls', href: '/webinars/admin/tracks-and-rooms', icon: Sliders },
     { label: 'Live Moderation', href: '/webinars/admin/live-moderation', icon: Video },
-    { label: 'Certificates', href: '/webinars/admin/certificates', icon: Award },
+    { label: 'Certificates', href: '/webinars/certificates', icon: Award },
     { label: 'Analytics & Quotas', href: '/webinars/admin/analytics', icon: BarChart3 }
   ];
 

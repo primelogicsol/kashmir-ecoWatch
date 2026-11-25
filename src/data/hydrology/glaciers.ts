@@ -1,4 +1,4 @@
-// Kashmir Eco Watch — Hydrology Database: GLACIERS
+// Kashmir EcoWatch — Hydrology Database: GLACIERS
 // Migration Status: Legacy Imported → Verified
 // Updated: 2026-06-16
 // DO NOT use Dashboard_Locked records in live KPI calculations.

@@ -226,7 +226,7 @@ export default function WaterQualityTestingPage() {
                 pollution of drinking water."
               </p>
               <p className="text-xs text-slate-400 mt-2">
-                — Environmental Systems Research Organization (ESRO), Kashmir Environmental Archive.
+                — Environment and Service Research Organization (ESRO), Kashmir Environmental Archive.
                 This module's testing framework is designed to address the gaps identified in
                 ESRO's water quality assessment.
               </p>
@@ -798,7 +798,7 @@ export default function WaterQualityTestingPage() {
         <div className="container mx-auto px-4 md:px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-sm text-slate-500">
-              Water Quality Testing & Monitoring — Kashmir Environmental Intelligence Platform
+              Water Quality Testing & Monitoring — Kashmir EcoWatch Western Himalayan
             </div>
             <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap">
               <Link href="/water-systems/drinking-water-sources" className="hover:text-white transition-colors">

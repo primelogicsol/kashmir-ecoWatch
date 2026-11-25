@@ -442,7 +442,7 @@ export const SHARED_ASSESSMENT_DATABASE: AssessmentRecord[] = [
         authorOrBody: 'Khan, F. A. & Zutshi, D. P. (Journal of Himalayan Ecology)',
         year: 2021,
         type: 'Peer-Reviewed Paper',
-        urlOrCitation: 'https://doi.org/10.1016/j.jhe.2021.104421'
+        urlOrCitation: 'https://kashmir-ecowatch.com/research-library'
       },
       {
         id: 'ref-tr-02',
@@ -450,7 +450,7 @@ export const SHARED_ASSESSMENT_DATABASE: AssessmentRecord[] = [
         authorOrBody: 'Kashmir EcoWatch Data Services',
         year: 2025,
         type: 'Field Sensor Network',
-        urlOrCitation: 'https://kashmir-ecowatch.com/data/dal-telemetry'
+        urlOrCitation: 'https://kashmir-ecowatch.com/water-systems/lakes/dal-lake'
       }
     ],
     reviewHistory: [
@@ -652,7 +652,7 @@ export const SHARED_ASSESSMENT_DATABASE: AssessmentRecord[] = [
         authorOrBody: 'Bhat, M. A. et al. (Environmental Pollution Research)',
         year: 2024,
         type: 'Peer-Reviewed Paper',
-        urlOrCitation: 'https://doi.org/10.1007/s10661-024-09887-2'
+        urlOrCitation: 'https://kashmir-ecowatch.com/research-library'
       },
       {
         id: 'ref-hr-02',
@@ -660,7 +660,7 @@ export const SHARED_ASSESSMENT_DATABASE: AssessmentRecord[] = [
         authorOrBody: 'Kashmir Water Resources Consortium',
         year: 2025,
         type: 'Government Sensor / Data',
-        urlOrCitation: 'https://kew-portal.org/groundwater/karewa-report'
+        urlOrCitation: 'https://kashmir-ecowatch.com/water-systems/groundwater'
       }
     ],
     reviewHistory: [
@@ -1002,7 +1002,7 @@ export const SHARED_ASSESSMENT_DATABASE: AssessmentRecord[] = [
         authorOrBody: 'Dar, N. A. & Jeelani, G. (Environmental Monitoring & Assessment)',
         year: 2023,
         type: 'Peer-Reviewed Paper',
-        urlOrCitation: 'https://doi.org/10.1007/s10661-023-11204-x'
+        urlOrCitation: 'https://kashmir-ecowatch.com/water-systems/lakes/wular-lake'
       }
     ],
     reviewHistory: [

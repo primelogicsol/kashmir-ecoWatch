@@ -1,3 +1,4 @@
+import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -20,10 +21,11 @@ import { Heading } from '@/components/common/Heading';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
-export const metadata: Metadata = {
-  title: 'Watershed Cumulative Impact & Basin Integration | Kashmir EcoWatch',
-  description: 'Cumulative impact modeling connecting headwater glacier retreat, river corridor disturbance, wetland shrinkage, and springshed stress across the Jhelum Basin.',
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Watershed Cumulative Impact & Basin Integration | Kashmir EcoWatch",
+  description: "Cumulative impact modeling connecting headwater glacier retreat, river corridor disturbance, wetland shrinkage, and springshed stress across the Jhelum Basin.",
+  canonicalPath: "/earth-human-impact/aquatic-cryosphere/watershed-cumulative-impact",
+});
 
 export default function WatershedCumulativeImpactPage() {
   const basins = [
