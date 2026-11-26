@@ -193,8 +193,8 @@ export default function GovernancePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 sm:via-slate-950/80 to-slate-950/35 pointer-events-none" />
         <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
         
-        <div className="kew-module-hero-inner container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 max-w-6xl">
-          <div className="max-w-3xl">
+        <div className="kew-module-hero-inner container mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+          <div className="w-full min-w-0">
             {/* Breadcrumbs */}
             <nav className="flex flex-wrap items-center gap-1.5 text-xs text-slate-300 mb-4 sm:mb-6">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>

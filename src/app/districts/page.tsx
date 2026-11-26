@@ -95,8 +95,8 @@ export default function DistrictsPage() {
       <Heading
         breadcrumbs={[{ label: 'Resources', href: '/research-library' }, { label: 'Regional Profiles' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Regional</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Regional</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
         </>}
         subtitle="Integrated district-level environmental intelligence bringing together ecological systems, water networks, monitoring, risk, evidence, and public contribution across the platform. Geographic Scope: Currently covering Kashmir Valley districts, with select profiles from Jammu Division and Ladakh. Expanded coverage in progress."
         icon={<Map className="w-6 h-6 text-emerald-400" />}

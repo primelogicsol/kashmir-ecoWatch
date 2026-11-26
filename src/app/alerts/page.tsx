@@ -156,7 +156,7 @@ export default function AlertsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Alerts & Advisories</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Alerts & Advisories</span>
           </>}
         subtitle="Public-facing live alert stream for Kashmir EcoWatch — real-time hazard alerts, weather advisories, and emergency notifications for public safety and disaster preparedness."
         icon={<Bell className="w-6 h-6 text-emerald-400" />}

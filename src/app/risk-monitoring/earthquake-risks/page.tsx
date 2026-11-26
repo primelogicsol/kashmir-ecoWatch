@@ -23,7 +23,7 @@ export default function EarthquakeRisksPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Earthquake Risks' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake Risks</span>
           </>}
         subtitle="Seismic hazard assessment, fault line mapping, and building vulnerability"
         icon={<Zap className="w-6 h-6 text-emerald-400" />}

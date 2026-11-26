@@ -115,7 +115,7 @@ export function ProtectedAreaManagementPlanPage({ area, backHref, categoryLabel,
     <main className="min-h-screen bg-slate-950">
 
       {/* ── COMPACT HERO ── */}
-      <div className="kew-module-hero-surface bg-slate-900/50 border-b border-white/5">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface bg-slate-900/50 border-b border-white/5">
         <div className="kew-module-hero-inner container mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-5 flex-wrap">

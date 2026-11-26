@@ -37,13 +37,13 @@ export default function DistrictProfilesPage() {
     <main className="min-h-screen bg-slate-950">
       <div className="kew-module-hero-surface relative overflow-hidden bg-slate-900/50">
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <div className="flex items-center gap-2 mb-4">
               <Building2 className="w-6 h-6 text-violet-400" />
               <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">Biodiversity Intelligence</span>
             </div>
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               <span className="block pb-1">District Biodiversity</span>
               <span className="block bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Profiles</span>
             </h1>

@@ -43,14 +43,14 @@ const RiskDashboardPage: React.FC = () => {
       <section className="kew-module-hero-surface relative overflow-hidden">
         <div className="absolute inset-0 bg-slate-900/50" />
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
               <Link href="/biodiversity" className="hover:text-white transition-colors">Biodiversity</Link>
               <span>/</span>
               <span className="text-white font-medium">Risk Dashboard</span>
             </div>
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Biodiversity Risk Dashboard
             </h1>
             <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">

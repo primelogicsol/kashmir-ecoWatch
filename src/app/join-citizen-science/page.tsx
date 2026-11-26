@@ -402,8 +402,8 @@ export default function JoinCitizenSciencePage() {
       <Heading
         breadcrumbs={[{ label: 'Get Involved', href: '/contribute' }, { label: 'Join Citizen Science' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Join KEW</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Citizen Science Network</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Join KEW</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Citizen Science Network</span>
         </>}
         subtitle="Help monitor, document, and protect the Western Himalayan environment. No scientific training required — just curiosity, care, and a few minutes of your time."
         icon={<Users className="w-6 h-6 text-emerald-400" />}

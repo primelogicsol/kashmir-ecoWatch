@@ -23,7 +23,7 @@ export default function BirdingTrailsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Birding Trails</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Birding Trails</span>
           </>}
         subtitle="Prime birdwatching routes through Kashmir's wetlands, forests, and migratory corridors"
         icon={<Bird className="w-6 h-6 text-emerald-400" />}

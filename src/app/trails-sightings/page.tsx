@@ -54,7 +54,7 @@ export default function TrailsAndSightingsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails & Sightings</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Trails & Sightings</span>
           </>}
         subtitle="Comprehensive ecological trail intelligence, field observation workflows, and citizen science database for Kashmir's biodiversity conservation and research"
         icon={<Footprints className="w-6 h-6 text-emerald-400" />}

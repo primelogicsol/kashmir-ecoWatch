@@ -24,7 +24,7 @@ export default function BirdSightingsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Sightings</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Sightings</span>
           </>}
         subtitle="Resident and migratory bird observations from across Kashmir's diverse avian habitats"
         icon={<Bird className="w-6 h-6 text-emerald-400" />}

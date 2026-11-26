@@ -424,8 +424,8 @@ export default function BecomeResearchPartnerPage() {
       <Heading
         breadcrumbs={[{ label: 'Get Involved', href: '/contribute' }, { label: 'Become a Research Partner' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Become a</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">KEW Research Partner</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Become a</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">KEW Research Partner</span>
         </>}
         subtitle="Establish a formal research or data partnership with the Western Himalayan Environmental Intelligence Network. Open to universities, government agencies, conservation organisations, and international bodies."
         icon={<Handshake className="w-6 h-6 text-indigo-400" />}

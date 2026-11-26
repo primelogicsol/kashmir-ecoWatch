@@ -75,7 +75,7 @@ function MonitoringOverviewPage() {
       <Heading
   title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Intelligence Overview</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Monitoring Intelligence Overview</span>
           </>}
   subtitle="Environmental monitoring systems tracking atmospheric, hydrological, seismic, meteorological, wildlife, and cryosphere-linked conditions across Kashmir. These networks form the platform's operational sensing layer — feeding alerts, dashboards, district profiles, and module-specific intelligence with continuous and periodic environmental data."
   icon={<Activity className="w-6 h-6 text-emerald-400" />}

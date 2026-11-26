@@ -53,7 +53,7 @@ export default function AirQualityDashboard() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
+            className="w-full min-w-0"
           >
             <div className="flex items-center gap-2 mb-4">
               <Wind className="w-5 h-5 text-emerald-400" />
@@ -62,7 +62,7 @@ export default function AirQualityDashboard() {
               </span>
             </div>
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Air Quality Intelligence
             </h1>
             <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">

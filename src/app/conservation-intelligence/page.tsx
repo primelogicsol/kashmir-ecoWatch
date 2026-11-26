@@ -956,7 +956,7 @@ export default function ConservationIntelligencePage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-5xl"
+          className="w-full min-w-0"
         >
           <div className="flex items-center gap-2 mb-4">
             <Compass className="w-6 h-6 text-emerald-400" />
@@ -966,7 +966,7 @@ export default function ConservationIntelligencePage() {
           </div>
 
           <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-          <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+          <h1 className="w-full text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-[1.14] tracking-tight break-words">
             Kashmir Monitoring
             <span className="block bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 bg-clip-text text-transparent">
               & Threat Intelligence

@@ -368,6 +368,19 @@ const CURATED_STATIC_ROUTES: Record<
       'Learn about Kashmir EcoWatch Western Himalayan (KEW), established in 2004 as Environment and Service Research Organization (ESRO), delivering independent non-commercial environmental science across the Western Himalaya.',
     keywords: ['About Kashmir EcoWatch', 'Kashmir EcoWatch Western Himalayan', 'ESRO 2004', 'Dr. Kumar Foundation USA'],
   },
+  '/about/message': {
+    title: 'Message from Dr. Ghulam Mohammad Kumar — Nature, Humanity, Knowledge & Our Shared Responsibility',
+    description:
+      'Philosophical reflections and ethical foundations inspired by Dr. Ghulam Mohammad Kumar on nature as a sacred trust, environmental stewardship, scientific inquiry, education as awakening, selfless service, and returning knowledge to Kashmir.',
+    imagePath: '/images/about/dr-ghulam-mohammad-kumar-life-and-work.png',
+    keywords: [
+      'Dr. Ghulam Mohammad Kumar',
+      'Message from Dr. Ghulam Mohammad Kumar',
+      'Dr. Kumar Foundation USA',
+      'Kashmir EcoWatch philosophy',
+      'Knowledge Return System Kashmir',
+    ],
+  },
   '/about/methodology': {
     title: 'Scientific Methodology, Data Provenance & Validation Standards',
     description:

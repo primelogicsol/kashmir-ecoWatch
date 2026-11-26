@@ -198,7 +198,7 @@ export default function MonsoonDynamicsPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
               Monsoon Dynamics
             </span>
           </>

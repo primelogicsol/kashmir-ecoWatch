@@ -43,7 +43,7 @@ export default function DistrictProfileDetail() {
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Directory
           </Button>
           
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <Badge className="bg-violet-500/20 text-violet-300 border border-violet-500/30 uppercase tracking-widest text-xs">
                 {profile.scope}

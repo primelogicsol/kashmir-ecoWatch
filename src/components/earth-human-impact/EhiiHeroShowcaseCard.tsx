@@ -63,8 +63,8 @@ export function EhiiHeroShowcaseCard({
 
         {/* Captions Overlay */}
         <div className="absolute bottom-2.5 left-3 right-3">
-          <div className="flex items-center justify-between gap-2 mb-1">
-            <h4 className="text-sm font-bold text-white drop-shadow-md leading-tight">
+          <div className="flex flex-wrap items-center justify-between gap-1.5 mb-1">
+            <h4 className="text-sm font-bold text-white drop-shadow-md leading-tight break-words min-w-0">
               {currentItem.title}
             </h4>
             <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 border ${
@@ -73,16 +73,16 @@ export function EhiiHeroShowcaseCard({
               {currentItem.status}
             </span>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-slate-300">
-            <span className="text-emerald-300 font-mono text-[10px] truncate max-w-[60%]">
+          <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5 text-[11px] text-slate-300">
+            <span className="text-emerald-300 font-mono text-[10px] break-words min-w-0">
               {currentItem.metrics}
             </span>
-            <span className="text-slate-400 text-[10px] truncate max-w-[38%] text-right">
+            <span className="text-slate-300 text-[10px] break-words min-w-0">
               {currentItem.location}
             </span>
           </div>
           {currentItem.subtitle && (
-            <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
+            <p className="text-[10px] text-slate-300 leading-snug break-words mt-0.5">
               {currentItem.subtitle}
             </p>
           )}
@@ -96,7 +96,7 @@ export function EhiiHeroShowcaseCard({
             key={item.id}
             type="button"
             onClick={() => setActiveIdx(idx)}
-            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer ${
+            className={`relative rounded-lg overflow-hidden border text-left p-1 transition-all flex flex-col items-center gap-1 cursor-pointer min-w-0 ${
               activeIdx === idx
                 ? 'border-emerald-400 ring-2 ring-emerald-400/40 bg-emerald-500/10 shadow-md'
                 : 'border-white/10 bg-slate-800/60 hover:border-emerald-500/30 hover:bg-slate-800'
@@ -106,8 +106,8 @@ export function EhiiHeroShowcaseCard({
               <img src={item.src} alt={item.short} className="w-full h-full object-cover" />
             </div>
             <span
-              className={`text-[9px] font-medium break-words w-full text-center leading-tight truncate px-0.5 ${
-                activeIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-400'
+              className={`text-[9px] font-medium break-words w-full text-center leading-tight px-0.5 ${
+                activeIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-300'
               }`}
             >
               {item.short}

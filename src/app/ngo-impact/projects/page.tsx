@@ -79,7 +79,7 @@ export default function NGOProjectsPage() {
         icon={<Target className="w-6 h-6 text-sky-400" />}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-blue-300 bg-clip-text text-transparent">Civil Society Projects</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-blue-300 bg-clip-text text-transparent">Civil Society Projects</span>
         </>}
         subtitle="Explore specific environmental interventions, ecological outcomes, and verified field restoration projects executed across Jammu & Kashmir."
         actions={

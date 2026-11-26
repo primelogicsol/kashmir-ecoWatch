@@ -42,7 +42,7 @@ export default function CriticalInfrastructureResponsePage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Critical Infrastructure & Response' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Critical Infrastructure & Response</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Critical Infrastructure & Response</span>
           </>}
         subtitle="Emergency-linked facility monitoring, high-priority response nodes, critical environmental infrastructure under stress, operational routing intelligence, and support asset awareness."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}

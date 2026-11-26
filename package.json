@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "audit:integrity": "node scripts/comprehensive-platform-audit.js",
-    "audit:cta-contrast": "node scripts/audit/cta-contrast-audit.js"
+    "audit:cta-contrast": "node scripts/audit/cta-contrast-audit.js",
+    "audit:hero-compliance": "node scripts/audit/hero-compliance-audit.js"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",

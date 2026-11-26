@@ -470,7 +470,7 @@ export default function ShareDataPage() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
               <div className="mb-8">
                 <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
-                <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Scientific Record Initialised</h1>
+                <h1 className=" text-4xl font-bold text-white mb-4">Scientific Record Initialised</h1>
                 <p className="text-slate-400 text-lg">
                   Your environmental intelligence record has been successfully integrated into the Kashmir EcoWatch platform.
                 </p>
@@ -507,7 +507,7 @@ export default function ShareDataPage() {
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Share Environmental Data' }]}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-blue-300 bg-clip-text text-transparent">Share Environmental Data</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-blue-300 bg-clip-text text-transparent">Share Environmental Data</span>
         </>}
         subtitle="Submit structured, content-aware scientific intelligence to the unified environmental network. Open to researchers, institutions, citizen scientists, and partner organisations."
         icon={<Database className="w-6 h-6 text-violet-400" />}

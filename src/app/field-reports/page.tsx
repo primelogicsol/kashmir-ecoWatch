@@ -64,7 +64,7 @@ export default function FieldReportsPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Field Intelligence Reports</span>
+            <span className="block whitespace-normal break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Field Intelligence Reports</span>
           </>
         }
         subtitle="Field reports, survey findings, technical assessments, and monitoring bulletins supporting environmental intelligence across Kashmir. These documents feed evidence layers, district profiles, alerts, and module intelligence throughout the platform."

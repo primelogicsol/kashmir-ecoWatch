@@ -78,7 +78,7 @@ export default function LandEarthSystemsSubmodulePage() {
             <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
               <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent tracking-normal">
-                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Land Transformation</span>, Karewas &amp; Slope Dynamics
+                <span className="inline-block whitespace-normal break-words [word-break:keep-all] [overflow-wrap:normal]">Land Transformation</span>, Karewas &amp; Slope Dynamics
               </span>
             </div>
           </div>

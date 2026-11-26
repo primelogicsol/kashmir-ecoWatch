@@ -23,7 +23,7 @@ export default function ForestMeadowTrailsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Forest & Meadow Trails</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Forest & Meadow Trails</span>
           </>}
         subtitle="Trails through dense forests and expansive alpine meadows (margs)"
         icon={<Trees className="w-6 h-6 text-emerald-400" />}

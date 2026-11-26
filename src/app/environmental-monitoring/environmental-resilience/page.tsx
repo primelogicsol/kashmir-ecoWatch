@@ -703,7 +703,7 @@ export default function EnvironmentalResiliencePage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">Environmental Resilience</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">Environmental Resilience</span>
           </>}
         subtitle="Monitoring community, infrastructure, ecosystem, and hazard-response resilience across the Kashmir environmental region — absorption, response, and recovery capacity."
         icon={<ShieldCheck className="w-6 h-6 text-teal-400" />}

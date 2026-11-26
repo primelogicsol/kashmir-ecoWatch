@@ -23,7 +23,7 @@ export default function PrivacyPage() {
     <main className="min-h-screen bg-slate-950"><section className="kew-module-hero-surface kew-module-hero-atmospheric relative overflow-hidden bg-[#080E1C]">
         
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                 <Shield className="w-8 h-8 text-white" />
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             </div>
 
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Sensitivity & <span className="text-emerald-400">Privacy</span>
             </h1>
 

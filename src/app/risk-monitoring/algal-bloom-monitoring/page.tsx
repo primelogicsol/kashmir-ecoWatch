@@ -78,7 +78,7 @@ export default function AlgalBloomMonitoringPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Algal Bloom Monitoring' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Algal Bloom Risk & Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Algal Bloom Risk & Monitoring</span>
           </>}
         subtitle="Eutrophication-prone lake and wetland monitoring for Kashmir's freshwater systems, linking bloom risk, cyanobacteria indicators, nutrient loading, oxygen stress, seasonal bloom windows, satellite signals, and field water-quality evidence."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}

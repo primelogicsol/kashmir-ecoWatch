@@ -38,7 +38,7 @@ export default function ExtremeWeatherHubPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 via-sky-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 via-sky-300 to-amber-300 bg-clip-text text-transparent">
               Extreme Weather Intelligence
             </span>
           </>

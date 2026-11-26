@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
   User,
@@ -270,6 +270,70 @@ export function KewControlCenter({
     }
   };
 
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [geometry, setGeometry] = useState<{
+    widthPx: number;
+    rightOffsetPx: number;
+    maxHeightPx: number;
+  } | null>(null);
+
+  const updatePanelGeometry = useCallback(() => {
+    if (typeof window === 'undefined' || !panelRef.current) return;
+    const vw = document.documentElement.clientWidth || window.innerWidth;
+    const vh = window.visualViewport?.height ?? window.innerHeight;
+    if (vw < 640 || vh <= 0) {
+      setGeometry(null);
+      return;
+    }
+
+    const anchorEl = panelRef.current.parentElement?.parentElement;
+    if (!anchorEl) return;
+    const anchorRect = anchorEl.getBoundingClientRect();
+    const margin = 14;
+    const widthPx = Math.min(420, Math.max(280, vw - margin * 2));
+
+    let desiredRight = anchorRect.right;
+    if (desiredRight > vw - margin) desiredRight = vw - margin;
+    if (desiredRight - widthPx < margin) {
+      desiredRight = Math.min(vw - margin, widthPx + margin);
+    }
+    const rightOffsetPx = Math.round((anchorRect.right - desiredRight) * 10) / 10;
+    const panelTop = Math.max(0, anchorRect.bottom + 8);
+    const maxHeightPx = Math.min(620, Math.max(200, Math.floor(vh - panelTop - margin)));
+
+    setGeometry((prev) =>
+      prev &&
+      prev.widthPx === widthPx &&
+      prev.rightOffsetPx === rightOffsetPx &&
+      prev.maxHeightPx === maxHeightPx
+        ? prev
+        : { widthPx, rightOffsetPx, maxHeightPx }
+    );
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!isOpen) {
+      setGeometry(null);
+      return;
+    }
+    updatePanelGeometry();
+  }, [isOpen, updatePanelGeometry]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    updatePanelGeometry();
+    window.addEventListener('resize', updatePanelGeometry, { passive: true });
+    window.addEventListener('scroll', updatePanelGeometry, { passive: true });
+    window.addEventListener('orientationchange', updatePanelGeometry, { passive: true });
+    window.visualViewport?.addEventListener('resize', updatePanelGeometry, { passive: true });
+    return () => {
+      window.removeEventListener('resize', updatePanelGeometry);
+      window.removeEventListener('scroll', updatePanelGeometry);
+      window.removeEventListener('orientationchange', updatePanelGeometry);
+      window.visualViewport?.removeEventListener('resize', updatePanelGeometry);
+    };
+  }, [isOpen, updatePanelGeometry]);
+
   if (!isOpen) return null;
 
   const {
@@ -337,31 +401,41 @@ export function KewControlCenter({
 
   return (
     <div
-      className="fixed inset-x-0 top-0 h-dvh z-[70] bg-black/70 sm:bg-transparent flex flex-col justify-end sm:static sm:h-auto sm:z-50 sm:block"
+      className="fixed inset-x-0 top-0 h-dvh z-[70] bg-black/70 sm:bg-transparent flex flex-col justify-end sm:static sm:h-auto sm:z-[110] sm:block"
       onClick={onClose}
     >
       <div
+        ref={panelRef}
         id="kew-control-center-panel"
         data-kew-dark-surface="true"
         role="dialog"
         aria-modal="false"
         aria-label="KEW Control Center"
         onClick={(e) => e.stopPropagation()}
-        style={{ backgroundColor: 'rgba(6, 12, 24, 0.97)' }}
-        className="w-full max-h-[86dvh] rounded-t-3xl sm:rounded-2xl sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-[420px] sm:max-w-[calc(100vw-1.5rem)] sm:max-h-[min(620px,calc(100dvh-5.5rem))] bg-slate-950/95 border-t sm:border border-white/20 shadow-2xl shadow-black/80 backdrop-blur-2xl overflow-hidden text-slate-200 flex flex-col animate-in fade-in zoom-in-95 duration-150"
+        style={
+          geometry
+            ? {
+                width: `${geometry.widthPx}px`,
+                maxWidth: 'calc(100vw - 1.5rem)',
+                right: `${geometry.rightOffsetPx}px`,
+                maxHeight: `${geometry.maxHeightPx}px`,
+              }
+            : undefined
+        }
+        className="kew-menu-surface kew-functional-overlay w-full max-h-[88dvh] rounded-t-3xl sm:rounded-2xl sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-[420px] sm:max-w-[calc(100vw-1.5rem)] sm:max-h-[min(620px,calc(100dvh-5.5rem))] border-t sm:border overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-150"
       >
         {/* Mobile Grab Handle */}
-        <div className="sm:hidden flex justify-center pt-2.5 pb-0.5 bg-slate-950/90 shrink-0">
-          <span className="w-10 h-1 rounded-full bg-white/20" aria-hidden="true" />
+        <div className="kew-menu-top-header sm:hidden flex justify-center pt-2.5 pb-0.5 shrink-0">
+          <span className="w-10 h-1 rounded-full bg-slate-500/40" aria-hidden="true" />
         </div>
 
         {/* =============================================================== */}
         {/* UNIFIED CONTROL CENTER HEADER                                   */}
         {/* =============================================================== */}
-        <div className="px-4 pt-3.5 pb-3 bg-slate-950/90 border-b border-white/10 shrink-0">
+        <div className="kew-menu-top-header px-4 pt-3.5 pb-3 border-b shrink-0">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 font-bold text-sm shrink-0 overflow-hidden">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/35 flex items-center justify-center text-emerald-400 font-bold text-sm shrink-0 overflow-hidden">
                 {showUserPhoto ? (
                   <img
                     src={user!.avatar!}
@@ -378,14 +452,14 @@ export function KewControlCenter({
 
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-400">
+                  <span className="kew-menu-accent-text text-[10px] font-bold uppercase tracking-[0.14em]">
                     KEW Control Center
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-white leading-tight truncate mt-0.5">
+                <h3 className="kew-menu-title text-sm font-bold leading-tight truncate mt-0.5">
                   {isLoggedIn && user ? user.name : 'Guest Observer'}
                 </h3>
-                <p className="text-[11px] text-slate-300 font-medium flex items-center gap-1.5 mt-0.5">
+                <p className="kew-menu-desc text-[11px] font-medium flex items-center gap-1.5 mt-0.5">
                   <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
                   <span data-testid="cc-role-label" className="truncate">
                     {roleDesignation}
@@ -397,7 +471,7 @@ export function KewControlCenter({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+              className="kew-menu-ghost-btn p-1.5 rounded-xl transition-colors cursor-pointer shrink-0"
               aria-label="Close KEW Control Center"
             >
               <X className="w-4 h-4" />
@@ -408,7 +482,7 @@ export function KewControlCenter({
           <div
             role="tablist"
             aria-label="KEW Control Center tabs"
-            className="grid grid-cols-3 gap-1 mt-3 p-1 rounded-xl bg-slate-900/95 border border-white/10"
+            className="kew-menu-tablist grid grid-cols-3 gap-1 mt-3 p-1 rounded-xl border"
           >
             <button
               ref={(el) => {
@@ -422,10 +496,8 @@ export function KewControlCenter({
               tabIndex={activeTab === 'account' ? 0 : -1}
               onClick={() => selectTab('account')}
               onKeyDown={(e) => handleTabKeyDown(e, 'account')}
-              className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'account'
-                  ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+              className={`kew-menu-tab flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                activeTab === 'account' ? 'kew-menu-tab--active' : ''
               }`}
             >
               <User className="w-3.5 h-3.5 shrink-0" />
@@ -444,10 +516,8 @@ export function KewControlCenter({
               tabIndex={activeTab === 'alerts' ? 0 : -1}
               onClick={() => selectTab('alerts')}
               onKeyDown={(e) => handleTabKeyDown(e, 'alerts')}
-              className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'alerts'
-                  ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+              className={`kew-menu-tab flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                activeTab === 'alerts' ? 'kew-menu-tab--active' : ''
               }`}
             >
               <Bell className="w-3.5 h-3.5 shrink-0" />
@@ -456,8 +526,8 @@ export function KewControlCenter({
                 <span
                   className={`min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold inline-flex items-center justify-center leading-none ${
                     unreadCriticalCount > 0
-                      ? 'bg-rose-600 text-white'
-                      : 'bg-amber-500 text-slate-950'
+                      ? 'kew-menu-badge-critical bg-rose-600 text-white'
+                      : 'kew-menu-badge-amber bg-amber-500 text-slate-950'
                   }`}
                 >
                   {unreadCount > 9 ? '9+' : unreadCount}
@@ -477,10 +547,8 @@ export function KewControlCenter({
               tabIndex={activeTab === 'preferences' ? 0 : -1}
               onClick={() => selectTab('preferences')}
               onKeyDown={(e) => handleTabKeyDown(e, 'preferences')}
-              className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === 'preferences'
-                  ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+              className={`kew-menu-tab flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                activeTab === 'preferences' ? 'kew-menu-tab--active' : ''
               }`}
             >
               <Settings className="w-3.5 h-3.5 shrink-0" />
@@ -499,17 +567,19 @@ export function KewControlCenter({
             aria-labelledby="kew-cc-tab-account"
             className="flex-1 min-h-0 flex flex-col"
           >
-            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-3 space-y-2 text-xs">
+            <div className="kew-menu-scroll flex-1 min-h-0 overflow-y-auto overscroll-contain p-3 space-y-2 text-xs">
               {/* Affiliation Card */}
-              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/10 flex items-center justify-between text-[11px]">
-                <span className="text-slate-400">Affiliation</span>
-                <span className="text-white font-semibold truncate ml-2">{affiliationDisplay}</span>
+              <div className="kew-menu-subcard p-2.5 rounded-xl border flex items-center justify-between text-[11px]">
+                <span className="kew-menu-desc">Affiliation</span>
+                <span className="kew-menu-title font-semibold truncate ml-2">
+                  {affiliationDisplay}
+                </span>
               </div>
 
               {/* Signed-Out Quick Auth Banner */}
               {!isLoggedIn && (
-                <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-2.5">
-                  <p className="text-[11px] text-slate-200 leading-relaxed">
+                <div className="kew-menu-subcard p-3 rounded-xl border space-y-2.5">
+                  <p className="kew-menu-desc text-[11px] leading-relaxed">
                     Sign in with Google or contributor credentials to synchronize field telemetry,
                     verified observations, and dataset submissions.
                   </p>
@@ -531,7 +601,7 @@ export function KewControlCenter({
                         onClose();
                         openAuthModal('signup');
                       }}
-                      className="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-white/20 font-semibold text-xs inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      className="kew-menu-option-btn py-2 px-3 rounded-xl border font-semibold text-xs inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                     >
                       <UserPlus className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Join KEW</span>
@@ -545,12 +615,14 @@ export function KewControlCenter({
                 <Link
                   href="/dashboard"
                   onClick={onClose}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-200 hover:text-white transition-colors border border-emerald-500/30"
+                  className="kew-menu-item kew-menu-item--card kew-menu-item--active items-center gap-2.5"
                 >
                   <Layers className="w-4 h-4 text-emerald-400 shrink-0" />
                   <div>
-                    <p className="font-bold leading-none">My Contributor Dashboard</p>
-                    <p className="text-[10px] text-emerald-300/80 mt-1">
+                    <p className="kew-menu-item-title font-bold leading-none">
+                      My Contributor Dashboard
+                    </p>
+                    <p className="kew-menu-item-desc text-[10px] mt-1">
                       Telemetry, submissions &amp; alerts
                     </p>
                   </div>
@@ -561,12 +633,14 @@ export function KewControlCenter({
                     href="/admin/dashboard"
                     onClick={onClose}
                     data-testid="cc-admin-command-link"
-                    className="flex items-center gap-2.5 p-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-200 hover:text-white transition-colors border border-purple-500/30"
+                    className="kew-menu-item kew-menu-item--card items-center gap-2.5"
                   >
                     <Shield className="w-4 h-4 text-purple-400 shrink-0" />
                     <div>
-                      <p className="font-bold leading-none">Admin Command Center</p>
-                      <p className="text-[10px] text-purple-300/80 mt-1">
+                      <p className="kew-menu-item-title font-bold leading-none">
+                        Admin Command Center
+                      </p>
+                      <p className="kew-menu-item-desc text-[10px] mt-1">
                         Authorized administrative access only
                       </p>
                     </div>
@@ -576,12 +650,14 @@ export function KewControlCenter({
                 <Link
                   href="/contribute-data"
                   onClick={onClose}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
+                  className="kew-menu-item kew-menu-item--card items-center gap-2.5"
                 >
                   <Upload className="w-4 h-4 text-emerald-400 shrink-0" />
                   <div>
-                    <p className="font-semibold leading-none">Deposit Research Data</p>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="kew-menu-item-title font-semibold leading-none">
+                      Deposit Research Data
+                    </p>
+                    <p className="kew-menu-item-desc text-[10px] mt-1">
                       Upload surveys, telemetry or GIS layers
                     </p>
                   </div>
@@ -590,12 +666,14 @@ export function KewControlCenter({
                 <Link
                   href="/submit-observation"
                   onClick={onClose}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
+                  className="kew-menu-item kew-menu-item--card items-center gap-2.5"
                 >
                   <FileText className="w-4 h-4 text-sky-400 shrink-0" />
                   <div>
-                    <p className="font-semibold leading-none">Submit Field Observation</p>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="kew-menu-item-title font-semibold leading-none">
+                      Submit Field Observation
+                    </p>
+                    <p className="kew-menu-item-desc text-[10px] mt-1">
                       Wildlife sightings with 5km masking
                     </p>
                   </div>
@@ -604,12 +682,14 @@ export function KewControlCenter({
                 <Link
                   href="/citizen-science"
                   onClick={onClose}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
+                  className="kew-menu-item kew-menu-item--card items-center gap-2.5"
                 >
                   <Award className="w-4 h-4 text-amber-400 shrink-0" />
                   <div>
-                    <p className="font-semibold leading-none">Citizen Science Grid</p>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="kew-menu-item-title font-semibold leading-none">
+                      Citizen Science Grid
+                    </p>
+                    <p className="kew-menu-item-desc text-[10px] mt-1">
                       District volunteer verification network
                     </p>
                   </div>
@@ -618,12 +698,14 @@ export function KewControlCenter({
                 <Link
                   href="/about/founder"
                   onClick={onClose}
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
+                  className="kew-menu-item kew-menu-item--card items-center gap-2.5"
                 >
                   <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
                   <div>
-                    <p className="font-semibold leading-none">Institutional Leadership</p>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="kew-menu-item-title font-semibold leading-none">
+                      Institutional Leadership
+                    </p>
+                    <p className="kew-menu-item-desc text-[10px] mt-1">
                       Governance, stewardship &amp; research record
                     </p>
                   </div>
@@ -632,8 +714,8 @@ export function KewControlCenter({
             </div>
 
             {/* Account Footer */}
-            <div className="px-4 py-3 bg-slate-950/90 border-t border-white/10 flex items-center justify-between text-xs shrink-0">
-              <span className="text-[11px] text-slate-400">
+            <div className="kew-menu-footer px-4 py-3 border-t flex items-center justify-between text-xs shrink-0">
+              <span className="kew-menu-desc text-[11px]">
                 {isLoggedIn ? 'Authenticated Contributor' : 'Guest Mode · Open Access'}
               </span>
               {isLoggedIn ? (
@@ -643,7 +725,7 @@ export function KewControlCenter({
                     signOut();
                     onClose();
                   }}
-                  className="text-red-300 hover:text-white inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-500/15 hover:bg-red-500/25 border border-red-500/25 transition-colors text-[11px] font-semibold cursor-pointer"
+                  className="text-white inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 transition-colors text-[11px] font-semibold cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Sign Out</span>
@@ -676,22 +758,22 @@ export function KewControlCenter({
             className="flex-1 min-h-0 flex flex-col"
           >
             {/* Alerts Status & Actions Bar */}
-            <div className="px-4 py-2.5 bg-slate-950/60 border-b border-white/10 flex items-center justify-between gap-2 shrink-0">
+            <div className="kew-menu-subbar px-4 py-2.5 border-b flex items-center justify-between gap-2 shrink-0">
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white">Live Alert Stream</span>
+                  <span className="kew-menu-title text-xs font-bold">Live Alert Stream</span>
                   {isLive ? (
                     <span className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
                       LIVE API
                     </span>
                   ) : (
-                    <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
+                    <span className="kew-menu-subcard text-[10px] font-medium px-1.5 py-0.5 rounded border">
                       CACHED
                     </span>
                   )}
                 </div>
-                <p className="text-[11px] text-slate-400 mt-0.5">
+                <p className="kew-menu-desc text-[11px] mt-0.5">
                   {unreadCount > 0
                     ? `${unreadCount} unread environmental alerts`
                     : 'All alerts up to date'}
@@ -703,7 +785,7 @@ export function KewControlCenter({
                   type="button"
                   onClick={() => refetch()}
                   disabled={isLoading}
-                  className="p-1.5 rounded-lg text-slate-300 hover:text-emerald-400 hover:bg-white/5 transition-colors disabled:opacity-50 cursor-pointer"
+                  className="kew-menu-ghost-btn p-1.5 rounded-lg transition-colors disabled:opacity-50 cursor-pointer"
                   title="Refresh live telemetry APIs"
                   aria-label="Refresh live telemetry"
                 >
@@ -717,7 +799,7 @@ export function KewControlCenter({
                     type="button"
                     data-testid="alerts-mark-all-btn"
                     onClick={markAllAsRead}
-                    className="text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold px-2 py-1 rounded-lg hover:bg-emerald-500/10 transition-colors cursor-pointer"
+                    className="kew-menu-ghost-btn text-[11px] font-semibold px-2 py-1 rounded-lg transition-colors cursor-pointer"
                   >
                     Mark all read
                   </button>
@@ -726,15 +808,15 @@ export function KewControlCenter({
             </div>
 
             {/* Real-Time Telemetry Sources Banner */}
-            <div className="px-4 py-2 bg-emerald-950/40 border-b border-emerald-500/20 flex items-center justify-between gap-2 text-[11px] text-slate-300 shrink-0">
+            <div className="kew-menu-subbar px-4 py-2 border-b flex items-center justify-between gap-2 text-[11px] shrink-0">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Radio className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span className="truncate">
+                <span className="kew-menu-title truncate">
                   Real-time feeds: <strong>Open-Meteo CAMS</strong>, <strong>GloFAS</strong> &amp;{' '}
                   <strong>USGS</strong>
                 </span>
               </div>
-              <span className="text-slate-400 font-mono text-[10px] shrink-0">
+              <span className="kew-menu-desc font-mono text-[10px] shrink-0">
                 {lastUpdated
                   ? new Date(lastUpdated).toLocaleTimeString([], {
                       hour: '2-digit',
@@ -745,17 +827,15 @@ export function KewControlCenter({
             </div>
 
             {/* Alert Filter Pills */}
-            <div className="px-4 py-2 border-b border-white/10 flex items-center gap-2 bg-slate-950/60 text-xs shrink-0">
+            <div className="kew-menu-subbar px-4 py-2 border-b flex items-center gap-2 text-xs shrink-0">
               {(['all', 'unread', 'critical'] as const).map((tab) => (
                 <button
                   key={tab}
                   type="button"
                   data-testid={`alerts-filter-${tab}`}
                   onClick={() => setAlertFilter(tab)}
-                  className={`px-2.5 py-1 rounded-lg font-medium capitalize transition-colors cursor-pointer ${
-                    alertFilter === tab
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
+                  className={`kew-menu-tab px-2.5 py-1 rounded-lg font-medium capitalize transition-colors cursor-pointer ${
+                    alertFilter === tab ? 'kew-menu-tab--active' : ''
                   }`}
                 >
                   {tab}
@@ -765,14 +845,14 @@ export function KewControlCenter({
             </div>
 
             {/* Scrollable Alert List */}
-            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain divide-y divide-white/5">
+            <div className="kew-menu-scroll flex-1 min-h-0 overflow-y-auto overscroll-contain divide-y divide-[var(--kew-menu-border)]">
               {filteredAlerts.length === 0 ? (
-                <div className="p-8 text-center text-slate-400 space-y-2">
+                <div className="p-8 text-center space-y-2">
                   <Shield className="w-8 h-8 mx-auto text-emerald-400/60" />
-                  <p className="text-xs font-medium text-slate-300">
+                  <p className="kew-menu-title text-xs font-medium">
                     No alerts matching this filter
                   </p>
-                  <p className="text-[11px]">
+                  <p className="kew-menu-desc text-[11px]">
                     All regional hazard telemetry streams are currently nominal.
                   </p>
                 </div>
@@ -783,8 +863,8 @@ export function KewControlCenter({
                   return (
                     <div
                       key={alert.id}
-                      className={`p-3.5 hover:bg-white/[0.04] transition-colors flex gap-3 items-start relative ${
-                        !isRead ? 'bg-emerald-500/[0.03]' : ''
+                      className={`kew-menu-item p-3.5 flex gap-3 items-start relative ${
+                        !isRead ? 'kew-menu-item--active' : ''
                       }`}
                     >
                       {!isRead && (
@@ -800,11 +880,11 @@ export function KewControlCenter({
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2 mb-1">
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300 shrink-0">
+                            <span className="kew-menu-subcard text-[10px] font-mono px-2 py-0.5 rounded border shrink-0">
                               {alert.district}
                             </span>
                             {alert.id.startsWith('live-') && (
-                              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 shrink-0">
+                              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
                                 LIVE SENSOR
                               </span>
                             )}
@@ -818,15 +898,15 @@ export function KewControlCenter({
                           </span>
                         </div>
 
-                        <h4 className="text-xs font-bold text-white leading-snug line-clamp-1 mb-1">
+                        <h4 className="kew-menu-item-title text-xs font-bold leading-snug line-clamp-1 mb-1">
                           {alert.title}
                         </h4>
-                        <p className="text-[11px] text-slate-300/90 leading-relaxed line-clamp-2 mb-2">
+                        <p className="kew-menu-item-desc text-[11px] leading-relaxed line-clamp-2 mb-2">
                           {alert.summary}
                         </p>
 
                         <div className="flex items-center justify-between text-[11px]">
-                          <span className="text-slate-400 font-mono text-[10px] truncate max-w-[175px]">
+                          <span className="kew-menu-desc font-mono text-[10px] truncate max-w-[175px]">
                             {alert.issuedBy}
                           </span>
                           <div className="flex items-center gap-3 shrink-0">
@@ -836,7 +916,7 @@ export function KewControlCenter({
                                 markAsRead(alert.id);
                                 onClose();
                               }}
-                              className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+                              className="kew-menu-accent-text hover:underline font-semibold inline-flex items-center gap-1"
                             >
                               <span>View</span>
                               <ArrowRight className="w-3 h-3" />
@@ -846,7 +926,7 @@ export function KewControlCenter({
                                 type="button"
                                 data-testid="alerts-dismiss-btn"
                                 onClick={() => markAsRead(alert.id)}
-                                className="text-slate-400 hover:text-slate-200 text-[10px] cursor-pointer"
+                                className="kew-menu-ghost-btn px-1.5 py-0.5 rounded text-[10px] cursor-pointer"
                                 title="Mark read"
                               >
                                 Dismiss
@@ -862,11 +942,11 @@ export function KewControlCenter({
             </div>
 
             {/* Alerts Footer */}
-            <div className="px-4 py-3 bg-slate-950/90 border-t border-white/10 flex items-center justify-between text-xs shrink-0">
+            <div className="kew-menu-footer px-4 py-3 border-t flex items-center justify-between text-xs shrink-0">
               <Link
                 href="/alerts"
                 onClick={onClose}
-                className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+                className="kew-menu-accent-text hover:underline font-semibold inline-flex items-center gap-1"
               >
                 <span>Open Full Alert Observatory</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -875,7 +955,7 @@ export function KewControlCenter({
                 type="button"
                 data-testid="alerts-reset-btn"
                 onClick={resetReadHistory}
-                className="text-slate-400 hover:text-slate-200 text-[11px] cursor-pointer"
+                className="kew-menu-ghost-btn px-2 py-0.5 rounded text-[11px] cursor-pointer"
               >
                 Reset History
               </button>
@@ -894,32 +974,32 @@ export function KewControlCenter({
             className="flex-1 min-h-0 flex flex-col"
           >
             {/* Preferences Subheader */}
-            <div className="px-4 py-2.5 bg-slate-950/60 border-b border-white/10 flex items-center justify-between shrink-0">
+            <div className="kew-menu-subbar px-4 py-2.5 border-b flex items-center justify-between shrink-0">
               <div>
-                <span className="text-xs font-bold text-white block">Platform Preferences</span>
-                <span className="text-[11px] text-slate-400">
+                <span className="kew-menu-title text-xs font-bold block">Platform Preferences</span>
+                <span className="kew-menu-desc text-[11px]">
                   Personalized telemetry &amp; interface controls
                 </span>
               </div>
               {savedNotification && (
-                <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-mono font-bold">
+                <span className="kew-menu-accent-text text-[10px] flex items-center gap-1 font-mono font-bold">
                   <Check className="w-3 h-3" /> SAVED
                 </span>
               )}
             </div>
 
             {/* Scrollable Settings Sections */}
-            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-4 divide-y divide-white/10 text-xs">
+            <div className="kew-menu-scroll flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-4 divide-y divide-[var(--kew-menu-border)] text-xs">
               {/* Measurement Units */}
               <div className="space-y-2 first:pt-0">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-white flex items-center gap-1.5">
+                  <span className="kew-menu-title font-bold flex items-center gap-1.5">
                     <Gauge className="w-3.5 h-3.5 text-sky-400" />
                     Measurement Units
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono">Telemetry</span>
+                  <span className="kew-menu-desc text-[10px] font-mono">Telemetry</span>
                 </div>
-                <p className="text-[11px] text-slate-400">
+                <p className="kew-menu-desc text-[11px]">
                   Choose display format for temperatures, elevation, and river discharge.
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -933,10 +1013,8 @@ export function KewControlCenter({
                       key={opt.id}
                       type="button"
                       onClick={() => updateSetting('units', opt.id)}
-                      className={`py-2 px-2.5 rounded-xl border text-center transition-all cursor-pointer ${
-                        settings.units === opt.id
-                          ? 'bg-sky-500/20 border-sky-500/45 text-sky-200 font-bold'
-                          : 'border-white/10 bg-slate-950/50 text-slate-300 hover:text-white hover:border-white/20'
+                      className={`kew-menu-option-btn py-2 px-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                        settings.units === opt.id ? 'kew-menu-option-btn--selected' : ''
                       }`}
                     >
                       {opt.label}
@@ -948,11 +1026,11 @@ export function KewControlCenter({
               {/* Telemetry Polling Rate */}
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-white flex items-center gap-1.5">
+                  <span className="kew-menu-title font-bold flex items-center gap-1.5">
                     <Monitor className="w-3.5 h-3.5 text-emerald-400" />
                     Telemetry Polling Rate
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono">Sensors</span>
+                  <span className="kew-menu-desc text-[10px] font-mono">Sensors</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {(
@@ -966,10 +1044,8 @@ export function KewControlCenter({
                       key={opt.id}
                       type="button"
                       onClick={() => updateSetting('refreshRate', opt.id)}
-                      className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
-                        settings.refreshRate === opt.id
-                          ? 'bg-emerald-500/20 border-emerald-500/45 text-emerald-200 font-bold'
-                          : 'border-white/10 bg-slate-950/50 text-slate-300 hover:text-white hover:border-white/20'
+                      className={`kew-menu-option-btn py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
+                        settings.refreshRate === opt.id ? 'kew-menu-option-btn--selected' : ''
                       }`}
                     >
                       {opt.label}
@@ -981,11 +1057,11 @@ export function KewControlCenter({
               {/* Default Map Canvas */}
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-white flex items-center gap-1.5">
+                  <span className="kew-menu-title font-bold flex items-center gap-1.5">
                     <Map className="w-3.5 h-3.5 text-amber-400" />
                     Default Map Canvas
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono">Atlas</span>
+                  <span className="kew-menu-desc text-[10px] font-mono">Atlas</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {(
@@ -999,10 +1075,8 @@ export function KewControlCenter({
                       key={opt.id}
                       type="button"
                       onClick={() => updateSetting('defaultBasemap', opt.id)}
-                      className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
-                        settings.defaultBasemap === opt.id
-                          ? 'bg-amber-500/20 border-amber-500/45 text-amber-200 font-bold'
-                          : 'border-white/10 bg-slate-950/50 text-slate-300 hover:text-white hover:border-white/20'
+                      className={`kew-menu-option-btn py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
+                        settings.defaultBasemap === opt.id ? 'kew-menu-option-btn--selected' : ''
                       }`}
                     >
                       {opt.label}
@@ -1013,13 +1087,13 @@ export function KewControlCenter({
 
               {/* Accessibility & Display */}
               <div className="space-y-3 pt-4">
-                <span className="font-bold text-white flex items-center gap-1.5">
+                <span className="kew-menu-title font-bold flex items-center gap-1.5">
                   <Eye className="w-3.5 h-3.5 text-purple-400" />
                   Accessibility &amp; Display
                 </span>
 
                 <div className="space-y-1.5">
-                  <p className="text-[11px] text-slate-300 font-semibold">Color Theme Mode</p>
+                  <p className="kew-menu-title text-[11px] font-semibold">Color Theme Mode</p>
                   <div className="grid grid-cols-3 gap-2">
                     {(
                       [
@@ -1032,10 +1106,8 @@ export function KewControlCenter({
                         key={opt.id}
                         type="button"
                         onClick={() => updateSetting('themeMode', opt.id)}
-                        className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
-                          settings.themeMode === opt.id
-                            ? 'bg-emerald-700 border-emerald-400/50 text-white font-bold'
-                            : 'border-white/10 bg-slate-950/60 text-slate-300 hover:text-white hover:border-white/25'
+                        className={`kew-menu-option-btn py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
+                          settings.themeMode === opt.id ? 'kew-menu-option-btn--selected' : ''
                         }`}
                       >
                         {opt.label}
@@ -1045,12 +1117,12 @@ export function KewControlCenter({
                 </div>
 
                 {/* High Contrast Toggle */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/50 border border-white/10">
+                <div className="kew-menu-subcard flex items-center justify-between p-2.5 rounded-xl border">
                   <div>
-                    <p className="font-semibold text-white leading-tight">
+                    <p className="kew-menu-title font-semibold leading-tight">
                       High Contrast Grayscale
                     </p>
-                    <p className="text-[10px] text-slate-400">
+                    <p className="kew-menu-desc text-[10px]">
                       Boosts border and text visibility for field use
                     </p>
                   </div>
@@ -1061,7 +1133,7 @@ export function KewControlCenter({
                     aria-label="Toggle High Contrast Grayscale"
                     onClick={() => updateSetting('highContrast', !settings.highContrast)}
                     className={`w-10 h-6 rounded-full transition-colors relative shrink-0 cursor-pointer ${
-                      settings.highContrast ? 'bg-purple-500' : 'bg-slate-800'
+                      settings.highContrast ? 'bg-purple-500' : 'bg-slate-700'
                     }`}
                   >
                     <span
@@ -1073,10 +1145,10 @@ export function KewControlCenter({
                 </div>
 
                 {/* Reduced Motion Toggle */}
-                <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/50 border border-white/10">
+                <div className="kew-menu-subcard flex items-center justify-between p-2.5 rounded-xl border">
                   <div>
-                    <p className="font-semibold text-white leading-tight">Reduce Motion</p>
-                    <p className="text-[10px] text-slate-400">
+                    <p className="kew-menu-title font-semibold leading-tight">Reduce Motion</p>
+                    <p className="kew-menu-desc text-[10px]">
                       Minimizes spring animations and transitions
                     </p>
                   </div>
@@ -1087,7 +1159,7 @@ export function KewControlCenter({
                     aria-label="Toggle Reduce Motion"
                     onClick={() => updateSetting('reducedMotion', !settings.reducedMotion)}
                     className={`w-10 h-6 rounded-full transition-colors relative shrink-0 cursor-pointer ${
-                      settings.reducedMotion ? 'bg-purple-500' : 'bg-slate-800'
+                      settings.reducedMotion ? 'bg-purple-500' : 'bg-slate-700'
                     }`}
                   >
                     <span
@@ -1101,12 +1173,12 @@ export function KewControlCenter({
             </div>
 
             {/* Preferences Footer */}
-            <div className="px-4 py-3 bg-slate-950/90 border-t border-white/10 flex items-center justify-between text-xs shrink-0">
-              <span className="text-[11px] text-slate-400">Persisted locally in browser</span>
+            <div className="kew-menu-footer px-4 py-3 border-t flex items-center justify-between text-xs shrink-0">
+              <span className="kew-menu-desc text-[11px]">Persisted locally in browser</span>
               <button
                 type="button"
                 onClick={resetDefaults}
-                className="text-slate-300 hover:text-white inline-flex items-center gap-1 text-[11px] transition-colors cursor-pointer"
+                className="kew-menu-ghost-btn px-2 py-0.5 rounded inline-flex items-center gap-1 text-[11px] transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" />
                 <span>Reset Defaults</span>

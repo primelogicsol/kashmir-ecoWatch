@@ -180,7 +180,7 @@ export default function RiskMonitoringOverviewPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk & Monitoring</span>
+            <span className="block whitespace-normal break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk & Monitoring</span>
           </>
         }
         subtitle="Live environmental telemetry, seismic hazard streams, hydrological discharge forecasts, and operational risk across Jammu & Kashmir"

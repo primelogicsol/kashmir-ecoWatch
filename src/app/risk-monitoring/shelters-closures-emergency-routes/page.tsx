@@ -37,7 +37,7 @@ export default function SheltersClosuresEmergencyRoutesPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Shelters, Closures & Emergency Routes</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Shelters, Closures & Emergency Routes</span>
           </>}
         subtitle="Closure tracking, emergency shelter status, restricted access monitoring, safe route intelligence, and operational mobility support across Kashmir's transportation network."
         icon={<FileText className="w-6 h-6 text-emerald-400" />}

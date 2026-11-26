@@ -299,7 +299,7 @@ export default function LiveIncidentMapPage() {
       <Heading
   title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Incident Map</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Live Incident Map</span>
           </>}
   subtitle="Real-time spatial view of active environmental incidents, field reports, and hazard events across Kashmir."
   icon={<Map className="w-6 h-6 text-emerald-400" />}

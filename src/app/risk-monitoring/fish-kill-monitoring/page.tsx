@@ -53,7 +53,7 @@ export default function FishKillMonitoringPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Fish Kill Monitoring' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Fish Kill Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Fish Kill Monitoring</span>
           </>}
         subtitle="Lake and river fish mortality events, oxygen depletion monitoring, pollution-linked kills, algal bloom linkage, seasonal mortality patterns, and aquaculture impact tracking across Kashmir waters"
         icon={<Fish className="w-6 h-6 text-emerald-400" />}

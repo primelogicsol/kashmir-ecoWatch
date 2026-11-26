@@ -268,7 +268,7 @@ export default function DrinkingWaterPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Drinking Water Safety</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Drinking Water Safety</span>
           </>}
         subtitle="Monitoring verified PCRWR & JJM/WQMIS supply system records, urban/rural coverage, and specific quality contamination risks."
         icon={<Droplets className="w-6 h-6 text-blue-400" />}

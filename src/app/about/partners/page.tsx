@@ -193,7 +193,7 @@ export default function PartnersPage() {
       <section className="kew-module-hero-surface kew-module-hero-atmospheric relative overflow-hidden bg-[#080E1C]">
         
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
                 <Users className="w-5 h-5 md:w-8 md:h-8 text-white" />
@@ -202,7 +202,7 @@ export default function PartnersPage() {
             </div>
 
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-4xl sm:text-3xl xs:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-4xl sm:text-3xl xs:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Partner With <span className="text-emerald-400">Kashmir EcoWatch</span>
             </h1>
 

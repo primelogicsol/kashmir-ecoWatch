@@ -31,7 +31,7 @@ export default function BiodiversityReportsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-purple-500 to-violet-600 bg-clip-text text-transparent">Biodiversity Field Reports</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-purple-500 to-violet-600 bg-clip-text text-transparent">Biodiversity Field Reports</span>
           </>}
         subtitle="Species population censuses, avian migration tracking, phenology records, and flora conservation surveys."
         icon={<PawPrint className="w-6 h-6 text-purple-400" />}

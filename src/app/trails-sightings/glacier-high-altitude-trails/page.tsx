@@ -23,7 +23,7 @@ export default function GlacierHighAltitudeTrailsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & High Altitude Trails</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & High Altitude Trails</span>
           </>}
         subtitle="High-elevation routes to glaciers, snowfields, and trans-Himalayan landscapes"
         icon={<Snowflake className="w-6 h-6 text-emerald-400" />}

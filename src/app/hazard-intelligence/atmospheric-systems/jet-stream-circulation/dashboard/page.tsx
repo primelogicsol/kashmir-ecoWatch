@@ -109,7 +109,7 @@ export default function JetStreamCirculationDashboardPage() {
         title={
           <>
             <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Jet Stream &amp; Circulation</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">
               Monitoring Dashboard
             </span>
           </>

@@ -300,7 +300,7 @@ export default function SolidWastePage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Solid Waste Management</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Solid Waste Management</span>
           </>}
         subtitle="Monitoring municipal solid waste accumulation, collection coverage, and environmental exposure via ward-level planning baselines."
         icon={<Trash2 className="w-6 h-6 text-emerald-400" />}

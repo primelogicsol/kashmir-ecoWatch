@@ -56,7 +56,7 @@ export default function BirdMigrationMonitoringPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Bird Migration Monitoring' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Migration Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Migration Monitoring</span>
           </>}
         subtitle="Hokersar, Hygam, Shallabugh, Wular wetland monitoring, seasonal migration windows, arrival/departure intelligence, migratory species tracking, and route/wetland sensitivity analysis"
         icon={<Bird className="w-6 h-6 text-emerald-400" />}

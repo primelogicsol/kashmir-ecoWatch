@@ -168,7 +168,7 @@ export default function WaterSystemsPage() {
         icon={<Droplet className="w-6 h-6 text-emerald-400" />}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Systems</span>
+          <span className="block whitespace-normal break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Systems</span>
         </>}
         subtitle="Water Systems is a complete hydrological, ecological, aquatic, water-quality, watershed, cryosphere, flood-risk, and restoration intelligence system for all mapped water-related landscapes and processes across Kashmir."
         actions={

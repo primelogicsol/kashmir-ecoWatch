@@ -138,10 +138,10 @@ export function BiodiversityCategoryPage({
     <main className="min-h-screen bg-slate-950">
       <Heading
         title={
-          <div className="overflow-visible pb-2">
+          <div className="overflow-visible pb-2 w-full min-w-0">
             <KewBrandIdentity />
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+            <div className="leading-[1.15] overflow-visible w-full min-w-0">
+              <span className="block w-full bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pb-1.5 whitespace-normal break-words tracking-normal">
                 {typeof title === 'string' ? title.replace(/^Western Himalayan\s+/i, '') : 'Taxa Directory'}
               </span>
             </div>

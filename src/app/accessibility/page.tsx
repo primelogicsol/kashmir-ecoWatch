@@ -259,7 +259,7 @@ export default function AccessibilityPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Accessibility Statement' }]}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Accessibility Statement</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Accessibility Statement</span>
         </>}
         subtitle="Kashmir EcoWatch is committed to providing an inclusive, accessible, and user-friendly experience for everyone — across all abilities, devices, and assistive technologies."
         icon={<Eye className="w-6 h-6 text-emerald-400" />}

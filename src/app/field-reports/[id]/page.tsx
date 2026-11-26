@@ -56,7 +56,7 @@ export default function ReportDetailPage() {
         <section className="pt-32 pb-20">
           <div className="container mx-auto px-6 text-center">
             <FileText className="w-20 h-20 text-slate-700 mx-auto mb-6" />
-            <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Report Not Found</h1>
+            <h1 className=" text-4xl font-bold text-white mb-4">Report Not Found</h1>
             <p className="text-slate-400 mb-8">The requested field report does not exist or has been removed.</p>
             <Button onClick={() => router.push('/field-reports')} icon={<ArrowLeft className="w-4 h-4" />}>
               Back to Field Reports
@@ -104,7 +104,7 @@ export default function ReportDetailPage() {
                   )}
                 </div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="max-w-xl text-3xl md:text-4xl font-bold text-white mb-3">
+                <h1 className=" text-3xl md:text-4xl font-bold text-white mb-3">
                   {report.title}
                 </h1>
               </div>

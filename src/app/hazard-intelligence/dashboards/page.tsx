@@ -178,7 +178,7 @@ export default function HazardDashboardsPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">Hazard Intelligence Dashboards</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">Hazard Intelligence Dashboards</span>
           </>}
         subtitle="Operational hazard analytics dashboards spanning multi-hazard incident mapping, seismic timelines, GLOF monitoring, satellite fire detection, flood heatmaps, and landslide susceptibility across Western Himalayan ecology."
         icon={<BarChart3 className="w-6 h-6 text-violet-400" />}

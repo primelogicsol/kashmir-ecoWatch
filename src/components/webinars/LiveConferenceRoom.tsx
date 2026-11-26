@@ -59,9 +59,19 @@ import {
   SignalEnvelope,
   StageLayoutId,
 } from '@/types/virtual-hall';
-import { VirtualHallParticipantTile } from './hall/VirtualHallAvatar';
-import { RealWebRtcTelemetry, VirtualHallDiagnosticsModal } from './hall/VirtualHallDiagnosticsModal';
+import { ROLE_SHORT_LABELS, VirtualHallParticipantTile } from './hall/VirtualHallAvatar';
+import {
+  RealWebRtcTelemetry,
+  VirtualHallDiagnosticsModal,
+} from './hall/VirtualHallDiagnosticsModal';
 import { SidePanelTabId, VirtualHallSidePanel } from './hall/VirtualHallSidePanel';
+import { useVirtualHallDiagnostics } from '@/hooks/useVirtualHallDiagnostics';
+import {
+  acquireVerifiedHardwareCameraStream,
+  markCameraHardwareReleased,
+  saveVerifiedDevicePrefs,
+} from '@/lib/virtual-hall-device-prefs';
+import { useAuth } from '@/context/AuthContext';
 import { KEW_OFFICIAL_LOGO_PATH } from '@/components/common/Logo';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
@@ -144,9 +154,12 @@ interface PeerConnectionEntry {
 }
 
 export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
+  const { user: authUser } = useAuth();
+
   // Room & RBAC state from server
   const [joinStatus, setJoinStatus] = useState<'connecting' | 'joined' | 'blocked'>('connecting');
   const [joinBlockReason, setJoinBlockReason] = useState<{ code: string; message: string } | null>(null);
+  const [isAdminSessionActive, setIsAdminSessionActive] = useState<boolean>(false);
   const [myPeerId, setMyPeerId] = useState<string>('');
   const [hallToken, setHallToken] = useState<string>('');
   const [me, setMe] = useState<HallParticipant | null>(null);
@@ -162,7 +175,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     institutionId: 'inst-ku',
     environmentMode: 'demo',
     eventMode: 'scientific_conference',
-    defaultLayout: 'presentation',
+    defaultLayout: 'active_speaker',
     maxConcurrentDelegates: 10,
     maxInteractiveSpeakers: 2,
     maxScientificTracks: 1,
@@ -174,6 +187,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     activeTrackId: session.tracks?.[0]?.id || 'track-a',
     spotlightPeerId: null,
     activeSlideDeckIndex: 0,
+    isSlideDeckOpen: false,
     activeConsentRecordingId: null,
     effectiveMaxInteractiveSpeakers: 2,
   });
@@ -236,20 +250,11 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   const [screenStream, setScreenStream] = useState<MediaStream | null>(null);
   const [micAudioLevel, setMicAudioLevel] = useState(0);
   const [remoteAudioLevel, setRemoteAudioLevel] = useState(0);
-  const [micPermissionStatus, setMicPermissionStatus] = useState<string>('prompt');
   const [micError, setMicError] = useState<string | null>(null);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [actionBanner, setActionBanner] = useState<{ text: string; tone: 'info' | 'warn' | 'ok' } | null>(
     null
   );
-
-  // Devices
-  const [audioInputDevices, setAudioInputDevices] = useState<MediaDeviceInfo[]>([]);
-  const [audioOutputDevices, setAudioOutputDevices] = useState<MediaDeviceInfo[]>([]);
-  const [videoDevices, setVideoDevices] = useState<MediaDeviceInfo[]>([]);
-  const [selectedMicId, setSelectedMicId] = useState('');
-  const [selectedSpeakerId, setSelectedSpeakerId] = useState('');
-  const [selectedCameraId, setSelectedCameraId] = useState('');
 
   // Live Captions (Web Speech API where supported)
   const [captionsEnabled, setCaptionsEnabled] = useState(false);
@@ -267,20 +272,39 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   const [telemetry, setTelemetry] = useState<RealWebRtcTelemetry>({
     activePeerConnections: 0,
     connectionState: 'standby',
+    iceGatheringState: 'standby',
+    iceConnectionState: 'standby',
+    signalingConnected: false,
     rttMs: null,
     jitterMs: null,
     packetsLost: 0,
     packetsReceived: 0,
+    packetsSent: 0,
     inboundKbps: 0,
     outboundKbps: 0,
     videoResolution: null,
     framesPerSecond: null,
     candidateType: null,
+    remoteCandidateType: null,
+    turnConfigured: false,
+    turnRelayVerified: false,
+    remoteAudioSubscribed: false,
+    localMediaPublished: { audio: false, video: false, screen: false },
+    activeRtpTransmission: false,
     sampledAt: null,
   });
 
   // Refs
   const rootContainerRef = useRef<HTMLDivElement | null>(null);
+  const stageViewportRef = useRef<HTMLDivElement | null>(null);
+  const [stageSize, setStageSize] = useState<{ width: number; height: number }>({
+    width: 1280,
+    height: 720,
+  });
+  const [windowWidth, setWindowWidth] = useState<number>(1440);
+  const [videoAspectsByPeer, setVideoAspectsByPeer] = useState<Record<string, number>>({});
+  const hasCustomNameRef = useRef<boolean>(false);
+  const hasCustomAffRef = useRef<boolean>(false);
   const hallTokenRef = useRef<string>('');
   const myPeerIdRef = useRef<string>(`peer_${Math.random().toString(36).slice(2, 11)}`);
   const isMountedRef = useRef<boolean>(false);
@@ -290,6 +314,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   const iceServersRef = useRef<RTCIceServer[]>([{ urls: 'stun:stun.l.google.com:19302' }]);
   const peersRef = useRef<Map<string, PeerConnectionEntry>>(new Map());
   const prevBytesRef = useRef<{ rx: number; tx: number; ts: number }>({ rx: 0, tx: 0, ts: 0 });
+  const prevPacketsRef = useRef<{ rx: number; tx: number }>({ rx: 0, tx: 0 });
 
   const audioStreamRef = useRef<MediaStream | null>(null);
   const videoStreamRef = useRef<MediaStream | null>(null);
@@ -298,11 +323,70 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   const audioCtxRef = useRef<AudioContext | null>(null);
   const micRafRef = useRef<number | null>(null);
   const remoteAudioCtxRef = useRef<AudioContext | null>(null);
+  const remoteAudioAnalyserRef = useRef<AnalyserNode | null>(null);
+  const remoteAudioSourcesRef = useRef<
+    Map<string, { streamId: string; node: MediaStreamAudioSourceNode }>
+  >(new Map());
   const remoteRafRef = useRef<number | null>(null);
   const remoteAudioElsRef = useRef<Map<string, HTMLAudioElement>>(new Map());
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
   const speechRecRef = useRef<{ stop: () => void } | null>(null);
+  const roomConfigRef = useRef<RoomAllocationConfig>(roomConfig);
+  roomConfigRef.current = roomConfig;
+  const autoRecoverCountRef = useRef<number>(0);
+  const iceDisconnectTimersRef = useRef<Map<string, number>>(new Map());
+  const liveDeviceSwitchRef = useRef<{
+    onMic: (id: string) => void;
+    onCam: (id: string) => void;
+  }>({ onMic: () => {}, onCam: () => {} });
+
+  // Shared Locked Hardware Diagnostics & Persisted Device Preferences Hook
+  const {
+    audioInputDevices,
+    audioOutputDevices,
+    videoDevices,
+    selectedMicId,
+    selectedSpeakerId,
+    selectedCameraId,
+    setSelectedCameraId,
+    micPermissionStatus,
+    setMicPermissionStatus,
+    cameraPermissionStatus,
+    setCameraPermissionStatus,
+    speakerSinkSupported,
+    isTestingMic,
+    micDiagStatus,
+    micDiagMessage,
+    diagMicLevel,
+    diagMicPeakLevel,
+    diagMicDb,
+    isTestingCamera,
+    cameraDiagStatus,
+    cameraDiagMessage,
+    diagCameraStream,
+    diagCameraResolution,
+    diagCameraFps,
+    speakerDiagStatus,
+    speakerDiagMessage,
+    refreshDevices,
+    handleSelectMic,
+    handleSelectSpeaker,
+    handleSelectCamera,
+    togglePrivateMicTest,
+    togglePrivateCameraTest,
+    stopPrivateCameraTest,
+    runPrivateSpeakerTest,
+  } = useVirtualHallDiagnostics({
+    open: showDiagnostics,
+    isMicOn,
+    isVideoOn,
+    audioStreamRef,
+    videoStreamRef,
+    remoteAudioElsRef,
+    onLiveMicDeviceChanged: (id) => liveDeviceSwitchRef.current.onMic(id),
+    onLiveCameraDeviceChanged: (id) => liveDeviceSwitchRef.current.onCam(id),
+  });
 
   const pushNotice = useCallback((text: string, tone: 'info' | 'warn' | 'ok' = 'info') => {
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -316,49 +400,54 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     return () => clearTimeout(t);
   }, [actionBanner]);
 
-  // Lock document scroll & collapse sidebar automatically on mobile/tablet initial load
+  // Lock document scroll, collapse sidebar on compact screens, and observe real stage & viewport dimensions
   useEffect(() => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    setWindowWidth(window.innerWidth);
     if (window.innerWidth < 1024) {
       setIsSidebarOpen(false);
     }
+
+    const updateViewportMetrics = () => {
+      setWindowWidth(window.innerWidth);
+      const el = stageViewportRef.current;
+      if (el) {
+        const r = el.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) {
+          setStageSize((prev) =>
+            Math.abs(prev.width - r.width) < 1 && Math.abs(prev.height - r.height) < 1
+              ? prev
+              : { width: Math.floor(r.width), height: Math.floor(r.height) }
+          );
+        }
+      }
+    };
+
+    const ro =
+      typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => {
+            updateViewportMetrics();
+          })
+        : null;
+    if (ro && stageViewportRef.current) {
+      ro.observe(stageViewportRef.current);
+    }
+    if (ro && rootContainerRef.current) {
+      ro.observe(rootContainerRef.current);
+    }
+
+    window.addEventListener('resize', updateViewportMetrics, { passive: true });
+    window.visualViewport?.addEventListener('resize', updateViewportMetrics, { passive: true });
+    updateViewportMetrics();
+
     return () => {
       document.body.style.overflow = prevOverflow;
+      ro?.disconnect();
+      window.removeEventListener('resize', updateViewportMetrics);
+      window.visualViewport?.removeEventListener('resize', updateViewportMetrics);
     };
-  }, []);
-
-  // Device enumeration
-  const refreshDevices = useCallback(async () => {
-    if (typeof navigator === 'undefined' || !navigator.mediaDevices?.enumerateDevices) return;
-    try {
-      const list = await navigator.mediaDevices.enumerateDevices();
-      const mics = list.filter((d) => d.kind === 'audioinput');
-      const spks = list.filter((d) => d.kind === 'audiooutput');
-      const cams = list.filter((d) => d.kind === 'videoinput');
-      setAudioInputDevices(mics);
-      setAudioOutputDevices(spks);
-      setVideoDevices(cams);
-      if (mics[0] && !selectedMicId) setSelectedMicId(mics[0].deviceId);
-      if (spks[0] && !selectedSpeakerId) setSelectedSpeakerId(spks[0].deviceId);
-      if (cams[0] && !selectedCameraId) {
-        const physical =
-          cams.find(
-            (c) =>
-              !c.label.toLowerCase().includes('virtual') &&
-              !c.label.toLowerCase().includes('phone') &&
-              !c.label.toLowerCase().includes('quest')
-          ) || cams[0];
-        setSelectedCameraId(physical.deviceId);
-      }
-    } catch {
-      // ignore enumeration error prior to permission
-    }
-  }, [selectedCameraId, selectedMicId, selectedSpeakerId]);
-
-  useEffect(() => {
-    refreshDevices();
-  }, [refreshDevices]);
+  }, [joinStatus, isSidebarOpen, sidebarWidth]);
 
   // Web Audio RMS meter for local mic
   const attachLocalAudioMeter = useCallback((stream: MediaStream) => {
@@ -375,16 +464,22 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       src.connect(analyser);
       audioCtxRef.current = ctx;
       const buf = new Uint8Array(analyser.frequencyBinCount);
+      let lastEmitTs = 0;
       const tick = () => {
         if (!audioStreamRef.current) return;
-        analyser.getByteTimeDomainData(buf);
-        let sumSq = 0;
-        for (let i = 0; i < buf.length; i++) {
-          const v = (buf[i] - 128) / 128;
-          sumSq += v * v;
+        const now = performance.now();
+        if (now - lastEmitTs >= 180) {
+          lastEmitTs = now;
+          analyser.getByteTimeDomainData(buf);
+          let sumSq = 0;
+          for (let i = 0; i < buf.length; i++) {
+            const v = (buf[i] - 128) / 128;
+            sumSq += v * v;
+          }
+          const rms = Math.sqrt(sumSq / buf.length);
+          const nextLvl = Math.min(100, Math.round(rms * 320));
+          setMicAudioLevel((prev) => (Math.abs(prev - nextLvl) >= 2 ? nextLvl : prev));
         }
-        const rms = Math.sqrt(sumSq / buf.length);
-        setMicAudioLevel(Math.min(100, Math.round(rms * 320)));
         micRafRef.current = requestAnimationFrame(tick);
       };
       tick();
@@ -412,32 +507,59 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             .catch(() => {});
         }
         audioEl.play().catch(() => {});
+      } else if (audioEl.paused) {
+        audioEl.play().catch(() => {});
       }
 
-      if (stream.getAudioTracks().length > 0 && !remoteAudioCtxRef.current) {
+      const hasActiveAudioTrack = stream
+        .getAudioTracks()
+        .some((t) => t.readyState === 'live' && !t.muted);
+      if (hasActiveAudioTrack) {
         try {
-          const Ctx =
-            window.AudioContext ||
-            (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-          const ctx = new Ctx();
-          const analyser = ctx.createAnalyser();
-          analyser.fftSize = 256;
-          const src = ctx.createMediaStreamSource(stream);
-          src.connect(analyser);
-          remoteAudioCtxRef.current = ctx;
-          const buf = new Uint8Array(analyser.frequencyBinCount);
-          const tick = () => {
-            analyser.getByteTimeDomainData(buf);
-            let sumSq = 0;
-            for (let i = 0; i < buf.length; i++) {
-              const v = (buf[i] - 128) / 128;
-              sumSq += v * v;
+          if (!remoteAudioCtxRef.current || !remoteAudioAnalyserRef.current) {
+            const Ctx =
+              window.AudioContext ||
+              (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+            const ctx = new Ctx();
+            const analyser = ctx.createAnalyser();
+            analyser.fftSize = 256;
+            remoteAudioCtxRef.current = ctx;
+            remoteAudioAnalyserRef.current = analyser;
+            const buf = new Uint8Array(analyser.frequencyBinCount);
+            let lastRemoteEmitTs = 0;
+            const tick = () => {
+              if (!remoteAudioAnalyserRef.current) return;
+              const now = performance.now();
+              if (now - lastRemoteEmitTs >= 180) {
+                lastRemoteEmitTs = now;
+                remoteAudioAnalyserRef.current.getByteTimeDomainData(buf);
+                let sumSq = 0;
+                for (let i = 0; i < buf.length; i++) {
+                  const v = (buf[i] - 128) / 128;
+                  sumSq += v * v;
+                }
+                const rms = Math.sqrt(sumSq / buf.length);
+                const nextLvl = Math.min(100, Math.round(rms * 320));
+                setRemoteAudioLevel((prev) => (Math.abs(prev - nextLvl) >= 2 ? nextLvl : prev));
+              }
+              remoteRafRef.current = requestAnimationFrame(tick);
+            };
+            tick();
+          }
+          if (remoteAudioCtxRef.current.state === 'suspended') {
+            remoteAudioCtxRef.current.resume().catch(() => {});
+          }
+          const existingSrc = remoteAudioSourcesRef.current.get(peerId);
+          if (!existingSrc || existingSrc.streamId !== stream.id) {
+            if (existingSrc) {
+              try {
+                existingSrc.node.disconnect();
+              } catch {}
             }
-            const rms = Math.sqrt(sumSq / buf.length);
-            setRemoteAudioLevel(Math.min(100, Math.round(rms * 320)));
-            remoteRafRef.current = requestAnimationFrame(tick);
-          };
-          tick();
+            const srcNode = remoteAudioCtxRef.current.createMediaStreamSource(stream);
+            srcNode.connect(remoteAudioAnalyserRef.current);
+            remoteAudioSourcesRef.current.set(peerId, { streamId: stream.id, node: srcNode });
+          }
         } catch {
           // ignore
         }
@@ -483,9 +605,13 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     if (audioTrack && audioStreamRef.current) {
       if (audioTr) {
         audioTr.direction = 'sendrecv';
-        (audioTr.sender as RTCRtpSender & { setStreams?: (...s: MediaStream[]) => void }).setStreams?.(
-          audioStreamRef.current
-        );
+        try {
+          (
+            audioTr.sender as RTCRtpSender & { setStreams?: (...s: MediaStream[]) => void }
+          ).setStreams?.(audioStreamRef.current);
+        } catch {
+          // setStreams throws InvalidStateError in Chromium if transceiver was already negotiated; replaceTrack suffices
+        }
         await audioTr.sender.replaceTrack(audioTrack).catch(() => {});
       } else {
         pc.addTrack(audioTrack, audioStreamRef.current);
@@ -506,9 +632,13 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     if (primaryVideoTrack && activeVidStream) {
       if (videoTr) {
         videoTr.direction = 'sendrecv';
-        (videoTr.sender as RTCRtpSender & { setStreams?: (...s: MediaStream[]) => void }).setStreams?.(
-          activeVidStream
-        );
+        try {
+          (
+            videoTr.sender as RTCRtpSender & { setStreams?: (...s: MediaStream[]) => void }
+          ).setStreams?.(activeVidStream);
+        } catch {
+          // setStreams throws InvalidStateError in Chromium if transceiver was already negotiated; replaceTrack suffices
+        }
         await videoTr.sender.replaceTrack(primaryVideoTrack).catch(() => {});
       } else {
         pc.addTrack(primaryVideoTrack, activeVidStream);
@@ -611,8 +741,8 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         const publishRemoteClone = () => {
           const cloned = new MediaStream(entry.remoteStream.getTracks());
           setRemoteStreamsByPeer((prev) => ({ ...prev, [remotePeerId]: cloned }));
-          if (ev.track.kind === 'audio') {
-            attachRemoteAudioPlayback(remotePeerId, cloned);
+          if (entry.remoteStream.getAudioTracks().length > 0) {
+            attachRemoteAudioPlayback(remotePeerId, entry.remoteStream);
           }
         };
         ev.track.onunmute = publishRemoteClone;
@@ -630,10 +760,50 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         }));
       };
 
+      // Automatic WebRTC ICE restart & transient network recovery
+      pc.oniceconnectionstatechange = () => {
+        const prevTimer = iceDisconnectTimersRef.current.get(remotePeerId);
+        if (prevTimer) {
+          window.clearTimeout(prevTimer);
+          iceDisconnectTimersRef.current.delete(remotePeerId);
+        }
+        if (pc.iceConnectionState === 'failed') {
+          pc.restartIce?.();
+          if (myPeerIdRef.current && myPeerIdRef.current < remotePeerId) {
+            negotiateWithPeer(remotePeerId);
+          }
+        } else if (pc.iceConnectionState === 'disconnected') {
+          const timerId = window.setTimeout(() => {
+            iceDisconnectTimersRef.current.delete(remotePeerId);
+            if (
+              peersRef.current.has(remotePeerId) &&
+              pc.connectionState !== 'connected' &&
+              (pc.iceConnectionState === 'disconnected' || pc.iceConnectionState === 'failed')
+            ) {
+              pc.restartIce?.();
+              negotiateWithPeer(remotePeerId);
+            }
+          }, 7000);
+          iceDisconnectTimersRef.current.set(remotePeerId, timerId);
+        }
+      };
+
       if (initiateIfTieWinner && myPeerIdRef.current && myPeerIdRef.current < remotePeerId) {
         setTimeout(() => {
           negotiateWithPeer(remotePeerId);
         }, 80);
+      } else if (initiateIfTieWinner) {
+        // Fallback watchdog for reloads/rejoins where remote tie-winner hasn't initiated yet
+        setTimeout(() => {
+          if (
+            peersRef.current.get(remotePeerId) === entry &&
+            pc.connectionState === 'new' &&
+            pc.signalingState === 'stable' &&
+            !entry.makingOffer
+          ) {
+            negotiateWithPeer(remotePeerId);
+          }
+        }, 1100);
       }
 
       return entry;
@@ -642,6 +812,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   );
 
   const closePeerConnection = useCallback((remotePeerId: string) => {
+    const iceTimer = iceDisconnectTimersRef.current.get(remotePeerId);
+    if (iceTimer) {
+      window.clearTimeout(iceTimer);
+      iceDisconnectTimersRef.current.delete(remotePeerId);
+    }
+    const remSrc = remoteAudioSourcesRef.current.get(remotePeerId);
+    if (remSrc) {
+      try {
+        remSrc.node.disconnect();
+      } catch {}
+      remoteAudioSourcesRef.current.delete(remotePeerId);
+    }
     const entry = peersRef.current.get(remotePeerId);
     if (entry) {
       try {
@@ -667,21 +849,26 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     }
   }, [closePeerConnection]);
 
-  // Dispose local camera with 250ms Windows Media Foundation driver cooldown
+  // Dispose local camera with 300ms Windows Media Foundation / UVC driver cooldown
   const stopCurrentVideoTracks = useCallback(async () => {
     if (cameraStateRef.current === 'STOPPING') return;
     cameraStateRef.current = 'STOPPING';
     if (videoStreamRef.current) {
+      let stoppedAny = false;
       videoStreamRef.current.getVideoTracks().forEach((t) => {
         try {
           t.stop();
+          stoppedAny = true;
         } catch {}
       });
+      if (stoppedAny) {
+        markCameraHardwareReleased();
+      }
       videoStreamRef.current = null;
     }
     setVideoStream(null);
     setIsVideoOn(false);
-    await new Promise((r) => setTimeout(r, 250));
+    await new Promise((r) => setTimeout(r, 300));
     cameraStateRef.current = 'IDLE';
   }, []);
 
@@ -719,6 +906,16 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       if (sig.type === 'room_state_changed' && sig.payload.roomConfig) {
         const nextCfg = sig.payload.roomConfig as RoomAllocationConfig;
         setRoomConfig((prev) => ({ ...prev, ...nextCfg }));
+        if (typeof nextCfg.isSlideDeckOpen === 'boolean') {
+          setIsSlideDeckActive((prevOpen) => {
+            if (prevOpen && !nextCfg.isSlideDeckOpen && !screenStreamRef.current) {
+              setStageLayout((cur) =>
+                cur === 'presentation' || cur === 'fullscreen_presentation' ? 'active_speaker' : cur
+              );
+            }
+            return Boolean(nextCfg.isSlideDeckOpen);
+          });
+        }
         if (sig.payload.recordingNotice) {
           pushNotice(String(sig.payload.recordingNotice), 'warn');
         }
@@ -753,7 +950,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           }
           if (directive === 'revoke_delegate_mic' && targetId === myPeerIdRef.current) {
             forceStopLocalAudio();
-            stopCurrentVideoTracks();
+            await stopCurrentVideoTracks();
+            for (const pid of peersRef.current.keys()) {
+              negotiateWithPeer(pid);
+            }
             pushNotice('Host returned you to audience listen-only mode.', 'info');
           }
         }
@@ -796,6 +996,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               targetPeerId: sig.senderPeerId,
               sdp: { type: pc.localDescription.type, sdp: pc.localDescription.sdp },
             });
+          }
+          if (entry.needsRenegotiation && pc.signalingState === 'stable') {
+            entry.needsRenegotiation = false;
+            setTimeout(() => negotiateWithPeer(sig.senderPeerId), 60);
           }
         } catch (err) {
           console.warn('[KEW WebRTC] Handle offer error:', err);
@@ -850,12 +1054,15 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     ]
   );
 
-  // Join Virtual Scientific Hall (supports query params + role/token modal re-join)
+  // Join Virtual Scientific Hall (authoritative server role & identity resolution)
   const joinHall = useCallback(
     async (opts?: {
       displayName?: string;
       affiliation?: string;
       requestedRole?: HallRole;
+      explicitRoleRequested?: boolean;
+      explicitNameProvided?: boolean;
+      explicitAffiliationProvided?: boolean;
       environmentMode?: EnvironmentMode;
       providedToken?: string;
       enterGreenRoom?: boolean;
@@ -866,12 +1073,21 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       closeAllPeerConnections();
 
       try {
+        const explicitNameProvided = opts?.explicitNameProvided ?? hasCustomNameRef.current;
+        const explicitAffiliationProvided =
+          opts?.explicitAffiliationProvided ?? hasCustomAffRef.current;
+
         const payloadBody = JSON.stringify({
           action: 'join',
           peerId: myPeerIdRef.current || undefined,
-          displayName: opts?.displayName ?? desiredName,
-          affiliation: opts?.affiliation ?? desiredAffiliation,
+          displayName: explicitNameProvided ? (opts?.displayName ?? desiredName) : '',
+          affiliation: explicitAffiliationProvided
+            ? (opts?.affiliation ?? desiredAffiliation)
+            : '',
           requestedRole: opts?.requestedRole ?? desiredRole,
+          explicitRoleRequested: opts?.explicitRoleRequested ?? true,
+          explicitNameProvided,
+          explicitAffiliationProvided,
           environmentMode: opts?.environmentMode ?? desiredEnv,
           providedToken: opts?.providedToken ?? providedSignedToken,
           enterGreenRoom: opts?.enterGreenRoom ?? joinGreenRoomChecked,
@@ -879,6 +1095,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
         let res = await fetch(`/api/webinars/room/${encodeURIComponent(session.id)}`, {
           method: 'POST',
+          credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
           body: payloadBody,
         });
@@ -888,6 +1105,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           await new Promise((resolve) => setTimeout(resolve, 900));
           res = await fetch(`/api/webinars/room/${encodeURIComponent(session.id)}`, {
             method: 'POST',
+            credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json' },
             body: payloadBody,
           });
@@ -917,10 +1135,22 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         setMe(data.participant);
         setPermissions(data.permissions || DEFAULT_DELEGATE_PERMS);
         setEnvironmentMode(data.participant.environmentMode);
+        setDesiredRole(data.participant.role);
+        setDesiredName(data.participant.displayName);
+        setDesiredAffiliation(data.participant.affiliation);
+        setDesiredEnv(data.participant.environmentMode);
         setCapacityProfile(data.capacityProfile || null);
         setEventModes(data.eventModes || {});
         setRoomConfig(data.roomConfig);
-        setStageLayout(data.roomConfig?.defaultLayout || 'active_speaker');
+        const initialDeckOpen = Boolean(data.roomConfig?.isSlideDeckOpen);
+        setIsSlideDeckActive(initialDeckOpen);
+        const rawDefaultLayout = (data.roomConfig?.defaultLayout || 'active_speaker') as StageLayoutId;
+        setStageLayout(
+          !initialDeckOpen &&
+            (rawDefaultLayout === 'presentation' || rawDefaultLayout === 'fullscreen_presentation')
+            ? 'active_speaker'
+            : rawDefaultLayout
+        );
         setCounts(data.counts);
         setParticipants(data.participants || []);
         setPromotedDelegateIds(data.promotedDelegateIds || []);
@@ -953,33 +1183,58 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   // Initial mount join reading optional URL parameters (StrictMode-safe idempotent peerId)
   useEffect(() => {
     isMountedRef.current = true;
+    fetch('/api/admin/session', { cache: 'no-store', credentials: 'same-origin' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (isMountedRef.current) {
+          setIsAdminSessionActive(Boolean(d?.authenticated && d?.role === 'administrator'));
+        }
+      })
+      .catch(() => {});
+
+    try {
+      const tabPeerKey = `kew_vh_tab_peer_${session.id}`;
+      const savedTabPeer = window.sessionStorage.getItem(tabPeerKey);
+      if (savedTabPeer) {
+        myPeerIdRef.current = savedTabPeer;
+      } else {
+        window.sessionStorage.setItem(tabPeerKey, myPeerIdRef.current);
+      }
+    } catch {
+      // ignore sessionStorage restrictions
+    }
     const params = new URLSearchParams(window.location.search);
-    const qRole = (params.get('role') as HallRole) || 'delegate';
-    const qName =
-      params.get('name') ||
-      (qRole === 'host'
-        ? 'Session Host'
-        : qRole === 'speaker'
-        ? 'Presenting Scientist'
-        : qRole === 'moderator'
-        ? 'Scientific Moderator'
-        : 'Visiting Delegate');
-    const qAff = params.get('affiliation') || 'Western Himalayan Research Network';
+    const explicitRoleParam = params.get('role') as HallRole | null;
+    const explicitNameParam = params.get('name');
+    const explicitAffParam = params.get('affiliation');
+    const qRole = explicitRoleParam || 'delegate';
+    const qName = explicitNameParam || authUser?.name || '';
+    const qAff = explicitAffParam || authUser?.institution || '';
     const qEnv = params.get('env') === 'live' ? 'live' : 'demo';
     const qToken = params.get('token') || '';
     const qGreen = params.get('greenroom') === '1';
+    const qPreflight = params.get('preflight') === '1' || params.get('diagnostics') === '1';
+
+    hasCustomNameRef.current = Boolean(explicitNameParam || authUser?.name);
+    hasCustomAffRef.current = Boolean(explicitAffParam || authUser?.institution);
 
     setDesiredRole(qRole);
-    setDesiredName(qName);
-    setDesiredAffiliation(qAff);
+    if (qName) setDesiredName(qName);
+    if (qAff) setDesiredAffiliation(qAff);
     setDesiredEnv(qEnv);
     setProvidedSignedToken(qToken);
     setJoinGreenRoomChecked(qGreen);
+    if (qPreflight) {
+      setShowDiagnostics(true);
+    }
 
     joinHall({
       displayName: qName,
       affiliation: qAff,
       requestedRole: qRole,
+      explicitRoleRequested: Boolean(explicitRoleParam),
+      explicitNameProvided: Boolean(explicitNameParam || authUser?.name),
+      explicitAffiliationProvided: Boolean(explicitAffParam || authUser?.institution),
       environmentMode: qEnv,
       providedToken: qToken,
       enterGreenRoom: qGreen,
@@ -993,7 +1248,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${hallTokenRef.current}`,
           },
-          body: JSON.stringify({ action: 'leave' }),
+          body: JSON.stringify({
+            action: 'leave',
+            joinedAt: meRef.current?.joinedAt,
+          }),
           keepalive: true,
         }).catch(() => {});
       }
@@ -1034,6 +1292,11 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           }
         );
         if (res.status === 410) {
+          if (!roomConfigRef.current?.isSessionEnded && autoRecoverCountRef.current < 2) {
+            autoRecoverCountRef.current += 1;
+            joinHall();
+            return;
+          }
           setJoinStatus('blocked');
           setJoinBlockReason({
             code: 'SESSION_DISCONNECTED',
@@ -1042,6 +1305,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           return;
         }
         if (!res.ok) return;
+        autoRecoverCountRef.current = 0;
         const data = await res.json();
         if (cancelled || !data.ok) return;
 
@@ -1053,17 +1317,57 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           setMe(data.me);
         }
         if (data.permissions) setPermissions(data.permissions);
-        if (data.roomConfig) setRoomConfig(data.roomConfig);
+        if (data.roomConfig) {
+          setRoomConfig(data.roomConfig);
+          if (typeof data.roomConfig.isSlideDeckOpen === 'boolean') {
+            const nextDeckOpen = Boolean(data.roomConfig.isSlideDeckOpen);
+            setIsSlideDeckActive((prevOpen) => {
+              if (prevOpen && !nextDeckOpen && !screenStreamRef.current) {
+                setStageLayout((cur) =>
+                  cur === 'presentation' || cur === 'fullscreen_presentation' ? 'active_speaker' : cur
+                );
+              }
+              return nextDeckOpen;
+            });
+          }
+        }
         if (data.counts) setCounts(data.counts);
+        // Process peer_left signals BEFORE reconciling active peer connections so a same-cycle
+        // reload (peer_left -> peer_joined) closes the stale PC first and opens a fresh PC immediately
+        if (Array.isArray(data.signals)) {
+          for (const sig of data.signals as SignalEnvelope[]) {
+            if (sig.type === 'peer_left') {
+              await handleSignalEnvelope(sig);
+            }
+          }
+        }
+
         if (Array.isArray(data.participants)) {
           setParticipants(data.participants);
-          // Connect P2P mesh with any connected peers when we are on main stage
+          // Star / Publisher-Subscriber P2P topology:
+          // Listen-only delegates connect exclusively to potential/active publishers (Speakers, Hosts,
+          // Moderators, Producers, Promoted Speakers, or Applied Workshop peers), eliminating N*(N-1)/2
+          // idle delegate-to-delegate connections while preserving immediate promotion & workshop mesh.
           if (data.me?.presence === 'connected') {
+            const nextPromoted: string[] = Array.isArray(data.promotedDelegateIds)
+              ? data.promotedDelegateIds
+              : [];
+            const activeMode = data.roomConfig?.eventMode || roomConfigRef.current?.eventMode;
+            const isPublisherCapable = (p: HallParticipant) =>
+              p.role !== 'delegate' && p.role !== 'observer'
+                ? true
+                : nextPromoted.includes(p.peerId) ||
+                  activeMode === 'applied_workshop' ||
+                  Boolean(p.isAudioEnabled || p.isVideoEnabled || p.isScreenSharing);
+
+            const amIPublisherCapable = isPublisherCapable(data.me as HallParticipant);
             const activeRemoteIds = new Set<string>();
             for (const p of data.participants as HallParticipant[]) {
               if (p.peerId !== myPeerIdRef.current && p.presence === 'connected') {
-                activeRemoteIds.add(p.peerId);
-                getOrCreatePeerConnection(p.peerId, true);
+                if (amIPublisherCapable || isPublisherCapable(p)) {
+                  activeRemoteIds.add(p.peerId);
+                  getOrCreatePeerConnection(p.peerId, true);
+                }
               }
             }
             for (const existingId of Array.from(peersRef.current.keys())) {
@@ -1084,7 +1388,9 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
         if (Array.isArray(data.signals)) {
           for (const sig of data.signals as SignalEnvelope[]) {
-            await handleSignalEnvelope(sig);
+            if (sig.type !== 'peer_left') {
+              await handleSignalEnvelope(sig);
+            }
           }
         }
       } catch {
@@ -1094,10 +1400,25 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       }
     };
 
+    const handleBrowserOnline = () => {
+      for (const [remotePeerId, entry] of peersRef.current.entries()) {
+        if (
+          entry.pc.iceConnectionState === 'failed' ||
+          entry.pc.iceConnectionState === 'disconnected'
+        ) {
+          entry.pc.restartIce?.();
+          negotiateWithPeer(remotePeerId);
+        }
+      }
+      pollSignals();
+    };
+
+    window.addEventListener('online', handleBrowserOnline);
     const interval = setInterval(pollSignals, 450);
     pollSignals();
     return () => {
       cancelled = true;
+      window.removeEventListener('online', handleBrowserOnline);
       clearInterval(interval);
     };
   }, [
@@ -1106,27 +1427,78 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     getOrCreatePeerConnection,
     hallToken,
     handleSignalEnvelope,
+    joinHall,
     joinStatus,
+    negotiateWithPeer,
     session.id,
   ]);
 
-  // Real RTCPeerConnection.getStats() sampler every 1.5s
+  // Real RTCPeerConnection.getStats() sampler every 1.5s (Zero Simulated Metrics!)
   useEffect(() => {
     const timer = setInterval(async () => {
       const entries = Array.from(peersRef.current.values());
+      const hasTurnConfigured = iceServersRef.current.some((s) => {
+        const urls = Array.isArray(s.urls) ? s.urls : [s.urls];
+        return urls.some((u) => typeof u === 'string' && /^turns?:/i.test(u));
+      });
+      const liveAudioTrackActive = Boolean(
+        isMicOn &&
+          meRef.current?.presence === 'connected' &&
+          audioStreamRef.current?.getAudioTracks().some((t) => t.readyState === 'live' && t.enabled)
+      );
+      const liveVideoTrackActive = Boolean(
+        isVideoOn &&
+          meRef.current?.presence === 'connected' &&
+          videoStreamRef.current?.getVideoTracks().some((t) => t.readyState === 'live' && t.enabled)
+      );
+      const liveScreenTrackActive = Boolean(
+        isScreenSharing &&
+          meRef.current?.presence === 'connected' &&
+          screenStreamRef.current?.getVideoTracks().some((t) => t.readyState === 'live')
+      );
+
       if (entries.length === 0) {
-        setTelemetry((prev) => ({
-          ...prev,
+        const localVidSettings = liveVideoTrackActive
+          ? videoStreamRef.current?.getVideoTracks()[0]?.getSettings?.()
+          : liveScreenTrackActive
+          ? screenStreamRef.current?.getVideoTracks()[0]?.getSettings?.()
+          : undefined;
+        const localVideoRes =
+          localVidSettings?.width && localVidSettings?.height
+            ? `${localVidSettings.width}×${localVidSettings.height}`
+            : null;
+        const localFps = localVidSettings?.frameRate
+          ? Math.round(localVidSettings.frameRate)
+          : null;
+
+        setTelemetry({
           activePeerConnections: 0,
           connectionState: joinStatus === 'joined' ? 'standby' : 'offline',
+          iceGatheringState: 'standby',
+          iceConnectionState: 'standby',
+          signalingConnected: joinStatus === 'joined',
           rttMs: null,
           jitterMs: null,
+          packetsLost: 0,
+          packetsReceived: 0,
+          packetsSent: 0,
           inboundKbps: 0,
           outboundKbps: 0,
-          videoResolution: null,
-          framesPerSecond: null,
+          videoResolution: localVideoRes,
+          framesPerSecond: localFps,
           candidateType: null,
-        }));
+          remoteCandidateType: null,
+          turnConfigured: hasTurnConfigured,
+          turnRelayVerified: false,
+          remoteAudioSubscribed: false,
+          localMediaPublished: {
+            audio: liveAudioTrackActive,
+            video: liveVideoTrackActive,
+            screen: liveScreenTrackActive,
+          },
+          activeRtpTransmission: false,
+          sampledAt: null,
+        });
         return;
       }
 
@@ -1134,35 +1506,86 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       let jitterMs: number | null = null;
       let packetsLost = 0;
       let packetsReceived = 0;
+      let packetsSent = 0;
       let bytesRx = 0;
       let bytesTx = 0;
       let videoRes: string | null = null;
       let fps: number | null = null;
       let candidateType: string | null = null;
-      let connState = entries[0].pc.connectionState;
+      let remoteCandidateType: string | null = null;
+      let connState: string = entries[0].pc.connectionState;
+      let iceGathState: string = entries[0].pc.iceGatheringState;
+      let iceConnState: string = entries[0].pc.iceConnectionState;
+      let remoteAudioSubscribed = false;
+      let senderHasAudio = false;
+      let senderHasVideo = false;
 
-      for (const { pc } of entries) {
+      for (const entry of entries) {
+        const { pc, remoteStream } = entry;
+        // Self-healing publisher track sync: ensure every stable peer connection receives active local media
+        if (pc.signalingState === 'stable' && !entry.makingOffer) {
+          const senders = pc.getSenders();
+          const missingLiveAudio =
+            liveAudioTrackActive &&
+            !senders.some((s) => s.track?.kind === 'audio' && s.track.readyState === 'live');
+          const missingLiveVideo =
+            (liveVideoTrackActive || liveScreenTrackActive) &&
+            !senders.some((s) => s.track?.kind === 'video' && s.track.readyState === 'live');
+          if (missingLiveAudio || missingLiveVideo) {
+            negotiateWithPeer(entry.peerId);
+          }
+        }
         if (pc.connectionState === 'connected') connState = 'connected';
+        if (pc.iceGatheringState === 'complete') iceGathState = 'complete';
+        if (pc.iceConnectionState === 'connected' || pc.iceConnectionState === 'completed') {
+          iceConnState = pc.iceConnectionState;
+        }
+        if (
+          remoteStream.getAudioTracks().some((t) => t.readyState === 'live' && !t.muted)
+        ) {
+          remoteAudioSubscribed = true;
+        }
+        for (const sender of pc.getSenders()) {
+          if (sender.track?.readyState === 'live' && sender.track.enabled) {
+            if (sender.track.kind === 'audio') senderHasAudio = true;
+            if (sender.track.kind === 'video') senderHasVideo = true;
+          }
+        }
+
         try {
           const stats = await pc.getStats();
           const candidateMap = new Map<string, { candidateType?: string }>();
+          const selectedPairIds = new Set<string>();
           stats.forEach((report) => {
             if (report.type === 'local-candidate' || report.type === 'remote-candidate') {
               candidateMap.set(report.id, report);
             }
+            if (report.type === 'transport' && report.selectedCandidatePairId) {
+              selectedPairIds.add(report.selectedCandidatePairId);
+            }
           });
           stats.forEach((report) => {
-            if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+            if (
+              report.type === 'candidate-pair' &&
+              (selectedPairIds.has(report.id) ||
+                report.selected === true ||
+                (report.state === 'succeeded' && report.nominated !== false))
+            ) {
               if (typeof report.currentRoundTripTime === 'number') {
                 rttMs = Math.round(report.currentRoundTripTime * 1000);
               }
               const localCand = candidateMap.get(report.localCandidateId);
+              const remoteCand = candidateMap.get(report.remoteCandidateId);
               if (localCand?.candidateType) candidateType = localCand.candidateType;
+              if (remoteCand?.candidateType) remoteCandidateType = remoteCand.candidateType;
             }
             if (report.type === 'inbound-rtp') {
               bytesRx += report.bytesReceived || 0;
               packetsLost += report.packetsLost || 0;
               packetsReceived += report.packetsReceived || 0;
+              if (report.kind === 'audio' && (report.bytesReceived || 0) > 0) {
+                remoteAudioSubscribed = true;
+              }
               if (typeof report.jitter === 'number') {
                 jitterMs = Math.round(report.jitter * 1000);
               }
@@ -1173,6 +1596,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             }
             if (report.type === 'outbound-rtp') {
               bytesTx += report.bytesSent || 0;
+              packetsSent += report.packetsSent || 0;
               if (!videoRes && report.kind === 'video' && report.frameWidth && report.frameHeight) {
                 videoRes = `${report.frameWidth}×${report.frameHeight}`;
                 if (report.framesPerSecond) fps = Math.round(report.framesPerSecond);
@@ -1192,20 +1616,43 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         inKbps = Math.max(0, Math.round(((bytesRx - prevBytesRef.current.rx) * 8) / 1000 / dtSec));
         outKbps = Math.max(0, Math.round(((bytesTx - prevBytesRef.current.tx) * 8) / 1000 / dtSec));
       }
+      const deltaPktsRx = Math.max(0, packetsReceived - prevPacketsRef.current.rx);
+      const deltaPktsTx = Math.max(0, packetsSent - prevPacketsRef.current.tx);
       prevBytesRef.current = { rx: bytesRx, tx: bytesTx, ts: now };
+      prevPacketsRef.current = { rx: packetsReceived, tx: packetsSent };
+
+      const turnRelayVerified = candidateType === 'relay' || remoteCandidateType === 'relay';
+      // Strictly distinguish local media rendering from active remote WebRTC RTP packet flow
+      const activeRtpTransmission =
+        connState === 'connected' &&
+        (inKbps > 0 || outKbps > 0 || deltaPktsRx > 0 || deltaPktsTx > 0);
 
       setTelemetry({
         activePeerConnections: entries.length,
         connectionState: connState,
+        iceGatheringState: iceGathState,
+        iceConnectionState: iceConnState,
+        signalingConnected: joinStatus === 'joined',
         rttMs,
         jitterMs,
         packetsLost,
         packetsReceived,
+        packetsSent,
         inboundKbps: inKbps,
         outboundKbps: outKbps,
         videoResolution: videoRes,
         framesPerSecond: fps,
         candidateType,
+        remoteCandidateType,
+        turnConfigured: hasTurnConfigured,
+        turnRelayVerified,
+        remoteAudioSubscribed,
+        localMediaPublished: {
+          audio: liveAudioTrackActive || senderHasAudio,
+          video: (liveVideoTrackActive && !liveScreenTrackActive) || (senderHasVideo && !liveScreenTrackActive),
+          screen: liveScreenTrackActive,
+        },
+        activeRtpTransmission,
         sampledAt: new Date().toLocaleTimeString([], {
           hour: '2-digit',
           minute: '2-digit',
@@ -1214,7 +1661,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       });
     }, 1500);
     return () => clearInterval(timer);
-  }, [joinStatus]);
+  }, [isMicOn, isScreenSharing, isVideoOn, joinStatus]);
 
   // Toggle Microphone (checks server RBAC & Phase I 2-speaker cap when on main stage)
   const toggleMic = useCallback(async () => {
@@ -1250,13 +1697,41 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         setIsMicOn(true);
         if (audioStreamRef.current) attachLocalAudioMeter(audioStreamRef.current);
       } else {
-        const constraints: MediaTrackConstraints = selectedMicId
-          ? { deviceId: { exact: selectedMicId } }
-          : { echoCancellation: true, noiseSuppression: true, autoGainControl: true };
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: constraints,
-          video: false,
-        });
+        let stream: MediaStream | null = null;
+        if (selectedMicId) {
+          try {
+            stream = await navigator.mediaDevices.getUserMedia({
+              audio: {
+                deviceId: { exact: selectedMicId },
+                echoCancellation: true,
+                noiseSuppression: true,
+                autoGainControl: true,
+              },
+              video: false,
+            });
+          } catch {
+            stream = null;
+          }
+        }
+        if (!stream) {
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              ...(selectedMicId ? { deviceId: { ideal: selectedMicId } } : {}),
+              echoCancellation: true,
+              noiseSuppression: true,
+              autoGainControl: true,
+            },
+            video: false,
+          });
+        }
+        const liveMicTrack = stream.getAudioTracks()[0];
+        if (liveMicTrack) {
+          saveVerifiedDevicePrefs({
+            audioInputId: liveMicTrack.getSettings?.()?.deviceId || selectedMicId || undefined,
+            audioInputLabel: liveMicTrack.label || undefined,
+            audioInputVerifiedAt: new Date().toISOString(),
+          });
+        }
         audioStreamRef.current = stream;
         setIsMicOn(true);
         setMicPermissionStatus('granted');
@@ -1287,9 +1762,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     pushNotice,
     refreshDevices,
     selectedMicId,
+    setMicPermissionStatus,
   ]);
 
-  // Toggle Hardware Camera (preserving proven 250ms driver cooldown & physical webcam preference)
+  // Toggle Hardware Camera (aligned with verified Diagnostics exact deviceId & 1280×720 constraints)
   const startHardwareCamera = useCallback(
     async (deviceOverride?: string) => {
       if (cameraStateRef.current === 'REQUESTING' || cameraStateRef.current === 'STOPPING') return;
@@ -1312,30 +1788,74 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           await stopCurrentVideoTracks();
           cameraStateRef.current = 'REQUESTING';
         }
-        const devId = deviceOverride || selectedCameraId;
-        let stream: MediaStream | null = null;
-        if (devId) {
-          try {
-            stream = await navigator.mediaDevices.getUserMedia({
-              video: { deviceId: { ideal: devId }, width: { ideal: 1280 }, height: { ideal: 720 } },
-              audio: false,
-            });
-          } catch {
-            stream = null;
-          }
-        }
-        if (!stream) {
-          stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-        }
+
+        const stream = await acquireVerifiedHardwareCameraStream({
+          deviceOverride,
+          selectedCameraId,
+          knownVideoDevices: videoDevices,
+        });
+
         const track = stream.getVideoTracks()[0];
         if (!track || track.readyState !== 'live') {
-          throw new Error('No active video track returned by camera.');
+          stream.getTracks().forEach((t) => {
+            try {
+              t.stop();
+            } catch {}
+          });
+          throw new Error('No active live video track returned by selected camera.');
         }
+
+        track.enabled = true;
+        track.onended = () => {
+          if (videoStreamRef.current === stream) {
+            markCameraHardwareReleased();
+            videoStreamRef.current = null;
+            setVideoStream(null);
+            setIsVideoOn(false);
+            cameraStateRef.current = 'IDLE';
+            postSignalAction({ action: 'update_media_state', isVideoEnabled: false }).catch(() => {});
+            for (const pid of peersRef.current.keys()) negotiateWithPeer(pid);
+            pushNotice('Camera stream ended or device was disconnected.', 'warn');
+          }
+        };
+
+        const settings = track.getSettings?.() || {};
+        const actualCamId = settings.deviceId || deviceOverride || selectedCameraId || '';
+        const actualCamLabel = track.label || '';
+
+        if (actualCamId) {
+          setSelectedCameraId(actualCamId);
+        }
+        setCameraPermissionStatus('granted');
+
+        saveVerifiedDevicePrefs({
+          videoInputId: actualCamId || undefined,
+          videoInputLabel: actualCamLabel || undefined,
+          videoInputVerifiedAt: new Date().toISOString(),
+        });
 
         videoStreamRef.current = stream;
         setVideoStream(stream);
         setIsVideoOn(true);
         cameraStateRef.current = 'ACTIVE';
+
+        // Immediately reflect active video on local participant state even with zero remote peers
+        setMe((prev) => (prev ? { ...prev, isVideoEnabled: true } : prev));
+        setParticipants((prev) =>
+          prev.map((p) =>
+            p.peerId === myPeerIdRef.current ? { ...p, isVideoEnabled: true } : p
+          )
+        );
+
+        // Ensure main conference stage visibly foregrounds the live camera if no deck/screen share is active
+        if (
+          !isScreenSharing &&
+          !isSlideDeckActive &&
+          (stageLayout === 'presentation' || stageLayout === 'fullscreen_presentation')
+        ) {
+          setStageLayout('active_speaker');
+        }
+
         refreshDevices();
 
         if (me?.presence === 'connected') {
@@ -1344,8 +1864,35 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       } catch (err) {
         cameraStateRef.current = 'IDLE';
         setIsVideoOn(false);
-        await postSignalAction({ action: 'update_media_state', isVideoEnabled: false });
-        const msg = `Camera error: ${(err as Error).message}`;
+        setVideoStream(null);
+        await postSignalAction({ action: 'update_media_state', isVideoEnabled: false }).catch(
+          () => {}
+        );
+
+        const domErr = err as DOMException & { constraint?: string };
+        const errName = domErr?.name || 'Error';
+        const errMessage = domErr?.message || String(err);
+        const errConstraint = domErr?.constraint ? ` [constraint: ${domErr.constraint}]` : '';
+        console.warn('[KEW Conference Camera] Hardware activation failed:', {
+          name: errName,
+          message: errMessage,
+          constraint: domErr?.constraint,
+          selectedCameraId: deviceOverride || selectedCameraId,
+        });
+
+        if (
+          errName === 'NotAllowedError' ||
+          errName === 'PermissionDeniedError' ||
+          errName === 'SecurityError'
+        ) {
+          setCameraPermissionStatus('denied');
+        }
+
+        const lockHint =
+          errName === 'NotReadableError' || errName === 'TrackStartError'
+            ? ' (Close any other browser window or video app currently using this camera and retry.)'
+            : '';
+        const msg = `Camera error (${errName}: ${errMessage}${errConstraint})${lockHint}`;
         setCameraError(msg);
         pushNotice(msg, 'warn');
       } finally {
@@ -1353,15 +1900,48 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       }
     },
     [
+      isScreenSharing,
+      isSlideDeckActive,
       me?.presence,
       negotiateWithPeer,
       postSignalAction,
       pushNotice,
       refreshDevices,
       selectedCameraId,
+      setCameraPermissionStatus,
+      setSelectedCameraId,
+      stageLayout,
       stopCurrentVideoTracks,
+      videoDevices,
     ]
   );
+
+  // Sync live on-air streams if user switches device inside Diagnostics while already broadcasting
+  liveDeviceSwitchRef.current = {
+    onMic: (id: string) => {
+      if (isMicOn && audioStreamRef.current) {
+        navigator.mediaDevices
+          .getUserMedia({
+            audio: id
+              ? { deviceId: { ideal: id }, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+              : true,
+            video: false,
+          })
+          .then((nextStream) => {
+            audioStreamRef.current?.getTracks().forEach((t) => t.stop());
+            audioStreamRef.current = nextStream;
+            attachLocalAudioMeter(nextStream);
+            for (const pid of peersRef.current.keys()) negotiateWithPeer(pid);
+          })
+          .catch(() => {});
+      }
+    },
+    onCam: (id: string) => {
+      if (isVideoOn) {
+        startHardwareCamera(id);
+      }
+    },
+  };
 
   const toggleCamera = useCallback(async () => {
     if (isVideoOn) {
@@ -1652,31 +2232,79 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     window.addEventListener('mouseup', onUp);
   }, [sidebarWidth]);
 
-  // Host command wrapper
+  // Host command wrapper (immediately applies authoritative server response)
   const sendHostCommand = useCallback(
     async (command: string, extra: Record<string, unknown> = {}) => {
       const res = await postSignalAction({ action: 'host_control', command, ...extra });
       if (!res.ok) {
         pushNotice(res.data?.error || 'Host permission denied.', 'warn');
+        return;
+      }
+      if (res.data?.roomConfig) {
+        const cfg = res.data.roomConfig as RoomAllocationConfig;
+        setRoomConfig((prev) => ({ ...prev, ...cfg }));
+        if (typeof cfg.isSlideDeckOpen === 'boolean') {
+          setIsSlideDeckActive(cfg.isSlideDeckOpen);
+        }
+      }
+      if (Array.isArray(res.data?.promotedDelegateIds)) {
+        setPromotedDelegateIds(res.data.promotedDelegateIds as string[]);
       }
     },
     [postSignalAction, pushNotice]
   );
 
-  // Connected main-stage participants + optional explicitly-toggled fictional layout preview tiles
-  const connectedParticipants = useMemo(
-    () => participants.filter((p) => p.presence === 'connected'),
-    [participants]
+  // Connected main-stage participants (strictly deduplicated by peerId) + zero-remote-peer local guarantee
+  const connectedParticipants = useMemo(() => {
+    const byPeer = new Map<string, HallParticipant>();
+    for (const p of participants) {
+      if (p.presence === 'connected' && p.peerId) {
+        byPeer.set(p.peerId, p);
+      }
+    }
+    if (me && me.presence === 'connected' && me.peerId) {
+      if (!byPeer.has(me.peerId) && !(myPeerId && byPeer.has(myPeerId))) {
+        return [me, ...Array.from(byPeer.values())];
+      }
+    }
+    return Array.from(byPeer.values());
+  }, [me, myPeerId, participants]);
+
+  const handleVideoDimensionsChange = useCallback(
+    (peerId: string, width: number, height: number) => {
+      if (!peerId || width <= 0 || height <= 0) return;
+      const ratio = Math.max(0.5, Math.min(2.4, Math.round((width / height) * 1000) / 1000));
+      setVideoAspectsByPeer((prev) => (prev[peerId] === ratio ? prev : { ...prev, [peerId]: ratio }));
+    },
+    []
   );
 
   const stageTiles = useMemo(() => {
     const realTiles = connectedParticipants.map((p) => {
-      const isLocal = p.peerId === myPeerId;
-      const localVid = isScreenSharing ? screenStream : videoStream;
+      const isLocal =
+        p.peerId === myPeerId ||
+        (Boolean(me?.peerId) && p.peerId === me?.peerId) ||
+        p.peerId === myPeerIdRef.current;
       const remoteVid = remoteStreamsByPeer[p.peerId] || null;
+      // Require non-muted remote video track + authoritative server video/screen flag so idle recvonly transceivers never render black video boxes
       const hasLiveRemoteVideo = Boolean(
-        remoteVid && remoteVid.getVideoTracks().some((t) => t.readyState === 'live')
+        remoteVid && remoteVid.getVideoTracks().some((t) => t.readyState === 'live' && !t.muted)
       );
+      const isFloorGranted =
+        promotedDelegateIds.includes(p.peerId) ||
+        (roomConfig.eventMode === 'applied_workshop' && p.role === 'delegate');
+      // Keep participant tile stream focused on camera video (not duplicating a shared screen already shown on the presentation stage)
+      const tileCameraStream = isLocal
+        ? videoStream
+        : p.isVideoEnabled && !p.isScreenSharing
+        ? remoteVid
+        : p.isVideoEnabled && hasLiveRemoteVideo
+        ? remoteVid
+        : null;
+      const tileVideoActive = isLocal
+        ? Boolean(isVideoOn && videoStream)
+        : Boolean(p.isVideoEnabled && !p.isScreenSharing && (hasLiveRemoteVideo || remoteVid));
+
       return {
         peerId: p.peerId,
         name: p.displayName,
@@ -1684,15 +2312,17 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         role: p.role,
         isLocal,
         isAudioEnabled: isLocal ? isMicOn : p.isAudioEnabled,
-        isVideoEnabled: isLocal ? isVideoOn || isScreenSharing : p.isVideoEnabled || hasLiveRemoteVideo,
+        isVideoEnabled: tileVideoActive,
         isScreenSharing: isLocal ? isScreenSharing : p.isScreenSharing,
         isHandRaised: p.isHandRaised,
         isSpotlighted: roomConfig.spotlightPeerId === p.peerId,
         isVerifiedIdentity: p.isVerifiedIdentity,
+        isFloorGranted,
         isDemoPlaceholder: false,
-        audioLevel: isLocal ? micAudioLevel : remoteAudioLevel,
-        videoStream: isLocal ? localVid : remoteVid,
-        mirrored: isLocal && !isScreenSharing,
+        audioLevel: isLocal ? micAudioLevel : p.isAudioEnabled ? remoteAudioLevel : 0,
+        videoStream: tileCameraStream,
+        mirrored: isLocal,
+        onVideoDimensionsChange: handleVideoDimensionsChange,
       };
     });
 
@@ -1710,10 +2340,12 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           isHandRaised: false,
           isSpotlighted: false,
           isVerifiedIdentity: false,
+          isFloorGranted: false,
           isDemoPlaceholder: true,
           audioLevel: 0,
           videoStream: null,
           mirrored: false,
+          onVideoDimensionsChange: handleVideoDimensionsChange,
         },
         {
           peerId: 'sandbox-preview-b',
@@ -1727,10 +2359,12 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           isHandRaised: false,
           isSpotlighted: false,
           isVerifiedIdentity: false,
+          isFloorGranted: false,
           isDemoPlaceholder: true,
           audioLevel: 0,
           videoStream: null,
           mirrored: false,
+          onVideoDimensionsChange: handleVideoDimensionsChange,
         }
       );
     }
@@ -1739,25 +2373,28 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   }, [
     connectedParticipants,
     environmentMode,
+    handleVideoDimensionsChange,
     isMicOn,
     isScreenSharing,
     isVideoOn,
+    me?.peerId,
     micAudioLevel,
     myPeerId,
+    promotedDelegateIds,
     remoteAudioLevel,
     remoteStreamsByPeer,
+    roomConfig.eventMode,
     roomConfig.spotlightPeerId,
-    screenStream,
     showDemoLayoutPreview,
     videoStream,
   ]);
 
   const primaryTile = useMemo(() => {
     return (
-      stageTiles.find((t) => t.isScreenSharing) ||
       stageTiles.find((t) => t.isSpotlighted) ||
       stageTiles.find((t) => !t.isLocal && t.isVideoEnabled) ||
       stageTiles.find((t) => t.isVideoEnabled) ||
+      stageTiles.find((t) => t.role === 'host' || t.role === 'speaker') ||
       stageTiles[0] ||
       null
     );
@@ -1772,8 +2409,151 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   const currentSlide =
     SCIENTIFIC_SLIDES[roomConfig.activeSlideDeckIndex % SCIENTIFIC_SLIDES.length] ||
     SCIENTIFIC_SLIDES[0];
-  const hasPresentationSurface =
-    isSlideDeckActive || isScreenSharing || stageTiles.some((t) => t.isScreenSharing);
+
+  const isSlideDeckEffective = Boolean(isSlideDeckActive || roomConfig.isSlideDeckOpen);
+  const activeScreenShareTarget = useMemo(() => {
+    if (isScreenSharing && screenStream) {
+      const meTile = stageTiles.find((t) => t.isLocal) || stageTiles[0];
+      return meTile
+        ? { ...meTile, isVideoEnabled: true, isScreenSharing: true, videoStream: screenStream, mirrored: false }
+        : null;
+    }
+    const remoteScreenPeer = connectedParticipants.find(
+      (p) => p.peerId !== myPeerId && p.isScreenSharing && remoteStreamsByPeer[p.peerId]
+    );
+    if (remoteScreenPeer) {
+      const remTile = stageTiles.find((t) => t.peerId === remoteScreenPeer.peerId);
+      if (remTile) {
+        return {
+          ...remTile,
+          isVideoEnabled: true,
+          isScreenSharing: true,
+          videoStream: remoteStreamsByPeer[remoteScreenPeer.peerId],
+          mirrored: false,
+        };
+      }
+    }
+    return null;
+  }, [connectedParticipants, isScreenSharing, myPeerId, remoteStreamsByPeer, screenStream, stageTiles]);
+
+  const hasPresentationSurface = Boolean(isSlideDeckEffective || activeScreenShareTarget);
+  const canPresentDeck = Boolean(
+    permissions.canShareScreen ||
+      (myPeerId && promotedDelegateIds.includes(myPeerId)) ||
+      (roomConfig.eventMode === 'applied_workshop' && me?.role === 'delegate')
+  );
+
+  // Open & Close KEW Briefing Slide Deck (completely independent of mic, camera & screen sharing)
+  const openBriefingDeck = useCallback(() => {
+    setIsSlideDeckActive(true);
+    setRoomConfig((prev) => ({ ...prev, isSlideDeckOpen: true }));
+    if (stageLayout === 'active_speaker' || stageLayout === 'gallery') {
+      setStageLayout('presentation');
+    }
+    sendHostCommand('set_slide_deck_open', { open: true });
+  }, [sendHostCommand, stageLayout]);
+
+  const closeBriefingDeck = useCallback(() => {
+    setIsSlideDeckActive(false);
+    setRoomConfig((prev) => ({ ...prev, isSlideDeckOpen: false }));
+    if (
+      !activeScreenShareTarget &&
+      (stageLayout === 'presentation' || stageLayout === 'fullscreen_presentation')
+    ) {
+      setStageLayout('active_speaker');
+    }
+    sendHostCommand('set_slide_deck_open', { open: false });
+  }, [activeScreenShareTarget, sendHostCommand, stageLayout]);
+
+  // Active Speaker non-duplicating filmstrip: excludes primaryTile when primaryTile is on the main stage
+  const activeSpeakerFilmstripTiles = useMemo(() => {
+    if (hasPresentationSurface) return stageTiles;
+    if (!primaryTile) return [];
+    return stageTiles.filter((t) => t.peerId !== primaryTile.peerId);
+  }, [hasPresentationSurface, primaryTile, stageTiles]);
+
+  // Container-aware bounded aspect-ratio frame for Active Speaker main camera stage
+  const activeSpeakerPrimaryStyle = useMemo<React.CSSProperties>(() => {
+    const availW = Math.max(240, stageSize.width);
+    const filmstripReserve =
+      activeSpeakerFilmstripTiles.length > 0 ? (availW < 640 ? 100 : 116) : 0;
+    const availH = Math.max(160, stageSize.height - filmstripReserve);
+    const ratio = (primaryTile && videoAspectsByPeer[primaryTile.peerId]) || 16 / 9;
+
+    // Prevent excessive webcam enlargement on 4K / Ultrawide while fitting smaller containers cleanly
+    const maxStageW = availW >= 2200 ? 1408 : 1216;
+    const maxStageH = availH >= 1100 ? 792 : 684;
+    const boundW = Math.min(availW, maxStageW);
+    const boundH = Math.min(availH, maxStageH);
+
+    const fitW = Math.max(220, Math.floor(Math.min(boundW, boundH * ratio)));
+    const fitH = Math.max(140, Math.floor(fitW / ratio));
+
+    return {
+      width: `${fitW}px`,
+      height: `${fitH}px`,
+      maxWidth: '100%',
+      maxHeight: '100%',
+    };
+  }, [activeSpeakerFilmstripTiles.length, primaryTile, stageSize.height, stageSize.width, videoAspectsByPeer]);
+
+  // Container-aware Gallery grid calculator (1 tile per participant, fitted to container width & height)
+  const galleryLayoutMetrics = useMemo(() => {
+    const count = Math.max(1, stageTiles.length);
+    const availW = Math.max(240, stageSize.width);
+    const availH = Math.max(180, stageSize.height);
+    const gap = 8;
+    const targetAspect = 16 / 9;
+    const maxCellWCap = availW >= 2200 ? 1120 : 960;
+    const maxCellHCap = availH >= 1100 ? 630 : 540;
+
+    let bestCols = 1;
+    let bestRows = count;
+    let bestCellW = 240;
+    let bestCellH = 135;
+    let bestArea = 0;
+
+    const maxCols = Math.min(count, 4);
+    for (let cols = 1; cols <= maxCols; cols++) {
+      const rows = Math.ceil(count / cols);
+      const rawW = Math.min((availW - gap * (cols - 1)) / cols, maxCellWCap);
+      const rawH = Math.min((availH - gap * (rows - 1)) / rows, maxCellHCap);
+      if (rawW <= 0 || rawH <= 0) continue;
+      const cellW = Math.min(rawW, rawH * targetAspect);
+      const cellH = cellW / targetAspect;
+      const area = cellW * cellH;
+      if (area > bestArea) {
+        bestArea = area;
+        bestCols = cols;
+        bestRows = rows;
+        bestCellW = Math.floor(cellW);
+        bestCellH = Math.floor(cellH);
+      }
+    }
+
+    const totalGridW = Math.min(availW, bestCols * bestCellW + gap * (bestCols - 1));
+    const totalGridH = Math.min(availH, bestRows * bestCellH + gap * (bestRows - 1));
+
+    return {
+      cols: bestCols,
+      rows: bestRows,
+      gridStyle: {
+        width: `${Math.max(220, totalGridW)}px`,
+        height: `${Math.max(150, totalGridH)}px`,
+        maxWidth: '100%',
+        maxHeight: '100%',
+        gridTemplateColumns: `repeat(${bestCols}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${bestRows}, minmax(0, 1fr))`,
+      } as React.CSSProperties,
+    };
+  }, [stageSize.height, stageSize.width, stageTiles.length]);
+
+  const useHorizontalPresentationSplit =
+    stageSize.width >= 820 && stageSize.width >= stageSize.height * 0.92;
+  const effectiveSidebarWidth = Math.min(
+    sidebarWidth,
+    Math.max(280, Math.floor(windowWidth * 0.38))
+  );
 
   const formatTimer = (secs: number) => {
     const m = Math.floor(secs / 60);
@@ -1782,82 +2562,129 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
   };
 
   const renderPresentationCanvas = () => {
-    const screenTile = stageTiles.find((t) => t.isScreenSharing && t.videoStream);
-    if (screenTile && screenTile.videoStream) {
+    if (!isSlideDeckEffective && activeScreenShareTarget && activeScreenShareTarget.videoStream) {
       return (
         <VirtualHallParticipantTile
-          {...screenTile}
+          {...activeScreenShareTarget}
           mirrored={false}
-          className="w-full h-full bg-black"
+          className="w-full h-full bg-[#050b14]"
         />
       );
     }
 
+    if (!isSlideDeckEffective) {
+      return (
+        <div
+          data-testid="presentation-stage-standby"
+          className="w-full h-full rounded-xl bg-[#0a1424] border border-slate-800 p-6 flex flex-col items-center justify-center text-center gap-3"
+        >
+          <div className="w-11 h-11 rounded-xl bg-teal-500/15 border border-teal-500/30 text-teal-300 flex items-center justify-center">
+            <Presentation className="w-5 h-5" />
+          </div>
+          <div className="max-w-md space-y-1">
+            <h2 className="text-sm sm:text-base font-bold text-white">
+              Presentation Stage Standby
+            </h2>
+            <p className="text-xs text-slate-400">
+              No slide deck or external screen share is currently active on the main stage.
+            </p>
+          </div>
+          {canPresentDeck && (
+            <Button
+              size="sm"
+              data-testid="standby-present-deck-btn"
+              onClick={openBriefingDeck}
+              className="bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold"
+            >
+              <Presentation className="w-3.5 h-3.5 mr-1.5" />
+              Present KEW Slide Deck
+            </Button>
+          )}
+        </div>
+      );
+    }
+
     return (
-      <div className="w-full h-full rounded-xl bg-gradient-to-br from-[#0b192e] via-[#091324] to-[#060d18] border border-teal-500/30 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto">
-        <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div
+        data-testid="kew-slide-deck-stage"
+        className="w-full h-full max-w-[1600px] mx-auto rounded-xl bg-gradient-to-br from-[#0b192e] via-[#091324] to-[#060d18] border border-teal-500/30 p-3.5 sm:p-6 flex flex-col justify-between overflow-y-auto"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2 min-w-0">
             <span className="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[10px] font-mono uppercase shrink-0">
               KEW Scientific Deck
             </span>
             <span className="text-xs text-slate-400 font-mono truncate">{session.roomCode}</span>
           </div>
-          {permissions.canShareScreen && (
+          {canPresentDeck && (
             <div className="flex items-center gap-1 shrink-0">
               <button
-                onClick={() =>
-                  sendHostCommand('set_slide_index', {
-                    slideIndex:
-                      (roomConfig.activeSlideDeckIndex - 1 + SCIENTIFIC_SLIDES.length) %
-                      SCIENTIFIC_SLIDES.length,
-                  })
-                }
-                className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+                type="button"
+                data-testid="deck-prev-slide-btn"
+                onClick={() => {
+                  const nextIdx =
+                    (roomConfig.activeSlideDeckIndex - 1 + SCIENTIFIC_SLIDES.length) %
+                    SCIENTIFIC_SLIDES.length;
+                  setRoomConfig((prev) => ({ ...prev, activeSlideDeckIndex: nextIdx }));
+                  sendHostCommand('set_slide_index', { slideIndex: nextIdx });
+                }}
+                className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 cursor-pointer"
                 title="Previous slide"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
-              <span className="text-[11px] font-mono text-slate-300 px-1.5">
+              <span
+                data-testid="deck-slide-counter"
+                className="text-[11px] font-mono text-slate-300 px-1.5"
+              >
                 {(roomConfig.activeSlideDeckIndex % SCIENTIFIC_SLIDES.length) + 1}/
                 {SCIENTIFIC_SLIDES.length}
               </span>
               <button
-                onClick={() =>
-                  sendHostCommand('set_slide_index', {
-                    slideIndex: (roomConfig.activeSlideDeckIndex + 1) % SCIENTIFIC_SLIDES.length,
-                  })
-                }
-                className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+                type="button"
+                data-testid="deck-next-slide-btn"
+                onClick={() => {
+                  const nextIdx =
+                    (roomConfig.activeSlideDeckIndex + 1) % SCIENTIFIC_SLIDES.length;
+                  setRoomConfig((prev) => ({ ...prev, activeSlideDeckIndex: nextIdx }));
+                  sendHostCommand('set_slide_index', { slideIndex: nextIdx });
+                }}
+                className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 cursor-pointer"
                 title="Next slide"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
               <button
-                onClick={() => setIsSlideDeckActive(false)}
-                className="ml-1 px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 text-[10px] font-semibold"
+                type="button"
+                data-testid="close-briefing-deck-btn"
+                onClick={closeBriefingDeck}
+                className="ml-1 px-2.5 py-0.5 rounded bg-rose-950/85 hover:bg-rose-900 text-rose-200 border border-rose-500/40 text-[10px] font-semibold cursor-pointer"
               >
-                Close Deck
+                Close Briefing Deck
               </button>
             </div>
           )}
         </div>
 
-        <div className="my-auto py-4 space-y-4">
+        <div className="my-auto py-3 sm:py-4 space-y-3.5 sm:space-y-4">
           <div>
-            <h2 className="text-base sm:text-xl lg:text-2xl font-bold text-white leading-snug">
+            <h2
+              data-testid="deck-slide-title"
+              className="text-base sm:text-xl lg:text-2xl font-bold text-white leading-snug"
+            >
               {currentSlide.title}
             </h2>
             <p className="text-xs sm:text-sm text-teal-300 mt-1">{currentSlide.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
               <div className="text-lg sm:text-2xl font-black text-teal-300 font-mono">
                 {currentSlide.metricA}
               </div>
               <div className="text-[11px] text-slate-400 mt-0.5">{currentSlide.metricALabel}</div>
             </div>
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
               <div className="text-lg sm:text-2xl font-black text-cyan-300 font-mono">
                 {currentSlide.metricB}
               </div>
@@ -1870,7 +2697,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           </p>
         </div>
 
-        <div className="text-[10px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-800/80 pt-2">
+        <div className="text-[10px] font-mono text-slate-500 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/80 pt-2">
           <span>Kashmir EcoWatch · Western Himalayan Scientific Conference Network</span>
           <span>Ref: KEW-SR-2026-101 / ABS-2027-001</span>
         </div>
@@ -1916,10 +2743,73 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
     }
   };
 
+  const diagnosticsModalNode = (
+    <VirtualHallDiagnosticsModal
+      open={showDiagnostics}
+      onClose={() => {
+        stopPrivateCameraTest(false);
+        setShowDiagnostics(false);
+      }}
+      telemetry={telemetry}
+      micPermissionStatus={micPermissionStatus}
+      cameraPermissionStatus={cameraPermissionStatus}
+      isTestingMic={isTestingMic}
+      micDiagStatus={micDiagStatus}
+      micDiagMessage={micDiagMessage}
+      diagMicLevel={diagMicLevel}
+      diagMicPeakLevel={diagMicPeakLevel}
+      diagMicDb={diagMicDb}
+      isTestingCamera={isTestingCamera}
+      cameraDiagStatus={cameraDiagStatus}
+      cameraDiagMessage={cameraDiagMessage}
+      diagCameraStream={diagCameraStream}
+      diagCameraResolution={diagCameraResolution}
+      diagCameraFps={diagCameraFps}
+      speakerDiagStatus={speakerDiagStatus}
+      speakerDiagMessage={speakerDiagMessage}
+      speakerSinkSupported={speakerSinkSupported}
+      canBroadcastLive={
+        joinStatus === 'joined' &&
+        Boolean(
+          permissions.canPublishAudioVideo ||
+            (myPeerId && promotedDelegateIds.includes(myPeerId)) ||
+            (roomConfig.eventMode === 'applied_workshop' && me?.role === 'delegate')
+        )
+      }
+      liveBroadcastRoleLabel={
+        joinStatus !== 'joined'
+          ? 'Pre-Join Gate'
+          : myPeerId && promotedDelegateIds.includes(myPeerId) && me?.role === 'delegate'
+          ? 'Promoted Speaker (Floor Granted)'
+          : permissions.label
+      }
+      liveBroadcastModeLabel={
+        joinStatus !== 'joined'
+          ? 'Pre-Conference Verification'
+          : eventModes[roomConfig.eventMode]?.label || 'Scientific Conference'
+      }
+      isLiveMicPublished={Boolean(isMicOn && me?.presence === 'connected')}
+      isLiveVideoPublished={Boolean((isVideoOn || isScreenSharing) && me?.presence === 'connected')}
+      remoteAudioLevel={remoteAudioLevel}
+      audioInputDevices={audioInputDevices}
+      audioOutputDevices={audioOutputDevices}
+      videoDevices={videoDevices}
+      selectedMicId={selectedMicId}
+      selectedSpeakerId={selectedSpeakerId}
+      selectedCameraId={selectedCameraId}
+      onSelectMic={handleSelectMic}
+      onSelectSpeaker={handleSelectSpeaker}
+      onSelectCamera={handleSelectCamera}
+      onToggleTestMic={togglePrivateMicTest}
+      onToggleTestCamera={togglePrivateCameraTest}
+      onTestSpeaker={runPrivateSpeakerTest}
+    />
+  );
+
   // Blocked / Capacity Full / Room Locked Screen
   if (joinStatus === 'blocked' && joinBlockReason) {
     return (
-      <div className="fixed inset-0 z-[60] h-[100dvh] w-screen bg-[#060d18] text-slate-100 flex items-center justify-center p-4 overflow-hidden">
+      <div className="fixed inset-0 z-[60] h-[100dvh] w-full max-w-full bg-[#060d18] text-slate-100 flex items-center justify-center p-4 overflow-hidden">
         <div className="max-w-lg w-full bg-[#0b1526] border border-slate-800 rounded-2xl p-6 space-y-4 shadow-2xl">
           <div className="flex items-center justify-between pb-3 border-b border-slate-800/90">
             <Link href="/webinars" className="flex items-center gap-2.5 group">
@@ -1951,32 +2841,29 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             </p>
           </div>
 
-          {/* One-Click Demo Sandbox Role Entry */}
+          {/* Authoritative Entry Presets (Unauthenticated access strictly limited to Delegate / Observer) */}
           <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
             <div className="text-[10px] font-bold uppercase tracking-wider text-teal-300">
-              Quick Demo Sandbox Entry (No Token Required)
+              Standard Participant Entry (Host &amp; Speaker Roles Require Authorization)
             </div>
             <div className="flex flex-wrap gap-2">
               {(
                 [
-                  { role: 'host', label: 'Conference Host', defaultName: 'Session Host' },
-                  { role: 'speaker', label: 'Confirmed Speaker', defaultName: 'Presenting Scientist' },
-                  { role: 'moderator', label: 'Moderator', defaultName: 'Scientific Moderator' },
-                  { role: 'delegate', label: 'Delegate', defaultName: 'Visiting Delegate' },
+                  { role: 'delegate', label: 'Registered Delegate' },
+                  { role: 'observer', label: 'Observer (View Only)' },
                 ] as const
               ).map((preset) => (
                 <button
                   key={preset.role}
                   type="button"
                   onClick={() => {
-                    setDesiredEnv('demo');
+                    hasCustomNameRef.current = false;
                     setDesiredRole(preset.role);
-                    setDesiredName(preset.defaultName);
                     setProvidedSignedToken('');
                     joinHall({
-                      environmentMode: 'demo',
                       requestedRole: preset.role,
-                      displayName: preset.defaultName,
+                      explicitRoleRequested: true,
+                      explicitNameProvided: false,
                       providedToken: '',
                     });
                   }}
@@ -1995,7 +2882,17 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               className="bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold"
             >
               <KeyRound className="w-3.5 h-3.5 mr-1.5" />
-              Join with Authorized Token or Sandbox Role
+              Enter Signed Host / Speaker Token
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              data-testid="gate-open-diagnostics-btn"
+              onClick={() => setShowDiagnostics(true)}
+              className="border-teal-500/40 text-teal-300 hover:bg-teal-950/40 text-xs font-semibold"
+            >
+              <Activity className="w-3.5 h-3.5 mr-1.5" />
+              Verify Hardware &amp; Audio
             </Button>
             <Link href="/webinars">
               <Button size="sm" variant="outline" className="border-slate-700 text-slate-300 text-xs">
@@ -2004,6 +2901,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             </Link>
           </div>
         </div>
+        {diagnosticsModalNode}
 
         {showRolePassModal && (
           <div className="fixed inset-0 z-[90] bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
@@ -2018,10 +2916,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
                 <div>
                   <h2 className="text-sm font-bold text-white">
-                    Join with Authorized Token or Sandbox Role
+                    Session Identity &amp; Authorized Access Token
                   </h2>
                   <p className="text-[11px] text-slate-400">
-                    Choose Demo Sandbox (no token needed) or paste a signed <code>kew_vh1...</code> token
+                    Host, Moderator &amp; Speaker roles require an Admin session or signed <code>kew_vh1...</code> token
                   </p>
                 </div>
                 <button
@@ -2040,7 +2938,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                     type="text"
                     required
                     value={desiredName}
-                    onChange={(e) => setDesiredName(e.target.value)}
+                    onChange={(e) => {
+                      hasCustomNameRef.current = true;
+                      setDesiredName(e.target.value);
+                    }}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-white"
                   />
                 </div>
@@ -2050,7 +2951,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                     type="text"
                     required
                     value={desiredAffiliation}
-                    onChange={(e) => setDesiredAffiliation(e.target.value)}
+                    onChange={(e) => {
+                      hasCustomAffRef.current = true;
+                      setDesiredAffiliation(e.target.value);
+                    }}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-white"
                   />
                 </div>
@@ -2069,7 +2973,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[11px] text-slate-300 mb-1">Participant / Sandbox Role</label>
+                  <label className="block text-[11px] text-slate-300 mb-1">Conference Role</label>
                   <select
                     value={desiredRole}
                     onChange={(e) => setDesiredRole(e.target.value as HallRole)}
@@ -2077,10 +2981,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   >
                     <option value="delegate">Registered Delegate</option>
                     <option value="observer">Observer (View Only)</option>
-                    <option value="speaker">Confirmed Speaker</option>
-                    <option value="moderator">Scientific Moderator</option>
-                    <option value="technical_producer">Technical Producer</option>
-                    <option value="host">Conference Host</option>
+                    <option value="speaker">
+                      Confirmed Speaker {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                    </option>
+                    <option value="moderator">
+                      Scientific Moderator {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                    </option>
+                    <option value="technical_producer">
+                      Technical Producer {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                    </option>
+                    <option value="host">
+                      Conference Host {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -2088,7 +3000,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <label className="text-[11px] text-slate-300">
-                    Signed Room Token {desiredEnv === 'demo' ? '(Optional in Demo Sandbox)' : '(Required for Host/Speaker)'}
+                    Signed Room Token (Required for Host/Speaker unless Admin)
                   </label>
                   <button
                     type="button"
@@ -2102,7 +3014,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   type="text"
                   value={providedSignedToken}
                   onChange={(e) => setProvidedSignedToken(e.target.value)}
-                  placeholder="Paste signed kew_vh1... token (optional in Demo Sandbox)"
+                  placeholder="Paste signed kew_vh1... token"
                   className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-teal-300 font-mono text-[11px]"
                 />
               </div>
@@ -2179,7 +3091,16 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
       ref={rootContainerRef}
       data-testid="kew-virtual-scientific-hall"
       data-kew-dark-surface="true"
-      className="fixed inset-0 z-[120] h-[100dvh] w-screen bg-[#060d18] text-slate-100 flex flex-col overflow-hidden select-none"
+      data-stage-layout={stageLayout}
+      data-participant-role={me?.role || 'connecting'}
+      data-webrtc-peers={telemetry.activePeerConnections}
+      data-webrtc-state={telemetry.connectionState}
+      data-rtp-active={String(telemetry.activeRtpTransmission)}
+      data-packets-sent={telemetry.packetsSent}
+      data-packets-received={telemetry.packetsReceived}
+      data-inbound-kbps={telemetry.inboundKbps}
+      data-outbound-kbps={telemetry.outboundKbps}
+      className="fixed inset-0 z-[120] h-[100dvh] w-full max-w-full bg-[#060d18] text-slate-100 flex flex-col overflow-hidden select-none"
     >
       {/* 1. COMPACT SINGLE-ROW CONFERENCE HEADER (56px) */}
       <header className="h-14 px-2.5 sm:px-4 bg-[#081120] border-b border-slate-800/90 flex items-center justify-between gap-2.5 shrink-0 z-30">
@@ -2278,15 +3199,26 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             <span>{environmentMode === 'live' ? 'Live Session' : 'Demo Sandbox'}</span>
           </button>
 
-          {/* Actual WebRTC / Room Connection Pill */}
+          {/* Actual WebRTC / Room Connection Pill (Distinguishes Local Preview vs Remote WebRTC RTP) */}
           <div
             data-testid="connection-status-pill"
             className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono"
+            title={
+              telemetry.activeRtpTransmission
+                ? `Remote WebRTC RTP active (↑${telemetry.outboundKbps} / ↓${telemetry.inboundKbps} kbps)`
+                : telemetry.connectionState === 'connected'
+                ? 'Peer WebRTC connected (no active RTP stream)'
+                : isVideoOn || isMicOn
+                ? 'Local media active (0 remote WebRTC peers connected)'
+                : 'Signaling standby'
+            }
           >
             <span
               className={cn(
                 'w-1.5 h-1.5 rounded-full',
-                telemetry.connectionState === 'connected'
+                telemetry.activeRtpTransmission
+                  ? 'bg-emerald-400 animate-pulse'
+                  : telemetry.connectionState === 'connected'
                   ? 'bg-emerald-400'
                   : joinStatus === 'joined'
                   ? 'bg-teal-400'
@@ -2294,8 +3226,12 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               )}
             />
             <span className="text-slate-200">
-              {telemetry.connectionState === 'connected'
-                ? `P2P Live${telemetry.rttMs !== null ? ` · ${telemetry.rttMs}ms` : ''}`
+              {telemetry.activeRtpTransmission
+                ? `WebRTC RTP Live${telemetry.rttMs !== null ? ` · ${telemetry.rttMs}ms` : ''}`
+                : telemetry.connectionState === 'connected'
+                ? `P2P Ready${telemetry.rttMs !== null ? ` · ${telemetry.rttMs}ms` : ''}`
+                : joinStatus === 'joined' && (isVideoOn || isMicOn)
+                ? 'Local Preview · 0 Peers'
                 : joinStatus === 'joined'
                 ? 'Signaling Ready'
                 : 'Connecting'}
@@ -2411,7 +3347,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           {/* CASE A: WAITING ROOM */}
           {me?.presence === 'waiting_room' ? (
             <div className="flex-1 rounded-2xl bg-[#0a1424] border border-slate-800 flex items-center justify-center p-6 text-center">
-              <div className="max-w-md space-y-3">
+              <div className="max-w-md space-y-3.5">
                 <div className="w-12 h-12 rounded-2xl bg-teal-500/15 border border-teal-500/30 text-teal-300 flex items-center justify-center mx-auto">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
@@ -2419,6 +3355,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 <p className="text-xs text-slate-400 leading-relaxed">
                   You are connected in the pre-admission lobby for <strong>{session.title}</strong>. The Session Chair or Moderator will admit you shortly.
                 </p>
+                <div className="pt-1 flex justify-center">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    data-testid="waiting-room-open-diagnostics-btn"
+                    onClick={() => setShowDiagnostics(true)}
+                    className="border-teal-500/40 text-teal-300 hover:bg-teal-950/40 text-xs font-semibold"
+                  >
+                    <Activity className="w-3.5 h-3.5 mr-1.5" />
+                    Verify Hardware &amp; Audio While Waiting
+                  </Button>
+                </div>
               </div>
             </div>
           ) : me?.presence === 'green_room' ? (
@@ -2493,20 +3441,32 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               </div>
             </div>
           ) : (
-            /* CASE C: MAIN STAGE — 8 CONFIGURABLE ADAPTIVE LAYOUTS */
-            <div className="flex-1 min-h-0 flex flex-col gap-2 overflow-hidden relative">
-              {/* Layout 1: Active Speaker */}
+            /* CASE C: MAIN STAGE — CONTAINER-AWARE, ASPECT-RATIO-PRESERVING LAYOUTS */
+            <div
+              ref={stageViewportRef}
+              data-testid="conference-stage-viewport"
+              data-stage-width={stageSize.width}
+              data-stage-height={stageSize.height}
+              className="flex-1 min-h-0 min-w-0 flex flex-col gap-2 overflow-hidden relative"
+            >
+              {/* Layout 1: Active Speaker (Primary Speaker + Non-Duplicating Filmstrip) */}
               {stageLayout === 'active_speaker' && (
-                <div className="flex-1 min-h-0 flex flex-col gap-2">
-                  <div className="flex-1 min-h-0 relative">
+                <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-2">
+                  <div className="flex-1 min-h-0 min-w-0 flex items-center justify-center relative overflow-hidden">
                     {hasPresentationSurface ? (
                       renderPresentationCanvas()
                     ) : primaryTile ? (
-                      <VirtualHallParticipantTile {...primaryTile} className="w-full h-full" />
+                      <VirtualHallParticipantTile
+                        {...primaryTile}
+                        style={activeSpeakerPrimaryStyle}
+                        className="mx-auto my-auto shadow-xl"
+                      />
                     ) : (
-                      <div className="w-full h-full rounded-xl bg-[#0a1424] border border-slate-800 flex items-center justify-center p-4 text-center">
+                      <div className="w-full h-full max-w-3xl max-h-[680px] rounded-xl bg-[#0a1424] border border-slate-800 flex items-center justify-center p-4 text-center">
                         <div className="max-w-md space-y-2">
-                          <div className="text-sm font-bold text-white">Stage Ready · Awaiting Speaker Stream</div>
+                          <div className="text-sm font-bold text-white">
+                            Stage Ready · Awaiting Speaker Stream
+                          </div>
                           <p className="text-xs text-slate-400">
                             Phase I capacity: up to {roomConfig.maxConcurrentDelegates} concurrent delegates &amp;{' '}
                             {roomConfig.effectiveMaxInteractiveSpeakers ?? roomConfig.maxInteractiveSpeakers}{' '}
@@ -2516,13 +3476,17 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                       </div>
                     )}
                   </div>
-                  {stageTiles.length > 1 && (
-                    <div className="h-24 sm:h-28 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 shrink-0">
-                      {stageTiles.slice(0, 5).map((t) => (
+                  {activeSpeakerFilmstripTiles.length > 0 && (
+                    <div
+                      data-testid="active-speaker-filmstrip"
+                      className="h-24 sm:h-28 flex items-center justify-center gap-2 overflow-x-auto no-scrollbar shrink-0 px-0.5"
+                    >
+                      {activeSpeakerFilmstripTiles.map((t) => (
                         <VirtualHallParticipantTile
                           key={t.peerId}
                           {...t}
                           compact
+                          className="w-40 h-[90px] sm:w-48 sm:h-[108px] shrink-0"
                           onClick={() => {
                             if (permissions.canSpotlight && !t.isDemoPlaceholder) {
                               sendHostCommand('spotlight_peer', { targetPeerId: t.peerId });
@@ -2535,82 +3499,131 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 </div>
               )}
 
-              {/* Layout 2: Gallery View */}
+              {/* Layout 2: Gallery View (One Tile Per Connected Participant, Container-Aware Aspect Grid) */}
               {stageLayout === 'gallery' && (
                 <div
-                  className={cn(
-                    'flex-1 min-h-0 grid gap-2',
-                    stageTiles.length <= 1
-                      ? 'grid-cols-1'
-                      : stageTiles.length === 2
-                      ? 'grid-cols-1 sm:grid-cols-2'
-                      : stageTiles.length <= 4
-                      ? 'grid-cols-2'
-                      : 'grid-cols-2 lg:grid-cols-3'
-                  )}
+                  data-testid="gallery-stage-container"
+                  className="flex-1 min-h-0 min-w-0 flex items-center justify-center overflow-hidden"
                 >
-                  {stageTiles.map((t) => (
-                    <VirtualHallParticipantTile key={t.peerId} {...t} className="w-full h-full min-h-0" />
-                  ))}
-                </div>
-              )}
-
-              {/* Layout 3: Presentation View (75% Deck/Screen + 25% Speaker Rail) */}
-              {stageLayout === 'presentation' && (
-                <div className="flex-1 min-h-0 flex flex-col lg:flex-row gap-2">
-                  <div className="flex-[3] min-h-0 min-w-0">{renderPresentationCanvas()}</div>
-                  <div className="h-28 lg:h-auto lg:w-60 xl:w-64 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-y-auto shrink-0">
+                  <div style={galleryLayoutMetrics.gridStyle} className="grid gap-2 mx-auto my-auto">
                     {stageTiles.map((t) => (
                       <VirtualHallParticipantTile
                         key={t.peerId}
                         {...t}
-                        compact
-                        className="w-44 lg:w-full h-full lg:h-36 shrink-0"
+                        className="w-full h-full min-h-0 min-w-0"
                       />
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Layout 4: Side-by-Side View (50% Presentation / 50% Active Speaker) */}
-              {stageLayout === 'side_by_side' && (
-                <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-2">
-                  <div className="min-h-0">{renderPresentationCanvas()}</div>
-                  <div className="min-h-0">
-                    {primaryTile ? (
-                      <VirtualHallParticipantTile {...primaryTile} className="w-full h-full" />
-                    ) : (
-                      <div className="w-full h-full rounded-xl bg-[#0b1526] border border-slate-800 flex items-center justify-center text-xs text-slate-400">
-                        Active Speaker Slot
-                      </div>
-                    )}
+              {/* Layout 3: Presentation View (Presentation Stage + Independent Participant Video Tiles) */}
+              {stageLayout === 'presentation' && (
+                <div
+                  data-testid="presentation-stage-container"
+                  className={cn(
+                    'flex-1 min-h-0 min-w-0 flex gap-2 overflow-hidden',
+                    useHorizontalPresentationSplit ? 'flex-row' : 'flex-col'
+                  )}
+                >
+                  <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
+                    {renderPresentationCanvas()}
                   </div>
+                  <div
+                    data-testid="presentation-participant-rail"
+                    className={cn(
+                      'flex gap-2 shrink-0',
+                      useHorizontalPresentationSplit
+                        ? 'w-56 xl:w-64 h-full flex-col overflow-y-auto pr-0.5'
+                        : 'h-24 sm:h-28 w-full flex-row items-center overflow-x-auto pb-0.5'
+                    )}
+                  >
+                    {stageTiles.map((t) => (
+                      <VirtualHallParticipantTile
+                        key={t.peerId}
+                        {...t}
+                        compact
+                        className={cn(
+                          'shrink-0',
+                          useHorizontalPresentationSplit
+                            ? 'w-full aspect-video'
+                            : 'w-40 h-[90px] sm:w-48 sm:h-[108px]'
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Layout 4: Side-by-Side View (50% Presentation / 50% Active Speaker + Secondary Strip) */}
+              {stageLayout === 'side_by_side' && (
+                <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-2 overflow-hidden">
+                  <div
+                    className={cn(
+                      'flex-1 min-h-0 min-w-0 grid gap-2',
+                      useHorizontalPresentationSplit ? 'grid-cols-2' : 'grid-cols-1 grid-rows-2'
+                    )}
+                  >
+                    <div className="min-h-0 min-w-0 overflow-hidden">{renderPresentationCanvas()}</div>
+                    <div className="min-h-0 min-w-0 flex items-center justify-center overflow-hidden">
+                      {primaryTile ? (
+                        <VirtualHallParticipantTile
+                          {...primaryTile}
+                          className="w-full max-w-full aspect-video max-h-full"
+                        />
+                      ) : (
+                        <div className="w-full h-full rounded-xl bg-[#0b1526] border border-slate-800 flex items-center justify-center text-xs text-slate-400">
+                          Active Speaker Slot
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {stageTiles.filter((t) => t.peerId !== primaryTile?.peerId).length > 0 && (
+                    <div className="h-20 sm:h-24 flex items-center justify-center gap-2 overflow-x-auto shrink-0">
+                      {stageTiles
+                        .filter((t) => t.peerId !== primaryTile?.peerId)
+                        .map((t) => (
+                          <VirtualHallParticipantTile
+                            key={t.peerId}
+                            {...t}
+                            compact
+                            className="h-full aspect-video shrink-0"
+                          />
+                        ))}
+                    </div>
+                  )}
                 </div>
               )}
 
               {/* Layout 5: Expert Panel View */}
               {stageLayout === 'expert_panel' && (
-                <div className="flex-1 min-h-0 flex flex-col gap-2">
+                <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-2 overflow-hidden">
                   <div className="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 flex items-center justify-between text-[11px] shrink-0">
                     <span className="font-semibold text-teal-300">Expert Panel Discussion Stage</span>
                     <span className="font-mono text-slate-400">{session.discipline}</span>
                   </div>
-                  <div
-                    className={cn(
-                      'flex-1 min-h-0 grid gap-2.5',
-                      stageTiles.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'
-                    )}
-                  >
-                    {stageTiles.slice(0, 4).map((t) => (
-                      <VirtualHallParticipantTile key={t.peerId} {...t} className="w-full h-full" />
-                    ))}
+                  <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+                    <div
+                      className={cn(
+                        'w-full max-w-[1440px] max-h-full grid gap-2.5',
+                        stageTiles.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                      )}
+                    >
+                      {stageTiles.slice(0, 6).map((t) => (
+                        <VirtualHallParticipantTile
+                          key={t.peerId}
+                          {...t}
+                          className="w-full aspect-video max-h-[420px]"
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
 
               {/* Layout 6: Podcast Interview View (2-Person Studio Frame) */}
               {stageLayout === 'podcast_interview' && (
-                <div className="flex-1 min-h-0 flex flex-col gap-2">
+                <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-2 overflow-hidden">
                   <div className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-teal-950/60 to-slate-900 border border-teal-500/30 flex items-center justify-between text-[11px] shrink-0">
                     <span className="font-bold text-teal-200 flex items-center gap-1.5">
                       <Radio className="w-3.5 h-3.5 text-teal-400" />
@@ -2618,29 +3631,40 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                     </span>
                     <span className="font-mono text-[10px] text-slate-400">Max 2 Interactive Voices</span>
                   </div>
-                  <div className="flex-1 min-h-0 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {stageTiles.slice(0, 2).map((t) => (
-                      <VirtualHallParticipantTile key={t.peerId} {...t} className="w-full h-full" />
-                    ))}
-                    {stageTiles.length < 2 && (
-                      <div className="rounded-xl bg-[#0b1526] border border-dashed border-slate-700 flex flex-col items-center justify-center p-4 text-center text-xs text-slate-400">
-                        <span className="font-semibold text-slate-300">Co-Host / Guest Scientist Slot</span>
-                        <span className="text-[11px] text-slate-500 mt-1">
-                          Awaiting 2nd connected studio speaker
-                        </span>
-                      </div>
-                    )}
+                  <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+                    <div className="w-full max-w-[1360px] max-h-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {stageTiles.slice(0, 2).map((t) => (
+                        <VirtualHallParticipantTile
+                          key={t.peerId}
+                          {...t}
+                          className="w-full aspect-video max-h-[480px]"
+                        />
+                      ))}
+                      {stageTiles.length < 2 && (
+                        <div className="w-full aspect-video max-h-[480px] rounded-xl bg-[#0b1526] border border-dashed border-slate-700 flex flex-col items-center justify-center p-4 text-center text-xs text-slate-400">
+                          <span className="font-semibold text-slate-300">Co-Host / Guest Scientist Slot</span>
+                          <span className="text-[11px] text-slate-500 mt-1">
+                            Awaiting 2nd connected studio speaker
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
 
               {/* Layout 7: Workshop Collaboration View (Workbench + up to 3 Interactive Tiles) */}
               {stageLayout === 'workshop_collaboration' && (
-                <div className="flex-1 min-h-0 flex flex-col gap-2">
-                  <div className="flex-[2] min-h-0">{renderPresentationCanvas()}</div>
-                  <div className="flex-1 min-h-[110px] grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-2 overflow-hidden">
+                  <div className="flex-[2] min-h-0 min-w-0 overflow-hidden">{renderPresentationCanvas()}</div>
+                  <div className="h-28 sm:h-32 flex items-center justify-center gap-2 overflow-x-auto shrink-0">
                     {stageTiles.slice(0, 3).map((t) => (
-                      <VirtualHallParticipantTile key={t.peerId} {...t} compact className="w-full h-full" />
+                      <VirtualHallParticipantTile
+                        key={t.peerId}
+                        {...t}
+                        compact
+                        className="h-full aspect-video shrink-0"
+                      />
                     ))}
                   </div>
                 </div>
@@ -2648,10 +3672,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
               {/* Layout 8: Fullscreen Presentation View + PiP Speaker */}
               {stageLayout === 'fullscreen_presentation' && (
-                <div className="flex-1 min-h-0 relative">
+                <div className="flex-1 min-h-0 min-w-0 relative overflow-hidden">
                   {renderPresentationCanvas()}
                   {primaryTile && (
-                    <div className="w-40 sm:w-52 h-28 sm:h-32 absolute bottom-3 right-3 z-20 shadow-2xl">
+                    <div className="w-36 sm:w-52 aspect-video absolute bottom-3 right-3 z-20 shadow-2xl">
                       <VirtualHallParticipantTile {...primaryTile} compact className="w-full h-full" />
                     </div>
                   )}
@@ -2691,7 +3715,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
               activeTab={activeTab}
               onSelectTab={setActiveTab}
               onClose={() => setIsSidebarOpen(false)}
-              widthPx={sidebarWidth}
+              widthPx={effectiveSidebarWidth}
               onStartResize={handleStartResize}
               me={me}
               permissions={permissions}
@@ -2733,28 +3757,35 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 if (!r.ok) pushNotice(r.data?.error || 'Poll creation denied.', 'warn');
               }}
               onHostCommand={sendHostCommand}
-              onLaunchDeckOnStage={() => {
-                setIsSlideDeckActive(true);
-                setStageLayout('presentation');
-              }}
+              isSlideDeckOpen={isSlideDeckEffective}
+              onLaunchDeckOnStage={openBriefingDeck}
+              onCloseDeckOnStage={closeBriefingDeck}
             />
           </>
         )}
       </div>
 
       {/* 3. COMPACT PROFESSIONAL CONFERENCE TOOLBAR (56px) */}
-      <footer className="h-14 px-2 sm:px-4 bg-[#081120] border-t border-slate-800/90 flex items-center justify-between gap-1.5 shrink-0 z-50">
-        {/* Left: Compact Local Audio/Role Readout */}
-        <div className="hidden md:flex items-center gap-2 min-w-0 text-[11px]">
+      <footer className="h-14 px-1.5 sm:px-4 bg-[#081120] border-t border-slate-800/90 flex items-center justify-between gap-1 sm:gap-1.5 shrink-0 z-50 min-w-0 max-w-full">
+        {/* Left: Compact Authoritative Role & Identity Readout */}
+        <div className="hidden lg:flex items-center gap-2 min-w-0 text-[11px] shrink-0">
           <button
             onClick={() => setShowRolePassModal(true)}
-            className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 flex items-center gap-1.5 truncate max-w-[210px]"
+            data-testid="toolbar-identity-btn"
+            className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 flex items-center gap-1.5 truncate max-w-[185px] xl:max-w-[240px]"
             title="Click to view or update your participant identity & role token"
           >
             <KeyRound className="w-3 h-3 text-teal-400 shrink-0" />
             <span className="font-semibold truncate">{me?.displayName || 'Joining...'}</span>
-            <span className="text-[10px] font-mono text-teal-300 uppercase shrink-0">
-              ({permissions.label.split(' ')[0]})
+            <span
+              data-testid="toolbar-role-label"
+              className="text-[10px] font-mono text-teal-300 uppercase shrink-0"
+            >
+              ({me ? ROLE_SHORT_LABELS[me.role] : 'Delegate'}
+              {me?.role === 'delegate' && myPeerId && promotedDelegateIds.includes(myPeerId)
+                ? ' · Floor'
+                : ''}
+              )
             </span>
           </button>
 
@@ -2767,13 +3798,14 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         </div>
 
         {/* Center: Primary Conferencing Controls */}
-        <div className="flex items-center gap-1 sm:gap-1.5 mx-auto">
+        <div className="flex items-center gap-1 sm:gap-1.5 mx-auto min-w-0">
           {/* Microphone */}
           <button
             onClick={toggleMic}
+            disabled={joinStatus !== 'joined'}
             data-testid="toolbar-mic-btn"
             className={cn(
-              'h-9 px-2.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border',
+              'h-9 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border shrink-0 disabled:opacity-50',
               isMicOn
                 ? 'bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-400/50'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2787,10 +3819,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           {/* Camera */}
           <button
             onClick={toggleCamera}
-            disabled={isCameraLoading}
+            disabled={isCameraLoading || joinStatus !== 'joined'}
             data-testid="toolbar-camera-btn"
             className={cn(
-              'h-9 px-2.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border',
+              'h-9 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border shrink-0 disabled:opacity-50',
               isVideoOn
                 ? 'bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-400/50'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2810,7 +3842,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             onClick={toggleScreenShare}
             data-testid="toolbar-share-btn"
             className={cn(
-              'h-9 px-2.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border',
+              'h-9 px-2 sm:px-3 rounded-xl text-xs font-semibold hidden min-[370px]:flex items-center gap-1.5 transition-colors border shrink-0',
               isScreenSharing
                 ? 'bg-cyan-600 hover:bg-cyan-500 text-white border-cyan-400/50'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2825,6 +3857,29 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             <span className="hidden md:inline">{isScreenSharing ? 'Stop Share' : 'Share'}</span>
           </button>
 
+          {/* Present KEW Slide Deck (Direct Toolbar Toggle for Authorized Presenters) */}
+          {canPresentDeck && (
+            <button
+              onClick={() => {
+                if (isSlideDeckEffective) closeBriefingDeck();
+                else openBriefingDeck();
+              }}
+              data-testid="toolbar-deck-btn"
+              className={cn(
+                'h-9 px-2 sm:px-3 rounded-xl text-xs font-semibold hidden md:flex items-center gap-1.5 transition-colors border shrink-0',
+                isSlideDeckEffective
+                  ? 'bg-teal-600 hover:bg-teal-500 text-white border-teal-400/50'
+                  : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
+              )}
+              title={isSlideDeckEffective ? 'Close Briefing Deck' : 'Present KEW Slide Deck'}
+            >
+              <Presentation className="w-4 h-4 text-teal-300" />
+              <span className="hidden xl:inline">
+                {isSlideDeckEffective ? 'Close Briefing Deck' : 'Present KEW Slide Deck'}
+              </span>
+            </button>
+          )}
+
           {/* Raise Hand */}
           <button
             onClick={() =>
@@ -2835,7 +3890,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             }
             data-testid="toolbar-hand-btn"
             className={cn(
-              'h-9 px-2.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors border',
+              'h-9 px-2 sm:px-2.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors border shrink-0',
               me?.isHandRaised
                 ? 'bg-amber-500 text-slate-950 border-amber-300 font-bold'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2857,7 +3912,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             }}
             data-testid="toolbar-chat-btn"
             className={cn(
-              'h-9 px-2.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors border',
+              'h-9 px-2 sm:px-2.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors border shrink-0',
               isSidebarOpen && activeTab === 'chat'
                 ? 'bg-teal-500/20 text-teal-300 border-teal-500/40'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2865,7 +3920,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             title="Open session chat"
           >
             <MessageSquare className="w-4 h-4" />
-            <span className="hidden lg:inline">Chat</span>
+            <span className="hidden xl:inline">Chat</span>
           </button>
 
           {/* Q&A */}
@@ -2879,7 +3934,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             }}
             data-testid="toolbar-qna-btn"
             className={cn(
-              'h-9 px-2.5 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors border',
+              'h-9 px-2 sm:px-2.5 rounded-xl text-xs font-semibold hidden min-[420px]:flex items-center gap-1 transition-colors border shrink-0',
               isSidebarOpen && activeTab === 'qna'
                 ? 'bg-teal-500/20 text-teal-300 border-teal-500/40'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2887,7 +3942,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             title="Moderated Q&A"
           >
             <HelpCircle className="w-4 h-4" />
-            <span className="hidden lg:inline">Q&amp;A</span>
+            <span className="hidden xl:inline">Q&amp;A</span>
           </button>
 
           {/* Participants */}
@@ -2901,7 +3956,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             }}
             data-testid="toolbar-participants-btn"
             className={cn(
-              'h-9 px-2.5 rounded-xl text-xs font-semibold hidden sm:flex items-center gap-1 transition-colors border',
+              'h-9 px-2.5 rounded-xl text-xs font-semibold hidden sm:flex items-center gap-1 transition-colors border shrink-0',
               isSidebarOpen && activeTab === 'participants'
                 ? 'bg-teal-500/20 text-teal-300 border-teal-500/40'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2916,7 +3971,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           <button
             onClick={toggleLiveCaptions}
             className={cn(
-              'h-9 px-2.5 rounded-xl text-xs font-semibold hidden md:flex items-center gap-1 transition-colors border',
+              'h-9 px-2.5 rounded-xl text-xs font-semibold hidden lg:flex items-center gap-1 transition-colors border shrink-0',
               captionsEnabled
                 ? 'bg-teal-500/20 text-teal-300 border-teal-500/40'
                 : 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-700'
@@ -2924,11 +3979,11 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             title="Toggle browser live captions"
           >
             <Captions className="w-4 h-4" />
-            <span className="hidden xl:inline">Captions</span>
+            <span className="hidden 2xl:inline">Captions</span>
           </button>
 
           {/* Stage Layout Switcher (8 Layouts) */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               onClick={() => {
                 setShowLayoutMenu(!showLayoutMenu);
@@ -2936,21 +3991,22 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 setShowHostMenu(false);
               }}
               data-testid="toolbar-layout-btn"
-              className="h-9 px-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1"
+              className="h-9 px-2 sm:px-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1"
               title="Switch stage layout"
             >
               <LayoutGrid className="w-4 h-4 text-teal-400" />
-              <span className="hidden lg:inline">Layout</span>
+              <span className="hidden xl:inline">Layout</span>
             </button>
 
             {showLayoutMenu && (
-              <div className="absolute bottom-12 right-0 z-50 w-64 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-2 rounded-2xl bg-[#0c182c] border border-slate-700 shadow-2xl space-y-1 text-xs">
+              <div className="fixed bottom-16 right-2 sm:absolute sm:bottom-12 sm:right-0 z-50 w-64 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-2 rounded-2xl bg-[#0c182c] border border-slate-700 shadow-2xl space-y-1 text-xs">
                 <div className="px-2 py-1 text-[10px] font-mono uppercase text-slate-400">
                   Stage View (8 Layouts)
                 </div>
                 {STAGE_LAYOUT_OPTIONS.map((opt) => (
                   <button
                     key={opt.id}
+                    data-testid={`layout-option-${opt.id}`}
                     onClick={() => {
                       setStageLayout(opt.id);
                       setShowLayoutMenu(false);
@@ -2986,7 +4042,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
           </div>
 
           {/* Secondary Overflow Menu ("More") */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               onClick={() => {
                 setShowMoreMenu(!showMoreMenu);
@@ -2994,14 +4050,14 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 setShowHostMenu(false);
               }}
               data-testid="toolbar-more-btn"
-              className="h-9 px-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1"
+              className="h-9 px-2 sm:px-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1"
               title="More options & diagnostics"
             >
               <MoreHorizontal className="w-4 h-4" />
             </button>
 
             {showMoreMenu && (
-              <div className="absolute bottom-12 right-0 z-50 w-60 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-2 rounded-2xl bg-[#0c182c] border border-slate-700 shadow-2xl space-y-1 text-xs">
+              <div className="fixed bottom-16 right-2 sm:absolute sm:bottom-12 sm:right-0 z-50 w-60 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-2 rounded-2xl bg-[#0c182c] border border-slate-700 shadow-2xl space-y-1 text-xs">
                 <button
                   onClick={() => {
                     setShowDiagnostics(true);
@@ -3016,6 +4072,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
 
                 <button
                   onClick={() => {
+                    setActiveTab('participants');
+                    setIsSidebarOpen(true);
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200 flex sm:hidden items-center gap-2"
+                >
+                  <Users className="w-3.5 h-3.5 text-teal-400" />
+                  <span>Participants &amp; Q&amp;A Panel</span>
+                </button>
+
+                <button
+                  onClick={() => {
                     setActiveTab('resources');
                     setIsSidebarOpen(true);
                     setShowMoreMenu(false);
@@ -3026,17 +4094,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   <span>KEW Papers, DOIs &amp; Resources</span>
                 </button>
 
-                {permissions.canShareScreen && (
+                {canPresentDeck && (
                   <button
                     onClick={() => {
-                      setIsSlideDeckActive(!isSlideDeckActive);
-                      if (!isSlideDeckActive) setStageLayout('presentation');
+                      if (isSlideDeckEffective) closeBriefingDeck();
+                      else openBriefingDeck();
                       setShowMoreMenu(false);
                     }}
+                    data-testid="menu-present-deck-btn"
                     className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200 flex items-center gap-2"
                   >
                     <Presentation className="w-3.5 h-3.5 text-teal-300" />
-                    <span>{isSlideDeckActive ? 'Close Briefing Deck' : 'Present KEW Slide Deck'}</span>
+                    <span>{isSlideDeckEffective ? 'Close Briefing Deck' : 'Present KEW Slide Deck'}</span>
                   </button>
                 )}
 
@@ -3090,7 +4159,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             permissions.canLockRoom ||
             permissions.canRecord ||
             permissions.canChangeEventMode) && (
-            <div className="relative">
+            <div className="relative shrink-0">
               <button
                 onClick={() => {
                   setShowHostMenu(!showHostMenu);
@@ -3098,14 +4167,14 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   setShowMoreMenu(false);
                 }}
                 data-testid="toolbar-host-controls-btn"
-                className="h-9 px-2.5 sm:px-3 rounded-xl text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 flex items-center gap-1"
+                className="h-9 px-2 sm:px-3 rounded-xl text-xs font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 flex items-center gap-1"
               >
                 <ShieldCheck className="w-4 h-4" />
-                <span className="hidden md:inline">Host</span>
+                <span className="hidden xl:inline">Host</span>
               </button>
 
               {showHostMenu && (
-                <div className="absolute bottom-12 right-0 z-50 w-72 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-3 rounded-2xl bg-[#0c182c] border border-amber-500/40 shadow-2xl space-y-2 text-xs">
+                <div className="fixed bottom-16 right-2 sm:absolute sm:bottom-12 sm:right-0 z-50 w-72 max-w-[calc(100vw-16px)] max-h-[72dvh] overflow-y-auto p-3 rounded-2xl bg-[#0c182c] border border-amber-500/40 shadow-2xl space-y-2 text-xs">
                   <div className="text-[10px] font-mono uppercase text-amber-400 font-bold">
                     Host &amp; Producer Controls (Server-Enforced)
                   </div>
@@ -3232,49 +4301,8 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
         </div>
       </footer>
 
-      {/* REAL HARDWARE & WEBRTC DIAGNOSTICS MODAL */}
-      <VirtualHallDiagnosticsModal
-        open={showDiagnostics}
-        onClose={() => setShowDiagnostics(false)}
-        telemetry={telemetry}
-        micPermissionStatus={micPermissionStatus}
-        isMicOn={isMicOn}
-        isVideoOn={isVideoOn}
-        micAudioLevel={micAudioLevel}
-        remoteAudioLevel={remoteAudioLevel}
-        audioInputDevices={audioInputDevices}
-        audioOutputDevices={audioOutputDevices}
-        videoDevices={videoDevices}
-        selectedMicId={selectedMicId}
-        selectedSpeakerId={selectedSpeakerId}
-        selectedCameraId={selectedCameraId}
-        onSelectMic={(id) => {
-          setSelectedMicId(id);
-          if (isMicOn && audioStreamRef.current) {
-            audioStreamRef.current.getTracks().forEach((t) => t.stop());
-            audioStreamRef.current = null;
-            setIsMicOn(false);
-          }
-        }}
-        onSelectSpeaker={(id) => {
-          setSelectedSpeakerId(id);
-          for (const el of remoteAudioElsRef.current.values()) {
-            if ('setSinkId' in el) {
-              (el as HTMLAudioElement & { setSinkId: (s: string) => Promise<void> })
-                .setSinkId(id)
-                .catch(() => {});
-            }
-          }
-        }}
-        onSelectCamera={(id) => {
-          setSelectedCameraId(id);
-          if (isVideoOn) startHardwareCamera(id);
-        }}
-        onTestMic={toggleMic}
-        onTestCamera={toggleCamera}
-        micError={micError}
-        cameraError={cameraError}
-      />
+      {/* REAL HARDWARE & WEBRTC DIAGNOSTICS MODAL (3-LAYER PERMISSION SEPARATION) */}
+      {diagnosticsModalNode}
 
       {/* RECORDING CONSENT & 1 GB QUOTA MODAL */}
       {showRecordingConsentModal && (
@@ -3355,7 +4383,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   type="text"
                   required
                   value={desiredName}
-                  onChange={(e) => setDesiredName(e.target.value)}
+                  onChange={(e) => {
+                    hasCustomNameRef.current = true;
+                    setDesiredName(e.target.value);
+                  }}
                   className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-white"
                 />
               </div>
@@ -3365,7 +4396,10 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                   type="text"
                   required
                   value={desiredAffiliation}
-                  onChange={(e) => setDesiredAffiliation(e.target.value)}
+                  onChange={(e) => {
+                    hasCustomAffRef.current = true;
+                    setDesiredAffiliation(e.target.value);
+                  }}
                   className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-white"
                 />
               </div>
@@ -3392,10 +4426,18 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
                 >
                   <option value="delegate">Registered Delegate</option>
                   <option value="observer">Observer (View Only)</option>
-                  <option value="speaker">Confirmed Speaker</option>
-                  <option value="moderator">Scientific Moderator</option>
-                  <option value="technical_producer">Technical Producer</option>
-                  <option value="host">Conference Host</option>
+                  <option value="speaker">
+                    Confirmed Speaker {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                  </option>
+                  <option value="moderator">
+                    Scientific Moderator {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                  </option>
+                  <option value="technical_producer">
+                    Technical Producer {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                  </option>
+                  <option value="host">
+                    Conference Host {!isAdminSessionActive && !providedSignedToken.trim() ? '(Token Req.)' : ''}
+                  </option>
                 </select>
               </div>
             </div>
@@ -3403,7 +4445,7 @@ export function LiveConferenceRoom({ session }: LiveConferenceRoomProps) {
             <div>
               <div className="flex items-center justify-between mb-1">
                 <label className="text-[11px] text-slate-300">
-                  Signed Room Token (Required for Host/Speaker in Live Mode)
+                  Signed Room Token (Required for Host/Speaker unless Admin)
                 </label>
                 <button
                   type="button"

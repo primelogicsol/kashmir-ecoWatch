@@ -252,7 +252,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
             <div className="w-full h-10 rounded overflow-hidden relative">
               <img src={item.src} alt={item.short} className="w-full h-full object-cover" />
             </div>
-            <span className={`text-[10px] font-medium truncate w-full text-center ${activeHeroIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-400'}`}>
+            <span className={`text-[10px] font-medium leading-tight break-words w-full text-center ${activeHeroIdx === idx ? 'text-emerald-300 font-bold' : 'text-slate-300'}`}>
               {item.short}
             </span>
           </button>
@@ -268,10 +268,10 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
       {/* ───────────────────────────────────────────────────────────── */}
       <Heading
         title={
-          <div className="overflow-visible pb-2">
+          <div className="overflow-visible pb-2 w-full min-w-0">
             <KewBrandIdentity />
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
+            <div className="leading-[1.15] overflow-visible w-full min-w-0">
+              <span className="block w-full bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pb-1.5 whitespace-normal break-words tracking-normal">
                 {title}
               </span>
             </div>

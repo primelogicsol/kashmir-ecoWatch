@@ -73,30 +73,30 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
 
   return (
     <div 
-      className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[420px] max-w-[420px] rounded-2xl bg-slate-900/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 overflow-hidden text-slate-200 animate-in fade-in zoom-in-95 duration-200"
+      className="kew-menu-surface kew-functional-overlay absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-[420px] max-w-[420px] rounded-2xl border z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200"
       onClick={e => e.stopPropagation()}
     >
       {/* Header */}
-      <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-950/70">
+      <div className="kew-menu-top-header p-4 border-b flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+          <div className="p-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
             <Bell className="w-4 h-4" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-white leading-tight">Live Alert Stream</h3>
+              <h3 className="kew-menu-title text-sm font-bold leading-tight">Live Alert Stream</h3>
               {isLive ? (
                 <span className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
                   LIVE API
                 </span>
               ) : (
-                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
+                <span className="kew-menu-subcard text-[10px] font-medium px-1.5 py-0.5 rounded border">
                   CACHED
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-slate-400 mt-0.5">
+            <p className="kew-menu-desc text-[11px] mt-0.5">
               {unreadCount > 0 ? `${unreadCount} unread environmental alerts` : 'All alerts up to date'}
             </p>
           </div>
@@ -106,7 +106,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
           <button
             onClick={() => refetch()}
             disabled={isLoading}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-white/5 transition-colors disabled:opacity-50"
+            className="kew-menu-ghost-btn p-1.5 rounded-lg transition-colors disabled:opacity-50"
             title="Refresh live telemetry APIs"
             aria-label="Refresh live telemetry"
           >
@@ -116,7 +116,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
-              className="text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold px-2 py-1 rounded hover:bg-emerald-500/10 transition-colors"
+              className="kew-menu-accent-text text-[11px] font-semibold px-2 py-1 rounded hover:underline transition-colors"
               title="Mark all as read"
             >
               Mark all read
@@ -125,7 +125,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="kew-menu-ghost-btn p-1.5 rounded-lg transition-colors"
             aria-label="Close notifications"
           >
             <X className="w-4 h-4" />
@@ -134,26 +134,24 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
       </div>
 
       {/* Live Telemetry Info Banner */}
-      <div className="px-4 py-2 bg-emerald-950/30 border-b border-emerald-500/10 flex items-center justify-between text-[11px] text-slate-300">
+      <div className="kew-menu-subbar px-4 py-2 border-b flex items-center justify-between text-[11px]">
         <div className="flex items-center gap-1.5">
           <Radio className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-          <span>Real-time feeds: <strong>Open-Meteo CAMS</strong>, <strong>GloFAS</strong> &amp; <strong>USGS</strong></span>
+          <span className="kew-menu-title">Real-time feeds: <strong>Open-Meteo CAMS</strong>, <strong>GloFAS</strong> &amp; <strong>USGS</strong></span>
         </div>
-        <span className="text-slate-500 font-mono text-[10px]">
+        <span className="kew-menu-desc font-mono text-[10px]">
           {lastUpdated ? new Date(lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}
         </span>
       </div>
 
       {/* Filter Tabs */}
-      <div className="px-4 py-2 border-b border-white/5 flex items-center gap-2 bg-slate-950/30 text-xs">
+      <div className="kew-menu-subbar px-4 py-2 border-b flex items-center gap-2 text-xs">
         {(['all', 'unread', 'critical'] as const).map(tab => (
           <button
             key={tab}
             onClick={() => setFilter(tab)}
-            className={`px-2.5 py-1 rounded-lg font-medium capitalize transition-colors ${
-              filter === tab
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            className={`kew-menu-tab px-2.5 py-1 rounded-lg font-medium capitalize transition-colors ${
+              filter === tab ? 'kew-menu-tab--active' : ''
             }`}
           >
             {tab} {tab === 'unread' && unreadCount > 0 ? `(${unreadCount})` : ''}
@@ -162,12 +160,12 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
       </div>
 
       {/* Alert List */}
-      <div className="max-h-[380px] overflow-y-auto divide-y divide-white/5">
+      <div className="kew-menu-scroll max-h-[min(380px,calc(100dvh-14rem))] overflow-y-auto overscroll-contain divide-y divide-[var(--kew-menu-border)]">
         {filteredAlerts.length === 0 ? (
-          <div className="p-8 text-center text-slate-400 space-y-2">
+          <div className="p-8 text-center space-y-2">
             <Shield className="w-8 h-8 mx-auto text-emerald-400/60" />
-            <p className="text-xs font-medium text-slate-300">No alerts matching this filter</p>
-            <p className="text-[11px]">All regional hazard telemetry streams are currently nominal.</p>
+            <p className="kew-menu-title text-xs font-medium">No alerts matching this filter</p>
+            <p className="kew-menu-desc text-[11px]">All regional hazard telemetry streams are currently nominal.</p>
           </div>
         ) : (
           filteredAlerts.map(alert => {
@@ -176,8 +174,8 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
             return (
               <div 
                 key={alert.id}
-                className={`p-3.5 hover:bg-white/[0.04] transition-colors flex gap-3 items-start relative ${
-                  !isRead ? 'bg-emerald-500/[0.03]' : ''
+                className={`kew-menu-item p-3.5 flex gap-3 items-start relative ${
+                  !isRead ? 'kew-menu-item--active' : ''
                 }`}
               >
                 {!isRead && (
@@ -189,11 +187,11 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white/5 border border-white/10 text-slate-300 shrink-0">
+                      <span className="kew-menu-subcard text-[10px] font-mono px-2 py-0.5 rounded-[4px] border shrink-0">
                         {alert.district}
                       </span>
                       {alert.id.startsWith('live-') && (
-                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 shrink-0">
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
                           LIVE SENSOR
                         </span>
                       )}
@@ -203,15 +201,15 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                     </span>
                   </div>
 
-                  <h4 className="text-xs font-bold text-white leading-snug line-clamp-1 mb-1">
+                  <h4 className="kew-menu-item-title text-xs font-bold leading-snug line-clamp-1 mb-1">
                     {alert.title}
                   </h4>
-                  <p className="text-[11px] text-slate-400 leading-relaxed line-clamp-2 mb-2">
+                  <p className="kew-menu-item-desc text-[11px] leading-relaxed line-clamp-2 mb-2">
                     {alert.summary}
                   </p>
 
                   <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-slate-500 font-mono text-[10px] truncate max-w-[180px]">
+                    <span className="kew-menu-desc font-mono text-[10px] truncate max-w-[180px]">
                       {alert.issuedBy}
                     </span>
                     <div className="flex items-center gap-3 shrink-0">
@@ -221,7 +219,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                           markAsRead(alert.id);
                           onClose();
                         }}
-                        className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+                        className="kew-menu-accent-text hover:underline font-semibold inline-flex items-center gap-1"
                       >
                         <span>View</span>
                         <ArrowRight className="w-3 h-3" />
@@ -229,7 +227,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                       {!isRead && (
                         <button
                           onClick={() => markAsRead(alert.id)}
-                          className="text-slate-400 hover:text-slate-200 text-[10px]"
+                          className="kew-menu-ghost-btn px-1.5 py-0.5 rounded text-[10px]"
                           title="Mark read"
                         >
                           Dismiss
@@ -245,18 +243,18 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
       </div>
 
       {/* Footer */}
-      <div className="p-3 bg-slate-950/80 border-t border-white/10 flex items-center justify-between text-xs">
+      <div className="kew-menu-footer p-3 border-t flex items-center justify-between text-xs">
         <Link
           href="/alerts"
           onClick={onClose}
-          className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+          className="kew-menu-accent-text hover:underline font-semibold inline-flex items-center gap-1"
         >
           <span>Open Full Alert Observatory</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </Link>
         <button
           onClick={clearAllHistory}
-          className="text-slate-500 hover:text-slate-300 text-[11px]"
+          className="kew-menu-ghost-btn px-2 py-0.5 rounded text-[11px]"
         >
           Reset History
         </button>

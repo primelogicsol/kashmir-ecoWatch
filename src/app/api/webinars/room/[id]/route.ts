@@ -14,6 +14,7 @@ import {
   getLinkedKewResources,
   getLiveRoomRuntime,
   getOrInitRoomAllocation,
+  isTurnServerConfigured,
   loadHallStore,
   mintHallAccessToken,
   ROLE_PERMISSIONS,
@@ -54,7 +55,8 @@ export async function GET(
       counts,
       invitedProgramSpeakers: getInvitedProgramSpeakers(roomId),
       linkedResources: getLinkedKewResources(roomId),
-      iceServers: getIceServersConfig(),
+      iceServers: getIceServersConfig({ includeTurnCredentials: false }),
+      turnConfigured: isTurnServerConfigured(),
     },
     { headers: { 'Cache-Control': 'no-store' } }
   );
@@ -82,7 +84,9 @@ export async function POST(
       return NextResponse.json({ ok: false, error: 'Invalid room session token.' }, { status: 401 });
     }
     const runtime = getLiveRoomRuntime(roomId, claims.environmentMode);
-    if (runtime.participants.has(claims.peerId)) {
+    const current = runtime.participants.get(claims.peerId);
+    // Guard against delayed pagehide keepalive beacons arriving after a same-tab F5 reload rejoin
+    if (current && (!body.joinedAt || current.joinedAt === body.joinedAt)) {
       runtime.participants.delete(claims.peerId);
       runtime.promotedDelegateIds.delete(claims.peerId);
       if (allocation.spotlightPeerId === claims.peerId) {
@@ -193,50 +197,48 @@ export async function POST(
       : allocation.environmentMode;
 
   const requestedRoleRaw = String(body.requestedRole || 'delegate') as HallRole;
+  const explicitRoleRequested = Boolean(body.explicitRoleRequested);
+  const explicitNameProvided = Boolean(body.explicitNameProvided);
+  const explicitAffiliationProvided = Boolean(body.explicitAffiliationProvided);
   const validRole: HallRole = ROLE_PERMISSIONS[requestedRoleRaw] ? requestedRoleRaw : 'delegate';
 
-  // Only invoke NextAuth/admin verification when joining Live privileged roles or platform_admin
-  const needsAdminCheck =
-    !verifiedTokenClaims &&
-    (validRole === 'platform_admin' ||
-      (requestedEnv === 'live' && validRole !== 'delegate' && validRole !== 'observer'));
-
-  const adminCheck = needsAdminCheck
+  // Always verify server-side KEW Administrator credentials when no signed room token is presented,
+  // ensuring authoritative role assignment across both Demo Sandbox and Live Session namespaces.
+  const adminCheck = !verifiedTokenClaims
     ? await verifyAdminRequest(request).catch(() => ({
         authorized: false,
         actor: 'anonymous',
         method: 'none',
       }))
-    : { authorized: false, actor: 'anonymous', method: 'skipped_sandbox' };
+    : { authorized: false, actor: 'anonymous', method: 'signed_room_token' };
 
   let assignedRole: HallRole = 'delegate';
   let isVerifiedIdentity = false;
 
   if (verifiedTokenClaims && verifiedTokenClaims.roomId === roomId) {
+    // Signed HMAC room token authoritatively governs conference role (preserves legitimate multiple-host functionality)
     assignedRole = verifiedTokenClaims.role;
     isVerifiedIdentity = true;
   } else if (adminCheck.authorized) {
-    assignedRole = validRole;
+    // Authenticated KEW Administrator: defaults to Host unless explicitly testing another conference role
+    assignedRole = !explicitRoleRequested && validRole === 'delegate' ? 'host' : validRole;
     isVerifiedIdentity = true;
-  } else if (requestedEnv === 'demo') {
-    // In isolated Demo Sandbox, allow role testing except platform_admin without admin auth
-    assignedRole = validRole === 'platform_admin' ? 'host' : validRole;
-    isVerifiedIdentity = false;
   } else {
-    // Live Authorized Session without admin session or signed speaker/host token:
-    // strictly block self-elevation to privileged roles!
-    if (validRole !== 'delegate' && validRole !== 'observer') {
+    // Unauthenticated / non-admin client: strictly forbid granting Host, Moderator, Producer, or Speaker
+    // privileges through client-side state, URL parameters, or display-name changes.
+    if (explicitRoleRequested && validRole !== 'delegate' && validRole !== 'observer') {
       return NextResponse.json(
         {
           ok: false,
           code: 'PRIVILEGED_TOKEN_REQUIRED',
           error:
-            'Live session Host, Moderator, Producer, and Speaker roles require a signed KEW room token or Administrator session.',
+            'Conference Host, Moderator, Producer, and Speaker roles require an active KEW Administrator session or a signed KEW room access token.',
         },
         { status: 403 }
       );
     }
-    assignedRole = validRole;
+    assignedRole = validRole === 'observer' ? 'observer' : 'delegate';
+    isVerifiedIdentity = false;
   }
 
   const perms = ROLE_PERMISSIONS[assignedRole];
@@ -312,18 +314,49 @@ export async function POST(
     );
   }
 
+  const roleDefaultNames: Record<HallRole, string> = {
+    platform_admin: 'KEW Platform Administrator',
+    institutional_admin: 'Institutional Host',
+    host: 'Session Host',
+    moderator: 'Scientific Moderator',
+    technical_producer: 'Technical Producer',
+    speaker: 'Confirmed Speaker',
+    delegate: 'Visiting Delegate',
+    observer: 'Session Observer',
+  };
+
+  const clientDisplayName = String(body.displayName || '').trim();
+  const isStaleDelegateFallback =
+    assignedRole !== 'delegate' &&
+    assignedRole !== 'observer' &&
+    /^visiting delegate$/i.test(clientDisplayName);
+
+  const adminActorDisplayName =
+    adminCheck.authorized &&
+    adminCheck.actor &&
+    adminCheck.actor !== 'anonymous' &&
+    adminCheck.actor !== 'KEW Automated CLI Verifier' &&
+    !adminCheck.actor.includes('@')
+      ? adminCheck.actor
+      : null;
+
   const rawName = String(
-    verifiedTokenClaims?.displayName ||
-      body.displayName ||
-      (requestedEnv === 'demo' ? `Sandbox ${perms.label}` : perms.label)
+    (verifiedTokenClaims && !explicitNameProvided ? verifiedTokenClaims.displayName : '') ||
+      (explicitNameProvided && !isStaleDelegateFallback ? clientDisplayName : '') ||
+      verifiedTokenClaims?.displayName ||
+      (assignedRole === 'host' && adminActorDisplayName ? adminActorDisplayName : '') ||
+      roleDefaultNames[assignedRole] ||
+      perms.label
   )
     .trim()
     .slice(0, 64);
 
+  const clientAffiliation = String(body.affiliation || '').trim();
   const rawAffiliation = String(
-    verifiedTokenClaims?.affiliation ||
-      body.affiliation ||
-      (requestedEnv === 'demo' ? 'KEW Demo Sandbox' : 'Registered Participant')
+    (verifiedTokenClaims && !explicitAffiliationProvided ? verifiedTokenClaims.affiliation : '') ||
+      (explicitAffiliationProvided ? clientAffiliation : '') ||
+      verifiedTokenClaims?.affiliation ||
+      (adminCheck.authorized ? 'Kashmir EcoWatch Secretariat' : 'Registered Conference Participant')
   )
     .trim()
     .slice(0, 80);
@@ -347,7 +380,7 @@ export async function POST(
     institutionId: verifiedTokenClaims?.institutionId || allocation.institutionId,
     environmentMode: requestedEnv,
     presence,
-    joinedAt: existingParticipant?.joinedAt || nowIso,
+    joinedAt: nowIso,
     lastSeenAt: nowIso,
     isAudioEnabled: false,
     isVideoEnabled: false,
@@ -356,6 +389,14 @@ export async function POST(
     isSpotlighted: allocation.spotlightPeerId === existingPeerId,
     isVerifiedIdentity,
   };
+
+  if (existingParticipant) {
+    enqueueRoomSignal(runtime, {
+      type: 'peer_left',
+      senderPeerId: existingPeerId,
+      payload: { peerId: existingPeerId, reason: 'peer_reloaded' },
+    });
+  }
 
   runtime.participants.set(existingPeerId, participant);
 
@@ -422,7 +463,8 @@ export async function POST(
       polls: runtime.polls,
       invitedProgramSpeakers: getInvitedProgramSpeakers(roomId),
       linkedResources: getLinkedKewResources(roomId),
-      iceServers: getIceServersConfig(),
+      iceServers: getIceServersConfig({ peerId: existingPeerId, includeTurnCredentials: true }),
+      turnConfigured: isTurnServerConfigured(),
       currentSeq: runtime.seq - 1,
     },
     { headers: { 'Cache-Control': 'no-store' } }

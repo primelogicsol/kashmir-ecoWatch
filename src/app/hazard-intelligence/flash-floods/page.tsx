@@ -355,7 +355,7 @@ export default function FlashFloodsPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-blue-300 bg-clip-text text-transparent">Flash Flood Intelligence</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-indigo-400 to-blue-300 bg-clip-text text-transparent">Flash Flood Intelligence</span>
           </>}
         subtitle="Forensically verified catchment runoff monitoring across 32 Western Himalayan mountain valleys, coupling official government emergency feeds with high-resolution atmospheric runoff models."
         icon={<Zap className="w-6 h-6 text-indigo-400" />}

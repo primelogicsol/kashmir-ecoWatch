@@ -32,7 +32,7 @@ export default function DrinkingWaterSourceDetailPage() {
     return (
       <main className="min-h-screen bg-slate-950 flex items-center justify-center">
         <div className="text-center px-4">
-          <h1 className="max-w-xl text-3xl font-bold text-white mb-3">Drinking Water Source Not Found</h1>
+          <h1 className=" text-3xl font-bold text-white mb-3">Drinking Water Source Not Found</h1>
           <p className="text-slate-400 mb-6">The requested drinking water facility or catchment could not be found.</p>
           <Link
             href="/water-systems/drinking-water-sources"

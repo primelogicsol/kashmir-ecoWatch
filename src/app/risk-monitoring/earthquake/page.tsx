@@ -320,7 +320,7 @@ export default function EarthquakeRiskMonitoringPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Earthquake & Seismic Risk' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake &amp; Seismic Risk</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Earthquake &amp; Seismic Risk</span>
           </>}
         subtitle="The Kashmir Himalayas sit in Seismic Zone V — India&apos;s highest hazard classification. The Indian plate continues thrusting beneath Eurasia at ~2 cm/year, accumulating strain that releases as devastating earthquakes. Monitoring, preparedness, and structural resilience are critical for the Valley&apos; 20 million+ residents."
         icon={<Siren className="w-6 h-6 text-emerald-400" />}

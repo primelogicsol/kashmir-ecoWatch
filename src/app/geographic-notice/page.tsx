@@ -352,10 +352,10 @@ export default function GeographicNoticePage() {
                   <span>Philanthropic Sponsorship & Engineering Delivery</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  Spearheaded & Supported by Dr. Kumar Foundation USA
+                  Spearheaded &amp; Supported by Dr. Kumar Foundation USA
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 max-w-2xl">
-                  Maintained with zero commercial monetization as a permanent Knowledge Return System for Kashmir, with enterprise cloud engineering provided gratis by Prime Logic Solutions under Corporate Social Responsibility (CSR).
+                  Maintained without commercial monetization as a permanent Knowledge Return System for Kashmir, with enterprise-grade cloud engineering and technological infrastructure provided gratis by Prime Logic Solutions USA as part of its Corporate Social Responsibility (CSR) commitment.
                 </p>
               </div>
 

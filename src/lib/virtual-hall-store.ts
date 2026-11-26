@@ -458,6 +458,7 @@ function createInitialStoreData(): PersistentHallStoreData {
       activeTrackId: w.tracks?.[0]?.id || 'main-plenary',
       spotlightPeerId: null,
       activeSlideDeckIndex: 0,
+      isSlideDeckOpen: false,
       activeConsentRecordingId: null,
     };
   }
@@ -595,6 +596,7 @@ export function getOrInitRoomAllocation(
       activeTrackId: 'track-a',
       spotlightPeerId: null,
       activeSlideDeckIndex: 0,
+      isSlideDeckOpen: false,
       activeConsentRecordingId: null,
     };
     saveHallStore(store);
@@ -719,8 +721,8 @@ export function enqueueRoomSignal(
     createdAt: new Date().toISOString(),
   };
   runtime.signals.push(env);
-  if (runtime.signals.length > 600) {
-    runtime.signals = runtime.signals.slice(-600);
+  if (runtime.signals.length > 2500) {
+    runtime.signals = runtime.signals.slice(-2500);
   }
   return env;
 }
@@ -892,24 +894,62 @@ export function getLinkedKewResources(roomId: string): LinkedKewResource[] {
   ];
 }
 
-export function getIceServersConfig(): RTCIceServer[] {
+export interface IceServersOptions {
+  peerId?: string;
+  includeTurnCredentials?: boolean;
+}
+
+export function isTurnServerConfigured(): boolean {
+  return Boolean((process.env.TURN_URL || process.env.NEXT_PUBLIC_TURN_URL || '').trim());
+}
+
+/**
+ * Builds RTCIceServer list:
+ * - Public GET requests omit TURN credentials so relay secrets are never exposed to unauthenticated scrapers.
+ * - Authenticated POST room joins mint short-lived coturn REST HMAC-SHA1 credentials (`use-auth-secret`)
+ *   when `TURN_SHARED_SECRET` is configured, or fall back to static `TURN_USERNAME` / `TURN_CREDENTIAL`.
+ */
+export function getIceServersConfig(opts?: IceServersOptions): RTCIceServer[] {
   const servers: RTCIceServer[] = [
     { urls: 'stun:stun.l.google.com:19302' },
     { urls: 'stun:stun1.l.google.com:19302' },
     { urls: 'stun:stun.cloudflare.com:3478' },
   ];
 
-  const turnUrl = process.env.NEXT_PUBLIC_TURN_URL || process.env.TURN_URL;
-  const turnUsername = process.env.NEXT_PUBLIC_TURN_USERNAME || process.env.TURN_USERNAME;
-  const turnCredential = process.env.NEXT_PUBLIC_TURN_CREDENTIAL || process.env.TURN_CREDENTIAL;
-
-  if (turnUrl) {
-    servers.push({
-      urls: turnUrl.split(',').map((s) => s.trim()),
-      ...(turnUsername ? { username: turnUsername } : {}),
-      ...(turnCredential ? { credential: turnCredential } : {}),
-    });
+  const turnUrlRaw = (process.env.TURN_URL || process.env.NEXT_PUBLIC_TURN_URL || '').trim();
+  if (!turnUrlRaw || opts?.includeTurnCredentials === false) {
+    return servers;
   }
+
+  const urls = turnUrlRaw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (urls.length === 0) return servers;
+
+  const sharedSecret = (process.env.TURN_SHARED_SECRET || '').trim();
+  const ttlSeconds = Math.max(
+    900,
+    Math.min(86400, Number(process.env.TURN_CREDENTIAL_TTL_SECONDS || 4 * 3600))
+  );
+
+  if (sharedSecret) {
+    const expiry = Math.floor(Date.now() / 1000) + ttlSeconds;
+    const safePeer = (opts?.peerId || 'kew_peer').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 48);
+    const username = `${expiry}:${safePeer}`;
+    const credential = crypto.createHmac('sha1', sharedSecret).update(username).digest('base64');
+    servers.push({ urls, username, credential });
+    return servers;
+  }
+
+  const turnUsername = (process.env.TURN_USERNAME || process.env.NEXT_PUBLIC_TURN_USERNAME || '').trim();
+  const turnCredential = (process.env.TURN_CREDENTIAL || process.env.NEXT_PUBLIC_TURN_CREDENTIAL || '').trim();
+
+  servers.push({
+    urls,
+    ...(turnUsername ? { username: turnUsername } : {}),
+    ...(turnCredential ? { credential: turnCredential } : {}),
+  });
 
   return servers;
 }

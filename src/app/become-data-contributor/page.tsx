@@ -441,8 +441,8 @@ export default function BecomeDataContributorPage() {
       <Heading
         breadcrumbs={[{ label: 'Get Involved', href: '/contribute' }, { label: 'Become a Data Contributor' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Become a</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">KEW Data Contributor</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Become a</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">KEW Data Contributor</span>
         </>}
         subtitle="Share structured environmental datasets with the Western Himalayan intelligence network. Open to researchers, institutions, government agencies, NGOs, and monitoring networks."
         icon={<Database className="w-6 h-6 text-teal-400" />}

@@ -47,7 +47,7 @@ export default function DistrictPage() {
   if (!district) {
     return (
       <main className="min-h-screen bg-slate-950"><div className="pt-48 text-center">
-          <h1 className="max-w-xl text-3xl font-bold text-white mb-4">District not found</h1>
+          <h1 className=" text-3xl font-bold text-white mb-4">District not found</h1>
           <Button onClick={() => window.history.back()}>Go Back</Button>
         </div>
       </main>
@@ -72,7 +72,7 @@ export default function DistrictPage() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+                <h1 className=" text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                   {district.name}
                 </h1>
                 <div className="flex items-center gap-4 text-slate-400">

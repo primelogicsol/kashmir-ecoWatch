@@ -371,7 +371,7 @@ export default function SewageWastewaterPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sewage and Wastewater</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sewage and Wastewater</span>
           </>}
         subtitle="Monitoring sewage generation, wastewater discharge, STP capacity, drainage pathways, septic dependence, and contamination routes across Kashmir's ecological systems."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}

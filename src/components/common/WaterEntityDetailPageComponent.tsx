@@ -72,7 +72,7 @@ export function WaterEntityDetailPageComponent({
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="kew-module-hero-surface relative overflow-hidden">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface relative overflow-x-clip">
         <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-15`} />
         <div className="absolute inset-0 bg-grid opacity-20" />
 
@@ -82,7 +82,7 @@ export function WaterEntityDetailPageComponent({
             animate={{ opacity: 1, y: 0 }}
           >
             {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-slate-300 mb-4 min-w-0">
               <Link href={backRoute} className="hover:text-white transition-colors">
                 Water Systems
               </Link>
@@ -94,9 +94,9 @@ export function WaterEntityDetailPageComponent({
               <span className="text-white font-medium" aria-current="page">{entity.name}</span>
             </nav>
 
-            <div className="flex items-start justify-between gap-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 min-w-0">
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-xl bg-slate-900 ${color} text-white flex items-center justify-center shadow-lg`}>
                     <Icon className="w-6 h-6" />
                   </div>
@@ -117,7 +117,7 @@ export function WaterEntityDetailPageComponent({
                   )}
                 </div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-4xl 3xl:max-w-5xl">
+                <h1 className="w-full text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-[1.14] tracking-tight break-words">
                   {entity.name}
                 </h1>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-[72ch] mb-6 leading-relaxed">

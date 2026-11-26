@@ -223,16 +223,16 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface relative overflow-x-clip">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
         
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-        <div className="relative kew-container-report">
+        <div className="kew-module-hero-inner relative kew-container-report">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1 text-xs md:text-sm text-slate-300 mb-6 min-w-0">
             {breadcrumbs.map((crumb, idx) => (
               <React.Fragment key={idx}>
                 {idx > 0 && <Icons.ChevronRight className="w-4 h-4" />}
@@ -252,9 +252,9 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
             <div className={`p-3 rounded-xl bg-slate-900 ${getGradientForVariant()} border border-white/10`}>
               <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 max-w-4xl">{name}</h1>
+              <h1 className="w-full text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 leading-[1.14] break-words">{name}</h1>
               <p className="text-slate-300 max-w-[74ch] leading-relaxed">{description}</p>
             </div>
           </div>

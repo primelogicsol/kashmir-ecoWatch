@@ -460,7 +460,7 @@ export default function FounderPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         
-        <div className="kew-module-hero-inner container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
+        <div className="kew-module-hero-inner container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Breadcrumbs */}
           <nav className="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 mb-4 sm:mb-6">

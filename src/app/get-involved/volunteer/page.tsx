@@ -530,8 +530,8 @@ export default function VolunteerPage() {
       <Heading
         breadcrumbs={[{ label: 'Get Involved', href: '/contribute' }, { label: 'Volunteer & Contributor Network' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Volunteer &</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Contributor Network</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Volunteer &</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Contributor Network</span>
         </>}
         subtitle="Help document, verify, report, map, photograph, and communicate environmental change across the Western Himalayan region. Every contribution type is valued equally — from a village resident to a field journalist."
         icon={<Users className="w-6 h-6 text-emerald-400" />}

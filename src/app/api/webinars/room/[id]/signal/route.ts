@@ -153,7 +153,17 @@ export async function POST(
     }
 
     const targetPeerId = body.targetPeerId ? String(body.targetPeerId) : undefined;
-    if (action === 'webrtc_offer' && body.publishingMedia === true) {
+    const rawSdp = typeof body.sdp?.sdp === 'string' ? body.sdp.sdp : '';
+    // Inspect actual SDP media-direction attributes (m=audio / m=video sections with a=sendrecv or a=sendonly)
+    // so unauthorized clients cannot bypass publication governance by omitting publishingMedia=true
+    // or injecting outbound media tracks inside a webrtc_answer.
+    const sdpAttemptsOutboundMedia =
+      rawSdp.length > 0 && /(?:^|\r?\n)a=(?:sendrecv|sendonly)\b/i.test(rawSdp);
+
+    if (
+      (action === 'webrtc_offer' || action === 'webrtc_answer') &&
+      (body.publishingMedia === true || sdpAttemptsOutboundMedia)
+    ) {
       const check = canParticipantPublishMedia(runtime, allocation, sender);
       if (!check.allowed) {
         return NextResponse.json(
@@ -619,11 +629,23 @@ export async function POST(
       return NextResponse.json({ ok: true, roomConfig: allocation });
     }
 
-    if (command === 'set_slide_index') {
-      if (!perms.canShareScreen) {
-        return NextResponse.json({ ok: false, code: 'FORBIDDEN_SLIDE_CONTROL', error: 'Presenter permission required.' }, { status: 403 });
+    if (command === 'set_slide_index' || command === 'set_slide_deck_open') {
+      const canPresentDeck =
+        perms.canShareScreen ||
+        runtime.promotedDelegateIds.has(sender.peerId) ||
+        allocation.eventMode === 'applied_workshop';
+      if (!canPresentDeck) {
+        return NextResponse.json(
+          { ok: false, code: 'FORBIDDEN_SLIDE_CONTROL', error: 'Presenter permission required.' },
+          { status: 403 }
+        );
       }
-      allocation.activeSlideDeckIndex = Math.max(0, Math.min(10, Number(body.slideIndex || 0)));
+      if (command === 'set_slide_deck_open' || typeof body.open === 'boolean') {
+        allocation.isSlideDeckOpen = Boolean(body.open);
+      }
+      if (command === 'set_slide_index' || typeof body.slideIndex === 'number') {
+        allocation.activeSlideDeckIndex = Math.max(0, Math.min(10, Number(body.slideIndex || 0)));
+      }
       saveHallStore(store);
       enqueueRoomSignal(runtime, {
         type: 'room_state_changed',

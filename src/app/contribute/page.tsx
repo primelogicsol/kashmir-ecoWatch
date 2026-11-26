@@ -93,7 +93,7 @@ export default function ContributeHubPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contribute' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute to Kashmir Intelligence</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Contribute to Kashmir Intelligence</span>
           </>}
         subtitle="Whether reporting an urgent hazard, documenting wildlife, sharing research data, or joining as a recurring contributor — your participation strengthens Kashmir&#39;s environmental monitoring and conservation decision-making"
         icon={<Upload className="w-6 h-6 text-emerald-400" />}

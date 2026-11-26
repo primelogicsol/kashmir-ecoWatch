@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, type RefObject } from 'react';
 
 interface UseScrolledHeaderOptions {
   /** Scroll threshold in pixels to trigger compact state (default: 50) */
@@ -10,79 +10,131 @@ interface UseScrolledHeaderOptions {
 }
 
 /**
- * Premium scroll-reactive header hook
- * Tracks scroll position and direction for intelligent header state management
+ * Masthead visibility observer that identifies the exact moment the Expanded Institutional Masthead
+ * scrolls completely out of the viewport so ONE Compact Sticky Navigation bar activates cleanly
+ * without duplicate logos, flickering, or layout shifts.
  */
-export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
-  const { threshold = 50, smoothTransition = true } = options;
-  
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isCompact, setIsCompact] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const lastScrollYRef = useRef(0);
+export function useMastheadStickyObserver(mastheadRef: RefObject<HTMLElement | null>): boolean {
+  const [isStickyActive, setIsStickyActive] = useState(false);
+  const activeRef = useRef(false);
+
+  useLayoutEffect(() => {
+    const node = mastheadRef.current;
+    if (!node || typeof window === 'undefined') return;
+    const rect = node.getBoundingClientRect();
+    if (rect.height > 0) {
+      const next = rect.bottom <= 1;
+      activeRef.current = next;
+      setIsStickyActive(next);
+    }
+  }, [mastheadRef]);
 
   useEffect(() => {
-    let ticking = false;
-    let compactTimeout: NodeJS.Timeout;
+    const node = mastheadRef.current;
+    if (!node || typeof window === 'undefined') return;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const prevScrollY = lastScrollYRef.current;
-          const direction = currentScrollY > prevScrollY ? 'down' : 'up';
-          const isBelowThreshold = currentScrollY > threshold;
+    let rafId: number | null = null;
 
-          // Update scroll direction
-          setScrollDirection(direction);
-          lastScrollYRef.current = currentScrollY;
-          setIsScrolled(isBelowThreshold);
-
-          // Compact state logic with smooth transition
-          if (smoothTransition) {
-            if (isBelowThreshold && direction === 'down') {
-              // Scroll down past threshold - compact immediately
-              clearTimeout(compactTimeout);
-              setIsCompact(true);
-            } else if (direction === 'up') {
-              // Scroll up - delay expansion for premium feel
-              clearTimeout(compactTimeout);
-              compactTimeout = setTimeout(() => {
-                if (window.scrollY <= threshold) {
-                  setIsCompact(false);
-                }
-              }, 150);
-            }
-          } else {
-            setIsCompact(isBelowThreshold);
-          }
-
-          ticking = false;
-        });
-        ticking = true;
+    const evaluate = () => {
+      rafId = null;
+      const el = mastheadRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.height <= 0) return;
+      const next = rect.bottom <= 1;
+      if (next !== activeRef.current) {
+        activeRef.current = next;
+        setIsStickyActive(next);
       }
     };
 
-    // Initial check
-    if (typeof window !== 'undefined') {
-      const initialScroll = window.scrollY;
-      setIsScrolled(initialScroll > threshold);
-      setIsCompact(initialScroll > threshold);
-      lastScrollYRef.current = initialScroll;
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(compactTimeout);
+    const scheduleEvaluate = () => {
+      if (rafId === null) {
+        rafId = window.requestAnimationFrame(evaluate);
+      }
     };
-  }, [threshold, smoothTransition]);
+
+    const onScroll = () => {
+      // Zero-reflow instant restoration when returning to the very top of the document
+      if (activeRef.current && window.scrollY <= 4) {
+        activeRef.current = false;
+        setIsStickyActive(false);
+        return;
+      }
+      scheduleEvaluate();
+    };
+
+    evaluate();
+
+    const observer =
+      typeof IntersectionObserver !== 'undefined'
+        ? new IntersectionObserver(
+            ([entry]) => {
+              if (!entry) return;
+              const outOfView = !entry.isIntersecting && entry.boundingClientRect.bottom <= 2;
+              if (outOfView !== activeRef.current) {
+                activeRef.current = outOfView;
+                setIsStickyActive(outOfView);
+              }
+            },
+            {
+              root: null,
+              threshold: [0, 0.01],
+            }
+          )
+        : null;
+
+    observer?.observe(node);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', scheduleEvaluate, { passive: true });
+    window.visualViewport?.addEventListener('resize', scheduleEvaluate, { passive: true });
+
+    return () => {
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      observer?.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', scheduleEvaluate);
+      window.visualViewport?.removeEventListener('resize', scheduleEvaluate);
+    };
+  }, [mastheadRef]);
+
+  return isStickyActive;
+}
+
+/**
+ * Legacy compatibility export preserved for external consumers, if any.
+ */
+export function useScrolledHeader(options: UseScrolledHeaderOptions = {}) {
+  const { threshold = 50 } = options;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastStateRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    let rafId: number | null = null;
+    const check = () => {
+      rafId = null;
+      const next = window.scrollY > threshold;
+      if (next !== lastStateRef.current) {
+        lastStateRef.current = next;
+        setIsScrolled(next);
+      }
+    };
+    check();
+    const onScroll = () => {
+      if (rafId === null) rafId = window.requestAnimationFrame(check);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
+  }, [threshold]);
 
   return {
     isScrolled,
-    isCompact,
-    scrollDirection,
-    headerState: isCompact ? 'compact' : isScrolled ? 'transitioning' : 'expanded',
+    isCompact: isScrolled,
+    scrollDirection: 'down' as const,
+    headerState: isScrolled ? ('compact' as const) : ('expanded' as const),
   };
 }

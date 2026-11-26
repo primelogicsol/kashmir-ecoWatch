@@ -49,7 +49,7 @@ export default function EcosystemStressMortalitySignalsPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Ecosystem Stress & Mortality Signals' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Ecosystem Stress & Mortality Signals</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Ecosystem Stress & Mortality Signals</span>
           </>}
         subtitle="Cross-system ecological stress monitoring, mortality signal detection, ecosystem health assessment, and integrated environmental risk analysis across Kashmir's interconnected ecological systems"
         icon={<Activity className="w-6 h-6 text-emerald-400" />}

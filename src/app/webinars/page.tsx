@@ -83,7 +83,7 @@ export default function ScientificWebinarsHubPage() {
               <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">
                 Exclusively Online &bull; 30 Ecological Domains
               </div>
-              <h4 className="text-sm font-bold text-white leading-snug line-clamp-2">
+              <h4 className="text-sm font-bold text-white leading-snug">
                 Western Himalayan Cryosphere Summit 2027
               </h4>
             </div>
@@ -235,7 +235,7 @@ export default function ScientificWebinarsHubPage() {
                     Conference Program
                   </Button>
                 </Link>
-                <Link href="/webinars/room/kew-conf-2027-cryo">
+                <Link href="/webinars/room/kew-conf-2027-cryo?preflight=1">
                   <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5 text-xs">
                     Pre-Flight Test
                   </Button>
@@ -286,7 +286,7 @@ export default function ScientificWebinarsHubPage() {
                     Conference Program
                   </Button>
                 </Link>
-                <Link href="/webinars/room/conf-2027-wetlands">
+                <Link href="/webinars/room/conf-2027-wetlands?preflight=1">
                   <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5 text-xs">
                     Pre-Flight Test
                   </Button>
@@ -337,7 +337,7 @@ export default function ScientificWebinarsHubPage() {
                     Conference Program
                   </Button>
                 </Link>
-                <Link href="/webinars/room/conf-2027-biodiversity">
+                <Link href="/webinars/room/conf-2027-biodiversity?preflight=1">
                   <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5 text-xs">
                     Pre-Flight Test
                   </Button>
@@ -388,7 +388,7 @@ export default function ScientificWebinarsHubPage() {
                     Conference Program
                   </Button>
                 </Link>
-                <Link href="/webinars/room/conf-2027-rivers">
+                <Link href="/webinars/room/conf-2027-rivers?preflight=1">
                   <Button size="sm" variant="outline" className="border-white/10 text-slate-300 hover:bg-white/5 text-xs">
                     Pre-Flight Test
                   </Button>
@@ -463,7 +463,7 @@ export default function ScientificWebinarsHubPage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3 pt-3">
-                <Link href="/webinars/room/kew-conf-2027-cryo">
+                <Link href="/webinars/room/kew-conf-2027-cryo?preflight=1">
                   <Button className="bg-teal-600 hover:bg-teal-500 font-bold text-white shadow-lg shadow-teal-600/30 px-6">
                     <Video className="w-4 h-4 mr-2" />
                     Enter Pre-Flight Virtual Hall
@@ -657,7 +657,7 @@ export default function ScientificWebinarsHubPage() {
               <WebinarCard
                 key={session.id}
                 session={session}
-                onRegister={handleOpenRegistration}
+                onRegisterClick={handleOpenRegistration}
               />
             ))}
           </div>

@@ -89,7 +89,7 @@ export default function SeasonalActivityPage() {
       <Heading
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Seasonal Species Activity</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Seasonal Species Activity</span>
         </>}
         subtitle="Breeding periods, activity windows, appearance/disappearance timing, altitudinal movement cues, and seasonal behavior notes."
         icon={<Calendar className="w-6 h-6 text-violet-400" />}

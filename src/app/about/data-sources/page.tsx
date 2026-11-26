@@ -122,7 +122,7 @@ export default function DataSourcesPage() {
         <div className="absolute inset-0 bg-slate-900/50" />
 
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <Link href="/about" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-6">
               <ArrowLeft className="w-4 h-4" />
               Back to About
@@ -136,7 +136,7 @@ export default function DataSourcesPage() {
             </div>
 
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               Data <span className="text-emerald-400">Sources</span>
             </h1>
 

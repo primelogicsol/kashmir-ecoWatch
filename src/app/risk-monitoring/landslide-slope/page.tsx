@@ -39,7 +39,7 @@ export default function LandslideSlopePage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Landslide & Slope Risk</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Landslide & Slope Risk</span>
           </>}
         subtitle="Slope instability monitoring, landslide-prone corridors, road vulnerability intelligence, and hill/mountain risk assessment across Kashmir's terrain."
         icon={<Mountain className="w-6 h-6 text-emerald-400" />}

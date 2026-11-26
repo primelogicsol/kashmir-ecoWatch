@@ -120,7 +120,7 @@ function RequestFormContent() {
         <Heading
           title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Spatial Data Verification</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Spatial Data Verification</span>
           </>}
           subtitle="Kashmir Trails and Observation Network spatial coordinates and GIS files are restricted. Unregistered users must register institutional credentials to download GPX/KML tracking data."
           icon={<Shield className="w-6 h-6 text-emerald-400" />}

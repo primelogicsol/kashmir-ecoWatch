@@ -408,7 +408,7 @@ export default function SoilPollutionPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Soil Pollution & Degradation</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Soil Pollution & Degradation</span>
           </>}
         subtitle="Comprehensive soil health intelligence covering erosion, nutrient depletion, chemical contamination, and land degradation across Jammu & Kashmir — sourced from the ESRO Environmental Impact Assessment and Council for Plant Protection archives."
         icon={<Mountain className="w-6 h-6 text-emerald-400" />}

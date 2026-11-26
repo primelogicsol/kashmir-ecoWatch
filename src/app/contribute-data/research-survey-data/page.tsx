@@ -47,7 +47,7 @@ export default function ResearchSurveyDataPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Card className="glass-intense border-white/10 p-8 text-center">
               <div className="w-20 h-20 rounded-full bg-indigo-500/20 flex items-center justify-center mx-auto mb-6"><CheckCircle className="w-10 h-10 text-indigo-400" /></div>
-              <h1 className="max-w-xl text-3xl font-bold text-white mb-3">Submission Received</h1>
+              <h1 className=" text-3xl font-bold text-white mb-3">Submission Received</h1>
               <p className="text-slate-400 mb-6">Your research & survey data has been successfully submitted.</p>
               <div className="bg-slate-800/50 rounded-xl p-4 mb-6"><p className="text-sm text-slate-400 mb-1">Submission Reference ID</p><p className="text-xl font-mono font-bold text-indigo-400">{submissionId}</p></div>
               <div className="mb-8"><h3 className="text-sm font-semibold text-white mb-4">What happens next</h3>
@@ -70,7 +70,7 @@ export default function ResearchSurveyDataPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Research & Survey Data</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Research & Survey Data</span>
           </>}
         subtitle="Submit academic research outputs, institutional survey results, and peer-reviewed findings. Approved records route into Library and relevant domain modules."
         icon={<FileText className="w-6 h-6 text-emerald-400" />}

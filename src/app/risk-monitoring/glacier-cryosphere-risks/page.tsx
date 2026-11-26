@@ -22,7 +22,7 @@ export default function GlacierCryosphereRisksPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere Risks</span>
           </>}
         subtitle="Glacial lake monitoring, GLOF risk, and cryosphere changes"
         icon={<Waves className="w-6 h-6 text-emerald-400" />}

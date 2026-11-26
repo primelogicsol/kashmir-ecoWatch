@@ -18,6 +18,7 @@ import {
   MicOff,
   Presentation,
   Send,
+  ShieldCheck,
   Sparkles,
   ThumbsUp,
   UserCheck,
@@ -36,7 +37,7 @@ import {
   RolePermissions,
   RoomAllocationConfig,
 } from '@/types/virtual-hall';
-import { getInitials } from './VirtualHallAvatar';
+import { getInitials, ROLE_BADGE_STYLES, ROLE_SHORT_LABELS } from './VirtualHallAvatar';
 import { cn } from '@/lib/utils';
 
 export type SidePanelTabId =
@@ -84,7 +85,9 @@ interface SidePanelProps {
   onVotePoll: (pollId: string, optionId: string) => Promise<void>;
   onCreatePoll: (question: string, options: string[]) => Promise<void>;
   onHostCommand: (command: string, payload?: Record<string, unknown>) => Promise<void>;
+  isSlideDeckOpen?: boolean;
   onLaunchDeckOnStage: () => void;
+  onCloseDeckOnStage?: () => void;
 }
 
 export function VirtualHallSidePanel({
@@ -113,7 +116,9 @@ export function VirtualHallSidePanel({
   onVotePoll,
   onCreatePoll,
   onHostCommand,
+  isSlideDeckOpen = false,
   onLaunchDeckOnStage,
+  onCloseDeckOnStage,
 }: SidePanelProps) {
   const [chatChannel, setChatChannel] = useState<'public' | 'speakers' | 'green_room'>('public');
   const [chatDraft, setChatDraft] = useState('');
@@ -508,10 +513,14 @@ export function VirtualHallSidePanel({
             </div>
             {connectedInHall.map((p) => {
               const isYou = me?.peerId === p.peerId;
-              const isPromoted = promotedDelegateIds.includes(p.peerId);
+              const isPromoted =
+                promotedDelegateIds.includes(p.peerId) ||
+                (roomConfig.eventMode === 'applied_workshop' && p.role === 'delegate');
               return (
                 <div
                   key={p.peerId}
+                  data-roster-peer={p.peerId}
+                  data-roster-role={p.role}
                   className="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2"
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -520,12 +529,31 @@ export function VirtualHallSidePanel({
                         {getInitials(p.displayName)}
                       </div>
                       <div className="min-w-0">
-                        <div className="font-semibold text-white truncate">
-                          {p.displayName} {isYou ? '(You)' : ''}
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="font-semibold text-white truncate">
+                            {p.displayName} {isYou ? '(You)' : ''}
+                          </span>
+                          <span
+                            className={cn(
+                              'px-1.5 py-0.2 rounded text-[9px] font-semibold border shrink-0',
+                              ROLE_BADGE_STYLES[p.role]
+                            )}
+                          >
+                            {ROLE_SHORT_LABELS[p.role]}
+                          </span>
+                          {p.isVerifiedIdentity && (
+                            <ShieldCheck
+                              className="w-3 h-3 text-emerald-400 shrink-0"
+                              aria-label="Verified identity"
+                            />
+                          )}
+                          {p.role === 'delegate' && isPromoted && (
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-teal-950/80 text-teal-300 border border-teal-500/40 shrink-0">
+                              Floor Mic
+                            </span>
+                          )}
                         </div>
-                        <div className="text-[10px] text-slate-400 truncate">
-                          {p.role.replace('_', ' ')} &bull; {p.affiliation}
-                        </div>
+                        <div className="text-[10px] text-slate-400 truncate">{p.affiliation}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
@@ -569,6 +597,7 @@ export function VirtualHallSidePanel({
                       )}
                       {!isYou && permissions.canAdmitOrRemove && p.role === 'delegate' && (
                         <button
+                          data-testid="roster-toggle-mic-btn"
                           onClick={() =>
                             onHostCommand(
                               isPromoted ? 'revoke_delegate_mic' : 'promote_delegate',
@@ -654,19 +683,33 @@ export function VirtualHallSidePanel({
 
           {permissions.canShareScreen && (
             <button
-              onClick={onLaunchDeckOnStage}
-              className="w-full p-3 rounded-xl bg-teal-500/15 hover:bg-teal-500/25 border border-teal-500/40 text-left flex items-center justify-between gap-2 transition-colors"
+              onClick={isSlideDeckOpen && onCloseDeckOnStage ? onCloseDeckOnStage : onLaunchDeckOnStage}
+              data-testid="resources-toggle-deck-btn"
+              className={cn(
+                'w-full p-3 rounded-xl border text-left flex items-center justify-between gap-2 transition-colors',
+                isSlideDeckOpen
+                  ? 'bg-rose-950/40 hover:bg-rose-950/60 border-rose-500/40'
+                  : 'bg-teal-500/15 hover:bg-teal-500/25 border-teal-500/40'
+              )}
             >
               <div className="flex items-center gap-2.5">
-                <Presentation className="w-4 h-4 text-teal-300 shrink-0" />
+                <Presentation
+                  className={cn('w-4 h-4 shrink-0', isSlideDeckOpen ? 'text-rose-300' : 'text-teal-300')}
+                />
                 <div>
-                  <div className="font-bold text-teal-200">Present Briefing Slides on Stage</div>
+                  <div className={cn('font-bold', isSlideDeckOpen ? 'text-rose-200' : 'text-teal-200')}>
+                    {isSlideDeckOpen ? 'Close Briefing Deck' : 'Present KEW Slide Deck'}
+                  </div>
                   <div className="text-[10px] text-slate-400">
-                    Load quantitative KEW Cryosphere &amp; Hydrology slide deck
+                    {isSlideDeckOpen
+                      ? 'Return main conference stage to active speaker view'
+                      : 'Load quantitative KEW Cryosphere & Hydrology slide deck'}
                   </div>
                 </div>
               </div>
-              <span className="text-[10px] font-mono text-teal-300">Launch &rarr;</span>
+              <span className={cn('text-[10px] font-mono', isSlideDeckOpen ? 'text-rose-300' : 'text-teal-300')}>
+                {isSlideDeckOpen ? 'Close' : 'Launch →'}
+              </span>
             </button>
           )}
 

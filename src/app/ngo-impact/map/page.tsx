@@ -26,7 +26,7 @@ export default function NGOImpactMapPage() {
         icon={<MapPin className="w-6 h-6 text-emerald-400" />}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Geospatial Impact Map</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Geospatial Impact Map</span>
         </>}
         subtitle="Visualize the geographic footprint and operational catchments of verified civil society interventions across Kashmir."
         actions={

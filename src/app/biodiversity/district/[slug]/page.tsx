@@ -40,19 +40,19 @@ const DistrictDetailPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-600 text-white">
-        <div className="container mx-auto py-12">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface kew-module-hero-atmospheric text-white">
+        <div className="kew-module-hero-inner container mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm mb-4">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm mb-4">
             <Link href="/biodiversity" className="hover:underline">
               Biodiversity
             </Link>
             <span>/</span>
             <span className="text-blue-100">{displayName}</span>
-          </div>
+          </nav>
 
           <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-          <h1 className="max-w-xl text-4xl font-bold mb-4">{displayName} District</h1>
+          <h1 className="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.14] break-words">{displayName} District</h1>
           <p className="text-xl text-blue-100 max-w-3xl">
             District-level biodiversity intelligence including species richness, 
             endemic species, threatened species, and habitat distribution.

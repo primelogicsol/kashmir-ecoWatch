@@ -119,7 +119,7 @@ export default function ExtremeRainfallDashboardPage() {
         title={
           <>
             <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Extreme Rainfall</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent">
               Monitoring Dashboard
             </span>
           </>

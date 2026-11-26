@@ -67,7 +67,7 @@ export default function WaterQualityReadingsPage() {
                 <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-10 h-10 text-emerald-400" />
                 </div>
-                <h1 className="max-w-xl text-3xl font-bold text-white mb-3">Submission Received</h1>
+                <h1 className=" text-3xl font-bold text-white mb-3">Submission Received</h1>
                 <p className="text-slate-400 mb-6">Your water quality readings have been successfully submitted.</p>
                 <div className="bg-slate-800/50 rounded-xl p-4 mb-6">
                   <p className="text-sm text-slate-400 mb-1">Submission Reference ID</p>
@@ -113,7 +113,7 @@ export default function WaterQualityReadingsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Quality Readings</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Quality Readings</span>
           </>}
         subtitle="Submit pH, dissolved oxygen, turbidity, temperature, and other water quality parameters from Kashmir's waterbodies. Approved records are routed into Water Systems and Water Quality modules."
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}

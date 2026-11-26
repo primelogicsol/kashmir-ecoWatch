@@ -97,7 +97,7 @@ export default function BiodiversityRisksPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Biodiversity Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Biodiversity Risks</span>
           </>}
         subtitle="Species vulnerability tracking, habitat risk assessment, mortality monitoring, and ecological intelligence for Kashmir's biodiversity conservation"
         icon={<Leaf className="w-6 h-6 text-emerald-400" />}

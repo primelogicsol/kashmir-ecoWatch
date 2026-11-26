@@ -17,6 +17,7 @@ import {
   Video
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { PreConferenceDeviceCheckButton } from './PreConferenceDeviceCheckButton';
 
 export function WebinarNav() {
   const pathname = usePathname();
@@ -78,6 +79,7 @@ export function WebinarNav() {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            <PreConferenceDeviceCheckButton />
             <Link
               href="/webinars/admin"
               className={cn(

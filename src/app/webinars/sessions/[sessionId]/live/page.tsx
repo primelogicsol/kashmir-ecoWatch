@@ -24,7 +24,7 @@ export default async function SessionLiveHallPage({ params }: Props) {
     ) || SCIENTIFIC_WEBINARS[0];
 
   return (
-    <div className="fixed inset-0 h-[100dvh] w-screen overflow-hidden bg-[#060d18]">
+    <div className="fixed inset-0 h-[100dvh] w-full max-w-full overflow-hidden bg-[#060d18]">
       <LiveConferenceRoom session={webinarLike} />
     </div>
   );

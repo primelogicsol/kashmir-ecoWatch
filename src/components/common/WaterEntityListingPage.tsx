@@ -251,7 +251,7 @@ export function WaterEntityListingPage({
           return (
             <>
               <KewBrandIdentity />
-              <span className={`block leading-[1.12] pb-2 overflow-visible whitespace-nowrap bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
+              <span className={`block w-full leading-[1.14] pb-2 overflow-visible whitespace-normal break-words bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {line2}
               </span>
             </>

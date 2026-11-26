@@ -291,7 +291,7 @@ export default function AlgalBloomIntelligencePage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal sm: whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
               Algal Bloom Intelligence & Laboratory Verification
             </span>
           </>

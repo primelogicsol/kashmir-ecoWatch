@@ -71,17 +71,17 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface relative bg-slate-950 overflow-x-clip">
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10 kew-has-hero-rail">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10 kew-has-hero-rail">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {/* Breadcrumbs */}
-            <nav className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-slate-300 mb-4 min-w-0">
               <button onClick={() => router.push('/protected-network')} className="hover:text-white transition-colors">
                 Protected Network
               </button>
@@ -93,9 +93,9 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
               <span className="text-white font-medium">{threat.name}</span>
             </nav>
 
-            <div className="flex items-start justify-between gap-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 min-w-0">
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-xl bg-slate-900 ${getSeverityColor(threat.severity)} text-white flex items-center justify-center shadow-lg`}>
                     <TypeIcon className="w-6 h-6" />
                   </div>
@@ -107,7 +107,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
                   </Badge>
                 </div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
+                <h1 className="w-full text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-[1.14] tracking-tight break-words">
                   {threat.name}
                 </h1>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-3xl mb-6 leading-relaxed">

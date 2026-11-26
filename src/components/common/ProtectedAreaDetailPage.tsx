@@ -842,8 +842,8 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     const secondPart = words.slice(splitIndex).join(' ');
     return (
       <>
-        <span className="block whitespace-nowrap">{firstPart}</span>
-        <span className="block whitespace-nowrap bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">{secondPart}</span>
+        <span className="block leading-[1.14] pb-1 whitespace-normal break-words">{firstPart}</span>
+        <span className="block leading-[1.14] pb-1.5 whitespace-normal break-words bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">{secondPart}</span>
       </>
     );
   };
@@ -914,13 +914,13 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     <main className="min-h-screen bg-slate-950">
 
       {/* ── HERO ── */}
-      <div className="kew-module-hero-surface relative bg-slate-950 overflow-hidden">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface relative bg-slate-950 overflow-x-clip">
         <BackgroundCarousel images={heroImages} />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10 kew-has-hero-rail">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-slate-300 mb-6 min-w-0">
             <button onClick={() => router.push('/protected-network')} className="hover:text-white transition-colors">Protected Network</button>
             <ChevronRight className="w-3 h-3 text-slate-600" />
             {area.id === 'salim-ali' ? (
@@ -936,7 +936,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Left: title + meta */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 min-w-0">
               {/* Scope + category badges — no duplicate name */}
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 {area.id === 'salim-ali' ? (
@@ -1012,7 +1012,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   <Icon className="w-4 h-4 text-emerald-500 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="text-[10px] text-slate-500 uppercase">{label}</div>
-                    <div className="text-sm font-semibold text-white truncate">{String(value)}</div>
+                    <div className="text-sm font-semibold text-white break-words">{String(value)}</div>
                   </div>
                 </div>
               ))}

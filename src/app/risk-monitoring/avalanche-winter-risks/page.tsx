@@ -21,7 +21,7 @@ export default function AvalancheWinterRisksPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Avalanche & Winter Risks' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Avalanche & Winter Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Avalanche & Winter Risks</span>
           </>}
         subtitle="Snow avalanche forecasting, winter hazard monitoring, and road closure tracking"
         icon={<Snowflake className="w-6 h-6 text-emerald-400" />}

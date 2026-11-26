@@ -93,45 +93,46 @@ export function SearchResultsDropdown({
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        className="absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl overflow-hidden z-[500]"
+        initial={{ y: -6 }}
+        animate={{ y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        className="kew-menu-surface absolute top-full left-0 right-0 mt-2 border rounded-lg overflow-hidden z-[500]"
       >
-        <div className="max-h-96 overflow-y-auto">
+        <div className="kew-menu-scroll max-h-[min(24rem,calc(100dvh-9rem))] overflow-y-auto overscroll-contain">
           {Object.entries(results).map(([type, items]) => {
             if (items.length === 0) return null;
 
             return (
-              <div key={type} className="border-b border-white/5 last:border-0">
-                <div className="px-4 py-2 bg-white/5">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <div key={type} className="border-b border-[var(--kew-menu-border)] last:border-0">
+                <div className="kew-menu-section-header">
+                  <span>
                     {type.replace(/([A-Z])/g, ' $1').trim()}
                   </span>
                 </div>
-                {items.map((result, idx) => {
+                {items.map((result) => {
                   const globalIndex = allResults.findIndex(r => r.id === result.id);
                   const isSelected = globalIndex === selectedIndex;
 
                   return (
                     <button
                       key={result.id}
+                      type="button"
                       onClick={() => onSelect(result)}
                       onMouseEnter={() => setSelectedIndex(globalIndex)}
-                      className={`w-full px-4 py-3 flex items-start gap-3 transition-colors ${
-                        isSelected ? 'bg-white/5' : 'hover:bg-white/5'
+                      className={`kew-menu-item w-full px-4 py-3 flex items-start gap-3 ${
+                        isSelected ? 'kew-menu-item--active' : ''
                       }`}
                     >
-                      <div className={`p-2 rounded-lg ${getTypeColor(result.type)}`}>
+                      <div className={`p-2 rounded-lg shrink-0 ${getTypeColor(result.type)}`}>
                         {getTypeIcon(result.type)}
                       </div>
-                      <div className="flex-1 text-left">
-                        <div className="font-medium text-white text-sm">{result.name}</div>
-                        <div className="text-xs text-slate-400 mt-0.5 line-clamp-1">
+                      <div className="flex-1 text-left min-w-0">
+                        <div className="kew-menu-item-title font-medium text-sm">{result.name}</div>
+                        <div className="kew-menu-item-desc text-xs mt-0.5 line-clamp-1">
                           {result.description}
                         </div>
                         {result.district && (
-                          <div className="text-xs text-slate-500 mt-1">
+                          <div className="kew-menu-desc text-xs mt-1">
                             {result.district}
                           </div>
                         )}

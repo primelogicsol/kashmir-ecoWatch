@@ -30,7 +30,7 @@ export default function DistrictRiskProfilesPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'District Risk Profiles' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Risk Profiles</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">District Risk Profiles</span>
           </>}
         subtitle="Operational risk intelligence at district level: current risk levels, dominant hazard categories, live alerts, infrastructure concerns, response notes, advisory status, and trend direction."
         icon={<MapPin className="w-6 h-6 text-emerald-400" />}

@@ -43,19 +43,19 @@ const HabitatDetailPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-700 to-green-600 text-white">
-        <div className="container mx-auto py-12">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface kew-module-hero-atmospheric text-white">
+        <div className="kew-module-hero-inner container mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm mb-4">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm mb-4">
             <Link href="/biodiversity" className="hover:underline">
               Biodiversity
             </Link>
             <span>/</span>
             <span className="text-green-100">{habitat.name}</span>
-          </div>
+          </nav>
 
           <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-          <h1 className="max-w-xl text-4xl font-bold mb-4">{habitat.name}</h1>
+          <h1 className="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.14] break-words">{habitat.name}</h1>
           <p className="text-xl text-green-100 max-w-3xl">{habitat.description}</p>
         </div>
       </div>

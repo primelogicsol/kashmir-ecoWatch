@@ -306,7 +306,7 @@ export default function LandslidesPage() {
         title={
           <>
             <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Decoupled Slope Intelligence</span>
-            <span className="block whitespace-normal sm:whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200 bg-clip-text text-transparent">
+            <span className="block whitespace-normal sm: whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200 bg-clip-text text-transparent">
               Road Corridors, Nowcast & Susceptibility
             </span>
           </>

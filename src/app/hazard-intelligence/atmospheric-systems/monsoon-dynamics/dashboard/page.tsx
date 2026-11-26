@@ -118,7 +118,7 @@ export default function MonsoonDynamicsDashboardPage() {
         title={
           <>
             <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Monsoon Dynamics</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-teal-400 to-cyan-300 bg-clip-text text-transparent">
               Monitoring Dashboard
             </span>
           </>

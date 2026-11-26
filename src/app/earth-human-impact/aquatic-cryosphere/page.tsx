@@ -105,8 +105,8 @@ export default function AquaticCryosphereOverviewPage() {
           <div className="overflow-visible pb-2">
             <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400 bg-clip-text text-transparent tracking-normal">
-                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Aquatic &amp; Cryosphere</span> Change Observatory
+              <span className="kew-hero-headline-gradient bg-gradient-to-r from-emerald-400 via-teal-300 to-teal-200 bg-clip-text text-transparent tracking-normal [word-break:keep-all] [overflow-wrap:normal]">
+                Aquatic &amp; Cryosphere Change Observatory
               </span>
             </div>
           </div>

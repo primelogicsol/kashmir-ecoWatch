@@ -61,7 +61,7 @@ export default function NoisePollutionPage() {
     <main className="min-h-screen bg-slate-950"><Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Noise Pollution Risk & Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Noise Pollution Risk & Monitoring</span>
           </>}
         subtitle="Urban and tourism corridor noise monitoring, traffic and commercial noise assessment, sensitive wildlife habitat disturbance tracking, and pilgrimage/event pressure analysis"
         icon={<Volume2 className="w-6 h-6 text-emerald-400" />}

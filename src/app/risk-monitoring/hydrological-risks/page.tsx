@@ -22,7 +22,7 @@ export default function HydrologicalRisksPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hydrological Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Hydrological Risks</span>
           </>}
         subtitle="Water-related hazards, drought monitoring, and water security"
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}

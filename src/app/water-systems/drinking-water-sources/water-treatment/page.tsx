@@ -205,7 +205,7 @@ export default function WaterTreatmentPage() {
         icon={<Beaker className="w-6 h-6 text-emerald-400" />}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Treatment</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Water Treatment</span>
           </>}
         subtitle="Comprehensive inventory of drinking water treatment infrastructure across Kashmir — from conventional rapid sand filtration to modern membrane bioreactor systems."
         breadcrumbs={[

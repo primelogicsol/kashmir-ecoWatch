@@ -585,7 +585,7 @@ export default function FloodsPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] pb-2 overflow-visible bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
               Flood Intelligence
             </span>
           </>

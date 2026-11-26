@@ -14,6 +14,7 @@ import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 const footerLinks = {
   explore: [
     { label: 'About',         href: '/about' },
+    { label: 'Message',       href: '/about/message' },
     { label: 'Mission',       href: '/about/mission' },
     { label: 'Governance',    href: '/about/governance' },
     { label: 'Institutional Leadership', href: '/about/founder' },
@@ -23,11 +24,11 @@ const footerLinks = {
     { label: 'CSR & Grants',  href: '/about/csr-collaborations' },
     { label: 'Contact',       href: '/about/contact' },
     { label: 'KEW Q&A',       href: '/about/qna' },
-    { label: 'Kashmir Craft Lifecycle Assessment', href: 'https://www.craftlore.org/clee' },
-    { label: 'Plan Your Kashmir Trip', href: 'https://kashmirartstay.com/' },
+    { label: 'Kashmir Craft Lifecycle', href: 'https://www.craftlore.org/clee' },
+    { label: 'Plan Kashmir Trip', href: 'https://kashmirartstay.com/' },
   ],
   platform: [
-    { label: 'Env. Investigations (KEW-EIAI)',    href: '/environmental-investigations' },
+    { label: 'Investigations',                    href: '/environmental-investigations' },
     { label: 'Himalayan Dispatch',                href: getKewToDispatchUrl('/') },
     { label: 'Investigation Dashboard',           href: '/environmental-investigations/dashboard' },
     { label: 'Sectoral EIA Engine',               href: '/sectoral-eia' },
@@ -39,12 +40,10 @@ const footerLinks = {
     { label: 'Hazard Intelligence Dashboard',     href: '/hazard-intelligence/dashboards' },
     { label: 'Earth Systems Dashboard',           href: '/seasonal-ecology' },
     { label: 'SDG Dashboard',                     href: '/environmental-monitoring/sdg-monitoring' },
-    { label: 'Himalayan Dispatch Magazine',       href: getKewToDispatchUrl('/') },
     { label: 'EcoVoices: Arts & Music',           href: '/ecovoices' },
   ],
   resources: [
     { label: 'Investigation Reports',     href: '/environmental-investigations/reports' },
-    { label: 'Himalayan Dispatch · Issue 02', href: getKewToDispatchUrl('/forthcoming') },
     { label: 'Accountability Matrix',     href: '/environmental-investigations/accountability' },
     { label: 'Sectoral Impact Atlas',     href: '/sectoral-eia/impact-atlas' },
     { label: 'SEIAE Scientific Reports',  href: '/sectoral-eia/reports' },
@@ -101,29 +100,31 @@ export function AdvancedFooter() {
     <footer data-kew-dark-surface="true" className="bg-slate-950 border-t border-white/5 text-slate-100">
       {/* Main footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 3xl:gap-12">
-          {/* Brand column - spans 2 columns */}
-          <div className="col-span-2 sm:col-span-4 lg:col-span-2">
-            <Link href="/" className="relative flex items-center group">
-            <div className="flex items-center gap-4 sm:gap-3 mb-4">
+        <div className="kew-footer-main-grid grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 3xl:gap-12">
+          {/* Institutional Identity column (28% desktop proportion, controlled content measure) */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1 min-w-0">
+            <Link href="/" className="relative flex items-center group max-w-full">
+              <div className="flex items-center gap-3 sm:gap-3.5 mb-4 min-w-0 max-w-full">
                 <img
                   src="/kew_LOGO.png"
-                  alt="Kashmir EcoWatch (KEW Western Himalayan) Logo"
-                  className="w-[3rem] h-[3rem] md:w-[4rem] md:h-[4rem] object-contain"
+                  alt="Dr. Kumar's Kashmir EcoWatch Logo"
+                  className="w-[3rem] h-[3rem] md:w-[4rem] md:h-[4rem] object-contain shrink-0"
                 />
-                
-                <div>
-                  <h3 className="text-base font-bold text-white tracking-wide">
-                    Kashmir EcoWatch
+
+                <div className="min-w-0 flex-1 flex flex-col items-start text-left">
+                  <h3 className="kew-footer-inst-line-1 text-sm sm:text-base font-bold tracking-tight leading-snug text-left break-words">
+                    Dr. Kumar&apos;s Kashmir EcoWatch
                   </h3>
-                  <span className="text-[11px] font-semibold text-emerald-400 tracking-wider uppercase block">KEW Western Himalayan</span>
+                  <span className="kew-footer-inst-line-2 text-[10px] sm:text-[11px] font-semibold tracking-[0.06em] uppercase leading-snug block mt-0.5 text-left break-words">
+                    GLOBAL INSTITUTE FOR ADVANCED ENVIRONMENTAL STUDIES
+                  </span>
                 </div>
-            </div>
+              </div>
             </Link>
-            <p className="text-xs sm:text-sm text-slate-400 mb-3 leading-relaxed">
-              A Kashmir Diaspora-Supported Initiative for Environmental Intelligence, Scientific Stewardship, and Ecological Resilience.
+            <p className="kew-footer-inst-desc text-xs sm:text-sm text-slate-400 mb-3 leading-relaxed">
+              A Kashmir diaspora-supported global institute advancing environmental research, scientific education, environmental intelligence, ecological resilience and sustainable stewardship across the Western Himalayas.
             </p>
-            <div className="mb-4 text-xs leading-relaxed">
+            <div className="kew-footer-inst-desc mb-4 text-xs leading-relaxed">
               <span className="block text-slate-500 font-medium mb-0.5">Operated &amp; Supported by</span>
               <a
                 href="https://dkf.sufisciencecenter.info/"
@@ -197,7 +198,7 @@ export function AdvancedFooter() {
           </div>
 
           {/* Explore links */}
-          <div className="col-span-1">
+          <div className="col-span-1 min-w-0">
             <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Explore
             </h4>
@@ -219,7 +220,7 @@ export function AdvancedFooter() {
           </div>
 
           {/* Platform links */}
-          <div className="col-span-1">
+          <div className="col-span-1 min-w-0">
             <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Platform
             </h4>
@@ -239,7 +240,7 @@ export function AdvancedFooter() {
           </div>
 
           {/* Resources links */}
-          <div className="col-span-1">
+          <div className="col-span-1 min-w-0">
             <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Resources
             </h4>
@@ -259,7 +260,7 @@ export function AdvancedFooter() {
           </div>
 
           {/* Contribute links */}
-          <div className="col-span-1">
+          <div className="col-span-1 min-w-0">
             <h4 className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4">
               Get Involved
             </h4>

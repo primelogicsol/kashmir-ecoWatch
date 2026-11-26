@@ -22,7 +22,7 @@ export default function DisasterRisksPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Disaster Risks' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Disaster Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Disaster Risks</span>
           </>}
         subtitle="Multi-hazard risk assessment and monitoring across Kashmir"
         icon={<AlertTriangle className="w-6 h-6 text-emerald-400" />}

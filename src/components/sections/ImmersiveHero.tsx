@@ -293,20 +293,53 @@ export function ImmersiveHero() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-500"></span>
             </span>
             <span className="text-[11px] sm:text-xs 3xl:text-sm font-semibold text-slate-200 tracking-wider uppercase">
-              Western Himalayan Environmental Command Center
+              WESTERN HIMALAYAN ENVIRONMENTAL COMMAND CENTER
             </span>
             <Radar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
           </motion.div>
 
-          {/* Universal Brand Identity Lockup */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-3 sm:mb-4"
-          >
-            <KewBrandIdentity variant="eyebrow" />
-          </motion.div>
+          {/* Universal Brand Identity & Institutional Attribution Width-Locked Stack */}
+          <div className="flex flex-col items-stretch w-fit max-w-full mb-1.5 sm:mb-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-fit max-w-full mb-2.5 sm:mb-3"
+            >
+              <KewBrandIdentity variant="eyebrow" />
+            </motion.div>
+
+            {/* Institutional Attribution Supertitle — Spans exact left-to-right width of KEW + Western Himalayan */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              data-kew-attribution-supertitle="true"
+              className="w-full m-0 font-extrabold uppercase text-emerald-400 leading-none"
+              style={{
+                fontSize: 'calc(var(--kew-brand-font-size) * 1.12)',
+              }}
+            >
+              <span className="sr-only">DR. KUMAR&apos;S</span>
+              <span
+                aria-hidden="true"
+                className="flex w-full items-baseline justify-between select-none whitespace-nowrap"
+                style={{
+                  paddingRight: 'var(--kew-brand-letter-spacing)',
+                }}
+              >
+                {Array.from("DR. KUMAR'S").map((ch, idx) => (
+                  <span
+                    key={idx}
+                    className={ch === ' ' ? 'inline-block w-[0.18em]' : 'inline-block'}
+                    style={{ letterSpacing: 0 }}
+                  >
+                    {ch === ' ' ? '\u00A0' : ch}
+                  </span>
+                ))}
+              </span>
+            </motion.p>
+          </div>
 
           {/* Main title - Unified Branding */}
           <motion.h1
@@ -319,12 +352,22 @@ export function ImmersiveHero() {
             <span className="gradient-text text-glow">EcoWatch</span>
           </motion.h1>
 
-          {/* Institutional Subtitle */}
+          {/* Institutional Designation */}
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl 3xl:text-[1.65rem] font-semibold tracking-wide text-slate-100 mb-1.5 sm:mb-2 max-w-[72ch]"
+          >
+            Global Institute for Advanced Environmental Studies
+          </motion.p>
+
+          {/* Observatory Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl font-bold tracking-wide text-emerald-400 mb-3 sm:mb-4 max-w-[72ch]"
+            className="text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl font-bold tracking-wide text-emerald-400 mb-3.5 sm:mb-4 max-w-[72ch]"
           >
             Integrated Environmental Intelligence &amp; Earth Systems Observatory
           </motion.p>
@@ -336,7 +379,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-[1.15rem] text-slate-300 mb-3 sm:mb-4 max-w-[74ch] leading-relaxed text-pretty"
           >
-            <span className="text-emerald-400 font-semibold">Kashmir EcoWatch Western Himalayan</span>, formerly the Environment and Service Research Organization (ESRO, established 2004), is a multidisciplinary environmental intelligence initiative operated and supported by Dr. Kumar Foundation USA and Kumar Trust USA.
+            <span className="text-emerald-400 font-semibold">Dr. Kumar&apos;s Kashmir EcoWatch</span>, formerly the Environment and Service Research Organization (ESRO, established 2004), is a multidisciplinary environmental institute dedicated to scientific research, environmental intelligence, advanced education, ecological conservation and public engagement, operated and supported by Dr. Kumar Foundation USA and Kumar Trust USA.
           </motion.p>
 
           {/* Product descriptor */}
@@ -346,7 +389,7 @@ export function ImmersiveHero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-[1.15rem] text-slate-400 mb-7 sm:mb-9 md:mb-10 max-w-[74ch] leading-relaxed text-pretty"
           >
-            Integrating Earth observation, geospatial analytics, ecosystem science, climate intelligence, hydrological modelling, biodiversity informatics and environmental risk assessment to advance evidence-based governance, ecological resilience and sustainable stewardship across the Western Himalayas.
+            Integrating Earth observation, remote sensing, geospatial analytics, Earth systems science, ecosystem science, climate intelligence, hydrological modelling, biodiversity informatics and environmental risk assessment to advance scientific understanding, evidence-based governance, ecological resilience and sustainable stewardship across the Western Himalayas.
           </motion.p>
 
           {/* Mobile 2-Tap Direct Field Telemetry (Priority 1 Mobile Accessibility) */}

@@ -408,8 +408,8 @@ export default function OpenDataPortalPage() {
       <Heading
         breadcrumbs={[{ label: 'Platform', href: '/' }, { label: 'Open Data Portal' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Open Data</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Portal</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Open Data</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Portal</span>
         </>}
         subtitle="Open Environmental Intelligence for Research, Conservation, and Public Benefit across the Western Himalaya."
         icon={<Database className="w-6 h-6 text-emerald-400" />}

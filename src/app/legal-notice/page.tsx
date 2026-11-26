@@ -239,7 +239,7 @@ export default function LegalNoticePage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Legal Notice' }]}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Legal Notice</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Legal Notice</span>
         </>}
         subtitle="This Legal Notice governs the use of the Kashmir EcoWatch website, environmental intelligence platform, digital services, datasets, publications, maps, dashboards, and related resources."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}

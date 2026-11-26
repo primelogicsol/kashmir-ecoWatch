@@ -444,7 +444,7 @@ export default function SubmitSightingPage() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
               <div className="mb-8">
                 <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
-                <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Observation Received</h1>
+                <h1 className=" text-4xl font-bold text-white mb-4">Observation Received</h1>
                 <p className="text-slate-400 text-lg">
                   Thank you! Your observation has been logged and will be reviewed by the Kashmir EcoWatch team.
                 </p>
@@ -502,8 +502,8 @@ export default function SubmitSightingPage() {
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Submit Observation' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Community Reporting</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Submit Observation</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Community Reporting</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Submit Observation</span>
         </>}
         subtitle="An easy-to-use platform for students, citizens, journalists, and communities to report wildlife, environmental conditions, and community events."
         icon={<Camera className="w-6 h-6 text-emerald-400" />}

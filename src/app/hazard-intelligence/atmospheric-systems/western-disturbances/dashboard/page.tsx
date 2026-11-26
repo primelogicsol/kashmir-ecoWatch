@@ -143,7 +143,7 @@ export default function WesternDisturbancesDashboardPage() {
         title={
           <>
             <span className="block leading-[1.12] overflow-visible pb-1 sm:pb-2">Western Disturbances</span>
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-indigo-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-sky-400 to-indigo-300 bg-clip-text text-transparent">
               Monitoring Dashboard
             </span>
           </>

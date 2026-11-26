@@ -1031,7 +1031,7 @@ export default function EcologicalHealthPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Ecological Health</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Ecological Health</span>
           </>}
         subtitle="Ecosystem condition, environmental stress, and habitat integrity intelligence across all 27 KEW regional units — water, vegetation, biodiversity, soil, and live microclimate indicators."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}

@@ -31,7 +31,7 @@ export default function ProtectedAreasReportsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent">Protected Areas Field Reports</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent">Protected Areas Field Reports</span>
           </>}
         subtitle="Field intelligence from National Parks, Wildlife Sanctuaries, and Conservation Reserves. Anti-poaching patrols, habitat assessments, and corridor tracking."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}

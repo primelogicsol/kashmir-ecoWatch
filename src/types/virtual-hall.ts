@@ -208,6 +208,7 @@ export interface RoomAllocationConfig {
   activeTrackId: string;
   spotlightPeerId: string | null;
   activeSlideDeckIndex: number;
+  isSlideDeckOpen?: boolean;
   activeConsentRecordingId: string | null;
 }
 

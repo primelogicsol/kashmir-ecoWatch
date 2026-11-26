@@ -166,7 +166,7 @@ export default function RiskUpdatesPage() {
 <Heading
   title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Risk Monitoring</span>
           </>}
   subtitle="Active environmental risks, early warnings, and hazard monitoring across the Kashmir Valley. Live tracking of flood zones, AQI hotspots, seismic activity, glacial lake conditions, and forest fire alerts — prioritising data-driven disaster preparedness."
   icon={<Activity className="w-6 h-6 text-emerald-400" />}

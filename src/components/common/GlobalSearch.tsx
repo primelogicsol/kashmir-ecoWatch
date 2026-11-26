@@ -84,13 +84,13 @@ export function GlobalSearch() {
               className="fixed inset-0 bg-black/65 backdrop-blur-sm z-50"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: -16 }}
+              initial={{ opacity: 1, scale: 0.98, y: -8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: -16 }}
-              className="fixed top-20 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-2xl bg-slate-900 border border-white/15 rounded-xl shadow-2xl z-50 overflow-hidden"
+              exit={{ opacity: 0, scale: 0.98, y: -8 }}
+              className="kew-global-search-panel kew-menu-surface fixed top-20 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-2xl border rounded-xl z-50 overflow-hidden"
             >
-              <div className="flex items-center gap-3 p-4 border-b border-white/10 bg-slate-950/80">
-                <Search className="w-5 h-5 text-emerald-400 shrink-0" />
+              <div className="kew-search-input-bar flex items-center gap-3 p-4 border-b">
+                <Search className="kew-search-lead-icon w-5 h-5 shrink-0" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -105,7 +105,7 @@ export function GlobalSearch() {
                     }
                   }}
                   placeholder="Search all Western Himalayan modules, records, entities & hazards..."
-                  className="flex-1 bg-transparent border-none outline-none text-white text-base placeholder:text-slate-500"
+                  className="kew-search-input flex-1 bg-transparent border-none outline-none text-base"
                   autoFocus
                 />
                 {query && (
@@ -115,20 +115,20 @@ export function GlobalSearch() {
                       setQuery('');
                       inputRef.current?.focus();
                     }}
-                    className="p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"
+                    className="kew-search-clear-btn p-1.5 rounded-lg"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 )}
               </div>
 
-              <div className="max-h-[60vh] overflow-y-auto p-3 space-y-4">
+              <div className="kew-search-content-body kew-menu-scroll max-h-[min(60vh,calc(100dvh-10rem))] overflow-y-auto overscroll-contain p-3 space-y-4">
                 {isLoading && groups.length === 0 ? (
-                  <div className="py-8 text-center text-sm text-slate-400">Searching canonical index...</div>
+                  <div className="kew-search-supporting-text py-8 text-center text-sm">Searching canonical index...</div>
                 ) : groups.length > 0 ? (
                   groups.map((g) => (
                     <div key={g.groupKey}>
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2 mb-1">
+                      <div className="kew-search-inst-heading text-[10px] font-bold uppercase tracking-wider px-2 mb-1">
                         {g.groupLabel}
                       </div>
                       <div className="space-y-1">
@@ -137,30 +137,30 @@ export function GlobalSearch() {
                             key={it.id}
                             href={it.canonicalUrl}
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center justify-between gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-colors group"
+                            className="kew-search-result-item flex items-center justify-between gap-3 p-2.5 rounded-lg transition-colors group"
                           >
                             <div className="min-w-0 flex-1">
-                              <div className="text-sm font-semibold text-white group-hover:text-emerald-300 truncate">
+                              <div className="kew-search-result-title text-sm font-semibold truncate">
                                 {it.title}
                               </div>
                               {it.subtitle && (
-                                <div className="text-xs text-slate-400 truncate">{it.subtitle}</div>
+                                <div className="kew-search-result-subtitle text-xs truncate">{it.subtitle}</div>
                               )}
                             </div>
-                            <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 shrink-0" />
+                            <ArrowUpRight className="kew-search-result-arrow w-4 h-4 shrink-0" />
                           </Link>
                         ))}
                       </div>
                     </div>
                   ))
                 ) : (
-                  <div className="py-6 text-center text-xs text-slate-400">
+                  <div className="kew-search-supporting-text py-6 text-center text-xs">
                     Type at least 2 characters to search modules, scientific records, PILs, EIAs, and geographic entities.
                   </div>
                 )}
               </div>
 
-              <div className="px-4 py-3 border-t border-white/10 bg-slate-950/90 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+              <div className="kew-search-footer-bar px-4 py-3 border-t flex flex-wrap items-center justify-between gap-2 text-xs">
                 <Link
                   href={
                     query.trim()
@@ -168,7 +168,7 @@ export function GlobalSearch() {
                       : '/search?mode=ask'
                   }
                   onClick={() => setIsOpen(false)}
-                  className="text-sky-300 hover:underline font-semibold inline-flex items-center gap-1"
+                  className="kew-search-qa-link hover:underline font-semibold inline-flex items-center gap-1"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Ask Scientific Question (Cited Brief) →</span>
@@ -176,7 +176,7 @@ export function GlobalSearch() {
                 <Link
                   href={query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search'}
                   onClick={() => setIsOpen(false)}
-                  className="text-emerald-400 hover:underline font-semibold"
+                  className="kew-search-full-link hover:underline font-semibold"
                 >
                   Open Full Search{totalHits > 0 ? ` (${totalHits.toLocaleString()})` : ''} →
                 </Link>

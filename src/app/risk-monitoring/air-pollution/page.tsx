@@ -55,7 +55,7 @@ export default function AirPollutionPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Air Pollution' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Risk & Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Risk & Monitoring</span>
           </>}
         subtitle="District-wise AQI intelligence, seasonal inversion patterns, transport corridor pollution, and public health overlap monitoring across Kashmir valley"
         icon={<Wind className="w-6 h-6 text-emerald-400" />}

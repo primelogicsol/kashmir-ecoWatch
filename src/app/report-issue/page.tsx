@@ -378,7 +378,7 @@ export default function ReportIssuePage() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
               <div className="mb-8">
                 <CheckCircle className="w-20 h-20 text-emerald-400 mb-6" />
-                <h1 className="max-w-xl text-4xl font-bold text-white mb-4">Incident Report Received</h1>
+                <h1 className=" text-4xl font-bold text-white mb-4">Incident Report Received</h1>
                 <p className="text-slate-400 text-lg">
                   Your report has been successfully logged into the Kashmir Environmental Intelligence system.
                 </p>
@@ -430,8 +430,8 @@ export default function ReportIssuePage() {
       <Heading
         breadcrumbs={[{ label: 'Contribute', href: '/contribute' }, { label: 'Report an Issue' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Report an</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Environmental Issue</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Report an</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Environmental Issue</span>
         </>}
         subtitle="Report environmental hazards, emergencies, and urgent concerns for rapid response and district-level risk intelligence across the Western Himalayas."
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}

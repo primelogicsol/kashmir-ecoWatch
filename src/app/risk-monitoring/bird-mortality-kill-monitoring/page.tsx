@@ -47,7 +47,7 @@ export default function BirdMortalityKillMonitoringPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Biodiversity Risks', href: '/risk-monitoring/biodiversity-risks' }, { label: 'Bird Mortality / Kill Monitoring' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Mortality / Kill Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Bird Mortality / Kill Monitoring</span>
           </>}
         subtitle="Wetland bird mortality tracking, collision and habitat pressure deaths, poisoning/contamination events, disease clusters, and seasonal bird kill anomaly detection"
         icon={<Bird className="w-6 h-6 text-emerald-400" />}

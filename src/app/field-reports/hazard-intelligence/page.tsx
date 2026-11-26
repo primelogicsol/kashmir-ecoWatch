@@ -31,7 +31,7 @@ export default function HazardIntelligenceReportsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-500 to-orange-600 bg-clip-text text-transparent">Hazard Intelligence Field Reports</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-red-500 to-orange-600 bg-clip-text text-transparent">Hazard Intelligence Field Reports</span>
           </>}
         subtitle="Avalanche exposure logs, landslide geotechnical assessments, GLOF monitoring, and flood vulnerability reports."
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}

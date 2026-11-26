@@ -1,118 +1,153 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import {
-  Globe, Map, Compass, Mountain, Droplets, ShieldCheck,
-  Layers, Cpu, Database, Eye, FileCheck, MapPin, Activity,
-  CheckCircle2, ArrowRight, Sparkles, Scale, Trees,
-  AlertTriangle, Shield, Landmark, ExternalLink, Zap, Info,
-  ChevronRight, Radio, Waves, Users
+  Globe,
+  Map,
+  Compass,
+  Mountain,
+  Droplets,
+  ShieldCheck,
+  Layers,
+  Cpu,
+  Database,
+  MapPin,
+  Activity,
+  CheckCircle2,
+  ArrowRight,
+  Sparkles,
+  Scale,
+  Trees,
+  AlertTriangle,
+  Shield,
+  Radio,
+  Waves,
+  Users,
+  ChevronRight,
+  Info,
 } from 'lucide-react';
+import {
+  GEOGRAPHY,
+  GEOGRAPHIC_SCOPE_TIERS,
+  LADAKH_DISTRICTS_REGISTRY,
+  OFFICIAL_ADMIN_SOURCES,
+} from '@/data/geography';
+import { districtsData as activeDistrictProfiles } from '@/data/districts-intelligence';
+import { groundStationsRegistry, airQualityRegistry } from '@/data/air-quality-registry';
 
 export default function GeographicScopePage() {
   const [selectedTier, setSelectedTier] = useState<number>(0);
-  const [activeSystemFilter, setActiveSystemFilter] = useState<string>('all');
 
-  // Key Geographic Scope Metrics Ribbon
+  // Dynamically derive verified counters strictly from actual underlying platform registries
+  const verifiedTelemetry = useMemo(() => {
+    const tier1Districts = GEOGRAPHY.units['Kashmir Core'].length; // 10
+    const tier2JammuDistricts = GEOGRAPHY.units.Jammu.length; // 10
+    const tier2LadakhBaseline = GEOGRAPHY.units.Ladakh.length; // 2
+    const tier2LadakhNotified = LADAKH_DISTRICTS_REGISTRY.length; // 8 (2 baseline + 6 notified 2026)
+    const tier2TotalNotified = tier2JammuDistricts + tier2LadakhNotified; // 18
+    const tier2TotalBaseline = tier2JammuDistricts + tier2LadakhBaseline; // 12
+    const tier3AjkDistricts = GEOGRAPHY.units.AJK.length; // 10
+    const tier3GbDistricts = GEOGRAPHY.units['Gilgit-Baltistan'].length; // 14
+    const tier3TotalDistricts = tier3AjkDistricts + tier3GbDistricts; // 24
+
+    const totalNotifiedDistricts = tier1Districts + tier2TotalNotified + tier3TotalDistricts; // 52
+    const totalBaselineUnits = tier1Districts + tier2TotalBaseline + tier3TotalDistricts; // 46
+
+    const tier1ActiveProfiles = activeDistrictProfiles.filter(
+      (d) => d.region === 'kashmir-valley'
+    ).length; // 10
+    const tier2ActiveProfiles = activeDistrictProfiles.filter(
+      (d) => d.region === 'jammu' || d.region === 'ladakh'
+    ).length; // 6
+    const totalActiveProfiles = activeDistrictProfiles.length; // 16
+
+    const groundByScope = {
+      'Kashmir Core': groundStationsRegistry.filter((s) => s.scope === 'Kashmir Core').length,
+      'Trans-Divisional': groundStationsRegistry.filter((s) => s.scope === 'Trans-Divisional')
+        .length,
+      'Transboundary / Extended': groundStationsRegistry.filter(
+        (s) => s.scope === 'Transboundary / Extended'
+      ).length,
+    };
+
+    const camsByScope = {
+      'Kashmir Core': airQualityRegistry.filter((s) => s.scope === 'Kashmir Core').length,
+      'Trans-Divisional': airQualityRegistry.filter((s) => s.scope === 'Trans-Divisional').length,
+      'Transboundary / Extended': airQualityRegistry.filter(
+        (s) => s.scope === 'Transboundary / Extended'
+      ).length,
+    };
+
+    return {
+      tier1Districts,
+      tier2JammuDistricts,
+      tier2LadakhBaseline,
+      tier2LadakhNotified,
+      tier2TotalNotified,
+      tier2TotalBaseline,
+      tier3TotalDistricts,
+      totalNotifiedDistricts,
+      totalBaselineUnits,
+      tier1ActiveProfiles,
+      tier2ActiveProfiles,
+      totalActiveProfiles,
+      totalGroundAqi: groundStationsRegistry.length,
+      totalCamsCells: airQualityRegistry.length,
+      groundByScope,
+      camsByScope,
+    };
+  }, []);
+
+  // Key Geographic Scope Metrics Ribbon — strictly separating Geographic Coverage vs Verified Active Monitoring
   const scopeMetrics = [
-    { value: 'Kashmir Core', title: 'Primary Bioregion', desc: '10 central valley districts & upper Jhelum basin', icon: Compass, color: 'text-emerald-400' },
-    { value: 'Trans-Divisional', title: 'Mountain Interfaces', desc: 'Pir Panjal, Chenab basin & tributary headwaters', icon: Mountain, color: 'text-sky-400' },
-    { value: 'Transboundary', title: 'Macro Corridors', desc: 'Upper Indus basin, glacial massifs & Siberian flyways', icon: Globe, color: 'text-amber-400' },
-    { value: '15,948+ km²', title: 'Valley Floor Area', desc: 'Intensive high-resolution telemetry & monitoring grid', icon: Layers, color: 'text-purple-400' },
-    { value: '1,000+', title: 'Water Systems', desc: 'Lakes, NWIA wetlands, rivers & subterranean springs', icon: Droplets, color: 'text-teal-400' },
-    { value: '100%', title: 'Scientific Neutrality', desc: 'Strict ecological boundaries, zero geopolitical bias', icon: ShieldCheck, color: 'text-rose-400' },
-  ];
-
-  // 3-Tier Scope Classification Framework
-  const scopeTiers = [
     {
-      id: 'kashmir-core',
-      name: 'Kashmir Core',
-      subtitle: 'The Central Valley & Primary Hydrological Depression',
-      badge: 'Tier 1: Intensive Ground & Satellite Grid',
-      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-      tagline: 'Primary environmental focus area encompassing the entire alluvial valley floor, flanking karewa terraces, and inner foothill catchments.',
-      description: 'Kashmir Core represents the contiguous geographic and ecological heartland of the Kashmir Valley. Bound by the Pir Panjal range to the south and west and the Greater Himalayas to the north and east, this enclosed intermontane basin acts as a singular, highly interconnected hydrological and atmospheric amphitheater.',
-      coverageDistricts: [
-        'Srinagar', 'Anantnag', 'Baramulla', 'Budgam', 'Pulwama',
-        'Kupwara', 'Kulgam', 'Bandipora', 'Ganderbal', 'Shopian'
-      ],
-      keyLandmarks: [
-        'River Jhelum (Vyeth) Mainstem & 24 Major Inflow Tributaries',
-        'Dal Lake, Nigeen Lake, Wular Lake (Ramsar #518), Manasbal Lake',
-        'Hokersar (Ramsar #1570), Shallabugh, Haigam & Mirgund Wetland Reserves',
-        'Dachigam National Park (Primary Hangul Deer Habitat), Overa-Aru Sanctuary',
-        'Pampore Karewa Saffron Ecosystems & North Kashmir Apple Belt Watersheds'
-      ],
-      monitoringFocus: [
-        'High-density water quality telemetry across urbanized and rural lake basins',
-        'Wetland perimeter encroachment and siltation rate tracking via Sentinel-2 MSI',
-        'Air Quality Index (AQI) winter temperature inversion monitoring in the valley bowl',
-        'Solid waste dumping hotspot detection along riverbanks and riparian buffers',
-        'Subterranean natural spring-shed (naag) vitality and aquifer discharge health'
-      ]
+      value: `${verifiedTelemetry.tier1Districts} Districts`,
+      title: 'Tier 1 · Kashmir Core',
+      desc: `${verifiedTelemetry.tier1ActiveProfiles}/${verifiedTelemetry.tier1Districts} active district dossiers & Jhelum basin grid`,
+      icon: Compass,
+      color: 'text-emerald-400',
     },
     {
-      id: 'trans-divisional',
-      name: 'Trans-Divisional',
-      subtitle: 'Mountain Passes, Ridges & Inter-Valley Drainage Interfaces',
-      badge: 'Tier 2: Watershed & Slope Interface Grid',
-      badgeColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-      tagline: 'Ecologically coupled mountain environments extending across the Pir Panjal crest into the Chenab drainage basin and foothill transition belts.',
-      description: 'Ecological phenomena do not terminate at mountain ridgelines. Trans-Divisional scope encompasses the high mountain catchments, passes, and river-basin headwaters that physically connect the Kashmir Valley to adjoining mountain valleys of Jammu division (Chenab Basin, Pir Panjal slopes, and Shivalik fringes). What occurs in these upper slopes directly governs downstream flood surges, sediment transport, and wildlife migrations.',
-      coverageDistricts: [
-        'Doda', 'Kishtwar', 'Ramban', 'Reasi', 'Udhampur',
-        'Poonch', 'Rajouri', 'Jammu Foothills', 'Kathua Slopes', 'Samba Buffer'
-      ],
-      keyLandmarks: [
-        'Chenab River Mainstem & High-Gradient Tributaries (Marusudar, Tawi)',
-        'Pir Panjal Alpine Ridgelines (Peer Ki Gali, Sinthan Top, Razdan Pass, Zojila)',
-        'Kishtwar National Park & High-Altitude Glaciated Mountain Catchments',
-        'Hydroelectric Reservoirs (Baglihar, Salal, Dul Hasti) Sedimentation Zones',
-        'Sub-Alpine Coniferous Forest Belts & Seasonal Gujjar-Bakarwal Pastoral Routes'
-      ],
-      monitoringFocus: [
-        'Slope stability and mass-movement landslide early detection along transit corridors',
-        'Glacier-fed stream discharge variation and cloudburst flash-flood routing',
-        'Forest fire hotspot propagation monitoring via NASA FIRMS real-time satellites',
-        'Pastoral grazing pressure and sub-alpine meadow biodiversity conservation',
-        'Aquatic connectivity and coldwater fish migration (Snow Trout, Himalayan Brown Trout)'
-      ]
+      value: `${verifiedTelemetry.tier2TotalNotified} Districts`,
+      title: 'Tier 2 · Jammu & Ladakh',
+      desc: `${verifiedTelemetry.tier2JammuDistricts} Jammu + ${verifiedTelemetry.tier2LadakhNotified} Ladakh (${verifiedTelemetry.tier2LadakhBaseline} baseline + 6 notified 2026)`,
+      icon: Mountain,
+      color: 'text-sky-400',
     },
     {
-      id: 'transboundary',
-      name: 'Transboundary / Extended',
-      subtitle: 'Upper Indus Basin, Cryospheric Glaciers & Avian Flyways',
-      badge: 'Tier 3: Macro-Ecosystem & Flyway Grid',
-      badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-      tagline: 'Macro-scale Earth systems encompassing the Western Himalayan cryosphere, the Indus water tower, and the Siberian migratory flyway.',
-      description: 'The Kashmir bioregion is an integral component of the third pole—the greatest concentration of snow and ice outside the polar regions. The Transboundary / Extended scope monitors macro-scale Earth systems that span national and international borders: the vast glacial complexes that feed the Indus River system, atmospheric circulation patterns (Western Disturbances), and transcontinental avian migration flyways linking Siberia and Central Asia to South Asia.',
-      coverageDistricts: [
-        'Upper Indus Basin', 'Karakoram-Himalayan Trans-Himalayan Axis',
-        'Gilgit-Baltistan Glacial Interfaces', 'Ladakh Cold-Desert Watersheds',
-        'Western Tibetan Plateau Drainage', 'Indus River Transboundary Corridor'
-      ],
-      keyLandmarks: [
-        'Great Himalayan Massifs (Kolhai Massif, Nun-Kun, Machoi, Thajwas Glacier)',
-        'Central Asian Flyway (CAF) Avian Migration Gateway',
-        'Upper Indus Hydrological Basin & Glacial Lake Complexes',
-        'Cross-Range Western Disturbance Atmospheric Snow-Deposition Corridors',
-        'High-Altitude Cold-Desert Wetland Systems (Tso Moriri, Pangong Tso Connections)'
-      ],
-      monitoringFocus: [
-        'Long-term glacial mass balance retreat tracking and snow-water equivalent anomalies',
-        'Glacial Lake Outburst Flood (GLOF) susceptibility mapping for high-altitude moraines',
-        'Migratory waterfowl stopover census tracking across the international flyway',
-        'Macro-climate warming velocity across elevation gradients (0–6,000m ASL)',
-        'Cross-border aerosol and trans-boundary air pollution plume dispersion'
-      ]
-    }
+      value: `${verifiedTelemetry.tier3TotalDistricts} + 5 Basins`,
+      title: 'Tier 3 · Transboundary',
+      desc: '10 AJK + 14 Gilgit-Baltistan districts & 5 cross-border macro corridors',
+      icon: Globe,
+      color: 'text-amber-400',
+    },
+    {
+      value: `${verifiedTelemetry.totalActiveProfiles} / ${verifiedTelemetry.totalNotifiedDistricts}`,
+      title: 'Verified District Dossiers',
+      desc: `${verifiedTelemetry.totalActiveProfiles} deep district profiles (${verifiedTelemetry.totalBaselineUnits} baseline GIS/registry units)`,
+      icon: Layers,
+      color: 'text-purple-400',
+    },
+    {
+      value: '1,333',
+      title: 'Water & Cryosphere Records',
+      desc: '553 master lakes, 374 watersheds, 127 rivers, 100 springs, 99 glaciers & 80 wetlands',
+      icon: Droplets,
+      color: 'text-teal-400',
+    },
+    {
+      value: `${verifiedTelemetry.totalGroundAqi} + ${verifiedTelemetry.totalCamsCells}`,
+      title: 'Ground vs Model AQI',
+      desc: `${verifiedTelemetry.totalGroundAqi} physical CAAQMS/EPA stations + ${verifiedTelemetry.totalCamsCells} CAMS model cells`,
+      icon: ShieldCheck,
+      color: 'text-rose-400',
+    },
   ];
 
-  // 6 Core Environmental Systems Covered
+  // 6 Core Environmental Systems Covered — aligned with verified repository counts
   const environmentalSystems = [
     {
       id: 'water',
@@ -122,14 +157,15 @@ export default function GeographicScopePage() {
       color: 'text-sky-400',
       borderColor: 'hover:border-sky-500/40',
       bgGlow: 'from-sky-500/10 to-transparent',
-      summary: 'Comprehensive hydrological telemetry tracking 1,000+ freshwater assets across Kashmir.',
+      summary:
+        'Empirical hydrological inventory spanning 1,333 cataloged freshwater and cryospheric records across the three tiers.',
       layers: [
-        'River Jhelum & Chenab drainage networks with 36 real-time gauge nodes',
-        'Ramsar wetlands: Wular, Hokersar, Shallabugh, Haigam & associated flood basins',
-        'Over 5,000 mountain springs (naags/chashmas) sustaining rural drinking water grids',
-        'High-altitude alpine oligotrophic lakes (Gangabal, Tarsar, Marsar, Vishansar, Sheshnag)',
-        'National Wetland Inventory & Assessment (NWIA) standardized GIS boundaries'
-      ]
+        '553-lake Western Himalayan Master Registry plus 80 NWIA-standardized wetlands and 374 delineated watersheds',
+        '127 mapped rivers and mountain streams with 12 live hydrometric gauge feeds (9 Jhelum/Valley, 1 Chenab, 2 cross-border)',
+        'Ramsar wetlands across Tier 1 (Wular, Hokersar, Shallabugh, Hygam), Tier 2 (Surinsar-Mansar, Tso Moriri, Tso Kar) & Tier 3 (Mangla)',
+        '100 documented karst & mountain springs (naags/chashmas) supporting drinking water and baseflow resilience',
+        'High-altitude oligotrophic & endorheic basins (Gangabal, Tarsar-Marsar, Sheshnag, Pangong Tso)',
+      ],
     },
     {
       id: 'cryosphere',
@@ -139,14 +175,15 @@ export default function GeographicScopePage() {
       color: 'text-purple-400',
       borderColor: 'hover:border-purple-500/40',
       bgGlow: 'from-purple-500/10 to-transparent',
-      summary: 'Frontline cryospheric observation monitoring the rapid recession of Western Himalayan ice.',
+      summary:
+        'Orbital and archival glaciological tracking across 99 cataloged valley glaciers and 27 GLOF hazard zones.',
       layers: [
-        'Glacial perimeter & terminus retreat tracking for Kolhai, Machoi, and Thajwas glaciers',
-        'Satellite-derived Snow Water Equivalent (SWE) and seasonal snow cover duration',
-        'Moraine-dammed proglacial lake expansion and GLOF sudden-drainage risk indices',
-        'Permafrost degradation and high-altitude rock-glacier creep in cold mountain valleys',
-        'Spring-melt timing shifts impacting downstream spring planting and paddy irrigation'
-      ]
+        'Terminus & mass-balance tracking across Kashmir Core (Kolahoi, Thajwas), Tier 2 Ladakh/Kishtwar (Drang-Drung, Parkachik, Machoi, Nun-Kun) & Tier 3 Karakoram',
+        'Satellite-derived Snow Water Equivalent (SWE) and seasonal snow-cover persistence via MODIS & Sentinel-2',
+        '27 moraine- and ice-dammed Glacial Lake Outburst Flood (GLOF) susceptibility zones across high-altitude basins',
+        'Permafrost thaw and rock-glacier kinematics across Zanskar, Changthang, Nubra, and Upper Indus valleys',
+        'Meltwater hydrograph timing shifts affecting downstream Jhelum, Chenab, and Indus irrigation regimes',
+      ],
     },
     {
       id: 'protected',
@@ -156,14 +193,15 @@ export default function GeographicScopePage() {
       color: 'text-emerald-400',
       borderColor: 'hover:border-emerald-500/40',
       bgGlow: 'from-emerald-500/10 to-transparent',
-      summary: 'Legally designated wildlife sanctuaries, national parks, and ecological corridors.',
+      summary:
+        '422 cataloged protected-network, wildlife sanctuary, conservation reserve, trail, and corridor records.',
       layers: [
-        'Dachigam National Park & the Greater Dachigam biodiversity buffer zone',
-        'Kaziranga-scale Hangul deer migratory corridors between Overa-Aru, Tral & Sindh',
-        'Kishtwar National Park, City Forest (Salim Ali), and Gulmarg Wildlife Sanctuary',
-        'Conservation Reserves: Brain-Nishat, Khrew, Wangat, Khiram, Shikargah',
-        'Habitat fragmentation index tracking linear infrastructure encroachments'
-      ]
+        'Tier 1 Kashmir Core sanctuaries: Dachigam National Park, Overa-Aru, Gulmarg, Hirpora & Salim Ali National Park',
+        'Tier 2 Jammu & Ladakh reserves: Kishtwar National Park, Hemis National Park, Changthang & Karakoram Wildlife Sanctuaries',
+        'Tier 3 cross-border landscapes: Central Karakoram, Deosai, Khunjerab & Machiara National Parks',
+        'Wetland & Conservation Reserves: Brain-Nishat, Khrew, Wangat, Khiram, Shikargah, Gharana & Surinsar-Mansar',
+        'Connectivity corridors linking Hangul, Snow Leopard, Himalayan Brown Bear, and Pir Panjal Markhor habitats',
+      ],
     },
     {
       id: 'biodiversity',
@@ -173,14 +211,15 @@ export default function GeographicScopePage() {
       color: 'text-teal-400',
       borderColor: 'hover:border-teal-500/40',
       bgGlow: 'from-teal-500/10 to-transparent',
-      summary: 'Taxonomic registers, Darwin Core data standards, and IUCN Red List monitoring.',
+      summary:
+        '2,739 curated taxonomic records aligned with Darwin Core schemas and IUCN Red List assessments.',
       layers: [
-        'Over 4,200 verified species records spanning mammals, avifauna, fish, reptiles & flora',
-        'Critically endangered focal species: Kashmir Stag (Hangul), Snow Leopard, Musk Deer',
-        'Central Asian Flyway waterfowl census: 800,000+ wintering migratory birds',
-        'Endemic high-altitude medicinal & aromatic flora (Kuth, Kour, Belladonna, Patrees)',
-        'Automated sensitivity masking to protect endangered wildlife locations from poaching'
-      ]
+        '1,834 vascular plant taxa, 601 avian species, 127 medicinal flora profiles, 111 mammals & 66 native/coldwater fish records',
+        '60 dedicated IUCN threatened species dossiers led by Kashmir Stag (Hangul), Snow Leopard, Markhor & Black-necked Crane',
+        'Central Asian Flyway (CAF) migratory waterfowl phenology linking Changthang, Hokersar, Wular, Gharana & Mangla staging grounds',
+        'Endemic Western Himalayan alpine & medicinal flora (Saussurea costus/Kuth, Arnebia, Picrorhiza, Aconitum)',
+        'Coordinate sensitivity masking on threatened wildlife observations to prevent poaching disturbance',
+      ],
     },
     {
       id: 'monitoring',
@@ -190,14 +229,15 @@ export default function GeographicScopePage() {
       color: 'text-amber-400',
       borderColor: 'hover:border-amber-500/40',
       bgGlow: 'from-amber-500/10 to-transparent',
-      summary: 'Ground sensors, satellite remote sensing, and municipal environmental audits.',
+      summary:
+        'Dual-track environmental monitoring explicitly separating physical ground stations from satellite-modeled grids.',
       layers: [
-        'Real-time & modeled Air Quality Index (PM2.5, PM10) during winter biomass inversions',
-        'Municipal solid waste open dumping tracking along vulnerable wetlands and watercourses',
-        'Sewage Treatment Plant (STP) discharge telemetry & biochemical oxygen demand (BOD)',
-        'Agricultural pesticide and chemical fertilizer runoff into river mainstems',
-        'Urban impervious surface expansion rate across the Greater Srinagar metropolitan area'
-      ]
+        '5 physical ground-truth AQI reference stations (Srinagar, Jammu, Leh CAAQMS; Muzaffarabad & Gilgit EPA) vs. 44 CAMS/Open-Meteo modeled cells',
+        'Municipal solid waste & bio-waste ward inventories across Kashmir Core and regional urban centers',
+        'Sewage Treatment Plant (STP) capacity, BOD/COD effluent compliance, and lake nutrient-loading audits',
+        'Horticultural & agricultural runoff pressure assessments across Karewa and floodplain sub-catchments',
+        'Multi-temporal land-cover and impervious surface change detection across Srinagar, Jammu, and Leh corridors',
+      ],
     },
     {
       id: 'hazards',
@@ -207,71 +247,104 @@ export default function GeographicScopePage() {
       color: 'text-rose-400',
       borderColor: 'hover:border-rose-500/40',
       bgGlow: 'from-rose-500/10 to-transparent',
-      summary: 'Predictive modeling and live alert streams for geological and atmospheric hazards.',
+      summary:
+        'Integrated multi-hazard surveillance across hydrological, cryospheric, seismic, slope, and synoptic atmospheric systems.',
       layers: [
-        'Flash flood & riverine breach vulnerability maps calibrated against 2014 benchmarks',
-        'Avalanche path mapping and hazard advisories across Gulmarg, Gurez, and Sonamarg',
-        'Active fault line seismic hazard tracking integrated with USGS seismic feed',
-        'Forest fire hotspot propagation modeling combining wind, humidity, and fuel loads',
-        'Cloudburst susceptibility ranking across vulnerable high-slope tributary ravines'
-      ]
-    }
+        'Riverine flood & flash-flood susceptibility calibrated against 2014 Jhelum/Chenab benchmarks and live gauge thresholds',
+        'Snow-avalanche zone profiles across Gulmarg, Sonamarg, Gurez, Zojila, Drass, Khardung La, and Pir Panjal passes',
+        'Instrumental earthquake tracking via live USGS seismic feeds across Zone IV–V Himalayan thrust systems',
+        'Near-real-time forest-fire thermal anomaly detection via NASA VIIRS/MODIS FIRMS across Jammu, Kashmir & AJK pine belts',
+        'Synoptic Western Disturbance, monsoon intrusion, and 250 hPa subtropical jet circulation diagnostics',
+      ],
+    },
   ];
 
   // Multi-Source Data Architecture
   const dataArchitecture = [
     {
       icon: Cpu,
-      title: 'Orbital Earth Observation',
-      provider: 'Sentinel-2 MSI, Landsat 8/9, MODIS, Copernicus DEM',
-      desc: 'Multispectral remote sensing providing continuous 10m to 30m resolution coverage of vegetation vitality, snow cover, water surfaces, and land-use shifts.',
-      color: 'text-sky-400'
+      title: 'Orbital Earth Observation (All 3 Tiers)',
+      provider: 'Sentinel-1/2, Landsat 8/9, MODIS, Copernicus CAMS & DEM',
+      desc: 'Continuous 10m–30m optical/SAR imagery and 0.1° atmospheric reanalysis providing wall-to-wall coverage across Kashmir Core, Jammu & Ladakh, and cross-border basins where in-situ access is absent.',
+      color: 'text-sky-400',
     },
     {
       icon: Waves,
-      title: 'In-Situ Telemetry & Hydrology',
-      provider: 'Open-Meteo, USGS Seismology, NASA FIRMS, CPCB / SPCB Feeds',
-      desc: 'Real-time telemetry feeds capturing atmospheric conditions, thermal anomaly fires, seismic ground acceleration, and hydrological river gauge telemetry.',
-      color: 'text-emerald-400'
+      title: 'Verified Ground & Public Agency Telemetry',
+      provider: 'CPCB/JKPCC/LPCC CAAQMS, EPA Feeds, USGS, NASA FIRMS, River Gauges',
+      desc: 'Strictly labeled in-situ station feeds (5 physical air-quality stations, 12 river gauge nodes, seismic & thermal feeds) never conflated with modeled reanalysis cells.',
+      color: 'text-emerald-400',
     },
     {
       icon: Database,
-      title: 'Taxonomic & Scientific Archives',
-      provider: 'Darwin Core Schema, GBIF, IUCN Red List, Academic Herbaria',
-      desc: 'Standardized biodiversity records cross-checked with peer-reviewed botanical surveys, the Flora of Kashmir, and university research repositories.',
-      color: 'text-amber-400'
+      title: 'Official Administrative & Scientific Archives',
+      provider: 'J&K GAD/IGOD, UT Ladakh S.O. 180 & 284, NWIA, ISFR, GBIF, IUCN',
+      desc: 'Administrative registries verified against official government notifications alongside peer-reviewed limnological, glaciological, and Darwin Core taxonomic datasets.',
+      color: 'text-amber-400',
     },
     {
       icon: Users,
-      title: 'Frontline Community Ground-Truth',
-      provider: 'College Observers, Shepherds, Mountain Guides, Citizen Grid',
-      desc: 'Field observations logged by university scholars, local environmental groups, Gujjar-Bakarwal pastoralists, and mountain guides in remote alpine zones.',
-      color: 'text-purple-400'
-    }
+      title: 'Verified Citizen & Academic Field Observations',
+      provider: 'University Researchers, Wildlife Wardens, Pastoralists & Citizen Grid',
+      desc: 'Geotagged field reports and species sightings concentrated in Tier 1 (Kashmir Core) and accessible Tier 2 (Jammu & Ladakh) study transects under multi-stage verification.',
+      color: 'text-purple-400',
+    },
   ];
 
   // Quick Cross-Module Navigation
   const relatedModules = [
-    { title: 'Interactive Map Atlas', href: '/atlas', desc: 'Explore all geographic scope layers interactively on live vector maps.', icon: Map },
-    { title: 'Water Systems Observatory', href: '/water-systems', desc: '1,000+ lakes, wetlands, rivers, and springs mapped across Kashmir.', icon: Droplets },
-    { title: 'Protected Area Network', href: '/protected-network', desc: 'Sanctuaries, national parks, and wildlife corridors across districts.', icon: Trees },
-    { title: 'Hazard Intelligence Grid', href: '/hazard-intelligence', desc: 'Live multi-hazard monitoring for floods, avalanches, and fires.', icon: AlertTriangle },
-    { title: 'Our Mission & Strategic Charter', href: '/about/mission', desc: 'Read the 2026–2030 roadmap and core scientific principles.', icon: Compass },
-    { title: 'Geographic Notice & Governance', href: '/geographic-notice', desc: 'Legal and scientific framework governing geographic references.', icon: ShieldCheck }
+    {
+      title: 'Interactive Map Atlas',
+      href: '/atlas',
+      desc: 'Explore all 3-tier geographic scope layers interactively on vector GIS maps.',
+      icon: Map,
+    },
+    {
+      title: 'Water Systems Observatory',
+      href: '/water-systems',
+      desc: '553 master lakes, wetlands, rivers, glaciers, and springs across the Western Himalayas.',
+      icon: Droplets,
+    },
+    {
+      title: 'Protected Area Network',
+      href: '/protected-network',
+      desc: 'National parks, sanctuaries, conservation reserves, and wildlife corridors.',
+      icon: Trees,
+    },
+    {
+      title: 'Hazard Intelligence Grid',
+      href: '/hazard-intelligence',
+      desc: 'Multi-hazard tracking for floods, GLOFs, avalanches, earthquakes, and fires.',
+      icon: AlertTriangle,
+    },
+    {
+      title: 'Regional District Profiles',
+      href: '/districts',
+      desc: 'Inspect the 16 active district intelligence dossiers across Kashmir Core and Jammu.',
+      icon: Compass,
+    },
+    {
+      title: 'Geographic Notice & Governance',
+      href: '/geographic-notice',
+      desc: 'Legal and scientific neutrality framework governing all geographic references.',
+      icon: ShieldCheck,
+    },
   ];
+
+  const activeTier = GEOGRAPHIC_SCOPE_TIERS[selectedTier];
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200 pb-20">
-      {/* ─── Hero Surface ────────────────────────────────────────────────────────── */}
-      <Heading 
+      {/* ─── Hero Surface (Dimensions & Component Locked) ────────────────────────── */}
+      <Heading
         icon={<Globe className="w-5 h-5 text-emerald-400" />}
         label="Bioregional Scope & Ecological Coverage"
         title="Western Himalayan Geographic Scope & Coverage"
-        subtitle="Environmental boundaries, not political boundaries: Mapping interconnected ecosystems across watersheds, elevation gradients, and transboundary wildlife corridors."
+        subtitle="Environmental boundaries, not political boundaries: Mapping interconnected ecosystems across Kashmir Core, Trans-Divisional (Jammu & Ladakh), and Transboundary watersheds, cryospheric massifs, and migratory corridors."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Governance', href: '/about/governance' },
-          { label: 'Geographic Scope' }
+          { label: 'Geographic Scope' },
         ]}
         actions={
           <div className="flex flex-wrap items-center gap-4">
@@ -300,7 +373,7 @@ export default function GeographicScopePage() {
         }
       />
 
-      {/* ─── Strategic Targets / Key Scope Metrics Ribbon ────────────────────────── */}
+      {/* ─── Strategic Targets / Verified Scope & Monitoring Metrics Ribbon ──────── */}
       <section className="relative z-10 mt-6 sm:mt-8 mb-16 container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {scopeMetrics.map((metric, idx) => (
@@ -311,15 +384,15 @@ export default function GeographicScopePage() {
               transition={{ delay: idx * 0.08 }}
               className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-xl"
             >
-              <div className="flex items-center justify-between mb-2">
-                <span className={`text-xl sm:text-2xl font-black tracking-tight ${metric.color}`}>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <span className={`text-lg sm:text-xl font-black tracking-tight ${metric.color}`}>
                   {metric.value}
                 </span>
                 <metric.icon className="w-5 h-5 text-slate-400 shrink-0 opacity-70" />
               </div>
               <div>
                 <p className="text-xs sm:text-sm font-bold text-white leading-snug">{metric.title}</p>
-                <p className="text-[11px] text-slate-400 leading-tight mt-1 line-clamp-2">{metric.desc}</p>
+                <p className="text-[11px] text-slate-400 leading-tight mt-1">{metric.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -328,13 +401,14 @@ export default function GeographicScopePage() {
 
       {/* ─── Main Content Container ────────────────────────────────────────────── */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-
         {/* ─── Section 1: The Bioregional Imperative ─────────────────────────────── */}
         <section className="relative">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">The Ecological Reality</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                The Ecological Reality
+              </span>
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-8">
               Why an Ecosystem Framework is Essential
@@ -344,16 +418,34 @@ export default function GeographicScopePage() {
               <div className="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 bg-slate-900/50 space-y-6 flex flex-col justify-between">
                 <div className="space-y-4">
                   <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-light">
-                    Nature does not recognize political or administrative boundaries. Rivers flow across jurisdictions; migratory waterfowl fly between continents; glaciers feed life downstream without regard for human borders.
+                    Nature does not recognize political or administrative boundaries. Rivers flow
+                    across jurisdictions; migratory waterfowl fly between continents; glaciers feed
+                    life downstream without regard for human borders.
                   </p>
                   <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
-                    The Kashmir Himalayas form an intricately coupled Earth system. Glacial melt in the Pir Panjal and Great Himalayan massifs feeds the River Jhelum and Chenab basins. Atmospheric inversions trap smoke across the entire valley bowl simultaneously. Forest fires propagate along contiguous mountain ridges without stopping at district checkpoints.
+                    The Western Himalayas form an intricately coupled Earth system. Snow and glacier
+                    melt across the Great Himalayan, Pir Panjal, Zanskar, and Karakoram ranges
+                    sustains the Jhelum, Chenab, and Upper Indus basins. Winter temperature
+                    inversions trap aerosols across intermontane valleys while Western Disturbances
+                    deliver synoptic precipitation across the entire mountain arc.
                   </p>
                   <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
-                    Historically, environmental analysis has been artificially splintered by administrative lines—rendering cross-boundary watershed management, flood routing, and wildlife corridor protection nearly impossible.
+                    To represent this physical reality without overstating in-situ sensor density,
+                    Kashmir EcoWatch explicitly distinguishes{' '}
+                    <strong className="text-white font-semibold">
+                      geographic &amp; ecological coverage
+                    </strong>{' '}
+                    from{' '}
+                    <strong className="text-white font-semibold">
+                      verified active ground monitoring
+                    </strong>
+                    —pairing certified station telemetry where physically deployed with orbital
+                    remote sensing and atmospheric reanalysis across remote mountain and
+                    transboundary basins.
                   </p>
                   <p className="text-emerald-400 font-semibold text-base sm:text-lg">
-                    Kashmir EcoWatch organizes information by natural ecological logic: watersheds, elevation zones, and bioregional corridors.
+                    Kashmir EcoWatch organizes environmental intelligence by watersheds, elevation
+                    zones, and bioregional corridors—never geopolitical claims.
                   </p>
                 </div>
 
@@ -363,8 +455,12 @@ export default function GeographicScopePage() {
                       <Compass className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
-                      <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Analytical Premise</p>
-                      <p className="text-sm font-bold text-white">Bioregional Scale Environmental Intelligence</p>
+                      <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
+                        Analytical Premise
+                      </p>
+                      <p className="text-sm font-bold text-white">
+                        Bioregional Coverage vs. Verified Telemetry Distinction
+                      </p>
                     </div>
                   </div>
                   <Link
@@ -390,10 +486,16 @@ export default function GeographicScopePage() {
                     Environmental Boundaries, Not Political Boundaries
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                    Our geographic coverage is designed strictly to reflect physical Earth systems: river catchments, vegetative altitudinal belts, seismic belts, and wildlife corridors.
+                    Our three-tier classification reflects operational and ecological coupling: Tier
+                    1 covers the 10-district Kashmir Valley core; Tier 2 unites the contiguous
+                    regional divisions of Jammu (10 districts) and UT of Ladakh (8 notified
+                    districts); Tier 3 tracks cross-border Indus, Neelum–Jhelum, Karakoram, and
+                    flyway systems.
                   </p>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-                    This scientific convention follows international standards established by UNEP, IUCN, and Ramsar Convention, ensuring full interoperability with planetary conservation databases.
+                    This scientific convention aligns with UNEP, IUCN, Darwin Core, and Ramsar
+                    watershed standards, ensuring full interoperability with international Earth
+                    observation repositories.
                   </p>
                 </div>
 
@@ -402,21 +504,34 @@ export default function GeographicScopePage() {
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-xs font-bold text-white block">Watershed Coherence</span>
-                      <span className="text-[11px] text-slate-400 leading-tight">Tracking headwaters to terminal outflow without artificial breaks.</span>
+                      <span className="text-[11px] text-slate-400 leading-tight">
+                        Tracking headwaters to downstream confluences across Jhelum, Chenab &amp;
+                        Upper Indus basins.
+                      </span>
                     </div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-slate-950/70 border border-white/5 flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-xs font-bold text-white block">Contiguous Wildlife Corridors</span>
-                      <span className="text-[11px] text-slate-400 leading-tight">Preserving migration paths for Hangul deer, Snow Leopard & Markhor.</span>
+                      <span className="text-xs font-bold text-white block">
+                        Contiguous Wildlife Corridors
+                      </span>
+                      <span className="text-[11px] text-slate-400 leading-tight">
+                        Connecting Hangul, Snow Leopard, Brown Bear, Markhor &amp; Central Asian
+                        Flyway habitats.
+                      </span>
                     </div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-slate-950/70 border border-white/5 flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-xs font-bold text-white block">Cryosphere Connectivity</span>
-                      <span className="text-[11px] text-slate-400 leading-tight">Glacial mass balance linked to downstream irrigation & drinking water.</span>
+                      <span className="text-xs font-bold text-white block">
+                        Transparent Sensor Provenance
+                      </span>
+                      <span className="text-[11px] text-slate-400 leading-tight">
+                        Explicit separation between physical ground stations, satellite remote
+                        sensing &amp; CAMS models.
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -428,30 +543,44 @@ export default function GeographicScopePage() {
         {/* ─── Section 2: Interactive 3-Tier Classification Framework ────────────── */}
         <section id="framework" className="relative scroll-mt-24">
           <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div className="mb-6 space-y-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Operational Hierarchy</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                  Operational &amp; Ecological Hierarchy
+                </span>
                 <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
                   The 3-Tier Scope Classification Framework
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                  Select a tier below to examine its geographic extent, monitored assets, and telemetry feeds.
+                <p className="text-xs sm:text-sm text-slate-400 mt-1.5 max-w-3xl">
+                  Select a tier below to inspect its verified administrative coverage, ecological
+                  landmarks, and explicit distinction between geographic inclusion and active
+                  scientific monitoring.
                 </p>
               </div>
 
-              {/* Tier Navigation Tabs */}
-              <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-white/10 rounded-xl overflow-x-auto max-w-full">
-                {scopeTiers.map((tier, idx) => (
+              {/* Tier Navigation Tabs — Positioned beneath heading so all 3 tabs remain 100% simultaneously visible without clipping */}
+              <div
+                role="tablist"
+                aria-label="Three-tier geographic scope selector"
+                data-testid="geographic-tier-tablist"
+                className="grid grid-cols-1 sm:inline-grid sm:grid-cols-3 gap-1.5 p-1.5 bg-slate-900 border border-white/10 rounded-xl w-full sm:w-auto max-w-full"
+              >
+                {GEOGRAPHIC_SCOPE_TIERS.map((tier, idx) => (
                   <button
                     key={tier.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={selectedTier === idx}
+                    aria-controls={`tier-panel-${tier.id}`}
+                    id={`tier-tab-${tier.id}`}
                     onClick={() => setSelectedTier(idx)}
-                    className={`px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                    className={`px-4 py-2.5 rounded-lg text-xs sm:text-[13px] font-semibold text-center transition-all cursor-pointer ${
                       selectedTier === idx
                         ? 'bg-emerald-500 text-slate-950 font-bold shadow-md'
-                        : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        : 'text-slate-300 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    {tier.name}
+                    {tier.tabLabel}
                   </button>
                 ))}
               </div>
@@ -460,51 +589,86 @@ export default function GeographicScopePage() {
             {/* Active Tier Card */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={selectedTier}
+                key={activeTier.id}
+                id={`tier-panel-${activeTier.id}`}
+                role="tabpanel"
+                aria-labelledby={`tier-tab-${activeTier.id}`}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.2 }}
-                className="glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/20 bg-slate-900/60 shadow-2xl relative overflow-hidden"
+                className="glass-panel p-6 sm:p-10 rounded-3xl border border-emerald-500/20 bg-slate-900/60 shadow-2xl relative overflow-hidden"
               >
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-6">
                   <div>
-                    <span className={`inline-block px-3 py-1 rounded-[4px] text-xs font-bold border ${scopeTiers[selectedTier].badgeColor} mb-2`}>
-                      {scopeTiers[selectedTier].badge}
+                    <span
+                      className={`inline-block px-3 py-1 rounded-[4px] text-xs font-bold border ${activeTier.badgeColor} mb-2`}
+                    >
+                      {activeTier.badge}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-black text-white">
-                      {scopeTiers[selectedTier].name}
-                    </h3>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white">{activeTier.name}</h3>
                     <p className="text-xs sm:text-sm text-emerald-400 font-medium mt-1">
-                      {scopeTiers[selectedTier].subtitle}
+                      {activeTier.subtitle}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 bg-slate-950/80 px-4 py-2 rounded-xl border border-white/5">
-                    <MapPin className="w-4 h-4 text-emerald-400" />
-                    <span>{scopeTiers[selectedTier].coverageDistricts.length} Monitored Sectors</span>
+
+                  {/* Dual Scientific Provenance Counters: Coverage vs Active Monitoring */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 shrink-0 lg:max-w-sm">
+                    <div className="flex items-start gap-2 text-xs text-slate-200 bg-slate-950/85 px-3.5 py-2 rounded-xl border border-white/10">
+                      <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="block text-[10px] uppercase tracking-wider font-bold text-slate-400">
+                          Geographic Coverage
+                        </span>
+                        <span className="font-semibold">{activeTier.coverageSummaryLabel}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2 text-xs text-slate-200 bg-slate-950/85 px-3.5 py-2 rounded-xl border border-emerald-500/20">
+                      <Activity className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="block text-[10px] uppercase tracking-wider font-bold text-emerald-400">
+                          Verified Active Monitoring
+                        </span>
+                        <span className="font-semibold">{activeTier.monitoringSummaryLabel}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 font-light">
-                  {scopeTiers[selectedTier].description}
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-5 font-light">
+                  {activeTier.description}
                 </p>
 
-                {/* Covered Districts / Sectors Pill Grid */}
-                <div className="mb-8">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-                    <Compass className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Sectors & Administrative Interfaces Included</span>
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {scopeTiers[selectedTier].coverageDistricts.map((item, dIdx) => (
-                      <span
-                        key={dIdx}
-                        className="px-3 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 text-xs font-medium text-slate-300 hover:border-emerald-500/40 transition-colors"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                {activeTier.transboundaryLinkageNote && (
+                  <div className="mb-6 p-3.5 sm:p-4 rounded-xl bg-slate-950/75 border border-sky-500/25 flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed">
+                    <Info className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                    <span>{activeTier.transboundaryLinkageNote}</span>
                   </div>
+                )}
+
+                {/* Grouped Administrative Districts & Ecological Corridors */}
+                <div className="mb-8 space-y-5">
+                  {activeTier.administrativeGroups.map((grp, gIdx) => (
+                    <div key={gIdx}>
+                      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2.5">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+                          <Compass className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span>{grp.groupLabel}</span>
+                        </h4>
+                        <span className="text-[11px] text-slate-400">{grp.regionNote}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {grp.items.map((item, dIdx) => (
+                          <span
+                            key={dIdx}
+                            className="px-3 py-1.5 rounded-lg bg-slate-950/85 border border-white/10 text-xs font-medium text-slate-200 hover:border-emerald-500/40 transition-colors"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Key Geographic Assets vs Monitored Intelligence Layers */}
@@ -512,10 +676,10 @@ export default function GeographicScopePage() {
                   <div className="p-5 rounded-2xl bg-slate-950/50 border border-white/5">
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400 mb-3">
                       <Droplets className="w-4 h-4" />
-                      <span>Key Landmarks & Ecological Assets</span>
+                      <span>Key Landmarks &amp; Ecological Assets</span>
                     </div>
                     <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
-                      {scopeTiers[selectedTier].keyLandmarks.map((landmark, lIdx) => (
+                      {activeTier.keyLandmarks.map((landmark, lIdx) => (
                         <li key={lIdx} className="flex items-start gap-2">
                           <ChevronRight className="w-3.5 h-3.5 text-sky-400 shrink-0 mt-0.5" />
                           <span>{landmark}</span>
@@ -527,10 +691,10 @@ export default function GeographicScopePage() {
                   <div className="p-5 rounded-2xl bg-slate-950/50 border border-white/5">
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3">
                       <Cpu className="w-4 h-4" />
-                      <span>Telemetry & Monitored Parameters</span>
+                      <span>Verified Telemetry &amp; Observation Modes</span>
                     </div>
                     <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
-                      {scopeTiers[selectedTier].monitoringFocus.map((focus, fIdx) => (
+                      {activeTier.monitoringFocus.map((focus, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                           <span>{focus}</span>
@@ -541,6 +705,52 @@ export default function GeographicScopePage() {
                 </div>
               </motion.div>
             </AnimatePresence>
+
+            {/* Verified Administrative Source Ledger */}
+            <div className="mt-8 glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 bg-slate-900/40">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400">
+                    Administrative Registry Verification
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mt-0.5">
+                    Verified Administrative Units vs. Operational Dataset Coverage
+                  </h3>
+                </div>
+                <span className="text-xs font-mono text-emerald-400 bg-slate-950 px-3 py-1 rounded-lg border border-white/10">
+                  {verifiedTelemetry.totalNotifiedDistricts} Notified Districts ·{' '}
+                  {verifiedTelemetry.totalBaselineUnits} Baseline Registry Units
+                </span>
+              </div>
+              <div className="kew-table-scroll">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="border-b border-white/10 text-slate-400 uppercase tracking-wider text-[10px]">
+                      <th className="py-2.5 pr-4 font-semibold">Tier</th>
+                      <th className="py-2.5 pr-4 font-semibold">Administrative / Ecological Region</th>
+                      <th className="py-2.5 pr-4 font-semibold">Official Units</th>
+                      <th className="py-2.5 pr-4 font-semibold">Authoritative Reference</th>
+                      <th className="py-2.5 font-semibold">KEW Monitoring &amp; Baseline Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5 text-slate-300">
+                    {OFFICIAL_ADMIN_SOURCES.map((row) => (
+                      <tr key={row.region} className="align-top">
+                        <td className="py-3 pr-4 font-bold text-emerald-400 whitespace-nowrap">
+                          {row.tier}
+                        </td>
+                        <td className="py-3 pr-4 font-semibold text-white">{row.region}</td>
+                        <td className="py-3 pr-4 whitespace-nowrap text-sky-300 font-medium">
+                          {row.districtCountSummary}
+                        </td>
+                        <td className="py-3 pr-4 text-slate-400">{row.authority}</td>
+                        <td className="py-3 text-slate-300">{row.verificationNote}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -548,12 +758,16 @@ export default function GeographicScopePage() {
         <section id="systems" className="relative scroll-mt-24">
           <div className="max-w-5xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Holistic Bioregional Scope</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                Holistic Bioregional Scope
+              </span>
               <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-2 mb-4">
                 Six Core Environmental Domains
               </h2>
               <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-                Kashmir EcoWatch integrates intelligence across six interconnected environmental systems, establishing an empirical living observatory for the Western Himalayas.
+                Kashmir EcoWatch synthesizes verified records across six interconnected
+                environmental domains spanning Kashmir Core, Trans-Divisional (Jammu &amp; Ladakh),
+                and Transboundary mountain systems.
               </p>
             </div>
 
@@ -578,13 +792,14 @@ export default function GeographicScopePage() {
                       <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
                         {system.title}
                       </h3>
-                      <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                        {system.summary}
-                      </p>
+                      <p className="text-xs text-slate-300 leading-relaxed mb-4">{system.summary}</p>
 
                       <div className="space-y-2 pt-4 border-t border-white/10">
                         {system.layers.map((layer, lIdx) => (
-                          <div key={lIdx} className="flex items-start gap-2 text-[11px] text-slate-400 leading-tight">
+                          <div
+                            key={lIdx}
+                            className="flex items-start gap-2 text-[11px] text-slate-400 leading-tight"
+                          >
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 mt-1 shrink-0" />
                             <span>{layer}</span>
                           </div>
@@ -602,12 +817,15 @@ export default function GeographicScopePage() {
         <section className="relative">
           <div className="max-w-5xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-bold uppercase tracking-widest text-sky-400">Scientific Provenance</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
+                Scientific Provenance
+              </span>
               <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-2 mb-4">
                 Multi-Source Data Synthesis
               </h2>
               <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-                Every polygon, telemetry stream, and indicator across our geographic scope is tied to open, verifiable, and authoritative scientific datasets.
+                Every polygon, station feed, and modeled indicator across our three-tier geographic
+                scope carries explicit source provenance and verification status.
               </p>
             </div>
 
@@ -615,10 +833,7 @@ export default function GeographicScopePage() {
               {dataArchitecture.map((item, idx) => {
                 const IconComp = item.icon;
                 return (
-                  <div
-                    key={idx}
-                    className="kew-card-shell p-6 sm:p-7 h-full"
-                  >
+                  <div key={idx} className="kew-card-shell p-6 sm:p-7 h-full">
                     <div className="kew-card-top-row">
                       <div className="kew-card-icon-box bg-slate-950 border border-white/10">
                         <IconComp className={`w-5 h-5 ${item.color}`} />
@@ -626,9 +841,7 @@ export default function GeographicScopePage() {
                       <span className="text-[11px] font-mono text-emerald-400">{item.provider}</span>
                     </div>
                     <h3 className="kew-card-title text-base mb-2">{item.title}</h3>
-                    <p className="kew-card-desc text-xs sm:text-sm">
-                      {item.desc}
-                    </p>
+                    <p className="kew-card-desc text-xs sm:text-sm">{item.desc}</p>
                   </div>
                 );
               })}
@@ -642,34 +855,66 @@ export default function GeographicScopePage() {
             <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 bg-slate-900/70 relative overflow-hidden">
               <div className="flex items-center gap-2 mb-4">
                 <Scale className="w-5 h-5 text-purple-400" />
-                <span className="text-xs font-bold uppercase tracking-widest text-purple-400">Institutional Charter</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-purple-400">
+                  Institutional Charter
+                </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-white mb-6">
-                Declaration of Scientific & Political Neutrality
+                Declaration of Scientific &amp; Political Neutrality
               </h2>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
                 <p>
-                  Kashmir EcoWatch is an independent, non-commercial, public-interest environmental intelligence observatory.
+                  Kashmir EcoWatch is an independent, non-commercial, public-interest environmental
+                  intelligence observatory.
                 </p>
                 <p>
-                  All geographic names, administrative designations, maps, geospatial overlays, ecological classifications, and environmental datasets presented across this platform are applied strictly for scientific, hydrological, disaster-risk reduction, and conservation purposes.
+                  All geographic names, administrative designations, maps, geospatial overlays,
+                  three-tier scope classifications, and environmental datasets presented across this
+                  platform represent ecological and operational coverage for scientific research,
+                  hydrological modeling, disaster-risk reduction, and conservation purposes only.
                 </p>
                 <p>
-                  Nothing contained within this platform should be construed as expressing, supporting, challenging, or implying any position regarding sovereignty, international boundaries, territorial claims, administrative disputes, or geopolitical viewpoints.
+                  Nothing contained within this platform should be construed as expressing,
+                  supporting, challenging, or implying any position regarding sovereignty,
+                  international boundaries, territorial claims, administrative disputes, or
+                  geopolitical viewpoints.
                 </p>
                 <p>
-                  Environmental processes—from glacial retreat and river runoff to migratory bird corridors and earthquake faults—naturally transcend human jurisdictions. Kashmir EcoWatch mirrors these physical ecological realities to enable evidence-based conservation, public disaster awareness, and sustainable resource stewardship.
+                  Environmental processes—from glacial retreat and river runoff to migratory bird
+                  corridors and earthquake faults—naturally transcend human jurisdictions. Kashmir
+                  EcoWatch mirrors these physical ecological realities to enable evidence-based
+                  conservation, public disaster awareness, and sustainable resource stewardship.
                 </p>
               </div>
 
               <div className="mt-8 pt-8 border-t border-white/10 text-center max-w-2xl mx-auto space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-emerald-400">Our Guiding Principle</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  Our Guiding Principle
+                </p>
                 <blockquote className="text-xl sm:text-2xl font-light italic text-white leading-snug">
                   &ldquo;Nature is interconnected. Environmental intelligence should be too.&rdquo;
                 </blockquote>
                 <p className="text-xs text-slate-400">
-                  Operated and supported philanthropically by <a href="https://dkf.sufisciencecenter.info/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-semibold">Dr. Kumar Foundation USA</a> &amp; maintained by <a href="https://primelogicsol.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-semibold">Prime Logic Solutions</a> as part of its CSR initiative.
+                  Operated and supported philanthropically by{' '}
+                  <a
+                    href="https://dkf.sufisciencecenter.info/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 hover:underline font-semibold"
+                  >
+                    Dr. Kumar Foundation USA
+                  </a>{' '}
+                  &amp; maintained by{' '}
+                  <a
+                    href="https://primelogicsol.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 hover:underline font-semibold"
+                  >
+                    Prime Logic Solutions
+                  </a>{' '}
+                  as part of its CSR initiative.
                 </p>
               </div>
             </div>
@@ -681,7 +926,9 @@ export default function GeographicScopePage() {
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Ecosystem Exploration</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                  Ecosystem Exploration
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
                   Explore Related Intelligence Modules
                 </h2>
@@ -704,9 +951,7 @@ export default function GeographicScopePage() {
                       <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors mb-1">
                         {module.title}
                       </h3>
-                      <p className="text-xs text-slate-400 leading-relaxed">
-                        {module.desc}
-                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed">{module.desc}</p>
                     </div>
                     <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-400 pt-4 mt-2">
                       <span>Access Module</span>
@@ -718,7 +963,6 @@ export default function GeographicScopePage() {
             </div>
           </div>
         </section>
-
       </div>
     </main>
   );

@@ -1,0 +1,713 @@
+/* ============================================================================
+   DR. KUMAR'S KASHMIR ECOWATCH — MESSAGE MANUSCRIPT EDITORIAL STYLESHEET
+   Strictly scoped via CSS Modules to `/about/message`.
+   Never modifies global KEW styles, header, footer, or other modules.
+   ============================================================================ */
+
+.pageShell {
+  background-color: #080d18;
+  min-height: 100vh;
+}
+
+/* ─── 01. Hero Stage & Laqab Identity ──────────────────────────────────────
+   Preserves the authentic Dr. Kumar Foundation USA portrait in its original
+   photographic clarity and tone while presenting the Qalandar of the Forest
+   (قلندرِ جنگل) honorific cleanly within the shared KEW hero surface.       */
+
+.heroStage {
+  position: relative;
+}
+
+.heroHeadlineBlock {
+  display: block;
+  width: 100%;
+}
+
+.heroLaqabRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  margin-top: 0.45rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.heroLaqabLatin {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 1.05rem + 0.95vw, 2.05rem);
+  line-height: 1.25;
+  color: #cbb089 !important;
+  -webkit-text-fill-color: #cbb089 !important;
+  text-shadow: 0 2px 12px rgba(8, 13, 24, 0.85);
+}
+
+.heroLaqabSeparator {
+  font-family: var(--font-msg-display), Georgia, serif;
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.55rem);
+  color: rgba(187, 160, 120, 0.65) !important;
+  -webkit-text-fill-color: rgba(187, 160, 120, 0.65) !important;
+}
+
+.heroLaqabUrdu {
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.6rem);
+  line-height: 1.85;
+  color: #cbb089 !important;
+  -webkit-text-fill-color: #cbb089 !important;
+  text-shadow: 0 2px 12px rgba(8, 13, 24, 0.85);
+}
+
+.heroCallingWrapper {
+  flex: 0 0 100%;
+  width: 100%;
+  margin-top: -0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.heroCallingLine {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 0.88rem + 0.28vw, 1.15rem);
+  line-height: 1.6;
+  color: #e6dfd0 !important;
+  text-shadow: 0 1px 10px rgba(8, 13, 24, 0.85);
+}
+
+/* ─── Below-Hero Manuscript Surface ──────────────────────────────────────── */
+
+.manuscriptSurface {
+  --msg-bg: #080d18;
+  --msg-ivory: #f0e9db;
+  --msg-gold: #bba078;
+  --msg-gold-soft: rgba(187, 160, 120, 0.72);
+  --msg-gold-rule: rgba(187, 160, 120, 0.28);
+  --msg-prose-primary: #ddd7ca;
+  --msg-prose-secondary: #b9bdc6;
+  --msg-prose-muted: #949aa6;
+  --msg-rule: #35363a;
+  --msg-rule-subtle: rgba(240, 233, 219, 0.09);
+
+  position: relative;
+  background-color: var(--msg-bg);
+  background-image: radial-gradient(
+    ellipse 80% 32rem at 50% 0%,
+    rgba(187, 160, 120, 0.045) 0%,
+    rgba(8, 13, 24, 0) 75%
+  );
+  color: var(--msg-prose-secondary);
+  padding-top: clamp(3.75rem, 6.5vw, 6.5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.manuscriptContainer {
+  width: 100%;
+  max-width: 56rem; /* 896px scholarly folio frame — never stretches across 4K/5K */
+  margin-inline: auto;
+  padding-left: max(clamp(1.25rem, 4.5vw, 3rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1.25rem, 4.5vw, 3rem), env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+
+.readingColumn {
+  width: 100%;
+  max-width: 43.5rem; /* ~696px (~64-68ch optimal literary line measure) */
+  margin-inline: auto;
+}
+
+/* ─── Eyebrow Rubrics & Ornamental Dividers ──────────────────────────────── */
+
+.rubric {
+  display: block;
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--msg-gold) !important;
+  line-height: 1.5;
+}
+
+.ornamentalRule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  margin-top: clamp(3.5rem, 6vw, 5.25rem);
+  margin-bottom: clamp(3.5rem, 6vw, 5.25rem);
+}
+
+.ornamentalRuleLine {
+  flex: 1 1 0%;
+  max-width: 12rem;
+  height: 1px;
+  background-color: var(--msg-rule);
+}
+
+.ornamentalDiamond {
+  width: 5px;
+  height: 5px;
+  background-color: var(--msg-gold);
+  transform: rotate(45deg);
+  opacity: 0.78;
+  flex-shrink: 0;
+}
+
+.shortGoldRule {
+  width: 3.25rem;
+  height: 1px;
+  background-color: var(--msg-gold-rule);
+  margin: 1.5rem 0 2rem;
+}
+
+/* ─── 02. Opening Chapter: The Qalandar of the Forest ────────────────────── */
+
+.qalandarHeaderMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.qalandarUrduTag {
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', Georgia, serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--msg-gold) !important;
+  opacity: 0.9;
+}
+
+.qalandarEpigraph {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(1.08rem, 1rem + 0.32vw, 1.28rem);
+  line-height: 1.7;
+  color: var(--msg-gold) !important;
+  margin-top: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ─── 03. Philosophical Reflection Manuscript Typography ─────────────────── */
+
+.openingSection {
+  margin-bottom: clamp(3.25rem, 5.5vw, 4.75rem);
+}
+
+.manuscriptTitle {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: clamp(1.95rem, 1.35rem + 2.1vw, 3.05rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--msg-ivory) !important;
+  margin-top: 0.75rem;
+  text-wrap: balance;
+}
+
+.leadProse {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.15rem, 1.03rem + 0.42vw, 1.375rem);
+  line-height: 1.82;
+  font-weight: 400;
+  color: var(--msg-ivory) !important;
+  margin-bottom: 1.5rem;
+}
+
+.bodyProseGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.bodyProse {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.03rem, 0.98rem + 0.22vw, 1.16rem);
+  line-height: 1.88;
+  font-weight: 400;
+  color: var(--msg-prose-primary) !important;
+}
+
+.editorialCoda {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--msg-prose-muted) !important;
+  margin-top: 1.75rem;
+}
+
+/* ─── 04. Three Foundational Philosophical Statements ────────────────────── */
+
+.triadSection {
+  border-top: 1px solid var(--msg-rule);
+  border-bottom: 1px solid var(--msg-rule);
+  padding-top: clamp(2rem, 3.5vw, 2.75rem);
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  margin-top: clamp(3rem, 5vw, 4.25rem);
+}
+
+.triadGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .triadGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.triadItem {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .triadItem + .triadItem {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--msg-rule-subtle);
+  }
+}
+
+@media (min-width: 768px) {
+  .triadItem {
+    padding-inline: 1.75rem;
+  }
+  .triadItem:first-child {
+    padding-left: 0;
+  }
+  .triadItem:last-child {
+    padding-right: 0;
+  }
+  .triadItem + .triadItem {
+    border-left: 1px solid var(--msg-rule);
+  }
+}
+
+.triadHeading {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--msg-gold) !important;
+  margin-bottom: 0.55rem;
+}
+
+.triadStatement {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.18rem, 1.06rem + 0.35vw, 1.38rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--msg-ivory) !important;
+}
+
+/* ─── 05. Eight Guiding Philosophical Principles (Roman Chapters I–VIII) ── */
+
+.chaptersIntro {
+  margin-bottom: clamp(2.75rem, 4.5vw, 4rem);
+}
+
+.sectionTitle {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 1.25rem + 1.7vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  color: var(--msg-ivory) !important;
+  margin-top: 0.65rem;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.sectionIntroProse {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  line-height: 1.82;
+  color: var(--msg-prose-secondary) !important;
+}
+
+.chapterList {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapterArticle {
+  padding-top: clamp(2.5rem, 4.2vw, 3.5rem);
+  padding-bottom: clamp(2.5rem, 4.2vw, 3.5rem);
+  border-top: 1px solid var(--msg-rule);
+}
+
+.chapterArticle:last-child {
+  border-bottom: 1px solid var(--msg-rule);
+}
+
+.chapterLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 680px) {
+  .chapterLayout {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    column-gap: 1.75rem;
+    align-items: baseline;
+  }
+}
+
+.chapterNumeral {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 1.45rem + 0.9vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: var(--msg-gold) !important;
+  user-select: none;
+}
+
+.chapterContent {
+  min-width: 0;
+  max-width: 41rem;
+}
+
+.chapterTitle {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 1.25rem + 0.75vw, 1.95rem);
+  font-weight: 500;
+  line-height: 1.24;
+  color: var(--msg-ivory) !important;
+  margin-bottom: 0.4rem;
+}
+
+.chapterSubtitle {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(0.98rem, 0.94rem + 0.16vw, 1.08rem);
+  line-height: 1.55;
+  color: var(--msg-gold) !important;
+  opacity: 0.92;
+  margin-bottom: 1.35rem;
+}
+
+.chapterReflection {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.02rem, 0.98rem + 0.2vw, 1.14rem);
+  line-height: 1.88;
+  color: var(--msg-prose-primary) !important;
+  margin-bottom: 1.2rem;
+}
+
+.chapterStewardship {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.98rem, 0.95rem + 0.16vw, 1.08rem);
+  line-height: 1.84;
+  color: var(--msg-prose-secondary) !important;
+  padding-left: 1.15rem;
+  border-left: 1px solid var(--msg-gold-rule);
+}
+
+/* ─── 06. Institutional Legacy & Five-Stage Spiritual-to-Scientific Continuum */
+
+.legacySection {
+  padding-top: 0.25rem;
+}
+
+.strongIvory {
+  color: var(--msg-ivory) !important;
+  font-weight: 500;
+}
+
+.continuumWrapper {
+  margin-top: 2.75rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--msg-rule);
+}
+
+.continuumList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.85rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--msg-gold-rule);
+  margin-top: 1.5rem;
+}
+
+.continuumStep {
+  position: relative;
+  min-width: 0;
+}
+
+.continuumStep::before {
+  content: '';
+  position: absolute;
+  left: calc(-1.5rem - 3px);
+  top: 0.42rem;
+  width: 5px;
+  height: 5px;
+  background-color: var(--msg-gold);
+  transform: rotate(45deg);
+}
+
+.continuumRubric {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--msg-gold) !important;
+  margin-bottom: 0.25rem;
+}
+
+.continuumHeading {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.3rem, 1.15rem + 0.5vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--msg-ivory) !important;
+}
+
+.continuumSubline {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: var(--msg-prose-secondary) !important;
+  margin-top: 0.15rem;
+}
+
+.legacyPillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 2.75rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--msg-rule);
+}
+
+@media (min-width: 768px) {
+  .legacyPillars {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.legacyPillarItem {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .legacyPillarItem + .legacyPillarItem {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--msg-rule-subtle);
+  }
+}
+
+@media (min-width: 768px) {
+  .legacyPillarItem {
+    padding-inline: 1.5rem;
+  }
+  .legacyPillarItem:first-child {
+    padding-left: 0;
+  }
+  .legacyPillarItem:last-child {
+    padding-right: 0;
+  }
+  .legacyPillarItem + .legacyPillarItem {
+    border-left: 1px solid var(--msg-rule);
+  }
+}
+
+.legacyPillarTitle {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--msg-ivory) !important;
+  margin-bottom: 0.5rem;
+}
+
+.legacyPillarBody {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  line-height: 1.72;
+  color: var(--msg-prose-secondary) !important;
+}
+
+/* ─── 07. Life, Work & Spiritual Legacy Reference ────────────────────────── */
+
+.lifeWorkSection {
+  margin-top: clamp(3.5rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 4.2vw, 3.25rem);
+  border-top: 1px solid var(--msg-rule);
+}
+
+.lifeWorkTitle {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 1.25rem + 0.7vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--msg-ivory) !important;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.lifeWorkProse {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--msg-prose-secondary) !important;
+  margin-bottom: 1.25rem;
+}
+
+.lifeWorkLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--msg-gold) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(187, 160, 120, 0.45);
+  padding-bottom: 0.2rem;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.lifeWorkLink:hover {
+  color: var(--msg-ivory) !important;
+  border-bottom-color: var(--msg-ivory);
+}
+
+/* ─── 08. Discreet Scholarly Notes & Photographic Attribution ────────────── */
+
+.colophonSection {
+  margin-top: clamp(3.25rem, 5.5vw, 4.5rem);
+  padding-top: clamp(2.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--msg-rule);
+}
+
+.colophonStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.colophonNote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.colophonLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--msg-gold-soft) !important;
+}
+
+.colophonText {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: 0.9125rem;
+  line-height: 1.75;
+  color: var(--msg-prose-muted) !important;
+}
+
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--msg-gold) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(187, 160, 120, 0.35);
+  padding-bottom: 0.125rem;
+  margin-top: 0.25rem;
+  width: fit-content;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.sourceLink:hover {
+  color: var(--msg-ivory) !important;
+  border-bottom-color: var(--msg-ivory);
+}
+
+/* ─── 09. Understated Concluding Institutional Navigation ────────────────── */
+
+.closingNavSection {
+  margin-top: clamp(3.25rem, 5.5vw, 4.5rem);
+  padding-top: clamp(2.5rem, 4.5vw, 3.5rem);
+  border-top: 1px solid var(--msg-rule);
+}
+
+.closingHeading {
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--msg-ivory) !important;
+  margin-top: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.closingSummary {
+  font-family: var(--font-msg-serif), Georgia, 'Times New Roman', serif;
+  font-size: 0.975rem;
+  line-height: 1.75;
+  color: var(--msg-prose-secondary) !important;
+  margin-bottom: 1.75rem;
+  max-width: 38rem;
+}
+
+.closingLinksRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 0.85rem;
+  column-gap: 2rem;
+}
+
+.closingLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-msg-display), Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--msg-ivory) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(187, 160, 120, 0.38);
+  padding-bottom: 0.2rem;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.closingLink:hover {
+  color: #34d399 !important;
+  border-bottom-color: #34d399;
+}
+
+.closingLinkArrow {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--msg-gold) !important;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.closingLink:hover .closingLinkArrow {
+  transform: translateX(3px);
+  color: #34d399 !important;
+}

@@ -69,7 +69,7 @@ export default function HazardIntelligenceOverview() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Hazard Intelligence</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">Hazard Intelligence</span>
           </>}
         subtitle="Multi-hazard monitoring covering floods, landslides, avalanches, earthquakes, GLOFs, and forest fires across the Western Himalayan ecological region"
         icon={<AlertTriangle className="w-6 h-6 text-red-400" />}

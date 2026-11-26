@@ -232,8 +232,8 @@ export default function MethodologyPage() {
       <Heading
         breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Methodology' }]}
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Our</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Methodology</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Our</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Methodology</span>
         </>}
         subtitle="Kashmir EcoWatch follows internationally recognised principles of environmental monitoring, geospatial intelligence, biodiversity documentation, and scientific data management."
         icon={<BookOpen className="w-6 h-6 text-emerald-400" />}

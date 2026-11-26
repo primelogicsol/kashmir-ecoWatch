@@ -639,7 +639,7 @@ export default function AirPollutionPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Monitoring</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Air Pollution Monitoring</span>
           </>}
         subtitle="Real-time hybrid air quality surveillance combining physical AirGradient / BreatheOSS street-level optical ground sensors with UTC-synced Open-Meteo & Copernicus CAMS telemetry across all 44 regional units."
         icon={<Wind className="w-6 h-6 text-emerald-400" />}

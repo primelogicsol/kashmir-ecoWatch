@@ -248,7 +248,7 @@ export default function PrivacyPolicyPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Privacy Policy</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Privacy Policy</span>
         </>}
         subtitle="Kashmir EcoWatch is committed to protecting your privacy and handling personal information responsibly."
         icon={<Shield className="w-6 h-6 text-emerald-400" />}

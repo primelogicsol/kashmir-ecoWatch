@@ -88,7 +88,7 @@ export default function ArchivesPage() {
         icon={<Archive className="w-6 h-6 text-amber-400" />}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Impact Archives</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">Impact Archives</span>
         </>}
         subtitle="Explore completed projects, past verification reports, retired campaigns, and historical field evidence recorded across Kashmir."
         actions={

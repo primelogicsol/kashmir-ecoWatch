@@ -29,7 +29,7 @@ export default function GlacierCryospherePage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Glacier & Cryosphere</span>
           </>}
         subtitle="Glacier-linked environmental risk monitoring, cryosphere sensitivity assessment, glacial lake formation tracking, and snow/melt stress indicators across Kashmir's cryosphere."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}

@@ -138,8 +138,8 @@ export default function ResearchLibraryPage() {
         breadcrumbs={[{ label: 'Resources', href: '/open-data' }, { label: 'Research Library' }]}
         label="Scientific Research"
         title={<>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible pb-2">Research</span>
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Library</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Research</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Library</span>
         </>}
         subtitle="Environmental impact assessments, research reports, and scientific publications documenting Kashmir's ecological systems and environmental challenges."
         icon={<BookOpen className="w-6 h-6 text-emerald-400" />}

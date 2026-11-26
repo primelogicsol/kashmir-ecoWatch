@@ -134,8 +134,8 @@ export default function ResourcesIndexPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 pb-20">
       {/* Header Banner */}
-      <section className="border-b border-slate-800 bg-slate-900 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto space-y-4">
+      <section data-kew-dark-surface="true" className="kew-module-hero-surface border-b border-slate-800 bg-slate-900">
+        <div className="kew-module-hero-inner container mx-auto space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-wider">
             <BookOpen className="w-4 h-4" />
             <span>Kashmir EcoWatch · Central Environmental Intelligence Portal</span>

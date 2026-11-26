@@ -139,7 +139,8 @@
 .site-header__inner,
 .mega-menu__inner,
 .page-content__inner,
-.kew-header-inner {
+.kew-header-inner,
+.kew-masthead-inner {
   width: 100%;
   max-width: var(--kew-container-standard);
   padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
@@ -149,78 +150,307 @@
 }
 
 /* =============================================
-   INTELLIGENT TWO-MODE GLOBAL KEW HEADER
-   Mode A: Single-Row Full Desktop Navigation (when all 14 items fit comfortably)
-   Mode B: Compact Explore Navigation (activated BEFORE any wrapping or clipping)
+   GLOBAL KEW TWO-STATE HEADER & STICKY NAVIGATION
+   State A: Expanded Institutional Masthead + Lower 14-Category Navigation
+   State B: Single-Bar Compact Sticky Navigation (activated when Masthead leaves viewport)
    ============================================= */
 
-.kew-header {
-  width: 100%;
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+:root {
+  --kew-masthead-height: 4.5rem;      /* 72px compact mobile (<640px) */
+  --kew-sticky-bar-height: 3rem;      /* 48px compact sticky bar (<640px) */
+  --kew-sticky-nav-offset: 4rem;      /* Anchor & focus clearance */
 }
 
-.kew-header-inner,
-.site-header__inner {
-  width: 100%;
-  min-width: 0;
+html {
+  scroll-padding-top: var(--kew-sticky-nav-offset, 4.5rem);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --kew-masthead-height: 5rem;      /* 80px tablet (640px-1023px) */
+    --kew-sticky-bar-height: 3.125rem;/* 50px sticky bar */
+    --kew-sticky-nav-offset: 4.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --kew-masthead-height: 5.25rem;   /* 84px laptop / vertical & standard desktop (+50% reference) */
+    --kew-sticky-bar-height: 3.125rem;/* 50px sticky bar */
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --kew-masthead-height: 5.5rem;    /* 88px Full HD / wide desktop */
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --kew-masthead-height: 6.5rem;    /* 104px 4K / Ultrawide / 5K desktop */
+    --kew-sticky-bar-height: 3.5rem;  /* 56px 4K sticky bar */
+    --kew-sticky-nav-offset: 4.5rem;
+  }
+}
+
+@media (max-height: 500px) and (max-width: 1023px) and (orientation: landscape) {
+  :root {
+    --kew-masthead-height: 4rem;      /* 64px short landscape smartphone */
+    --kew-sticky-bar-height: 2.875rem;/* 46px short landscape sticky bar */
+  }
+}
+
+/* Hidden 1:1 measurement vault for ResizeObserver rulers */
+.kew-measurement-vault {
+  position: fixed;
+  top: -9999px;
+  left: 0;
+  width: max-content;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  box-sizing: border-box;
+  align-items: flex-start;
 }
 
-.kew-logo,
-.site-logo {
-  flex: 0 0 auto;
-  margin-right: clamp(12px, 1vw, 24px);
-}
-
-/* Central Institutional Designation Slot (Container-Aware, Zoom-Aware & Zero-Height-Delta) */
-.kew-designation-slot {
-  flex: 1 1 0%;
-  min-width: 0;
-  height: 100%;
-  position: relative;
-  display: flex;
+.kew-ruler-inline {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  padding-inline: clamp(12px, 1.25vw, 28px);
-  container-type: inline-size;
+  width: max-content !important;
+  max-width: none !important;
+  white-space: nowrap;
 }
 
-.kew-institutional-designation,
-.kew-institutional-designation-ruler {
-  font-weight: 500;
-  text-transform: uppercase;
-  white-space: nowrap !important;
-  line-height: 1;
+.kew-sticky-search-text,
+.kew-sticky-search-kbd {
+  display: none;
+}
+
+@media (min-width: 2800px) {
+  .kew-sticky-search-text {
+    display: inline;
+  }
+}
+
+@media (min-width: 2960px) {
+  .kew-sticky-search-kbd {
+    display: inline-block;
+  }
+}
+
+/* ── STATE A: Expanded Institutional Masthead ────────────────────────────── */
+.kew-masthead {
+  width: 100%;
+  position: relative;
+  background-color: rgba(2, 6, 23, 0.96);
+  container-type: inline-size;
+  container-name: kew-masthead;
+}
+
+.kew-masthead-inner {
+  --kew-masthead-brand-gap: 1rem;     /* 16px controlled gap between logo and institutional text */
+  position: relative;
+  min-height: var(--kew-masthead-height);
+  height: var(--kew-masthead-height);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: clamp(0.75rem, 1.25vw, 1.5rem);
+  min-width: 0;
+}
+
+@media (min-width: 2560px) {
+  .kew-masthead-inner {
+    --kew-masthead-brand-gap: 1.25rem;/* 20px proportional gap beside 96px 4K/5K logo */
+  }
+}
+
+.kew-masthead-left,
+.kew-masthead-brand-group {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: var(--kew-masthead-brand-gap, 1rem);
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.kew-masthead-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.kew-masthead-right {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* Original Locked KEW Logo — Expanded State A (Proportional 1:1, Unmodified Artwork) */
+.kew-logo-img--expanded {
+  width: 3.75rem;   /* 60px (<640px) */
+  height: 3.75rem;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 640px) {
+  .kew-logo-img--expanded {
+    width: 4.25rem; /* 68px (640px-1023px) */
+    height: 4.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .kew-logo-img--expanded {
+    width: 4.75rem; /* 76px (1024px-1919px) */
+    height: 4.75rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .kew-logo-img--expanded {
+    width: 5rem;    /* 80px (1920px-2559px) */
+    height: 5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .kew-logo-img--expanded {
+    width: 6rem;    /* 96px (4K / 5K) */
+    height: 6rem;
+  }
+}
+
+@media (max-height: 500px) and (max-width: 1023px) and (orientation: landscape) {
+  .kew-logo-img--expanded {
+    width: 3.25rem; /* 52px short landscape */
+    height: 3.25rem;
+  }
+}
+
+/* Original Locked KEW Logo + Compact White Brand — Sticky State B */
+.kew-logo-img--sticky {
+  width: 2.25rem;   /* 36px (<640px) */
+  height: 2.25rem;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 640px) {
+  .kew-logo-img--sticky {
+    width: 2.5rem;  /* 40px (640px-2559px) */
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .kew-logo-img--sticky {
+    width: 2.875rem;/* 46px (4K / 5K) */
+    height: 2.875rem;
+  }
+}
+
+.kew-sticky-wordmark,
+.kew-sticky-wordmark-ruler {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.kew-sticky-wordmark-title,
+.kew-sticky-wordmark-ruler {
+  color: #ffffff !important;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  font-size: 0.8125rem; /* 13px (<640px) */
+}
+
+@media (min-width: 640px) {
+  .kew-sticky-wordmark-title,
+  .kew-sticky-wordmark-ruler {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+@media (min-width: 1920px) {
+  .kew-sticky-wordmark,
+  .kew-sticky-wordmark-ruler {
+    margin-left: 0.625rem;
+  }
+  .kew-sticky-wordmark-title,
+  .kew-sticky-wordmark-ruler {
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 2560px) {
+  .kew-sticky-wordmark,
+  .kew-sticky-wordmark-ruler {
+    margin-left: 0.75rem;
+  }
+  .kew-sticky-wordmark-title,
+  .kew-sticky-wordmark-ruler {
+    font-size: 1.0625rem; /* 17px */
+  }
+}
+
+header.kew-header[data-sticky-wordmark="hidden"] .kew-sticky-wordmark {
+  display: none !important;
+}
+
+/* Unified Left-Aligned Two-Line Institutional Identity Slot
+   Lives directly inside .kew-masthead-brand-group beside the original KEW logo.
+   Never centers independently; surplus space stays between branding group and right utility controls. */
+.kew-designation-slot {
+  position: relative;
+  inset: auto;
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  min-width: 0;
+  overflow: visible;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kew-institutional-identity,
+.kew-institutional-identity-ruler {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  row-gap: 0.25rem;
   background: transparent !important;
   background-color: transparent !important;
+  background-image: none !important;
   border: 0 !important;
   box-shadow: none !important;
   padding: 0;
   margin: 0;
-  font-size: 0.625rem; /* 10px compact desktop/laptop floor (~402px intrinsic width) */
-  letter-spacing: 0.13em;
 }
 
-.kew-institutional-designation {
-  display: none;
-  color: rgba(226, 232, 240, 0.92) !important; /* Elegant silver-white */
+.kew-institutional-identity {
+  display: inline-flex;
   max-width: 100%;
 }
 
-.kew-institutional-designation-ruler {
-  position: absolute;
-  top: 0;
+.kew-institutional-identity-ruler {
+  display: inline-flex;
+  position: fixed;
+  top: -9999px;
   left: 0;
   width: max-content !important;
   max-width: none !important;
@@ -229,47 +459,182 @@
   z-index: -1;
 }
 
-/* Container-aware typography scaling (every step leaves >= 70px total clearance) */
-@container (min-width: 430px) {
-  .kew-institutional-designation,
-  .kew-institutional-designation-ruler {
-    font-size: 0.625rem; /* 10px */
-    letter-spacing: 0.13em;
-  }
-  header.kew-header:not([data-designation-fit="hidden"]) .kew-institutional-designation {
-    display: inline-block;
+/* Line 1: Dr. Kumar's Kashmir EcoWatch — KEW Logo-Inspired Cyan-Blue (#0EA6E8), Bold, Left-Aligned with Line 2 */
+:is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-1 {
+  display: block;
+  color: #0EA6E8 !important;
+  font-weight: 800;
+  text-transform: none;
+  white-space: nowrap !important;
+  line-height: 1.12;
+  font-size: 0.75rem;      /* 12px compact tablet floor */
+  letter-spacing: 0.02em;
+  padding-left: 0;
+  margin-left: 0;
+  text-indent: 0;
+  text-align: left;
+}
+
+/* Line 2: GLOBAL INSTITUTE FOR ADVANCED ENVIRONMENTAL STUDIES — White Institutional Typography, Left-Aligned */
+:is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-2 {
+  display: block;
+  color: #ffffff !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap !important;
+  line-height: 1.15;
+  font-size: 0.5625rem;    /* 9px (~318px intrinsic width) */
+  letter-spacing: 0.055em;
+  padding-left: 0;
+  margin-left: 0;
+  text-indent: 0;
+  text-align: left;
+}
+
+@container kew-masthead (min-width: 860px) {
+  .kew-masthead[data-designation-fit="auto"] .kew-designation-slot {
+    display: inline-flex;
   }
 }
 
-@container (min-width: 600px) {
-  .kew-institutional-designation,
-  .kew-institutional-designation-ruler {
-    font-size: 0.6875rem; /* 11px (~485px intrinsic width) */
-    letter-spacing: 0.18em;
+@container kew-masthead (min-width: 960px) {
+  .kew-institutional-identity,
+  .kew-institutional-identity-ruler {
+    row-gap: 0.28rem;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-1 {
+    font-size: 0.9375rem;  /* 15px */
+    letter-spacing: 0.02em;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-2 {
+    font-size: 0.6875rem;  /* 11px */
+    letter-spacing: 0.09em;
   }
 }
 
-@container (min-width: 820px) {
-  .kew-institutional-designation,
-  .kew-institutional-designation-ruler {
-    font-size: 0.75rem; /* 12px (~555px intrinsic width) */
-    letter-spacing: 0.22em;
+@container kew-masthead (min-width: 1280px) {
+  .kew-institutional-identity,
+  .kew-institutional-identity-ruler {
+    row-gap: 0.3125rem;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-1 {
+    font-size: 1.0625rem;  /* 17px */
+    letter-spacing: 0.02em;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-2 {
+    font-size: 0.78125rem; /* 12.5px */
+    letter-spacing: 0.12em;
   }
 }
 
-@container (min-width: 1200px) {
-  .kew-institutional-designation,
-  .kew-institutional-designation-ruler {
-    font-size: 0.8125rem; /* 13px (~625px intrinsic width) */
-    letter-spacing: 0.25em;
+@container kew-masthead (min-width: 1800px) {
+  .kew-institutional-identity,
+  .kew-institutional-identity-ruler {
+    row-gap: 0.34375rem;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-1 {
+    font-size: 1.1875rem;  /* 19px */
+    letter-spacing: 0.025em;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-2 {
+    font-size: 0.875rem;   /* 14px */
+    letter-spacing: 0.14em;
   }
 }
 
-header.kew-header[data-designation-fit="hidden"] .kew-institutional-designation {
+@container kew-masthead (min-width: 2480px) {
+  .kew-institutional-identity,
+  .kew-institutional-identity-ruler {
+    row-gap: 0.4rem;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-1 {
+    font-size: 1.4375rem;  /* 23px */
+    letter-spacing: 0.025em;
+  }
+  :is(.kew-institutional-identity, .kew-institutional-identity-ruler) .kew-inst-line-2 {
+    font-size: 1rem;       /* 16px */
+    letter-spacing: 0.16em;
+  }
+}
+
+.kew-masthead[data-designation-fit="hidden"] .kew-designation-slot,
+.kew-masthead[data-designation-fit="hidden"] .kew-institutional-identity {
   display: none !important;
 }
 
-header.kew-header[data-designation-fit="visible"] .kew-institutional-designation {
+.kew-masthead[data-designation-fit="visible"] .kew-designation-slot,
+.kew-masthead[data-designation-fit="visible"] .kew-institutional-identity {
+  display: inline-flex;
+}
+
+/* ── STICKY HEADER & LOWER NAVIGATION BAR (Native CSS position: sticky) ──── */
+.kew-header {
+  width: 100%;
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
+}
+
+.kew-sticky-bar-shell {
+  background-color: rgba(2, 6, 23, 0.94);
+}
+
+.kew-sticky-bar-shell--active {
+  background-color: rgba(2, 6, 23, 0.97);
+}
+
+/* Zero-CLS Sticky Sentinel Architecture when State A is in Compact Explore mode:
+   - At top of page (data-header-state="expanded"): 0px height, bar hidden (no blank row)
+   - When scrolled (data-header-state="sticky"): 0px flow height + floating sticky bar at top:0 -> 0.00px scroll jump! */
+header.kew-header[data-expanded-nav-mode="compact"] {
+  height: 0;
+  overflow: visible;
+}
+
+header.kew-header[data-expanded-nav-mode="compact"][data-header-state="expanded"] .kew-sticky-bar-shell {
+  display: none !important;
+}
+
+header.kew-header[data-expanded-nav-mode="auto"] {
+  height: 0;
+  overflow: visible;
+}
+
+header.kew-header[data-expanded-nav-mode="auto"][data-header-state="expanded"] .kew-sticky-bar-shell {
+  display: none;
+}
+
+@media (min-width: 1920px) {
+  header.kew-header[data-expanded-nav-mode="auto"] {
+    height: auto;
+  }
+  header.kew-header[data-expanded-nav-mode="auto"][data-header-state="expanded"] .kew-sticky-bar-shell {
+    display: block;
+  }
+}
+
+.kew-sticky-row {
+  height: var(--kew-sticky-bar-height);
+  min-height: var(--kew-sticky-bar-height);
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  min-width: 0;
+}
+
+.kew-sticky-separator {
+  display: none;
+  width: 1px;
+  height: 1.375rem;
+  background-color: rgba(255, 255, 255, 0.18);
+  margin-left: 0.625rem;
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+header.kew-header[data-header-state="sticky"][data-sticky-nav-mode="full"] .kew-sticky-separator {
   display: inline-block;
 }
 
@@ -277,126 +642,141 @@ header.kew-header[data-designation-fit="visible"] .kew-institutional-designation
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: auto;
-  padding-left: 12px;
+  gap: 0.5rem;
   flex: 0 0 auto;
 }
 
-/* Mode A: Uninterrupted Single-Row 14-Module Navigation (NEVER wraps) */
+/* Uninterrupted Single-Row 14-Module Navigation (NEVER wraps) */
 .kew-desktop-nav-row {
   display: flex;
   flex-wrap: nowrap !important;
   align-items: center;
   justify-content: space-between;
-  column-gap: 0.25rem;
-  width: 100%;
+  column-gap: 0.125rem;
+  flex: 1 1 0%;
   min-width: 0;
   white-space: nowrap;
 }
 
-/* Out-of-flow single-row measurement ruler for content-aware ResizeObserver */
+/* Out-of-flow single-row measurement rulers (1:1 match with visible nav links) */
 .kew-desktop-nav-ruler {
-  position: fixed;
-  top: -9999px;
-  left: 0;
-  width: max-content !important;
-  max-width: none !important;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-  pointer-events: none;
   display: flex;
   flex-wrap: nowrap !important;
   align-items: center;
-  column-gap: 0.25rem;
   white-space: nowrap;
-  z-index: -1;
+  width: max-content !important;
+  max-width: none !important;
+  column-gap: 0.125rem;
 }
 
-/* Shared readable desktop navigation link sizing (matches ruler 1:1) */
+@media (min-width: 2120px) {
+  .kew-desktop-nav-row--expanded,
+  .kew-nav-ruler--expanded {
+    column-gap: 0.25rem;
+  }
+}
+
 .kew-desktop-nav-link {
   display: inline-flex;
   align-items: center;
   gap: 0.125rem;
-  padding: 0.25rem 0.375rem;
   border-radius: 0.375rem;
-  font-size: 0.75rem;
+  font-size: 0.75rem;      /* 12px crisp institutional label */
   line-height: 1.25rem;
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
+.kew-nav-link--expanded {
+  padding: 0.25rem 0.375rem;
+}
+
+.kew-nav-link--sticky {
+  padding: 0.25rem 0.3125rem;
+}
+
 @media (min-width: 2040px) {
-  .kew-desktop-nav-link {
+  .kew-nav-link--expanded {
     padding: 0.25rem 0.4375rem;
   }
 }
 
 @media (min-width: 2220px) {
-  .kew-desktop-nav-link {
-    padding: 0.25rem 0.625rem;
+  .kew-nav-link--expanded {
+    padding: 0.25rem 0.5rem;
     font-size: 0.8125rem;
   }
 }
 
 @media (min-width: 2560px) {
-  .kew-logo,
-  .site-logo {
-    margin-right: 48px;
-  }
-
-  .kew-logo img,
-  .site-logo img {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
-  .kew-desktop-nav-link {
+  .kew-nav-link--expanded {
     padding: 0.3125rem 0.6875rem;
     font-size: 0.875rem;
   }
+  .kew-nav-link--sticky {
+    padding: 0.25rem 0.375rem;
+  }
 }
 
-/* Pre-hydration SSR fallback (`data-nav-mode="auto"`) prevents any 1-frame wrap/flash */
+@media (min-width: 2800px) {
+  .kew-nav-link--sticky {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Explore Toggle Visibility Governance in State A (Expanded Masthead) */
+.kew-masthead .kew-masthead-explore-toggle {
+  display: inline-flex;
+}
+@media (min-width: 1920px) {
+  .kew-masthead[data-masthead-nav-mode="auto"] .kew-masthead-explore-toggle {
+    display: none;
+  }
+}
+.kew-masthead[data-masthead-nav-mode="full"] .kew-masthead-explore-toggle {
+  display: none !important;
+}
+.kew-masthead[data-masthead-nav-mode="compact"] .kew-masthead-explore-toggle {
+  display: inline-flex;
+}
+
+/* Nav Row & Explore Toggle Visibility Governance in Sticky Header */
 header.kew-header[data-nav-mode="auto"] .kew-desktop-nav-row {
   display: none;
 }
-header.kew-header[data-nav-mode="auto"] .kew-explore-toggle {
+header.kew-header[data-nav-mode="auto"] .kew-sticky-explore-toggle {
   display: inline-flex;
 }
-@media (min-width: 1900px) and (min-height: 500px) {
-  header.kew-header[data-nav-mode="auto"] .kew-desktop-nav-row {
+@media (min-width: 1920px) {
+  header.kew-header[data-header-state="expanded"][data-nav-mode="auto"] .kew-desktop-nav-row {
     display: flex;
   }
-  header.kew-header[data-nav-mode="auto"] .kew-explore-toggle {
+}
+@media (min-width: 2560px) {
+  header.kew-header[data-header-state="sticky"][data-nav-mode="auto"] .kew-desktop-nav-row {
+    display: flex;
+  }
+  header.kew-header[data-header-state="sticky"][data-nav-mode="auto"] .kew-sticky-explore-toggle {
     display: none;
   }
 }
 
-/* Hydrated Content-Aware Mode A: Full Desktop Single-Row Navigation */
 header.kew-header[data-nav-mode="full"] .kew-desktop-nav-row {
   display: flex;
 }
-header.kew-header[data-nav-mode="full"] .kew-explore-toggle,
+header.kew-header[data-nav-mode="full"] .kew-sticky-explore-toggle,
 header.kew-header[data-nav-mode="full"] #mobile-menu-drawer,
 header.kew-header[data-nav-mode="full"] .kew-drawer-overlay {
   display: none !important;
 }
 
-/* Hydrated Content-Aware Mode B: Compact Explore Navigation */
 header.kew-header[data-nav-mode="compact"] .kew-desktop-nav-row {
   display: none !important;
 }
-header.kew-header[data-nav-mode="compact"] .kew-explore-toggle {
+header.kew-header[data-nav-mode="compact"] .kew-sticky-explore-toggle {
   display: inline-flex;
-}
-
-@media (max-width: 1500px) {
-  .kew-search-label {
-    display: none !important;
-  }
 }
 
 /* =============================================
@@ -510,12 +890,12 @@ button, a, input, select, textarea {
 }
 
 html {
-  overflow-y: auto;
   overflow-x: clip;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: rgba(52, 211, 153, 0.45) #090d16;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--kew-sticky-nav-offset, 4.25rem);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -561,10 +941,10 @@ body {
 @media (max-width: 768px) {
   html {
     scrollbar-gutter: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   ::-webkit-scrollbar {
     display: none;
@@ -1033,10 +1413,10 @@ span[class*="tag"] {
    KEW GLOBAL RESPONSIVE DESIGN SYSTEM & NON-TRUNCATION LIFE-SAFETY RULES
    ========================================================================== */
 
-/* Universal horizontal scrollbar elimination across all mobile viewports */
+/* Universal horizontal scrollbar elimination across all viewports (clip preserves native position: sticky) */
 html,
 body {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   max-width: 100vw !important;
   width: 100% !important;
   position: relative;
@@ -2176,9 +2556,23 @@ html.light section.bg-slate-900:not([data-kew-dark-surface="true"]) {
   color: #0f172a;
 }
 
-html.light header.kew-header {
+html.light header.kew-header,
+html.light .kew-masthead {
   background-color: rgba(2, 6, 23, 0.94) !important;
   color: #f1f5f9 !important;
+}
+
+/* Never render the Himalayan Dispatch direct-access button inside the sticky header
+   (avoids duplicating the Himalayan Dispatch item in the sticky navigation menu) */
+header.kew-header a.kew-dispatch-direct-link {
+  display: none !important;
+}
+
+.kew-masthead a.kew-dispatch-direct-link,
+html.light .kew-masthead a.kew-dispatch-direct-link {
+  background-color: rgba(140, 49, 37, 0.16) !important;
+  border-color: rgba(198, 126, 88, 0.38) !important;
+  color: #f4efe6 !important;
 }
 
 html.light .glass-intense,
@@ -2407,44 +2801,50 @@ html.high-contrast :is(button, [role="button"], [role="tab"], a[class*="px-"], a
    Refined muted copper/bronze accent consistent with Dispatch editorial identity
    across both default Dark Mode and Light Mode sticky header surfaces.
    ========================================================================= */
-header.kew-header a.kew-dispatch-direct-link,
-html.light header.kew-header a.kew-dispatch-direct-link {
+/* Never render the Himalayan Dispatch direct-access button inside the sticky header
+   (avoids duplicating the Himalayan Dispatch item in the sticky navigation menu) */
+header.kew-header a.kew-dispatch-direct-link {
+  display: none !important;
+}
+
+.kew-masthead a.kew-dispatch-direct-link,
+html.light .kew-masthead a.kew-dispatch-direct-link {
   background-color: rgba(140, 49, 37, 0.16) !important;
   border-color: rgba(198, 126, 88, 0.38) !important;
   color: #f4efe6 !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link .kew-dispatch-direct-label,
-html.light header.kew-header a.kew-dispatch-direct-link .kew-dispatch-direct-label {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link .kew-dispatch-direct-label,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link .kew-dispatch-direct-label {
   color: #f4efe6 !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon,
-html.light header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon {
   color: #d8956b !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow,
-html.light header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow {
   color: #c88a63 !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link:hover,
-header.kew-header a.kew-dispatch-direct-link:focus-visible,
-html.light header.kew-header a.kew-dispatch-direct-link:hover,
-html.light header.kew-header a.kew-dispatch-direct-link:focus-visible {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover,
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:focus-visible,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:focus-visible {
   background-color: rgba(140, 49, 37, 0.26) !important;
   border-color: rgba(216, 149, 107, 0.62) !important;
   color: #ffffff !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label,
-html.light header.kew-header a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label {
   color: #ffffff !important;
 }
 
-header.kew-header a.kew-dispatch-direct-link:hover svg,
-html.light header.kew-header a.kew-dispatch-direct-link:hover svg {
+:is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover svg,
+html.light :is(header.kew-header, .kew-masthead) a.kew-dispatch-direct-link:hover svg {
   color: #e6ab86 !important;
 }
 
@@ -2457,15 +2857,9 @@ html.light header.kew-header a.kew-dispatch-direct-link:hover svg {
 
 /* Reserve dedicated right-side rail clearance inside multi-slide heroes on >= 768px
    so hero headlines, floating showcase panels, and close/restore controls never collide */
-@media (min-width: 768px) and (max-width: 1919px) {
+@media (min-width: 768px) {
   .kew-has-hero-rail {
-    padding-right: calc(max(var(--page-gutter), env(safe-area-inset-right, 0px)) + 2.5rem) !important;
-  }
-}
-
-@media (min-width: 1920px) {
-  .kew-has-hero-rail {
-    padding-right: calc(max(var(--page-gutter), env(safe-area-inset-right, 0px)) + 1.5rem) !important;
+    padding-right: calc(max(var(--page-gutter), env(safe-area-inset-right, 0px)) + 2.75rem) !important;
   }
 }
 
@@ -2752,7 +3146,7 @@ html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
   /* Viewport- & safe-area-aware internal hero vertical clearance */
   --kew-module-hero-pt: calc(clamp(4.25rem, 8svh, 5.25rem) + env(safe-area-inset-top, 0px));
   --kew-module-hero-pb: calc(clamp(2.25rem, 4.5svh, 3.75rem) + env(safe-area-inset-bottom, 0px));
-  --kew-module-hero-pb-rail: calc(clamp(4.15rem, 7svh, 5rem) + env(safe-area-inset-bottom, 0px));
+  --kew-module-hero-pb-rail: calc(clamp(4.85rem, 8svh, 5.5rem) + env(safe-area-inset-bottom, 0px));
 }
 
 /* Tablet Landscape, Tablet Portrait & Vertical Desktop (< 1280px · compact 1-tier header) */
@@ -2792,7 +3186,7 @@ html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
     --kew-hero-reference-height: max(100svh, 31rem);
     --kew-module-hero-pt: calc(4rem + env(safe-area-inset-top, 0px));
     --kew-module-hero-pb: calc(2rem + env(safe-area-inset-bottom, 0px));
-    --kew-module-hero-pb-rail: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+    --kew-module-hero-pb-rail: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -2801,6 +3195,8 @@ html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
   min-height: var(--kew-module-hero-height-vh);
   min-height: var(--kew-module-hero-height);
   height: auto;
+  max-height: none;
+  overflow-x: clip;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2811,8 +3207,78 @@ html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
 :is(.kew-heading-surface, .kew-module-hero-surface) > :is(.kew-heading-inner, .kew-module-hero-inner) {
   box-sizing: border-box;
   width: 100%;
+  min-width: 0;
   padding-top: var(--kew-module-hero-pt);
   padding-bottom: var(--kew-module-hero-pb);
+}
+
+/* =========================================================================
+   KASHMIR ECOWATCH — UNIVERSAL HERO CONTENT VISIBILITY & OVERFLOW GOVERNANCE
+   Enforces complete visibility, intelligent width utilization, natural wrapping,
+   and zero truncation/clipping across all KEW module & submodule heroes.
+   Himalayan Dispatch (.hd-editorial-root) is strictly excluded.
+   ========================================================================= */
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-heading-scope {
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+/* Main Hero Headlines: Utilize full available column width independently of description measure; never clip or force nowrap */
+:is(.kew-heading-surface, .kew-module-hero-surface) h1,
+:is(.kew-heading-surface, .kew-module-hero-surface) [data-kew-synced-slides="true"] [data-hero-scene-id] > div > div {
+  max-width: 100% !important;
+  min-width: 0;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  -webkit-line-clamp: unset !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* Prevent legacy `whitespace-nowrap`, `truncate`, or `line-clamp-*` inside hero H1 spans from clipping scientific titles,
+   while preserving single-line lockup on KewBrandIdentity (`[data-kew-brand-identity]`) and `.sr-only` */
+:is(.kew-heading-surface, .kew-module-hero-surface) h1 span:not(.sr-only):not([data-kew-brand-identity]):not(.kew-brand-badge):not(.kew-brand-region) {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  -webkit-line-clamp: unset !important;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Multi-line gradient headline descender & overhang protection */
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(h1, [data-kew-synced-slides]) :is(.bg-clip-text, .gradient-text, .kew-hero-headline-gradient) {
+  padding-bottom: 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Hero Breadcrumbs, Category Eyebrows, Metadata Badges & CTA Rows: Natural responsive wrapping without clipping */
+:is(.kew-heading-surface, .kew-module-hero-surface) nav[aria-label="Breadcrumb"],
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-hero-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(.badge, [class*="badge"], [data-badge]) {
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  height: auto;
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(.kew-heading-scope, .kew-module-hero-inner) :is(a, button):not(.carousel-touch-target):not(.kew-cc-step):not(.kew-cc-pause):not([data-kew-hero-overlay-close]):not([data-kew-hero-overlay-restore]) {
+  max-width: 100%;
+  white-space: normal;
+  height: auto;
 }
 
 @media (max-width: 767px) {
@@ -2980,4 +3446,667 @@ html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
 :is(.kew-heading-surface, .kew-module-hero-surface) :is(.kew-heading-scope, .kew-module-hero-inner) :is(button, a):is([class*="border-white"], [class*="border-slate"], [class*="border-emerald-400"]):not([class*="bg-emerald-5"]):not([class*="bg-emerald-6"]):not([data-kew-hero-overlay="true"] *):not(.kew-cinematic-controller *):not(.kew-card *):not(.card-intelligence *):hover {
   background-color: rgba(15, 23, 42, 0.92) !important;
   border-color: rgba(52, 211, 153, 0.62) !important;
+}
+
+/* =========================================================================
+   KASHMIR ECOWATCH — GLOBAL SEARCH INTERFACE (OPAQUE DARK SURFACE & CONTRAST)
+   Functional overlay surface decoupled 100% from underlying hero photography,
+   carousel transitions, and dark/light/high-contrast page theme cascades.
+   Reuses canonical KEW dark-surface & text tokens:
+   - Input Header: #0D1423 (Deep Navy)
+   - Content Body: #0F172A (KEW Slate-900)
+   - Suggestion Chips & ESC: #1E293B (KEW Slate-800)
+   - Footer Bar: #080E1C (--kew-hero-navy)
+   - Primary Text: #FFFFFF (--kew-hero-white)
+   - Supporting Text: #E2E8F0 (--kew-hero-description) / #CBD5E1 (--kew-hero-label)
+   - Institutional Heading & Full Search: #34D399 (--kew-hero-emerald)
+   - Scientific Q&A: #7DD3FC (KEW Cyan-Blue)
+   ========================================================================= */
+/* Elevate active header surface above lower sticky nav row (z-index: 100) whenever any header dropdown or functional overlay is open */
+:is(.kew-masthead, header.kew-header):has(.kew-global-search-panel, #kew-control-center-panel, .kew-nav-dropdown-anchor, .kew-functional-overlay) {
+  z-index: 120 !important;
+}
+
+/* =========================================================================
+   CENTRALIZED KEW MENU, DROPDOWN & FUNCTIONAL OVERLAY SURFACE GOVERNANCE
+   Permanent Design Principle:
+   Cinematic transparency belongs in environmental storytelling, not
+   functional navigation interfaces. All menus, submenus, and functional
+   overlays enforce 100% opaque backgrounds, zero backdrop blur, WCAG AA+
+   contrast, and light/dark theme token parity.
+   ========================================================================= */
+:root,
+html,
+html.dark {
+  --kew-menu-bg: #080d1c;
+  --kew-menu-header-bg: #151e2e;
+  --kew-menu-hover-bg: #12332f;
+  --kew-menu-border: #263244;
+  --kew-menu-text-primary: #ffffff;
+  --kew-menu-text-secondary: #a8b6c9;
+  --kew-menu-accent: #34d399;
+  --kew-menu-accent-hover: #6ee7b7;
+  --kew-menu-qa-accent: #7dd3fc;
+  --kew-menu-qa-accent-hover: #bae6fd;
+  --kew-menu-chip-bg: #151e2e;
+  --kew-menu-subcard-bg: #0f172a;
+  --kew-menu-shadow:
+    0 24px 64px -12px rgba(2, 6, 23, 0.94),
+    0 12px 28px -8px rgba(2, 6, 23, 0.85),
+    0 0 0 1px rgba(38, 50, 68, 0.9);
+}
+
+html.light {
+  --kew-menu-bg: #ffffff;
+  --kew-menu-header-bg: #f1f5f9;
+  --kew-menu-hover-bg: #e6f4f1;
+  --kew-menu-border: #cbd5e1;
+  --kew-menu-text-primary: #0f172a;
+  --kew-menu-text-secondary: #475569;
+  --kew-menu-accent: #047857;
+  --kew-menu-accent-hover: #065f46;
+  --kew-menu-qa-accent: #0369a1;
+  --kew-menu-qa-accent-hover: #075985;
+  --kew-menu-chip-bg: #f1f5f9;
+  --kew-menu-subcard-bg: #f8fafc;
+  --kew-menu-shadow:
+    0 22px 54px -12px rgba(15, 23, 42, 0.24),
+    0 10px 24px -8px rgba(15, 23, 42, 0.14),
+    0 0 0 1px rgba(203, 213, 225, 0.95);
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) {
+  background-color: var(--kew-menu-bg) !important;
+  background-image: none !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-primary) !important;
+  box-shadow: var(--kew-menu-shadow) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  isolation: isolate;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) :is(.kew-menu-top-header, .kew-menu-footer, .kew-menu-subbar) {
+  background-color: var(--kew-menu-header-bg) !important;
+  background-image: none !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-scroll {
+  background-color: var(--kew-menu-bg) !important;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--kew-menu-border) var(--kew-menu-bg);
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-section-header {
+  display: block;
+  padding: 0.4375rem 0.9375rem;
+  background-color: var(--kew-menu-header-bg) !important;
+  border-top: 1px solid var(--kew-menu-border);
+  border-bottom: 1px solid var(--kew-menu-border);
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-section-header:first-child {
+  border-top: 0;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-section-header > span {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4375rem 0.9375rem;
+  background-color: var(--kew-menu-header-bg) !important;
+  border: 0 !important;
+  border-top: 1px solid var(--kew-menu-border) !important;
+  border-bottom: 1px solid var(--kew-menu-border) !important;
+  border-radius: 0 !important;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle > span {
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle svg {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle:hover,
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle:focus-visible {
+  background-color: var(--kew-menu-hover-bg) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle:hover svg,
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-section-toggle:focus-visible svg {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item {
+  display: block;
+  padding: 0.4375rem 0.9375rem;
+  background-color: var(--kew-menu-bg) !important;
+  border: 0 !important;
+  border-left: 2px solid transparent !important;
+  color: var(--kew-menu-text-primary) !important;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--card {
+  display: flex;
+  border-left-width: 1px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.75rem;
+  padding: 0.625rem;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item .kew-menu-item-title {
+  color: var(--kew-menu-text-primary) !important;
+  font-weight: 600;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--external .kew-menu-item-title {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item .kew-menu-item-desc {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item:hover,
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item:focus-visible,
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--active {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-left-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--card:hover,
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--card:focus-visible,
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--card.kew-menu-item--active {
+  border-color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item:focus-visible {
+  outline: 2px solid var(--kew-menu-accent) !important;
+  outline-offset: -2px;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) :is(.kew-menu-item--active, .kew-menu-item:hover) .kew-menu-item-title {
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-item--external:hover .kew-menu-item-title {
+  color: var(--kew-menu-accent-hover) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-title {
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-desc {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-accent-text {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-subcard {
+  background-color: var(--kew-menu-subcard-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) .kew-menu-tablist {
+  background-color: var(--kew-menu-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab :is(span, svg) {
+  color: inherit !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab:hover {
+  background-color: var(--kew-menu-hover-bg) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab[aria-selected="true"],
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab.kew-menu-tab--active {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab[aria-selected="true"] svg,
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab.kew-menu-tab--active svg {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab .kew-menu-badge-critical {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-tab .kew-menu-badge-amber {
+  background-color: #f59e0b !important;
+  color: #0f172a !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-ghost-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-ghost-btn :is(span, svg) {
+  color: inherit !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-ghost-btn:hover {
+  background-color: var(--kew-menu-hover-bg) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-option-btn {
+  background-color: var(--kew-menu-subcard-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-option-btn :is(span, strong) {
+  color: inherit !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-option-btn:hover {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-menu-surface) button.kew-menu-option-btn--selected {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+  font-weight: 700;
+}
+
+/* Preserve dark institutional header strip behind white KEW mobile logo in Light Mode */
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .kew-drawer-brand-header {
+  background-color: #080d1c !important;
+  border-color: #263244 !important;
+  color: #ffffff !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .kew-drawer-brand-header button.kew-menu-ghost-btn {
+  color: #cbd5e1 !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .kew-drawer-brand-header button.kew-menu-ghost-btn:hover {
+  background-color: #12332f !important;
+  color: #ffffff !important;
+}
+
+/* Light-mode accessible icon palette inside .kew-menu-surface */
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-emerald-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-sky-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-sky-400 {
+  color: #0369a1 !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-amber-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-amber-300,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-amber-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-amber-300 {
+  color: #b45309 !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-red-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-red-400 {
+  color: #b91c1c !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-teal-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-teal-400 {
+  color: #0f766e !important;
+}
+
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) svg.text-purple-400,
+html.light :is(#kew-menu-governance-scope, .kew-menu-surface) .text-purple-400 {
+  color: #6d28d9 !important;
+}
+
+/* Global Search Panel aligned to centralized --kew-menu-* tokens (Dark & Light parity) */
+:is(#kew-menu-governance-scope, .kew-global-search-panel) {
+  background-color: var(--kew-menu-bg) !important;
+  background-image: none !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-primary) !important;
+  box-shadow: var(--kew-menu-shadow) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  isolation: isolate;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-input-bar,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-footer-bar {
+  background-color: var(--kew-menu-header-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-content-body {
+  background-color: var(--kew-menu-bg) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-lead-icon {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-input {
+  color: var(--kew-menu-text-primary) !important;
+  caret-color: var(--kew-menu-accent);
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-input::placeholder {
+  color: var(--kew-menu-text-secondary) !important;
+  opacity: 1 !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-inst-heading,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-inst-heading :is(span, svg) {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-supporting-text {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-chip {
+  background-color: var(--kew-menu-chip-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-chip:hover,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-chip:focus-visible {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-esc-btn {
+  background-color: var(--kew-menu-chip-bg) !important;
+  border-color: var(--kew-menu-border) !important;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-esc-btn:hover {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-clear-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-clear-btn svg {
+  color: currentColor !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-clear-btn:hover {
+  background-color: var(--kew-menu-hover-bg) !important;
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item:hover,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item--focused {
+  background-color: var(--kew-menu-hover-bg) !important;
+  border-color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-title {
+  color: var(--kew-menu-text-primary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item:hover .kew-search-result-title,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item--focused .kew-search-result-title {
+  color: var(--kew-menu-accent-hover) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-subtitle {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-arrow {
+  color: var(--kew-menu-text-secondary) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item:hover .kew-search-result-arrow,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-result-item--focused .kew-search-result-arrow {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-qa-link,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-qa-link :is(span, svg) {
+  color: var(--kew-menu-qa-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-qa-link:hover,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-qa-link:hover :is(span, svg) {
+  color: var(--kew-menu-qa-accent-hover) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-full-link,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-full-link :is(span, svg) {
+  color: var(--kew-menu-accent) !important;
+}
+
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-full-link:hover,
+:is(#kew-menu-governance-scope, .kew-global-search-panel) .kew-search-full-link:hover :is(span, svg) {
+  color: var(--kew-menu-accent-hover) !important;
+}
+
+/* =========================================================================
+   GLOBAL FOOTER INSTITUTIONAL IDENTITY LOCKUP (Dark & Light Mode Safe)
+   Line 1: Dr. Kumar's Kashmir EcoWatch — KEW Cyan-Blue (#0EA6E8)
+   Line 2: GLOBAL INSTITUTE FOR ADVANCED ENVIRONMENTAL STUDIES — Pure White (#FFFFFF)
+   ========================================================================= */
+footer .kew-footer-inst-line-1,
+html.dark footer .kew-footer-inst-line-1,
+html.light footer .kew-footer-inst-line-1 {
+  color: #0ea6e8 !important;
+}
+
+footer .kew-footer-inst-line-2,
+html.dark footer .kew-footer-inst-line-2,
+html.light footer .kew-footer-inst-line-2 {
+  color: #ffffff !important;
+}
+
+/* Controlled institutional description measure & container-responsive 28% / 18% / 18% / 18% / 18% desktop grid */
+footer .kew-footer-inst-desc {
+  width: 100%;
+  max-width: 46ch;
+}
+
+@media (min-width: 1024px) {
+  footer .kew-footer-main-grid {
+    grid-template-columns: minmax(0, 28fr) repeat(4, minmax(0, 18fr));
+  }
+}
+
+
+/* =========================================================================
+   DR. GHULAM MOHAMMAD KUMAR — DEDICATED MESSAGE HERO PORTRAIT GOVERNANCE
+   Strictly scoped to `.kew-kumar-message-hero` on `/about/message`.
+   Preserves the approved 80% homepage-relative module hero height standard
+   while framing Dr. Kumar's authentic Dr. Kumar Foundation USA portrait
+   (`1920x1080` `/dr_kumar_image.png`) without facial cropping, headline
+   collision, or portrait darkening across all responsive viewports.
+   ========================================================================= */
+.kew-kumar-message-hero {
+  background-color: #080e1c !important;
+}
+
+/* Portrait Mobile, Portrait Tablet & Vertical Desktop (e.g. 390x844, 768x1024, 1080x1920):
+   Upper stage frames Dr. Kumar's complete close-up face without eye/cheek clipping;
+   lower stage presents the headline, Laqab, subtitle & CTAs over a clean bottom scrim. */
+@media (orientation: portrait) {
+  .kew-kumar-message-hero {
+    justify-content: flex-end;
+  }
+
+  .kew-kumar-message-hero [data-carousel-slide-index] {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: min(60%, 82vw);
+    -webkit-mask-image: linear-gradient(180deg, #000000 0%, #000000 70%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000000 0%, #000000 70%, transparent 100%);
+  }
+
+  .kew-kumar-message-hero .kew-carousel-media {
+    object-fit: cover;
+    object-position: 43% 38% !important;
+  }
+
+  .kew-kumar-message-hero .kew-hero-directional-scrim {
+    background-image: linear-gradient(
+      180deg,
+      rgba(8, 14, 28, 0.24) 0%,
+      rgba(8, 14, 28, 0.02) 16%,
+      rgba(8, 14, 28, 0.04) 36%,
+      rgba(8, 14, 28, 0.82) 52%,
+      rgba(8, 14, 28, 0.96) 66%,
+      rgba(8, 14, 28, 0.99) 100%
+    ) !important;
+  }
+
+  .kew-kumar-message-hero > .kew-heading-inner {
+    padding-top: min(44svh, 66vw);
+  }
+}
+
+/* Landscape Mobile & Compact Landscape (< 1024px landscape):
+   Right-anchored portrait stage keeps Dr. Kumar's face clear of left headline copy. */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .kew-kumar-message-hero [data-carousel-slide-index] {
+    inset: 0 0 0 32%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.65) 16%, #000000 30%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.65) 16%, #000000 30%);
+  }
+
+  .kew-kumar-message-hero .kew-carousel-media {
+    object-fit: cover;
+    object-position: 45% 42% !important;
+  }
+
+  .kew-kumar-message-hero .kew-heading-scope {
+    max-width: min(50%, 31rem);
+  }
+
+  .kew-kumar-message-hero .kew-hero-directional-scrim {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 28, 0.96) 0%,
+        rgba(8, 14, 28, 0.90) 40%,
+        rgba(8, 14, 28, 0.30) 56%,
+        rgba(8, 14, 28, 0.04) 72%,
+        rgba(8, 14, 28, 0.03) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 14, 28, 0.28) 0%,
+        rgba(8, 14, 28, 0.03) 20%,
+        rgba(8, 14, 28, 0.04) 78%,
+        rgba(8, 14, 28, 0.80) 100%
+      ) !important;
+  }
+}
+
+/* Landscape Tablet, Laptop, Standard Horizontal Desktop, Ultrawide & 4K/5K (>= 1024px landscape):
+   Frames the authentic 16:9 close-up portrait cleanly across the right stage so Dr. Kumar's
+   complete face, eyes, warm smile & beard sit clear of the left text column without cropping. */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .kew-kumar-message-hero [data-carousel-slide-index] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: max(28%, calc(100% - 150svh));
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.6) 12%, #000000 26%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.6) 12%, #000000 26%);
+  }
+
+  .kew-kumar-message-hero .kew-carousel-media {
+    object-fit: cover;
+    object-position: 44% 45% !important;
+  }
+
+  .kew-kumar-message-hero .kew-heading-scope {
+    max-width: min(44%, 39rem);
+  }
+
+  .kew-kumar-message-hero .kew-hero-directional-scrim {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 28, 0.96) 0%,
+        rgba(8, 14, 28, 0.90) 35%,
+        rgba(8, 14, 28, 0.44) 47%,
+        rgba(8, 14, 28, 0.05) 58%,
+        rgba(8, 14, 28, 0.02) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 14, 28, 0.28) 0%,
+        rgba(8, 14, 28, 0.02) 18%,
+        rgba(8, 14, 28, 0.04) 80%,
+        rgba(8, 14, 28, 0.82) 100%
+      ) !important;
+  }
 }

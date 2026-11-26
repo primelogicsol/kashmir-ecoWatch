@@ -282,6 +282,7 @@ export function getGlobalDropdownItems(label: string): GlobalDropdownItem[] {
     case 'About':
       return [
         { name: '🏛️ About KEW', href: '/about', desc: 'Platform overview & scientific charter' },
+        { name: '📜 Message', href: '/about/message', desc: 'Reflections inspired by Dr. Ghulam Mohammad Kumar' },
         { name: '🎯 Mission', href: '/about/mission', desc: 'Ecological mandates & strategic vision' },
         { name: '⚖️ Governance', href: '/about/governance', desc: 'Institutional oversight & ethics' },
         { name: '👤 Institutional Leadership', href: '/about/founder', desc: 'Founder & executive director' },

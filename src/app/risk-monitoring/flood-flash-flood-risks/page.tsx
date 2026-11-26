@@ -23,7 +23,7 @@ export default function FloodFlashFloodRisksPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood Risks' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risks</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risks</span>
           </>}
         subtitle="River flooding, flash flood corridors, and GLOF risk monitoring"
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}

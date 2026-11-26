@@ -72,7 +72,7 @@ export default function GroundwaterPage() {
         icon={<Database className="w-6 h-6 text-emerald-400" />}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Aquifers</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Aquifers</span>
           </>}
         subtitle="Comprehensive monitoring and mapping of Kashmir's groundwater resources — the Karewa aquifer system that sustains millions. The ESRO EIA Report warns that water resources like springs, wells, baulies are drying up."
         breadcrumbs={[

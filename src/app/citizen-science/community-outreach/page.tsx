@@ -38,14 +38,14 @@ export default function CommunityOutreachPage() {
     <main className="min-h-screen bg-slate-950"><section className="kew-module-hero-surface relative overflow-hidden bg-slate-900/50">
         
         <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-w-0">
             <Link href="/citizen-science" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-6"><ArrowLeft className="w-4 h-4" />Back to Citizen Science</Link>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center shadow-xl"><Users className="w-7 h-7 text-white" /></div>
               <Badge variant="warning" size="lg">Outreach Program</Badge>
             </div>
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Community <span className="text-emerald-400">Outreach</span></h1>
+            <h1 className=" text-4xl md:text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">Community <span className="text-emerald-400">Outreach</span></h1>
             <p className="text-lg text-slate-400 max-w-2xl">Engage local communities in conservation awareness, environmental monitoring training, and citizen science programs. Build bridges between science and society.</p>
           </motion.div>
         </div>

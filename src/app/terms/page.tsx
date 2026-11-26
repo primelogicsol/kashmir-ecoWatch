@@ -259,7 +259,7 @@ export default function TermsOfUsePage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Terms of Use' }]}
         title={<>
           <KewBrandIdentity />
-          <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Terms of Use</span>
+          <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Terms of Use</span>
         </>}
         subtitle="These Terms govern access to and use of the Kashmir EcoWatch website, environmental intelligence platform, datasets, dashboards, maps, publications, and related services."
         icon={<ScrollText className="w-6 h-6 text-emerald-400" />}

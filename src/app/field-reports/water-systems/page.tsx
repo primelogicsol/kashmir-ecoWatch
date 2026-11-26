@@ -31,7 +31,7 @@ export default function WaterSystemsReportsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent">Water Systems Field Reports</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent">Water Systems Field Reports</span>
           </>}
         subtitle="Water quality testing, lake trophic status monitoring, river discharge data, and groundwater recharge field studies."
         icon={<Droplets className="w-6 h-6 text-blue-400" />}

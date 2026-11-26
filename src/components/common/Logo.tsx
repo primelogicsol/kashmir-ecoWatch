@@ -6,7 +6,7 @@ import { KEW_OFFICIAL_LOGO_PATH } from '@/lib/seo/entity-identity';
 export { KEW_OFFICIAL_LOGO_PATH };
 
 interface LogoProps {
-  variant?: 'expanded' | 'compact' | 'mobile';
+  variant?: 'expanded' | 'sticky' | 'compact' | 'mobile';
   className?: string;
 }
 
@@ -55,72 +55,54 @@ export function KewOfficialPublicationLogo({
 }
 
 /**
- * Premium Logo Component for Kashmir EcoWatch
- * 
+ * Global Header Logo Component for Kashmir EcoWatch.
+ * Uses ONLY the single locked original logo asset (`/kew_LOGO.png`) without artwork modification.
+ *
  * Variants:
- * - expanded: Full logo with mark and wordmark for hero state
- * - compact: Simplified logo for sticky header state
- * - mobile: Optimized logo for mobile header
+ * - expanded: Large standalone original KEW logo for the Expanded Institutional Masthead (no separate text)
+ * - sticky / compact: Small original KEW logo + compact white "Kashmir EcoWatch" text for Sticky Mode
+ * - mobile: Small original KEW logo + compact white "Kashmir EcoWatch" text for the Explore drawer header
  */
 export function Logo({ variant = 'expanded', className }: LogoProps) {
-  const logoConfig = {
-    expanded: {
-      containerClass: 'flex items-center',
-      imgClass: 'w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-lg',
-      showWordmark: false,
-      wordmarkClass: 'flex flex-col justify-center',
-    },
-    compact: {
-      containerClass: 'flex items-center',
-      imgClass: 'w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-md',
-      showWordmark: false,
-      wordmarkClass: 'flex flex-col justify-center',
-    },
-    mobile: {
-      containerClass: 'flex items-center',
-      imgClass: 'w-8 h-8 md:w-9 md:h-9 object-contain drop-shadow-md',
-      showWordmark: false,
-      wordmarkClass: 'flex flex-col justify-center',
-    },
-  };
-
-  const config = logoConfig[variant];
+  const isExpanded = variant === 'expanded';
+  const isSticky = variant === 'sticky' || variant === 'compact';
+  const isMobileDrawer = variant === 'mobile';
 
   return (
-    <Link 
-      href="/" 
+    <Link
+      href="/"
+      aria-label="Kashmir EcoWatch — Home"
       className={cn(
-        'group relative transition-all duration-300',
-        config.containerClass,
+        'kew-brand-link group relative inline-flex items-center shrink-0 transition-opacity duration-200 hover:opacity-95',
+        isExpanded && 'kew-brand-link--expanded',
+        isSticky && 'kew-brand-link--sticky',
+        isMobileDrawer && 'kew-brand-link--drawer gap-2.5',
         className
       )}
     >
-      {/* Logo Mark */}
       <img
         src={KEW_OFFICIAL_LOGO_PATH}
-        alt="Kashmir EcoWatch (KEW Western Himalayan)"
+        alt="Kashmir EcoWatch"
+        decoding="async"
         className={cn(
-          config.imgClass,
-          'transform group-hover:scale-105 transition-transform duration-300'
+          'object-contain shrink-0 select-none transition-transform duration-300 group-hover:scale-[1.03]',
+          isExpanded && 'kew-logo-img--expanded drop-shadow-lg',
+          isSticky && 'kew-logo-img--sticky drop-shadow-md',
+          isMobileDrawer && 'w-9 h-9 drop-shadow-md'
         )}
       />
 
-      {/* Institutional Wordmark - Proportioned for Wide & 4K Displays */}
-      {variant !== 'mobile' && (
-        <div className="hidden xl:flex flex-col justify-center ml-3 select-none">
-          <span className="text-sm 2xl:text-base font-bold text-white tracking-tight leading-tight whitespace-nowrap">
-            Kashmir EcoWatch
-          </span>
-          <span className="text-[10px] 2xl:text-xs text-emerald-400 font-semibold tracking-wider uppercase whitespace-nowrap">
-            KEW Western Himalayan
-          </span>
-        </div>
+      {isSticky && (
+        <span className="kew-sticky-wordmark select-none">
+          <span className="kew-sticky-wordmark-title">Kashmir EcoWatch</span>
+        </span>
       )}
 
-      {/* Subtle hover glow effect */}
-      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-sky-500/10 rounded-lg blur-xl" />
-      </div>
+      {isMobileDrawer && (
+        <span className="text-sm font-bold text-white tracking-tight whitespace-nowrap select-none">
+          Kashmir EcoWatch
+        </span>
+      )}
     </Link>
   );
 }

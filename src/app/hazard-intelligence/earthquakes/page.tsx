@@ -375,7 +375,7 @@ export default function EarthquakesPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Seismic Risk Intelligence</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">Seismic Risk Intelligence</span>
           </>}
         subtitle="Real-time triple-agency earthquake surveillance (NCS India + EMSC + USGS) fused with district-level fault geometry, Zone V exposure, and structural vulnerability across the Western Himalayas."
         icon={<Activity className="w-6 h-6 text-red-400" />}

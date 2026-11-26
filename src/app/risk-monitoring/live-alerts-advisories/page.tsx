@@ -49,7 +49,7 @@ export default function LiveAlertsAdvisoriesPage() {
         title={
           <>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
               Live Alerts & Advisories
             </span>
           </>

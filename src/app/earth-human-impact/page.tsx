@@ -109,10 +109,10 @@ export default function EarthHumanImpactHubPage() {
           <div className="overflow-visible pb-2">
             <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
-              <span className="block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="block whitespace-normal break-words [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
                 Earth &amp; Human
               </span>
-              <span className="block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-teal-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
+              <span className="block whitespace-normal break-words [word-break:keep-all] [overflow-wrap:normal] bg-gradient-to-r from-teal-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
                 Impact (EHI)
               </span>
             </div>

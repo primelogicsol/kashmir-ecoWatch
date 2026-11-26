@@ -46,8 +46,8 @@ export default function ProjectProfilePage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col pb-12">
       {/* HEADER SECTION */}
-      <div className="bg-slate-900 border-b border-slate-800 pt-24 pb-12 px-6">
-        <div className="max-w-4xl mx-auto">
+      <div data-kew-dark-surface="true" className="kew-module-hero-surface bg-slate-900 border-b border-slate-800">
+        <div className="kew-module-hero-inner container mx-auto">
           <Link href={`/ngo-impact/${foundNgo.slug}`} className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-400 mb-6 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to {foundNgo.name}
           </Link>

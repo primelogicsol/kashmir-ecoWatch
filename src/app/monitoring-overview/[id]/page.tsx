@@ -30,7 +30,7 @@ export default function MonitoringDetailPage() {
       <main className="min-h-screen bg-slate-950 flex items-center justify-center">
         <div className="text-center">
           <Activity className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-          <h1 className="max-w-xl text-2xl font-bold text-white mb-2">Monitoring Network Not Found</h1>
+          <h1 className=" text-2xl font-bold text-white mb-2">Monitoring Network Not Found</h1>
           <p className="text-slate-400 mb-6">The monitoring network you're looking for doesn't exist or has been removed.</p>
           <Button onClick={() => router.push('/monitoring-overview')} icon={<ArrowLeft className="w-5 h-5" />}>
             Back to Monitoring Overview
@@ -86,7 +86,7 @@ export default function MonitoringDetailPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-5xl"
+            className="w-full min-w-0"
           >
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -103,7 +103,7 @@ export default function MonitoringDetailPage() {
 
             {/* Title */}
             <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-            <h1 className="max-w-xl text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className=" text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
               {network.name}
             </h1>
 

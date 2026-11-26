@@ -31,7 +31,7 @@ export default function EnvironmentalMonitoringReportsPage() {
       <Heading
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Environmental Monitoring Field Reports</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Environmental Monitoring Field Reports</span>
           </>}
         subtitle="Air pollution indices, solid and bio-waste tracking, and sewage outfall field measurements."
         icon={<Activity className="w-6 h-6 text-cyan-400" />}

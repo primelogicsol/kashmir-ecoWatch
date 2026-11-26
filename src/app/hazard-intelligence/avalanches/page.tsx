@@ -381,7 +381,7 @@ export default function AvalanchesPage() {
         ]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Avalanche Risk Intelligence</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Avalanche Risk Intelligence</span>
           </>}
         subtitle="Forensically verified mountain pass & cryosphere monitoring across 30 Western Himalayan corridors, combining official hazard advisories and Gulmarg Avalanche Center observations with high-resolution snowpack models."
         icon={<Snowflake className="w-6 h-6 text-cyan-400" />}

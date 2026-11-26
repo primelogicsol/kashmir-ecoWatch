@@ -118,7 +118,7 @@ export function Heading({
     <div
       data-kew-dark-surface="true"
       className={cn(
-        'kew-heading-surface relative bg-slate-950 w-full max-w-full overflow-hidden sm:overflow-visible text-slate-100',
+        'kew-heading-surface relative bg-slate-950 w-full max-w-full overflow-x-clip text-slate-100',
         className
       )}
     >
@@ -162,10 +162,7 @@ export function Heading({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={cn(
-              'kew-heading-scope w-full max-w-5xl 3xl:max-w-6xl min-w-0',
-              (rightContent || featuredImage) && 'max-w-4xl 3xl:max-w-5xl flex-1'
-            )}
+            className="kew-heading-scope w-full flex-1 min-w-0"
           >
             {breadcrumbs && breadcrumbs.length > 0 && (
               <nav
@@ -233,7 +230,7 @@ export function Heading({
                   {slides!.map((slide, idx) => {
                     const isActive = idx === activeSlideIndex;
                     const headlineClasses =
-                      'text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] font-black leading-[1.14] tracking-tight pb-1 break-words min-w-0 drop-shadow-[0_2px_12px_rgba(2,6,23,0.85)]';
+                      'w-full max-w-full text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] 3xl:text-[3.75rem] font-black leading-[1.14] tracking-tight pb-1.5 whitespace-normal break-words min-w-0 drop-shadow-[0_2px_12px_rgba(2,6,23,0.85)]';
 
                     return (
                       <div
@@ -277,7 +274,7 @@ export function Heading({
 
                           <p
                             data-hero-scene-description="true"
-                            className="kew-hero-description text-xs sm:text-sm md:text-base lg:text-[1.05rem] text-slate-200 leading-relaxed max-w-2xl break-words min-w-0"
+                            className="kew-hero-description text-xs sm:text-sm md:text-base lg:text-[1.05rem] 3xl:text-lg text-slate-200 leading-relaxed max-w-[70ch] break-words min-w-0"
                           >
                             {slide.description}
                           </p>
@@ -342,7 +339,7 @@ export function Heading({
                   </div>
                 )}
 
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-[4rem] 4xl:text-[4.5rem] font-black text-white mb-3 sm:mb-6 leading-[1.12] tracking-tight overflow-visible pb-1 sm:pb-2 break-words min-w-0 max-sm:[&_.whitespace-nowrap]:!whitespace-normal [&_.whitespace-nowrap]:break-words sm:[&_.whitespace-nowrap]:whitespace-normal md:[&_.whitespace-nowrap]:whitespace-nowrap [&_.word-keep]:!whitespace-nowrap [&_.word-keep]:![word-break:keep-all] [&_.word-keep]:![overflow-wrap:normal]">
+                <h1 className="w-full max-w-full text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-[4rem] 4xl:text-[4.5rem] font-black text-white mb-3 sm:mb-6 leading-[1.14] tracking-tight overflow-visible pb-1.5 sm:pb-2 whitespace-normal break-words min-w-0 [&_.whitespace-nowrap]:!whitespace-normal [&_.whitespace-nowrap]:break-words">
                   {isStringTitle ? (
                     (() => {
                       const moduleName = (title as string)
@@ -360,7 +357,7 @@ export function Heading({
                               <span className="sr-only">{' '}</span>
                             </>
                           )}
-                          <span className="kew-hero-headline-gradient block leading-[1.12] pb-1 sm:pb-2 overflow-visible break-words bg-gradient-to-r from-emerald-400 via-teal-300 to-teal-200 bg-clip-text text-transparent">
+                          <span className="kew-hero-headline-gradient block w-full leading-[1.14] pb-1.5 sm:pb-2 overflow-visible whitespace-normal break-words bg-gradient-to-r from-emerald-400 via-teal-300 to-teal-200 bg-clip-text text-transparent">
                             {moduleName}
                           </span>
                         </>
@@ -372,7 +369,7 @@ export function Heading({
                 </h1>
 
                 {subtitle && (
-                  <p className="kew-hero-description text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-xl mb-6 sm:mb-8 leading-relaxed max-w-[70ch] break-words min-w-0 text-slate-200">
+                  <p className="kew-hero-description text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-xl mb-6 sm:mb-8 leading-relaxed max-w-[72ch] 3xl:max-w-[76ch] break-words min-w-0 text-slate-200">
                     {subtitle}
                   </p>
                 )}

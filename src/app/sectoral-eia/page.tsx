@@ -187,8 +187,8 @@ export default function SectoralEiaHomePage() {
           <div className="overflow-visible pb-2">
             <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent tracking-normal">
-                <span className="inline-block whitespace-nowrap [word-break:keep-all] [overflow-wrap:normal]">Sectoral EIA</span> &amp; Intelligence Engine (SEIAE)
+              <span className="kew-hero-headline-gradient bg-gradient-to-r from-emerald-400 via-teal-300 to-teal-200 bg-clip-text text-transparent tracking-normal [word-break:keep-all] [overflow-wrap:normal]">
+                Sectoral EIA &amp; Intelligence Engine (SEIAE)
               </span>
             </div>
           </div>

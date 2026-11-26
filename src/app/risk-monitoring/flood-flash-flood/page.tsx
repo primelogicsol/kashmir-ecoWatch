@@ -62,7 +62,7 @@ export default function FloodFlashFloodPage() {
         breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Hazard Risks', href: '/risk-monitoring/hazard-risks' }, { label: 'Flood & Flash Flood' }]}
         title={<>
             <KewBrandIdentity />
-            <span className="block whitespace-nowrap leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risk</span>
+            <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Flood & Flash Flood Risk</span>
           </>}
         subtitle="River overflow monitoring, flash flood corridors, inundation risk assessment, and drainage stress intelligence across Kashmir's hydrological systems."
         icon={<Droplets className="w-6 h-6 text-emerald-400" />}
