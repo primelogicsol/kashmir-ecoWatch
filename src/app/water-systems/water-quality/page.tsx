@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
-import { waterQualitySites, WaterEntity } from '@/data/water-systems';
+import { waterQualitySites, WaterEntity, MASTER_LAKE_REGISTRY } from '@/data/water-systems';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import {
@@ -102,6 +102,26 @@ export default function WaterQualityPage() {
         ) : null
       }
     >
+      {/* ── Section 34: Published Lake Limnological Chemistry (Separated from Live Station Telemetry) ── */}
+      <div className="mb-8 rounded-2xl border border-teal-500/25 bg-slate-900/80 p-5 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-teal-400">
+              Provenance Separation · Published Limnological Observations vs Station Telemetry
+            </span>
+            <h3 className="text-base font-bold text-white mt-0.5">
+              Published Peer-Reviewed Lake Chemistry &amp; Carlson TSI Observations ({MASTER_LAKE_REGISTRY.filter(m => m.regionalScope === 'Kashmir Division' && m.trophicStatus !== 'Insufficient Evidence').length} Kashmir Lakes)
+            </h3>
+          </div>
+          <Link href="/water-systems/lakes" className="text-xs font-semibold text-cyan-300 hover:underline">
+            Inspect Full Carlson TSI Ledger in Lakes Intelligence →
+          </Link>
+        </div>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          Dated peer-reviewed lake observations (Vass et al. 1989; Solim &amp; Wanganeo 2008; Dar et al. 2020, 2021; Lone et al. 2021; Mir &amp; Pandit 2021; Mushtaq et al. 2022; Ali et al. 2025) are preserved with exact sampling windows, units, and APHA methods in the Master Lake Registry and are never displayed as live sensor feeds.
+        </p>
+      </div>
+
       {/* ── Water Quality Focus Typologies Filter Bar ──────────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">

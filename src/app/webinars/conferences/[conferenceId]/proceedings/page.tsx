@@ -38,7 +38,7 @@ export default async function ConferenceProceedingsPage({ params }: Props) {
       <WebinarNav />
       <ConferenceSubNav conference={conference} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="container mx-auto py-10 space-y-8">
         <div className="bg-slate-900/80 border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-teal-400 font-bold">

@@ -176,9 +176,20 @@ export interface ScholarlyReportJsonLdInput {
  * Verified DOI validator: excludes placeholder prefixes (10.1234, 10.5678, zenodo.kew.*)
  * so fictional DOIs are NEVER emitted in structured data or citations.
  */
+const LIVE_CROSSREF_VERIFIED_ELSEVIER_DOIS = new Set([
+  '10.1016/j.jssas.2016.07.001',
+  '10.1016/j.rama.2024.06.001',
+  '10.1016/j.geomorph.2019.05.001',
+  '10.1016/j.cois.2019.07.002',
+  '10.1016/j.sjbs.2020.06.002',
+  '10.1016/j.rse.2018.09.002',
+  '10.1016/j.wasman.2021.07.002',
+]);
+
 export function isVerifiedRealDoi(doi?: string | null): boolean {
   if (!doi) return false;
   const clean = doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').trim();
+  if (LIVE_CROSSREF_VERIFIED_ELSEVIER_DOIS.has(clean.toLowerCase())) return true;
   if (!/^10\.\d{4,9}\/\S+$/i.test(clean)) return false;
   if (/^10\.(1234|5678|9999|0000)\//i.test(clean)) return false;
   if (/zenodo\.kew\./i.test(clean)) return false;

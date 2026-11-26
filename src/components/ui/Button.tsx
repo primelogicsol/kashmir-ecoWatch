@@ -1,11 +1,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
+export type ButtonVariant = 'primary' | 'default' | 'secondary' | 'outline' | 'ghost';
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: ButtonVariant;
   size?: 'sm' | 'md' | 'lg';
   children?: React.ReactNode;
   icon?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 export function Button({
@@ -13,16 +16,25 @@ export function Button({
   size = 'md',
   children,
   icon,
+  isLoading = false,
+  disabled,
   className,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-center leading-snug break-words max-w-full';
+  const normalizedVariant = variant === 'default' ? 'primary' : variant;
 
-  const variants = {
-    primary: 'bg-gradient-to-r from-forest-600 to-glacier-600 hover:from-forest-700 hover:to-glacier-700 text-white shadow-lg hover:shadow-xl focus:ring-forest-500',
-    secondary: 'bg-slate-800 hover:bg-slate-700 text-white shadow-md hover:shadow-lg focus:ring-slate-500',
-    outline: 'border-2 border-slate-300 dark:border-slate-600 hover:border-forest-500 dark:hover:border-forest-400 text-slate-700 dark:text-slate-200 hover:text-forest-600 dark:hover:text-forest-400 bg-transparent',
-    ghost: 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200',
+  const baseStyles =
+    'kew-cta inline-flex items-center justify-center font-semibold transition-all duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 visited:text-current [&_svg]:shrink-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:pointer-events-none text-center leading-snug break-words max-w-full select-none';
+
+  const variants: Record<'primary' | 'secondary' | 'outline' | 'ghost', string> = {
+    primary:
+      'kew-cta-primary bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white border border-emerald-400/25 shadow-lg hover:shadow-xl',
+    secondary:
+      'kew-cta-secondary bg-slate-800 hover:bg-slate-700 active:bg-slate-900 text-white border border-slate-600/80 shadow-md hover:shadow-lg',
+    outline:
+      'kew-cta-outline border-2 border-slate-400/75 hover:border-emerald-400 bg-slate-950/65 hover:bg-slate-900/90 active:bg-slate-950 text-slate-100 hover:text-emerald-300',
+    ghost:
+      'kew-cta-ghost bg-transparent hover:bg-slate-800/80 active:bg-slate-800 text-slate-200 hover:text-white',
   };
 
   const sizes = {
@@ -31,12 +43,24 @@ export function Button({
     lg: 'px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base gap-2 rounded-md',
   };
 
+  const isDisabled = disabled || isLoading;
+
   return (
     <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      data-kew-cta={normalizedVariant}
+      aria-busy={isLoading || undefined}
+      disabled={isDisabled}
+      className={cn(baseStyles, variants[normalizedVariant], sizes[size], className)}
       {...props}
     >
-      {icon && <span className="flex-shrink-0">{icon}</span>}
+      {isLoading ? (
+        <span
+          aria-hidden="true"
+          className="inline-block w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin flex-shrink-0"
+        />
+      ) : (
+        icon && <span className="flex-shrink-0 inline-flex items-center">{icon}</span>
+      )}
       {children}
     </button>
   );

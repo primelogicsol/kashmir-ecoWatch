@@ -64,12 +64,6 @@ export default function WebinarCertificatesPage() {
           </div>
         }
         subtitle="Real-time cryptographic certificate verification engine. Authenticating academic delegate attendance, keynote contributions, and continuing education hours logged during Kashmir EcoWatch symposiums."
-        images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
-        ]}
       />
 
       <WebinarNav />

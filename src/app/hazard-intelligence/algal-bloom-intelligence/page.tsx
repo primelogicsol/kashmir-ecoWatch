@@ -35,6 +35,7 @@ import {
   ForecastValidationStatus,
 } from '@/hooks/useAlgalBloomIntelligence';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { MASTER_LAKE_SUMMARY_STATS } from '@/data/hydrology/master-lake-registry';
 
 // ─── Active Layer Tabs ────────────────────────────────────────────────────────
 
@@ -328,6 +329,29 @@ export default function AlgalBloomIntelligencePage() {
       {/* ── KPI METRICS RIBBON ────────────────────────────────────────────── */}
       <div className="mb-6">
         <ModuleKpiStrip kpis={metrics} iconColor="text-emerald-500" />
+      </div>
+
+      {/* ── MASTER LAKE REGISTRY OPTICAL SCREENING ELIGIBILITY (Section 35) ── */}
+      <div className="container mx-auto px-6 mb-6">
+        <div className="rounded-xl border border-emerald-500/30 bg-slate-900/90 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="space-y-1 text-xs text-slate-300 leading-relaxed max-w-4xl">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-bold">
+              Master Lake Registry Optical Screening Boundary · Sentinel-2 MSI (10–20 m) vs Laboratory Assays
+            </div>
+            <p>
+              Out of <strong className="text-white">{MASTER_LAKE_SUMMARY_STATS.kashmirDivisionTotalUniqueIdentities}</strong> reconciled Kashmir Division lake identities,{' '}
+              <strong className="text-emerald-300">{MASTER_LAKE_SUMMARY_STATS.kashmirOpticalBloomEligibleCount}</strong> open-water basins (≥10 ha) satisfy spatial-resolution criteria for unmixed Sentinel-2 NDCI (B5/B4) chlorophyll-a proxy screening. Sub-10 ha glacial tarns and dense macrophyte-covered marshes are explicitly excluded from automated optical bloom claims to prevent shoreline mixed-pixel false positives; optical NDCI screening is strictly distinguished from ELISA/LC-MS cyanotoxin confirmation.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <Link href="/water-systems/lakes" className="px-3 py-1.5 rounded-lg bg-slate-950 border border-emerald-500/30 text-emerald-300 text-xs font-semibold hover:bg-emerald-950/40">
+              Regional Trophic Atlas (521 Lakes) →
+            </Link>
+            <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="px-3 py-1.5 rounded-lg bg-cyan-950/60 border border-cyan-500/30 text-cyan-200 text-xs font-semibold hover:bg-cyan-900/60">
+              Monograph Ch. 14 (KEW-SR-2026-101)
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* ── 5-REGION GEOGRAPHIC SELECTOR ───────────────────────────────────── */}

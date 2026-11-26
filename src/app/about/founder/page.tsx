@@ -455,12 +455,12 @@ export default function FounderPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200 pb-20">
       {/* ─── Institutional Leadership Hero Surface ──────────────────────────────── */}
-      <section className="relative bg-slate-950 border-b border-white/10 overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16">
+      <section className="kew-module-hero-surface relative bg-slate-950 border-b border-white/10 overflow-hidden">
         {/* Subtle institutional grid & ambient gradient (No deer or dramatic photo) */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
+        <div className="kew-module-hero-inner container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
           
           {/* Breadcrumbs */}
           <nav className="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 mb-4 sm:mb-6">
@@ -1397,7 +1397,7 @@ export default function FounderPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/about/contact"
-                  className="px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
                 >
                   <Mail className="w-4 h-4" />
                   <span>Send Institutional Message</span>

@@ -242,13 +242,13 @@ export const VERIFIED_INSTITUTIONS: Institution[] = [
       phone: '+91 194 227 2000'
     },
     status: 'under_review',
-    logo: '/images/bear.png',
+    logo: '/images/avatars/institution-emblem.svg',
     tier: 'Advanced Academic (Free)',
     resourceQuota: {
-      maxConcurrentTracks: 4,
-      maxDelegatesPerHall: 1000,
-      cloudStorageGB: 50,
-      liveRecordingHours: 100
+      maxConcurrentTracks: 1,
+      maxDelegatesPerHall: 10,
+      cloudStorageGB: 1,
+      liveRecordingHours: 4
     },
     bio: 'Premier state university with specialized research centers in Himalayan glaciology, high-altitude ecology, and mountain hydrology in the Jhelum basin. Bilateral MoU under preparation for 2027 summit co-hosting.',
     members: [
@@ -270,13 +270,13 @@ export const VERIFIED_INSTITUTIONS: Institution[] = [
       email: 'hydrology@skuastkashmir.ac.in'
     },
     status: 'under_review',
-    logo: '/images/markhor.png',
+    logo: '/images/avatars/institution-emblem.svg',
     tier: 'Advanced Academic (Free)',
     resourceQuota: {
-      maxConcurrentTracks: 4,
-      maxDelegatesPerHall: 800,
-      cloudStorageGB: 50,
-      liveRecordingHours: 80
+      maxConcurrentTracks: 1,
+      maxDelegatesPerHall: 10,
+      cloudStorageGB: 1,
+      liveRecordingHours: 4
     },
     bio: 'Agricultural sciences and technology university conducting research on Karewa plateau hydrology, orchard soil physics, and temperate forest corridors. Participation in 2027 events subject to formal agreement.',
     members: []
@@ -296,13 +296,13 @@ export const VERIFIED_INSTITUTIONS: Institution[] = [
       email: 'contact@wetlands-southasia.org'
     },
     status: 'under_review',
-    logo: '/images/tiger.png',
+    logo: '/images/avatars/institution-emblem.svg',
     tier: 'Standard Environmental (Free)',
     resourceQuota: {
-      maxConcurrentTracks: 2,
-      maxDelegatesPerHall: 500,
-      cloudStorageGB: 25,
-      liveRecordingHours: 50
+      maxConcurrentTracks: 1,
+      maxDelegatesPerHall: 10,
+      cloudStorageGB: 1,
+      liveRecordingHours: 4
     },
     bio: 'Regional non-governmental organization dedicated to sustaining and restoring wetlands and their biodiversity across South Asia. Dialogue ongoing for 2027 Ramsar symposium partnership.',
     members: []
@@ -444,7 +444,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
         name: 'Prof. M. Farooq (Nominated / Invited)',
         title: 'Professor & Head of Earth Sciences',
         institution: 'University of Kashmir',
-        avatar: '/images/bear.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research across Western Himalayan glacier basins.',
         status: 'Invited'
       },
@@ -453,7 +453,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
         name: 'Prof. Elena Rostova (Nominated / Invited)',
         title: 'Senior Cryosphere Research Fellow',
         institution: 'ETH Zurich & ICIMOD Affiliate',
-        avatar: '/images/tiger.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Specialist in supraglacial debris thermal physics, high-altitude UAV photogrammetry, and Hindu Kush-Himalayan cryospheric ablation modeling.',
         status: 'Invited'
       },
@@ -462,7 +462,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
         name: 'Dr. Tariq Ahmad (Nominated / Invited)',
         title: 'Associate Professor of Agricultural Hydrology',
         institution: 'SKUAST-Kashmir',
-        avatar: '/images/markhor.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Researcher on Karewa springshed hydraulics, watershed water budgets, and high-density horticultural irrigation resilience.',
         status: 'Invited'
       }
@@ -471,11 +471,11 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     abstractDeadline: 'April 15, 2027',
     proceedingsDoi: undefined,
     registeredCount: 0,
-    maxCapacity: 1000,
-    bannerImage: '/images/protected-network.png',
+    maxCapacity: 10,
+    bannerImage: '/images/webinars/webinar-hero-1.jpg',
     resourceLimits: {
-      concurrentRooms: 4,
-      cloudStorageGB: 50,
+      concurrentRooms: 1,
+      cloudStorageGB: 1,
       recordingStatus: 'Standby'
     }
   },
@@ -544,7 +544,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
         name: 'Dr. Bushra Nazir (Nominated / Invited)',
         title: 'Senior Limnologist & Wetland Ecologist',
         institution: 'Limnology Research Centre, Srinagar',
-        avatar: '/images/bear.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Researches benthic macro-invertebrate biotic indexing and waterbird carrying-capacity audits across J&K wetlands.',
         status: 'Invited'
       }
@@ -554,7 +554,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 500,
-    bannerImage: '/images/bear.png',
+    bannerImage: '/images/webinars/webinar-hero-5.jpg',
     resourceLimits: {
       concurrentRooms: 2,
       cloudStorageGB: 25,
@@ -616,7 +616,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
         name: 'Dr. Tariq Ahmad (Nominated / Invited)',
         title: 'Associate Professor of Agricultural Hydrology',
         institution: 'SKUAST-Kashmir',
-        avatar: '/images/markhor.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Lead researcher on fluvial geomorphology, sediment budgets, and river corridor restoration.',
         status: 'Invited'
       }
@@ -626,7 +626,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 500,
-    bannerImage: '/images/markhor.png',
+    bannerImage: '/images/webinars/webinar-hero-4.jpg',
     resourceLimits: {
       concurrentRooms: 1,
       cloudStorageGB: 20,
@@ -679,14 +679,14 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'September 24, 2027', title: 'Day 2: Ethnobotany, Pollinators & Community Forestry', highlight: 'Alpine Flora and Pollinator Baselines' }
     ],
     featuredSpeakers: [
-      { id: 'spk-bio-1', name: 'Dr. Khursheed Ahmad (Invited)', title: 'Head of Wildlife Sciences', institution: 'SKUAST-K', avatar: '/images/bear.png', bio: 'Senior wildlife biologist specializing in high-altitude ungulates.', status: 'Invited' }
+      { id: 'spk-bio-1', name: 'Dr. Khursheed Ahmad (Invited)', title: 'Head of Wildlife Sciences', institution: 'SKUAST-K', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Senior wildlife biologist specializing in high-altitude ungulates.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'August 15, 2027',
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 600,
-    bannerImage: '/images/tiger.png',
+    bannerImage: '/images/webinars/webinar-hero-2.jpg',
     resourceLimits: { concurrentRooms: 2, cloudStorageGB: 25, recordingStatus: 'Standby' }
   },
   {
@@ -736,14 +736,14 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 3, date: 'March 18, 2028', title: 'Day 3: Seismic Hazard & Community Preparedness', highlight: 'Disaster Risk Reduction Policy Matrix' }
     ],
     featuredSpeakers: [
-      { id: 'spk-haz-1', name: 'Er. R. K. Raina (Invited)', title: 'Chief Hazard Specialist', institution: 'Disaster Authority', avatar: '/images/bear.png', bio: 'Expert in mountain slope stabilization and compound hazard mitigation.', status: 'Invited' }
+      { id: 'spk-haz-1', name: 'Er. R. K. Raina (Invited)', title: 'Chief Hazard Specialist', institution: 'Disaster Authority', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Expert in mountain slope stabilization and compound hazard mitigation.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'February 1, 2028',
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 600,
-    bannerImage: '/images/bear.png',
+    bannerImage: '/images/webinars/webinar-hero-5.jpg',
     resourceLimits: { concurrentRooms: 2, cloudStorageGB: 30, recordingStatus: 'Standby' }
   },
   {
@@ -792,14 +792,14 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'June 16, 2028', title: 'Day 2: Agriculture, Horticulture & Craft Lifecycles', highlight: 'Sectoral Cumulative Mitigation Dossiers' }
     ],
     featuredSpeakers: [
-      { id: 'spk-eia-1', name: 'Dr. M. S. Wani (Invited)', title: 'Director of Environmental Economics', institution: 'SKUAST-K', avatar: '/images/markhor.png', bio: 'Pioneered carrying-capacity modeling for alpine resort destinations.', status: 'Invited' }
+      { id: 'spk-eia-1', name: 'Dr. M. S. Wani (Invited)', title: 'Director of Environmental Economics', institution: 'SKUAST-K', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Pioneered carrying-capacity modeling for alpine resort destinations.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'May 1, 2028',
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 500,
-    bannerImage: '/images/markhor.png',
+    bannerImage: '/images/webinars/webinar-hero-4.jpg',
     resourceLimits: { concurrentRooms: 2, cloudStorageGB: 25, recordingStatus: 'Standby' }
   },
   {
@@ -848,14 +848,14 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'September 22, 2028', title: 'Day 2: NGO Impact Verification & EcoVoices', highlight: 'Civil Society Restoration Accreditation' }
     ],
     featuredSpeakers: [
-      { id: 'spk-edu-1', name: 'Prof. Nighat Ara (Invited)', title: 'Dean of Environmental Pedagogy', institution: 'University of Kashmir', avatar: '/images/tiger.png', bio: 'Champion of experiential outdoor classroom learning in montane high schools.', status: 'Invited' }
+      { id: 'spk-edu-1', name: 'Prof. Nighat Ara (Invited)', title: 'Dean of Environmental Pedagogy', institution: 'University of Kashmir', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Champion of experiential outdoor classroom learning in montane high schools.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'August 1, 2028',
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 600,
-    bannerImage: '/images/tiger.png',
+    bannerImage: '/images/webinars/webinar-hero-2.jpg',
     resourceLimits: { concurrentRooms: 2, cloudStorageGB: 25, recordingStatus: 'Standby' }
   },
   {
@@ -905,14 +905,14 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 3, date: 'November 18, 2028', title: 'Day 3: Western Himalayan Research Priorities 2029–2030', highlight: 'Institutional Program Declaration & DOI Index' }
     ],
     featuredSpeakers: [
-      { id: 'spk-syn-1', name: 'Scientific Secretariat (KEW)', title: 'Director of Scientific Research', institution: 'Kashmir EcoWatch', avatar: '/images/bear.png', bio: 'Leading the integrated Western Himalayan environmental intelligence framework.', status: 'Invited' }
+      { id: 'spk-syn-1', name: 'Scientific Secretariat (KEW)', title: 'Director of Scientific Research', institution: 'Kashmir EcoWatch', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Leading the integrated Western Himalayan environmental intelligence framework.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'October 1, 2028',
     proceedingsDoi: undefined,
     registeredCount: 0,
     maxCapacity: 800,
-    bannerImage: '/images/bear.png',
+    bannerImage: '/images/webinars/webinar-hero-5.jpg',
     resourceLimits: { concurrentRooms: 3, cloudStorageGB: 40, recordingStatus: 'Standby' }
   }
 ];
@@ -937,7 +937,7 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
       name: 'Prof. M. Farooq (Nominated / Invited)',
       title: 'Professor & Head of Earth Sciences',
       institution: 'University of Kashmir',
-      avatar: '/images/bear.png',
+      avatar: '/images/avatars/academic-silhouette.svg',
       bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research.',
       status: 'Invited'
     },
@@ -947,7 +947,7 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
         name: 'Prof. M. Farooq (Nominated / Invited)',
         title: 'Professor & Head of Earth Sciences',
         institution: 'University of Kashmir',
-        avatar: '/images/bear.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research.',
         status: 'Invited'
       }
@@ -976,7 +976,7 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
       name: 'Nominated Session Moderator',
       title: 'Cryosphere Researcher',
       institution: 'Scientific Committee',
-      avatar: '/images/tiger.png',
+      avatar: '/images/avatars/academic-silhouette.svg',
       bio: 'Specialist in supraglacial thermal physics and radar analysis.'
     },
     speakers: [],
@@ -1004,7 +1004,7 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
       name: 'Er. Asif Qadri (Nominated / Invited)',
       title: 'Ecological Hydrology Consultant',
       institution: 'Wetlands International South Asia',
-      avatar: '/images/tiger.png',
+      avatar: '/images/avatars/academic-silhouette.svg',
       bio: 'Hydrological consultant on wetland water control and dredge designs.'
     },
     speakers: [],

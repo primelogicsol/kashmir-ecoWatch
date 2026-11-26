@@ -39,9 +39,9 @@ export default function WildlifeMonitoringPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-slate-900/50">
+      <section className="kew-module-hero-surface relative overflow-hidden bg-slate-900/50">
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
             <Link href="/citizen-science" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-6">
               <ArrowLeft className="w-4 h-4" />

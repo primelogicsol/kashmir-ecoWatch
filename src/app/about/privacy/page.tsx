@@ -20,9 +20,9 @@ export default function PrivacyPage() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-slate-950"><section className="relative pt-8 sm:pt-12 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-blue-700">
+    <main className="min-h-screen bg-slate-950"><section className="kew-module-hero-surface kew-module-hero-atmospheric relative overflow-hidden bg-[#080E1C]">
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">

@@ -10,6 +10,49 @@ export type InvestigationStatus =
   | 'proposed'             // Proposed investigation subject (no predetermined findings)
   | 'archived';
 
+export type InvestigationPriority = 'Critical' | 'High' | 'Standard';
+
+export type InvestigationSeriesId =
+  | 'core-himalayan-portfolio'
+  | 'dal-lake-interventions'
+  | 'dachigam-national-park'
+  | 'salim-ali-national-park'
+  | 'drinking-water-security'
+  | 'transport-air-noise'
+  | 'security-transport-compliance'
+  | 'environmental-economics-fiscal';
+
+export type StatutoryComplianceClass =
+  | 'Verified compliant'
+  | 'Legally exempt'
+  | 'Verified noncompliant'
+  | 'Not verified'
+  | 'Regulatory ambiguity';
+
+export interface InvestigationSeriesDef {
+  id: InvestigationSeriesId;
+  shortLabel: string;
+  title: string;
+  subtitle: string;
+  targetModules: Array<{ label: string; route: string }>;
+}
+
+export interface DuplicationAuditRecord {
+  status: 'Cleared — Distinct Investigative Question' | 'Cleared — Cross-Module Accountability Complement';
+  relatedSectoralCodes: string[];
+  relatedInvestigationCodes: string[];
+  scopeDifferentiation: string;
+}
+
+export interface StatutoryComplianceAssessmentRow {
+  id: string;
+  sectorOrQuestion: string;
+  applicableInstrument: string;
+  classification: StatutoryComplianceClass;
+  evidenceAndLegalBasis: string;
+  requiredInstitutionalEvidence: string;
+}
+
 export type EvidenceVerificationClass =
   | 'Documented'              // Directly established by peer-reviewed or statutory audit records
   | 'Provisionally Supported' // Plausible mechanism supported by partial empirical/remote-sensing data
@@ -53,7 +96,8 @@ export type DisciplineClusterId =
   | 'biological-ecological'
   | 'chemical-atmospheric'
   | 'spatial-computational'
-  | 'applied-environmental';
+  | 'applied-environmental'
+  | 'economics-natural-capital';
 
 export type PublicationFormatId =
   | 'full-scientific'
@@ -285,7 +329,13 @@ export interface InvestigationRecord {
   heroImageCaption: string;
 
   // Geography & Spatial Envelope
-  subregion: 'Kashmir Valley' | 'Lidder–Panjal Alpine Belt' | 'Jhelum Basin' | 'Greater Himalaya' | 'Multi-District Kashmir Basin';
+  subregion:
+    | 'Kashmir Valley'
+    | 'Lidder–Panjal Alpine Belt'
+    | 'Jhelum Basin'
+    | 'Greater Himalaya'
+    | 'Multi-District Kashmir Basin'
+    | 'Jammu & Kashmir (State 2000–2019 / UT 2019–2027)';
   districts: string[];
   watershedOrBasin: string;
   elevationRangeM: string;
@@ -326,6 +376,15 @@ export interface InvestigationRecord {
 
   // Canonical 24-Section Publication Architecture
   sections: InvestigationReportSection[];
+
+  // Portfolio Expansion Metadata (Thematic Series, Priority, Duplication Audit & Statutory Compliance)
+  seriesId?: InvestigationSeriesId;
+  seriesTitle?: string;
+  priority?: InvestigationPriority;
+  recommendedPublicationSequence?: number;
+  centralScientificQuestion?: string;
+  duplicationAudit?: DuplicationAuditRecord;
+  statutoryComplianceMatrix?: StatutoryComplianceAssessmentRow[];
 }
 
 export interface InvestigationSubmissionProposal {

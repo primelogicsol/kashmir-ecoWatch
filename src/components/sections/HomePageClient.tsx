@@ -1,6 +1,7 @@
 'use client';
 
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
+import { CinematicIntroduction } from '@/components/sections/CinematicIntroduction';
 import { ImmersiveHero } from '@/components/sections/ImmersiveHero';
 import { AsymmetricModuleSurface } from '@/components/sections/AsymmetricModuleSurface';
 import { ExpandableLivePanels } from '@/components/sections/ExpandableLivePanels';
@@ -32,6 +33,11 @@ const MapIntelligenceCore = dynamic(
 export function HomePageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-slate-950">
+      {/* Additive Cinematic Institutional Introduction */}
+      <ErrorBoundary sectionName="Cinematic Introduction">
+        <CinematicIntroduction />
+      </ErrorBoundary>
+
       {/* Band 1: Hero Command Surface */}
       <ErrorBoundary sectionName="Hero">
         <ImmersiveHero />

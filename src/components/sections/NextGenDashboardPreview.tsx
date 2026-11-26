@@ -257,7 +257,7 @@ export function NextGenDashboardPreview() {
         </motion.div>
 
         {/* Dashboard grid - asymmetric layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-4 gap-4 sm:gap-5 3xl:gap-6">
           {/* Air Quality - Large card with LIVE API telemetry */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -545,7 +545,7 @@ export function NextGenDashboardPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 4xl:col-span-3"
           >
             <Card className="glass-light border-white/5 h-full" padding="lg">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-6">

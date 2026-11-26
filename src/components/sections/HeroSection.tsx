@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-forest-950">
+    <section className="kew-module-hero-surface relative items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-forest-950">
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-hero-pattern animate-pulse-slow" />

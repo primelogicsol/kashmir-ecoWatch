@@ -14,6 +14,7 @@ interface SettingsModalProps {
 export interface PlatformSettings {
   units: 'metric' | 'imperial';
   refreshRate: '30s' | '5m' | 'manual';
+  themeMode: 'dark' | 'light' | 'system';
   highContrast: boolean;
   reducedMotion: boolean;
   defaultBasemap: 'dark' | 'satellite' | 'topo';
@@ -23,11 +24,29 @@ export interface PlatformSettings {
 const DEFAULT_SETTINGS: PlatformSettings = {
   units: 'metric',
   refreshRate: '30s',
+  themeMode: 'dark',
   highContrast: false,
   reducedMotion: false,
   defaultBasemap: 'dark',
   compactMode: false
 };
+
+function applyDocumentThemeMode(mode: 'dark' | 'light' | 'system') {
+  if (typeof document === 'undefined') return;
+  const root = document.documentElement;
+  const prefersLight =
+    mode === 'system' &&
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: light)').matches;
+  if (mode === 'light' || prefersLight) {
+    root.classList.remove('dark');
+    root.classList.add('light');
+  } else {
+    root.classList.remove('light');
+    root.classList.add('dark');
+  }
+}
 
 export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [settings, setSettings] = useState<PlatformSettings>(DEFAULT_SETTINGS);
@@ -53,7 +72,10 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       setSavedNotification(true);
       setTimeout(() => setSavedNotification(false), 2000);
 
-      // Apply accessibility classes to document body
+      // Apply accessibility & theme classes to document root
+      if (key === 'themeMode') {
+        applyDocumentThemeMode(value as 'dark' | 'light' | 'system');
+      }
       if (key === 'highContrast') {
         if (value) document.documentElement.classList.add('high-contrast');
         else document.documentElement.classList.remove('high-contrast');
@@ -67,6 +89,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     setSettings(DEFAULT_SETTINGS);
     try {
       localStorage.setItem('kew_user_settings', JSON.stringify(DEFAULT_SETTINGS));
+      applyDocumentThemeMode('dark');
       document.documentElement.classList.remove('high-contrast');
       setSavedNotification(true);
       setTimeout(() => setSavedNotification(false), 2000);
@@ -208,6 +231,33 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             <Eye className="w-3.5 h-3.5 text-purple-400" />
             Accessibility & Display
           </span>
+
+          {/* Theme Mode Selector (Dark / Light / System) */}
+          <div className="space-y-1.5">
+            <p className="text-[11px] text-slate-300 font-semibold">Color Theme Mode</p>
+            <div className="grid grid-cols-3 gap-2">
+              {(
+                [
+                  { id: 'dark', label: 'Dark' },
+                  { id: 'light', label: 'Light' },
+                  { id: 'system', label: 'System' },
+                ] as const
+              ).map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => updateSetting('themeMode', opt.id)}
+                  className={`py-2 px-2 rounded-xl border text-center transition-all ${
+                    settings.themeMode === opt.id
+                      ? 'bg-emerald-700 border-emerald-400/50 text-white font-bold'
+                      : 'border-white/10 bg-slate-950/60 text-slate-300 hover:text-white hover:border-white/25'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
           {/* High Contrast Toggle */}
           <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/40 border border-white/5">

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/Badge';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import Link from 'next/link';
 import {
   SeasonalLandscape,

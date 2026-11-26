@@ -147,17 +147,21 @@ export function ModuleScopeRow({
           {/* Grid / List toggle */}
           <div className="flex items-center gap-1">
             <button
+              type="button"
+              aria-label="Grid view"
               onClick={() => onViewModeChange('grid')}
               className={`p-1.5 rounded-md transition-colors ${
-                viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400 hover:text-white'
+                viewMode === 'grid' ? 'bg-emerald-500/20 text-emerald-300' : 'text-slate-300 hover:text-white'
               }`}
             >
               <Grid3X3 className="w-4 h-4" />
             </button>
             <button
+              type="button"
+              aria-label="List view"
               onClick={() => onViewModeChange('list')}
               className={`p-1.5 rounded-md transition-colors ${
-                viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400 hover:text-white'
+                viewMode === 'list' ? 'bg-emerald-500/20 text-emerald-300' : 'text-slate-300 hover:text-white'
               }`}
             >
               <List className="w-4 h-4" />

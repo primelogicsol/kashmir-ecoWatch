@@ -186,7 +186,7 @@ export function GreenHeroesSubNav({ activeTab, onTabChange }: GreenHeroesSubNavP
   if (!mounted) {
     return (
       <div className="w-full bg-slate-900/90 border-y border-slate-800 sticky top-16 z-30 py-2.5 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-xs text-slate-400">
+        <div className="container mx-auto flex items-center justify-between text-xs text-slate-400">
           <span>Loading KEW Green Heroes workbench...</span>
         </div>
       </div>
@@ -195,7 +195,7 @@ export function GreenHeroesSubNav({ activeTab, onTabChange }: GreenHeroesSubNavP
 
   return (
     <div className="w-full bg-slate-900/95 backdrop-blur-md border-y border-slate-800/80 sticky top-16 z-30 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between gap-2 py-2">
           {/* Scrollable Tabs */}
           <nav

@@ -32,8 +32,8 @@ export default function NGOProfilePage() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       {/* HEADER SECTION */}
-      <div className="bg-slate-900 border-b border-slate-800 pt-24 pb-12 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+      <div className="kew-module-hero-surface bg-slate-900 border-b border-slate-800 px-6">
+        <div className="kew-module-hero-inner kew-container-report flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <div className="flex gap-6 items-center">
             <div className="w-24 h-24 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-700 shadow-xl">
               <Building className="w-12 h-12 text-slate-400" />
@@ -73,7 +73,7 @@ export default function NGOProfilePage() {
         </div>
       </div>
 
-      <div className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="flex-1 kew-container-report py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* LEFT COLUMN: Overview & Stats */}
         <div className="lg:col-span-1 space-y-6">

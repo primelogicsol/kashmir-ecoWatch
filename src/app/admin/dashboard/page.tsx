@@ -27,11 +27,13 @@ import { CITIZEN_SCIENCE_PROGRAMS, CITIZEN_SCIENCE_METRICS } from '@/data/citize
 import { GlobalDiscoveryCommandCenter } from '@/components/admin/GlobalDiscoveryCommandCenter';
 import { EnvironmentalInvestigationsAdminPanel } from '@/components/admin/EnvironmentalInvestigationsAdminPanel';
 import { SectoralResearchAdminPanel } from '@/components/admin/SectoralResearchAdminPanel';
+import { HimalayanDispatchAdminPanel } from '@/components/admin/HimalayanDispatchAdminPanel';
 
 type AdminTab = 
   | 'queue' 
   | 'sectoral-research'
   | 'investigations'
+  | 'himalayan-dispatch'
   | 'discovery' 
   | 'events' 
   | 'partnerships' 
@@ -75,7 +77,12 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const urlTab = new URLSearchParams(window.location.search).get('tab');
-      if (urlTab === 'sectoral-research' || urlTab === 'investigations' || urlTab === 'discovery') {
+      if (
+        urlTab === 'sectoral-research' ||
+        urlTab === 'investigations' ||
+        urlTab === 'himalayan-dispatch' ||
+        urlTab === 'discovery'
+      ) {
         setActiveTab(urlTab);
       }
     }
@@ -400,7 +407,7 @@ Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(147,51,234,0.06),transparent_50%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="kew-container-admin relative z-10">
         
         {/* Breadcrumb Navigation */}
         <nav className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6">
@@ -483,8 +490,9 @@ Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
         <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto">
           {[
             { id: 'queue', label: 'Unified Operations Queue', icon: Activity, count: operations.length },
-            { id: 'sectoral-research', label: 'Sectoral Research Series', icon: Layers, badge: '40 Dossiers' },
+            { id: 'sectoral-research', label: 'Scientific Research Series', icon: Layers, badge: '100 Dossiers · 23 Sectors' },
             { id: 'investigations', label: 'Environmental Investigations', icon: ShieldCheck, badge: 'KEW-EIAI' },
+            { id: 'himalayan-dispatch', label: 'Himalayan Dispatch', icon: Sparkles, badge: 'Magazine Desk' },
             { id: 'discovery', label: 'Global Discovery & Authority', icon: Globe, badge: 'Live SEO & AI' },
             { id: 'events', label: 'Events & Conferences', icon: Calendar, badge: '104 Programs' },
             { id: 'partnerships', label: 'Support, CSR & Grants', icon: DollarSign, badge: 'Compliance' },
@@ -531,6 +539,11 @@ Kashmir EcoWatch Western Himalayan (https://kashmir-ecowatch.com/)`;
         {/* Environmental Investigations & Accountability (KEW-EIAI) Admin Workspace */}
         {activeTab === 'investigations' && (
           <EnvironmentalInvestigationsAdminPanel adminName={user?.name || 'KEW Administrator'} />
+        )}
+
+        {/* Himalayan Dispatch Newsroom & Editorial Workflow Desk */}
+        {activeTab === 'himalayan-dispatch' && (
+          <HimalayanDispatchAdminPanel adminName={user?.name || 'KEW Administrator'} />
         )}
 
         {/* Global Discovery, Brand Entity & Authority Intelligence */}

@@ -30,6 +30,7 @@ import { RegistrationModal } from '@/components/webinars/RegistrationModal';
 import { SCIENTIFIC_WEBINARS, WEBINAR_KPIS, WebinarSession } from '@/data/webinars';
 import { CONFERENCES_DETAILED, VERIFIED_INSTITUTIONS } from '@/data/conference-system';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { WEBINAR_HERO_SLIDES } from '@/data/webinar-hero-carousel';
 
 export default function ScientificWebinarsHubPage() {
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>('All');
@@ -57,7 +58,7 @@ export default function ScientificWebinarsHubPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Canonical Institutional Hero Section */}
+      {/* Canonical Nine-Scene Institutional Hero Carousel */}
       <Heading
         label="KASHMIR ECOWATCH · SCIENTIFIC CONFERENCE NETWORK"
         breadcrumbs={[
@@ -65,50 +66,36 @@ export default function ScientificWebinarsHubPage() {
           { label: 'Webinars & Conferences' }
         ]}
         icon={<Video className="w-6 h-6 text-emerald-400" />}
-        title={
-          <div className="overflow-visible pb-2">
-            <KewBrandIdentity />
-            <div className="leading-[1.15] overflow-visible pr-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent pr-6 tracking-normal">
-                Scientific Conferences &amp; Webinars
-              </span>
-            </div>
-          </div>
-        }
-        subtitle="Western Himalayan Environmental Research, Dialogue & Scientific Collaboration. Comprehensive 2027–2028 inaugural program encompassing 8 flagship conferences, 48 specialist webinars, 24 applied workshops, and 24 environmental observances across 30 ecological domains."
-        images={[
-          '/images/webinars/webinar-hero-1.jpg',
-          '/images/webinars/webinar-hero-2.jpg',
-          '/images/webinars/webinar-hero-3.jpg',
-          '/images/webinars/webinar-hero-4.jpg'
-        ]}
+        title="Scientific Conferences & Webinars"
+        subtitle="Western Himalayan Environmental Research, Dialogue & Scientific Collaboration — Exclusively Online."
+        slides={WEBINAR_HERO_SLIDES}
         rightContent={
-          <div className="relative p-6 rounded-2xl bg-slate-950/40 backdrop-blur-md border border-white/15 shadow-2xl space-y-4 hover:border-emerald-500/30 transition-colors">
+          <div className="relative p-6 rounded-2xl bg-slate-950/65 backdrop-blur-md border border-white/15 shadow-2xl space-y-4 hover:border-emerald-500/30 transition-colors">
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] text-[11px] font-black uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 2027–2028 Master Program
               </span>
-              <span className="text-xs font-mono text-amber-300 font-bold">104 Activities</span>
+              <span className="text-xs font-mono text-amber-300 font-bold">104 Proposed</span>
             </div>
 
             <div>
               <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">
-                Flagship Proposed Summit
+                Exclusively Online &bull; 30 Ecological Domains
               </div>
               <h4 className="text-sm font-bold text-white leading-snug line-clamp-2">
                 Western Himalayan Cryosphere Summit 2027
               </h4>
             </div>
 
-            <div className="space-y-1.5 text-xs text-slate-300">
+            <div className="space-y-1.5 text-xs text-slate-200">
               <div className="flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span className="font-mono text-slate-200">May 27–29, 2027 (Proposed)</span>
+                <span className="font-mono text-slate-100">May 27–29, 2027 (Proposed Online)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Layers className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span>8 Flagship Summits &bull; 48 Webinars &bull; 24 Workshops</span>
+                <Layers className="w-3.5 h-3.5 text-slate-300 shrink-0" />
+                <span>8 Summits &bull; 48 Webinars &bull; 24 Workshops &bull; 24 Observances</span>
               </div>
             </div>
 
@@ -120,33 +107,17 @@ export default function ScientificWebinarsHubPage() {
                 </Button>
               </Link>
               <Link href="/webinars/conferences">
-                <Button size="sm" variant="outline" className="border-white/15 text-slate-200 hover:bg-white/10 bg-slate-900/30 backdrop-blur-sm">
+                <Button size="sm" variant="outline" className="border-white/20 text-slate-100 hover:bg-white/10 bg-slate-900/50 backdrop-blur-sm">
                   Conferences
                 </Button>
               </Link>
             </div>
           </div>
         }
-        actions={
-          <div className="flex flex-wrap items-center gap-2">
-            <Link href="/webinars/calendar">
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-md shadow-emerald-600/20">
-                <Calendar className="w-4 h-4 mr-1.5" />
-                Master Calendar (104 Activities)
-              </Button>
-            </Link>
-            <Link href="/webinars/host-a-conference">
-              <Button size="sm" variant="outline" className="border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 font-bold">
-                <PlusCircle className="w-4 h-4 mr-1.5" />
-                Host a Conference
-              </Button>
-            </Link>
-          </div>
-        }
       />
 
       {/* Prominent Two-Year Target Strip */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-6">
+      <div className="relative z-10 container mx-auto mt-6 sm:mt-8 mb-6">
         <div className="p-4 sm:p-6 rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-xl shadow-2xl space-y-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-white/5 text-center space-y-0.5">
@@ -195,7 +166,7 @@ export default function ScientificWebinarsHubPage() {
       <WebinarNav />
 
       {/* Main Page Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+      <div className="container mx-auto py-10 space-y-16">
         {/* Section: Three Proposed 2027 Scientific Conferences */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">

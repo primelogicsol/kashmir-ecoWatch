@@ -126,9 +126,9 @@ export default function EvidenceDetailPage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
+      <section className="kew-module-hero-surface relative overflow-hidden">
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,7 +208,7 @@ export default function EvidenceDetailPage() {
       {/* Main Content */}
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
             {/* Left Column - Main Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Abstract */}

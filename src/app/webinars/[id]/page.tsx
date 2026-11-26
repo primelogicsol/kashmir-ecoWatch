@@ -26,6 +26,7 @@ import { RegistrationModal } from '@/components/webinars/RegistrationModal';
 import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { getContextualWebinarSessionImages } from '@/data/webinar-hero-carousel';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -65,12 +66,7 @@ export default function WebinarDetailPage({ params }: PageProps) {
           </div>
         }
         subtitle={session.abstract}
-        images={[
-          session.bannerImage || '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
-        ]}
+        images={getContextualWebinarSessionImages(session.type)}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             {isLive ? (
@@ -110,7 +106,7 @@ export default function WebinarDetailPage({ params }: PageProps) {
 
       <WebinarNav />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+      <div className="container mx-auto py-10 space-y-12">
         {/* Main Grid: Details + Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Left Column: Agenda, Tracks, Materials */}

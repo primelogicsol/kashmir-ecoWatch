@@ -153,7 +153,7 @@ export function CommandBand() {
               )}
 
               {/* Hover glow */}
-              <div className="absolute inset-0 bg-slate-900 group-hover:from-forest-500/5 group-hover:to-glacier-500/5 transition-all duration-300 rounded-xl" />
+              <div className="absolute inset-0 bg-slate-900 transition-all duration-300 rounded-xl" />
             </div>
           </motion.div>
         ))}

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import { Card } from '@/components/ui/Card';
 import { motion } from 'framer-motion';
 

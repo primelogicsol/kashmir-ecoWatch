@@ -29,6 +29,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { EnvironmentalInvestigationsNav } from '@/components/environmental-investigations/EnvironmentalInvestigationsNav';
+import { EnvironmentalEconomicsFiscalPanel } from '@/components/environmental-investigations/EnvironmentalEconomicsFiscalPanel';
 import {
   EvidenceClassificationBadge,
   InvestigationStatusBadge,
@@ -198,6 +199,15 @@ function CanonicalInvestigationReportInner({
           actions={
             <>
               <InvestigationStatusBadge status={inv.status} label={inv.statusLabel} />
+              {inv.linkedKewModules
+                .filter((m) => m.route.startsWith('/sectoral-eia/reports/'))
+                .map((m) => (
+                  <Link key={m.route} href={m.route}>
+                    <Button size="sm" icon={<BookOpen className="w-4 h-4" />}>
+                      20-Chapter Monograph &amp; PDF
+                    </Button>
+                  </Link>
+                ))}
               <Button
                 variant="secondary"
                 size="sm"
@@ -556,7 +566,41 @@ function CanonicalInvestigationReportInner({
                     ))}
                   </div>
 
-                  {/* SECTION 02: Scoping Questions */}
+                  {/* SECTION 02: Scoping Questions & Cross-Portfolio Duplication Audit */}
+                  {sec.sectionNumber === '02' && inv.duplicationAudit && (
+                    <div className="p-4 bg-slate-950/80 rounded-lg border border-emerald-500/30 space-y-2 text-xs">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="font-mono font-bold uppercase tracking-wider text-emerald-400">
+                          Portfolio Duplication Audit: {inv.duplicationAudit.status}
+                        </span>
+                        {inv.seriesTitle && (
+                          <Badge variant="info" size="sm">
+                            {inv.seriesTitle}
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-slate-300 leading-relaxed">
+                        {inv.duplicationAudit.scopeDifferentiation}
+                      </p>
+                      {inv.duplicationAudit.relatedSectoralCodes.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                          <span className="text-slate-400 font-mono text-[11px]">
+                            Complementary Sectoral Dossiers:
+                          </span>
+                          {inv.duplicationAudit.relatedSectoralCodes.map((sc) => (
+                            <Link
+                              key={sc}
+                              href={`/sectoral-eia/reports/${sc.toLowerCase()}`}
+                              className="px-2 py-0.5 rounded bg-slate-900 border border-cyan-500/30 text-cyan-300 hover:text-white font-mono text-[11px]"
+                            >
+                              {sc} →
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {sec.sectionNumber === '02' && inv.scopingQuestions.length > 0 && (
                     <div className="p-4 bg-slate-950/70 rounded-lg border border-white/10 space-y-2">
                       <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block">
@@ -569,6 +613,64 @@ function CanonicalInvestigationReportInner({
                       </ol>
                     </div>
                   )}
+
+                  {/* SECTION 17: Five-Tier Statutory Exemption vs Compliance Matrix (when present) */}
+                  {sec.sectionNumber === '17' &&
+                    inv.statutoryComplianceMatrix &&
+                    inv.statutoryComplianceMatrix.length > 0 && (
+                      <div className="space-y-3 pt-2">
+                        <div className="text-xs font-bold uppercase tracking-wider text-amber-300">
+                          Five-Tier Statutory Compliance &amp; Exemption Assessment Matrix
+                        </div>
+                        <div className="responsive-table-container mb-0">
+                          <table className="w-full text-left text-xs border-collapse">
+                            <thead>
+                              <tr className="border-b border-white/10 text-slate-400 uppercase text-[10px]">
+                                <th className="py-2.5 px-3">Evaluated Sector / Requirement</th>
+                                <th className="py-2.5 px-3">Statutory Instrument</th>
+                                <th className="py-2.5 px-3">Compliance Classification</th>
+                                <th className="py-2.5 px-3">Legal &amp; Scientific Basis</th>
+                                <th className="py-2.5 px-3">Required Institutional Evidence</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                              {inv.statutoryComplianceMatrix.map((row) => (
+                                <tr key={row.id} className="hover:bg-white/[0.02]">
+                                  <td className="py-3 px-3 font-semibold text-white max-w-xs">
+                                    {row.sectorOrQuestion}
+                                  </td>
+                                  <td className="py-3 px-3 font-mono text-[11px] text-cyan-300">
+                                    {row.applicableInstrument}
+                                  </td>
+                                  <td className="py-3 px-3 whitespace-nowrap">
+                                    <Badge
+                                      variant={
+                                        row.classification === 'Verified compliant'
+                                          ? 'success'
+                                          : row.classification === 'Legally exempt'
+                                          ? 'info'
+                                          : row.classification === 'Verified noncompliant'
+                                          ? 'danger'
+                                          : 'warning'
+                                      }
+                                      size="sm"
+                                    >
+                                      {row.classification}
+                                    </Badge>
+                                  </td>
+                                  <td className="py-3 px-3 text-slate-300 leading-relaxed max-w-sm">
+                                    {row.evidenceAndLegalBasis}
+                                  </td>
+                                  <td className="py-3 px-3 text-amber-200/90 font-mono text-[11px] max-w-xs">
+                                    {row.requiredInstitutionalEvidence}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
 
                   {/* SECTION 03: Connected Ecosystems */}
                   {sec.sectionNumber === '03' && inv.connectedEcosystems.length > 0 && (
@@ -741,6 +843,12 @@ function CanonicalInvestigationReportInner({
                       ))}
                     </div>
                   )}
+
+                  {/* SECTION 15: Shared Fiscal & Natural Capital Evidence Panel (Series VII) */}
+                  {sec.sectionNumber === '15' &&
+                    inv.seriesId === 'environmental-economics-fiscal' && (
+                      <EnvironmentalEconomicsFiscalPanel mode="compact" className="pt-2" />
+                    )}
 
                   {/* SECTION 16: Institutional Accountability Matrix */}
                   {sec.sectionNumber === '16' && inv.accountabilityMatrix.length > 0 && (

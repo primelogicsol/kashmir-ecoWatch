@@ -14,7 +14,19 @@ export function DiscoveryReferralBeacon() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (!pathname || pathname.startsWith('/admin') || pathname.startsWith('/api')) return;
+    if (
+      !pathname ||
+      pathname.startsWith('/admin') ||
+      pathname.startsWith('/api') ||
+      pathname.startsWith('/newsroom') ||
+      pathname.startsWith('/editorial-cms') ||
+      pathname.startsWith('/journalist-sign-in') ||
+      pathname.startsWith('/himalayan-dispatch/newsroom') ||
+      pathname.startsWith('/himalayan-dispatch/editorial-cms') ||
+      pathname.startsWith('/himalayan-dispatch/journalist-sign-in')
+    ) {
+      return;
+    }
 
     const referrer = document.referrer || '';
     const params = new URLSearchParams(window.location.search);

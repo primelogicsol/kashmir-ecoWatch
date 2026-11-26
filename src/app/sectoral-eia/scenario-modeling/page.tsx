@@ -46,7 +46,7 @@ export default function ScenarioModelingPage() {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
+      <div className="kew-container-report mt-8 space-y-12">
         {/* SCENARIO SELECTOR STRIP */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {SCENARIO_MODELS.map((scen) => (

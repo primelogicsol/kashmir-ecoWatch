@@ -9,7 +9,7 @@ import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 import { GlobalFilterBar, FilterSelect } from '@/components/common/GlobalFilterBar';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import {
   MapPin, Search, ArrowRight, Activity, Eye,
   ChevronRight, X, SlidersHorizontal, Database,
@@ -36,7 +36,7 @@ interface ListingPageProps {
   title: string;
   description: string;
   /** lucide icon name used in hero + cards */
-  icon: keyof typeof import('lucide-react');
+  icon: import('@/components/common/KewIcons').KewIconName;
   /** tailwind gradient classes, e.g. 'from-blue-500 to-cyan-600' */
   color: string;
   entities: WaterEntity[];
@@ -380,7 +380,7 @@ export function WaterEntityListingPage({
             <motion.div
               key="grid"
               layout
-              className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}
+              className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-5 3xl:gap-6' : 'space-y-4'}
             >
               {paginated.map((entity, idx) => (
                 <motion.div

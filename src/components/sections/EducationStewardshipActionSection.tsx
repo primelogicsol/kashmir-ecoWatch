@@ -45,20 +45,20 @@ export function EducationStewardshipActionSection() {
     {
       id: 'ecovoices',
       tag: 'EcoVoices × SufiPulse USA',
-      badge: 'Cultural Stewardship',
-      badgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/20',
-      title: 'Environmental Music & Literary Stewardship',
-      subtitle: 'Where Himalayan telemetry meets poetry, kalam, and musical voice',
+      badge: 'Environmental Arts & Music',
+      badgeColor: 'text-amber-300 bg-amber-500/10 border-amber-400/25',
+      title: 'EcoVoices: Environmental Arts & Creative Expression',
+      subtitle: 'Music, poetry, cinema, visual arts & Himalayan soundscapes',
       icon: Music,
-      iconColor: 'text-purple-400',
-      desc: 'An official joint initiative with SufiPulse USA recruiting writers, poets, vocalists, instrumentalists, and composers to give voice to Kashmir’s waterbodies, forests, and glaciers. Includes working streaming tracks and direct contributor applications.',
+      iconColor: 'text-amber-300',
+      desc: 'Kashmir EcoWatch’s independent creative platform communicating environmental consciousness through SufiPulse USA master compositions, ecological poetry, documentaries, visual arts, and natural soundscapes.',
       stats: [
-        { label: 'Official Releases', value: '3 Curated Tracks' },
-        { label: 'Creative Tracks', value: '5 Contributor Roles' },
-        { label: 'Publisher', value: 'SufiPulse USA' }
+        { label: 'Published Music', value: '6 Master Tracks' },
+        { label: 'Architecture', value: '6 Departments' },
+        { label: 'Music Partner', value: 'SufiPulse USA' }
       ],
-      primaryLink: { label: 'Enter EcoVoices Music Hub', href: '/environmental-calendar/ecovoices' },
-      secondaryLink: { label: 'Become a Contributor', href: '/environmental-calendar/ecovoices#participate' },
+      primaryLink: { label: 'Enter EcoVoices Platform', href: '/ecovoices' },
+      secondaryLink: { label: 'Submit Creative Work', href: '/ecovoices#submit' },
       gradient: 'from-purple-500/10 via-transparent to-transparent'
     },
     {
@@ -223,7 +223,7 @@ export function EducationStewardshipActionSection() {
         </motion.div>
 
         {/* Pillars Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-5 gap-5 items-stretch">
           {filteredPillars.map((p, idx) => {
             const Icon = p.icon;
             return (

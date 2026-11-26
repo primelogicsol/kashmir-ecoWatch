@@ -36,7 +36,7 @@ export default async function ConferenceSpeakersPage({ params }: Props) {
       <WebinarNav />
       <ConferenceSubNav conference={conference} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="container mx-auto py-10 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {conference.featuredSpeakers.map(spk => (
             <div key={spk.id} className="bg-slate-900/80 border border-white/10 rounded-2xl p-6 space-y-4">

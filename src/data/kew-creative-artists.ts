@@ -119,7 +119,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'ORIGINAL CREATIVE WORK AND UNIVERSITY PARTNERSHIP DOCUMENTED · KEW editorial approval pending',
     evidenceAuditNotes: 'Primary creative poetry and academic video documentation confirmed; verified in international university catalog.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Traditional Plants', url: '/biodiversity/plants' },
       { label: 'Environmental Calendar', url: '/environmental-calendar' }
     ]
@@ -167,7 +167,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Waste quantities and environmental impact require independent empirical assessment; art medium verified.',
     linkedModules: [
       { label: 'Plastic Pollution', url: '/environmental-monitoring/plastic-pollution' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -203,7 +203,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Performance at university event verified; master audio tracks to be catalogued in Ecological Voices.',
     linkedModules: [
       { label: 'Dal Lake Health', url: '/water-systems/lakes' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -239,7 +239,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Paintings and published artist commentary directly link visuals to lake degradation; catalogued in visual archive.',
     linkedModules: [
       { label: 'Wular Lake Profile', url: '/water-systems/lakes' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -274,7 +274,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'HISTORICAL PERFORMANCE DOCUMENTED · Master recording & rights under cataloguing',
     evidenceAuditNotes: 'Verified historical performance; rights and master audio file being traced for preservation.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Climate Intelligence', url: '/hazard-intelligence/dashboards' }
     ]
   },
@@ -323,7 +323,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     linkedModules: [
       { label: 'Wular Lake', url: '/water-systems/lakes' },
       { label: 'Plastic Pollution', url: '/environmental-monitoring/plastic-pollution' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
 
@@ -361,7 +361,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'University verification confirmed; physical river restoration metrics tracked separately in Tawi river module.',
     linkedModules: [
       { label: 'Tawi River Hydrology', url: '/water-systems/rivers' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -406,7 +406,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'LITERARY WORK AND FORESTRY RECORD DOCUMENTED · Cataloguing in Ecological Poetry Library',
     evidenceAuditNotes: 'Poetry texts verified; ISBN and botanical references verified against regional floristic surveys.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Forest Ecosystems', url: '/biodiversity/forest-ecosystems' },
       { label: 'Tawi River', url: '/water-systems/rivers' }
     ]
@@ -445,7 +445,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Festival screening and CMS VATAVARAN citation confirmed; digital screener to be archived.',
     linkedModules: [
       { label: 'Climate Intelligence', url: '/hazard-intelligence/dashboards' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
 
@@ -492,7 +492,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'ENVIRONMENTAL SONGWRITING DOCUMENTED · Track lyric repository in progress',
     evidenceAuditNotes: 'Environmental verses catalogued separately from political commentary; youth outreach documented.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Climate Intelligence', url: '/hazard-intelligence/dashboards' }
     ]
   },
@@ -529,7 +529,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'FILM IDENTITY AND ENVIRONMENTAL SUBJECT DOCUMENTED · Festival catalogue pending',
     evidenceAuditNotes: 'Film festival selection confirmed; animated depiction represents ecological stress faithfully.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Flash Floods', url: '/hazard-intelligence/flash-floods' }
     ]
   },
@@ -566,7 +566,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Artistic representation of pastoral stress independently validated against Changthang meteorological trends.',
     linkedModules: [
       { label: 'Pastoral Ecology', url: '/biodiversity/mammals' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -613,7 +613,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Combines verified visual documentary with tangible community water engineering; approved.',
     linkedModules: [
       { label: 'Glaciers & Cryosphere', url: '/water-systems/glaciers' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
 
@@ -663,7 +663,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     linkedModules: [
       { label: 'Mangla Reservoir', url: '/water-systems/lakes' },
       { label: 'Jhelum River', url: '/water-systems/rivers' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
 
@@ -702,7 +702,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Official UN agency sponsorship confirmed; Burushaski ecological lexicon documented in film narrative.',
     linkedModules: [
       { label: 'Mountain Biodiversity', url: '/biodiversity' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -738,7 +738,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'ARTIST PARTICIPATION DOCUMENTED · Lyrics translation underway',
     evidenceAuditNotes: 'Participation in landscape musical residency verified; separate individual environmental songwriting audit required.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Glaciers & Cryosphere', url: '/water-systems/glaciers' }
     ]
   },
@@ -774,7 +774,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     researchStatus: 'ARTIST AND WORK DOCUMENTED · Safeguard: nature representation classification',
     evidenceAuditNotes: 'Classified under Nature Representation to ensure project-level goals are not conflated with individual activism.',
     linkedModules: [
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
   {
@@ -810,7 +810,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     evidenceAuditNotes: 'Production role and traditional cryosphere subject confirmed; full festival schedule to be indexed upon release.',
     linkedModules: [
       { label: 'Glaciers & Cryosphere', url: '/water-systems/glaciers' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'Ecological Voices', url: '/ecovoices' }
     ]
   },
 
@@ -881,14 +881,14 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     sourceProvenance: [
       { title: 'Official Dr. Zarf-e-Noori Literary Identity: SufiPulse USA', url: 'https://sufipulse.com/about/zarf-e-noori', outletOrType: 'Literary Biography' },
       { title: 'SufiPulse USA Official Release Catalogue & Master Archive', url: 'https://sufipulse.com/releases', outletOrType: 'Music Publisher Archive' },
-      { title: 'KEW EcoVoices Five-Track Environmental Music Program', url: 'https://kashmir-ecowatch.com/environmental-calendar/ecovoices', outletOrType: 'Curated Environmental Music Platform' },
+      { title: 'KEW EcoVoices Environmental Music & Arts Platform', url: 'https://kashmir-ecowatch.com/ecovoices', outletOrType: 'Curated Environmental Arts Platform' },
       { title: 'Kashmir Observer: A Song from America Reaches Kashmir with a Plea for Healing (Dec 8, 2025)', url: 'https://kashmirobserver.net/2025/12/08/a-song-from-america-reaches-kashmir-with-a-plea-for-healing/', outletOrType: 'Independent Regional Media' }
     ],
     researchStatus: 'FOUNDER CREATIVE WORK DOCUMENTED · EcoVoices master recordings confirmed',
     evidenceAuditNotes:
       'Governance Safeguard: Distinguishes an externally verified Green Hero recognition from a founder\'s documented creative contributions. The five EcoVoices recordings are verified in the affiliated archive with track-level master credits. Person identity (Dr. Fayaz Ahmad Khan) connects scientific and literary categories.',
     linkedModules: [
-      { label: 'EcoVoices Music Archive', url: '/environmental-calendar/ecovoices' },
+      { label: 'EcoVoices Music Archive', url: '/ecovoices' },
       { label: 'Jhelum River Basin', url: '/water-systems/rivers' },
       { label: 'Dal Lake Health Scorecard', url: '/water-systems/lakes' },
       { label: 'About KEW Founder', url: '/about/founder' }

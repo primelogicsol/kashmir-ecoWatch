@@ -417,7 +417,7 @@ export default function OpenDataPortalPage() {
       />
 
       <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row gap-8 items-start">
 
             {/* ── LEFT: Body (70%) ── */}
@@ -444,6 +444,37 @@ export default function OpenDataPortalPage() {
                   </div>
 
                   <div className="border-t border-white/5" />
+
+                  {/* Featured Reconciled Dataset Downloads (Section 41) */}
+                  <div className="rounded-xl border border-emerald-500/30 bg-slate-950/90 p-5 space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">
+                          Verified Open Geospatial &amp; Limnological Release · CC BY 4.0
+                        </span>
+                        <h3 className="text-base font-bold text-white mt-0.5">
+                          Kashmir Division Master Lake Inventory &amp; Source Reconciliation Package (KEW-SR-2026-101)
+                        </h3>
+                      </div>
+                      <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="text-xs font-semibold text-cyan-300 hover:underline">
+                        Read Monograph &amp; Appendices A–O →
+                      </Link>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      Legally reusable machine-readable tables reconciling DEERS 2012 (415 Kashmir waterbodies + 45 1967→2009 converted waterbodies), Rashid &amp; Kashani 2025 glacial lake polygons (155 features, DOI: 10.5281/zenodo.15051825), CAG Report No. 4 of 2025 (330 historical baseline), Jal Shakti First Census (37 J&amp;K lakes), and individual Carlson TSI diagnostics.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                      <a href="/data/kew-kashmir-master-lakes.csv" download className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-950/60 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-900/60">
+                        <Download className="w-3.5 h-3.5" /> Master Lake Inventory CSV (553 rows)
+                      </a>
+                      <a href="/data/kew-kashmir-master-lakes.geojson" download className="inline-flex items-center gap-1.5 rounded-md border border-cyan-500/40 bg-cyan-950/60 px-3 py-1.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-900/60">
+                        <Layers className="w-3.5 h-3.5" /> Kashmir Lakes GeoJSON (521 features, EPSG:4326)
+                      </a>
+                      <a href="/data/kew-lake-source-reconciliation.json" download className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 bg-amber-950/40 px-3 py-1.5 text-xs font-semibold text-amber-200 hover:bg-amber-900/50">
+                        <FileText className="w-3.5 h-3.5" /> 10-District &amp; Source Reconciliation JSON
+                      </a>
+                    </div>
+                  </div>
 
                   {/* Principles */}
                   <Section id="principles" icon={Shield} title="Open Data Principles">

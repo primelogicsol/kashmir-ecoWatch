@@ -299,7 +299,7 @@ export default function CsrCollaborationsPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#flagship-programs"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-emerald-400 hover:from-amber-300 hover:to-emerald-300 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40"
             >
               <Award className="w-4 h-4" />
               <span>Explore 4 Flagship Programs</span>
@@ -629,7 +629,7 @@ export default function CsrCollaborationsPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewConceptProgram(activeProgram)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:from-amber-500/30 hover:to-emerald-500/30 border border-amber-500/40 text-amber-300 font-bold text-xs transition-all cursor-pointer shadow-sm shadow-amber-950/20"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-amber-500/40 text-amber-300 font-bold text-xs transition-all cursor-pointer shadow-sm shadow-amber-950/20"
                 >
                   <FileText className="w-4 h-4 text-amber-400" />
                   <span>View & Print PDF Concept Note</span>
@@ -921,7 +921,7 @@ export default function CsrCollaborationsPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-emerald-400 hover:from-amber-300 hover:to-emerald-300 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-950/40 cursor-pointer"
                 >
                   Submit Official Partnership Inquiry
                 </button>

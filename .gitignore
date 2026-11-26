@@ -5,6 +5,7 @@ node_modules/
 
 # Next.js build output
 .next/
+.next-dispatch-verify/
 out/
 build/
 dist/
@@ -80,6 +81,12 @@ data/discovery-intelligence-store.json
 data/environmental-investigations-store.json
 data/sectoral-research-series-store.json
 data/sectoral-report-analytics.json
+data/himalayan-dispatch-store.json
+data/hd-anie-store.json
+data/hdn-newsroom-store.json
+data/virtual-hall-store.json
+data/conference-recordings/
+data/private-dispatch-credentials/
 data/generated-pdfs/
 data/backups/
 *.dump

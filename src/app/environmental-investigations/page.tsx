@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -28,6 +28,7 @@ import { Card, UniversalCard } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { EnvironmentalInvestigationsNav } from '@/components/environmental-investigations/EnvironmentalInvestigationsNav';
+import { EnvironmentalEconomicsFiscalPanel } from '@/components/environmental-investigations/EnvironmentalEconomicsFiscalPanel';
 import {
   EvidenceClassificationBadge,
   InvestigationStatusBadge,
@@ -39,17 +40,20 @@ import {
   getDomainById,
   getDomainInvestigationCounts,
   INVESTIGATION_DOMAINS,
+  INVESTIGATION_THEMATIC_SERIES,
   INVESTIGATION_WORKFLOW_STAGES,
   KEW_ECOSYSTEM_INTEGRATIONS,
+  PRIMARY_INSTITUTIONAL_EVIDENCE_SOURCES,
   PUBLICATION_FORMATS,
   STANDARD_REPORT_SECTIONS,
 } from '@/data/environmental-investigations';
-import { InvestigationRecord } from '@/types/environmental-investigations';
+import { InvestigationRecord, InvestigationSeriesId } from '@/types/environmental-investigations';
 
 export default function EnvironmentalInvestigationsHomePage() {
   const [records, setRecords] = useState<InvestigationRecord[]>(CANONICAL_INVESTIGATIONS);
   const [heroIdx, setHeroIdx] = useState(0);
   const [selectedEvidenceClass, setSelectedEvidenceClass] = useState<string>('ALL');
+  const [selectedSeries, setSelectedSeries] = useState<InvestigationSeriesId | 'all'>('all');
 
   useEffect(() => {
     fetch('/api/environmental-investigations')
@@ -261,7 +265,7 @@ export default function EnvironmentalInvestigationsHomePage() {
             <div className="flex flex-wrap items-center gap-2 shrink-0">
               <Link href="/environmental-investigations/methodology">
                 <Button variant="outline" size="sm">
-                  24-Section Standard
+                  Investigation Methodology
                 </Button>
               </Link>
               <Link href="/research-library">
@@ -284,7 +288,7 @@ export default function EnvironmentalInvestigationsHomePage() {
                 Featured Scientific Investigations
               </h2>
               <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-                Comprehensive 24-section multidisciplinary investigations synthesising statutory audits, peer-reviewed studies, satellite archives, and institutional responses.
+                Comprehensive {STANDARD_REPORT_SECTIONS.length}-section multidisciplinary investigations synthesising statutory audits, peer-reviewed studies, satellite archives, and institutional responses.
               </p>
             </div>
             <Link href="/environmental-investigations/reports">
@@ -405,15 +409,18 @@ export default function EnvironmentalInvestigationsHomePage() {
           </div>
         </section>
 
-        {/* SECTION B: INITIAL 8-INVESTIGATION PORTFOLIO */}
+        {/* SECTION A2: SHARED ENVIRONMENTAL ECONOMICS & FISCAL EVIDENCE LAYER */}
+        <EnvironmentalEconomicsFiscalPanel mode="compact" />
+
+        {/* SECTION B: WESTERN HIMALAYAN INVESTIGATION PORTFOLIO */}
         <section aria-labelledby="portfolio-heading" className="space-y-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 block mb-1">
-                KEW-INV-0001 Through KEW-INV-0008
+                KEW-INV-0001 Through {records[records.length - 1]?.code || 'KEW-INV-0009'}
               </span>
               <h2 id="portfolio-heading" className="text-2xl sm:text-3xl font-bold text-white">
-                Initial Western Himalayan Investigation Portfolio
+                Western Himalayan Investigation Portfolio
               </h2>
               <p className="text-sm text-slate-400 mt-1 max-w-3xl">
                 Active and proposed investigation subjects are transparently distinguished from completed peer-verified reports — scoping charters define falsifiable scientific questions, not predetermined conclusions.
@@ -426,8 +433,66 @@ export default function EnvironmentalInvestigationsHomePage() {
             </Link>
           </div>
 
+          {/* Thematic Investigation Series Filter Bar (Dynamic In-Page Counts) */}
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setSelectedSeries('all')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-sm border transition-colors ${
+                  selectedSeries === 'all'
+                    ? 'bg-emerald-600 text-white border-emerald-500'
+                    : 'bg-slate-900 text-slate-300 border-white/10 hover:text-white'
+                }`}
+              >
+                {`All Investigations (${records.length})`}
+              </button>
+              {INVESTIGATION_THEMATIC_SERIES.map((ser) => {
+                const cnt = records.filter((r) => (r.seriesId || 'core-himalayan-portfolio') === ser.id).length;
+                return (
+                  <button
+                    key={ser.id}
+                    type="button"
+                    onClick={() => setSelectedSeries(ser.id)}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-sm border transition-colors ${
+                      selectedSeries === ser.id
+                        ? 'bg-emerald-600 text-white border-emerald-500'
+                        : 'bg-slate-900 text-slate-300 border-white/10 hover:text-white'
+                    }`}
+                  >
+                    {`${ser.shortLabel} (${cnt})`}
+                  </button>
+                );
+              })}
+            </div>
+            {selectedSeries !== 'all' && (
+              <div className="p-3.5 rounded-lg bg-slate-900/90 border border-emerald-500/25 text-xs text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <strong className="text-white">
+                    {INVESTIGATION_THEMATIC_SERIES.find((s) => s.id === selectedSeries)?.title}:
+                  </strong>{' '}
+                  {INVESTIGATION_THEMATIC_SERIES.find((s) => s.id === selectedSeries)?.subtitle}
+                </div>
+                <div className="flex flex-wrap gap-1.5 shrink-0">
+                  {INVESTIGATION_THEMATIC_SERIES.find((s) => s.id === selectedSeries)?.targetModules.map((tm) => (
+                    <Link
+                      key={tm.route}
+                      href={tm.route}
+                      className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-950 border border-white/10 text-emerald-300 hover:text-white font-mono text-[11px]"
+                    >
+                      <span>{tm.label}</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 card-grid-stretch">
-            {records.map((inv) => {
+            {records
+              .filter((r) => selectedSeries === 'all' || (r.seriesId || 'core-himalayan-portfolio') === selectedSeries)
+              .map((inv) => {
               const domain = getDomainById(inv.primaryDomainId);
               return (
                 <UniversalCard
@@ -436,10 +501,10 @@ export default function EnvironmentalInvestigationsHomePage() {
                   href={`/environmental-investigations/reports/${inv.slug}`}
                   icon={<FileSearch className="w-5 h-5 text-emerald-400" />}
                   badge={<InvestigationStatusBadge status={inv.status} />}
-                  eyebrow={`${inv.code} · ${inv.temporalScope}`}
+                  eyebrow={`${inv.code} · ${inv.temporalScope}${inv.priority ? ` · ${inv.priority.toUpperCase()}` : ''}`}
                   title={inv.shortTitle}
-                  subtitle={`${domain?.name || ''} • ${inv.districts.join(', ')}`}
-                  description={inv.subtitle}
+                  subtitle={`${domain?.name || ''} • ${inv.districts.length === 10 ? 'All 10 Kashmir Districts' : inv.districts.join(', ')}`}
+                  description={inv.centralScientificQuestion || inv.subtitle}
                   ctaLabel={
                     inv.status === 'published'
                       ? 'Read Published Investigation'
@@ -554,12 +619,12 @@ export default function EnvironmentalInvestigationsHomePage() {
           </section>
         )}
 
-        {/* SECTION D: ALL 18 ENVIRONMENTAL INVESTIGATION DOMAINS */}
+        {/* SECTION D: ENVIRONMENTAL INVESTIGATION DOMAINS */}
         <section aria-labelledby="domains-heading" className="space-y-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">
-                18 Ecological, Physical &amp; Governance Scopes
+                {INVESTIGATION_DOMAINS.length} Ecological, Physical &amp; Governance Scopes
               </span>
               <h2 id="domains-heading" className="text-2xl sm:text-3xl font-bold text-white">
                 Environmental Investigation Domains
@@ -570,7 +635,7 @@ export default function EnvironmentalInvestigationsHomePage() {
             </div>
             <Link href="/environmental-investigations/domains">
               <Button variant="secondary" size="sm" icon={<Layers className="w-4 h-4 text-emerald-400" />}>
-                Explore All 18 Domains
+                Explore All {INVESTIGATION_DOMAINS.length} Domains
               </Button>
             </Link>
           </div>
@@ -658,6 +723,64 @@ export default function EnvironmentalInvestigationsHomePage() {
           </Card>
         </section>
 
+        {/* SECTION E2: PRIMARY INSTITUTIONAL & SCIENTIFIC EVIDENCE ACQUISITION MATRIX */}
+        <section aria-labelledby="evidence-acquisition-heading" className="space-y-5">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">
+              Mandatory Pre-Publication Evidence Acquisition Protocol
+            </span>
+            <h2 id="evidence-acquisition-heading" className="text-2xl sm:text-3xl font-bold text-white">
+              Primary Scientific &amp; Institutional Data Repositories
+            </h2>
+            <p className="text-sm text-slate-400 mt-1 max-w-3xl">
+              Every proposed and scoping investigation remains gated behind authenticated documentary, audit, laboratory, and satellite acquisition from primary statutory custodians — never substituting AI synthesis for missing empirical records.
+            </p>
+          </div>
+
+          <Card padding="none" className="overflow-hidden">
+            <div className="responsive-table-container mb-0">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-950/80 border-b border-white/10 text-slate-400 uppercase tracking-wider text-[10px]">
+                    <th className="py-3.5 px-4">Custodian Institution / Portal</th>
+                    <th className="py-3.5 px-4">Target Investigation Series</th>
+                    <th className="py-3.5 px-4">Required Authenticated Evidence</th>
+                    <th className="py-3.5 px-4">Official Repository</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {PRIMARY_INSTITUTIONAL_EVIDENCE_SOURCES.map((src) => (
+                    <tr key={src.institution} className="hover:bg-white/[0.02]">
+                      <td className="py-3.5 px-4 font-bold text-white">{src.institution}</td>
+                      <td className="py-3.5 px-4 text-emerald-300 font-mono text-[11px] whitespace-nowrap">
+                        {src.targetSeries}
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-300 leading-relaxed max-w-lg">
+                        {src.requiredEvidence}
+                      </td>
+                      <td className="py-3.5 px-4 whitespace-nowrap">
+                        {src.repositoryUrl ? (
+                          <a
+                            href={src.repositoryUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-mono text-[11px]"
+                          >
+                            <span>Official Portal</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="text-slate-500 font-mono text-[11px]">Statutory / Archival</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </section>
+
         {/* SECTION F: 6 SCIENTIFIC CLUSTERS + 24-SECTION STANDARD + 12 FORMATS OVERVIEW */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Card className="flex flex-col justify-between">
@@ -665,7 +788,7 @@ export default function EnvironmentalInvestigationsHomePage() {
               <div className="flex items-center justify-between">
                 <FlaskConical className="w-6 h-6 text-cyan-400" />
                 <Badge variant="info" size="sm" className="font-mono">
-                  6 Clusters · {ALL_SCIENTIFIC_DISCIPLINES_LEN(DISCIPLINE_CLUSTERS)} Sciences
+                  {DISCIPLINE_CLUSTERS.length} Clusters · {ALL_SCIENTIFIC_DISCIPLINES_LEN(DISCIPLINE_CLUSTERS)} Sciences
                 </Badge>
               </div>
               <h3 className="text-lg font-bold text-white">Integrated Scientific Disciplines</h3>
@@ -702,7 +825,7 @@ export default function EnvironmentalInvestigationsHomePage() {
               </div>
               <h3 className="text-lg font-bold text-white">Standard Scientific Report Architecture</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Every investigation follows a uniform 24-section scientific architecture (Executive Summary through Updates &amp; Corrections), dynamically suppressing non-applicable sections.
+                Every investigation follows a uniform {STANDARD_REPORT_SECTIONS.length}-section scientific architecture (Executive Summary through Updates &amp; Corrections), dynamically suppressing non-applicable sections.
               </p>
               <div className="grid grid-cols-2 gap-1.5 pt-1 text-[11px] text-slate-300 font-mono">
                 {STANDARD_REPORT_SECTIONS.slice(0, 8).map((s) => (
@@ -717,7 +840,7 @@ export default function EnvironmentalInvestigationsHomePage() {
                 href="/environmental-investigations/methodology#report-architecture"
                 className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300"
               >
-                <span>View Complete 24-Section Specification</span>
+                <span>View Complete {STANDARD_REPORT_SECTIONS.length}-Section Specification</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -733,7 +856,7 @@ export default function EnvironmentalInvestigationsHomePage() {
               </div>
               <h3 className="text-lg font-bold text-white">Single-Record Multi-Format Publishing</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                All 12 publication outputs — from Full Scientific Investigation and Executive Briefing to Legal Evidence Brief, Citation Record, and Open Dataset — derive from one verified master record.
+                All {PUBLICATION_FORMATS.length} publication outputs — from Full Scientific Investigation and Executive Briefing to Legal Evidence Brief, Citation Record, and Open Dataset — derive from one verified master record.
               </p>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {PUBLICATION_FORMATS.slice(0, 8).map((f) => (
@@ -748,7 +871,7 @@ export default function EnvironmentalInvestigationsHomePage() {
                 href="/environmental-investigations/methodology#workflow"
                 className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300"
               >
-                <span>Explore 12-Stage Investigation Workflow ({INVESTIGATION_WORKFLOW_STAGES.length} Stages)</span>
+                <span>Explore Investigative Workflow ({INVESTIGATION_WORKFLOW_STAGES.length} Stages)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

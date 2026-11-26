@@ -21,24 +21,12 @@ module.exports = {
       'modal': '10px',
       'full': '9999px',
     },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '1.5rem',
-        lg: '2rem',
-      },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
-      },
-    },
     extend: {
       screens: {
         'xs': '320px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+        '5xl': '3440px',
       },
       spacing: {
         '18': '4.5rem',
@@ -128,6 +116,9 @@ module.exports = {
         },
       },
     },
+  },
+  corePlugins: {
+    container: false,
   },
   plugins: [],
 }

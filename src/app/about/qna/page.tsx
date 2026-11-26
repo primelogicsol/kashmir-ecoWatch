@@ -972,7 +972,7 @@ export default function QuestionsAndAnswersPage() {
         }
       />
 
-      <div className="container mx-auto px-3 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 pt-8 max-w-7xl">
+      <div className="container mx-auto space-y-12 sm:space-y-16 pt-8">
         
         {/* ─── Macro Stats Banner (6 Compact Responsive Cards) ────────────────── */}
         <section className="relative z-20">

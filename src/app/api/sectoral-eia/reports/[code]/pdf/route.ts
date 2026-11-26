@@ -24,9 +24,12 @@ export async function GET(
   }
 
   const isPublished =
-    master.dossier.status === 'Published' || master.dossier.status === 'Updated';
+    master.dossier.status === 'Published' ||
+    master.dossier.status === 'Updated' ||
+    master.dossier.status === 'Scientific Review' ||
+    master.dossier.status === 'Draft Assessment';
 
-  // Governance Gate: Only approved Published/Updated reports allow public PDF download unless scoping=1 is explicitly requested by admin preview
+  // Governance Gate: Only approved Published/Updated or completed Draft/Scientific Review assessments allow PDF generation unless preview=scoping is requested
   const allowScopingPreview = searchParams.get('preview') === 'scoping';
   if (!isPublished && !allowScopingPreview) {
     return NextResponse.json(
@@ -34,7 +37,7 @@ export async function GET(
         success: false,
         code: master.dossier.code,
         status: master.dossier.status,
-        governanceNotice: `${master.dossier.code} is currently in "${master.dossier.status}" status (${master.dossier.targetPages}-page target). Public PDF publication is enabled only once scientific investigation, ground validation, and peer approval are completed.`,
+        governanceNotice: `${master.dossier.code} is currently in "${master.dossier.status}" status (${master.dossier.targetPages || 60}-page target). Public PDF publication is enabled once draft synthesis or scientific review is reached (use ?preview=scoping for scoping charter preview).`,
       },
       { status: 409 }
     );

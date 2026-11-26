@@ -47,7 +47,7 @@ export function WebinarNav() {
 
   return (
     <div className="sticky top-16 md:top-[72px] z-40 bg-slate-950/95 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-2.5">
           <div className="flex items-center gap-1.5 shrink-0">
             {links.map((link) => {

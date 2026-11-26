@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   AlertCircle,
@@ -21,6 +21,7 @@ import { Heading } from '@/components/common/Heading';
 import { WebinarNav } from '@/components/webinars/WebinarNav';
 import { Button } from '@/components/ui/Button';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { getContextualWebinarSessionImages } from '@/data/webinar-hero-carousel';
 
 export default function CreateWebinarPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -49,6 +50,18 @@ export default function CreateWebinarPage() {
     requiresCertificate: true,
     requiresRecordingConsent: true
   });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const fmt = new URLSearchParams(window.location.search).get('format');
+    if (fmt === 'roundtable' || fmt === 'webinar' || fmt === 'conference') {
+      setForm((prev) => ({
+        ...prev,
+        type: fmt,
+        isMultiDay: fmt === 'conference',
+      }));
+    }
+  }, []);
 
   const handleAddTrack = () => {
     const nextLetter = String.fromCharCode(65 + form.parallelTracks.length);
@@ -87,12 +100,7 @@ export default function CreateWebinarPage() {
           </div>
         }
         subtitle="Submit technical sessions, workshops, and multi-day symposia to the Kashmir EcoWatch Scientific Advisory Board. Provision parallel WebRTC virtual halls and delegate registration pipelines."
-        images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
-        ]}
+        images={getContextualWebinarSessionImages(form.type)}
       />
 
       <WebinarNav />

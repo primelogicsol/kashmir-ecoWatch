@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompiledSearchCorpus } from '@/lib/search/index-builder';
 import { evidenceRegistry } from '@/data/evidence-intelligence';
 import { fieldReportsRegistry } from '@/data/field-reports-registry';
+import { getMergedResearchDossiers } from '@/lib/sectoral-research-store';
 import {
   CANONICAL_HOMEPAGE_URL,
   CANONICAL_SITE_URL,
@@ -572,7 +573,20 @@ export async function GET(request: NextRequest) {
         ? await queryLiveScholarlyMentions()
         : null;
 
+    const publishedSeriesDossiers = getMergedResearchDossiers().filter(
+      (d) => d.status === 'Published' || d.status === 'Updated'
+    );
+
     const publishableReports = [
+      ...publishedSeriesDossiers.map((sr) => ({
+        id: sr.code,
+        title: `${sr.code}: ${sr.title}`,
+        canonicalUrl: `${CANONICAL_SITE_URL}/sectoral-eia/reports/${sr.code.toLowerCase()}`,
+        publishedDate: sr.date,
+        authors: [sr.author],
+        abstract: sr.abstract,
+        sourceType: 'Scientific Research Series (Published Monograph)',
+      })),
       ...evidenceRegistry.map((ev) => ({
         id: ev.id,
         title: ev.title,

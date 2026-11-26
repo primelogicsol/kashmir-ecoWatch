@@ -183,8 +183,8 @@ export function WebinarCard({ session, onRegisterClick }: WebinarCardProps) {
           </Button>
         )}
 
-        <Link href={`/webinars/${session.id}`}>
-          <Button size="sm" variant="outline" className="border-white/15 text-slate-300 hover:bg-white/5 px-2.5">
+        <Link href={`/webinars/${session.id}`} aria-label={`View details for ${session.title}`}>
+          <Button size="sm" variant="outline" aria-label={`View details for ${session.title}`} className="border-white/15 text-slate-300 hover:bg-white/5 px-2.5">
             <ArrowRight className="w-4 h-4" />
           </Button>
         </Link>

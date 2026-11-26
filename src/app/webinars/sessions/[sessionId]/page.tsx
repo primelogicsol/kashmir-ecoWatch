@@ -5,6 +5,7 @@ import { Clock, Radio, Users, MessageSquare, Download, Layers, ShieldCheck, Arro
 import { Heading } from '@/components/common/Heading';
 import { WebinarNav } from '@/components/webinars/WebinarNav';
 import { SESSIONS_DETAILED, CONFERENCES_DETAILED } from '@/data/conference-system';
+import { getContextualWebinarSessionImages } from '@/data/webinar-hero-carousel';
 
 export function generateStaticParams() {
   return SESSIONS_DETAILED.map(sess => ({ sessionId: sess.id }));
@@ -35,6 +36,7 @@ export default async function SessionDetailsPage({ params }: Props) {
         icon={<Clock className="w-6 h-6 text-teal-400" />}
         title={session.title}
         subtitle={session.trackName}
+        images={getContextualWebinarSessionImages(session.sessionType)}
         actions={
           session.status === 'live' ? (
             <Link
@@ -50,7 +52,7 @@ export default async function SessionDetailsPage({ params }: Props) {
 
       <WebinarNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="container mx-auto py-10 space-y-8">
         {/* Quick Nav Bar */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar bg-slate-900/60 p-2.5 rounded-2xl border border-white/10 text-xs">
           <Link

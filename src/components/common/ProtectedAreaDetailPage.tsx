@@ -20,6 +20,8 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ProtectedArea } from '@/data/protected-network';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 
 interface ProtectedAreaDetailPageProps {
   area: ProtectedArea;
@@ -912,11 +914,11 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
     <main className="min-h-screen bg-slate-950">
 
       {/* ── HERO ── */}
-      <div className="relative bg-slate-900/50 pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
-        <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
+      <div className="kew-module-hero-surface relative bg-slate-950 overflow-hidden">
+        <BackgroundCarousel images={heroImages} />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10 kew-has-hero-rail">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6">
             <button onClick={() => router.push('/protected-network')} className="hover:text-white transition-colors">Protected Network</button>
@@ -987,7 +989,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
             </div>
 
             {/* Right: intelligence panel */}
-            <Card className={`${CARD} p-5 space-y-3`}>
+            <DismissibleHeroOverlay restoreLabel="Show Area Intelligence"><Card className={`${CARD} p-5 space-y-3`}>
               {(area.id === 'salim-ali' ? [
                 { icon: MapPin,        label: 'Area',               value: '9.07 km²' },
                 { icon: Calendar,     label: 'Established',        value: 1986 },
@@ -1024,7 +1026,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   ))}
                 </div>
               </div>
-            </Card>
+            </Card></DismissibleHeroOverlay>
           </div>
         </div>
       </div>
@@ -2740,6 +2742,21 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
             )}
           </>
         )}
+
+        {/* ── LINKED KEW-EIAI SCIENTIFIC INVESTIGATIONS (DACHIGAM, SALIM ALI & CORRIDORS) ── */}
+        <LinkedInvestigationsModulePanel
+          className="mt-12"
+          title={`KEW-EIAI Scientific & Governance Investigations — ${area.name}`}
+          subtitle="Independent multidisciplinary investigations examining population viability, grazing competition, departmental land occupation, statutory gazette notifications, corridor connectivity, and lost ecosystem services."
+          routeMatch={area.slug}
+          seriesIds={
+            area.slug === 'dachigam-national-park'
+              ? ['dachigam-national-park']
+              : area.slug === 'salim-ali-national-park'
+              ? ['salim-ali-national-park']
+              : undefined
+          }
+        />
 
         {/* ── RELATED AREAS ── */}
         {relatedAreas.length > 0 && (

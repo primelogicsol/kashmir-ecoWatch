@@ -1,21 +1,17 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  ExternalLink, 
-  Radio, 
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  ExternalLink,
+  Radio,
   RotateCcw,
-  Sparkles,
-  Music2,
-  Info,
   Tv,
-  X
+  X,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
 import { EcoVoiceRelease } from '@/data/ecovoices-catalog';
 
 interface EcoVoiceAudioPlayerProps {
@@ -24,16 +20,15 @@ interface EcoVoiceAudioPlayerProps {
   initiallyOpen?: boolean;
 }
 
-// Convert "8:04" string into total seconds (484)
 function parseDurationToSeconds(durationStr: string): number {
   const parts = durationStr.split(':').map(Number);
   if (parts.length === 2) {
-    return (parts[0] * 60) + parts[1];
+    return parts[0] * 60 + parts[1];
   }
   if (parts.length === 3) {
-    return (parts[0] * 3600) + (parts[1] * 60) + parts[2];
+    return parts[0] * 3600 + parts[1] * 60 + parts[2];
   }
-  return 300; // default 5 mins
+  return 300;
 }
 
 function formatSeconds(totalSeconds: number): string {
@@ -45,7 +40,7 @@ function formatSeconds(totalSeconds: number): string {
 export function EcoVoiceAudioPlayer({
   release,
   variant = 'card',
-  initiallyOpen = false
+  initiallyOpen = false,
 }: EcoVoiceAudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [showVideo, setShowVideo] = useState<boolean>(false);
@@ -56,34 +51,35 @@ export function EcoVoiceAudioPlayer({
 
   const totalSeconds = parseDurationToSeconds(release.durationFormatted);
 
-  // Audio Context references
   const audioCtxRef = useRef<AudioContext | null>(null);
   const masterGainRef = useRef<GainNode | null>(null);
   const oscNodesRef = useRef<OscillatorNode[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Determine base harmonic frequency based on release theme
   const getBaseFrequency = () => {
     switch (release.id) {
       case 'sheikh-noorani-father-of-sustainable-development':
-        return 144; // D3 alpine grounding tone
+        return 144;
       case 'cry-of-the-kashmir-valley':
-        return 288; // D4 awakening bell harmonic
+        return 288;
       case 'mirror-of-hazratbal-wound-of-dal':
-        return 256; // C4 sacred harmonic
+        return 256;
       case 'sufi-cry-for-a-river':
-        return 192; // G3 contemplative river tone
+        return 192;
+      case 'kashmir-how-long-will-you-remain-silent':
+        return 174;
       case 'pani-gawah-hai':
       default:
-        return 216; // 432 Hz sub-harmonic water resonance
+        return 216;
     }
   };
 
-  // Start sound generation
   const startAudio = () => {
     try {
       if (typeof window === 'undefined') return;
-      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (!AudioContextClass) return;
 
       if (!audioCtxRef.current) {
@@ -97,21 +93,19 @@ export function EcoVoiceAudioPlayer({
       const ctx = audioCtxRef.current;
       const now = ctx.currentTime;
 
-      // Master Gain Node
       const masterGain = ctx.createGain();
-      const targetVol = isMuted ? 0 : volume * 0.22; // Keep ambient & comfortable
+      const targetVol = isMuted ? 0 : volume * 0.22;
       masterGain.gain.setValueAtTime(0.0001, now);
       masterGain.gain.exponentialRampToValueAtTime(Math.max(0.0001, targetVol), now + 0.8);
       masterGain.connect(ctx.destination);
       masterGainRef.current = masterGain;
 
-      // Multi-harmonic acoustic drone (Root, 5th, Octave, Warm Filtered Sub)
       const baseFreq = getBaseFrequency();
       const harmonics = [
         { freq: baseFreq, type: 'sine' as OscillatorType, gain: 0.4 },
         { freq: baseFreq * 1.5, type: 'triangle' as OscillatorType, gain: 0.25 },
         { freq: baseFreq * 2, type: 'sine' as OscillatorType, gain: 0.15 },
-        { freq: baseFreq * 0.5, type: 'sine' as OscillatorType, gain: 0.2 }
+        { freq: baseFreq * 0.5, type: 'sine' as OscillatorType, gain: 0.2 },
       ];
 
       oscNodesRef.current = [];
@@ -124,7 +118,6 @@ export function EcoVoiceAudioPlayer({
         osc.type = type;
         osc.frequency.setValueAtTime(freq, now);
 
-        // Low-pass warm resonance
         filter.type = 'lowpass';
         filter.frequency.setValueAtTime(750, now);
         filter.Q.setValueAtTime(2.0, now);
@@ -145,7 +138,6 @@ export function EcoVoiceAudioPlayer({
     }
   };
 
-  // Stop sound generation with smooth fade-out
   const stopAudio = () => {
     try {
       if (audioCtxRef.current && masterGainRef.current) {
@@ -160,7 +152,7 @@ export function EcoVoiceAudioPlayer({
               osc.stop();
               osc.disconnect();
             } catch {
-              // Ignore already stopped
+              // ignore
             }
           });
           oscNodesRef.current = [];
@@ -198,7 +190,6 @@ export function EcoVoiceAudioPlayer({
     setShowVideo(false);
   };
 
-  // Timer interval for playback progress
   useEffect(() => {
     if (isPlaying) {
       timerRef.current = setInterval(() => {
@@ -219,7 +210,6 @@ export function EcoVoiceAudioPlayer({
     };
   }, [isPlaying, totalSeconds]);
 
-  // Adjust volume
   useEffect(() => {
     if (masterGainRef.current && audioCtxRef.current) {
       const targetVol = isMuted ? 0.0001 : Math.max(0.0001, volume * 0.22);
@@ -227,7 +217,6 @@ export function EcoVoiceAudioPlayer({
     }
   }, [volume, isMuted]);
 
-  // Clean up on unmount
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -250,19 +239,30 @@ export function EcoVoiceAudioPlayer({
     setCurrentTime(Math.floor(ratio * totalSeconds));
   };
 
+  const handleSeekKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      setCurrentTime((prev) => Math.min(totalSeconds, prev + 10));
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      setCurrentTime((prev) => Math.max(0, prev - 10));
+    }
+  };
+
   const handleReset = () => {
     setCurrentTime(0);
   };
 
   const videoId = release.youtubeVideoId || release.videoEmbedId;
-  const thumbnailSrc = release.thumbnailUrl || release.coverImage || (videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '');
+  const thumbnailSrc =
+    release.thumbnailUrl ||
+    release.coverImage ||
+    (videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '');
 
   return (
     <div className="space-y-3.5 w-full">
-      {/* ======================================================== */}
-      {/* 1. PLAYABLE VIDEO & VISIBLE THUMBNAIL SCREEN */}
-      {/* ======================================================== */}
-      <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 bg-slate-950 shadow-xl group">
+      {/* 1. CINEMA VIDEO & ARTWORK SCREEN */}
+      <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-amber-300/20 bg-[#05070f] shadow-[0_18px_45px_rgba(0,0,0,0.65)] group">
         {showVideo && videoId ? (
           <div className="relative w-full h-full bg-black">
             <iframe
@@ -272,48 +272,41 @@ export function EcoVoiceAudioPlayer({
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-            {/* Close Video Bar */}
-            <div className="absolute top-2 right-2 z-20">
+            <div className="absolute top-2.5 right-2.5 z-20">
               <button
                 type="button"
                 onClick={handleCloseVideo}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/80 hover:bg-black text-white text-[11px] font-semibold border border-white/20 backdrop-blur-md transition-colors shadow-lg cursor-pointer"
-                title="Close video and show thumbnail"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 hover:bg-black text-amber-100 text-[11px] font-semibold border border-amber-300/30 backdrop-blur-md transition-colors shadow-lg cursor-pointer"
+                aria-label="Close video player and return to composition artwork"
               >
                 <X className="w-3.5 h-3.5" />
-                <span>Close Video</span>
+                <span>Close Screening</span>
               </button>
             </div>
           </div>
         ) : (
           <div className="relative w-full h-full">
-            {/* Visible Thumbnail Image */}
             <img
               src={thumbnailSrc}
-              alt={release.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              alt={`${release.title} — ${release.artistCredit || 'SufiPulse USA'}`}
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/30 group-hover:from-slate-950/95 transition-all" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/45 to-black/35 group-hover:from-[#05070f]/95 transition-all" />
 
             {/* Top Badges */}
-            <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
+            <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
               <div className="flex items-center gap-1.5">
-                <span className="bg-red-600 text-white font-mono font-bold text-[10px] px-2 py-0.5 rounded shadow-md flex items-center gap-1">
-                  <svg className="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                  <span>Track #{release.youtubeStats?.trackNumber || release.trackOrder}</span>
+                <span className="bg-black/75 backdrop-blur-md text-amber-200 font-mono font-semibold text-[10px] px-2.5 py-0.5 rounded-full border border-amber-300/30 tracking-wider uppercase">
+                  Master #{release.youtubeStats?.trackNumber || release.trackOrder}
                 </span>
-                <span className="bg-black/70 backdrop-blur-md text-slate-200 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10">
-                  ⏱ {release.durationFormatted}
+                <span className="bg-black/75 backdrop-blur-md text-slate-200 font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-white/15">
+                  {release.durationFormatted}
                 </span>
               </div>
 
-              {release.youtubeStats && (
-                <span className="bg-black/70 backdrop-blur-md text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10 hidden sm:inline-block">
-                  👁 {release.youtubeStats.views} views • {release.youtubeStats.uploadedAge}
-                </span>
-              )}
+              <span className="bg-emerald-950/80 backdrop-blur-md text-emerald-200 font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-emerald-400/30 hidden sm:inline-block">
+                Published Master
+              </span>
             </div>
 
             {/* Central Playable Trigger */}
@@ -321,102 +314,96 @@ export function EcoVoiceAudioPlayer({
               <button
                 type="button"
                 onClick={handlePlayVideo}
-                aria-label={`Play official YouTube recording for ${release.title}`}
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shadow-2xl shadow-red-600/60 hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-white/20 group-hover:ring-red-400/50"
+                aria-label={`Play official master video for ${release.title}`}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-amber-300 via-amber-200 to-yellow-100 hover:from-amber-200 hover:to-white text-slate-950 flex items-center justify-center shadow-[0_0_35px_rgba(251,191,36,0.45)] hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-amber-200/25"
               >
-                <Play className="w-7 h-7 sm:w-8 sm:h-8 ml-1 fill-white" />
+                <Play className="w-7 h-7 ml-1 fill-slate-950" />
               </button>
               <div className="space-y-0.5">
-                <span className="text-xs sm:text-sm font-bold text-white tracking-wide bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-[4px] border border-white/15 shadow">
-                  Play Official YouTube Master
+                <span className="text-xs font-semibold text-amber-100 tracking-wide bg-black/75 backdrop-blur-md px-3.5 py-1 rounded-full border border-amber-300/25 shadow">
+                  Screen Official Master Recording
                 </span>
-                <p className="text-[10px] text-slate-300 font-mono drop-shadow hidden sm:block">
-                  Click to watch full video with high-fidelity audio
-                </p>
               </div>
             </div>
 
             {/* Bottom Info Strip */}
-            <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[11px] text-slate-300 z-10 pointer-events-none">
-              <span className="truncate pr-2 font-medium drop-shadow-md text-white">
-                {release.title}
+            <div className="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between text-[11px] text-slate-300 z-10 pointer-events-none">
+              <span className="truncate pr-2 font-[family-name:var(--font-ecovoices-serif)] italic text-sm text-amber-100 drop-shadow-md">
+                {release.artistCredit || 'Dr. Zarf-e-Noori · SufiPulse USA'}
               </span>
-              <span className="shrink-0 text-[10px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30">
-                SufiPulse USA
+              <span className="shrink-0 text-[10px] font-mono text-amber-200/90 bg-black/70 px-2.5 py-0.5 rounded-full border border-amber-300/25">
+                {release.catalogCode}
               </span>
             </div>
           </div>
         )}
       </div>
 
-      {/* ======================================================== */}
-      {/* 2. AUDIO & STREAM TOOLBAR */}
-      {/* ======================================================== */}
+      {/* 2. ACCESSIBLE MEDIA CONTROLS TOOLBAR */}
       <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-        <div className="flex items-center gap-2">
-          {/* Play Video Quick Button */}
+        <div className="flex flex-wrap items-center gap-2">
           {!showVideo && (
             <button
               type="button"
               onClick={handlePlayVideo}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] shadow-sm transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-300 hover:bg-amber-200 text-slate-950 font-bold text-[11px] shadow-sm transition-colors cursor-pointer"
             >
               <Tv className="w-3.5 h-3.5" />
-              <span>Watch Video</span>
+              <span>Screen Master Video</span>
             </button>
           )}
 
-          {/* Toggle Ambient Drone Audio */}
           <button
             type="button"
             onClick={togglePlayAudio}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[11px] border transition-colors cursor-pointer ${
+            aria-pressed={isPlaying}
+            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-semibold text-[11px] border transition-colors cursor-pointer ${
               isPlaying
-                ? 'bg-purple-600 text-white border-purple-500 shadow-md shadow-purple-600/30'
-                : 'bg-slate-900 text-slate-300 border-white/10 hover:bg-slate-800'
+                ? 'bg-amber-400/20 text-amber-200 border-amber-300/60 shadow-md shadow-amber-500/15'
+                : 'bg-white/[0.04] text-slate-200 border-white/15 hover:border-amber-300/35 hover:text-amber-100'
             }`}
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{isPlaying ? 'Pause Ambient Stream' : '432 Hz Drone Preview'}</span>
+            <span>{isPlaying ? 'Pause Acoustic Resonance' : '432 Hz Harmonic Preview'}</span>
           </button>
         </div>
 
-        {/* Video & Playlist External Links */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {release.youtubeStats && (
             <a
               href={release.youtubeStats.playlistUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[11px] text-red-400 hover:text-red-300 font-mono underline underline-offset-2"
+              className="inline-flex items-center gap-1 text-[11px] text-amber-200/80 hover:text-amber-100 font-mono underline underline-offset-4"
             >
-              <span>Playlist Track #{release.youtubeStats.trackNumber}</span>
+              <span>YouTube Master #{release.youtubeStats.trackNumber}</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           )}
         </div>
       </div>
 
-      {/* ======================================================== */}
-      {/* 3. EXPANDABLE AMBIENT DRONE CONSOLE (Optional) */}
-      {/* ======================================================== */}
+      {/* 3. EXPANDABLE WEB AUDIO HARMONIC CONSOLE */}
       {(isAudioConsoleOpen || isPlaying) && (
-        <div className={`rounded-xl border transition-all ${
-          variant === 'full' 
-            ? 'p-5 bg-slate-950/90 border-purple-500/40 shadow-xl space-y-4' 
-            : 'p-3.5 bg-purple-950/25 border-purple-500/25 space-y-3'
-        }`}>
-          {/* Header Strip */}
+        <div
+          className={`rounded-2xl border transition-all ${
+            variant === 'full'
+              ? 'p-5 bg-[#070a16]/95 border-amber-300/30 shadow-xl space-y-4'
+              : 'p-3.5 bg-[#080c1a]/90 border-amber-300/20 space-y-3'
+          }`}
+        >
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-white/10 text-xs font-mono">
-            <div className="flex items-center gap-2 text-purple-300">
-              <Radio className={`w-3.5 h-3.5 text-purple-400 ${isPlaying ? 'animate-pulse' : ''}`} />
+            <div className="flex items-center gap-2 text-amber-200">
+              <Radio className={`w-3.5 h-3.5 text-amber-300 ${isPlaying ? 'animate-pulse' : ''}`} />
               <span className="font-semibold tracking-wide text-[11px]">
-                {isPlaying ? 'Active 432 Hz Himalayan Resonance' : 'Acoustic Drone Preview Console'}
+                {isPlaying
+                  ? 'Active Himalayan Harmonic Resonance (Web Audio Synthesis)'
+                  : 'Contemplative Drone Preview Console'}
               </span>
             </div>
 
             <div className="flex items-center gap-2">
-              <span data-testid="audio-timer-current" className="text-purple-300 font-bold font-mono text-[11px]">
+              <span data-testid="audio-timer-current" className="text-amber-200 font-bold font-mono text-[11px]">
                 {formatSeconds(currentTime)}
               </span>
               <span className="text-slate-500">/</span>
@@ -426,16 +413,15 @@ export function EcoVoiceAudioPlayer({
             </div>
           </div>
 
-          {/* Main Controls Row */}
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={togglePlayAudio}
-              aria-label={isPlaying ? 'Pause' : 'Play'}
-              className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform ${
-                isPlaying 
-                  ? 'bg-purple-600 text-white shadow-md shadow-purple-600/40' 
-                  : 'bg-purple-900/80 text-purple-200 border border-purple-400/30 hover:bg-purple-800'
+              aria-label={isPlaying ? `Pause resonance preview for ${release.title}` : `Play resonance preview for ${release.title}`}
+              className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-transform cursor-pointer ${
+                isPlaying
+                  ? 'bg-amber-300 text-slate-950 shadow-md shadow-amber-400/30'
+                  : 'bg-amber-300/15 text-amber-200 border border-amber-300/35 hover:bg-amber-300/25'
               }`}
             >
               {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
@@ -446,40 +432,45 @@ export function EcoVoiceAudioPlayer({
               onClick={handleReset}
               title="Restart from beginning"
               aria-label="Restart audio from beginning"
-              className="p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-400 hover:text-white transition-colors"
+              className="p-2 rounded-full bg-white/[0.04] border border-white/10 text-slate-300 hover:text-amber-200 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
 
-            {/* Seek Bar */}
             <div className="flex-1 space-y-1">
-              <div 
+              <div
+                role="slider"
+                tabIndex={0}
+                aria-label={`Seek position for ${release.title}`}
+                aria-valuemin={0}
+                aria-valuemax={totalSeconds}
+                aria-valuenow={currentTime}
                 onClick={handleSeek}
-                className="h-2.5 w-full bg-slate-900 rounded-full overflow-hidden cursor-pointer relative group flex items-center border border-white/5"
-                title="Click to seek"
+                onKeyDown={handleSeekKeyDown}
+                className="h-2.5 w-full bg-slate-900 rounded-full overflow-hidden cursor-pointer relative group flex items-center border border-white/10 focus:outline-none focus:ring-2 focus:ring-amber-300/60"
+                title="Click or use Left/Right arrow keys to seek"
               >
-                <div 
-                  className="h-full bg-gradient-to-r from-purple-600 via-purple-500 to-emerald-400 transition-all duration-300"
+                <div
+                  className="h-full bg-gradient-to-r from-amber-500 via-amber-300 to-emerald-300 transition-all duration-300"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
 
-              {/* Equalizer Waveform */}
-              <div className="h-3 w-full flex items-center gap-0.5 px-0.5">
+              <div className="h-3 w-full flex items-center gap-0.5 px-0.5" aria-hidden="true">
                 {Array.from({ length: 32 }).map((_, i) => {
                   const isPast = (i / 32) * 100 <= progressPercent;
-                  const barHeight = isPlaying 
-                    ? 25 + (((i * 17) + (currentTime * 7)) % 75)
+                  const barHeight = isPlaying
+                    ? 25 + ((i * 17 + currentTime * 7) % 75)
                     : 20 + ((i * 13) % 40);
                   return (
                     <div
                       key={i}
                       className={`h-full flex-1 rounded-xs transition-all duration-200 ${
-                        isPast ? 'bg-purple-400/80' : 'bg-slate-800'
+                        isPast ? 'bg-amber-300/85' : 'bg-slate-800'
                       }`}
-                      style={{ 
+                      style={{
                         height: `${barHeight}%`,
-                        opacity: isPlaying ? 1 : 0.4
+                        opacity: isPlaying ? 1 : 0.45,
                       }}
                     />
                   );
@@ -487,15 +478,18 @@ export function EcoVoiceAudioPlayer({
               </div>
             </div>
 
-            {/* Volume Control */}
             <div className="hidden sm:flex items-center gap-2 pl-1">
               <button
                 type="button"
                 onClick={() => setIsMuted(!isMuted)}
-                aria-label={isMuted ? 'Unmute' : 'Mute'}
-                className="text-slate-400 hover:text-purple-300 transition-colors"
+                aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}
+                className="text-slate-300 hover:text-amber-200 transition-colors cursor-pointer"
               >
-                {isMuted ? <VolumeX className="w-3.5 h-3.5 text-red-400" /> : <Volume2 className="w-3.5 h-3.5" />}
+                {isMuted ? (
+                  <VolumeX className="w-3.5 h-3.5 text-rose-400" />
+                ) : (
+                  <Volume2 className="w-3.5 h-3.5" />
+                )}
               </button>
               <input
                 type="range"
@@ -507,7 +501,7 @@ export function EcoVoiceAudioPlayer({
                   setVolume(parseFloat(e.target.value));
                   if (isMuted) setIsMuted(false);
                 }}
-                className="w-14 accent-purple-500 cursor-pointer h-1 bg-slate-800 rounded-lg"
+                className="w-16 accent-amber-300 cursor-pointer h-1 bg-slate-800 rounded-lg"
                 aria-label="Volume slider"
               />
             </div>

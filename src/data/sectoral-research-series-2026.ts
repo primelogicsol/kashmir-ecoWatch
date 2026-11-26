@@ -16,6 +16,11 @@ import {
   ResearchSeriesSectorTag,
   SectorType,
 } from '@/types/sectoral-eia';
+import {
+  ADDITIONAL_60_RESEARCH_DOSSIERS,
+  EXPANDED_DIVISIONS_XIII_TO_XXIII,
+  PRIORITY_15_RESEARCH_QUEUE,
+} from './research-portfolio-100-expansion';
 
 export interface ResearchDivisionDefinition {
   id: ResearchDivisionId;
@@ -123,6 +128,7 @@ export const RESEARCH_SERIES_DIVISIONS: ResearchDivisionDefinition[] = [
     sectorTags: ['cross-sectoral'],
     primaryKewRoute: '/sectoral-eia/cumulative-impact',
   },
+  ...EXPANDED_DIVISIONS_XIII_TO_XXIII,
 ];
 
 // ─── 20-CHAPTER INSTITUTIONAL PUBLICATION STANDARD ────────────────────────────
@@ -321,13 +327,13 @@ export const SECTORAL_RESEARCH_SERIES_2026: ResearchSeriesDossier[] = [
     subdisciplineBanner: 'TOURISM · CARRYING CAPACITY · LIMNOLOGICAL RESILIENCE',
     title: 'The Dal Lake Tourism Carrying Capacity & Limnological Resilience Dossier',
     abstract:
-      'An exhaustive 24-month multi-sensor investigation detailing peak visitor density, houseboat blackwater mass balances, sediment nutrient loading, and actionable vacuum sanitation mitigation plans for the Dal Lake basin.',
+      'A multi-source secondary-data and satellite scientific assessment synthesizing peak visitor density, registered houseboat blackwater mass balances, published sediment nutrient loading, and vacuum sanitation mitigation blueprints for the Dal Lake basin.',
     status: 'Published',
     date: 'March 2026',
     pages: 64,
     author: 'Kashmir EcoWatch Limnological Intelligence Unit',
     isProposedWorkingGroup: false,
-    badge: 'Peer-Reviewed Assessment',
+    badge: 'Secondary-Data Scientific Assessment',
     telemetryRoute: '/sectoral-eia/sectors/tourism',
     gisMapRoute: '/sectoral-eia/impact-atlas',
     historicalComparisonRoute: '/earth-human-impact/aquatic-cryosphere/lake-encroachment',
@@ -424,7 +430,7 @@ export const SECTORAL_RESEARCH_SERIES_2026: ResearchSeriesDossier[] = [
     pages: 52,
     author: 'Kashmir EcoWatch Agro-Ecology & Pesticide Impact Working Group',
     isProposedWorkingGroup: false,
-    badge: 'Peer-Reviewed Assessment',
+    badge: 'Secondary-Data Scientific Assessment',
     telemetryRoute: '/sectoral-eia/sectors/horticulture',
     gisMapRoute: '/sectoral-eia/impact-atlas',
     historicalComparisonRoute: '/earth-human-impact/land-earth-systems',
@@ -519,7 +525,7 @@ export const SECTORAL_RESEARCH_SERIES_2026: ResearchSeriesDossier[] = [
     pages: 44,
     author: 'EcoWatch Industrial Ecology & Craft Guild Audit Unit',
     isProposedWorkingGroup: false,
-    badge: 'Technical Monograph',
+    badge: 'Secondary-Data Scientific Assessment',
     telemetryRoute: '/sectoral-eia/sectors/handicrafts',
     gisMapRoute: '/sectoral-eia/impact-atlas',
     historicalComparisonRoute: '/earth-human-impact/urban-ecology',
@@ -608,13 +614,13 @@ export const SECTORAL_RESEARCH_SERIES_2026: ResearchSeriesDossier[] = [
     subdisciplineBanner: 'AGRICULTURE · NITROGEN LEACHING · WULAR EUTROPHICATION',
     title: 'Nitrogen Surges and Wetland Eutrophication in the Lower Jhelum & Wular Basin',
     abstract:
-      'Field investigation of urea over-broadcasting, seasonal nitrate leaching through floodplain drainage canals, and strategic deployment of constructed wetland bio-swales to protect the Wular Ramsar sanctuary.',
+      'Secondary-data and Copernicus Sentinel-2 scientific assessment of urea over-broadcasting, seasonal nitrate leaching through floodplain drainage canals, and constructed wetland bio-swale blueprints to protect the Wular Ramsar sanctuary (#461).',
     status: 'Published',
     date: 'February 2026',
     pages: 48,
     author: 'EcoWatch Agro-Hydrology & Soil Sciences Working Group',
     isProposedWorkingGroup: false,
-    badge: 'Technical Monograph',
+    badge: 'Secondary-Data Scientific Assessment',
     telemetryRoute: '/sectoral-eia/sectors/agriculture',
     gisMapRoute: '/sectoral-eia/impact-atlas',
     historicalComparisonRoute: '/earth-human-impact/aquatic-cryosphere/wetland-encroachment',
@@ -990,6 +996,7 @@ export const SECTORAL_RESEARCH_SERIES_2026: ResearchSeriesDossier[] = [
       'Laboratory analysis',
     ],
   }),
+  ...ADDITIONAL_60_RESEARCH_DOSSIERS,
 ];
 
 export function getResearchDossierByCodeOrId(
@@ -1010,6 +1017,12 @@ export function computeResearchSeriesPortfolioStats(
     (d) => d.status === 'Published' || d.status === 'Updated'
   ).length;
   const proposedOrInProgressCount = totalDossiers - publishedCount;
+  const originalSectoral40Count = dossiers.filter((d) => d.sequenceNumber <= 40).length;
+  const expandedNaturalAndGovernance60Count = dossiers.filter(
+    (d) => d.sequenceNumber >= 41
+  ).length;
+  const priority15Count = dossiers.filter((d) => typeof d.priorityRank === 'number').length;
+
   const divisionBreakdown = RESEARCH_SERIES_DIVISIONS.map((div) => ({
     ...div,
     count: dossiers.filter((d) => d.divisionId === div.id).length,
@@ -1024,6 +1037,9 @@ export function computeResearchSeriesPortfolioStats(
     publishedCount,
     proposedCount: dossiers.filter((d) => d.status === 'Proposed').length,
     proposedOrInProgressCount,
+    originalSectoral40Count,
+    expandedNaturalAndGovernance60Count,
+    priority15Count: priority15Count || PRIORITY_15_RESEARCH_QUEUE.length,
     divisionBreakdown,
   };
 }

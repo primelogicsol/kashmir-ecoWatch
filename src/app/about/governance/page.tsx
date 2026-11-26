@@ -182,7 +182,7 @@ export default function GovernancePage() {
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200 pb-20">
       
       {/* ─── 1. INSTITUTIONAL HERO: ECOLOGICAL GOVERNANCE ──────────────────────── */}
-      <section className="relative bg-slate-950 border-b border-white/10 overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 min-h-[460px] lg:min-h-[520px] flex items-center">
+      <section className="kew-module-hero-surface relative bg-slate-950 border-b border-white/10 overflow-hidden">
         {/* Approved Photographic Hero Background (Local Asset: Governance & Alamdar Ethos) */}
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat bg-[position:center_30%] sm:bg-[position:center_35%] lg:bg-[position:right_center]"
@@ -193,7 +193,7 @@ export default function GovernancePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 sm:via-slate-950/80 to-slate-950/35 pointer-events-none" />
         <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
         
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 max-w-6xl">
+        <div className="kew-module-hero-inner container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 max-w-6xl">
           <div className="max-w-3xl">
             {/* Breadcrumbs */}
             <nav className="flex flex-wrap items-center gap-1.5 text-xs text-slate-300 mb-4 sm:mb-6">

@@ -231,7 +231,7 @@ export function EnvironmentalPilSubNav({ activeTab, onTabChange }: Environmental
 
   return (
     <div className="w-full bg-slate-900/95 backdrop-blur-md border-b border-slate-800 sticky top-14 z-30 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         {/* Top Header Strip with Dual Division Switcher */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-2 border-b border-slate-800/60 gap-2 text-xs">
           <div className="flex items-center gap-2 text-slate-400">

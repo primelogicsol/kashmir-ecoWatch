@@ -560,7 +560,7 @@ export default function InstitutionalRegistrationPage() {
                     </button>
                     <button
                       type="submit"
-                      className="px-8 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-sm flex items-center gap-2 transition-all shadow-xl shadow-emerald-950/50"
+                      className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-black text-sm flex items-center gap-2 transition-all shadow-xl shadow-emerald-950/50"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Submit Institutional Registration</span>

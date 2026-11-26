@@ -15,7 +15,7 @@ import {
   Grid3X3, List, MapPin, Shield, ChevronLeft, ChevronRight,
   Compass, ShieldAlert, AlertTriangle, Mountain, Sparkles, type LucideIcon
 } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BiodiversitySpecies, biodiversityMetrics } from '@/data/biodiversity';
 import { useRouter } from 'next/navigation';
@@ -383,7 +383,7 @@ export function BiodiversityCategoryPage({
 
         {filteredSpecies.length > 0 ? (
           <>
-            <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+            <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-5 3xl:gap-6' : 'space-y-4'}>
               {filteredSpecies.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((species, index) => (
                 <motion.div
                   key={species.id}

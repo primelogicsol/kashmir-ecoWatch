@@ -26,7 +26,7 @@ export default function UpcomingEventsPage() {
 
       <WebinarNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+      <main className="container mx-auto py-10 space-y-12">
         {/* Conferences Section */}
         <section className="space-y-6">
           <div className="flex items-center justify-between">

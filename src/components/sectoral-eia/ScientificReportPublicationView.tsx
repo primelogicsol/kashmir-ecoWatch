@@ -43,6 +43,7 @@ import {
 } from 'lucide-react';
 import type { CanonicalReportMasterRecord } from '@/data/sectoral-research-content-engine';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { KewOfficialPublicationLogo } from '@/components/common/Logo';
 import { SectoralImpactMap } from '@/components/sectoral-eia/SectoralImpactMap';
 import {
   ReportActionToolbar,
@@ -50,6 +51,14 @@ import {
   ReportIntelligenceTab,
 } from '@/components/sectoral-eia/ReportActionToolbar';
 import { ReportShareModal } from '@/components/sectoral-eia/ReportShareModal';
+import { MinimalistScientificCover } from '@/components/sectoral-eia/MinimalistScientificCover';
+import {
+  EditorialChapterOpeningSpread,
+  EditorialPullQuoteAndEquipment,
+  EditorialSplitFeature,
+  ScientificProcessDiagramSvg,
+} from '@/components/sectoral-eia/EditorialStoryComponents';
+import { getScopedCraftloreCssVars } from '@/lib/design/craftlore-publication-tokens';
 import { isVerifiedRealDoi } from '@/lib/seo/structured-data';
 
 export interface SerializedPdfMetadata {
@@ -159,6 +168,7 @@ export function ScientificReportPublicationView({
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
   const [shareAnchor, setShareAnchor] = useState<string>('');
   const [mounted, setMounted] = useState<boolean>(false);
+  const [editorialTheme, setEditorialTheme] = useState<'dark' | 'parchment'>('dark');
 
   // Embedded PDF viewer controls
   const [pdfPage, setPdfPage] = useState<number>(1);
@@ -309,7 +319,7 @@ export function ScientificReportPublicationView({
     URL.revokeObjectURL(url);
   };
 
-  const displayedPages = pdfMetadata?.pageCount || dossier.pages;
+  const displayedPages = pdfMetadata?.pageCount || dossier.pages || dossier.targetPages || 60;
 
   const tabs: Array<{
     id: ReportIntelligenceTab;
@@ -371,8 +381,14 @@ export function ScientificReportPublicationView({
     : `/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/pdf?disposition=inline&preview=scoping#page=${pdfPage}&zoom=${pdfZoom}`;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 print:bg-white print:text-slate-900">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 pt-6 pb-20 space-y-6">
+    <div
+      className="min-h-screen text-slate-100 print:bg-white print:text-slate-900"
+      style={{
+        backgroundColor: '#080a12',
+        ...getScopedCraftloreCssVars(editorialTheme),
+      }}
+    >
+      <div className="kew-container-report pt-6 pb-20 space-y-6">
         {/* ── LAYER A: COMPACT INSTITUTIONAL METADATA HEADER ── */}
         <header className="space-y-4">
           <nav
@@ -399,13 +415,14 @@ export function ScientificReportPublicationView({
 
           <div className="kew-card rounded-lg border border-slate-800 bg-slate-900/95 p-5 sm:p-6 space-y-4 print:border-slate-300 print:bg-white">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/90 pb-3.5 print:border-slate-300">
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <KewOfficialPublicationLogo size="sm" />
                 <KewBrandIdentity variant="eyebrow" />
                 <span className="rounded-sm border border-slate-700 bg-slate-950 px-2.5 py-1 font-mono text-xs font-bold text-emerald-400 print:border-slate-400 print:bg-slate-100 print:text-slate-900">
                   {dossier.code}
                 </span>
                 <span className="rounded-sm border border-slate-700 bg-slate-950 px-2.5 py-1 text-xs font-medium text-slate-300 print:border-slate-400 print:bg-slate-100 print:text-slate-800">
-                  Sector {dossier.divisionRoman}: {dossier.divisionTitle}
+                  Sector {dossier.divisionRoman}
                 </span>
                 <span
                   className={`rounded-sm border px-2.5 py-1 text-xs font-semibold uppercase tracking-wider ${formatStatusBadgeStyle(
@@ -414,17 +431,25 @@ export function ScientificReportPublicationView({
                 >
                   {dossier.status}
                 </span>
+                <span className="rounded-sm border border-amber-500/35 bg-slate-950 px-2.5 py-1 text-xs font-mono font-semibold text-amber-200">
+                  {master.evidencePublicationClass}
+                </span>
+                {typeof dossier.priorityRank === 'number' && (
+                  <span className="rounded-sm border border-cyan-500/40 bg-cyan-950/60 px-2.5 py-1 text-xs font-mono font-bold text-cyan-300">
+                    Priority #{dossier.priorityRank} of 15
+                  </span>
+                )}
               </div>
 
               <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 font-mono">
                 <span>
-                  {isPublished ? `Published: ${dossier.date}` : `Schedule: ${dossier.date}`}
+                  {isPublished ? `Published: ${dossier.date}` : `Status: ${dossier.date}`}
                 </span>
                 <span>·</span>
                 <span>
                   {isPublished
-                    ? `${displayedPages} Verified PDF Pages`
-                    : `${dossier.pages}-Page Target Scope`}
+                    ? `${displayedPages} PDF Pages`
+                    : `${dossier.targetPages || 60}-Page Scope`}
                 </span>
                 <span>·</span>
                 <span>{master.version}</span>
@@ -446,20 +471,15 @@ export function ScientificReportPublicationView({
               </p>
             </div>
 
-            {/* Scientific Governance Notice for Proposed / Unpublished Dossiers */}
+            {/* Concise Methodological Scope Note for Unpublished Dossiers */}
             {!isPublished && (
-              <div className="rounded-md border border-amber-500/40 bg-amber-950/30 p-3.5 text-xs text-amber-200 leading-relaxed flex items-start gap-2.5">
+              <div className="rounded-md border border-amber-500/35 bg-amber-950/25 px-3.5 py-2.5 text-xs text-amber-200 leading-relaxed flex items-start gap-2.5">
                 <ShieldAlert className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold uppercase tracking-wider text-amber-300">
-                    Scientific Governance & Secondary-Data Scoping Notice:{' '}
-                  </span>
-                  {dossier.code} is currently classified as <strong>{dossier.status}</strong>. All
-                  baseline parameters, watershed boundaries, and risk indicators presented below are
-                  derived strictly from verified secondary scientific literature, statutory baseline
-                  audits, and multi-spectral satellite archives. Original KEW field sampling,
-                  laboratory assays, final publication date, and public dataset exports remain locked
-                  until completion of the 19-stage institutional validation workflow.
+                  <strong className="text-amber-300">{master.evidencePublicationClass}: </strong>
+                  Synthesizes published peer-reviewed literature, statutory records, and satellite
+                  observations for {master.studyArea.region}; primary field and laboratory
+                  measurements remain scheduled prior to final publication.
                 </div>
               </div>
             )}
@@ -503,35 +523,34 @@ export function ScientificReportPublicationView({
             </div>
           </div>
 
-          {/* ── LAYER C & D: HERO VISUAL + STRUCTURED 7-PART ABSTRACT ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            {/* Authenticated Study Landscape Visual */}
-            <figure className="lg:col-span-5 kew-card rounded-lg border border-slate-800 bg-slate-900 overflow-hidden flex flex-col justify-between print:border-slate-300">
-              <div className="relative h-60 sm:h-72 lg:h-full min-h-[250px] w-full bg-slate-950 overflow-hidden">
-                <img
-                  src={master.heroVisual.src}
-                  alt={master.heroVisual.caption}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute top-3 left-3 rounded-sm border border-slate-700/90 bg-slate-950/90 px-2.5 py-1 text-[11px] font-mono text-emerald-300">
-                  {master.heroVisual.locationLabel}
-                </div>
-              </div>
-              <figcaption className="border-t border-slate-800 bg-slate-950 p-3.5 space-y-1 text-xs text-slate-300 print:bg-slate-50 print:text-slate-700">
-                <p className="font-medium text-slate-200 leading-snug print:text-slate-900">
-                  {master.heroVisual.caption}
-                </p>
-                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 font-mono pt-1">
-                  <span>Source: {master.heroVisual.sourceAttribution}</span>
-                  <span>{master.heroVisual.acquisitionWindow}</span>
-                </div>
-              </figcaption>
-            </figure>
+          {/* ── LAYER C & D: UNIVERSAL MINIMALIST SCIENTIFIC COVER + STRUCTURED 7-PART ABSTRACT ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+            {/* Restrained Minimalist International Scientific Cover (Zero Photography on Cover) */}
+            <div className="lg:col-span-5 flex flex-col">
+              <MinimalistScientificCover
+                code={dossier.code}
+                sequenceNumber={dossier.sequenceNumber}
+                divisionId={dossier.divisionId}
+                sectorLabel={`SECTOR ${dossier.divisionRoman} · ${dossier.sectorTag.toUpperCase()}`}
+                title={dossier.title}
+                subtitle={master.subtitle}
+                status={dossier.status}
+                version={master.version}
+                workingGroup={master.attribution.workingGroup}
+                pagesLabel={
+                  isPublished
+                    ? `${displayedPages} PDF Pages`
+                    : `${dossier.targetPages || 60}-Page Scope`
+                }
+                compact
+              />
+            </div>
 
             {/* Structured 7-Part Scientific Abstract */}
             <section
               aria-label="Structured Scientific Abstract"
-              className="lg:col-span-7 kew-card rounded-lg border border-slate-800 bg-slate-900 p-5 space-y-3 print:border-slate-300 print:bg-white"
+              className="lg:col-span-7 kew-card rounded-lg border p-5 space-y-3 print:border-slate-300 print:bg-white"
+              style={{ backgroundColor: '#11131c', borderColor: '#40382e' }}
             >
               <div className="flex items-center justify-between border-b border-slate-800 pb-2.5 print:border-slate-300">
                 <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 print:text-slate-900">
@@ -602,6 +621,68 @@ export function ScientificReportPublicationView({
               </div>
             </section>
           </div>
+
+          {/* ── SCIENTIFIC SCOPE, HYPOTHESES & DUPLICATION CLEARANCE REGISTRY STRIP ── */}
+          {master.duplicationScope && (
+            <div className="kew-card rounded-lg border border-slate-800 bg-slate-900/95 p-5 space-y-3 print:border-slate-300 print:bg-white">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-cyan-400">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  <span>
+                    Scientific Scope &amp; Non-Duplication Clearance Registry ·{' '}
+                    {master.duplicationScope.duplicationStatus}
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono text-slate-400">
+                  Study Window: {master.duplicationScope.studyPeriod}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs leading-relaxed">
+                <div className="space-y-1">
+                  <span className="font-bold uppercase tracking-wider text-slate-300 block">
+                    Primary Research Question
+                  </span>
+                  <p className="text-slate-200">
+                    {master.duplicationScope.primaryResearchQuestion}
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="font-bold uppercase tracking-wider text-emerald-300 block">
+                    Distinct Scientific Contribution
+                  </span>
+                  <p className="text-slate-300">
+                    {master.duplicationScope.distinctScientificContribution}
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="font-bold uppercase tracking-wider text-slate-300 block">
+                    Research Hypotheses &amp; GIS Scope
+                  </span>
+                  <p className="text-slate-300">
+                    {master.duplicationScope.hypotheses[0]}
+                  </p>
+                </div>
+              </div>
+
+              {master.connectedCoverageModules && master.connectedCoverageModules.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800/80 text-[11px]">
+                  <span className="font-mono uppercase text-slate-400 mr-1">
+                    Many-to-Many KEW Domain Links:
+                  </span>
+                  {master.connectedCoverageModules.map((mod) => (
+                    <Link
+                      key={mod.moduleId}
+                      href={mod.route}
+                      className="rounded-sm border border-slate-700 bg-slate-950 px-2 py-0.5 text-emerald-300 hover:border-emerald-500/50 transition-colors"
+                    >
+                      {mod.domainName}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </header>
 
         {/* ── LAYER F: REUSABLE REPORT ACTION TOOLBAR ── */}
@@ -917,48 +998,170 @@ export function ScientificReportPublicationView({
                     </div>
                   </aside>
 
-                  {/* CENTER COLUMN: Primary Scientific Prose, Equations, Tables & Figures */}
+                  {/* CENTER COLUMN: National Geographic x Craftlore Editorial Storytelling + Scientific Prose */}
                   <main className="lg:col-span-6 space-y-6">
+                    {/* Craftlore Editorial Reading Surface Switcher */}
+                    <div
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-lg border px-4 py-2.5 text-xs print:hidden"
+                      style={{ backgroundColor: '#11131c', borderColor: '#40382e' }}
+                    >
+                      <span className="font-mono uppercase tracking-wider" style={{ color: '#c6a87c' }}>
+                        KEW × Craftlore Scientific Editorial Edition
+                      </span>
+                      <div className="inline-flex rounded-sm border p-0.5" style={{ borderColor: '#40382e', backgroundColor: '#080a12' }}>
+                        <button
+                          type="button"
+                          onClick={() => setEditorialTheme('dark')}
+                          className="px-2.5 py-1 rounded-sm text-[11px] font-semibold transition-colors"
+                          style={{
+                            backgroundColor: editorialTheme === 'dark' ? '#c6a87c' : 'transparent',
+                            color: editorialTheme === 'dark' ? '#080a12' : '#d0d2da',
+                          }}
+                        >
+                          Premiere Obsidian
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setEditorialTheme('parchment')}
+                          className="px-2.5 py-1 rounded-sm text-[11px] font-semibold transition-colors"
+                          style={{
+                            backgroundColor: editorialTheme === 'parchment' ? '#f4f0e8' : 'transparent',
+                            color: editorialTheme === 'parchment' ? '#120f0d' : '#d0d2da',
+                          }}
+                        >
+                          Archival Parchment
+                        </button>
+                      </div>
+                    </div>
+
                     {master.chapters.map((ch) => (
-                      <article
-                        key={ch.number}
-                        id={`chapter-${ch.number}`}
-                        className="scroll-mt-36 kew-card rounded-lg border border-slate-800 bg-slate-900 p-5 sm:p-7 space-y-4 print:border-slate-300 print:bg-white print:shadow-none"
-                      >
-                        <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3 print:border-slate-300">
-                          <div>
-                            <div className="text-xs font-mono uppercase tracking-wider text-emerald-400 print:text-slate-700">
-                              Chapter {ch.number} · {dossier.code}
+                      <React.Fragment key={ch.number}>
+                        {/* Vector 5-Stage Scientific Process Schematic before Chapter 06 */}
+                        {ch.number === '06' && master.editorialNarrative && (
+                          <ScientificProcessDiagramSvg
+                            diagramType={master.editorialNarrative.processDiagramType}
+                            code={dossier.code}
+                            theme={editorialTheme}
+                          />
+                        )}
+
+                        {/* Field Investigation Protocol Split Feature before Chapter 09 */}
+                        {ch.number === '09' && master.editorialNarrative && (
+                          <EditorialSplitFeature
+                            plate={master.editorialNarrative.fieldMethodologyPlate}
+                            eyebrow={`FIELD METHODOLOGY · ${master.editorialNarrative.equipmentProfile.discipline.toUpperCase()}`}
+                            headline={master.editorialNarrative.fieldMethodologyPlate.title}
+                            narrativeParagraphs={[
+                              master.editorialNarrative.fieldMethodologyPlate.caption,
+                              `Primary field instrumentation: ${master.editorialNarrative.equipmentProfile.fieldInstruments.slice(0, 2).join(' · ')}.`,
+                            ]}
+                            theme={editorialTheme}
+                          />
+                        )}
+
+                        {/* Analytical Laboratory & Geospatial Computational Split Feature before Chapter 11 */}
+                        {ch.number === '11' && master.editorialNarrative && (
+                          <EditorialSplitFeature
+                            plate={master.editorialNarrative.analyticalPlate}
+                            eyebrow="ANALYTICAL LABORATORY & COMPUTATIONAL SYNTHESIS"
+                            headline={master.editorialNarrative.analyticalPlate.title}
+                            narrativeParagraphs={[
+                              master.editorialNarrative.analyticalPlate.caption,
+                              `Analytical systems: ${master.editorialNarrative.equipmentProfile.laboratoryAndComputationalSystems.join(' · ')}.`,
+                            ]}
+                            reverse
+                            theme={editorialTheme}
+                          />
+                        )}
+
+                        <article
+                          id={`chapter-${ch.number}`}
+                          className="scroll-mt-36 rounded-lg border p-5 sm:p-7 space-y-4 print:border-slate-300 print:bg-white print:shadow-none"
+                          style={{
+                            backgroundColor: editorialTheme === 'parchment' ? '#faf8f5' : '#11131c',
+                            borderColor: editorialTheme === 'parchment' ? '#d1c7b7' : '#40382e',
+                          }}
+                        >
+                          {ch.number === '01' && master.editorialNarrative ? (
+                            <EditorialChapterOpeningSpread
+                              chapterNumber="01"
+                              editorialHeadline={ch.title}
+                              standfirstLead={
+                                ch.editorialStandfirst ||
+                                ch.subtitle ||
+                                master.subtitle
+                              }
+                              plate={master.editorialNarrative.openingPlate}
+                              theme={editorialTheme}
+                              onShare={() => {
+                                setShareAnchor(ch.number);
+                                setShareModalOpen(true);
+                              }}
+                            />
+                          ) : (
+                            <div
+                              className="flex items-start justify-between gap-3 border-b pb-3 print:border-slate-300"
+                              style={{ borderColor: editorialTheme === 'parchment' ? '#e5ded3' : '#202535' }}
+                            >
+                              <div>
+                                <div
+                                  className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] print:text-slate-700"
+                                  style={{ color: editorialTheme === 'parchment' ? '#805a38' : '#c6a87c' }}
+                                >
+                                  {`CHAPTER ${ch.number}`.split('').join(' ')}
+                                </div>
+                                <h2
+                                  className="mt-1 text-lg sm:text-2xl font-bold leading-snug print:text-slate-950"
+                                  style={{
+                                    color: editorialTheme === 'parchment' ? '#120f0d' : '#f4f0e8',
+                                    fontFamily: 'var(--font-craftlore-serif), Georgia, Cambria, serif',
+                                  }}
+                                >
+                                  {ch.title}
+                                </h2>
+                                {(ch.editorialStandfirst || ch.subtitle) && (
+                                  <p
+                                    className="mt-1.5 text-xs sm:text-sm italic leading-relaxed print:text-slate-600"
+                                    style={{
+                                      color: editorialTheme === 'parchment' ? '#4a3728' : '#d0d2da',
+                                      fontFamily: 'var(--font-craftlore-serif), Georgia, Cambria, serif',
+                                    }}
+                                  >
+                                    {ch.editorialStandfirst || ch.subtitle}
+                                  </p>
+                                )}
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setShareAnchor(ch.number);
+                                  setShareModalOpen(true);
+                                }}
+                                title={`Share direct link to Chapter ${ch.number}`}
+                                className="rounded-md border p-1.5 transition-colors print:hidden"
+                                style={{
+                                  borderColor: editorialTheme === 'parchment' ? '#d1c7b7' : '#40382e',
+                                  backgroundColor: editorialTheme === 'parchment' ? '#f4f0e8' : '#080a12',
+                                  color: editorialTheme === 'parchment' ? '#805a38' : '#c6a87c',
+                                }}
+                              >
+                                <Share2 className="h-3.5 w-3.5" />
+                              </button>
                             </div>
-                            <h2 className="mt-0.5 text-lg sm:text-xl font-bold text-white leading-snug print:text-slate-950">
-                              {ch.title}
-                            </h2>
-                            {ch.subtitle && (
-                              <p className="mt-1 text-xs text-slate-400 print:text-slate-600">
-                                {ch.subtitle}
-                              </p>
-                            )}
-                          </div>
+                          )}
 
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setShareAnchor(ch.number);
-                              setShareModalOpen(true);
+                          {/* Editorial Prose */}
+                          <div
+                            className="space-y-3.5 max-w-[72ch] text-[15.5px] leading-[1.8] print:text-slate-800"
+                            style={{
+                              color: editorialTheme === 'parchment' ? '#120f0d' : '#e5ded3',
                             }}
-                            title={`Share direct link to Chapter ${ch.number}`}
-                            className="rounded-md border border-slate-800 bg-slate-950 p-1.5 text-slate-400 hover:text-emerald-300 hover:border-slate-600 transition-colors print:hidden"
                           >
-                            <Share2 className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
-
-                        {/* Scientific Prose (controlled 65–72ch line measure) */}
-                        <div className="space-y-3.5 max-w-[72ch] text-[15px] leading-[1.75] text-slate-200 print:text-slate-800">
-                          {ch.paragraphs.map((para, pIdx) => (
-                            <p key={pIdx}>{renderParagraphWithCitations(para)}</p>
-                          ))}
-                        </div>
+                            {ch.paragraphs.map((para, pIdx) => (
+                              <p key={pIdx}>{renderParagraphWithCitations(para)}</p>
+                            ))}
+                          </div>
 
                         {/* Mathematical / Hydrological Equation Block */}
                         {ch.equation && (
@@ -1119,7 +1322,18 @@ export function ScientificReportPublicationView({
                             {ch.limitationsNote}
                           </div>
                         )}
-                      </article>
+                        </article>
+
+                        {/* Pull Quotation & Discipline Instrumentation Manifest after Chapter 02 */}
+                        {ch.number === '02' && master.editorialNarrative && (
+                          <EditorialPullQuoteAndEquipment
+                            quote={master.editorialNarrative.pullQuote.quote}
+                            attribution={master.editorialNarrative.pullQuote.attribution}
+                            equipmentProfile={master.editorialNarrative.equipmentProfile}
+                            theme={editorialTheme}
+                          />
+                        )}
+                      </React.Fragment>
                     ))}
 
                     {/* Methodological & Data Limitations Disclosure Panel */}
@@ -1470,6 +1684,41 @@ export function ScientificReportPublicationView({
                     </tbody>
                   </table>
                 </div>
+
+                {master.mitigationRecommendations && master.mitigationRecommendations.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-slate-800">
+                    <h3 className="text-base font-bold text-white">
+                      Discipline-Specific Mitigation, Policy &amp; Monitoring Pathways
+                    </h3>
+                    <div className="space-y-2.5">
+                      {master.mitigationRecommendations.map((mit) => (
+                        <div
+                          key={mit.id}
+                          className="rounded-md border border-slate-800 bg-slate-950 p-4 space-y-1.5 text-xs"
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="rounded-sm border border-emerald-500/40 bg-emerald-950/50 px-2 py-0.5 font-mono font-semibold text-emerald-300">
+                              {mit.category}
+                            </span>
+                            <span className="font-mono text-[11px] text-slate-400">
+                              Lead: {mit.responsibleInstitutions}
+                            </span>
+                          </div>
+                          <p className="font-semibold text-white text-sm">{mit.recommendation}</p>
+                          <p className="text-slate-300">
+                            <strong>Mechanism:</strong> {mit.scientificMechanism} ·{' '}
+                            <strong>Target:</strong> {mit.targetReceptorOrIndicator}
+                          </p>
+                          <p className="text-slate-400">
+                            <strong>Feasibility:</strong> {mit.feasibilityAssessment} ·{' '}
+                            <strong className="text-amber-300">Trade-offs:</strong>{' '}
+                            {mit.environmentalTradeOffs}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
             )}
 
@@ -1510,6 +1759,69 @@ export function ScientificReportPublicationView({
                     </Link>
                   </div>
                 </div>
+
+                {master.studyArea.studyLocations && master.studyArea.studyLocations.length > 0 && (
+                  <div className="responsive-table-container rounded-md border border-slate-800 bg-slate-950">
+                    <table className="w-full text-left border-collapse text-xs">
+                      <thead>
+                        <tr className="border-b border-slate-800 bg-slate-900 text-slate-300">
+                          <th className="px-3 py-2">Georeferenced Study Location</th>
+                          <th className="px-3 py-2">Coordinates (WGS84)</th>
+                          <th className="px-3 py-2">Elevation</th>
+                          <th className="px-3 py-2">Scientific Role in Investigation</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800/70">
+                        {master.studyArea.studyLocations.map((loc, idx) => (
+                          <tr key={idx} className="text-slate-200">
+                            <td className="px-3 py-2 font-semibold text-white">{loc.name}</td>
+                            <td className="px-3 py-2 font-mono text-emerald-300">
+                              {loc.latitude.toFixed(4)}°N, {loc.longitude.toFixed(4)}°E
+                            </td>
+                            <td className="px-3 py-2 font-mono">{loc.elevationM} m</td>
+                            <td className="px-3 py-2 text-slate-300">{loc.role}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {master.remoteSensingAndAnalyticalMethods &&
+                  master.remoteSensingAndAnalyticalMethods.length > 0 && (
+                    <div className="responsive-table-container rounded-md border border-slate-800 bg-slate-950">
+                      <table className="w-full text-left border-collapse text-xs">
+                        <thead>
+                          <tr className="border-b border-slate-800 bg-slate-900 text-slate-300">
+                            <th className="px-3 py-2">Sensor / Analytical Instrument</th>
+                            <th className="px-3 py-2">Product / Standard</th>
+                            <th className="px-3 py-2">Resolution &amp; Window</th>
+                            <th className="px-3 py-2">Method &amp; Uncertainty</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-800/70">
+                          {master.remoteSensingAndAnalyticalMethods.map((rm, idx) => (
+                            <tr key={idx} className="text-slate-200">
+                              <td className="px-3 py-2 font-semibold text-white">
+                                {rm.sensorOrInstrument}
+                                <span className="block text-[10px] font-mono text-cyan-400">
+                                  {rm.roleInStudy}
+                                </span>
+                              </td>
+                              <td className="px-3 py-2">{rm.productOrStandard}</td>
+                              <td className="px-3 py-2 font-mono text-slate-300">
+                                {rm.spatialOrAnalyticalResolution} · {rm.temporalCoverage}
+                              </td>
+                              <td className="px-3 py-2 text-slate-400">
+                                {rm.preprocessingAndMethod}{' '}
+                                <em className="text-amber-200/90">({rm.validationAndUncertainty})</em>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
 
                 <SectoralImpactMap selectedSector={dossier.sector} className="h-[520px]" />
               </section>
@@ -1577,18 +1889,47 @@ export function ScientificReportPublicationView({
                         </div>
                       </dl>
 
-                      {isPublished && ds.availableForDownload ? (
+                      {(isPublished || dossier.code === 'KEW-SR-2026-101') && ds.availableForDownload ? (
                         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800">
-                          {ds.formats.map((fmt) => (
-                            <a
-                              key={fmt}
-                              href={`/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/dataset?format=${fmt.toLowerCase()}`}
-                              className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-950/50 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-900/60 transition-colors"
-                            >
-                              <Download className="h-3.5 w-3.5" />
-                              Export {fmt}
-                            </a>
-                          ))}
+                          {dossier.code === 'KEW-SR-2026-101' ? (
+                            <>
+                              <a
+                                href="/data/kew-kashmir-master-lakes.csv"
+                                download
+                                className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-950/50 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-900/60 transition-colors"
+                              >
+                                <Download className="h-3.5 w-3.5" />
+                                Master CSV (553 Lakes)
+                              </a>
+                              <a
+                                href="/data/kew-kashmir-master-lakes.geojson"
+                                download
+                                className="inline-flex items-center gap-1.5 rounded-md border border-cyan-500/40 bg-cyan-950/50 px-3 py-1.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-900/60 transition-colors"
+                              >
+                                <Download className="h-3.5 w-3.5" />
+                                Master GeoJSON (EPSG:4326)
+                              </a>
+                              <a
+                                href="/data/kew-lake-source-reconciliation.json"
+                                download
+                                className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 bg-amber-950/40 px-3 py-1.5 text-xs font-semibold text-amber-200 hover:bg-amber-900/50 transition-colors"
+                              >
+                                <Download className="h-3.5 w-3.5" />
+                                Reconciliation JSON
+                              </a>
+                            </>
+                          ) : (
+                            ds.formats.map((fmt) => (
+                              <a
+                                key={fmt}
+                                href={`/api/sectoral-eia/reports/${dossier.code.toLowerCase()}/dataset?format=${fmt.toLowerCase()}`}
+                                className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-950/50 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-900/60 transition-colors"
+                              >
+                                <Download className="h-3.5 w-3.5" />
+                                Export {fmt}
+                              </a>
+                            ))
+                          )}
                         </div>
                       ) : (
                         <div className="rounded-md border border-amber-500/30 bg-amber-950/25 p-2.5 text-xs text-amber-200">
@@ -1599,6 +1940,36 @@ export function ScientificReportPublicationView({
                     </div>
                   ))}
                 </div>
+
+                {master.flagshipAppendices && master.flagshipAppendices.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-slate-800">
+                    <h3 className="text-base font-bold text-white">
+                      Mandatory Technical Appendices (Appendices A–O)
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {master.flagshipAppendices.map((ap) => (
+                        <div
+                          key={ap.letter}
+                          className="rounded-md border border-slate-800 bg-slate-950 p-3.5 space-y-1.5 text-xs"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-mono font-bold text-emerald-400">
+                              {ap.letter} — {ap.title}
+                            </span>
+                            <a
+                              href={ap.artifactUrl}
+                              className="text-[11px] font-mono text-cyan-300 hover:underline shrink-0"
+                            >
+                              Open Source →
+                            </a>
+                          </div>
+                          <div className="text-[11px] font-mono text-amber-200/90">{ap.scope}</div>
+                          <p className="text-slate-400 leading-relaxed">{ap.summary}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
             )}
 
@@ -1759,19 +2130,54 @@ export function ScientificReportPublicationView({
                     </tbody>
                   </table>
                 </div>
+
+                {master.mitigationRecommendations && master.mitigationRecommendations.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-slate-800">
+                    <h3 className="text-base font-bold text-white">
+                      Discipline-Specific Mitigation, Policy &amp; Monitoring Pathways
+                    </h3>
+                    <div className="space-y-2.5">
+                      {master.mitigationRecommendations.map((mit) => (
+                        <div
+                          key={mit.id}
+                          className="rounded-md border border-slate-800 bg-slate-950 p-4 space-y-1.5 text-xs"
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="rounded-sm border border-emerald-500/40 bg-emerald-950/50 px-2 py-0.5 font-mono font-semibold text-emerald-300">
+                              {mit.category}
+                            </span>
+                            <span className="font-mono text-[11px] text-slate-400">
+                              Lead: {mit.responsibleInstitutions}
+                            </span>
+                          </div>
+                          <p className="font-semibold text-white text-sm">{mit.recommendation}</p>
+                          <p className="text-slate-300">
+                            <strong>Mechanism:</strong> {mit.scientificMechanism} ·{' '}
+                            <strong>Target:</strong> {mit.targetReceptorOrIndicator}
+                          </p>
+                          <p className="text-slate-400">
+                            <strong>Feasibility:</strong> {mit.feasibilityAssessment} ·{' '}
+                            <strong className="text-amber-300">Trade-offs:</strong>{' '}
+                            {mit.environmentalTradeOffs}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
             )}
 
-            {/* ── TAB 7: VERIFIED SCIENTIFIC REFERENCES ── */}
+            {/* ── TAB 7: VERIFIED SCIENTIFIC REFERENCES, SEARCH PROTOCOL & CLAIM REGISTRY ── */}
             {activeTab === 'references' && (
-              <section className="kew-card rounded-lg border border-slate-800 bg-slate-900 p-6 space-y-5">
+              <section className="kew-card rounded-lg border border-slate-800 bg-slate-900 p-6 space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
                   <div>
                     <div className="text-xs font-mono uppercase tracking-wider text-emerald-400">
-                      Verified Literature & Statutory Evidence · {dossier.code}
+                      External Scientific Evidence Corpus · {dossier.code}
                     </div>
                     <h2 className="mt-1 text-xl font-bold text-white">
-                      Numbered Bibliography & Source Provenance
+                      Numbered Bibliography, Geographical Tiering (A–E) &amp; Claim Verification
                     </h2>
                   </div>
 
@@ -1792,6 +2198,39 @@ export function ScientificReportPublicationView({
                   </select>
                 </div>
 
+                {/* Individualized External Literature Search Protocol Audit Box */}
+                {master.externalSearchProtocol && (
+                  <div className="rounded-lg border border-cyan-500/30 bg-slate-950 p-4 space-y-2.5 text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="font-mono font-bold uppercase tracking-wider text-cyan-400">
+                        Individualized External Literature Search Protocol ({dossier.code})
+                      </span>
+                      <span className="font-mono text-[11px] text-emerald-300">
+                        {master.externalSearchProtocol.queriesExecuted} Live API Queries ·{' '}
+                        {master.externalSearchProtocol.deduplicatedCandidatesInspected} Deduplicated Works Screened ·{' '}
+                        {master.references.length} Verified Sources Retained
+                      </span>
+                    </div>
+                    <div className="rounded border border-slate-800 bg-slate-900 px-3 py-2 font-mono text-[11px] text-amber-200 break-words">
+                      Boolean Strategy: {master.externalSearchProtocol.booleanProtocol}
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-[11px] text-slate-300">
+                      <div>
+                        <strong className="text-white">Repositories Queried: </strong>
+                        {master.externalSearchProtocol.repositoriesQueried.join(', ')}
+                      </div>
+                      <div>
+                        <strong className="text-white">Disciplines: </strong>
+                        {master.externalSearchProtocol.scientificDisciplines.join(', ')}
+                      </div>
+                      <div>
+                        <strong className="text-white">Methodological Standards: </strong>
+                        {master.externalSearchProtocol.applicableInternationalStandards.join('; ')}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="space-y-3">
                   {filteredReferences.map((ref) => {
                     const validDoi = isVerifiedRealDoi(ref.doi);
@@ -1799,13 +2238,23 @@ export function ScientificReportPublicationView({
                       <div
                         key={ref.id}
                         id={`ref-entry-${ref.num}`}
-                        className="rounded-md border border-slate-800 bg-slate-950 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                        className="rounded-md border border-slate-800 bg-slate-950 p-4 flex flex-col lg:flex-row lg:items-start justify-between gap-3"
                       >
-                        <div className="space-y-1">
+                        <div className="space-y-1.5 max-w-4xl">
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="rounded-sm border border-emerald-500/40 bg-emerald-950/60 px-2 py-0.5 font-mono text-xs font-bold text-emerald-300">
                               [{ref.num}]
                             </span>
+                            {ref.geographicalTier && (
+                              <span className="rounded-sm border border-cyan-500/40 bg-cyan-950/50 px-2 py-0.5 font-mono text-[11px] font-semibold text-cyan-300">
+                                {ref.geographicalTier}
+                              </span>
+                            )}
+                            {ref.accessClassification && (
+                              <span className="rounded-sm border border-amber-500/35 bg-slate-900 px-2 py-0.5 text-[11px] font-mono text-amber-200">
+                                {ref.accessClassification}
+                              </span>
+                            )}
                             <span className="rounded-sm border border-slate-700 bg-slate-900 px-2 py-0.5 text-[11px] text-slate-300">
                               {ref.category}
                             </span>
@@ -1815,6 +2264,18 @@ export function ScientificReportPublicationView({
                           <p className="text-xs text-slate-300">
                             {ref.authors} · <em className="text-slate-400">{ref.journalOrPublisher}</em>
                           </p>
+                          {ref.extractedFindingSnippet && (
+                            <p className="text-xs text-slate-400 border-l-2 border-emerald-500/40 pl-2.5 mt-1 leading-relaxed">
+                              <strong className="text-slate-300">Verified Finding: </strong>
+                              {ref.extractedFindingSnippet}
+                            </p>
+                          )}
+                          {ref.applicabilityLimitation && (
+                            <p className="text-xs text-amber-200/80 border-l-2 border-amber-500/40 pl-2.5 mt-1 leading-relaxed">
+                              <strong className="text-amber-300">Applicability &amp; Limitation: </strong>
+                              {ref.applicabilityLimitation}
+                            </p>
+                          )}
                         </div>
 
                         <div className="flex flex-wrap items-center gap-2 shrink-0">
@@ -1829,7 +2290,18 @@ export function ScientificReportPublicationView({
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           )}
-                          {ref.sourceUrl && (
+                          {ref.oaFullTextUrl && (
+                            <a
+                              href={ref.oaFullTextUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-md border border-cyan-500/40 bg-cyan-950/40 px-2.5 py-1.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-900/60"
+                            >
+                              Open-Access Text
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
+                          {ref.sourceUrl && ref.sourceUrl !== ref.oaFullTextUrl && (
                             <a
                               href={ref.sourceUrl}
                               target="_blank"
@@ -1845,6 +2317,70 @@ export function ScientificReportPublicationView({
                     );
                   })}
                 </div>
+
+                {/* International Comparative Case Study Panel */}
+                {master.internationalComparativeCase && (
+                  <div className="rounded-lg border border-amber-500/30 bg-slate-950 p-4 space-y-2 text-xs">
+                    <div className="font-mono font-bold uppercase tracking-wider text-amber-300">
+                      International Comparative Benchmark · {master.internationalComparativeCase.benchmarkSite}
+                    </div>
+                    <p className="text-slate-300 leading-relaxed">
+                      <strong className="text-white">Comparable Mechanism: </strong>
+                      {master.internationalComparativeCase.mechanismCompared}
+                    </p>
+                    <p className="text-slate-300 leading-relaxed">
+                      <strong className="text-white">Benchmark Intervention: </strong>
+                      {master.internationalComparativeCase.interventionCompared}
+                    </p>
+                    <p className="text-emerald-200/90 leading-relaxed">
+                      <strong className="text-emerald-300">Kashmir Transferability &amp; Limitations: </strong>
+                      {master.internationalComparativeCase.outcomeAndLimitation}
+                    </p>
+                  </div>
+                )}
+
+                {/* Claim-to-Evidence Verification Matrix */}
+                {master.claimVerificationMatrix && master.claimVerificationMatrix.length > 0 && (
+                  <div className="space-y-2.5 pt-2">
+                    <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-emerald-400">
+                      Claim-to-Evidence Verification Matrix (9-Tier Epistemic Audit)
+                    </h3>
+                    <div className="responsive-table-container rounded-md border border-slate-800 bg-slate-950">
+                      <table className="w-full text-left border-collapse text-xs">
+                        <thead>
+                          <tr className="border-b border-slate-800 bg-slate-900 text-slate-300">
+                            <th className="px-3 py-2">Claim ID &amp; Section</th>
+                            <th className="px-3 py-2">Scientific Statement</th>
+                            <th className="px-3 py-2">9-Tier Classification</th>
+                            <th className="px-3 py-2">Traceable Evidence &amp; Qualification</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-800/80">
+                          {master.claimVerificationMatrix.map((cm) => (
+                            <tr key={cm.claimId} className="text-slate-200">
+                              <td className="px-3 py-2.5 font-mono whitespace-nowrap">
+                                <div className="font-bold text-emerald-400">{cm.claimId}</div>
+                                <div className="text-[10px] text-slate-400">{cm.chapterSection}</div>
+                              </td>
+                              <td className="px-3 py-2.5 max-w-md leading-relaxed">
+                                {cm.claimStatement}
+                              </td>
+                              <td className="px-3 py-2.5 font-mono text-cyan-300 whitespace-nowrap">
+                                {cm.classification}
+                              </td>
+                              <td className="px-3 py-2.5 max-w-sm text-slate-300 leading-relaxed">
+                                <div className="font-semibold text-white">{cm.supportingEvidence}</div>
+                                <div className="text-[11px] text-slate-400 mt-0.5">
+                                  {cm.epistemicQualification}
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
               </section>
             )}
 
@@ -1921,6 +2457,41 @@ export function ScientificReportPublicationView({
                     </tbody>
                   </table>
                 </div>
+
+                {master.mitigationRecommendations && master.mitigationRecommendations.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-slate-800">
+                    <h3 className="text-base font-bold text-white">
+                      Discipline-Specific Mitigation, Policy &amp; Monitoring Pathways
+                    </h3>
+                    <div className="space-y-2.5">
+                      {master.mitigationRecommendations.map((mit) => (
+                        <div
+                          key={mit.id}
+                          className="rounded-md border border-slate-800 bg-slate-950 p-4 space-y-1.5 text-xs"
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="rounded-sm border border-emerald-500/40 bg-emerald-950/50 px-2 py-0.5 font-mono font-semibold text-emerald-300">
+                              {mit.category}
+                            </span>
+                            <span className="font-mono text-[11px] text-slate-400">
+                              Lead: {mit.responsibleInstitutions}
+                            </span>
+                          </div>
+                          <p className="font-semibold text-white text-sm">{mit.recommendation}</p>
+                          <p className="text-slate-300">
+                            <strong>Mechanism:</strong> {mit.scientificMechanism} ·{' '}
+                            <strong>Target:</strong> {mit.targetReceptorOrIndicator}
+                          </p>
+                          <p className="text-slate-400">
+                            <strong>Feasibility:</strong> {mit.feasibilityAssessment} ·{' '}
+                            <strong className="text-amber-300">Trade-offs:</strong>{' '}
+                            {mit.environmentalTradeOffs}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
             )}
           </>

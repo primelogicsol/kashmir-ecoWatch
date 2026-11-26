@@ -44,7 +44,7 @@ const HabitatDetailPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-700 to-green-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="container mx-auto py-12">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm mb-4">
             <Link href="/biodiversity" className="hover:underline">
@@ -60,7 +60,7 @@ const HabitatDetailPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+      <div className="container mx-auto py-8 space-y-8">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
           <MetricCard label="Area (km²)" value={habitat.areaKm2.toLocaleString()} />

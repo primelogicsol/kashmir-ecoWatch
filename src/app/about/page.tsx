@@ -250,7 +250,7 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/about/mission"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Our Strategic Mission</span>
               <ArrowRight className="w-4 h-4" />
@@ -1118,7 +1118,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/atlas"
-                  className="px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
+                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-2"
                 >
                   <Map className="w-4 h-4" />
                   <span>Launch Ecological Atlas</span>

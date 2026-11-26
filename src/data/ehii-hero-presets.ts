@@ -1284,7 +1284,7 @@ export const EHII_HERO_CONFIGS: Record<string, EhiiSubmoduleHeroConfig> = {
       { label: 'Riparian Buffer Loss', value: '595 ha Scars', icon: 'TrendingDown', color: 'text-rose-400' },
       { label: 'Urban Width Narrowing', value: '-18.5% in Srinagar', icon: 'Layers', color: 'text-cyan-400' },
       { label: 'Monitored Rivers', value: '7 Major Tributaries', icon: 'GitBranch', color: 'text-teal-400' },
-      { label: 'InSAR Bed Elevation', value: 'TanDEM-X & Drone LiDAR', icon: 'Satellite', color: 'text-white' },
+      { label: 'DEM & SAR Reference', value: 'Copernicus & Sentinel-1', icon: 'Satellite', color: 'text-white' },
       { label: 'NGT Compliance Orders', value: 'O.A. 241/2021 Active', icon: 'ShieldAlert', color: 'text-amber-300' },
       { label: 'Temporal Resolution', value: 'Bi-Monthly Sentinel-2', icon: 'Clock', color: 'text-emerald-300' }
     ]

@@ -35,8 +35,8 @@ export default function DistrictProfilesPage() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-slate-900/50">
-        <div className="container mx-auto px-6 relative z-10">
+      <div className="kew-module-hero-surface relative overflow-hidden bg-slate-900/50">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
               <Building2 className="w-6 h-6 text-violet-400" />

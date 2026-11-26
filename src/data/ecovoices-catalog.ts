@@ -1,16 +1,280 @@
 /**
- * EcoVoices: Environmental Music & Cultural Stewardship
- * In collaboration with SufiPulse USA
- * 
+ * EcoVoices: Environmental Arts, Music & Creative Expression
+ * Independent Top-Level Creative Platform of Kashmir EcoWatch
+ * Founding Music Collaboration: SufiPulse USA × Kashmir EcoWatch
+ *
  * Canonical Music Publisher & Rights Holder: SufiPulse USA (https://sufipulse.com)
- * Environmental Science & Education Platform: Kashmir EcoWatch (https://kashmir-ecowatch.com)
- * 
- * Rights Notice:
- * All recordings, musical compositions, audio masters, lyrics, and promotional artwork
- * remain the sole intellectual property of SufiPulse USA and affiliated artists.
- * Kashmir EcoWatch presents these curated releases strictly for non-commercial ecological
- * education, environmental curriculum integration, and community awareness.
+ * Environmental Science, Education & Creative Curation Platform: Kashmir EcoWatch (https://kashmir-ecowatch.com)
+ *
+ * Rights & Governance Notice:
+ * All musical recordings, compositions, audio masters, lyrics, and promotional artwork in the
+ * SufiPulse series remain the sole intellectual property of SufiPulse USA and affiliated artists.
+ * Kashmir EcoWatch presents curated releases strictly for non-commercial ecological consciousness,
+ * environmental education, and community stewardship.
+ * Published works are strictly distinguished from externally documented regional works and
+ * forthcoming/proposed creative productions. Zero fabricated works, profiles, or statistics are displayed.
  */
+
+export const ECOVOICES_MODULE_IDENTITY = {
+  name: 'EcoVoices',
+  spacedTitle: 'E C O V O I C E S',
+  subtitle: 'Where Environmental Science, Spiritual Consciousness & Creative Expression Meet',
+  eyebrow: 'A COLLABORATIVE ENVIRONMENTAL & CREATIVE INITIATIVE',
+  motto: 'WHEN NATURE FINDS ITS VOICE',
+  tagline: 'Music. Nature. Consciousness.',
+  philosophy:
+    'Science helps us understand nature. Art helps us feel it. Spirituality reminds us of our responsibility toward it.',
+  canonicalRoute: '/ecovoices',
+  legacyRoute: '/environmental-calendar/ecovoices',
+  description:
+    'A collaborative platform bringing together science, spirituality and artistic expression to communicate environmental consciousness through music, poetry, literature, visual arts, natural soundscapes and cinematic storytelling across the Western Himalayas and beyond.',
+  featuredCompositionSlug: 'pani-gawah-hai',
+} as const;
+
+export interface CollaboratingInitiative {
+  id: string;
+  name: string;
+  role: string;
+  officialUrl: string;
+  logoPath: string;
+  logoAlt: string;
+}
+
+export const ECOVOICES_COLLABORATING_INITIATIVES: readonly CollaboratingInitiative[] = [
+  {
+    id: 'kashmir-ecowatch',
+    name: 'Kashmir EcoWatch',
+    role: 'Environmental Science & Intelligence',
+    officialUrl: 'https://kashmir-ecowatch.com/',
+    logoPath: '/kew_LOGO.png',
+    logoAlt: 'Kashmir EcoWatch Official Logo',
+  },
+  {
+    id: 'sufipulse-usa',
+    name: 'SufiPulse USA',
+    role: 'Music & Creative Expression',
+    officialUrl: 'https://sufipulse.com/',
+    logoPath: '/images/partners/sufipulse-logo-v5.png',
+    logoAlt: 'SufiPulse USA Official Logo',
+  },
+  {
+    id: 'sufitube-usa',
+    name: 'SufiTube USA',
+    role: 'Cinema & Visual Storytelling',
+    officialUrl: 'https://sufipulse.com/sufitube',
+    logoPath: '/images/partners/sufitube-circular-logo.png',
+    logoAlt: 'SufiTube USA Official Logo',
+  },
+  {
+    id: 'sufi-science-center-usa',
+    name: 'Sufi Science Center USA',
+    role: 'Science & Spiritual Consciousness',
+    officialUrl: 'https://sufisciencecenter.info/',
+    logoPath: '/images/partners/ssc-logo.png',
+    logoAlt: 'Sufi Science Center USA Official Logo',
+  },
+] as const;
+
+export interface CommunicationPlatformPillar {
+  id: string;
+  platform: string;
+  medium: string;
+  primaryContributors: string;
+  href?: string;
+  status: 'active_module' | 'editorial_pillar';
+  statusLabel: string;
+}
+
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
+
+export const KEW_COMMUNICATION_PLATFORMS: CommunicationPlatformPillar[] = [
+  {
+    id: 'himalayan-dispatch',
+    platform: 'Himalayan Dispatch',
+    medium: 'Journalism, articles and editorial reporting',
+    primaryContributors: 'Journalists and environmental correspondents',
+    href: getKewToDispatchUrl('/'),
+    status: 'active_module',
+    statusLabel: 'Independent Editorial Magazine',
+  },
+  {
+    id: 'ecovoices',
+    platform: 'EcoVoices',
+    medium: 'Music, poetry, cinema, visual arts and natural soundscapes',
+    primaryContributors: 'Musicians, poets, filmmakers and visual artists',
+    href: '/ecovoices',
+    status: 'active_module',
+    statusLabel: 'Independent Creative Module',
+  },
+  {
+    id: 'environmental-calendar',
+    platform: 'Environmental Calendar & Outdoor Classroom',
+    medium: 'Observances, environmental education and experiential field learning',
+    primaryContributors: 'Teachers, students and academic institutions',
+    href: '/environmental-calendar',
+    status: 'active_module',
+    statusLabel: 'Education & Observance Module',
+  },
+];
+
+export type EcoVoicesDepartmentId =
+  | 'music'
+  | 'poetry'
+  | 'cinema'
+  | 'art'
+  | 'soundscapes'
+  | 'contributors';
+
+export interface EcoVoicesDepartment {
+  id: EcoVoicesDepartmentId;
+  navLabel: string;
+  hash: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  status: 'published' | 'expanding';
+  statusLabel: string;
+  governanceNote: string;
+  artworkImage: string;
+  artworkCaption: string;
+  proposedFormats?: string[];
+}
+
+export const ECOVOICES_DEPARTMENTS: EcoVoicesDepartment[] = [
+  {
+    id: 'music',
+    navLabel: 'Music',
+    hash: 'music',
+    title: 'Environmental Music',
+    subtitle: 'Original environmental songs, Sufi kalam and ecological advocacy compositions through SufiPulse USA.',
+    description:
+      'Six published master compositions produced by SufiPulse USA and scientifically contextualized by Kashmir EcoWatch—bridging Kashmiri Sufiana kalam, santoor, rabab, and orchestral arrangements with empirical hydrology, wetland restoration, and forest conservation.',
+    status: 'published',
+    statusLabel: 'Confirmed & Published · 6 Master Releases',
+    governanceNote:
+      'All 6 curated tracks are published official releases hosted via SufiPulse USA master embeds, paired with verified Kashmir EcoWatch ecological dossiers and Outdoor Classroom fieldwork protocols.',
+    artworkImage: '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
+    artworkCaption: 'Acoustic studio production & Western Himalayan musical stewardship',
+  },
+  {
+    id: 'poetry',
+    navLabel: 'Poetry',
+    hash: 'poetry',
+    title: 'Environmental Poetry',
+    subtitle: 'Poetry, mystical reflections and literary expressions of humanity’s relationship with nature.',
+    description:
+      'From the 14th-century ecological shruks of Sheikh Noor-ud-Din Wali (Nund Rishi) and vakhs of Lalleshwari to contemporary Kashmiri, Urdu, Dogri, and English environmental verse exploring sacred trust (Amaanat), cosmic balance (Meezan), and watershed memory.',
+    status: 'published',
+    statusLabel: 'Published Kalam Archive · Literary Expansion Open',
+    governanceNote:
+      'Features verified original poetic excerpts from published EcoVoices compositions alongside externally documented Western Himalayan literary works and open editorial intake via Ahl-e-Qalam and the SufiPulse Literary Journal.',
+    artworkImage: '/images/green-heroes/legacy-heritage.jpg',
+    artworkCaption: 'Kashmiri, Urdu & Himalayan ecological manuscripts and mystical verse',
+    proposedFormats: [
+      'Multilingual Ecological Verse Anthology (Kashmiri, Urdu, Dogri, Ladakhi, Burushaski, English)',
+      'Annotated Translations of Classical Rishi-Sufi Nature Shruks & Vakhs',
+      'Reflective Environmental Essays & Field Memoirs (1,000–3,500 words)',
+    ],
+  },
+  {
+    id: 'cinema',
+    navLabel: 'Cinema',
+    hash: 'cinema',
+    title: 'Environmental Cinema',
+    subtitle: 'Short films, documentaries, visual narratives and ecological awareness productions.',
+    description:
+      'Cinematic storytelling dedicated to receding glaciers, threatened wetlands, nomadic pastoral transitions, and frontline conservationists across Kashmir, Jammu, Ladakh, AJ&K, and Gilgit-Baltistan.',
+    status: 'expanding',
+    statusLabel: 'Proposed Expansion · External Film Reference Index',
+    governanceNote:
+      'Governance Disclosure: Native KEW Environmental Cinema productions are a proposed expansion currently open for filmmaker submissions. Documented regional films listed in this department are independently produced works indexed from public festival, university, and UNESCO records—not hosted or claimed as KEW productions.',
+    artworkImage: '/images/publications/sheshnag-alpine-glacial-lake.jpg',
+    artworkCaption: 'High-altitude glacial tarns and visual ecological storytelling',
+    proposedFormats: [
+      'Short Ecological Documentaries & Watershed Visual Essays (5–25 min)',
+      'Cryosphere & Glacier-Grafting Oral History Chronicles',
+      'Animated Environmental Storytelling for Youth & Schools',
+      'Curated Environmental Film Screening Showcases',
+    ],
+  },
+  {
+    id: 'art',
+    navLabel: 'Visual Arts',
+    hash: 'visual-arts',
+    title: 'Environmental Art',
+    subtitle: 'Paintings, illustrations, digital art and creative ecological interpretations.',
+    description:
+      'Visual interpretations of wetland macrophytes, riverine transformations, circular waste-to-art installations, botanical illustration, and ecological cartography across the Western Himalayas.',
+    status: 'expanding',
+    statusLabel: 'Proposed Expansion · Documented Regional Practice',
+    governanceNote:
+      'Governance Disclosure: Curated KEW digital gallery exhibitions are a forthcoming expansion. Artist portfolios referenced below represent independently documented regional exhibitions and public installations verified in university, museum, and press archives.',
+    artworkImage: '/images/publications/dal-lake-lacustrine-houseboats.jpg',
+    artworkCaption: 'Lacustrine reflections, botanical studies, and ecological installations',
+    proposedFormats: [
+      'Fine Art & Contemporary Landscape Exhibitions on Wetland & River Change',
+      'Scientific Botanical & Endemic Wildlife Illustration Portfolios',
+      'Waste-to-Art & Public Riverbank Sculpture Documentation',
+      'Digital Ecological Art & Interpretive Visual Essays',
+    ],
+  },
+  {
+    id: 'soundscapes',
+    navLabel: 'Soundscapes',
+    hash: 'soundscapes',
+    title: 'Sounds of Nature',
+    subtitle: 'The Living Acoustic Heritage of the Western Himalayas',
+    description:
+      'An immersive exploration of the natural voices of the Western Himalayan landscape—documenting its wildlife, forests, rivers, wetlands, mountains, and atmospheric phenomena through environmental soundscapes and bioacoustic research.',
+    status: 'published',
+    statusLabel: 'Bioacoustic Archive · Biophony, Geophony & Anthrophony',
+    governanceNote:
+      'Governance Disclosure: Verified open-license recordings (Xeno-canto & Wikimedia Commons CC BY / CC BY-SA / Public Domain) carry full 18-field provenance, exact recording locality, and recordist attribution. Collection categories awaiting verified Western Himalayan field capture are marked "Field recording pending"—never substituted with synthesized wildlife calls or misattributed recordings.',
+    artworkImage: '/images/publications/lidder-pahalgam-mountain-river.jpg',
+    artworkCaption: 'Bioacoustic heritage across wildlife, rivers, forests, wetlands, and glaciers',
+    proposedFormats: [
+      'Biophony: Avian Dawn Choruses, Pheasant Call-Count Vouchers, Endemic Songbirds, Mammals, Amphibians & Insects',
+      'Geophony: Himalayan Rivers, Karst Springs (Naags), Waterfalls, Deodar & Chinar Canopies, Rain, Thunder & Glaciers',
+      'Anthrophony: Comparative Highway & Peri-Urban Acoustic Masking Baselines Linked to KEW Noise Monitoring',
+    ],
+  },
+  {
+    id: 'contributors',
+    navLabel: 'Artists',
+    hash: 'artists',
+    title: 'Creative Contributors',
+    subtitle: 'Musicians, poets, filmmakers, artists, composers and environmental storytellers.',
+    description:
+      'Uniting SufiPulse USA’s five established creative contributor pathways with 19 independently documented Western Himalayan artists and an open editorial intake gateway for original ecological works.',
+    status: 'published',
+    statusLabel: '5 SufiPulse Pathways · 19 Documented Artists · Open Intake',
+    governanceNote:
+      'Profiles distinguish founding SufiPulse USA × KEW creative contributors from externally documented regional artists researched across five Western Himalayan jurisdictions. No unverified or fabricated contributor statistics are shown.',
+    artworkImage: '/images/publications/forestry-betula-treeline-lidar.jpg',
+    artworkCaption: 'Collaborative network of Himalayan musicians, poets, filmmakers, and artists',
+  },
+];
+
+export interface AcousticSoundscapePreview {
+  id: string;
+  title: string;
+  kashmiriOrLocalTerm: string;
+  biome: string;
+  elevationBand: string;
+  status: 'field_recording_pending';
+  statusBadge: string;
+  acousticProfile: string;
+  noiseCharacter: 'glacial_stream' | 'river_riffle' | 'deodar_wind' | 'wetland_night';
+  image: string;
+  linkedModuleTitle: string;
+  linkedModuleHref: string;
+}
+
+/**
+ * Legacy preview array sanitized to remove arbitrary unmeasured frequency resonance claims.
+ * Authoritative Department V data now resides in `src/data/ecovoices-bioacoustics.ts`.
+ */
+export const ECOVOICES_SOUNDSCAPE_PREVIEWS: AcousticSoundscapePreview[] = [];
 
 export interface RelatedScientificModule {
   title: string;
@@ -47,7 +311,10 @@ export interface EcoVoiceRelease {
   slug: string;
   trackOrder: number;
   title: string;
+  shortTitle?: string;
   subtitle: string;
+  artistCredit: string;
+  publicationStatus: 'published';
   catalogNumber: string;
   catalogCode: string;
   canonicalUrl: string;
@@ -79,7 +346,7 @@ export interface EcoVoiceRelease {
 }
 
 export const ECOVOICES_THEME_CATEGORIES = [
-  { id: 'all', label: 'All Environmental Releases', count: 6 },
+  { id: 'all', label: 'All Published Releases', count: 6 },
   { id: 'water_stewardship', label: 'Water Stewardship', count: 1 },
   { id: 'sustainable_development', label: 'Sustainable Development & Ethics', count: 2 },
   { id: 'river_conservation', label: 'River Conservation (Jhelum)', count: 1 },
@@ -93,7 +360,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'pani-gawah-hai',
     trackOrder: 1,
     title: 'PANI GAWAH HAI | Kashmir Water Bears Witness',
+    shortTitle: 'PANI GAWAH HAI',
     subtitle: 'A Sufi Symphony on Kashmir\'s Freshwater Heritage & Riparian Memory',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-001',
     catalogCode: 'SP-USA-ENV-001',
     canonicalUrl: 'https://sufipulse.com/release-detail/pani-gawah-hai-kashmir-water-bears-witness-sufipulse-usa',
@@ -115,7 +385,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       'J&K Freshwater Basin Week (September 24)',
       'World Environment Day (June 5)'
     ],
-    kalamPoetOrSource: 'Traditional Kashmiri Mystical Idiom & Contemporary Sufi Ecology',
+    kalamPoetOrSource: 'Dr. Zarf-e-Noori · Traditional Kashmiri Mystical Idiom & Contemporary Sufi Ecology',
     musicalStyle: 'Spiritual Symphony with Traditional Kashmiri Santoor & Rabab',
     instrumentsUsed: ['Kashmiri Santoor', 'Afghan Rabab', 'Sarangi', 'Frame Drum (Daf)', 'Ambient Himalayan Soundscapes'],
     poeticExcerptOriginal: 'پانِ گواہ چُھ، سارسار درؠیاو گواہ چُھ،\nکوہِ ہِمالایہِ پؠٹھہٕ یِم آپ ژھَلَن چِھ۔\nامانت چھِ امۍ ژھیل، گژھہِ نہٕ زاہ زایہِ گژھُن۔',
@@ -175,7 +445,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'sheikh-noorani-father-of-sustainable-development',
     trackOrder: 2,
     title: 'Sheikh! Sheikh! Noorani (RA) | Father of Sustainable Development',
+    shortTitle: 'SHEIKH! SHEIKH! NOORANI (RA)',
     subtitle: 'The Ecological Legacy of Alamdar-e-Kashmir & Western Himalayan Forest Guardianship',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-002',
     catalogCode: 'SP-USA-ENV-002',
     canonicalUrl: 'https://sufipulse.com/release-detail/sheikh-noorani-father-of-sustainable-development',
@@ -197,7 +470,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       'International Day of Forests (March 21)',
       'Kashmir Arbor & Heritage Tree Observance (September 12)'
     ],
-    kalamPoetOrSource: 'Nund Rishi (Sheikh Noor-ud-Din Noorani RA / Alamdar-e-Kashmir, 1377–1440 CE)',
+    kalamPoetOrSource: 'Nund Rishi (Sheikh Noor-ud-Din Noorani RA / Alamdar-e-Kashmir, 1377–1440 CE) · Contemporary Kalam by Dr. Zarf-e-Noori',
     musicalStyle: 'Devotional Himalayan Choral Symphony with Santoor, Rabab & Resonant Drone',
     instrumentsUsed: ['Kashmiri Santoor', 'Afghan Rabab', 'Bansuri (Bamboo Flute)', 'Dumbak Percussion', 'Acoustic Cello'],
     poeticExcerptOriginal: 'اَن پوشِہ تَیلِہ یَلِہ وَن پوشِہ،\nیِم ہَنٛدِ کۄل ژھَنٛڈِو تِم ہَنٛدِ دارُن۔\nکوہَن مَنٛز چھُ رَب سُنٛد نُور چَمکان،\nکُنٛڈَن ہٕنٛز حِفاظَت کٔرِو زان۔',
@@ -257,7 +530,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'sufi-cry-for-a-river',
     trackOrder: 3,
     title: 'Sufi Cry for a River | A Cry for the Jhelum (Vyeth)',
+    shortTitle: 'SUFI CRY FOR A RIVER',
     subtitle: 'Elegy for Kashmir\'s Lifeline: The Hydrological & Cultural Trajectory of River Jhelum',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-003',
     catalogCode: 'SP-USA-ENV-003',
     canonicalUrl: 'https://sufipulse.com/release-detail/sufi-cry-for-a-river',
@@ -279,7 +555,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       'World River Day (Fourth Sunday of September)',
       'Kashmir Flood Remembrance Day (September 7)'
     ],
-    kalamPoetOrSource: 'Classical Kashmiri Kalam & Contemporary Riverine Lament',
+    kalamPoetOrSource: 'Dr. Zarf-e-Noori · Classical Kashmiri Kalam & Contemporary Riverine Lament',
     musicalStyle: 'Meditative Kashmiri Sufiana Qalam with Ney and Mournful Strings',
     instrumentsUsed: ['Persian Ney', 'Kashmiri Saaz', 'Acoustic Guitar', 'Clay Matka Percussion', 'Harmonium'],
     poeticExcerptOriginal: 'وؠتھ چھےٚ رَوان دَواں، سؠنہِ مَنٛز چھُ ژِٹھ پؠوان،\nکتھ کٔنۍ زِ اَمۍ سٕنٛدِ سٲرؠ کُنٛڈ گٔے مژھِ مَنٛز گُم؟\nیِتھ تَنہِ روٗد نہٕ کینہہ، صِرِف وؠتھ چھےٚ ژھۆپہِ پٲٹھۍ نالان۔',
@@ -339,7 +615,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'mirror-of-hazratbal-wound-of-dal',
     trackOrder: 4,
     title: 'Mirror of Hazratbal, Wound of Dal',
+    shortTitle: 'MIRROR OF HAZRATBAL, WOUND OF DAL',
     subtitle: 'Sacred Reflections, Ecological Trauma & the Restoration of Dal Lake',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-004',
     catalogCode: 'SP-USA-ENV-004',
     canonicalUrl: 'https://sufipulse.com/release-detail/mirror-of-hazratbal-wound-of-dal',
@@ -361,7 +640,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       'World Environment Day (June 5)',
       'Himalayan Biodiversity Day (May 22)'
     ],
-    kalamPoetOrSource: 'Mystical Eulogy on Hazratbal Sanctum & the Living Waters of Dal',
+    kalamPoetOrSource: 'Dr. Zarf-e-Noori · Mystical Eulogy on Hazratbal Sanctum & the Living Waters of Dal',
     musicalStyle: 'Soulful Qawwali / Sufi Chamber Orchestration with Santoor & Bamboo Flute',
     instrumentsUsed: ['Kashmiri Santoor', 'Bansuri (Bamboo Flute)', 'Harmonium', 'Tabla & Daf', 'Cellos and Viola'],
     poeticExcerptOriginal: 'حضرت بَلو پؠٹھہٕ وٕچھِو ڈَل کِتھ کٔنۍ چُھ رووان،\nآئی نہٕ زاہ صَفٲئی، صِرِف لالچ چھےٚ گۄڈنۍ وِتھان۔\nپَمپوش گٔے بیگان، ناگہٕ لۆسِ گٔے کَمزور۔',
@@ -421,7 +700,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'cry-of-the-kashmir-valley',
     trackOrder: 5,
     title: 'Cry of the Kashmir Valley | Come Light the Mystic Lamp',
+    shortTitle: 'CRY OF THE KASHMIR VALLEY',
     subtitle: 'A Lament for Degraded Slopes, Vanishing Springs & Ecological Awakening',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-005',
     catalogCode: 'SP-USA-ENV-005',
     canonicalUrl: 'https://sufipulse.com/release-detail/cry-of-the-kashmir-valley-come-light-the-mystic-lamp',
@@ -443,7 +725,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       'Himalayan Ecology Day (September 9)',
       'International Mountain Day (December 11)'
     ],
-    kalamPoetOrSource: 'Mystic Valley Elegy & Contemporary Kashmiri Ecological Kalam',
+    kalamPoetOrSource: 'Dr. Zarf-e-Noori · Mystic Valley Elegy & Contemporary Kashmiri Ecological Kalam',
     musicalStyle: 'Haunting Ambient Sufiana with Ney, Cello, Kashmiri Rabab and Chiming Bells',
     instrumentsUsed: ['Persian Ney', 'Afghan Rabab', 'Acoustic Cello', 'Tibetan Singing Bowls', 'Kashmiri Matka'],
     poeticExcerptOriginal: 'ژہٕ پَلِ کٔرِو فِکر، کَہہ گۆو اَمِس کٔشیٖرِ؟\nناگہٕ سٲرؠ سُکھِ گٔے، گاش گۆو اندھیرس مَنٛز گُم۔\nوَلِو تَنہِ لۆسِ دِیُو، عِشٖقُک دیٖوَل بالِو،\nزِندٕ کٔرِو بییہِ اَمِکۍ آبشار تَہِ وۆنہِ۔',
@@ -465,7 +747,7 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
       {
         title: 'Karewa Geomorphology & Land Degradation',
         category: 'Soil Science',
-        href: '/environmental-calendar',
+        href: '/earth-human-impact/land-earth-systems',
         description: 'Quarrying impact on ancient lacustrine plateau terraces, saffron soil stability, and siltation runoffs.'
       }
     ],
@@ -503,7 +785,10 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
     slug: 'kashmir-how-long-will-you-remain-silent',
     trackOrder: 6,
     title: 'Kashmir, How Long Will You Remain Silent? | Kab Tak Khamosh?',
+    shortTitle: 'KAB TAK KHAMOSH?',
     subtitle: 'Kashmir\'s Environmental Awakening: An Original Mystical Sufi Kalam on Meezan, Amaanat & Ecological Conscience',
+    artistCredit: 'Dr. Zarf-e-Noori · SufiPulse USA',
+    publicationStatus: 'published',
     catalogNumber: 'SP-USA-ENV-006',
     catalogCode: 'SP-USA-ENV-006',
     canonicalUrl: 'https://sufipulse.com/releases',
@@ -582,11 +867,11 @@ export const ECOVOICES_RELEASES: EcoVoiceRelease[] = [
 ];
 
 export const ECOVOICES_COLLABORATION_FRAMEWORK = {
-  title: 'EcoVoices: Scientific Knowledge Meets Creative Stewardship',
+  title: 'EcoVoices: Creative Expression Meets Scientific Stewardship',
   coFounders: ['Kashmir EcoWatch', 'SufiPulse USA'],
   sufiPulseRole: {
-    title: 'Music Publisher & Cultural Arts Contributor',
-    description: 'SufiPulse USA (sufipulse.com) serves as the canonical publisher, composer, and rights holder for all musical works, lyrical arrangements, master recordings, and artistic media. SufiPulse maintains absolute ownership and artistic autonomy over all musical releases.',
+    title: 'Music Publisher & Cultural Arts Partner',
+    description: 'SufiPulse USA (sufipulse.com) serves as the canonical publisher, composer, and rights holder for all musical works, lyrical arrangements, master recordings, and artistic media in the SufiPulse environmental music series. SufiPulse maintains absolute ownership and artistic autonomy over its musical releases.',
     responsibilities: [
       'Original music composition, studio production, and high-fidelity mastering',
       'Curation of authentic Sufi kalam, classical Kashmiri verses, and contemporary ecological lyrics',
@@ -595,17 +880,17 @@ export const ECOVOICES_COLLABORATION_FRAMEWORK = {
     ]
   },
   ecoWatchRole: {
-    title: 'Environmental Science & Pedagogical Outreach Platform',
-    description: 'Kashmir EcoWatch (kashmir-ecowatch.com) serves as the independent scientific authority, educational curriculum architect, and environmental observatory. EcoWatch anchors each musical piece to verified scientific data and field diagnostics.',
+    title: 'Environmental Arts Curation & Scientific Grounding Platform',
+    description: 'Kashmir EcoWatch (kashmir-ecowatch.com) hosts EcoVoices as its independent creative expression platform, anchoring musical, poetic, visual, and cinematic works to verified Western Himalayan scientific data and field education.',
     responsibilities: [
-      'Thematic classification and scientific validation of environmental themes',
-      'Development of Outdoor Classroom student field sheets, teacher guides, and hypotheses',
-      'Linking songs to real-time water quality, forest canopy, and river gauge telemetry',
-      'Integrating music into official United Nations and Kashmir Environmental Calendar observances',
-      'Facilitating student creative writing, ecological poetry, and community stewardship projects'
+      'Curating Environmental Music, Poetry, Cinema, Visual Arts, and Acoustic Heritage departments',
+      'Scientific validation and pairing of creative works with hydrology, biodiversity, and cryosphere layers',
+      'Bridging compositions with Outdoor Classroom field hypotheses and student worksheets',
+      'Documenting regional creative practitioners with transparent evidence provenance',
+      'Facilitating open, non-commercial creative submissions and youth ecological storytelling'
     ]
   },
-  institutionalBoundary: 'Neither organization compromises its core mandate: SufiPulse remains a cultural music publisher, while Kashmir EcoWatch remains an uncompromised, non-commercial scientific research and monitoring platform. No advertising, commercial promotion, or sponsored product placement compromises the ecological integrity of either platform.'
+  institutionalBoundary: 'Neither organization compromises its core mandate: SufiPulse USA remains an independent cultural music publisher, while Kashmir EcoWatch remains an uncompromised, non-commercial environmental intelligence and creative stewardship platform. No advertising, commercial promotion, or sponsored product placement compromises the integrity of either platform.'
 };
 
 export interface SufiPulseCreativePathway {
@@ -771,7 +1056,7 @@ export const ECOVOICES_ENVIRONMENTAL_THEMES: EnvironmentalThemeRegistryItem[] = 
     title: 'Climate Change & Alpine Vulnerability',
     subtitle: 'Shifting Precipitation, Warmer Winters & Mountain Risk',
     scopeSummary: 'Thermal satellite analysis of microclimates, winter drought spikes (Chilai Kalan disruptions), and erratic hail cycles.',
-    scientificHref: '/risk-monitoring/climate-change',
+    scientificHref: '/hazard-intelligence',
     kashmirContext: 'Kashmir apple orchards and saffron terraces are already experiencing altered phenological flowering windows.',
     recommendedStyles: ['Contemporary Spoken Word', 'Modern Acoustic Song', 'Scientific Poetry']
   },
@@ -781,7 +1066,7 @@ export const ECOVOICES_ENVIRONMENTAL_THEMES: EnvironmentalThemeRegistryItem[] = 
     title: 'Pollution, Toxic Effluents & Solid Waste',
     subtitle: 'Downtown Srinagar Drainage, Industrial Mordants & Plastic Litter',
     scopeSummary: 'Untreated municipal stormwater channels, chemical dye effluents in downtown canals, and single-use plastic clogging.',
-    scientificHref: '/risk-monitoring/water-pollution',
+    scientificHref: '/environmental-monitoring/plastic-pollution',
     kashmirContext: 'Urban tributaries like Doodh Ganga and Khushalsar suffer from heavy localized anthropogenic contamination.',
     recommendedStyles: ['Protest Poetry', 'Fast-Paced Percussive Songs', 'Youth Spoken Word']
   },
@@ -811,7 +1096,7 @@ export const ECOVOICES_ENVIRONMENTAL_THEMES: EnvironmentalThemeRegistryItem[] = 
     title: 'Western Himalayan Living Heritage & Seasons',
     subtitle: 'Traditional Water Mills, Agrarian Seasons & Nomadic Pastoralism',
     scopeSummary: 'The seasonal rhythms of Kashmir: Navreh, Badamwari bloom, Harud harvest, Wandha winter, and pastoral high-altitude migrations.',
-    scientificHref: '/trails-sightings/protected-area-trails',
+    scientificHref: '/protected-network/trails-and-sightings',
     kashmirContext: 'Gujjars, Bakarwals, and valley agrarians whose lives are intricately woven into mountain seasonal phenology.',
     recommendedStyles: ['Folk Songs (Wanwun)', 'Rabab & Daf Ballads', 'Cultural Memoirs']
   }
@@ -823,8 +1108,8 @@ export const YOUTH_ECOVOICES_FRAMEWORK = {
   ageGroups: [
     { tier: 'Junior Eco-Chant (Ages 8–12)', format: 'Classroom nature poems, school choir chants, riparian memory sketches' },
     { tier: 'Youth Anthems (Ages 13–18)', format: 'Original acoustic songs, spoken word poetry, river quality field memoirs' },
-    { tier: 'University & Collegiate (Ages 18–25)', format: 'In-depth essays, full instrumental compositions, multilingual songs' }
+    { tier: 'University & Collegiate (Ages 18–25)', format: 'In-depth essays, short environmental films, full instrumental compositions' }
   ],
   guardianSafeguardPolicy: 'All submissions from participants under 18 years of age must be submitted under the supervision of a verified school teacher, academic principal, or legal guardian. Student contact details are kept strictly confidential and will never be published or shared commercially.',
-  educationalIntegration: 'Selected youth works are featured during Kashmir Environmental Calendar observances, published in the student library, and performed in the Outdoor Classroom.'
+  educationalIntegration: 'Selected youth works are featured on EcoVoices, highlighted during Kashmir Environmental Calendar observances, and paired with Outdoor Classroom field science lessons.'
 };

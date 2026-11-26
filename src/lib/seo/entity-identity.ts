@@ -12,6 +12,13 @@ export const CANONICAL_HOMEPAGE_URL = `${CANONICAL_SITE_URL}/`;
 export const ORGANIZATION_ENTITY_ID = `${CANONICAL_SITE_URL}/#organization`;
 export const WEBSITE_ENTITY_ID = `${CANONICAL_SITE_URL}/#website`;
 
+/**
+ * Single Authoritative Organizational Logo Asset Path for Kashmir EcoWatch.
+ * Used universally across site navigation, footers, all 100 scientific report covers,
+ * downloadable A4 PDFs, research cards, OpenGraph/social previews, and print layouts.
+ */
+export const KEW_OFFICIAL_LOGO_PATH = '/kew_LOGO.png';
+
 export interface P0BrandKeywordDefinition {
   id: string;
   keyword: string;

@@ -338,7 +338,7 @@ function EnvironmentalPilPortalContent() {
       <EnvironmentalPilSubNav activeTab={activeTab} onTabChange={handleTabChange} />
 
       {/* ── 3. MAIN WORKBENCH CONTENT CONTAINER ─── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+      <main className="container mx-auto py-8 w-full flex-1">
         {/* ───────────────────────────────────────────────────────────── */}
         {/* TAB 1: OVERVIEW HUB */}
         {/* ───────────────────────────────────────────────────────────── */}

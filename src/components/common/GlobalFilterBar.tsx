@@ -13,23 +13,23 @@ import { GEOGRAPHY, Scope } from '@/data/geography';
 const SCOPE_META: Record<string, { label: string; color: string; active: string }> = {
   'All': {
     label: 'All Scopes',
-    color: 'text-slate-400 border-white/10 hover:border-white/20 hover:text-white',
-    active: 'bg-white/10 text-white border-white/20',
+    color: 'text-slate-300 border-white/15 hover:border-white/30 hover:text-white',
+    active: 'bg-white/15 text-white border-white/30',
   },
   'Kashmir Core': {
     label: 'Kashmir Core',
-    color: 'text-emerald-400/70 border-emerald-500/20 hover:border-emerald-500/40 hover:text-emerald-300',
-    active: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+    color: 'text-emerald-300 border-emerald-500/25 hover:border-emerald-400/50 hover:text-emerald-200',
+    active: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/50',
   },
   'Trans-Divisional': {
     label: 'Trans-Divisional',
-    color: 'text-blue-400/70 border-blue-500/20 hover:border-blue-500/40 hover:text-blue-300',
-    active: 'bg-blue-500/20 text-blue-300 border-blue-500/40',
+    color: 'text-blue-300 border-blue-500/25 hover:border-blue-400/50 hover:text-blue-200',
+    active: 'bg-blue-500/20 text-blue-200 border-blue-400/50',
   },
   'Transboundary / Extended': {
     label: 'Transboundary',
-    color: 'text-amber-400/70 border-amber-500/20 hover:border-amber-500/40 hover:text-amber-300',
-    active: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+    color: 'text-amber-300 border-amber-500/25 hover:border-amber-400/50 hover:text-amber-200',
+    active: 'bg-amber-500/20 text-amber-200 border-amber-400/50',
   },
 };
 

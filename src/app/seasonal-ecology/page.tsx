@@ -4,7 +4,7 @@ import React, { useState, useMemo, Suspense } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -672,7 +672,7 @@ function SeasonalEcologyHubContent() {
       )}
 
       {/* Metrics Ribbon */}
-      <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="container mx-auto mb-12">
         <Card className="glass-intense border-slate-700/50">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 p-4">
             {[
@@ -737,7 +737,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {/* FILTERED SEASONAL LANDSCAPES                                  */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="container mx-auto py-10">
         <div className="flex items-center justify-between mb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -812,7 +812,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {/* FILTERED BLOOM & PHENOLOGY RECORDS                            */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="container mx-auto py-10">
         <div className="flex items-center justify-between mb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -879,7 +879,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {/* NAVIGATION MODULES GRID                                       */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto py-12">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-white mb-2">
             Seasonal Ecology Submodules &amp; Analytics
@@ -927,7 +927,7 @@ function SeasonalEcologyHubContent() {
       {/* ───────────────────────────────────────────────────────────── */}
       {/* DISTRICT SEASON HIGHLIGHTS                                    */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto py-12">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-white mb-2">
             Kashmir District Seasonal Highlights

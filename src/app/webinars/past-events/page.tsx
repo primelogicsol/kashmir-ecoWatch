@@ -26,7 +26,7 @@ export default function PastEventsPage() {
 
       <WebinarNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+      <main className="container mx-auto py-10 space-y-10">
         {pastConfs.length === 0 && pastWebinars.length === 0 ? (
           <div className="p-8 sm:p-12 rounded-3xl bg-slate-900/60 border border-white/10 text-center max-w-3xl mx-auto space-y-6 shadow-2xl">
             <div className="w-16 h-16 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center mx-auto">

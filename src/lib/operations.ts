@@ -22,7 +22,8 @@ export type PublicSourcePage =
   | '/become-data-contributor'
   | '/become-research-partner'
   | '/get-involved/volunteer'
-  | '/environmental-investigations/submit';
+  | '/environmental-investigations/submit'
+  | '/ecovoices';
 
 export type SubmissionPriority = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
 
@@ -157,6 +158,13 @@ export const SOURCE_PAGE_MAP: Record<PublicSourcePage, {
     managementCenterLabel: 'Environmental Investigations Desk',
     label: 'Submit Environmental Investigation',
     userDashboardSection: 'My Investigation Proposals',
+  },
+  '/ecovoices': {
+    prefix: 'KEW-ECV',
+    managementCenter: 'COMMUNITY_NETWORK',
+    managementCenterLabel: 'EcoVoices Editorial & Creative Review',
+    label: 'EcoVoices Creative Submissions',
+    userDashboardSection: 'My Creative Submissions',
   },
 };
 

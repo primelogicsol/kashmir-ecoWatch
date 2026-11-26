@@ -1,10 +1,12 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { JsonLd } from '@/components/seo/JsonLd';
 import {
   buildBreadcrumbJsonLd,
   buildScholarlyArticleJsonLd,
 } from '@/lib/seo/structured-data';
+import { CANONICAL_SITE_URL, KEW_OFFICIAL_LOGO_PATH } from '@/lib/seo/entity-identity';
 import {
   getMergedMasterRecord,
   getMergedResearchDossiers,
@@ -15,6 +17,48 @@ import {
 import { ScientificReportPublicationView } from '@/components/sectoral-eia/ScientificReportPublicationView';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ code: string }>;
+}): Promise<Metadata> {
+  const { code } = await params;
+  const master = getMergedMasterRecord(code, true);
+  if (!master) {
+    return { title: 'Scientific Research Report | Kashmir EcoWatch' };
+  }
+  const { dossier } = master;
+  const canonicalUrl = `${CANONICAL_SITE_URL}/sectoral-eia/reports/${dossier.code.toLowerCase()}`;
+  const ogImagePath = master.editorialNarrative?.openingPlate?.src || KEW_OFFICIAL_LOGO_PATH;
+  const ogImageUrl = ogImagePath.startsWith('http')
+    ? ogImagePath
+    : `${CANONICAL_SITE_URL}${ogImagePath}`;
+  const officialLogoUrl = `${CANONICAL_SITE_URL}${KEW_OFFICIAL_LOGO_PATH}`;
+
+  return {
+    title: `${dossier.code}: ${dossier.title} | Kashmir EcoWatch`,
+    description: dossier.abstract,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: `${dossier.code} — ${dossier.title}`,
+      description: dossier.abstract,
+      url: canonicalUrl,
+      siteName: 'Kashmir EcoWatch (KEW Western Himalayan)',
+      type: 'article',
+      images: [
+        { url: ogImageUrl, alt: `${dossier.code}: ${dossier.title}` },
+        { url: officialLogoUrl, alt: 'Kashmir EcoWatch Official Logo' },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${dossier.code} — ${dossier.title}`,
+      description: dossier.abstract,
+      images: [ogImageUrl],
+    },
+  };
+}
 
 export default async function ResearchDossierDetailPage({
   params,

@@ -23,7 +23,7 @@ export default function AdminAnalyticsPage() {
       <WebinarNav />
       <AdminSubNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="kew-container-admin py-10 space-y-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="bg-slate-900/80 p-5 rounded-2xl border border-white/10">
             <span className="text-xs text-slate-400">Total Delegates Registered</span>

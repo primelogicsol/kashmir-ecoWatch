@@ -32,8 +32,8 @@ export default function DistrictProfileDetail() {
 
   return (
     <main className="min-h-screen bg-slate-950">
-      <div className="relative pt-24 sm:pt-32 pb-12 overflow-hidden bg-slate-900/50">
-        <div className="container mx-auto px-6 relative z-10">
+      <div className="kew-module-hero-surface relative overflow-hidden bg-slate-900/50">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <Button 
             variant="outline" 
             size="sm" 

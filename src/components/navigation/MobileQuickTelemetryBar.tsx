@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 import { 
   Map, Wind, AlertTriangle, PlusCircle, Menu, 
   Activity, Bell, Compass
@@ -16,9 +16,17 @@ interface MobileQuickTelemetryBarProps {
 
 export function MobileQuickTelemetryBar({ onOpenMenu }: MobileQuickTelemetryBarProps) {
   const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
   const [unreadAlerts, setUnreadAlerts] = useState<number>(0);
+  const isDispatchRoute = Boolean(
+    segment === 'himalayan-dispatch' ||
+      pathname?.startsWith('/himalayan-dispatch') ||
+      pathname?.startsWith('/webinars/room/') ||
+      (pathname?.startsWith('/webinars/sessions/') && pathname?.endsWith('/live'))
+  );
 
   useEffect(() => {
+    if (isDispatchRoute) return;
     let isMounted = true;
     const checkAlerts = async () => {
       try {
@@ -52,7 +60,11 @@ export function MobileQuickTelemetryBar({ onOpenMenu }: MobileQuickTelemetryBarP
       window.removeEventListener('storage', checkAlerts);
       window.removeEventListener('kew_alerts_updated', checkAlerts);
     };
-  }, []);
+  }, [isDispatchRoute]);
+
+  if (isDispatchRoute) {
+    return null;
+  }
 
   const navButtons = [
     {
@@ -132,8 +144,8 @@ export function MobileQuickTelemetryBar({ onOpenMenu }: MobileQuickTelemetryBarP
                 className={cn(
                   "flex flex-col items-center justify-center -mt-4 px-3 py-1 rounded-2xl transition-all duration-200 active:scale-95 group",
                   btn.isActive 
-                    ? "bg-gradient-to-b from-emerald-500 to-emerald-700 text-white shadow-lg shadow-emerald-950/80 ring-2 ring-emerald-400/40" 
-                    : "bg-gradient-to-b from-emerald-600 to-emerald-800 text-white shadow-lg shadow-emerald-950/60 hover:from-emerald-500 hover:to-emerald-700"
+                    ? "bg-gradient-to-b from-emerald-700 to-emerald-900 text-white shadow-lg shadow-emerald-950/80 ring-2 ring-emerald-400/50" 
+                    : "bg-gradient-to-b from-emerald-700 to-emerald-900 text-white shadow-lg shadow-emerald-950/60 hover:from-emerald-800 hover:to-emerald-950"
                 )}
                 aria-label="Submit Citizen Science Field Observation"
               >
@@ -178,7 +190,7 @@ export function MobileQuickTelemetryBar({ onOpenMenu }: MobileQuickTelemetryBarP
               <div className="relative">
                 <Icon className={cn("w-5 h-5 mb-1 transition-colors", btn.isActive ? btn.color : "text-slate-400")} />
                 {btn.badge && (
-                  <span className="absolute -top-1.5 -right-2 px-1 min-w-[16px] h-4 bg-red-500 text-white rounded-[4px] text-[9px] font-black flex items-center justify-center animate-pulse shadow-md shadow-red-500/50">
+                  <span className="absolute -top-1.5 -right-2 px-1 min-w-[16px] h-4 bg-red-600 text-white rounded-[4px] text-[9px] font-black flex items-center justify-center animate-pulse shadow-md shadow-red-500/50">
                     {btn.badge}
                   </span>
                 )}

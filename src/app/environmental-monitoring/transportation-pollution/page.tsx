@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
 import { Card } from '@/components/ui/Card';
 import { TransportSubNav } from '@/components/transportation-pollution/TransportSubNav';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 import {
   DISTRICT_TRANSPORT_DATA,
   REGION_TRANSPORT_SUMMARIES,
@@ -642,6 +643,13 @@ export default function TransportationPollutionOverviewPage() {
               );
             })}
           </div>
+
+          <LinkedInvestigationsModulePanel
+            className="mt-10"
+            title="Transportation, Atmospheric Pollution, Noise & Statutory Compliance Investigations"
+            subtitle="13 multidisciplinary KEW-EIAI investigations covering active fleet carrying capacity, cold-start/altitude emissions, 12-source Srinagar PMF apportionment, winter inversions, road dust, logarithmic LAeq noise, transit, EVs, highway fragmentation, and institutional/security vehicle compliance."
+            seriesIds={['transport-air-noise', 'security-transport-compliance']}
+          />
         </div>
       </div>
     </div>

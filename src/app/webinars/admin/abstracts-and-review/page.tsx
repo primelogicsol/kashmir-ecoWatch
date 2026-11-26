@@ -50,7 +50,7 @@ export default function AdminAbstractsReviewPage() {
       <WebinarNav />
       <AdminSubNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="kew-container-admin py-10 space-y-6">
         <div className="space-y-4">
           {abstracts.map(abs => (
             <div key={abs.id} className="bg-slate-900/80 border border-white/10 rounded-2xl p-6 space-y-3">

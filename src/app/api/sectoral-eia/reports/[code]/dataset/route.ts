@@ -130,9 +130,19 @@ export async function GET(
       Title: r.title,
       Publication: r.journalOrPublisher,
       Category: r.category,
+      Geographical_Tier: r.geographicalTier || 'Tier B',
+      Access_Classification: r.accessClassification || 'Abstract-Verified',
       DOI_Or_URL: r.doi ? `https://doi.org/${r.doi}` : r.sourceUrl || '',
     }));
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(refRows), 'References');
+
+    if (master.claimVerificationMatrix && master.claimVerificationMatrix.length > 0) {
+      XLSX.utils.book_append_sheet(
+        wb,
+        XLSX.utils.json_to_sheet(master.claimVerificationMatrix),
+        'Claim_Verification'
+      );
+    }
 
     const xlsxBuf = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer;
     return new NextResponse(new Uint8Array(xlsxBuf), {
@@ -154,12 +164,17 @@ export async function GET(
       title: master.dossier.title,
       version: master.version,
       status: master.dossier.status,
+      evidencePublicationClass: master.evidencePublicationClass,
       publicationDate: master.dossier.date,
       workingGroup: master.attribution.workingGroup,
       studyArea: master.studyArea,
+      externalSearchProtocol: master.externalSearchProtocol,
+      analyticalModelSpec: master.analyticalModelSpec,
       indicators: master.indicators,
       telemetrySeries: master.telemetrySeries,
       riskMatrix: master.riskMatrix,
+      claimVerificationMatrix: master.claimVerificationMatrix,
+      internationalComparativeCase: master.internationalComparativeCase,
       references: master.references,
       limitations: master.limitations,
     };

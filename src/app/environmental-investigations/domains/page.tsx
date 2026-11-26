@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import Link from 'next/link';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import { ArrowRight, ExternalLink, Layers } from 'lucide-react';
 import { Heading } from '@/components/common/Heading';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
@@ -26,14 +26,14 @@ export default function InvestigationDomainsPage() {
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Investigations', href: '/environmental-investigations' },
-          { label: 'Domains' },
+          { label: 'Investigation Domains' },
         ]}
         icon={<Layers className="w-6 h-6 text-emerald-400" />}
         title={
           <div className="overflow-visible pb-1">
             <KewBrandIdentity />
             <span className="block leading-[1.14] bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-              18 Environmental Investigation Domains
+              {INVESTIGATION_DOMAINS.length} Environmental Investigation Domains
             </span>
           </div>
         }

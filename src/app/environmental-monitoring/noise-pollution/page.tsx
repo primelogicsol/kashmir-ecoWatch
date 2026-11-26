@@ -29,6 +29,7 @@ import {
 import { Heading } from '@/components/common/Heading';
 import { Card } from '@/components/ui/Card';
 import { NoisePollutionSubNav } from '@/components/noise-pollution/NoisePollutionSubNav';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 import {
   DISTRICT_NOISE_PROFILES,
   NOISE_MONITORING_STATIONS,
@@ -877,6 +878,13 @@ export default function NoisePollutionOverviewPage() {
               </Link>
             ))}
           </div>
+
+          <LinkedInvestigationsModulePanel
+            className="mt-10"
+            title="Acoustic Degradation, Statutory Silence Zones & Vehicle Noise Compliance Investigations"
+            subtitle="KEW-EIAI investigations enforcing logarithmic LAeq,T integration against Noise Pollution Rules, 2000 (75/70, 65/55, 55/45, 50/40 dB(A)), hospital/school Silence Zone notifications, and CMVR Rule 119–120 horn/siren compliance."
+            investigationCodes={['KEW-INV-0031', 'KEW-INV-0032', 'KEW-INV-0037', 'KEW-INV-0038']}
+          />
         </div>
       </section>
     </div>

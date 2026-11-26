@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { SpeciesProfile, getProtectedAreas } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface SpeciesDetailPageProps {
   species: SpeciesProfile;
@@ -157,7 +158,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 kew-has-hero-rail">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -217,7 +218,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
               </div>
 
               {/* Quick Stats sidebar */}
-              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 w-full lg:max-w-xs shrink-0">
+              <DismissibleHeroOverlay restoreLabel="Show Species Stats" className="w-full lg:max-w-xs shrink-0"><Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 w-full">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-emerald-500" />
@@ -243,7 +244,7 @@ export function SpeciesDetailPage({ species, relatedSpecies = [] }: SpeciesDetai
                     </div>
                   </div>
                 </div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

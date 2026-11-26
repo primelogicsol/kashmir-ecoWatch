@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { encodeQrMatrix, renderQrSvgString } from '@/lib/qr-svg';
 import { CANONICAL_SITE_URL } from '@/lib/seo/entity-identity';
+import { KewOfficialPublicationLogo } from '@/components/common/Logo';
 
 export interface ShareableChapterAnchor {
   number: string;
@@ -195,17 +196,20 @@ export function ReportShareModal({
       <div className="w-full max-w-2xl rounded-lg border border-slate-700/80 bg-slate-900 shadow-2xl overflow-hidden">
         {/* Modal Header */}
         <div className="flex items-start justify-between gap-4 border-b border-slate-800 bg-slate-950 px-6 py-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
-              <Share2 className="h-3.5 w-3.5" />
-              <span>Scientific Report Dissemination · {code}</span>
+          <div className="flex items-start gap-3">
+            <KewOfficialPublicationLogo size="sm" />
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
+                <Share2 className="h-3.5 w-3.5" />
+                <span>Scientific Report Dissemination · {code}</span>
+              </div>
+              <h3
+                id="kew-share-report-title"
+                className="mt-1 text-base font-bold text-white leading-snug"
+              >
+                {title}
+              </h3>
             </div>
-            <h3
-              id="kew-share-report-title"
-              className="mt-1 text-base font-bold text-white leading-snug"
-            >
-              {title}
-            </h3>
           </div>
           <button
             type="button"

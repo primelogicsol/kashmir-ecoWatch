@@ -115,11 +115,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={notoNastaliqUrdu.variable} suppressHydrationWarning>
+    <html lang="en" className={`dark ${notoNastaliqUrdu.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var raw=localStorage.getItem('kew_user_settings');var s=raw?JSON.parse(raw):{};var m=s.themeMode||'dark';var d=document.documentElement;var useLight=m==='light'||(m==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);if(useLight){d.classList.remove('dark');d.classList.add('light');}else{d.classList.remove('light');d.classList.add('dark');}if(s.highContrast){d.classList.add('high-contrast');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         <a
           href="#kew-main-surface"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-emerald-600 focus:text-white focus:text-xs focus:font-bold focus:shadow-xl"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-emerald-700 focus:text-white focus:text-xs focus:font-bold focus:shadow-xl"
         >
           Skip to main content
         </a>

@@ -95,7 +95,7 @@ export default function AssessmentDetailPage({ params }: AssessmentPageProps) {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-10 max-w-6xl">
+      <div className="kew-container-report mt-8 space-y-10">
         {/* DOSSIER HEADER STATS STRIP */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
           <div className="p-3.5 rounded-xl bg-slate-900 border border-white/10">

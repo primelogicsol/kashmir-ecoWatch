@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
-import { wetlandsData, WaterEntity } from '@/data/water-systems';
+import { wetlandsData, WaterEntity, MASTER_LAKE_SUMMARY_STATS } from '@/data/water-systems';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import {
@@ -88,6 +88,24 @@ export default function WetlandsPage() {
       getEntitySlug={entity => `/water-systems/wetlands/${entity.slug}`}
       getCategory={entity => entity.category}
     >
+      {/* ── Section 33: Lake–Wetland Connectivity & Non-Double-Counting Reconciliation ── */}
+      <div className="mb-8 rounded-2xl border border-sky-500/25 bg-slate-900/80 p-5 space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-sky-400">
+            Hydrological Connectivity · Ramsar &amp; Jhelum Floodplain Reconciliation
+          </span>
+          <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="text-xs font-semibold text-emerald-300 hover:underline">
+            Monograph Ch. 03 &amp; Ch. 10 →
+          </Link>
+        </div>
+        <h3 className="text-base font-bold text-white">
+          Lake–Wetland Floodplain Connectivity &amp; Inventory Reconciliation
+        </h3>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          Reconciles {wetlandsData.length} mapped wetland reserves with {MASTER_LAKE_SUMMARY_STATS.kashmirWetlandAssociatedLakes} wetland-associated Kashmir lake/nambal records in DEERS (2012), separating open-water polygons from emergent marsh buffers (e.g., Wular: 2,472.3 ha open water + 9,191.2 ha marshy; Dal: 1,129.4 ha open water + 187.9 ha marshy) and deduplicating shared Ramsar complexes in aggregate basin totals.
+        </p>
+      </div>
+
       {/* ── Wetland Focus Typologies & Guilds Filter Bar ───────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">

@@ -21,14 +21,21 @@ import {
   CANONICAL_INVESTIGATIONS,
   getDomainById,
   INVESTIGATION_DOMAINS,
+  INVESTIGATION_THEMATIC_SERIES,
+  STANDARD_REPORT_SECTIONS,
 } from '@/data/environmental-investigations';
-import { InvestigationRecord, InvestigationStatus } from '@/types/environmental-investigations';
+import {
+  InvestigationRecord,
+  InvestigationSeriesId,
+  InvestigationStatus,
+} from '@/types/environmental-investigations';
 
 export default function InvestigationReportsRegistryPage() {
   const [records, setRecords] = useState<InvestigationRecord[]>(CANONICAL_INVESTIGATIONS);
   const [query, setQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<InvestigationStatus | 'all'>('all');
   const [domainFilter, setDomainFilter] = useState<string>('all');
+  const [seriesFilter, setSeriesFilter] = useState<InvestigationSeriesId | 'all'>('all');
 
   useEffect(() => {
     fetch('/api/environmental-investigations')
@@ -44,6 +51,9 @@ export default function InvestigationReportsRegistryPage() {
   const filtered = useMemo(() => {
     return records.filter((r) => {
       if (statusFilter !== 'all' && r.status !== statusFilter) return false;
+      if (seriesFilter !== 'all' && (r.seriesId || 'core-himalayan-portfolio') !== seriesFilter) {
+        return false;
+      }
       if (
         domainFilter !== 'all' &&
         r.primaryDomainId !== domainFilter &&
@@ -53,12 +63,12 @@ export default function InvestigationReportsRegistryPage() {
       }
       if (query.trim()) {
         const q = query.toLowerCase();
-        const hay = `${r.code} ${r.title} ${r.subtitle} ${r.districts.join(' ')} ${r.watershedOrBasin}`.toLowerCase();
+        const hay = `${r.code} ${r.title} ${r.subtitle} ${r.seriesTitle || ''} ${r.districts.join(' ')} ${r.watershedOrBasin}`.toLowerCase();
         return hay.includes(q);
       }
       return true;
     });
-  }, [records, statusFilter, domainFilter, query]);
+  }, [records, statusFilter, seriesFilter, domainFilter, query]);
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 pb-20">
@@ -78,7 +88,7 @@ export default function InvestigationReportsRegistryPage() {
             </span>
           </div>
         }
-        subtitle="Browse published 24-section scientific investigations alongside active evidence-compilation dossiers, scoping reviews, and proposed investigation charters across the Western Himalayas."
+        subtitle={`Browse published ${STANDARD_REPORT_SECTIONS.length}-section scientific investigations alongside active evidence-compilation dossiers, scoping reviews, and proposed investigation charters across the Western Himalayas.`}
         images={['/images/water-module/water-lake.jpg']}
       />
 
@@ -87,17 +97,31 @@ export default function InvestigationReportsRegistryPage() {
       <div className="page-content__inner py-10 space-y-8">
         {/* Filter Bar */}
         <Card className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
             <div className="relative md:col-span-2">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by code (KEW-INV-...), lake/glacier/river, watershed, or district..."
+                placeholder="Search by code (KEW-INV-...), Dal, Dachigam, Salim Ali, drinking water, transport, G.S.R. 547(E)..."
                 className="w-full pl-10 pr-4 py-2 bg-slate-950 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
               />
             </div>
+
+            <select
+              value={seriesFilter}
+              onChange={(e) => setSeriesFilter(e.target.value as InvestigationSeriesId | 'all')}
+              aria-label="Filter by thematic investigation series"
+              className="w-full px-3 py-2 bg-slate-950 border border-white/15 text-xs text-white focus:border-emerald-500 focus:outline-none"
+            >
+              <option value="all">All {INVESTIGATION_THEMATIC_SERIES.length} Thematic Series ({records.length})</option>
+              {INVESTIGATION_THEMATIC_SERIES.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.shortLabel} ({records.filter((r) => (r.seriesId || 'core-himalayan-portfolio') === s.id).length})
+                </option>
+              ))}
+            </select>
 
             <select
               value={domainFilter}
@@ -105,7 +129,7 @@ export default function InvestigationReportsRegistryPage() {
               aria-label="Filter by investigation domain"
               className="w-full px-3 py-2 bg-slate-950 border border-white/15 text-xs text-white focus:border-emerald-500 focus:outline-none"
             >
-              <option value="all">All 18 Investigation Domains</option>
+              <option value="all">All {INVESTIGATION_DOMAINS.length} Investigation Domains</option>
               {INVESTIGATION_DOMAINS.map((d) => (
                 <option key={d.id} value={d.id}>
                   {d.code}. {d.name}
@@ -182,9 +206,25 @@ export default function InvestigationReportsRegistryPage() {
                   <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-between gap-4">
                     <div className="space-y-2.5">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-teal-300">
-                          {domain?.code}. {domain?.name}
-                        </span>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="text-xs font-bold uppercase tracking-wider text-teal-300">
+                            {domain?.code}. {domain?.name}
+                          </span>
+                          {inv.seriesTitle && (
+                            <Badge variant="outline" size="sm" className="text-[10px] font-mono">
+                              {inv.seriesTitle}
+                            </Badge>
+                          )}
+                          {inv.priority && (
+                            <Badge
+                              variant={inv.priority === 'Critical' ? 'danger' : 'warning'}
+                              size="sm"
+                              className="text-[10px]"
+                            >
+                              {inv.priority} Priority
+                            </Badge>
+                          )}
+                        </div>
                         <InvestigationStatusBadge status={inv.status} label={inv.statusLabel} />
                       </div>
 

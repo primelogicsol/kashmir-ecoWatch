@@ -43,7 +43,7 @@ export default function ImpactAtlasPage() {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-8 max-w-6xl">
+      <div className="kew-container-report mt-8 space-y-8">
         {/* FULLSCREEN GIS MAP CONTAINER */}
         <div className="space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

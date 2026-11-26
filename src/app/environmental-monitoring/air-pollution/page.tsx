@@ -27,6 +27,7 @@ import {
 import { useGlobalFilter } from '@/context/GlobalFilterContext';
 import { ModuleScopeRow, DEFAULT_SCOPE_PILL_MAP } from '@/components/common/ModuleScopeRow';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 
 type AirQualityPageRecord = AirQualityLiveRecord & {
   aqi: number;
@@ -987,6 +988,24 @@ export default function AirPollutionPage() {
               icon: Zap,
               color: 'violet',
             },
+          ]}
+        />
+      </div>
+
+      {/* ── Linked KEW-EIAI Atmospheric & Source Apportionment Investigations ── */}
+      <div className="container mx-auto px-6 py-6">
+        <LinkedInvestigationsModulePanel
+          title="Atmospheric Source Apportionment, Winter Inversions & Vehicular Emission Investigations"
+          subtitle="KEW-EIAI scientific investigations examining multi-sectoral PM2.5/PM10 source apportionment (biomass heating, brick kilns, road dust, vehicular fleets), winter boundary-layer inversions, and statutory fleet emission compliance."
+          investigationCodes={[
+            'KEW-INV-0006',
+            'KEW-INV-0027',
+            'KEW-INV-0028',
+            'KEW-INV-0029',
+            'KEW-INV-0030',
+            'KEW-INV-0033',
+            'KEW-INV-0037',
+            'KEW-INV-0038',
           ]}
         />
       </div>

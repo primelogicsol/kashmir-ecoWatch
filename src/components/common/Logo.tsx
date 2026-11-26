@@ -1,12 +1,57 @@
-'use client';
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { KEW_OFFICIAL_LOGO_PATH } from '@/lib/seo/entity-identity';
+
+export { KEW_OFFICIAL_LOGO_PATH };
 
 interface LogoProps {
   variant?: 'expanded' | 'compact' | 'mobile';
   className?: string;
+}
+
+/**
+ * Reusable Institutional Logo Mark for Scientific Publications, Covers, Headers & Print.
+ * Preserves original aspect ratio, high-resolution transparency, and guaranteed contrast
+ * across both dark Premiere Obsidian (#080a12) and light Archival Parchment / Print layouts.
+ */
+export function KewOfficialPublicationLogo({
+  size = 'md',
+  className,
+}: {
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  className?: string;
+}) {
+  const dims = {
+    xs: 'h-7 w-7 p-0.5',
+    sm: 'h-9 w-9 p-1',
+    md: 'h-12 w-12 p-1',
+    lg: 'h-14 w-14 sm:h-16 sm:w-16 p-1.5',
+  }[size];
+
+  return (
+    <span
+      className={cn(
+        'inline-flex shrink-0 items-center justify-center rounded-sm border select-none',
+        dims,
+        className
+      )}
+      style={{
+        backgroundColor: '#080a12',
+        borderColor: '#40382e',
+        WebkitPrintColorAdjust: 'exact',
+        printColorAdjust: 'exact',
+      }}
+    >
+      <img
+        src={KEW_OFFICIAL_LOGO_PATH}
+        alt="Kashmir EcoWatch"
+        className="h-full w-full object-contain"
+        loading="eager"
+        decoding="sync"
+      />
+    </span>
+  );
 }
 
 /**
@@ -52,7 +97,7 @@ export function Logo({ variant = 'expanded', className }: LogoProps) {
     >
       {/* Logo Mark */}
       <img
-        src="/kew_LOGO.png"
+        src={KEW_OFFICIAL_LOGO_PATH}
         alt="Kashmir EcoWatch (KEW Western Himalayan)"
         className={cn(
           config.imgClass,

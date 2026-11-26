@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { Report } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface ReportDetailPageProps {
   report: Report;
@@ -77,7 +78,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 kew-has-hero-rail">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,10 +110,10 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
                   </Badge>
                 </div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-4xl 3xl:max-w-5xl">
                   {report.title}
                 </h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-3xl mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-[72ch] mb-6 leading-relaxed">
                   {report.description}
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
@@ -141,7 +142,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
               </div>
 
               {/* Quick Stats */}
-              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 hidden lg:block">
+              <DismissibleHeroOverlay restoreLabel="Show Report Stats" className="hidden lg:grid shrink-0"><Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -165,7 +166,7 @@ export function ReportDetailPage({ report, relatedReports = [] }: ReportDetailPa
                     </div>
                   </div>
                 </div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { KEWRegion } from './kew-green-heroes';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 
 export type MartyrVerificationType =
   | 'HISTORICAL_CASE'
@@ -73,6 +74,7 @@ export const MARTYRS_REGISTRY_SUMMARY: MartyrsRegistrySummary = {
 };
 
 export const COMMON_DOSSIER_LINKS = [
+  { label: 'Himalayan Dispatch Cover Story: The Price of Protecting Paradise', url: getKewToDispatchUrl('/issues/volume-01-issue-01/the-price-of-protecting-paradise') },
   { label: 'KEW Green Heroes Directory', url: '/resources/kew-green-heroes?tab=all-heroes' },
   { label: 'Green Martyrs Memorial', url: '/resources/kew-green-heroes?tab=green-martyrs' },
   { label: 'Forest & Biodiversity Monitoring', url: '/biodiversity/forest-ecosystems' },
@@ -158,18 +160,19 @@ export const GREEN_MARTYRS_DOSSIERS: GreenMartyrDossier[] = [
     year: 2025,
     editorialTribute: '“He confronted a forest fire without the protection his service demanded.”',
     narrative:
-      'Gull Mohammad Shah, 54, was involved in combating a forest fire in the Hengipora area of Verinag. On December 7, 2025, he fell down a steep slope while attempting to move away from advancing flames. An investigation published by Kashmir Observer described significant shortages of personal protective equipment among the firefighting personnel.',
-    keyImpact: 'Fatality highlighting gaps in frontline forest-fire safety',
+      'Gull Mohammad Shah, 54, had served the J&K Forest Department for nearly three decades and, according to relatives, was approaching a long-awaited promotion. On Sunday, December 7, 2025, while helping contain a forest fire in the Hengipora area of Verinag (Anantnag), he suffered a fatal fall down a steep mountainside while moving away from advancing flames. Subsequent investigative reporting described significant shortages of personal protective equipment among frontline firefighting personnel.',
+    keyImpact: 'Fatality highlighting gaps in frontline forest-fire safety after nearly three decades of service',
     documentedContributions: [
       {
         year: 2025,
-        title: 'Hengipora Forest Fire Response',
+        title: 'Hengipora (Verinag) Forest Fire Response',
         evidenceTier: 'INVESTIGATIVE ENVIRONMENTAL REPORTING',
         description: 'Participated in firefighting operations in Compartment 48 of the Verinag forest landscape.',
-        documentedOutcome: 'Fatal accident during firefighting; published calls for improved equipment and worker safety.'
+        documentedOutcome: 'Fatal fall during firefighting on December 7, 2025; published calls for improved equipment and worker safety.'
       }
     ],
     sourceProvenance: [
+      { title: 'Greater Kashmir, December 2025: Forest worker dies saving green gold in Verinag woods', url: 'https://www.greaterkashmir.com/kashmir/forest-worker-dies-saving-green-gold-in-verinag-woods/' },
       { title: 'Kashmir Observer investigative report by Dr Raja Muzaffar Bhat: Bare-handed battle ends in tragedy for forest guard in Kashmir', url: 'https://kashmirobserver.net/2025/12/09/bare-handed-battle-ends-in-tragedy-for-forest-guard-in-kashmir/' }
     ],
     researchStatus: 'Independently documented. Departmental safety inquiry and compensation outcome pending.'
@@ -555,6 +558,7 @@ export const GREEN_MARTYRS_DOSSIERS: GreenMartyrDossier[] = [
       }
     ],
     sourceProvenance: [
+      { title: 'Kashmir Life, December 2025: Jammu Kashmir forest guard dies in stone slide', url: 'https://kashmirlife.net/jammu-kashmir-forest-guard-dies-in-stone-slide-418989/' },
       { title: 'Kashmir Vision incident report: Forest guard dies after hit by stone in Doda', url: 'https://kashmirvision.in/2025/12/31/forest-guard-dies-after-hit-by-stone-in-doda-2/' }
     ],
     researchStatus: 'Independently documented. Duty circumstances and departmental inquiry pending.'

@@ -1,70 +1,131 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  PenTool, 
-  Mic2, 
-  Music, 
-  BookOpen, 
-  Sparkles, 
-  ExternalLink, 
-  Send, 
-  CheckCircle2, 
-  ShieldCheck, 
-  AlertCircle, 
-  GraduationCap, 
-  Layers, 
+import {
+  PenTool,
+  Mic2,
+  Music,
+  BookOpen,
+  ExternalLink,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  GraduationCap,
   ArrowRight,
   Radio,
-  FileCheck,
-  Globe2,
-  Users,
   Copy,
-  Check
+  Check,
+  Film,
+  Palette,
+  Waves,
 } from 'lucide-react';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
-import { 
-  SUFIPULSE_CREATIVE_PATHWAYS, 
-  ECOVOICES_ENVIRONMENTAL_THEMES, 
+import { useAuth } from '@/context/AuthContext';
+import {
+  SUFIPULSE_CREATIVE_PATHWAYS,
+  ECOVOICES_ENVIRONMENTAL_THEMES,
   YOUTH_ECOVOICES_FRAMEWORK,
-  SufiPulseCreativePathway 
 } from '@/data/ecovoices-catalog';
+import {
+  ECOVOICES_BIOACOUSTIC_COLLECTION,
+  KEW_SIX_ACOUSTIC_REGIONS,
+  type AcousticClassification,
+  type KewAcousticRegion,
+} from '@/data/ecovoices-bioacoustics';
 
 export function EcoVoicesParticipationGateway() {
-  const [selectedRole, setSelectedRole] = useState<string>('all');
+  const { user, isLoggedIn } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submissionSuccess, setSubmissionSuccess] = useState<any | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<boolean>(false);
 
-  // Form states
   const [formData, setFormData] = useState({
     contributorName: '',
     contributorEmail: '',
     contributorPhone: '',
+    creativeDepartment: 'music' as 'music' | 'poetry' | 'cinema' | 'art' | 'soundscapes' | 'contributors',
     contributorRole: 'Writer / Poet (Ahl-e-Qalam)',
     preferredLanguage: 'Kashmiri (Koshur)',
     environmentalThemeId: 'glaciers_snow',
-    geographicConnection: 'Srinagar Basin',
+    geographicConnection: 'Srinagar (Dal & Jhelum)',
     creativeFormat: 'Poem / Lyrical Kalam',
-    stylisticOrientation: 'Secular Modern Ecological Advocacy',
+    stylisticOrientation: 'Secular Modern Ecological Advocacy (Open Tradition)',
     workTitle: '',
     contentOrPortfolioUrl: '',
     isYouthSubmission: false,
     institutionOrGuardian: '',
-    rightsDeclarationAgreed: false
+    rightsDeclarationAgreed: false,
+    // Department V Bioacoustic Field Provenance (active when creativeDepartment === 'soundscapes')
+    acousticClassification: 'Biophony' as AcousticClassification,
+    targetCollectionId: 'voices-himalayan-monal',
+    kewSixRegion: 'Kashmir' as KewAcousticRegion,
+    speciesOrPhenomenon: '',
+    habitatAndElevation: '',
+    recordingDateAndSeason: '',
+    recordingEquipment: '',
+    openLicenseChoice: 'CC BY 4.0 (Attribution)',
+    maskSensitiveCoordinates: true,
+    unmanipulatedFieldAttestation: false,
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      setFormData((prev) => ({
+        ...prev,
+        contributorName: prev.contributorName || user.name || '',
+        contributorEmail: prev.contributorEmail || user.email || '',
+      }));
+    }
+  }, [isLoggedIn, user]);
+
+  useEffect(() => {
+    const handlePrefill = (event: Event) => {
+      const custom = event as CustomEvent<{
+        targetEntryId?: string;
+        title?: string;
+        classification?: AcousticClassification;
+        region?: KewAcousticRegion;
+        speciesCommon?: string;
+        speciesScientific?: string;
+        habitat?: string;
+        sensitiveProtected?: boolean;
+      }>;
+      const d = custom.detail || {};
+      setFormData((prev) => ({
+        ...prev,
+        creativeDepartment: 'soundscapes',
+        contributorRole: 'Ornithologist / Bioacoustician / Field Recordist',
+        preferredLanguage: 'Visual / Instrumental / Non-Verbal',
+        workTitle: d.title ? `Field Voucher: ${d.title}` : prev.workTitle,
+        acousticClassification: d.classification || prev.acousticClassification,
+        targetCollectionId: d.targetEntryId || prev.targetCollectionId,
+        kewSixRegion: d.region || prev.kewSixRegion,
+        speciesOrPhenomenon:
+          d.speciesCommon && d.speciesScientific
+            ? `${d.speciesCommon} (${d.speciesScientific})`
+            : prev.speciesOrPhenomenon,
+        habitatAndElevation: d.habitat || prev.habitatAndElevation,
+        maskSensitiveCoordinates:
+          typeof d.sensitiveProtected === 'boolean'
+            ? d.sensitiveProtected
+            : prev.maskSensitiveCoordinates,
+      }));
+    };
+
+    window.addEventListener('kew:ecovoices-prefill-soundscape', handlePrefill);
+    return () => window.removeEventListener('kew:ecovoices-prefill-soundscape', handlePrefill);
+  }, []);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -72,7 +133,11 @@ export function EcoVoicesParticipationGateway() {
     e.preventDefault();
     setFormError(null);
 
-    if (!formData.contributorName.trim() || !formData.contributorEmail.trim() || !formData.workTitle.trim()) {
+    if (
+      !formData.contributorName.trim() ||
+      !formData.contributorEmail.trim() ||
+      !formData.workTitle.trim()
+    ) {
       setFormError('Please complete all required fields (Name, Email, and Work Title).');
       return;
     }
@@ -82,24 +147,68 @@ export function EcoVoicesParticipationGateway() {
       return;
     }
 
+    if (
+      formData.creativeDepartment === 'soundscapes' &&
+      !formData.unmanipulatedFieldAttestation
+    ) {
+      setFormError(
+        'For Sounds of Nature submissions, please confirm that the recording is an authentic, non-synthesized field capture.'
+      );
+      return;
+    }
+
     setIsSubmitting(true);
+
+    const submissionPayload =
+      formData.creativeDepartment === 'soundscapes'
+        ? {
+            ...formData,
+            bioacousticMetadata: {
+              acousticClassification: formData.acousticClassification,
+              targetCollectionId: formData.targetCollectionId,
+              kewSixRegion: formData.kewSixRegion,
+              speciesOrPhenomenon: formData.speciesOrPhenomenon,
+              habitatAndElevation: formData.habitatAndElevation,
+              recordingDateAndSeason: formData.recordingDateAndSeason,
+              recordingEquipment: formData.recordingEquipment,
+              openLicenseChoice: formData.openLicenseChoice,
+              maskSensitiveCoordinates: formData.maskSensitiveCoordinates,
+              unmanipulatedFieldAttestation: formData.unmanipulatedFieldAttestation,
+            },
+          }
+        : formData;
 
     try {
       const res = await fetch('/api/ecovoices/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(submissionPayload),
       });
 
       const data = await res.json();
+
+      // Mirror into unified administrative operations queue for Admin & Contributor Dashboard visibility
+      fetch('/api/operations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sourcePage: '/ecovoices',
+          title: `[EcoVoices · ${formData.creativeDepartment.toUpperCase()}] ${formData.workTitle}`,
+          category: formData.contributorRole,
+          ownerName: formData.contributorName,
+          ownerEmail: formData.contributorEmail,
+          organization: formData.institutionOrGuardian || undefined,
+          district: formData.geographicConnection,
+          details: `Department: ${formData.creativeDepartment} | Language: ${formData.preferredLanguage} | Theme: ${formData.environmentalThemeId}\n\n${formData.contentOrPortfolioUrl}`,
+        }),
+      }).catch(() => null);
 
       if (data.success) {
         setSubmissionSuccess(data);
       } else {
         setFormError(data.error || 'Submission failed. Please check your information.');
       }
-    } catch (err: any) {
-      // Fallback local receipt if offline
+    } catch {
       const fallbackId = `ECOVOICES-2026-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
       setSubmissionSuccess({
         trackingId: fallbackId,
@@ -108,8 +217,8 @@ export function EcoVoicesParticipationGateway() {
           contributorName: formData.contributorName,
           role: formData.contributorRole,
           theme: formData.environmentalThemeId,
-          trackingId: fallbackId
-        }
+          trackingId: fallbackId,
+        },
       });
     } finally {
       setIsSubmitting(false);
@@ -123,192 +232,19 @@ export function EcoVoicesParticipationGateway() {
   };
 
   return (
-    <div className="space-y-12">
-      
-      {/* ======================================================== */}
-      {/* SECTION 1: PROMINENT INVITATION BANNER & QUICK ROLES */}
-      {/* ======================================================== */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 border border-purple-500/40 shadow-2xl relative overflow-hidden space-y-8">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 left-10 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="space-y-4 max-w-4xl relative z-10">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge className="bg-purple-600 text-white font-mono text-xs uppercase tracking-wider px-3 py-1">
-              Environmental Creative Participation Network
-            </Badge>
-            <Badge variant="outline" className="border-emerald-500/40 text-emerald-300 font-mono text-xs">
-              Kashmir EcoWatch × SufiPulse USA
-            </Badge>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            Let Kashmir&apos;s Environment <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-emerald-300 to-cyan-400">Find Its Voice</span>
-          </h2>
-
-          <p className="text-lg sm:text-xl font-medium text-purple-200">
-            Write. Sing. Compose. Perform. Publish.
-          </p>
-
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            An open, inclusive invitation to writers, poets, vocalists, instrumentalists, composers, producers, and literary scholars to create original creative works dedicated to the lakes, glaciers, rivers, and Western Himalayan ecology of Kashmir. Whether your artistic expression is sacred kalam, traditional folk, contemporary acoustic, or modern secular conservation advocacy—your voice belongs here.
-          </p>
-        </div>
-
-        {/* 6 QUICK ACTION CARDS */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 relative z-10">
-          <a
-            href="https://sufipulse.com/writers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/20 hover:border-purple-400 hover:bg-purple-950/40 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-purple-900/60 text-purple-300 flex items-center justify-center">
-                <PenTool className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-purple-300">
-                Write for Nature
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Poetry, kalam &amp; song lyrics
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-purple-400 font-mono">
-              <span>Ahl-e-Qalam</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-
-          <a
-            href="https://sufipulse.com/vocalists"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/20 hover:border-purple-400 hover:bg-purple-950/40 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-cyan-900/60 text-cyan-300 flex items-center justify-center">
-                <Mic2 className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-cyan-300">
-                Sing for Nature
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Vocals &amp; solo performance
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-cyan-400 font-mono">
-              <span>Ahl-e-Sada</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-
-          <a
-            href="https://sufipulse.com/producers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/20 hover:border-purple-400 hover:bg-purple-950/40 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-emerald-900/60 text-emerald-300 flex items-center justify-center">
-                <Music className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-emerald-300">
-                Play for Nature
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Santoor, rabab, flute &amp; strings
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-emerald-400 font-mono">
-              <span>Saaz-kaaran</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-
-          <a
-            href="https://sufipulse.com/producers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/20 hover:border-purple-400 hover:bg-purple-950/40 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-amber-900/60 text-amber-300 flex items-center justify-center">
-                <Radio className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-amber-300">
-                Produce for Nature
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Arrangements &amp; audio mixing
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-amber-400 font-mono">
-              <span>Ahl-e-Naghma</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-
-          <a
-            href="https://sufipulse.com/literary-contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/20 hover:border-purple-400 hover:bg-purple-950/40 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-rose-900/60 text-rose-300 flex items-center justify-center">
-                <BookOpen className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-rose-300">
-                Publish for Nature
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Essays, memoirs &amp; commentaries
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-rose-400 font-mono">
-              <span>Ahl-e-Tahreer</span>
-              <ExternalLink className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-
-          <a
-            href="#youth-ecovoices"
-            className="p-4 rounded-2xl bg-slate-950/80 border border-emerald-500/30 hover:border-emerald-400 hover:bg-emerald-950/30 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-emerald-900/60 text-emerald-300 flex items-center justify-center">
-                <GraduationCap className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-white text-xs group-hover:text-emerald-300">
-                Youth EcoVoices
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-snug">
-                Schools, colleges &amp; choirs
-              </p>
-            </div>
-            <div className="pt-3 flex items-center text-[10px] text-emerald-400 font-mono">
-              <span>Junior Choirs</span>
-              <ArrowRight className="w-2.5 h-2.5 ml-1 opacity-70" />
-            </div>
-          </a>
-        </div>
-      </div>
-
-      {/* ======================================================== */}
-      {/* SECTION 2: THE 5 SUFIPULSE CREATIVE PATHWAYS & JOURNAL */}
-      {/* ======================================================== */}
+    <div className="space-y-14">
+      {/* 1. FIVE SUFIPULSE CREATIVE PATHWAYS + LITERARY JOURNAL */}
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <Badge className="bg-purple-950 text-purple-300 border-purple-500/40 text-xs mb-2">
-              Canonical Creative Infrastructure
-            </Badge>
-            <h3 className="text-2xl font-black text-white">
+          <div className="space-y-2">
+            <span className="inline-block text-[11px] font-mono uppercase tracking-[0.22em] text-amber-300/90">
+              Canonical Music &amp; Literary Infrastructure · SufiPulse USA × KEW
+            </span>
+            <h3 className="font-[family-name:var(--font-ecovoices-serif)] text-3xl sm:text-4xl font-semibold text-white">
               Five SufiPulse Pathways, One Ecological Mission
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-1">
-              EcoVoices directly connects with SufiPulse USA&apos;s established contributor pathways. While SufiPulse manages artistic direction, auditions, studio recording, and publishing, Kashmir EcoWatch provides the scientific grounding and curriculum integration.
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+              For musical compositions, vocal performance, acoustic instrumentation, and literary kalam, EcoVoices connects directly with SufiPulse USA&apos;s established contributor pathways while Kashmir EcoWatch provides scientific grounding and educational integration.
             </p>
           </div>
 
@@ -316,57 +252,59 @@ export function EcoVoicesParticipationGateway() {
             href="https://sufipulse.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-purple-300 border border-purple-500/30 font-mono text-xs shrink-0 transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-amber-300/15 text-amber-200 border border-amber-300/30 font-mono text-xs shrink-0 transition-colors"
           >
             <span>Explore SufiPulse.com Portal</span>
-            <ExternalLink className="w-3 h-3" />
+            <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {SUFIPULSE_CREATIVE_PATHWAYS.map((pathway) => (
-            <Card
+            <div
               key={pathway.id}
-              className={`p-6 flex flex-col justify-between transition-all ${
+              className={`p-6 rounded-2xl border flex flex-col justify-between transition-all ${
                 pathway.roleType === 'curated_publication'
-                  ? 'bg-gradient-to-b from-slate-900 to-purple-950/30 border-purple-500/40 ring-1 ring-purple-500/20'
-                  : 'bg-slate-900/90 border-white/10 hover:border-purple-500/40'
+                  ? 'bg-gradient-to-b from-[#0b1024] to-[#120d24] border-amber-300/40 shadow-[0_12px_35px_rgba(0,0,0,0.5)]'
+                  : 'bg-[#080c18]/90 border-white/10 hover:border-amber-300/35'
               }`}
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono text-xs font-bold text-purple-400">
+                  <span className="font-mono text-xs font-bold text-amber-300">
                     {pathway.name}
                   </span>
-                  <Badge 
-                    variant={pathway.roleType === 'curated_publication' ? 'default' : 'outline'}
-                    className={`text-[10px] ${
-                      pathway.roleType === 'curated_publication' 
-                        ? 'bg-purple-600 text-white border-none' 
-                        : 'border-white/10 text-slate-400'
+                  <span
+                    className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full border ${
+                      pathway.roleType === 'curated_publication'
+                        ? 'bg-amber-300 text-slate-950 font-bold border-amber-200'
+                        : 'border-amber-300/25 text-amber-200/80 bg-amber-300/5'
                     }`}
                   >
                     {pathway.badgeLabel}
-                  </Badge>
+                  </span>
                 </div>
 
-                <h4 className="font-bold text-white text-base">
+                <h4 className="font-[family-name:var(--font-ecovoices-serif)] text-xl font-semibold text-white">
                   {pathway.title}
                 </h4>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {pathway.summary}
-                </p>
+                <p className="text-xs text-slate-300 leading-relaxed">{pathway.summary}</p>
 
-                <p className="text-[11px] text-slate-400 leading-relaxed border-t border-white/5 pt-2">
+                <p className="text-[11px] text-slate-400 leading-relaxed border-t border-white/10 pt-2.5">
                   {pathway.detailedScope}
                 </p>
 
                 <div className="space-y-1.5 pt-1">
-                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">Eligible Formats:</span>
-                  <div className="flex flex-wrap gap-1">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
+                    Eligible Formats:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
                     {pathway.eligibleFormats.map((f, i) => (
-                      <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-slate-950 border border-white/5 text-slate-300">
+                      <span
+                        key={i}
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-black/50 border border-white/10 text-slate-300"
+                      >
                         {f}
                       </span>
                     ))}
@@ -374,8 +312,8 @@ export function EcoVoicesParticipationGateway() {
                 </div>
               </div>
 
-              <div className="pt-5 border-t border-white/10 mt-4 flex items-center justify-between gap-2">
-                <span className="text-[10px] font-mono text-slate-500">
+              <div className="pt-5 border-t border-white/10 mt-5 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-mono text-slate-400">
                   {pathway.roleType === 'curated_publication' ? 'Publishing Venue' : 'Contributor Role'}
                 </span>
 
@@ -383,49 +321,51 @@ export function EcoVoicesParticipationGateway() {
                   href={pathway.canonicalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                     pathway.roleType === 'curated_publication'
-                      ? 'bg-purple-600 hover:bg-purple-500 text-white'
-                      : 'bg-slate-800 hover:bg-purple-900/60 text-purple-300 hover:text-white border border-white/10'
+                      ? 'bg-amber-300 hover:bg-amber-200 text-slate-950 font-bold'
+                      : 'bg-white/[0.05] hover:bg-amber-300/20 text-amber-200 border border-amber-300/25'
                   }`}
                 >
-                  <span>{pathway.roleType === 'curated_publication' ? 'Visit Journal Archive' : 'Apply on SufiPulse'}</span>
+                  <span>
+                    {pathway.roleType === 'curated_publication'
+                      ? 'Visit Journal Archive'
+                      : 'Apply on SufiPulse'}
+                  </span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* ======================================================== */}
-      {/* SECTION 3: ENVIRONMENTAL THEME REGISTRY (10 THEMES) */}
-      {/* ======================================================== */}
+      {/* 2. 10 WESTERN HIMALAYAN ENVIRONMENTAL THEMES */}
       <div className="space-y-6">
-        <div>
-          <Badge className="bg-emerald-950 text-emerald-300 border-emerald-500/40 text-xs mb-2">
-            Thematic Focus Areas
-          </Badge>
-          <h3 className="text-2xl font-black text-white">
-            10 Western Himalayan Environmental Themes
+        <div className="space-y-1.5">
+          <span className="inline-block text-[11px] font-mono uppercase tracking-[0.22em] text-emerald-300/90">
+            Scientific Grounding · 10 Observatory Themes
+          </span>
+          <h3 className="font-[family-name:var(--font-ecovoices-serif)] text-2xl sm:text-3xl font-semibold text-white">
+            Western Himalayan Ecological Themes
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-1">
-            Every creative contribution is anchored to one of Kashmir EcoWatch&apos;s active scientific observatory layers. Select a theme below to view the empirical monitoring module and ground your creative work in real Western Himalayan science.
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl">
+            Every creative work on EcoVoices connects to an active Kashmir EcoWatch scientific observatory layer so artistic expression remains grounded in living mountain reality.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
           {ECOVOICES_ENVIRONMENTAL_THEMES.map((theme) => (
-            <Card
+            <div
               key={theme.id}
-              className="p-4 bg-slate-900/80 border-white/10 hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-3 group"
+              className="p-4 rounded-2xl bg-[#080c18]/85 border border-white/10 hover:border-amber-300/35 transition-all flex flex-col justify-between space-y-3 group"
             >
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-[10px] font-mono">
-                  <span className="text-emerald-400 font-bold">{theme.number}</span>
-                  <span className="text-slate-500">EcoWatch Layer</span>
+                  <span className="text-amber-300 font-bold">{theme.number}</span>
+                  <span className="text-slate-500">Observatory</span>
                 </div>
-                <h4 className="font-bold text-white text-xs group-hover:text-emerald-300 transition-colors leading-snug">
+                <h4 className="font-semibold text-white text-xs group-hover:text-amber-200 transition-colors leading-snug">
                   {theme.title}
                 </h4>
                 <p className="text-[11px] text-slate-400 leading-snug line-clamp-2">
@@ -433,222 +373,277 @@ export function EcoVoicesParticipationGateway() {
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-white/5 space-y-2">
-                <span className="text-[10px] text-purple-300 font-mono block">
-                  Styles: {theme.recommendedStyles[0]}
+              <div className="pt-2 border-t border-white/10 space-y-1.5">
+                <span className="text-[10px] text-amber-200/75 font-mono block truncate">
+                  {theme.recommendedStyles[0]}
                 </span>
-
                 <Link
                   href={theme.scientificHref}
-                  className="inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold group/link"
+                  className="inline-flex items-center gap-1 text-[11px] text-emerald-300 hover:text-emerald-200 font-semibold group/link"
                 >
-                  <span>View Scientific Layer</span>
+                  <span>Explore Science</span>
                   <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* ======================================================== */}
-      {/* SECTION 4: DEDICATED ENVIRONMENTAL SUBMISSION GATEWAY */}
-      {/* ======================================================== */}
-      <div id="participate-form" className="space-y-6 pt-4">
-        <div className="p-6 rounded-2xl bg-slate-900 border border-blue-500/30 space-y-2">
-          <Badge className="bg-blue-600 text-white font-bold text-xs">
-            Direct Environmental Submission Gateway
-          </Badge>
-          <h3 className="text-2xl font-black text-white">
-            Register Your Environmental Creative Work
+      {/* 3. MULTI-DEPARTMENT CREATIVE SUBMISSION GATEWAY */}
+      <div id="submit" className="scroll-mt-32 space-y-6 pt-2">
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0b1022] via-[#090d1b] to-[#120e1e] border border-amber-300/30 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-amber-300 font-semibold">
+              Open Creative Submission &amp; Editorial Review Gateway
+            </span>
+            {isLoggedIn && user && (
+              <span className="text-[11px] font-mono px-3 py-0.5 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-400/30">
+                Signed in as {user.name}
+              </span>
+            )}
+          </div>
+          <h3 className="font-[family-name:var(--font-ecovoices-serif)] text-3xl sm:text-4xl font-semibold text-white">
+            Submit an Environmental Creative Work
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-            Submit your poems, vocal demos, acoustic instrumental arrangements, essays, or school choir compositions. All traditions—secular conservation songs, contemporary folk, classical Kashmiri vakhs, or Sufiana qalam—are fully eligible for scientific and artistic review.
+            Submit original songs, ecological poetry, documentary film screeners, visual art portfolios, natural soundscape recordings, or supervised youth choir works for joint artistic and scientific review.
           </p>
+
+          {/* 6 Department Quick Role Pills */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-2">
+            {[
+              { id: 'music', label: 'Music & Vocals', icon: Mic2, role: 'Vocalist & Singer (Ahl-e-Sada)' },
+              { id: 'poetry', label: 'Poetry & Kalam', icon: PenTool, role: 'Writer / Poet (Ahl-e-Qalam)' },
+              { id: 'cinema', label: 'Cinema & Film', icon: Film, role: 'Documentary Filmmaker / Visual Director' },
+              { id: 'art', label: 'Visual Arts', icon: Palette, role: 'Visual Artist / Botanical Illustrator' },
+              { id: 'soundscapes', label: 'Soundscapes', icon: Waves, role: 'Field Recordist / Acoustic Composer' },
+              { id: 'contributors', label: 'Youth Choirs', icon: GraduationCap, role: 'Student / School Choir Lead (Youth EcoVoices)' },
+            ].map((item) => {
+              const Icon = item.icon;
+              const isSelected = formData.creativeDepartment === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      creativeDepartment: item.id as any,
+                      contributorRole: item.role,
+                      isYouthSubmission: item.id === 'contributors' ? true : prev.isYouthSubmission,
+                    }))
+                  }
+                  className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-center gap-2.5 ${
+                    isSelected
+                      ? 'bg-amber-300/15 border-amber-300/60 text-amber-100 shadow-md'
+                      : 'bg-black/40 border-white/10 text-slate-300 hover:border-amber-300/30'
+                  }`}
+                >
+                  <Icon className="w-4 h-4 text-amber-300 shrink-0" />
+                  <span className="text-xs font-semibold truncate">{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {submissionSuccess ? (
-          <Card className="p-8 bg-emerald-950/30 border border-emerald-500/40 rounded-2xl space-y-6 max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 text-emerald-400">
+          <div className="p-8 bg-emerald-950/30 border border-emerald-400/40 rounded-3xl space-y-6 max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 text-emerald-300">
               <CheckCircle2 className="w-8 h-8 shrink-0" />
               <div>
-                <h4 className="text-xl font-black text-white">
-                  Submission Successfully Registered
+                <h4 className="font-[family-name:var(--font-ecovoices-serif)] text-2xl font-semibold text-white">
+                  Creative Proposal Registered for Editorial Review
                 </h4>
                 <p className="text-xs text-emerald-300 font-mono">
-                  Your creative work is now in the EcoVoices Editorial &amp; Scientific Review Registry.
+                  Logged in the EcoVoices Editorial &amp; Scientific Review Registry.
                 </p>
               </div>
             </div>
 
-            <div className="p-5 rounded-xl bg-slate-950 border border-emerald-500/30 space-y-3 font-mono text-xs">
+            <div className="p-5 rounded-2xl bg-black/60 border border-emerald-400/30 space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <span className="text-slate-400">Tracking Reference ID:</span>
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-emerald-400 text-sm">{submissionSuccess.trackingId}</span>
+                  <span className="font-bold text-amber-300 text-sm">
+                    {submissionSuccess.trackingId}
+                  </span>
                   <button
+                    type="button"
                     onClick={() => handleCopyTrackingId(submissionSuccess.trackingId)}
-                    className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300"
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 cursor-pointer"
                     title="Copy tracking ID"
+                    aria-label="Copy tracking ID"
                   >
-                    {copiedId ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedId ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-3.5 h-3.5" />
+                    )}
                   </button>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300 text-[11px]">
-                <div><span className="text-slate-500">Contributor:</span> {submissionSuccess.details?.contributorName}</div>
-                <div><span className="text-slate-500">Role:</span> {submissionSuccess.details?.role}</div>
-                <div><span className="text-slate-500">Theme:</span> {submissionSuccess.details?.theme}</div>
-                <div><span className="text-slate-500">Logged At:</span> {new Date(submissionSuccess.receivedAt).toLocaleString()}</div>
+                <div>
+                  <span className="text-slate-500">Contributor:</span>{' '}
+                  {submissionSuccess.details?.contributorName}
+                </div>
+                <div>
+                  <span className="text-slate-500">Role:</span> {submissionSuccess.details?.role}
+                </div>
+                <div>
+                  <span className="text-slate-500">Theme:</span> {submissionSuccess.details?.theme}
+                </div>
+                <div>
+                  <span className="text-slate-500">Logged At:</span>{' '}
+                  {new Date(submissionSuccess.receivedAt).toLocaleString()}
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2 text-xs text-slate-300 leading-relaxed">
-              <p>
-                <strong>Next Editorial Steps:</strong>
-              </p>
-              <ul className="space-y-1 text-[11px] text-slate-400 list-disc pl-4">
-                <li>Kashmir EcoWatch scientific curators will review environmental relevance and geographic alignment.</li>
-                <li>SufiPulse USA artistic directors will assess musical arrangement, lyrical cadence, or literary publication suitability.</li>
-                <li>You will be contacted via email if your submission is shortlisted for studio production, choir arrangement, or publication in the Literary Journal.</li>
-              </ul>
-            </div>
-
-            <Button
-              onClick={() => { setSubmissionSuccess(null); setFormData(prev => ({ ...prev, workTitle: '', contentOrPortfolioUrl: '' })); }}
-              variant="outline"
-              className="border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/50"
+            <button
+              type="button"
+              onClick={() => {
+                setSubmissionSuccess(null);
+                setFormData((prev) => ({ ...prev, workTitle: '', contentOrPortfolioUrl: '' }));
+              }}
+              className="px-5 py-2.5 rounded-full border border-amber-300/40 text-amber-200 hover:bg-amber-300/10 text-xs font-semibold cursor-pointer"
             >
               Submit Another Creative Work
-            </Button>
-          </Card>
+            </button>
+          </div>
         ) : (
-          <Card className="p-6 sm:p-8 bg-slate-900/90 border-white/10 rounded-2xl space-y-6 max-w-3xl mx-auto">
+          <div className="p-6 sm:p-8 bg-[#080c18]/95 border border-white/10 rounded-3xl space-y-6 max-w-3xl mx-auto shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-5 text-xs">
-              
               {formError && (
-                <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+                <div
+                  role="alert"
+                  className="p-3.5 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-200 text-xs flex items-center gap-2"
+                >
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
                   <span>{formError}</span>
                 </div>
               )}
 
-              {/* CONTRIBUTOR BASICS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Contributor Full Name *</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-contributorName" className="text-slate-200 font-semibold block">
+                    Contributor Full Name *
+                  </label>
                   <input
+                    id="ev-contributorName"
                     type="text"
                     name="contributorName"
                     required
                     value={formData.contributorName}
                     onChange={handleInputChange}
                     placeholder="e.g. Zeeshan Ahmad"
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/60"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-300/60"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Contact Email *</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-contributorEmail" className="text-slate-200 font-semibold block">
+                    Contact Email *
+                  </label>
                   <input
+                    id="ev-contributorEmail"
                     type="email"
                     name="contributorEmail"
                     required
                     value={formData.contributorEmail}
                     onChange={handleInputChange}
-                    placeholder="e.g. zeeshan@example.com"
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/60"
+                    placeholder="e.g. artist@example.org"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-300/60"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Phone / WhatsApp (Optional)</label>
-                  <input
-                    type="tel"
-                    name="contributorPhone"
-                    value={formData.contributorPhone}
-                    onChange={handleInputChange}
-                    placeholder="e.g. +91 94190 XXXXX"
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/60"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Geographic Connection / District</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-department" className="text-slate-200 font-semibold block">
+                    Creative Department *
+                  </label>
                   <select
-                    name="geographicConnection"
-                    value={formData.geographicConnection}
+                    id="ev-department"
+                    name="creativeDepartment"
+                    value={formData.creativeDepartment}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-purple-500/60"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-amber-300/60"
                   >
-                    <option>Srinagar (Dal &amp; Jhelum)</option>
-                    <option>Anantnag / Islamabad (Verinag &amp; Springs)</option>
-                    <option>Baramulla (Lower Jhelum &amp; Wular Basin)</option>
-                    <option>Ganderbal (Sindh River &amp; Lakes)</option>
-                    <option>Kupwara (Lolab &amp; Forest Belts)</option>
-                    <option>Budgam (Doodh Ganga &amp; Karewas)</option>
-                    <option>Pulwama &amp; Shopian (Apple Orchards &amp; Rambiara)</option>
-                    <option>Kulgam (Aharbal &amp; Veshaw Basin)</option>
-                    <option>Bandipora (Wular Lake Shoreline)</option>
-                    <option>Pir Panjal &amp; Chenab Basin</option>
-                    <option>Ladakh / Zanskar Cryosphere</option>
-                    <option>Kashmiri Diaspora / Global Contributor</option>
+                    <option value="music">Environmental Music</option>
+                    <option value="poetry">Environmental Poetry &amp; Literature</option>
+                    <option value="cinema">Environmental Cinema &amp; Short Film</option>
+                    <option value="art">Environmental Visual Art &amp; Illustration</option>
+                    <option value="soundscapes">Sounds of Nature &amp; Field Acoustics</option>
+                    <option value="contributors">Youth EcoVoices &amp; School Choirs</option>
                   </select>
                 </div>
-              </div>
 
-              {/* ROLE & LANGUAGE */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Primary Creative Role *</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-role" className="text-slate-200 font-semibold block">
+                    Primary Creative Role *
+                  </label>
                   <select
+                    id="ev-role"
                     name="contributorRole"
                     value={formData.contributorRole}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-purple-500/60 font-mono text-xs"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-amber-300/60"
                   >
                     <option>Writer / Poet (Ahl-e-Qalam)</option>
                     <option>Vocalist &amp; Singer (Ahl-e-Sada)</option>
                     <option>Instrumentalist / Master Musician (Saaz-kaaran)</option>
                     <option>Composer &amp; Music Producer (Ahl-e-Naghma)</option>
                     <option>Literary Contributor / Essayist (Ahl-e-Tahreer)</option>
+                    <option>Documentary Filmmaker / Visual Director</option>
+                    <option>Visual Artist / Botanical Illustrator</option>
+                    <option>Ornithologist / Bioacoustician / Field Recordist</option>
+                    <option>Environmental Researcher / Hydrologist</option>
+                    <option>Wildlife Photographer &amp; Field Videographer</option>
+                    <option>Field Investigator / Conservation Warden</option>
+                    <option>Citizen Scientist / Natural Soundscape Recordist</option>
+                    <option>Field Recordist / Acoustic Composer</option>
                     <option>Student / School Choir Lead (Youth EcoVoices)</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Language of Expression</label>
-                  <select
-                    name="preferredLanguage"
-                    value={formData.preferredLanguage}
-                    onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-purple-500/60"
-                  >
-                    <option>Kashmiri (Koshur)</option>
-                    <option>Urdu</option>
-                    <option>English</option>
-                    <option>Hindi</option>
-                    <option>Pahari / Gojri</option>
-                    <option>Shina / Balti / Ladakhi</option>
-                    <option>Multilingual Blend</option>
                   </select>
                 </div>
               </div>
 
-              {/* THEME & FORMAT */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Environmental Theme *</label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-language" className="text-slate-200 font-semibold block">
+                    Language / Medium
+                  </label>
                   <select
+                    id="ev-language"
+                    name="preferredLanguage"
+                    value={formData.preferredLanguage}
+                    onChange={handleInputChange}
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-amber-300/60"
+                  >
+                    <option>Kashmiri (Koshur)</option>
+                    <option>Urdu</option>
+                    <option>English</option>
+                    <option>Dogri / Hindi / Pahari</option>
+                    <option>Ladakhi / Balti / Shina / Burushaski</option>
+                    <option>Visual / Instrumental / Non-Verbal</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-theme" className="text-slate-200 font-semibold block">
+                    Environmental Theme *
+                  </label>
+                  <select
+                    id="ev-theme"
                     name="environmentalThemeId"
                     value={formData.environmentalThemeId}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-purple-500/60 font-mono text-xs"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-amber-300/60"
                   >
-                    {ECOVOICES_ENVIRONMENTAL_THEMES.map(t => (
+                    {ECOVOICES_ENVIRONMENTAL_THEMES.map((t) => (
                       <option key={t.id} value={t.id}>
                         {t.number}: {t.title}
                       </option>
@@ -656,90 +651,297 @@ export function EcoVoicesParticipationGateway() {
                   </select>
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-slate-200 font-semibold">Creative Style Orientation</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="ev-region" className="text-slate-200 font-semibold block">
+                    Geographic Connection
+                  </label>
                   <select
-                    name="stylisticOrientation"
-                    value={formData.stylisticOrientation}
+                    id="ev-region"
+                    name="geographicConnection"
+                    value={formData.geographicConnection}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-purple-500/60"
+                    className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-amber-300/60"
                   >
-                    <option>Secular Modern Ecological Advocacy (Open Tradition)</option>
-                    <option>Traditional Sufiana Qalam / Mystic Ecology</option>
-                    <option>Classical Kashmiri Poetry (Vakh / Shruk / Ghazal)</option>
-                    <option>Western Himalayan Acoustic Folk</option>
-                    <option>School Choir / Youth Anthem</option>
-                    <option>Orchestral Instrumental Soundscape</option>
+                    <option>Srinagar (Dal &amp; Jhelum)</option>
+                    <option>Anantnag / Verinag &amp; Springs</option>
+                    <option>Baramulla &amp; Wular Basin</option>
+                    <option>Ganderbal /Kupwara / Budgam / South Kashmir</option>
+                    <option>Jammu / Tawi &amp; Chenab Basin</option>
+                    <option>Ladakh / Zanskar &amp; Changthang</option>
+                    <option>Azad Jammu &amp; Kashmir</option>
+                    <option>Gilgit-Baltistan</option>
+                    <option>Kashmiri Diaspora / Global Collaborator</option>
                   </select>
                 </div>
               </div>
 
-              {/* WORK TITLE & CONTENT */}
-              <div className="space-y-1">
-                <label className="text-slate-200 font-semibold">Work Title / Composition Name *</label>
+              <div className="space-y-1.5">
+                <label htmlFor="ev-workTitle" className="text-slate-200 font-semibold block">
+                  Work Title / Composition or Exhibition Name *
+                </label>
                 <input
+                  id="ev-workTitle"
                   type="text"
                   name="workTitle"
                   required
                   value={formData.workTitle}
                   onChange={handleInputChange}
-                  placeholder="e.g. Song of the Wular Silt Beds"
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/60"
+                  placeholder="e.g. Elegy for the Kolahoi Meltwater"
+                  className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-300/60"
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-slate-200 font-semibold">
-                  Original Lyrics, Essay Text, or Portfolio / Demo Link *
+              <div className="space-y-1.5">
+                <label htmlFor="ev-content" className="text-slate-200 font-semibold block">
+                  {formData.creativeDepartment === 'soundscapes'
+                    ? 'Lossless WAV/FLAC/MP3 Field Recording URL & Field Observation Notes *'
+                    : 'Original Lyrics, Poetic Text, Artist Statement, or Portfolio / Screener Link *'}
                 </label>
                 <textarea
+                  id="ev-content"
                   name="contentOrPortfolioUrl"
                   rows={4}
                   required
                   value={formData.contentOrPortfolioUrl}
                   onChange={handleInputChange}
-                  placeholder="Paste your original poetry/lyrics, essay draft, or link to audio/video demo (SoundCloud, Google Drive, YouTube, Dropbox)..."
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/60"
+                  placeholder={
+                    formData.creativeDepartment === 'soundscapes'
+                      ? 'Provide link to original WAV/FLAC/MP3 recording (Xeno-canto, Wikimedia Commons, Drive, Zenodo) plus weather, playback disclosure, and species/phenomenon verification notes...'
+                      : 'Paste original poetry/lyrics, film synopsis & screener URL, visual portfolio link, or field recording notes...'
+                  }
+                  className="w-full bg-black/60 border border-white/15 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-300/60"
                 />
               </div>
 
-              {/* YOUTH TOGGLE */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-emerald-500/30 space-y-3">
+              {/* Conditional Department V Bioacoustic Provenance & Verification Block */}
+              {formData.creativeDepartment === 'soundscapes' && (
+                <div className="p-5 rounded-2xl bg-[#0a1324] border border-amber-300/35 space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-300 block">
+                      Department V · Bioacoustic Field Provenance &amp; Verification Gate
+                    </span>
+                    <p className="text-[11px] text-slate-300 leading-relaxed">
+                      All natural soundscape submissions undergo taxonomic/geophysical review before public archive
+                      publication. Synthesized wildlife calls and artificial musical drones are not accepted as field
+                      vouchers.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                    <div className="space-y-1">
+                      <label htmlFor="ev-acousticClass" className="text-slate-200 font-semibold block">
+                        Acoustic Classification *
+                      </label>
+                      <select
+                        id="ev-acousticClass"
+                        name="acousticClassification"
+                        value={formData.acousticClassification}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-slate-200"
+                      >
+                        <option value="Biophony">Biophony (Wildlife / Living Organisms)</option>
+                        <option value="Geophony">Geophony (Rivers / Wind / Rain / Glaciers)</option>
+                        <option value="Anthrophony">Anthrophony (Comparative Noise Baseline)</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="ev-kewSixRegion" className="text-slate-200 font-semibold block">
+                        KEW Six-Region Scope *
+                      </label>
+                      <select
+                        id="ev-kewSixRegion"
+                        name="kewSixRegion"
+                        value={formData.kewSixRegion}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-slate-200"
+                      >
+                        {KEW_SIX_ACOUSTIC_REGIONS.map((r) => (
+                          <option key={r.id} value={r.id}>
+                            {r.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="ev-targetSlot" className="text-slate-200 font-semibold block">
+                        Target Collection Category
+                      </label>
+                      <select
+                        id="ev-targetSlot"
+                        name="targetCollectionId"
+                        value={formData.targetCollectionId}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-slate-200"
+                      >
+                        {ECOVOICES_BIOACOUSTIC_COLLECTION.map((item) => (
+                          <option key={item.id} value={item.id}>
+                            {item.catalogNumber}: {item.title}
+                          </option>
+                        ))}
+                        <option value="custom-western-himalayan">
+                          New Western Himalayan Bioacoustic Voucher
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div className="space-y-1">
+                      <label htmlFor="ev-speciesPhenomenon" className="text-slate-200 font-semibold block">
+                        Species (Common &amp; Scientific) or Physical Phenomenon
+                      </label>
+                      <input
+                        id="ev-speciesPhenomenon"
+                        type="text"
+                        name="speciesOrPhenomenon"
+                        value={formData.speciesOrPhenomenon}
+                        onChange={handleInputChange}
+                        placeholder="e.g. Himalayan Monal (Lophophorus impejanus) or Verinag Karst Spring"
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-white placeholder-slate-500"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="ev-habitatElev" className="text-slate-200 font-semibold block">
+                        Habitat, Locality &amp; Elevation (m ASL)
+                      </label>
+                      <input
+                        id="ev-habitatElev"
+                        type="text"
+                        name="habitatAndElevation"
+                        value={formData.habitatAndElevation}
+                        onChange={handleInputChange}
+                        placeholder="e.g. Upper Dachigam birch-conifer belt, 2,950 m ASL"
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-white placeholder-slate-500"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                    <div className="space-y-1">
+                      <label htmlFor="ev-recDateSeason" className="text-slate-200 font-semibold block">
+                        Recording Date, Time &amp; Season
+                      </label>
+                      <input
+                        id="ev-recDateSeason"
+                        type="text"
+                        name="recordingDateAndSeason"
+                        value={formData.recordingDateAndSeason}
+                        onChange={handleInputChange}
+                        placeholder="e.g. 2026-05-12 05:25 · Spring"
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-white placeholder-slate-500"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="ev-recEquip" className="text-slate-200 font-semibold block">
+                        Recorder / Microphone / Hydrophone
+                      </label>
+                      <input
+                        id="ev-recEquip"
+                        type="text"
+                        name="recordingEquipment"
+                        value={formData.recordingEquipment}
+                        onChange={handleInputChange}
+                        placeholder="e.g. Zoom F3 + Sennheiser ME66 (48kHz WAV)"
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-white placeholder-slate-500"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="ev-openLicense" className="text-slate-200 font-semibold block">
+                        Open License / Permission *
+                      </label>
+                      <select
+                        id="ev-openLicense"
+                        name="openLicenseChoice"
+                        value={formData.openLicenseChoice}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/65 border border-white/15 rounded-xl px-3 py-2 text-slate-200"
+                      >
+                        <option>CC BY 4.0 (Attribution)</option>
+                        <option>CC BY-SA 4.0 (Attribution-ShareAlike)</option>
+                        <option>CC0 1.0 (Public Domain Dedication)</option>
+                        <option>Written Non-Commercial KEW Scientific &amp; Educational Permission</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2.5 pt-2 border-t border-white/10">
+                    <label className="flex items-start gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="maskSensitiveCoordinates"
+                        checked={formData.maskSensitiveCoordinates}
+                        onChange={handleInputChange}
+                        className="w-4 h-4 mt-0.5 rounded accent-amber-300"
+                      />
+                      <span className="text-[11px] text-amber-100 leading-relaxed">
+                        <strong className="text-amber-300">Sensitive Wildlife Location Protection:</strong> Mask exact
+                        GPS coordinates on public pages if this recording documents threatened wildlife (e.g., Hangul,
+                        Kashmir Flycatcher, Himalayan Monal, Himalayan Wolf, nesting cliffs, or den sites).
+                      </span>
+                    </label>
+
+                    <label className="flex items-start gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="unmanipulatedFieldAttestation"
+                        checked={formData.unmanipulatedFieldAttestation}
+                        onChange={handleInputChange}
+                        className="w-4 h-4 mt-0.5 rounded accent-emerald-400"
+                      />
+                      <span className="text-[11px] text-slate-200 leading-relaxed">
+                        <strong className="text-emerald-300">Scientific Authenticity Attestation *:</strong> I confirm
+                        this recording is an authentic field capture (not AI-generated or synthesizer-produced), no
+                        artificial musical drones have been added, and any wildlife call-playback use is honestly
+                        disclosed in the notes.
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              )}
+
+              {/* Youth Safeguard */}
+              <div className="p-4 rounded-2xl bg-black/50 border border-emerald-400/25 space-y-3">
                 <label className="flex items-center gap-2.5 cursor-pointer">
                   <input
                     type="checkbox"
                     name="isYouthSubmission"
                     checked={formData.isYouthSubmission}
                     onChange={handleInputChange}
-                    className="w-4 h-4 rounded text-emerald-500 bg-slate-900 border-white/20 focus:ring-emerald-500"
+                    className="w-4 h-4 rounded accent-emerald-400"
                   />
                   <span className="font-semibold text-emerald-300">
-                    This is a Youth / Student / School Submission (Ages Under 18)
+                    Youth / Student / School Submission (Ages Under 18)
                   </span>
                 </label>
 
                 {formData.isYouthSubmission && (
-                  <div className="pt-2 border-t border-white/5 space-y-2">
-                    <label className="text-slate-300 font-medium block">
+                  <div className="pt-2 border-t border-white/10 space-y-2">
+                    <label htmlFor="ev-guardian" className="text-slate-300 font-medium block">
                       School, College or Supervising Teacher / Guardian Name *
                     </label>
                     <input
+                      id="ev-guardian"
                       type="text"
                       name="institutionOrGuardian"
                       value={formData.institutionOrGuardian}
                       onChange={handleInputChange}
                       placeholder="e.g. Govt Higher Secondary School, Sopore (Supervisor: Ms. Farooq)"
-                      className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white placeholder-slate-500 text-xs"
+                      className="w-full bg-slate-900 border border-white/15 rounded-xl px-3.5 py-2 text-white placeholder-slate-500 text-xs"
                     />
                     <p className="text-[10px] text-slate-400">
-                      Safeguard note: Student contact details are kept strictly confidential and used only for teacher/guardian communication.
+                      {YOUTH_ECOVOICES_FRAMEWORK.guardianSafeguardPolicy}
                     </p>
                   </div>
                 )}
               </div>
 
-              {/* RIGHTS & NON-COMMERCIAL DECLARATION */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-white/10 space-y-2">
+              {/* Non-commercial attribution agreement */}
+              <div className="p-4 rounded-2xl bg-black/50 border border-white/10">
                 <label className="flex items-start gap-2.5 cursor-pointer">
                   <input
                     type="checkbox"
@@ -747,86 +949,74 @@ export function EcoVoicesParticipationGateway() {
                     required
                     checked={formData.rightsDeclarationAgreed}
                     onChange={handleInputChange}
-                    className="w-4 h-4 mt-0.5 rounded text-purple-600 bg-slate-900 border-white/20 focus:ring-purple-500"
+                    className="w-4 h-4 mt-0.5 rounded accent-amber-300"
                   />
                   <span className="text-[11px] text-slate-300 leading-relaxed">
-                    I declare that this work is original. I agree that Kashmir EcoWatch and SufiPulse USA may review this submission for non-commercial environmental educational outreach, curriculum integration, and potential recording/publication under proper artist attribution. I understand that submission does not guarantee automatic recording or publication.
+                    I declare that this creative work is original. I agree that Kashmir EcoWatch and SufiPulse USA may review this submission for non-commercial environmental stewardship, educational integration, and potential curated publication under full creator attribution.
                   </span>
                 </label>
               </div>
 
-              <Button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-slate-900 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-purple-600/20 text-sm"
+                className="w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-200 hover:from-amber-200 hover:to-white text-slate-950 font-bold text-sm shadow-[0_10px_30px_rgba(251,191,36,0.22)] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
               >
                 {isSubmitting ? (
-                  <span className="flex items-center gap-2">
+                  <>
                     <Radio className="w-4 h-4 animate-spin" />
-                    Registering with EcoVoices Editorial Registry...
-                  </span>
+                    <span>Registering with EcoVoices Editorial Panel...</span>
+                  </>
                 ) : (
-                  <span className="flex items-center gap-2">
+                  <>
                     <Send className="w-4 h-4" />
-                    Submit to EcoVoices Creative Network
-                  </span>
+                    <span>Submit to EcoVoices Creative Network</span>
+                  </>
                 )}
-              </Button>
+              </button>
             </form>
-          </Card>
+          </div>
         )}
       </div>
 
-      {/* ======================================================== */}
-      {/* SECTION 5: YOUTH ECOVOICES (SCHOOLS & COLLEGES) */}
-      {/* ======================================================== */}
-      <div id="youth-ecovoices" className="p-8 rounded-3xl bg-slate-900 border border-emerald-500/30 space-y-6">
+      {/* 4. YOUTH ECOVOICES */}
+      <div
+        id="youth-ecovoices"
+        className="p-7 sm:p-8 rounded-3xl bg-[#080c18]/90 border border-emerald-400/25 space-y-6"
+      >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <Badge className="bg-emerald-500 text-slate-950 font-bold text-xs mb-1">
-              Supervised Educational Outreach
-            </Badge>
-            <h3 className="text-2xl font-black text-white">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-300">
+              Supervised Student &amp; Collegiate Expression
+            </span>
+            <h3 className="font-[family-name:var(--font-ecovoices-serif)] text-2xl sm:text-3xl font-semibold text-white">
               {YOUTH_ECOVOICES_FRAMEWORK.title}
             </h3>
-            <p className="text-xs sm:text-sm text-emerald-300 font-mono">
-              {YOUTH_ECOVOICES_FRAMEWORK.tagline}
-            </p>
+            <p className="text-xs text-slate-300">{YOUTH_ECOVOICES_FRAMEWORK.tagline}</p>
           </div>
 
           <Link
             href="/environmental-calendar/outdoor-classroom"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-400/15 hover:bg-emerald-400/25 text-emerald-200 border border-emerald-400/35 font-semibold text-xs transition-colors shrink-0"
           >
-            <span>Visit Outdoor Classroom</span>
+            <GraduationCap className="w-4 h-4" />
+            <span>Outdoor Classroom Hub</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {YOUTH_ECOVOICES_FRAMEWORK.ageGroups.map((grp, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-950 border border-emerald-500/20 space-y-2">
-              <span className="text-xs font-bold text-emerald-400 font-mono block">
-                {grp.tier}
-              </span>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
-                {grp.format}
-              </p>
+            <div
+              key={idx}
+              className="p-4 rounded-2xl bg-black/45 border border-white/10 space-y-1.5"
+            >
+              <div className="text-xs font-bold text-emerald-300 font-mono">{grp.tier}</div>
+              <p className="text-xs text-slate-300 leading-relaxed">{grp.format}</p>
             </div>
           ))}
         </div>
-
-        <div className="p-4 rounded-xl bg-slate-950/80 border border-white/5 space-y-2 text-xs text-slate-300">
-          <div className="flex items-center gap-2 text-emerald-400 font-semibold font-mono text-[11px]">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Guardian &amp; Teacher Safeguard Policy</span>
-          </div>
-          <p className="text-[11px] leading-relaxed text-slate-400">
-            {YOUTH_ECOVOICES_FRAMEWORK.guardianSafeguardPolicy}
-          </p>
-        </div>
       </div>
-
     </div>
   );
 }

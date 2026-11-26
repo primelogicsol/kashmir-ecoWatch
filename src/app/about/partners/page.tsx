@@ -190,9 +190,9 @@ export default function PartnersPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       {/* --- 1. Hero -------------------------------------------------------- */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden bg-blue-700">
+      <section className="kew-module-hero-surface kew-module-hero-atmospheric relative overflow-hidden bg-[#080E1C]">
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl">
@@ -239,7 +239,7 @@ export default function PartnersPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
             {VALUE_CARDS.map((card, i) => (
               <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 p-5 h-full">
@@ -307,7 +307,7 @@ export default function PartnersPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full items-stretch">
             {ONBOARDING_PATHS.map((path, i) => (
               <motion.div key={path.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="h-full min-w-0">
                 <div
@@ -403,7 +403,7 @@ export default function PartnersPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 w-full">
             {PARTICIPATION_STANDARDS.map((std, i) => (
               <motion.div key={std.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Card className="glass-intense border-white/10 p-5 h-full">

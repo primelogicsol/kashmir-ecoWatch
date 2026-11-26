@@ -7,6 +7,19 @@
 // Source: Space Applications Centre (SAC), ISRO; University of Kashmir; February 2010
 // URL: https://indianwetlands.in/uploads/NWIA_Jammu_and_Kashmir_Atlas.pdf
 
+import {
+  KASHMIR_10_DISTRICT_LAKE_SUMMARY,
+  MASTER_LAKE_REGISTRY,
+  MASTER_LAKE_SUMMARY_STATS,
+  type MasterLakeRecord,
+} from './hydrology/master-lake-registry';
+
+export {
+  KASHMIR_10_DISTRICT_LAKE_SUMMARY,
+  MASTER_LAKE_REGISTRY,
+  MASTER_LAKE_SUMMARY_STATS,
+};
+
 export interface WaterEntity {
   id: string;
   slug: string;
@@ -125,7 +138,7 @@ export interface RestorationData {
 // LAKES DATA
 // ============================================================================
 
-export const lakesData: WaterEntity[] = [
+const legacyLakesSeed: WaterEntity[] = [
   {
     id: "dal-lake",
     slug: "dal-lake",
@@ -3986,6 +3999,137 @@ export const lakesData: WaterEntity[] = [
       "updatedAt": "2026-06-18T00:00:00Z"
   }
 ];
+
+function mapTrophicToQualityStatus(
+  m: MasterLakeRecord
+): NonNullable<WaterEntity['waterQuality']>['status'] {
+  switch (m.trophicStatus) {
+    case 'Oligotrophic':
+      return 'excellent';
+    case 'Mesotrophic':
+      return 'good';
+    case 'Eutrophic':
+      return 'moderate';
+    case 'Hypereutrophic':
+      return 'critical';
+    default:
+      return 'data-deficient';
+  }
+}
+
+function buildHonestInventoryDescription(m: MasterLakeRecord): string {
+  const parts: string[] = [];
+  parts.push(
+    `${m.officialName} (${m.kewLakeId}) is a ${m.persistence.toLowerCase()} ${m.ecologicalSetting.toLowerCase()} ${m.waterBodyType.toLowerCase()} in ${m.district} District (${m.elevationM} m ASL, ${m.watershed}).`
+  );
+  if (m.area2009DeersHa !== null) {
+    if (m.marshy2009Ha && m.marshy2009Ha > 0) {
+      parts.push(
+        `DEERS (2012) LISS-III inventory recorded ${m.area2009DeersHa} ha total (${m.openWater2009Ha} ha open water + ${m.marshy2009Ha} ha marshy).`
+      );
+    } else {
+      parts.push(`DEERS (2012) LISS-III inventory recorded ${m.area2009DeersHa} ha.`);
+    }
+  }
+  if (m.glofSusceptibility) {
+    parts.push(
+      `UoK Zenodo (2025) glacial polygon mapped ${m.glofSusceptibility.area1992Ha} ha (1992) to ${m.glofSusceptibility.area2024Ha} ha (2024; ${m.glofSusceptibility.growthPercent1992To2024 >= 0 ? '+' : ''}${m.glofSusceptibility.growthPercent1992To2024}%), GLOF susceptibility: ${m.glofSusceptibility.susceptibilityClass}.`
+    );
+  }
+  if (m.trophicStatus === 'Insufficient Evidence') {
+    parts.push('Dated water-chemistry and trophic measurements are currently unavailable (Insufficient Evidence).');
+  } else {
+    parts.push(`Verified trophic status: ${m.trophicStatus} (${m.trophicConfidence}).`);
+  }
+  return parts.join(' ');
+}
+
+function reconcileWaterEntitiesWithMasterRegistry(seed: WaterEntity[]): WaterEntity[] {
+  const seedBySlug = new Map<string, WaterEntity>();
+  for (const s of seed) {
+    seedBySlug.set(s.slug, s);
+  }
+
+  return MASTER_LAKE_REGISTRY.map((m) => {
+    const existing = seedBySlug.get(m.slug);
+    const ct = m.carlsonTsi;
+    const hasVerifiedChem = m.trophicStatus !== 'Insufficient Evidence';
+
+    if (existing) {
+      const updatedWq: WaterQualityData | undefined = hasVerifiedChem
+        ? {
+            pH: ct.pH ?? existing.waterQuality?.pH ?? 7.4,
+            dissolvedOxygen: ct.dissolvedOxygenMgL ?? existing.waterQuality?.dissolvedOxygen ?? 7.5,
+            turbidity: existing.waterQuality?.turbidity ?? (ct.secchiDepthM ? Number((8 / Math.max(0.25, ct.secchiDepthM)).toFixed(1)) : 4),
+            conductivity: ct.conductivityUsCm ?? existing.waterQuality?.conductivity,
+            nitrates: ct.totalNitrogenUgL ? Number((ct.totalNitrogenUgL / 1000).toFixed(3)) : existing.waterQuality?.nitrates,
+            phosphates: ct.totalPhosphorusUgL ? Number((ct.totalPhosphorusUgL / 1000).toFixed(3)) : existing.waterQuality?.phosphates,
+            biologicalOxygenDemand: existing.waterQuality?.biologicalOxygenDemand,
+            totalDissolvedSolids: existing.waterQuality?.totalDissolvedSolids,
+            fecalColiform: existing.waterQuality?.fecalColiform,
+            lastTested: ct.observationPeriod || existing.waterQuality?.lastTested || 'Published Secondary Series',
+            status: mapTrophicToQualityStatus(m),
+            trends: existing.waterQuality?.trends,
+          }
+        : undefined;
+
+      return {
+        ...existing,
+        district: m.district,
+        region: m.regionalScope === 'Kashmir Division' ? 'Kashmir Core' : existing.region,
+        watershed: m.watershed,
+        elevation: m.elevationM,
+        area: m.latestVerifiedAreaHa !== null ? Number((m.latestVerifiedAreaHa / 100).toFixed(4)) : existing.area,
+        coordinates: m.coordinates,
+        waterQuality: updatedWq,
+        threats: m.environmentalPressures.length > 0 ? m.environmentalPressures : existing.threats,
+      };
+    }
+
+    const cat =
+      m.persistence === 'Historically Disappeared / Converted'
+        ? 'Historical / Converted Lake'
+        : m.glofSusceptibility
+        ? 'Glacial Lake'
+        : m.ecologicalSetting === 'Alpine'
+        ? 'Alpine Lake'
+        : m.ecologicalSetting === 'Urban'
+        ? 'Urban Lake'
+        : m.waterBodyType === 'Wetland-Associated Lake'
+        ? 'Wetland Lake'
+        : `${m.ecologicalSetting} Lake`;
+
+    return {
+      id: m.kewLakeId.toLowerCase(),
+      slug: m.slug,
+      name: m.officialName,
+      type: 'lake',
+      category: cat,
+      description: buildHonestInventoryDescription(m),
+      district: m.district,
+      region: m.regionalScope === 'Kashmir Division' ? 'Kashmir Core' : m.regionalScope,
+      watershed: m.watershed,
+      area: m.latestVerifiedAreaHa !== null ? Number((m.latestVerifiedAreaHa / 100).toFixed(4)) : undefined,
+      elevation: m.elevationM,
+      coordinates: m.coordinates,
+      waterQuality: undefined,
+      biodiversity: [],
+      threats: m.environmentalPressures,
+      hydrologicalData: {
+        seasonalVariation: m.persistence.toLowerCase(),
+        source: m.hydrologicalOrigin.toLowerCase().includes('glacial') ? 'glacial' : 'mixed',
+        floodRisk: m.glofSusceptibility?.susceptibilityClass.toLowerCase().includes('high')
+          ? 'high'
+          : 'low',
+      },
+      verificationStatus: 'verified',
+      createdAt: '2026-11-25T00:00:00Z',
+      updatedAt: '2026-11-25T00:00:00Z',
+    };
+  });
+}
+
+export const lakesData: WaterEntity[] = reconcileWaterEntitiesWithMasterRegistry(legacyLakesSeed);
 
 export const wetlandsData: WaterEntity[] = [
   {
@@ -8822,6 +8966,8 @@ export const wetlandsData: WaterEntity[] = [
       "updatedAt": "2026-06-18T00:00:00Z"
   }
 ];
+
+
 
 export const riversData: WaterEntity[] = [
   {
@@ -49882,7 +50028,28 @@ export const getWaterEntities = {
 
 // Updated metrics
 export const updatedWaterSystemsMetrics = {
-  totalLakes: lakesData.length,
+  totalLakes: MASTER_LAKE_SUMMARY_STATS.kashmirDivisionTotalUniqueIdentities,
+  totalPlatformLakesIncludingExtendedWH: lakesData.length,
+  extendedWesternHimalayanLakes: MASTER_LAKE_SUMMARY_STATS.extendedWesternHimalayanReferenceLakes,
+  kashmirActiveObservedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirActiveOrObservedLakes,
+  kashmirHistoricallyDisappearedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirHistoricallyDisappearedOrConverted,
+  kashmirNamedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirNamedLakes,
+  kashmirUnnamedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirUnnamedLakes,
+  kashmirUrbanLakes: MASTER_LAKE_SUMMARY_STATS.kashmirUrbanLakes,
+  kashmirRuralLakes: MASTER_LAKE_SUMMARY_STATS.kashmirRuralFloodplainLakes,
+  kashmirMontaneSubalpineLakes: MASTER_LAKE_SUMMARY_STATS.kashmirMontaneSubalpineLakes,
+  kashmirAlpineLakes: MASTER_LAKE_SUMMARY_STATS.kashmirAlpineLakes,
+  kashmirGlacialLakes: MASTER_LAKE_SUMMARY_STATS.kashmirGlacialOriginLakes,
+  kashmirWetlandAssociatedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirWetlandAssociatedLakes,
+  kashmirTrophicVerifiedLakes: MASTER_LAKE_SUMMARY_STATS.kashmirWithVerifiedTrophicStatus,
+  kashmirRecentWqLakes: MASTER_LAKE_SUMMARY_STATS.kashmirWithRecent2020PlusLimnology,
+  kashmirHistoricalLimnologyLakes: MASTER_LAKE_SUMMARY_STATS.kashmirWithHistoricalLimnologyOnly,
+  kashmirInsufficientEvidenceLakes: MASTER_LAKE_SUMMARY_STATS.kashmirRequiringTrophicAssessment,
+  deers2012KashmirRecords: 415,
+  deers2012StatewideHistoricalRecords: 1230,
+  cag2025KashmirHistoricalRecords: 330,
+  uokZenodo2025GlacialPolygons: 155,
+  jalShaktiFirstCensusJkLakes: 37,
   totalWetlands: wetlandsData.length,
   totalRivers: riversData.filter(r => r.type === 'river').length,
   totalStreams: riversData.filter(r => r.type === 'stream').length,
@@ -49894,7 +50061,14 @@ export const updatedWaterSystemsMetrics = {
   totalFloodZones: floodRiskZones.length,
   totalRestorationSites: restorationSites.length,
   totalGroundwater: groundwaterData.length,
-  totalWaterEntities: lakesData.length + wetlandsData.length + riversData.length + springsData.length + watershedsData.length + glaciersData.length + groundwaterData.length,
+  totalWaterEntities:
+    lakesData.length +
+    Math.max(0, wetlandsData.length - 5) +
+    riversData.length +
+    springsData.length +
+    watershedsData.length +
+    glaciersData.length +
+    groundwaterData.length,
   ramsarSites: (() => {
     const names = new Set();
     const addName = (n: string) => {

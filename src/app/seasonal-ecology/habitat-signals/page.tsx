@@ -40,7 +40,7 @@ export default function HabitatSignalsPage() {
       />
 
       {/* Cross-Link Intelligence Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="container mx-auto pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link href="/biodiversity/habitat-signals">
             <div className="kew-card-shell kew-card-shell--interactive group h-full">

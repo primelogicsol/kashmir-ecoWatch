@@ -9,11 +9,19 @@ import type { Metadata } from 'next';
 import { CANONICAL_SITE_URL, KEW_IDENTITY } from './entity-identity';
 import { isVerifiedRealDoi, toAbsoluteCanonicalUrl } from './structured-data';
 import { EXTRACTED_ROUTE_METADATA } from './generated-route-descriptions';
+import {
+  ALLOWED_DISPATCH_ROOT_SEGMENTS,
+  CANONICAL_DISPATCH_URL,
+  DISPATCH_IDENTITY,
+  stripDispatchPrefix,
+  toDispatchCanonicalUrl,
+} from '@/lib/himalayan-dispatch-routes';
 
 export interface PageMetadataOptions {
   title: string;
   description: string;
   canonicalPath: string;
+  publication?: 'kew' | 'himalayan-dispatch';
   ogType?: 'website' | 'article';
   imagePath?: string;
   keywords?: string[];
@@ -30,6 +38,17 @@ export interface PageMetadataOptions {
     pdfOrDataUrl?: string;
     keywords?: string[];
   };
+}
+
+function isHimalayanDispatchMetadataPath(canonicalPath: string, explicitPub?: string): boolean {
+  if (explicitPub === 'himalayan-dispatch') return true;
+  if (explicitPub === 'kew') return false;
+  const clean = (canonicalPath || '').split(/[?#]/)[0] || '/';
+  if (clean === '/himalayan-dispatch' || clean.startsWith('/himalayan-dispatch/')) {
+    return true;
+  }
+  const firstSeg = clean.split('/').filter(Boolean)[0] || '';
+  return firstSeg.length > 0 && ALLOWED_DISPATCH_ROOT_SEGMENTS.has(firstSeg);
 }
 
 /**
@@ -50,6 +69,14 @@ export const DUPLICATE_ROUTE_CANONICAL_OVERRIDES: Record<string, string> = {
 
 export const NON_INDEXABLE_ROUTE_PREFIXES = [
   '/admin',
+  '/himalayan-dispatch/newsroom',
+  '/himalayan-dispatch/editorial-cms',
+  '/himalayan-dispatch/journalist-sign-in',
+  '/himalayan-dispatch/pitch',
+  '/newsroom',
+  '/editorial-cms',
+  '/journalist-sign-in',
+  '/pitch',
   '/webinars/admin',
   '/webinars/institution/',
   '/api',
@@ -76,6 +103,111 @@ export function isNonPublicRoute(routePath: string): boolean {
 }
 
 export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
+  if (isHimalayanDispatchMetadataPath(opts.canonicalPath, opts.publication)) {
+    const cleanDispatchTitle = opts.title
+      .replace(/\s*\|\s*Kashmir EcoWatch.*$/i, '')
+      .replace(/\s*—\s*Kashmir Environmental Intelligence Platform$/i, '')
+      .trim();
+
+    const fullDispatchTitle = cleanDispatchTitle.toLowerCase().includes('himalayan dispatch')
+      ? cleanDispatchTitle
+      : `${cleanDispatchTitle} | ${DISPATCH_IDENTITY.officialName}`;
+
+    const dispatchSubpath = stripDispatchPrefix(opts.canonicalPath);
+    const dispatchCanonicalUrl = toDispatchCanonicalUrl(dispatchSubpath);
+    const rawImg = opts.imagePath || DISPATCH_IDENTITY.defaultOgImagePath;
+    const dispatchImageUrl = /^https?:\/\//i.test(rawImg)
+      ? rawImg
+      : `${CANONICAL_DISPATCH_URL}${rawImg.startsWith('/') ? rawImg : `/${rawImg}`}`;
+    const shouldNoIndexDispatch = Boolean(opts.noIndex || isNonPublicRoute(opts.canonicalPath));
+
+    return {
+      metadataBase: new URL(CANONICAL_DISPATCH_URL),
+      applicationName: DISPATCH_IDENTITY.officialName,
+      title: {
+        absolute: fullDispatchTitle,
+      },
+      description: opts.description,
+      ...(opts.keywords && opts.keywords.length > 0
+        ? {
+            keywords: Array.from(
+              new Set([
+                ...opts.keywords,
+                DISPATCH_IDENTITY.officialName,
+                'Western Himalayas',
+                'Environmental Journalism',
+              ])
+            ),
+          }
+        : {}),
+      authors:
+        opts.authors && opts.authors.length > 0
+          ? opts.authors.map((name) => ({ name }))
+          : [{ name: DISPATCH_IDENTITY.officialName, url: DISPATCH_IDENTITY.canonicalHomepageUrl }],
+      creator: DISPATCH_IDENTITY.officialName,
+      publisher: DISPATCH_IDENTITY.publisherName,
+      alternates: {
+        canonical: dispatchCanonicalUrl,
+        types: {
+          'application/rss+xml': DISPATCH_IDENTITY.rssFeedUrl,
+        },
+      },
+      robots: shouldNoIndexDispatch
+        ? {
+            index: false,
+            follow: false,
+            nocache: true,
+            googleBot: {
+              index: false,
+              follow: false,
+              noimageindex: true,
+            },
+          }
+        : {
+            index: true,
+            follow: true,
+            'max-snippet': -1,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
+            googleBot: {
+              index: true,
+              follow: true,
+              'max-snippet': -1,
+              'max-image-preview': 'large',
+              'max-video-preview': -1,
+            },
+          },
+      openGraph: {
+        title: fullDispatchTitle,
+        description: opts.description,
+        url: dispatchCanonicalUrl,
+        siteName: DISPATCH_IDENTITY.officialName,
+        locale: 'en_US',
+        type: opts.ogType || 'website',
+        images: [
+          {
+            url: dispatchImageUrl,
+            alt: `${cleanDispatchTitle} — ${DISPATCH_IDENTITY.officialName}`,
+          },
+        ],
+        ...(opts.ogType === 'article' && opts.publishedTime
+          ? { publishedTime: opts.publishedTime }
+          : {}),
+        ...(opts.ogType === 'article' && opts.modifiedTime
+          ? { modifiedTime: opts.modifiedTime }
+          : {}),
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: KEW_IDENTITY.twitterHandle,
+        creator: KEW_IDENTITY.twitterHandle,
+        title: fullDispatchTitle,
+        description: opts.description,
+        images: [dispatchImageUrl],
+      },
+    };
+  }
+
   const cleanBaseTitle = opts.title
     .replace(/\s*\|\s*Kashmir EcoWatch.*$/i, '')
     .replace(/\s*—\s*Kashmir Environmental Intelligence Platform$/i, '')
@@ -266,6 +398,20 @@ const CURATED_STATIC_ROUTES: Record<
     title: 'Contact Kashmir EcoWatch Secretariat & Scientific Desk',
     description:
       'Reach the Kashmir EcoWatch Western Himalayan Secretariat for research collaboration, dataset inquiries, media verification, and environmental reporting.',
+  },
+  '/ecovoices': {
+    title: 'EcoVoices — Environmental Arts, Music & Creative Expression',
+    description:
+      'EcoVoices is Kashmir EcoWatch’s independent platform for communicating environmental consciousness through music, poetry, literature, visual arts, natural soundscapes, and cinematic storytelling across the Western Himalayas.',
+    imagePath: '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
+    keywords: [
+      'EcoVoices',
+      'Environmental Arts Kashmir',
+      'Environmental Music Kashmir',
+      'Pani Gawah Hai',
+      'SufiPulse USA',
+      'Dr. Zarf-e-Noori',
+    ],
   },
   '/research-library': {
     title: 'Scientific Research Library, Environmental Assessments & Monographs',

@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { WaterEntityListingPage } from '@/components/common/WaterEntityListingPage';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 import { springsData, WaterEntity } from '@/data/water-systems';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -472,6 +473,13 @@ export default function SpringsPage() {
           )}
         </AnimatePresence>
       </div>
+
+      <LinkedInvestigationsModulePanel
+        title="Springshed Depletion, Groundwater Security & Drinking Water Investigations"
+        subtitle="KEW-EIAI scientific investigations examining karst and Karewa spring discharge trends, recharge-zone disturbance, CGWB aquifer stress, and microbial/physicochemical drinking water safety across Kashmir."
+        investigationCodes={['KEW-INV-0021', 'KEW-INV-0024', 'KEW-INV-0025']}
+        className="mb-10"
+      />
     </WaterEntityListingPage>
   );
 }

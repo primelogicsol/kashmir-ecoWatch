@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { PremiumStickyHeader } from '@/components/sections/PremiumStickyHeader';
 import Link from 'next/link';
@@ -18,8 +19,23 @@ function HeaderFallback() {
 /**
  * Wraps PremiumStickyHeader in an error boundary so a navigation crash
  * doesn't take down the entire application.
+ * Omitted inside Himalayan Dispatch (both on dispatch.kashmir-ecowatch.com
+ * via rewritten App Router segment and on /himalayan-dispatch) so the magazine
+ * uses its exclusive editorial masthead.
  */
 export function SafeHeader() {
+  const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
+  const isVirtualHallApp =
+    pathname?.startsWith('/webinars/room/') ||
+    (pathname?.startsWith('/webinars/sessions/') && pathname?.endsWith('/live'));
+  if (
+    segment === 'himalayan-dispatch' ||
+    pathname?.startsWith('/himalayan-dispatch') ||
+    isVirtualHallApp
+  ) {
+    return null;
+  }
   return (
     <ErrorBoundary sectionName="Navigation" fallback={<HeaderFallback />}>
       <PremiumStickyHeader />

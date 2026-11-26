@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Map, Leaf, BarChart3, ArrowRight, ArrowUpRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles, Wind, Scale, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -26,17 +26,81 @@ export function ImmersiveHero() {
   const [totalHits, setTotalHits] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const spotlightLayerRef = useRef<HTMLDivElement>(null);
+  const rafIdRef = useRef<number | null>(null);
+  const pointerClientRef = useRef<{ x: number; y: number } | null>(null);
+  const isPointerInsideRef = useRef(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  const scheduleSpotlightUpdate = useCallback(() => {
+    if (rafIdRef.current !== null) return;
+    rafIdRef.current = window.requestAnimationFrame(() => {
+      rafIdRef.current = null;
+      const sectionEl = sectionRef.current;
+      const spotEl = spotlightLayerRef.current;
+      const pt = pointerClientRef.current;
+      if (!sectionEl || !spotEl || !pt) return;
+      const rect = sectionEl.getBoundingClientRect();
+      const relX = pt.x - rect.left;
+      const relY = pt.y - rect.top;
+      spotEl.style.setProperty('--kew-spot-x', `${relX.toFixed(1)}px`);
+      spotEl.style.setProperty('--kew-spot-y', `${relY.toFixed(1)}px`);
+    });
+  }, []);
+
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
+    const syncOnScrollOrResize = () => {
+      if (isPointerInsideRef.current && pointerClientRef.current) {
+        scheduleSpotlightUpdate();
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', syncOnScrollOrResize, { passive: true });
+    window.addEventListener('resize', syncOnScrollOrResize, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', syncOnScrollOrResize);
+      window.removeEventListener('resize', syncOnScrollOrResize);
+      if (rafIdRef.current !== null) {
+        window.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
+  }, [scheduleSpotlightUpdate]);
+
+  const handleSectionPointerEnter = useCallback(
+    (e: React.PointerEvent<HTMLElement>) => {
+      if (e.pointerType === 'touch') return;
+      isPointerInsideRef.current = true;
+      pointerClientRef.current = { x: e.clientX, y: e.clientY };
+      scheduleSpotlightUpdate();
+      if (spotlightLayerRef.current) {
+        spotlightLayerRef.current.style.opacity = '1';
+      }
+    },
+    [scheduleSpotlightUpdate]
+  );
+
+  const handleSectionPointerMove = useCallback(
+    (e: React.PointerEvent<HTMLElement>) => {
+      if (e.pointerType === 'touch') return;
+      isPointerInsideRef.current = true;
+      pointerClientRef.current = { x: e.clientX, y: e.clientY };
+      scheduleSpotlightUpdate();
+      if (spotlightLayerRef.current && spotlightLayerRef.current.style.opacity !== '1') {
+        spotlightLayerRef.current.style.opacity = '1';
+      }
+    },
+    [scheduleSpotlightUpdate]
+  );
+
+  const handleSectionPointerLeave = useCallback((e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType === 'touch') return;
+    isPointerInsideRef.current = false;
+    if (spotlightLayerRef.current) {
+      spotlightLayerRef.current.style.opacity = '0';
+    }
   }, []);
 
   // Click outside listener to dismiss search dropdown
@@ -140,84 +204,98 @@ export function ImmersiveHero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
-      {/* Layer 1: Base Kashmir satellite-relief terrain - dark aerial environmental intelligence surface */}
-      <div 
-        className="absolute inset-0 hero-satellite-relief" 
-        style={{
-          backgroundImage: `url('/background.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+    <section
+      ref={sectionRef}
+      data-kew-dark-surface="true"
+      onPointerEnter={handleSectionPointerEnter}
+      onPointerMove={handleSectionPointerMove}
+      onPointerLeave={handleSectionPointerLeave}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-slate-100"
+    >
+      {/* Continuous Section 01 Geospatial Background Surface (immediately below Cinematic Hero through EXPLORE indicator) */}
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        {/* Layer 1: Base Kashmir satellite-relief terrain - dark aerial environmental intelligence surface */}
+        <div
+          className="absolute inset-0 hero-satellite-relief"
+          style={{
+            backgroundImage: `url('/background.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
 
-      {/* Layer 2: Eco intelligence overlay - topo + hydrology combined */}
-      <div className="absolute inset-0 hero-kashmir-eco-overlay" />
+        {/* Layer 2: Eco intelligence overlay - topo + hydrology combined */}
+        <div className="absolute inset-0 hero-kashmir-eco-overlay" />
 
-      {/* Layer 3: Top atmospheric fade - subtle depth from top */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-transparent to-slate-950/40" />
+        {/* Layer 3: Top atmospheric fade - subtle depth from top */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-transparent to-slate-950/40" />
 
-      {/* Layer 4: Content protection gradient - left to right dark fade for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
+        {/* Layer 4: Content protection gradient - left to right dark fade for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
 
-      {/* Layer 5: Bottom fade for smooth content transition */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
+        {/* Layer 5: Bottom boundary fade below EXPLORE indicator */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
 
-      {/* Layer 6: Cursor spotlight effect - reveals background on hover */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle 250px at ${cursorPos.x}px ${cursorPos.y}px, transparent 0%, rgba(2, 6, 23, 0.85) 100%)`,
-        }}
-      />
+        {/* Layer 6: Default resting veil — preserves exact resting background appearance outside spotlight & when pointer leaves */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: 'rgba(2, 6, 23, 0.85)',
+          }}
+        />
 
-      {/* Layer 7: Minimal live monitoring nodes - 5 strategic locations */}
-      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[
-          { top: '24%', left: '62%' },  // Northern region
-          { top: '36%', left: '71%' },  // Eastern region
-          { top: '48%', left: '66%' },  // Central region
-          { top: '58%', left: '78%' },  // Southern region
-          { top: '67%', left: '59%' },  // Western region
-        ].map((pos, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2.5 h-2.5 rounded-full bg-emerald-400/80 shadow-[0_0_18px_rgba(52,211,153,0.35)]"
+        {/* Layer 6b: Cursor-reactive 250px localized illumination (+10% relative hover terrain visibility, ~300ms transition) */}
+        <div
+          ref={spotlightLayerRef}
+          data-kew-spotlight-layer="true"
+          className="absolute inset-0 will-change-[opacity]"
+          style={{
+            opacity: 0,
+            transition: 'opacity 300ms ease',
+            ['--kew-spot-x' as string]: '50%',
+            ['--kew-spot-y' as string]: '50%',
+            WebkitMaskImage:
+              'radial-gradient(circle 250px at var(--kew-spot-x) var(--kew-spot-y), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
+            maskImage:
+              'radial-gradient(circle 250px at var(--kew-spot-x) var(--kew-spot-y), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
+          }}
+        >
+          <div
+            className="absolute inset-0 hero-satellite-relief"
             style={{
-              top: pos.top,
-              left: pos.left,
-            }}
-            initial={{ opacity: 0.45, scale: 1 }}
-            animate={{ opacity: [0.45, 1, 0.45], scale: [1, 1.35, 1] }}
-            transition={{
-              duration: 3.2 + i * 0.35,
-              repeat: Infinity,
-              delay: i * 0.4,
-              ease: [0.4, 0, 0.2, 1]
+              backgroundImage: `url('/background.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
             }}
           />
-        ))}
-      </div> */}
+          <div className="absolute inset-0 hero-kashmir-eco-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/25 via-transparent to-slate-950/35" />
+          {/* Calibrated +10% relative terrain visibility inside 250px spotlight (40% -> 44% on right; continuous subtle relief across Section 01) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/76 via-slate-950/66 to-[#020617]/[0.56]" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/75 to-transparent" />
+        </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20 sm:py-24 md:py-28 lg:py-32">
-        <div className="max-w-[96rem] mx-auto">
+      <div className="relative z-10 container mx-auto py-16 sm:py-20 md:py-24 lg:py-28 3xl:py-32">
+        <div className="w-full">
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] glass-light border border-white/10 mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] glass-light border border-white/10 mb-5 sm:mb-7"
           >
-            <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+            <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-500"></span>
             </span>
-            <span className="text-[0.40rem] xs:text-[0.45rem] sm:text-xs md:text-[0.65rem] lg:text-xs font-medium text-slate-300 tracking-wide uppercase">
+            <span className="text-[11px] sm:text-xs 3xl:text-sm font-semibold text-slate-200 tracking-wider uppercase">
               Western Himalayan Environmental Command Center
             </span>
-            <Radar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+            <Radar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
           </motion.div>
 
           {/* Universal Brand Identity Lockup */}
@@ -235,20 +313,20 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-2 sm:mb-3 leading-tight tracking-tight"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4xl:text-[5.5rem] font-black text-white mb-2 sm:mb-3 leading-[1.08] tracking-tight"
           >
             Kashmir{' '}
             <span className="gradient-text text-glow">EcoWatch</span>
           </motion.h1>
 
-          {/* Institutional Subtitle — Mandatory Canonical Short Institutional Name */}
+          {/* Institutional Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-wide text-emerald-400 mb-3 sm:mb-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl font-bold tracking-wide text-emerald-400 mb-3 sm:mb-4 max-w-[72ch]"
           >
-            KEW Western Himalayan
+            Integrated Environmental Intelligence &amp; Earth Systems Observatory
           </motion.p>
 
           {/* Positioning statement - Full institutional line */}
@@ -256,9 +334,9 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 mb-3 sm:mb-4 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
+            className="text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-[1.15rem] text-slate-300 mb-3 sm:mb-4 max-w-[74ch] leading-relaxed text-pretty"
           >
-            <span className="text-emerald-400 font-semibold">Kashmir EcoWatch Western Himalayan</span> · Formerly Environment and Service Research Organization (ESRO, Est. 2004) · Operated &amp; Supported by Dr. Kumar Foundation USA &amp; Kumar Trust USA
+            <span className="text-emerald-400 font-semibold">Kashmir EcoWatch Western Himalayan</span>, formerly the Environment and Service Research Organization (ESRO, established 2004), is a multidisciplinary environmental intelligence initiative operated and supported by Dr. Kumar Foundation USA and Kumar Trust USA.
           </motion.p>
 
           {/* Product descriptor */}
@@ -266,9 +344,9 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl sm:max-w-3xl leading-relaxed text-balance"
+            className="text-xs sm:text-sm md:text-base lg:text-lg 3xl:text-[1.15rem] text-slate-400 mb-7 sm:mb-9 md:mb-10 max-w-[74ch] leading-relaxed text-pretty"
           >
-            Environmental intelligence, satellite monitoring, GIS, biodiversity research, climate science, hydrological monitoring, and ecological assessments across the Western Himalaya.
+            Integrating Earth observation, geospatial analytics, ecosystem science, climate intelligence, hydrological modelling, biodiversity informatics and environmental risk assessment to advance evidence-based governance, ecological resilience and sustainable stewardship across the Western Himalayas.
           </motion.p>
 
           {/* Mobile 2-Tap Direct Field Telemetry (Priority 1 Mobile Accessibility) */}
@@ -379,7 +457,7 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl"
+            className="mt-8 sm:mt-10 md:mt-12 max-w-full sm:max-w-3xl lg:max-w-5xl 3xl:max-w-6xl"
           >
             {/* Search input */}
             <div ref={searchContainerRef} className="relative">
@@ -610,11 +688,11 @@ export function ImmersiveHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl"
+            className="mt-10 sm:mt-12 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 3xl:gap-6 w-full"
           >
             {[
               { value: '2,847+', label: 'Species Indexed', icon: Leaf, trend: '+156' },
-              { value: '47', label: 'Protected Areas', icon: Map, trend: '4,380 km²' },
+              { value: '182', label: 'Protected & Bird Areas', icon: Map, trend: '47 Core J&K' },
               { value: '1,435+', label: 'Water Systems', icon: Activity, trend: 'Active' },
               { value: '240+', label: 'Monitoring Stations', icon: Satellite, trend: 'Online' },
             ].map((stat, index) => (
@@ -623,32 +701,32 @@ export function ImmersiveHero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
-                className="glass-light rounded-xl p-3 sm:p-4 md:p-5 border border-white/10 hover:border-forest-500/30 transition-all duration-300 card-intelligence"
+                className="glass-light rounded-xl p-3.5 sm:p-4 md:p-5 3xl:p-6 border border-white/10 hover:border-forest-500/30 transition-all duration-300 card-intelligence"
               >
                 <div className="flex items-start justify-between mb-2 sm:mb-3">
-                  <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
+                  <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400/80" />
                   <span className="text-[10px] sm:text-xs text-emerald-400 font-mono">{stat.trend}</span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-bold text-white mb-1 metric-live">
+                <div className="text-2xl sm:text-3xl 3xl:text-4xl font-bold text-white mb-1 metric-live tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider">
+                <div className="text-[11px] sm:text-xs 3xl:text-sm text-slate-400 uppercase tracking-wider font-medium">
                   {stat.label}
                 </div>
               </motion.div>
             ))}
           </motion.div>
-          
+
           {/* Source/Status credibility line */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
-            className="mt-8 max-w-4xl"
+            className="mt-6 sm:mt-8 w-full"
           >
-            <div className="inline-flex items-center gap-3 px-2 md:px-4 py-2 rounded-[4px] glass-light border border-white/10">
-              <Database className="w-4 h-4 text-blue-400" />
-              <span className="text-[8px] md:text-xs text-slate-400">
+            <div className="inline-flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-[4px] glass-light border border-white/10 max-w-full">
+              <Database className="w-4 h-4 text-blue-400 shrink-0" />
+              <span className="text-[11px] sm:text-xs 3xl:text-sm text-slate-300 leading-relaxed">
                 Source-integrated metrics updated across 24 specialized intelligence modules — synthesizing reference inventories, Copernicus/ECMWF satellite feeds, municipal audits, and field sensors
               </span>
             </div>
@@ -661,7 +739,7 @@ export function ImmersiveHero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-1 md:bottom-7 left-1/2 -translate-x-1/2"
+        className="absolute z-10 bottom-1 md:bottom-7 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-3">
           <span className="text-xs uppercase tracking-widest text-slate-500">Explore</span>
@@ -674,9 +752,6 @@ export function ImmersiveHero() {
           </div>
         </div>
       </motion.div>
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
     </section>
   );
 }

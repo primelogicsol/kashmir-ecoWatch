@@ -64,7 +64,7 @@ export default function SeiaeDataSourcesPage() {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
+      <div className="kew-container-report mt-8 space-y-12">
         {/* EXECUTIVE MANDATE & 3 ACQUISITION TIERS */}
         <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/30 shadow-xl space-y-4">
           <div className="flex items-center gap-2">

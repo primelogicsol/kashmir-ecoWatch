@@ -364,7 +364,7 @@ export function FeaturedEntityStrip() {
                 </div>
               ) : (
                 <Carousel
-                  itemWidth={{ mobile: 272, tablet: 300, desktop: 340 }}
+                  itemWidth={{ mobile: 272, tablet: 310, desktop: 360 }}
                   gap="gap-3 sm:gap-4 md:gap-5"
                   showArrows={true}
                   ariaLabel="Featured entities carousel"
@@ -372,7 +372,7 @@ export function FeaturedEntityStrip() {
                   {filteredEntities.map((entity) => (
                     <div
                       key={entity.id}
-                      className="flex-shrink-0 w-[calc(100vw-2.5rem)] max-w-[280px] sm:w-[300px] sm:max-w-none md:w-[340px] snap-start h-auto flex"
+                      className="flex-shrink-0 w-[calc(100vw-2.5rem)] max-w-[280px] sm:w-[300px] sm:max-w-none md:w-[340px] 3xl:w-[380px] 4xl:w-[410px] snap-start h-auto flex"
                     >
                       <EntityCard entity={entity} onNavigate={router.push} />
                     </div>

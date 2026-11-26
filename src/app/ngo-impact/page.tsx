@@ -126,7 +126,7 @@ export default function NGOImpactLandingPage() {
       {/* ─── 2. 8 KPI CARDS (ModuleKpiStrip) ────────────────────────────────────── */}
       <ModuleKpiStrip kpis={metrics} />
 
-      <div className="container mx-auto px-6 max-w-[1600px] flex flex-col gap-16 mt-8">
+      <div className="kew-container-wide flex flex-col gap-16 mt-8">
         
         {/* ─── 3. SEARCH & FILTERS ────────────────────────────────────────────────── */}
         <section id="ngos" className="relative z-40">

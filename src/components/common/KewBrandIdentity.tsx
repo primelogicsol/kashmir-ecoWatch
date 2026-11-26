@@ -19,13 +19,12 @@ export interface KewBrandIdentityProps {
 }
 
 /**
- * Canonical KEW Responsive Brand Identity Lockup (`KEW | Western Himalayan`)
+ * Canonical KEW Institutional Brand Identity Lockup (`KEW | WESTERN HIMALAYAN`)
  *
- * Enforces the universal mobile branding standard across Kashmir EcoWatch:
- * 1. Green `KEW` badge and `Western Himalayan` stay on a single horizontal line on mobile (320px–430px+).
- * 2. Identical font-family, font-size, font-weight, line-height, and letter-spacing on mobile via shared CSS tokens.
- * 3. Green badge preserved (`bg-emerald-600`); `Western Himalayan` remains visually separate without badge background.
- * 4. Desktop (`>= 768px`) typography and hero layouts preserved without modification.
+ * Enforces the global KEW institutional identity standard across mobile, tablet, desktop & 4K:
+ * 1. `KEW` badge and `WESTERN HIMALAYAN` render on a single horizontal line aligned on the same baseline.
+ * 2. Identical font-family, font-size, font-weight, line-height, letter-spacing, and uppercase cap-height via shared CSS tokens.
+ * 3. KEW emerald badge preserved; `WESTERN HIMALAYAN` renders in Pure White (#FFFFFF) without badge background.
  */
 export function KewBrandIdentity({
   badgeText = 'KEW',

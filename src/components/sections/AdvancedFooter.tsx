@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 
 export const KEW_OFFICIAL_WHATSAPP_GROUP = 'https://chat.whatsapp.com/CfI56jHncxoBXoV7XK5o39';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 
 const footerLinks = {
   explore: [
@@ -27,6 +28,7 @@ const footerLinks = {
   ],
   platform: [
     { label: 'Env. Investigations (KEW-EIAI)',    href: '/environmental-investigations' },
+    { label: 'Himalayan Dispatch',                href: getKewToDispatchUrl('/') },
     { label: 'Investigation Dashboard',           href: '/environmental-investigations/dashboard' },
     { label: 'Sectoral EIA Engine',               href: '/sectoral-eia' },
     { label: 'Cumulative Impact Modeling',        href: '/sectoral-eia/cumulative-impact' },
@@ -37,9 +39,12 @@ const footerLinks = {
     { label: 'Hazard Intelligence Dashboard',     href: '/hazard-intelligence/dashboards' },
     { label: 'Earth Systems Dashboard',           href: '/seasonal-ecology' },
     { label: 'SDG Dashboard',                     href: '/environmental-monitoring/sdg-monitoring' },
+    { label: 'Himalayan Dispatch Magazine',       href: getKewToDispatchUrl('/') },
+    { label: 'EcoVoices: Arts & Music',           href: '/ecovoices' },
   ],
   resources: [
     { label: 'Investigation Reports',     href: '/environmental-investigations/reports' },
+    { label: 'Himalayan Dispatch · Issue 02', href: getKewToDispatchUrl('/forthcoming') },
     { label: 'Accountability Matrix',     href: '/environmental-investigations/accountability' },
     { label: 'Sectoral Impact Atlas',     href: '/sectoral-eia/impact-atlas' },
     { label: 'SEIAE Scientific Reports',  href: '/sectoral-eia/reports' },
@@ -55,6 +60,7 @@ const footerLinks = {
   ],
   getInvolved: [
     { label: 'Submit Investigation',      href: '/environmental-investigations/submit' },
+    { label: 'Submit Creative Work',      href: '/ecovoices#submit' },
     { label: 'Submit Sectoral Assessment',href: '/sectoral-eia/assessment/new' },
     { label: 'Submit Observation',        href: '/submit-observation' },
     { label: 'Report Environmental Issue',href: '/report-issue' },
@@ -92,10 +98,10 @@ const socialLinks = [
 
 export function AdvancedFooter() {
   return (
-    <footer className="bg-slate-950 border-t border-white/5">
+    <footer data-kew-dark-surface="true" className="bg-slate-950 border-t border-white/5 text-slate-100">
       {/* Main footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 3xl:gap-12">
           {/* Brand column - spans 2 columns */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
             <Link href="/" className="relative flex items-center group">

@@ -389,7 +389,7 @@ export default function MedicinalPlantsPage() {
               size="sm"
               className={`font-bold transition-all ${
                 activePreset === 'endemic'
-                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/30 ring-2 ring-purple-400'
+                  ? 'bg-purple-700 text-white shadow-md shadow-purple-500/30 ring-2 ring-purple-400'
                   : 'bg-gradient-to-r from-purple-600 to-indigo-500 text-white hover:from-purple-500 hover:to-indigo-400'
               }`}
               onClick={() => { setActiveMainTab('catalog'); setActivePreset('endemic'); setCurrentPage(1); }}
@@ -558,7 +558,7 @@ export default function MedicinalPlantsPage() {
               <Leaf className="w-4 h-4" />
               <span>Species Pharmacopeia Catalog</span>
               <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
-                activeMainTab === 'catalog' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-emerald-400'
+                activeMainTab === 'catalog' ? 'bg-slate-950/15 text-slate-950 font-black' : 'bg-slate-800 text-emerald-400'
               }`}>
                 127
               </span>
@@ -592,7 +592,7 @@ export default function MedicinalPlantsPage() {
               <Pill className="w-4 h-4" />
               <span>Formulary &amp; Preparation Laboratory</span>
               <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
-                activeMainTab === 'formulary' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-amber-300'
+                activeMainTab === 'formulary' ? 'bg-slate-950/15 text-slate-950 font-black' : 'bg-slate-800 text-amber-300'
               }`}>
                 6 Modes
               </span>
@@ -609,7 +609,7 @@ export default function MedicinalPlantsPage() {
               <FlaskConical className="w-4 h-4" />
               <span>Phytochemical Directory &amp; Mechanisms</span>
               <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono ${
-                activeMainTab === 'phytochemistry' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-800 text-cyan-300'
+                activeMainTab === 'phytochemistry' ? 'bg-slate-950/15 text-slate-950 font-black' : 'bg-slate-800 text-cyan-300'
               }`}>
                 12 Key Bioactives
               </span>
@@ -622,7 +622,7 @@ export default function MedicinalPlantsPage() {
       {/* TAB 1: SPECIES CATALOG VIEW                                    */}
       {/* ───────────────────────────────────────────────────────────── */}
       {activeMainTab === 'catalog' && (
-        <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex-1 kew-container-wide py-2">
           {/* Preset Category Chips */}
           <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar">
             {presetFilters.map(preset => {
@@ -644,7 +644,7 @@ export default function MedicinalPlantsPage() {
                   <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-950' : 'text-emerald-400'}`} />
                   {preset.label}
                   <span className={`px-1.5 py-0.2 rounded-[4px] text-[10px] font-mono ${
-                    isActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-400'
+                    isActive ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800 text-slate-400'
                   }`}>
                     {preset.count}
                   </span>
@@ -1076,7 +1076,7 @@ export default function MedicinalPlantsPage() {
       {/* TAB 2: CLASSICAL MEDICAL TRADITIONS COMPARATIVE MATRIX        */}
       {/* ───────────────────────────────────────────────────────────── */}
       {activeMainTab === 'traditions' && (
-        <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex-1 kew-container-wide py-2">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2.5">
               <BookOpen className="w-6 h-6 text-purple-400" />
@@ -1227,7 +1227,7 @@ export default function MedicinalPlantsPage() {
       {/* TAB 3: FORMULARY & PREPARATION LABORATORY VIEW                */}
       {/* ───────────────────────────────────────────────────────────── */}
       {activeMainTab === 'formulary' && (
-        <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex-1 kew-container-wide py-2">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2.5">
               <Pill className="w-6 h-6 text-amber-400" />
@@ -1366,7 +1366,7 @@ export default function MedicinalPlantsPage() {
       {/* TAB 4: PHYTOCHEMICAL DIRECTORY & MOLECULAR MECHANISMS VIEW    */}
       {/* ───────────────────────────────────────────────────────────── */}
       {activeMainTab === 'phytochemistry' && (
-        <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex-1 kew-container-wide py-2">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2.5">
               <FlaskConical className="w-6 h-6 text-cyan-400" />

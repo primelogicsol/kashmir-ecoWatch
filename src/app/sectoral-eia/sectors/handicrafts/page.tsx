@@ -182,7 +182,7 @@ export default function HandicraftsEiaPage() {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-10 max-w-7xl">
+      <div className="kew-container-report mt-8 space-y-10">
         
         {/* ======================================================== */}
         {/* 1. HEADLINE OFFICIAL PUBLIC-SECTOR FIGURES (UT LEVEL)    */}

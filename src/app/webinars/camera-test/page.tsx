@@ -509,7 +509,7 @@ export default function CameraDiagnosticPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-4 md:p-8 pt-28 md:pt-36 font-sans">
       {/* Header */}
-      <div className="max-w-7xl mx-auto mb-6">
+      <div className="container mx-auto mb-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2">
@@ -547,7 +547,7 @@ export default function CameraDiagnosticPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Controls & Presets */}
         <div className="lg:col-span-5 space-y-6">
           {/* Device Selection Card */}

@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { Threat } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface ThreatDetailPageProps {
   threat: Threat;
@@ -74,7 +75,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 kew-has-hero-rail">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,7 +132,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
               </div>
 
               {/* Quick Stats */}
-              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 hidden lg:block">
+              <DismissibleHeroOverlay restoreLabel="Show Threat Stats" className="hidden lg:grid shrink-0"><Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -155,7 +156,7 @@ export function ThreatDetailPage({ threat, relatedThreats = [] }: ThreatDetailPa
                     </div>
                   </div>
                 </div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

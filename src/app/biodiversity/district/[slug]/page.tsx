@@ -41,7 +41,7 @@ const DistrictDetailPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-700 to-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="container mx-auto py-12">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm mb-4">
             <Link href="/biodiversity" className="hover:underline">
@@ -60,7 +60,7 @@ const DistrictDetailPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+      <div className="container mx-auto py-8 space-y-8">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           <MetricCard label="Total Species" value={district.totalSpecies} highlight />

@@ -41,7 +41,7 @@ export default function BloomMappingPage() {
       />
 
       {/* Cross-Link Card: Algal Bloom Monitoring */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="container mx-auto pb-16">
         <Link href="/risk-monitoring/algal-bloom-monitoring">
           <Card className="glass-intense border-emerald-500/30 hover:border-emerald-500/50 transition-all cursor-pointer group overflow-hidden">
             <div className="relative p-6 md:p-8">

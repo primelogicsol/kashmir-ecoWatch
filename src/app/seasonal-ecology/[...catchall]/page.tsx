@@ -5,7 +5,7 @@ import { SeasonalDetailPage } from '@/components/common/SeasonalDetailPage';
 import { getSeasonalEcologyData } from '@/data/seasonal-ecology';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 
 export default function SeasonalEcologyGenericDetailPage() {
   const params = useParams();

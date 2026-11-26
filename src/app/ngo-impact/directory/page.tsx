@@ -104,7 +104,7 @@ export default function NGODirectoryPage() {
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
-      <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col gap-6">
+      <div className="flex-1 kew-container-wide py-6 md:py-8 flex flex-col gap-6">
         
         <GlobalFilterBar
           showScope={false}

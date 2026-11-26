@@ -14,12 +14,10 @@ import {
   FileSpreadsheet,
   Calendar,
   Sparkles,
-  Music
 } from 'lucide-react';
 
 const NAV_LINKS = [
   { href: '/environmental-calendar/outdoor-classroom', label: 'Program Overview', icon: Compass },
-  { href: '/environmental-calendar/ecovoices', label: 'EcoVoices (Music)', icon: Music },
   { href: '/environmental-calendar/outdoor-classroom/curriculum', label: 'Curriculum Library', icon: BookOpen },
   { href: '/environmental-calendar/outdoor-classroom/adopt-an-ecosystem', label: 'Adopt-an-Ecosystem', icon: Globe2 },
   { href: '/environmental-calendar/outdoor-classroom/field-learning-programs', label: '8 Field Programs', icon: Layers },

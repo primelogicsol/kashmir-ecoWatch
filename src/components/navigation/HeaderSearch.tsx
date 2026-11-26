@@ -12,13 +12,13 @@ interface HeaderSearchProps {
 }
 
 const QUICK_CHIPS = [
+  'Himalayan Dispatch',
+  'EcoVoices',
+  'Webinars & Conferences',
   'Hangul',
   'Wular Lake',
   'Western Disturbances',
   'Environmental PIL',
-  'Glacier Recession',
-  'Green Heroes',
-  'Gilgit-Baltistan',
 ];
 
 export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {

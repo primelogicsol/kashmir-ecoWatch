@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Calendar,
@@ -46,6 +46,7 @@ import {
   calculateInternationalFairness,
   MAJOR_INTERNATIONAL_HUBS
 } from '@/lib/conference-timezone';
+import { getWebinarRouteHeroImages } from '@/data/webinar-hero-carousel';
 
 export default function ScientificProgramCalendarPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,6 +55,22 @@ export default function ScientificProgramCalendarPage() {
   const [selectedModule, setSelectedModule] = useState<string>('all');
   const [activeView, setActiveView] = useState<'timeline' | 'flagships' | 'matrix' | 'sandbox'>('timeline');
   const [selectedActivity, setSelectedActivity] = useState<ScientificProgramActivity | null>(null);
+
+  // Support contextual ?type= filter from hero carousel CTAs (e.g. applied_workshop, specialist_webinar, environmental_observance)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type');
+    const validTypes: ActivityType[] = [
+      'flagship_conference',
+      'specialist_webinar',
+      'applied_workshop',
+      'environmental_observance',
+    ];
+    if (typeParam && validTypes.includes(typeParam as ActivityType)) {
+      setSelectedType(typeParam);
+    }
+  }, []);
 
   // Time zone engine state
   const [participantZone, setParticipantZone] = useState('Asia/Kolkata');
@@ -224,12 +241,7 @@ export default function ScientificProgramCalendarPage() {
           </div>
         }
         subtitle="Proposed inaugural two-year institutional program · 104 activities across 8 flagship summits, 48 specialist webinars, 24 applied workshops, and 24 environmental observances with automatic global time zone conversion and DST synchronization."
-        images={[
-          '/images/webinars/webinar-hero-1.jpg',
-          '/images/webinars/webinar-hero-2.jpg',
-          '/images/webinars/webinar-hero-3.jpg',
-          '/images/webinars/webinar-hero-4.jpg'
-        ]}
+        images={getWebinarRouteHeroImages('/webinars/calendar', selectedType)}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button
@@ -253,7 +265,7 @@ export default function ScientificProgramCalendarPage() {
       />
 
       {/* Prominent 5-Metric Target Strip */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-6">
+      <div className="relative z-10 container mx-auto mt-6 sm:mt-8 mb-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-teal-500/30 backdrop-blur-xl shadow-2xl">
           <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-white/5 text-center space-y-1">
             <div className="text-2xl sm:text-3xl font-extrabold text-teal-400 font-mono">
@@ -295,7 +307,7 @@ export default function ScientificProgramCalendarPage() {
 
       <WebinarNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="container mx-auto py-8 space-y-8">
         {/* Controls Bar: Search, View Switcher & Filters */}
         <div className="p-5 rounded-3xl bg-slate-900/80 border border-white/10 space-y-5 shadow-xl">
           {/* Top Row: Search & View Tabs */}

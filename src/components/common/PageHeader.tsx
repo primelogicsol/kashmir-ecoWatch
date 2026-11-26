@@ -18,12 +18,13 @@ interface PageHeaderProps {
 
 export function PageHeader({ icon, title, subtitle, breadcrumbs, actions }: PageHeaderProps) {
   return (
-    <div className="pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 container mx-auto px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl"
-      >
+    <div className="kew-module-hero-surface w-full">
+      <div className="kew-module-hero-inner container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-5xl 3xl:max-w-6xl"
+        >
         {/* Breadcrumbs */}
         {breadcrumbs && breadcrumbs.length > 0 && (
           <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
@@ -53,12 +54,13 @@ export function PageHeader({ icon, title, subtitle, breadcrumbs, actions }: Page
             KEW Protected Network
           </span>
         </div>
-        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">{title}</h1>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-3xl">{subtitle}</p>
+        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-4xl 3xl:max-w-5xl">{title}</h1>
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 mb-8 leading-relaxed max-w-[72ch]">{subtitle}</p>
 
         {/* Actions */}
         {actions && <div className="flex flex-col sm:flex-row flex-wrap gap-4">{actions}</div>}
       </motion.div>
+      </div>
     </div>
   );
 }

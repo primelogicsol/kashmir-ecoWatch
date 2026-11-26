@@ -93,17 +93,17 @@ export default function InvestigationMethodologyPage() {
           </div>
         </section>
 
-        {/* 2. Standard 24-Section Architecture */}
+        {/* 2. Standard Report Architecture */}
         <section id="report-architecture" className="space-y-5 scroll-mt-32">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 block mb-1">
               Section 02 · Uniform Scientific Publication Architecture
             </span>
             <h2 className="text-2xl font-bold text-white">
-              24-Section Dynamic Investigation Report Standard
+              {STANDARD_REPORT_SECTIONS.length}-Section Dynamic Investigation Report Standard
             </h2>
             <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-              Every investigation follows this 24-section publication order while dynamically suppressing non-applicable sections (for example, omitting Hydrological Analysis on a purely atmospheric study).
+              Every investigation follows this {STANDARD_REPORT_SECTIONS.length}-section publication order while dynamically suppressing non-applicable sections (for example, omitting Hydrological Analysis on a purely atmospheric study).
             </p>
           </div>
 
@@ -135,14 +135,14 @@ export default function InvestigationMethodologyPage() {
           </Card>
         </section>
 
-        {/* 3. 12-Stage AI-Assisted & Human-Verified Workflow */}
+        {/* 3. AI-Assisted & Human-Verified Workflow */}
         <section id="workflow" className="space-y-5 scroll-mt-32">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">
               Section 03 · Strict Anti-Fabrication Guardrails
             </span>
             <h2 className="text-2xl font-bold text-white">
-              12-Stage AI-Assisted &amp; Scientifically Validated Workflow
+              {INVESTIGATION_WORKFLOW_STAGES.length}-Stage AI-Assisted &amp; Scientifically Validated Workflow
             </h2>
             <p className="text-sm text-slate-400 mt-1 max-w-3xl">
               AI assists documentary synthesis, literature cross-checking, supported mass-balance computation, and red-team critique — it is strictly forbidden from fabricating field measurements, laboratory assays, or unperformed numerical simulations.
@@ -174,17 +174,17 @@ export default function InvestigationMethodologyPage() {
           </div>
         </section>
 
-        {/* 4. 12 Derived Publication Formats */}
+        {/* 4. Derived Publication Formats */}
         <section id="formats" className="space-y-5">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-1">
               Section 04 · Canonical Single-Source Publishing
             </span>
             <h2 className="text-2xl font-bold text-white">
-              12 Derived Publication Formats
+              {PUBLICATION_FORMATS.length} Derived Publication Formats
             </h2>
             <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-              All twelve audience-specific outputs are generated dynamically from the single canonical master record to prevent version drift.
+              All {PUBLICATION_FORMATS.length} audience-specific outputs are generated dynamically from the single canonical master record to prevent version drift.
             </p>
           </div>
 

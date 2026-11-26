@@ -11,12 +11,13 @@ import {
   Landmark, Gavel, ShieldCheck, HandCoins, Database, Scale as ScaleIcon,
   Accessibility, LandPlot, MapPin, Route, Waves, Flame, Zap,
   Droplets, TestTube, Factory as FactoryIcon, Trash2, Recycle,
-  Wind, Thermometer, Info, Search, ListFilter, Activity, TreePine, Hammer, Wheat, Layers
+  Wind, Thermometer, Info, Search, ListFilter, Activity, TreePine, Hammer, Wheat, Layers, Music, Sparkles, Award
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 
 interface ModuleItem {
   name: string;
@@ -45,17 +46,33 @@ const moduleGroups: ModuleGroup[] = [
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
     modules: [
       { name: 'Module Home', route: '/environmental-investigations', description: 'Portfolio overview, live metrics & featured reports', icon: Scale },
-      { name: 'Investigation Dashboard', route: '/environmental-investigations/dashboard', description: '12-tab analytical & verification cockpit', icon: TrendingUp },
-      { name: 'Investigation Reports', route: '/environmental-investigations/reports', description: 'Published & proposed canonical dossiers', icon: FileText },
-      { name: '18 Investigation Domains', route: '/environmental-investigations/domains', description: 'Lakes, cryosphere, Karewas, dams & governance', icon: Layers },
-      { name: '36 Scientific Disciplines', route: '/environmental-investigations/disciplines', description: 'Equations, methods & Himalayan literature', icon: BookOpen },
+      { name: 'Investigation Dashboard', route: '/environmental-investigations/dashboard', description: 'Intelligence & evidence cockpit', icon: TrendingUp },
+      { name: 'Investigation Reports', route: '/environmental-investigations/reports', description: 'Scientific dossiers & scoping portfolio', icon: FileText },
+      { name: 'Investigation Domains', route: '/environmental-investigations/domains', description: 'Lakes, cryosphere, Karewas, dams & governance', icon: Layers },
+      { name: 'Scientific Disciplines', route: '/environmental-investigations/disciplines', description: 'Equations, methods & Himalayan literature', icon: BookOpen },
       { name: 'Evidence Registry', route: '/environmental-investigations/evidence', description: 'Claim-by-claim scientific verification matrix', icon: Database },
       { name: 'Investigation Atlas', route: '/environmental-investigations/atlas', description: 'Interactive GIS footprints & watersheds', icon: Map },
-      { name: 'Institutional Accountability', route: '/environmental-investigations/accountability', description: '11-component statutory responsibility matrix', icon: Landmark },
+      { name: 'Institutional Accountability', route: '/environmental-investigations/accountability', description: 'Statutory responsibility matrix', icon: Landmark },
       { name: 'Asian & Global Case Studies', route: '/environmental-investigations/precedents', description: 'Comparative international restoration benchmarks', icon: Compass },
       { name: 'Recommendations Tracker', route: '/environmental-investigations/recommendations', description: 'Immediate, medium & long-term corrective actions', icon: ShieldCheck },
-      { name: 'Investigation Methodology', route: '/environmental-investigations/methodology', description: '24-section standard & 12-stage AI-verified workflow', icon: Info },
+      { name: 'Investigation Methodology', route: '/environmental-investigations/methodology', description: 'Scientific standards & investigative workflow', icon: Info },
       { name: 'Submit Investigation', route: '/environmental-investigations/submit', description: 'Propose scoped study or official response', icon: Upload },
+    ],
+  },
+  {
+    id: 'himalayan-dispatch',
+    title: 'Himalayan Dispatch — Environmental Journalism & Magazine',
+    description: 'An exclusive digital environmental magazine featuring longform narrative features, field dispatches, monochrome photo essays, investigative journalism, and forthcoming edition previews.',
+    badge: 'Magazine',
+    icon: BookOpen,
+    gradient: 'from-amber-600 via-orange-700 to-stone-700',
+    modules: [
+      { name: 'Current Edition (Vol. 01 / No. 01)', route: getKewToDispatchUrl('/'), description: 'When Mountains Speak, Who Is Listening?', icon: BookOpen },
+      { name: 'Coming Next (Issue 02 Preview)', route: getKewToDispatchUrl('/forthcoming'), description: 'A World in Transition & Inside the Newsroom', icon: Eye },
+      { name: 'Editorial Departments', route: getKewToDispatchUrl('/departments'), description: 'Longform, Field Reports, Photo Essays, Data & Interviews', icon: Layers },
+      { name: 'Journalists & Portfolios', route: getKewToDispatchUrl('/journalists'), description: 'Correspondents, published stories & approved commissions', icon: Users },
+      { name: 'Editorial Board & Standards', route: getKewToDispatchUrl('/editorial-board'), description: 'Masthead governance, scientific review & source charter', icon: ShieldCheck },
+      { name: 'Edition Archive', route: getKewToDispatchUrl('/archive'), description: 'Complete periodical volume archive', icon: FileText },
     ],
   },
   {
@@ -202,6 +219,59 @@ const moduleGroups: ModuleGroup[] = [
       { name: 'Earthquake Risks', route: '/risk-monitoring/earthquake-risks', description: 'Seismic event monitoring', icon: Zap },
       { name: 'Shelters, Closures & Emergency Routes', route: '/risk-monitoring/shelters-closures-emergency-routes', description: 'Operational status', icon: Route },
       { name: 'Critical Infrastructure Response', route: '/risk-monitoring/critical-infrastructure-response', description: 'Infrastructure monitoring', icon: ShieldCheck },
+    ],
+  },
+  {
+    id: 'himalayan-dispatch',
+    title: 'Himalayan Dispatch: Environmental Journalism & Magazine',
+    description: 'Luxury digital environmental periodical dedicated to longform narrative reporting, documentary photography, data journalism, and scientific truth across the Western Himalayas.',
+    badge: 'Himalayan Dispatch',
+    icon: BookOpen,
+    gradient: 'from-amber-600 via-orange-700 to-stone-800',
+    modules: [
+      { name: 'The Inaugural Issue', route: getKewToDispatchUrl('/'), description: 'Cover story, editorial folios & current issue', icon: BookOpen },
+      { name: 'Coming Next (Issue 02)', route: getKewToDispatchUrl('/forthcoming'), description: 'Forthcoming editorial slate & previews', icon: Calendar },
+      { name: 'Editorial Departments', route: getKewToDispatchUrl('/departments'), description: 'Cover stories, longform, field & data journalism', icon: Layers },
+      { name: 'Journalists & Portfolios', route: getKewToDispatchUrl('/journalists'), description: 'Correspondents & documentary photographers', icon: Users },
+      { name: 'Editorial Board', route: getKewToDispatchUrl('/editorial-board'), description: 'Governance, standards & scientific review', icon: ShieldCheck },
+      { name: 'Edition Archive', route: getKewToDispatchUrl('/archive'), description: 'Permanent periodical folio archive', icon: Database },
+      { name: 'Pitch a Story', route: getKewToDispatchUrl('/pitch'), description: 'Commissioning desk & source-protected intake', icon: Upload },
+    ],
+  },
+  {
+    id: 'webinars-conferences',
+    title: 'Webinars & Conferences: Scientific Exchange & Knowledge Sharing',
+    description: 'Academic symposiums, 104-event 2027–2028 scientific calendar, institutional partnerships, and published proceedings across Western Himalayan research disciplines.',
+    badge: 'Webinars & Conferences',
+    icon: Compass,
+    gradient: 'from-teal-500 via-emerald-600 to-cyan-700',
+    modules: [
+      { name: 'Webinars & Conferences Hub', route: '/webinars', description: 'Overview, featured symposiums & registration', icon: Compass },
+      { name: 'Flagship Conferences (8)', route: '/webinars/conferences', description: 'Multi-track Western Himalayan conferences', icon: Layers },
+      { name: '2027–28 Scientific Calendar', route: '/webinars/calendar', description: '104 scheduled scientific webinars & events', icon: Calendar },
+      { name: 'Upcoming Sessions', route: '/webinars/upcoming', description: 'Open registration & live symposium schedule', icon: Bell },
+      { name: 'Host a Conference', route: '/webinars/host-a-conference', description: 'University & institutional symposium intake', icon: Upload },
+      { name: 'Institutional Network', route: '/webinars/institution/verification', description: 'Partner university accreditation & registration', icon: Building2 },
+      { name: 'Published Proceedings', route: '/webinars/proceedings', description: 'Abstracts, monographs & session papers', icon: FileText },
+      { name: 'Past Event Archives', route: '/webinars/past-events', description: 'Recorded symposiums & verifiable certificates', icon: Award },
+    ],
+  },
+  {
+    id: 'ecovoices',
+    title: 'EcoVoices: Environmental Arts, Music & Creative Expression',
+    description: 'Dedicated creative platform communicating environmental consciousness through music, poetry, literature, visual arts, natural soundscapes, and cinematic storytelling.',
+    badge: 'EcoVoices',
+    icon: Music,
+    gradient: 'from-amber-400 via-amber-500 to-indigo-600',
+    modules: [
+      { name: 'EcoVoices Hub', route: '/ecovoices', description: 'Premiere stage & six creative departments', icon: Sparkles },
+      { name: 'Environmental Music', route: '/ecovoices#music', description: '6 Published SufiPulse USA × KEW master compositions', icon: Music },
+      { name: 'Environmental Poetry', route: '/ecovoices#poetry', description: 'Mystical kalam, shruks & ecological verse', icon: BookOpen },
+      { name: 'Environmental Cinema', route: '/ecovoices#cinema', description: 'Documentaries, short films & visual narratives', icon: Eye },
+      { name: 'Environmental Art', route: '/ecovoices#visual-arts', description: 'Paintings, installations & ecological art', icon: Flower2 },
+      { name: 'Sounds of Nature', route: '/ecovoices#soundscapes', description: 'Western Himalayan acoustic heritage & soundscapes', icon: Waves },
+      { name: 'Creative Contributors', route: '/ecovoices#artists', description: '19 documented regional voices & SufiPulse pathways', icon: Users },
+      { name: 'Submit Creative Work', route: '/ecovoices#submit', description: 'Open creative submission & editorial review gateway', icon: Upload },
     ],
   },
   {

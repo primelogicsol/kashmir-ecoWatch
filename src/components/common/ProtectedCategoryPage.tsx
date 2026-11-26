@@ -5,7 +5,7 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import {
   MapPin, Activity, ArrowRight, Search,
   Grid3X3, List, Map, TrendingUp, ChevronLeft, ChevronRight, Compass, Shield
@@ -71,10 +71,10 @@ interface ProtectedCategoryPageProps {
   images?: string[];
   title: string | React.ReactNode;
   subtitle: string;
-  icon: keyof typeof import('lucide-react');
+  icon: import('@/components/common/KewIcons').KewIconName;
   color: string;
   areas: ProtectedArea[];
-  metrics: Array<{ label: string; value: number | string; icon: keyof typeof import('lucide-react') }>;
+  metrics: Array<{ label: string; value: number | string; icon: import('@/components/common/KewIcons').KewIconName }>;
   sourceData?: {
     title: string;
     count: number;
@@ -388,7 +388,7 @@ export function ProtectedCategoryPage({
 
         {/* Protected Areas Grid/List */}
         {filteredAreas.length > 0 ? (
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+          <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-5 gap-5 3xl:gap-6' : 'space-y-4'}>
             {filteredAreas.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((area, index) => (
               <motion.a
                 key={area.id}

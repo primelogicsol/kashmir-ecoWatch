@@ -135,7 +135,7 @@ export default function ResourcesIndexPage() {
     <div className="min-h-screen bg-slate-950 text-slate-100 pb-20">
       {/* Header Banner */}
       <section className="border-b border-slate-800 bg-slate-900 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-4">
+        <div className="container mx-auto space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-wider">
             <BookOpen className="w-4 h-4" />
             <span>Kashmir EcoWatch · Central Environmental Intelligence Portal</span>
@@ -167,7 +167,7 @@ export default function ResourcesIndexPage() {
       </section>
 
       {/* Main Grid */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <main className="container mx-auto py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESOURCE_MODULES.map((mod) => {
             const Icon = mod.icon;

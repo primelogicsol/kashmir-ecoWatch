@@ -86,6 +86,26 @@ export default function RestorationPage() {
         ) : null
       }
     >
+      {/* ── Lake Sewage Mass-Balance, CAG Audit & Outcome Accountability (Section 40) ── */}
+      <div className="mb-8 rounded-xl border border-lime-500/30 bg-slate-900/90 p-5 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-lime-400">
+              Institutional Restoration Accountability · CAG Report No. 4 of 2025 &amp; LCMA/WUCMA Records
+            </span>
+            <h3 className="text-base font-bold text-white mt-0.5">
+              Distinguishing Capital Expenditure &amp; DPR Approvals from Verified Limnological Recovery
+            </h3>
+          </div>
+          <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="text-xs font-semibold text-lime-300 hover:underline">
+            Read Monograph Ch. 18 &amp; Appendices L–M →
+          </Link>
+        </div>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          Lake restoration tracking across Dal Lake (LCMA: 6 STPs at Habak, Hazratbal, Laam, Brari Nambal, Nallah Amir Khan &amp; Nishat FAB fluidized-bed systems vs untreated catchment sewage deficits, floating gardens &amp; houseboat sanitation), Wular Lake (WUCMA boundary demarcation &amp; willow-removal dredging), Anchar, Khushalsar, Gilsar, and Hokersar strictly separates <strong className="text-white">approved DPRs</strong>, <strong className="text-white">financial expenditure</strong>, and <strong className="text-white">mechanical de-weeding/dredging</strong> from <strong className="text-emerald-300">scientifically verified trophic recovery</strong> (sustained reductions in total phosphorus, internal sediment P release, and summer Carlson TSI).
+        </p>
+      </div>
+
       {/* ── Restoration Focus Typologies & Status Filter Bar ────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">

@@ -14,6 +14,20 @@ import {
 } from '@/data/environmental-investigations';
 import { InvestigationRecord } from '@/types/environmental-investigations';
 
+const ACCOUNTABILITY_FRAMEWORK_COMPONENTS = [
+  'Statutory Mandate',
+  'Project Ownership',
+  'Scientific Responsibility',
+  'Financial Responsibility',
+  'Environmental Authorisation',
+  'Monitoring Obligations',
+  'Documented Audit & Scientific Observations',
+  'Recorded Institutional Response',
+  'Outstanding Questions Awaiting Documented Answers',
+  'Corrective Action',
+  'Verified Follow-Up Status',
+] as const;
+
 export default function InstitutionalAccountabilityPage() {
   const [records, setRecords] = useState<InvestigationRecord[]>(CANONICAL_INVESTIGATIONS);
 
@@ -36,7 +50,7 @@ export default function InstitutionalAccountabilityPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 pb-20">
       <Heading
-        label="KEW-EIAI 11-COMPONENT STATUTORY RESPONSIBILITY FRAMEWORK"
+        label={`KEW-EIAI ${ACCOUNTABILITY_FRAMEWORK_COMPONENTS.length}-COMPONENT STATUTORY RESPONSIBILITY FRAMEWORK`}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Environmental Investigations', href: '/environmental-investigations' },

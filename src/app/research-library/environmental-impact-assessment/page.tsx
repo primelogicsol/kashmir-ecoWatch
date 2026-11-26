@@ -519,7 +519,7 @@ export default function EnvironmentalImpactAssessmentPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative z-10 container mx-auto py-8">
 
         {/* ── Breadcrumb ──────────────────────────────────────────── */}
         <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">

@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "audit:integrity": "node scripts/comprehensive-platform-audit.js"
+    "audit:integrity": "node scripts/comprehensive-platform-audit.js",
+    "audit:cta-contrast": "node scripts/audit/cta-contrast-audit.js"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
@@ -34,6 +35,7 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
+    "axe-core": "^4.14.1",
     "eslint": "^10.1.0",
     "fast-glob": "^3.3.3",
     "postcss": "^8.4.38",

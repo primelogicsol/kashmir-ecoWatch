@@ -39,6 +39,19 @@ import { ngoRegistryData } from '@/data/ngo-impact';
 import { SHARED_ASSESSMENT_DATABASE } from '@/data/sectoral-eia';
 import { getMergedResearchDossiers } from '@/lib/sectoral-research-store';
 import { CANONICAL_INVESTIGATIONS } from '@/data/environmental-investigations';
+import {
+  getPublicCorrectionRecords,
+  getPublicDailyDispatches,
+  getPublicEditions,
+  getPublicJournalists,
+  getPublicPublishedStories,
+  getPublicReportingBeats,
+} from '@/lib/himalayan-dispatch-store';
+import {
+  DEPARTMENT_ROUTE_CONFIG,
+  FOOTER_BUREAU_LINKS,
+  toCanonicalIssueSlug,
+} from '@/lib/himalayan-dispatch-routes';
 import { CONFERENCES_DETAILED, SESSIONS_DETAILED } from '@/data/conference-system';
 import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
 import { CANONICAL_HOMEPAGE_URL, CANONICAL_SITE_URL } from './entity-identity';
@@ -250,10 +263,18 @@ const REDIRECT_SOURCE_PATHS = new Set<string>([
   '/water-systems/glaciers/kolahoi',
   '/water-systems/springs/kokernag',
   '/protected-areas/dachigam',
+  '/environmental-calendar/ecovoices',
 ]);
 
 function isRedirectStubPath(pathname: string): boolean {
   if (REDIRECT_SOURCE_PATHS.has(pathname)) return true;
+  if (pathname.startsWith('/environmental-calendar/ecovoices/')) return true;
+  if (
+    pathname.startsWith('/himalayan-dispatch/stories/') ||
+    pathname.startsWith('/himalayan-dispatch/editions/')
+  ) {
+    return true;
+  }
   if (
     pathname.startsWith('/resources/environmental-pil/') ||
     pathname.startsWith('/resources/kew-green-heroes/')
@@ -300,6 +321,17 @@ export function shouldNoIndexDynamicEntity(pathname: string): boolean {
   }
   if (parts[0] === 'sectoral-eia' && parts[1] === 'reports' && parts[2]) {
     return !getPublishedResearchDossierCodes().has(parts[2].toLowerCase());
+  }
+  if (parts[0] === 'himalayan-dispatch' && parts[1] === 'stories' && parts[2]) {
+    return !getPublicPublishedStories().some((s) => s.slug === parts[2]);
+  }
+  if (parts[0] === 'himalayan-dispatch' && parts[1] === 'issues' && parts[3]) {
+    return !getPublicPublishedStories().some(
+      (s) => toCanonicalIssueSlug(s.editionSlug) === parts[2] && s.slug === parts[3]
+    );
+  }
+  if (parts[0] === 'himalayan-dispatch' && parts[1] === 'daily-dispatch' && parts[2] && parts[2] !== 'archive') {
+    return !getPublicDailyDispatches().some((d) => d.slug === parts[2]);
   }
   return false;
 }
@@ -408,6 +440,15 @@ export function buildValidatedSitemapInventory(): {
   const eligible: ValidatedSitemapEntry[] = [];
 
   for (const [pathname, meta] of candidateMap.entries()) {
+    // 0. Himalayan Dispatch has its own dedicated publication hostname & sitemap
+    // (`https://dispatch.kashmir-ecowatch.com/sitemap.xml`); legacy `/himalayan-dispatch*`
+    // paths on `kashmir-ecowatch.com` permanently 308-redirect to the Dispatch subdomain.
+    if (pathname === '/himalayan-dispatch' || pathname.startsWith('/himalayan-dispatch/')) {
+      audit.redirectedUrls++;
+      note('redirected_to_dispatch_subdomain_sitemap');
+      continue;
+    }
+
     // 1. Redirected routes & compatibility stubs
     if (isRedirectStubPath(pathname)) {
       audit.redirectedUrls++;
@@ -421,6 +462,9 @@ export function buildValidatedSitemapInventory(): {
       (pathname.startsWith('/webinars/sessions/') && pathname.endsWith('/live')) ||
       pathname === '/ngo-impact/submit' ||
       pathname === '/environmental-investigations/submit' ||
+      pathname === '/himalayan-dispatch/pitch' ||
+      pathname === '/himalayan-dispatch/newsroom' ||
+      pathname === '/himalayan-dispatch/journalist-sign-in' ||
       pathname === '/sectoral-eia/assessment/new'
     ) {
       audit.nonIndexableUrls++;
@@ -575,6 +619,80 @@ export function buildValidatedSitemapInventory(): {
       if (!PUBLISHED_INVESTIGATION_SLUGS.has(parts[2])) {
         audit.nonIndexableUrls++;
         note('proposed_or_scoping_investigation_excluded_until_published');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'issues' && parts[2]) {
+      const validIssueSlugs = new Set(
+        getPublicEditions()
+          .filter((e) => e.status !== 'forthcoming')
+          .map((e) => toCanonicalIssueSlug(e.slug))
+      );
+      if (!validIssueSlugs.has(parts[2])) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_issue');
+        continue;
+      }
+      if (parts[3]) {
+        const pubMatch = getPublicPublishedStories().some(
+          (s) => toCanonicalIssueSlug(s.editionSlug) === parts[2] && s.slug === parts[3]
+        );
+        if (!pubMatch) {
+          audit.restrictedUrls++;
+          note('unpublished_or_confidential_dispatch_story_excluded');
+          continue;
+        }
+      }
+    }
+    if (
+      parts[0] === 'himalayan-dispatch' &&
+      parts[1] === 'daily-dispatch' &&
+      parts[2] &&
+      parts[2] !== 'archive'
+    ) {
+      const ddSlugs = new Set(getPublicDailyDispatches().map((d) => d.slug));
+      if (!ddSlugs.has(parts[2])) {
+        audit.restrictedUrls++;
+        note('unpublished_daily_dispatch_excluded');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'departments' && parts[2]) {
+      if (!(parts[2] in DEPARTMENT_ROUTE_CONFIG)) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_department');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'bureaus' && parts[2]) {
+      const validBureaus = new Set(FOOTER_BUREAU_LINKS.map((b) => b.id));
+      if (!validBureaus.has(parts[2] as any)) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_bureau');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'reporting-beats' && parts[2]) {
+      const validBeats = new Set(getPublicReportingBeats().map((b) => b.slug));
+      if (!validBeats.has(parts[2])) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_beat');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'corrections' && parts[2]) {
+      const validCorIds = new Set(getPublicCorrectionRecords().map((c) => c.id));
+      if (!validCorIds.has(parts[2])) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_correction_record');
+        continue;
+      }
+    }
+    if (parts[0] === 'himalayan-dispatch' && parts[1] === 'journalists' && parts[2]) {
+      const jSlugs = new Set(getPublicJournalists().map((j) => j.slug));
+      if (!jSlugs.has(parts[2])) {
+        audit.invalidOrSoft404Urls++;
+        note('soft404_missing_dispatch_journalist');
         continue;
       }
     }

@@ -142,7 +142,7 @@ export default function WaterIntelligenceDashboard() {
         ]}
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-10 space-y-10">
+      <div className="kew-container-dashboard py-10 space-y-10">
 
         {/* ── Tier 1: Header KPI Strip ──────────────────────────────────── */}
         <motion.section initial="hidden" animate="visible">

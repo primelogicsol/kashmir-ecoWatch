@@ -49,12 +49,6 @@ export default function WebinarProceedingsPage() {
           </div>
         }
         subtitle="Open-access repository of recorded scientific webinars, plenary video transcripts, synchronized slide presentations, and peer-reviewed symposium proceedings registered with DOI handles."
-        images={[
-          '/images/protected-network.png',
-          '/images/bear.png',
-          '/images/markhor.png',
-          '/images/tiger.png'
-        ]}
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Link href="/webinars/calendar">
@@ -69,7 +63,7 @@ export default function WebinarProceedingsPage() {
 
       <WebinarNav />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+      <div className="container mx-auto py-10 space-y-10">
         {/* Search Bar */}
         <div className="p-4 sm:p-6 rounded-2xl bg-slate-900/60 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="relative w-full sm:w-96">

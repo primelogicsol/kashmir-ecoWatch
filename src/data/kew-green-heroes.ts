@@ -1017,7 +1017,7 @@ export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
     evidenceSummary: 'Documented via video archives of sermons, regional newspaper reports, and verification audits by local agriculture universities.',
     crossModuleLinks: [
       { label: 'Chinar Conservation Registry', url: '/environmental-monitoring/chinar-monitoring' },
-      { label: 'Ecological Voices', url: '/environmental-calendar/ecovoices' }
+      { label: 'EcoVoices', url: '/ecovoices' }
     ],
     verificationStatus: 'VERIFIED_BY_EDITORIAL_BOARD',
     lastAuditedDate: '2026-10-28',

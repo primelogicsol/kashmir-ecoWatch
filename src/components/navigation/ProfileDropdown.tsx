@@ -72,17 +72,19 @@ export function ProfileDropdown({ isOpen, onClose }: ProfileDropdownProps) {
           </div>
         </Link>
 
-        <Link
-          href="/admin/dashboard"
-          onClick={onClose}
-          className="flex items-center gap-2.5 p-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/15 text-purple-300 hover:text-purple-200 transition-colors border border-purple-500/20"
-        >
-          <Shield className="w-4 h-4 text-purple-400" />
-          <div>
-            <p className="font-bold leading-none">Admin Command Center</p>
-            <p className="text-[10px] text-purple-400/80 mt-1">Review queue & observer grid</p>
-          </div>
-        </Link>
+        {isLoggedIn && user?.role === 'administrator' && (
+          <Link
+            href="/admin/dashboard"
+            onClick={onClose}
+            className="flex items-center gap-2.5 p-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/15 text-purple-300 hover:text-purple-200 transition-colors border border-purple-500/20"
+          >
+            <Shield className="w-4 h-4 text-purple-400" />
+            <div>
+              <p className="font-bold leading-none">Admin Command Center</p>
+              <p className="text-[10px] text-purple-400/80 mt-1">Authorized administrative access only</p>
+            </div>
+          </Link>
+        )}
 
         <Link
           href="/contribute-data"

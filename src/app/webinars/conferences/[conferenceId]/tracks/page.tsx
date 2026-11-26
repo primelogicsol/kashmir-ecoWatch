@@ -37,7 +37,7 @@ export default async function ConferenceTracksPage({ params }: Props) {
       <WebinarNav />
       <ConferenceSubNav conference={conference} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="container mx-auto py-10 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {conference.tracks.map(track => {
             const trackSessions = SESSIONS_DETAILED.filter(s => s.trackId === track.id);

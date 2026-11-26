@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { updatedWaterSystemsMetrics } from '@/data/water-systems';
 
 const dashboardModules = [
   {
@@ -92,6 +93,8 @@ const districtWaterStress = [
   { district: 'Budgam', stress: 52, status: 'Moderate' as const, aqi: 118, waterQuality: 'Moderate' as const },
   { district: 'Ganderbal', stress: 45, status: 'Low' as const, aqi: 76, waterQuality: 'Good' as const },
   { district: 'Kupwara', stress: 38, status: 'Low' as const, aqi: 64, waterQuality: 'Good' as const },
+  { district: 'Bandipora', stress: 58, status: 'Moderate' as const, aqi: 94, waterQuality: 'Moderate' as const },
+  { district: 'Kulgam', stress: 46, status: 'Low' as const, aqi: 74, waterQuality: 'Good' as const },
   { district: 'Shopian', stress: 42, status: 'Low' as const, aqi: 71, waterQuality: 'Good' as const },
 ];
 
@@ -161,8 +164,8 @@ export default function WaterSystemsDashboardsPage() {
         { label: 'Daily Samples',       value: 1847,    icon: 'BarChart3',     color: 'text-blue-400'    },
         { label: 'Active Alerts',       value: 7,       icon: 'AlertTriangle', color: 'text-amber-400'   },
         { label: 'Data Points (M)',     value: '2.4M',  icon: 'LineChart',     color: 'text-purple-400'  },
-        { label: 'Water Bodies',        value: 580,     icon: 'Droplet'                                  },
-        { label: 'Quality Sites',       value: 47,      icon: 'Activity'                                 },
+        { label: 'Kashmir Master Lakes', value: updatedWaterSystemsMetrics.totalLakes, icon: 'Droplet' },
+        { label: 'Quality Sites',       value: updatedWaterSystemsMetrics.totalWaterQualitySites, icon: 'Activity' },
         { label: 'Districts Covered',   value: 10,      icon: 'MapPin'                                   },
         { label: 'Reports This Month',  value: 124,     icon: 'FileText',      color: 'text-emerald-400' },
       ]} />

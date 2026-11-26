@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card } from '@/components/ui/Card';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 
 interface MetricItem {
   label: string;

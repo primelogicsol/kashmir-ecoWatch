@@ -4,6 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { InvestigationRecord } from '@/types/environmental-investigations';
+import { MASTER_LAKE_SUMMARY_STATS as MLS } from '@/data/hydrology/master-lake-registry';
 
 function buildScopingSections(
   leadExec: string,
@@ -727,5 +728,802 @@ export const PORTFOLIO_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       true,
       'Models snowmelt vs glacier-ice melt shares in West Lidder late-summer low flows.'
     ),
+  },
+
+  // ─── KEW-INV-0009: KASHMIR'S LAKES — FROM OLIGOTROPHY TO EUTROPHICATION ────
+  {
+    code: 'KEW-INV-0009',
+    slug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+    title: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+    subtitle:
+      'A Comprehensive Limnological Assessment Across Urban, Rural, Subalpine and Alpine Lake Ecosystems',
+    shortTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+    status: 'active_investigation',
+    statusLabel: 'Scientific Review · Regional Trophic Atlas',
+    temporalScope: '1967–2026',
+    initiatedDate: '2026-11-25',
+    lastUpdated: '2026-11-25',
+    version: 'v0.9 (Scientific Review · Synchronized with KEW-SR-2026-101)',
+    featured: true,
+    heroImage: '/images/publications/dal-lake-lacustrine-houseboats.jpg',
+    heroImageCaption:
+      'Comparative trophic gradient across 521 deduplicated Kashmir Division lakes spanning valley-floor urban/floodplain basins (~1,580 m ASL) to ultra-oligotrophic alpine glacial tarns (>4,200 m ASL).',
+
+    subregion: 'Multi-District Kashmir Basin',
+    districts: [
+      'Srinagar',
+      'Bandipora',
+      'Baramulla',
+      'Ganderbal',
+      'Anantnag',
+      'Budgam',
+      'Pulwama',
+      'Shopian',
+      'Kulgam',
+      'Kupwara',
+    ],
+    watershedOrBasin: 'All 10 Districts of Kashmir Division (Jhelum, Lidder, Sind, Pohru & High-Altitude Glacial Sub-Basins)',
+    elevationRangeM: '1,578–4,550+ m ASL',
+    coordinates: [34.125, 74.835],
+    spatialEnvelopeKm2: 15948,
+    connectedEcosystems: [
+      `${MLS.kashmirUrbanLakes} Urban Lakes`,
+      `${MLS.kashmirRuralFloodplainLakes} Rural & Floodplain Lakes`,
+      `${MLS.kashmirMontaneSubalpineLakes} Montane & Subalpine Lakes`,
+      `${MLS.kashmirAlpineLakes} Alpine & Glacial Lakes`,
+    ],
+
+    primaryDomainId: '01-lakes-limnology',
+    secondaryDomainIds: [
+      '02-wetlands-floodplains',
+      '05-glaciers-cryosphere',
+      '06-alpine-mountain-ecology',
+      '13-agriculture-horticulture',
+      '15-solid-waste-sewage',
+      '18-environmental-governance',
+    ],
+    disciplineIds: [
+      'limnology',
+      'hydrology',
+      'hydrodynamics',
+      'aquatic-ecology',
+      'wetland-ecology',
+      'restoration-ecology',
+      'environmental-chemistry',
+      'geochemistry',
+      'environmental-microbiology',
+      'remote-sensing',
+      'gis',
+      'environmental-data-science',
+      'environmental-engineering',
+      'environmental-law',
+    ],
+    linkedKewModules: [
+      {
+        moduleName: 'Flagship 20-Chapter Monograph & PDF (KEW-SR-2026-101)',
+        route: '/sectoral-eia/reports/kew-sr-2026-101',
+        contributionNote:
+          'Complete 20-chapter regional trophic status monograph, Appendices A–O, and downloadable A4 PDF.',
+      },
+      {
+        moduleName: 'Water Systems · Kashmir Lakes & Trophic Atlas',
+        route: '/water-systems/lakes',
+        contributionNote: `Interactive spatial & tabular explorer across all ${MLS.kashmirDivisionTotalUniqueIdentities} deduplicated Kashmir Division lake identities.`,
+      },
+      {
+        moduleName: 'Water Systems · Water Quality & Limnology',
+        route: '/water-systems/water-quality',
+        contributionNote: 'Unaveraged Carlson (1977) TSI(SD), TSI(Chl-a), and TSI(TP) diagnostics with nutrient & DO profiles.',
+      },
+      {
+        moduleName: 'Hazard Intelligence · Algal Bloom Sentinel',
+        route: '/hazard-intelligence/algal-bloom-intelligence',
+        contributionNote: `Optical Sentinel-2 chlorophyll/NDCI bloom screening across ${MLS.kashmirOpticalBloomEligibleCount} eligible lakes.`,
+      },
+    ],
+    relatedInvestigationCodes: ['KEW-INV-0001', 'KEW-INV-0002', 'KEW-INV-0003', 'KEW-INV-0005', 'KEW-INV-0006'],
+
+    scopingQuestions: [
+      `How do historical areal persistence (1967 Survey of India vs 2009 LISS-III vs 2024–2025 Sentinel-2) and contemporary trophic states vary across all ${MLS.kashmirDivisionTotalUniqueIdentities} deduplicated lakes in Kashmir Division?`,
+      'Which external catchment loads (untreated municipal sewage, houseboat blackwater, floodplain nitrogen/orchard runoff) versus internal anoxic sediment phosphorus release govern non-linear transitions from oligotrophy/mesotrophy to hypereutrophication?',
+      `What phased monitoring protocol is required to close the ${MLS.kashmirRequiringTrophicAssessment}-lake empirical data gap without fabricating or extrapolating trophic indices?`,
+    ],
+    executiveKeyFindings: [
+      `Spatial entity reconciliation across DEERS 2012 (415 Kashmir records), CAG Report No. 4 of 2025 (330 historical comparison records), University of Kashmir Zenodo GIS (155 glacial lake polygons), and the Ministry of Jal Shakti First Census (37 J&K lakes) establishes ${MLS.kashmirDivisionTotalUniqueIdentities} unique Kashmir Division lake identities (${MLS.kashmirActiveOrObservedLakes} active/observed; ${MLS.kashmirHistoricallyDisappearedOrConverted} historically disappeared or converted).`,
+      `Strict unaveraged Carlson (1977) TSI verification confirms dated trophic measurements for ${MLS.kashmirWithVerifiedTrophicStatus} Kashmir lakes (${MLS.kashmirTrophicBreakdown.Oligotrophic} Oligotrophic, ${MLS.kashmirTrophicBreakdown.Mesotrophic} Mesotrophic, ${MLS.kashmirTrophicBreakdown.Eutrophic} Eutrophic, ${MLS.kashmirTrophicBreakdown.Hypereutrophic} Hypereutrophic), while ${MLS.kashmirRequiringTrophicAssessment} unmeasured lakes are transparently classified as Insufficient Evidence rather than inferred.`,
+    ],
+    chronology: [
+      {
+        period: '1967–1982',
+        eventTitle: 'Survey of India Toposheet Baseline & Foundational Kashmir Limnology',
+        documentedRecord:
+          '1:50,000 Survey of India mapping and Zutshi et al. (1980) comparative Himalayan lake studies documented clear-water macrophyte dominance in valley lakes and ultra-oligotrophy in high-altitude tarns.',
+        sourceRef: 'REF-KLE-05',
+        significance: 'Baseline',
+      },
+      {
+        period: '2009–2012',
+        eventTitle: 'DEERS J&K Satellite Lake & Waterbody Directory (LISS-III)',
+        documentedRecord:
+          'DEERS (2012) inventoried 415 Kashmir Division waterbodies >=2.25 ha and compared 45 major lakes against 1967 baselines, documenting widespread open-water contraction and marshy infill.',
+        sourceRef: 'REF-KLE-01',
+        significance: 'Ecological Shift',
+      },
+      {
+        period: '2023–2025',
+        eventTitle: 'Jal Shakti Census, CAG Audit No. 4 of 2025 & KU Glacial Lake GIS',
+        documentedRecord:
+          'CAG (2025) audited 330 historical Kashmir waterbodies and flagged 13 dried/converted lakes alongside STP/conservation gaps; Rashid & Kashani (2025) mapped 155 glacial lake polygons (1992–2024 expansion).',
+        sourceRef: 'REF-KLE-02',
+        significance: 'Audit / Judicial',
+      },
+      {
+        period: 'Nov 2026',
+        eventTitle: 'KEW 10-District Master Lake Reconciliation & Regional Trophic Monograph',
+        documentedRecord: `Reconciled overlapping statutory and academic inventories into ${MLS.kashmirDivisionTotalUniqueIdentities} unique Kashmir Division lake identities under Scientific Review (KEW-SR-2026-101 / KEW-INV-0009).`,
+        sourceRef: 'REF-KLE-03',
+        significance: 'Intervention',
+      },
+    ],
+    interventionInventory: [
+      {
+        id: 'INT-KLE-01',
+        name: 'Dal–Nigeen & Brari Nambal Sewage Interception, FAB STPs & Mechanical De-weeding',
+        period: '1997–Present',
+        executingAgency: 'LCMA / UEED',
+        interventionType: 'Urban Lake Wastewater & In-Lake Biomass Management',
+        reportedScaleOrOutlay: 'NLCP, AMRUT & Prime Minister Development Package allocations',
+        status: 'Ongoing',
+        documentedOutcome:
+          'Partial sewage interception achieved, but secondary FAB STPs without tertiary phosphorus stripping and unintercepted storm/houseboat drains sustain eutrophic-to-hypereutrophic nutrient loads.',
+      },
+      {
+        id: 'INT-KLE-02',
+        name: 'Wular Lake Comprehensive Management Action Plan (CMAP) Dredging & Willow Removal',
+        period: '2011–Present',
+        executingAgency: 'WUCMA',
+        interventionType: 'Floodplain Lake Desiltation & Storage Restoration',
+        reportedScaleOrOutlay: 'State/UT & National Plan Conservation Grants',
+        status: 'Ongoing',
+        documentedOutcome:
+          'Localised open-water gains recorded, while upstream Jhelum/Erin/Madhumati siltation and agricultural nitrogen inflow continue.',
+      },
+      {
+        id: 'INT-KLE-03',
+        name: 'Khushalsar, Gilsar & Anchar Urban Twin-Lake Desilting & Encroachment Drives',
+        period: '2021–Present',
+        executingAgency: 'LCMA / SMC / Civil Society Collaborations',
+        interventionType: 'Channel Re-opening & Solid-Waste Removal',
+        reportedScaleOrOutlay: 'Municipal & UT Convergence Works',
+        status: 'Ongoing',
+        documentedOutcome:
+          'Surface waste clearance improved open-water visibility in pockets, but raw domestic greywater/sewage inflows keep Anchar–Khushalsar–Gilsar hypereutrophic.',
+      },
+    ],
+    disciplineFindings: [
+      {
+        disciplineId: 'limnology',
+        disciplineName: 'Limnology',
+        clusterName: 'Water & Aquatic Sciences',
+        methodologyApplied:
+          'Individual unaveraged Carlson (1977) TSI(SD), TSI(Chl-a), and TSI(TP) computation strictly where dated empirical measurements exist.',
+        equationOrMetricUsed:
+          'TSI(SD) = 60 - 14.41 ln(SD); TSI(Chl) = 9.81 ln(Chl) + 30.6; TSI(TP) = 14.42 ln(TP) + 4.15',
+        empiricalFinding:
+          'Divergence between TSI(TP) > TSI(Chl-a) in macrophyte-choked basins indicates luxury phosphorus uptake by Ceratophyllum/Myriophyllum/Azolla, whereas TSI(SD) > TSI(Chl-a) in glacial-silt and floodplain basins reflects non-algal mineral turbidity.',
+        uncertaintyAndLimitations: `Empirical hydrochemistry exists for ${MLS.kashmirWithVerifiedTrophicStatus} of ${MLS.kashmirDivisionTotalUniqueIdentities} Kashmir lakes; ${MLS.kashmirRequiringTrophicAssessment} lakes remain unassessed.`,
+        verificationClass: 'Documented',
+      },
+      {
+        disciplineId: 'environmental-chemistry',
+        disciplineName: 'Environmental Chemistry',
+        clusterName: 'Chemical & Atmospheric Sciences',
+        methodologyApplied:
+          'External watershed N/P mass-balance vs benthic anoxic Fe-bound phosphorus release review.',
+        equationOrMetricUsed: 'J_P = -φ D_s (∂C_pore / ∂z) under benthic DO < 2.0 mg/L',
+        empiricalFinding:
+          'In hypereutrophic urban basins (Brari Nambal, Anchar, Khushalsar, Gilsar, interior Dal channels), summer benthic anoxia remobilises legacy sediment orthophosphate, creating internal loading hysteresis.',
+        uncertaintyAndLimitations:
+          ' intact sediment-core diffusive flux incubations are lacking for most rural Karst/Karewa lakes.',
+        verificationClass: 'Provisionally Supported',
+      },
+      {
+        disciplineId: 'remote-sensing',
+        disciplineName: 'Remote Sensing & GIS',
+        clusterName: 'Spatial & Computational Sciences',
+        methodologyApplied:
+          'Multi-inventory spatial deduplication (WGS84 centroid/polygon matching) + Sentinel-2 NDCI/MNDWI optical eligibility screening.',
+        equationOrMetricUsed:
+          'NDCI = (B5_705nm - B4_665nm) / (B5_705nm + B4_665nm) restricted to open-water pixels >=4 ha free of ice/shadow',
+        empiricalFinding: `Reconciles 937 overlapping raw institutional rows into ${MLS.kashmirDivisionTotalUniqueIdentities} unique Kashmir Division lakes and restricts automated satellite bloom screening to ${MLS.kashmirOpticalBloomEligibleCount} optically valid lakes to eliminate mixed-pixel false positives.`,
+        uncertaintyAndLimitations:
+          '20 m red-edge bands cannot resolve narrow <30 m urban channels or slush-ice alpine margins without sub-metre UAV/in-situ validation.',
+        verificationClass: 'Documented',
+      },
+    ],
+    evidenceMatrix: [
+      {
+        id: 'EVID-KLE-01',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion: `Spatial deduplication of DEERS (415), CAG 2025 (330), KU Zenodo 2025 (155), and Jal Shakti Census (37) inventories yields ${MLS.kashmirDivisionTotalUniqueIdentities} unique lake identities across the 10 districts of Kashmir Division.`,
+        sourceCategory: 'Satellite & GIS Archive',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Source inventories overlap rather than add; deterministic coordinate, watershed, and toponym reconciliation is published in the KEW Master Lake Registry (CSV/GeoJSON).',
+        citationIds: ['REF-KLE-01', 'REF-KLE-02', 'REF-KLE-03', 'REF-KLE-04'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-02',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'DEERS (2012) LISS-III comparisons against 1967 Survey of India baselines and CAG Report No. 4 of 2025 document severe areal shrinkage across valley floodplain/urban lakes and complete conversion/loss of 31 historical Kashmir waterbodies.',
+        sourceCategory: 'Government Audit Records',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Directly established by DEERS (2012) Table of 45 Present-Status Kashmir Lakes and CAG Report No. 4 of 2025 audit of 330 historical Kashmir waterbodies.',
+        citationIds: ['REF-KLE-01', 'REF-KLE-02'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-03',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'High-altitude glacial lakes in Kashmir expanded in surface area and count between 1992 and 2024 due to cryospheric recession, moving in the opposite areal direction to shrinking valley-floor lakes.',
+        sourceCategory: 'Scientific Literature',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Quantified across 155 georeferenced glacial lake polygons by Rashid & Kashani (2025, Zenodo DOI: 10.5281/zenodo.15051825).',
+        citationIds: ['REF-KLE-03'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-04',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'Urban and peri-urban valley basins receiving untreated sewage or secondary STP effluent (Brari Nambal, Anchar, Khushalsar, Gilsar, interior Dal pockets) exhibit eutrophic to hypereutrophic conditions (TP > 50–300 µg/L, benthic hypoxia, Azolla/Microcystis blooms).',
+        sourceCategory: 'Scientific Literature',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Confirmed across multi-decadal peer-reviewed limnological series (Zutshi et al., 1980; Rashid et al., 2017; Dar et al., 2020) and statutory JKPCC/CAG water-quality annexures.',
+        citationIds: ['REF-KLE-02', 'REF-KLE-05', 'REF-KLE-06', 'REF-KLE-07'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-05',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion: `Contemporary trophic status remains unmeasured for ${MLS.kashmirRequiringTrophicAssessment} of ${MLS.kashmirDivisionTotalUniqueIdentities} Kashmir Division lakes (predominantly remote alpine tarns and unmonitored rural ponds).`,
+        sourceCategory: 'Technical Institute Report',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Verified audit finding of the KEW Master Lake Registry; unmeasured lakes are strictly retained as Insufficient Evidence.',
+        citationIds: ['REF-KLE-01', 'REF-KLE-03', 'REF-KLE-06'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-06',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'Secondary Fluidized Aerobic Bio-Reactor (FAB) STPs around Dal Lake lack dedicated tertiary chemical/biological phosphorus stripping, allowing dissolved orthophosphate to continue fueling macrophyte and algal growth despite BOD reduction.',
+        sourceCategory: 'Government Audit Records',
+        classification: 'Documented',
+        evidenceBasisSummary:
+          'Documented in CAG conservation audits and environmental engineering evaluations of Dal–Nigeen STP effluent nutrient concentrations.',
+        citationIds: ['REF-KLE-02', 'REF-KLE-07'],
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-07',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'Elevation-dependent warming and prolonged summer thermal stratification are accelerating early mesotrophic phytoplankton shifts in subalpine and mid-elevation forest lakes (e.g., Nilnag, Manasbal hypolimnion).',
+        sourceCategory: 'Hydrological & Telemetry Series',
+        classification: 'Provisionally Supported',
+        evidenceBasisSummary:
+          'Supported by episodic summer DO depletion and surface warming trends in Manasbal and Nilnag, awaiting continuous multi-year thermistor-chain and Chl-a fluorometry profiles.',
+        citationIds: ['REF-KLE-05', 'REF-KLE-07'],
+        methodologicalRequirement:
+          'Deploy continuous vertical thermistor/optical-DO chains and seasonal APHA TP/Chl-a sampling across Manasbal, Nilnag, and Gangabal–Nundkol sentinel pairs.',
+        lastVerifiedDate: '2026-11-25',
+      },
+      {
+        id: 'EVID-KLE-08',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        assertion:
+          'Quantitative microcystin-LR and anatoxin-a hepatotoxin/neurotoxin thresholds are routinely exceeded across all bloom-prone rural Kashmir floodplain lakes during August–September.',
+        sourceCategory: 'Field Survey Protocol',
+        classification: 'Unverified',
+        evidenceBasisSummary:
+          'While cyanobacterial dominance (Microcystis, Dolichospermum) is documented in eutrophic valley basins, systematic LC-MS/MS or ELISA extracellular cyanotoxin assays across rural Kashmir lakes have not yet been published.',
+        citationIds: ['REF-KLE-06'],
+        methodologicalRequirement:
+          'Execute late-summer (Jul–Sep) ELISA screening and LC-MS/MS confirmation for microcystin-LR, cylindrospermopsin, and anatoxin-a at drinking-water and fishery intakes.',
+        lastVerifiedDate: '2026-11-25',
+      },
+    ],
+    accountabilityMatrix: [
+      {
+        id: 'ACC-KLE-01',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        responsibleInstitution: 'J&K Lake Conservation and Management Authority',
+        institutionAcronym: 'LCMA',
+        statutoryMandate:
+          'Conservation, sewage interception, catchment management, and water-quality restoration across notified urban lakes (Dal, Nigeen, Brari Nambal, Khushalsar, Gilsar, Anchar).',
+        projectOwnership: 'Dal–Nigeen STPs, houseboat sanitation network, de-weeding, and settling basins',
+        scientificResponsibility:
+          'Station-wise limnological nutrient (TP, TN, Chl-a, DO, Secchi) monitoring and STP inlet/outlet phosphorus mass-balance reporting.',
+        financialResponsibility: 'Central & UT conservation capital and O&M outlays.',
+        environmentalAuthorisation: 'Water Act 1974 & J&K High Court / NGT oversight directives.',
+        monitoringObligations: 'Monthly multi-basin physicochemical and STP effluent public disclosure.',
+        documentedFindings:
+          'CAG Report No. 4 of 2025 and NGT proceedings noted persistent untreated sewage inflows, unlinked houseboat/shoreline drains, and lack of tertiary phosphorus removal.',
+        institutionalResponse:
+          'Ongoing houseboat floating-sewer/STP upgrade tenders and Khushalsar–Gilsar rejuvenation drives reported.',
+        outstandingQuestions: [
+          'What is the verified monthly orthophosphate and total phosphorus removal efficiency (%) at each operational Dal–Nigeen STP?',
+          'When will complete station-wise raw limnological CSV time series be published openly?',
+        ],
+        correctiveAction: 'Tertiary phosphorus polishing retrofits and 100% houseboat/drain interception required.',
+        followUpStatus: 'Under Statutory Review',
+      },
+      {
+        id: 'ACC-KLE-02',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        responsibleInstitution: 'J&K Wetland Authority & Wular Conservation and Management Authority',
+        institutionAcronym: 'JKWA / WUCMA',
+        statutoryMandate:
+          'Statutory boundary notification, Integrated Management Plans, and ecological character protection under the Wetlands (Conservation and Management) Rules, 2017.',
+        projectOwnership: 'Ramsar sites (Wular, Hokersar, Hygam, Shallabugh) and notified rural/floodplain lakes',
+        scientificResponsibility:
+          'Cadastral digital boundary notification, bathymetric siltation tracking, and trophic status baseline surveys.',
+        financialResponsibility: 'NPCA & UT Wetland Conservation Grants.',
+        environmentalAuthorisation: 'Wetlands (Conservation and Management) Rules, 2017 & Ramsar Convention.',
+        monitoringObligations: 'Brief Documents, health cards, and seasonal hydroperiod/water-quality reporting.',
+        documentedFindings:
+          'CAG (2025) documented unnotified boundaries across scores of DEERS-inventoried rural waterbodies and continuing silt/nutrient ingress into floodplain wetlands.',
+        institutionalResponse:
+          'Phased wetland health-card preparation and boundary demarcation initiated for priority waterbodies.',
+        outstandingQuestions: [
+          'What is the district-wise schedule for notifying statutory boundaries and buffer zones for all surviving DEERS (2012) rural lakes?',
+        ],
+        correctiveAction: 'Accelerate cadastral GIS boundary notification and agricultural bio-swale nutrient buffers.',
+        followUpStatus: 'Clarification Invited',
+      },
+    ],
+    unansweredQuestions: [
+      `Which of the ${MLS.kashmirRequiringTrophicAssessment} currently unassessed Kashmir Division lakes already exhibit early mesotrophic or eutrophic nutrient enrichment?`,
+      'What fraction of summer orthophosphate in Dal, Nigeen, Anchar, and Manasbal originates from internal anoxic sediment release versus active external sewage/runoff outfalls?',
+      'Are microcystin-LR concentrations exceeding the WHO 1.0 µg/L drinking-water guideline during late-summer cyanobacterial blooms in valley lakes?',
+    ],
+    alternativeSolutions: [
+      {
+        title: 'Tertiary Phosphorus Stripping & Constructed Phragmites/Typha Polishing Wetlands',
+        mechanism:
+          'Retrofits alum/ferric or biological phosphorus removal onto existing FAB STPs coupled with littoral emergent macrophyte bio-retention cells at tributary mouths.',
+        evidencePrecedent: 'Lake Biwa (Shiga Prefecture) & Veluwemeer shallow-lake external P-cutoff recovery.',
+        feasibilityNote:
+          'Addresses the root limiting-nutrient driver of eutrophication rather than repeatedly harvesting symptom biomass.',
+      },
+      {
+        title: 'Tiered 3-Level Regional Lake Monitoring Network (Sentinel + Citizen Secchi + Core Lab)',
+        mechanism: `Pairs bi-weekly Sentinel-2 optical screening (${MLS.kashmirOpticalBloomEligibleCount} eligible lakes) with calibrated Secchi/EC field kits across 100 rural/subalpine lakes and full APHA/LC-MS seasonal profiling at 30 sentinel basins.`,
+        evidencePrecedent: 'US EPA National Lakes Assessment & European Water Framework Directive surveillance tiers.',
+        feasibilityNote: `Closes the ${MLS.kashmirRequiringTrophicAssessment}-lake data gap cost-effectively within 24 months.`,
+      },
+    ],
+    recommendations: [
+      {
+        id: 'REC-KLE-01',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        horizon: 'Immediate (0–12 Months)',
+        title: 'Mandate Open Monthly TP, TN, Chl-a & Secchi Disclosure + Tertiary P-Removal Audit',
+        actionSpecification:
+          'Publish station-wise raw CSV water-quality logs and inlet/outlet orthophosphate mass balances for all STPs discharging into Dal, Nigeen, Brari Nambal, Anchar, and Wular.',
+        targetInstitution: 'LCMA, JKPCC & UEED',
+        scientificJustification:
+          'Carlson TSI trajectories cannot be verified or reversed without transparent limiting-nutrient load accounting.',
+        verificationIndicator: 'Public monthly CSV portal live for 100% of operational STPs and monitored urban lake basins.',
+        status: 'Proposed',
+      },
+      {
+        id: 'REC-KLE-02',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        horizon: 'Medium-Term (1–3 Years)',
+        title: 'Notify Cadastral GIS Buffers for All Surviving DEERS Rural Lakes & Establish 50-Lake Baseline Assay',
+        actionSpecification:
+          'Complete Wetlands Rules 2017 boundary notification across all 10 districts and execute standardized summer/autumn Secchi, Chl-a, TP, TN, and DO sampling across 50 unassessed rural and subalpine lakes.',
+        targetInstitution: 'J&K Wetland Authority, DEERS & Revenue Department',
+        scientificJustification:
+          'Prevents irreversible infill of undocumented rural waterbodies while establishing empirical trophic baselines.',
+        verificationIndicator: '50 previously unassessed lakes upgraded from Insufficient Evidence to Scientifically Assessed.',
+        status: 'Proposed',
+      },
+      {
+        id: 'REC-KLE-03',
+        investigationCode: 'KEW-INV-0009',
+        investigationSlug: 'kashmirs-lakes-from-oligotrophy-to-eutrophication',
+        investigationTitle: "Kashmir's Lakes: From Oligotrophy to Eutrophication",
+        horizon: 'Long-Term (3–10 Years)',
+        title: 'Zero-Sewage Catchment Diversion, Orchard/Paddy Bio-Swales & Alpine Pack-Animal Exclusion Buffers',
+        actionSpecification:
+          'Achieve >80% external phosphorus load reduction in urban/floodplain lakes and enforce strict 200 m zero-camp/zero-equine oligotrophic protection buffers around high-altitude glacial lakes.',
+        targetInstitution: 'Housing & Urban Development Dept., Agriculture Dept., Forest/Wildlife Dept. & SASB/PDAs',
+        scientificJustification:
+          'Shallow eutrophic lakes exhibit strong hysteresis requiring deep external P cuts, while ultra-oligotrophic alpine tarns have near-zero buffering capacity.',
+        verificationIndicator: 'Measurable downward shift in summer TSI(Chl-a) and TSI(TP) across sentinel valley lakes; zero trophic drift in alpine tarns.',
+        status: 'Proposed',
+      },
+    ],
+    references: [
+      {
+        id: 'REF-KLE-01',
+        authorsOrBody: 'Department of Ecology, Environment and Remote Sensing (DEERS), Govt. of J&K',
+        year: 2012,
+        title: 'Directory of Lakes and Waterbodies of J&K State (IRS-P6 LISS-III Inventory & 1967–2009 Comparison)',
+        publicationOrSeries: 'Official Remote Sensing Inventory, Government of Jammu & Kashmir',
+        referenceType: 'Technical Institute Report',
+        externalUrl: 'https://rsis.ramsar.org/RISapp/files/42191262/documents/IN2496_descr220412_1.pdf',
+        provenanceNote: 'Primary baseline for 415 Kashmir Division waterbodies and 45 historical areal change comparisons.',
+      },
+      {
+        id: 'REF-KLE-02',
+        authorsOrBody: 'Comptroller and Auditor General of India (CAG)',
+        year: 2025,
+        title: 'Report No. 4 of 2025 — Performance Audit on Conservation and Management of Waterbodies in Jammu & Kashmir',
+        publicationOrSeries: 'Statutory Audit Report, Government of India',
+        referenceType: 'Statutory Audit (CAG)',
+        provenanceNote: 'Documents 330 historical Kashmir waterbodies, 13 dried/converted named lakes, and conservation governance gaps.',
+      },
+      {
+        id: 'REF-KLE-03',
+        authorsOrBody: 'Rashid, I., & Kashani, S.',
+        year: 2025,
+        title: 'Geospatial Inventory and Multi-Decadal Evolution of Glacial Lakes in Kashmir Himalaya (1992–2024)',
+        publicationOrSeries: 'University of Kashmir / Zenodo Open GIS Repository',
+        referenceType: 'Remote Sensing Dataset',
+        doiOrOfficialRef: '10.5281/zenodo.15051825',
+        externalUrl: 'https://doi.org/10.5281/zenodo.15051825',
+        provenanceNote: 'Provides 155 exact WGS84 glacial lake polygons and 1992–2024 expansion metrics.',
+      },
+      {
+        id: 'REF-KLE-04',
+        authorsOrBody: 'Ministry of Jal Shakti, Department of Water Resources, RD & GR',
+        year: 2023,
+        title: 'First Census of Water Bodies — Jammu & Kashmir State/UT Volume',
+        publicationOrSeries: 'Government of India Statutory Waterbody Census',
+        referenceType: 'Technical Institute Report',
+        provenanceNote: 'Separates 37 enumerated J&K lakes from 9,728 ponds, tanks, and check-dams.',
+      },
+      {
+        id: 'REF-KLE-05',
+        authorsOrBody: 'Zutshi, D. P., Subla, B. A., Khan, M. A., & Wanganeo, A.',
+        year: 1980,
+        title: 'Comparative limnology of nine lakes of Jammu and Kashmir Himalayas',
+        publicationOrSeries: 'Hydrobiologia, 72(1–2), 101–112',
+        referenceType: 'Peer-Reviewed Journal',
+        doiOrOfficialRef: '10.1007/BF00016238',
+        externalUrl: 'https://doi.org/10.1007/BF00016238',
+        provenanceNote: 'Foundational comparative altitudinal and trophic baseline across Kashmir lakes.',
+      },
+      {
+        id: 'REF-KLE-06',
+        authorsOrBody: 'Carlson, R. E.',
+        year: 1977,
+        title: 'A trophic state index for lakes',
+        publicationOrSeries: 'Limnology and Oceanography, 22(2), 361–369',
+        referenceType: 'Peer-Reviewed Journal',
+        doiOrOfficialRef: '10.4319/lo.1977.22.2.0361',
+        externalUrl: 'https://doi.org/10.4319/lo.1977.22.2.0361',
+        provenanceNote: 'Methodological standard requiring unaveraged reporting of TSI(SD), TSI(Chl-a), and TSI(TP).',
+      },
+      {
+        id: 'REF-KLE-07',
+        authorsOrBody: 'Rashid, I., Romshoo, S. A., Amin, M., Khanday, S. A., & Chauhan, P.',
+        year: 2017,
+        title: 'Linking human-biophysical interactions with the trophic status of Dal Lake, Kashmir Himalaya, India',
+        publicationOrSeries: 'Limnologica, 62, 84–96',
+        referenceType: 'Peer-Reviewed Journal',
+        doiOrOfficialRef: '10.1016/j.limno.2016.11.008',
+        externalUrl: 'https://doi.org/10.1016/j.limno.2016.11.008',
+        provenanceNote: 'Couples multi-decadal catchment land-use change with spatially explicit lacustrine trophic degradation.',
+      },
+      {
+        id: 'REF-KLE-08',
+        authorsOrBody: 'Ministry of Environment, Forest and Climate Change (MoEFCC)',
+        year: 2017,
+        title: 'Wetlands (Conservation and Management) Rules, 2017 & NPCA Operational Guidelines',
+        publicationOrSeries: 'Gazette of India Statutory Notification',
+        referenceType: 'Judicial Order / NGT',
+        provenanceNote: 'Establishes statutory prohibitions on wetland conversion, solid-waste dumping, and untreated effluent discharge.',
+      },
+    ],
+    updatesLog: [
+      {
+        date: '2026-11-25',
+        version: 'v0.9',
+        entryType: 'Initial Publication',
+        summary: `Registered 24-section KEW-EIAI regional synthesis (KEW-INV-0009) synchronized with Flagship Monograph KEW-SR-2026-101 and the ${MLS.kashmirDivisionTotalUniqueIdentities}-lake Master Registry under Scientific Review.`,
+        verifiedBy: 'KEW Regional Limnology & Geospatial Reconciliation Unit',
+      },
+    ],
+    dataGaps: [
+      `${MLS.kashmirRequiringTrophicAssessment} of ${MLS.kashmirDivisionTotalUniqueIdentities} Kashmir Division lakes lack contemporary APHA-standard Secchi, Chlorophyll-a, and Total Phosphorus measurements.`,
+      'Intact sediment-core internal phosphorus release rates (mg P/m²/day) and quantitative cyanotoxin (microcystin-LR) LC-MS/MS baselines remain unmeasured across rural Kashmir lakes.',
+    ],
+    sections: [
+      {
+        sectionNumber: '01',
+        key: 'executive-summary',
+        title: 'Executive Summary',
+        applicable: true,
+        leadSummary: `Regional scientific synthesis reconciling ${MLS.kashmirDivisionTotalUniqueIdentities} deduplicated lakes across all 10 districts of Kashmir Division and tracing the mechanistic transition from ultra-oligotrophic alpine headwaters to hypereutrophic urban and floodplain basins.`,
+        bodyParagraphs: [
+          `Institutional counts of Kashmir's lakes have historically diverged because satellite directories (DEERS 2012: 415 records), statutory audits (CAG 2025: 330 records), glacial GIS inventories (Rashid & Kashani 2025: 155 polygons), and administrative censuses (Jal Shakti 2023: 37 lakes) apply different minimum size thresholds and elevation cutoffs. Spatial deduplication establishes ${MLS.kashmirDivisionTotalUniqueIdentities} unique Kashmir Division lake identities (${MLS.kashmirActiveOrObservedLakes} active/observed; ${MLS.kashmirHistoricallyDisappearedOrConverted} historically disappeared or converted).`,
+          `Where dated empirical measurements exist (${MLS.kashmirWithVerifiedTrophicStatus} lakes), Kashmir's lakes span a dramatic 60-unit Carlson TSI gradient: high-altitude glacial tarns (Sheshnag, Gangabal, Nundkol, Tarsar, Vishansar, Krishansar, Kounsarnag) remain oligotrophic (TSI < 38), deep monomictic/subalpine basins (Manasbal, Nilnag) sit on fragile mesotrophic-eutrophic margins, and valley-floor urban/floodplain lakes receiving raw sewage and agrarian runoff (Dal interior, Nigeen, Brari Nambal, Anchar, Khushalsar, Gilsar, Wular fringes) exhibit eutrophic to hypereutrophic states. All ${MLS.kashmirRequiringTrophicAssessment} unmeasured lakes are explicitly reported as Insufficient Evidence.`,
+        ],
+        quantitativeCallouts: [
+          { label: 'Unique Kashmir Lakes', value: String(MLS.kashmirDivisionTotalUniqueIdentities), unit: '10 Districts', sourceTag: 'KEW Master Reconciliation' },
+          { label: 'Verified Trophic Profiles', value: String(MLS.kashmirWithVerifiedTrophicStatus), unit: `${MLS.kashmirTrophicBreakdown.Oligotrophic} Oligo · ${MLS.kashmirTrophicBreakdown.Eutrophic + MLS.kashmirTrophicBreakdown.Hypereutrophic} Eutr/Hyper`, sourceTag: 'Carlson TSI Registry' },
+          { label: 'Insufficient Evidence', value: String(MLS.kashmirRequiringTrophicAssessment), unit: 'Unmeasured Lakes', sourceTag: 'Epistemic Audit' },
+          { label: 'Disappeared / Converted', value: String(MLS.kashmirHistoricallyDisappearedOrConverted), unit: 'Historical Loss', sourceTag: 'DEERS 2012 & CAG 2025' },
+        ],
+      },
+      {
+        sectionNumber: '02',
+        key: 'investigation-background',
+        title: 'Investigation Background',
+        applicable: true,
+        leadSummary:
+          'Initiated to unify fragmented lake inventories and establish a rigorous, non-extrapolated regional trophic status baseline across urban, rural, montane, subalpine, and alpine ecosystems.',
+        bodyParagraphs: [
+          'Individual KEW dossiers examine site-specific dredging in Dal Lake (KEW-INV-0001), pilgrimage pressure at Sheshnag (KEW-INV-0002), Telbal siltation (KEW-INV-0003), Wular restoration (KEW-INV-0005), and Hokersar flood-buffer loss (KEW-INV-0006). This regional investigation synthesises basin-wide eutrophication trajectories across all ten Kashmir districts and synchronizes directly with Flagship Monograph KEW-SR-2026-101.',
+        ],
+      },
+      {
+        sectionNumber: '03',
+        key: 'geographic-context',
+        title: 'Geographic Context',
+        applicable: true,
+        leadSummary:
+          'Spans a nearly 3,000-metre altitudinal gradient from Jhelum floodplain oxbows and urban lagoons (~1,578–1,600 m ASL) through Karewa/forest basins (1,800–2,600 m) to Panjal and Greater Himalayan cirque tarns (3,200–4,550+ m ASL).',
+        bodyParagraphs: [
+          `Covers Anantnag, Bandipora, Baramulla, Budgam, Ganderbal, Kulgam, Kupwara, Pulwama, Shopian, and Srinagar, encompassing ${MLS.kashmirUrbanLakes} urban, ${MLS.kashmirRuralFloodplainLakes} rural/floodplain, ${MLS.kashmirMontaneSubalpineLakes} montane/subalpine, and ${MLS.kashmirAlpineLakes} alpine/glacial lakes.`,
+        ],
+      },
+      {
+        sectionNumber: '04',
+        key: 'historical-chronology',
+        title: 'Historical Chronology',
+        applicable: true,
+        leadSummary: 'Tracks six decades of contrasting lowland contraction/enrichment versus high-altitude deglacial lake expansion (1967–2026).',
+        bodyParagraphs: [
+          'Between the 1967 Survey of India baseline and 2009–2025 satellite/audit evaluations, valley-floor waterbodies lost substantial open-water expanse to siltation, floating agriculture, willow plantations, and urban landfilling, while glacial retreat across the Pir Panjal and Greater Himalaya enlarged moraine- and cirque-dammed alpine lakes.',
+        ],
+      },
+      {
+        sectionNumber: '05',
+        key: 'environmental-baseline',
+        title: 'Environmental Baseline',
+        applicable: true,
+        leadSummary: 'Contrasts calcium-bicarbonate ultra-oligotrophic glacial tarns (EC < 65 µS/cm, TP < 10 µg/L) against nutrient-saturated valley basins (TP 60–450+ µg/L).',
+        bodyParagraphs: [
+          'Following Carlson (1977), KEW reports TSI(SD), TSI(Chl-a), and TSI(TP) separately without averaging, preserving diagnostic differences between macrophyte nutrient sequestration and inorganic glacial/fluvial turbidity.',
+        ],
+      },
+      {
+        sectionNumber: '06',
+        key: 'project-intervention-inventory',
+        title: 'Project & Intervention Inventory',
+        applicable: true,
+        leadSummary: 'Audits decades of mechanical de-weeding, shoreline dredging, FAB sewage treatment plants, and wetland demarcation programmes.',
+        bodyParagraphs: [
+          'In-lake biomass harvesting and dredging have repeatedly treated visible symptoms while external orthophosphate and untreated greywater/sewage loads remained above critical Vollenweider thresholds.',
+        ],
+      },
+      {
+        sectionNumber: '07',
+        key: 'scientific-disciplines',
+        title: 'Scientific Disciplines',
+        applicable: true,
+        leadSummary: 'Integrates 14 disciplines across limnology, environmental chemistry, remote sensing, GIS, aquatic ecology, wastewater engineering, and statutory law.',
+        bodyParagraphs: [
+          'Combines Vollenweider phosphorus loading balances, Fickian benthic diffusive flux, Beer–Lambert underwater light attenuation, NDCI/MNDWI optical screening, and statutory Wetlands Rules 2017 compliance.',
+        ],
+      },
+      {
+        sectionNumber: '08',
+        key: 'scientific-analysis',
+        title: 'Scientific Analysis',
+        applicable: true,
+        leadSummary: 'Demonstrates why external nutrient loading and benthic redox cycling lock shallow valley lakes into turbid/floating-mat states.',
+        bodyParagraphs: [
+          'Once submerged Charophyte/Potamogeton meadows collapse under high epiphyte/phytoplankton shading and dredging disturbance, sediment resuspension and summer benthic anoxia (DO < 2 mg/L) recycle legacy iron-bound phosphorus back into the water column.',
+        ],
+      },
+      {
+        sectionNumber: '09',
+        key: 'satellite-gis-evidence',
+        title: 'Satellite & GIS Evidence',
+        applicable: true,
+        leadSummary: `Multi-sensor spatial reconciliation (LISS-III, Landsat, Sentinel-2) and optical bloom eligibility screening (${MLS.kashmirOpticalBloomEligibleCount} lakes >=4 ha).`,
+        bodyParagraphs: [
+          'Small rural ponds (<4 ha), narrow urban channels, and ice/shadow-affected cirque tarns are excluded from automated 20 m red-edge chlorophyll indices to prevent mixed-pixel shoreline artifacts.',
+        ],
+      },
+      {
+        sectionNumber: '10',
+        key: 'hydrological-analysis',
+        title: 'Hydrological Analysis',
+        applicable: true,
+        leadSummary: 'Evaluates hydraulic residence time (τ_w), sub-lacustrine karst spring inflows, and causeway/bund circulation dead zones.',
+        bodyParagraphs: [
+          'Internal bunds, floating gardens, and weir regulation lengthen local water residence times in interior Dal, Nigeen, Anchar, and Khushalsar pockets, amplifying summer thermal stratification and nutrient retention.',
+        ],
+      },
+      {
+        sectionNumber: '11',
+        key: 'ecological-impact-analysis',
+        title: 'Ecological Impact Analysis',
+        applicable: true,
+        leadSummary: 'Documents shifts from native submerged macrophytes and endemic Schizothorax snow trout toward invasive Azolla/Salvinia mats, carp dominance, and cyanobacterial blooms.',
+        bodyParagraphs: [
+          'Hypereutrophication eliminates oxygenated gravel/macrophyte refugia required by native cold-water fauna while degrading winter foraging depth windows for Central Asian Flyway waterbirds.',
+        ],
+      },
+      {
+        sectionNumber: '12',
+        key: 'cumulative-impact-assessment',
+        title: 'Cumulative Impact Assessment',
+        applicable: true,
+        leadSummary: 'Quantifies compounding pressures of catchment deforestation, orchard/paddy agrochemicals, urban sprawl, climate warming, and hydrological fragmentation.',
+        bodyParagraphs: [
+          'Rising air temperatures strengthen thermal stratification and lengthen cyanobacterial growing windows, lowering the nutrient threshold needed to trigger blooms across valley and subalpine lakes.',
+        ],
+      },
+      {
+        sectionNumber: '13',
+        key: 'environmental-risk-pathways',
+        title: 'Environmental Risk Pathways',
+        applicable: true,
+        leadSummary: 'Maps ecological regime shifts, benthic fish-kill hypoxia, drinking-water intake vulnerability, flood-sponge loss, and alpine GLOF/trophic coupling.',
+        bodyParagraphs: [
+          'In valley basins, loss of lake volume directly reduces Jhelum flood detention capacity; in alpine catchments, moraine-dammed lake expansion increases outburst hazard while low alkalinity leaves tarns acutely vulnerable to organic waste.',
+        ],
+      },
+      {
+        sectionNumber: '14',
+        key: 'asian-global-precedents',
+        title: 'Asian & Global Precedents',
+        applicable: true,
+        leadSummary: 'Benchmarks Kashmir lake trajectories against Lake Biwa (Japan), Lakes Taihu & Dianchi (China), and alpine oligotrophic protection zones.',
+        bodyParagraphs: [
+          'International evidence confirms that large-scale dredging fails without >70–80% external phosphorus load interception and watershed detergent/sewage ordinances.',
+        ],
+      },
+      {
+        sectionNumber: '15',
+        key: 'government-scientific-records',
+        title: 'Government & Scientific Records',
+        applicable: true,
+        leadSummary: 'Cross-examines DEERS (2012), Jal Shakti Census (2023), CAG Report No. 4 of 2025, NGT/High Court orders, and peer-reviewed Himalayan limnology.',
+        bodyParagraphs: [
+          'Preserves all four official inventory counts transparently alongside deduplicated spatial identities so administrative and scientific records remain fully auditable.',
+        ],
+      },
+      {
+        sectionNumber: '16',
+        key: 'institutional-accountability',
+        title: 'Institutional Accountability',
+        applicable: true,
+        leadSummary: 'Maps statutory responsibilities across LCMA, JKWA, WUCMA, JKPCC, UEED, Revenue Department, and development authorities.',
+        bodyParagraphs: [
+          'Records documented CAG audit findings alongside ongoing institutional restoration initiatives without inferring unverified wrongdoing where monitoring records are absent.',
+        ],
+      },
+      {
+        sectionNumber: '17',
+        key: 'regulatory-analysis',
+        title: 'Regulatory Analysis',
+        applicable: true,
+        leadSummary: 'Evaluates compliance under the Water Act 1974, Wetlands (Conservation and Management) Rules 2017, Environment Protection Act 1986, and Ramsar obligations.',
+        bodyParagraphs: [
+          'Highlights the statutory gap whereby hundreds of smaller rural DEERS waterbodies remain unnotified on revenue cadastral maps.',
+        ],
+      },
+      {
+        sectionNumber: '18',
+        key: 'scientific-evidence-matrix',
+        title: 'Scientific Evidence Matrix',
+        applicable: true,
+        leadSummary: 'Grades eight core regional assertions across Documented, Provisionally Supported, and Unverified epistemic tiers.',
+        bodyParagraphs: [
+          'Separates verified inventory/trophic facts from unmeasured cyanotoxin and sediment-flux hypotheses.',
+        ],
+      },
+      {
+        sectionNumber: '19',
+        key: 'unanswered-questions',
+        title: 'Unanswered Questions',
+        applicable: true,
+        leadSummary: `Identifies the ${MLS.kashmirRequiringTrophicAssessment}-lake monitoring gap, STP phosphorus removal disclosure, and cyanotoxin baseline needs.`,
+        bodyParagraphs: [
+          'Public agencies and academic laboratories are invited to deposit dated water-quality series to upgrade unassessed lakes.',
+        ],
+      },
+      {
+        sectionNumber: '20',
+        key: 'alternative-solutions',
+        title: 'Alternative Solutions',
+        applicable: true,
+        leadSummary: 'Prioritises tertiary phosphorus stripping, constructed littoral wetlands, and tiered 3-level basin surveillance over repetitive symptom dredging.',
+        bodyParagraphs: [
+          'Catchment-first nutrient interception and natural macrophyte-marsh biofiltration deliver durable trophic recovery at lower lifecycle cost.',
+        ],
+      },
+      {
+        sectionNumber: '21',
+        key: 'recommendations',
+        title: 'Recommendations',
+        applicable: true,
+        leadSummary: 'Establishes Immediate (0–12 mo), Medium-Term (1–3 yr), and Long-Term (3–10 yr) corrective actions with measurable verification indicators.',
+        bodyParagraphs: [
+          'Pairs immediate STP phosphorus disclosure with 50-lake empirical baseline expansion and long-term watershed nutrient reduction.',
+        ],
+      },
+      {
+        sectionNumber: '22',
+        key: 'scientific-conclusions',
+        title: 'Scientific Conclusions',
+        applicable: true,
+        leadSummary: 'Synthesises verified regional findings while maintaining strict epistemic boundaries during Scientific Review.',
+        bodyParagraphs: [
+          `Kashmir's ${MLS.kashmirDivisionTotalUniqueIdentities} lakes exhibit a sharp altitudinal bifurcation: shrinking, nutrient-enriched valley basins versus expanding, climate-exposed alpine glacial lakes — demanding differentiated watershed restoration in the plains and strict zero-waste preventative protection in the high Himalaya.`,
+        ],
+      },
+      {
+        sectionNumber: '23',
+        key: 'references-datasets',
+        title: 'References & Datasets',
+        applicable: true,
+        leadSummary: 'Provides traceable DOI/archival citations and open Master CSV + GeoJSON downloads.',
+        bodyParagraphs: [
+          'Full 20-chapter monograph text, Appendices A–O, and downloadable A4 PDF are synchronized at /sectoral-eia/reports/kew-sr-2026-101.',
+        ],
+      },
+      {
+        sectionNumber: '24',
+        key: 'investigation-updates',
+        title: 'Investigation Updates',
+        applicable: true,
+        leadSummary: 'Living revision log tracking progression from Scientific Review to formal Published release.',
+        bodyParagraphs: [
+          'v0.9 registered on 2026-11-25; awaiting final Scientific Review sign-off and official institutional responses.',
+        ],
+      },
+    ],
   },
 ];

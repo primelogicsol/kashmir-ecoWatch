@@ -109,3 +109,208 @@ model forecasts_ts {
 
   @@index([target_time(sort: Asc)])
 }
+
+// ─── HIMALAYAN DISPATCH NEWSROOM (HDN) — EDITORIAL CMS & OPERATING SYSTEM ──────────
+// Shared KEW PostgreSQL models backing human journalists, 18-role RBAC, block-based
+// manuscripts, revisions, scientific reviews, fact-checks, and confidential sources.
+
+model hdn_accounts {
+  id                           String   @id @default(uuid())
+  slug                         String   @unique
+  full_name                    String
+  email                        String   @unique
+  primary_role_title           String
+  roles                        String[]
+  assigned_bureaus             String[]
+  assigned_departments         String[]
+  reporting_beats              String[]
+  based_in                     String   @default("Western Himalayas")
+  short_bio                    String   @default("")
+  portrait_url                 String?
+  languages                    String[]
+  access_code_hash             String?
+  status                       String   @default("active")
+  charter_accepted             Boolean  @default(false)
+  contributor_agreement_type   String   @default("voluntary_editorial_fellow")
+  public_portfolio_consent     Boolean  @default(false)
+  public_portfolio_approved    Boolean  @default(false)
+  linked_application_id        String?
+  created_at                   DateTime @default(now())
+  updated_at                   DateTime @updatedAt
+
+  manuscripts                  hdn_manuscripts[]
+  scientific_reviews           hdn_scientific_reviews[]
+}
+
+model hdn_assignments {
+  id                           String   @id @default(uuid())
+  title                        String
+  editorial_brief              String
+  assigned_journalist_slug     String
+  responsible_editor_slug      String
+  bureau_id                    String
+  department_id                String
+  reporting_beat_slug          String
+  expected_deliverables        String[]
+  target_word_count            Int      @default(2500)
+  research_requirements        String   @default("")
+  scientific_review_required   Boolean  @default(false)
+  media_requirements           String   @default("")
+  deadline_iso                 DateTime
+  priority                     String   @default("standard")
+  publication_stream           String   @default("monthly_edition")
+  proposed_edition_slug        String
+  status                       String   @default("commissioned")
+  is_confidential              Boolean  @default(false)
+  source_protection_level      String   @default("standard_on_record")
+  correspondence_json          Json     @default("[]")
+  history_json                 Json     @default("[]")
+  created_at                   DateTime @default(now())
+  updated_at                   DateTime @updatedAt
+
+  @@index([assigned_journalist_slug])
+  @@index([bureau_id, status])
+}
+
+model hdn_manuscripts {
+  id                           String   @id @default(uuid())
+  slug                         String   @unique
+  origin_type                  String   @default("human_manuscript")
+  linked_anie_draft_id         String?
+  linked_assignment_id         String?
+  headline                     String
+  standfirst                   String   @default("")
+  subtitle                     String   @default("")
+  byline_display               String
+  primary_author_slug          String
+  dateline                     String
+  is_ai_assisted               Boolean  @default(false)
+  publication_stream           String   @default("daily_dispatch")
+  target_edition_slug          String
+  department_id                String
+  bureau_id                    String
+  reporting_beat_slug          String
+  article_format               String   @default("Regional Dispatch")
+  lifecycle_stage              String   @default("04")
+  workflow_status              String   @default("drafting")
+  review_track                 String   @default("standard_reporting")
+  risk_level                   String   @default("GREEN")
+  priority                     String   @default("standard")
+  is_featured                  Boolean  @default(false)
+  is_confidential              Boolean  @default(false)
+  fact_check_required          Boolean  @default(true)
+  fact_check_completed         Boolean  @default(false)
+  scientific_review_required   Boolean  @default(false)
+  scientific_review_completed  Boolean  @default(false)
+  legal_review_required        Boolean  @default(false)
+  legal_review_completed       Boolean  @default(false)
+  blocks_json                  Json     @default("[]")
+  comments_json                Json     @default("[]")
+  corrections_json             Json     @default("[]")
+  editorial_disclosure         String   @default("")
+  word_count                   Int      @default(0)
+  version_number               Int      @default(1)
+  scheduled_publication_at     DateTime?
+  published_at                 DateTime?
+  trashed_at                   DateTime?
+  created_at                   DateTime @default(now())
+  updated_at                   DateTime @updatedAt
+
+  author                       hdn_accounts @relation(fields: [primary_author_slug], references: [slug])
+  revisions                    hdn_manuscript_revisions[]
+  scientific_reviews           hdn_scientific_reviews[]
+  fact_checks                  hdn_fact_checks[]
+
+  @@index([workflow_status, publication_stream])
+  @@index([bureau_id, department_id])
+}
+
+model hdn_manuscript_revisions {
+  id                           String   @id @default(uuid())
+  manuscript_id                String
+  version_number               Int
+  save_kind                    String   @default("manual")
+  actor_slug                   String
+  actor_name                   String
+  summary                      String
+  workflow_status              String
+  word_count                   Int
+  headline                     String
+  standfirst                   String
+  blocks_snapshot              Json
+  saved_at                     DateTime @default(now())
+
+  manuscript                   hdn_manuscripts @relation(fields: [manuscript_id], references: [id], onDelete: Cascade)
+
+  @@index([manuscript_id, version_number(sort: Desc)])
+}
+
+model hdn_scientific_reviews {
+  id                           String   @id @default(uuid())
+  manuscript_id                String
+  assigned_reviewer_slug       String
+  status                       String   @default("assigned")
+  claim_assessments_json       Json     @default("[]")
+  supporting_references        String[]
+  methodological_comments      String   @default("")
+  statistical_status           String   @default("not_applicable")
+  geospatial_status            String   @default("not_applicable")
+  uncertainty_assessment       String   @default("")
+  coi_declared                 Boolean  @default(false)
+  coi_details                  String   @default("")
+  recommendation               String?
+  assigned_at                  DateTime @default(now())
+  completed_at                 DateTime?
+
+  manuscript                   hdn_manuscripts @relation(fields: [manuscript_id], references: [id], onDelete: Cascade)
+  reviewer                     hdn_accounts    @relation(fields: [assigned_reviewer_slug], references: [slug])
+}
+
+model hdn_fact_checks {
+  id                           String   @id @default(uuid())
+  claim_identifier             String   @unique
+  manuscript_id                String
+  claim_assertion              String
+  source_classification        String
+  supporting_source_label      String
+  source_url                   String
+  verification_status          String   @default("verified")
+  reviewer_slug                String
+  resolution_status            String   @default("resolved")
+  reviewed_at                  DateTime @default(now())
+
+  manuscript                   hdn_manuscripts @relation(fields: [manuscript_id], references: [id], onDelete: Cascade)
+}
+
+model hdn_confidential_sources {
+  id                           String   @id @default(uuid())
+  code_name                    String   @unique
+  owner_journalist_slug        String
+  bureau_id                    String
+  confidentiality_level        String   @default("strict_confidential")
+  public_description           String
+  restricted_notes             String
+  consent_recorded             Boolean  @default(true)
+  retention_policy             String   @default("retain_encrypted_archive")
+  interviews_json              Json     @default("[]")
+  authorized_viewer_slugs      String[]
+  access_audit_json            Json     @default("[]")
+  created_at                   DateTime @default(now())
+  updated_at                   DateTime @updatedAt
+}
+
+model hdn_audit_logs {
+  id                           String   @id @default(uuid())
+  actor_slug                   String
+  actor_name                   String
+  actor_roles                  String[]
+  category                     String
+  action                       String
+  target_id                    String?
+  target_label                 String?
+  details                      String
+  created_at                   DateTime @default(now())
+
+  @@index([created_at(sort: Desc)])
+  @@index([category])
+}

@@ -5,7 +5,7 @@ import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import { SeasonalLandscape, BloomZone, MigrationWindow, PollinatorWindow, PhenologyRecord, HabitatSignal, WaterTransition, SpeciesActivity, ClimateWindow, SeasonalReport } from '@/types/seasonal-ecology';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
@@ -230,7 +230,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative kew-container-report">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-1 text-xs md:text-sm text-slate-400 mb-6">
             {breadcrumbs.map((crumb, idx) => (
@@ -254,8 +254,8 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
             </div>
             <div className="flex-1">
               <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-              <h1 className="text-3xl font-bold text-white mb-2 max-w-xl">{name}</h1>
-              <p className="text-slate-300">{description}</p>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 max-w-4xl">{name}</h1>
+              <p className="text-slate-300 max-w-[74ch] leading-relaxed">{description}</p>
             </div>
           </div>
 
@@ -319,7 +319,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
 
       {/* Sticky Tab Navigation */}
       <div className="sticky top-16 z-40 bg-slate-950/95 backdrop-blur-xl border-y border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="kew-container-report">
           <div className="flex items-center gap-1 overflow-x-auto py-2">
             {tabs.map((tab) => {
               const TabIcon = (Icons as any)[tab.icon] || Icons.FileText;
@@ -343,15 +343,15 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
       </div>
 
       {/* Tab Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="kew-container-report py-8">
         {children(activeTab)}
       </div>
 
       {/* Related Intelligence */}
       {relatedIntelligence.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="kew-container-report pb-16">
           <h2 className="text-xl font-semibold text-white mb-6">Related Intelligence</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-4">
             {relatedIntelligence.map((item, idx) => {
               const RelatedIcon = (Icons as any)[item.icon] || Icons.Link;
               return (
@@ -385,7 +385,7 @@ export const SeasonalDetailPage: React.FC<SeasonalDetailPageProps> = ({
       )}
 
       {/* CTA Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="kew-container-report pb-16">
         <Card className={`glass-intense border-slate-700/50 bg-slate-900 ${theme.bgGradient}`}>
           <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>

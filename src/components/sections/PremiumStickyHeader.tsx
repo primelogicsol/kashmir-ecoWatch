@@ -1,16 +1,17 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/Button';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { Logo } from '@/components/common/Logo';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
+  ArrowUpRight,
   ExternalLink,
   Sparkles,
   Leaf,
   Menu,
+  Newspaper,
   X,
-  Map,
   ChevronDown,
   Bell,
   Settings,
@@ -18,71 +19,52 @@ import {
   Shield,
   Search,
   Droplet,
-  Waves,
-  Wind,
-  Mountain,
-  Thermometer,
-  Fish,
   AlertTriangle,
-  Hammer,
   Calendar,
-  Footprints,
-  Database,
   BarChart3,
-  Book,
+  BookOpen,
   Globe,
-  Factory,
-  Recycle,
-  Upload,
   FileText,
   LogIn,
   LogOut,
-  Layers
+  Layers,
+  Music,
+  Video,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrolledHeader } from '@/hooks/useScrolledHeader';
 import { cn } from '@/lib/utils';
 import { HeaderSearch } from '@/components/navigation/HeaderSearch';
-import { NotificationDropdown } from '@/components/navigation/NotificationDropdown';
-import { SettingsModal } from '@/components/navigation/SettingsModal';
-import { ProfileDropdown } from '@/components/navigation/ProfileDropdown';
-import { alertRegistry } from '@/data/alert-registry';
+import {
+  KewControlCenter,
+  formatContributorRoleLabel,
+  isUsableAvatarUrl,
+  type ControlCenterTab,
+} from '@/components/navigation/KewControlCenter';
+import { useLiveAlerts } from '@/hooks/useLiveAlerts';
 import { useAuth } from '@/context/AuthContext';
-
-const navItems = [
-  { label: 'Protected Areas',         href: '/protected-network',        hasDropdown: true },
-  { label: 'Biodiversity',            href: '/biodiversity',             hasDropdown: true },
-  { label: 'Water Systems',           href: '/water-systems',            hasDropdown: true },
-  { label: 'Environmental Monitoring',href: '/environmental-monitoring', hasDropdown: true },
-  { label: 'Hazard Intelligence',     href: '/hazard-intelligence',      hasDropdown: true },
-  { label: 'Earth & Human Impact',    href: '/earth-human-impact',       hasDropdown: true },
-  { label: 'Sectoral EIA',            href: '/sectoral-eia',             hasDropdown: true },
-  { label: 'Investigations',          href: '/environmental-investigations', hasDropdown: true },
-  { label: 'NGO Impact',              href: '/ngo-impact',               hasDropdown: false },
-  { label: 'Environmental Calendar',  href: '/environmental-calendar',   hasDropdown: true },
-  { label: 'About',                   href: '/about',                    hasDropdown: true },
-];
-
-interface DropdownItem {
-  name: string;
-  href: string;
-  desc?: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  color?: string;
-  isHeader?: boolean;
-  groupId?: string;
-  parentGroup?: string;
-}
+import {
+  GLOBAL_NAV_ITEMS,
+  getGlobalDropdownItems,
+  type GlobalDropdownItem,
+} from '@/data/global-navigation';
+import {
+  DISPATCH_SUBDOMAIN_DIRECT_URL,
+  getDirectDispatchHeaderUrl,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
+} from '@/lib/himalayan-dispatch-routes';
 
 export function PremiumStickyHeader() {
+  const pathname = usePathname();
   const { user, isLoggedIn, signOut, openAuthModal } = useAuth();
-  const { isScrolled, isCompact, scrollDirection } = useScrolledHeader({ threshold: 60, smoothTransition: true });
+  const { isScrolled, isCompact } = useScrolledHeader({ threshold: 60, smoothTransition: true });
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMobileSubmenus, setExpandedMobileSubmenus] = useState<Set<string>>(new Set());
   const [expandedHazardGroups, setExpandedHazardGroups] = useState<Set<string>>(
     () => new Set(['atmospheric', 'hazard-systems'])
   );
+
   const toggleHazardGroup = (gid: string) => {
     setExpandedHazardGroups((prev) => {
       const next = new Set(prev);
@@ -91,10 +73,59 @@ export function PremiumStickyHeader() {
       return next;
     });
   };
-  const [activeHeaderModal, setActiveHeaderModal] = useState<'search' | 'notifications' | 'settings' | 'profile' | null>(null);
-  const [unreadCount, setUnreadCount] = useState<number>(alertRegistry.length);
+
+  const [activeHeaderModal, setActiveHeaderModal] = useState<
+    'search' | 'control-center' | null
+  >(null);
+  const [requestedControlTab, setRequestedControlTab] = useState<ControlCenterTab | null>(null);
+  const [requestedControlTabSeq, setRequestedControlTabSeq] = useState<number>(0);
+  const [isServerAdmin, setIsServerAdmin] = useState<boolean>(false);
+  const [avatarLoadFailed, setAvatarLoadFailed] = useState<boolean>(false);
+
+  const liveAlerts = useLiveAlerts();
+  const { unreadCount, unreadCriticalCount } = liveAlerts;
+
   const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   const [mobileSuggestions, setMobileSuggestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    setAvatarLoadFailed(false);
+  }, [user?.avatar]);
+
+  // Verify real server-side administrator clearance before exposing any Admin Command links
+  useEffect(() => {
+    let active = true;
+    const verifyServerAdmin = async () => {
+      try {
+        const res = await fetch('/api/admin/session', {
+          cache: 'no-store',
+          credentials: 'same-origin',
+        });
+        if (!active) return;
+        if (res.ok) {
+          const data = await res.json();
+          setIsServerAdmin(Boolean(data?.authenticated && data?.role === 'administrator'));
+        } else {
+          setIsServerAdmin(false);
+        }
+      } catch {
+        if (active) setIsServerAdmin(false);
+      }
+    };
+
+    verifyServerAdmin();
+    window.addEventListener('kew_admin_session_updated', verifyServerAdmin);
+    return () => {
+      active = false;
+      window.removeEventListener('kew_admin_session_updated', verifyServerAdmin);
+    };
+  }, [user?.id, isLoggedIn, pathname]);
+
+  const openControlCenterOnTab = (tab: ControlCenterTab) => {
+    setRequestedControlTab(tab);
+    setRequestedControlTabSeq((n) => n + 1);
+    setActiveHeaderModal('control-center');
+  };
 
   useEffect(() => {
     if (!isMobileMenuOpen || mobileSearchQuery.trim().length < 2) {
@@ -103,10 +134,13 @@ export function PremiumStickyHeader() {
     }
     const ctrl = new AbortController();
     const t = setTimeout(() => {
-      fetch(`/api/search/suggest?q=${encodeURIComponent(mobileSearchQuery.trim())}&limit=3`, { signal: ctrl.signal })
+      fetch(`/api/search/suggest?q=${encodeURIComponent(mobileSearchQuery.trim())}&limit=3`, {
+        signal: ctrl.signal,
+      })
         .then((r) => (r.ok ? r.json() : null))
         .then((d) => {
-          if (d?.groups) setMobileSuggestions(d.groups.flatMap((g: any) => g.items || []).slice(0, 6));
+          if (d?.groups)
+            setMobileSuggestions(d.groups.flatMap((g: any) => g.items || []).slice(0, 6));
         })
         .catch(() => {});
     }, 110);
@@ -115,54 +149,182 @@ export function PremiumStickyHeader() {
       ctrl.abort();
     };
   }, [mobileSearchQuery, isMobileMenuOpen]);
+
   const headerActionsRef = useRef<HTMLDivElement>(null);
+  const headerInnerRef = useRef<HTMLDivElement>(null);
+  const navMeasureRef = useRef<HTMLDivElement>(null);
+  const designationSlotRef = useRef<HTMLDivElement>(null);
+  const designationMeasureRef = useRef<HTMLSpanElement>(null);
+  const [navMode, setNavMode] = useState<'auto' | 'full' | 'compact'>('auto');
+  const navModeRef = useRef<'auto' | 'full' | 'compact'>('auto');
+  const [designationFit, setDesignationFit] = useState<'auto' | 'visible' | 'hidden'>('auto');
+  const designationFitRef = useRef<'auto' | 'visible' | 'hidden'>('auto');
+  const [navFitMetrics, setNavFitMetrics] = useState<{ available: number; required: number }>({
+    available: 0,
+    required: 0,
+  });
 
-  // Sync unread alerts with live telemetry stream
-  useEffect(() => {
-    let isMounted = true;
-    const updateUnread = async () => {
-      try {
-        const stored = localStorage.getItem('kew_read_notifications');
-        const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
-        const res = await fetch('/api/alerts/live');
-        if (res.ok && isMounted) {
-          const data = await res.json();
-          const list = data.alerts || alertRegistry;
-          setUnreadCount(list.filter((a: any) => !readIds.has(a.id)).length);
-          return;
-        }
-      } catch {}
+  // Content-aware + viewport-aware single-row navigation & central designation measurement with hysteresis
+  const evaluateNavigationFit = useCallback(() => {
+    if (typeof window === 'undefined') return;
 
-      if (isMounted) {
-        try {
-          const stored = localStorage.getItem('kew_read_notifications');
-          const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
-          setUnreadCount(alertRegistry.filter(a => !readIds.has(a.id)).length);
-        } catch {
-          setUnreadCount(alertRegistry.length);
+    // 1. Central Institutional Designation Container-Aware Collision Guard
+    const slotEl = designationSlotRef.current;
+    const desigRulerEl = designationMeasureRef.current;
+    if (slotEl && desigRulerEl) {
+      const slotStyles = window.getComputedStyle(slotEl);
+      const slotPadL = parseFloat(slotStyles.paddingLeft || '0') || 0;
+      const slotPadR = parseFloat(slotStyles.paddingRight || '0') || 0;
+      const availableCenterPx = Math.floor(slotEl.clientWidth - slotPadL - slotPadR);
+      const requiredDesigPx = Math.ceil(
+        desigRulerEl.getBoundingClientRect().width || desigRulerEl.scrollWidth
+      );
+
+      if (requiredDesigPx > 0) {
+        const currentDesig = designationFitRef.current;
+        // Hysteresis buffer prevents boundary flicker during smooth window resize or browser zoom
+        const desigMargin = currentDesig === 'hidden' ? 28 : 16;
+        const nextDesigFit: 'visible' | 'hidden' =
+          availableCenterPx >= requiredDesigPx + desigMargin ? 'visible' : 'hidden';
+        if (nextDesigFit !== currentDesig) {
+          designationFitRef.current = nextDesigFit;
+          setDesignationFit(nextDesigFit);
         }
       }
+    }
+
+    // 2. Primary 14-Module Navigation Row Fit Audit
+    const innerEl = headerInnerRef.current;
+    const rulerEl = navMeasureRef.current;
+    if (!innerEl || !rulerEl) return;
+
+    const innerStyles = window.getComputedStyle(innerEl);
+    const padL = parseFloat(innerStyles.paddingLeft || '0') || 0;
+    const padR = parseFloat(innerStyles.paddingRight || '0') || 0;
+    const availableWidth = Math.floor(innerEl.clientWidth - padL - padR);
+    const requiredWidth = Math.ceil(rulerEl.getBoundingClientRect().width || rulerEl.scrollWidth);
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+
+    setNavFitMetrics((prev) =>
+      prev.available === availableWidth && prev.required === requiredWidth
+        ? prev
+        : { available: availableWidth, required: requiredWidth }
+    );
+
+    if (availableWidth <= 0 || requiredWidth <= 0) return;
+
+    // Short landscape viewports (< 500px CSS height) always use Compact Explore to preserve vertical screen space
+    if (viewportHeight < 500) {
+      if (navModeRef.current !== 'compact') {
+        navModeRef.current = 'compact';
+        setNavMode('compact');
+        setActiveDropdown(null);
+      }
+      return;
+    }
+
+    // Hysteresis deadband prevents any oscillation when resizing pixel-by-pixel near the threshold:
+    // - Switch Full -> Compact when availableWidth < requiredWidth + 8px
+    // - Switch Compact -> Full only when availableWidth >= requiredWidth + 20px
+    const current = navModeRef.current;
+    const safetyMargin = current === 'compact' ? 20 : 8;
+    const nextMode: 'full' | 'compact' =
+      availableWidth >= requiredWidth + safetyMargin ? 'full' : 'compact';
+
+    if (nextMode !== current) {
+      navModeRef.current = nextMode;
+      setNavMode(nextMode);
+      if (nextMode === 'compact') {
+        setActiveDropdown(null);
+      } else {
+        setIsMobileMenuOpen(false);
+      }
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    evaluateNavigationFit();
+  }, [evaluateNavigationFit]);
+
+  useEffect(() => {
+    evaluateNavigationFit();
+
+    let rafId: number | null = null;
+    const scheduleMeasure = () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        evaluateNavigationFit();
+      });
     };
 
-    updateUnread();
-    window.addEventListener('storage', updateUnread);
-    window.addEventListener('kew_alerts_updated', updateUnread);
+    const ro =
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(scheduleMeasure) : null;
+    if (ro) {
+      if (headerInnerRef.current) ro.observe(headerInnerRef.current);
+      if (navMeasureRef.current) ro.observe(navMeasureRef.current);
+      if (designationSlotRef.current) ro.observe(designationSlotRef.current);
+      if (designationMeasureRef.current) ro.observe(designationMeasureRef.current);
+      if (headerActionsRef.current) ro.observe(headerActionsRef.current);
+    }
+
+    window.addEventListener('resize', scheduleMeasure, { passive: true });
+    window.addEventListener('orientationchange', scheduleMeasure, { passive: true });
+    window.visualViewport?.addEventListener('resize', scheduleMeasure, { passive: true });
+
+    if (typeof document !== 'undefined' && 'fonts' in document) {
+      (document as Document & { fonts: FontFaceSet }).fonts.ready
+        .then(scheduleMeasure)
+        .catch(() => {});
+    }
+
     return () => {
-      isMounted = false;
-      window.removeEventListener('storage', updateUnread);
-      window.removeEventListener('kew_alerts_updated', updateUnread);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      ro?.disconnect();
+      window.removeEventListener('resize', scheduleMeasure);
+      window.removeEventListener('orientationchange', scheduleMeasure);
+      window.visualViewport?.removeEventListener('resize', scheduleMeasure);
+    };
+  }, [evaluateNavigationFit]);
+  const [dispatchDirectUrl, setDispatchDirectUrl] = useState<string>(() =>
+    getDirectDispatchHeaderUrl(IS_DISPATCH_SUBDOMAIN_LIVE)
+  );
+  const [isDispatchSubdomainVerified, setIsDispatchSubdomainVerified] = useState<boolean>(
+    IS_DISPATCH_SUBDOMAIN_LIVE
+  );
+
+  useEffect(() => {
+    let active = true;
+    fetch('/api/himalayan-dispatch/subdomain-status')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!active || !data) return;
+        const verified = Boolean(data.ready && data.tlsValid && data.statusCode === 200);
+        setIsDispatchSubdomainVerified(verified);
+        const isLocalDevHost =
+          typeof window !== 'undefined' &&
+          (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+        if (verified && (!isLocalDevHost || IS_DISPATCH_SUBDOMAIN_LIVE)) {
+          setDispatchDirectUrl(DISPATCH_SUBDOMAIN_DIRECT_URL);
+        } else {
+          setDispatchDirectUrl('/himalayan-dispatch');
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
     };
   }, []);
 
-  // Global hotkeys (Cmd+K / Ctrl+K to toggle search, Escape to close)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        setActiveHeaderModal(prev => (prev === 'search' ? null : 'search'));
+        setActiveHeaderModal((prev) => (prev === 'search' ? null : 'search'));
       } else if (e.key === 'Escape') {
         setActiveHeaderModal(null);
         setActiveDropdown(null);
+        setIsMobileMenuOpen(false);
       }
     };
 
@@ -170,7 +332,6 @@ export function PremiumStickyHeader() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Close modals when clicking outside header actions
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (headerActionsRef.current && !headerActionsRef.current.contains(e.target as Node)) {
@@ -186,7 +347,6 @@ export function PremiumStickyHeader() {
     };
   }, [activeHeaderModal]);
 
-  // Body scroll lock when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -205,7 +365,7 @@ export function PremiumStickyHeader() {
   }, [isMobileMenuOpen]);
 
   const toggleMobileSubmenu = (label: string) => {
-    setExpandedMobileSubmenus(prev => {
+    setExpandedMobileSubmenus((prev) => {
       const next = new Set(prev);
       if (next.has(label)) {
         next.delete(label);
@@ -216,475 +376,310 @@ export function PremiumStickyHeader() {
     });
   };
 
-  const getDropdownItems = (label: string): DropdownItem[] => {
+  const isRouteActive = (href: string) => {
+    if (!pathname) return false;
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
+  const renderDropdownIcon = (label: string) => {
     switch (label) {
-      case 'About':
-        return [
-          { name: '🏛️ About KEW', href: '/about', desc: 'Platform overview & scientific charter' },
-          { name: '🎯 Mission', href: '/about/mission', desc: 'Ecological mandates & strategic vision' },
-          { name: '⚖️ Governance', href: '/about/governance', desc: 'Institutional oversight & ethics' },
-          { name: '👤 Institutional Leadership', href: '/about/founder', desc: 'Founder & executive director' },
-          { name: '👥 Contributors', href: '/about/contributors', desc: 'Scientists, researchers & advisors' },
-          { name: '🎥 Webinars & Conferences', href: '/webinars', desc: 'Academic symposiums & workshops' },
-          { name: '🤝 Support KEW', href: '/about/support-sponsorship', desc: 'Philanthropic support & sponsorship' },
-          { name: '🏢 CSR & Grants', href: '/about/csr-collaborations', desc: 'Corporate social responsibility' },
-          { name: '✉️ Contact', href: '/about/contact', desc: 'Inquiries & editorial communications' },
-          { name: '❓ KEW Q&A', href: '/about/qna', desc: '50 foundational knowledge answers' },
-          { name: '── Affiliated Initiatives ──', href: '#', desc: '', isHeader: true },
-          { name: 'Kashmir Craft Lifecycle Assessment', href: 'https://www.craftlore.org/clee', desc: 'Craftlore CLEE artisanal environmental index' },
-          { name: 'Plan Your Kashmir Trip', href: 'https://kashmirartstay.com/', desc: 'Kashmir ArtStay ethical heritage travel' },
-        ];
-
-
       case 'Protected Areas':
-        return [
-          { name: '🗺️ Network Overview', href: '/protected-network', desc: 'Complete protected area system' },
-          { name: '📍 Protected Area Atlas', href: '/protected-network/atlas', desc: 'Interactive GIS mapping' },
-          { name: '── Protected Areas ──', href: '#', desc: '', isHeader: true },
-          { name: 'National Parks', href: '/protected-network/national-parks', desc: 'Core conservation landscapes' },
-          { name: 'Wildlife Sanctuaries', href: '/protected-network/wildlife-sanctuaries', desc: 'Protected habitats' },
-          { name: 'Wetland Reserves', href: '/protected-network/wetland-reserves', desc: 'Marsh & bird conservation' },
-          { name: 'Conservation Reserves', href: '/protected-network/conservation-reserves', desc: 'Community landscapes' },
-          { name: 'Bird & Habitat Areas', href: '/protected-network/bird-and-habitat-areas', desc: 'Important bird areas' },
-          { name: '── Ecological Intelligence ──', href: '#', desc: '', isHeader: true },
-          { name: 'Species Intelligence Network', href: '/protected-network/species-intelligence', desc: 'Biological intelligence layer' },
-          { name: 'Corridors and Connectivity', href: '/protected-network/corridors-and-connectivity', desc: 'Landscape linkages' },
-          { name: 'Monitoring and Threat Intelligence', href: '/protected-network/monitoring-and-threats', desc: 'Conservation alerts' },
-          { name: 'Human–Wildlife Conflict', href: '/protected-network/human-wildlife-conflict', desc: 'Community safety, conflict patterns & coexistence' },
-          { name: 'Research and Assessments', href: '/protected-network/reports-and-plans', desc: 'Scientific publications' },
-          { name: 'Trails & Sightings', href: '/protected-network/trails-and-sightings', desc: 'Field observations' },
-        ];
+        return <Shield className="w-4 h-4 text-emerald-400" />;
       case 'Biodiversity':
-        return [
-          { name: '📊 Overview', href: '/biodiversity/overview', desc: 'Module command center' },
-          { name: '📊 Dashboards', href: '/biodiversity/dashboards', desc: 'Analytics & trends' },
-          // Species Group
-          { name: '── Species ──', href: '#', desc: '', isHeader: true },
-          { name: 'Species Directory', href: '/biodiversity', desc: 'Browse complete database' },
-          { name: 'Mammals', href: '/biodiversity/mammals', desc: 'Ungulates, carnivores & more' },
-          { name: 'Birds', href: '/biodiversity/birds', desc: 'Resident & migratory species' },
-          { name: 'Fish & Aquatic Life', href: '/biodiversity/fish', desc: 'Freshwater & aquatic biodiversity' },
-          { name: 'Plants & Flora', href: '/biodiversity/plants', desc: 'Vascular plants & vegetation' },
-          { name: 'Medicinal Flora', href: '/biodiversity/medicinal-plants', desc: 'Traditional medicinal plants' },
-          { name: 'Priority & Threatened Species', href: '/biodiversity/threatened-species', desc: 'CR, EN, VU conservation taxa' },
-          // Observation & Ecology Group
-          { name: '── Observation & Ecology ──', href: '#', desc: '', isHeader: true },
-          { name: 'Wildlife Sightings', href: '/biodiversity/wildlife-sightings', desc: 'Verified & community observations' },
-          { name: 'Birding & Observation Hotspots', href: '/biodiversity/birding-hotspots', desc: 'Prime observation areas' },
-          { name: 'Forest Ecosystems', href: '/biodiversity/forest-ecosystems', desc: '10-module habitat intelligence layer' },
-          // Dedicated Seasonal Ecology & Phenology Module Space
-          { name: '── Seasonal Ecology & Phenology ──', href: '#', desc: '', isHeader: true },
-          { name: 'Seasonal Landscapes', href: '/seasonal-ecology/seasonal-landscapes', desc: 'Landscape-scale seasonal patterns' },
-          { name: 'Bloom Mapping', href: '/seasonal-ecology/bloom-mapping', desc: 'Bloom zones and flowering landscapes' },
-          { name: 'Migration Windows', href: '/seasonal-ecology/migration-windows', desc: 'Migration timing & wetland bird windows' },
-          { name: 'Pollinator Activity', href: '/seasonal-ecology/pollinator-windows', desc: 'Pollinator activity timing across Kashmir' },
-          { name: 'Phenology & Flowering Records', href: '/seasonal-ecology/phenology-records', desc: 'Flowering & observation-based records' },
-          { name: 'Seasonal Habitat Signals', href: '/seasonal-ecology/habitat-signals', desc: 'Seasonal habitat changes & transitions' },
-          { name: 'Water & Wetland Transitions', href: '/seasonal-ecology/water-transitions', desc: 'Seasonal water & wetland transitions' },
-          { name: 'Seasonal Species Activity', href: '/seasonal-ecology/species-activity', desc: 'Seasonal species activity patterns' },
-          { name: 'Climate & Visibility Windows', href: '/seasonal-ecology/climate-windows', desc: 'Climate-linked visibility & access' },
-          { name: 'Seasonal Reports & References', href: '/seasonal-ecology/reports-references', desc: 'Kashmir seasonal research & evidence' },
-          // Intelligence Group
-          { name: '── Intelligence ──', href: '#', desc: '', isHeader: true },
-          { name: 'District Biodiversity Profiles', href: '/biodiversity/district-profiles', desc: 'Regional intelligence' },
-        ];
+        return <Leaf className="w-4 h-4 text-emerald-400" />;
       case 'Water Systems':
-        return [
-          { name: '💧 Overview', href: '/water-systems', desc: 'Complete hydrological intelligence' },
-          { name: 'Dashboards', href: '/water-systems/dashboards', desc: 'Analytics, trends & heatmaps' },
-          { name: 'Lakes', href: '/water-systems/lakes', desc: 'Major, minor, urban & high-altitude lakes' },
-          { name: 'Wetlands', href: '/water-systems/wetlands', desc: 'Marshes, floodplain & Ramsar wetlands' },
-          { name: 'Rivers & Streams', href: '/water-systems/rivers', desc: 'Major rivers, tributaries & streams' },
-          { name: 'Springs', href: '/water-systems/springs', desc: 'Perennial, seasonal & community springs' },
-          { name: 'Watersheds', href: '/water-systems/watersheds', desc: 'Basins, catchments & hydrological units' },
-          { name: 'Groundwater', href: '/water-systems/groundwater', desc: 'Aquifers, water levels & validation queues' },
-          { name: 'Glaciers & Cryosphere', href: '/water-systems/glaciers', desc: 'Glaciers & snow-fed systems' },
-          { name: 'Drinking Water Sources', href: '/water-systems/drinking-water-sources', desc: 'Spring & surface supply vulnerability' },
-          { name: 'Water Quality', href: '/water-systems/water-quality', desc: 'Quality monitoring & trends' },
-          { name: 'Aquatic Life & Fisheries', href: '/water-systems/fisheries', desc: 'Fish species & fishery management' },
-          { name: 'Restoration & Rejuvenation', href: '/water-systems/restoration', desc: 'Conservation & restoration projects' },
-          { name: 'Flood & Hydrological Risk', href: '/water-systems/flood-risk', desc: 'Flood zones & hazard assessment' },
-        ];
+        return <Droplet className="w-4 h-4 text-sky-400" />;
       case 'Environmental Monitoring':
-        return [
-          { name: '🏗️ Overview', href: '/environmental-monitoring', desc: 'Environmental intelligence command center' },
-          { name: 'Dashboards', href: '/environmental-monitoring/dashboards', desc: 'District comparison & stress heatmaps' },
-          { name: 'Solid Waste', href: '/environmental-monitoring/solid-waste', desc: 'Dumping, landfill stress, open waste' },
-          { name: 'Plastic Pollution', href: '/environmental-monitoring/plastic-pollution', desc: 'Plastic waste, recycling & contamination' },
-          { name: 'Bio-Waste', href: '/environmental-monitoring/bio-waste', desc: 'Organic waste, decomposition zones' },
-          { name: 'Sewage & Wastewater', href: '/environmental-monitoring/sewage-wastewater', desc: 'Overflow, outfalls, untreated discharge' },
-          { name: 'Drinking Water', href: '/environmental-monitoring/drinking-water', desc: 'Contamination alerts, supply issues' },
-          { name: 'Critical Infrastructure', href: '/environmental-monitoring/critical-infrastructure', desc: 'Reservoirs, utilities, waste assets' },
-          { name: 'Air Pollution', href: '/environmental-monitoring/air-pollution', desc: 'AQI, particulate, smoke, burning' },
-          { name: 'Transportation Pollution', href: '/environmental-monitoring/transportation-pollution', desc: 'Vehicle emissions, traffic & noise' },
-          { name: 'Noise Pollution', href: '/environmental-monitoring/noise-pollution', desc: 'Sound levels, hotspots & exposure' },
-          { name: 'Environmental Health Signals', href: '/environmental-monitoring/environmental-health', desc: 'Odor, fish kill, stagnant water' },
-          { name: 'Environmental Resilience', href: '/environmental-monitoring/environmental-resilience', desc: 'Resilience, recovery & stress capacity' },
-          { name: 'Chinar Monitoring', href: '/environmental-monitoring/chinar-monitoring', desc: 'Tree health, GIS & conservation' },
-          { name: 'SDG Monitoring', href: '/environmental-monitoring/sdg-monitoring', desc: 'Environmental UN SDG performance tracking' },
-        ];
+        return <BarChart3 className="w-4 h-4 text-amber-400" />;
       case 'Hazard Intelligence':
-        return [
-          { name: '⚠️ Overview', href: '/hazard-intelligence', desc: 'Multi-hazard intelligence command center' },
-          { name: '📊 Dashboards', href: '/hazard-intelligence/dashboards', desc: 'Risk dashboards, heatmaps & trends' },
-          { name: '── Atmospheric Systems ──', href: '#', desc: '', isHeader: true, groupId: 'atmospheric' },
-          { name: 'Western Disturbances', href: '/hazard-intelligence/atmospheric-systems/western-disturbances', desc: 'WD tracking, rain/snow forecasts & regional impacts', parentGroup: 'atmospheric' },
-          { name: 'Monsoon Dynamics', href: '/hazard-intelligence/atmospheric-systems/monsoon-dynamics', desc: 'Terrain-masked moisture, ERA5 rain & anomalies', parentGroup: 'atmospheric' },
-          { name: 'Jet Stream & Circulation', href: '/hazard-intelligence/atmospheric-systems/jet-stream-circulation', desc: '2D SWJ axis, 500 hPa troughs & blocking ridges', parentGroup: 'atmospheric' },
-          { name: '── Extreme Weather Systems ──', href: '#', desc: '', isHeader: true, groupId: 'extreme-weather' },
-          { name: 'Extreme Weather Hub', href: '/hazard-intelligence/extreme-weather', desc: '12-module phased extreme meteorology architecture', parentGroup: 'extreme-weather' },
-          { name: 'Extreme Rainfall & Cloudbursts', href: '/hazard-intelligence/extreme-weather/extreme-rainfall-cloudbursts', desc: 'Operational: 1h/24h rain, 31-member ensemble & ERA5', parentGroup: 'extreme-weather' },
-          { name: 'Heavy Snowfall & Blizzards', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Snowfall, SWE & gusts', parentGroup: 'extreme-weather' },
-          { name: 'Thunderstorms & Lightning', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · CAPE & convective watch', parentGroup: 'extreme-weather' },
-          { name: 'Heatwaves', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Elevation-adjusted Tmax', parentGroup: 'extreme-weather' },
-          { name: 'Cold Waves & Frost', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 1 Rollout · Sub-zero & orchard frost', parentGroup: 'extreme-weather' },
-          { name: 'Hailstorms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Hail instability & alerts', parentGroup: 'extreme-weather' },
-          { name: 'Extreme Winds & Storms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Peak gusts & pass rotors', parentGroup: 'extreme-weather' },
-          { name: 'Fog & Visibility', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 2 Rollout · Valley fog & METAR visibility', parentGroup: 'extreme-weather' },
-          { name: 'Drought & Dry Spells', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · SPI/SPEI & rainfall deficits', parentGroup: 'extreme-weather' },
-          { name: 'Dust Storms', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · CAMS dust, PM10 & AOD', parentGroup: 'extreme-weather' },
-          { name: 'Freezing Rain & Ice', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · Thermal inversions & icing', parentGroup: 'extreme-weather' },
-          { name: 'Rain-on-Snow & Snowmelt', href: '/hazard-intelligence/extreme-weather', desc: 'Phase 3 Rollout · Warm rain over snowpack', parentGroup: 'extreme-weather' },
-          { name: '── Hazard Systems ──', href: '#', desc: '', isHeader: true, groupId: 'hazard-systems' },
-          { name: 'Floods', href: '/hazard-intelligence/floods', desc: 'Riverine, urban & floodplain flooding', parentGroup: 'hazard-systems' },
-          { name: 'Flash Floods', href: '/hazard-intelligence/flash-floods', desc: 'Cloudburst & rapid runoff hazards', parentGroup: 'hazard-systems' },
-          { name: 'Landslides', href: '/hazard-intelligence/landslides', desc: 'Slope instability & mass movement', parentGroup: 'hazard-systems' },
-          { name: 'Avalanches', href: '/hazard-intelligence/avalanches', desc: 'Snow-slide monitoring & exposure', parentGroup: 'hazard-systems' },
-          { name: 'Algal Bloom Intelligence', href: '/hazard-intelligence/algal-bloom-intelligence', desc: 'Eutrophication & bloom risk monitoring', parentGroup: 'hazard-systems' },
-          { name: 'Earthquakes', href: '/hazard-intelligence/earthquakes', desc: 'Seismic activity & fault systems', parentGroup: 'hazard-systems' },
-          { name: 'GLOFs', href: '/hazard-intelligence/glofs', desc: 'Glacial lake outburst flood intelligence', parentGroup: 'hazard-systems' },
-          { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', desc: 'Wildfire occurrence & burn monitoring', parentGroup: 'hazard-systems' },
-        ];
-
+        return <AlertTriangle className="w-4 h-4 text-red-400" />;
       case 'Earth & Human Impact':
-        return [
-          { name: '🌍 EHII Command Center', href: '/earth-human-impact', desc: 'Western Himalayan Earth Systems Observatory' },
-          { name: '🛰️ Satellite Change Observatory', href: '/earth-human-impact/change-detection-observatory', desc: 'Spaceborne multi-temporal detection core' },
-          { name: '🔔 Two-Tier Detection Alerts', href: '/earth-human-impact/change-detection-observatory/detection-alerts', desc: 'Preliminary alerts & verified findings' },
-          { name: '── The 7 Scientific Systems ──', href: '#', desc: '', isHeader: true },
-          { name: 'Climate & Atmosphere', href: '/earth-human-impact/climate-atmosphere', desc: 'Temperature, snowfall, rainfall & extremes' },
-          { name: 'Forest & Landscape', href: '/earth-human-impact/forests-landscapes', desc: 'Canopy density, biomass & fragmentation' },
-          { name: 'Land Use & Earth Systems', href: '/earth-human-impact/land-earth-systems', desc: 'Karewa destruction, conversion & erosion' },
-          { name: 'Aquatic & Cryosphere Change', href: '/earth-human-impact/aquatic-cryosphere', desc: 'Lake, wetland, glacier & springshed change detection' },
-          { name: 'Energy & Infrastructure', href: '/earth-human-impact/energy-infrastructure', desc: 'Hydropower, highways, tunnels & transmission' },
-          { name: 'Mining & Extraction', href: '/earth-human-impact/mining-extraction', desc: 'Riverbed excavation, quarries & brick kilns' },
-          { name: 'Urban Ecology', href: '/earth-human-impact/urban-ecology', desc: 'Urban heat islands, sprawl & impervious surface' },
-          { name: '── Spaceborne Tools & Evidence ──', href: '#', desc: '', isHeader: true },
-          { name: 'Loss & Recovery Ledger (1985–2026)', href: '/earth-human-impact/aquatic-cryosphere/loss-recovery-ledger', desc: 'Historical multi-decadal ecosystem balance sheet' },
-          { name: 'Historical Comparison (1982–2026)', href: '/earth-human-impact/change-detection-observatory/historical-comparison', desc: 'Pampore, Wular & Srinagar multi-epoch' },
-          { name: 'Spatial Change Atlas', href: '/earth-human-impact/change-detection-observatory/change-detection-atlas', desc: 'Interactive PostGIS vector boundaries' },
-          { name: 'Verification Queue', href: '/earth-human-impact/change-detection-observatory/verification-queue', desc: 'Step 7 scientific peer review workbench' },
-          { name: 'Scientific Evidence Dossiers', href: '/earth-human-impact/change-detection-observatory/scientific-dossiers', desc: 'Permanent assessment packages' },
-          { name: 'Cumulative Impact Matrix', href: '/earth-human-impact/cumulative-impact', desc: 'Compounding multi-stressor interactions' },
-        ];
-
+        return <Globe className="w-4 h-4 text-emerald-400" />;
       case 'Sectoral EIA':
-        return [
-          { name: '🌐 SEIAE Portal Hub', href: '/sectoral-eia', desc: 'Sectoral Environmental Impact Assessment Engine' },
-          { name: '🏛️ Architecture & Overview', href: '/sectoral-eia/overview', desc: 'Scientific architecture & SEA mandate' },
-          { name: '📋 9-Step Methodology', href: '/sectoral-eia/methodology', desc: 'Standard assessment workflow' },
-          { name: '🗄️ Data Sources & Registry', href: '/sectoral-eia/data-sources', desc: 'External scientific acquisition catalog' },
-          { name: '── Sector Engines ──', href: '#', desc: '', isHeader: true },
-          { name: 'Tourism EIA', href: '/sectoral-eia/sectors/tourism', desc: 'Carrying capacity & visitor pressure' },
-          { name: 'Horticulture EIA', href: '/sectoral-eia/sectors/horticulture', desc: 'Orchard agrochemicals & Karewa aquifers' },
-          { name: 'Handicrafts EIA', href: '/sectoral-eia/sectors/handicrafts', desc: 'Artisanal lifecycle & dye wastewater' },
-          { name: 'Agriculture EIA', href: '/sectoral-eia/sectors/agriculture', desc: 'Nutrient runoff & soil health' },
-          { name: '── Intelligence & Tools ──', href: '#', desc: '', isHeader: true },
-          { name: '➕ Submit Assessment', href: '/sectoral-eia/assessment/new', desc: 'Enterprise & scientific intake portal' },
-          { name: 'Cumulative Impact Matrix', href: '/sectoral-eia/cumulative-impact', desc: 'Multi-sector compounding stress' },
-          { name: 'Scenario Modeling', href: '/sectoral-eia/scenario-modeling', desc: '2026-2035 predictive pathways' },
-          { name: 'GIS Impact Atlas', href: '/sectoral-eia/impact-atlas', desc: 'Interactive spatial boundaries' },
-          { name: 'Mitigation Tracker', href: '/sectoral-eia/mitigation-tracker', desc: 'Track verified reductions' },
-          { name: 'Scientific Reports', href: '/sectoral-eia/reports', desc: 'Peer-reviewed dossiers & monographs' },
-        ];
-
+        return <Layers className="w-4 h-4 text-emerald-400" />;
       case 'Investigations':
-        return [
-          { name: '⚖️ Investigations Hub (KEW-EIAI)', href: '/environmental-investigations', desc: 'Scientific evidence & institutional accountability' },
-          { name: '📊 Investigation Dashboard', href: '/environmental-investigations/dashboard', desc: '12-tab intelligence & evidence cockpit' },
-          { name: '📑 Investigation Reports', href: '/environmental-investigations/reports', desc: '24-section dossiers & scoping portfolio' },
-          { name: '── Flagship Published Reports ──', href: '#', desc: '', isHeader: true },
-          { name: 'KEW-INV-0001: Dal Lake Dredging', href: '/environmental-investigations/reports/dal-lake-mechanical-dredging-ecological-defences', desc: '1990–2026 sediment, wetland & audit synthesis' },
-          { name: 'KEW-INV-0002: Sheshnag Ecology', href: '/environmental-investigations/reports/sheshnag-pilgrimage-infrastructure-alpine-ecology', desc: '2012–2026 alpine tarn & corridor risks' },
-          { name: '── Architecture & Verification ──', href: '#', desc: '', isHeader: true },
-          { name: '18 Investigation Domains', href: '/environmental-investigations/domains', desc: 'Lakes, cryosphere, Karewas, dams & governance' },
-          { name: '36 Scientific Disciplines', href: '/environmental-investigations/disciplines', desc: 'Governing equations & analytical methods' },
-          { name: 'Scientific Evidence Registry', href: '/environmental-investigations/evidence', desc: 'Documented vs unverified claim matrix' },
-          { name: 'Spatial Investigation Atlas', href: '/environmental-investigations/atlas', desc: 'Interactive GIS investigation footprints' },
-          { name: 'Institutional Accountability', href: '/environmental-investigations/accountability', desc: '11-component statutory responsibility matrix' },
-          { name: 'Asian & Global Case Studies', href: '/environmental-investigations/precedents', desc: 'Lake Biwa, Taihu, Imja Tsho & Rhine benchmarks' },
-          { name: 'Recommendations Tracker', href: '/environmental-investigations/recommendations', desc: 'Phased corrective actions & indicators' },
-          { name: 'Investigation Methodology', href: '/environmental-investigations/methodology', desc: '24-section standard & 12-stage workflow' },
-          { name: '➕ Submit Investigation', href: '/environmental-investigations/submit', desc: 'Propose scoped study or official response' },
-        ];
-
+        return <FileText className="w-4 h-4 text-emerald-400" />;
+      case 'Himalayan Dispatch':
+        return <BookOpen className="w-4 h-4 text-amber-300" />;
+      case 'EcoVoices':
+        return <Music className="w-4 h-4 text-amber-300" />;
       case 'Environmental Calendar':
-        return [
-          { name: '📅 Annual Calendar', href: '/environmental-calendar', desc: '17 UN & Western Himalayan observances' },
-          { name: '🎵 EcoVoices: Environmental Music', href: '/environmental-calendar/ecovoices', desc: 'SufiPulse USA × EcoWatch music & stewardship' },
-          { name: '── Outdoor Classroom (OD) ──', href: '#', desc: '', isHeader: true },
-          { name: '🧭 Program Overview', href: '/environmental-calendar/outdoor-classroom', desc: '8-stage experiential learning lifecycle' },
-          { name: '📚 Curriculum Library', href: '/environmental-calendar/outdoor-classroom/curriculum', desc: '5-tier teacher guides & student rubrics' },
-          { name: '🌐 Adopt-an-Ecosystem', href: '/environmental-calendar/outdoor-classroom/adopt-an-ecosystem', desc: '20 registered field sites across 10 districts' },
-          { name: '🔬 8 Field Programs', href: '/environmental-calendar/outdoor-classroom/field-learning-programs', desc: 'Wetlands, forests, karst springs & cryosphere' },
-          { name: '🏫 School Registration', href: '/environmental-calendar/outdoor-classroom/institutional-registration', desc: '100% free school & eco-club intake' },
-          { name: '📡 Field Telemetry', href: '/environmental-calendar/outdoor-classroom/student-observations', desc: 'Supervised student environmental logs' },
-          { name: '🏅 Competency Certificates', href: '/environmental-calendar/outdoor-classroom/certificates', desc: 'Cryptographically verifiable digital credentials' },
-          { name: '📊 Annual Pilot Report', href: '/environmental-calendar/outdoor-classroom/annual-report', desc: '2026 Phase 1 pilot findings & archive' },
-        ];
-
+        return <Calendar className="w-4 h-4 text-emerald-400" />;
+      case 'Webinars & Conferences':
+        return <Video className="w-4 h-4 text-teal-400" />;
+      case 'About':
       default:
-        return [];
+        return <Sparkles className="w-4 h-4 text-emerald-400" />;
     }
   };
 
-  const renderDropdownItems = (items: DropdownItem[]) => (
+  const renderDropdownItems = (items: GlobalDropdownItem[]) => (
     <>
       {items
         .filter((subitem) => !subitem.parentGroup || expandedHazardGroups.has(subitem.parentGroup))
-        .map((subitem) => (
-        subitem.isHeader ? (
-          subitem.groupId ? (
-            <button
+        .map((subitem) =>
+          subitem.isHeader ? (
+            subitem.groupId ? (
+              <button
+                key={subitem.name}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleHazardGroup(subitem.groupId!);
+                }}
+                className="w-full px-4 py-1.5 bg-slate-800/45 hover:bg-slate-800/75 flex items-center justify-between text-left transition-colors cursor-pointer"
+              >
+                <span className="text-[9px] font-bold uppercase tracking-wider text-slate-300">
+                  {subitem.name.replace(/──/g, '').trim()}
+                </span>
+                <ChevronDown
+                  className={cn(
+                    'w-3.5 h-3.5 text-slate-400 transition-transform',
+                    expandedHazardGroups.has(subitem.groupId) && 'rotate-180'
+                  )}
+                />
+              </button>
+            ) : (
+              <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
+                <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">
+                  {subitem.name.replace(/──/g, '').trim()}
+                </span>
+              </div>
+            )
+          ) : subitem.href.startsWith('http') ? (
+            <a
               key={subitem.name}
-              type="button"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleHazardGroup(subitem.groupId!); }}
-              className="w-full px-4 py-1.5 bg-slate-800/45 hover:bg-slate-800/75 flex items-center justify-between text-left transition-colors cursor-pointer"
+              href={subitem.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                setActiveDropdown(null);
+                setIsMobileMenuOpen(false);
+              }}
+              className="block px-3.5 py-1.5 text-xs text-emerald-300 hover:text-emerald-200 hover:bg-white/5 transition-colors cursor-pointer group"
             >
-              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-300">{subitem.name.replace(/──/g, '').trim()}</span>
-              <ChevronDown className={cn('w-3.5 h-3.5 text-slate-400 transition-transform', expandedHazardGroups.has(subitem.groupId) && 'rotate-180')} />
-            </button>
+              <div className="flex items-center justify-between">
+                <span className="font-medium">{subitem.name}</span>
+                <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-emerald-400 shrink-0 ml-1" />
+              </div>
+              {subitem.desc && (
+                <span className="block text-[10px] text-slate-400 mt-0.5">{subitem.desc}</span>
+              )}
+            </a>
           ) : (
-            <div key={subitem.name} className="px-4 py-1.5 bg-slate-800/30">
-              <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">{subitem.name.replace(/──/g, '').trim()}</span>
-            </div>
-          )
-        ) : subitem.href.startsWith('http') ? (
-          <a
-            key={subitem.name}
-            href={subitem.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => { setActiveDropdown(null); setIsMobileMenuOpen(false); }}
-            className="block px-3 py-1 text-xs text-emerald-300 hover:text-emerald-200 hover:bg-white/5 transition-colors cursor-pointer group"
-          >
-            <div className="flex items-center justify-between">
+            <Link
+              key={subitem.name}
+              href={subitem.href}
+              onClick={() => {
+                setActiveDropdown(null);
+                setIsMobileMenuOpen(false);
+              }}
+              className="block px-3.5 py-1.5 text-xs text-slate-200 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+            >
               <span className="font-medium">{subitem.name}</span>
-              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-emerald-400 shrink-0 ml-1" />
-            </div>
-            {subitem.desc && (
-              <span className="block text-[10px] text-slate-400 mt-0.5">{subitem.desc}</span>
-            )}
-          </a>
-        ) : (
-          <Link
-            key={subitem.name}
-            href={subitem.href}
-            onClick={() => { setActiveDropdown(null); setIsMobileMenuOpen(false); }}
-            className="block px-3 py-1 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-          >
-            <span className="font-medium">{subitem.name}</span>
-            {subitem.desc && (
-              <span className="block text-[10px] text-slate-500 mt-0.5">{subitem.desc}</span>
-            )}
-          </Link>
-        )
-      ))}
+              {subitem.desc && (
+                <span className="block text-[10px] text-slate-400 mt-0.5">{subitem.desc}</span>
+              )}
+            </Link>
+          )
+        )}
     </>
   );
 
   return (
     <header
+      data-kew-dark-surface="true"
+      data-nav-mode={navMode}
+      data-designation-fit={designationFit}
+      data-nav-available-px={navFitMetrics.available || undefined}
+      data-nav-required-px={navFitMetrics.required || undefined}
       className={cn(
         'kew-header fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out',
-        // Expanded state (hero)
-        !isScrolled && 'bg-transparent',
-        // Transitioning state
-        isScrolled && !isCompact && 'bg-slate-950/80 backdrop-blur-md border-b border-white/5',
-        // Compact sticky state
-        isCompact && 'bg-slate-950/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/10'
+        !isScrolled && 'bg-slate-950/75 backdrop-blur-md border-b border-white/[0.06]',
+        isScrolled && !isCompact && 'bg-slate-950/90 backdrop-blur-xl border-b border-white/10',
+        isCompact &&
+          'bg-slate-950/96 backdrop-blur-2xl shadow-2xl shadow-black/60 border-b border-white/10'
       )}
     >
-      <div className="kew-header-inner site-header__inner">
+      <div
+        ref={headerInnerRef}
+        className="kew-header-inner site-header__inner flex-col items-stretch"
+      >
+        {/* Hidden Single-Row Measurement Ruler (Content-Aware Width Audit) */}
+        <div
+          ref={navMeasureRef}
+          data-kew-nav-measure="true"
+          className="kew-desktop-nav-ruler"
+          aria-hidden="true"
+        >
+          {GLOBAL_NAV_ITEMS.map((item) => (
+            <span key={item.label} className="kew-desktop-nav-link">
+              <span>{item.label}</span>
+              {item.hasDropdown && <ChevronDown className="w-3 h-3 shrink-0" />}
+            </span>
+          ))}
+        </div>
+
+        {/* ================================================================= */}
+        {/* TIER 1: BRAND IDENTITY & GLOBAL UTILITY CLUSTER                   */}
+        {/* ================================================================= */}
         <div
           className={cn(
-            'flex items-center w-full gap-0 transition-all duration-300 ease-out',
-            // Height transitions
-            !isCompact ? 'h-16 sm:h-20 md:h-28' : 'h-14 sm:h-16 md:h-18'
+            'flex items-center justify-between w-full gap-3 transition-all duration-300 ease-out',
+            !isCompact
+              ? navMode === 'compact'
+                ? 'h-14 sm:h-16'
+                : 'h-14 sm:h-16 xl:h-14'
+              : navMode === 'compact'
+                ? 'h-12 sm:h-14'
+                : 'h-12 sm:h-14 xl:h-11'
           )}
         >
-          {/* Logo - Premium with variants left-aligned */}
           <div className="kew-logo site-logo flex-shrink-0">
-            <Logo variant={isCompact ? 'compact' : 'expanded'} />
+            <Logo variant="compact" />
           </div>
 
-          {/* Desktop navigation - Hidden on <= 1320px (e.g. portrait monitors) via kew-navigation CSS */}
-          <nav className="kew-navigation primary-navigation items-center min-w-0" role="navigation" aria-label="Main Navigation">
-            {navItems.map((item, idx) => (
-              <div
-                key={item.label}
-                className="relative group"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
-                onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className={cn(
-                    'flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer whitespace-nowrap',
-                    activeDropdown === item.label
-                      ? 'text-white bg-white/10'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
-                  )}
-                >
-                  {item.label}
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      className={cn(
-                        'w-3 h-3 -ml-0.5 transition-transform duration-200',
-                        activeDropdown === item.label && 'rotate-180'
-                      )}
-                    />
-                  )}
-                </Link>
+          {/* Central Institutional Designation (Container-Aware, Zoom-Aware & Single-Line) */}
+          <div ref={designationSlotRef} className="kew-designation-slot">
+            <span
+              ref={designationMeasureRef}
+              className="kew-institutional-designation-ruler"
+              aria-hidden="true"
+            >
+              GLOBAL INSTITUTE FOR ADVANCED ENVIRONMENTAL STUDIES
+            </span>
+            <span className="kew-institutional-designation">
+              GLOBAL INSTITUTE FOR ADVANCED ENVIRONMENTAL STUDIES
+            </span>
+          </div>
 
-                {/* Dropdown Panel - Viewport-aware anchoring to prevent edge bleed */}
-                {item.hasDropdown && activeDropdown === item.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.15 }}
-                    className={cn(
-                      "absolute top-full w-80 max-w-[calc(100vw-2rem)] glass-intense rounded-xl shadow-2xl border border-white/10 overflow-hidden z-50 pt-2",
-                      idx >= 4 ? "right-0" : "left-0"
-                    )}
-                  >
-                    {/* Dropdown Header */}
-                    <div className="px-4 py-3 border-b border-white/5 bg-slate-900">
-                      <div className="flex items-center gap-2">
-                        {item.label === 'Protected Areas' && <Shield className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'Biodiversity' && <Leaf className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'Water Systems' && <Droplet className="w-4 h-4 text-sky-400" />}
-                        {item.label === 'Environmental Monitoring' && <BarChart3 className="w-4 h-4 text-amber-400" />}
-                        {item.label === 'Hazard Intelligence' && <AlertTriangle className="w-4 h-4 text-red-400" />}
-                        {item.label === 'Earth & Human Impact' && <Globe className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'Sectoral EIA' && <Layers className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'Investigations' && <FileText className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'Field Intelligence' && <FileText className="w-4 h-4 text-orange-400" />}
-                        {item.label === 'Seasonal Ecology' && <Calendar className="w-4 h-4 text-amber-400" />}
-                        {item.label === 'Risk & Monitoring' && <AlertTriangle className="w-4 h-4 text-red-400" />}
-                        {item.label === 'Environmental Calendar' && <Calendar className="w-4 h-4 text-emerald-400" />}
-                        {item.label === 'About' && <Sparkles className="w-4 h-4 text-emerald-400" />}
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                          {item.label}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Dropdown Items */}
-                    <div className="py-2 max-h-[70vh] overflow-y-auto">
-                      {renderDropdownItems(getDropdownItems(item.label))}
-                    </div>
-                  </motion.div>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          {/* Right side actions - Unified across wide desktop, portrait desktop, and mobile */}
-          <div ref={headerActionsRef} className="kew-header-actions header-actions flex items-center gap-1.5 sm:gap-2 relative flex-shrink-0 ml-auto">
-            {/* Search button with Cmd+K badge (full field on wide, icon on narrow) */}
+          <div
+            ref={headerActionsRef}
+            className="kew-header-actions header-actions flex items-center gap-1.5 sm:gap-2 relative flex-shrink-0 ml-auto"
+          >
+            {/* Search button with Cmd+K badge */}
             <button
-              onClick={() => setActiveHeaderModal(prev => (prev === 'search' ? null : 'search'))}
+              type="button"
+              onClick={() => setActiveHeaderModal((prev) => (prev === 'search' ? null : 'search'))}
               className={cn(
-                "flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer",
+                'flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer',
                 activeHeaderModal === 'search'
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
-                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
+                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                  : 'bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white border-white/15'
               )}
               title="Search environmental intelligence (Ctrl+K / ⌘K)"
               aria-label="Search environmental intelligence"
               aria-expanded={activeHeaderModal === 'search'}
             >
               <Search className="w-4 h-4 text-emerald-400" />
-              <span className="kew-search-label hidden 2xl:inline text-slate-300">Search</span>
-              <kbd className="kew-search-label hidden 2xl:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-white/10 text-slate-400 border border-white/10">
+              <span className="hidden md:inline text-slate-200">Search</span>
+              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded bg-white/10 text-slate-300 border border-white/10">
                 ⌘K
               </kbd>
             </button>
 
-            {/* Notification Bell */}
-            <button
-              onClick={() => setActiveHeaderModal(prev => (prev === 'notifications' ? null : 'notifications'))}
-              className={cn(
-                "relative p-2 rounded-xl border transition-all cursor-pointer",
-                activeHeaderModal === 'notifications'
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
-                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
-              )}
-              title={unreadCount > 0 ? `${unreadCount} unread environmental alerts` : "Environmental alerts stream"}
-              aria-label="Environmental alerts"
-              aria-expanded={activeHeaderModal === 'notifications'}
+            {/* Himalayan Dispatch — Direct Publication Access */}
+            <a
+              href={dispatchDirectUrl}
+              data-dispatch-destination={DISPATCH_SUBDOMAIN_DIRECT_URL}
+              data-dispatch-verified={isDispatchSubdomainVerified ? 'true' : 'pending'}
+              className="kew-dispatch-direct-link group inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors duration-200 cursor-pointer shrink-0 whitespace-nowrap"
+              title="Himalayan Dispatch — Environmental Journalism & Periodical"
+              aria-label="Himalayan Dispatch"
             >
-              <Bell className="w-4 h-4" />
+              <Newspaper className="kew-dispatch-direct-icon w-4 h-4 shrink-0" aria-hidden="true" />
+              <span className="sr-only sm:not-sr-only kew-dispatch-direct-label">
+                Himalayan Dispatch
+              </span>
+              <ArrowUpRight
+                className="kew-dispatch-direct-arrow hidden min-[360px]:inline-block w-3.5 h-3.5 shrink-0 transition-opacity duration-200 opacity-85 group-hover:opacity-100"
+                aria-hidden="true"
+              />
+            </a>
+
+            {/* Unified KEW Control Center Trigger (Account + Alerts + Preferences) */}
+            <button
+              type="button"
+              id="kew-control-center-trigger"
+              onClick={() => {
+                setRequestedControlTab(null);
+                setActiveHeaderModal((prev) =>
+                  prev === 'control-center' ? null : 'control-center'
+                );
+              }}
+              className={cn(
+                'relative w-9 h-9 rounded-full border flex items-center justify-center transition-all cursor-pointer shrink-0',
+                activeHeaderModal === 'control-center'
+                  ? 'bg-emerald-500/25 border-emerald-400/60 ring-2 ring-emerald-500/30 text-white'
+                  : isLoggedIn && user
+                    ? 'bg-emerald-500/15 hover:bg-emerald-500/25 border-emerald-500/40 text-white'
+                    : 'bg-white/5 hover:bg-white/10 border-white/15 text-slate-200 hover:text-white'
+              )}
+              title={
+                unreadCount > 0
+                  ? `KEW Control Center — ${unreadCount} unread environmental alerts${
+                      unreadCriticalCount > 0
+                        ? ` (${unreadCriticalCount} critical/high severity)`
+                        : ''
+                    }`
+                  : 'KEW Control Center — Account, Alerts & Preferences'
+              }
+              aria-label={
+                unreadCount > 0
+                  ? `KEW Control Center, ${unreadCount} unread alerts${
+                      unreadCriticalCount > 0 ? ', critical advisories active' : ''
+                    }`
+                  : 'KEW Control Center'
+              }
+              aria-haspopup="dialog"
+              aria-expanded={activeHeaderModal === 'control-center'}
+              aria-controls="kew-control-center-panel"
+            >
+              {isLoggedIn && user ? (
+                isUsableAvatarUrl(user.avatar) && !avatarLoadFailed ? (
+                  <img
+                    src={user.avatar!}
+                    alt={user.name}
+                    onError={() => setAvatarLoadFailed(true)}
+                    className="w-7 h-7 rounded-full object-cover"
+                  />
+                ) : (
+                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold select-none">
+                    {user.name.charAt(0).toUpperCase()}
+                  </span>
+                )
+              ) : (
+                <User className="w-4 h-4" />
+              )}
+
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-500 text-white rounded-sm text-[10px] font-bold flex items-center justify-center animate-pulse shadow-lg shadow-red-500/50">
+                <span
+                  data-testid="cc-unread-badge"
+                  data-severity={unreadCriticalCount > 0 ? 'critical' : 'standard'}
+                  className={cn(
+                    'absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center leading-none ring-2 ring-slate-950 shadow-md',
+                    unreadCriticalCount > 0
+                      ? 'bg-rose-600 text-white animate-pulse shadow-rose-600/50'
+                      : 'bg-amber-500 text-slate-950 shadow-amber-500/30'
+                  )}
+                >
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
             </button>
 
-            {/* Settings Gear */}
+            {/* Mode B: Compact Explore Drawer Toggle (Activated Automatically Whenever Full Nav Cannot Fit on 1 Row) */}
             <button
-              onClick={() => setActiveHeaderModal(prev => (prev === 'settings' ? null : 'settings'))}
-              className={cn(
-                "p-2 rounded-xl border transition-all cursor-pointer hidden sm:flex items-center justify-center",
-                activeHeaderModal === 'settings'
-                  ? "bg-purple-500/20 text-purple-300 border-purple-500/40"
-                  : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10"
-              )}
-              title="Platform preferences & telemetry settings"
-              aria-label="Platform settings"
-              aria-expanded={activeHeaderModal === 'settings'}
-            >
-              <Settings className="w-4 h-4" />
-            </button>
-
-            {/* Contributor / User Profile or Quick Trigger */}
-            {isLoggedIn && user ? (
-              <button
-                onClick={() => setActiveHeaderModal(prev => (prev === 'profile' ? null : 'profile'))}
-                className={cn(
-                  "flex items-center gap-1.5 px-2 py-1.5 rounded-xl border transition-all cursor-pointer",
-                  activeHeaderModal === 'profile'
-                    ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
-                    : "bg-emerald-500/10 hover:bg-emerald-500/20 text-slate-200 border-emerald-500/30"
-                )}
-                title="Contributor Workspace & Actions"
-                aria-label="Contributor Workspace"
-                aria-expanded={activeHeaderModal === 'profile'}
-              >
-                <div className="w-5 h-5 rounded-full bg-emerald-500/40 text-emerald-200 flex items-center justify-center text-[10px] font-bold">
-                  {user.name.charAt(0).toUpperCase()}
-                </div>
-                <span className="hidden md:inline text-xs font-semibold max-w-[80px] truncate">{user.name.split(' ')[0]}</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => openAuthModal('signin')}
-                className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
-                aria-label="Sign In to platform"
-              >
-                <LogIn className="w-3.5 h-3.5" />
-                <span className="hidden md:inline">Sign In</span>
-              </button>
-            )}
-
-            {/* Compact Explore Menu Toggle for Portrait / Narrow Desktops and Mobile */}
-            <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="kew-menu-toggle flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all cursor-pointer"
-              aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
+              className="kew-explore-toggle items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all cursor-pointer shrink-0"
+              aria-label={
+                isMobileMenuOpen
+                  ? 'Close Explore navigation menu'
+                  : 'Open Explore navigation menu'
+              }
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu-drawer"
             >
@@ -696,114 +691,196 @@ export function PremiumStickyHeader() {
               <span className="hidden sm:inline">Explore</span>
             </button>
 
-            {/* Dropdown Portals */}
+            {/* Dropdown & Control Center Panels */}
             <HeaderSearch
               isOpen={activeHeaderModal === 'search'}
               onClose={() => setActiveHeaderModal(null)}
             />
-            <NotificationDropdown
-              isOpen={activeHeaderModal === 'notifications'}
+            <KewControlCenter
+              isOpen={activeHeaderModal === 'control-center'}
               onClose={() => setActiveHeaderModal(null)}
-            />
-            <SettingsModal
-              isOpen={activeHeaderModal === 'settings'}
-              onClose={() => setActiveHeaderModal(null)}
-            />
-            <ProfileDropdown
-              isOpen={activeHeaderModal === 'profile'}
-              onClose={() => setActiveHeaderModal(null)}
+              liveAlerts={liveAlerts}
+              isServerAdmin={isServerAdmin}
+              requestedTab={requestedControlTab}
+              requestedTabSeq={requestedControlTabSeq}
             />
           </div>
         </div>
+
+        {/* ================================================================= */}
+        {/* TIER 2: MODE A — 14-MODULE SINGLE-ROW DESKTOP NAVIGATION          */}
+        {/* ================================================================= */}
+        <nav
+          className="kew-desktop-nav-row py-1.5 border-t border-white/[0.08]"
+          role="navigation"
+          aria-label="Main Navigation"
+        >
+          {GLOBAL_NAV_ITEMS.map((item, idx) => {
+            const active = isRouteActive(item.href);
+            return (
+              <div
+                key={item.label}
+                className="relative group shrink-0"
+                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
+                onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
+              >
+                <Link
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={cn(
+                    'kew-desktop-nav-link transition-all duration-200 cursor-pointer',
+                    activeDropdown === item.label || active
+                      ? 'text-white bg-white/10 font-semibold'
+                      : 'text-slate-200/90 hover:text-white hover:bg-white/5'
+                  )}
+                >
+                  <span>{item.label}</span>
+                  {item.hasDropdown && (
+                    <ChevronDown
+                      className={cn(
+                        'w-3 h-3 shrink-0 transition-transform duration-200 opacity-75',
+                        activeDropdown === item.label && 'rotate-180 opacity-100'
+                      )}
+                    />
+                  )}
+                </Link>
+
+                {/* Viewport-Aware Dropdown Panel */}
+                {item.hasDropdown && activeDropdown === item.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.14 }}
+                    className={cn(
+                      'absolute top-full w-80 max-w-[calc(100vw-2rem)] glass-intense rounded-xl shadow-2xl border border-white/15 overflow-hidden z-50 pt-1.5',
+                      idx >= 7 ? 'right-0' : 'left-0'
+                    )}
+                  >
+                    <div className="px-4 py-2.5 border-b border-white/10 bg-slate-900/95">
+                      <div className="flex items-center gap-2">
+                        {renderDropdownIcon(item.label)}
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200 block">
+                            {item.label}
+                          </span>
+                          {item.subtitle && (
+                            <span className="text-[10px] text-slate-400 block leading-tight">
+                              {item.subtitle}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="py-1.5 max-h-[68vh] overflow-y-auto">
+                      {renderDropdownItems(getGlobalDropdownItems(item.label))}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
       </div>
 
-      {/* Mobile menu overlay and drawer */}
+      {/* =================================================================== */}
+      {/* MODE B: COMPACT EXPLORE NAVIGATION DRAWER                           */}
+      {/* =================================================================== */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isMobileMenuOpen && navMode !== 'full' && (
           <>
-            {/* Overlay backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="kew-drawer-overlay fixed inset-0 bg-black/60 z-50"
+              className="kew-drawer-overlay fixed inset-0 bg-black/65 z-50"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
             <motion.div
               id="mobile-menu-drawer"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="kew-drawer-panel fixed inset-y-0 left-0 w-[85%] sm:w-[75%] max-w-[340px] bg-slate-900 z-[51] shadow-2xl flex flex-col h-dvh border-r border-white/10"
+              transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+              className="kew-drawer-panel fixed inset-y-0 left-0 w-[86%] sm:w-[75%] max-w-[360px] md:max-w-[420px] bg-slate-950 z-[51] shadow-2xl flex flex-col h-dvh border-r border-white/15"
               role="dialog"
               aria-modal="true"
-              aria-label="Navigation drawer"
+              aria-label="Explore navigation drawer"
             >
-              {/* Drawer header */}
+              {/* Drawer Header */}
               <div className="shrink-0 flex items-center justify-between px-4 py-3 border-b border-white/10">
                 <Logo variant="mobile" />
                 <button
+                  type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-white/10 transition-colors text-slate-400 hover:text-white"
+                  className="p-2 rounded-lg hover:bg-white/10 transition-colors text-slate-300 hover:text-white cursor-pointer"
                   aria-label="Close menu"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              {/* Contributor Mobile Account Card */}
-              <div className="p-3 mx-3 mt-3 mb-2 rounded-2xl bg-slate-900 border border-emerald-500/20 shadow-lg shrink-0">
+              {/* Contributor Account Card */}
+              <div className="p-3 mx-3 mt-3 mb-2 rounded-2xl bg-slate-900 border border-emerald-500/25 shadow-lg shrink-0">
                 {isLoggedIn && user ? (
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 flex items-center justify-center font-bold text-sm shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="min-w-0">
                           <p className="text-xs font-bold text-white truncate">{user.name}</p>
-                          <p className="text-[10px] text-emerald-400 capitalize flex items-center gap-1">
+                          <p className="text-[10px] text-emerald-400 flex items-center gap-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            {user.role}
+                            {formatContributorRoleLabel(user.role, isServerAdmin)}
                           </p>
                         </div>
                       </div>
                       <button
-                        onClick={() => { signOut(); setIsMobileMenuOpen(false); }}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        type="button"
+                        onClick={() => {
+                          signOut();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="p-1.5 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-500/10 transition-colors"
                         title="Sign Out"
+                        aria-label="Sign Out"
                       >
                         <LogOut className="w-4 h-4" />
                       </button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-1.5 pt-1 border-t border-white/5">
+                    <div className="grid grid-cols-2 gap-1.5 pt-1 border-t border-white/10">
                       <Link
                         href="/dashboard"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="py-2 px-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-semibold text-center transition-colors shadow-sm"
+                        className="py-2 px-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold text-center transition-colors"
                       >
                         Dashboard
                       </Link>
-                      {user.role === 'administrator' ? (
+                      {isServerAdmin ? (
                         <Link
                           href="/admin/dashboard"
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="py-2 px-2.5 rounded-xl bg-purple-600/90 hover:bg-purple-500 text-white text-xs font-semibold text-center transition-colors shadow-sm"
+                          className="py-2 px-2.5 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold text-center transition-colors"
                         >
                           Admin Command
                         </Link>
                       ) : (
                         <button
-                          onClick={() => { signOut(); setIsMobileMenuOpen(false); }}
-                          className="py-2 px-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 text-slate-300 hover:text-red-400 text-xs font-semibold text-center transition-colors"
+                          type="button"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            openControlCenterOnTab('account');
+                          }}
+                          className="py-2 px-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 text-xs font-semibold text-center transition-colors cursor-pointer"
                         >
-                          Sign Out
+                          Control Center
                         </button>
                       )}
                     </div>
@@ -817,28 +894,36 @@ export function PremiumStickyHeader() {
                           Contributor Observatory
                         </span>
                       </div>
-                      <Link 
-                        href="/auth" 
-                        onClick={() => setIsMobileMenuOpen(false)} 
-                        className="text-[10px] text-slate-400 hover:text-white underline"
+                      <Link
+                        href="/auth"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-[10px] text-slate-300 hover:text-white underline"
                       >
                         Full Page
                       </Link>
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-tight mb-3">
+                    <p className="text-[11px] text-slate-300 leading-tight mb-3">
                       Sign in to deposit field observations and track live telemetry.
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       <button
-                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signin'); }}
-                        className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs text-center shadow-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        type="button"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          openAuthModal('signin');
+                        }}
+                        className="w-full py-2 px-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs text-center shadow-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
                         <LogIn className="w-3.5 h-3.5" />
                         <span>Sign In</span>
                       </button>
                       <button
-                        onClick={() => { setIsMobileMenuOpen(false); openAuthModal('signup'); }}
-                        className="w-full py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-semibold text-xs text-center flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        type="button"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          openAuthModal('signup');
+                        }}
+                        className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-white/15 font-semibold text-xs text-center flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
                         <span>Register</span>
                       </button>
@@ -847,31 +932,50 @@ export function PremiumStickyHeader() {
                 )}
               </div>
 
-              {/* Scrollable menu content */}
+              {/* Scrollable 14-Module Navigation List */}
               <nav
-                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 py-4 space-y-0.5"
+                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 py-3 space-y-0.5"
                 role="navigation"
                 aria-label="Mobile navigation"
               >
-                {navItems.map((item) => {
+                {GLOBAL_NAV_ITEMS.map((item) => {
                   const isExpanded = expandedMobileSubmenus.has(item.label);
+                  const active = isRouteActive(item.href);
                   return (
                     <div key={item.label} className="border-b border-white/5 last:border-0">
                       {item.hasDropdown ? (
                         <>
-                          <button
-                            onClick={() => toggleMobileSubmenu(item.label)}
-                            className="w-full flex items-center justify-between gap-3 px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer text-sm font-medium"
-                            aria-expanded={isExpanded}
-                          >
-                            <span>{item.label}</span>
-                            <ChevronDown
+                          <div className="flex items-center justify-between rounded-lg hover:bg-white/5">
+                            <Link
+                              href={item.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
                               className={cn(
-                                'w-5 h-5 transition-transform duration-200',
-                                isExpanded && 'rotate-180'
+                                'flex-1 px-3 py-2.5 text-sm font-medium transition-colors',
+                                active ? 'text-emerald-300 font-semibold' : 'text-slate-200 hover:text-white'
                               )}
-                            />
-                          </button>
+                            >
+                              <span className="block">{item.label}</span>
+                              {item.subtitle && (
+                                <span className="block text-[10px] text-slate-400 font-normal leading-tight mt-0.5">
+                                  {item.subtitle}
+                                </span>
+                              )}
+                            </Link>
+                            <button
+                              type="button"
+                              onClick={() => toggleMobileSubmenu(item.label)}
+                              aria-label={`Toggle ${item.label} submenu`}
+                              aria-expanded={isExpanded}
+                              className="p-2.5 text-slate-300 hover:text-white cursor-pointer"
+                            >
+                              <ChevronDown
+                                className={cn(
+                                  'w-4 h-4 transition-transform duration-200',
+                                  isExpanded && 'rotate-180'
+                                )}
+                              />
+                            </button>
+                          </div>
 
                           <AnimatePresence>
                             {isExpanded && (
@@ -882,11 +986,11 @@ export function PremiumStickyHeader() {
                                 transition={{ duration: 0.2 }}
                                 className="overflow-hidden"
                               >
-                                <div className="ml-4 mt-2 mb-3 space-y-0.5">
+                                <div className="ml-3 pl-2 border-l border-white/10 mt-1 mb-2.5 space-y-0.5">
                                   {renderDropdownItems(
-                                    getDropdownItems(item.label).map(item => ({
-                                      ...item,
-                                      name: item.name.replace(/^[^\w\s]+\s*/u, '') // Strip leading emoji for mobile
+                                    getGlobalDropdownItems(item.label).map((sub) => ({
+                                      ...sub,
+                                      name: sub.name.replace(/^[^\w\s]+\s*/u, ''),
                                     }))
                                   )}
                                 </div>
@@ -897,7 +1001,13 @@ export function PremiumStickyHeader() {
                       ) : (
                         <Link
                           href={item.href}
-                          onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={cn(
+                            'block px-3 py-2.5 rounded-lg transition-colors text-sm font-medium',
+                            active
+                              ? 'text-emerald-300 font-semibold bg-white/5'
+                              : 'text-slate-200 hover:text-white hover:bg-white/5'
+                          )}
                         >
                           {item.label}
                         </Link>
@@ -906,15 +1016,16 @@ export function PremiumStickyHeader() {
                   );
                 })}
 
-                {/* Mobile search and actions */}
-                <div className="pt-6 mt-6 border-t border-white/10 space-y-4">
-                  {/* Real Search Form */}
+                {/* Mobile Search & Quick Actions */}
+                <div className="pt-5 mt-4 border-t border-white/10 space-y-4 pb-6">
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
                       if (mobileSearchQuery.trim()) {
                         setIsMobileMenuOpen(false);
-                        window.location.href = `/search?q=${encodeURIComponent(mobileSearchQuery.trim())}`;
+                        window.location.href = `/search?q=${encodeURIComponent(
+                          mobileSearchQuery.trim()
+                        )}`;
                       }
                     }}
                     className="relative"
@@ -923,19 +1034,20 @@ export function PremiumStickyHeader() {
                       type="text"
                       value={mobileSearchQuery}
                       onChange={(e) => setMobileSearchQuery(e.target.value)}
-                      placeholder="Search modules, species, water, PIL, hazards..."
-                      className="w-full px-4 py-3 pl-11 rounded-xl bg-white/5 border border-white/10 outline-none text-sm text-white placeholder:text-slate-500 focus:border-emerald-500/40 focus:bg-white/10 transition-colors"
+                      placeholder="Search 14 modules, species, water, dispatch..."
+                      className="w-full px-4 py-2.5 pl-10 rounded-xl bg-slate-900 border border-white/15 outline-none text-sm text-white placeholder:text-slate-400 focus:border-emerald-500/50 transition-colors"
                     />
                     <button
                       type="submit"
                       aria-label="Submit search"
-                      className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-400"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-400"
                     >
-                      <Search className="w-5 h-5" />
+                      <Search className="w-4 h-4" />
                     </button>
                   </form>
+
                   {mobileSuggestions.length > 0 && (
-                    <div className="rounded-xl bg-slate-950/90 border border-white/10 divide-y divide-white/5 overflow-hidden">
+                    <div className="rounded-xl bg-slate-900 border border-white/15 divide-y divide-white/10 overflow-hidden">
                       {mobileSuggestions.map((it) => (
                         <Link
                           key={it.id}
@@ -955,53 +1067,51 @@ export function PremiumStickyHeader() {
                     </div>
                   )}
 
-                  {/* Mobile Quick Action Tiles */}
                   <div className="grid grid-cols-3 gap-2">
-                    <Link
-                      href="/risk-monitoring/live-alerts-advisories"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors relative"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        openControlCenterOnTab('alerts');
+                      }}
+                      className="p-2.5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-slate-800 transition-colors relative cursor-pointer"
                     >
                       <Bell className="w-4 h-4 text-amber-400 mb-1" />
-                      <span className="text-[11px] font-medium text-slate-300">Alerts</span>
+                      <span className="text-[11px] font-medium text-slate-200">Alerts</span>
                       {unreadCount > 0 && (
                         <span className="absolute top-1 right-2 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                       )}
-                    </Link>
-
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setActiveHeaderModal('settings');
-                      }}
-                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors"
-                    >
-                      <Settings className="w-4 h-4 text-purple-400 mb-1" />
-                      <span className="text-[11px] font-medium text-slate-300">Settings</span>
                     </button>
 
                     <button
+                      type="button"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
-                        if (isLoggedIn) {
-                          window.location.href = '/dashboard';
-                        } else {
-                          openAuthModal('signin');
-                        }
+                        openControlCenterOnTab('preferences');
                       }}
-                      className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors cursor-pointer"
+                      className="p-2.5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-slate-800 transition-colors cursor-pointer"
+                    >
+                      <Settings className="w-4 h-4 text-purple-400 mb-1" />
+                      <span className="text-[11px] font-medium text-slate-200">Preferences</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        openControlCenterOnTab('account');
+                      }}
+                      className="p-2.5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center justify-center text-center hover:bg-slate-800 transition-colors cursor-pointer"
                     >
                       <User className="w-4 h-4 text-emerald-400 mb-1" />
-                      <span className="text-[11px] font-medium text-slate-300">
-                        {isLoggedIn ? 'Dashboard' : 'Sign In'}
-                      </span>
+                      <span className="text-[11px] font-medium text-slate-200">Account</span>
                     </button>
                   </div>
 
                   <Link
                     href="/atlas"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full py-3 px-4 rounded-xl bg-slate-900 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-center text-sm shadow-lg shadow-emerald-950/40 transition-all"
+                    className="block w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-center text-sm shadow-lg shadow-emerald-950/40 transition-all"
                   >
                     Launch Interactive Atlas
                   </Link>

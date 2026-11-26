@@ -41,7 +41,7 @@ export default async function InstitutionConferencesPage({ params }: Props) {
       <WebinarNav />
       <InstitutionSubNav institution={institution} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="container mx-auto py-10 space-y-6">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold text-white">Active &amp; Archived Events ({conferences.length})</h3>
           <Link

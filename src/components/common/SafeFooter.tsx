@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { AdvancedFooter } from '@/components/sections/AdvancedFooter';
 
@@ -16,8 +17,22 @@ function FooterFallback() {
 /**
  * Wraps AdvancedFooter in an error boundary so a footer crash
  * doesn't take down the entire application.
+ * Omitted inside Himalayan Dispatch (both on dispatch.kashmir-ecowatch.com
+ * and /himalayan-dispatch) so the magazine uses its exclusive colophon.
  */
 export function SafeFooter() {
+  const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
+  const isVirtualHallApp =
+    pathname?.startsWith('/webinars/room/') ||
+    (pathname?.startsWith('/webinars/sessions/') && pathname?.endsWith('/live'));
+  if (
+    segment === 'himalayan-dispatch' ||
+    pathname?.startsWith('/himalayan-dispatch') ||
+    isVirtualHallApp
+  ) {
+    return null;
+  }
   return (
     <ErrorBoundary sectionName="Footer" fallback={<FooterFallback />}>
       <AdvancedFooter />

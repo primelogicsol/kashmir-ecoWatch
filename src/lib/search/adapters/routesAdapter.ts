@@ -42,12 +42,25 @@ function inferDomainFromRoute(route: string): { domain: SearchDomain; parentModu
     case 'monitoring-overview':
       return { domain: 'environmental_monitoring', parentModule: 'Environmental Monitoring' };
     case 'sectoral-eia':
+    case 'himalayan-dispatch':
     case 'research-library':
     case 'library':
     case 'field-reports':
     case 'open-data':
     case 'webinars':
-      return { domain: 'scientific_research', parentModule: seg === 'sectoral-eia' ? 'Sectoral EIA (SEIAE)' : 'Scientific Research & Archives' };
+      return {
+        domain: 'scientific_research',
+        parentModule:
+          seg === 'sectoral-eia'
+            ? 'Sectoral EIA (SEIAE)'
+            : seg === 'himalayan-dispatch'
+            ? 'Himalayan Dispatch Magazine'
+            : seg === 'webinars'
+            ? 'Webinars & Conferences'
+            : 'Scientific Research & Archives',
+      };
+    case 'ecovoices':
+      return { domain: 'ecological_calendar', parentModule: 'EcoVoices · Environmental Arts & Music' };
     case 'resources':
       if (route.includes('environmental-pil')) {
         return { domain: 'environmental_accountability', parentModule: 'Environmental PIL Portal' };
@@ -328,6 +341,7 @@ export function buildRoutesAndTabsIndex(): {
       /^\/(admin|auth|login|register|signup|signin|profile|dashboard|dashboards\/air-quality|unauthorized|forbidden)/i.test(
         route
       ) ||
+      /^\/himalayan-dispatch\/(newsroom|journalist-sign-in)(\/|$)/i.test(route) ||
       /^\/webinars\/(create|room)/.test(route)
     ) {
       excluded.push({

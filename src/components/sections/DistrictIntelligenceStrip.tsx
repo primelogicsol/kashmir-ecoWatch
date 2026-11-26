@@ -324,7 +324,11 @@ export function DistrictIntelligenceStrip() {
         </motion.div>
 
         {/* District Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
+            showAllDistricts ? '3xl:grid-cols-5' : '4xl:grid-cols-6'
+          } gap-4 sm:gap-5 items-stretch`}
+        >
           {visibleDistricts.map((district, index) => (
             <motion.div
               key={district.name}

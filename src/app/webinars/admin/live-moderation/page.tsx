@@ -24,7 +24,7 @@ export default function AdminLiveModerationPage() {
       <WebinarNav />
       <AdminSubNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="kew-container-admin py-10 space-y-6">
         <div className="p-6 bg-slate-900/80 rounded-2xl border border-white/10 space-y-4">
           <h3 className="text-base font-bold text-white">Active Stage Console</h3>
           <p className="text-xs text-slate-300">

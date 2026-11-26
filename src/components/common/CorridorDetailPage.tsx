@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { Corridor, getFragmentationRecords, getProtectedAreas } from '@/data/protected-network';
 import { BackgroundCarousel } from '@/components/ui/BackgroundCarousel';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface CorridorDetailPageProps {
   corridor: Corridor;
@@ -120,7 +121,7 @@ export function CorridorDetailPage({ corridor, relatedCorridors = [] }: Corridor
         <BackgroundCarousel images={heroImages} overlayClassName="from-[#160C27]/40 via-transparent to-[#160C27]/60" />
         <div className="absolute inset-0 bg-grid opacity-10" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 kew-has-hero-rail">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -178,7 +179,7 @@ export function CorridorDetailPage({ corridor, relatedCorridors = [] }: Corridor
               </div>
 
               {/* Quick Score Circle */}
-              <Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 w-full lg:max-w-xs shrink-0 flex flex-col items-center justify-center text-center">
+              <DismissibleHeroOverlay restoreLabel="Show Connectivity Score" className="w-full lg:max-w-xs shrink-0"><Card className="card-intelligence border border-white/5 bg-transparent backdrop-blur-sm shadow-xl p-6 w-full flex flex-col items-center justify-center text-center">
                 <div className="relative w-28 h-28 flex items-center justify-center mb-3">
                   {/* Outer circle */}
                   <svg className="w-full h-full transform -rotate-90">
@@ -198,7 +199,7 @@ export function CorridorDetailPage({ corridor, relatedCorridors = [] }: Corridor
                 </div>
                 <div className="text-sm font-bold text-white">Connectivity Index</div>
                 <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Combined Network Health</div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

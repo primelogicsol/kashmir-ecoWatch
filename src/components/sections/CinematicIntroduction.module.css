@@ -1,0 +1,553 @@
+/* ==========================================================================
+   KASHMIR ECOWATCH — INTELLIGENT VIEWPORT-AWARE CINEMATIC INTRODUCTION
+   Component-scoped CSS Module. Zero global CSS modifications.
+   Adapts dynamically to viewport width, height, aspect ratio, orientation,
+   safe-area insets, and browser zoom (100%–200%+) from 320px to 4K/Ultra-wide.
+   ========================================================================== */
+
+.cinematicRoot {
+  --scene-focal-x: 62%;
+  --scene-focal-y: 42%;
+  --scene-focal-portrait-x: 60%;
+  --scene-focal-portrait-y: 36%;
+  --scene-scrim-strength: 0.86;
+
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #020617;
+  color: #f8fafc;
+  isolation: isolate;
+  container-type: inline-size;
+  container-name: kew-cinematic;
+
+  /* Dynamic top & bottom clearance respecting fixed header, mobile bar & safe-area insets */
+  padding-top: calc(clamp(4.5rem, 9svh, 5.75rem) + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  .cinematicRoot {
+    padding-top: clamp(7.75rem, 12.5svh, 11rem);
+    padding-bottom: clamp(1.5rem, 3.8svh, 4.25rem);
+  }
+}
+
+/* Short desktop/laptop & landscape viewports: trim vertical whitespace before shrinking text */
+@media (min-width: 768px) and (max-height: 740px) {
+  .cinematicRoot {
+    padding-top: 7.5rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .cinematicRoot {
+    padding-top: calc(4.25rem + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ── Full-Bleed Documentary Media Stage & Scene-Specific Focal Points ─────── */
+
+.mediaStage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #020617;
+}
+
+.sceneMediaLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.sceneMediaLayerActive {
+  opacity: 1;
+}
+
+.sceneImageMotion {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.01);
+}
+
+@keyframes cinematicSlowDrift {
+  0% {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.058) translate3d(-0.45%, -0.3%, 0);
+  }
+}
+
+.sceneImageMotionAnimated {
+  animation: cinematicSlowDrift 7800ms ease-out forwards;
+}
+
+.scenePhoto {
+  object-fit: cover;
+  object-position: var(--scene-focal-x) var(--scene-focal-y);
+  transition: object-position 400ms ease;
+}
+
+/* Portrait aspect ratios use scene-specific wildlife/subject-preserving focal coordinates */
+@media (max-aspect-ratio: 1/1) {
+  .scenePhoto {
+    object-position: var(--scene-focal-portrait-x) var(--scene-focal-portrait-y);
+  }
+}
+
+/* ── Localized Contrast Shading: Preserves Photographic Luminosity ────────── */
+
+/* Landscape / Wide screens: localized left editorial shading; right photographic field stays open */
+.scrimLocalized {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 72% 84% at 18% 54%,
+      rgba(2, 6, 23, var(--scene-scrim-strength)) 0%,
+      rgba(2, 6, 23, 0.58) 54%,
+      rgba(2, 6, 23, 0.08) 100%
+    ),
+    linear-gradient(
+      94deg,
+      rgba(2, 6, 23, 0.88) 0%,
+      rgba(2, 6, 23, 0.62) 44%,
+      rgba(2, 6, 23, 0.18) 74%,
+      rgba(2, 6, 23, 0.05) 100%
+    );
+}
+
+/* Portrait screens: upper photographic subject stays bright; localized bottom-up shading behind text */
+@media (max-aspect-ratio: 1/1) {
+  .scrimLocalized {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 6, 23, 0.24) 0%,
+      rgba(2, 6, 23, 0.54) 24%,
+      rgba(2, 6, 23, 0.82) 52%,
+      rgba(2, 6, 23, 0.94) 80%,
+      rgba(2, 6, 23, 0.97) 100%
+    );
+  }
+}
+
+.scrimTopHeader {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: clamp(5.5rem, 15svh, 11rem);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.84) 0%,
+    rgba(2, 6, 23, 0.32) 58%,
+    rgba(2, 6, 23, 0) 100%
+  );
+}
+
+.scrimBottomTransition {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: clamp(5rem, 13svh, 10rem);
+  background: linear-gradient(
+    0deg,
+    #020617 0%,
+    rgba(2, 6, 23, 0.74) 42%,
+    rgba(2, 6, 23, 0) 100%
+  );
+}
+
+/* ── Adaptive Foreground Stage (Scales from 320px up to 4K / 21:9 Ultra-Wide) */
+
+.foregroundShell {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--kew-container-standard, 232rem);
+  margin-inline: auto;
+  padding-inline: max(var(--page-gutter, clamp(0.875rem, 3.8vw, 6.75rem)), env(safe-area-inset-left, 0px))
+                  max(var(--page-gutter, clamp(0.875rem, 3.8vw, 6.75rem)), env(safe-area-inset-right, 0px));
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 2.5svh, 2.75rem);
+  box-sizing: border-box;
+}
+
+/* Editorial stage occupies ~80–82% of available content width on landscape/wide viewports */
+.editorialStage {
+  width: 100%;
+  max-width: clamp(38rem, 82%, 144rem);
+  margin-block: auto;
+}
+
+/* Portrait viewports: anchor narrative cleanly in lower zone so upper wildlife/peaks stay unobstructed */
+@media (max-aspect-ratio: 1/1) {
+  .editorialStage {
+    max-width: min(100%, 46rem);
+    margin-top: auto;
+    margin-bottom: clamp(0.25rem, 1.5svh, 1.25rem);
+  }
+}
+
+@media (min-width: 768px) and (max-aspect-ratio: 1/1) {
+  .editorialStage {
+    margin-bottom: clamp(1.25rem, 3svh, 2.5rem);
+  }
+}
+
+/* Short viewports: remove extra vertical auto-margins before reducing typography */
+@media (max-height: 640px) {
+  .editorialStage {
+    margin-block: 0;
+    max-width: clamp(32rem, 78%, 96rem);
+  }
+}
+
+.brandLockup {
+  --kew-brand-badge-bg: #047857;
+  margin-bottom: clamp(0.5rem, 1.8svh, 1.65rem);
+}
+
+@media (min-width: 2200px) {
+  .brandLockup {
+    transform: scale(1.25);
+    transform-origin: left center;
+    margin-bottom: clamp(1.25rem, 2svh, 2.25rem);
+  }
+}
+
+/* ── Zero-Shift 7-Scene Subgrid Stage: Uniform Vertical Rhythm Across Transitions */
+
+.scenesSubgridStage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto auto;
+}
+
+.sceneSlideRowGroup {
+  grid-column: 1 / -1;
+  grid-row: 1 / 6;
+  display: grid;
+  grid-template-rows: subgrid;
+  align-items: start;
+}
+
+.sceneSlideInactive {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sceneSlideActive {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes narrativeFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.narrativeFrameAnimated {
+  animation: narrativeFadeIn 540ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── 2D Viewport-Intelligent Typography (Width + Height + Root Rem Scaling) ─ */
+
+.sceneCategoryHeading {
+  display: block;
+  font-size: clamp(0.75rem, calc(0.35rem + min(0.75vw, 1.25svh)), 1.375rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #34d399;
+  margin-bottom: clamp(0.35rem, 1svh, 0.85rem);
+  text-shadow: 0 1px 12px rgba(2, 6, 23, 0.85);
+}
+
+/* Landscape / Desktop / Laptop / Ultra-Wide / 4K 2D headline scaling — uniform across all 7 scenes */
+.sceneHeadline {
+  font-size: clamp(2rem, calc(0.45rem + min(4.3vw, 7.1svh)), 7.25rem);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: clamp(0.55rem, 1.8svh, 1.5rem);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  text-shadow: 0 4px 32px rgba(2, 6, 23, 0.72);
+}
+
+/* Portrait Mobile & Tablet Portrait: bold width-driven headlines that command narrow screens */
+@media (max-aspect-ratio: 1/1) {
+  .sceneHeadline {
+    font-size: clamp(1.9rem, calc(0.4rem + min(7.4vw, 6svh)), 3.85rem);
+    line-height: 1.08;
+  }
+}
+
+/* Safeguard ultra-narrow 320px screens against mid-word wrapping on long words */
+@media (max-width: 359px) {
+  .sceneHeadline {
+    font-size: clamp(1.75rem, 8.4vw, 2rem);
+    line-height: 1.08;
+  }
+}
+
+/* Mobile landscape / ultra-short browser windows: preserve bold headline while staying compact */
+@media (max-height: 500px) and (orientation: landscape) {
+  .sceneHeadline {
+    font-size: clamp(1.65rem, calc(0.35rem + min(4.2vw, 8.8svh)), 2.5rem);
+    margin-bottom: 0.375rem;
+  }
+}
+
+.headlineStatementLine {
+  display: block;
+}
+
+.headlineDesktopLine {
+  display: inline;
+}
+
+@media (min-width: 1024px) and (min-aspect-ratio: 1/1) {
+  .headlineDesktopLine {
+    display: block;
+  }
+}
+
+.headlineAccent {
+  background: linear-gradient(135deg, #5eead4 0%, #34d399 52%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 24px rgba(2, 6, 23, 0.65));
+}
+
+/* Calibrated font-proportional measure (36.5em) yields 3 visually balanced lines across all 7 scenes on desktop/laptop while allowing natural multi-line reflow on narrow mobile & zoomed viewports */
+.sceneDescription {
+  font-size: clamp(0.9375rem, calc(0.5rem + min(0.85vw, 1.45svh)), 1.6875rem);
+  font-weight: 400;
+  line-height: 1.58;
+  color: #f1f5f9;
+  width: 100%;
+  max-width: min(100%, 36.5em);
+  margin-bottom: clamp(0.65rem, 2svh, 1.65rem);
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  text-shadow: 0 2px 18px rgba(2, 6, 23, 0.85);
+}
+
+@media (min-width: 1024px) {
+  .sceneDescription {
+    text-wrap: balance;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .sceneDescription {
+    max-width: 100%;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .sceneDescription {
+    font-size: clamp(0.875rem, 3.6svh, 1rem);
+    line-height: 1.42;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ── Relevant Capability Labels ───────────────────────────────────────────── */
+
+.capabilityRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.35rem, 0.5vw, 0.65rem);
+  margin-bottom: clamp(0.85rem, 2.4svh, 2rem);
+}
+
+@media (max-height: 460px) and (orientation: landscape) {
+  .capabilityRow {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.capabilityLabel {
+  display: inline-flex;
+  align-items: center;
+  padding: clamp(0.22rem, 0.35svh, 0.42rem) clamp(0.55rem, 0.7vw, 0.95rem);
+  border-radius: 4px;
+  background-color: rgba(2, 6, 23, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e2e8f0;
+  font-size: clamp(0.72rem, calc(0.45rem + min(0.38vw, 0.65svh)), 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── Adaptive Primary CTA & Subtle Location Attribution ───────────────────── */
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.625rem, 1.2vw, 1.5rem);
+}
+
+.primaryScrollCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.45rem, 0.5vw, 0.75rem);
+  padding: clamp(0.7rem, 1.25svh, 1.15rem) clamp(1.25rem, 1.8vw, 2.25rem);
+  border-radius: 6px;
+  background-color: #047857;
+  border: 1px solid rgba(110, 231, 183, 0.42);
+  color: #ffffff;
+  font-size: clamp(0.9rem, calc(0.55rem + min(0.55vw, 0.95svh)), 1.3125rem);
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(2, 6, 23, 0.55);
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.primaryScrollCta:hover {
+  background-color: #065f46;
+  border-color: rgba(110, 231, 183, 0.7);
+}
+
+.primaryScrollCta:active {
+  transform: translateY(1px);
+}
+
+.primaryScrollCta svg {
+  color: #ffffff;
+  width: clamp(1rem, 1.05em, 1.35rem);
+  height: clamp(1rem, 1.05em, 1.35rem);
+  flex-shrink: 0;
+}
+
+@media (max-width: 479px) and (orientation: portrait) {
+  .primaryScrollCta {
+    width: 100%;
+  }
+}
+
+.locationCaption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #cbd5e1;
+  font-size: clamp(0.75rem, calc(0.48rem + min(0.35vw, 0.6svh)), 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  text-shadow: 0 1px 10px rgba(2, 6, 23, 0.92);
+}
+
+.locationCaption svg {
+  color: #34d399;
+  width: clamp(0.875rem, 1em, 1.15rem);
+  height: clamp(0.875rem, 1em, 1.15rem);
+  flex-shrink: 0;
+}
+
+/* ── Minimal Unobtrusive 7-Dot Progress Indicator + Pause/Play Control ────── */
+
+.minimalProgressRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .minimalProgressRow {
+    flex-wrap: nowrap;
+  }
+}
+
+.dotsList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.dotIndicator {
+  background-color: rgba(255, 255, 255, 0.36);
+  transition: background-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+}
+
+.dotIndicatorActive {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.92), 0 0 10px rgba(52, 211, 153, 0.55);
+  transform: scale(1.14);
+}
+
+.pausePlayBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 2.25rem;
+  padding: clamp(0.32rem, 0.5svh, 0.55rem) clamp(0.7rem, 0.9vw, 1.1rem);
+  border-radius: 6px;
+  background-color: rgba(2, 6, 23, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
+  font-size: clamp(0.75rem, calc(0.48rem + min(0.32vw, 0.55svh)), 1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.pausePlayBtn:hover {
+  background-color: rgba(15, 23, 42, 0.96);
+  border-color: rgba(52, 211, 153, 0.55);
+  color: #ffffff;
+}
+
+.pausePlayBtn svg {
+  color: #34d399;
+  flex-shrink: 0;
+}
+
+/* ── Reduced Motion Compliance ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .sceneMediaLayer {
+    transition: opacity 200ms linear;
+  }
+
+  .sceneImageMotionAnimated,
+  .narrativeFrameAnimated {
+    animation: none !important;
+    transform: none !important;
+  }
+}

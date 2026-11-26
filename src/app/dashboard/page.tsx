@@ -104,7 +104,7 @@ export default function UserDashboardPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(147,51,234,0.05),transparent_50%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="kew-container-dashboard relative z-10">
 
         {/* Breadcrumb Navigation */}
         <nav className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6">

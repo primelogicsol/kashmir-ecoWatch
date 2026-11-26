@@ -475,7 +475,7 @@ export function ExpandableLivePanels() {
         </motion.div>
 
         {/* Panels grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 5xl:grid-cols-6 gap-4 sm:gap-5 items-stretch">
           {filteredPanels.map((panel, index) => {
             const status = statusConfig[panel.status];
             const IconComponent = iconConfig[panel.id] || Activity;

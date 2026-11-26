@@ -80,6 +80,32 @@ export default function GlaciersPage() {
       getCategory={entity => entity.category}
       getSecondaryMetric={entity => entity.area ? { label: 'Area', value: `${entity.area} km²` } : null}
     >
+      {/* ── Reconciled Glacial Lake GIS Inventory & Hazard/Trophic Separation (Section 37) ── */}
+      <div className="mb-8 rounded-xl border border-cyan-500/30 bg-slate-900/90 p-5 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400">
+              Integrated Glacial Lake GIS Inventory · Rashid &amp; Kashani (2025, DOI: 10.5281/zenodo.15051825)
+            </span>
+            <h3 className="text-base font-bold text-white mt-0.5">
+              155 Georeferenced Glacial Lake Polygons (1992–2024) &amp; Strict GLOF-vs-Trophic Separation
+            </h3>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link href="/water-systems/lakes" className="text-xs font-semibold text-cyan-300 hover:underline">
+              Explore 314 Glacial-Origin Lakes in Trophic Atlas →
+            </Link>
+            <span className="text-slate-600">|</span>
+            <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="text-xs font-semibold text-emerald-300 hover:underline">
+              Monograph Ch. 12 &amp; Appendix D →
+            </Link>
+          </div>
+        </div>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          All <strong className="text-white">155</strong> Kashmir-basin glacial lake polygons from the University of Kashmir inventory (ice-contact proglacial <code className="text-cyan-300">ic_pgl</code>, non-ice-contact proglacial <code className="text-cyan-300">nic_pgl</code>, supraglacial <code className="text-cyan-300">sgl</code>, and cirque/other glacial <code className="text-cyan-300">og</code>) are integrated into the unified KEW Master Lake Registry (77 matched to DEERS 2012 alpine waterbodies + 78 additional georeferenced high-altitude lakes), alongside multi-decadal regional benchmarks (<em>Discover Water</em> 2021, DOI: 10.1007/s43832-021-00007-1; <em>Discover Geoscience</em> 2026, DOI: 10.1007/s44288-026-00761-6). Physical GLOF moraine-breach susceptibility (<code className="text-amber-300">very high</code> to <code className="text-slate-300">very low</code>) is maintained strictly separate from nutrient-driven eutrophication: high GLOF hazard is never conflated with trophic degradation.
+        </p>
+      </div>
+
       {/* ── Cryosphere Focus Typologies & Guilds Filter Bar ────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">

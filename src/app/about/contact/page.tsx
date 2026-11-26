@@ -89,7 +89,7 @@ export default function ContactPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#form"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300"
             >
               <span>Submit Portal Enquiry</span>
               <ArrowRight className="w-4 h-4" />
@@ -349,7 +349,7 @@ export default function ContactPage() {
 
                     <button 
                       type="submit" 
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:from-emerald-400 hover:to-teal-500 text-slate-950 text-sm font-bold transition-all shadow-lg shadow-emerald-500/20 w-full justify-center"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 text-sm font-bold transition-all shadow-lg shadow-emerald-500/20 w-full justify-center"
                     >
                       <Send className="w-4 h-4" /> Send Structured Inquiry to contact@kashmir-ecowatch.com
                     </button>

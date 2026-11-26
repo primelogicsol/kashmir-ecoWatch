@@ -39,6 +39,23 @@ import { SCIENTIFIC_WEBINARS } from '@/data/webinars';
 import { CONFERENCES_DETAILED } from '@/data/conference-system';
 import { SCIENTIFIC_PROGRAM_ACTIVITIES } from '@/data/scientific-program-2027-2028';
 import { CANONICAL_INVESTIGATIONS, getDomainById } from '@/data/environmental-investigations';
+import { REGIONAL_REPORTING_BUREAUS } from '@/data/himalayan-dispatch';
+import {
+  getAllMergedAssignmentsInternal,
+  getPublicDailyDispatches,
+  getPublicEditions,
+  getPublicJournalists,
+  getPublicPublishedStories,
+  getPublicReportingBeats,
+} from '@/lib/himalayan-dispatch-store';
+import {
+  DEPARTMENT_ROUTE_CONFIG,
+  HD_ROUTES,
+  resolveCanonicalStoryUrl,
+  toCanonicalIssueSlug,
+  toInternalDispatchPath,
+  type BureauRouteSlug,
+} from '@/lib/himalayan-dispatch-routes';
 
 export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
   const documents: SearchDocument[] = [];
@@ -309,9 +326,17 @@ export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
       subtitle: `${isPublishedDossier ? 'SEIAE Published Dossier' : 'SEIAE Proposed Research Dossier'} · ${sr.date || sr.year || '2026'} (${sectorLabel}${pageDescriptor ? ` · ${pageDescriptor}` : ''})`,
       description: sr.abstract || sr.summary || sr.description || 'Sectoral environmental research dossier.',
       canonicalUrl: sr.code ? `/sectoral-eia/reports/${sr.code.toLowerCase()}` : '/sectoral-eia/reports',
-      parentModule: 'Sectoral EIA · 2026 Research Series (40 Dossiers)',
-      subregion: resolveSubregion(sr.district, sr.region),
-      tags: ['SEIAE Report', 'EIA Reports', 'Research Series 2026', sectorLabel, sr.code].filter(Boolean),
+      parentModule: 'KEW Scientific Research Series (100 Dossiers · 23 Sectors)',
+      subregion: resolveSubregion(sr.district, sr.region || sr.title),
+      tags: [
+        'KEW Research Series',
+        'Scientific Dossier',
+        'Research Series 2026',
+        sectorLabel,
+        sr.divisionTitle,
+        sr.code,
+        ...(typeof sr.priorityRank === 'number' ? [`Priority #${sr.priorityRank}`] : []),
+      ].filter(Boolean),
       synonyms: [sr.code || ''].filter(Boolean),
       source: sr.author || (sr.authors ? (Array.isArray(sr.authors) ? sr.authors.join(', ') : sr.authors) : 'KEW SEIAE Research Series'),
       trustBadge: isPublishedDossier ? 'Peer-Reviewed / Institutional' : 'KEW Scientific Assessment',
@@ -822,6 +847,220 @@ export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
       ctaLabel: inv.status === 'published' ? 'Open 24-Section Investigation' : 'Open Scoping Dossier',
       adapterId: 'research-accountability',
     });
+  }
+
+  // 11. Himalayan Dispatch — Published Stories, Daily Dispatches, Issues, Departments, Bureaus, Beats & Journalists
+  for (const story of getPublicPublishedStories()) {
+    const subregion = resolveSubregion(story.region, story.region);
+    documents.push({
+      id: `hd-story:${story.slug}`,
+      documentType: 'scientific_report',
+      resultClass: 'report_dataset',
+      domain: 'scientific_research',
+      title: `${story.title} — Himalayan Dispatch`,
+      subtitle: `${story.departmentRubric} · By ${story.bylineDisplay} (${story.editionLabel})`,
+      description: `${story.subtitle} ${story.excerpt}`,
+      canonicalUrl: toInternalDispatchPath(resolveCanonicalStoryUrl(story)),
+      parentModule: 'Himalayan Dispatch Magazine',
+      subregion,
+      tags: Array.from(
+        new Set([
+          'Himalayan Dispatch',
+          'Environmental Journalism',
+          story.departmentRubric,
+          story.bylineDisplay,
+          ...story.seoKeywords,
+        ])
+      ),
+      synonyms: ['Himalayan Dispatch', 'magazine', story.folioCode],
+      source: 'Himalayan Dispatch — Kashmir EcoWatch Editorial Publication',
+      trustBadge: 'Peer-Reviewed / Institutional',
+      temporalNature: 'reference',
+      observationTimestamp: story.publishedAt,
+      lastUpdated: story.updatedAt || story.publishedAt,
+      verificationStatus: 'Fact-Checked & Scientifically Reviewed',
+      dataFreshness: 'periodic_baseline',
+      accessClassification: 'public',
+      metrics: [{ label: 'Reading Time', value: `${story.readingTimeMinutes} min` }],
+      ctaLabel: 'Read in Himalayan Dispatch',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const dd of getPublicDailyDispatches()) {
+    const subregion = resolveSubregion(dd.bureauLabel, dd.dateline);
+    documents.push({
+      id: `hd-daily:${dd.slug}`,
+      documentType: 'field_report',
+      resultClass: 'report_dataset',
+      domain: 'scientific_research',
+      title: `${dd.headline} — Daily Dispatch`,
+      subtitle: `${dd.dateline} · By ${dd.bylineDisplay} (${dd.publishedAt})`,
+      description: `${dd.standfirst} ${dd.scientificSourceNote}`,
+      canonicalUrl: toInternalDispatchPath(HD_ROUTES.dailyDispatchArticle(dd.slug)),
+      parentModule: 'Himalayan Dispatch · The Daily Dispatch',
+      subregion,
+      tags: [
+        'Himalayan Dispatch',
+        'Daily Dispatch',
+        dd.bureauLabel,
+        dd.beatTitle,
+        dd.departmentLabel,
+      ],
+      synonyms: ['Daily Dispatch', dd.bureauLabel],
+      source: 'Himalayan Dispatch Environmental Newsroom',
+      trustBadge: 'Field Verified',
+      temporalNature: 'periodic_monitoring',
+      observationTimestamp: dd.publishedAt,
+      lastUpdated: dd.publishedAt,
+      verificationStatus: dd.factCheckedBy,
+      dataFreshness: 'periodic_baseline',
+      accessClassification: 'public',
+      metrics: [{ label: 'Reading Time', value: `${dd.readingTimeMinutes} min` }],
+      ctaLabel: 'Read Daily Dispatch',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const dept of Object.values(DEPARTMENT_ROUTE_CONFIG)) {
+    documents.push({
+      id: `hd-dept:${dept.routeSlug}`,
+      documentType: 'module_page',
+      resultClass: 'module',
+      domain: 'scientific_research',
+      title: `${dept.name} — Himalayan Dispatch Department`,
+      subtitle: `${dept.kicker} · ${dept.wordCountGuide}`,
+      description: `${dept.editorialIntroduction} ${dept.editorialMandate}`,
+      canonicalUrl: toInternalDispatchPath(HD_ROUTES.department(dept.routeSlug)),
+      parentModule: 'Himalayan Dispatch · Editorial Departments',
+      subregion: 'Multi-Regional',
+      tags: ['Himalayan Dispatch', 'Editorial Department', dept.name],
+      synonyms: [dept.name],
+      source: 'Himalayan Dispatch Editorial Directorate',
+      trustBadge: 'Peer-Reviewed / Institutional',
+      temporalNature: 'reference',
+      verificationStatus: 'Active Editorial Department',
+      dataFreshness: 'static_module',
+      accessClassification: 'public',
+      ctaLabel: 'Open Department',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const bureau of REGIONAL_REPORTING_BUREAUS) {
+    documents.push({
+      id: `hd-bureau:${bureau.id}`,
+      documentType: 'module_page',
+      resultClass: 'module',
+      domain: 'scientific_research',
+      title: `${bureau.name} — Himalayan Dispatch Regional Desk`,
+      subtitle: `${bureau.publicStatusBadge} · ${bureau.geographicScopeLabel}`,
+      description: bureau.editorialMandate,
+      canonicalUrl: toInternalDispatchPath(HD_ROUTES.bureau(bureau.id as BureauRouteSlug)),
+      parentModule: 'Himalayan Dispatch · Regional Bureaus',
+      subregion: resolveSubregion(bureau.name, bureau.geographicScopeLabel),
+      tags: ['Himalayan Dispatch', 'Regional Bureau', bureau.name, ...bureau.storyRegionKeywords],
+      synonyms: [bureau.name],
+      source: 'Himalayan Dispatch Geographical Editorial Directorate',
+      trustBadge: 'Peer-Reviewed / Institutional',
+      temporalNature: 'reference',
+      verificationStatus: bureau.publicStatusBadge,
+      dataFreshness: 'static_module',
+      accessClassification: 'public',
+      ctaLabel: 'Open Regional Bureau',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const beat of getPublicReportingBeats()) {
+    documents.push({
+      id: `hd-beat:${beat.slug}`,
+      documentType: 'module_page',
+      resultClass: 'module',
+      domain: 'scientific_research',
+      title: `${beat.title} — Himalayan Dispatch Reporting Beat`,
+      subtitle: `${beat.code} · ${beat.leadEditorRole}`,
+      description: `${beat.editorialMandate} ${beat.summary}`,
+      canonicalUrl: toInternalDispatchPath(HD_ROUTES.reportingBeat(beat.slug)),
+      parentModule: 'Himalayan Dispatch · Reporting Beats',
+      subregion: 'Multi-Regional',
+      tags: ['Himalayan Dispatch', 'Reporting Beat', beat.title, ...beat.coveredBureaus],
+      synonyms: [beat.code],
+      source: 'Himalayan Dispatch Editorial Affairs',
+      trustBadge: 'Peer-Reviewed / Institutional',
+      temporalNature: 'reference',
+      verificationStatus: 'Active Reporting Beat',
+      dataFreshness: 'static_module',
+      accessClassification: 'public',
+      ctaLabel: 'Open Reporting Beat',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const journalist of getPublicJournalists()) {
+    documents.push({
+      id: `hd-journalist:${journalist.slug}`,
+      documentType: 'green_hero',
+      resultClass: 'scientific_record',
+      domain: 'scientific_research',
+      title: `${journalist.name} — Himalayan Dispatch Portfolio`,
+      subtitle: `${journalist.roleTitle} · ${journalist.basedIn}`,
+      description: `${journalist.shortBio} Beat: ${journalist.beat}.`,
+      canonicalUrl: toInternalDispatchPath(HD_ROUTES.journalistPortfolio(journalist.slug)),
+      parentModule: 'Himalayan Dispatch · Journalists',
+      subregion: resolveSubregion(journalist.basedIn, journalist.basedIn),
+      tags: ['Himalayan Dispatch', 'Environmental Journalist', journalist.name, journalist.beat],
+      synonyms: [journalist.name],
+      source: 'Himalayan Dispatch Masthead',
+      trustBadge: 'Peer-Reviewed / Institutional',
+      temporalNature: 'reference',
+      verificationStatus: 'Verified Masthead Correspondent',
+      dataFreshness: 'static_module',
+      accessClassification: 'public',
+      ctaLabel: 'Open Journalist Portfolio',
+      adapterId: 'research-accountability',
+    });
+  }
+
+  for (const edition of getPublicEditions()) {
+    if (edition.status !== 'forthcoming') {
+      const issueSlug = toCanonicalIssueSlug(edition.slug);
+      documents.push({
+        id: `hd-edition:${issueSlug}`,
+        documentType: 'scientific_report',
+        resultClass: 'report_dataset',
+        domain: 'scientific_research',
+        title: `${edition.title} (${edition.volumeLabel}) — Himalayan Dispatch`,
+        subtitle: `${edition.issueNumberLabel} · ${edition.publicationDateLabel}`,
+        description: edition.subtitle,
+        canonicalUrl: toInternalDispatchPath(HD_ROUTES.issue(issueSlug)),
+        parentModule: 'Himalayan Dispatch · Monthly Issues',
+        subregion: 'Multi-Regional',
+        tags: ['Himalayan Dispatch', 'Monthly Issue', edition.volumeLabel, edition.title],
+        synonyms: [edition.volumeLabel],
+        source: 'Himalayan Dispatch Edition Archive',
+        trustBadge: 'Peer-Reviewed / Institutional',
+        temporalNature: edition.status === 'archived' ? 'historical_archive' : 'reference',
+        lastUpdated: edition.publishedIsoDate,
+        verificationStatus: 'Published Periodical Volume',
+        dataFreshness: edition.status === 'archived' ? 'historical_archive' : 'periodic_baseline',
+        accessClassification: 'public',
+        ctaLabel: 'Open Complete Issue',
+        adapterId: 'research-accountability',
+      });
+    }
+  }
+
+  // Record confidential / unapproved assignments in excluded audit trail (never indexed publicly)
+  for (const assign of getAllMergedAssignmentsInternal()) {
+    if (assign.isConfidential || !assign.publicPreviewApproved) {
+      excluded.push({
+        idOrRoute: `hd-confidential:${assign.id}`,
+        title: 'Protected Newsroom Assignment (Redacted)',
+        reason: 'restricted_visibility',
+        adapterId: 'research-accountability',
+      });
+    }
   }
 
   return {

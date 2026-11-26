@@ -15,6 +15,10 @@ import {
   SHARED_ASSESSMENT_DATABASE,
   CUMULATIVE_IMPACT_HOTSPOTS 
 } from '@/data/sectoral-eia';
+import {
+  RESEARCH_SERIES_DIVISIONS,
+  SECTORAL_RESEARCH_SERIES_2026,
+} from '@/data/sectoral-research-series-2026';
 import { 
   Activity, 
   Layers, 
@@ -39,6 +43,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 
 export default function SectoralEiaHomePage() {
   const [selectedSector, setSelectedSector] = useState<'all' | 'tourism' | 'horticulture' | 'handicrafts' | 'agriculture'>('all');
@@ -49,41 +54,41 @@ export default function SectoralEiaHomePage() {
       id: 'tourism',
       src: '/images/sectoral-eia/eia-tourism-carrying-capacity.jpg',
       title: 'Tourism Carrying Capacity & Visitor Stress',
-      metrics: '3.4M Footfall / Yr',
+      metrics: '849 Registered Houseboats (GIS)',
       status: 'High Peak Stress',
-      location: 'Gulmarg, Pahalgam & Sonamarg',
+      location: 'Dal–Nigeen, Gulmarg, Pahalgam & Sonamarg',
       short: 'Tourism',
-      desc: 'Subalpine meadow compaction, solid waste generation, and high-altitude sewage outfalls.'
+      desc: 'Published carrying-capacity synthesis covering subalpine meadow compaction, solid waste, and lacustrine sewage loading.'
     },
     {
       id: 'horticulture',
       src: '/images/sectoral-eia/eia-horticulture-agrochemical.jpg',
       title: 'Horticulture & Agrochemical Leaching',
-      metrics: '8,200 MT Fungicide / Yr',
+      metrics: '12–16 Spray Rounds / Season',
       status: 'Groundwater Alert',
-      location: 'Sopore, Shopian & Baramulla Orchards',
+      location: 'Sopore, Shopian & Kulgam Karewas',
       short: 'Horticulture',
-      desc: 'Mancozeb & synthetic pyrethroid accumulation in Karewa aquifer recharge catchments.'
+      desc: 'Literature-verified fungicide frequency (SKUAST-K) and CGWB Karewa spring/aquifer vulnerability synthesis.'
     },
     {
       id: 'handicrafts',
       src: '/images/sectoral-eia/eia-handicrafts-dye-effluent.jpg',
-      title: 'Handicrafts, Dye Wash & Chemical Exposure',
-      metrics: 'Structured Sampling Active',
+      title: 'Handicrafts, Dye Wash & Lifecycle Ecology',
+      metrics: 'GI #46 & ISO 14044 Scope',
       status: 'Artisanal Stewardship',
-      location: 'Downtown Srinagar & Zadibal Hub',
+      location: 'Shehr-e-Khas Srinagar & Changthang',
       short: 'Handicrafts',
-      desc: 'Mass-balance flow metering distinguishing residential sewage from artisanal dye effluents.'
+      desc: 'Differentiating low-carbon manual spinning/weaving from unsegregated synthetic acid-azo dye discharges.'
     },
     {
       id: 'agriculture',
       src: '/images/sectoral-eia/eia-agriculture-riverbed-soil.jpg',
       title: 'Agriculture, Nutrient Leaching & Soil Health',
-      metrics: '142 kg/ha NPK Input',
+      metrics: '~142 kg/ha NPK (DES J&K)',
       status: 'Eutrophication Risk',
-      location: 'Floodplain Paddy Belts & Anantnag',
+      location: 'Lower Jhelum, Wular & Pampore',
       short: 'Agriculture',
-      desc: 'Nitrogen & phosphorus runoff triggering seasonal macrophyte choking in Wular & Dal lakes.'
+      desc: 'Official fertilizer distribution mass-balances and Sentinel-2 floodplain wetland macrophyte dynamics.'
     },
   ];
   const currentHero = heroSectors[activeHeroIdx];
@@ -631,7 +636,9 @@ export default function SectoralEiaHomePage() {
               href="/sectoral-eia/reports"
               className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
             >
-              <span>Explore 2026 Research Series (40 Dossiers)</span>
+              <span>
+                Explore Scientific Research Series ({SECTORAL_RESEARCH_SERIES_2026.length} Dossiers · {RESEARCH_SERIES_DIVISIONS.length} Sectors)
+              </span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -725,6 +732,13 @@ export default function SectoralEiaHomePage() {
             ))}
           </div>
         </div>
+
+        {/* LINKED KEW-EIAI ENVIRONMENTAL ECONOMICS & FISCAL ACCOUNTABILITY SERIES */}
+        <LinkedInvestigationsModulePanel
+          title="Environmental Economics, Public Expenditure & Sectoral Externality Investigations"
+          subtitle="KEW-EIAI Series VII investigations connecting sectoral carrying-capacity stressors (tourism, horticulture, highways, mining, hydropower, sanitation) with Jammu & Kashmir public expenditure (₹1,13,767 cr FY27 BE), UN SEEA natural capital depreciation, and Benefit–Cost Ratios."
+          seriesIds={['environmental-economics-fiscal']}
+        />
 
         {/* CRITICAL DESIGN QUESTION: DUAL INGESTION MODEL CALLOUT */}
         <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-emerald-500/30">

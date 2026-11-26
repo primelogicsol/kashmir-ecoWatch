@@ -45,7 +45,7 @@ export default function CumulativeImpactPage() {
 
       <SectoralEiaNav />
 
-      <div className="container mx-auto px-4 mt-8 space-y-12 max-w-6xl">
+      <div className="kew-container-report mt-8 space-y-12">
         {/* CONCEPTUAL MANDATE */}
         <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-rose-500/30 shadow-xl">
           <div className="flex items-center gap-2 mb-2">

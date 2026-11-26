@@ -38,7 +38,7 @@ export function ConferenceSubNav({ conference }: Props) {
 
   return (
     <div className="bg-slate-900/90 border-b border-white/10 backdrop-blur-md sticky top-28 md:top-32 z-30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-2">
           <div className="flex items-center gap-1">
             {tabs.map((tab) => {

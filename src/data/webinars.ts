@@ -166,7 +166,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Prof. M. Farooq (Nominated / Invited)',
         title: 'Professor & Head of Earth Sciences',
         institution: 'University of Kashmir',
-        avatar: '/images/bear.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research across Western Himalayan glacier basins.',
         status: 'Invited'
       },
@@ -175,7 +175,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Prof. Elena Rostova (Nominated / Invited)',
         title: 'Senior Cryosphere Research Fellow',
         institution: 'ETH Zurich & ICIMOD Affiliate',
-        avatar: '/images/tiger.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Specialist in supraglacial debris thermal physics, high-altitude UAV photogrammetry, and Hindu Kush-Himalayan cryospheric ablation modeling.',
         status: 'Invited'
       },
@@ -184,7 +184,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Dr. Tariq Ahmad (Nominated / Invited)',
         title: 'Associate Professor of Agricultural Hydrology',
         institution: 'SKUAST-Kashmir',
-        avatar: '/images/markhor.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Researcher on Karewa springshed hydraulics, watershed water budgets, and high-density horticultural irrigation resilience.',
         status: 'Invited'
       }
@@ -195,12 +195,12 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
       'Proposed: Dr. Kumar Foundation USA'
     ],
     registeredCount: 0,
-    maxCapacity: 1000,
+    maxCapacity: 10,
     roomCode: 'CRYO-CONF-2027',
     proceedingsDoi: undefined,
     materialsCount: 0,
     featured: true,
-    bannerImage: '/images/protected-network.png'
+    bannerImage: '/images/webinars/webinar-hero-1.jpg'
   },
   {
     id: 'conf-2027-wetlands',
@@ -226,7 +226,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Dr. Bushra Nazir (Nominated / Invited)',
         title: 'Senior Limnologist & Wetland Ecologist',
         institution: 'Limnology Research Centre, Srinagar',
-        avatar: '/images/bear.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Researches benthic macro-invertebrate biotic indexing and waterbird carrying-capacity audits across J&K wetlands.',
         status: 'Invited'
       },
@@ -235,7 +235,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Er. Asif Qadri (Nominated / Invited)',
         title: 'Ecological Hydrology Consultant',
         institution: 'Wetlands International South Asia',
-        avatar: '/images/tiger.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Designs ecological water control structures and channel de-silting models across Wular Lake and Haigam wetland.',
         status: 'Invited'
       }
@@ -245,10 +245,10 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
       'Proposed: University of Kashmir Limnology Centre'
     ],
     registeredCount: 0,
-    maxCapacity: 500,
+    maxCapacity: 10,
     roomCode: 'WETLAND-CONF-2027',
     featured: true,
-    bannerImage: '/images/bear.png'
+    bannerImage: '/images/webinars/webinar-hero-5.jpg'
   },
   {
     id: 'conf-2027-rivers',
@@ -273,7 +273,7 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
         name: 'Dr. Tariq Ahmad (Nominated / Invited)',
         title: 'Associate Professor of Agricultural Hydrology',
         institution: 'SKUAST-Kashmir',
-        avatar: '/images/markhor.png',
+        avatar: '/images/avatars/academic-silhouette.svg',
         bio: 'Lead researcher on fluvial geomorphology, sediment budgets, and river corridor restoration.',
         status: 'Invited'
       }
@@ -283,10 +283,10 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
       'Proposed: Environmental Law Forum J&K'
     ],
     registeredCount: 0,
-    maxCapacity: 500,
+    maxCapacity: 10,
     roomCode: 'RIVERS-CONF-2027',
     featured: true,
-    bannerImage: '/images/markhor.png'
+    bannerImage: '/images/webinars/webinar-hero-4.jpg'
   },
   {
     id: 'kew-web-2027-karewa',
@@ -307,10 +307,10 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
     speakers: [],
     coHosts: ['Proposed: Geological Society of India (Kashmir Chapter)'],
     registeredCount: 0,
-    maxCapacity: 400,
+    maxCapacity: 10,
     roomCode: 'KAREWA-ROUND-2027',
     featured: false,
-    bannerImage: '/images/tiger.png'
+    bannerImage: '/images/webinars/webinar-hero-3.jpg'
   },
   {
     id: 'kew-web-2027-forests',
@@ -331,10 +331,10 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
     speakers: [],
     coHosts: ['Proposed: Wildlife Trust of India', 'Proposed: SKUAST-K'],
     registeredCount: 0,
-    maxCapacity: 600,
+    maxCapacity: 10,
     roomCode: 'FOREST-WEB-2027',
     featured: false,
-    bannerImage: '/images/protected-network.png'
+    bannerImage: '/images/webinars/webinar-hero-2.jpg'
   }
 ];
 

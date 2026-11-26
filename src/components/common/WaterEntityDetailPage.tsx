@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { WaterEntity, WaterQualityData, HydrologicalData } from '@/data/water-systems';
 import { NwiaClassificationBadge } from '@/components/water/NwiaClassificationPanel';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface WaterEntityDetailPageProps {
   entity: WaterEntity;
@@ -140,7 +141,7 @@ export function WaterEntityDetailPage({ entity, relatedEntities = [] }: WaterEnt
               </div>
 
               {/* Quick Stats */}
-              <Card className="glass-intense border-white/10 p-6 hidden lg:block">
+              <DismissibleHeroOverlay restoreLabel="Show Hydrology Stats" className="hidden lg:grid shrink-0"><Card className="glass-intense border-white/10 p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -164,7 +165,7 @@ export function WaterEntityDetailPage({ entity, relatedEntities = [] }: WaterEnt
                     </div>
                   </div>
                 </div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

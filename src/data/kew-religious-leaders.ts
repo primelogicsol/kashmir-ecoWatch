@@ -133,8 +133,8 @@ export const RELIGIOUS_LEADERS_DOSSIERS: ReligiousLeaderDossier[] = [
     evidenceAuditNotes: 'Classified strictly as Historical Spiritual Legacy. Manuscript records confirm ethical impact rather than quantitative field metrics.',
     linkedModules: [
       { label: 'Forest Conservation', url: '/biodiversity/forest-ecosystems' },
-      { label: 'Environmental Poetry', url: '/environmental-calendar/ecovoices' },
-      { label: 'Spiritual Ecology', url: '/environmental-calendar/ecovoices' },
+      { label: 'Environmental Poetry', url: '/ecovoices' },
+      { label: 'Spiritual Ecology', url: '/ecovoices' },
       { label: 'Ecological Heritage', url: '/resources' }
     ]
   },
@@ -240,7 +240,7 @@ export const RELIGIOUS_LEADERS_DOSSIERS: ReligiousLeaderDossier[] = [
     researchStatus: 'Named preacher and environmental activity documented. Mosque, district and current role need verification.',
     evidenceAuditNotes: 'Candidate under active research tracing. Specific district, mosque registry number, and post-2019 activities remain to be geo-referenced.',
     linkedModules: [
-      { label: 'Spiritual Ecology', url: '/environmental-calendar/ecovoices' },
+      { label: 'Spiritual Ecology', url: '/ecovoices' },
       { label: 'Environmental Education', url: '/environmental-calendar/outdoor-classroom/field-learning-programs' },
       { label: 'River Health Scorecard', url: '/water-systems/rivers' }
     ]
@@ -282,7 +282,7 @@ export const RELIGIOUS_LEADERS_DOSSIERS: ReligiousLeaderDossier[] = [
     linkedModules: [
       { label: 'Hazratbal Basin Intelligence', url: '/water-systems/lakes' },
       { label: 'Dal Lake Scorecard', url: '/water-systems/lakes' },
-      { label: 'Spiritual Ecology', url: '/environmental-calendar/ecovoices' }
+      { label: 'Spiritual Ecology', url: '/ecovoices' }
     ]
   },
 
@@ -504,7 +504,7 @@ export const RELIGIOUS_LEADERS_DOSSIERS: ReligiousLeaderDossier[] = [
     linkedModules: [
       { label: 'Mountain Waste Management', url: '/environmental-monitoring/plastic-pollution' },
       { label: 'Plastic Pollution Surveillance', url: '/environmental-monitoring/plastic-pollution' },
-      { label: 'Ecological Pilgrimages', url: '/environmental-calendar/ecovoices' },
+      { label: 'Ecological Pilgrimages', url: '/ecovoices' },
       { label: 'Community Conservation', url: '/protected-network/atlas' }
     ]
   },
@@ -793,7 +793,7 @@ export const RELIGIOUS_LEADERS_DOSSIERS: ReligiousLeaderDossier[] = [
       { label: 'Indigenous Ecological Knowledge', url: '/resources' },
       { label: 'Environmental Education', url: '/environmental-calendar/outdoor-classroom/field-learning-programs' },
       { label: 'Mountain Sustainability', url: '/resources' },
-      { label: 'Spiritual Ecology', url: '/environmental-calendar/ecovoices' }
+      { label: 'Spiritual Ecology', url: '/ecovoices' }
     ],
     isCandidate: true
   }

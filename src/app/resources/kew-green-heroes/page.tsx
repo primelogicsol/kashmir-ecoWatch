@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Heading } from '@/components/common/Heading';
 import { Card } from '@/components/ui/Card';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 import {
   GREEN_HEROES_MASTER_DATA,
   GREEN_HEROES_STATS,
@@ -770,7 +771,7 @@ function GreenHeroesPortalContent() {
       <GreenHeroesSubNav activeTab={activeTab} onTabChange={handleTabChange} />
 
       {/* ── 3. MAIN WORKBENCH CONTENT CONTAINER ─── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+      <main className="container mx-auto py-8 w-full flex-1">
         
         {/* ───────────────────────────────────────────────────────────── */}
         {/* TAB 1: OVERVIEW HUB */}
@@ -1185,6 +1186,28 @@ function GreenHeroesPortalContent() {
                 Forest Protection Martyrs and Fallen Environmental Defenders
               </h3>
             </div>
+
+            {/* Companion Himalayan Dispatch Inaugural Cover Story Feature */}
+            <Card className="p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-red-950/25 to-slate-900 border border-amber-500/35 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-amber-300 font-bold block">
+                  Himalayan Dispatch · Vol. 01 / No. 01 · Inaugural Cover Story
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  The Price of Protecting Paradise — The Green Martyrs of Kashmir
+                </h4>
+                <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">
+                  Longform commemorative and environmental analysis examining the December 2025 fatalities in Verinag and Doda, historical commemoration discrepancies, ecological functions protected, frontline occupational safety, and the proposed Charter for Environmental Defenders.
+                </p>
+              </div>
+              <a
+                href={getKewToDispatchUrl('/issues/volume-01-issue-01/the-price-of-protecting-paradise')}
+                className="px-4 py-2 rounded-[6px] bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs transition-colors shrink-0 inline-flex items-center gap-1.5 self-start md:self-auto"
+              >
+                <span>Read Inaugural Cover Story</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </Card>
 
             {/* Executive Registry Telemetry & Summary */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -2963,7 +2986,7 @@ function GreenHeroesPortalContent() {
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <Link
-                    href="/environmental-calendar/ecovoices"
+                    href="/ecovoices"
                     className="px-3 py-1.5 rounded-[6px] bg-slate-800 hover:bg-slate-700 text-purple-300 hover:text-white text-xs font-medium border border-purple-800/40 flex items-center gap-1.5 transition-colors"
                   >
                     <Headphones className="w-3.5 h-3.5 text-purple-400" />
@@ -3191,7 +3214,7 @@ function GreenHeroesPortalContent() {
                     Songs, performers, composers, lyrics, audio recordings, dialects, and conservation themes across Pir Panjal to Karakoram.
                   </p>
                   <Link
-                    href="/environmental-calendar/ecovoices"
+                    href="/ecovoices"
                     className="text-xs text-purple-400 hover:underline flex items-center gap-1 pt-1 font-medium"
                   >
                     <span>Open Songs Registry</span>
@@ -3208,7 +3231,7 @@ function GreenHeroesPortalContent() {
                     Original poems, published anthologies, ecological themes, recitations, English translations, and bibliographic gazettes.
                   </p>
                   <Link
-                    href="/environmental-calendar/ecovoices"
+                    href="/ecovoices"
                     className="text-xs text-indigo-400 hover:underline flex items-center gap-1 pt-1 font-medium"
                   >
                     <span>Open Poetry Library</span>
@@ -3225,7 +3248,7 @@ function GreenHeroesPortalContent() {
                     Filmographies, directors, crew credits, festival honors, geographical subjects, and verifiable environmental findings.
                   </p>
                   <Link
-                    href="/environmental-calendar/ecovoices"
+                    href="/ecovoices"
                     className="text-xs text-cyan-400 hover:underline flex items-center gap-1 pt-1 font-medium"
                   >
                     <span>Open Cinema Archive</span>
@@ -3242,7 +3265,7 @@ function GreenHeroesPortalContent() {
                     Paintings, sculptures, waste-based installations, riverbank murals, gallery exhibitions, and ecological subjects.
                   </p>
                   <Link
-                    href="/environmental-calendar/ecovoices"
+                    href="/ecovoices"
                     className="text-xs text-emerald-400 hover:underline flex items-center gap-1 pt-1 font-medium"
                   >
                     <span>Open Art Gallery</span>
@@ -3276,7 +3299,7 @@ function GreenHeroesPortalContent() {
                       Submit Archival Candidate or Lead
                     </button>
                     <Link
-                      href="/environmental-calendar/ecovoices"
+                      href="/ecovoices"
                       className="px-3.5 py-1.5 rounded-[6px] bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-colors flex items-center gap-1.5"
                     >
                       <span>Explore Ecological Voices Initiative</span>
@@ -3594,7 +3617,7 @@ function GreenHeroesPortalContent() {
                       Submit Sacred Site or Religious Lead
                     </button>
                     <Link
-                      href="/environmental-calendar/ecovoices"
+                      href="/ecovoices"
                       className="px-3.5 py-1.5 rounded-[6px] bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-colors flex items-center gap-1.5"
                     >
                       <span>Explore Ecological Voices Initiative</span>

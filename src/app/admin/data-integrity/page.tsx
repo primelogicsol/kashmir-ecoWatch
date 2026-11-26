@@ -89,7 +89,7 @@ export default function DataIntegrityDashboardPage() {
     <div className="min-h-screen bg-slate-950 text-slate-100 pb-20">
       {/* Header */}
       <section className="border-b border-slate-800 bg-slate-900 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-4">
+        <div className="kew-container-admin space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4" />
@@ -123,7 +123,7 @@ export default function DataIntegrityDashboardPage() {
       </section>
 
       {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="kew-container-admin py-8 space-y-8">
         {/* Passcode Security Gate if not unlocked */}
         {!isUnlocked ? (
           <div className="max-w-md mx-auto my-12 p-6 rounded-xl bg-slate-900/90 border border-slate-800 shadow-2xl space-y-4">
@@ -351,7 +351,7 @@ export default function DataIntegrityDashboardPage() {
                     '/sectoral-eia',
                     '/open-data',
                     '/citizen-science',
-                    '/environmental-calendar/ecovoices',
+                    '/ecovoices',
                     '/admin/dashboard',
                     '/admin/data-integrity',
                     '/api/health/db',

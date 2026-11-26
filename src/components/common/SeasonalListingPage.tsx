@@ -9,7 +9,7 @@ import { SeasonalCard } from '@/components/common/SeasonalCard';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 
 interface SeasonalListingPageProps {
   title: string;
@@ -370,7 +370,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
       {/* ───────────────────────────────────────────────────────────── */}
       {/* ECOLOGICAL SCOPE TABS                                         */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="relative max-w-[93rem] mx-auto px-4 mb-6">
+      <div className="relative container mx-auto mb-6">
         <div className="flex items-center gap-2 p-1.5 glass-intense border border-white/10 rounded-2xl overflow-x-auto scrollbar-hide w-fit">
           {availableScopes.map(scope => (
             <button
@@ -391,8 +391,8 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
       {/* ───────────────────────────────────────────────────────────── */}
       {/* MAIN CONTENT GRID & FILTERS                                   */}
       {/* ───────────────────────────────────────────────────────────── */}
-      <div className="relative max-w-[93rem] mx-auto pb-16 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="relative container mx-auto pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 3xl:grid-cols-5 gap-6">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
@@ -436,7 +436,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
           </div>
 
           {/* Entity Grid */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 3xl:col-span-4">
             {filteredEntities.length === 0 ? (
               <div className="text-center py-20 border border-white/5 rounded-2xl bg-slate-900/30">
                 <Icons.Layers className="w-12 h-12 text-slate-600 mx-auto mb-3" />
@@ -463,7 +463,7 @@ export const SeasonalListingPage: React.FC<SeasonalListingPageProps> = ({
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 4xl:grid-cols-4 gap-4 3xl:gap-5">
                 {filteredEntities.map((entity, idx) => (
                   <SeasonalCard
                     key={entity.id || entity.slug || idx}

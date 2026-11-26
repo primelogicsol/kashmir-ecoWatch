@@ -38,7 +38,7 @@ export default async function InstitutionReportsPage({ params }: Props) {
       <WebinarNav />
       <InstitutionSubNav institution={institution} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="container mx-auto py-10 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-slate-900/80 p-6 rounded-2xl border border-white/10 space-y-2">
             <span className="text-xs text-slate-400">Total Verified Delegate Hours</span>

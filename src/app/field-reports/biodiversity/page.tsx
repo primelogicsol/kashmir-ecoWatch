@@ -43,7 +43,7 @@ export default function BiodiversityReportsPage() {
       />
 
       <section className="py-12 border-t border-white/10">
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="container mx-auto">
           <Button variant="ghost" className="mb-6 text-slate-400 hover:text-white" onClick={() => router.push('/field-reports')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Field Reports

@@ -15,6 +15,7 @@ import {
   FileSearch,
   FlaskConical,
   Globe2,
+  Landmark,
   Layers,
   Map,
   Radio,
@@ -39,6 +40,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { EnvironmentalInvestigationsNav } from '@/components/environmental-investigations/EnvironmentalInvestigationsNav';
+import { EnvironmentalEconomicsFiscalPanel } from '@/components/environmental-investigations/EnvironmentalEconomicsFiscalPanel';
 import {
   EvidenceClassificationBadge,
   InvestigationStatusBadge,
@@ -61,6 +63,7 @@ import { InvestigationRecord } from '@/types/environmental-investigations';
 type DashboardTabId =
   | 'overview'
   | 'investigations'
+  | 'economics-fiscal'
   | 'scientific-analysis'
   | 'evidence'
   | 'spatial-intelligence'
@@ -79,6 +82,7 @@ const DASHBOARD_TABS: Array<{
 }> = [
   { id: 'overview', label: 'Overview', icon: BarChart3 },
   { id: 'investigations', label: 'Investigations', icon: FileSearch },
+  { id: 'economics-fiscal', label: 'Economics & Natural Capital', icon: Landmark },
   { id: 'scientific-analysis', label: 'Scientific Analysis', icon: FlaskConical },
   { id: 'evidence', label: 'Evidence', icon: Database },
   { id: 'spatial-intelligence', label: 'Spatial Intelligence', icon: Map },
@@ -159,7 +163,7 @@ export default function InvestigationDashboardPage() {
             </span>
           </div>
         }
-        subtitle="Unified 12-dimension analytical cockpit tracking portfolio progress, scientific discipline equations, verified vs unverified evidence distributions, spatial envelopes, institutional responses, and unresolved data gaps."
+        subtitle={`Unified ${DASHBOARD_TABS.length}-dimension analytical cockpit tracking portfolio progress, scientific discipline equations, verified vs unverified evidence distributions, spatial envelopes, institutional responses, and unresolved data gaps.`}
         images={['/images/earth-human-impact/ehii-command-center-satellite.jpg']}
       />
 
@@ -385,6 +389,11 @@ export default function InvestigationDashboardPage() {
           </Card>
         )}
 
+        {/* TAB: ECONOMICS & NATURAL CAPITAL */}
+        {activeTab === 'economics-fiscal' && (
+          <EnvironmentalEconomicsFiscalPanel mode="full" />
+        )}
+
         {/* TAB 3: SCIENTIFIC ANALYSIS */}
         {activeTab === 'scientific-analysis' && (
           <div className="space-y-4">
@@ -398,7 +407,7 @@ export default function InvestigationDashboardPage() {
                       <h3 className="text-lg font-bold text-white">{inv.title}</h3>
                     </div>
                     <Link href="/environmental-investigations/disciplines">
-                      <Button variant="outline" size="sm">All 36 Discipline Equations</Button>
+                      <Button variant="outline" size="sm">All {metrics.totalDisciplinesDefined} Discipline Equations</Button>
                     </Link>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

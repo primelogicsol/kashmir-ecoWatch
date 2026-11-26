@@ -32,6 +32,7 @@ import {
   drinkingWaterEntities,
   toDrinkingWaterEntity,
 } from '@/data/drinking-water-sources';
+import { LinkedInvestigationsModulePanel } from '@/components/environmental-investigations/LinkedInvestigationsModulePanel';
 
 const entities: WaterEntity[] = drinkingWaterEntities;
 
@@ -732,6 +733,13 @@ export default function DrinkingWaterSourcesPage() {
             </div>
           )}
         </motion.div>
+
+        <LinkedInvestigationsModulePanel
+          className="mt-10"
+          title="Drinking Water Security & Public Supply Investigations (10 Districts)"
+          subtitle="Evaluating BIS IS 10500 tap-water compliance, post-2013 WTP filtration performance, Jal Jeevan Mission 4-pillar functionality, spring recession, and upstream catchment contamination pathways."
+          seriesIds={['drinking-water-security']}
+        />
       </div>
     </WaterEntityListingPage>
   );

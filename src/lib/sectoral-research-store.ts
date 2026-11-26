@@ -22,9 +22,17 @@ import {
   toPdfDocumentInput,
 } from '@/data/sectoral-research-content-engine';
 import {
+  classifyScientificPublicationEvidence,
+  getExternalEvidenceForReport,
+} from '@/data/report-scientific-registries-100';
+import {
   GeneratedPdfArtifact,
   generateInstitutionalScientificPdf,
 } from '@/lib/pdf/kew-scientific-pdf-engine';
+import {
+  auditAllDossiersQualityGates,
+  type PortfolioQualityControlSummary,
+} from '@/lib/scientific-quality-gates';
 
 export const PUBLICATION_WORKFLOW_19_STAGES = [
   '01. Research Proposal',
@@ -126,6 +134,21 @@ export function saveDossierOverride(
   const prev = all[normCode] || {};
   const nextStatus = patch.status || prev.status || 'Proposed';
 
+  // Mandatory Publication Gate: No dossier can transition to Published/Updated if technical quality gates fail!
+  if (nextStatus === 'Published' || nextStatus === 'Updated') {
+    const allMerged = getMergedResearchDossiers();
+    const candidateMasters = allMerged
+      .map((d) => buildCanonicalReportMasterRecord(d.code, allMerged))
+      .filter((m): m is CanonicalReportMasterRecord => Boolean(m));
+    const qc = auditAllDossiersQualityGates(candidateMasters);
+    const targetAudit = qc.dossierResults.find((r) => r.code.toUpperCase() === normCode);
+    if (targetAudit && !targetAudit.readyForScientificReview) {
+      throw new Error(
+        `Publication Quality Gate Blocked for ${normCode}: ${targetAudit.criticalDefects.join(' | ')}`
+      );
+    }
+  }
+
   const revEntry = patch.note
     ? [
         {
@@ -223,6 +246,14 @@ export function getMergedResearchDossiers(): ResearchSeriesDossier[] {
     const mergedStatus = ov?.status || base.status;
     const isPub = mergedStatus === 'Published' || mergedStatus === 'Updated';
 
+    const pubClass = classifyScientificPublicationEvidence(base).evidenceClass;
+    const extEntry = getExternalEvidenceForReport(base.sequenceNumber);
+    const extRefsCount = extEntry
+      ? extEntry.retrievedLiterature.length +
+        extEntry.verifiedInstitutionalDatasets.length +
+        Math.min(1, extEntry.retrievedDataCiteDatasets.length)
+      : 0;
+
     const merged: ResearchSeriesDossier = {
       ...base,
       status: mergedStatus,
@@ -230,6 +261,8 @@ export function getMergedResearchDossiers(): ResearchSeriesDossier[] {
       title: ov?.title || base.title,
       abstract: ov?.abstract || base.abstract,
       author: ov?.author || base.author,
+      evidencePublicationClass: pubClass,
+      verifiedExternalCitationsCount: extRefsCount,
       isProposedWorkingGroup:
         typeof ov?.isProposedWorkingGroup === 'boolean'
           ? ov.isProposedWorkingGroup
@@ -243,17 +276,20 @@ export function getMergedResearchDossiers(): ResearchSeriesDossier[] {
       },
     };
 
-    // Derive exact page count directly from the generated PDF for published reports!
-    if (isPub) {
+    // Derive exact page count directly from the generated PDF for published & review-stage monographs!
+    if (isPub || mergedStatus === 'Scientific Review' || mergedStatus === 'Draft Assessment') {
       const cacheHit = pdfCache.get(merged.code.toUpperCase());
       if (cacheHit) {
         merged.pages = cacheHit.pageCount;
+        merged.derivedPdfPages = cacheHit.pageCount;
       } else {
         const master = buildCanonicalReportMasterRecord(merged.code, [merged]);
         if (master) {
           const art = generateInstitutionalScientificPdf(toPdfDocumentInput(master));
           pdfCache.set(merged.code.toUpperCase(), art);
           merged.pages = art.pageCount;
+          merged.derivedPdfPages = art.pageCount;
+          merged.verifiedExternalCitationsCount = master.references.length;
         }
       }
     }
@@ -360,4 +396,20 @@ export function recordReportAnalyticsEvent(
 
 export function getAllReportAnalytics(): Record<string, DossierAnalyticsCounters> {
   return readJsonSafe<Record<string, DossierAnalyticsCounters>>(ANALYTICS_FILE, {});
+}
+
+let cachedQcSummary: { ts: number; data: PortfolioQualityControlSummary } | null = null;
+
+export function getPortfolioQualityControlReport(forceRefresh = false): PortfolioQualityControlSummary {
+  if (!forceRefresh && cachedQcSummary && Date.now() - cachedQcSummary.ts < 30_000) {
+    return cachedQcSummary.data;
+  }
+  const merged = getMergedResearchDossiers();
+  const masters = merged
+    .map((d) => getMergedMasterRecord(d.code, false))
+    .filter((m): m is CanonicalReportMasterRecord => Boolean(m));
+  const validatedPdfs = new Set<string>(masters.map((m) => m.dossier.code));
+  const data = auditAllDossiersQualityGates(masters, validatedPdfs);
+  cachedQcSummary = { ts: Date.now(), data };
+  return data;
 }

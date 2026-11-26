@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import { SeasonType, ElevationZone, DistrictKashmir, HabitatType } from '@/types/seasonal-ecology';
 
 interface SeasonalFiltersProps {

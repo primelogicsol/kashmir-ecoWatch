@@ -76,7 +76,21 @@ export function useLiveAlerts() {
     markAsRead(id);
   }, [markAsRead]);
 
-  const unreadCount = alerts.filter(a => !readAlertIds.has(a.id)).length;
+  const resetReadHistory = useCallback(() => {
+    setReadAlertIds(new Set());
+    try {
+      localStorage.removeItem('kew_read_notifications');
+      window.dispatchEvent(new Event('kew_alerts_updated'));
+    } catch (e) {
+      console.error('Failed to reset read notifications:', e);
+    }
+  }, []);
+
+  const unreadAlerts = alerts.filter(a => !readAlertIds.has(a.id));
+  const unreadCount = unreadAlerts.length;
+  const unreadCriticalCount = unreadAlerts.filter(
+    a => a.severity === 'critical' || a.severity === 'high'
+  ).length;
 
   return {
     alerts,
@@ -85,9 +99,11 @@ export function useLiveAlerts() {
     lastUpdated,
     readAlertIds,
     unreadCount,
+    unreadCriticalCount,
     refetch: fetchLiveAlerts,
     markAsRead,
     markAllAsRead,
-    dismissAlert
+    dismissAlert,
+    resetReadHistory,
   };
 }

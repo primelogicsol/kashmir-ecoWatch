@@ -41,7 +41,7 @@ const submodules = [
     description: 'Every major, minor, urban, rural, high-altitude, floodplain, and district-level lake mapped across Kashmir',
     icon: Droplet,
     color: 'from-blue-500 to-cyan-600',
-    count: lakesData.length,
+    count: updatedWaterSystemsMetrics.totalLakes,
     route: '/water-systems/lakes',
     features: ['Water Quality', 'Biodiversity', 'Hydrology', 'Threats Monitoring']
   },
@@ -236,7 +236,7 @@ export default function WaterSystemsPage() {
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-0.5">
-                  Multi-basin intelligence synthesizing 1,230+ lakes, 165+ wetlands, river corridors, and glacial melt telemetry across Kashmir, Jammu, and Ladakh watersheds.
+                  Reconciles 521 deduplicated Kashmir Division lake identities (+32 Western Himalayan reference lakes) from the 1,230-record DEERS (2012) historical directory, 330 CAG (2025) comparison lakes, and 155 UoK (2025) glacial lake polygons.
                 </p>
               </div>
             </div>
@@ -250,6 +250,48 @@ export default function WaterSystemsPage() {
                 <span>Streamflow: <strong>Synchronized</strong></span>
               </div>
             </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* ── Section 31: Authoritative Master Lake Registry Coverage (Kashmir Division 10 Districts) ── */}
+      <section className="container mx-auto px-6 mt-6">
+        <Card className="glass-intense border-cyan-500/25 p-5 bg-slate-900/90">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-white/10 pb-3 mb-4">
+            <div>
+              <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400">
+                Authoritative Master Lake Registry · Kashmir Division (10 Districts, 1967–2026)
+              </div>
+              <h2 className="text-lg font-bold text-white mt-0.5">
+                Deduplicated Lake Identities vs Historical Institutional Source Inventories
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button size="sm" variant="outline" className="border-cyan-500/40 text-cyan-300 text-xs" onClick={() => router.push('/water-systems/lakes')}>
+                Open Regional Trophic Atlas →
+              </Button>
+              <Button size="sm" variant="outline" className="border-emerald-500/40 text-emerald-300 text-xs" onClick={() => router.push('/sectoral-eia/reports/kew-sr-2026-101')}>
+                Flagship Monograph KEW-SR-2026-101
+              </Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 text-xs">
+            {[
+              { label: 'Unique Kashmir Lakes', val: metrics.totalLakes, sub: '+32 Extended WH' },
+              { label: 'Currently Observed', val: metrics.kashmirActiveObservedLakes, sub: 'Active / Seasonal' },
+              { label: 'Disappeared / Conv.', val: metrics.kashmirHistoricallyDisappearedLakes, sub: 'CAG: 56 of 330' },
+              { label: 'Named / Unnamed', val: `${metrics.kashmirNamedLakes} / ${metrics.kashmirUnnamedLakes}`, sub: 'Toponymy verified' },
+              { label: 'Urban / Rural', val: `${metrics.kashmirUrbanLakes} / ${metrics.kashmirRuralLakes}`, sub: 'Valley & floodplain' },
+              { label: 'Montane / Alpine', val: `${metrics.kashmirMontaneSubalpineLakes} / ${metrics.kashmirAlpineLakes}`, sub: `${metrics.kashmirGlacialLakes} glacial origin` },
+              { label: 'Trophic Verified', val: metrics.kashmirTrophicVerifiedLakes, sub: `${metrics.kashmirRecentWqLakes} recent · ${metrics.kashmirHistoricalLimnologyLakes} hist.` },
+              { label: 'Needs Assessment', val: metrics.kashmirInsufficientEvidenceLakes, sub: 'Insufficient Evidence' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-lg border border-white/10 bg-slate-950 p-3">
+                <div className="text-[10px] font-mono uppercase text-slate-400">{item.label}</div>
+                <div className="text-lg font-black text-white font-mono mt-0.5">{item.val}</div>
+                <div className="text-[10px] text-cyan-300/85 mt-0.5">{item.sub}</div>
+              </div>
+            ))}
           </div>
         </Card>
       </section>
@@ -589,8 +631,8 @@ export default function WaterSystemsPage() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {['Srinagar', 'Anantnag', 'Baramulla', 'Kupwara'].map((district) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+          {['Anantnag', 'Bandipora', 'Baramulla', 'Budgam', 'Ganderbal', 'Kulgam', 'Kupwara', 'Pulwama', 'Shopian', 'Srinagar'].map((district) => (
             <DistrictWaterCard
               key={district}
               intelligence={getDistrictWaterIntelligence(district)}

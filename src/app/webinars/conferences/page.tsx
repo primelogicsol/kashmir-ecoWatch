@@ -52,7 +52,7 @@ export default function ConferencesIndexPage() {
 
       <WebinarNav />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="container mx-auto py-10 space-y-8">
         {/* Filters */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto">

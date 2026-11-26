@@ -104,6 +104,53 @@ export default function HistoricalComparisonPage() {
       <EarthHumanImpactNav />
 
       <div className="page-content__inner py-10 space-y-12">
+        {/* Regional Lake Multi-Epoch Area Transformation Ledger (Section 38) */}
+        <section className="rounded-2xl border border-cyan-500/30 bg-slate-900/85 p-6 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400">
+                Multi-Epoch Lacustrine Change Detection · 1967 · 1992 · 2009–2010 · 2018 · 2024
+              </span>
+              <h2 className="text-lg font-bold text-white mt-0.5">
+                Kashmir Division Historical Lake Transformation &amp; Disappeared Waterbodies Ledger
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <Link href="/water-systems/lakes" className="px-3 py-1.5 rounded-lg bg-cyan-950/60 border border-cyan-500/30 text-cyan-200 font-semibold hover:bg-cyan-900/60">
+                Inspect 521 Lake Identities →
+              </Link>
+              <Link href="/sectoral-eia/reports/kew-sr-2026-101" className="px-3 py-1.5 rounded-lg bg-slate-950 border border-emerald-500/30 text-emerald-300 font-semibold hover:bg-emerald-950/40">
+                Monograph Ch. 15 &amp; Appendix G →
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div className="rounded-xl bg-slate-950/80 border border-white/10 p-3.5">
+              <div className="text-[10px] font-mono text-slate-400 uppercase">SOI 1967 → LISS-III 2009 (DEERS)</div>
+              <div className="text-xl font-bold text-amber-300 font-mono mt-1">45 Converted</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">Waterbodies converted to built-up, siltation, orchards &amp; agriculture</div>
+            </div>
+            <div className="rounded-xl bg-slate-950/80 border border-white/10 p-3.5">
+              <div className="text-[10px] font-mono text-slate-400 uppercase">CAG Report No. 4 of 2025 (330 Lakes)</div>
+              <div className="text-xl font-bold text-rose-400 font-mono mt-1">56 Disappeared</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">144 shrunk · 104 expanded · 26 unchanged (NRSC multi-temporal audit)</div>
+            </div>
+            <div className="rounded-xl bg-slate-950/80 border border-white/10 p-3.5">
+              <div className="text-[10px] font-mono text-slate-400 uppercase">Glacial GIS 1992 → 2024 (Zenodo)</div>
+              <div className="text-xl font-bold text-cyan-300 font-mono mt-1">155 Polygons</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">Verified EPSG:4326 vector boundaries &amp; proglacial area expansion</div>
+            </div>
+            <div className="rounded-xl bg-slate-950/80 border border-white/10 p-3.5">
+              <div className="text-[10px] font-mono text-slate-400 uppercase">Valley Floor Baselines (1859–2024)</div>
+              <div className="text-xl font-bold text-emerald-300 font-mono mt-1">Tabular + Vector</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">Open-water vs marshy area preserved without inventing historical polygons</div>
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400 leading-relaxed">
+            <strong>Boundary &amp; Geometry Integrity Rule:</strong> Where historical institutional records (1967 Survey of India, 2009–2010 DEERS directory, 2018 J&amp;K ENVIS, or CAG 2025 audit tables) report area figures without public vector shapefiles, KEW preserves exact source-dated tabular hectares (distinguishing open-water surface from emergent macrophyte marsh) rather than fabricating synthetic historical shorelines.
+          </p>
+        </section>
+
         {/* Pilot Study Selector Tabs */}
         <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/80 rounded-xl border border-white/10 w-fit">
           {GEOGRAPHIC_PILOT_STUDIES.map((p) => (

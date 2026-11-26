@@ -1,0 +1,531 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HIMALAYAN DISPATCH — EXCLUSIVE ROUTE-SCOPED LUXURY EDITORIAL DESIGN SYSTEM
+   Warm Editorial Ivory (#F2EFE7) · Ink Black (#171717)
+   Burnt Copper (#8C3125) · Muted Stone (#A39B8B)
+   Decoupled from KEW scientific dashboard cards, navy/teal surfaces & radii
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Remove KEW mobile bottom telemetry padding when inside Himalayan Dispatch */
+#kew-main-surface:has(.hd-editorial-root) {
+  padding-bottom: 0 !important;
+}
+
+.hd-editorial-root,
+.hd-editorial-root[data-hd-theme="ivory"] {
+  --hd-bg: #F2EFE7;
+  --hd-bg-elevated: #F8F6F0;
+  --hd-bg-recessed: #E8E3D6;
+  --hd-fg: #171717;
+  --hd-fg-secondary: #34312C;
+  --hd-fg-muted: #5F584B;
+  --hd-stone: #A39B8B;
+  --hd-rule: rgba(23, 23, 23, 0.14);
+  --hd-rule-strong: #171717;
+  --hd-copper: #8C3125;
+  --hd-copper-solid: #8C3125;
+  --hd-copper-hover: #6E2319;
+  --hd-copper-soft: rgba(140, 49, 37, 0.08);
+  --hd-nav-backdrop: rgba(242, 239, 231, 0.94);
+
+  background-color: var(--hd-bg);
+  color: var(--hd-fg);
+}
+
+.hd-editorial-root[data-hd-theme="ink"] {
+  --hd-bg: #171717;
+  --hd-bg-elevated: #201F1D;
+  --hd-bg-recessed: #10100F;
+  --hd-fg: #F2EFE7;
+  --hd-fg-secondary: #D8D2C5;
+  --hd-fg-muted: #A39B8B;
+  --hd-stone: #A39B8B;
+  --hd-rule: rgba(242, 239, 231, 0.15);
+  --hd-rule-strong: rgba(242, 239, 231, 0.65);
+  --hd-copper: #CC6252;
+  --hd-copper-solid: #8C3125;
+  --hd-copper-hover: #DF7767;
+  --hd-copper-soft: rgba(204, 98, 82, 0.14);
+  --hd-nav-backdrop: rgba(23, 23, 23, 0.94);
+
+  background-color: var(--hd-bg);
+  color: var(--hd-fg);
+}
+
+.hd-editorial-root {
+  min-height: 100vh;
+  width: 100%;
+  font-family: var(--font-hd-body), Georgia, 'Times New Roman', serif;
+  transition: background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Override KEW global dashboard pill/card border-radius enforcement inside the magazine */
+.hd-editorial-root button,
+.hd-editorial-root a,
+.hd-editorial-root span,
+.hd-editorial-root div,
+.hd-editorial-root input,
+.hd-editorial-root select,
+.hd-editorial-root textarea,
+.hd-editorial-root figure,
+.hd-editorial-root article,
+.hd-editorial-root section {
+  border-radius: 0 !important;
+}
+
+.hd-editorial-root button:focus-visible,
+.hd-editorial-root a:focus-visible,
+.hd-editorial-root input:focus-visible,
+.hd-editorial-root select:focus-visible,
+.hd-editorial-root textarea:focus-visible {
+  outline: 2px solid var(--hd-copper) !important;
+  outline-offset: 3px !important;
+}
+
+/* Typography Stacks */
+.hd-font-display {
+  font-family: var(--font-hd-display), 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.hd-font-body {
+  font-family: var(--font-hd-body), 'Newsreader', Georgia, serif;
+}
+
+.hd-font-sans {
+  font-family: var(--font-hd-sans), 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Editorial Kicker / Folio Rubric */
+.hd-kicker {
+  font-family: var(--font-hd-sans), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hd-copper);
+}
+
+.hd-folio-meta {
+  font-family: var(--font-hd-sans), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hd-fg-muted);
+}
+
+/* Double-Hairline Print Rule */
+.hd-double-rule {
+  border-top: 1px solid var(--hd-rule-strong);
+  border-bottom: 1px solid var(--hd-rule);
+  height: 5px;
+  width: 100%;
+}
+
+/* Literary Drop Cap */
+.hd-dropcap::first-letter {
+  float: left;
+  font-family: var(--font-hd-display), Georgia, serif;
+  font-size: 4.5rem;
+  line-height: 0.82;
+  padding-top: 0.2rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.1rem;
+  font-weight: 600;
+  color: var(--hd-copper);
+}
+
+/* Longform Reading Measure */
+.hd-prose p {
+  font-family: var(--font-hd-body), Georgia, serif;
+  font-size: clamp(1.08rem, 1.02rem + 0.25vw, 1.24rem);
+  line-height: 1.84;
+  color: var(--hd-fg-secondary);
+  margin-bottom: 1.55rem;
+}
+
+/* Cinematic Slow Plate Frame */
+.hd-plate-frame {
+  overflow: hidden;
+  position: relative;
+  background-color: #171717;
+}
+
+.hd-plate-frame img {
+  transition: transform 1.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.hd-plate-group:hover .hd-plate-frame img {
+  transform: scale(1.032);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hd-plate-frame img {
+    transition: none !important;
+  }
+  .hd-plate-group:hover .hd-plate-frame img {
+    transform: none !important;
+  }
+}
+
+/* Permanent Darkroom Gallery Surface (for 03 / The Visual Journal) */
+.hd-darkroom-spread {
+  background-color: #171717;
+  color: #F2EFE7;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLOBAL HIMALAYAN DISPATCH NAVIGATION & REUSABLE DROPDOWN STANDARD
+   1. Neutralizes KEW global `*, *::before, *::after { max-width: 100%; }`
+      so dropdown panels never inherit the narrow width of parent triggers.
+   2. Neutralizes KEW `html.light` global button/link overrides inside the
+      magazine masthead and dropdown menus.
+   3. Supports portrait desktop monitors (1080x1920, 1200x1920, 1440x2560)
+      as desktop navigation (>= 1024px) rather than misclassifying them as mobile.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hd-editorial-root .hd-sticky-nav {
+  z-index: 65;
+}
+
+/* Desktop Horizontal Navigation Row (>= 1024px includes portrait desktop monitors) */
+.hd-editorial-root .hd-desktop-nav-row {
+  display: none;
+}
+
+.hd-editorial-root .hd-compact-folio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.hd-editorial-root .hd-nav-primary-link {
+  font-family: var(--font-hd-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  background-color: transparent !important;
+  border: 0 !important;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.hd-editorial-root .hd-nav-primary-link:hover {
+  opacity: 0.82;
+}
+
+.hd-editorial-root .hd-nav-chevron-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  margin-left: 0.125rem;
+  cursor: pointer;
+  background-color: transparent !important;
+  border: 0 !important;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.hd-editorial-root .hd-join-cta-btn {
+  background-color: var(--hd-copper-soft) !important;
+  color: var(--hd-copper) !important;
+  border: 1px solid var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-join-cta-btn[data-active="true"] {
+  background-color: var(--hd-copper-solid) !important;
+  color: #F2EFE7 !important;
+  border-color: var(--hd-copper-solid) !important;
+}
+
+.hd-editorial-root .hd-theme-toggle-btn {
+  background-color: var(--hd-bg) !important;
+  color: var(--hd-fg) !important;
+  border: 1px solid var(--hd-rule) !important;
+}
+
+@media (min-width: 1024px) {
+  .hd-editorial-root .hd-desktop-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    gap: 0.625rem;
+  }
+
+  .hd-editorial-root .hd-compact-folio-controls,
+  .hd-editorial-root .hd-mobile-folio-label,
+  .hd-editorial-root .hd-mobile-folio-drawer {
+    display: none !important;
+  }
+
+  /* Calibrated typography & spacing for 1024px–1279px (e.g. 1080x1920 & 1200x1920 portrait desktops) */
+  .hd-editorial-root .hd-nav-primary-link {
+    font-size: 0.625rem;
+    letter-spacing: 0.11em;
+  }
+
+  .hd-editorial-root .hd-join-cta-btn {
+    padding: 0.325rem 0.55rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.11em;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hd-editorial-root .hd-desktop-nav-row {
+    gap: 0.875rem;
+  }
+
+  .hd-editorial-root .hd-nav-primary-link {
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hd-editorial-root .hd-join-cta-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (min-width: 1536px) {
+  .hd-editorial-root .hd-desktop-nav-row {
+    gap: 1.25rem;
+  }
+
+  .hd-editorial-root .hd-nav-primary-link {
+    letter-spacing: 0.2em;
+  }
+
+  .hd-editorial-root .hd-join-cta-btn {
+    letter-spacing: 0.19em;
+  }
+}
+
+/* Reusable Content-Aware Dropdown Panel Standard */
+.hd-editorial-root .hd-nav-dropdown,
+.hd-editorial-root .hd-nav-dropdown * {
+  max-width: none;
+}
+
+.hd-editorial-root .hd-nav-dropdown {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--hd-dropdown-shift, 0px)));
+  width: max-content;
+  min-width: 19.25rem; /* 308px floor */
+  max-width: min(22.5rem, calc(100vw - 1.5rem)) !important;
+  background-color: var(--hd-bg-elevated) !important;
+  color: var(--hd-fg) !important;
+  border: 1px solid var(--hd-rule-strong) !important;
+  box-shadow: 0 20px 44px -12px rgba(23, 23, 23, 0.28),
+              0 4px 12px -2px rgba(23, 23, 23, 0.12);
+  padding: 0.75rem 0;
+  z-index: 90;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.hd-editorial-root .hd-nav-dropdown--departments {
+  width: clamp(19.25rem, 21vw, 21.5rem); /* 308px – 344px */
+}
+
+.hd-editorial-root .hd-nav-dropdown--bureaus {
+  width: clamp(19.75rem, 22vw, 22.25rem); /* 316px – 356px (within 300–360px spec) */
+}
+
+.hd-editorial-root .hd-nav-dropdown__header {
+  padding: 0.125rem 1.125rem 0.625rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid var(--hd-rule);
+}
+
+.hd-editorial-root .hd-nav-dropdown__heading {
+  display: block;
+  font-family: var(--font-hd-sans), 'Inter', system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--hd-copper) !important;
+  white-space: nowrap;
+}
+
+.hd-editorial-root .hd-nav-dropdown__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hd-editorial-root .hd-nav-dropdown__list > li + li {
+  border-top: 1px solid var(--hd-rule);
+}
+
+.hd-editorial-root .hd-nav-dropdown__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.875rem;
+  width: 100%;
+  min-height: 2.625rem;
+  padding: 0.55rem 1.125rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  background-color: transparent !important;
+  color: var(--hd-fg) !important;
+  border: 0 !important;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.hd-editorial-root .hd-nav-dropdown__item:hover,
+.hd-editorial-root .hd-nav-dropdown__item:focus-visible {
+  background-color: var(--hd-copper-soft) !important;
+  color: var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-nav-dropdown__item[data-active="true"] {
+  background-color: var(--hd-copper-soft) !important;
+  color: var(--hd-copper) !important;
+  box-shadow: inset 3px 0 0 var(--hd-copper);
+}
+
+.hd-editorial-root .hd-nav-dropdown__label {
+  font-family: var(--font-hd-body), 'Newsreader', Georgia, serif;
+  font-size: 0.96875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: inherit !important;
+  white-space: nowrap;
+}
+
+.hd-editorial-root .hd-nav-dropdown__item[data-active="true"] .hd-nav-dropdown__label {
+  font-weight: 600;
+}
+
+.hd-editorial-root .hd-nav-dropdown__meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.hd-editorial-root .hd-nav-dropdown__est {
+  font-family: var(--font-hd-sans), 'Inter', system-ui, sans-serif;
+  font-size: 0.59375rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hd-fg-muted) !important;
+  border: 1px solid var(--hd-rule);
+  padding: 0.125rem 0.375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.hd-editorial-root .hd-nav-dropdown__arrow {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  flex-shrink: 0;
+  color: var(--hd-copper) !important;
+  transition: transform 0.18s ease;
+}
+
+.hd-editorial-root .hd-nav-dropdown__item:hover .hd-nav-dropdown__arrow,
+.hd-editorial-root .hd-nav-dropdown__item:focus-visible .hd-nav-dropdown__arrow,
+.hd-editorial-root .hd-nav-dropdown__footer-link:hover .hd-nav-dropdown__arrow,
+.hd-editorial-root .hd-nav-dropdown__footer-link:focus-visible .hd-nav-dropdown__arrow {
+  transform: translateX(2px);
+}
+
+.hd-editorial-root .hd-nav-dropdown__footer {
+  padding: 0.65rem 1.125rem 0.15rem;
+  margin-top: 0.2rem;
+  border-top: 1px solid var(--hd-rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hd-editorial-root .hd-nav-dropdown__footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-hd-sans), 'Inter', system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: transparent !important;
+  border: 0 !important;
+  color: var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-nav-dropdown__footer-link--full {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.hd-editorial-root .hd-nav-dropdown__footer-link--muted {
+  color: var(--hd-fg-muted) !important;
+}
+
+.hd-editorial-root .hd-nav-dropdown__footer-link:hover,
+.hd-editorial-root .hd-nav-dropdown__footer-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 359px) {
+  .hd-editorial-root .hd-nav-dropdown__label,
+  .hd-editorial-root .hd-nav-dropdown__heading {
+    white-space: normal;
+  }
+}
+
+
+/* ─── HIMALAYAN DISPATCH NEWSROOM (HDN) — DETERMINISTIC DARK WORKSPACE MODE ─── */
+.hdn-theme-dark .bg-white {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+.hdn-theme-dark .bg-slate-50,
+.hdn-theme-dark .bg-slate-100,
+.hdn-theme-dark .bg-slate-100\/70 {
+  background-color: #020617 !important;
+  color: #e2e8f0 !important;
+}
+.hdn-theme-dark .border-slate-200,
+.hdn-theme-dark .border-slate-300,
+.hdn-theme-dark .border-slate-100 {
+  border-color: #1e293b !important;
+}
+.hdn-theme-dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e293b !important;
+}
+.hdn-theme-dark .text-slate-700,
+.hdn-theme-dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+.hdn-theme-dark .text-slate-500 {
+  color: #94a3b8 !important;
+}

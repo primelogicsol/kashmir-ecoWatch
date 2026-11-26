@@ -9,19 +9,131 @@
   --foreground-rgb: 241, 245, 249;
   --background-start-rgb: 2, 6, 23;
   --background-end-rgb: 15, 23, 42;
-  --page-gutter: clamp(16px, 3.5vw, 24px);
+
+  /* ── Centralized Screen-Aware Gutter & Container Architecture ─────────── */
+  --page-gutter: clamp(0.875rem, 3.8vw, 6.75rem);
+  --kew-admin-gutter: clamp(1rem, 2.6vw, 4.25rem);
+
+  --kew-container-cinematic: 100%;
+  --kew-container-standard: 232rem;   /* 3712px outer -> ~91% net content on 4K, ~92.4% on FHD/QHD/Portrait */
+  --kew-container-wide: 240rem;       /* 3840px outer -> ~94.4% net content on 4K for dashboards & matrices */
+  --kew-container-dashboard: 240rem;
+  --kew-container-gis: 100%;
+  --kew-container-report: 224rem;     /* 3584px outer for multi-column report + sidebar dossiers */
+  --kew-container-reading: 96rem;     /* 1536px structured institutional reading shell */
+  --kew-container-admin: 240rem;      /* 3840px outer for operational admin consoles */
+  --kew-prose-measure: 74ch;          /* Comfortable long-form reading line length */
+
+  /* ── Bounded Fluid Section Spacing & Typography Tokens (rem-based for Zoom) */
+  --kew-section-py: clamp(2.75rem, 4.2vw, 5.25rem);
+  --kew-section-gap: clamp(1.25rem, 2vw, 2.5rem);
+  --kew-type-hero: clamp(2.125rem, 1.1rem + 3.1vw, 5.25rem);
+  --kew-type-h1: clamp(1.875rem, 1rem + 2.4vw, 4.25rem);
+  --kew-type-h2: clamp(1.5rem, 0.95rem + 1.55vw, 2.875rem);
+  --kew-type-h3: clamp(1.125rem, 0.9rem + 0.55vw, 1.5rem);
+  --kew-type-body: clamp(0.9375rem, 0.875rem + 0.22vw, 1.125rem);
+  --kew-type-kpi: clamp(1.375rem, 1rem + 0.85vw, 2.25rem);
 }
 
-@media (min-width: 768px) {
-  :root {
-    --page-gutter: clamp(24px, 2.5vw, 36px);
+@layer components {
+  /* Default Global Container + Semantic KEW Container Variants
+     Protected specialized layouts (.hd-editorial-root, virtual hall) remain untouched */
+  .container,
+  .kew-container-standard {
+    width: 100%;
+    max-width: var(--kew-container-standard);
+    margin-inline: auto;
+    padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .kew-container-cinematic,
+  .kew-container-gis {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+  }
+
+  .kew-container-wide,
+  .kew-container-dashboard {
+    width: 100%;
+    max-width: var(--kew-container-wide);
+    margin-inline: auto;
+    padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .kew-container-report {
+    width: 100%;
+    max-width: var(--kew-container-report);
+    margin-inline: auto;
+    padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .kew-container-reading {
+    width: 100%;
+    max-width: var(--kew-container-reading);
+    margin-inline: auto;
+    padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .kew-container-admin {
+    width: 100%;
+    max-width: var(--kew-container-admin);
+    margin-inline: auto;
+    padding-left: max(var(--kew-admin-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--kew-admin-gutter), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .kew-prose-measure {
+    max-width: var(--kew-prose-measure);
+  }
+
+  /* Adaptive Scientific Card & Metric Grids */
+  .kew-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20.5rem), 1fr));
+    gap: clamp(1rem, 1.4vw, 1.5rem);
+    align-items: stretch;
+  }
+
+  .kew-grid-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+    gap: clamp(0.75rem, 1.1vw, 1.25rem);
+    align-items: stretch;
+  }
+
+  .kew-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-@media (min-width: 1280px) {
-  :root {
-    --page-gutter: clamp(36px, 2.5vw, 48px);
-  }
+/* Harmonize horizontal gutters on .container (overriding legacy hardcoded px-3/px-4/px-6/px-8)
+   while respecting explicit .px-0 / .p-0 and never touching Himalayan Dispatch (.hd-editorial-root) */
+:where(body) :not(.hd-editorial-root) > .container:not(.px-0):not(.p-0),
+:where(main, section, footer, header, div):not(.hd-editorial-root):not(.hd-editorial-root *) > .container:not(.px-0):not(.p-0) {
+  padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+}
+
+/* Eliminate duplicate horizontal gutters when containers are accidentally nested */
+:where(.container, .page-content__inner, [class*="kew-container-"]) :is(.container, .page-content__inner, [class*="kew-container-"]) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100%;
 }
 
 .site-header__inner,
@@ -29,14 +141,17 @@
 .page-content__inner,
 .kew-header-inner {
   width: 100%;
-  padding-inline: var(--page-gutter);
+  max-width: var(--kew-container-standard);
+  padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
   margin-inline: auto;
   box-sizing: border-box;
 }
 
 /* =============================================
-   RESPONSIVE TWO-MODE INSTITUTIONAL HEADER
-   Wide 4K Desktop vs. Narrow / Vertical Desktop
+   INTELLIGENT TWO-MODE GLOBAL KEW HEADER
+   Mode A: Single-Row Full Desktop Navigation (when all 14 items fit comfortably)
+   Mode B: Compact Explore Navigation (activated BEFORE any wrapping or clipping)
    ============================================= */
 
 .kew-header {
@@ -53,7 +168,8 @@
   width: 100%;
   min-width: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: 0;
   box-sizing: border-box;
 }
@@ -64,13 +180,97 @@
   margin-right: clamp(12px, 1vw, 24px);
 }
 
-.kew-navigation,
-.primary-navigation {
+/* Central Institutional Designation Slot (Container-Aware, Zoom-Aware & Zero-Height-Delta) */
+.kew-designation-slot {
+  flex: 1 1 0%;
+  min-width: 0;
+  height: 100%;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(4px, 0.5vw, 12px);
-  min-width: 0;
-  white-space: nowrap;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  padding-inline: clamp(12px, 1.25vw, 28px);
+  container-type: inline-size;
+}
+
+.kew-institutional-designation,
+.kew-institutional-designation-ruler {
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap !important;
+  line-height: 1;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+  font-size: 0.625rem; /* 10px compact desktop/laptop floor (~402px intrinsic width) */
+  letter-spacing: 0.13em;
+}
+
+.kew-institutional-designation {
+  display: none;
+  color: rgba(226, 232, 240, 0.92) !important; /* Elegant silver-white */
+  max-width: 100%;
+}
+
+.kew-institutional-designation-ruler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content !important;
+  max-width: none !important;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Container-aware typography scaling (every step leaves >= 70px total clearance) */
+@container (min-width: 430px) {
+  .kew-institutional-designation,
+  .kew-institutional-designation-ruler {
+    font-size: 0.625rem; /* 10px */
+    letter-spacing: 0.13em;
+  }
+  header.kew-header:not([data-designation-fit="hidden"]) .kew-institutional-designation {
+    display: inline-block;
+  }
+}
+
+@container (min-width: 600px) {
+  .kew-institutional-designation,
+  .kew-institutional-designation-ruler {
+    font-size: 0.6875rem; /* 11px (~485px intrinsic width) */
+    letter-spacing: 0.18em;
+  }
+}
+
+@container (min-width: 820px) {
+  .kew-institutional-designation,
+  .kew-institutional-designation-ruler {
+    font-size: 0.75rem; /* 12px (~555px intrinsic width) */
+    letter-spacing: 0.22em;
+  }
+}
+
+@container (min-width: 1200px) {
+  .kew-institutional-designation,
+  .kew-institutional-designation-ruler {
+    font-size: 0.8125rem; /* 13px (~625px intrinsic width) */
+    letter-spacing: 0.25em;
+  }
+}
+
+header.kew-header[data-designation-fit="hidden"] .kew-institutional-designation {
+  display: none !important;
+}
+
+header.kew-header[data-designation-fit="visible"] .kew-institutional-designation {
+  display: inline-block;
 }
 
 .kew-header-actions,
@@ -83,71 +283,65 @@
   flex: 0 0 auto;
 }
 
-/* Compact Explore Menu Toggle (hidden on wide desktop by default) */
-.kew-menu-toggle {
-  display: none;
+/* Mode A: Uninterrupted Single-Row 14-Module Navigation (NEVER wraps) */
+.kew-desktop-nav-row {
+  display: flex;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.25rem;
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
 }
 
-/* Narrow desktop & portrait monitors (<= 1500px) */
-@media (max-width: 1500px) {
-  .kew-logo,
-  .site-logo {
-    margin-right: 24px;
-  }
-
-  .kew-navigation,
-  .primary-navigation {
-    gap: 16px;
-  }
-
-  .kew-search-label {
-    display: none !important;
-  }
+/* Out-of-flow single-row measurement ruler for content-aware ResizeObserver */
+.kew-desktop-nav-ruler {
+  position: fixed;
+  top: -9999px;
+  left: 0;
+  width: max-content !important;
+  max-width: none !important;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  column-gap: 0.25rem;
+  white-space: nowrap;
+  z-index: -1;
 }
 
-/* Switch to compact navigation before overlap (<= 1580px)
-   Protects 1080x1920, 1200x1920 portrait monitors, 1440x2560 large portrait desktops, and 1366px laptops */
-@media (max-width: 1580px) {
-  .kew-navigation,
-  .primary-navigation {
-    display: none !important;
-  }
-
-  .kew-menu-toggle {
-    display: inline-flex !important;
-  }
-
-  .kew-header-actions,
-  .header-actions {
-    margin-left: auto;
-    padding-left: 8px;
-  }
+/* Shared readable desktop navigation link sizing (matches ruler 1:1) */
+.kew-desktop-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Wide desktop (>= 1581px): Ensure full horizontal navigation */
-@media (min-width: 1581px) {
-  .kew-navigation,
-  .primary-navigation {
-    display: flex !important;
-  }
-
-  .kew-menu-toggle {
-    display: none !important;
-  }
-
-  #mobile-menu-drawer,
-  .kew-drawer-panel,
-  .kew-drawer-overlay {
-    display: none !important;
+@media (min-width: 2040px) {
+  .kew-desktop-nav-link {
+    padding: 0.25rem 0.4375rem;
   }
 }
 
-/* 4K Ultra-Wide Monitors (>= 2560px) */
+@media (min-width: 2220px) {
+  .kew-desktop-nav-link {
+    padding: 0.25rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+}
+
 @media (min-width: 2560px) {
-  :root {
-    --page-gutter: clamp(48px, 3.5vw, 96px);
-  }
-
   .kew-logo,
   .site-logo {
     margin-right: 48px;
@@ -159,15 +353,49 @@
     height: 4.5rem;
   }
 
-  .kew-navigation,
-  .primary-navigation {
-    gap: 28px;
+  .kew-desktop-nav-link {
+    padding: 0.3125rem 0.6875rem;
+    font-size: 0.875rem;
   }
+}
 
-  .kew-navigation a,
-  .primary-navigation a {
-    font-size: 0.875rem; /* 14px */
-    padding: 0.5rem 0.75rem;
+/* Pre-hydration SSR fallback (`data-nav-mode="auto"`) prevents any 1-frame wrap/flash */
+header.kew-header[data-nav-mode="auto"] .kew-desktop-nav-row {
+  display: none;
+}
+header.kew-header[data-nav-mode="auto"] .kew-explore-toggle {
+  display: inline-flex;
+}
+@media (min-width: 1900px) and (min-height: 500px) {
+  header.kew-header[data-nav-mode="auto"] .kew-desktop-nav-row {
+    display: flex;
+  }
+  header.kew-header[data-nav-mode="auto"] .kew-explore-toggle {
+    display: none;
+  }
+}
+
+/* Hydrated Content-Aware Mode A: Full Desktop Single-Row Navigation */
+header.kew-header[data-nav-mode="full"] .kew-desktop-nav-row {
+  display: flex;
+}
+header.kew-header[data-nav-mode="full"] .kew-explore-toggle,
+header.kew-header[data-nav-mode="full"] #mobile-menu-drawer,
+header.kew-header[data-nav-mode="full"] .kew-drawer-overlay {
+  display: none !important;
+}
+
+/* Hydrated Content-Aware Mode B: Compact Explore Navigation */
+header.kew-header[data-nav-mode="compact"] .kew-desktop-nav-row {
+  display: none !important;
+}
+header.kew-header[data-nav-mode="compact"] .kew-explore-toggle {
+  display: inline-flex;
+}
+
+@media (max-width: 1500px) {
+  .kew-search-label {
+    display: none !important;
   }
 }
 
@@ -921,120 +1149,6 @@ body {
 .nav-tab,
 .category-filter,
 .data-source-label,
-.verification-badge {
-  border-radius: var(--radius-sm) !important;
-}
-
-/* 2. Interactive Buttons, Input Fields & Dropdown Selectors: Maximum 6px */
-button:not(.rounded-full):not([class*="w-"]):not([class*="h-"]):not([class*="size-"]),
-.btn,
-[class*="btn-"],
-input:not([type="checkbox"]):not([type="radio"]),
-select,
-textarea,
-.dropdown-trigger,
-.icon-btn,
-.search-input {
-  border-radius: var(--radius-md) !important;
-}
-
-/* 3. Scientific Metric Cards, Environmental Monitoring Cards & Dashboard Panels: Maximum 8px */
-.card,
-[class*="card"],
-[class*="Card"],
-.panel,
-[class*="panel"],
-.dashboard-panel,
-.metric-card,
-.kew-metric-card,
-.chart-container,
-.gis-panel,
-.stat-box,
-.alert-panel {
-  border-radius: var(--radius-lg) !important;
-}
-
-/* 4. Modal Windows & Popovers: Maximum 10px */
-.modal,
-[role="dialog"],
-.dialog-content,
-.modal-window {
-  border-radius: var(--radius-xl) !important;
-}
-
-/* 5. Tooltips: Maximum 6px */
-.tooltip,
-[role="tooltip"] {
-  border-radius: var(--radius-md) !important;
-}
-
-/* 6. Universal Capsule Elimination:
-   Intercept rectangular elements with horizontal padding that use rounded-full */
-span.rounded-full[class*="px-"],
-div.rounded-full[class*="px-"],
-a.rounded-full[class*="px-"],
-button.rounded-full[class*="px-"],
-[class*="rounded-full"][class*="px-"] {
-  border-radius: var(--radius-sm) !important;
-}
-
-/* 7. Strict Tailwind overrides: Enforce 8px maximum on rounded-xl, 2xl, 3xl, 4xl */
-.rounded-xl,
-.rounded-2xl,
-.rounded-3xl,
-.rounded-4xl {
-  border-radius: var(--radius-lg) !important;
-}
-
-/* 8. Intentional Circular Visualizations Allowlist (Preserve Legitimate Circles) */
-.rounded-full.w-1, .rounded-full.h-1,
-.rounded-full.w-1\.5, .rounded-full.h-1\.5,
-.rounded-full.w-2, .rounded-full.h-2,
-.rounded-full.w-2\.5, .rounded-full.h-2\.5,
-.rounded-full.w-3, .rounded-full.h-3,
-.rounded-full.w-4, .rounded-full.h-4,
-.rounded-full.w-5, .rounded-full.h-5,
-.rounded-full.w-6, .rounded-full.h-6,
-.rounded-full.w-8, .rounded-full.h-8,
-.rounded-full.w-10, .rounded-full.h-10,
-.rounded-full.w-12, .rounded-full.h-12,
-.rounded-full.w-14, .rounded-full.h-14,
-.rounded-full.w-16, .rounded-full.h-16,
-.rounded-full.animate-spin,
-.avatar-circle,
-.status-dot,
-.circular-marker,
-.pulse-ring,
-input[type="radio"] {
-  border-radius: 9999px !important;
-}
-
-/* ==========================================================================
-   KEW SCIENTIFIC GEOMETRIC DESIGN SYSTEM & GLOBAL BORDER-RADIUS ENFORCEMENT
-   Mandatory standards for scientific-institutional environmental monitoring
-   ========================================================================== */
-
-:root {
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 10px;
-}
-
-/* 1. Status Badges, Classification Labels, Filters, Tabs & Chips: Maximum 4px */
-.badge,
-[class*="badge"],
-[data-badge],
-.status-pill,
-.filter-chip,
-.filter-tab,
-.tag,
-.pill,
-[role="tab"],
-.nav-tab,
-.category-filter,
-.data-source-label,
 .verification-badge,
 span[class*="px-"],
 span[class*="text-"][class*="py-"],
@@ -1292,51 +1406,73 @@ input[type="radio"] {
 }
 
 /* ==========================================================================
-   KEW UNIVERSAL MOBILE & RESPONSIVE BRAND IDENTITY DESIGN TOKENS
-   Centralized typography & layout tokens for [ KEW ] Western Himalayan
+   KEW UNIVERSAL INSTITUTIONAL BRAND IDENTITY DESIGN TOKENS
+   Centralized typography & baseline lockup for [ KEW ] WESTERN HIMALAYAN
    ========================================================================== */
 :root {
   --kew-brand-font-family: inherit;
-  --kew-brand-mobile-font-size: 0.75rem;      /* 12px — identical on KEW & Western Himalayan */
-  --kew-brand-mobile-font-weight: 900;        /* font-black — identical on both */
-  --kew-brand-mobile-line-height: 1.2;        /* identical on both */
-  --kew-brand-mobile-letter-spacing: 0.1em;   /* tracking-widest — identical on both */
-  --kew-brand-mobile-gap: 0.625rem;           /* 10px clean visual separation */
-  --kew-brand-desktop-badge-size: 0.875rem;   /* 14px desktop KEW badge */
-  --kew-brand-desktop-gap: 1rem;              /* 16px desktop gap */
-  --kew-brand-badge-bg: #059669;              /* emerald-600 green KEW badge */
+  --kew-brand-font-size: 0.75rem;             /* 12px mobile — identical on KEW & WESTERN HIMALAYAN */
+  --kew-brand-font-weight: 800;               /* Shared institutional weight — identical on both */
+  --kew-brand-line-height: 1;                 /* Exact 1:1 cap-height & box rhythm — identical on both */
+  --kew-brand-letter-spacing: 0.12em;         /* Institutional uppercase tracking — identical on both */
+  --kew-brand-gap: 0.625rem;                  /* 10px clean horizontal separation */
+  --kew-brand-badge-bg: #059669;              /* KEW emerald-600 institutional badge */
   --kew-brand-badge-fg: #ffffff;
   --kew-brand-region-fg: #ffffff;
 }
 
 @media (max-width: 359px) {
   :root {
-    --kew-brand-mobile-font-size: 0.6875rem;  /* 11px on 320px viewports — prevents any clipping */
-    --kew-brand-mobile-gap: 0.5rem;           /* 8px gap on 320px viewports */
+    --kew-brand-font-size: 0.6875rem;         /* 11px on 320px viewports — zero clipping or wrapping */
+    --kew-brand-letter-spacing: 0.09em;
+    --kew-brand-gap: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --kew-brand-font-size: 0.8125rem;         /* 13px tablet/desktop — identical on KEW & WESTERN HIMALAYAN */
+    --kew-brand-gap: 0.75rem;                 /* 12px horizontal separation */
+  }
+}
+
+@media (min-width: 2200px) {
+  :root {
+    --kew-brand-font-size: 0.9375rem;         /* 15px 4K/5K displays — identical on both */
+    --kew-brand-gap: 0.875rem;
   }
 }
 
 .kew-brand-identity {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: var(--kew-brand-mobile-gap);
+  gap: var(--kew-brand-gap);
   max-width: 100%;
   min-width: 0;
+  vertical-align: middle;
 }
 
 .kew-brand-identity--hero {
-  padding-bottom: 0.375rem;
+  display: flex;
+  width: fit-content;
+  margin-bottom: clamp(0.5rem, 1.15svh, 0.8125rem);
+  padding-bottom: 0;
 }
 
 .kew-brand-badge,
-.kew-brand-region {
-  font-family: var(--kew-brand-font-family);
-  font-size: var(--kew-brand-mobile-font-size);
-  font-weight: var(--kew-brand-mobile-font-weight);
-  line-height: var(--kew-brand-mobile-line-height);
-  letter-spacing: var(--kew-brand-mobile-letter-spacing);
+.kew-brand-region,
+.kew-brand-identity--hero .kew-brand-badge,
+.kew-brand-identity--hero .kew-brand-region,
+.kew-brand-identity--eyebrow .kew-brand-badge,
+.kew-brand-identity--eyebrow .kew-brand-region {
+  font-family: var(--kew-brand-font-family) !important;
+  font-size: var(--kew-brand-font-size) !important;
+  font-weight: var(--kew-brand-font-weight) !important;
+  line-height: var(--kew-brand-line-height) !important;
+  letter-spacing: var(--kew-brand-letter-spacing) !important;
+  text-transform: uppercase !important;
   white-space: nowrap;
   hyphens: none;
   overflow-wrap: normal;
@@ -1349,61 +1485,51 @@ input[type="radio"] {
   justify-content: center;
   flex-shrink: 0;
   background-color: var(--kew-brand-badge-bg);
-  color: var(--kew-brand-badge-fg);
-  text-transform: uppercase;
+  color: var(--kew-brand-badge-fg) !important;
   padding: 0.25rem 0.625rem;
   border-radius: var(--radius-sm);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px 0 rgba(8, 14, 28, 0.45);
 }
 
 .kew-brand-region {
   display: inline-flex;
   align-items: center;
-  color: var(--kew-brand-region-fg);
+  color: var(--kew-brand-region-fg) !important;
   background: transparent;
+  padding: 0.25rem 0;
   min-width: 0;
-}
-
-/* Preserve existing desktop typography and layouts (>= 768px) */
-@media (min-width: 768px) {
-  .kew-brand-identity--hero {
-    gap: var(--kew-brand-desktop-gap);
-    line-height: 1.15;
-    padding-bottom: 0.5rem;
-  }
-
-  .kew-brand-identity--hero .kew-brand-badge {
-    font-size: var(--kew-brand-desktop-badge-size);
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.625rem;
-  }
-
-  .kew-brand-identity--hero .kew-brand-region {
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: 1.15;
-    letter-spacing: inherit;
-  }
-
-  .kew-brand-identity--eyebrow {
-    gap: 0.75rem;
-  }
-
-  .kew-brand-identity--eyebrow .kew-brand-badge,
-  .kew-brand-identity--eyebrow .kew-brand-region {
-    font-size: 0.8125rem;
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: 0.1em;
-  }
+  text-shadow: 0 1px 8px rgba(8, 14, 28, 0.75);
 }
 
 /* Ironclad hero brand deduplication safeguard:
    Never render a standalone eyebrow lockup if <h1> already embeds <KewBrandIdentity /> */
-.kew-heading-scope:has(h1 [data-kew-brand-identity]) > .kew-heading-brand-eyebrow {
+.kew-heading-scope:has(h1 [data-kew-brand-identity]) > .kew-heading-brand-eyebrow,
+.kew-heading-scope:has([data-kew-stationary-brand="true"]) > .kew-heading-brand-eyebrow {
   display: none !important;
+}
+
+/* Responsive focal-point preservation for cinematic hero carousel slides (preserves faces & scientific displays) */
+.kew-carousel-media {
+  object-fit: cover;
+  object-position: var(--kew-focal-mobile, 50% 40%);
+}
+
+@media (min-width: 768px) {
+  .kew-carousel-media {
+    object-position: var(--kew-focal-desktop, 50% 40%);
+  }
+}
+
+/* Dense 7–9 slide pagination bar: prevent horizontal overflow on 320px–639px mobile viewports */
+@media (max-width: 639px) {
+  [data-carousel-dense="true"] .carousel-touch-target {
+    min-width: 28px !important;
+    width: 28px !important;
+    max-width: 28px !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    max-height: 36px !important;
+  }
 }
 
 /* ==========================================================================
@@ -1661,5 +1787,1197 @@ a:focus-visible > .kew-card-shell {
   }
 }
 
+/* ==========================================================================
+   KEW GLOBAL WCAG 2.2 AA CTA CONTRAST, INTERACTION STATE & THEME SYSTEM
+   Centralized permanent remediation for all primary, secondary, outline,
+   ghost, filter/tab, and anchor-styled CTAs across Light, Dark & Hero modes.
+   ========================================================================== */
+
+/* 1. Preserve linear-gradient fills on interactive CTAs inside cards/panels
+      (Only when bg-gradient-to-* is actually present after twMerge!) */
+:is(button, a, [role="button"])[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
+:is(button, a, [role="button"])[class*="bg-gradient-to-b"] {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops)) !important;
+}
+
+:is(button, a, [role="button"])[class*="bg-gradient-to-br"] {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
+}
+
+/* 2. Universal Focus-Visible & Visited Link Safeguards (WCAG 2.2 AA 3:1+ ring) */
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):focus-visible {
+  outline: 2px solid #34d399 !important;
+  outline-offset: 2px !important;
+}
+
+a[class*="px-"]:visited,
+a[class*="btn"]:visited,
+a.kew-cta:visited {
+  color: inherit;
+}
+
+a[class*="px-"].text-white:visited,
+a[class*="btn"].text-white:visited {
+  color: #ffffff !important;
+}
+
+a[class*="px-"].text-slate-950:visited,
+a[class*="btn"].text-slate-950:visited {
+  color: #020617 !important;
+}
+
+/* 3. Defensive Anti-Dark-on-Dark Guard:
+      Prevent accidental dark text on opaque dark slate button fills */
+:is(button, [role="button"], a[class*="px-"], a[class*="btn"]):is(.bg-slate-950, .bg-slate-900, .bg-slate-800):not([class*="bg-gradient-to-"]):is(.text-slate-950, .text-slate-900, .text-black) {
+  color: #f8fafc !important;
+}
+
+/* 4. WCAG 2.2 AA Solid Fill Calibration for White-Foreground CTAs (>= 4.7:1 to 7.8:1) */
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-emerald-500, .bg-emerald-600, .bg-green-500, .bg-green-600) {
+  background-color: #047857 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-emerald-500, .bg-emerald-600, .bg-emerald-700, .bg-green-500, .bg-green-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover):is(.hover\:bg-emerald-500, .hover\:bg-emerald-600, .hover\:bg-green-500, .hover\:bg-green-600):hover {
+  background-color: #065f46 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-forest-500, .bg-forest-600) {
+  background-color: #1f7359 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-forest-500, .bg-forest-600):hover {
+  background-color: #1a5c48 !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-teal-500, .bg-teal-600) {
+  background-color: #0f766e !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-teal-500, .bg-teal-600, .bg-teal-700):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover):is(.hover\:bg-teal-500, .hover\:bg-teal-600):hover {
+  background-color: #115e59 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-cyan-500, .bg-cyan-600) {
+  background-color: #0e7490 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-cyan-500, .bg-cyan-600, .bg-cyan-700):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover):is(.hover\:bg-cyan-500, .hover\:bg-cyan-600):hover {
+  background-color: #155e75 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-sky-500, .bg-sky-600, .bg-glacier-500) {
+  background-color: #0369a1 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-sky-500, .bg-sky-600, .bg-sky-700, .bg-glacier-500):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover):is(.hover\:bg-sky-500, .hover\:bg-sky-600):hover {
+  background-color: #075985 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white.bg-blue-500 {
+  background-color: #2563eb !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-blue-500, .bg-blue-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover).hover\:bg-blue-500:hover {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white.bg-indigo-500 {
+  background-color: #4f46e5 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-indigo-500, .bg-indigo-600):hover {
+  background-color: #4338ca !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-violet-500, .bg-violet-600) {
+  background-color: #6d28d9 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-violet-500, .bg-violet-600):hover {
+  background-color: #5b21b6 !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-purple-500, .bg-purple-600) {
+  background-color: #7e22ce !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-purple-500, .bg-purple-600):hover {
+  background-color: #6b21a8 !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-pink-500, .bg-pink-600, .bg-fuchsia-500, .bg-fuchsia-600) {
+  background-color: #be185d !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-amber-500, .bg-amber-600, .bg-yellow-500, .bg-yellow-600) {
+  background-color: #b45309 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-amber-500, .bg-amber-600, .bg-yellow-500, .bg-yellow-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover).hover\:bg-amber-500:hover {
+  background-color: #92400e !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-orange-500, .bg-orange-600) {
+  background-color: #c2410c !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-orange-500, .bg-orange-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover).hover\:bg-orange-500:hover {
+  background-color: #9a3412 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white.bg-red-500 {
+  background-color: #dc2626 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-red-500, .bg-red-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover).hover\:bg-red-500:hover {
+  background-color: #b91c1c !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white.bg-rose-500 {
+  background-color: #e11d48 !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-rose-500, .bg-rose-600):hover,
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):is(.text-white, .hover\:text-white:hover).hover\:bg-rose-500:hover {
+  background-color: #be123c !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]).text-white:is(.bg-lime-500, .bg-lime-600) {
+  background-color: #3f6212 !important;
+}
+
+/* 4b. Inherited-White Solid Fill Calibration & White-Button Accent Text Floor */
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-emerald-500, .bg-emerald-600, .bg-green-500, .bg-green-600) {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-teal-500, .bg-teal-600) {
+  background-color: #0f766e !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-cyan-500, .bg-cyan-600) {
+  background-color: #0e7490 !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-sky-500, .bg-sky-600, .bg-glacier-500) {
+  background-color: #0369a1 !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-amber-500, .bg-amber-600, .bg-yellow-500, .bg-yellow-600) {
+  background-color: #b45309 !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-orange-500, .bg-orange-600) {
+  background-color: #c2410c !important;
+  color: #ffffff !important;
+}
+:is(button, [role="button"], [role="tab"], input[type="submit"], input[type="button"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.bg-lime-500, .bg-lime-600) {
+  background-color: #3f6212 !important;
+  color: #ffffff !important;
+}
+
+:is(button, [role="button"], a[class*="px-"], a[class*="btn"]).bg-white:is(.text-emerald-600, .text-emerald-500) {
+  color: #047857 !important;
+}
+:is(button, [role="button"], a[class*="px-"], a[class*="btn"]).bg-white:is(.text-teal-600, .text-teal-500) {
+  color: #0f766e !important;
+}
+:is(button, [role="button"], a[class*="px-"], a[class*="btn"]).bg-white:is(.text-cyan-600, .text-cyan-500, .text-sky-600, .text-blue-500) {
+  color: #0369a1 !important;
+}
+:is(button, [role="button"], a[class*="px-"], a[class*="btn"]).bg-white:is(.text-amber-600, .text-amber-500, .text-orange-600, .text-orange-500) {
+  color: #b45309 !important;
+}
+
+/* 5. Calibrate Gradient Stops on Non-Dark-Text CTAs so every stop >= 5.0:1 */
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-emerald-500, .from-emerald-600, .from-green-500, .from-green-600) {
+  --tw-gradient-from: #047857 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-emerald-500, .to-emerald-600, .to-green-500, .to-green-600) {
+  --tw-gradient-to: #047857 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-lime-400, .from-lime-500, .from-lime-600) {
+  --tw-gradient-from: #3f6212 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-lime-400, .to-lime-500, .to-lime-600) {
+  --tw-gradient-to: #3f6212 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-teal-500, .from-teal-600) {
+  --tw-gradient-from: #0f766e var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-teal-500, .to-teal-600) {
+  --tw-gradient-to: #0f766e var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-cyan-500, .from-cyan-600) {
+  --tw-gradient-from: #0e7490 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-cyan-500, .to-cyan-600) {
+  --tw-gradient-to: #0e7490 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-sky-500, .from-sky-600) {
+  --tw-gradient-from: #0369a1 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-sky-500, .to-sky-600) {
+  --tw-gradient-to: #0369a1 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black).from-forest-500 {
+  --tw-gradient-from: #1f7359 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black).to-forest-500 {
+  --tw-gradient-to: #1f7359 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black).from-glacier-500 {
+  --tw-gradient-from: #1f6691 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black).to-glacier-500 {
+  --tw-gradient-to: #1f6691 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-blue-500, .from-blue-600) {
+  --tw-gradient-from: #1d4ed8 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-blue-500, .to-blue-600) {
+  --tw-gradient-to: #1d4ed8 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-indigo-500, .from-indigo-600, .from-purple-500, .from-purple-600, .from-violet-500, .from-violet-600) {
+  --tw-gradient-from: #5b21b6 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-indigo-500, .to-indigo-600, .to-purple-500, .to-purple-600, .to-violet-500, .to-violet-600) {
+  --tw-gradient-to: #5b21b6 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-pink-500, .from-pink-600, .from-fuchsia-500, .from-fuchsia-600) {
+  --tw-gradient-from: #be185d var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-pink-500, .to-pink-600, .to-fuchsia-500, .to-fuchsia-600) {
+  --tw-gradient-to: #be185d var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-amber-500, .from-amber-600, .from-yellow-500) {
+  --tw-gradient-from: #b45309 var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-amber-500, .to-amber-600, .to-yellow-500) {
+  --tw-gradient-to: #b45309 var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-orange-500, .from-orange-600) {
+  --tw-gradient-from: #c2410c var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-orange-500, .to-orange-600) {
+  --tw-gradient-to: #c2410c var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.from-red-500, .from-red-600, .from-rose-500, .from-rose-600) {
+  --tw-gradient-from: #b91c1c var(--tw-gradient-from-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.to-red-500, .to-red-600, .to-rose-500, .to-rose-600) {
+  --tw-gradient-to: #b91c1c var(--tw-gradient-to-position) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-cyan-500, .via-cyan-600, .via-sky-500, .via-sky-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #0e7490 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-teal-500, .via-teal-600, .via-emerald-500, .via-emerald-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #0f766e var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-lime-500, .via-lime-600, .via-green-500, .via-green-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #15803d var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-blue-500, .via-indigo-500) {
+  --tw-gradient-stops: var(--tw-gradient-from), #1d4ed8 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Muted slate & accent-400 text/icon floor on enabled dark-surface controls (>= 4.5:1 text, >= 3.0:1 SVG) */
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100):is(.text-slate-500, .text-slate-600),
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100) :is(.text-slate-500, .text-slate-600) {
+  color: #cbd5e1 !important;
+}
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100).text-blue-400,
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100) .text-blue-400 {
+  color: #bfdbfe !important;
+}
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100):is(.text-indigo-400, .text-violet-400, .text-purple-400),
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100) :is(.text-indigo-400, .text-violet-400, .text-purple-400) {
+  color: #ddd6fe !important;
+}
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100):is(.text-red-400, .text-rose-400),
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]):not(.bg-white):not(.bg-slate-100) :is(.text-red-400, .text-rose-400) {
+  color: #fecaca !important;
+}
+html.dark :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(:disabled):not([aria-disabled="true"]) svg:is(.text-slate-600, .text-slate-500) {
+  color: #cbd5e1 !important;
+}
+
+/* 6. Child SVG Icon Inheritance Inside Solid White-Foreground CTAs (>= 4.7:1) */
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(
+  .bg-emerald-500, .bg-emerald-600, .bg-emerald-700,
+  .bg-teal-500, .bg-teal-600, .bg-teal-700,
+  .bg-cyan-500, .bg-cyan-600, .bg-cyan-700,
+  .bg-sky-500, .bg-sky-600, .bg-sky-700,
+  .bg-blue-500, .bg-blue-600, .bg-blue-700,
+  .bg-indigo-500, .bg-indigo-600, .bg-indigo-700,
+  .bg-violet-500, .bg-violet-600, .bg-violet-700,
+  .bg-purple-500, .bg-purple-600, .bg-purple-700,
+  .bg-amber-500, .bg-amber-600, .bg-amber-700,
+  .bg-orange-500, .bg-orange-600, .bg-orange-700,
+  .bg-red-500, .bg-red-600, .bg-red-700,
+  .bg-rose-500, .bg-rose-600, .bg-rose-700,
+  .bg-lime-500, .bg-lime-600, .bg-forest-500, .bg-forest-600,
+  [class*="bg-gradient-to-"]
+) svg {
+  color: #ffffff !important;
+}
+
+/* 7. Hero Overlay & Transparent CTA Backdrop Guarantee on Dark Surfaces */
+[data-kew-dark-surface="true"] :is(button, a[class*="px-"], [role="button"]).bg-transparent:not(.carousel-touch-target) {
+  background-color: rgba(2, 6, 23, 0.65) !important;
+  color: #f8fafc !important;
+}
 
 
+/* 7b. Additional Gradient Via-Stop Calibration & KBD Shortcut Badge Contrast */
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-amber-500, .via-amber-600, .via-yellow-500) {
+  --tw-gradient-stops: var(--tw-gradient-from), #b45309 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-orange-500, .via-orange-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #c2410c var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-purple-500, .via-purple-600, .via-violet-500, .via-violet-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #5b21b6 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+:is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(.via-red-500, .via-red-600, .via-rose-500, .via-rose-600) {
+  --tw-gradient-stops: var(--tw-gradient-from), #b91c1c var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+html.dark :is(button, [role="button"], a[class*="px-"]) kbd {
+  color: #e2e8f0 !important;
+  background-color: rgba(15, 23, 42, 0.85) !important;
+}
+
+[class*="primaryScrollCta"] svg {
+  color: #ffffff !important;
+}
+
+/* 8. Complete Light Mode (html.light) & Dark-Hero Surface Isolation
+      100% LightningCSS / PostCSS Production-Safe Pure Cascade (zero :not(:is(...))) */
+html.light {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+  scrollbar-color: rgba(4, 120, 87, 0.45) #e2e8f0;
+}
+
+html.light main.bg-slate-950,
+html.light div.min-h-screen.bg-slate-950,
+html.light section.bg-slate-950:not([data-kew-dark-surface="true"]),
+html.light section.bg-slate-900:not([data-kew-dark-surface="true"]) {
+  background-color: #f8fafc !important;
+  color: #0f172a;
+}
+
+html.light header.kew-header {
+  background-color: rgba(2, 6, 23, 0.94) !important;
+  color: #f1f5f9 !important;
+}
+
+html.light .glass-intense,
+html.light .kew-card.glass-intense {
+  background-color: rgba(2, 6, 23, 0.94) !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+html.light [data-kew-dark-surface="true"],
+html.light [class*="cinematicRoot"],
+html.light footer,
+html.light [role="dialog"] {
+  color: #f1f5f9;
+}
+
+html.light .kew-card-shell > div.bg-slate-900.absolute {
+  background-color: transparent !important;
+}
+
+html.light .kew-card:not(.glass-intense):not([data-kew-dark-surface="true"]),
+html.light .kew-card-shell {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .kew-card-shell svg {
+  color: #0f766e !important;
+}
+
+html.light :is(.kew-card:not(.glass-intense), .kew-card-shell) :is(h1, h2, h3, h4) {
+  color: #0f172a !important;
+}
+
+html.light :is(.kew-card:not(.glass-intense), .kew-card-shell) p {
+  color: #334155 !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) .kew-card-shell {
+  background-color: rgba(15, 23, 42, 0.88) !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) .kew-card-shell svg {
+  color: #34d399 !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) :is(h1, h2, h3, h4) {
+  color: #f8fafc !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) p {
+  color: #cbd5e1 !important;
+}
+
+/* Step L1: Default Light-Surface CTA Adaptation (simple single-token :not() only) */
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #64748b !important;
+}
+
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) :is(span, strong, kbd) {
+  color: #0f172a !important;
+}
+
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) svg {
+  color: #0f766e !important;
+}
+
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]):hover {
+  background-color: #e2e8f0 !important;
+  color: #065f46 !important;
+  border-color: #047857 !important;
+}
+
+/* Step L2: Dark-Surface Isolation Override (Heroes, Cinematic Intro, Sticky Header, Footer, Modals, Glass-Intense) */
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) {
+  background-color: rgba(15, 23, 42, 0.94) !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.55) !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) :is(span, strong, kbd) {
+  color: #f8fafc !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]) svg {
+  color: #34d399 !important;
+}
+
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], header.kew-header, footer, [role="dialog"], .glass-intense) :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"][class*="py-"], a[class*="px-"][class*="bg-"], a[class*="px-"][class*="border"]):not(:disabled):not([aria-disabled="true"]):not(.carousel-touch-target):not(.kew-card-shell):not(.kew-card):not([class*="primaryScrollCta"]):hover {
+  background-color: rgba(30, 41, 59, 0.98) !important;
+  color: #ffffff !important;
+  border-color: #34d399 !important;
+}
+
+/* Step L3: Solid & Gradient Brand Fill Preservation in Light Mode (wins by cascade over Step L1 & L2) */
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-emerald-500, .bg-emerald-600, .bg-emerald-700, .bg-emerald-800, .bg-green-500, .bg-green-600, .bg-green-700) {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-forest-500, .bg-forest-600, .bg-forest-700) {
+  background-color: #1f7359 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-teal-500, .bg-teal-600, .bg-teal-700, .bg-teal-800) {
+  background-color: #0f766e !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-cyan-500, .bg-cyan-600, .bg-cyan-700, .bg-cyan-800) {
+  background-color: #0e7490 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-sky-500, .bg-sky-600, .bg-sky-700, .bg-glacier-500, .bg-glacier-600) {
+  background-color: #0369a1 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-blue-500, .bg-blue-600, .bg-blue-700) {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-indigo-500, .bg-indigo-600, .bg-indigo-700, .bg-violet-500, .bg-violet-600, .bg-violet-700, .bg-purple-500, .bg-purple-600, .bg-purple-700) {
+  background-color: #5b21b6 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-pink-500, .bg-pink-600, .bg-fuchsia-500, .bg-fuchsia-600) {
+  background-color: #be185d !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-amber-500, .bg-amber-600, .bg-amber-700, .bg-yellow-500, .bg-yellow-600) {
+  background-color: #b45309 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-orange-500, .bg-orange-600, .bg-orange-700) {
+  background-color: #c2410c !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-red-500, .bg-red-600, .bg-red-700, .bg-rose-500, .bg-rose-600, .bg-rose-700) {
+  background-color: #b91c1c !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-lime-500, .bg-lime-600) {
+  background-color: #3f6212 !important;
+  color: #ffffff !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700) {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"])[class*="bg-gradient-to-"] {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+}
+
+/* Bright-fill dark-text CTAs in Light Mode (.text-slate-950 / .text-slate-900 / .text-black) */
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.text-slate-950, .text-slate-900, .text-black):is(.bg-emerald-400, .bg-emerald-500, .bg-teal-400, .bg-teal-500, .bg-cyan-400, .bg-cyan-500, .bg-amber-400, .bg-amber-500, .bg-lime-400, .bg-lime-500, .bg-yellow-400, .bg-yellow-500, [class*="bg-gradient-to-"]) {
+  background-color: #34d399 !important;
+  color: #020617 !important;
+}
+
+/* Child span/strong/h3/svg synchronization inside Step L3 solid & gradient CTAs */
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):not(.text-slate-950):not(.text-slate-900):not(.text-black):is(
+  .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700,
+  .bg-emerald-500, .bg-emerald-600, .bg-emerald-700, .bg-emerald-800, .bg-green-500, .bg-green-600, .bg-green-700, .bg-forest-500, .bg-forest-600, .bg-forest-700,
+  .bg-teal-500, .bg-teal-600, .bg-teal-700, .bg-teal-800,
+  .bg-cyan-500, .bg-cyan-600, .bg-cyan-700, .bg-cyan-800,
+  .bg-sky-500, .bg-sky-600, .bg-sky-700, .bg-glacier-500, .bg-glacier-600,
+  .bg-blue-500, .bg-blue-600, .bg-blue-700,
+  .bg-indigo-500, .bg-indigo-600, .bg-indigo-700, .bg-violet-500, .bg-violet-600, .bg-violet-700, .bg-purple-500, .bg-purple-600, .bg-purple-700,
+  .bg-pink-500, .bg-pink-600, .bg-fuchsia-500, .bg-fuchsia-600,
+  .bg-amber-500, .bg-amber-600, .bg-amber-700, .bg-yellow-500, .bg-yellow-600,
+  .bg-orange-500, .bg-orange-600, .bg-orange-700,
+  .bg-red-500, .bg-red-600, .bg-red-700, .bg-rose-500, .bg-rose-600, .bg-rose-700,
+  .bg-lime-500, .bg-lime-600,
+  [class*="bg-gradient-to-"]
+) :is(span, strong, kbd, h1, h2, h3, h4, p, svg) {
+  color: #ffffff !important;
+}
+
+html.light :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="btn"], a[class*="px-"]):is(.text-slate-950, .text-slate-900, .text-black):is(
+  .bg-emerald-400, .bg-emerald-500, .bg-teal-400, .bg-teal-500, .bg-cyan-400, .bg-cyan-500, .bg-amber-400, .bg-amber-500, .bg-lime-400, .bg-lime-500, .bg-yellow-400, .bg-yellow-500, [class*="bg-gradient-to-"]
+) :is(span, strong, kbd, svg) {
+  color: #020617 !important;
+}
+
+/* 9. Authoritative Dark-Mode Solid, Gradient & Dark-Slate CTA SVG Foreground Guarantee */
+html.dark :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="px-"], a[class*="btn"]):not(.text-slate-950):not(.text-slate-900):not(.text-slate-800):not(.text-black):is(
+  .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700,
+  .bg-emerald-500, .bg-emerald-600, .bg-emerald-700, .bg-emerald-800, .bg-emerald-900,
+  .bg-green-500, .bg-green-600, .bg-green-700, .bg-forest-500, .bg-forest-600, .bg-forest-700,
+  .bg-teal-500, .bg-teal-600, .bg-teal-700, .bg-teal-800,
+  .bg-cyan-500, .bg-cyan-600, .bg-cyan-700, .bg-cyan-800,
+  .bg-sky-500, .bg-sky-600, .bg-sky-700, .bg-sky-800, .bg-glacier-500, .bg-glacier-600,
+  .bg-blue-500, .bg-blue-600, .bg-blue-700, .bg-indigo-500, .bg-indigo-600, .bg-indigo-700,
+  .bg-violet-500, .bg-violet-600, .bg-violet-700, .bg-purple-500, .bg-purple-600, .bg-purple-700,
+  .bg-pink-500, .bg-pink-600, .bg-fuchsia-500, .bg-fuchsia-600,
+  .bg-amber-500, .bg-amber-600, .bg-amber-700,
+  .bg-orange-500, .bg-orange-600, .bg-orange-700,
+  .bg-red-500, .bg-red-600, .bg-red-700, .bg-rose-500, .bg-rose-600, .bg-rose-700,
+  .bg-lime-500, .bg-lime-600,
+  [class*="bg-gradient-to-"]
+) svg {
+  color: #ffffff !important;
+}
+
+html.dark :is(button, [role="button"], [role="tab"], a.kew-cta, a[class*="px-"], a[class*="btn"]):is(.text-slate-950, .text-slate-900, .text-black):is(
+  .bg-emerald-400, .bg-emerald-500, .bg-teal-400, .bg-teal-500,
+  .bg-cyan-400, .bg-cyan-500, .bg-amber-400, .bg-amber-500,
+  .bg-lime-400, .bg-lime-500, .bg-yellow-400, .bg-yellow-500,
+  [class*="bg-gradient-to-"]
+) svg {
+  color: #020617 !important;
+}
+
+/* High-Contrast Mode Enhancement (SettingsModal toggle) */
+html.high-contrast :is(button, [role="button"], [role="tab"], a[class*="px-"], a[class*="btn"]):not(.carousel-touch-target) {
+  border-width: 2px !important;
+}
+
+/* =========================================================================
+   HIMALAYAN DISPATCH — GLOBAL HEADER DIRECT PUBLICATION ACCESS ACCENT
+   Refined muted copper/bronze accent consistent with Dispatch editorial identity
+   across both default Dark Mode and Light Mode sticky header surfaces.
+   ========================================================================= */
+header.kew-header a.kew-dispatch-direct-link,
+html.light header.kew-header a.kew-dispatch-direct-link {
+  background-color: rgba(140, 49, 37, 0.16) !important;
+  border-color: rgba(198, 126, 88, 0.38) !important;
+  color: #f4efe6 !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link .kew-dispatch-direct-label,
+html.light header.kew-header a.kew-dispatch-direct-link .kew-dispatch-direct-label {
+  color: #f4efe6 !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon,
+html.light header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-icon {
+  color: #d8956b !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow,
+html.light header.kew-header a.kew-dispatch-direct-link svg.kew-dispatch-direct-arrow {
+  color: #c88a63 !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link:hover,
+header.kew-header a.kew-dispatch-direct-link:focus-visible,
+html.light header.kew-header a.kew-dispatch-direct-link:hover,
+html.light header.kew-header a.kew-dispatch-direct-link:focus-visible {
+  background-color: rgba(140, 49, 37, 0.26) !important;
+  border-color: rgba(216, 149, 107, 0.62) !important;
+  color: #ffffff !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label,
+html.light header.kew-header a.kew-dispatch-direct-link:hover .kew-dispatch-direct-label {
+  color: #ffffff !important;
+}
+
+header.kew-header a.kew-dispatch-direct-link:hover svg,
+html.light header.kew-header a.kew-dispatch-direct-link:hover svg {
+  color: #e6ab86 !important;
+}
+
+/* =========================================================================
+   KASHMIR ECOWATCH — GLOBAL CINEMATIC CAROUSEL CONTROLLER STANDARD
+   Right-side frameless vertical progress rail (>= 768px) and compact
+   frameless mobile horizontal controller (< 768px).
+   Strictly scoped to KEW surfaces; Himalayan Dispatch is untouched.
+   ========================================================================= */
+
+/* Reserve dedicated right-side rail clearance inside multi-slide heroes on >= 768px
+   so hero headlines, floating showcase panels, and close/restore controls never collide */
+@media (min-width: 768px) and (max-width: 1919px) {
+  .kew-has-hero-rail {
+    padding-right: calc(max(var(--page-gutter), env(safe-area-inset-right, 0px)) + 2.5rem) !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .kew-has-hero-rail {
+    padding-right: calc(max(var(--page-gutter), env(safe-area-inset-right, 0px)) + 1.5rem) !important;
+  }
+}
+
+.kew-cinematic-controller {
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Mobile (< 768px): Compact frameless horizontal controller with integrated Pause/Play */
+@media (max-width: 767px) {
+  .kew-cinematic-controller--mobile-overlay {
+    position: absolute;
+    left: max(var(--page-gutter, 0.875rem), env(safe-area-inset-left, 0px));
+    bottom: 2.35rem;
+    flex-direction: row;
+    gap: 0.45rem;
+    max-width: calc(100vw - 2 * var(--page-gutter, 0.875rem));
+  }
+
+  .kew-cinematic-controller--mobile-inline {
+    position: relative;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-self: flex-start;
+    max-width: 100%;
+  }
+
+  .kew-cinematic-controller .kew-cc-track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step {
+    width: 24px;
+    min-width: 24px;
+    height: 32px;
+    min-height: 32px !important;
+  }
+
+  .kew-cinematic-controller[data-dense="true"] .kew-cc-step {
+    width: 20px;
+    min-width: 20px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step {
+    width: 14px;
+    min-width: 14px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step[aria-selected="true"] {
+    width: 30px;
+    min-width: 30px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step[aria-selected="true"] {
+    width: 22px;
+    min-width: 22px;
+  }
+
+  .kew-cinematic-controller .kew-cc-bar {
+    width: 12px;
+    height: 2.5px;
+  }
+
+  .kew-cinematic-controller[data-dense="true"] .kew-cc-bar {
+    width: 10px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-bar {
+    width: 7px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step[aria-selected="true"] .kew-cc-bar {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step[aria-selected="true"] .kew-cc-bar {
+    width: 16px;
+  }
+}
+
+/* Tablet, Vertical Desktop, Laptop, QHD, Ultrawide & 4K (>= 768px):
+   Right-side vertically centered frameless progress rail */
+@media (min-width: 768px) {
+  .kew-cinematic-controller {
+    position: absolute;
+    right: clamp(0.75rem, 1.55vw, 2.75rem);
+    top: var(--kew-cc-top, calc(50% + 1.35rem));
+    transform: translateY(-50%);
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45rem;
+  }
+
+  .kew-cinematic-controller .kew-cc-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step {
+    width: 34px;
+    min-width: 34px;
+    height: 17px;
+    min-height: 17px !important;
+  }
+
+  .kew-cinematic-controller[data-dense="true"] .kew-cc-step {
+    height: 15px;
+    min-height: 15px !important;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step {
+    height: 11px;
+    min-height: 11px !important;
+  }
+
+  .kew-cinematic-controller .kew-cc-step[aria-selected="true"] {
+    height: 25px;
+    min-height: 25px !important;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step[aria-selected="true"] {
+    height: 18px;
+    min-height: 18px !important;
+  }
+
+  .kew-cinematic-controller .kew-cc-bar {
+    width: 2px;
+    height: 11px;
+  }
+
+  .kew-cinematic-controller[data-dense="true"] .kew-cc-bar {
+    height: 9px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-bar {
+    height: 6.5px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step:hover .kew-cc-bar {
+    height: 13px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step:hover .kew-cc-bar {
+    height: 9.5px;
+  }
+
+  .kew-cinematic-controller .kew-cc-step[aria-selected="true"] .kew-cc-bar {
+    width: 2.5px;
+    height: 21px;
+  }
+
+  .kew-cinematic-controller[data-ultra-dense="true"] .kew-cc-step[aria-selected="true"] .kew-cc-bar {
+    width: 2.5px;
+    height: 15px;
+  }
+}
+
+/* Typography & Indicator Tokens (Frameless — Zero Container, Border, or Decorative Fill) */
+.kew-cinematic-controller .kew-cc-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 6px rgba(2, 6, 23, 0.85);
+}
+
+.kew-cinematic-controller .kew-cc-current {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f8fafc !important;
+}
+
+.kew-cinematic-controller .kew-cc-total {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.85) !important;
+}
+
+/* Authoritative Frameless Button Override across Dark, Light & High-Contrast Modes */
+html .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause),
+html.dark .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause),
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], body) .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause),
+html.high-contrast .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause),
+html .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause):hover,
+html.light :is([data-kew-dark-surface="true"], [class*="cinematicRoot"], body) .kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause):hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+}
+
+.kew-cinematic-controller :is(.kew-cc-step, .kew-cc-pause):focus-visible {
+  outline: 1.5px solid #34d399 !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+/* Muted Slate Inactive Indicator -> Refined Emerald Active Indicator */
+.kew-cinematic-controller .kew-cc-bar {
+  display: block;
+  border-radius: 9999px !important;
+  background-color: rgba(148, 163, 184, 0.45);
+  transition: width 220ms ease, height 220ms ease, background-color 220ms ease;
+  pointer-events: none;
+}
+
+.kew-cinematic-controller .kew-cc-step:hover .kew-cc-bar {
+  background-color: rgba(226, 232, 240, 0.85);
+}
+
+.kew-cinematic-controller .kew-cc-step[aria-selected="true"] .kew-cc-bar {
+  background-color: #10b981;
+}
+
+/* Compact Frameless Pause / Play Toggle */
+.kew-cinematic-controller .kew-cc-pause {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px !important;
+  color: rgba(203, 213, 225, 0.88) !important;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.kew-cinematic-controller .kew-cc-pause:hover {
+  color: #ffffff !important;
+}
+
+.kew-cinematic-controller .kew-cc-pause-icon {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  color: currentColor !important;
+  filter: drop-shadow(0 1px 4px rgba(2, 6, 23, 0.8));
+}
+
+.kew-cinematic-controller .kew-cc-pause-icon--paused,
+html.dark .kew-cinematic-controller .kew-cc-pause-icon--paused,
+html.light .kew-cinematic-controller .kew-cc-pause-icon--paused {
+  color: #34d399 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kew-cinematic-controller .kew-cc-bar,
+  .kew-cinematic-controller .kew-cc-pause {
+    transition: none;
+  }
+}
+
+/* =========================================================================
+   KASHMIR ECOWATCH — GLOBAL DEVICE-AWARE HERO HEIGHT STANDARDIZATION
+   Strictly scoped to KEW module & submodule hero containers ONLY.
+   - Homepage Hero (#kew-cinematic-introduction): 100% Reference (Untouched)
+   - All Other KEW Module & Submodule Heroes: Homepage Reference × 0.80
+   - Himalayan Dispatch, Virtual Scientific Hall & GIS Workspaces: Excluded
+   ========================================================================= */
+:root {
+  /* Master Homepage Reference Hero Height (derived from CinematicIntroduction.module.css) */
+  --kew-hero-reference-vh: 100vh;
+  --kew-hero-reference-height: 100svh;
+  --kew-hero-module-scale: 0.8;
+
+  /* Proportional 80% Module & Submodule Hero Target Height */
+  --kew-module-hero-height-vh: calc(var(--kew-hero-reference-vh) * var(--kew-hero-module-scale));
+  --kew-module-hero-height: calc(var(--kew-hero-reference-height) * var(--kew-hero-module-scale));
+
+  /* Viewport- & safe-area-aware internal hero vertical clearance */
+  --kew-module-hero-pt: calc(clamp(4.25rem, 8svh, 5.25rem) + env(safe-area-inset-top, 0px));
+  --kew-module-hero-pb: calc(clamp(2.25rem, 4.5svh, 3.75rem) + env(safe-area-inset-bottom, 0px));
+  --kew-module-hero-pb-rail: calc(clamp(4.15rem, 7svh, 5rem) + env(safe-area-inset-bottom, 0px));
+}
+
+/* Tablet Landscape, Tablet Portrait & Vertical Desktop (< 1280px · compact 1-tier header) */
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root {
+    --kew-module-hero-pt: clamp(4.75rem, 8.5svh, 7.25rem);
+    --kew-module-hero-pb: clamp(2.25rem, 4.2svh, 4rem);
+  }
+}
+
+/* Laptop, Standard Desktop, Ultrawide, Vertical QHD/4K & 4K/5K (>= 1280px · 2-tier header) */
+@media (min-width: 1280px) {
+  :root {
+    --kew-module-hero-pt: clamp(6.15rem, 9.8svh, 9rem);
+    --kew-module-hero-pb: clamp(2.25rem, 3.8svh, 4.25rem);
+  }
+}
+
+/* Short laptop/tablet heights & zoomed desktop viewports: trim excess padding before exceeding 80% */
+@media (min-width: 768px) and (max-width: 1279px) and (max-height: 820px) {
+  :root {
+    --kew-module-hero-pt: 4.5rem;
+    --kew-module-hero-pb: 2rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 820px) {
+  :root {
+    --kew-module-hero-pt: 5.85rem;
+    --kew-module-hero-pb: 2rem;
+  }
+}
+
+/* Mobile landscape & ultra-short landscape viewports (mirrors Homepage Reference landscape rules) */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --kew-hero-reference-height: max(100svh, 31rem);
+    --kew-module-hero-pt: calc(4rem + env(safe-area-inset-top, 0px));
+    --kew-module-hero-pb: calc(2rem + env(safe-area-inset-bottom, 0px));
+    --kew-module-hero-pb-rail: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) {
+  box-sizing: border-box;
+  min-height: var(--kew-module-hero-height-vh);
+  min-height: var(--kew-module-hero-height);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  container-type: inline-size;
+  container-name: kew-module-hero;
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) > :is(.kew-heading-inner, .kew-module-hero-inner) {
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--kew-module-hero-pt);
+  padding-bottom: var(--kew-module-hero-pb);
+}
+
+@media (max-width: 767px) {
+  :is(.kew-heading-surface, .kew-module-hero-surface) > :is(.kew-heading-inner, .kew-module-hero-inner).kew-has-hero-rail {
+    padding-bottom: var(--kew-module-hero-pb-rail);
+  }
+}
+
+/* =========================================================================
+   KASHMIR ECOWATCH — GLOBAL HERO COLOR HARMONY & ADAPTIVE CONTENT CONTRAST
+   Strictly scoped to KEW hero sections (:is(.kew-heading-surface, .kew-module-hero-surface)).
+   - Approved Palette: KEW Emerald (#34D399), Himalayan Teal (#5EEAD4), Glacial Mint (#99E6D0)
+   - Text Tokens: Pure White (#FFFFFF), Glacial White (#E2E8F0), Silver Slate (#CBD5E1)
+   - Localized Directional Scrim: Deep Atmospheric Navy (#080E1C), luminance-adaptive
+   - Excludes right-side showcase cards ([data-kew-hero-overlay="true"]), controllers & non-hero UI
+   ========================================================================= */
+:root {
+  --kew-hero-emerald: #34d399;
+  --kew-hero-teal: #5eead4;
+  --kew-hero-glacial-mint: #99e6d0;
+  --kew-hero-white: #ffffff;
+  --kew-hero-description: #e2e8f0;
+  --kew-hero-label: #cbd5e1;
+  --kew-hero-navy: #080e1c;
+  --kew-hero-gradient: linear-gradient(
+    96deg,
+    var(--kew-hero-emerald) 0%,
+    var(--kew-hero-teal) 54%,
+    var(--kew-hero-glacial-mint) 100%
+  );
+}
+
+/* 1. Localized Luminance-Adaptive Directional Atmospheric Scrim (#080E1C) */
+.kew-hero-directional-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 420ms ease;
+  /* Portrait, Tablet & Mobile (<1024px or portrait desktop): protects full 70ch text block while preserving lower-right visual depth */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(8, 14, 28, var(--kew-scrim-strong, 0.86)) 0%,
+      rgba(8, 14, 28, var(--kew-scrim-mid, 0.78)) 58%,
+      rgba(8, 14, 28, 0.88) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(8, 14, 28, 0.42) 0%,
+      rgba(8, 14, 28, 0.22) 68%,
+      rgba(8, 14, 28, 0.06) 100%
+    );
+}
+
+/* Landscape Laptop, Desktop, Ultrawide & 4K: strong localized left text-zone scrim tapering cleanly to reveal right-side photography */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .kew-hero-directional-scrim {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 28, var(--kew-scrim-strong, 0.86)) 0%,
+        rgba(8, 14, 28, var(--kew-scrim-strong, 0.86)) 40%,
+        rgba(8, 14, 28, var(--kew-scrim-mid, 0.75)) 56%,
+        rgba(8, 14, 28, var(--kew-scrim-soft, 0.34)) 78%,
+        rgba(8, 14, 28, var(--kew-scrim-edge, 0.20)) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 14, 28, 0.58) 0%,
+        rgba(8, 14, 28, 0.14) 26%,
+        rgba(8, 14, 28, 0.18) 74%,
+        rgba(8, 14, 28, 0.84) 100%
+      );
+  }
+
+  /* Symmetric centered directional scrim when hero masthead is centered (e.g. EcoVoices) */
+  :is(.kew-heading-surface, .kew-module-hero-surface):has(.text-center h1) .kew-hero-directional-scrim {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 28, var(--kew-scrim-soft, 0.36)) 0%,
+        rgba(8, 14, 28, var(--kew-scrim-strong, 0.86)) 22%,
+        rgba(8, 14, 28, var(--kew-scrim-strong, 0.86)) 78%,
+        rgba(8, 14, 28, var(--kew-scrim-soft, 0.36)) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 14, 28, 0.62) 0%,
+        rgba(8, 14, 28, 0.22) 35%,
+        rgba(8, 14, 28, 0.86) 100%
+      );
+  }
+}
+
+/* Solid Atmospheric Navy surface for non-photographic institutional heroes */
+.kew-module-hero-atmospheric,
+.kew-module-hero-surface.bg-blue-700 {
+  background-color: var(--kew-hero-navy) !important;
+  background-image:
+    radial-gradient(ellipse 68% 58% at 18% 24%, rgba(52, 211, 153, 0.12), transparent 70%),
+    radial-gradient(ellipse 52% 48% at 82% 72%, rgba(94, 234, 212, 0.08), transparent 72%) !important;
+}
+
+/* 2. Harmonized KEW Emerald -> Himalayan Teal -> Glacial Mint Hero Headline Accents */
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-hero-headline-gradient,
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(h1, [data-kew-synced-slides]) .bg-clip-text:not(.kew-brand-identity):not(.kew-brand-identity *),
+:is(.kew-heading-surface, .kew-module-hero-surface) h1.bg-clip-text,
+:is(.kew-heading-surface, .kew-module-hero-surface) h1 .gradient-text {
+  background-image: var(--kew-hero-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 12px rgba(8, 14, 28, 0.72));
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) h1 > span:not(.bg-clip-text):not(.sr-only):not(.kew-brand-identity):is(
+  [class*="text-emerald-"],
+  [class*="text-teal-"],
+  [class*="text-cyan-"],
+  [class*="text-amber-"],
+  [class*="text-sky-"],
+  [class*="text-violet-"]
+) {
+  background-image: var(--kew-hero-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 3. High-Contrast Glacial White (#E2E8F0) Hero Descriptions & Silver Slate (#CBD5E1) Supporting Labels */
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-hero-description,
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-heading-scope p:not([data-kew-hero-overlay="true"] *),
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-module-hero-inner p:not([data-kew-hero-overlay="true"] *):not(.kew-card *):not(.card-intelligence *):not([class*="Card"] *) {
+  color: var(--kew-hero-description) !important;
+  text-shadow: 0 1px 8px rgba(8, 14, 28, 0.72);
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) .kew-hero-eyebrow,
+:is(.kew-heading-surface, .kew-module-hero-surface) nav[aria-label="Breadcrumb"] {
+  color: var(--kew-hero-label) !important;
+  text-shadow: 0 1px 6px rgba(8, 14, 28, 0.78);
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) nav[aria-label="Breadcrumb"] a {
+  color: var(--kew-hero-label);
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) nav[aria-label="Breadcrumb"] a:hover,
+:is(.kew-heading-surface, .kew-module-hero-surface) nav[aria-label="Breadcrumb"] [aria-current="page"] {
+  color: var(--kew-hero-white) !important;
+}
+
+/* 4. Secondary / Outline Hero CTA Contrast Protection over Bright Backgrounds */
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(.kew-heading-scope, .kew-module-hero-inner) :is(button, a):is([class*="border-white"], [class*="border-slate"], [class*="border-emerald-400"]):not([class*="bg-emerald-5"]):not([class*="bg-emerald-6"]):not([data-kew-hero-overlay="true"] *):not(.kew-cinematic-controller *):not(.kew-card *):not(.card-intelligence *) {
+  background-color: rgba(8, 14, 28, 0.78) !important;
+  border-color: rgba(226, 232, 240, 0.34) !important;
+  color: var(--kew-hero-white) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(8, 14, 28, 0.42);
+}
+
+:is(.kew-heading-surface, .kew-module-hero-surface) :is(.kew-heading-scope, .kew-module-hero-inner) :is(button, a):is([class*="border-white"], [class*="border-slate"], [class*="border-emerald-400"]):not([class*="bg-emerald-5"]):not([class*="bg-emerald-6"]):not([data-kew-hero-overlay="true"] *):not(.kew-cinematic-controller *):not(.kew-card *):not(.card-intelligence *):hover {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+  border-color: rgba(52, 211, 153, 0.62) !important;
+}

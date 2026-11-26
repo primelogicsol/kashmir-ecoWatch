@@ -57,7 +57,7 @@ export default function NGOImpactMapPage() {
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
-      <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col gap-6">
+      <div className="flex-1 kew-container-wide py-6 md:py-8 flex flex-col gap-6">
         
         <Card className="flex flex-col h-[70vh] bg-slate-900 border-slate-800 overflow-hidden relative">
           {/* This would be a real map in production, re-using MapPreviewSection as a placeholder layout */}

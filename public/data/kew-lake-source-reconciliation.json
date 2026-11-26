@@ -1,0 +1,681 @@
+{
+  "summary": {
+    "generatedAt": "2026-11-25T22:15:00Z",
+    "kashmirDivisionTotalUniqueIdentities": 521,
+    "extendedWesternHimalayanReferenceLakes": 32,
+    "combinedPlatformMasterRecords": 553,
+    "kashmirActiveOrObservedLakes": 490,
+    "kashmirHistoricallyDisappearedOrConverted": 31,
+    "kashmirNamedLakes": 418,
+    "kashmirUnnamedLakes": 103,
+    "kashmirUrbanLakes": 29,
+    "kashmirRuralFloodplainLakes": 169,
+    "kashmirMontaneSubalpineLakes": 13,
+    "kashmirAlpineLakes": 310,
+    "kashmirGlacialOriginLakes": 314,
+    "kashmirWetlandAssociatedLakes": 50,
+    "kashmirWithVerifiedTrophicStatus": 22,
+    "kashmirWithRecent2020PlusLimnology": 13,
+    "kashmirWithHistoricalLimnologyOnly": 9,
+    "kashmirRequiringTrophicAssessment": 499,
+    "kashmirExactGeoreferencedCount": 147,
+    "kashmirOpticalBloomEligibleCount": 29,
+    "kashmirTrophicBreakdown": {
+      "Oligotrophic": 10,
+      "Mesotrophic": 1,
+      "Eutrophic": 6,
+      "Hypereutrophic": 5,
+      "Insufficient Evidence": 499
+    },
+    "externalSourceCompleteness": [
+      {
+        "sourceId": "SRC-DEERS-2012",
+        "title": "Directory of Lakes and Waterbodies of J&K State (Dr. Hanifa Nasim & Dr. Tasneem Keng, DEERS May 2012, LISS-III 2009–2010)",
+        "expectedKashmirRecords": 415,
+        "retrievedKashmirRecords": 415,
+        "parsedKashmirRecords": 415,
+        "awaitingExtraction": 0,
+        "presentStatus1967To2009Rows": 45,
+        "outOfBoundaryRecords": 815,
+        "outOfBoundaryNote": "Jammu Division: 150 records; Ladakh: 665 records (Combined historical statewide directory = 1,230).",
+        "status": "100% Extracted & Verified (SHA-256 Verified PDF)"
+      },
+      {
+        "sourceId": "SRC-UOK-ZENODO-2025",
+        "title": "Glacial Lake Outburst Flood Susceptibility and Potential Downstream Implications Across the Kashmir Himalaya (Rashid & Kashani, March 19, 2025, DOI: 10.5281/zenodo.15051825)",
+        "expectedKashmirRecords": 155,
+        "retrievedKashmirRecords": 155,
+        "parsedKashmirRecords": 155,
+        "awaitingExtraction": 0,
+        "presentStatus1967To2009Rows": 0,
+        "outOfBoundaryRecords": 0,
+        "outOfBoundaryNote": "All 155 UTM Zone 43N polygons lie within 14 Upper Jhelum / Kashmir Himalayan watersheds.",
+        "status": "100% Extracted & Inverse-Projected to WGS84 (CC BY 4.0)"
+      },
+      {
+        "sourceId": "SRC-CAG-2025-R4",
+        "title": "CAG of India Report No. 4 of 2025: Conservation and Management of Lakes in Jammu and Kashmir (ended March 2022)",
+        "expectedKashmirRecords": 330,
+        "retrievedKashmirRecords": 13,
+        "parsedKashmirRecords": 13,
+        "awaitingExtraction": 317,
+        "presentStatus1967To2009Rows": 0,
+        "outOfBoundaryRecords": 367,
+        "outOfBoundaryNote": "Jammu Division historical comparison = 367 records (Combined = 697). Official 4-page CAG Press Release retrieved via CloudFront CDN; main saiindia.gov.in timed out (WinError 10060) and cag.gov.in returned HTTP 500, so Appendices 2.1–2.10 (317 remaining individual Kashmir rows: 56 disappeared, 144 decreased, 104 increased, 26 unchanged) remain queued.",
+        "status": "Aggregate Audit Verified + 13 Named Kashmir Lakes Linked; 317 Appendix Rows Queued"
+      },
+      {
+        "sourceId": "SRC-JALSHAKTI-WB1",
+        "title": "Ministry of Jal Shakti First Census of Water Bodies (2017–18 Reference, All-India & J&K State Report pp. 181–186)",
+        "expectedKashmirRecords": 37,
+        "retrievedKashmirRecords": 37,
+        "parsedKashmirRecords": 37,
+        "awaitingExtraction": 0,
+        "presentStatus1967To2009Rows": 0,
+        "outOfBoundaryRecords": 9728,
+        "outOfBoundaryNote": "Of 9,765 enumerated J&K water bodies, only 37 (0.38%) are classified as Lakes; 9,728 are Ponds (5,256), Reservoirs (441), Tanks (179), Check Dams (29), and Others (3,823). Unit-level OGD API CSV requires authenticated key.",
+        "status": "State Annexure Extracted & Strictly Separated from Non-Lake Ponds/Tanks"
+      }
+    ],
+    "reconciliationCounts": {
+      "deersMatchedToExistingKew": 35,
+      "deersAddedAsDistinctIdentities": 380,
+      "presentStatusMatchedToActiveOrMarshy": 17,
+      "presentStatusAddedAsDisappeared": 28,
+      "zenodoMatchedToNamedAlpineLakes": 77,
+      "zenodoAddedAsGeoreferencedGlacialLakes": 78,
+      "overlapAdvisory": "78 georeferenced Zenodo glacial lakes (1992–2024) without unambiguous name matches potentially correspond spatially to a subset of ungeoreferenced high-altitude DEERS 2012 tabular tarns (>=3,400 m), and per Section 16 ('Do not force a match where spatial evidence is insufficient') are retained as distinct auditable records until DEERS sheet coordinates are released."
+    }
+  },
+  "districtBreakdown10": [
+    {
+      "district": "Anantnag",
+      "totalVerifiedLakeIdentities": 104,
+      "currentlyObservedLakes": 95,
+      "historicallyDisappearedOrConverted": 9,
+      "namedLakes": 88,
+      "unnamedLakes": 16,
+      "exactCoordinateGeoreferenced": 34,
+      "glacialPolygonMapped": 31,
+      "trophicDistribution": {
+        "Oligotrophic": 2,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 102
+      },
+      "settingDistribution": {
+        "Alpine": 90,
+        "Rural / Floodplain": 12,
+        "Subalpine": 2
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Bandipora",
+      "totalVerifiedLakeIdentities": 29,
+      "currentlyObservedLakes": 29,
+      "historicallyDisappearedOrConverted": 0,
+      "namedLakes": 24,
+      "unnamedLakes": 5,
+      "exactCoordinateGeoreferenced": 17,
+      "glacialPolygonMapped": 14,
+      "trophicDistribution": {
+        "Oligotrophic": 0,
+        "Mesotrophic": 0,
+        "Eutrophic": 1,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 28
+      },
+      "settingDistribution": {
+        "Rural / Floodplain": 12,
+        "Subalpine": 1,
+        "Alpine": 16
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Baramulla",
+      "totalVerifiedLakeIdentities": 105,
+      "currentlyObservedLakes": 99,
+      "historicallyDisappearedOrConverted": 6,
+      "namedLakes": 78,
+      "unnamedLakes": 27,
+      "exactCoordinateGeoreferenced": 5,
+      "glacialPolygonMapped": 5,
+      "trophicDistribution": {
+        "Oligotrophic": 1,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 104
+      },
+      "settingDistribution": {
+        "Alpine": 68,
+        "Rural / Floodplain": 35,
+        "Montane / Forest": 1,
+        "Subalpine": 1
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Budgam",
+      "totalVerifiedLakeIdentities": 45,
+      "currentlyObservedLakes": 42,
+      "historicallyDisappearedOrConverted": 3,
+      "namedLakes": 36,
+      "unnamedLakes": 9,
+      "exactCoordinateGeoreferenced": 15,
+      "glacialPolygonMapped": 14,
+      "trophicDistribution": {
+        "Oligotrophic": 0,
+        "Mesotrophic": 1,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 44
+      },
+      "settingDistribution": {
+        "Montane / Forest": 3,
+        "Rural / Floodplain": 11,
+        "Alpine": 31
+      },
+      "dataGapNote": "Complete DEERS 2012 district tabular extraction verified; field limnological sampling required."
+    },
+    {
+      "district": "Ganderbal",
+      "totalVerifiedLakeIdentities": 49,
+      "currentlyObservedLakes": 48,
+      "historicallyDisappearedOrConverted": 1,
+      "namedLakes": 38,
+      "unnamedLakes": 11,
+      "exactCoordinateGeoreferenced": 36,
+      "glacialPolygonMapped": 28,
+      "trophicDistribution": {
+        "Oligotrophic": 5,
+        "Mesotrophic": 0,
+        "Eutrophic": 3,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 41
+      },
+      "settingDistribution": {
+        "Rural / Floodplain": 14,
+        "Alpine": 35
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Kulgam",
+      "totalVerifiedLakeIdentities": 25,
+      "currentlyObservedLakes": 25,
+      "historicallyDisappearedOrConverted": 0,
+      "namedLakes": 17,
+      "unnamedLakes": 8,
+      "exactCoordinateGeoreferenced": 16,
+      "glacialPolygonMapped": 15,
+      "trophicDistribution": {
+        "Oligotrophic": 1,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 24
+      },
+      "settingDistribution": {
+        "Alpine": 25
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Kupwara",
+      "totalVerifiedLakeIdentities": 66,
+      "currentlyObservedLakes": 66,
+      "historicallyDisappearedOrConverted": 0,
+      "namedLakes": 59,
+      "unnamedLakes": 7,
+      "exactCoordinateGeoreferenced": 0,
+      "glacialPolygonMapped": 0,
+      "trophicDistribution": {
+        "Oligotrophic": 0,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 66
+      },
+      "settingDistribution": {
+        "Rural / Floodplain": 62,
+        "Alpine": 2,
+        "Montane / Forest": 1,
+        "Subalpine": 1
+      },
+      "dataGapNote": "Complete DEERS 2012 district tabular extraction verified; field limnological sampling required."
+    },
+    {
+      "district": "Pulwama",
+      "totalVerifiedLakeIdentities": 26,
+      "currentlyObservedLakes": 18,
+      "historicallyDisappearedOrConverted": 8,
+      "namedLakes": 24,
+      "unnamedLakes": 2,
+      "exactCoordinateGeoreferenced": 2,
+      "glacialPolygonMapped": 2,
+      "trophicDistribution": {
+        "Oligotrophic": 0,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 26
+      },
+      "settingDistribution": {
+        "Rural / Floodplain": 21,
+        "Montane / Forest": 3,
+        "Alpine": 2
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Shopian",
+      "totalVerifiedLakeIdentities": 17,
+      "currentlyObservedLakes": 17,
+      "historicallyDisappearedOrConverted": 0,
+      "namedLakes": 12,
+      "unnamedLakes": 5,
+      "exactCoordinateGeoreferenced": 13,
+      "glacialPolygonMapped": 13,
+      "trophicDistribution": {
+        "Oligotrophic": 0,
+        "Mesotrophic": 0,
+        "Eutrophic": 0,
+        "Hypereutrophic": 0,
+        "Insufficient Evidence": 17
+      },
+      "settingDistribution": {
+        "Alpine": 17
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    },
+    {
+      "district": "Srinagar",
+      "totalVerifiedLakeIdentities": 55,
+      "currentlyObservedLakes": 51,
+      "historicallyDisappearedOrConverted": 4,
+      "namedLakes": 42,
+      "unnamedLakes": 13,
+      "exactCoordinateGeoreferenced": 9,
+      "glacialPolygonMapped": 2,
+      "trophicDistribution": {
+        "Oligotrophic": 1,
+        "Mesotrophic": 0,
+        "Eutrophic": 2,
+        "Hypereutrophic": 5,
+        "Insufficient Evidence": 47
+      },
+      "settingDistribution": {
+        "Urban": 29,
+        "Alpine": 24,
+        "Rural / Floodplain": 2
+      },
+      "dataGapNote": "DEERS 2012 pre-2007 parent-district tabular entries without published coordinates remain assigned to parent district until SOI/LISS-III sheet georeferencing."
+    }
+  ],
+  "deersPresentStatus1967To2009": [
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-01",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 1,
+      "originalName": "Khushal Sar",
+      "status2009": "Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-02",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 2,
+      "originalName": "Gilsar",
+      "status2009": "Habitation/Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-03",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 3,
+      "originalName": "Ahansar",
+      "status2009": "Marshy/Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-04",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 4,
+      "originalName": "Waskur",
+      "status2009": "Agriculture/Marshy/Habitation"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-05",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 5,
+      "originalName": "Kharbagh",
+      "status2009": "Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-06",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 6,
+      "originalName": "Khanpur",
+      "status2009": "Agriculture/Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-07",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 7,
+      "originalName": "Shalihar",
+      "status2009": "Marshy/Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-08",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 8,
+      "originalName": "Rakhi Rabitar",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-09",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 9,
+      "originalName": "Babe Bemb",
+      "status2009": "Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-10",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 10,
+      "originalName": "Rakhi Kujar",
+      "status2009": "Marshy/Agriculture plantation"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-11",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 11,
+      "originalName": "Anchar Lake",
+      "status2009": "Plantation/Habitation/Agriculture/ Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-12",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 12,
+      "originalName": "Nagin",
+      "status2009": "Marshy/Habitation"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-13",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 13,
+      "originalName": "Nesbal Nambal",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-SRI-14",
+      "sourcePage": 50,
+      "originalDistrict": "Srinagar",
+      "sNo": 14,
+      "originalName": "Dal Lake",
+      "status2009": "Marshy/Habitation Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-ANA-01",
+      "sourcePage": 51,
+      "originalDistrict": "Anantnag",
+      "sNo": 1,
+      "originalName": "RampurTalao",
+      "status2009": "Playground"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-ANA-02",
+      "sourcePage": 51,
+      "originalDistrict": "Anantnag",
+      "sNo": 2,
+      "originalName": "Mumshahun Talao",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-ANA-03",
+      "sourcePage": 51,
+      "originalDistrict": "Anantnag",
+      "sNo": 3,
+      "originalName": "Gashramun Talao",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-ANA-04",
+      "sourcePage": 51,
+      "originalDistrict": "Anantnag",
+      "sNo": 4,
+      "originalName": "Kiel Khanun Talao",
+      "status2009": "Play field"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-ANA-05",
+      "sourcePage": 51,
+      "originalDistrict": "Anantnag",
+      "sNo": 5,
+      "originalName": "Chakla Nambal",
+      "status2009": "Agriculture land"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-01",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 1,
+      "originalName": "Wudin Sar",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-02",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 2,
+      "originalName": "Tsore Teng",
+      "status2009": "Seasonal"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-03",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 3,
+      "originalName": "Yakmanpor",
+      "status2009": "Agriculture/Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-04",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 4,
+      "originalName": "Malipur",
+      "status2009": "Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-05",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 5,
+      "originalName": "Panznor",
+      "status2009": "Agriculture/Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-06",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 6,
+      "originalName": "Wullar",
+      "status2009": "Marshy/ Plantation/Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-07",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 7,
+      "originalName": "Bonehar Nambal",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-08",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 8,
+      "originalName": "Khurwan Sar",
+      "status2009": "Marshy/Habitation Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-09",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 9,
+      "originalName": "Bod Nambal (Gadsar)",
+      "status2009": "Marshy/Agriculture Horticulture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-10",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 10,
+      "originalName": "Delina Dhat Nambal",
+      "status2009": "Land proposal university North campus)"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BAR-11",
+      "sourcePage": 51,
+      "originalDistrict": "Baramulla",
+      "sNo": 11,
+      "originalName": "Haigam Jhil",
+      "status2009": "Agriculture/Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-01",
+      "sourcePage": 51,
+      "originalDistrict": "Pulwama",
+      "sNo": 1,
+      "originalName": "Bod bagh Nambal",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-02",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 2,
+      "originalName": "Rakhi Malanpur",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-03",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 3,
+      "originalName": "Thal Sar",
+      "status2009": "Marshy"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-04",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 4,
+      "originalName": "Chowkidar Sar",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-05",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 5,
+      "originalName": "Buner Nambal",
+      "status2009": "Horticulture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-06",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 6,
+      "originalName": "Bod Sar",
+      "status2009": "Marshy/Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-07",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 7,
+      "originalName": "Drangbal Sar",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-PUL-08",
+      "sourcePage": 52,
+      "originalDistrict": "Pulwama",
+      "sNo": 8,
+      "originalName": "Begam bagh Nambal",
+      "status2009": "Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BUD-01",
+      "sourcePage": 52,
+      "originalDistrict": "Budgam",
+      "sNo": 1,
+      "originalName": "Rakhi Arth",
+      "status2009": "Land /Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BUD-02",
+      "sourcePage": 52,
+      "originalDistrict": "Budgam",
+      "sNo": 2,
+      "originalName": "Nambli Narkur",
+      "status2009": "Plantation/Agriculture /Marshy/Habitation"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BUD-03",
+      "sourcePage": 52,
+      "originalDistrict": "Budgam",
+      "sNo": 3,
+      "originalName": "Hoker Sar",
+      "status2009": "Plantation/Agriculture/Marshy Habitation"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-BUD-04",
+      "sourcePage": 52,
+      "originalDistrict": "Budgam",
+      "sNo": 4,
+      "originalName": "Danda Pokhan",
+      "status2009": "Marshy/Agriculture"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-KUP-01",
+      "sourcePage": 52,
+      "originalDistrict": "Kupwara",
+      "sNo": 1,
+      "originalName": "Buta Sar",
+      "status2009": "Seasonal"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-KUP-02",
+      "sourcePage": 52,
+      "originalDistrict": "Kupwara",
+      "sNo": 2,
+      "originalName": "Tekipur",
+      "status2009": "Seasonal"
+    },
+    {
+      "sourceRecordId": "DEERS-2012-PS-KUP-03",
+      "sourcePage": 52,
+      "originalDistrict": "Kupwara",
+      "sNo": 3,
+      "originalName": "Nonn Khan Chak",
+      "status2009": "Seasonal"
+    }
+  ]
+}

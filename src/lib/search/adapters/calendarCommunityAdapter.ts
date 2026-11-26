@@ -223,6 +223,41 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
     });
   }
 
+  // 5a. EcoVoices Top-Level Module & Creative Departments
+  documents.push({
+    id: 'module:ecovoices',
+    documentType: 'module_page',
+    resultClass: 'module_hub',
+    domain: 'ecological_calendar',
+    title: 'EcoVoices — Environmental Arts, Music & Creative Expression',
+    subtitle: 'Independent Creative Platform · Music, Poetry, Cinema, Visual Arts & Soundscapes',
+    description:
+      'A dedicated platform for communicating environmental consciousness through music, poetry, literature, visual arts, natural soundscapes, and cinematic storytelling across the Western Himalayas, featuring SufiPulse USA environmental compositions.',
+    canonicalUrl: '/ecovoices',
+    parentModule: 'EcoVoices',
+    subregion: 'Multi-Regional',
+    tags: [
+      'EcoVoices',
+      'Environmental Music',
+      'Environmental Poetry',
+      'Environmental Cinema',
+      'Environmental Art',
+      'Sounds of Nature',
+      'Creative Contributors',
+      'SufiPulse USA',
+      'Pani Gawah Hai',
+    ],
+    synonyms: ['Eco Voices', 'Kashmir Environmental Music', 'SufiPulse EcoVoices'],
+    source: 'Kashmir EcoWatch × SufiPulse USA Creative Initiative',
+    trustBadge: 'Platform Module',
+    temporalNature: 'reference',
+    verificationStatus: 'Active Top-Level Module',
+    dataFreshness: 'static_module',
+    accessClassification: 'public',
+    ctaLabel: 'Enter EcoVoices',
+    adapterId: 'calendar-community',
+  });
+
   for (const song of ECOVOICES_RELEASES || []) {
     if (!song?.slug) continue;
     const lex = enrichWithMultilingualLexicon(`${song.title} ${(song as any).environmentalTheme || ''}`);
@@ -232,14 +267,14 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
       resultClass: 'scientific_record',
       domain: 'ecological_calendar',
       title: `${song.title} — EcoVoices Environmental Music`,
-      subtitle: `SufiPulse USA × Kashmir EcoWatch · ${(song as any).artist || 'EcoVoices'}`,
+      subtitle: `SufiPulse USA × Kashmir EcoWatch · ${(song as any).artistCredit || 'Dr. Zarf-e-Noori'}`,
       description:
-        (song as any).ecologicalNarrative ||
+        (song as any).ecologicalDossier ||
         (song as any).summary ||
         (song as any).description ||
         'Curated environmental stewardship musical release paired with Outdoor Classroom curriculum.',
-      canonicalUrl: `/environmental-calendar/ecovoices/song/${song.slug}`,
-      parentModule: 'Environmental Calendar · EcoVoices',
+      canonicalUrl: `/ecovoices/song/${song.slug}`,
+      parentModule: 'EcoVoices · Environmental Arts & Music',
       subregion: 'Multi-Regional',
       tags: ['EcoVoices', 'Environmental Music', 'SufiPulse', (song as any).themeCategory || ''].filter(Boolean),
       synonyms: lex.synonyms,
@@ -250,7 +285,7 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
       verificationStatus: 'Published Cultural Release',
       dataFreshness: 'static_module',
       accessClassification: 'public',
-      ctaLabel: 'Listen & View Lesson',
+      ctaLabel: 'Listen & View Dossier',
       adapterId: 'calendar-community',
     });
   }

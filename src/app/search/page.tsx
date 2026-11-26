@@ -15,7 +15,9 @@ import {
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Heading } from '@/components/common/Heading';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { ModuleKpiStrip, type ModuleKpi } from '@/components/common/ModuleKpiStrip';
 import { ScientificQuestionWorkbench } from '@/components/search/ScientificQuestionWorkbench';
 import {
   ScientificSynthesisResponse,
@@ -435,50 +437,221 @@ function SearchWorkbench() {
     baselineStats?.indexStats?.totalIndexedDocuments ||
     0;
 
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      <main className="flex-1 relative z-10 pt-24 sm:pt-28 md:pt-32 pb-20 container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Breadcrumb + Index Diagnostics Trigger */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <nav className="flex items-center gap-2 text-xs text-slate-400">
-            <Link href="/" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-              <Home className="w-3.5 h-3.5" />
-              <span>Home</span>
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-600" />
-            <span className="text-white font-medium">
-              Western Himalayan Environmental Knowledge &amp; Intelligence Search
-            </span>
-          </nav>
+  const workbenchRef = useRef<HTMLElement>(null);
 
-          <button
-            type="button"
-            onClick={openHealthAudit}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] bg-slate-900 border border-white/10 hover:border-emerald-500/40 text-xs text-slate-300 hover:text-white transition-colors cursor-pointer"
-          >
-            <Database className="w-3.5 h-3.5 text-emerald-400" />
-            <span>
-              Index Health &amp; Coverage{totalIndexed ? ` (${totalIndexed.toLocaleString()} Records)` : ''}
-            </span>
-          </button>
+  const focusWorkbench = (targetMode: 'search' | 'ask') => {
+    switchMode(targetMode);
+    workbenchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      inputRef.current?.focus({ preventScroll: true });
+    }, 220);
+  };
+
+  const searchKpis: ModuleKpi[] = [
+    {
+      label: 'Indexed Platform Records',
+      value: totalIndexed > 0 ? totalIndexed : 'Syncing',
+      icon: 'Database',
+      color: 'text-emerald-400',
+    },
+    {
+      label: 'Knowledge Domains',
+      value: Object.keys(SEARCH_DOMAIN_META).length,
+      icon: 'Layers',
+      color: 'text-cyan-400',
+    },
+    {
+      label: 'Himalayan Subregions',
+      value: '6 Subregions',
+      icon: 'Globe',
+      color: 'text-sky-400',
+    },
+    {
+      label: hasActiveCriteria ? 'Matched Records' : 'Active Search Mode',
+      value:
+        hasActiveCriteria && data
+          ? data.totalHits
+          : searchMode === 'ask'
+          ? 'Cited Q&A'
+          : 'Hybrid Index',
+      icon: 'Search',
+      color: 'text-white',
+    },
+    {
+      label: hasActiveCriteria ? 'GIS-Located Matches' : 'GIS-Indexed Records',
+      value:
+        hasActiveCriteria && data
+          ? data.facets?.withCoordinates ?? 0
+          : baselineStats?.facets?.withCoordinates ?? 0,
+      icon: 'MapPin',
+      color: 'text-teal-300',
+    },
+    {
+      label: 'Retrieval Engine',
+      value:
+        data?.engine === 'postgresql_fts_hybrid' || baselineStats?.indexStats?.pgSynced
+          ? 'PG FTS + Trgm'
+          : 'Hybrid FTS',
+      icon: 'ShieldCheck',
+      color: 'text-amber-300',
+    },
+  ];
+
+  const heroTelemetryCard = (
+    <div className="kew-card rounded-xl border border-white/15 bg-slate-900/95 p-3.5 shadow-2xl shadow-emerald-950/50 backdrop-blur-md">
+      <div className="flex items-center justify-between gap-2 pb-2 mb-2.5 border-b border-white/10 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="font-bold text-emerald-300 uppercase tracking-wider text-[11px]">
+            KEW Unified Hybrid Index
+          </span>
         </div>
+        <span className="font-mono text-[10px] text-slate-300 bg-slate-950 px-2 py-0.5 border border-white/10 rounded">
+          {totalIndexed > 0 ? `${totalIndexed.toLocaleString()} Records` : '8 Adapters'}
+        </span>
+      </div>
 
-        {/* Phase 4 Required Identity Header */}
-        <header className="mb-8 max-w-4xl">
-          <div className="mb-3">
-            <KewBrandIdentity variant="eyebrow" />
+      <div className="relative h-40 sm:h-44 w-full rounded-lg overflow-hidden border border-white/10 mb-3">
+        <img
+          src="/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg"
+          alt="Kashmir EcoWatch Western Himalayan Environmental Intelligence Search"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
+        <div className="absolute bottom-2.5 left-3 right-3 space-y-1">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-[4px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              {hasActiveCriteria && query.trim() ? 'Live Query Active' : 'Cross-Module Telemetry'}
+            </span>
+            <span className="text-[10px] text-slate-200 flex items-center gap-1">
+              <Globe className="w-3 h-3 text-emerald-400" />
+              Kashmir · Jammu · Ladakh · AJ&amp;K · Gilgit · Baltistan
+            </span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[11px] font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 shrink-0" />
-            <span>WESTERN HIMALAYAN ENVIRONMENTAL KNOWLEDGE &amp; INTELLIGENCE SEARCH</span>
+          <h3 className="text-sm font-bold text-white leading-snug truncate">
+            {hasActiveCriteria && query.trim()
+              ? `Query: “${query.trim()}”${data ? ` (${data.totalHits.toLocaleString()} matches)` : ''}`
+              : '11 Scientific Domains & Geospatial Entity Registry'}
+          </h3>
+        </div>
+      </div>
+
+      <p className="text-xs text-slate-300 leading-relaxed mb-3">
+        {hasActiveCriteria && data
+          ? `Retrieved ${data.totalHits.toLocaleString()} verified platform records across KEW modules, scientific dossiers, GIS layers, and statutory archives in ${data.latencyMs} ms.`
+          : 'Full-text, multilingual (English, Urdu, Kashmiri, Hindi), and spatial search across species, watersheds, hazards, PIL dockets, EIA dossiers, and publications.'}
+      </p>
+
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/10">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {['Hangul', 'Wular Lake', 'EIA Reports'].map((preset) => (
+            <button
+              key={preset}
+              type="button"
+              onClick={() => {
+                applyQuery(preset);
+                workbenchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className={`px-2 py-1 text-[10px] font-mono rounded border transition-colors cursor-pointer ${
+                query.trim().toLowerCase() === preset.toLowerCase()
+                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 font-bold'
+                  : 'bg-slate-950 text-slate-300 border-white/10 hover:text-white hover:border-emerald-500/40'
+              }`}
+            >
+              {preset}
+            </button>
+          ))}
+        </div>
+        <Link
+          href="/module-directory"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300"
+        >
+          <span>All Modules</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+    </div>
+  );
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col pb-20">
+      {/* 1. Canonical Kashmir EcoWatch Module Hero Section */}
+      <Heading
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Knowledge & Intelligence Search' },
+        ]}
+        icon={<Search className="w-6 h-6 text-emerald-400" />}
+        badge={
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300 drop-shadow-[0_1px_6px_rgba(2,6,23,0.9)]">
+              Environmental Knowledge &amp; Intelligence Index
+            </span>
+            <Badge variant="success" size="md">
+              Unified Search &amp; GIS
+            </Badge>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-3">
-            Explore Kashmir EcoWatch Intelligence
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Discover environmental research, ecological records, geospatial datasets, hazard intelligence, conservation resources, scientific assessments and public environmental initiatives across the Western Himalayan region.
-          </p>
-        </header>
+        }
+        title={
+          <div className="overflow-visible pb-1 drop-shadow-[0_2px_12px_rgba(2,6,23,0.85)]">
+            <KewBrandIdentity />
+            <span className="block leading-[1.14] pb-1 bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+              Knowledge &amp; Intelligence Search
+            </span>
+          </div>
+        }
+        subtitle="Discover environmental research, ecological records, geospatial datasets, hazard intelligence, conservation resources, scientific assessments, and verified publications across all six Western Himalayan subregions."
+        images={[
+          '/images/earth-human-impact/ehii-command-center-satellite.jpg',
+          '/images/env-monitoring/kashmir-env-command-center.jpg',
+          '/images/biodiversity/biodiversity-command-center.jpg',
+          '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+        ]}
+        overlayClassName="bg-gradient-to-r from-slate-950/95 via-slate-950/82 to-slate-950/55"
+        rightContent={heroTelemetryCard}
+        overlayPanelId="/search"
+        overlayRestoreLabel="Show Index Telemetry"
+        actions={
+          <>
+            <Button
+              size="md"
+              icon={<Search className="w-4 h-4" />}
+              onClick={() => focusWorkbench('search')}
+            >
+              Search Index &amp; GIS{totalIndexed ? ` (${totalIndexed.toLocaleString()})` : ''}
+            </Button>
+            <Button
+              variant="secondary"
+              size="md"
+              icon={<FileText className="w-4 h-4 text-emerald-400" />}
+              onClick={() => focusWorkbench('ask')}
+            >
+              Scientific Q&amp;A Synthesis
+            </Button>
+            <Button
+              variant="outline"
+              size="md"
+              icon={<Database className="w-4 h-4" />}
+              onClick={openHealthAudit}
+            >
+              Index Health &amp; Coverage
+            </Button>
+          </>
+        }
+      />
+
+      {/* 2. Canonical KEW Overlapping KPI Strip */}
+      <ModuleKpiStrip kpis={searchKpis} iconColor="text-emerald-400" />
+
+      {/* 3. Search & Scientific Q&A Workbench */}
+      <section
+        ref={workbenchRef}
+        id="kew-search-workbench"
+        className="flex-1 relative z-10 pt-4 page-content__inner w-full"
+      >
 
         {/* Mode Switcher: Standard Index Search vs Evidence-Grounded Scientific Q&A */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -565,7 +738,6 @@ function SearchWorkbench() {
                   : 'Explore Kashmir EcoWatch Intelligence'
               }
               className="flex-1 bg-transparent border-none outline-none text-white text-sm sm:text-base md:text-lg px-1 sm:px-2 placeholder:text-slate-500 min-w-0"
-              autoFocus
             />
             {query && (
               <button
@@ -1497,8 +1669,8 @@ function SearchWorkbench() {
             </div>
           </div>
         )}
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
 

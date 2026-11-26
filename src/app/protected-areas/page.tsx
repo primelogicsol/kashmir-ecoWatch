@@ -87,6 +87,18 @@ export default function ProtectedAreasPage() {
 
   const dynamicMetrics = useMemo(() => {
     const totalArea = filteredAreas.reduce((sum, pa) => sum + (pa.area || 0), 0);
+    // Exclude overlapping IBA bird-habitat polygons when computing statutory terrestrial/wetland coverage
+    const nonOverlappingStatutoryArea = filteredAreas
+      .filter((pa) => pa.category !== 'iba')
+      .reduce((sum, pa) => sum + (pa.area || 0), 0);
+    // Geographic denominator matched to selected scope (Kashmir Core: 15,948 km²; Trans-Divisional J&K/Ladakh: 101,387 km²; Full Western Himalayan 5-Region Mandate: 222,236 km²)
+    const regionDenominatorKm2 =
+      activeScope === 'Kashmir Core'
+        ? 15948
+        : activeScope === 'Trans-Divisional'
+        ? 101387
+        : 222236;
+
     return {
       totalProtectedAreas: filteredAreas.length,
       totalArea: Math.round(totalArea),
@@ -95,9 +107,9 @@ export default function ProtectedAreasPage() {
       wetlandReserves: filteredAreas.filter(pa => pa.category === 'wetland_reserve').length,
       conservationReserves: filteredAreas.filter(pa => pa.category === 'conservation_reserve').length,
       importantBirdAreas: filteredAreas.filter(pa => pa.category === 'iba').length,
-      coveragePercentage: ((totalArea / 45679) * 100).toFixed(1),
+      coveragePercentage: Math.min(100, (nonOverlappingStatutoryArea / regionDenominatorKm2) * 100).toFixed(1),
     };
-  }, [filteredAreas]);
+  }, [filteredAreas, activeScope]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -261,7 +273,7 @@ export default function ProtectedAreasPage() {
               <filter.icon className="w-4 h-4" />
               {filter.label}
               <span className="text-xs text-slate-500 ml-1">
-                ({activeFilter === filter.id ? allProtectedAreas.length : allProtectedAreas.filter(a => filter.id === 'all' || a.category === filter.id).length})
+                ({filter.id === 'all' ? allProtectedAreas.length : allProtectedAreas.filter(a => a.category === filter.id).length})
               </span>
             </button>
           ))}

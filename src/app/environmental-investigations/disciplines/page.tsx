@@ -20,6 +20,10 @@ export default function ScientificDisciplinesPage() {
     () => getDisciplineInvestigationCounts(CANONICAL_INVESTIGATIONS),
     []
   );
+  const totalDisciplinesCount = useMemo(
+    () => DISCIPLINE_CLUSTERS.reduce((sum, c) => sum + c.disciplines.length, 0),
+    []
+  );
 
   const visibleClusters =
     selectedCluster === 'all'
@@ -40,7 +44,7 @@ export default function ScientificDisciplinesPage() {
           <div className="overflow-visible pb-1">
             <KewBrandIdentity />
             <span className="block leading-[1.14] bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              36 Integrated Scientific Disciplines
+              {totalDisciplinesCount} Integrated Scientific Disciplines
             </span>
           </div>
         }
@@ -62,7 +66,7 @@ export default function ScientificDisciplinesPage() {
                 : 'bg-slate-900 text-slate-300 border-white/10 hover:text-white'
             }`}
           >
-            All 6 Scientific Clusters (36 Disciplines)
+            All {DISCIPLINE_CLUSTERS.length} Scientific Clusters ({totalDisciplinesCount} Disciplines)
           </button>
           {DISCIPLINE_CLUSTERS.map((c) => (
             <button

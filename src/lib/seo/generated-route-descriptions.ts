@@ -380,9 +380,9 @@ export const EXTRACTED_ROUTE_METADATA: Record<string, { title?: string; descript
   "/entity-explorer": {
     "description": "Browse and filter all ecological entities across Kashmir EcoWatch — protected areas, water bodies, species, districts, trails, and monitoring zones."
   },
-  "/environmental-calendar/ecovoices": {
-    "description": "Where empirical telemetry meets poetry, spiritual kalam, and environmental consciousness. An open collaborative platform inviting writers, singers, instrumentalists, and composers to give voice to Kashmir",
-    "label": "Kashmir EcoWatch × SufiPulse USA · Environmental Music & Cultural Stewardship"
+  "/ecovoices": {
+    "description": "A dedicated platform for communicating environmental consciousness through music, poetry, literature, visual arts, natural soundscapes, and cinematic storytelling across the Western Himalayas.",
+    "label": "EcoVoices · Environmental Arts, Music & Creative Expression"
   },
   "/environmental-calendar/outdoor-classroom/adopt-an-ecosystem": {
     "description": "An open educational stewardship network connecting Kashmir schools and colleges with their local wetlands, forest transects, glacial streams, and karst springs as long-term ecological observation stations.",

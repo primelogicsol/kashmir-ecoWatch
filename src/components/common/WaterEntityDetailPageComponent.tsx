@@ -7,7 +7,7 @@ import { ScientificPublicationStandard } from '@/components/seo/ScientificPublic
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import * as Icons from 'lucide-react';
+import { KewIcons as Icons } from '@/components/common/KewIcons';
 import {
   MapPin, Droplet, Activity, ArrowRight, ChevronRight, TrendingUp,
   AlertTriangle, Book, FileText, Eye, Calendar, Thermometer,
@@ -18,15 +18,16 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { WaterEntity, WaterQualityData, HydrologicalData, FisheryData, FloodRiskData, RestorationData } from '@/data/water-systems';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { DismissibleHeroOverlay } from '@/components/common/DismissibleHeroOverlay';
 
 interface WaterEntityDetailPageProps {
   entity: WaterEntity;
   relatedEntities?: WaterEntity[];
   color: string;
-  icon: keyof typeof import('lucide-react');
+  icon: import('@/components/common/KewIcons').KewIconName;
   backRoute: string;
   listRoute: string;
-  tabs?: Array<{ id: string; label: string; icon: keyof typeof import('lucide-react'); content: React.ReactNode }>;
+  tabs?: Array<{ id: string; label: string; icon: import('@/components/common/KewIcons').KewIconName; content: React.ReactNode }>;
 }
 
 export function WaterEntityDetailPageComponent({
@@ -71,11 +72,11 @@ export function WaterEntityDetailPageComponent({
 
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero */}
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-48 pb-4 sm:pb-8 md:pb-12 lg:pb-20 overflow-hidden">
+      <div className="kew-module-hero-surface relative overflow-hidden">
         <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-15`} />
         <div className="absolute inset-0 bg-grid opacity-20" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="kew-module-hero-inner container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,10 +117,10 @@ export function WaterEntityDetailPageComponent({
                   )}
                 </div>
                 <div className="mb-2.5 sm:mb-3"><KewBrandIdentity variant="eyebrow" /></div>
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-xl">
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight max-w-4xl 3xl:max-w-5xl">
                   {entity.name}
                 </h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-3xl mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-400 max-w-[72ch] mb-6 leading-relaxed">
                   {entity.description}
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
@@ -144,7 +145,7 @@ export function WaterEntityDetailPageComponent({
               </div>
 
               {/* Quick Stats */}
-              <Card className="glass-intense border-white/10 p-6 hidden lg:block">
+              <DismissibleHeroOverlay restoreLabel="Show Hydrology Stats" className="hidden lg:grid shrink-0"><Card className="glass-intense border-white/10 p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-slate-400" />
@@ -168,7 +169,7 @@ export function WaterEntityDetailPageComponent({
                     </div>
                   </div>
                 </div>
-              </Card>
+              </Card></DismissibleHeroOverlay>
             </div>
           </motion.div>
         </div>

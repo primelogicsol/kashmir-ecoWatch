@@ -12,10 +12,35 @@ import {
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
+import {
+  RESEARCH_SERIES_DIVISIONS,
+  SECTORAL_RESEARCH_SERIES_2026,
+} from '@/data/sectoral-research-series-2026';
 
 /* ─── Collections ─────────────────────────────────────────────────────── */
 
-const librarySections = [
+const librarySections: Array<{
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  route: string;
+  documentCount: number;
+  status: 'Live' | 'Coming Soon';
+  accent: string;
+}> = [
+  {
+    id: 'scientific-research-series-2026',
+    title: `Scientific Research Series (${SECTORAL_RESEARCH_SERIES_2026.length} Dossiers)`,
+    description: `Externally researched scientific dossiers across ${RESEARCH_SERIES_DIVISIONS.length} sectors (KEW-SR-2026-01 through KEW-SR-2026-100), with verified Crossref, Europe PMC, Zenodo & DataCite bibliographies, GIS layers, and synchronized A4 PDFs.`,
+    icon: Layers,
+    color: 'from-emerald-500 to-cyan-600',
+    route: '/sectoral-eia/reports',
+    documentCount: SECTORAL_RESEARCH_SERIES_2026.length,
+    status: 'Live',
+    accent: 'text-emerald-400',
+  },
   {
     id: 'environmental-impact-assessment',
     title: 'Environmental Impact Assessments',
@@ -24,7 +49,7 @@ const librarySections = [
     icon: FileText,
     color: 'from-amber-500 to-orange-600',
     route: '/research-library/environmental-impact-assessment',
-    documentCount: 1,
+    documentCount: 6,
     status: 'Live' as const,
     accent: 'text-amber-400',
   },
@@ -122,14 +147,14 @@ export default function ResearchLibraryPage() {
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <Link
               href="/open-data"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:from-emerald-500 hover:to-emerald-400 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold shadow-md transition-all"
             >
               <Database className="w-4 h-4" />
               Open Data Portal
             </Link>
             <Link
               href="/about/methodology"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/20 text-white text-sm font-semibold hover:border-white/40 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-white/25 text-white text-sm font-semibold hover:border-emerald-400/50 transition-all"
             >
               <Download className="w-4 h-4" />
               Methodology

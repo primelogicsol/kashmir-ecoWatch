@@ -55,7 +55,7 @@ export default async function InstitutionDashboardPage({ params }: Props) {
       <WebinarNav />
       <InstitutionSubNav institution={institution} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+      <main className="container mx-auto py-10 space-y-10">
         {/* Workspace Security Notice */}
         <div className="bg-slate-900/60 border border-teal-500/20 rounded-2xl p-4 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2 text-teal-300 font-mono">

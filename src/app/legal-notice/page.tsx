@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import { WEBINAR_CONCEPTUAL_MEDIA_DISCLOSURE } from '@/data/webinar-hero-carousel';
 
 /* ─── Document metadata ───────────────────────────────────────────────────
    Update NOTICE_LAST_UPDATED whenever this document is revised.
@@ -550,6 +551,12 @@ export default function LegalNoticePage() {
                           Some datasets displayed on the platform may remain subject to third-party licensing restrictions and may not be redistributed without authorisation.
                         </p>
                       </div>
+                    </div>
+                    <div className="rounded-xl bg-slate-900/80 border border-white/10 p-4 mt-3">
+                      <div className="text-xs font-bold text-teal-400 mb-1.5">Conceptual Studio &amp; Editorial Media Disclosures</div>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {WEBINAR_CONCEPTUAL_MEDIA_DISCLOSURE}
+                      </p>
                     </div>
                   </Section>
 

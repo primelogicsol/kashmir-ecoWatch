@@ -179,7 +179,7 @@ export default function NGOSubmitPage() {
         overlayClassName="bg-gradient-to-b from-[#060E1A]/85 via-[#0a1628]/65 to-[#060E1A]/85"
       />
 
-      <div className="w-full max-w-7xl mx-auto px-4 xl:px-8 py-8">
+      <div className="kew-container-reading py-8">
         
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           

@@ -179,7 +179,7 @@ export const CANONICAL_ENTITIES: CanonicalEntity[] = [
     sourceModuleLinks: [
       { moduleName: 'Green Heroes', route: '/resources/kew-green-heroes', localRecordId: 'kew-hero-003', relationship: 'Primary Historical Contributor' },
       { moduleName: 'Religious Leaders', route: '/resources/kew-green-heroes?tab=religious-spiritual', localRecordId: 'rel-001', relationship: 'Historical Spiritual Legacy' },
-      { moduleName: 'EcoVoices', route: '/environmental-calendar/ecovoices', localRecordId: 'song-ann-poshi', relationship: 'Lyric & Kalam Originator' }
+      { moduleName: 'EcoVoices', route: '/ecovoices', localRecordId: 'song-ann-poshi', relationship: 'Lyric & Kalam Originator' }
     ],
     biographyOrDescription: '14th-century patron saint, philosopher, and founder of the Kashmiri Rishi tradition. Formulated the universal Himalayan forest conservation aphorism: "Ann poshi teli yeli van poshi" (Food will endure as long as forests endure).',
     historicalPeriodOrLifespan: '1377–1440 CE',

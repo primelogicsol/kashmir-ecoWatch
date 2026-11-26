@@ -36,8 +36,8 @@ export function Card({ children, className, hover = true, padding = 'md', onClic
       tabIndex={onClick ? 0 : undefined}
       className={cn(
         'kew-card backdrop-blur-sm rounded-lg min-w-0 max-w-full',
-        'border border-slate-200 dark:border-white/10',
-        'bg-white dark:bg-slate-900/85 text-slate-900 dark:text-slate-100',
+        'border border-white/10',
+        'bg-slate-900/90 text-slate-100',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950',
         paddingStyles[padding],
         hover && 'card-hover',
@@ -66,7 +66,7 @@ interface CardTitleProps {
 
 export function CardTitle({ children, className }: CardTitleProps) {
   return (
-    <h3 className={cn('kew-card-title text-lg font-bold text-slate-900 dark:text-white', className)}>
+    <h3 className={cn('kew-card-title text-lg font-bold text-white', className)}>
       {children}
     </h3>
   );
@@ -79,7 +79,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ children, className }: CardDescriptionProps) {
   return (
-    <p className={cn('kew-card-desc text-sm text-slate-600 dark:text-slate-300 mt-1', className)}>
+    <p className={cn('kew-card-desc text-sm text-slate-300 mt-1', className)}>
       {children}
     </p>
   );

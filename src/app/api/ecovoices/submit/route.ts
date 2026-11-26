@@ -2,11 +2,25 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export interface BioacousticSubmissionMetadata {
+  acousticClassification: 'Biophony' | 'Geophony' | 'Anthrophony';
+  targetCollectionId?: string;
+  kewSixRegion: 'Kashmir' | 'Jammu' | 'Ladakh' | 'AJ&K' | 'Gilgit' | 'Baltistan';
+  speciesOrPhenomenon?: string;
+  habitatAndElevation?: string;
+  recordingDateAndSeason?: string;
+  recordingEquipment?: string;
+  openLicenseChoice?: string;
+  maskSensitiveCoordinates?: boolean;
+  unmanipulatedFieldAttestation?: boolean;
+}
+
 export interface EcoVoicesSubmissionPayload {
   trackingId?: string;
   contributorName: string;
   contributorEmail: string;
   contributorPhone?: string;
+  creativeDepartment?: 'music' | 'poetry' | 'cinema' | 'art' | 'soundscapes' | 'contributors';
   contributorRole: string;
   preferredLanguage: string;
   environmentalThemeId: string;
@@ -18,6 +32,8 @@ export interface EcoVoicesSubmissionPayload {
   isYouthSubmission?: boolean;
   institutionOrGuardian?: string;
   rightsDeclarationAgreed: boolean;
+  bioacousticMetadata?: BioacousticSubmissionMetadata;
+  verificationStatus?: 'Pending Editorial Review' | 'Pending Bioacoustic & Taxonomic Verification';
   receivedAt?: string;
 }
 
@@ -71,13 +87,33 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    if (
+      body.creativeDepartment === 'soundscapes' &&
+      body.bioacousticMetadata &&
+      !body.bioacousticMetadata.unmanipulatedFieldAttestation
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Sounds of Nature submissions require scientific authenticity attestation (non-synthesized field capture).',
+        },
+        { status: 400 }
+      );
+    }
+
     // Generate verified environment tracking ID
     const randomHex = Math.random().toString(36).substring(2, 7).toUpperCase();
     const trackingId = `ECOVOICES-2026-${randomHex}`;
     const receivedAt = new Date().toISOString();
 
+    const verificationStatus =
+      body.creativeDepartment === 'soundscapes'
+        ? 'Pending Bioacoustic & Taxonomic Verification'
+        : 'Pending Editorial Review';
+
     const record: EcoVoicesSubmissionPayload = {
       ...body,
+      verificationStatus,
       trackingId,
       receivedAt
     };
@@ -88,11 +124,15 @@ export async function POST(req: NextRequest) {
       success: true,
       trackingId,
       receivedAt,
-      message: 'Your environmental creative proposal has been successfully registered with the EcoVoices Editorial Panel.',
+      message:
+        body.creativeDepartment === 'soundscapes'
+          ? 'Your field recording voucher has been queued for KEW Bioacoustic & Taxonomic Verification prior to archive publication.'
+          : 'Your environmental creative proposal has been successfully registered with the EcoVoices Editorial Panel.',
       details: {
         contributorName: record.contributorName,
         role: record.contributorRole,
         theme: record.environmentalThemeId,
+        verificationStatus,
         trackingId
       }
     });

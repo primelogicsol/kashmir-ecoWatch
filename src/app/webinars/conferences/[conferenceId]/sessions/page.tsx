@@ -39,7 +39,7 @@ export default async function ConferenceSessionsPage({ params }: Props) {
       <WebinarNav />
       <ConferenceSubNav conference={conference} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-4">
+      <main className="container mx-auto py-10 space-y-4">
         {sessions.map(s => (
           <div key={s.id} className="bg-slate-900/80 border border-white/10 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1 flex-1">

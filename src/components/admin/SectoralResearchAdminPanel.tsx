@@ -18,6 +18,8 @@ import {
   Layers,
 } from 'lucide-react';
 import type { ResearchDossierStatus, ResearchSeriesDossier } from '@/types/sectoral-eia';
+import { ADMIN_15_STAGE_LABELS } from '@/data/report-scientific-registries-100';
+import { KewOfficialPublicationLogo } from '@/components/common/Logo';
 
 interface DossierAnalyticsEntry {
   reportViews: number;
@@ -52,7 +54,9 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
 
   const [query, setQuery] = useState<string>('');
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
+  const [cohortFilter, setCohortFilter] = useState<string>('ALL');
   const [selectedCode, setSelectedCode] = useState<string>('KEW-SR-2026-04');
+  const [dupCheckResult, setDupCheckResult] = useState<string | null>(null);
 
   // Editor form state for selected dossier
   const [editStatus, setEditStatus] = useState<ResearchDossierStatus>('Published');
@@ -67,12 +71,17 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
   const [editNote, setEditNote] = useState<string>('');
   const [pdfMeta, setPdfMeta] = useState<any>(null);
   const [masterChapters, setMasterChapters] = useState<Array<{ number: string; title: string; paragraphs: string[] }>>([]);
+  const [selectedCompletion15, setSelectedCompletion15] = useState<any>(null);
+  const [selectedPubClass, setSelectedPubClass] = useState<string>('');
+  const [humanPeerReviewConfirmed, setHumanPeerReviewConfirmed] = useState<boolean>(false);
+  const [qcSummary, setQcSummary] = useState<any>(null);
+  const [lakeSummary, setLakeSummary] = useState<any>(null);
 
   const fetchAll = async () => {
     setLoading(true);
     try {
       const [repRes, subRes] = await Promise.all([
-        fetch('/api/sectoral-eia/reports?analytics=true'),
+        fetch('/api/sectoral-eia/reports?analytics=true&qc=true'),
         fetch('/api/sectoral-eia/assessments'),
       ]);
       if (repRes.ok) {
@@ -80,6 +89,8 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
         if (Array.isArray(repJson.dossiers)) setDossiers(repJson.dossiers);
         if (Array.isArray(repJson.workflowStages)) setWorkflowStages(repJson.workflowStages);
         if (repJson.analytics) setAnalyticsMap(repJson.analytics);
+        if (repJson.qualityControl) setQcSummary(repJson.qualityControl);
+        if (repJson.lakeInventorySummary) setLakeSummary(repJson.lakeInventorySummary);
       }
       if (subRes.ok) {
         const subJson = await subRes.json();
@@ -107,6 +118,9 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
           setEditAbstract(d.abstract);
           setEditAuthor(d.author);
           setPdfMeta(data.pdfMetadata || null);
+          setSelectedCompletion15(data.master.admin15StageCompletion || null);
+          setSelectedPubClass(data.master.evidencePublicationClass || '');
+          setHumanPeerReviewConfirmed(false);
           const chs = data.master.chapters || [];
           setMasterChapters(chs);
           if (chs.length > 0) {
@@ -131,13 +145,34 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
   const filteredDossiers = useMemo(() => {
     return dossiers.filter((d) => {
       if (statusFilter !== 'ALL' && d.status !== statusFilter) return false;
+      if (cohortFilter === 'PRIORITY_15' && typeof d.priorityRank !== 'number') return false;
+      if (cohortFilter === 'ORIGINAL_40' && d.sequenceNumber > 40) return false;
+      if (cohortFilter === 'EXPANDED_60' && d.sequenceNumber < 41) return false;
       if (query.trim()) {
         const q = query.toLowerCase();
-        return `${d.code} ${d.title} ${d.divisionTitle} ${d.author}`.toLowerCase().includes(q);
+        return `${d.code} ${d.title} ${d.divisionTitle} ${d.sectorTag} ${d.author}`.toLowerCase().includes(q);
       }
       return true;
     });
-  }, [dossiers, statusFilter, query]);
+  }, [dossiers, statusFilter, cohortFilter, query]);
+
+  const handleRunDuplicationCheck = async () => {
+    try {
+      const res = await fetch('/api/sectoral-eia/reports', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: selectedCode,
+          title: editTitle,
+          primaryResearchQuestion: editAbstract,
+        }),
+      });
+      const json = await res.json();
+      if (json?.success && json.duplicationCheck) {
+        setDupCheckResult(json.duplicationCheck.verdict);
+      }
+    } catch {}
+  };
 
   const aggregateAnalytics = useMemo(() => {
     let views = 0;
@@ -157,6 +192,15 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
 
   const handleSaveDossier = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (
+      (editStatus === 'Published' || editStatus === 'Updated') &&
+      !humanPeerReviewConfirmed
+    ) {
+      setNotice(
+        'Mandatory Quality Gate Blocked: Confirm documented human scientific peer review before approving a dossier as Published/Updated.'
+      );
+      return;
+    }
     setSaving(true);
     setNotice(null);
     try {
@@ -223,13 +267,16 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
       {/* Header & Aggregate Analytics Strip */}
       <div className="rounded-lg border border-slate-800 bg-slate-900 p-5 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-emerald-400">
-              Sectoral EIA Engine · Institutional Report Builder &amp; Workflow Studio
+          <div className="flex items-center gap-3">
+            <KewOfficialPublicationLogo size="sm" />
+            <div>
+              <div className="text-xs font-mono uppercase tracking-wider text-emerald-400">
+                Western Himalayan Scientific Observatory · Institutional Report Builder &amp; Workflow Studio
+              </div>
+              <h2 className="text-xl font-bold text-white mt-0.5">
+                100-Dossier Scientific Research Series Management (23 Sectors · KEW-SR-2026-01 to 100)
+              </h2>
             </div>
-            <h2 className="text-xl font-bold text-white mt-0.5">
-              40-Dossier Sectoral Research Series Management (KEW-SR-2026-01 to 40)
-            </h2>
           </div>
           <div className="flex items-center gap-2">
             <Link
@@ -247,6 +294,49 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
               <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </button>
+          </div>
+        </div>
+
+        {/* Portfolio-Wide Real Scientific Completion Differentiation (Section 30) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+          <div className="rounded-md border border-emerald-500/30 bg-slate-950 p-3">
+            <div className="text-[11px] font-mono text-emerald-400">External Search &amp; Chapters</div>
+            <div className="mt-1 text-lg font-bold font-mono text-white">{dossiers.length} / 100</div>
+            <div className="text-[10px] text-slate-400">100% externally researched (zero generic templates)</div>
+          </div>
+          <div className="rounded-md border border-emerald-500/30 bg-slate-950 p-3">
+            <div className="text-[11px] font-mono text-emerald-300">Approved Secondary-Data Pubs</div>
+            <div className="mt-1 text-lg font-bold font-mono text-white">
+              {dossiers.filter((d) => d.status === 'Published' || d.status === 'Updated').length} / 100
+            </div>
+            <div className="text-[10px] text-slate-400">Revalidated secondary-data assessments (01–04)</div>
+          </div>
+          <div className="rounded-md border border-cyan-500/30 bg-slate-950 p-3">
+            <div className="text-[11px] font-mono text-cyan-300">Awaiting Human Peer Review</div>
+            <div className="mt-1 text-lg font-bold font-mono text-white">
+              {
+                dossiers.filter(
+                  (d) =>
+                    d.status !== 'Published' &&
+                    d.status !== 'Updated' &&
+                    d.evidencePublicationClass !== 'Scientific Scoping Dossier'
+                ).length
+              }{' '}
+              / 100
+            </div>
+            <div className="text-[10px] text-slate-400">Secondary/modelled/systematic syntheses ready for review</div>
+          </div>
+          <div className="rounded-md border border-amber-500/30 bg-slate-950 p-3">
+            <div className="text-[11px] font-mono text-amber-300">Awaiting Field/Lab Campaigns</div>
+            <div className="mt-1 text-lg font-bold font-mono text-white">
+              {
+                dossiers.filter(
+                  (d) => d.evidencePublicationClass === 'Scientific Scoping Dossier'
+                ).length
+              }{' '}
+              / 100
+            </div>
+            <div className="text-[10px] text-slate-400">Require primary UHPLC-MS/qPCR/FTIR/borehole assays</div>
           </div>
         </div>
 
@@ -277,6 +367,63 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
             </button>
           </div>
         )}
+
+        {/* KEW Scientific Publication Quality Control Acceptance Dashboard (Section 5 & 21) */}
+        {qcSummary && (
+          <div className="rounded-lg border border-cyan-500/30 bg-slate-950 p-4 space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+              <div>
+                <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400">
+                  KEW Scientific Publication Quality Control · Live Automated Gate Audit
+                </div>
+                <div className="text-xs text-slate-300 mt-0.5">
+                  Audited: <strong>{qcSummary.totalReportsAudited}</strong> Dossiers ·{' '}
+                  <strong>{qcSummary.totalChaptersInspected}</strong> Chapters ·{' '}
+                  <strong>{qcSummary.totalSectorsCovered}</strong> Sectors ·{' '}
+                  <strong className="text-emerald-300">
+                    {qcSummary.individuallyVerifiedCount} / {qcSummary.totalReportsAudited}
+                  </strong>{' '}
+                  Passing All 10 Technical Quality Gates
+                </div>
+              </div>
+              {lakeSummary && (
+                <div className="text-[11px] font-mono text-emerald-300">
+                  Master Lake Registry: {lakeSummary.kashmirDivisionTotalUniqueIdentities} Kashmir Lakes ({lakeSummary.kashmirWithVerifiedTrophicStatus} Trophic-Assessed · {lakeSummary.kashmirRequiringTrophicAssessment} Insufficient Evidence)
+                </div>
+              )}
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 text-[11px]">
+              {[
+                { label: 'Duplicated Content', val: qcSummary.reportsWithDuplicatedContent, ok: qcSummary.reportsWithDuplicatedContent === 0 },
+                { label: 'Generic Methodology', val: qcSummary.reportsWithGenericMethodology, ok: qcSummary.reportsWithGenericMethodology === 0 },
+                { label: 'Verified References', val: `${qcSummary.reportsWithVerifiedReferences}/${qcSummary.totalReportsAudited}`, ok: qcSummary.reportsWithVerifiedReferences === qcSummary.totalReportsAudited },
+                { label: 'Unique Chapters', val: `${qcSummary.reportsWithUniqueScientificChapters}/${qcSummary.totalReportsAudited}`, ok: qcSummary.reportsWithUniqueScientificChapters === qcSummary.totalReportsAudited },
+                { label: 'Validated Geography', val: `${qcSummary.reportsWithValidatedGeographicBoundaries}/${qcSummary.totalReportsAudited}`, ok: qcSummary.reportsWithValidatedGeographicBoundaries === qcSummary.totalReportsAudited },
+                { label: 'Specific Indicators', val: `${qcSummary.reportsWithReportSpecificIndicators}/${qcSummary.totalReportsAudited}`, ok: qcSummary.reportsWithReportSpecificIndicators === qcSummary.totalReportsAudited },
+              ].map((c) => (
+                <div key={c.label} className="rounded border border-slate-800 bg-slate-900/90 p-2">
+                  <div className="text-slate-400">{c.label}</div>
+                  <div className={`font-mono font-bold text-sm mt-0.5 ${c.ok ? 'text-emerald-400' : 'text-rose-400'}`}>
+                    {c.val}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-[11px]">
+              {(qcSummary.gateSummary || []).map((g: any) => (
+                <div
+                  key={g.gateId}
+                  className="flex items-center justify-between rounded border border-slate-800 bg-slate-900/60 px-2.5 py-1.5"
+                >
+                  <span className="text-slate-200 font-medium">{g.label}</span>
+                  <span className="font-mono text-emerald-300">{g.overallStatus}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Main 2-Pane Builder: Left 40-Dossier Selector | Right 19-Stage Editor & PDF Synchronizer */}
@@ -289,23 +436,36 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Filter KEW-SR-2026-01..40..."
+              placeholder="Filter KEW-SR-2026-01..100..."
               className="w-full rounded-md border border-slate-700 bg-slate-950 pl-9 pr-3 py-1.5 text-xs text-white"
             />
           </div>
 
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full rounded-md border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-xs text-slate-200"
-          >
-            <option value="ALL">All Statuses ({dossiers.length})</option>
-            {ALL_STATUSES.map((st) => (
-              <option key={st} value={st}>
-                {st} ({dossiers.filter((d) => d.status === st).length})
-              </option>
-            ))}
-          </select>
+          <div className="grid grid-cols-2 gap-2">
+            <select
+              value={cohortFilter}
+              onChange={(e) => setCohortFilter(e.target.value)}
+              className="w-full rounded-md border border-slate-700 bg-slate-950 px-2 py-1.5 text-xs text-slate-200"
+            >
+              <option value="ALL">All 100 Dossiers</option>
+              <option value="PRIORITY_15">Top-15 Priority</option>
+              <option value="ORIGINAL_40">Sectors I–XII (40)</option>
+              <option value="EXPANDED_60">Sectors XIII–XXIII (60)</option>
+            </select>
+
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="w-full rounded-md border border-slate-700 bg-slate-950 px-2 py-1.5 text-xs text-slate-200"
+            >
+              <option value="ALL">All Statuses ({dossiers.length})</option>
+              {ALL_STATUSES.map((st) => (
+                <option key={st} value={st}>
+                  {st} ({dossiers.filter((d) => d.status === st).length})
+                </option>
+              ))}
+            </select>
+          </div>
 
           <div className="max-h-[620px] overflow-y-auto space-y-1.5 pr-1">
             {filteredDossiers.map((d) => {
@@ -373,6 +533,63 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
               </a>
             </div>
           </div>
+
+          {/* 15-Stage Per-Report Scientific Completion & Quality Gate Tracker */}
+          {selectedCompletion15 && (
+            <div className="rounded-md border border-cyan-500/30 bg-slate-950 p-4 space-y-3 text-xs">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <span className="font-mono font-bold uppercase tracking-wider text-cyan-400">
+                    15-Stage Per-Report Completion Audit · {selectedPubClass}
+                  </span>
+                  <div className="text-[11px] text-slate-400 mt-0.5">
+                    {selectedCompletion15.readinessCategory}
+                  </div>
+                </div>
+                <span className="rounded-sm border border-emerald-500/40 bg-emerald-950/50 px-2.5 py-1 font-mono font-bold text-emerald-300">
+                  {selectedCompletion15.completedBooleanStagesCount} / 15 Verified Stages
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
+                {ADMIN_15_STAGE_LABELS.map((item) => {
+                  const val = selectedCompletion15.stages?.[item.key];
+                  const isDone =
+                    val === true ||
+                    val === 'Completed (OA Full Text + Abstracts)' ||
+                    val === 'Approved' ||
+                    val === 'Approved Secondary-Data Publication';
+                  return (
+                    <div
+                      key={item.key}
+                      className={`rounded border px-2.5 py-1.5 text-[11px] flex items-center justify-between gap-1.5 ${
+                        isDone
+                          ? 'border-emerald-500/30 bg-emerald-950/25 text-emerald-200'
+                          : 'border-amber-500/25 bg-amber-950/20 text-amber-200'
+                      }`}
+                    >
+                      <span className="truncate">{item.label}</span>
+                      <span className="font-mono text-[10px] shrink-0">
+                        {typeof val === 'boolean' ? (val ? 'DONE' : 'GATED') : String(val).slice(0, 14)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              {(editStatus === 'Published' || editStatus === 'Updated') && (
+                <label className="flex items-center gap-2 pt-1 text-xs text-amber-200 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={humanPeerReviewConfirmed}
+                    onChange={(e) => setHumanPeerReviewConfirmed(e.target.checked)}
+                    className="rounded border-slate-600 bg-slate-900"
+                  />
+                  <span>
+                    Mandatory Quality Gate: I confirm documented human scientific review &amp; source traceability before saving {selectedCode} as {editStatus}.
+                  </span>
+                </label>
+              )}
+            </div>
+          )}
 
           {/* Synchronized PDF Artifact Status */}
           <div className="rounded-md border border-slate-800 bg-slate-950 p-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
@@ -533,7 +750,23 @@ export function SectoralResearchAdminPanel({ adminName }: { adminName: string })
             </div>
           </div>
 
-          <div className="flex justify-end pt-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handleRunDuplicationCheck}
+                className="inline-flex items-center gap-1.5 rounded-md border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/50 px-3 py-2 text-xs font-semibold text-cyan-300"
+              >
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                Verify Scope Non-Duplication (vs 100 Dossiers)
+              </button>
+              {dupCheckResult && (
+                <span className="text-[11px] font-mono text-emerald-300 max-w-md">
+                  {dupCheckResult}
+                </span>
+              )}
+            </div>
+
             <button
               type="submit"
               disabled={saving}

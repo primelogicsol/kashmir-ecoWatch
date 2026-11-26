@@ -2,6 +2,7 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   reactStrictMode: true,
 
   typescript: {
@@ -10,6 +11,10 @@ const nextConfig = {
 
   turbopack: {
     root: path.resolve(__dirname),
+  },
+
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
   },
 
   images: {
@@ -42,6 +47,17 @@ const nextConfig = {
       },
       { source: '/admin', headers: noIndexHeaders },
       { source: '/admin/:path*', headers: noIndexHeaders },
+      { source: '/himalayan-dispatch/newsroom', headers: noIndexHeaders },
+      { source: '/himalayan-dispatch/newsroom/:path*', headers: noIndexHeaders },
+      { source: '/himalayan-dispatch/editorial-cms', headers: noIndexHeaders },
+      { source: '/himalayan-dispatch/journalist-sign-in', headers: noIndexHeaders },
+      { source: '/himalayan-dispatch/pitch', headers: noIndexHeaders },
+      { source: '/newsroom', headers: noIndexHeaders },
+      { source: '/newsroom/:path*', headers: noIndexHeaders },
+      { source: '/editorial-cms', headers: noIndexHeaders },
+      { source: '/editorial-cms/:path*', headers: noIndexHeaders },
+      { source: '/journalist-sign-in', headers: noIndexHeaders },
+      { source: '/pitch', headers: noIndexHeaders },
       { source: '/webinars/admin', headers: noIndexHeaders },
       { source: '/webinars/admin/:path*', headers: noIndexHeaders },
       { source: '/webinars/institution/:institutionId/:subpath+', headers: noIndexHeaders },
@@ -57,12 +73,19 @@ const nextConfig = {
   },
 
   async redirects() {
+    const dispatchHostFilter = [{ type: 'host', value: '(?:www\\.)?dispatch\\..*' }];
     return [
       // Canonical Domain Consolidation: Permanent 308 redirects for WWW, legacy domains & obsolete public Vercel addresses
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.kashmir-ecowatch.com' }],
         destination: 'https://kashmir-ecowatch.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.dispatch.kashmir-ecowatch.com' }],
+        destination: 'https://dispatch.kashmir-ecowatch.com/:path*',
         permanent: true,
       },
       {
@@ -99,99 +122,170 @@ const nextConfig = {
       },
       {
         source: '/submit-sighting',
+        missing: dispatchHostFilter,
         destination: '/submit-observation',
         permanent: true,
       },
       {
         source: '/plastic-pollution',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/plastic-pollution',
         permanent: true,
       },
       {
         source: '/plastic-pollution/:path*',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/plastic-pollution/:path*',
         permanent: true,
       },
       {
         source: '/chinar-monitoring',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/chinar-monitoring',
         permanent: true,
       },
       {
         source: '/chinar-monitoring/:path*',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/chinar-monitoring/:path*',
         permanent: true,
       },
       {
         source: '/transportation-pollution',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/transportation-pollution',
         permanent: true,
       },
       {
         source: '/transportation-pollution/:path*',
+        missing: dispatchHostFilter,
         destination: '/environmental-monitoring/transportation-pollution/:path*',
         permanent: true,
       },
       {
         source: '/hazard-intelligence/western-disturbances',
+        missing: dispatchHostFilter,
         destination: '/hazard-intelligence/atmospheric-systems/western-disturbances',
         permanent: true,
       },
       {
         source: '/hazard-intelligence/western-disturbances/:path*',
+        missing: dispatchHostFilter,
         destination: '/hazard-intelligence/atmospheric-systems/western-disturbances/:path*',
         permanent: true,
       },
       {
         source: '/research-library/reports',
+        missing: dispatchHostFilter,
         destination: '/library',
         permanent: true,
       },
       {
         source: '/risk-monitoring/hazard-risks',
+        missing: dispatchHostFilter,
         destination: '/risk-monitoring/disaster-risks',
         permanent: true,
       },
       {
         source: '/webinars/admin/certificates',
+        missing: dispatchHostFilter,
         destination: '/webinars/certificates',
         permanent: false,
       },
       {
         source: '/water-systems/wetlands/haigam-wetland',
+        missing: dispatchHostFilter,
         destination: '/water-systems/wetlands/hygam-wetland',
         permanent: true,
       },
       {
         source: '/water-systems/wetlands/haigam',
+        missing: dispatchHostFilter,
         destination: '/water-systems/wetlands/hygam-wetland',
         permanent: true,
       },
       {
         source: '/water-systems/wetlands/hokersar',
+        missing: dispatchHostFilter,
         destination: '/water-systems/wetlands/hokersar-wetland',
         permanent: true,
       },
       {
         source: '/water-systems/wetlands/shallabugh',
+        missing: dispatchHostFilter,
         destination: '/water-systems/wetlands/shallabugh-wetland',
         permanent: true,
       },
       {
         source: '/water-systems/glaciers/kolahoi',
+        missing: dispatchHostFilter,
         destination: '/water-systems/glaciers/kolahoi-glacier',
         permanent: true,
       },
       {
         source: '/water-systems/springs/kokernag',
+        missing: dispatchHostFilter,
         destination: '/water-systems/springs/kokernag-spring',
         permanent: true,
       },
       {
+        source: '/environmental-calendar/ecovoices',
+        missing: dispatchHostFilter,
+        destination: '/ecovoices',
+        permanent: true,
+      },
+      {
+        source: '/environmental-calendar/ecovoices/song/:slug',
+        missing: dispatchHostFilter,
+        destination: '/ecovoices/song/:slug',
+        permanent: true,
+      },
+      {
+        source: '/environmental-calendar/ecovoices/:path*',
+        missing: dispatchHostFilter,
+        destination: '/ecovoices/:path*',
+        permanent: true,
+      },
+      {
         source: '/protected-areas/dachigam',
+        missing: dispatchHostFilter,
         destination: '/protected-areas/dachigam-national-park',
         permanent: true,
       },
+      // Note: All `/himalayan-dispatch*` legacy edition, story, query-parameter, and
+      // subdomain consolidation 308 redirects are handled single-hop in `src/proxy.ts`.
+      // On non-Dispatch hosts, `/newsroom` resolves locally to `/himalayan-dispatch/newsroom`,
+      // and redirects `kashmir-ecowatch.com/newsroom` to `https://dispatch.kashmir-ecowatch.com/newsroom`
+      // only when `DISPATCH_LEGACY_REDIRECTS_ENABLED === 'true'`.
+      ...(process.env.DISPATCH_LEGACY_REDIRECTS_ENABLED === 'true'
+        ? [
+            {
+              source: '/newsroom',
+              has: [{ type: 'host', value: '(?:www\\.)?kashmir-ecowatch\\.com' }],
+              destination: 'https://dispatch.kashmir-ecowatch.com/newsroom',
+              permanent: false,
+            },
+            {
+              source: '/newsroom/:path*',
+              has: [{ type: 'host', value: '(?:www\\.)?kashmir-ecowatch\\.com' }],
+              destination: 'https://dispatch.kashmir-ecowatch.com/newsroom/:path*',
+              permanent: false,
+            },
+          ]
+        : [
+            {
+              source: '/newsroom',
+              missing: dispatchHostFilter,
+              destination: '/himalayan-dispatch/newsroom',
+              permanent: false,
+            },
+            {
+              source: '/newsroom/:path*',
+              missing: dispatchHostFilter,
+              destination: '/himalayan-dispatch/newsroom/:path*',
+              permanent: false,
+            },
+          ]),
     ];
   },
 

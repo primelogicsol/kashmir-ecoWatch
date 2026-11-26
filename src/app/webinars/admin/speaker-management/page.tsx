@@ -25,7 +25,7 @@ export default function AdminSpeakerManagementPage() {
       />
       <WebinarNav />
       <AdminSubNav />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-4">
+      <main className="kew-container-admin py-10 space-y-4">
         {speakers.map(s => (
           <div key={s.id} className="bg-slate-900/80 border border-white/10 rounded-2xl p-5 flex items-center justify-between">
             <div>
