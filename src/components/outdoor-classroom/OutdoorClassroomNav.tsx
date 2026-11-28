@@ -13,10 +13,12 @@ import {
   Award, 
   FileSpreadsheet,
   Calendar,
+  GraduationCap,
   Sparkles,
 } from 'lucide-react';
 
 const NAV_LINKS = [
+  { href: '/environmental-calendar', label: 'Environmental Calendar', icon: Calendar },
   { href: '/environmental-calendar/outdoor-classroom', label: 'Program Overview', icon: Compass },
   { href: '/environmental-calendar/outdoor-classroom/curriculum', label: 'Curriculum Library', icon: BookOpen },
   { href: '/environmental-calendar/outdoor-classroom/adopt-an-ecosystem', label: 'Adopt-an-Ecosystem', icon: Globe2 },
@@ -29,6 +31,7 @@ const NAV_LINKS = [
 
 export function OutdoorClassroomNav() {
   const pathname = usePathname();
+  const isHubRoot = pathname === '/environmental-calendar';
 
   return (
     <nav
@@ -44,15 +47,24 @@ export function OutdoorClassroomNav() {
               href="/environmental-calendar"
               title="Student Action Hub — Environmental Awareness, Education, Participation & Action"
               aria-label="Student Action Hub"
-              className="hover:text-emerald-400 flex items-center gap-1.5 transition-colors"
+              className="hover:text-emerald-400 flex items-center gap-1.5 transition-colors font-semibold text-slate-200"
             >
-              <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+              <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
               <span>Student Action Hub</span>
             </Link>
             <span className="text-slate-600">/</span>
             <span className="font-semibold text-emerald-300 flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-emerald-400" />
-              Outdoor Classroom (OD) Workspace
+              {isHubRoot ? (
+                <>
+                  <Calendar className="w-3 h-3 text-emerald-400" />
+                  <span>Environmental Calendar &amp; Outdoor Classroom (OD)</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-3 h-3 text-emerald-400" />
+                  <span>Outdoor Classroom (OD) Workspace</span>
+                </>
+              )}
             </span>
           </div>
 
