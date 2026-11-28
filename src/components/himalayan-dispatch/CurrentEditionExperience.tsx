@@ -51,6 +51,16 @@ import {
   KASHMIR_SEISMIC_GAP_METRICS,
   THE_TIME_BOMB_SPEC,
 } from '@/data/himalayan-dispatch-time-bomb-monograph';
+import {
+  KASHMIR_INSTITUTIONAL_HERITAGE_PENTAD_5,
+  NASEEM_BAGH_CHINARS_SPEC,
+} from '@/data/himalayan-dispatch-naseem-bagh-chinars-monograph';
+import { WEALTH_BENEATH_MOUNTAINS_SPEC } from '@/data/himalayan-dispatch-wealth-beneath-mountains-monograph';
+import {
+  AJK_EDITORIAL_PRIORITIES_6,
+  AJK_RIVERS_MONOGRAPH_SPEC,
+  MUZAFFARABAD_DIVERSION_METRICS,
+} from '@/data/himalayan-dispatch-ajk-rivers-monograph';
 
 export function CurrentEditionExperience({
   edition,
@@ -98,8 +108,20 @@ export function CurrentEditionExperience({
   ).padStart(2, '0');
   const dispatchNoOf = (slug: string) =>
     String(Math.max(1, stories.findIndex((s) => s.slug === slug) + 1)).padStart(2, '0');
+  const specialNaseemBaghInvestigation = bySlug('the-chinars-in-the-shadow-of-concrete');
+  const naseemBaghNo = dispatchNoOf('the-chinars-in-the-shadow-of-concrete');
   const specialPriceOfPowerInvestigation = bySlug('the-price-of-power');
   const priceOfPowerNo = dispatchNoOf('the-price-of-power');
+  const specialWealthBeneathMountainsInvestigation = bySlug(
+    'the-wealth-beneath-the-mountains'
+  );
+  const wealthBeneathMountainsNo = dispatchNoOf('the-wealth-beneath-the-mountains');
+  const specialAjkRiversInvestigation = bySlug(
+    'the-rivers-that-no-longer-belong-to-their-valleys'
+  );
+  const ajkRiversNo = dispatchNoOf(
+    'the-rivers-that-no-longer-belong-to-their-valleys'
+  );
   const specialTimeBombInvestigation = bySlug(
     'the-western-himalayas-are-sitting-on-a-time-bomb'
   );
@@ -1024,6 +1046,135 @@ export function CurrentEditionExperience({
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL HISTORICAL & ECOLOGICAL INVESTIGATION (DISPATCH 11 · MONOGRAPH 14)
+          "The Chinars in the Shadow of Concrete" — Naseem Bagh & Academic Heritage
+          Positioned immediately after Dispatch 10 (Sálim Ali National Park)
+          and immediately before Dispatch 12 (An Elegy for Winter)
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialNaseemBaghInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-kicker">
+                  {naseemBaghNo} &nbsp;·&nbsp; {NASEEM_BAGH_CHINARS_SPEC.editionRubric}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialNaseemBaghInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {NASEEM_BAGH_CHINARS_SPEC.title}
+                  </h2>
+                  <p
+                    className="hd-font-display text-2xl sm:text-3xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {NASEEM_BAGH_CHINARS_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg italic leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {NASEEM_BAGH_CHINARS_SPEC.italicDeck}
+                </p>
+
+                <div
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule-strong)' }}
+                >
+                  {NASEEM_BAGH_CHINARS_SPEC.incidentCards4.map((card) => (
+                    <div key={card.kicker} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-4xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {card.figure}
+                      </div>
+                      <div className="hd-folio-meta">{card.kicker}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-folio-meta">
+                  BY {NASEEM_BAGH_CHINARS_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {NASEEM_BAGH_CHINARS_SPEC.geographicScope}
+                </p>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialNaseemBaghInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {naseemBaghNo} (
+                      {specialNaseemBaghInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monographNaseemBaghChinars}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border text-xs font-semibold tracking-[0.2em] uppercase transition-colors hover:opacity-80"
+                    style={{ borderColor: 'var(--hd-copper)', color: 'var(--hd-copper)' }}
+                  >
+                    <span>Open Monograph 14 (12 Volumes · 72 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside
+                className="lg:col-span-5 p-6 sm:p-7 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                <p className="hd-kicker">FIVE INSTITUTIONAL HERITAGE INVESTIGATIONS</p>
+                <p
+                  className="hd-font-display text-xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{NASEEM_BAGH_CHINARS_SPEC.landscapeAxiom}”
+                </p>
+                <div className="space-y-2 pt-2 border-t text-xs" style={{ borderColor: 'var(--hd-rule)' }}>
+                  {KASHMIR_INSTITUTIONAL_HERITAGE_PENTAD_5.map((p) => (
+                    <Link
+                      key={p.investigation}
+                      href={p.href}
+                      className="block p-2.5 border hover:border-[#8C3125] transition-colors"
+                      style={{ borderColor: 'var(--hd-rule)' }}
+                    >
+                      <span className="font-semibold" style={{ color: 'var(--hd-fg)' }}>
+                        {p.investigation}
+                      </span>{' '}
+                      <span style={{ color: 'var(--hd-fg-muted)' }}>
+                        — {p.publicAssetExamined}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
           COMPOSITION 03 — 03 / THE VISUAL JOURNAL
           Permanent Darkroom Ink-Black Gallery Spread · Monochrome Plate Sequence
           ═══════════════════════════════════════════════════════════════════════ */}
@@ -1935,6 +2086,327 @@ export function CurrentEditionExperience({
                   </div>
                 </div>
               </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL GEOLOGICAL & ENVIRONMENTAL INVESTIGATION (DISPATCH 24 · MONOGRAPH 16)
+          "The Wealth Beneath the Mountains" — Gilgit-Baltistan Mineral Resources
+          Positioned immediately after Dispatch 23 ("The Price of Power") and
+          before Dispatch 25 ("The Rivers That No Longer Belong to Their Valleys")
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialWealthBeneathMountainsInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#1B1A18',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  {wealthBeneathMountainsNo} &nbsp;·&nbsp;{' '}
+                  {WEALTH_BENEATH_MOUNTAINS_SPEC.editionRubric}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialWealthBeneathMountainsInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {WEALTH_BENEATH_MOUNTAINS_SPEC.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {WEALTH_BENEATH_MOUNTAINS_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg italic leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {WEALTH_BENEATH_MOUNTAINS_SPEC.italicDeck}
+                </p>
+
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {WEALTH_BENEATH_MOUNTAINS_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1 text-xs text-[#F2EFE7]/80">
+                  <p className="hd-font-sans font-semibold tracking-[0.16em] uppercase text-[#D8C3A5]">
+                    BY {WEALTH_BENEATH_MOUNTAINS_SPEC.bylineDisplay}
+                  </p>
+                  <p className="hd-font-body text-[#F2EFE7]/75">
+                    {WEALTH_BENEATH_MOUNTAINS_SPEC.deskAttribution} &nbsp;·&nbsp;{' '}
+                    {WEALTH_BENEATH_MOUNTAINS_SPEC.dateline} &nbsp;·&nbsp; Editorial Oversight:{' '}
+                    {WEALTH_BENEATH_MOUNTAINS_SPEC.editorialOversight}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialWealthBeneathMountainsInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {wealthBeneathMountainsNo} (
+                      {specialWealthBeneathMountainsInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monographWealthBeneathMountains}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 16 (18 Volumes · 108 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-4 bg-[#22201E]">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  REGIONAL EXTRACTION, RIVER JUSTICE &amp; VULNERABILITY ARC
+                </p>
+                <div className="space-y-2.5 text-xs">
+                  <div className="p-3 border border-[#F2EFE7]/15 bg-[#171717]">
+                    <span className="text-[#D8C3A5] font-semibold">
+                      {dispatchNoOf('who-gave-development-the-right-to-exceed-the-mountain')} · Ecological Limits:
+                    </span>{' '}
+                    <span className="text-[#F2EFE7]/85">
+                      Who Gave Development the Right to Exceed the Mountain?
+                    </span>
+                  </div>
+                  <div className="p-3 border border-[#F2EFE7]/15 bg-[#171717]">
+                    <span className="text-[#D8C3A5] font-semibold">
+                      {priceOfPowerNo} · Energy Sacrifice:
+                    </span>{' '}
+                    <span className="text-[#F2EFE7]/85">The Price of Power</span>
+                  </div>
+                  <div className="p-3 border border-[#8C3125] bg-[#171717]">
+                    <span className="text-[#D8C3A5] font-semibold">
+                      {wealthBeneathMountainsNo} · Gilgit-Baltistan Minerals (Monograph 16):
+                    </span>{' '}
+                    <span className="text-[#F2EFE7]/95">
+                      The Wealth Beneath the Mountains — paired with KEW’s{' '}
+                      <Link
+                        href="/earth-human-impact/mining-extraction/gilgit-baltistan-mineral-observatory"
+                        className="underline text-[#D8C3A5]"
+                      >
+                        18-Registry GB Mineral Observatory
+                      </Link>
+                    </span>
+                  </div>
+                  <div className="p-3 border border-[#F2EFE7]/15 bg-[#171717]">
+                    <span className="text-[#D8C3A5] font-semibold">
+                      {ajkRiversNo} · Azad Jammu &amp; Kashmir Rivers (Monograph 17):
+                    </span>{' '}
+                    <span className="text-[#F2EFE7]/85">
+                      The Rivers That No Longer Belong to Their Valleys
+                    </span>
+                  </div>
+                  <div className="p-3 border border-[#F2EFE7]/15 bg-[#171717]">
+                    <span className="text-[#D8C3A5] font-semibold">
+                      {timeBombNo} · Cumulative Disaster Convergence:
+                    </span>{' '}
+                    <span className="text-[#F2EFE7]/85">
+                      The Western Himalayas Are Sitting on a Time Bomb
+                    </span>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          FLAGSHIP REGIONAL INVESTIGATION — AZAD JAMMU & KASHMIR (DISPATCH 25 · MONOGRAPH 17)
+          "The Rivers That No Longer Belong to Their Valleys"
+          Filed by Himalayan Dispatch Research Desk | Muzaffarabad Coverage
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialAjkRiversInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-kicker">
+                  {ajkRiversNo} &nbsp;·&nbsp; AZAD JAMMU &amp; KASHMIR &nbsp;·&nbsp;{' '}
+                  {AJK_RIVERS_MONOGRAPH_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialAjkRiversInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {AJK_RIVERS_MONOGRAPH_SPEC.title}
+                  </h2>
+                  <p
+                    className="hd-font-display text-2xl sm:text-3xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {AJK_RIVERS_MONOGRAPH_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {AJK_RIVERS_MONOGRAPH_SPEC.standfirst}
+                </p>
+
+                <div
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule)' }}
+                >
+                  {MUZAFFARABAD_DIVERSION_METRICS.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-4xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1 text-xs">
+                  <p className="hd-folio-meta">
+                    BY {AJK_RIVERS_MONOGRAPH_SPEC.bylineDisplay} &nbsp;·&nbsp;{' '}
+                    {AJK_RIVERS_MONOGRAPH_SPEC.subBylineDesk}
+                  </p>
+                  <p className="hd-folio-meta">
+                    {AJK_RIVERS_MONOGRAPH_SPEC.geographicalFocus}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialAjkRiversInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {ajkRiversNo} ({specialAjkRiversInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monograph17}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border text-xs font-semibold tracking-[0.2em] uppercase transition-colors"
+                    style={{
+                      borderColor: 'var(--hd-copper)',
+                      color: 'var(--hd-copper)',
+                    }}
+                  >
+                    <span>Explore Monograph 17 (12 Volumes · 72 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside
+                className="lg:col-span-5 p-6 sm:p-7 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                <p className="hd-kicker">
+                  SIX AZAD JAMMU &amp; KASHMIR EDITORIAL PRIORITIES
+                </p>
+                <div className="space-y-2.5 text-xs">
+                  {AJK_EDITORIAL_PRIORITIES_6.map((p) => (
+                    <div
+                      key={p.priority}
+                      className="p-2.5 border space-y-0.5"
+                      style={{ borderColor: 'var(--hd-rule)' }}
+                    >
+                      <span className="hd-kicker">
+                        PRIORITY {p.priority} · {p.title}
+                      </span>
+                      <p
+                        className="hd-font-body"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
+                      >
+                        {p.significance}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <blockquote
+                  className="pt-3 border-t hd-font-display text-lg italic leading-snug"
+                  style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg)' }}
+                >
+                  “{AJK_RIVERS_MONOGRAPH_SPEC.overarchingQuestion}”
+                </blockquote>
+              </aside>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              {AJK_RIVERS_MONOGRAPH_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border flex flex-col justify-between space-y-3"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg)',
+                  }}
+                >
+                  <div className="space-y-2">
+                    <p className="hd-kicker">{item.level}</p>
+                    <h4
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="hd-font-body text-xs leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-kicker inline-flex items-center gap-1.5 hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>

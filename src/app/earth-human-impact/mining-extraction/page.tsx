@@ -112,6 +112,12 @@ export default function MiningExtractionSubmodulePage() {
                 Observatory
               </Button>
             </Link>
+            <Link href="/earth-human-impact/mining-extraction/gilgit-baltistan-mineral-observatory">
+              <Button size="sm" variant="outline" className="border-amber-500/40 text-amber-300 hover:bg-amber-500/10 font-bold">
+                <Pickaxe className="w-4 h-4 mr-1.5" />
+                Gilgit-Baltistan Mineral Observatory (18 Registries)
+              </Button>
+            </Link>
           </div>
         }
       />
@@ -220,6 +226,38 @@ export default function MiningExtractionSubmodulePage() {
           >
             Water Systems & Fisheries
           </Link>
+        </div>
+
+        {/* Dedicated Gilgit-Baltistan Mineral Extraction & Environmental Accountability Expansion */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-teal-950/30 to-slate-900 border border-teal-500/35 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
+            <div className="text-xs font-mono font-bold uppercase tracking-widest text-teal-400">
+              WESTERN HIMALAYAN EXTRACTIVE INTELLIGENCE EXPANSION · MONOGRAPH 16
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white">
+              Gilgit-Baltistan Mineral Extraction &amp; Environmental Accountability Observatory
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Eighteen permanent registries tracking 14 Karakoram–Himalayan–Hindu Kush mineral
+              groups, the 590-entry Mines Portal study cadastre, August 2026 Indus/Gilgit placer
+              gold scour warnings, pre-2024 vs. 2024 community royalty rules, Upper Indus acid-mine
+              drainage geochemistry, and the 20-Gate Mineral Extraction Integrity Protocol.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link
+              href="/earth-human-impact/mining-extraction/gilgit-baltistan-mineral-observatory"
+              className="px-4 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold transition-colors"
+            >
+              Open 18-Registry GB Observatory →
+            </Link>
+            <Link
+              href="/himalayan-dispatch/issues/volume-01-issue-01/the-wealth-beneath-the-mountains"
+              className="px-4 py-2.5 rounded-lg border border-white/20 hover:bg-white/10 text-slate-200 text-xs font-bold transition-colors"
+            >
+              Read Dispatch 24
+            </Link>
+          </div>
         </div>
       </div>
     </div>

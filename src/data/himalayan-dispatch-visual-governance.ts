@@ -333,6 +333,7 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
       'thirty-eight-winters-of-snowline-retreat',
       'the-atmosphere-has-no-borders',
       'the-mathematics-of-a-dying-lake',
+      'journalism-at-a-crossroads',
     ],
   },
   {
@@ -1155,5 +1156,31 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     publicCaptionPolicyNote:
       'Inline hydrological context plate in Dispatch 22; quantitative 2014 Jhelum metrics carried strictly by peer-reviewed hydraulic citations.',
     usedInStorySlugs: ['the-western-himalayas-are-sitting-on-a-time-bomb'],
+  },
+  {
+    id: 'hdn-gov-media-45',
+    title: 'Journalism at a Crossroads — Archival Ledgers & Himalayan Geospatial Desk Study',
+    mediaType: 'conceptual_illustration',
+    url: '/images/himalayan-dispatch/journalism-at-a-crossroads-hero.jpg',
+    caption:
+      'Editorial desk study contrasting unbranded newspaper broadsheets, string-tied archival gazette dockets, and a reporter’s notebook under warm brass lamplight with dual monitors displaying Himalayan glacier and watershed telemetry overlooking snow-mantled peaks at dusk.',
+    photographerOrCreator: 'Himalayan Dispatch Visual Editions Desk',
+    contributorSlug: 'himalayan-dispatch-desk',
+    bureauId: 'kashmir',
+    locationAndElevation: 'Western Himalayas (Thematic Newsroom & Geospatial Study)',
+    licensingInfo: 'KEW × Himalayan Dispatch Internal Editorial License',
+    consentRecorded: true,
+    provenanceClassification: 'ai_or_conceptual_labeled',
+    editorialApprovalStatus: 'approved',
+    approvedBy: 'Dr. Fayaz Ahmad Khan',
+    createdAt: '2026-11-28T00:00:00.000Z',
+    generationWorkflow:
+      'Bespoke digital editorial synthesis with C2PA/SynthID provenance container (Exif=False; zero identifiable individuals or real newspaper mastheads).',
+    c2paSynthIdDetected: true,
+    exifPresent: false,
+    evidentiarySuitability: 'decorative_editorial_only',
+    publicCaptionPolicyNote:
+      'Approved content-aware header plate for Dispatch 17 & Monograph 15 (Journalism at a Crossroads); explicitly labeled as an illustrative editorial study carrying no allegation against any specific publication or individual.',
+    usedInStorySlugs: ['journalism-at-a-crossroads'],
   },
 ];

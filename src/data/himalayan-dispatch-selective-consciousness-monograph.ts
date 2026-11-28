@@ -51,7 +51,7 @@ export interface AccountabilityObservatoryRegistrySpec {
 export const SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC = {
   monographCode: 'MONOGRAPH 02 · POLITICAL ECOLOGY & ENVIRONMENTAL ETHICS',
   monographSlug: 'monograph-02-selective-environmental-consciousness',
-  dispatchNumber: '24',
+  dispatchNumber: '36',
   dispatchSlug: 'selective-environmental-consciousness',
   legacyIntroductoryEssaySlug:
     'who-speaks-for-the-environment-when-politics-chooses-the-landscape',
@@ -90,12 +90,12 @@ export const SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC = {
     'Methodological & Provenance Disclosure: Documented historical chronologies (2008 Baltal–Domail forestland order, 2023–2026 Ladakh constitutional movement, November 2026 Sheshnag track-excavation inquiry) and statutory audit figures (CAG of India Report No. 4 of 2025 covering the period ended March 2022) cite official parliamentary, audit, and published news records. The 50-chapter monograph targets, 3,000–5,000-respondent Kashmir Environmental Consciousness Survey, randomized Consistency Experiment, 2000–2026 media database, and multi-decadal satellite change-detection protocols represent proposed research architectures awaiting field execution and Stage 05 external scientific review.',
   publicationHierarchy: [
     {
-      level: '01 · Inaugural Edition Flagship (Dispatch 24)',
-      title: 'Dispatch 24 — Selective Environmental Consciousness',
+      level: '01 · Inaugural Edition Flagship (Dispatch 36)',
+      title: 'Dispatch 36 — Selective Environmental Consciousness',
       detail:
         'Published as the closing flagship investigation of Vol. 01 / No. 01: opens with the cover essay "Who Speaks for the Environment When Politics Chooses the Landscape?" and synthesizes all eight investigative parts.',
       href: '/himalayan-dispatch/issues/volume-01-issue-01/selective-environmental-consciousness',
-      ctaLabel: 'Read Dispatch 24',
+      ctaLabel: 'Read Dispatch 36',
     },
     {
       level: '02 · Independent 9-Volume Monograph',
@@ -154,6 +154,16 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/water-systems/lakes/dal-lake/conservation-performance',
   },
   {
+    dispatchLabel: 'DISPATCH 11 · LIVING BOTANICAL HERITAGE & ACADEMIC ACCOUNTABILITY',
+    foundationPillar: 'THE LIVING HERITAGE & CAMPUS ECOLOGY FOUNDATION',
+    title: 'The Chinars in the Shadow of Concrete',
+    subtitle:
+      'Naseem Bagh: When an Institution of Higher Learning Expands Within a Landscape of Living Heritage',
+    href: '/himalayan-dispatch/issues/volume-01-issue-01/the-chinars-in-the-shadow-of-concrete',
+    companionLabel: 'Monograph 14 (12 Vols · 72 Chapters) & Naseem Bagh Living Heritage Observatory',
+    companionHref: '/environmental-monitoring/chinar-monitoring/naseem-bagh-heritage-observatory',
+  },
+  {
     dispatchLabel: 'DISPATCH 12 · ACADEMIC AND SCIENTIFIC ACCOUNTABILITY',
     foundationPillar: 'THE ACADEMIC & KNOWLEDGE-RETURN FOUNDATION',
     title: 'Who Are We Researching For?',
@@ -163,7 +173,7 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/research-library/environmental-research-observatory',
   },
   {
-    dispatchLabel: 'HYDROPOWER, TECTONIC HAZARDS & ENERGY JUSTICE',
+    dispatchLabel: 'DISPATCH 23 · HYDROPOWER, TECTONIC HAZARDS & ENERGY JUSTICE',
     foundationPillar: 'THE MOUNTAIN INFRASTRUCTURE & ENERGY JUSTICE FOUNDATION',
     title: 'The Price of Power',
     subtitle:
@@ -173,7 +183,37 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/earth-human-impact/hydropower-energy-justice-observatory',
   },
   {
-    dispatchLabel: 'ATMOSPHERIC AND TRANSBOUNDARY ACCOUNTABILITY',
+    dispatchLabel: 'DISPATCH 24 · MINERAL GOVERNANCE, EXTRACTIVE ECONOMICS & RESOURCE JUSTICE',
+    foundationPillar: 'THE GEOLOGICAL & MINERAL OWNERSHIP FOUNDATION',
+    title: 'The Wealth Beneath the Mountains',
+    subtitle:
+      'Gilgit-Baltistan’s Mineral Resources: Extraction, Environmental Vulnerability, External Commercial Interests and the Question of Local Ownership',
+    href: '/himalayan-dispatch/issues/volume-01-issue-01/the-wealth-beneath-the-mountains',
+    companionLabel: 'Monograph 16 (18 Vols · 108 Chapters) & 18-Registry GB Mineral Observatory',
+    companionHref: '/earth-human-impact/mining-extraction/gilgit-baltistan-mineral-observatory',
+  },
+  {
+    dispatchLabel: 'DISPATCH 25 · RIVER DIVERSION, SUBMERGENCE & ENVIRONMENTAL JUSTICE',
+    foundationPillar: 'THE AZAD JAMMU & KASHMIR WATER & DISPLACEMENT FOUNDATION',
+    title: 'The Rivers That No Longer Belong to Their Valleys',
+    subtitle:
+      'Azad Jammu & Kashmir: Hydropower, River Diversion, Submerged Civilizations and the Unresolved Question of Environmental Justice',
+    href: '/himalayan-dispatch/issues/volume-01-issue-01/the-rivers-that-no-longer-belong-to-their-valleys',
+    companionLabel: 'Monograph 17 (12 Vols · 72 Chapters) & 10-Registry AJ&K River Observatory',
+    companionHref: '/earth-human-impact/ajk-river-justice-observatory',
+  },
+  {
+    dispatchLabel: 'DISPATCH 26 · TECTONIC INSTABILITY, MULTI-HAZARDS & CRITICAL LIFELINES',
+    foundationPillar: 'THE CASCADING DISASTER VULNERABILITY FOUNDATION',
+    title: 'The Western Himalayas Are Sitting on a Time Bomb',
+    subtitle:
+      'The Convergence of Tectonic Instability, Climate Extremes, Ecological Destruction and Unprepared Human Settlements',
+    href: '/himalayan-dispatch/issues/volume-01-issue-01/the-western-himalayas-are-sitting-on-a-time-bomb',
+    companionLabel: 'Monograph 13 (25 Vols · 150 Chapters) & 20-Pillar Multi-Hazard Command Center',
+    companionHref: '/hazard-intelligence/multi-hazard-resilience-command-center',
+  },
+  {
+    dispatchLabel: 'DISPATCH 30 · ATMOSPHERIC AND TRANSBOUNDARY ACCOUNTABILITY',
     foundationPillar: 'THE ATMOSPHERIC SCIENTIFIC FOUNDATION',
     title: 'The Atmosphere Has No Borders',
     subtitle: 'The Air We Breathe, the Numbers We Cannot Trust',
@@ -182,7 +222,7 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/risk-monitoring/air-pollution',
   },
   {
-    dispatchLabel: 'ENVIRONMENTAL JURISPRUDENCE & LEGISLATIVE ACCOUNTABILITY',
+    dispatchLabel: 'DISPATCH 31 · ENVIRONMENTAL JURISPRUDENCE & LEGISLATIVE ACCOUNTABILITY',
     foundationPillar: 'THE LEGAL & REGULATORY FOUNDATION',
     title: 'When Environmental Laws Exist but the Environment Has No Defence',
     subtitle:
@@ -192,7 +232,7 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/governance/legislation-enforcement-observatory',
   },
   {
-    dispatchLabel: 'ELECTORAL & LEGISLATIVE ACCOUNTABILITY',
+    dispatchLabel: 'DISPATCH 35 · ELECTORAL & LEGISLATIVE ACCOUNTABILITY',
     foundationPillar: 'THE ELECTORAL GOVERNANCE FOUNDATION',
     title: 'When Politics Promises Green',
     subtitle:
@@ -202,7 +242,7 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/governance/environmental-manifesto-observatory',
   },
   {
-    dispatchLabel: 'DISPATCH 24 · POLITICAL, SOCIETAL AND ETHICAL ACCOUNTABILITY',
+    dispatchLabel: 'DISPATCH 36 · POLITICAL, SOCIETAL AND ETHICAL ACCOUNTABILITY',
     foundationPillar: 'THE ETHICAL AND INSTITUTIONAL FOUNDATION',
     title: 'Selective Environmental Consciousness',
     subtitle: 'When Ecology Becomes Political and Environmental Responsibility Becomes Optional',

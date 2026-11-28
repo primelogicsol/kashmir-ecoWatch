@@ -360,17 +360,35 @@ export function HimalayanDispatchMasthead() {
   const [mobileBureausOpen, setMobileBureausOpen] = useState(false);
 
   const navRootRef = useRef<HTMLElement>(null);
+  const isScrolledRef = useRef(false);
 
   const normalizedPath = stripDispatchPrefix(pathname || '/');
   const isMagazineHome = normalizedPath === '/';
 
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 180);
+    let rafId: number | null = null;
+    const evaluateScroll = () => {
+      rafId = null;
+      const y = window.scrollY;
+      // Hysteresis deadband (150px..190px) + ref equality guard prevents nested
+      // setState oscillation ("Maximum update depth exceeded") around threshold.
+      const next = isScrolledRef.current ? y > 150 : y > 190;
+      if (next !== isScrolledRef.current) {
+        isScrolledRef.current = next;
+        setIsScrolled(next);
+      }
     };
-    onScroll();
+    const onScroll = () => {
+      if (rafId === null) {
+        rafId = window.requestAnimationFrame(evaluateScroll);
+      }
+    };
+    evaluateScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   useEffect(() => {

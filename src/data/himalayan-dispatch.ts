@@ -30,17 +30,21 @@ import { STORY_04_WILD_WATERS } from './himalayan-dispatch-stories/story-04-wild
 import { THE_SKY_HAS_NO_BORDERS_STORY } from './himalayan-dispatch-sky-has-no-borders-story';
 import { STORY_05_FOREST_GUARDIANS } from './himalayan-dispatch-stories/story-05-forest-guardians';
 import { THE_NATIONAL_PARK_THAT_BECAME_A_GOLF_COURSE_STORY } from './himalayan-dispatch-salim-ali-park-story';
+import { THE_CHINARS_IN_THE_SHADOW_OF_CONCRETE_STORY } from './himalayan-dispatch-naseem-bagh-chinars-story';
 import { STORY_06_ELEGY_WINTER } from './himalayan-dispatch-stories/story-06-elegy-winter';
 import { STORY_07_VANISHING_FLOODPLAIN } from './himalayan-dispatch-stories/story-07-vanishing-floodplain';
 import { STORY_08_SNOWLINE_RETREAT } from './himalayan-dispatch-stories/story-08-snowline-retreat';
 import { STORY_09_GLACIER_DIALOGUE } from './himalayan-dispatch-stories/story-09-glacier-dialogue';
 import { STORY_10_SLOW_JOURNALISM } from './himalayan-dispatch-stories/story-10-slow-journalism';
+import { JOURNALISM_AT_A_CROSSROADS_STORY } from './himalayan-dispatch-journalism-crossroads-story';
 import { WHO_ARE_WE_RESEARCHING_FOR_STORY } from './himalayan-dispatch-research-accountability-story';
 import { SOUTH_ASIAN_VANGUARD_STORY } from './himalayan-dispatch-south-asian-vanguard-story';
 import { STORY_11_SCIENCE_GOVERNANCE } from './himalayan-dispatch-stories/story-11-science-diagnosed-valley-governance';
 import { STORY_12_MOUNTAIN_REJECTS_ENGINEER } from './himalayan-dispatch-stories/story-12-when-mountain-rejects-engineer';
 import { STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT } from './himalayan-dispatch-stories/story-13-who-gave-development-right-exceed-mountain';
 import { THE_PRICE_OF_POWER_STORY } from './himalayan-dispatch-price-of-power-story';
+import { THE_WEALTH_BENEATH_THE_MOUNTAINS_STORY } from './himalayan-dispatch-wealth-beneath-mountains-story';
+import { THE_RIVERS_THAT_NO_LONGER_BELONG_STORY } from './himalayan-dispatch-ajk-rivers-story';
 import { THE_WESTERN_HIMALAYAS_TIME_BOMB_STORY } from './himalayan-dispatch-time-bomb-story';
 import { STORY_14_NATURE_NOT_CONTRACTOR } from './himalayan-dispatch-stories/story-14-nature-is-not-a-contractor';
 import { STORY_15_CLIMATE_AGRICULTURAL_SCIENCE } from './himalayan-dispatch-stories/story-15-climate-has-changed-has-agricultural-science';
@@ -333,6 +337,26 @@ export const JOURNALIST_PROFILES: JournalistProfile[] = [
       'Himalayan Dispatch Ecological & Commons Synthesis Desk',
     ],
   },
+  {
+    slug: 'himalayan-dispatch-research-desk-gb',
+    name: 'Himalayan Dispatch Research Desk | Gilgit-Baltistan Coverage',
+    roleTitle:
+      'Geological Sciences, Extractive Economics & Mineral Resource Governance Desk (Pre-Bureau Coverage)',
+    beat: 'Gilgit-Baltistan Mineral Governance, Karakoram Cryosphere & Upper Indus Accountability',
+    basedIn: 'Fairfax, Virginia (Gilgit & Baltistan Distributed Desks In Establishment)',
+    portraitUrl: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
+    shortBio:
+      'Institutional research desk conducting documentary, geological, and environmental-governance investigations across Gilgit-Baltistan, the Karakoram, and the Upper Indus Basin prior to formal local correspondent appointment.',
+    extendedBio: [
+      'In accordance with the Himalayan Dispatch Editorial Charter, regional investigations in territories where a distributed bureau is still in establishment are published transparently under "Himalayan Dispatch Research Desk | Gilgit-Baltistan Coverage" rather than inventing fictional correspondent identities or overstating local physical bureau presence.',
+      'Once an accredited Gilgit-Baltistan regional correspondent is formally appointed and contributes firsthand reporting, regional byline ownership transitions progressively to the Gilgit-Baltistan Bureau under Founding Editor-in-Chief editorial oversight.',
+    ],
+    languages: ['English', 'Urdu', 'Shina', 'Balti'],
+    awardsAndFellowships: [
+      'Himalayan Dispatch Regional Ownership & Attribution Integrity Standard',
+      'Connected to KEW Gilgit-Baltistan Mineral Extraction Observatory',
+    ],
+  },
 ];
 
 export const EDITORIAL_BOARD_MEMBERS: EditorialBoardMember[] = [
@@ -411,14 +435,18 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'Across Kashmir EcoWatch, sensors, satellite passes, geospatial models and hydrological ledgers measure the Western Himalayas with necessary precision. Yet numbers alone rarely explain the human cost of keeping a mountain watershed standing, or what happens to a home in Verinag or Doda when a forest guard never returns from duty.',
       'Himalayan Dispatch was founded to build a different kind of room: unhurried, intellectually independent, literary, visually uncompromising and anchored in verifiable truth. A room where scientific evidence meets human experience, where historical decisions encounter contemporary consequences, and where environmental responsibility extends beyond institutional declarations.',
       'Our inaugural cover story, The Price of Protecting Paradise, turns towards the forgotten guardians of Kashmir’s forests, reconciling official memorials with lived occupational realities and asking who protects the protectors.',
-      'Across this inaugural volume of thirty-two dispatches, our correspondents listen to high cirque lakes beneath Haramukh, trace Srinagar’s buried waterways, stand at dawn along Hokersar’s reedlines, follow migratory birds across political boundaries and examine thirty-eight winters of snowline retreat.',
+      'Across this inaugural volume of thirty-six dispatches, our correspondents listen to high cirque lakes beneath Haramukh, trace Srinagar’s buried waterways, stand at dawn along Hokersar’s reedlines, follow migratory birds across political boundaries and examine thirty-eight winters of snowline retreat.',
       'But this edition also enters less comfortable territory.',
       'The Mathematics of a Dying Lake reconstructs the unresolved engineering questions and eight mass balances of Dal Lake conservation. The Laboratory That Kashmir Lost investigates the displacement and deterioration of the scientific infrastructure established to understand the very ecosystem Kashmir continues attempting to restore. The Art of Encroachment examines the historical transformation of water into land, the pressures of property development, the consequences of political instability and documented allegations of administrative collusion.',
       'The National Park That Became a Golf Course revisits the transformation of part of Srinagar’s Sálim Ali National Park, asking what protected status means when conservation landscapes become available for competing development priorities.',
+      'The Chinars in the Shadow of Concrete examines four centuries of living Mughal Chinar heritage at Naseem Bagh alongside decades of campus expansion, asking how an institution of higher learning that teaches ecology, botany, geography and environmental law reconciles academic advancement with the preservation of the living landscape entrusted to its own grounds.',
+      'Journalism at a Crossroads turns that same lens inward upon the profession of journalism itself—examining the political establishment–media house nexus, government advertising dependency, media ownership, press-release reproduction, scientific and geospatial specialization, internal protections for working journalists, and the universal obligation of Himalayan Dispatch to subject itself and Kashmir EcoWatch to the very standards it proposes.',
       'Our investigation into academic responsibility, Who Are We Researching For? The World Knows Our Mountains. Do We?, examines the relationship between scientific production, original knowledge, public understanding and measurable environmental outcomes across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir and Gilgit-Baltistan.',
       'Alongside it, South Asia’s Environmental Vanguard looks beyond our mountains to the extraordinary environmental advocates, journalists, scientists and conservation leaders of India and Pakistan. Their journeys were not always easy. Neither are those of our own professionals. Their struggles, contributions and achievements invite us towards respectful introspection, renewed intellectual ambition and a deeper understanding of professional responsibility.',
       'Through Beyond the Conference, we examine the distance between scientific recommendations and environmental governance, between engineering ambition and geological reality, between development expenditure and ecological recovery, and between agricultural research and a changing mountain climate.',
       'The Price of Power investigates the geographical distribution of hydropower benefits and environmental burdens. It asks who receives the electricity, who receives the revenue, and who lives with submerged forests, displaced wildlife, altered rivers and geological uncertainty. It also examines the contradiction of electricity-generating mountain regions experiencing persistent power shortages.',
+      'The Wealth Beneath the Mountains—prepared by our Research Desk’s Gilgit-Baltistan Coverage ahead of future regional correspondent ownership—examines Gilgit-Baltistan’s mineral resources across the Karakoram, Himalaya and Hindu Kush, asking who owns the mineral wealth, who captures its economic value, and who inherits riverbed destabilization, slope hazards and environmental liabilities after the mountains are excavated.',
+      'The Rivers That No Longer Belong to Their Valleys—prepared by our Research Desk’s Muzaffarabad Coverage under Central Editorial Board oversight—turns across all ten districts of Azad Jammu & Kashmir, from Muzaffarabad’s post-diversion river-flow and drinking-water paradox to six decades of Mangla submergence, unfinished compensation, drying springs, forest pressures and mining-concession reversals.',
       'The Western Himalayas Are Sitting on a Time Bomb brings these concerns into a wider scientific examination of tectonic instability, accumulated seismic strain, glacial lake outbursts, landslides, extreme weather, vulnerable settlements and interdependent critical infrastructure. Its purpose is not to predict catastrophe or cultivate fear, but to investigate whether our societies are adequately preparing for the natural hazards and human-created vulnerabilities that increasingly coexist within these mountains.',
       'Our atmospheric investigations examine the persistence of unhealthy air, transboundary pollution transport, the integrity of environmental measurements and the limitations of explanations confined within political borders.',
       'Our legal and civil society investigations ask whether environmental legislation is producing environmental protection, whether lake restoration extends beyond recurring cleanup operations, whether activism is generating measurable outcomes, and whether public declarations are being translated into institutional action.',
@@ -450,17 +478,21 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'the-sky-has-no-borders',
       'the-people-who-guard-the-forest',
       'the-national-park-that-became-a-golf-course',
+      'the-chinars-in-the-shadow-of-concrete',
       'an-elegy-for-winter',
       'gravel-concrete-and-the-vanishing-floodplain',
       'thirty-eight-winters-of-snowline-retreat',
       'a-glacier-does-not-negotiate-with-five-year-plans',
       'why-the-western-himalayas-demand-slow-journalism',
+      'journalism-at-a-crossroads',
       'who-are-we-researching-for',
       'south-asias-environmental-vanguard',
       'science-has-diagnosed-the-valley-who-will-prescribe-its-governance',
       'when-the-mountain-rejects-the-engineer',
       'who-gave-development-the-right-to-exceed-the-mountain',
       'the-price-of-power',
+      'the-wealth-beneath-the-mountains',
+      'the-rivers-that-no-longer-belong-to-their-valleys',
       'the-western-himalayas-are-sitting-on-a-time-bomb',
       'nature-is-not-a-contractor',
       'the-climate-has-changed-has-agricultural-science',
@@ -895,10 +927,125 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
     editorsNoteRole: 'Founding Editor-in-Chief',
     storySlugs: ['the-western-himalayas-are-sitting-on-a-time-bomb'],
   },
+  {
+    id: 'ed-monograph-14-naseem-bagh-chinars',
+    slug: 'monograph-14-the-chinars-in-the-shadow-of-concrete',
+    volumeLabel: 'MONOGRAPH 14 · LIVING HERITAGE & ACADEMIC ACCOUNTABILITY',
+    issueNumberLabel: 'SPECIAL HISTORICAL & ECOLOGICAL MONOGRAPH',
+    status: 'archived',
+    title: 'The Chinars in the Shadow of Concrete',
+    themeKicker:
+      'LIVING HERITAGE · ACADEMIC INSTITUTIONAL ACCOUNTABILITY · LANDSCAPE TRANSFORMATION · URBAN ECOLOGY · ARBORICULTURE',
+    subtitle:
+      'Naseem Bagh: When an Institution of Higher Learning Expands Within a Landscape of Living Heritage — 12 Thematic Volumes, 72 Proposed Chapters & 15-Measure Recovery Protocol.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Permit Audit, Cadastral Survey & Arboricultural Fieldwork Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/env-monitoring/naseem-bagh-chinar-gis.jpg',
+    coverLocation: 'Naseem Bagh · Hazratbal · Dal Lake Shore · Srinagar · Kashmir Valley',
+    coverCaption:
+      'Mature Kashmir Chinar (Platanus orientalis) canopy geometry representative of Srinagar’s historic Naseem Bagh landscape—where four centuries of Mughal arboriculture meet modern campus construction and root-zone science (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'What Did the Chinars Teach the University?',
+    editorsNoteBody: [
+      'Positioned at Dispatch 11 immediately after "The National Park That Became a Golf Course" in Vol. 01 / No. 01, Monograph 14 sets out a twelve-volume, seventy-two-chapter historical, botanical, and legal investigation into Naseem Bagh—examining the University of Kashmir’s Institutional Calendar (696 Chinars) and 2021–22 Environmental Audit (~700 Chinars; 74.66 ha main-campus inventory) alongside 2007–2026 construction controversies, BS 5837 root-zone biomechanics, and Section 3 of the J&K Preservation of Specified Trees Act, 1969.',
+      'Connected permanently with Kashmir EcoWatch’s twelve-registry Naseem Bagh Living Heritage & Campus Ecology Observatory (/environmental-monitoring/chinar-monitoring/naseem-bagh-heritage-observatory), it enforces strict non-subtraction / non-addition census rules and guarantees formal Right of Response to the University of Kashmir.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-chinars-in-the-shadow-of-concrete'],
+  },
+  {
+    id: 'ed-monograph-15-journalism-at-a-crossroads',
+    slug: 'monograph-15-journalism-at-a-crossroads',
+    volumeLabel: 'MONOGRAPH 15 · MEDIA POLITICAL ECONOMY & EDITORIAL INDEPENDENCE',
+    issueNumberLabel: 'SPECIAL EDITORIAL & INSTITUTIONAL MONOGRAPH',
+    status: 'archived',
+    title: 'Journalism at a Crossroads',
+    themeKicker:
+      'POLITICAL ECONOMY OF MEDIA · JOURNALISTIC INDEPENDENCE · SCIENTIFIC LITERACY · MEDIA OWNERSHIP · PUBLIC ACCOUNTABILITY',
+    subtitle:
+      'Why the Western Himalayas Need a New Direction in Journalism: Beyond Political Patronage, Institutional Dependency, Press Release Journalism and the Boundaries of Conventional Reporting — 15 Thematic Volumes & 90 Proposed Research Chapters.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Documentary, Financial & Five-Region Census Protocols Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/himalayan-dispatch/journalism-at-a-crossroads-hero.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Western Himalayas',
+    coverCaption:
+      'Printed broadsheets, string-tied archival gazette dockets, and a reporter’s notebook paired with dual monitors displaying Himalayan glacier and watershed telemetry at dusk—evoking the crossroads between press-release reporting and independent scientific journalism (Illustrative editorial study — Himalayan Dispatch Visual Editions Desk).',
+    coverCredit: 'Himalayan Dispatch Visual Editions Desk',
+    editorsNoteTitle: 'Who Will Investigate the Institutions That Employ the Investigators?',
+    editorsNoteBody: [
+      'Positioned immediately after our founding manifesto ("Why the Western Himalayas Demand Slow, Fearless Journalism") as Dispatch 17 in Vol. 01 / No. 01, Monograph 15 establishes a fifteen-volume, ninety-chapter research repository examining the political establishment–media house nexus, government advertising dependency, media ownership, citizen journalism ethics, press-release reproduction, twenty proposed specialized desks, geospatial/preventive journalism, and internal newsroom safeguards across all five Western Himalayan regions.',
+      'Paired permanently with the sixteen-module Western Himalayan Media Transparency & Editorial Independence Observatory (/himalayan-dispatch/media-transparency-observatory), it advances the twenty-principle Integrity Charter, the fifteen-programme 2027–2035 Development Initiative, and the fourteen-requirement Self-Scrutiny Standard—applying full transparency and critical independence first to Himalayan Dispatch and Kashmir EcoWatch itself.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['journalism-at-a-crossroads'],
+  },
+  {
+    id: 'ed-monograph-17-ajk-rivers',
+    slug: 'monograph-17-the-rivers-that-no-longer-belong-to-their-valleys',
+    volumeLabel: 'MONOGRAPH 17 · WATER GOVERNANCE, DISPLACEMENT & ENVIRONMENTAL JUSTICE',
+    issueNumberLabel: 'SPECIAL HISTORICAL & HYDROLOGICAL MONOGRAPH',
+    status: 'archived',
+    title: 'The Rivers That No Longer Belong to Their Valleys',
+    themeKicker:
+      'RESOURCE GOVERNANCE · WATER GOVERNANCE · ENERGY JUSTICE · ENVIRONMENTAL ECONOMICS · COMMUNITY RIGHTS',
+    subtitle:
+      'Azad Jammu & Kashmir: Hydropower, River Diversion, Submerged Civilizations and the Unresolved Question of Environmental Justice — 12 Thematic Volumes, 72 Proposed Chapters & 6 Regional Priorities Across All 10 Districts.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Himalayan Dispatch Research Desk | Muzaffarabad Coverage · Field Verification Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
+    coverLocation:
+      'Muzaffarabad · Neelum Valley · Mirpur · Mangla · Sudhnoti · Bagh · Poonch · Upper Jhelum Basin',
+    coverCaption:
+      'Himalayan river-confluence and steep mountain valley corridor context—examining what happens when mountain waters are transformed into national economic resources while local communities confront displacement and water insecurity (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'When Rivers Leave Their Valleys Behind',
+    editorsNoteBody: [
+      'Filed by the Himalayan Dispatch Research Desk | Muzaffarabad Coverage under Central Editorial Board oversight—without implying an operational local Muzaffarabad office—Monograph 17 sets out a twelve-volume, seventy-two-chapter research programme across all ten districts of Azad Jammu & Kashmir.',
+      'Uniting Muzaffarabad’s post-2018 Neelum–Jhelum river diversion (969 MW; >PKR 1.6B 2025 water-supply replacement scheme) and six decades of Mangla submergence (including the 15,780-acre, 118-village Raising Project flagged in May 2026) with forest watershed decline, the March 2026 retrospective mining-concession reversal, Mirpur drinking-water pledges, and post-2005 earthquake reconstruction resilience, it connects permanently with KEW’s AJ&K River Diversion, Reservoir Displacement & Resource Justice Observatory (/earth-human-impact/ajk-river-justice-observatory).',
+    ],
+    editorsNoteAuthor: 'Himalayan Dispatch Central Editorial Board',
+    editorsNoteRole: 'Himalayan Dispatch Research Desk | Muzaffarabad Coverage',
+    storySlugs: ['the-rivers-that-no-longer-belong-to-their-valleys'],
+  },
+  {
+    id: 'ed-monograph-16-wealth-beneath-mountains',
+    slug: 'monograph-16-the-wealth-beneath-the-mountains',
+    volumeLabel: 'MONOGRAPH 16 · MINERAL GOVERNANCE & ENVIRONMENTAL JUSTICE',
+    issueNumberLabel: 'SPECIAL GEOLOGICAL & ENVIRONMENTAL MONOGRAPH',
+    status: 'archived',
+    title: 'The Wealth Beneath the Mountains',
+    themeKicker:
+      'MINERAL RESOURCE GOVERNANCE · EXTRACTIVE ECONOMICS · ENVIRONMENTAL JUSTICE · GEOPOLITICAL INTERESTS',
+    subtitle:
+      'Gilgit-Baltistan’s Mineral Resources: Extraction, Environmental Vulnerability, External Commercial Interests and the Question of Local Ownership — 18 Thematic Volumes, 108 Proposed Chapters & 20-Gate Integrity Protocol.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Gazette Authentication, Cadastre & Field Sampling Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
+    coverLocation: 'Gilgit-Baltistan · Karakoram · Upper Indus Basin · Western Himalayas',
+    coverCaption:
+      'High-relief mountain river corridor representative of Upper Indus mineral-extraction landscapes—where alluvial gold dredging, pegmatite gemstone mining, glacier-fed rivers, and steep fractured slopes intersect (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Mountains May Be Rich. Will Their People Share That Wealth?',
+    editorsNoteBody: [
+      'Positioned at Dispatch 24 immediately after "The Price of Power" in Vol. 01 / No. 01, Monograph 16 sets out an eighteen-volume, hundred-and-eight-chapter geological, economic, and environmental investigation into mineral extraction across Gilgit-Baltistan—strictly separating 14 mineral occurrence groups and the 43,494 km² interest figure from verified reserves while examining the 590-entry portal, April 2025 Shigar protests, the 2024 royalty-rule shift (2× to 30%), and August 2026 placer-gold river warnings.',
+      'Published under "Himalayan Dispatch Research Desk | Gilgit-Baltistan Coverage" (with Founding Editor-in-Chief oversight and future regional correspondent ownership) and integrated into Kashmir EcoWatch’s eighteen-registry Gilgit-Baltistan Mineral Extraction Observatory (/earth-human-impact/mining-extraction/gilgit-baltistan-mineral-observatory), it advances the twenty-gate Mineral Extraction Integrity Protocol (GB-MEIP-20).',
+    ],
+    editorsNoteAuthor: 'Himalayan Dispatch Research Desk | Gilgit-Baltistan Coverage',
+    editorsNoteRole:
+      'Geological Sciences, Extractive Economics & Mineral Resource Governance · Editorial Oversight: Dr. Fayaz Ahmad Khan',
+    storySlugs: ['the-wealth-beneath-the-mountains'],
+  },
 ];
 
 export const MAGAZINE_STORIES: MagazineStory[] = [
-  // ── 01–11: INAUGURAL EDITION (VOL. 01 / NO. 01) FOUNDING & DAL FLAGSHIP ────
+  // ── 01–17: INAUGURAL EDITION (VOL. 01 / NO. 01) FOUNDING, DAL, HERITAGE & MEDIA ──
   THE_PRICE_OF_PROTECTING_PARADISE_STORY,
   STORY_02_MOUNTAINS_SPEAK,
   STORY_03_FORGOTTEN_WATER,
@@ -909,21 +1056,25 @@ export const MAGAZINE_STORIES: MagazineStory[] = [
   THE_SKY_HAS_NO_BORDERS_STORY,
   STORY_05_FOREST_GUARDIANS,
   THE_NATIONAL_PARK_THAT_BECAME_A_GOLF_COURSE_STORY,
+  THE_CHINARS_IN_THE_SHADOW_OF_CONCRETE_STORY,
   STORY_06_ELEGY_WINTER,
   STORY_07_VANISHING_FLOODPLAIN,
   STORY_08_SNOWLINE_RETREAT,
   STORY_09_GLACIER_DIALOGUE,
   STORY_10_SLOW_JOURNALISM,
+  JOURNALISM_AT_A_CROSSROADS_STORY,
 
-  // ── 13–14: ACADEMIC ACCOUNTABILITY & SOUTH ASIAN VANGUARD FLAGSHIPS ────────
+  // ── 18–19: ACADEMIC ACCOUNTABILITY & SOUTH ASIAN VANGUARD FLAGSHIPS ────────
   WHO_ARE_WE_RESEARCHING_FOR_STORY,
   SOUTH_ASIAN_VANGUARD_STORY,
 
-  // ── BEYOND THE CONFERENCE, HYDROPOWER & MULTI-HAZARD CONVERGENCE (18–24) ───
+  // ── BEYOND THE CONFERENCE, HYDROPOWER, MINERALS, RIVERS & MULTI-HAZARDS ────
   STORY_11_SCIENCE_GOVERNANCE,
   STORY_12_MOUNTAIN_REJECTS_ENGINEER,
   STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT,
   THE_PRICE_OF_POWER_STORY,
+  THE_WEALTH_BENEATH_THE_MOUNTAINS_STORY,
+  THE_RIVERS_THAT_NO_LONGER_BELONG_STORY,
   THE_WESTERN_HIMALAYAS_TIME_BOMB_STORY,
   STORY_14_NATURE_NOT_CONTRACTOR,
   STORY_15_CLIMATE_AGRICULTURAL_SCIENCE,

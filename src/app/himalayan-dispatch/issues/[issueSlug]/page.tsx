@@ -38,6 +38,9 @@ import {
   SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17,
 } from '@/data/himalayan-dispatch-beyond-conference';
 import { PRICE_OF_POWER_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-price-of-power-monograph';
+import { NASEEM_BAGH_CHINARS_SPEC } from '@/data/himalayan-dispatch-naseem-bagh-chinars-monograph';
+import { JOURNALISM_CROSSROADS_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-journalism-crossroads-monograph';
+import { WEALTH_BENEATH_MOUNTAINS_SPEC } from '@/data/himalayan-dispatch-wealth-beneath-mountains-monograph';
 import { formatPublicReadingDuration } from '@/lib/himalayan-dispatch-metrics';
 
 export function generateStaticParams() {
@@ -500,6 +503,31 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                         </div>
                       )}
 
+                      {st.slug === NASEEM_BAGH_CHINARS_SPEC.dispatchSlug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {NASEEM_BAGH_CHINARS_SPEC.subtitle} —{' '}
+                            {NASEEM_BAGH_CHINARS_SPEC.italicDeck}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {NASEEM_BAGH_CHINARS_SPEC.heroStats.map((hs) => (
+                              <span key={hs.label} className="hd-folio-meta">
+                                {hs.value} {hs.label}
+                              </span>
+                            ))}
+                            <Link
+                              href={HD_ROUTES.monographNaseemBaghChinars}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open 12-Volume Monograph 14 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
                       {st.slug === PRICE_OF_POWER_MONOGRAPH_SPEC.dispatchSlug && (
                         <div className="space-y-2 pt-0.5">
                           <p
@@ -520,6 +548,65 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                               className="hd-kicker underline hover:opacity-80"
                             >
                               Open 20-Volume Monograph 12 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
+                      {st.slug === WEALTH_BENEATH_MOUNTAINS_SPEC.dispatchSlug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {WEALTH_BENEATH_MOUNTAINS_SPEC.subtitle} —{' '}
+                            {WEALTH_BENEATH_MOUNTAINS_SPEC.italicDeck}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {WEALTH_BENEATH_MOUNTAINS_SPEC.heroStats.map((hs) => (
+                              <span key={hs.label} className="hd-folio-meta">
+                                {hs.value} {hs.label}
+                              </span>
+                            ))}
+                            <Link
+                              href={HD_ROUTES.monographWealthBeneathMountains}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open 18-Volume Monograph 16 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
+                      {st.slug === JOURNALISM_CROSSROADS_MONOGRAPH_SPEC.companionDispatchSlug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {JOURNALISM_CROSSROADS_MONOGRAPH_SPEC.subtitle} — Beyond political
+                            patronage, institutional dependency, press release journalism and the
+                            boundaries of conventional reporting
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {JOURNALISM_CROSSROADS_MONOGRAPH_SPEC.heroStats
+                              .slice(0, 4)
+                              .map((hs) => (
+                                <span key={hs.label} className="hd-folio-meta">
+                                  {hs.value} {hs.label}
+                                </span>
+                              ))}
+                            <Link
+                              href={HD_ROUTES.monograph15}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open 15-Volume Monograph 15 →
+                            </Link>
+                            <Link
+                              href={HD_ROUTES.mediaTransparencyObservatory}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Media Transparency Observatory →
                             </Link>
                           </div>
                         </div>

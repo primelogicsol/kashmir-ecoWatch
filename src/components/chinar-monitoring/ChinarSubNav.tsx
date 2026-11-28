@@ -127,6 +127,14 @@ export const CHINAR_SUBMODULES: ChinarSubmoduleRoute[] = [
     badge: 'Heritage',
   },
   {
+    name: 'Naseem Bagh Observatory',
+    shortName: 'Naseem Bagh',
+    path: '/environmental-monitoring/chinar-monitoring/naseem-bagh-heritage-observatory',
+    category: '03 · Conservation & Heritage Protection',
+    icon: Landmark,
+    badge: 'Monograph 14',
+  },
+  {
     name: 'Mortality & Felling Threats',
     shortName: 'Threats & Felling',
     path: '/environmental-monitoring/chinar-monitoring/threats',

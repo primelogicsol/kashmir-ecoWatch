@@ -307,6 +307,9 @@ export default function EditorialCharterPage() {
           <Link href={HD_ROUTES.publicEditor} className="hd-kicker hover:underline">
             Office of the Public Editor →
           </Link>
+          <Link href={HD_ROUTES.mediaTransparencyObservatory} className="hd-kicker hover:underline">
+            Media Transparency &amp; Independence Observatory →
+          </Link>
         </div>
       </div>
     </div>

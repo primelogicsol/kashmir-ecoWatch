@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Clock, ExternalLink, FileCheck2, ShieldAlert } from 'lucide-react';
 import { JournalistProfile, MagazineStory } from '@/types/himalayan-dispatch';
@@ -42,6 +42,10 @@ import { HabakLaboratoryWorkbench } from './HabakLaboratoryWorkbench';
 import { DalLakeEncroachmentWorkbench } from './DalLakeEncroachmentWorkbench';
 import { HydropowerEnergyJusticeWorkbench } from './HydropowerEnergyJusticeWorkbench';
 import { HimalayanTimeBombWorkbench } from './HimalayanTimeBombWorkbench';
+import { NaseemBaghChinarWorkbench } from './NaseemBaghChinarWorkbench';
+import { MediaFinancialDependencyWorkbench } from './MediaFinancialDependencyWorkbench';
+import { GilgitBaltistanMineralWorkbench } from './GilgitBaltistanMineralWorkbench';
+import { AjkRiverJusticeWorkbench } from './AjkRiverJusticeWorkbench';
 
 export function StoryReaderClient({
   story,
@@ -54,22 +58,34 @@ export function StoryReaderClient({
   nextStory: MagazineStory | null;
   disablePublicSharing?: boolean;
 }) {
-  const [progress, setProgress] = useState(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const [rollFilter, setRollFilter] = useState<'ALL' | 'JK_FOREST' | 'SERVICE' | 'SUPPORTING'>('ALL');
 
   useEffect(() => {
-    const updateProgress = () => {
+    let rafId: number | null = null;
+    const applyProgress = () => {
+      rafId = null;
+      const bar = progressBarRef.current;
+      if (!bar) return;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight <= 0) {
-        setProgress(0);
-        return;
-      }
-      setProgress(Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)));
+      const pct =
+        docHeight <= 0 ? 0 : Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+      bar.style.width = `${pct.toFixed(2)}%`;
     };
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    return () => window.removeEventListener('scroll', updateProgress);
+    const onScroll = () => {
+      if (rafId === null) {
+        rafId = window.requestAnimationFrame(applyProgress);
+      }
+    };
+    applyProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   const isPhotoEssay = story.departmentId === 'photo-essays';
@@ -99,8 +115,9 @@ export function StoryReaderClient({
       {/* Burnt Copper Reading Progress Hairline */}
       <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-transparent pointer-events-none">
         <div
+          ref={progressBarRef}
           className="h-full transition-[width] duration-150 ease-out"
-          style={{ width: `${progress}%`, backgroundColor: '#8C3125' }}
+          style={{ width: '0%', backgroundColor: '#8C3125' }}
         />
       </div>
 
@@ -324,7 +341,7 @@ export function StoryReaderClient({
               <div className="aspect-[16/9] max-h-[72vh] w-full overflow-hidden bg-[#171717]">
                 <img
                   src={story.heroImage}
-                  alt={story.heroCaption}
+                  alt={`${story.title} — Editorial Cover Plate`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -801,6 +818,23 @@ export function StoryReaderClient({
                   'the-western-himalayas-are-sitting-on-a-time-bomb' &&
                   ch.numberRoman === 'VIII' && (
                     <HimalayanTimeBombWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-chinars-in-the-shadow-of-concrete' &&
+                  ch.numberRoman === 'IV' && (
+                    <NaseemBaghChinarWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'journalism-at-a-crossroads' &&
+                  ch.numberRoman === 'V' && (
+                    <MediaFinancialDependencyWorkbench variant="editorial" />
+                  )}
+                {story.slug ===
+                  'the-rivers-that-no-longer-belong-to-their-valleys' &&
+                  ch.numberRoman === 'VI' && (
+                    <AjkRiverJusticeWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-wealth-beneath-the-mountains' &&
+                  ch.numberRoman === 'IV' && (
+                    <GilgitBaltistanMineralWorkbench variant="editorial" />
                   )}
               </section>
               );

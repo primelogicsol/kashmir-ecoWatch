@@ -188,6 +188,13 @@ export default function ChinarOverviewPage() {
         actions={
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
+              href="/environmental-monitoring/chinar-monitoring/naseem-bagh-heritage-observatory"
+              className="px-3.5 py-1.5 rounded-[6px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 font-bold text-xs border border-amber-500/40 transition-all flex items-center gap-1.5"
+            >
+              <Landmark className="w-3.5 h-3.5 text-amber-400" />
+              <span>Naseem Bagh Living Heritage Observatory</span>
+            </Link>
+            <Link
               href="/environmental-monitoring/chinar-monitoring/dashboards"
               className="px-3.5 py-1.5 rounded-[6px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all flex items-center gap-1.5"
             >

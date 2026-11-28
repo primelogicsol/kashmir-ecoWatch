@@ -99,6 +99,7 @@ export const ALLOWED_DISPATCH_ROOT_SEGMENTS = new Set<string>([
   'journalist-sign-in',
   'journalists',
   'manifest.webmanifest',
+  'media-transparency-observatory',
   'newsroom',
   'our-story',
   'pitch',
@@ -378,6 +379,31 @@ export const HD_ROUTES = {
   monograph13Chapter: (chapterSlug: string) =>
     hdRoute(
       `/issues/monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb/chapters/${chapterSlug}`
+    ),
+  get monographNaseemBaghChinars() {
+    return hdRoute('/issues/monograph-14-the-chinars-in-the-shadow-of-concrete');
+  },
+  monographNaseemBaghChinarsChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-14-the-chinars-in-the-shadow-of-concrete/chapters/${chapterSlug}`),
+  get monograph15() {
+    return hdRoute('/issues/monograph-15-journalism-at-a-crossroads');
+  },
+  monograph15Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-15-journalism-at-a-crossroads/chapters/${chapterSlug}`),
+  get monographWealthBeneathMountains() {
+    return hdRoute('/issues/monograph-16-the-wealth-beneath-the-mountains');
+  },
+  monographWealthBeneathMountainsChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-16-the-wealth-beneath-the-mountains/chapters/${chapterSlug}`),
+  get mediaTransparencyObservatory() {
+    return hdRoute('/media-transparency-observatory');
+  },
+  get monograph17() {
+    return hdRoute('/issues/monograph-17-the-rivers-that-no-longer-belong-to-their-valleys');
+  },
+  monograph17Chapter: (chapterSlug: string) =>
+    hdRoute(
+      `/issues/monograph-17-the-rivers-that-no-longer-belong-to-their-valleys/chapters/${chapterSlug}`
     ),
   get forthcoming() {
     return hdRoute('/forthcoming');
@@ -689,6 +715,14 @@ export const CANONICAL_EDITION_SLUG_MAP: Record<string, string> = {
   'monograph-12-the-price-of-power': 'monograph-12-the-price-of-power',
   'monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb':
     'monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb',
+  'monograph-14-the-chinars-in-the-shadow-of-concrete':
+    'monograph-14-the-chinars-in-the-shadow-of-concrete',
+  'monograph-15-journalism-at-a-crossroads':
+    'monograph-15-journalism-at-a-crossroads',
+  'monograph-16-the-wealth-beneath-the-mountains':
+    'monograph-16-the-wealth-beneath-the-mountains',
+  'monograph-17-the-rivers-that-no-longer-belong-to-their-valleys':
+    'monograph-17-the-rivers-that-no-longer-belong-to-their-valleys',
   'issue-02-a-world-in-transition': 'issue-02-a-world-in-transition',
 };
 
