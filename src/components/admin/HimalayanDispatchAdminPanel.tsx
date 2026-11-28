@@ -33,10 +33,15 @@ import {
   MagazineStory,
   MastheadAppointmentStatus,
   MastheadPositionRecord,
+  MastheadRosterSummary,
   MastheadSectionId,
   MastheadSectionSpec,
   NewsroomApplicationStatus,
   NewsroomContributorApplication,
+  PersonnelAppointmentState,
+  PersonnelAuthorizationState,
+  PersonnelPublicationState,
+  PersonnelVerificationState,
   PublicProductionBadge,
 } from '@/types/himalayan-dispatch';
 import { EDITORIAL_WORKFLOW_STAGES } from '@/data/himalayan-dispatch';
@@ -52,6 +57,34 @@ const ALL_MASTHEAD_STATUSES: MastheadAppointmentStatus[] = [
   'Former Member',
 ];
 
+const ALL_APPOINTMENT_STATES: Array<{ value: PersonnelAppointmentState; label: string }> = [
+  { value: 'appointed', label: 'Appointed' },
+  { value: 'vacant', label: 'Vacant' },
+  { value: 'under_review', label: 'Under Review' },
+  { value: 'visiting', label: 'Visiting' },
+  { value: 'external_reviewer', label: 'External Reviewer' },
+  { value: 'in_establishment', label: 'In Establishment' },
+  { value: 'former_member', label: 'Former Member' },
+];
+
+const ALL_VERIFICATION_STATES: Array<{ value: PersonnelVerificationState; label: string }> = [
+  { value: 'verified', label: 'Verified Identity & Credentials' },
+  { value: 'pending_verification', label: 'Pending Identity Verification' },
+  { value: 'illustrative_unverified', label: 'Illustrative Placeholder (Unverified)' },
+];
+
+const ALL_AUTHORIZATION_STATES: Array<{ value: PersonnelAuthorizationState; label: string }> = [
+  { value: 'authorized', label: 'Authorized Editorial Access' },
+  { value: 'desk_restricted', label: 'Desk-Restricted Access' },
+  { value: 'not_authorized', label: 'Not Authorized' },
+];
+
+const ALL_PUBLICATION_STATES: Array<{ value: PersonnelPublicationState; label: string }> = [
+  { value: 'published_verified', label: 'Published (Verified Identity Only)' },
+  { value: 'public_vacant_pending', label: 'Public Vacant / Appointment Pending' },
+  { value: 'internal_planning_only', label: 'Internal Planning Only (Hidden)' },
+];
+
 const PUBLIC_NAMED_STATUSES = new Set<MastheadAppointmentStatus>([
   'Confirmed',
   'Visiting',
@@ -64,6 +97,10 @@ interface MastheadDraftEditState {
   domainsRubric: string;
   mandateDescription: string;
   status: MastheadAppointmentStatus;
+  appointmentState: PersonnelAppointmentState;
+  verificationState: PersonnelVerificationState;
+  authorizationState: PersonnelAuthorizationState;
+  publicationState: PersonnelPublicationState;
   publicVacantLabel: string;
   internalAdminNote: string;
   expanded: boolean;
@@ -110,6 +147,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
   const [journalists, setJournalists] = useState<JournalistProfile[]>([]);
   const [mastheadSections, setMastheadSections] = useState<MastheadSectionSpec[]>([]);
   const [mastheadPositions, setMastheadPositions] = useState<MastheadPositionRecord[]>([]);
+  const [mastheadRosterSummary, setMastheadRosterSummary] = useState<MastheadRosterSummary | null>(null);
   const [mastheadEdits, setMastheadEdits] = useState<Record<string, MastheadDraftEditState>>({});
   const [mastheadSectionFilter, setMastheadSectionFilter] = useState<'all' | MastheadSectionId>('all');
   const [mastheadStatusFilter, setMastheadStatusFilter] = useState<'all' | MastheadAppointmentStatus>('all');
@@ -171,6 +209,10 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
           domainsRubric: p.domainsRubric,
           mandateDescription: p.mandateDescription,
           status: p.status,
+          appointmentState: p.appointmentState || (p.status === 'Confirmed' ? 'appointed' : 'vacant'),
+          verificationState: p.verificationState || (p.status === 'Confirmed' ? 'verified' : 'illustrative_unverified'),
+          authorizationState: p.authorizationState || (p.status === 'Confirmed' ? 'authorized' : 'not_authorized'),
+          publicationState: p.publicationState || (p.status === 'Confirmed' ? 'published_verified' : 'public_vacant_pending'),
           publicVacantLabel: p.publicVacantLabel || '',
           internalAdminNote: p.internalAdminNote || '',
           expanded: prev[p.id]?.expanded ?? false,
@@ -198,6 +240,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
         setJournalists(data.journalists || []);
         setMastheadSections(data.mastheadSections || []);
         setMastheadPositions(data.mastheadPositions || []);
+        setMastheadRosterSummary(data.mastheadRosterSummary || null);
         initDecisions(data.applications || []);
         initMastheadEdits(data.mastheadPositions || []);
         if (!corrSlug && data.stories?.[0]?.slug) {
@@ -439,6 +482,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
   const handleSaveMastheadPosition = async (pos: MastheadPositionRecord) => {
     const draft = mastheadEdits[pos.id];
     if (!draft) return;
+    setError(null);
 
     const res = await fetch('/api/himalayan-dispatch/admin', {
       method: 'PATCH',
@@ -452,6 +496,10 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
         domainsRubric: draft.domainsRubric,
         mandateDescription: draft.mandateDescription,
         status: draft.status,
+        appointmentState: draft.appointmentState,
+        verificationState: draft.verificationState,
+        authorizationState: draft.authorizationState,
+        publicationState: draft.publicationState,
         publicVacantLabel: draft.publicVacantLabel,
         internalAdminNote: draft.internalAdminNote,
       }),
@@ -460,8 +508,8 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
     if (res.ok && data.success) {
       await loadDesk();
       flash(
-        `Masthead seat "${draft.roleTitle}" updated to status "${draft.status}"${
-          draft.holderName ? ` (${draft.holderName})` : ''
+        `Masthead seat "${draft.roleTitle}" synchronized across registry (Appointment: ${draft.appointmentState} · Verification: ${draft.verificationState} · Publication: ${draft.publicationState})${
+          draft.holderName ? ` — ${draft.holderName}` : ''
         }.`
       );
     } else {
@@ -511,7 +559,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
     }
     if (mastheadQuery.trim()) {
       const q = mastheadQuery.trim().toLowerCase();
-      const hay = `${pos.roleTitle} ${pos.holderName} ${pos.domainsRubric} ${pos.mandateDescription}`.toLowerCase();
+      const hay = `${pos.roleTitle} ${pos.holderName} ${pos.illustrativePlanningName || ''} ${pos.domainsRubric} ${pos.mandateDescription}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -626,28 +674,33 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
       <div className="rounded-2xl bg-slate-900/80 border border-amber-500/25 p-6 space-y-5">
         <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
           <div className="space-y-1">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-400 font-bold">
+              EST. 2026 · KEW WESTERN HIMALAYAS · LANDSCAPE · PEOPLE · SCIENCE · TRUTH
+            </p>
             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Building2 className="w-4 h-4 text-amber-400" />
               <span>
-                Masthead &amp; Governance Appointments ({mastheadPositions.length} Seats ·{' '}
-                {publiclyNamedMastheadCount} Publicly Named · {unconfirmedOrVacantMastheadCount} Pending / Vacant)
+                Centralized Editorial Personnel &amp; Masthead Registry ({mastheadPositions.length} Seats ·{' '}
+                {publiclyNamedMastheadCount} Verified Publicly · {unconfirmedOrVacantMastheadCount} Pending Verification / Vacant)
               </span>
             </h3>
-            <p className="text-xs text-slate-400">
-              Manage every position across Sections I–IX. Only{' '}
-              <strong className="text-emerald-300">Confirmed</strong>,{' '}
-              <strong className="text-emerald-300">Visiting</strong>, and{' '}
-              <strong className="text-emerald-300">External Reviewer</strong> appointments display
-              named individuals on the public masthead; seats set to{' '}
-              <strong className="text-amber-300">Proposed</strong>,{' '}
-              <strong className="text-amber-300">Under Review</strong>,{' '}
-              <strong className="text-amber-300">Vacant</strong>, or{' '}
-              <strong className="text-amber-300">Former Member</strong> keep candidate placeholders
-              private on the server.
+            <p className="text-xs italic text-amber-200/90">
+              Internal appointment planning roster. Names other than verified existing personnel remain subject to identity and appointment confirmation.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <Link href={HD_ROUTES.adminCorrespondence}>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="border-white/15 text-slate-200 text-xs"
+              >
+                <span>Correspondence Center</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+              </Button>
+            </Link>
             <Button
               type="button"
               variant="outline"
@@ -660,6 +713,84 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
             </Button>
           </div>
         </div>
+
+        {/* Organizational Roster Summary (Internal Planning Metrics + Strict Anti-Misrepresentation Gate) */}
+        {mastheadRosterSummary && (
+          <div className="p-4 rounded-xl bg-slate-950/90 border border-amber-500/25 space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-amber-300 font-bold">
+                ORGANIZATIONAL ROSTER SUMMARY (INTERNAL APPOINTMENT PLANNING LEDGER)
+              </span>
+              <span className="text-[10px] font-mono text-emerald-300">
+                Synchronized: Masthead · 6 Bureaus · Scientific Council · Public Editor · Portfolios · Correspondence
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-white tabular-nums">
+                  {mastheadRosterSummary.totalDesignatedPositions}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Total designated positions
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-white tabular-nums">
+                  {mastheadRosterSummary.organizationalDivisions}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Organizational divisions
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-amber-300 tabular-nums">
+                  {mastheadRosterSummary.illustrativeMaleNames}{' '}
+                  <span className="text-xs font-mono text-slate-400">
+                    ({mastheadRosterSummary.illustrativeMalePct})
+                  </span>
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Male names (Planning)
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-amber-300 tabular-nums">
+                  {mastheadRosterSummary.illustrativeFemaleNames}{' '}
+                  <span className="text-xs font-mono text-slate-400">
+                    ({mastheadRosterSummary.illustrativeFemalePct})
+                  </span>
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Female names (Planning)
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-white tabular-nums">
+                  {mastheadRosterSummary.regionalBureaus}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Regional bureaus
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-900 border border-white/10">
+                <div className="text-xl font-black text-white tabular-nums">
+                  {mastheadRosterSummary.scientificReviewPositions}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">
+                  Scientific review positions
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg bg-amber-950/30 border border-amber-500/30 text-[11px] text-amber-200 leading-relaxed flex items-start gap-2">
+              <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <span>
+                <strong>Important:</strong> {mastheadRosterSummary.illustrativeDisclaimer} Server-side governance blocks public display unless <code>verificationState = verified</code> and a confirmed appointee name is entered.
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Optional Add New Masthead Seat Form */}
         {showNewSeatForm && (
@@ -810,8 +941,15 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
           </div>
         </div>
 
+        {/* Position | Name Column Heading Bar */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-2.5 px-4 py-2 rounded-lg bg-slate-950 border border-white/10 text-[10px] font-mono uppercase tracking-widest text-amber-300 font-bold">
+          <div className="lg:col-span-4">Position</div>
+          <div className="lg:col-span-4">Name</div>
+          <div className="lg:col-span-4">4-Axis Governance Status &amp; Sync</div>
+        </div>
+
         {/* Scrollable Masthead Seats Ledger */}
-        <div className="space-y-2.5 max-h-[540px] overflow-y-auto pr-1">
+        <div className="space-y-2.5 max-h-[620px] overflow-y-auto pr-1">
           {filteredMastheadPositions.map((pos) => {
             const secSpec = mastheadSections.find((s) => s.id === pos.sectionId);
             const draft = mastheadEdits[pos.id] || {
@@ -820,12 +958,18 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
               domainsRubric: pos.domainsRubric,
               mandateDescription: pos.mandateDescription,
               status: pos.status,
+              appointmentState: pos.appointmentState || 'vacant',
+              verificationState: pos.verificationState || 'illustrative_unverified',
+              authorizationState: pos.authorizationState || 'not_authorized',
+              publicationState: pos.publicationState || 'public_vacant_pending',
               publicVacantLabel: pos.publicVacantLabel || '',
               internalAdminNote: pos.internalAdminNote || '',
               expanded: false,
             };
             const isPublicNamed =
-              PUBLIC_NAMED_STATUSES.has(draft.status) && draft.holderName.trim().length > 0;
+              PUBLIC_NAMED_STATUSES.has(draft.status) &&
+              draft.publicationState === 'published_verified' &&
+              draft.holderName.trim().length > 0;
 
             return (
               <div
@@ -839,7 +983,10 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                     </span>
                     {pos.bureauId && (
                       <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-200 text-[10px] font-bold uppercase">
-                        Bureau: {pos.bureauId.toUpperCase()}
+                        Bureau: {pos.bureauId.toUpperCase()}{' '}
+                        {pos.bureauOperationalStatus === 'in_establishment'
+                          ? '· IN ESTABLISHMENT'
+                          : '· ESTABLISHED DESK'}
                       </span>
                     )}
                     <span
@@ -850,8 +997,8 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                       }`}
                     >
                       {isPublicNamed
-                        ? `Publicly Named (${draft.status})`
-                        : `Publicly Vacant / Pending (${draft.status})`}
+                        ? `Verified & Publicly Named (${draft.status})`
+                        : `Publicly Vacant / Pending (${draft.verificationState.replace(/_/g, ' ')})`}
                     </span>
                   </div>
 
@@ -873,10 +1020,11 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-2.5 items-end">
-                  <div className="lg:col-span-3">
-                    <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-                      Role Title
+                {/* Primary Row: Position | Name | Masthead Status + Save */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-2.5 items-start">
+                  <div className="lg:col-span-4 space-y-1">
+                    <label className="block text-[10px] uppercase font-bold text-slate-400">
+                      Position
                     </label>
                     <input
                       type="text"
@@ -886,11 +1034,14 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                       }
                       className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
                     />
+                    <div className="text-[10px] text-slate-500 truncate" title={draft.domainsRubric}>
+                      {draft.domainsRubric}
+                    </div>
                   </div>
 
-                  <div className="lg:col-span-3">
-                    <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-                      Appointee / Candidate Name
+                  <div className="lg:col-span-4 space-y-1">
+                    <label className="block text-[10px] uppercase font-bold text-slate-400">
+                      Name (Confirmed / Verified Appointee Only)
                     </label>
                     <input
                       type="text"
@@ -898,22 +1049,48 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                       onChange={(e) =>
                         updateMastheadDraft(pos.id, { holderName: e.target.value })
                       }
-                      placeholder="Vacant / Appointment Pending"
+                      placeholder="Leave blank until identity & appointment confirmed"
                       className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
                     />
+                    {pos.illustrativePlanningName && draft.verificationState !== 'verified' && (
+                      <div className="px-2 py-1 rounded bg-amber-950/40 border border-amber-500/25 text-[10px] text-amber-200/90 flex items-center justify-between gap-2">
+                        <span>
+                          Planning Roster: <strong>{pos.illustrativePlanningName}</strong>
+                        </span>
+                        <span className="font-mono uppercase text-[9px] text-amber-400 shrink-0">
+                          Illustrative · Hidden Publicly
+                        </span>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="lg:col-span-2">
-                    <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-                      Appointment Status
+                  <div className="lg:col-span-3 space-y-1">
+                    <label className="block text-[10px] uppercase font-bold text-slate-400">
+                      Masthead Designation
                     </label>
                     <select
                       value={draft.status}
-                      onChange={(e) =>
-                        updateMastheadDraft(pos.id, {
-                          status: e.target.value as MastheadAppointmentStatus,
-                        })
-                      }
+                      onChange={(e) => {
+                        const nextSt = e.target.value as MastheadAppointmentStatus;
+                        const autoPatch: Partial<MastheadDraftEditState> = { status: nextSt };
+                        if (nextSt === 'Vacant') {
+                          autoPatch.appointmentState = 'vacant';
+                          autoPatch.publicationState = 'public_vacant_pending';
+                        } else if (nextSt === 'Under Review' || nextSt === 'Proposed') {
+                          autoPatch.appointmentState = 'under_review';
+                          autoPatch.publicationState = 'public_vacant_pending';
+                        } else if (nextSt === 'Confirmed') {
+                          autoPatch.appointmentState = 'appointed';
+                        } else if (nextSt === 'Visiting') {
+                          autoPatch.appointmentState = 'visiting';
+                        } else if (nextSt === 'External Reviewer') {
+                          autoPatch.appointmentState = 'external_reviewer';
+                        } else if (nextSt === 'Former Member') {
+                          autoPatch.appointmentState = 'former_member';
+                          autoPatch.publicationState = 'public_vacant_pending';
+                        }
+                        updateMastheadDraft(pos.id, autoPatch);
+                      }}
                       className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2 py-1.5 rounded"
                     >
                       {ALL_MASTHEAD_STATUSES.map((st) => (
@@ -924,21 +1101,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                     </select>
                   </div>
 
-                  <div className="lg:col-span-3">
-                    <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-                      Specialization / Domains
-                    </label>
-                    <input
-                      type="text"
-                      value={draft.domainsRubric}
-                      onChange={(e) =>
-                        updateMastheadDraft(pos.id, { domainsRubric: e.target.value })
-                      }
-                      className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
-                    />
-                  </div>
-
-                  <div className="lg:col-span-1">
+                  <div className="lg:col-span-1 pt-4">
                     <Button
                       type="button"
                       size="sm"
@@ -950,9 +1113,109 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                   </div>
                 </div>
 
+                {/* Four Separate Institutional Governance Status Axes */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-2 border-t border-white/5">
+                  <div>
+                    <label className="block text-[9px] font-mono uppercase text-slate-400 mb-1">
+                      1. Appointment Status
+                    </label>
+                    <select
+                      value={draft.appointmentState}
+                      onChange={(e) =>
+                        updateMastheadDraft(pos.id, {
+                          appointmentState: e.target.value as PersonnelAppointmentState,
+                        })
+                      }
+                      className="w-full bg-slate-900 border border-white/10 text-[11px] text-slate-200 px-2 py-1.5 rounded"
+                    >
+                      {ALL_APPOINTMENT_STATES.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[9px] font-mono uppercase text-slate-400 mb-1">
+                      2. Verification Status
+                    </label>
+                    <select
+                      value={draft.verificationState}
+                      onChange={(e) =>
+                        updateMastheadDraft(pos.id, {
+                          verificationState: e.target.value as PersonnelVerificationState,
+                        })
+                      }
+                      className="w-full bg-slate-900 border border-white/10 text-[11px] text-slate-200 px-2 py-1.5 rounded"
+                    >
+                      {ALL_VERIFICATION_STATES.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[9px] font-mono uppercase text-slate-400 mb-1">
+                      3. Authorization Status
+                    </label>
+                    <select
+                      value={draft.authorizationState}
+                      onChange={(e) =>
+                        updateMastheadDraft(pos.id, {
+                          authorizationState: e.target.value as PersonnelAuthorizationState,
+                        })
+                      }
+                      className="w-full bg-slate-900 border border-white/10 text-[11px] text-slate-200 px-2 py-1.5 rounded"
+                    >
+                      {ALL_AUTHORIZATION_STATES.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[9px] font-mono uppercase text-slate-400 mb-1">
+                      4. Publication Status
+                    </label>
+                    <select
+                      value={draft.publicationState}
+                      onChange={(e) =>
+                        updateMastheadDraft(pos.id, {
+                          publicationState: e.target.value as PersonnelPublicationState,
+                        })
+                      }
+                      className="w-full bg-slate-900 border border-white/10 text-[11px] text-slate-200 px-2 py-1.5 rounded"
+                    >
+                      {ALL_PUBLICATION_STATES.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
                 {draft.expanded && (
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 pt-2 border-t border-white/10">
-                    <div className="lg:col-span-6">
+                    <div className="lg:col-span-4">
+                      <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                        Specialization / Domains Rubric
+                      </label>
+                      <input
+                        type="text"
+                        value={draft.domainsRubric}
+                        onChange={(e) =>
+                          updateMastheadDraft(pos.id, { domainsRubric: e.target.value })
+                        }
+                        className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
+                      />
+                    </div>
+                    <div className="lg:col-span-4">
                       <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
                         Public Mandate Description
                       </label>
@@ -965,7 +1228,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                         className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
                       />
                     </div>
-                    <div className="lg:col-span-3">
+                    <div className="lg:col-span-2">
                       <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
                         Vacant Fallback Label
                       </label>
@@ -975,13 +1238,13 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                         onChange={(e) =>
                           updateMastheadDraft(pos.id, { publicVacantLabel: e.target.value })
                         }
-                        placeholder="Vacant or Appointment Pending"
+                        placeholder="Appointment Pending"
                         className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
                       />
                     </div>
-                    <div className="lg:col-span-3">
+                    <div className="lg:col-span-2">
                       <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-                        Internal Governance Note (Private)
+                        Internal Governance Note
                       </label>
                       <input
                         type="text"
@@ -989,7 +1252,7 @@ export function HimalayanDispatchAdminPanel({ adminName }: { adminName: string }
                         onChange={(e) =>
                           updateMastheadDraft(pos.id, { internalAdminNote: e.target.value })
                         }
-                        placeholder="Never shown on public masthead..."
+                        placeholder="Private admin note..."
                         className="w-full bg-slate-900 border border-white/15 text-xs text-white px-2.5 py-1.5 rounded"
                       />
                     </div>

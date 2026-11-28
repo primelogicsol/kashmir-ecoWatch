@@ -20,6 +20,7 @@ import {
 } from '@/lib/hdn/rbac';
 import { readHdnStore } from '@/lib/hdn/store';
 import {
+  getPublicMastheadPositions,
   JOURNALIST_SESSION_COOKIE,
   verifyJournalistSessionToken,
 } from '@/lib/himalayan-dispatch-store';
@@ -1324,6 +1325,20 @@ export async function getAdminCorrespondenceBundle(actor: EditorialCorrespondenc
       createdAt: new Date(a.created_at).toISOString(),
     }));
 
+  const verifiedPersonnel = getPublicMastheadPositions()
+    .filter((p) => p.isFilledPublicly)
+    .map((p) => ({
+      slug:
+        p.journalistSlug ||
+        p.displayHolderName
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, ''),
+      name: p.displayHolderName,
+      roleTitle: p.roleTitle,
+      sectionId: p.sectionId,
+    }));
+
   return {
     actor: {
       slug: actor.slug,
@@ -1338,6 +1353,7 @@ export async function getAdminCorrespondenceBundle(actor: EditorialCorrespondenc
     consentedKewSubmissions,
     evidenceExchangeRequests,
     auditLogs,
+    verifiedPersonnel,
   };
 }
 

@@ -348,6 +348,30 @@ export type MastheadAppointmentStatus =
   | 'External Reviewer'
   | 'Former Member';
 
+export type PersonnelAppointmentState =
+  | 'appointed'
+  | 'vacant'
+  | 'under_review'
+  | 'visiting'
+  | 'external_reviewer'
+  | 'in_establishment'
+  | 'former_member';
+
+export type PersonnelVerificationState =
+  | 'verified'
+  | 'pending_verification'
+  | 'illustrative_unverified';
+
+export type PersonnelAuthorizationState =
+  | 'authorized'
+  | 'desk_restricted'
+  | 'not_authorized';
+
+export type PersonnelPublicationState =
+  | 'published_verified'
+  | 'public_vacant_pending'
+  | 'internal_planning_only';
+
 export type MastheadSectionId =
   | 'I_leadership'
   | 'II_commissioning'
@@ -373,12 +397,21 @@ export interface MastheadPositionRecord {
   sectionId: MastheadSectionId;
   order: number;
   roleTitle: string;
-  /** Stored on server; only exposed publicly when status is Confirmed, Visiting, or External Reviewer */
+  /** Verified appointee name ONLY; blank until identity, qualifications & appointment are confirmed */
   holderName: string;
+  /** Internal appointment-planning placeholder name — NEVER exposed on public routes */
+  illustrativePlanningName?: string;
+  /** Conventional name gender used strictly for internal illustrative planning summary */
+  illustrativeGenderCategory?: 'male' | 'female';
   domainsRubric: string;
   mandateDescription: string;
   status: MastheadAppointmentStatus;
-  /** Public fallback label when seat is Vacant, Proposed, Under Review, or Former Member */
+  /** Separate 4-axis institutional governance states */
+  appointmentState?: PersonnelAppointmentState;
+  verificationState?: PersonnelVerificationState;
+  authorizationState?: PersonnelAuthorizationState;
+  publicationState?: PersonnelPublicationState;
+  /** Public fallback label when seat is Vacant, Proposed, Under Review, or Unverified */
   publicVacantLabel?: string;
   /** Optional regional bureau link for Section IV seats */
   bureauId?: 'kashmir' | 'jammu' | 'ladakh' | 'ajk' | 'gilgit' | 'baltistan';
@@ -402,15 +435,31 @@ export interface PublicMastheadPosition {
   /** Publicly verified appointee name, or Vacant / Appointment Pending when unconfirmed */
   displayHolderName: string;
   isFilledPublicly: boolean;
-  /** Only populated for special active designations like Visiting; never prints Proposed */
+  /** Only populated for special active designations like Visiting; never prints Proposed or Illustrative */
   publicDesignationNote?: string;
   domainsRubric: string;
   mandateDescription: string;
+  appointmentState: PersonnelAppointmentState;
+  verificationState: 'verified' | 'unconfirmed';
   bureauId?: 'kashmir' | 'jammu' | 'ladakh' | 'ajk' | 'gilgit' | 'baltistan';
   bureauOperationalStatus?: 'active_reporting_desk' | 'in_establishment';
   isCouncilSpecialistRow?: boolean;
   anchorId?: string;
   journalistSlug?: string;
+}
+
+export interface MastheadRosterSummary {
+  totalDesignatedPositions: number;
+  organizationalDivisions: number;
+  confirmedVerifiedPositions: number;
+  vacantOrPendingPositions: number;
+  regionalBureaus: number;
+  scientificReviewPositions: number;
+  illustrativeMaleNames: number;
+  illustrativeFemaleNames: number;
+  illustrativeMalePct: string;
+  illustrativeFemalePct: string;
+  illustrativeDisclaimer: string;
 }
 
 export interface EditorialCharterCommitment {

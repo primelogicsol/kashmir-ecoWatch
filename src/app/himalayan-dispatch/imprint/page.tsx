@@ -39,18 +39,20 @@ export default function PublicationImprintPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <section className="p-8 border space-y-3" style={{ borderColor: 'var(--hd-rule-strong)', backgroundColor: 'var(--hd-bg-elevated)' }}>
-            <p className="hd-kicker">I · EDITORIAL HEADQUARTERS &amp; PUBLISHING OFFICE</p>
+            <p className="hd-kicker">I · EDITORIAL &amp; PUBLISHING HEADQUARTERS</p>
             <h2 className="hd-font-display text-3xl font-semibold">
-              Fairfax, Virginia · United States of America
+              Fairfax, Virginia 22031 · United States of America
             </h2>
             <p className="hd-font-body text-base leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
               <strong>Himalayan Dispatch</strong>
               <br />
-              Editorial Directorate &amp; Digital Publishing Office
+              Published by Kashmir EcoWatch Western Himalayas
               <br />
-              Fairfax, VA 22031 · Greater Washington Metropolitan Area
+              Supported by Dr. Kumar Foundation USA · Kumar Trust USA
               <br />
-              United States of America
+              Editorial &amp; Publishing Headquarters · Fairfax, Virginia 22031 · United States of America
+              <br />
+              Six Regional Reporting Bureaus · Western Himalayas
             </p>
             <p className="hd-folio-meta pt-2">
               CORRESPONDENCE: <Link href={HD_ROUTES.contact} className="underline">CONTACT THE EDITORIAL DESK</Link>
@@ -60,14 +62,14 @@ export default function PublicationImprintPage() {
           <section className="p-8 border space-y-3" style={{ borderColor: 'var(--hd-rule)' }}>
             <p className="hd-kicker">II · PUBLISHER &amp; INSTITUTIONAL LINEAGE</p>
             <h2 className="hd-font-display text-3xl font-semibold">
-              Kashmir EcoWatch Western Himalayan
+              Kashmir EcoWatch Western Himalayas
             </h2>
             <p className="hd-font-body text-sm sm:text-base leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
               Himalayan Dispatch is published as the flagship environmental journalism periodical of{' '}
               <a href={toKewPlatformUrl('/')} className="underline">
-                Kashmir EcoWatch (KEW) Western Himalayan
+                Kashmir EcoWatch (KEW) Western Himalayas
               </a>
-              , supported non-commercially by Dr. Kumar Foundation USA and Kumar Trust USA under a
+              , supported non-commercially by Dr. Kumar Foundation USA · Kumar Trust USA under a
               strict firewall protecting editorial independence from philanthropic or administrative
               interference.
             </p>

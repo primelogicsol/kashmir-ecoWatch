@@ -4,6 +4,8 @@ import { permanentRedirect } from 'next/navigation';
 import { ArrowRight, MapPin, ShieldCheck } from 'lucide-react';
 import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import { REGIONAL_REPORTING_BUREAUS } from '@/data/himalayan-dispatch';
+import { REGIONAL_REPORTING_JURISDICTIONS } from '@/data/himalayan-dispatch-masthead-roster';
+import { getPublicMastheadPositions } from '@/lib/himalayan-dispatch-store';
 import { BureauRouteSlug, HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
 import { LegacyFragmentRedirector } from '@/components/himalayan-dispatch/LegacyFragmentRedirector';
@@ -28,6 +30,10 @@ export default async function HimalayanDispatchBureausDirectoryPage({
   if (sp?.bureau && VALID_BUREAUS.has(sp.bureau.toLowerCase())) {
     permanentRedirect(HD_ROUTES.bureau(sp.bureau.toLowerCase() as BureauRouteSlug));
   }
+
+  const regionalLeadership = getPublicMastheadPositions().filter(
+    (pos) => pos.sectionId === 'IV_bureaus'
+  );
 
   return (
     <div className="w-full px-4 sm:px-8 lg:px-14 py-10 sm:py-16">
@@ -147,6 +153,108 @@ export default async function HimalayanDispatchBureausDirectoryPage({
             );
           })}
         </div>
+
+        {/* Synchronized Division IV Masthead Roster & Regional Jurisdictions */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-4">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="space-y-1">
+              <p className="hd-kicker">DIVISION IV · SYNCHRONIZED MASTHEAD ROSTER</p>
+              <h2 className="hd-font-display text-3xl font-semibold" style={{ color: 'var(--hd-fg)' }}>
+                Regional Correspondence &amp; Bureau Leadership
+              </h2>
+            </div>
+            <div className="overflow-x-auto border" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr
+                    className="border-b"
+                    style={{
+                      borderColor: 'var(--hd-rule-strong)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <th className="py-3.5 px-5 hd-kicker text-[10px] w-1/2">Position</th>
+                    <th className="py-3.5 px-5 hd-kicker text-[10px] w-1/2">Name</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                  {regionalLeadership.map((pos) => (
+                    <tr key={pos.id} className="align-top">
+                      <td className="py-3.5 px-5">
+                        <span className="hd-font-body text-sm font-semibold block" style={{ color: 'var(--hd-fg)' }}>
+                          {pos.roleTitle}
+                        </span>
+                        <span className="hd-font-body text-xs block mt-0.5" style={{ color: 'var(--hd-fg-muted)' }}>
+                          {pos.domainsRubric}
+                        </span>
+                      </td>
+                      <td className="py-3.5 px-5">
+                        <span
+                          className={`hd-font-display text-xl font-semibold block ${
+                            pos.isFilledPublicly ? '' : 'italic'
+                          }`}
+                          style={{
+                            color: pos.isFilledPublicly ? 'var(--hd-fg)' : 'var(--hd-fg-muted)',
+                          }}
+                        >
+                          {pos.displayHolderName}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 space-y-4">
+            <div className="space-y-1">
+              <p className="hd-kicker">GEOGRAPHIC JURISDICTION MATRIX</p>
+              <h2 className="hd-font-display text-3xl font-semibold" style={{ color: 'var(--hd-fg)' }}>
+                Regional Reporting Jurisdictions
+              </h2>
+            </div>
+            <div className="overflow-x-auto border" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr
+                    className="border-b"
+                    style={{
+                      borderColor: 'var(--hd-rule-strong)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <th className="py-3.5 px-5 hd-kicker text-[10px] w-2/5">Bureau</th>
+                    <th className="py-3.5 px-5 hd-kicker text-[10px] w-3/5">Geographic Scope</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                  {REGIONAL_REPORTING_JURISDICTIONS.map((jur) => (
+                    <tr key={jur.bureauId} className="align-top">
+                      <td className="py-3.5 px-5">
+                        <Link
+                          href={HD_ROUTES.bureau(jur.bureauId)}
+                          className="hd-font-body text-sm font-semibold hover:underline block"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {jur.bureau}
+                        </Link>
+                        <span className="hd-folio-meta text-[9px] block mt-0.5">
+                          {jur.inEstablishment
+                            ? 'IN ESTABLISHMENT'
+                            : 'ESTABLISHED REPORTING DESK'}
+                        </span>
+                      </td>
+                      <td className="py-3.5 px-5 hd-font-body text-sm" style={{ color: 'var(--hd-fg-secondary)' }}>
+                        {jur.geographicalCoverage}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

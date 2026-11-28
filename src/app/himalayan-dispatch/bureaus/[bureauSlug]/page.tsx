@@ -531,19 +531,47 @@ export default async function RegionalBureauIndependentPage({
           {/* Right 4 Cols: Bureau Leadership, Correspondents, Beats & KEW Links */}
           <aside className="lg:col-span-4 space-y-10">
             <div className="p-6 border space-y-4" style={{ borderColor: 'var(--hd-rule-strong)', backgroundColor: 'var(--hd-bg-elevated)' }}>
-              <p className="hd-kicker">VERIFIED BUREAU LEADERSHIP</p>
-              <div className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
-                {bureauLeadership.map((pos) => (
-                  <div key={pos.id} className="py-3 first:pt-0 last:pb-0 space-y-1" style={{ borderColor: 'var(--hd-rule)' }}>
-                    <span className="hd-folio-meta block">{pos.roleTitle}</span>
-                    <span className="hd-font-display text-2xl font-semibold italic block" style={{ color: 'var(--hd-fg)' }}>
-                      {pos.displayHolderName}
-                    </span>
-                    <span className="hd-font-body text-xs block" style={{ color: 'var(--hd-fg-muted)' }}>
-                      {pos.domainsRubric}
-                    </span>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between gap-2">
+                <p className="hd-kicker">BUREAU LEADERSHIP</p>
+                <span className="hd-folio-meta text-[9px]">
+                  {isEstablishing ? 'IN ESTABLISHMENT' : 'ESTABLISHED DESK'}
+                </span>
+              </div>
+              <div className="overflow-x-auto border-t" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                      <th className="py-2.5 pr-3 hd-kicker text-[10px]">Position</th>
+                      <th className="py-2.5 pl-3 hd-kicker text-[10px]">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                    {bureauLeadership.map((pos) => (
+                      <tr key={pos.id} className="align-top">
+                        <td className="py-3 pr-3">
+                          <span className="hd-font-body text-xs sm:text-sm font-semibold block" style={{ color: 'var(--hd-fg)' }}>
+                            {pos.roleTitle}
+                          </span>
+                          <span className="hd-font-body text-[11px] block mt-0.5" style={{ color: 'var(--hd-fg-muted)' }}>
+                            {pos.domainsRubric}
+                          </span>
+                        </td>
+                        <td className="py-3 pl-3">
+                          <span
+                            className={`hd-font-display text-lg sm:text-xl font-semibold block ${
+                              pos.isFilledPublicly ? '' : 'italic'
+                            }`}
+                            style={{
+                              color: pos.isFilledPublicly ? 'var(--hd-fg)' : 'var(--hd-fg-muted)',
+                            }}
+                          >
+                            {pos.displayHolderName}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
 

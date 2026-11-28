@@ -68,17 +68,53 @@ export default function PublicEditorPage() {
           </aside>
         </header>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {ombudsOfficers.map((p) => (
-            <div key={p.id} className="p-6 sm:p-8 border space-y-2" style={{ borderColor: 'var(--hd-rule)' }}>
-              <span className="hd-kicker">{p.roleTitle}</span>
-              <h2 className="hd-font-display text-3xl font-semibold italic">{p.displayHolderName}</h2>
-              <p className="hd-folio-meta">{p.domainsRubric}</p>
-              <p className="hd-font-body text-sm leading-relaxed pt-1" style={{ color: 'var(--hd-fg-secondary)' }}>
-                {p.mandateDescription}
-              </p>
-            </div>
-          ))}
+        <section
+          className="overflow-x-auto border"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr
+                className="border-b"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg-recessed)',
+                }}
+              >
+                <th scope="col" className="w-[58%] px-5 sm:px-6 py-3.5 hd-kicker">Position</th>
+                <th scope="col" className="w-[42%] px-5 sm:px-6 py-3.5 hd-kicker">Name</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+              {ombudsOfficers.map((p) => (
+                <tr key={p.id} className="align-top">
+                  <td className="px-5 sm:px-6 py-4 space-y-1">
+                    <span className="hd-font-display text-xl sm:text-2xl font-semibold block">
+                      {p.roleTitle}
+                    </span>
+                    <span className="hd-folio-meta block">{p.domainsRubric}</span>
+                  </td>
+                  <td className="px-5 sm:px-6 py-4">
+                    <span
+                      className={
+                        p.isFilledPublicly
+                          ? 'hd-font-display text-xl sm:text-2xl font-semibold italic'
+                          : 'hd-font-body text-sm sm:text-base italic'
+                      }
+                      style={{
+                        color: p.isFilledPublicly ? 'var(--hd-fg)' : 'var(--hd-fg-muted)',
+                      }}
+                    >
+                      {p.displayHolderName}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
 
         <EditorialInquiryFormClient

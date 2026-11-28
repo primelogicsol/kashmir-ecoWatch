@@ -2510,11 +2510,11 @@ export const MASTHEAD_DEFAULT_POSITIONS: MastheadPositionRecord[] = [
 
 export const EDITORIAL_CHARTER_COMMITMENTS: EditorialCharterCommitment[] = [
   {
-    principle: 'Editorial independence',
+    principle: 'Editorial Independence',
     standard: 'Freedom from improper institutional, political and commercial interference',
   },
   {
-    principle: 'Scientific integrity',
+    principle: 'Scientific Integrity',
     standard: 'Evidence-based interpretation and acknowledgment of uncertainty',
   },
   {
@@ -2526,47 +2526,47 @@ export const EDITORIAL_CHARTER_COMMITMENTS: EditorialCharterCommitment[] = [
     standard: 'Accurate representation of relevant perspectives',
   },
   {
-    principle: 'Right of reply',
+    principle: 'Right of Reply',
     standard: 'Reasonable opportunity to respond to significant allegations',
   },
   {
-    principle: 'Source confidentiality',
+    principle: 'Source Confidentiality',
     standard: 'Protection of confidential sources and sensitive records',
   },
   {
-    principle: 'Documentary integrity',
+    principle: 'Documentary Integrity',
     standard: 'No misleading manipulation of documentary evidence',
   },
   {
-    principle: 'Visual & archival authenticity',
+    principle: 'Visual & Archival Authenticity',
     standard: 'Strict verification of documentary media and primary archival records',
   },
   {
-    principle: 'Conflict of interest',
+    principle: 'Conflict of Interest',
     standard: 'Disclosure and management of competing interests',
   },
   {
-    principle: 'Public accountability',
+    principle: 'Public Accountability',
     standard: 'Accessible complaints, corrections and clarifications',
   },
   {
-    principle: 'Journalist safety',
+    principle: 'Journalist Safety',
     standard: 'Appropriate physical, legal and digital safeguards',
   },
   {
-    principle: 'Financial transparency',
+    principle: 'Financial Transparency',
     standard: 'Disclosure of material funding and sponsorship relationships',
   },
   {
-    principle: 'Copyright protection',
+    principle: 'Copyright Protection',
     standard: 'Respect for intellectual property and contributor rights',
   },
   {
-    principle: 'Environmental responsibility',
+    principle: 'Environmental Responsibility',
     standard: 'Protection of sensitive ecosystems and wildlife locations',
   },
   {
-    principle: 'Editorial transparency',
+    principle: 'Editorial Transparency',
     standard: 'Clear distinction between reporting, analysis, opinion and sponsored content',
   },
 ];

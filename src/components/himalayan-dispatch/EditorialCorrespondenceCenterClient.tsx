@@ -83,6 +83,7 @@ export function EditorialCorrespondenceCenterClient() {
   const [editDeskCode, setEditDeskCode] = useState<string>('editorial_directorate');
   const [editAssignedDept, setEditAssignedDept] = useState<string>('Editorial Directorate');
   const [editBureau, setEditBureau] = useState<string>('');
+  const [editEditorSlug, setEditEditorSlug] = useState<string>('');
   const [editNotes, setEditNotes] = useState<string>('');
   const [savingMeta, setSavingMeta] = useState(false);
 
@@ -189,6 +190,7 @@ export function EditorialCorrespondenceCenterClient() {
     setEditDeskCode(selectedRecord.deskCode);
     setEditAssignedDept(selectedRecord.assignedDepartment);
     setEditBureau(selectedRecord.assignedBureau || '');
+    setEditEditorSlug(selectedRecord.assignedEditorSlug || '');
     setEditNotes(selectedRecord.internalNotes || '');
   }, [selectedRecord]);
 
@@ -257,6 +259,7 @@ export function EditorialCorrespondenceCenterClient() {
           deskCode: editDeskCode,
           assignedDepartment: editAssignedDept,
           assignedBureau: editBureau || null,
+          assignedEditorSlug: editEditorSlug || null,
           internalNotes: editNotes,
         },
         `Updated workflow metadata for ${selectedRecord.referenceNumber}.`
@@ -1333,6 +1336,29 @@ export function EditorialCorrespondenceCenterClient() {
                                 {BUREAU_OPTIONS.map((b) => (
                                   <option key={b.value} value={b.value}>
                                     {b.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+
+                            <div className="space-y-1 sm:col-span-2">
+                              <label className="hd-kicker block">
+                                ASSIGNED VERIFIED MASTHEAD PERSONNEL (SYNCHRONIZED REGISTRY)
+                              </label>
+                              <select
+                                value={editEditorSlug}
+                                onChange={(e) => setEditEditorSlug(e.target.value)}
+                                className="w-full px-3 py-2 border hd-font-body text-sm"
+                                style={{
+                                  borderColor: 'var(--hd-rule-strong)',
+                                  backgroundColor: 'var(--hd-bg)',
+                                  color: 'var(--hd-fg)',
+                                }}
+                              >
+                                <option value="">Desk Queue (No Individual Assigned)</option>
+                                {(bundle.verifiedPersonnel || []).map((vp) => (
+                                  <option key={`${vp.slug}-${vp.roleTitle}`} value={vp.slug}>
+                                    {vp.name} — {vp.roleTitle} (Verified)
                                   </option>
                                 ))}
                               </select>

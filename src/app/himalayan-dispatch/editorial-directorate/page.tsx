@@ -31,7 +31,10 @@ export default function EditorialDirectoratePage() {
           ]}
         />
 
-        <header className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b items-start" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+        <header
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b items-start"
+          style={{ borderColor: 'var(--hd-rule-strong)' }}
+        >
           <div className="lg:col-span-8 space-y-4">
             <p className="hd-kicker">EXECUTIVE EDITORIAL GOVERNANCE</p>
             <h1
@@ -58,9 +61,12 @@ export default function EditorialDirectoratePage() {
               <ShieldCheck className="w-4 h-4 shrink-0" style={{ color: 'var(--hd-copper)' }} />
               <span className="hd-kicker">PUBLISHING SEAT</span>
             </div>
-            <p className="hd-font-display text-2xl font-semibold">Fairfax, Virginia · USA</p>
-            <p className="hd-font-body text-sm leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
-              Editorial decisions rest exclusively with the Founding Editor-in-Chief and senior
+            <p className="hd-font-display text-2xl font-semibold">Fairfax, Virginia 22031 · USA</p>
+            <p
+              className="hd-font-body text-sm leading-relaxed"
+              style={{ color: 'var(--hd-fg-secondary)' }}
+            >
+              Editorial decisions rest exclusively with the Founding Editor-in-Chief and verified
               commissioning editors under the{' '}
               <Link href={HD_ROUTES.editorialCharter} className="underline">
                 Editorial Charter
@@ -72,18 +78,18 @@ export default function EditorialDirectoratePage() {
 
         {[
           {
-            kicker: 'DIRECTORATE I · EXECUTIVE LEADERSHIP',
-            title: 'Office of the Editor-in-Chief',
+            kicker: 'I · MASTHEAD LEADERSHIP',
+            title: 'Editorial Directorate',
             items: executive,
           },
           {
-            kicker: 'DIRECTORATE II · COMMISSIONING & COPY',
-            title: 'Central Newsroom Desk',
+            kicker: 'II · EDITORIAL PRODUCTION & COMMISSIONING',
+            title: 'Central Newsroom',
             items: centralDesk,
           },
           {
-            kicker: 'DIRECTORATE III · PHOTOGRAPHY, DATA & DESIGN',
-            title: 'Visual Editions Directorate',
+            kicker: 'III · VISUAL JOURNALISM, CARTOGRAPHY & DESIGN',
+            title: 'Photography, Multimedia & Visual Editions Directorate',
             items: visualDesk,
           },
         ].map((sec) => (
@@ -96,27 +102,64 @@ export default function EditorialDirectoratePage() {
               <p className="hd-kicker">{sec.kicker}</p>
               <h2 className="hd-font-display text-3xl font-semibold">{sec.title}</h2>
             </div>
-            <div className="lg:col-span-8 divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
-              {sec.items.map((p) => (
-                <div key={p.id} className="py-5 first:pt-0 space-y-1.5" style={{ borderColor: 'var(--hd-rule)' }}>
-                  <span className="hd-kicker">{p.roleTitle}</span>
-                  {p.journalistSlug ? (
-                    <Link href={HD_ROUTES.journalistPortfolio(p.journalistSlug)} className="block group">
-                      <h3 className="hd-font-display text-2xl sm:text-3xl font-semibold italic group-hover:underline">
-                        {p.displayHolderName}
-                      </h3>
-                    </Link>
-                  ) : (
-                    <h3 className="hd-font-display text-2xl sm:text-3xl font-semibold italic">
-                      {p.displayHolderName}
-                    </h3>
-                  )}
-                  <p className="hd-folio-meta">{p.domainsRubric}</p>
-                  <p className="hd-font-body text-sm sm:text-base leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
-                    {p.mandateDescription}
-                  </p>
-                </div>
-              ))}
+            <div className="lg:col-span-8">
+              <div
+                className="overflow-x-auto border"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr
+                      className="border-b"
+                      style={{
+                        borderColor: 'var(--hd-rule-strong)',
+                        backgroundColor: 'var(--hd-bg-recessed)',
+                      }}
+                    >
+                      <th scope="col" className="w-[58%] px-5 sm:px-6 py-3.5 hd-kicker">Position</th>
+                      <th scope="col" className="w-[42%] px-5 sm:px-6 py-3.5 hd-kicker">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                    {sec.items.map((p) => (
+                      <tr key={p.id} className="align-top">
+                        <td className="px-5 sm:px-6 py-4 space-y-1">
+                          <span className="hd-font-display text-xl sm:text-2xl font-semibold block">
+                            {p.roleTitle}
+                          </span>
+                          <span className="hd-folio-meta block">{p.domainsRubric}</span>
+                        </td>
+                        <td className="px-5 sm:px-6 py-4">
+                          {p.isFilledPublicly ? (
+                            p.journalistSlug ? (
+                              <Link
+                                href={HD_ROUTES.journalistPortfolio(p.journalistSlug)}
+                                className="hd-font-display text-xl sm:text-2xl font-semibold italic hover:underline"
+                              >
+                                {p.displayHolderName}
+                              </Link>
+                            ) : (
+                              <span className="hd-font-display text-xl sm:text-2xl font-semibold italic">
+                                {p.displayHolderName}
+                              </span>
+                            )
+                          ) : (
+                            <span
+                              className="hd-font-body text-sm sm:text-base italic"
+                              style={{ color: 'var(--hd-fg-muted)' }}
+                            >
+                              {p.displayHolderName}
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         ))}

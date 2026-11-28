@@ -39,6 +39,12 @@ import {
   toCanonicalIssueSlug,
 } from '@/lib/himalayan-dispatch-routes';
 import {
+  computeMastheadRosterSummary,
+  enrichBaseMastheadPosition,
+  REGIONAL_REPORTING_JURISDICTIONS,
+} from '@/data/himalayan-dispatch-masthead-roster';
+import pool from '@/lib/db';
+import {
   AutonomousEditorialQueueItem,
   AutonomousQueueStatus,
   AutonomousSourceSignal,
@@ -64,6 +70,10 @@ import {
   MastheadSectionId,
   NewsroomApplicationStatus,
   NewsroomContributorApplication,
+  PersonnelAppointmentState,
+  PersonnelAuthorizationState,
+  PersonnelPublicationState,
+  PersonnelVerificationState,
   PrivateCredentialAttachment,
   PublicApplicationStatusSummary,
   PublicCorrectionRecord,
@@ -140,6 +150,11 @@ interface DispatchPersistentStoreData {
       domainsRubric?: string;
       mandateDescription?: string;
       status?: MastheadAppointmentStatus;
+      appointmentState?: PersonnelAppointmentState;
+      verificationState?: PersonnelVerificationState;
+      authorizationState?: PersonnelAuthorizationState;
+      publicationState?: PersonnelPublicationState;
+      journalistSlug?: string;
       publicVacantLabel?: string;
       internalAdminNote?: string;
       updatedAt: string;
@@ -657,6 +672,38 @@ export function getPublicJournalists(): JournalistProfile[] {
     ...onboardedPublicProfiles.map((p) => p.slug),
   ]);
 
+  // Synchronize active Masthead editorial, visual, bureau, standards & public-editor appointees
+  const verifiedMastheadProfiles: JournalistProfile[] = getAllMastheadPositionsInternal()
+    .filter(
+      (pos) =>
+        pos.publicationState === 'published_verified' &&
+        PUBLICLY_NAMED_MASTHEAD_STATUSES.has(pos.status) &&
+        pos.holderName.trim().length > 0 &&
+        ['I_leadership', 'II_commissioning', 'III_visual', 'IV_bureaus', 'VI_standards', 'VIII_public_editor'].includes(pos.sectionId)
+    )
+    .map((pos) => {
+      const slug = pos.journalistSlug || slugifyName(pos.holderName);
+      return { pos, slug };
+    })
+    .filter(({ slug }) => Boolean(slug) && !combinedSlugs.has(slug))
+    .map(({ pos, slug }) => {
+      combinedSlugs.add(slug);
+      return {
+        slug,
+        name: pos.holderName.trim(),
+        roleTitle: pos.roleTitle,
+        beat: pos.domainsRubric,
+        basedIn: pos.bureauId
+          ? `${pos.bureauId.toUpperCase()} Bureau · Western Himalayas`
+          : 'Fairfax, Virginia & Western Himalayas',
+        portraitUrl: '/images/publications/pashmina-field-ecology-scientists.jpg',
+        shortBio: pos.mandateDescription,
+        extendedBio: [pos.mandateDescription],
+        languages: ['English'],
+        awardsAndFellowships: [`Himalayan Dispatch · ${pos.roleTitle}`],
+      };
+    });
+
   const hdnExtraProfiles: JournalistProfile[] = readHdnStore()
     .accounts.filter(
       (acc) =>
@@ -683,7 +730,12 @@ export function getPublicJournalists(): JournalistProfile[] {
           : [`Himalayan Dispatch Verified ${acc.primaryRoleTitle}`],
     }));
 
-  return [...baseProfiles, ...onboardedPublicProfiles, ...hdnExtraProfiles];
+  return [
+    ...baseProfiles,
+    ...onboardedPublicProfiles,
+    ...verifiedMastheadProfiles,
+    ...hdnExtraProfiles,
+  ];
 }
 
 const LEGACY_JOURNALIST_SLUG_ALIASES: Record<string, string> = {
@@ -701,8 +753,8 @@ export function getPublicJournalistPortfolio(slug: string): {
   const publicList = getPublicJournalists();
   const resolvedSlug = LEGACY_JOURNALIST_SLUG_ALIASES[slug] || slug;
   const journalist =
-    publicList.find((j) => j.slug === resolvedSlug) ||
-    publicList.find((j) => j.slug === slug);
+    publicList.find((j) => j.slug === slug) ||
+    publicList.find((j) => j.slug === resolvedSlug);
   if (!journalist) return null;
   const publishedStories = getPublicPublishedStories().filter(
     (s) =>
@@ -728,11 +780,12 @@ const PUBLICLY_NAMED_MASTHEAD_STATUSES = new Set<MastheadAppointmentStatus>([
 
 /**
  * Internal merged masthead positions (for authorized Newsroom Admin Dashboard ONLY).
- * Includes private Proposed / Under Review candidate placeholders and internal notes.
+ * Includes private illustrative appointment-planning names, 4-axis governance states, and internal notes.
  */
 export function getAllMastheadPositionsInternal(): MastheadPositionRecord[] {
   const store = readDispatchStore();
-  const baseMerged = MASTHEAD_DEFAULT_POSITIONS.map((pos) => {
+  const baseMerged = MASTHEAD_DEFAULT_POSITIONS.map((rawPos) => {
+    const pos = enrichBaseMastheadPosition(rawPos);
     const ov = store.mastheadPositionOverrides[pos.id];
     if (!ov) return pos;
     return {
@@ -743,6 +796,16 @@ export function getAllMastheadPositionsInternal(): MastheadPositionRecord[] {
       mandateDescription:
         ov.mandateDescription !== undefined ? ov.mandateDescription : pos.mandateDescription,
       status: ov.status !== undefined ? ov.status : pos.status,
+      appointmentState:
+        ov.appointmentState !== undefined ? ov.appointmentState : pos.appointmentState,
+      verificationState:
+        ov.verificationState !== undefined ? ov.verificationState : pos.verificationState,
+      authorizationState:
+        ov.authorizationState !== undefined ? ov.authorizationState : pos.authorizationState,
+      publicationState:
+        ov.publicationState !== undefined ? ov.publicationState : pos.publicationState,
+      journalistSlug:
+        ov.journalistSlug !== undefined ? ov.journalistSlug : pos.journalistSlug,
       publicVacantLabel:
         ov.publicVacantLabel !== undefined ? ov.publicVacantLabel : pos.publicVacantLabel,
       internalAdminNote:
@@ -752,7 +815,8 @@ export function getAllMastheadPositionsInternal(): MastheadPositionRecord[] {
     };
   });
 
-  const customMerged = store.customMastheadPositions.map((pos) => {
+  const customMerged = store.customMastheadPositions.map((rawPos) => {
+    const pos = enrichBaseMastheadPosition(rawPos);
     const ov = store.mastheadPositionOverrides[pos.id];
     if (!ov) return pos;
     return {
@@ -763,6 +827,16 @@ export function getAllMastheadPositionsInternal(): MastheadPositionRecord[] {
       mandateDescription:
         ov.mandateDescription !== undefined ? ov.mandateDescription : pos.mandateDescription,
       status: ov.status !== undefined ? ov.status : pos.status,
+      appointmentState:
+        ov.appointmentState !== undefined ? ov.appointmentState : pos.appointmentState,
+      verificationState:
+        ov.verificationState !== undefined ? ov.verificationState : pos.verificationState,
+      authorizationState:
+        ov.authorizationState !== undefined ? ov.authorizationState : pos.authorizationState,
+      publicationState:
+        ov.publicationState !== undefined ? ov.publicationState : pos.publicationState,
+      journalistSlug:
+        ov.journalistSlug !== undefined ? ov.journalistSlug : pos.journalistSlug,
       publicVacantLabel:
         ov.publicVacantLabel !== undefined ? ov.publicVacantLabel : pos.publicVacantLabel,
       internalAdminNote:
@@ -776,38 +850,49 @@ export function getAllMastheadPositionsInternal(): MastheadPositionRecord[] {
 }
 
 /**
- * PUBLIC MASTHEAD POSITIONS — Enforces institutional governance rule on the server:
- * Only verified & accepted appointments (`Confirmed`, `Visiting`, `External Reviewer`)
- * with a non-empty holderName appear as named individuals on the public masthead.
- * Any seat set to `Proposed`, `Under Review`, `Vacant`, or `Former Member` suppresses
- * private planning names on the server and displays `Appointment Pending` or `Vacant`.
+ * PUBLIC MASTHEAD POSITIONS — Enforces strict server-side verification & anti-misrepresentation gate:
+ * Illustrative planning names are NEVER exposed publicly. A seat displays a person's name ONLY when:
+ *  1. `verificationState === 'verified'`
+ *  2. `publicationState === 'published_verified'`
+ *  3. `status` is `Confirmed`, `Visiting`, or `External Reviewer` AND `holderName` is non-empty.
  */
 export function getPublicMastheadPositions(): PublicMastheadPosition[] {
   return getAllMastheadPositionsInternal().map((pos) => {
     const trimmedName = (pos.holderName || '').trim();
-    const isFilledPublicly =
-      PUBLICLY_NAMED_MASTHEAD_STATUSES.has(pos.status) && trimmedName.length > 0;
+    const isActiveNamed =
+      pos.publicationState === 'published_verified' &&
+      PUBLICLY_NAMED_MASTHEAD_STATUSES.has(pos.status) &&
+      trimmedName.length > 0;
 
     const fallbackVacantLabel =
       pos.publicVacantLabel?.trim() ||
-      (pos.status === 'Under Review' ? 'Appointment Pending' : 'Vacant');
+      (pos.bureauOperationalStatus === 'in_establishment'
+        ? 'In Establishment · Appointment Pending'
+        : 'Appointment Pending');
 
     return {
       id: pos.id,
       sectionId: pos.sectionId,
       order: pos.order,
       roleTitle: pos.roleTitle,
-      displayHolderName: isFilledPublicly ? trimmedName : fallbackVacantLabel,
-      isFilledPublicly,
+      displayHolderName: isActiveNamed ? trimmedName : fallbackVacantLabel,
+      isFilledPublicly: isActiveNamed,
       publicDesignationNote:
-        isFilledPublicly && pos.status === 'Visiting' ? 'Visiting Appointment' : undefined,
+        isActiveNamed && pos.status === 'Visiting' ? 'Visiting Appointment' : undefined,
       domainsRubric: pos.domainsRubric,
       mandateDescription: pos.mandateDescription,
+      appointmentState: pos.appointmentState || 'vacant',
+      verificationState: pos.verificationState === 'verified' ? 'verified' : 'unconfirmed',
       bureauId: pos.bureauId,
       bureauOperationalStatus: pos.bureauOperationalStatus,
       isCouncilSpecialistRow: pos.isCouncilSpecialistRow,
       anchorId: pos.anchorId,
-      journalistSlug: isFilledPublicly ? pos.journalistSlug : undefined,
+      journalistSlug: isActiveNamed
+        ? pos.journalistSlug ||
+          (['I_leadership', 'II_commissioning', 'III_visual', 'IV_bureaus', 'VI_standards', 'VIII_public_editor'].includes(pos.sectionId)
+            ? slugifyName(trimmedName)
+            : undefined)
+        : undefined,
     };
   });
 }
@@ -822,6 +907,8 @@ export function getPublicDispatchBundle() {
   const currentEditionStories = currentEdition.storySlugs
     .map((slug) => publishedStories.find((s) => s.slug === slug))
     .filter((s): s is MagazineStory => Boolean(s));
+  const internalPositions = getAllMastheadPositionsInternal();
+  const rosterSummary = computeMastheadRosterSummary(internalPositions);
 
   return {
     currentEdition,
@@ -836,6 +923,20 @@ export function getPublicDispatchBundle() {
     editorialBoard: EDITORIAL_BOARD_MEMBERS,
     mastheadSections: MASTHEAD_SECTION_SPECS,
     mastheadPositions: getPublicMastheadPositions(),
+    regionalJurisdictions: REGIONAL_REPORTING_JURISDICTIONS,
+    mastheadPublicSummary: {
+      totalDesignatedPositions: rosterSummary.totalDesignatedPositions,
+      organizationalDivisions: rosterSummary.organizationalDivisions,
+      confirmedVerifiedPositions: rosterSummary.confirmedVerifiedPositions,
+      vacantOrPendingPositions: rosterSummary.vacantOrPendingPositions,
+      regionalBureaus: rosterSummary.regionalBureaus,
+      scientificReviewPositions: rosterSummary.scientificReviewPositions,
+      maleNames: rosterSummary.illustrativeMaleNames,
+      femaleNames: rosterSummary.illustrativeFemaleNames,
+      malePct: rosterSummary.illustrativeMalePct,
+      femalePct: rosterSummary.illustrativeFemalePct,
+      genderDistributionNote: rosterSummary.illustrativeDisclaimer,
+    },
     editorialCharterCommitments: EDITORIAL_CHARTER_COMMITMENTS,
     regionalBureaus: REGIONAL_REPORTING_BUREAUS,
     workflowStages: EDITORIAL_WORKFLOW_STAGES,
@@ -1466,7 +1567,65 @@ export function getAdminDispatchBundle() {
     contributorCategories: CONTRIBUTOR_ROLE_CATEGORIES,
     mastheadSections: MASTHEAD_SECTION_SPECS,
     mastheadPositions: getAllMastheadPositionsInternal(),
+    mastheadRosterSummary: computeMastheadRosterSummary(getAllMastheadPositionsInternal()),
   };
+}
+
+async function syncMastheadPositionToPostgres(pos: MastheadPositionRecord): Promise<void> {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS hd_editorial_personnel_registry (
+        position_id TEXT PRIMARY KEY,
+        section_id TEXT NOT NULL,
+        role_title TEXT NOT NULL,
+        confirmed_holder_name TEXT NOT NULL DEFAULT '',
+        illustrative_planning_name TEXT,
+        appointment_state TEXT NOT NULL,
+        verification_state TEXT NOT NULL,
+        authorization_state TEXT NOT NULL,
+        publication_state TEXT NOT NULL,
+        legacy_status TEXT NOT NULL,
+        bureau_id TEXT,
+        bureau_operational_status TEXT,
+        updated_by TEXT,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      );
+    `);
+    await pool.query(
+      `INSERT INTO hd_editorial_personnel_registry (
+        position_id, section_id, role_title, confirmed_holder_name, illustrative_planning_name,
+        appointment_state, verification_state, authorization_state, publication_state,
+        legacy_status, bureau_id, bureau_operational_status, updated_by, updated_at
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,NOW())
+      ON CONFLICT (position_id) DO UPDATE SET
+        role_title = EXCLUDED.role_title,
+        confirmed_holder_name = EXCLUDED.confirmed_holder_name,
+        appointment_state = EXCLUDED.appointment_state,
+        verification_state = EXCLUDED.verification_state,
+        authorization_state = EXCLUDED.authorization_state,
+        publication_state = EXCLUDED.publication_state,
+        legacy_status = EXCLUDED.legacy_status,
+        updated_by = EXCLUDED.updated_by,
+        updated_at = NOW()`,
+      [
+        pos.id,
+        pos.sectionId,
+        pos.roleTitle,
+        pos.holderName || '',
+        pos.illustrativePlanningName || null,
+        pos.appointmentState || 'vacant',
+        pos.verificationState || 'illustrative_unverified',
+        pos.authorizationState || 'not_authorized',
+        pos.publicationState || 'public_vacant_pending',
+        pos.status,
+        pos.bureauId || null,
+        pos.bureauOperationalStatus || null,
+        pos.updatedBy || 'system',
+      ]
+    );
+  } catch {
+    // File store remains authoritative fallback if DB offline
+  }
 }
 
 export function adminUpdateMastheadPosition(
@@ -1477,6 +1636,11 @@ export function adminUpdateMastheadPosition(
     domainsRubric?: string;
     mandateDescription?: string;
     status?: MastheadAppointmentStatus;
+    appointmentState?: PersonnelAppointmentState;
+    verificationState?: PersonnelVerificationState;
+    authorizationState?: PersonnelAuthorizationState;
+    publicationState?: PersonnelPublicationState;
+    journalistSlug?: string;
     publicVacantLabel?: string;
     internalAdminNote?: string;
   },
@@ -1485,6 +1649,41 @@ export function adminUpdateMastheadPosition(
   const all = getAllMastheadPositionsInternal();
   const target = all.find((p) => p.id === positionId);
   if (!target) return null;
+
+  const nextStatus = updates.status !== undefined ? updates.status : target.status;
+  const nextVerification: PersonnelVerificationState =
+    updates.verificationState !== undefined
+      ? updates.verificationState
+      : target.verificationState || 'illustrative_unverified';
+  const nextPublication: PersonnelPublicationState =
+    updates.publicationState !== undefined
+      ? updates.publicationState
+      : target.publicationState || 'public_vacant_pending';
+  const nextHolder =
+    updates.holderName !== undefined ? updates.holderName.trim() : target.holderName.trim();
+
+  // Require a non-empty holderName when publishing a named seat on the Masthead
+  if (
+    (nextPublication === 'published_verified' ||
+      PUBLICLY_NAMED_MASTHEAD_STATUSES.has(nextStatus)) &&
+    !nextHolder
+  ) {
+    throw new Error(
+      'An appointee name is required when setting a Masthead seat to Confirmed, Visiting, or External Reviewer.'
+    );
+  }
+
+  const nextAppointment: PersonnelAppointmentState =
+    updates.appointmentState !== undefined
+      ? updates.appointmentState
+      : PUBLICLY_NAMED_MASTHEAD_STATUSES.has(nextStatus)
+      ? 'appointed'
+      : target.appointmentState || 'vacant';
+
+  const nextAuthorization: PersonnelAuthorizationState =
+    updates.authorizationState !== undefined
+      ? updates.authorizationState
+      : target.authorizationState || 'not_authorized';
 
   const store = readDispatchStore();
   const prevOv = store.mastheadPositionOverrides[positionId] || {
@@ -1503,7 +1702,14 @@ export function adminUpdateMastheadPosition(
     ...(updates.mandateDescription !== undefined
       ? { mandateDescription: updates.mandateDescription.trim() }
       : {}),
-    ...(updates.status !== undefined ? { status: updates.status } : {}),
+    status: nextStatus,
+    appointmentState: nextAppointment,
+    verificationState: nextVerification,
+    authorizationState: nextAuthorization,
+    publicationState: nextPublication,
+    ...(updates.journalistSlug !== undefined
+      ? { journalistSlug: updates.journalistSlug.trim() || undefined }
+      : {}),
     ...(updates.publicVacantLabel !== undefined
       ? { publicVacantLabel: updates.publicVacantLabel.trim() }
       : {}),
@@ -1515,7 +1721,12 @@ export function adminUpdateMastheadPosition(
   };
 
   writeDispatchStore(store);
-  return getAllMastheadPositionsInternal().find((p) => p.id === positionId) || null;
+  const updatedRecord =
+    getAllMastheadPositionsInternal().find((p) => p.id === positionId) || null;
+  if (updatedRecord) {
+    void syncMastheadPositionToPostgres(updatedRecord);
+  }
+  return updatedRecord;
 }
 
 export function adminCreateMastheadPosition(

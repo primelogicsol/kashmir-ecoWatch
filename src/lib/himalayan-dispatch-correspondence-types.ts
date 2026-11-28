@@ -676,4 +676,10 @@ export interface AdminCorrespondenceBundle {
     details: string;
     createdAt: string;
   }>;
+  verifiedPersonnel?: Array<{
+    slug: string;
+    name: string;
+    roleTitle: string;
+    sectionId: string;
+  }>;
 }

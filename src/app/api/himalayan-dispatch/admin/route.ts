@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminRequest } from '@/lib/seo/admin-session';
+import { isExecutiveOrAdmin, resolveHdnRequestAccount } from '@/lib/hdn/rbac';
+import { readHdnStore } from '@/lib/hdn/store';
 import {
   adminAppendStoryCorrection,
   adminCreateEditorialAssignment,
@@ -22,6 +24,10 @@ import {
   MastheadAppointmentStatus,
   MastheadSectionId,
   NewsroomApplicationStatus,
+  PersonnelAppointmentState,
+  PersonnelAuthorizationState,
+  PersonnelPublicationState,
+  PersonnelVerificationState,
   PublicProductionBadge,
   StoryCorrectionEntry,
 } from '@/types/himalayan-dispatch';
@@ -59,14 +65,29 @@ const VALID_MASTHEAD_SECTIONS = new Set<MastheadSectionId>([
   'IX_digital_publishing',
 ]);
 
+async function verifyDispatchOrKewAdmin(
+  request: NextRequest
+): Promise<{ authorized: boolean; actor: string }> {
+  const kewAuth = await verifyAdminRequest(request);
+  if (kewAuth.authorized) {
+    return { authorized: true, actor: kewAuth.actor };
+  }
+  const hdnStore = readHdnStore();
+  const hdnAuth = await resolveHdnRequestAccount(request, () => hdnStore.accounts);
+  if (hdnAuth.authenticated && hdnAuth.account && isExecutiveOrAdmin(hdnAuth.account)) {
+    return { authorized: true, actor: hdnAuth.account.fullName };
+  }
+  return { authorized: false, actor: 'anonymous' };
+}
+
 export async function GET(request: NextRequest) {
-  const authResult = await verifyAdminRequest(request);
+  const authResult = await verifyDispatchOrKewAdmin(request);
   if (!authResult.authorized) {
     return NextResponse.json(
       {
         success: false,
         error:
-          'Unauthorized: Himalayan Dispatch Newsroom Desk requires verified KEW Administrator credentials.',
+          'Unauthorized: Himalayan Dispatch Newsroom Desk requires verified Editorial Directorate or KEW Administrator credentials.',
       },
       { status: 401 }
     );
@@ -81,7 +102,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
-  const authResult = await verifyAdminRequest(request);
+  const authResult = await verifyDispatchOrKewAdmin(request);
   if (!authResult.authorized) {
     return NextResponse.json(
       {
@@ -275,23 +296,52 @@ export async function PATCH(request: NextRequest) {
         );
       }
 
-      const updated = adminUpdateMastheadPosition(
-        positionId,
-        {
-          roleTitle: body.roleTitle !== undefined ? String(body.roleTitle) : undefined,
-          holderName: body.holderName !== undefined ? String(body.holderName) : undefined,
-          domainsRubric:
-            body.domainsRubric !== undefined ? String(body.domainsRubric) : undefined,
-          mandateDescription:
-            body.mandateDescription !== undefined ? String(body.mandateDescription) : undefined,
-          status: nextStatus,
-          publicVacantLabel:
-            body.publicVacantLabel !== undefined ? String(body.publicVacantLabel) : undefined,
-          internalAdminNote:
-            body.internalAdminNote !== undefined ? String(body.internalAdminNote) : undefined,
-        },
-        authResult.actor
-      );
+      let updated;
+      try {
+        updated = adminUpdateMastheadPosition(
+          positionId,
+          {
+            roleTitle: body.roleTitle !== undefined ? String(body.roleTitle) : undefined,
+            holderName: body.holderName !== undefined ? String(body.holderName) : undefined,
+            domainsRubric:
+              body.domainsRubric !== undefined ? String(body.domainsRubric) : undefined,
+            mandateDescription:
+              body.mandateDescription !== undefined ? String(body.mandateDescription) : undefined,
+            status: nextStatus,
+            appointmentState:
+              body.appointmentState !== undefined
+                ? (String(body.appointmentState) as PersonnelAppointmentState)
+                : undefined,
+            verificationState:
+              body.verificationState !== undefined
+                ? (String(body.verificationState) as PersonnelVerificationState)
+                : undefined,
+            authorizationState:
+              body.authorizationState !== undefined
+                ? (String(body.authorizationState) as PersonnelAuthorizationState)
+                : undefined,
+            publicationState:
+              body.publicationState !== undefined
+                ? (String(body.publicationState) as PersonnelPublicationState)
+                : undefined,
+            journalistSlug:
+              body.journalistSlug !== undefined ? String(body.journalistSlug) : undefined,
+            publicVacantLabel:
+              body.publicVacantLabel !== undefined ? String(body.publicVacantLabel) : undefined,
+            internalAdminNote:
+              body.internalAdminNote !== undefined ? String(body.internalAdminNote) : undefined,
+          },
+          authResult.actor
+        );
+      } catch (govErr: any) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: govErr?.message || 'Masthead governance verification gate blocked update.',
+          },
+          { status: 400 }
+        );
+      }
 
       if (!updated) {
         return NextResponse.json(

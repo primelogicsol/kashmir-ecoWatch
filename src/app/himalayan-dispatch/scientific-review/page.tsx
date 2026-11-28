@@ -31,26 +31,40 @@ export default function ScientificReviewPolicyPage() {
           ]}
         />
 
-        <header className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b items-start" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+        <header
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b items-start"
+          style={{ borderColor: 'var(--hd-rule-strong)' }}
+        >
           <div className="lg:col-span-8 space-y-4">
-            <p className="hd-kicker">STAGE 05 · EMPIRICAL REVIEW PROTOCOL</p>
+            <p className="hd-kicker">V · EMPIRICAL &amp; INDEPENDENT SCIENTIFIC REVIEW</p>
             <h1 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.02]">
-              Independent Scientific Review
+              Multidisciplinary Scientific Review Council
             </h1>
-            <p className="hd-font-body text-lg sm:text-xl leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
-              Every Himalayan Dispatch feature making hydrological, glaciological, ecological,
-              chemical, or statistical claims undergoes Stage 05 empirical review prior to
-              publication—preventing causal overstatement while preserving independent literary voice.
+            <p
+              className="hd-font-body text-lg sm:text-xl leading-relaxed"
+              style={{ color: 'var(--hd-fg-secondary)' }}
+            >
+              The council assesses scientific evidence, methodological accuracy, statistical
+              uncertainty and technical interpretations without dictating literary voice or
+              improperly influencing editorial conclusions.
             </p>
           </div>
 
           {councilChair && (
             <aside
               className="lg:col-span-4 p-6 border space-y-2"
-              style={{ borderColor: 'var(--hd-rule-strong)', backgroundColor: 'var(--hd-bg-elevated)' }}
+              style={{
+                borderColor: 'var(--hd-rule-strong)',
+                backgroundColor: 'var(--hd-bg-elevated)',
+              }}
             >
               <span className="hd-kicker">{councilChair.roleTitle}</span>
-              <h2 className="hd-font-display text-2xl font-semibold italic">
+              <h2
+                className="hd-font-display text-2xl font-semibold italic"
+                style={{
+                  color: councilChair.isFilledPublicly ? 'var(--hd-fg)' : 'var(--hd-fg-muted)',
+                }}
+              >
                 {councilChair.displayHolderName}
               </h2>
               <p className="hd-folio-meta">{councilChair.domainsRubric}</p>
@@ -77,35 +91,83 @@ export default function ScientificReviewPolicyPage() {
               body: 'Scientific reviewers audit empirical accuracy and methodological fairness; narrative framing, investigative accountability, and publication decisions remain with the Editors.',
             },
           ].map((item) => (
-            <div key={item.kicker} className="p-6 border space-y-2.5" style={{ borderColor: 'var(--hd-rule)' }}>
+            <div
+              key={item.kicker}
+              className="p-6 border space-y-2.5"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
               <span className="hd-kicker">{item.kicker}</span>
               <h2 className="hd-font-display text-2xl font-semibold">{item.title}</h2>
-              <p className="hd-font-body text-sm leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
+              <p
+                className="hd-font-body text-sm leading-relaxed"
+                style={{ color: 'var(--hd-fg-secondary)' }}
+              >
                 {item.body}
               </p>
             </div>
           ))}
         </section>
 
-        {/* 15 Specialist Disciplines Ledger */}
+        {/* 16 Council Positions Ledger (Retaining Position | Name Column Headings) */}
         <section className="space-y-6">
-          <div className="pb-3 border-b flex items-center justify-between" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+          <div
+            className="pb-3 border-b flex flex-wrap items-center justify-between gap-4"
+            style={{ borderColor: 'var(--hd-rule-strong)' }}
+          >
             <h2 className="hd-font-display text-3xl font-semibold">
-              Multidisciplinary Scientific Review Council ({councilMembers.length} Specialist Chairs)
+              Council Roster ({(councilChair ? 1 : 0) + councilMembers.length} Designated Positions)
             </h2>
             <Link href={HD_ROUTES.editorialAppointments} className="hd-kicker hover:underline">
               Nominate External Reviewer →
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l" style={{ borderColor: 'var(--hd-rule)' }}>
-            {councilMembers.map((m) => (
-              <div key={m.id} className="p-5 border-r border-b space-y-1.5" style={{ borderColor: 'var(--hd-rule)', backgroundColor: 'var(--hd-bg-elevated)' }}>
-                <span className="hd-kicker text-[10px]">{m.domainsRubric}</span>
-                <h3 className="hd-font-display text-2xl font-semibold italic">{m.displayHolderName}</h3>
-                <p className="hd-folio-meta">{m.roleTitle}</p>
-              </div>
-            ))}
+          <div
+            className="overflow-x-auto border"
+            style={{
+              borderColor: 'var(--hd-rule-strong)',
+              backgroundColor: 'var(--hd-bg-elevated)',
+            }}
+          >
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr
+                  className="border-b"
+                  style={{
+                    borderColor: 'var(--hd-rule-strong)',
+                    backgroundColor: 'var(--hd-bg-recessed)',
+                  }}
+                >
+                  <th scope="col" className="w-[58%] px-5 sm:px-6 py-3.5 hd-kicker">Position</th>
+                  <th scope="col" className="w-[42%] px-5 sm:px-6 py-3.5 hd-kicker">Name</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                {[...(councilChair ? [councilChair] : []), ...councilMembers].map((m) => (
+                  <tr key={m.id} className="align-top">
+                    <td className="px-5 sm:px-6 py-4">
+                      <span className="hd-font-display text-xl sm:text-2xl font-semibold block">
+                        {m.roleTitle}
+                      </span>
+                    </td>
+                    <td className="px-5 sm:px-6 py-4">
+                      <span
+                        className={
+                          m.isFilledPublicly
+                            ? 'hd-font-display text-xl sm:text-2xl font-semibold italic'
+                            : 'hd-font-body text-sm sm:text-base italic'
+                        }
+                        style={{
+                          color: m.isFilledPublicly ? 'var(--hd-fg)' : 'var(--hd-fg-muted)',
+                        }}
+                      >
+                        {m.displayHolderName}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
