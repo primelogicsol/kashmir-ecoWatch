@@ -52,7 +52,7 @@ const CINEMATIC_SCENES: readonly CinematicScene[] = [
     imageAlt:
       'Western Himalayan field glaciologists conducting cryosphere survey observations above an alpine glacial tarn',
     focalLandscape: { x: '64%', y: '42%' },
-    focalPortrait: { x: '62%', y: '36%' },
+    focalPortrait: { x: '80%', y: '36%' },
     scrimStrength: 0.86,
     readingDurationMs: 7600,
   },
